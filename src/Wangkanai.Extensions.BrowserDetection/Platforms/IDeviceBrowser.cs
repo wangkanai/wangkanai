@@ -7,6 +7,7 @@ namespace Wangkanai.Extensions.BrowserDetection.Platforms
 {
     internal interface IDeviceBrowser
     {
+        DeviceInfo DeviceInfo { get; }
         bool IsValid(HttpRequest request);
     }
 }

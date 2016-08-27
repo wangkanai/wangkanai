@@ -20,8 +20,8 @@ namespace Wangkanai.Extensions.BrowserDetection.Platforms
             var agent = request.Headers["User-Agent"].FirstOrDefault()?.ToLowerInvariant();
 
             // user agent keyword detection
-            if (agent == null && !_keywords.Any(keyword => agent.Contains(keyword)))
-                return false;
+            if (agent == null) return false;
+            if (!_keywords.Any(keyword => agent.Contains(keyword))) return false;
 
             DeviceInfo = DeviceBuilder.Mobile();
             return true;

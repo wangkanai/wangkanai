@@ -11,7 +11,7 @@ namespace Wangkanai.Extensions.BrowserDetection.Platforms
         public override bool IsValid(HttpRequest request)
         {
             // opera mini special case
-            if (!request.Headers.Any(header => header.Value.Any(value => value.Contains("OperaMini"))))                return false;
+            if (!request.Headers.Any(header => header.Value.Any(value => value.Contains("OperaMini")))) return false;
 
             DeviceInfo = DeviceBuilder.Mobile();
             return true;

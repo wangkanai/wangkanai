@@ -24,11 +24,16 @@ namespace Wangkanai.Extensions.BrowserDetection
             {
                 new DesktopBrowser(),
                 new TabletBrowser(),
-                new MobileKeywordBrowser()
+                new MobileKeywordBrowser(),
+                new MobilePrefixBrowser(),                
+                new WapBrowser(),
+                new UAProfBrowser(),
+                new OperaMiniBrowser(),
+                new CrawlerBrowser()
             };
             foreach (var browser in browsers)
                 if (browser.IsValid(_request))
-                    return DeviceBuilder.Mobile();
+                    return browser.DeviceInfo;
 
             return DeviceBuilder.Desktop();
         }

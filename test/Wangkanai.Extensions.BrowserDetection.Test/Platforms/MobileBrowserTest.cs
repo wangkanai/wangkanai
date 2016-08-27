@@ -25,12 +25,51 @@ namespace Wangkanai.Extensions.BrowserDetection.Platforms
         public void Keywords(string agents)
         {
             // arrange 
-            var request = CreateRequest(agents);
-            var mobile = new MobileKeywordBrowser();
+            var request = CreateRequest(agents);            
             // act
-            var result = mobile.IsValid(request);
+            var device = new DeviceResolver(request).DeviceInfo;
             // assert
-            Assert.Equal(true, result);
+            Assert.Equal(DeviceTypes.Mobile, device.Device);
+        }
+
+        [Theory]
+        [InlineData("EricssonT68/R101")]
+        [InlineData("Nokia9210/2.0 Symbian-Crystal/6.1 Nokia/2.1")]
+        [InlineData("SAMSUNG-SGH-R220/1.0 UP/4.1.19k")]
+        [InlineData("SonyEricssonT68/R201A")]
+        [InlineData("WinWAP 3.0 PRO")]
+        public void Prefix(string agent)
+        {
+            // Arrange            
+            var request = CreateRequest(agent);                
+            // Act
+            var device = new DeviceResolver(request).DeviceInfo;
+            // Assert
+            Assert.Equal(DeviceTypes.Mobile, device.Device);
+        }
+
+        [Theory]
+        [InlineData("x-wap-profile")]
+        [InlineData("Profile")]
+        public void UAProf(string agent)
+        {
+            // Arrange               
+            var request = CreateRequest(agent, "<xml><doc></doc>");          
+            // Act
+            var device = new DeviceResolver(request).DeviceInfo;
+            // Assert
+            Assert.Equal(DeviceTypes.Mobile, device.Device);
+        }
+
+        [Fact]
+        public void Wap()
+        {
+            // Arrange
+            var request = CreateRequest("Accept", "wap");
+            // Act
+            var device = new DeviceResolver(request).DeviceInfo;
+            // Assert
+            Assert.Equal(DeviceTypes.Mobile, device.Device);
         }
     }
 }
