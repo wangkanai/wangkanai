@@ -1,0 +1,36 @@
+﻿{
+  "description": "Wangkanai extension client web browser detection components",
+  "version": "1.0.0-*",
+
+  "authors": [ "Sarin Na Wangkanai" ],
+  "copyright": "Copyright © 2016 Sarin Na Wangkanai",
+  "packOptions": {
+    "repository": {
+      "type": "git",
+      "url": "git://github.com/wangkanai/Responsiveness"
+    },
+    "tags": [
+      "aspnetcore",
+      "responsiveness"
+    ],
+    "iconUrl": "http://0.gravatar.com/avatar/f58457d38ab3bc43526c6e52af17494e",
+    "licenseUrl": "https://github.com/wangkanai/BrowserDetection/blob/master/LICENSE",
+    "projectUrl": "https://github.com/wangkanai/BrowserDetection"
+  },
+  "buildOptions": {
+    "warningsAsErrors": true,
+    "nowarn": [
+      "CS1591"
+    ],
+    "xmlDoc": true
+  },
+  "dependencies": {
+    "NETStandard.Library": "1.6.0",
+    "Microsoft.AspNetCore.Http": "1.0.0" 
+  },
+
+  "frameworks": {
+    "net451": {},
+    "netstandard1.6": {}
+  }
+}
