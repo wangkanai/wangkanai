@@ -7,7 +7,7 @@
   "packOptions": {
     "repository": {
       "type": "git",
-      "url": "git://github.com/wangkanai/Responsiveness"
+      "url": "git://github.com/wangkanai/BrowserDetection"
     },
     "tags": [
       "aspnetcore",
