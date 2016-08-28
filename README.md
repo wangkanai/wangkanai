@@ -15,3 +15,14 @@ PM> install-package Wangkanai.Browser -pre
 ```csharp
 var device = new DeviceResolver(context.Request).DeviceInfo;
 ```
+
+### Directory Structure
+* `src` - The code of this project lives here
+* `test` - Unit tests of this project to valid that everything pass specs
+* `sample` - Contains sample web application of usage
+
+### Contributing
+
+All contribution are welcome, please contact the author.
+
+### See the [LICENSE](https://github.com/wangkanai/Browser/blob/master/LICENSE) file.
