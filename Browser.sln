@@ -20,6 +20,8 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Wangkanai.Browser.Test", "t
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{C26D86D6-4B4E-407E-9F1D-9CA1765768CE}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Sandbox", "sample\Sandbox\Sandbox.xproj", "{9679508F-3D6C-4693-90D0-838224DE84DB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,6 +36,10 @@ Global
 		{AECA4214-0584-4272-BC85-7B41593E5BC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AECA4214-0584-4272-BC85-7B41593E5BC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AECA4214-0584-4272-BC85-7B41593E5BC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9679508F-3D6C-4693-90D0-838224DE84DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9679508F-3D6C-4693-90D0-838224DE84DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9679508F-3D6C-4693-90D0-838224DE84DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9679508F-3D6C-4693-90D0-838224DE84DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -41,5 +47,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{178C7E01-9834-4EC7-97C1-184C3837277D} = {30E11A87-E8E1-4BB7-BB21-7D486B1511C2}
 		{AECA4214-0584-4272-BC85-7B41593E5BC8} = {724DDFD4-2D6F-4FF9-A76F-6D94278EDA0B}
+		{9679508F-3D6C-4693-90D0-838224DE84DB} = {C26D86D6-4B4E-407E-9F1D-9CA1765768CE}
 	EndGlobalSection
 EndGlobal
