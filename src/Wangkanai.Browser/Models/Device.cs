@@ -6,4 +6,9 @@ namespace Wangkanai.Browser.Models
     public class Device
     {
     }
+
+    public class DeviceFactory
+    {
+        
+    }
 }

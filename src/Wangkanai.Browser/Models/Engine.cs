@@ -7,4 +7,9 @@ namespace Wangkanai.Browser.Models
     {
         
     }
+
+    public class EngineFactory
+    {
+        
+    }
 }
