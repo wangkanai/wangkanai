@@ -1,6 +1,6 @@
 # ASP.NET Core Browser
 
-[![Build status](https://ci.appveyor.com/api/projects/status/d3edr7luj1ai7695/branch/master?svg=true)](https://ci.appveyor.com/project/wangkanai/browser/branch/master) [![NuGet Pre Release](https://img.shields.io/nuget/vpre/Wangkanai.Browser.svg?maxAge=2592000)](https://www.nuget.org/packages/Wangkanai.Browser/)
+[![Build status](https://ci.appveyor.com/api/projects/status/nwke0v8dqp3xkgwr/branch/master?svg=true)](https://ci.appveyor.com/project/wangkanai/browser/branch/master) [![NuGet Pre Release](https://img.shields.io/nuget/vpre/Wangkanai.Browser.svg?maxAge=2592000)](https://www.nuget.org/packages/Wangkanai.Browser/)
 
 ASP.NET Core client web browser detection resolver extension
 
