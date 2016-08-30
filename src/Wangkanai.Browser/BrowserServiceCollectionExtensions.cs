@@ -15,8 +15,10 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IServiceCollection AddBrowserDetector(this IServiceCollection services)
         {
             if(services == null) throw new ArgumentNullException(nameof(services));
-            
+
+            // Hosting doesn't add IHttpContextAccessor by default
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            // Browser Services
             services.TryAddTransient<IBrowserDetector, BrowserDetector>();
 
             return services;

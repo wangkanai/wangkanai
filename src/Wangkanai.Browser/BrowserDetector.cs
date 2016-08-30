@@ -9,15 +9,15 @@ namespace Wangkanai.Browser
 {
     public class BrowserDetector : IBrowserDetector
     {        
-        private readonly IHttpContextAccessor _contextAccessor;
+        private readonly HttpContext _context;
         private readonly DeviceInfo _info;        
 
         public BrowserDetector(IHttpContextAccessor contextAccessor)
         {
             if(contextAccessor == null) throw new ArgumentNullException(nameof(contextAccessor));
 
-            _contextAccessor = contextAccessor;
-            _info = Resolve(contextAccessor.HttpContext);
+            _context = contextAccessor?.HttpContext;
+            _info = Resolve(_context);
         }
 
         private DeviceInfo Resolve(HttpContext context)
