@@ -18,7 +18,8 @@ namespace Sandbox.Controllers
         }
 
         public IActionResult Index()
-        {            
+        {
+            //var maker = HttpContext.Request.Browser().Maker;
             return View(_browser);
         }
     }

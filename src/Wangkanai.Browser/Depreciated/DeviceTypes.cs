@@ -3,6 +3,7 @@
 
 using System;
 
+// ReSharper disable once CheckNamespace
 namespace Wangkanai.Browser
 {
     [Flags]

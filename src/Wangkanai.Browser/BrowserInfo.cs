@@ -8,35 +8,34 @@ namespace Wangkanai.Browser
     public class BrowserInfo
     {
         public UserAgent UserAgent { get; }
+        public Browser Browser { get; }
         public Device Device { get; }
         public Engine Engine { get; }
         public Platform Platform { get; }
-        public bool IsCrawler { get; }
-        public bool IsMobile => Device.Type == DeviceType.Mobile;
-        public bool IsTablet => Device.Type == DeviceType.Tablet;
 
         public BrowserInfo() { }
+        public BrowserInfo(UserAgent agent) { }
 
-        public BrowserInfo(UserAgent agent, Device device, Engine engine, Platform platform)
+        public BrowserInfo(UserAgent agent, Browser browser, Device device, Engine engine, Platform platform)
+            : this(agent)
         {
-            UserAgent = agent;
+            Browser = browser;
             Device = device;
             Engine = engine;
             Platform = platform;
         }
     }
 
+    public class Browser
+    {
+        public string Maker { get; set; }
+    }
     public class Device
     {
         public string Name { get; set; }
         public string Maker { get; set; }
         public DeviceType Type { get; set; }
-    }
-    public enum DeviceType
-    {
-        Desktop,
-        Tablet,
-        Mobile
+        public PointingMethod Pointing { get; set; }
     }
 
     public class Engine
@@ -51,11 +50,11 @@ namespace Wangkanai.Browser
 
     public class Crawler
     {
-        
+
     }
 
     public class Feature
     {
-        
+
     }
 }

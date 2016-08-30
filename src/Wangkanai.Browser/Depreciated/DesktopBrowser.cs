@@ -3,7 +3,7 @@
 
 using Microsoft.AspNetCore.Http;
 
-namespace Wangkanai.Browser.Platforms
+namespace Wangkanai.Browser.Depreciated
 {
     internal class DesktopBrowser : DeviceBrowser
     {

@@ -3,7 +3,7 @@
 
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Http;
-using Wangkanai.Browser.Platforms;
+using Wangkanai.Browser.Depreciated;
 
 namespace Wangkanai.Browser
 {

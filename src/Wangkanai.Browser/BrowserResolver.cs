@@ -17,7 +17,7 @@ namespace Wangkanai.Browser
         {
             if (context == null) throw new ArgumentNullException(nameof(context));
 
-            _request = context.Request;
+            _request = context.Request;                        
         }
     }
 }
