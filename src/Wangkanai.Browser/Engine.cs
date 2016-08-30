@@ -3,9 +3,9 @@
 
 namespace Wangkanai.Browser
 {
-    public enum PointingMethod
+    public class Engine
     {
-        Mouse,
-        Touch
+        public string Name { get; set; }
+        public string Maker { get; set; }
     }
 }

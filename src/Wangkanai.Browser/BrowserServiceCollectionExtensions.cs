@@ -30,7 +30,7 @@ namespace Microsoft.Extensions.DependencyInjection
             // Hosting doesn't add IHttpContextAccessor by default
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             // Browser Services            
-            services.TryAddTransient<IBrowserService, BrowserService>();
+            services.TryAddScoped<IBrowserService, BrowserService>();
 
             return new BrowserBuilder(services);
         }

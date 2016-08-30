@@ -3,9 +3,13 @@
 
 namespace Wangkanai.Browser
 {
-    public enum PointingMethod
+    public enum PlatformType
     {
-        Mouse,
-        Touch
+        Win,
+        Mac,
+        IOS,
+        Andriod,
+        Linux,
+        Other
     }
 }

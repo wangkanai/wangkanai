@@ -3,9 +3,8 @@
 
 namespace Wangkanai.Browser
 {
-    public enum PointingMethod
+    public enum BrowserType
     {
-        Mouse,
-        Touch
+        Browser
     }
 }
