@@ -1,6 +1,10 @@
-﻿@{
+﻿@model Wangkanai.Browser.Abstractions.IBrowserDetector
+
+@{
     ViewData["Title"] = "Browser";
 }
 
 <h4>Browser</h4>
-<p></p>
+<p>device: @Model.Device()</p>
+<p>platform: @Model.Platform()</p>
+<p>engine: @Model.Engine()</p>

@@ -14,8 +14,31 @@ PM> install-package Wangkanai.Browser -pre
 
 ### Implement detection the device for each request
 
+Configuring the `Startup.cs` by adding the BrowserDetector Service to the service collection.
 ```csharp
-var device = new DeviceResolver(context.Request).DeviceInfo;
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddBrowserDetector();
+    // Add framework services.
+    services.AddMvc();
+}
+```
+Example of calling the browser detector service in the `Controller`.
+```csharp
+public class HomeController : Controller
+{
+    private readonly IBrowserDetector _browser;
+
+    public HomeController(IBrowserDetector browser)
+    {
+        _browser = browser;
+    }
+
+    public IActionResult Index()
+    {            
+        return View(_browser);
+    }
+}
 ```
 
 ### Directory Structure
