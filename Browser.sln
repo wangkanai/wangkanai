@@ -7,12 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{30E11A87-E8E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9AEBDADF-AE00-4A85-8CAC-EFE8B6FBCEAE}"
 	ProjectSection(SolutionItems) = preProject
-		appveyor.yml = appveyor.yml
-		build.cmd = build.cmd
-		build.ps1 = build.ps1
-		build.sh = build.sh
 		global.json = global.json
-		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
 EndProject
@@ -25,6 +20,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{C26D86D6-4B4E-407E-9F1D-9CA1765768CE}"
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Sandbox", "sample\Sandbox\Sandbox.xproj", "{9679508F-3D6C-4693-90D0-838224DE84DB}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Wangkanai.Browser.Abstractions", "src\Wangkanai.Browser.Abstractions\Wangkanai.Browser.Abstractions.xproj", "{5DDD1ADA-CBD7-4380-83AF-FDC841EACF1D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,6 +41,10 @@ Global
 		{9679508F-3D6C-4693-90D0-838224DE84DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9679508F-3D6C-4693-90D0-838224DE84DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9679508F-3D6C-4693-90D0-838224DE84DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DDD1ADA-CBD7-4380-83AF-FDC841EACF1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DDD1ADA-CBD7-4380-83AF-FDC841EACF1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DDD1ADA-CBD7-4380-83AF-FDC841EACF1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DDD1ADA-CBD7-4380-83AF-FDC841EACF1D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,5 +53,6 @@ Global
 		{178C7E01-9834-4EC7-97C1-184C3837277D} = {30E11A87-E8E1-4BB7-BB21-7D486B1511C2}
 		{AECA4214-0584-4272-BC85-7B41593E5BC8} = {724DDFD4-2D6F-4FF9-A76F-6D94278EDA0B}
 		{9679508F-3D6C-4693-90D0-838224DE84DB} = {C26D86D6-4B4E-407E-9F1D-9CA1765768CE}
+		{5DDD1ADA-CBD7-4380-83AF-FDC841EACF1D} = {30E11A87-E8E1-4BB7-BB21-7D486B1511C2}
 	EndGlobalSection
 EndGlobal
