@@ -18,7 +18,7 @@ Configuring the `Startup.cs` by adding the BrowserDetector Service to the servic
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
-    services.AddBrowserDetector();
+    services.AddBrowser();
     // Add framework services.
     services.AddMvc();
 }
@@ -27,9 +27,9 @@ Example of calling the browser detector service in the `Controller`.
 ```csharp
 public class HomeController : Controller
 {
-    private readonly IBrowserDetector _browser;
+    private readonly IBrowserService _browser;
 
-    public HomeController(IBrowserDetector browser)
+    public HomeController(IBrowserService browser)
     {
         _browser = browser;
     }

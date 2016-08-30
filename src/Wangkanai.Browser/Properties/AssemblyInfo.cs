@@ -20,5 +20,5 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("178c7e01-9834-4ec7-97c1-184c3837277d")]
+//[assembly: Guid("178c7e01-9834-4ec7-97c1-184c3837277d")]
 [assembly: InternalsVisibleTo("Wangkanai.Browser.Test")]

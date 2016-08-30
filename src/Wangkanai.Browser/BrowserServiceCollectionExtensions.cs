@@ -12,16 +12,16 @@ namespace Microsoft.Extensions.DependencyInjection
 {
     public static class BrowserServiceCollectionExtensions
     {
-        public static IServiceCollection AddBrowserDetector(this IServiceCollection services)
+        public static IBrowserBuilder AddBrowser(this IServiceCollection services)
         {
             if(services == null) throw new ArgumentNullException(nameof(services));
 
             // Hosting doesn't add IHttpContextAccessor by default
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             // Browser Services            
-            services.TryAddTransient<IBrowserDetector, BrowserDetector>();
+            services.TryAddTransient<IBrowserService, BrowserService>();
 
-            return services;
+            return new BrowserBuilder(services);
         }
     }
 }

@@ -5,10 +5,12 @@ using System.Threading.Tasks;
 
 namespace Wangkanai.Browser.Abstractions
 {
-    public interface IBrowserDetector
+    public interface IBrowserService
     {
+        string UserAgent();
         string Device();
-        string Platform();
-        string Engine();
+        // waiting to implement in the future
+        //string Platform();
+        //string Engine();
     }
 }
