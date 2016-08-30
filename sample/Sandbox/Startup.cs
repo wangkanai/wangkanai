@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Wangkanai.Browser;
+using Wangkanai.Browser.Abstractions;
 
 namespace Sandbox
 {
@@ -17,10 +18,11 @@ namespace Sandbox
         // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddBrowserDetector();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, IBrowserDetector browser)
         {
             loggerFactory.AddConsole();
 
@@ -30,10 +32,9 @@ namespace Sandbox
             }
 
             app.Run(async (context) =>
-            {
-                var device = new DeviceResolver(context.Request).DeviceInfo;
+            {                                  
                 await context.Response.WriteAsync($"<p>{context.Request.Headers["User-Agent"]}");                
-                await context.Response.WriteAsync($"<p>{device.Device.ToString()}");
+                await context.Response.WriteAsync($"<p>{browser.Device()}");
             });
         }
     }

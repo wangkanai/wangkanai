@@ -7,8 +7,8 @@ namespace Wangkanai.Browser.Abstractions
 {
     public interface IBrowserDetector
     {
-        string Device { get; }
-        string Platform { get;}
-        string Engine { get; }
+        string Device();
+        string Platform();
+        string Engine();
     }
 }
