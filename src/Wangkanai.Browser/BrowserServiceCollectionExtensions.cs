@@ -18,7 +18,7 @@ namespace Microsoft.Extensions.DependencyInjection
 
             // Hosting doesn't add IHttpContextAccessor by default
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            // Browser Services
+            // Browser Services            
             services.TryAddTransient<IBrowserDetector, BrowserDetector>();
 
             return services;

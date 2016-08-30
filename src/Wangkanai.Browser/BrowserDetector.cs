@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Wangkanai.Browser.Abstractions;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Wangkanai.Browser
 {
@@ -12,11 +13,10 @@ namespace Wangkanai.Browser
         private readonly HttpContext _context;
         private readonly DeviceInfo _info;        
 
-        public BrowserDetector(IHttpContextAccessor contextAccessor)
+        public BrowserDetector(IServiceProvider services)
         {
-            if(contextAccessor == null) throw new ArgumentNullException(nameof(contextAccessor));
-
-            _context = contextAccessor?.HttpContext;
+            if (services != null)
+                _context = services.GetService<IHttpContextAccessor>()?.HttpContext;
             _info = Resolve(_context);
         }
 
