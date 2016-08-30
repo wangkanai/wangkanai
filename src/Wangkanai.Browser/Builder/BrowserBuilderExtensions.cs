@@ -13,13 +13,13 @@ namespace Microsoft.Extensions.DependencyInjection
     public static class BrowserBuilderExtensions
     {
         // Concept idea on detecting crawler to browser service
-        public static IBrowserBuilder AddCrawler(this IBrowserBuilder builder)
+        public static IBrowserBuilder AddPlatform(this IBrowserBuilder builder)
         {
             return builder;
         }
 
         // Concept idea on add extensive praser to browser service
-        public static IBrowserBuilder AddExtensive(this IBrowserBuilder builder)
+        public static IBrowserBuilder AddEngine(this IBrowserBuilder builder)
         {
             return builder;
         }

@@ -19,12 +19,16 @@ Configuring the `Startup.cs` by adding the Browser Service in the `ConfigureServ
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
-    services.AddBrowser();
+    services.AddBrowser()
+        .AddPlatform()
+        .AddEngine();
     // Add framework services.
     services.AddMvc();
 }
 ```
-* `AddBrowser()` Add the browser service to the services container.
+* `AddBrowser()` Adds the browser services to the services container.
+* `AddPlatform()` (*concept*) Adds platform identification to the browser services.
+* `AddEngine()` (*concept*) Adds rendering engine identification to the browser services.
 
 #### Usage
 
