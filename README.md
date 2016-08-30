@@ -25,8 +25,6 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 * `AddBrowser()` Add the browser service to the services container.
-* `AddCrawler()` (*concept*) Add support for crawler detection seperation to the browser service.
-* `AddExtensive()` (*concept*) Add support for extensive detection to cover a wide of client request types to the browser service.
 
 #### Usage
 

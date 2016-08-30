@@ -19,7 +19,10 @@ namespace Sandbox.Controllers
 
         public IActionResult Index()
         {
-            //var maker = HttpContext.Request.Browser().Maker;
+            var browser = HttpContext.Request.Browser();
+            var platform = HttpContext.Request.Platform();
+            var device = HttpContext.Request.Device();
+            var engine = HttpContext.Request.Engine();
             return View(_browser);
         }
     }
