@@ -19,14 +19,14 @@ Configuring the `Startup.cs` by adding the Browser Service in the `ConfigureServ
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
-    services.AddBrowser()
-        AddCrawler();
+    services.AddBrowser();
     // Add framework services.
     services.AddMvc();
 }
 ```
-* `AddBrowser` Add the browser service to the services container.
-* `AddCrawler` Add support for crawler detection seperation to the browser service.
+* `AddBrowser()` Add the browser service to the services container.
+* `AddCrawler()` (*concept*) Add support for crawler detection seperation to the browser service.
+* `AddExtensive()` (*concept*) Add support for extensive detection to cover a wide of client request types to the browser service.
 #### Usage
 
 Example of calling the browser detector service in the `Controller`.
