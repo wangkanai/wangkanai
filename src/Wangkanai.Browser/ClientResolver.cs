@@ -9,13 +9,13 @@ using Microsoft.AspNetCore.Http;
 
 namespace Wangkanai.Browser
 {
-    internal class BrowserResolver
+    internal class ClientResolver
     {
-        internal BrowserInfo BrowserInfo => new BrowserInfo();
+        internal ClientInfo ClientInfo => new ClientInfo();
 
         private readonly HttpRequest _request;
 
-        public BrowserResolver(HttpContext context)
+        public ClientResolver(HttpContext context)
         {
             if (context == null) throw new ArgumentNullException(nameof(context));
 

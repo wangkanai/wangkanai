@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace Wangkanai.Browser
 {
-    public class BrowserInfo
+    public class ClientInfo
     {
         public UserAgent UserAgent { get; }
         public Browser Browser { get; }
@@ -13,14 +13,14 @@ namespace Wangkanai.Browser
         public Engine Engine { get; }
         public Platform Platform { get; }
 
-        public BrowserInfo() { }
+        public ClientInfo() { }
 
-        public BrowserInfo(UserAgent agent)
+        public ClientInfo(UserAgent agent)
         {
             UserAgent = agent;
         }
 
-        public BrowserInfo(UserAgent agent, Browser browser, Device device, Engine engine, Platform platform)
+        public ClientInfo(UserAgent agent, Browser browser, Device device, Engine engine, Platform platform)
             : this(agent)
         {
             Browser = browser;

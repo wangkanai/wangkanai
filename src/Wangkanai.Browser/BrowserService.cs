@@ -21,7 +21,7 @@ namespace Wangkanai.Browser
         public string Engine => "concept";
 
         private readonly HttpContext _context;
-        private readonly BrowserInfo _info;
+        private readonly ClientInfo _info;
         //private readonly DeviceInfo _info;
         //private readonly string _useragent;
 
@@ -30,8 +30,8 @@ namespace Wangkanai.Browser
             if (services != null) _context = services.GetService<IHttpContextAccessor>()?.HttpContext;
             if (_context == null) throw new ArgumentNullException(nameof(_context));
 
-            var resolver = new BrowserResolver(_context);
-            _info = resolver.BrowserInfo;
+            var resolver = new ClientResolver(_context);
+            _info = resolver.ClientInfo;
 
             //var agent = _context.Request.Headers["User-Agent"].FirstOrDefault();
             //if (agent != null)

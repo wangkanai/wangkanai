@@ -18,6 +18,5 @@ namespace Wangkanai.Browser
         public string Minor { get;  }
         public string Patch { get;  }
         public string Build { get;  }
-
     }
 }
