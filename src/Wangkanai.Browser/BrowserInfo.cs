@@ -14,7 +14,11 @@ namespace Wangkanai.Browser
         public Platform Platform { get; }
 
         public BrowserInfo() { }
-        public BrowserInfo(UserAgent agent) { }
+
+        public BrowserInfo(UserAgent agent)
+        {
+            UserAgent = agent;
+        }
 
         public BrowserInfo(UserAgent agent, Browser browser, Device device, Engine engine, Platform platform)
             : this(agent)
