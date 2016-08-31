@@ -19,8 +19,8 @@ namespace Sandbox.Controllers
         public IActionResult Index()
         {
             var browser = HttpContext.Request.Browser();
-            var platform = HttpContext.Request.Platform();
             var device = HttpContext.Request.Device();
+            var platform = HttpContext.Request.Platform();            
             var engine = HttpContext.Request.Engine();
             return View(_browser);
         }

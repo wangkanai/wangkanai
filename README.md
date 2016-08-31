@@ -49,6 +49,13 @@ public class HomeController : Controller
     }
 }
 ```
+*(Concept)* Add extensions to `HttpRequest` #1
+```csharp
+var browser = HttpContext.Request.Browser();
+var device = HttpContext.Request.Device();
+var platform = HttpContext.Request.Platform();
+var engine = HttpContext.Request.Engine();
+```
 
 ### Directory Structure
 * `src` - The code of this project lives here
