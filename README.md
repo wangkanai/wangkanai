@@ -49,7 +49,7 @@ public class HomeController : Controller
     }
 }
 ```
-*(Concept)* Add extensions to `HttpRequest` #1
+*(Concept)* Add extensions to `HttpRequest` [Learn more #1](/issues/1)
 ```csharp
 var browser = HttpContext.Request.Browser();
 var device = HttpContext.Request.Device();
