@@ -28,8 +28,8 @@ namespace Sandbox
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddBrowser()
-                .AddPlatform()
-                .AddEngine();                
+                .AddPlatform() // concept
+                .AddEngine();  // concept              
             // Add framework services.
             services.AddMvc();
         }

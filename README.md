@@ -20,8 +20,8 @@ Configuring the `Startup.cs` by adding the Browser Service in the `ConfigureServ
 public void ConfigureServices(IServiceCollection services)
 {
     services.AddBrowser()
-        .AddPlatform()
-        .AddEngine();
+        .AddPlatform() // concept
+        .AddEngine();  // concept
     // Add framework services.
     services.AddMvc();
 }
