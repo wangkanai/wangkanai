@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Wangkanai.Browser.Abstractions
+namespace Wangkanai.Browser
 {
     public interface IBrowserService
     {

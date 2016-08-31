@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Wangkanai.Browser;
-using Wangkanai.Browser.Abstractions;
 
 namespace Sandbox.Controllers
 {

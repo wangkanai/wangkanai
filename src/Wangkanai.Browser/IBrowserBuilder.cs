@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace Wangkanai.Browser.Abstractions
+namespace Wangkanai.Browser
 {
     public interface IBrowserBuilder
     {
