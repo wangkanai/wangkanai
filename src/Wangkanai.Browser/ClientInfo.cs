@@ -7,21 +7,26 @@ namespace Wangkanai.Browser
 {
     public class ClientInfo
     {
-        public UserAgent UserAgent { get; }
-        public Browser Browser { get; }
-        public Device Device { get; }
-        public Engine Engine { get; }
-        public Platform Platform { get; }
+        public UserAgent Useragent { get; } = new UserAgent();
+        public Browser Browser { get; } = new Browser();
+        public Device Device { get; } = new Device();
+        public Engine Engine { get; } = new Engine();
+        public Platform Platform { get; } = new Platform();
 
         public ClientInfo() { }
 
-        public ClientInfo(UserAgent agent)
+        public ClientInfo(string useragent)
         {
-            UserAgent = agent;
+            Useragent = new UserAgent(useragent);
         }
 
-        public ClientInfo(UserAgent agent, Browser browser, Device device, Engine engine, Platform platform)
-            : this(agent)
+        public ClientInfo(UserAgent useragent)
+        {
+            Useragent = useragent;
+        }
+
+        public ClientInfo(UserAgent useragent, Browser browser, Device device, Engine engine, Platform platform)
+            : this(useragent)
         {
             Browser = browser;
             Device = device;

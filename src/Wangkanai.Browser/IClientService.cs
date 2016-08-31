@@ -10,7 +10,9 @@ namespace Wangkanai.Browser
         UserAgent UserAgent { get; }
         Device Device { get; }
         // waiting to implement in the future
-        //Platform Platform{get;}
-        //Engine Engine{get;}
+        //Browser Browser { get; }
+        //Platform Platform { get; }
+        //Engine Engine { get; }
+        //Engine Engine { get; }
     }
 }

@@ -5,16 +5,18 @@ namespace Wangkanai.Browser
 {
     public class UserAgent
     {
-        private readonly string agent;
+        private readonly string useragent;
 
-        public UserAgent(string agent)
+        public UserAgent() { }
+        public UserAgent(string useragent)
         {
-            this.agent = agent;
+            if (useragent != null)
+                this.useragent = useragent.ToLowerInvariant();
         }
 
         public override string ToString()
         {
-            return agent;
+            return useragent;
         }
     }
 }

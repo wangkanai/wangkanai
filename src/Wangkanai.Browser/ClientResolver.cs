@@ -11,7 +11,7 @@ namespace Wangkanai.Browser
 {
     internal class ClientResolver
     {
-        internal ClientInfo ClientInfo => new ClientInfo();
+        internal ClientInfo ClientInfo { get; }
 
         private readonly HttpRequest _request;
 
@@ -20,6 +20,13 @@ namespace Wangkanai.Browser
             if (context == null) throw new ArgumentNullException(nameof(context));
 
             _request = context.Request;
-        }        
+            ClientInfo = Resolve(_request);
+        }
+
+        private ClientInfo Resolve(HttpRequest request)
+        {
+            var useragent = request.Headers["User-Agent"].FirstOrDefault();
+            return new ClientInfo(useragent);
+        }  
     }
 }

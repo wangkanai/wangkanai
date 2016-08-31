@@ -15,10 +15,11 @@ namespace Wangkanai.Browser
     /// </summary>
     public class ClientService : IClientService
     {
-        public UserAgent UserAgent => _info.UserAgent;
+        public UserAgent UserAgent => _info.Useragent;
+        public string Browser => "concept";
         public Device Device => _info.Device;
-        public string Platform => "concept";
         public string Engine => "concept";
+        public string Platform => "concept";        
 
         private readonly HttpContext _context;
         private readonly ClientInfo _info;
@@ -30,12 +31,16 @@ namespace Wangkanai.Browser
             if (services != null) _context = services.GetService<IHttpContextAccessor>()?.HttpContext;
             if (_context == null) throw new ArgumentNullException(nameof(_context));
 
-            var resolver = new ClientResolver(_context);
-            _info = resolver.ClientInfo;
-
-            //var agent = _context.Request.Headers["User-Agent"].FirstOrDefault();
-            //if (agent != null)
-            //    _useragent = agent.ToLowerInvariant();
+            //var resolver = new ClientResolver(_context);
+            var useragent = new UserAgent(_context.Request.Headers["User-Agent"].FirstOrDefault());
+            var browser = new Browser();   // waiting for implementation
+            var device = new Device();     // waiting for implementation
+            var engine = new Engine();     // waiting for implementation
+            var platform = new Platform(); // waiting for implementation            
+            _info = new ClientInfo(useragent, browser, device, engine, platform);
+            
+            //if (useragent != null)
+            //    _useragent = useragent.ToLowerInvariant();
 
             //_info = new DeviceResolver(_context.Request).DeviceInfo;
         }
