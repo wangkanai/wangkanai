@@ -15,7 +15,7 @@ PM> install-package Wangkanai.Browser -pre
 ### Implement detection the device for each request
 
 #### Configuring
-Configuring the `Startup.cs` by adding the Browser Service in the `ConfigureServices` method.
+Configuring the `Startup.cs` by adding the Client Service in the `ConfigureServices` method.
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
@@ -36,7 +36,7 @@ Example of calling the client service in the `Controller`.
 ```csharp
 public class HomeController : Controller
 {
-    private readonly IClientService _client_;
+    private readonly IClientService _client;
 
     public HomeController(IClientService client)
     {
