@@ -7,5 +7,6 @@ namespace Wangkanai.Browser
         public BrowserType Type { get; set; }
         public byte Bits { get; set; }
         public string Version { get; set; }
+        public Feature Feature { get; set; }
     }
 }
