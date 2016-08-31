@@ -31,7 +31,7 @@ namespace Wangkanai.Browser
             if (_context == null) throw new ArgumentNullException(nameof(_context));
 
             var resolver = new BrowserResolver(_context);
-            _info = resolver.BrowserInfo();
+            _info = resolver.BrowserInfo;
 
             //var agent = _context.Request.Headers["User-Agent"].FirstOrDefault();
             //if (agent != null)

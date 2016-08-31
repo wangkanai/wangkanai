@@ -11,18 +11,15 @@ namespace Wangkanai.Browser
 {
     internal class BrowserResolver
     {
+        internal BrowserInfo BrowserInfo => new BrowserInfo();
+
         private readonly HttpRequest _request;
 
         public BrowserResolver(HttpContext context)
         {
             if (context == null) throw new ArgumentNullException(nameof(context));
 
-            _request = context.Request;                        
-        }
-
-        internal BrowserInfo BrowserInfo()
-        {
-            throw new NotImplementedException();
-        }
+            _request = context.Request;
+        }        
     }
 }

@@ -2,9 +2,9 @@ namespace Wangkanai.Browser
 {
     public class Platform
     {
-        public string Name { get; set; }
-        public string Version { get; set; }
+        public string Name { get; set; }        
+        public Version Version { get; set; }
         public byte Bits { get; set; }
-        public PlatformType Type { get; set; }
+        public PlatformFamily Family { get; set; }
     }
 }

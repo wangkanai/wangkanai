@@ -3,7 +3,7 @@
 
 namespace Wangkanai.Browser
 {
-    public enum PlatformType
+    public enum PlatformFamily
     {
         Win,
         Mac,
