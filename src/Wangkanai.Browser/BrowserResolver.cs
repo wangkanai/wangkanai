@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace Wangkanai.Browser
 {
-    public class BrowserResolver
+    internal class BrowserResolver
     {
         private readonly HttpRequest _request;
 
@@ -18,6 +18,11 @@ namespace Wangkanai.Browser
             if (context == null) throw new ArgumentNullException(nameof(context));
 
             _request = context.Request;                        
+        }
+
+        internal BrowserInfo BrowserInfo()
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model Wangkanai.Browser.Abstractions.IBrowserService
+﻿@model Wangkanai.Browser.IBrowserService
 
 @{
     ViewData["Title"] = "Browser";
@@ -7,10 +7,10 @@
 <table border="1" cellpadding="5px">
     <tr>
         <td>device</td>
-        <td>@Model.Device()</td>
+        <td>@Model.Device.Type.ToString()</td>
     </tr>
     <tr>
         <td>user-agent</td>
-        <td>@Model.UserAgent()</td>
+        <td>@Model.UserAgent.ToString()</td>
     </tr>
 </table>

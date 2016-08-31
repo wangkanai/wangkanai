@@ -7,10 +7,10 @@ namespace Wangkanai.Browser
 {
     public interface IBrowserService
     {
-        string UserAgent();
-        string Device();
+        UserAgent UserAgent { get; }
+        Device Device { get; }
         // waiting to implement in the future
-        //string Platform();
-        //string Engine();
+        //Platform Platform{get;}
+        //Engine Engine{get;}
     }
 }
