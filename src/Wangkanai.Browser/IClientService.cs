@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Wangkanai.Browser
 {
-    public interface IBrowserService
+    public interface IClientService
     {
         UserAgent UserAgent { get; }
         Device Device { get; }

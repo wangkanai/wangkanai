@@ -13,7 +13,7 @@ namespace Wangkanai.Browser
     /// <summary>
     /// Provides the APIs for query client access device.
     /// </summary>
-    public class BrowserService : IBrowserService
+    public class ClientService : IClientService
     {
         public UserAgent UserAgent => _info.UserAgent;
         public Device Device => _info.Device;
@@ -25,7 +25,7 @@ namespace Wangkanai.Browser
         //private readonly DeviceInfo _info;
         //private readonly string _useragent;
 
-        public BrowserService(IServiceProvider services)
+        public ClientService(IServiceProvider services)
         {
             if (services != null) _context = services.GetService<IHttpContextAccessor>()?.HttpContext;
             if (_context == null) throw new ArgumentNullException(nameof(_context));

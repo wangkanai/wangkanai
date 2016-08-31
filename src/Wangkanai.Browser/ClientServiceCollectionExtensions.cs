@@ -13,25 +13,25 @@ using Wangkanai.Browser;
 namespace Microsoft.Extensions.DependencyInjection
 {
     /// <summary>
-    /// Contains extension method to <see cref="IServiceCollection"/> for configuring browser services.
+    /// Contains extension method to <see cref="IServiceCollection"/> for configuring client services.
     /// </summary>
-    public static class BrowserServiceCollectionExtensions
+    public static class ClientServiceCollectionExtensions
     {
         /// <summary>
-        /// Adds the default browser service to the services container.
+        /// Adds the default client service to the services container.
         /// </summary>
         /// <param name="services">The services available in the application.</param>
-        /// <returns>An <see cref="IBrowserBuilder"/> for creating and configuring the browser system.</returns>
-        public static IBrowserBuilder AddBrowser(this IServiceCollection services)
+        /// <returns>An <see cref="IClientBuilder"/> for creating and configuring the browser system.</returns>
+        public static IClientBuilder AddBrowser(this IServiceCollection services)
         {
             if(services == null) throw new ArgumentNullException(nameof(services));
 
             // Hosting doesn't add IHttpContextAccessor by default
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            // Browser Services            
-            services.TryAddScoped<IBrowserService, BrowserService>();
+            // Client Services            
+            services.TryAddScoped<IClientService, ClientService>();
 
-            return new BrowserBuilder(services);
+            return new ClientBuilder(services);
         }
     }
 }

@@ -12,13 +12,13 @@ namespace Wangkanai.Browser
     /// <summary>
     /// Helper functions for configuring browser services.
     /// </summary>
-    public class BrowserBuilder : IBrowserBuilder
+    public class ClientBuilder : IClientBuilder
     {
         /// <summary>
-        /// Creates a new instance of <see cref="IBrowserBuilder"/>.
+        /// Creates a new instance of <see cref="IClientBuilder"/>.
         /// </summary>
         /// <param name="services">The <see cref="IServiceCollection"/> to attach to.</param>
-        public BrowserBuilder(IServiceCollection services)
+        public ClientBuilder(IServiceCollection services)
         {
             Services = services;
         }

@@ -9,11 +9,11 @@ namespace Sandbox.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IBrowserService _browser;
+        private readonly IClientService _client;
 
-        public HomeController(IBrowserService browser)
+        public HomeController(IClientService client)
         {
-            _browser = browser;
+            _client = client;
         }
 
         public IActionResult Index()
@@ -22,7 +22,7 @@ namespace Sandbox.Controllers
             var device = HttpContext.Request.Device();
             var platform = HttpContext.Request.Platform();            
             var engine = HttpContext.Request.Engine();
-            return View(_browser);
+            return View(_client);
         }
     }
 }

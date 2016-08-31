@@ -26,21 +26,21 @@ public void ConfigureServices(IServiceCollection services)
     services.AddMvc();
 }
 ```
-* `AddBrowser()` Adds the browser services to the services container.
-* `AddPlatform()` (*concept*) Adds platform identification to the browser services.
-* `AddEngine()` (*concept*) Adds rendering engine identification to the browser services.
+* `AddBrowser()` Adds the client services to the services container.
+* `AddPlatform()` (*concept*) Adds platform identification to the client services.
+* `AddEngine()` (*concept*) Adds rendering engine identification to the client services.
 
 #### Usage
 
-Example of calling the browser detector service in the `Controller`.
+Example of calling the client service in the `Controller`.
 ```csharp
 public class HomeController : Controller
 {
-    private readonly IBrowserService _browser;
+    private readonly IClientService _client_;
 
-    public HomeController(IBrowserService browser)
+    public HomeController(IClientService client)
     {
-        _browser = browser;
+        _client = client;
     }
 
     public IActionResult Index()

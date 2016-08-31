@@ -2,7 +2,7 @@
 
 namespace Wangkanai.Browser
 {
-    public interface IBrowserBuilder
+    public interface IClientBuilder
     {
         IServiceCollection Services { get; }
     }
