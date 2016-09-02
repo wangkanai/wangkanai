@@ -6,17 +6,17 @@ using Wangkanai.Browser.Depreciated;
 
 namespace Wangkanai.Browser
 {
-    public class DeviceInfo
+    public class DeviceInfoDepreciated
     {
         public string Name => Device.ToString().ToLowerInvariant();
         public DeviceTypes Device { get; }
-        public DeviceInfo(string name)
+        public DeviceInfoDepreciated(string name)
         {
             if(name==null) throw new ArgumentNullException(nameof(name));
             Device = GetDeviceInfo(name);
         }
 
-        public DeviceInfo(DeviceTypes types)
+        public DeviceInfoDepreciated(DeviceTypes types)
         {
             Device = types;            
         }

@@ -7,18 +7,18 @@ using Wangkanai.Browser.Depreciated;
 
 namespace Wangkanai.Browser
 {
-    public class DeviceResolver
+    public class DeviceResolverDepreciated
     {
         private readonly HttpRequest _request;
-        public DeviceInfo DeviceInfo { get; }
+        public DeviceInfoDepreciated DeviceInfoDepreciated { get; }
 
-        public DeviceResolver(HttpRequest request)
+        public DeviceResolverDepreciated(HttpRequest request)
         {
             _request = request;
-            DeviceInfo = Resolve();
+            DeviceInfoDepreciated = Resolve();
         }
 
-        private DeviceInfo Resolve()
+        private DeviceInfoDepreciated Resolve()
         {
             var browsers = new List<IDeviceBrowser>
             {
@@ -33,9 +33,9 @@ namespace Wangkanai.Browser
             };
             foreach (var browser in browsers)
                 if (browser.IsValid(_request))
-                    return browser.DeviceInfo;
+                    return browser.DeviceInfoDepreciated;
 
-            return DeviceBuilder.Desktop();
+            return DeviceBuilderDepreciated.Desktop();
         }
     }
 }

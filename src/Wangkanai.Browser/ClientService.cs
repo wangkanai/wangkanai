@@ -23,7 +23,7 @@ namespace Wangkanai.Browser
 
         private readonly HttpContext _context;
         private readonly ClientInfo _info;
-        //private readonly DeviceInfo _info;
+        //private readonly DeviceInfoDepreciated _info;
         //private readonly string _useragent;
 
         public ClientService(IServiceProvider services)
@@ -42,7 +42,7 @@ namespace Wangkanai.Browser
             //if (useragent != null)
             //    _useragent = useragent.ToLowerInvariant();
 
-            //_info = new DeviceResolver(_context.Request).DeviceInfo;
+            //_info = new DeviceResolverDepreciated(_context.Request).DeviceInfoDepreciated;
         }
     }
 }

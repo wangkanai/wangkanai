@@ -22,7 +22,7 @@ namespace Wangkanai.Browser.Test.Platforms
             // arrange 
             var request = CreateRequest(agents);            
             // act
-            var device = new DeviceResolver(request).DeviceInfo;
+            var device = new DeviceResolver(request).DeviceInfoDepreciated;
             // assert
             Assert.Equal(DeviceTypes.Mobile, device.Device);
         }
@@ -38,7 +38,7 @@ namespace Wangkanai.Browser.Test.Platforms
             // Arrange            
             var request = CreateRequest(agent);                
             // Act
-            var device = new DeviceResolver(request).DeviceInfo;
+            var device = new DeviceResolver(request).DeviceInfoDepreciated;
             // Assert
             Assert.Equal(DeviceTypes.Mobile, device.Device);
         }
@@ -51,7 +51,7 @@ namespace Wangkanai.Browser.Test.Platforms
             // Arrange               
             var request = CreateRequest(agent, "<xml><doc></doc>");          
             // Act
-            var device = new DeviceResolver(request).DeviceInfo;
+            var device = new DeviceResolver(request).DeviceInfoDepreciated;
             // Assert
             Assert.Equal(DeviceTypes.Mobile, device.Device);
         }
@@ -62,7 +62,7 @@ namespace Wangkanai.Browser.Test.Platforms
             // Arrange
             var request = CreateRequest("Accept", "wap");
             // Act
-            var device = new DeviceResolver(request).DeviceInfo;
+            var device = new DeviceResolver(request).DeviceInfoDepreciated;
             // Assert
             Assert.Equal(DeviceTypes.Mobile, device.Device);
         }

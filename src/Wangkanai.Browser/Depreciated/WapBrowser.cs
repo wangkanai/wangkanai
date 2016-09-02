@@ -13,7 +13,7 @@ namespace Wangkanai.Browser.Depreciated
             // accept-header base detection
             if (request.Headers["Accept"].All(accept => accept.ToLowerInvariant() != "wap")) return false;
 
-            DeviceInfo = DeviceBuilder.Mobile();
+            DeviceInfoDepreciated = DeviceBuilderDepreciated.Mobile();
             return true;
         }
     }

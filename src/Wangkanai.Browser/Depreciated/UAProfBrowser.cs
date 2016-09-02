@@ -12,7 +12,7 @@ namespace Wangkanai.Browser.Depreciated
             // user agent prof detection
             if (request.Headers.ContainsKey("x-wap-profile") || request.Headers.ContainsKey("Profile"))
             {
-                DeviceInfo = DeviceBuilder.Mobile();
+                DeviceInfoDepreciated = DeviceBuilderDepreciated.Mobile();
                 return true;
             }
             

@@ -7,7 +7,7 @@ namespace Wangkanai.Browser.Depreciated
 {
     internal interface IDeviceBrowser
     {
-        DeviceInfo DeviceInfo { get; }
+        DeviceInfoDepreciated DeviceInfoDepreciated { get; }
         bool IsValid(HttpRequest request);
     }
 }

@@ -7,10 +7,10 @@ namespace Wangkanai.Browser.Depreciated
 {
     internal abstract class DeviceBrowser : IDeviceBrowser
     {
-        public DeviceInfo DeviceInfo { get; protected set; }
+        public DeviceInfoDepreciated DeviceInfoDepreciated { get; protected set; }
         public virtual bool IsValid(HttpRequest request)
         {
-            DeviceInfo = new DeviceInfo(DeviceTypes.Other);
+            DeviceInfoDepreciated = new DeviceInfoDepreciated(DeviceTypes.Other);
             return false;
         }
     }

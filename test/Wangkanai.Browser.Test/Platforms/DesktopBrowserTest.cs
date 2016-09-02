@@ -21,7 +21,7 @@ namespace Wangkanai.Browser.Test.Platforms
             // arrange 
             var request = CreateRequest(agent);
             // act
-            var device = new DeviceResolver(request).DeviceInfo;
+            var device = new DeviceResolver(request).DeviceInfoDepreciated;
             // assert
             Assert.Equal(DeviceTypes.Desktop, device.Device);
         }

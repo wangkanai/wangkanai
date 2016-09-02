@@ -13,7 +13,7 @@ namespace Wangkanai.Browser.Depreciated
             // opera mini special case
             if (!request.Headers.Any(header => header.Value.Any(value => value.Contains("OperaMini")))) return false;
 
-            DeviceInfo = DeviceBuilder.Mobile();
+            DeviceInfoDepreciated = DeviceBuilderDepreciated.Mobile();
             return true;
         }
     }

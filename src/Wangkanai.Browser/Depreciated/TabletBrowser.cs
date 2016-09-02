@@ -20,7 +20,7 @@ namespace Wangkanai.Browser.Depreciated
             if (!_keywords.Any(k => agent.Contains(k))) return false;
             if (!agent.Contains("ipad") && agent.Contains("mobile")) return false;
 
-            DeviceInfo = DeviceBuilder.Tablet();
+            DeviceInfoDepreciated = DeviceBuilderDepreciated.Tablet();
             return true;
         }
     }

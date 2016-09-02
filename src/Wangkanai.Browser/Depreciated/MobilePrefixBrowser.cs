@@ -29,7 +29,7 @@ namespace Wangkanai.Browser.Depreciated
             // user agent prefix detection
             if (!(agent?.Length >= 4) || !_prefixes.Any(prefix => agent.StartsWith(prefix))) return false;
 
-            DeviceInfo = DeviceBuilder.Mobile();
+            DeviceInfoDepreciated = DeviceBuilderDepreciated.Mobile();
             return true;
         }
     }

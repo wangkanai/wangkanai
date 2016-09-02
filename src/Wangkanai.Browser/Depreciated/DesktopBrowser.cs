@@ -9,7 +9,7 @@ namespace Wangkanai.Browser.Depreciated
     {
         public override bool IsValid(HttpRequest request)
         {
-            DeviceInfo = new DeviceInfo(DeviceTypes.Desktop);
+            DeviceInfoDepreciated = new DeviceInfoDepreciated(DeviceTypes.Desktop);
             return base.IsValid(request);
         }
     }

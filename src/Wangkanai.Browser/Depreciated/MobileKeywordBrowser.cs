@@ -23,7 +23,7 @@ namespace Wangkanai.Browser.Depreciated
             if (agent == null) return false;
             if (!_keywords.Any(keyword => agent.Contains(keyword))) return false;
 
-            DeviceInfo = DeviceBuilder.Mobile();
+            DeviceInfoDepreciated = DeviceBuilderDepreciated.Mobile();
             return true;
         }
     }
