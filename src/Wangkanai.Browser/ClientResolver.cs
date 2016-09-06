@@ -9,24 +9,24 @@ using Microsoft.AspNetCore.Http;
 
 namespace Wangkanai.Browser
 {
-    internal class ClientResolver
-    {
-        internal ClientInfo ClientInfo { get; }
+    //internal class ClientResolver
+    //{
+    //    internal ClientInfo ClientInfo { get; }
 
-        private readonly HttpRequest _request;
+    //    private readonly HttpRequest _request;
 
-        public ClientResolver(HttpContext context)
-        {
-            if (context == null) throw new ArgumentNullException(nameof(context));
+    //    public ClientResolver(HttpContext context)
+    //    {
+    //        if (context == null) throw new ArgumentNullException(nameof(context));
 
-            _request = context.Request;
-            ClientInfo = Resolve(_request);
-        }
+    //        _request = context.Request;
+    //        ClientInfo = Resolve(_request);
+    //    }
 
-        private ClientInfo Resolve(HttpRequest request)
-        {
-            var useragent = request.Headers["User-Agent"].FirstOrDefault();
-            return new ClientInfo(useragent);
-        }  
-    }
+    //    private ClientInfo Resolve(HttpRequest request)
+    //    {
+    //        var useragent = request.Headers["User-Agent"].FirstOrDefault();
+    //        return new ClientInfo(useragent);
+    //    }  
+    //}
 }
