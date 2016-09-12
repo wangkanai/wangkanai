@@ -9,7 +9,7 @@ namespace Wangkanai.Browser.Resolvers
         private readonly IClientService _service;
         public DeviceResolver(IClientService service)
         {
-            if (service == null) throw new ArgumentNullException(nameof(service);
+            if (service == null) throw new ArgumentNullException(nameof(service));
 
             _service = service;
         }
