@@ -2,11 +2,13 @@
 // The GNU GPLv3. See License.txt in the project root for license information.
 
 using System;
+using System.Runtime.InteropServices;
+using Microsoft.AspNetCore.Http.Features;
 using Xunit;
 
 namespace Wangkanai.Browser.Test
 {
-    public class DeviveInfoTest
+    public class DeviceInfoTest
     {
         [Fact]
         public void browser_mobile()
