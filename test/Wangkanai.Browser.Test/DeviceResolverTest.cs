@@ -12,7 +12,7 @@ namespace Wangkanai.Browser.Test
         [Fact]
         public void device_resolver_setup()
         {
-            //var provider = new Mock<IServiceProvider>().Object;
+            //var provider = new Mock<IServiceProvider>();                        
             //var service = new ClientService(provider);
             //var resolver = new DeviceResolver(service);
             //Assert.NotNull(resolver);

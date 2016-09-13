@@ -15,34 +15,27 @@ namespace Wangkanai.Browser
     /// </summary>
     public class ClientService : IClientService
     {
+        public HttpContext Context { get; }
         public UserAgent UserAgent => _info.Useragent;
         public string Browser => "concept";
         public Device Device => _info.Device;
         public string Engine => "concept";
         public string Platform => "concept";        
-
-        private readonly HttpContext _context;
+        
         private readonly ClientInfo _info;
-        //private readonly DeviceInfoDepreciated _info;
-        //private readonly string _useragent;
 
         public ClientService(IServiceProvider services)
         {
-            if (services != null) _context = services.GetService<IHttpContextAccessor>()?.HttpContext;
-            if (_context == null) throw new ArgumentNullException(nameof(_context));
+            if (services != null) Context = services.GetService<IHttpContextAccessor>()?.HttpContext;
+            if (Context == null) throw new ArgumentNullException(nameof(Context));
 
             //var resolver = new ClientResolver(_context);
-            var useragent = new UserAgent(_context.Request.Headers["User-Agent"].FirstOrDefault());
+            var useragent = new UserAgent(Context.Request.Headers["User-Agent"].FirstOrDefault());
             var browser = new Browser();   // waiting for implementation
             var device = new Device();     // waiting for implementation
             var engine = new Engine();     // waiting for implementation
             var platform = new Platform(); // waiting for implementation            
-            _info = new ClientInfo(useragent, browser, device, engine, platform);
-            
-            //if (useragent != null)
-            //    _useragent = useragent.ToLowerInvariant();
-
-            //_info = new DeviceResolverDepreciated(_context.Request).DeviceInfoDepreciated;
+            _info = new ClientInfo(useragent, browser, device, engine, platform);                        
         }
     }
 }

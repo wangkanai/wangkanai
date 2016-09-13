@@ -5,11 +5,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace Wangkanai.Browser
 {
     public interface IClientService
     {
+        HttpContext Context { get; }
         UserAgent UserAgent { get; }
         Device Device { get; }
         // waiting to implement in the future
