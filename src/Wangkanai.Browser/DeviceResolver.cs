@@ -4,7 +4,7 @@
 using System;
 using System.Linq;
 
-namespace Wangkanai.Browser.Resolvers
+namespace Wangkanai.Browser
 {
     public sealed class DeviceResolver
     {
