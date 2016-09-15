@@ -4,13 +4,16 @@
     ViewData["Title"] = "Browser";
 }
 
-<table border="1" cellpadding="5px">
+<h4>UserAgent</h4>
+<code>@Model.UserAgent</code>
+<h4>Device</h4>
+<table>
     <tr>
-        <td>device</td>
+        <th>DeviceType</th>
         <td>@Model.Device.Type.ToString()</td>
     </tr>
     <tr>
-        <td>user-useragent</td>
-        <td>@Model.UserAgent.ToString()</td>
+        <th>IsCrawler</th>
+        <td>@Model.Device.IsCrawler</td>
     </tr>
 </table>

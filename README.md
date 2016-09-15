@@ -19,16 +19,14 @@ Configuring the `Startup.cs` by adding the Client Service in the `ConfigureServi
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
-    services.AddBrowser()
-        .AddPlatform() // concept
-        .AddEngine();  // concept
+    services.AddBrowser();
+
     // Add framework services.
     services.AddMvc();
 }
 ```
 * `AddBrowser()` Adds the client services to the services container.
-* `AddPlatform()` (*concept*) Adds platform identification to the client services.
-* `AddEngine()` (*concept*) Adds rendering engine identification to the client services.
+
 
 #### Usage
 

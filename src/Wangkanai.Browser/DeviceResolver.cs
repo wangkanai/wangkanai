@@ -3,25 +3,35 @@
 
 using System;
 using System.Linq;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Wangkanai.Browser
 {
-    public sealed class DeviceResolver
+    public sealed class DeviceResolver : IDeviceResolver
     {
         public Device Device { get; set; }
-        private readonly IClientService _service;
-        public DeviceResolver(IClientService service)
+        private readonly HttpContext _context;
+        public DeviceResolver(IServiceProvider service)
         {
-            if (service == null) throw new ArgumentNullException(nameof(service));
+            if (service != null) _context = service.GetService<IHttpContextAccessor>()?.HttpContext;
+            if (_context == null) throw new ArgumentNullException(nameof(_context));
 
-            _service = service;
+            Device = new Device()
+            {
+                Type = GetDeviceType(),
+                IsCrawler = GetCrawler()
+            };
         }
 
         private DeviceType GetDeviceType()
         {
             var agent = GetUserAgent();
-            var request = _service.Context.Request;
+            var request = _context.Request;
 
+            // tablet user agent keyword detection       
+            if (agent != null && _tabletKeywords.Any(keyword => agent.Contains(keyword)))
+                return DeviceType.Tablet;
             // mobile user agent keyword detection
             if (agent != null && _mobileKeywords.Any(keyword => agent.Contains(keyword)))
                 return DeviceType.Mobile;
@@ -37,9 +47,6 @@ namespace Wangkanai.Browser
             // mobile accept-header base detection
             if (request.Headers["Accept"].All(accept => accept.ToLowerInvariant() == "wap"))
                 return DeviceType.Mobile;
-            // tablet user agent keyword detection       
-            if (agent != null && _tabletKeywords.Any(keyword => agent.Contains(keyword)))
-                return DeviceType.Tablet;
 
             return DeviceType.Desktop;
         }
@@ -52,7 +59,7 @@ namespace Wangkanai.Browser
         }
         private string GetUserAgent()
         {
-            return _service.UserAgent.ToString();
+            return new UserAgent(_context.Request.Headers["User-Agent"].FirstOrDefault()).ToString();
         }
 
         #region yml    

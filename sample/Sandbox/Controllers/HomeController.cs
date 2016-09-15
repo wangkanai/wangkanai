@@ -9,11 +9,11 @@ namespace Sandbox.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IClientService _client;
+        private readonly IClientService _client;        
 
         public HomeController(IClientService client)
         {
-            _client = client;
+            _client = client;            
         }
 
         public IActionResult Index()

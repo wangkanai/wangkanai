@@ -11,7 +11,6 @@ namespace Wangkanai.Browser
 {
     public interface IClientService
     {
-        HttpContext Context { get; }
         UserAgent UserAgent { get; }
         Device Device { get; }
         // waiting to implement in the future

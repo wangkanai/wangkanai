@@ -21,17 +21,18 @@ namespace Microsoft.Extensions.DependencyInjection
         /// Adds the default client service to the services container.
         /// </summary>
         /// <param name="services">The services available in the application.</param>
-        /// <returns>An <see cref="IClientBuilder"/> for creating and configuring the browser system.</returns>
-        public static IClientBuilder AddBrowser(this IServiceCollection services)
+        /// <returns>An <see cref="IServiceCollection"/> so that additional calls can be chained.</returns>
+        public static IServiceCollection AddBrowser(this IServiceCollection services)
         {
             if(services == null) throw new ArgumentNullException(nameof(services));
 
             // Hosting doesn't add IHttpContextAccessor by default
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             // Client Services            
-            services.TryAddScoped<IClientService, ClientService>();
+            services.AddTransient<IDeviceResolver, DeviceResolver>();
+            services.AddTransient<IClientService, ClientService>();            
 
-            return new ClientBuilder(services);
+            return services;
         }
     }
 }

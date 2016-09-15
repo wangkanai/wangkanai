@@ -12,6 +12,7 @@ namespace Wangkanai.Browser
     /// <summary>
     /// Helper functions for configuring browser services.
     /// </summary>
+    [Obsolete]
     public class ClientBuilder : IClientBuilder
     {
         /// <summary>
