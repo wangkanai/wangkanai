@@ -1,6 +1,6 @@
 # ASP.NET Core Browser
 
-[![Build status](https://ci.appveyor.com/api/projects/status/nwke0v8dqp3xkgwr/branch/master?svg=true)](https://ci.appveyor.com/project/wangkanai/browser/branch/master) [![NuGet Pre Release](https://img.shields.io/nuget/vpre/Wangkanai.Browser.svg?maxAge=2592000)](https://www.nuget.org/packages/Wangkanai.Browser/)
+[![Build status](https://ci.appveyor.com/api/projects/status/nwke0v8dqp3xkgwr/branch/dev?svg=true)](https://ci.appveyor.com/project/wangkanai/browser/branch/dev) [![NuGet Pre Release](https://img.shields.io/nuget/vpre/Wangkanai.Browser.svg?maxAge=2592000)](https://www.nuget.org/packages/Wangkanai.Browser/)
 
 ![ASP.NET Core Responsiveness](https://raw.githubusercontent.com/wangkanai/browser/master/asset/aspnet-core-browser.png)
 
@@ -14,8 +14,54 @@ PM> install-package Wangkanai.Browser -pre
 
 ### Implement detection the device for each request
 
+#### Configuring
+Configuring the `Startup.cs` by adding the Client Service in the `ConfigureServices` method.
 ```csharp
-var device = new DeviceResolver(context.Request).DeviceInfo;
+public void ConfigureServices(IServiceCollection services)
+{
+	// Add browser detection services.
+    services.AddClientService()
+		.AddDevice()
+		.AddBrowser()
+		.AddEngine()
+		.AddPlatform();
+
+    // Add framework services.
+    services.AddMvc();
+}
+```
+* `AddClientService()` Adds the client services to the services container.
+* `AddDevice()` Adds the device resolver service to the client services builder.
+* `AddBrowser()` Adds the browser resolver service to the client services builder.
+* `AddEngine()` Adds the engine resolver service to the client services builder.
+* `AddPlatform()` Adds the platform resolver service to the client services builder.
+
+
+#### Usage
+
+Example of calling the client service in the `Controller`.
+```csharp
+public class HomeController : Controller
+{
+    private readonly IClientInfo _client;
+
+    public HomeController(IClientInfo client)
+    {
+        _client = client;
+    }
+
+    public IActionResult Index()
+    {            
+        return View(_client);
+    }
+}
+```
+*(Concept)* Add extensions to `HttpRequest` [Learn more #1](/../../issues/1)
+```csharp
+var browser = Request.Browser();
+var device = Request.Device();
+var platform = Request.Platform();
+var engine = Request.Engine();
 ```
 
 ### Directory Structure
