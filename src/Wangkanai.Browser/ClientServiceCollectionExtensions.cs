@@ -22,17 +22,16 @@ namespace Microsoft.Extensions.DependencyInjection
         /// </summary>
         /// <param name="services">The services available in the application.</param>
         /// <returns>An <see cref="IServiceCollection"/> so that additional calls can be chained.</returns>
-        public static IServiceCollection AddBrowser(this IServiceCollection services)
+        public static IClientBuilder AddClientService(this IServiceCollection services)
         {
             if(services == null) throw new ArgumentNullException(nameof(services));
 
             // Hosting doesn't add IHttpContextAccessor by default
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            // Client Services            
-            services.AddTransient<IDeviceResolver, DeviceResolver>();
+            // Client Services                        
             services.AddTransient<IClientService, ClientService>();            
 
-            return services;
+            return new ClientBuilder(services);
         }
     }
 }

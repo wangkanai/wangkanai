@@ -9,17 +9,27 @@ using Wangkanai.Browser;
 
 // ReSharper disable once CheckNamespace
 namespace Microsoft.Extensions.DependencyInjection
-{
-    [Obsolete]
+{    
     public static class ClientBuilderExtensions
     {
-        // Concept idea on detecting crawler to client service
+        public static IClientBuilder AddDevice(this IClientBuilder builder)
+        {
+            builder.Services.AddTransient<IDeviceResolver, DeviceResolver>();
+
+            return builder;
+        }
+        // concept idea on adding platform detection to client service
+        public static IClientBuilder AddBrowser(this IClientBuilder builder)
+        {
+            return builder;
+        }
+        // Concept idea on adding platform detection to client service
         public static IClientBuilder AddPlatform(this IClientBuilder builder)
         {
             return builder;
         }
 
-        // Concept idea on add extensive praser to client service
+        // Concept idea on adding engine detection to client service
         public static IClientBuilder AddEngine(this IClientBuilder builder)
         {
             return builder;

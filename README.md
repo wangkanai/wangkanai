@@ -19,13 +19,22 @@ Configuring the `Startup.cs` by adding the Client Service in the `ConfigureServi
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
-    services.AddBrowser();
+	// Add browser detection services.
+    services.AddClientService()
+		.AddDevice()
+		.AddBrowser()
+		.AddEngine()
+		.AddPlatform();
 
     // Add framework services.
     services.AddMvc();
 }
 ```
-* `AddBrowser()` Adds the client services to the services container.
+* `AddClientService()` Adds the client services to the services container.
+* `AddDevice()` Adds the device resolver service to the client services builder.
+* `AddBrowser()` Adds the browser resolver service to the client services builder.
+* `AddEngine()` Adds the engine resolver service to the client services builder.
+* `AddPlatform()` Adds the platform resolver service to the client services builder.
 
 
 #### Usage
@@ -49,10 +58,10 @@ public class HomeController : Controller
 ```
 *(Concept)* Add extensions to `HttpRequest` [Learn more #1](/../../issues/1)
 ```csharp
-var browser = HttpContext.Request.Browser();
-var device = HttpContext.Request.Device();
-var platform = HttpContext.Request.Platform();
-var engine = HttpContext.Request.Engine();
+var browser = Request.Browser();
+var device = Request.Device();
+var platform = Request.Platform();
+var engine = Request.Engine();
 ```
 
 ### Directory Structure

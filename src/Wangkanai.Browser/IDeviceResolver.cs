@@ -5,6 +5,6 @@ namespace Wangkanai.Browser
 {
     public interface IDeviceResolver
     {
-        Device Device { get; set; }
+        Device Device { get; }
     }
 }

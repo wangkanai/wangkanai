@@ -5,8 +5,7 @@ using System;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Wangkanai.Browser
-{
-    [Obsolete]
+{    
     public interface IClientBuilder
     {
         IServiceCollection Services { get; }

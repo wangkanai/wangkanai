@@ -3,9 +3,9 @@
 
 using Xunit;
 
-namespace Wangkanai.Browser.Test.Platforms
+namespace Wangkanai.Browser.Test
 {
-    public class MobileBrowserTest : DeviceBrowserTest
+    public class DeviceMobileTest : DeviceTestAbstract
     {
         [Theory]
         [InlineData("Mozilla/5.0 (iPhone; CPU iPhone OS 8_3 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) FxiOS/1.0 Mobile/12F69 Safari/600.1.4")]
@@ -20,11 +20,11 @@ namespace Wangkanai.Browser.Test.Platforms
         public void Keywords(string agents)
         {
             // arrange 
-            var request = CreateRequest(agents);            
+            var service = CreateService(agents);            
             // act
-            var device = new DeviceResolverDepreciated(request).DeviceInfoDepreciated;
+            var resolver = new DeviceResolver(service);
             // assert
-            Assert.Equal(DeviceTypes.Mobile, device.Device);
+            Assert.Equal(DeviceType.Mobile, resolver.Device.Type);
         }
 
         [Theory]
@@ -36,11 +36,11 @@ namespace Wangkanai.Browser.Test.Platforms
         public void Prefix(string agent)
         {
             // Arrange            
-            var request = CreateRequest(agent);                
+            var service = CreateService(agent);                
             // Act
-            var device = new DeviceResolverDepreciated(request).DeviceInfoDepreciated;
+            var device = new DeviceResolver(service).Device;
             // Assert
-            Assert.Equal(DeviceTypes.Mobile, device.Device);
+            Assert.Equal(DeviceType.Mobile, device.Type);
         }
 
         [Theory]
@@ -49,22 +49,22 @@ namespace Wangkanai.Browser.Test.Platforms
         public void UAProf(string agent)
         {
             // Arrange               
-            var request = CreateRequest(agent, "<xml><doc></doc>");          
+            var service = CreateService(agent, "<xml><doc></doc>");          
             // Act
-            var device = new DeviceResolverDepreciated(request).DeviceInfoDepreciated;
+            var device = new DeviceResolver(service).Device;
             // Assert
-            Assert.Equal(DeviceTypes.Mobile, device.Device);
+            Assert.Equal(DeviceType.Mobile, device.Type);
         }
 
         [Fact]
         public void Wap()
         {
             // Arrange
-            var request = CreateRequest("Accept", "wap");
+            var service = CreateService("Accept", "wap");
             // Act
-            var device = new DeviceResolverDepreciated(request).DeviceInfoDepreciated;
+            var device = new DeviceResolver(service).Device;
             // Assert
-            Assert.Equal(DeviceTypes.Mobile, device.Device);
+            Assert.Equal(DeviceType.Mobile, device.Type);
         }
     }
 }

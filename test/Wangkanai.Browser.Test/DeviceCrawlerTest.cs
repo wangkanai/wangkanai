@@ -3,9 +3,9 @@
 
 using Xunit;
 
-namespace Wangkanai.Browser.Test.Platforms
+namespace Wangkanai.Browser.Test
 {
-    public class CrawlerBrowserTest : DeviceBrowserTest
+    public class DeviceCrawlerTest : DeviceTestAbstract
     {
         [Theory]
         [InlineData("Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)")]
@@ -15,11 +15,11 @@ namespace Wangkanai.Browser.Test.Platforms
         public void Keyword(string agent)
         {
             // arrange 
-            var request = CreateRequest(agent);
+            var service = CreateService(agent);
             // act
-            var device = new DeviceResolverDepreciated(request).DeviceInfoDepreciated;
+            var device = new DeviceResolver(service).Device;
             // assert
-            Assert.Equal(DeviceTypes.Crawler, device.Device);
+            Assert.Equal(true, device.IsCrawler);
         }
     }
 }

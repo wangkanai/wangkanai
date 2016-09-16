@@ -1,11 +1,14 @@
 ﻿// Copyright (c) 2016 Sarin Na Wangkanai, All Rights Reserved.
 // The GNU GPLv3. See License.txt in the project root for license information.
 
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
+using Moq;
 using Xunit;
 
-namespace Wangkanai.Browser.Test.Platforms
+namespace Wangkanai.Browser.Test
 {
-    public class DesktopBrowserTest : DeviceBrowserTest
+    public class DeviceDesktopTest : DeviceTestAbstract
     {
         [Theory]
         [InlineData("Mozilla/5.0 (Windows NT x.y; rv:10.0) Gecko/20100101 Firefox/10.0")]
@@ -19,11 +22,11 @@ namespace Wangkanai.Browser.Test.Platforms
         public void Keyword(string agent)
         {
             // arrange 
-            var request = CreateRequest(agent);
-            // act
-            var device = new DeviceResolverDepreciated(request).DeviceInfoDepreciated;
+            var service = CreateService(agent);
+            // act            
+            var resolver = new DeviceResolver(service);            
             // assert
-            Assert.Equal(DeviceTypes.Desktop, device.Device);
+            Assert.Equal(DeviceType.Desktop, resolver.Device.Type);
         }
     }
 }

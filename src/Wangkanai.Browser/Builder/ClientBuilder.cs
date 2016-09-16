@@ -12,7 +12,6 @@ namespace Wangkanai.Browser
     /// <summary>
     /// Helper functions for configuring browser services.
     /// </summary>
-    [Obsolete]
     public class ClientBuilder : IClientBuilder
     {
         /// <summary>
@@ -21,7 +20,9 @@ namespace Wangkanai.Browser
         /// <param name="services">The <see cref="IServiceCollection"/> to attach to.</param>
         public ClientBuilder(IServiceCollection services)
         {
-            Services = services;
+            if (services == null) throw new ArgumentNullException(nameof(services));
+
+            Services = services.AddTransient<IClientInfo, ClientInfo>();
         }
 
         /// <summary>

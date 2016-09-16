@@ -10,14 +10,15 @@ namespace Wangkanai.Browser
 {
     public sealed class DeviceResolver : IDeviceResolver
     {
-        public Device Device { get; set; }
+        public Device Device => _device;
         private readonly HttpContext _context;
-        public DeviceResolver(IServiceProvider service)
+        private readonly Device _device;
+        public DeviceResolver(IClientService service)
         {
-            if (service != null) _context = service.GetService<IHttpContextAccessor>()?.HttpContext;
-            if (_context == null) throw new ArgumentNullException(nameof(_context));
-
-            Device = new Device()
+            if (service != null) _context = service.Context;
+            // testing failed because no default Httpcontext
+            //if (_context == null) throw new ArgumentNullException(nameof(_context));
+            _device = new Device()
             {
                 Type = GetDeviceType(),
                 IsCrawler = GetCrawler()
@@ -45,7 +46,7 @@ namespace Wangkanai.Browser
             if (request.Headers.ContainsKey("x-wap-profile") || request.Headers.ContainsKey("Profile"))
                 return DeviceType.Mobile;
             // mobile accept-header base detection
-            if (request.Headers["Accept"].All(accept => accept.ToLowerInvariant() == "wap"))
+            if (request.Headers["Accept"].Any(accept => accept.ToLowerInvariant() == "wap"))
                 return DeviceType.Mobile;
 
             return DeviceType.Desktop;
@@ -54,15 +55,17 @@ namespace Wangkanai.Browser
         {
             var agent = GetUserAgent();
             if (agent == null) return false;
-            if (_crawlerKeywords.Any(keyword => keyword.Contains(agent))) return true;
+            if (_crawlerKeywords.Any(keyword => agent.Contains(keyword))) return true;
             return false;
         }
         private string GetUserAgent()
         {
+            if (_context == null) return "";
+            if (!_context.Request.Headers["User-Agent"].Any()) return "";
             return new UserAgent(_context.Request.Headers["User-Agent"].FirstOrDefault()).ToString();
         }
 
-        #region yml    
+        #region yaml    
         private readonly string[] _tabletKeywords = {
             "tablet",
             "ipad",

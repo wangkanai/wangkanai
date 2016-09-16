@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Wangkanai.Browser;
 
@@ -9,19 +10,19 @@ namespace Sandbox.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IClientService _client;        
+        private readonly IClientInfo _client;        
 
-        public HomeController(IClientService client)
+        public HomeController(IClientInfo client)
         {
             _client = client;            
         }
 
         public IActionResult Index()
         {
-            var browser = HttpContext.Request.Browser();
-            var device = HttpContext.Request.Device();
-            var platform = HttpContext.Request.Platform();            
-            var engine = HttpContext.Request.Engine();
+            var browser = Request.Browser();
+            var device = Request.Device();
+            var platform = Request.Platform();            
+            var engine = Request.Engine();
             return View(_client);
         }
     }

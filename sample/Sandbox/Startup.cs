@@ -27,7 +27,11 @@ namespace Sandbox
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddBrowser();
+            services.AddClientService()
+                .AddDevice()
+                .AddBrowser()
+                .AddEngine()
+                .AddPlatform();
                       
             // Add framework services.
             services.AddMvc();

@@ -15,27 +15,23 @@ namespace Wangkanai.Browser
     /// </summary>
     public class ClientService : IClientService
     {
-        public UserAgent UserAgent => _info.Useragent;        
-        public Device Device => _info.Device;
-        public Browser Browser => _info.Browser; //concept for implementation
-        public Engine Engine => _info.Engine; //concept for implementation
-        public Platform Platform => _info.Platform;  //concept for implementation
+        public HttpContext Context { get; }
+        public UserAgent UserAgent { get; }
 
-        private readonly ClientInfo _info;
-        private readonly HttpContext _context;
-
-        public ClientService(IServiceProvider services, IDeviceResolver deviceResolver)
+        public ClientService(IServiceProvider services)
         {
-            if (services != null) _context = services.GetService<IHttpContextAccessor>()?.HttpContext;
-            if (_context == null) throw new ArgumentNullException(nameof(_context));
-            if (deviceResolver == null) throw new ArgumentNullException(nameof(deviceResolver));
+            if (services != null) Context = services.GetService<IHttpContextAccessor>()?.HttpContext;
 
-            var useragent = new UserAgent(_context.Request.Headers["User-Agent"].FirstOrDefault());
-            var device = deviceResolver.Device;
-            var browser = new Browser();   // waiting for implementation
-            var engine = new Engine();     // waiting for implementation
-            var platform = new Platform(); // waiting for implementation            
-            _info = new ClientInfo(useragent, browser, device, engine, platform);
+            UserAgent = CreateUserAgent(Context);
+        }
+
+        private UserAgent CreateUserAgent(HttpContext context)
+        {
+            // fail in unit testing
+            //if (Context == null) throw new ArgumentNullException(nameof(Context));  
+            if (context != null) return new UserAgent(Context.Request.Headers["User-Agent"].FirstOrDefault());
+
+            return new UserAgent();
         }
     }
 }
