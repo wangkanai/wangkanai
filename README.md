@@ -43,9 +43,9 @@ Example of calling the client service in the `Controller`.
 ```csharp
 public class HomeController : Controller
 {
-    private readonly IClientService _client;
+    private readonly IClientInfo _client;
 
-    public HomeController(IClientService client)
+    public HomeController(IClientInfo client)
     {
         _client = client;
     }
