@@ -1,0 +1,37 @@
+{
+  "description": "ASP.NET Core Engine Resolver components",
+  "version": "1.0.0-*",
+
+  "authors": [ "Sarin Na Wangkanai" ],
+  "copyright": "Copyright © 2016 Sarin Na Wangkanai",
+  "packOptions": {
+    "repository": {
+      "type": "git",
+      "url": "git://github.com/wangkanai/Detection"
+    },
+    "tags": [
+      "aspnetcore",
+      "browser"
+    ],
+    "iconUrl": "http://0.gravatar.com/avatar/f58457d38ab3bc43526c6e52af17494e",
+    "licenseUrl": "https://github.com/wangkanai/Detection/blob/master/LICENSE",
+    "projectUrl": "https://github.com/wangkanai/Detection"
+  },
+  "buildOptions": {
+    "warningsAsErrors": true,
+    "nowarn": [
+      "CS1591"
+    ],
+    "xmlDoc": true
+  },
+
+  "dependencies": {
+    "NETStandard.Library": "1.6.0",
+    "Wangkanai.Detection": "1.0.0-*"
+  },
+
+  "frameworks": {
+    "net451": {},
+    "netstandard1.6": {}
+  }
+}

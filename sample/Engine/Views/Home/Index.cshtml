@@ -1,0 +1,19 @@
+﻿@model Wangkanai.Browser.IClientInfo
+
+@{
+    ViewData["Title"] = "Browser";
+}
+
+<h4>UserAgent</h4>
+<code>@Model.UserAgent</code>
+<h4>Device</h4>
+<table>
+    <tr>
+        <th>DeviceType</th>
+        <td>@Model.Device.Type.ToString()</td>
+    </tr>
+    <tr>
+        <th>IsCrawler</th>
+        <td>@Model.Device.IsCrawler</td>
+    </tr>
+</table>

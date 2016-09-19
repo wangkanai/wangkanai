@@ -29,9 +29,6 @@ namespace Sandbox
         {
             // Add detection services.
             services.AddDetection()
-                .AddDevice()
-                .AddBrowser()
-                .AddEngine()
                 .AddPlatform();                
                       
             // Add framework services.
