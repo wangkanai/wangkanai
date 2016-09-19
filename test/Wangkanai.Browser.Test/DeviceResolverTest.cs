@@ -1,7 +1,6 @@
 ﻿// Copyright (c) 2016 Sarin Na Wangkanai, All Rights Reserved.
 // The GNU GPLv3. See License.txt in the project root for license information.
 
-using System;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
@@ -19,7 +18,7 @@ namespace Wangkanai.Browser.Test
             //var provider = new Mock<IServiceProvider>();            
             //var services = new Mock<IServiceCollection>();
             //services.Setup(x => x.BuildServiceProvider()).Returns(provider.Object);
-            
+
             //// act
             //services.Object.AddClientService()
             //    .AddDevice();
