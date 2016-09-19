@@ -1,5 +1,5 @@
-{
-  "description": "ASP.NET Core Detection Abstractions",
+﻿{
+  "description": "ASP.NET Core extension client web browser detection components",
   "version": "1.0.0-*",
 
   "authors": [ "Sarin Na Wangkanai" ],
@@ -7,15 +7,15 @@
   "packOptions": {
     "repository": {
       "type": "git",
-      "url": "git://github.com/wangkanai/Browser"
+      "url": "git://github.com/wangkanai/Detection"
     },
     "tags": [
       "aspnetcore",
       "browser"
     ],
     "iconUrl": "http://0.gravatar.com/avatar/f58457d38ab3bc43526c6e52af17494e",
-    "licenseUrl": "https://github.com/wangkanai/Browser/blob/master/LICENSE",
-    "projectUrl": "https://github.com/wangkanai/Browser"
+    "licenseUrl": "https://github.com/wangkanai/Detection/blob/master/LICENSE",
+    "projectUrl": "https://github.com/wangkanai/Detection"
   },
   "buildOptions": {
     "warningsAsErrors": true,
@@ -25,14 +25,13 @@
     "xmlDoc": true
   },
   "dependencies": {
-    "Microsoft.AspNetCore.Http": "1.0.0",
-    "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0"
+    "NETStandard.Library": "1.6.0",
+    "Wangkanai.Detection": "1.0.0-*",
+    "Wangkanai.Detection.Abstractions": "1.0.0-*"
   },
 
   "frameworks": {
     "net451": {},
-    "netstandard1.6": {
-      "imports": "dnxcore50"
-    }
+    "netstandard1.6": {}
   }
 }

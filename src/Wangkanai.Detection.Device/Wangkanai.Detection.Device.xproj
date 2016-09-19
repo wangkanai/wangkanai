@@ -7,8 +7,8 @@
 
   <Import Project="$(VSToolsPath)\DotNet\Microsoft.DotNet.Props" Condition="'$(VSToolsPath)' != ''" />
   <PropertyGroup Label="Globals">
-    <ProjectGuid>5ddd1ada-cbd7-4380-83af-fdc841eacf1d</ProjectGuid>
-    <RootNamespace>Wangkanai.Browser.Abstractions</RootNamespace>
+    <ProjectGuid>8a4965cf-54ac-47b8-9428-8fe400df3200</ProjectGuid>
+    <RootNamespace>Wangkanai.Detection.Device</RootNamespace>
     <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)'=='' ">.\obj</BaseIntermediateOutputPath>
     <OutputPath Condition="'$(OutputPath)'=='' ">.\bin\</OutputPath>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>

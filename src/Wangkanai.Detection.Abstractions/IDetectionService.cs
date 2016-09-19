@@ -2,13 +2,13 @@
 // The GNU GPLv3. See License.txt in the project root for license information.
 
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Wangkanai.Detection
 {
-    public interface IClientService
+    public interface IDetectionService
     {
         HttpContext Context { get; }
-        UserAgent UserAgent { get; }
-        //Engine Engine { get; }
+        IUserAgent UserAgent { get; }
     }
 }

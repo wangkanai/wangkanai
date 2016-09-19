@@ -7,11 +7,11 @@ namespace Wangkanai.Detection
 {
     public class ClientInfo : IClientInfo
     {
-        public UserAgent UserAgent { get; }
-        public Device Device { get; }
-        public Browser Browser { get; }
-        public Engine Engine { get; }
-        public Platform Platform { get; }
+        public IUserAgent UserAgent { get; }
+        public IDevice Device { get; }
+        public IBrowser Browser { get; }
+        public IEngine Engine { get; }
+        public IPlatform Platform { get; }
 
         private readonly IClientService _service;
 

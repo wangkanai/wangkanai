@@ -5,8 +5,8 @@ namespace Wangkanai.Detection
 {
     public interface IClientInfo
     {
-        UserAgent UserAgent { get; }
-        Device Device { get; }
+        IUserAgent UserAgent { get; }
+        IDevice Device { get; }
         // waiting to implement in the future
         //Browser Browser { get; }
         //Platform Platform { get; }
