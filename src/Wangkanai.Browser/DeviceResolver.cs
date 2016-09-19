@@ -18,11 +18,11 @@ namespace Wangkanai.Browser
             if (service != null) _context = service.Context;
             // testing failed because no default Httpcontext
             //if (_context == null) throw new ArgumentNullException(nameof(_context));
-            _device = new Device()
-            {
-                Type = GetDeviceType(),
-                IsCrawler = GetCrawler()
-            };
+            _device = new Device(GetDeviceType(), GetCrawler());
+            //{
+            //    Type = GetDeviceType(),
+            //    IsCrawler = GetCrawler()
+            //};
         }
 
         private DeviceType GetDeviceType()
