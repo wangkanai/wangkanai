@@ -29,7 +29,7 @@ namespace Sandbox
         {
             // Add detection services.
             services.AddDetection()
-                .AddDevice();                
+                .AddPlatform();                
                       
             // Add framework services.
             services.AddMvc();
