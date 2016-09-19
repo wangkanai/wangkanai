@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 // associated with an assembly.
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Wangkanai.Detection.Device")]
+[assembly: AssemblyProduct("Wangkanai.Detection.Browser")]
 [assembly: AssemblyTrademark("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
@@ -19,4 +19,4 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("8a4965cf-54ac-47b8-9428-8fe400df3200")]
+[assembly: Guid("dbbeb1f2-556e-49e0-aee7-894ff0c05043")]

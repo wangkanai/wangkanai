@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Wangkanai.Detection;
+using Wangkanai.Detection.Abstractions;
 
 namespace Sandbox.Controllers
 {
@@ -19,10 +19,6 @@ namespace Sandbox.Controllers
 
         public IActionResult Index()
         {
-            var browser = Request.Browser();
-            var device = Request.Device();
-            var platform = Request.Platform();            
-            var engine = Request.Engine();
             return View(_client);
         }
     }

@@ -2,9 +2,8 @@
 // The GNU GPLv3. See License.txt in the project root for license information.
 
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.DependencyInjection;
 
-namespace Wangkanai.Detection
+namespace Wangkanai.Detection.Abstractions
 {
     public interface IDetectionService
     {

@@ -1,9 +1,9 @@
-﻿{
-  "description": "ASP.NET Core Device Resolver components",
+{
+  "description": "ASP.NET Core Engine Resolver components",
   "version": "1.0.0-*",
 
   "authors": [ "Sarin Na Wangkanai" ],
-  "copyright": "Copyright © 2016 Sarin Na Wangkanai",
+  "copyright": "Copyright � 2016 Sarin Na Wangkanai",
   "packOptions": {
     "repository": {
       "type": "git",

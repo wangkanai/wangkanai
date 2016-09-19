@@ -5,25 +5,26 @@ using System;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using System.Linq;
+using Wangkanai.Detection.Abstractions;
 
 namespace Wangkanai.Detection
 {
     /// <summary>
     /// Provides the APIs for query client access device.
     /// </summary>
-    public class ClientService : IClientService
+    public class DetectionService : IDetectionService
     {
         public HttpContext Context { get; }
-        public UserAgent UserAgent { get; }
+        public IUserAgent UserAgent { get; }
 
-        public ClientService(IServiceProvider services)
+        public DetectionService(IServiceProvider services)
         {
             if (services != null) Context = services.GetService<IHttpContextAccessor>()?.HttpContext;
 
             UserAgent = CreateUserAgent(Context);
         }
 
-        private UserAgent CreateUserAgent(HttpContext context)
+        private IUserAgent CreateUserAgent(HttpContext context)
         {
             // fail in unit testing
             //if (Context == null) throw new ArgumentNullException(nameof(Context));  

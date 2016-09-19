@@ -2,10 +2,11 @@
 // The GNU GPLv3. See License.txt in the project root for license information.
 
 using System;
+using Wangkanai.Detection.Abstractions;
 
 namespace Wangkanai.Detection
 {
-    public class Device
+    public class Device :IDevice
     {
         public DeviceType Type { get; set; }
         public bool IsCrawler { get; set; }
@@ -25,6 +26,5 @@ namespace Wangkanai.Detection
                 throw new DeviceNotFoundException(name, "not found");
             Type = deviceType;            
         }
-
     }
 }

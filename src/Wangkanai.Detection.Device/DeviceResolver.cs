@@ -3,15 +3,16 @@
 
 using Microsoft.AspNetCore.Http;
 using System.Linq;
+using Wangkanai.Detection.Abstractions;
 
 namespace Wangkanai.Detection
 {
     public sealed class DeviceResolver : IDeviceResolver
     {
-        public Device Device => _device;
+        public IDevice Device => _device;
         private readonly HttpContext _context;
         private readonly Device _device;
-        public DeviceResolver(IClientService service)
+        public DeviceResolver(IDetectionService service)
         {
             if (service != null) _context = service.Context;
             // testing failed because no default Httpcontext

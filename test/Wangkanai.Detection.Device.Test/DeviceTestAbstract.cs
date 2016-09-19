@@ -3,6 +3,7 @@
 
 using Microsoft.AspNetCore.Http;
 using Moq;
+using Wangkanai.Detection.Abstractions;
 
 namespace Wangkanai.Detection.Test
 {
@@ -10,19 +11,19 @@ namespace Wangkanai.Detection.Test
     {
         private HttpRequest CreateRequest() => new DefaultHttpContext().Request;
         private HttpContext CreateContext() => new DefaultHttpContext();
-        protected IClientService CreateService(string agent)
+        protected IDetectionService CreateService(string agent)
         {
             var context = CreateContext(agent);
-            var service = new Mock<IClientService>();
+            var service = new Mock<IDetectionService>();
             service.Setup(f => f.Context).Returns(context);
             service.Setup(f => f.UserAgent).Returns(new UserAgent(agent));
             return service.Object;
         }
 
-        protected IClientService CreateService(string header, string value)
+        protected IDetectionService CreateService(string header, string value)
         {
             var context = CreateContext(header, value);
-            var service = new Mock<IClientService>();
+            var service = new Mock<IDetectionService>();
             service.Setup(f => f.Context).Returns(context);
             service.Setup(f => f.UserAgent).Returns(new UserAgent());
             return service.Object;

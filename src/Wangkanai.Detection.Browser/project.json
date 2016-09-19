@@ -1,9 +1,9 @@
-﻿{
-  "description": "ASP.NET Core Device Resolver components",
+{
+  "description": "ASP.NET Core Browser Resolver components",
   "version": "1.0.0-*",
 
   "authors": [ "Sarin Na Wangkanai" ],
-  "copyright": "Copyright © 2016 Sarin Na Wangkanai",
+  "copyright": "Copyright � 2016 Sarin Na Wangkanai",
   "packOptions": {
     "repository": {
       "type": "git",
@@ -27,7 +27,7 @@
 
   "dependencies": {
     "NETStandard.Library": "1.6.0",
-    "Wangkanai.Detection": "1.0.0-*"
+    "Wangkanai.Detection": "1.0.0-*"    
   },
 
   "frameworks": {

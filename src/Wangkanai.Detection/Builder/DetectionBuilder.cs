@@ -3,23 +3,25 @@
 
 using System;
 using Microsoft.Extensions.DependencyInjection;
+using Wangkanai.Detection.Abstractions;
+using Wangkanai.Detection.Builder;
 
 namespace Wangkanai.Detection.Builder
 {
     /// <summary>
     /// Helper functions for configuring browser services.
     /// </summary>
-    public class ClientBuilder : IClientBuilder
+    public class DetectionBuilder : IDetectionBuilder
     {
         /// <summary>
-        /// Creates a new instance of <see cref="IClientBuilder"/>.
+        /// Creates a new instance of <see cref="DetectionBuilder"/>.
         /// </summary>
         /// <param name="services">The <see cref="IServiceCollection"/> to attach to.</param>
-        public ClientBuilder(IServiceCollection services)
+        public DetectionBuilder(IServiceCollection services)
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
 
-            Services = services.AddTransient<IClientInfo, ClientInfo>();
+            Services = services;
         }
 
         /// <summary>
