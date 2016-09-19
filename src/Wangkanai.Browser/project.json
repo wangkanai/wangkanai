@@ -1,6 +1,6 @@
 ﻿{
   "description": "ASP.NET Core extension client web browser detection components",
-  "version": "1.0.0-beta2",
+  "version": "1.0.0-beta3",
 
   "authors": [ "Sarin Na Wangkanai" ],
   "copyright": "Copyright © 2016 Sarin Na Wangkanai",
