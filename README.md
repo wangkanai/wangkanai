@@ -6,7 +6,7 @@ ASP.NET Core client web browser detection extension to resolve devices, platform
 
 package | build | nuget    |
 --------|-------|----------|
-Wangkanai.Detection | [![Build status](https://ci.appveyor.com/api/projects/status/nwke0v8dqp3xkgwr/branch/dev?svg=true)](https://ci.appveyor.com/project/wangkanai/browser/branch/dev) |  [![NuGet Pre Release](https://img.shields.io/nuget/vpre/Wangkanai.Browser.svg?maxAge=2592000)](https://www.nuget.org/packages/Wangkanai.Browser/)  |
+Wangkanai.Detection | [![Build status](https://ci.appveyor.com/api/projects/status/033qv4nqv8g4altq?svg=true)](https://ci.appveyor.com/project/wangkanai/detection) | [![NuGet Pre Release](https://img.shields.io/nuget/vpre/Wangkanai.Browser.svg?maxAge=2592000)](https://www.nuget.org/packages/Wangkanai.Browser/)  |
 Wangkanai.Detection.Device | | | 
 Wangkanai.Detection.Browser | | | 
 Wangkanai.Detection.Engine | | | 
@@ -29,7 +29,7 @@ Configuring the `Startup.cs` by adding the Client Service in the `ConfigureServi
 public void ConfigureServices(IServiceCollection services)
 {
 	// Add browser detection services.
-    services.AddClientService()
+    services.AddDetection()
 		.AddDevice()
 		.AddBrowser()
 		.AddEngine()
@@ -39,11 +39,11 @@ public void ConfigureServices(IServiceCollection services)
     services.AddMvc();
 }
 ```
-* `AddClientService()` Adds the client services to the services container.
-* `AddDevice()` Adds the device resolver service to the client services builder.
-* `AddBrowser()` Adds the browser resolver service to the client services builder.
-* `AddEngine()` Adds the engine resolver service to the client services builder.
-* `AddPlatform()` Adds the platform resolver service to the client services builder.
+* `AddDetection()` Adds the detection services to the services container.
+* `AddDevice()` Adds the device resolver service to the detection services builder.
+* `AddBrowser()` Adds the browser resolver service to the detection services builder.
+* `AddEngine()` Adds the engine resolver service to the detection services builder.
+* `AddPlatform()` Adds the platform resolver service to the detection services builder.
 
 
 #### Usage
