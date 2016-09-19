@@ -1,15 +1,24 @@
-# ASP.NET Core Browser
+# ASP.NET Core Detection
 
-[![Build status](https://ci.appveyor.com/api/projects/status/nwke0v8dqp3xkgwr/branch/dev?svg=true)](https://ci.appveyor.com/project/wangkanai/browser/branch/dev) [![NuGet Pre Release](https://img.shields.io/nuget/vpre/Wangkanai.Browser.svg?maxAge=2592000)](https://www.nuget.org/packages/Wangkanai.Browser/)
+ASP.NET Core client web browser detection extension to resolve devices, platforms, engine of the client.
 
 ![ASP.NET Core Responsiveness](https://raw.githubusercontent.com/wangkanai/browser/master/asset/aspnet-core-browser.png)
 
-ASP.NET Core client web browser detection extension to resolve devices, platforms, engine of the client.
+package | build | nuget    |
+--------|-------|----------|
+Wangkanai.Detection | [![Build status](https://ci.appveyor.com/api/projects/status/nwke0v8dqp3xkgwr/branch/dev?svg=true)](https://ci.appveyor.com/project/wangkanai/browser/branch/dev) |  [![NuGet Pre Release](https://img.shields.io/nuget/vpre/Wangkanai.Browser.svg?maxAge=2592000)](https://www.nuget.org/packages/Wangkanai.Browser/)  |
+Wangkanai.Detection.Device | | | 
+Wangkanai.Detection.Browser | | | 
+Wangkanai.Detection.Engine | | | 
+Wangkanai.Detection.Platform | | | 
 
 ### Installation - [NuGet](https://www.nuget.org/packages/Wangkanai.Browser/)
 
 ```powershell
-PM> install-package Wangkanai.Browser -pre
+PM> install-package Wangkanai.Detection.Device -pre
+PM> install-package Wangkanai.Detection.Browser -pre
+PM> install-package Wangkanai.Detection.Engine -pre
+PM> install-package Wangkanai.Detection.Platform -pre
 ```
 
 ### Implement detection the device for each request
