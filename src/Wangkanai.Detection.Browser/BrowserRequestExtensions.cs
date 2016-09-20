@@ -1,10 +1,9 @@
 ﻿// Copyright (c) 2016 Sarin Na Wangkanai, All Rights Reserved.
 // The GNU GPLv3. See License.txt in the project root for license information.
 
-// ReSharper disable once CheckNamespace
-
 using Wangkanai.Detection;
 
+// ReSharper disable once CheckNamespace
 namespace Microsoft.AspNetCore.Http
 {
     // concept of extension to HttpRequest

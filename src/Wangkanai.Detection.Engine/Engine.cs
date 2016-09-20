@@ -3,7 +3,7 @@
 
 namespace Wangkanai.Detection
 {
-    public class Engine
+    public class Engine : IEngine
     {
         public string Name { get; set; }
         public string Maker { get; set; }
