@@ -3,7 +3,6 @@
 
 using Microsoft.AspNetCore.Http;
 using System.Linq;
-using Wangkanai.Detection.Abstractions;
 
 namespace Wangkanai.Detection
 {

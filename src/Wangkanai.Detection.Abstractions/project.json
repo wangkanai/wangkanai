@@ -1,5 +1,5 @@
 {
-  "description": "ASP.NET Core Detection Abstractions",
+  "description": "ASP.NET Core Detection service abstractions and interfaces for action invocation and dispatching.\r\nCommonly used types:\r\nWangkanai.Detection.IClientInfo",
   "version": "1.0.0-*",
 
   "authors": [ "Sarin Na Wangkanai" ],

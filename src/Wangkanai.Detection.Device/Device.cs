@@ -2,7 +2,6 @@
 // The GNU GPLv3. See License.txt in the project root for license information.
 
 using System;
-using Wangkanai.Detection.Abstractions;
 
 namespace Wangkanai.Detection
 {

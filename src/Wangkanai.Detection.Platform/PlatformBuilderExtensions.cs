@@ -2,7 +2,6 @@
 // The GNU GPLv3. See License.txt in the project root for license information.
 
 using Wangkanai.Detection;
-using Wangkanai.Detection.Abstractions;
 
 // ReSharper disable once CheckNamespace
 namespace Microsoft.Extensions.DependencyInjection

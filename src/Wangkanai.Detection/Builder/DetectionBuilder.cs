@@ -2,9 +2,9 @@
 // The GNU GPLv3. See License.txt in the project root for license information.
 
 using System;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using Wangkanai.Detection.Abstractions;
 using Wangkanai.Detection.Builder;
 
 namespace Wangkanai.Detection.Builder

@@ -3,7 +3,7 @@
 
 using Microsoft.AspNetCore.Http;
 
-namespace Wangkanai.Detection.Abstractions
+namespace Wangkanai.Detection
 {
     public interface IDetectionService
     {

@@ -3,7 +3,7 @@
 
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Wangkanai.Detection.Abstractions
+namespace Wangkanai.Detection
 {    
     public interface IDetectionBuilder
     {

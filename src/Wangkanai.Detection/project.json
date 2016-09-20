@@ -1,5 +1,5 @@
 ﻿{
-  "description": "ASP.NET Core extension client web browser detection components",
+  "description": "ASP.NET Core Detection service components for identifying details about client device, browser, engine, and platform.",
   "version": "1.0.0-*",
 
   "authors": [ "Sarin Na Wangkanai" ],
@@ -25,7 +25,7 @@
     "xmlDoc": true
   },
   "dependencies": {
-    "NETStandard.Library": "1.6.0",
+    
     "Microsoft.AspNetCore.Http": "1.0.0",
     "Wangkanai.Detection.Abstractions": "1.0.0-*"
   },

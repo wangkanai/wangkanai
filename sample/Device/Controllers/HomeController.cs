@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Wangkanai.Detection;
-using Wangkanai.Detection.Abstractions;
 
 namespace Sandbox.Controllers
 {

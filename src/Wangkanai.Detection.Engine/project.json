@@ -1,5 +1,5 @@
 {
-  "description": "ASP.NET Core Engine Resolver components",
+  "description": "ASP.NET Core Detection Engine resolver components",
   "version": "1.0.0-*",
 
   "authors": [ "Sarin Na Wangkanai" ],

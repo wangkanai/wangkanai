@@ -3,7 +3,6 @@
 
 using Microsoft.AspNetCore.Http;
 using Moq;
-using Wangkanai.Detection.Abstractions;
 
 namespace Wangkanai.Detection.Test
 {

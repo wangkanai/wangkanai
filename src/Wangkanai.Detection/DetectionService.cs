@@ -5,7 +5,6 @@ using System;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using System.Linq;
-using Wangkanai.Detection.Abstractions;
 
 namespace Wangkanai.Detection
 {

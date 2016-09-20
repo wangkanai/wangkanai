@@ -1,5 +1,5 @@
 ﻿{
-  "description": "ASP.NET Core Device Resolver components",
+  "description": "ASP.NET Core Detection Device resolver components",
   "version": "1.0.0-*",
 
   "authors": [ "Sarin Na Wangkanai" ],

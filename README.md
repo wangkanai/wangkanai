@@ -6,19 +6,19 @@ ASP.NET Core client web browser detection extension to resolve devices, platform
 
 package | build | nuget    |
 --------|-------|----------|
-Wangkanai.Detection | [![Build status](https://ci.appveyor.com/api/projects/status/033qv4nqv8g4altq?svg=true)](https://ci.appveyor.com/project/wangkanai/detection) | [![NuGet Pre Release](https://img.shields.io/nuget/vpre/Wangkanai.Browser.svg?maxAge=2592000)](https://www.nuget.org/packages/Wangkanai.Browser/)  |
-Wangkanai.Detection.Device | | | 
-Wangkanai.Detection.Browser | | | 
-Wangkanai.Detection.Engine | | | 
-Wangkanai.Detection.Platform | | | 
+Wangkanai.Detection | [![Build status](https://ci.appveyor.com/api/projects/status/033qv4nqv8g4altq?svg=true)](https://ci.appveyor.com/project/wangkanai/detection) | [![NuGet Pre Release](https://img.shields.io/nuget/vpre/Wangkanai.Detection.svg?maxAge=2592000)](https://www.nuget.org/packages/Wangkanai.Detection/)  |
+Wangkanai.Detection.Device | | [![NuGet Pre Release](https://img.shields.io/nuget/vpre/Wangkanai.Detection.Device.svg?maxAge=2592000)](https://www.nuget.org/packages/Wangkanai.Detection.Device/) | 
+Wangkanai.Detection.Browser | | [![NuGet Pre Release](https://img.shields.io/nuget/vpre/Wangkanai.Browser.svg?maxAge=2592000)](https://www.nuget.org/packages/Wangkanai.Browser/) | 
+Wangkanai.Detection.Engine | | [![NuGet Pre Release](https://img.shields.io/nuget/vpre/Wangkanai.Engine.svg?maxAge=2592000)](https://www.nuget.org/packages/Wangkanai.Engine/) | 
+Wangkanai.Detection.Platform | | [![NuGet Pre Release](https://img.shields.io/nuget/vpre/Wangkanai.Platform.svg?maxAge=2592000)](https://www.nuget.org/packages/Wangkanai.Platform/) | 
 
 ### Installation - [NuGet](https://www.nuget.org/packages/Wangkanai.Browser/)
 
 ```powershell
 PM> install-package Wangkanai.Detection.Device -pre
-PM> install-package Wangkanai.Detection.Browser -pre
-PM> install-package Wangkanai.Detection.Engine -pre
-PM> install-package Wangkanai.Detection.Platform -pre
+PM> install-package Wangkanai.Detection.Browser -pre  //concept
+PM> install-package Wangkanai.Detection.Engine -pre   //concept
+PM> install-package Wangkanai.Detection.Platform -pre //concept
 ```
 
 ### Implement detection the device for each request
@@ -31,9 +31,9 @@ public void ConfigureServices(IServiceCollection services)
 	// Add browser detection services.
     services.AddDetection()
 		.AddDevice()
-		.AddBrowser()
-		.AddEngine()
-		.AddPlatform();
+		.AddBrowser()   // concept
+		.AddEngine()    // concept
+		.AddPlatform(); // concept
 
     // Add framework services.
     services.AddMvc();

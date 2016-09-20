@@ -1,7 +1,10 @@
 ﻿// Copyright (c) 2016 Sarin Na Wangkanai, All Rights Reserved.
 // The GNU GPLv3. See License.txt in the project root for license information.
 
-namespace Wangkanai.Detection.Abstractions
+using Wangkanai.Detection;
+
+// ReSharper disable once CheckNamespace
+namespace Microsoft.AspNetCore.Http
 {
     public interface IClientInfo
     {
