@@ -3,6 +3,7 @@
 
 using System;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Wangkanai.Detection.Abstractions;
 using Wangkanai.Detection.Builder;
 
@@ -20,6 +21,8 @@ namespace Wangkanai.Detection.Builder
         public DetectionBuilder(IServiceCollection services)
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
+
+            services.TryAddTransient<IClientInfo, ClientInfo>();
 
             Services = services;
         }

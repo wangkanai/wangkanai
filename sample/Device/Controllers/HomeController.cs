@@ -4,23 +4,23 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Wangkanai.Detection;
 using Wangkanai.Detection.Abstractions;
 
 namespace Sandbox.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IClientInfo _client;        
+        private readonly IDeviceResolver _device;        
 
-        public HomeController(IClientInfo client)
+        public HomeController(IDeviceResolver device)
         {
-            _client = client;            
+            _device = device;
         }
 
         public IActionResult Index()
-        {
-            var device = Request.Device();
-            return View(_client);
+        {            
+            return View(_device.Device);
         }
     }
 }

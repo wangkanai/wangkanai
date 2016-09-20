@@ -1,19 +1,17 @@
-﻿@model Wangkanai.Browser.IClientInfo
+﻿@model Wangkanai.Detection.Abstractions.IDevice
 
 @{
-    ViewData["Title"] = "Browser";
+    ViewData["Title"] = "Device";
 }
 
-<h4>UserAgent</h4>
-<code>@Model.UserAgent</code>
 <h4>Device</h4>
 <table>
     <tr>
         <th>DeviceType</th>
-        <td>@Model.Device.Type.ToString()</td>
+        <td>@Model.Type.ToString()</td>
     </tr>
     <tr>
         <th>IsCrawler</th>
-        <td>@Model.Device.IsCrawler</td>
+        <td>@Model.IsCrawler</td>
     </tr>
 </table>

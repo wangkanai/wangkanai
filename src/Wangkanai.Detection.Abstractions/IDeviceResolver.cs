@@ -5,7 +5,7 @@ using Wangkanai.Detection.Abstractions;
 
 namespace Wangkanai.Detection
 {
-    public interface IDeviceResolver
+    public interface IDeviceResolver : IResolver
     {
         IDevice Device { get; }
     }
