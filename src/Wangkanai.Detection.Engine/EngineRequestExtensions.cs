@@ -8,11 +8,11 @@ using Wangkanai.Detection;
 namespace Microsoft.AspNetCore.Http
 {
     // concept of extension to HttpRequest
-    public static class DeviceRequestExtensions
+    public static class EngineRequestExtensions
     {
-        public static Device Device(this HttpRequest request)
+        public static Engine Engine(this HttpRequest request)
         {
-            return new Device();
+            return new Engine();
         }        
     }
 }

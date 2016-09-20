@@ -10,15 +10,16 @@ namespace Sandbox.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IClientInfo _client;        
+        private readonly IClientInfo _client;
 
         public HomeController(IClientInfo client)
         {
-            _client = client;            
+            _client = client;
         }
 
         public IActionResult Index()
         {
+            var browser = Request.Browser();            
             return View(_client);
         }
     }

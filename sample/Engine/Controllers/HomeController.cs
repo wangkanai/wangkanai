@@ -19,6 +19,7 @@ namespace Sandbox.Controllers
 
         public IActionResult Index()
         {
+            var engine = Request.Engine();
             return View(_client);
         }
     }

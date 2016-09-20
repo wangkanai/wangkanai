@@ -19,6 +19,7 @@ namespace Sandbox.Controllers
 
         public IActionResult Index()
         {
+            var device = Request.Device();
             return View(_client);
         }
     }

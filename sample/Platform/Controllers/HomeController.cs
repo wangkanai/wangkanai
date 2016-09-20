@@ -19,6 +19,7 @@ namespace Sandbox.Controllers
 
         public IActionResult Index()
         {
+            var platform = Request.Platform();
             return View(_client);
         }
     }
