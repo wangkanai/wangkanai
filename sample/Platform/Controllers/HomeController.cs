@@ -4,22 +4,22 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Wangkanai.Detection;
 
 namespace Sandbox.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IClientInfo _client;        
+        private readonly IPlatformResolver _platform;        
 
-        public HomeController(IClientInfo client)
+        public HomeController(IPlatformResolver platform)
         {
-            _client = client;            
+            _platform = platform;            
         }
 
         public IActionResult Index()
-        {
-            var platform = Request.Platform();
-            return View(_client);
+        {            
+            return View(_platform);
         }
     }
 }

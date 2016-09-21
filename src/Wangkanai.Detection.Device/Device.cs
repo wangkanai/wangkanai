@@ -5,12 +5,12 @@ using System;
 
 namespace Wangkanai.Detection
 {
-    public class Device :IDevice
+    public class Device : IDevice
     {
         public DeviceType Type { get; set; }
         public bool IsCrawler { get; set; }
 
-        public Device(){}
+        public Device() { }
 
         public Device(DeviceType deviceType, bool isCrawler)
         {
@@ -19,11 +19,11 @@ namespace Wangkanai.Detection
         }
 
         public Device(string name)
-        {        
+        {
             DeviceType deviceType;
             if (!Enum.TryParse(name, true, out deviceType))
                 throw new DeviceNotFoundException(name, "not found");
-            Type = deviceType;            
+            Type = deviceType;
         }
     }
 }

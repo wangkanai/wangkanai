@@ -4,22 +4,22 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Wangkanai.Detection;
 
 namespace Sandbox.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IClientInfo _client;
+        private readonly IBrowserResolver _browser;
 
-        public HomeController(IClientInfo client)
+        public HomeController(IBrowserResolver browser)
         {
-            _client = client;
+            _browser = browser;
         }
 
         public IActionResult Index()
-        {
-            var browser = Request.Browser();            
-            return View(_client);
+        {            
+            return View(_browser);
         }
     }
 }
