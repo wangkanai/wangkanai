@@ -22,7 +22,8 @@ namespace Wangkanai.Detection.Builder
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
 
-            services.TryAddTransient<IClientInfo, ClientInfo>();
+            // proposing for your call each resolver indivitually 
+            //services.TryAddTransient<IClientInfo, ClientInfo>();
 
             Services = services;
         }

@@ -9,21 +9,21 @@ using Wangkanai.Detection;
 
 namespace Microsoft.AspNetCore.Http
 {
-    public class ClientInfo : IClientInfo
-    {
-        public IUserAgent UserAgent { get; }
-        public IDevice Device { get; }
-        public IBrowser Browser { get; }
-        public IEngine Engine { get; }
-        public IPlatform Platform { get; }
-        public ClientInfo(IDetectionService service, IDevice device, IBrowser browser, IEngine engine, IPlatform platform)
-        {
-           if(service == null) throw new ArgumentNullException(nameof(service));
-            UserAgent = service.UserAgent;
-            Device = device;
-            Browser = browser;
-            Engine = engine;
-            Platform = platform;
-        }
-    }
+    //public class ClientInfo : IClientInfo
+    //{
+    //    public IUserAgent UserAgent { get; }
+    //    public IDevice Device { get; }
+    //    public IBrowser Browser { get; }
+    //    public IEngine Engine { get; }
+    //    public IPlatform Platform { get; }
+    //    public ClientInfo(IDetectionService service, IDevice device, IBrowser browser, IEngine engine, IPlatform platform)
+    //    {
+    //       if(service == null) throw new ArgumentNullException(nameof(service));
+    //        UserAgent = service.UserAgent;
+    //        Device = device;
+    //        Browser = browser;
+    //        Engine = engine;
+    //        Platform = platform;
+    //    }
+    //}
 }

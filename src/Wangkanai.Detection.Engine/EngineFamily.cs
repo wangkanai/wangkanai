@@ -21,6 +21,7 @@ namespace Wangkanai.Detection
         Robin,    // The Bat!
         Servo,    // Mozilla & Samsung
         Tkhtml,   // hv3
-        Links2    // launched with -g
+        Links2,   // launched with -g
+        Others
     }
 }

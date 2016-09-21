@@ -5,9 +5,9 @@ namespace Wangkanai.Detection
 {
     public enum PlatformFamily
     {
-        Win,
+        Windows,
         Mac,
-        IOS,
+        iOS,
         Andriod,
         Linux,
         Other
