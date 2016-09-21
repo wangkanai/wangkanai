@@ -24,8 +24,7 @@
     ],
     "xmlDoc": true
   },
-  "dependencies": {
-    
+  "dependencies": {    
     "Microsoft.AspNetCore.Http": "1.0.0",
     "Wangkanai.Detection.Abstractions": "1.0.0-*"
   },
