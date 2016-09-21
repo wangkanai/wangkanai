@@ -8,9 +8,9 @@ package | build | nuget    |
 --------|-------|----------|
 Wangkanai.Detection | [![Build status](https://ci.appveyor.com/api/projects/status/033qv4nqv8g4altq?svg=true)](https://ci.appveyor.com/project/wangkanai/detection) | [![NuGet Pre Release](https://img.shields.io/nuget/vpre/Wangkanai.Detection.svg?maxAge=2592000)](https://www.nuget.org/packages/Wangkanai.Detection/)  |
 Wangkanai.Detection.Device | | [![NuGet Pre Release](https://img.shields.io/nuget/vpre/Wangkanai.Detection.Device.svg?maxAge=2592000)](https://www.nuget.org/packages/Wangkanai.Detection.Device/) | 
-Wangkanai.Detection.Browser | | [![NuGet Pre Release](https://img.shields.io/nuget/vpre/Wangkanai.Browser.svg?maxAge=2592000)](https://www.nuget.org/packages/Wangkanai.Browser/) | 
-Wangkanai.Detection.Engine | | [![NuGet Pre Release](https://img.shields.io/nuget/vpre/Wangkanai.Engine.svg?maxAge=2592000)](https://www.nuget.org/packages/Wangkanai.Engine/) | 
-Wangkanai.Detection.Platform | | [![NuGet Pre Release](https://img.shields.io/nuget/vpre/Wangkanai.Platform.svg?maxAge=2592000)](https://www.nuget.org/packages/Wangkanai.Platform/) | 
+Wangkanai.Detection.Browser | | [![NuGet Pre Release](https://img.shields.io/nuget/vpre/Wangkanai.Detection.Browser.svg?maxAge=2592000)](https://www.nuget.org/packages/Wangkanai.Browser/) | 
+Wangkanai.Detection.Engine | | [![NuGet Pre Release](https://img.shields.io/nuget/vpre/Wangkanai.Detection.Engine.svg?maxAge=2592000)](https://www.nuget.org/packages/Wangkanai.Engine/) | 
+Wangkanai.Detection.Platform | | [![NuGet Pre Release](https://img.shields.io/nuget/vpre/Wangkanai.Detection.Platform.svg?maxAge=2592000)](https://www.nuget.org/packages/Wangkanai.Platform/) | 
 
 ### Installation - [NuGet](https://www.nuget.org/packages/Wangkanai.Browser/)
 
@@ -51,17 +51,30 @@ public void ConfigureServices(IServiceCollection services)
 Example of calling the client service in the `Controller`.
 ```csharp
 public class HomeController : Controller
-{
-    private readonly IClientInfo _client;
+{    
+    private readonly IUserAgent _useragent;
+    private readonly IDevice _device;
+    private readonly IBrowser _browser;
+    private readonly IEngine _engine;
+    private readonly IPlatform _platform;
 
-    public HomeController(IClientInfo client)
+    public HomeController(
+        IDetectionService detectionService,
+        IDeviceResolver deviceResolver, 
+        IBrowserResolver browserResolver, 
+        IEngineResolver engineResolver, 
+        IPlatformResolver platformResolver)
     {
-        _client = client;
+        _useragent = detectionService.UserAgent,
+        _device = deviceResolver.Device,
+        _browser = browserResolver.Browser,
+        _engine = engineResolver.Engine,
+        _platform = platformResolver.Platform
     }
 
     public IActionResult Index()
     {            
-        return View(_client);
+        return View();
     }
 }
 ```

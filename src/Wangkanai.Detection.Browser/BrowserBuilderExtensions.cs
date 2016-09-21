@@ -11,6 +11,8 @@ namespace Microsoft.Extensions.DependencyInjection
         // concept idea on adding platform detection to client service
         public static IDetectionBuilder AddBrowser(this IDetectionBuilder builder)
         {
+            builder.Services.AddTransient<IBrowserResolver, BrowserResolver>();
+
             return builder;
         }
     }

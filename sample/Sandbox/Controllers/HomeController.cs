@@ -11,7 +11,7 @@ namespace Sandbox.Controllers
     public class HomeController : Controller
     {
         private readonly ClientInfo client;
-
+        
         public HomeController(
             IDetectionService detectionService,
             IDeviceResolver deviceResolver, 
