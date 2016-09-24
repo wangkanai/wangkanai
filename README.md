@@ -96,21 +96,16 @@ Example of calling the client service in the `Controller`.
 ```csharp
 public class HomeController : Controller
 {    
-    private readonly IUserAgent _useragent;
-    private readonly IDevice _device;
+    private readonly IUserAgent _useragent;    
     private readonly IBrowser _browser;
     private readonly IEngine _engine;
     private readonly IPlatform _platform;
 
-    public HomeController(
-        IDetectionService detectionService,
-        IDeviceResolver deviceResolver, 
-        IBrowserResolver browserResolver, 
+    public HomeController(IBrowserResolver browserResolver, 
         IEngineResolver engineResolver, 
         IPlatformResolver platformResolver)
     {
-        _useragent = detectionService.UserAgent,
-        _device = deviceResolver.Device,
+        _useragent = detectionService.UserAgent,        
         _browser = browserResolver.Browser,
         _engine = engineResolver.Engine,
         _platform = platformResolver.Platform
