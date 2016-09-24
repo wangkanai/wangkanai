@@ -14,8 +14,8 @@
       "browser"
     ],
     "iconUrl": "http://0.gravatar.com/avatar/f58457d38ab3bc43526c6e52af17494e",
-    "licenseUrl": "https://github.com/wangkanai/Browser/blob/master/LICENSE",
-    "projectUrl": "https://github.com/wangkanai/Browser"
+    "licenseUrl": "https://github.com/wangkanai/Detection/blob/master/LICENSE",
+    "projectUrl": "https://github.com/wangkanai/Detection"
   },
   "buildOptions": {
     "warningsAsErrors": true,
