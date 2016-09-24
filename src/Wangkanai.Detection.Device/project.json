@@ -1,6 +1,11 @@
 ﻿{
+<<<<<<< HEAD:src/Wangkanai.Detection.Device/project.json
   "description": "ASP.NET Core Detection Device resolver components",
   "version": "1.0.0-*",
+=======
+  "description": "ASP.NET Core extension client web browser detection components",
+  "version": "1.0.0-beta3",
+>>>>>>> refs/remotes/origin/master:src/Wangkanai.Browser/project.json
 
   "authors": [ "Sarin Na Wangkanai" ],
   "copyright": "Copyright © 2016 Sarin Na Wangkanai",
