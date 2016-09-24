@@ -8,5 +8,6 @@ namespace Wangkanai.Detection
     public class EngineResolver : IEngineResolver
     {
         public IEngine Engine { get; }
+        public IUserAgent UserAgent { get; }
     }
 }

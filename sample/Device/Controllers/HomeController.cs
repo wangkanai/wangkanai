@@ -10,16 +10,16 @@ namespace Sandbox.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IDeviceResolver _device;        
+        private readonly IDeviceResolver _resolver;        
 
-        public HomeController(IDeviceResolver device)
+        public HomeController(IDeviceResolver resolver)
         {
-            _device = device;
+            _resolver = resolver;
         }
 
         public IActionResult Index()
         {            
-            return View(_device.Device);
+            return View(_resolver);
         }
     }
 }

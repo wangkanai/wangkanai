@@ -8,5 +8,6 @@ namespace Wangkanai.Detection
     public class PlatformResolver : IPlatformResolver
     {
         public IPlatform Platform { get; }
+        public IUserAgent UserAgent { get; }
     }
 }

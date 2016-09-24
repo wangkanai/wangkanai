@@ -1,6 +1,7 @@
 ﻿// Copyright (c) 2016 Sarin Na Wangkanai, All Rights Reserved.
 // The GNU GPLv3. See License.txt in the project root for license information.
 
+using System;
 using Microsoft.AspNetCore.Http;
 using System.Linq;
 
@@ -9,11 +10,16 @@ namespace Wangkanai.Detection
     public sealed class DeviceResolver : IDeviceResolver
     {
         public IDevice Device => _device;
-        private readonly HttpContext _context;
+        public IUserAgent UserAgent => _service.UserAgent;
+        private HttpContext _context => _service.Context;
         private readonly Device _device;
+        private readonly IDetectionService _service;
         public DeviceResolver(IDetectionService service)
         {
-            if (service != null) _context = service.Context;
+            if (service == null) throw new ArgumentNullException(nameof(service));
+
+            _service = service;
+
             // testing failed because no default Httpcontext
             //if (_context == null) throw new ArgumentNullException(nameof(_context));
             _device = new Device(GetDeviceType(), GetCrawler());

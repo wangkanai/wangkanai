@@ -1,17 +1,20 @@
-﻿@model Wangkanai.Detection.Abstractions.IDevice
+﻿@model Wangkanai.Detection.IDeviceResolver
 
 @{
     ViewData["Title"] = "Device";
 }
 
+<h4>UserAgent</h4>
+<code>@Model.UserAgent</code>
+
 <h4>Device</h4>
 <table>
     <tr>
         <th>DeviceType</th>
-        <td>@Model.Type.ToString()</td>
+        <td>@Model.Device.Type.ToString()</td>
     </tr>
     <tr>
         <th>IsCrawler</th>
-        <td>@Model.IsCrawler</td>
+        <td>@Model.Device.IsCrawler</td>
     </tr>
 </table>
