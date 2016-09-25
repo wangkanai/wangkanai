@@ -27,7 +27,7 @@ Implement of the library into your web application is done by configuring the `S
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
-	// Add browser detection services.
+	// Add detection services container and device resolver service.
     services.AddDetection()
 		.AddDevice();
 
