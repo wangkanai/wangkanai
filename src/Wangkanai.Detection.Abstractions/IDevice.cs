@@ -6,6 +6,6 @@ namespace Wangkanai.Detection
     public interface IDevice
     {
         DeviceType Type { get; set; }
-        bool IsCrawler { get; set; }
+        bool Crawler { get; set; }
     }
 }

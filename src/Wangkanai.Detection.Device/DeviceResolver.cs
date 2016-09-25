@@ -25,7 +25,7 @@ namespace Wangkanai.Detection
             _device = new Device(GetDeviceType(), GetCrawler());
             //{
             //    Type = GetDeviceType(),
-            //    IsCrawler = GetCrawler()
+            //    Crawler = GetCrawler()
             //};
         }
 

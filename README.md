@@ -105,7 +105,7 @@ public class HomeController : Controller
         IEngineResolver engineResolver, 
         IPlatformResolver platformResolver)
     {
-        _useragent = detectionService.UserAgent,        
+        _useragent = browserResolver.UserAgent,        
         _browser = browserResolver.Browser,
         _engine = engineResolver.Engine,
         _platform = platformResolver.Platform

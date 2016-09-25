@@ -3,7 +3,7 @@
 
 namespace Wangkanai.Detection
 {
-    public class Version
+    public class Version : IVersion
     {
         public Version(string major, string minor)
         {

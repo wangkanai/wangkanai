@@ -8,14 +8,14 @@ namespace Wangkanai.Detection
     public class Device : IDevice
     {
         public DeviceType Type { get; set; }
-        public bool IsCrawler { get; set; }
+        public bool Crawler { get; set; }
 
         public Device() { }
 
         public Device(DeviceType deviceType, bool isCrawler)
         {
             Type = deviceType;
-            IsCrawler = isCrawler;
+            Crawler = isCrawler;
         }
 
         public Device(string name)
