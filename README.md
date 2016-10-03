@@ -22,7 +22,7 @@ Installation of device resolver library components.
 PM> install-package Wangkanai.Detection.Device -pre
 ```
 
-Implement of the library into your web application is done by configuring the `Startup.css` by adding the detection service in the `ConfigureServices` method.
+Implement of the library into your web application is done by configuring the `Startup.cs` by adding the detection service in the `ConfigureServices` method.
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
