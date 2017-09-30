@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{30E11A87-E8E1-4BB7-BB21-7D486B1511C2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9AEBDADF-AE00-4A85-8CAC-EFE8B6FBCEAE}"
 	ProjectSection(SolutionItems) = preProject
-		global.json = global.json
+		appveyor.yml = appveyor.yml
 		README.md = README.md
 	EndProjectSection
 EndProject
@@ -15,31 +15,29 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{724DDFD4-2
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{C26D86D6-4B4E-407E-9F1D-9CA1765768CE}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Wangkanai.Detection", "src\Wangkanai.Detection\Wangkanai.Detection.xproj", "{178C7E01-9834-4EC7-97C1-184C3837277D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection", "src\Wangkanai.Detection\Wangkanai.Detection.csproj", "{178C7E01-9834-4EC7-97C1-184C3837277D}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Wangkanai.Detection.Test", "test\Wangkanai.Detection.Test\Wangkanai.Detection.Test.xproj", "{AECA4214-0584-4272-BC85-7B41593E5BC8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection.Test", "test\Wangkanai.Detection.Test\Wangkanai.Detection.Test.csproj", "{AECA4214-0584-4272-BC85-7B41593E5BC8}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Wangkanai.Detection.Abstractions", "src\Wangkanai.Detection.Abstractions\Wangkanai.Detection.Abstractions.xproj", "{5DDD1ADA-CBD7-4380-83AF-FDC841EACF1D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection.Device", "src\Wangkanai.Detection.Device\Wangkanai.Detection.Device.csproj", "{8A4965CF-54AC-47B8-9428-8FE400DF3200}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Wangkanai.Detection.Device", "src\Wangkanai.Detection.Device\Wangkanai.Detection.Device.xproj", "{8A4965CF-54AC-47B8-9428-8FE400DF3200}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection.Browser", "src\Wangkanai.Detection.Browser\Wangkanai.Detection.Browser.csproj", "{DBBEB1F2-556E-49E0-AEE7-894FF0C05043}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Wangkanai.Detection.Browser", "src\Wangkanai.Detection.Browser\Wangkanai.Detection.Browser.xproj", "{DBBEB1F2-556E-49E0-AEE7-894FF0C05043}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection.Engine", "src\Wangkanai.Detection.Engine\Wangkanai.Detection.Engine.csproj", "{5EA11342-50E0-4274-BD38-67C817DE8A71}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Wangkanai.Detection.Engine", "src\Wangkanai.Detection.Engine\Wangkanai.Detection.Engine.xproj", "{5EA11342-50E0-4274-BD38-67C817DE8A71}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection.Platform", "src\Wangkanai.Detection.Platform\Wangkanai.Detection.Platform.csproj", "{2E8738C0-CF34-4B99-906D-C53EC3DECADB}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Wangkanai.Detection.Platform", "src\Wangkanai.Detection.Platform\Wangkanai.Detection.Platform.xproj", "{2E8738C0-CF34-4B99-906D-C53EC3DECADB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection.Device.Test", "test\Wangkanai.Detection.Device.Test\Wangkanai.Detection.Device.Test.csproj", "{96D7B361-F692-4B81-9201-3C1121197847}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Wangkanai.Detection.Device.Test", "test\Wangkanai.Detection.Device.Test\Wangkanai.Detection.Device.Test.xproj", "{96D7B361-F692-4B81-9201-3C1121197847}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Device", "sample\Device\Device.csproj", "{715CF682-3AE1-4D7A-89D2-301CB23F2D10}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Device", "sample\Device\Device.xproj", "{715CF682-3AE1-4D7A-89D2-301CB23F2D10}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Browser", "sample\Browser\Browser.csproj", "{77534488-DD22-41DE-B937-51F2B6E9BBE0}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Browser", "sample\Browser\Browser.xproj", "{77534488-DD22-41DE-B937-51F2B6E9BBE0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Engine", "sample\Engine\Engine.csproj", "{4DBC12E8-56C4-4A5D-BFFC-466F780238AD}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Engine", "sample\Engine\Engine.xproj", "{4DBC12E8-56C4-4A5D-BFFC-466F780238AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Platform", "sample\Platform\Platform.csproj", "{07ABE320-05CA-420A-8EF8-200FE5C4BEB2}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Platform", "sample\Platform\Platform.xproj", "{07ABE320-05CA-420A-8EF8-200FE5C4BEB2}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Sandbox", "sample\Sandbox\Sandbox.xproj", "{0454B5E2-405D-4E06-9971-CDDDD9FB522B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sandbox", "sample\Sandbox\Sandbox.csproj", "{0454B5E2-405D-4E06-9971-CDDDD9FB522B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,10 +53,6 @@ Global
 		{AECA4214-0584-4272-BC85-7B41593E5BC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AECA4214-0584-4272-BC85-7B41593E5BC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AECA4214-0584-4272-BC85-7B41593E5BC8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5DDD1ADA-CBD7-4380-83AF-FDC841EACF1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5DDD1ADA-CBD7-4380-83AF-FDC841EACF1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5DDD1ADA-CBD7-4380-83AF-FDC841EACF1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5DDD1ADA-CBD7-4380-83AF-FDC841EACF1D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8A4965CF-54AC-47B8-9428-8FE400DF3200}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8A4965CF-54AC-47B8-9428-8FE400DF3200}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8A4965CF-54AC-47B8-9428-8FE400DF3200}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -106,7 +100,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{178C7E01-9834-4EC7-97C1-184C3837277D} = {30E11A87-E8E1-4BB7-BB21-7D486B1511C2}
 		{AECA4214-0584-4272-BC85-7B41593E5BC8} = {724DDFD4-2D6F-4FF9-A76F-6D94278EDA0B}
-		{5DDD1ADA-CBD7-4380-83AF-FDC841EACF1D} = {30E11A87-E8E1-4BB7-BB21-7D486B1511C2}
 		{8A4965CF-54AC-47B8-9428-8FE400DF3200} = {30E11A87-E8E1-4BB7-BB21-7D486B1511C2}
 		{DBBEB1F2-556E-49E0-AEE7-894FF0C05043} = {30E11A87-E8E1-4BB7-BB21-7D486B1511C2}
 		{5EA11342-50E0-4274-BD38-67C817DE8A71} = {30E11A87-E8E1-4BB7-BB21-7D486B1511C2}
@@ -117,5 +110,8 @@ Global
 		{4DBC12E8-56C4-4A5D-BFFC-466F780238AD} = {C26D86D6-4B4E-407E-9F1D-9CA1765768CE}
 		{07ABE320-05CA-420A-8EF8-200FE5C4BEB2} = {C26D86D6-4B4E-407E-9F1D-9CA1765768CE}
 		{0454B5E2-405D-4E06-9971-CDDDD9FB522B} = {C26D86D6-4B4E-407E-9F1D-9CA1765768CE}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3127A458-807C-4225-A25F-B1900C7AD357}
 	EndGlobalSection
 EndGlobal
