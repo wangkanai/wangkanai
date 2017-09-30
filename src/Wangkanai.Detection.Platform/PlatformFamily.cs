@@ -8,7 +8,7 @@ namespace Wangkanai.Detection
         Windows,
         Mac,
         iOS,
-        Andriod,
+        Android,
         Linux,
         Other
     }
