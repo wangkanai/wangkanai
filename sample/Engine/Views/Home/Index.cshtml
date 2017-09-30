@@ -1,4 +1,4 @@
-﻿@model Wangkanai.Browser.IClientInfo
+﻿@model Wangkanai.Detection.EngineResolver
 
 @{
     ViewData["Title"] = "Browser";
@@ -6,14 +6,11 @@
 
 <h4>UserAgent</h4>
 <code>@Model.UserAgent</code>
-<h4>Device</h4>
+
+<h4>Engine</h4>
 <table>
     <tr>
-        <th>DeviceType</th>
-        <td>@Model.Device.Type.ToString()</td>
-    </tr>
-    <tr>
-        <th>IsCrawler</th>
-        <td>@Model.Device.IsCrawler</td>
+        <th>EngineType</th>
+        <td>@Model.Engine.ToString()</td>
     </tr>
 </table>

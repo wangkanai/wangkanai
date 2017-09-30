@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>ASP.NET Core Detection Browser resolver components</Description>
+    <Copyright>Copyright (c) 2016 Sarin Na Wangkanai</Copyright>
+    <Authors>Sarin Na Wangkanai</Authors>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <AssemblyName>Wangkanai.Detection.Browser</AssemblyName>
+    <PackageId>Wangkanai.Detection.Browser</PackageId>
+    <PackageTags>aspnetcore;browser</PackageTags>
+    <PackageIconUrl>http://0.gravatar.com/avatar/f58457d38ab3bc43526c6e52af17494e</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/wangkanai/Detection</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/wangkanai/Detection/blob/master/LICENSE</PackageLicenseUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>git://github.com/wangkanai/Detection</RepositoryUrl>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <Version>2.0.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Wangkanai.Detection\Wangkanai.Detection.csproj" />
+  </ItemGroup>
+
+</Project>
