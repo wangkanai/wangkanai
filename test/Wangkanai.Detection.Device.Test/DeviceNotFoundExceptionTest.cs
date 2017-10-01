@@ -23,7 +23,7 @@ namespace Wangkanai.Detection.Test
             // act
             var message = exception.Message;
             // assert
-            Assert.Equal("test\r\nwatch", message);
+            Assert.Equal("test\r\nParameter name: param\r\nwatch", message);
 
         }
     }
