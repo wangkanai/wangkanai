@@ -4,6 +4,8 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
 
     <IsPackable>false</IsPackable>
+
+    <AssemblyName>Wangkanai.Detection.Test</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
