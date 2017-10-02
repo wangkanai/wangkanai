@@ -19,7 +19,7 @@ namespace Wangkanai.Detection.Test
             // act
             var device = new DeviceResolver(service).Device;
             // assert
-            Assert.Equal(true, device.Crawler);
+            Assert.True(device.Crawler);
         }
     }
 }

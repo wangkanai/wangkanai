@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Wangkanai.Detection
 {
-    public enum EngineFamily
+    public enum EngineType
     {
         WebKit,   // iOs (Safari, WebViews, Chrome <28)
         Blink,    // Google Chrome, Opera v15+

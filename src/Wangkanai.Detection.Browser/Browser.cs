@@ -7,7 +7,7 @@ namespace Wangkanai.Detection
     {
         public string Name { get; set; }
         public string Maker { get; set; }
-        public BrowserType Type { get; set; }
+        //public BrowserType Type { get; set; }
         public byte Bits { get; set; }
         public string Version { get; set; }
         public Feature Feature { get; set; }
