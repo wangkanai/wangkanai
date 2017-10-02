@@ -2,7 +2,7 @@
 
 ASP.NET Core client web browser detection extension to resolve devices, platforms, engine of the client.
 
-The library is the base foundation for [ASP.NET Core Responsiveness](https://github.com/wangkanai/Responsive)
+The library is the base foundation for [ASP.NET Core Responsive](https://github.com/wangkanai/Responsive)
 
 ![ASP.NET Core Responsive](https://raw.githubusercontent.com/wangkanai/Detection/dev/asset/aspnet-core-browser.png)
 
