@@ -8,6 +8,7 @@ namespace Wangkanai.Detection
         public string Name { get; set; }        
         public Version Version { get; set; }
         public byte Bits { get; set; }
+        //waiting for beta 3 published nuget
         //public PlatformType Type { get; set; }
     }
 }
