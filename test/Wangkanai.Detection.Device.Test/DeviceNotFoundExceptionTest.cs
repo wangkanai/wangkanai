@@ -1,9 +1,21 @@
-﻿using Xunit;
+﻿using System;
+using Xunit;
 
 namespace Wangkanai.Detection.Test
 {
     public class DeviceNotFoundExceptionTest
     {
+        [Fact]
+        public void ExceptionDefaultBehavuor()
+        {
+            // arrange
+            var exception = new DeviceNotFoundException();
+            // act 
+            var message = exception.Message;
+            // assert
+            Assert.Equal("Device Not Supported", message);
+        }
+
         [Fact]
         public void ExceptionNotNull()
         {
@@ -25,6 +37,18 @@ namespace Wangkanai.Detection.Test
             // assert
             Assert.Equal("test\r\nParameter name: param\r\nwatch", message);
 
+        }
+
+        [Fact]
+        public void ExceptionWithInnerException()
+        {
+            // arrange
+            var inner = new Exception("inner");
+            var exception = new DeviceNotFoundException("test", inner);
+            // act
+            var message = exception.Message;
+            // assert
+            Assert.Equal("test",message);
         }
     }
 }

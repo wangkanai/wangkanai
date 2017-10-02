@@ -5,6 +5,11 @@ namespace Wangkanai.Detection
 {
     public enum BrowserType
     {
-        Browser
+        IE,
+        Chrome,
+        Safari,
+        Firefox,
+        Edge,
+        Opera
     }
 }
