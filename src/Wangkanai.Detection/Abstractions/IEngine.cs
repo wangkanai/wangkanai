@@ -3,8 +3,8 @@
 
 namespace Wangkanai.Detection
 {
-    public interface IEngine
+    public interface IEngine : IVersion
     {
-        
+        EngineType Type { get; set; }   
     }
 }
