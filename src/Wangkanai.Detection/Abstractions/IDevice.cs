@@ -3,7 +3,7 @@
 
 namespace Wangkanai.Detection
 {
-    public interface IDevice : IVersion
+    public interface IDevice
     {
         DeviceType Type { get; set; }
         bool Crawler { get; set; }
