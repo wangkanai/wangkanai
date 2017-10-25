@@ -23,10 +23,6 @@ namespace Wangkanai.Detection
             // testing failed because no default Httpcontext
             //if (_context == null) throw new ArgumentNullException(nameof(_context));
             _device = new Device(GetDeviceType(), GetCrawler());
-            //{
-            //    Type = GetDeviceType(),
-            //    Crawler = GetCrawler()
-            //};
         }
 
         private DeviceType GetDeviceType()

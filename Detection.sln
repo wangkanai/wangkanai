@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{30E11A87-E8E1-4BB7-BB21-7D486B1511C2}"
 EndProject
@@ -38,6 +38,11 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Platform", "sample\Platform\Platform.csproj", "{07ABE320-05CA-420A-8EF8-200FE5C4BEB2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sandbox", "sample\Sandbox\Sandbox.csproj", "{0454B5E2-405D-4E06-9971-CDDDD9FB522B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "collection", "collection", "{69C93D15-B5AA-451C-A7A5-8E8D2DD91E9E}"
+	ProjectSection(SolutionItems) = preProject
+		collection\useragents.csv = collection\useragents.csv
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
