@@ -41,7 +41,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sandbox", "sample\Sandbox\S
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "collection", "collection", "{69C93D15-B5AA-451C-A7A5-8E8D2DD91E9E}"
 	ProjectSection(SolutionItems) = preProject
-		collection\useragents.csv = collection\useragents.csv
+		collection\useragents.tsv = collection\useragents.tsv
 	EndProjectSection
 EndProject
 Global
