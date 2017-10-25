@@ -75,7 +75,8 @@ namespace Wangkanai.Detection
             "ipad",
             "playbook",
             "hp-tablet",
-            "kindle"
+            "kindle",
+            "sm-t"
         };
 
         private readonly string[] _crawlerKeywords = {
