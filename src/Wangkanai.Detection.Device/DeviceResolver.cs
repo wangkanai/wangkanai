@@ -31,13 +31,13 @@ namespace Wangkanai.Detection
             var request = _context.Request;
 
             // tablet user agent keyword detection       
-            if (agent != null && _tabletKeywords.Any(keyword => agent.Contains(keyword)))
+            if (agent != null && TabletCollection.Keywords.Any(keyword => agent.Contains(keyword)))
                 return DeviceType.Tablet;
             // mobile user agent keyword detection
-            if (agent != null && _mobileKeywords.Any(keyword => agent.Contains(keyword)))
+            if (agent != null && MobileCollection.Keywords.Any(keyword => agent.Contains(keyword)))
                 return DeviceType.Mobile;
             // mobile user agent prefix detection
-            if (agent?.Length >= 4 && _mobilePrefixes.Any(prefix => agent.StartsWith(prefix)))
+            if (agent?.Length >= 4 && MobileCollection.Prefixes.Any(prefix => agent.StartsWith(prefix)))
                 return DeviceType.Mobile;
             // mobile opera mini special case
             if (request.Headers.Any(header => header.Value.Any(value => value.Contains("OperaMini"))))
@@ -55,7 +55,7 @@ namespace Wangkanai.Detection
         {
             var agent = GetUserAgent();
             if (agent == null) return false;
-            if (_crawlerKeywords.Any(keyword => agent.Contains(keyword))) return true;
+            if (CrawlerCollection.Keywords.Any(keyword => agent.Contains(keyword))) return true;
             return false;
         }
         private string GetUserAgent()
@@ -64,142 +64,5 @@ namespace Wangkanai.Detection
             if (!_context.Request.Headers["User-Agent"].Any()) return "";
             return new UserAgent(_context.Request.Headers["User-Agent"].FirstOrDefault()).ToString();
         }
-
-        #region yaml    
-        private readonly string[] _tabletKeywords = {
-            "tablet",
-            "ipad",
-            "playbook",
-            "hp-tablet",
-            "kindle",
-            "sm-t"
-        };
-
-        private readonly string[] _crawlerKeywords = {
-            "bot",
-            "slurp",
-            "spider"
-        };
-
-        private readonly string[] _mobileKeywords = {
-            "blackberry",
-            "webos",
-            "ipod",
-            "lge vx",
-            "midp",
-            "maemo",
-            "mmp",
-            "mobile",
-            "netfront",
-            "hiptop",
-            "nintendo DS",
-            "novarra",
-            "openweb",
-            "opera mobi",
-            "opera mini",
-            "palm",
-            "psp",
-            "phone",
-            "smartphone",
-            "symbian",
-            "up.browser",
-            "up.link",
-            "wap",
-            "windows ce"
-        };
-
-        // reference 4 chare from http://www.webcab.de/wapua.htm
-        private readonly string[] _mobilePrefixes = {
-            "w3c ",
-            "w3c-",
-            "acs-",
-            "alav",
-            "alca",
-            "amoi",
-            "audi",
-            "avan",
-            "benq",
-            "bird",
-            "blac",
-            "blaz",
-            "brew",
-            "cell",
-            "cldc",
-            "cmd-",
-            "dang",
-            "doco",
-            "eric",
-            "hipt",
-            "htc_",
-            "inno",
-            "ipaq",
-            "ipod",
-            "jigs",
-            "kddi",
-            "keji",
-            "leno",
-            "lg-c",
-            "lg-d",
-            "lg-g",
-            "lge-",
-            "lg/u",
-            "maui",
-            "maxo",
-            "midp",
-            "mits",
-            "mmef",
-            "mobi",
-            "mot-",
-            "moto",
-            "mwbp",
-            "nec-",
-            "newt",
-            "noki",
-            "palm",
-            "pana",
-            "pant",
-            "phil",
-            "play",
-            "port",
-            "prox",
-            "qwap",
-            "sage",
-            "sams",
-            "sany",
-            "sch-",
-            "sec-",
-            "send",
-            "seri",
-            "sgh-",
-            "shar",
-            "sie-",
-            "siem",
-            "smal",
-            "smar",
-            "sony",
-            "sph-",
-            "symb",
-            "t-mo",
-            "teli",
-            "tim-",
-            "tosh",
-            "tsm-",
-            "upg1",
-            "upsi",
-            "vk-v",
-            "voda",
-            "wap-",
-            "wapa",
-            "wapi",
-            "wapp",
-            "wapr",
-            "webc",
-            "winw",
-            "winw",
-            "xda ",
-            "xda-"
-        };
-
-        #endregion
     }
 }
