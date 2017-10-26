@@ -9,8 +9,17 @@ namespace Wangkanai.Detection
 {
     public sealed class DeviceResolver : IDeviceResolver
     {
+        /// <summary>
+        /// Get device result of device result
+        /// </summary>
         public IDevice Device => _device;
+        /// <summary>
+        /// Get user agnet of the request client
+        /// </summary>
         public IUserAgent UserAgent => _service.UserAgent;
+        /// <summary>
+        /// Get HttpContext of the application service
+        /// </summary>
         private HttpContext _context => _service.Context;
         private readonly Device _device;
         private readonly IDetectionService _service;

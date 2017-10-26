@@ -3,6 +3,9 @@
 
 namespace Wangkanai.Detection
 {
+    /// <summary>
+    /// Get device resolver to generate the device result
+    /// </summary>
     public interface IDeviceResolver : IResolver
     {
         IDevice Device { get; }
