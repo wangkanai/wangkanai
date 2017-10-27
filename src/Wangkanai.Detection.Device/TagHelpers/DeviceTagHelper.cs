@@ -6,10 +6,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Wangkanai.Detection;
 
-namespace Microsoft.AspNetCore.Mvc.TagHelpers
+namespace Wangkanai.Detection.TagHelpers
 {
-    [HtmlTargetElement("device", Attributes = IncludeAttributeName)]
-    [HtmlTargetElement("device", Attributes = ExcludeAttributeName)]
+    [HtmlTargetElement(ElementName, Attributes = IncludeAttributeName)]
+    [HtmlTargetElement(ElementName, Attributes = ExcludeAttributeName)]
     public class DeviceTagHelper : TagHelper
     {
         private const string ElementName = "device";
@@ -81,6 +81,8 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
             }
 
             if (hasDevice) output.SuppressOutput();
+
+            base.Process(context, output);
         }
     }
 }
