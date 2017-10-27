@@ -18,7 +18,7 @@ namespace Sandbox.Controllers
         }
 
         public IActionResult Index()
-        {            
+        {                        
             return View(_resolver);
         }
     }

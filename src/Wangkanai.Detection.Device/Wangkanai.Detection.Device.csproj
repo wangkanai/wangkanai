@@ -26,5 +26,11 @@
     <PackageReference Include="Wangkanai.Detection" Version="2.0.0-beta4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="Microsoft.AspNetCore.Razor.Runtime">
+      <HintPath>C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.aspnetcore.razor.runtime\2.0.0\lib\netstandard2.0\Microsoft.AspNetCore.Razor.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 
 </Project>
