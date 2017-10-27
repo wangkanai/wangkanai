@@ -3,6 +3,7 @@ using Microsoft.Extensions.Primitives;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using Wangkanai.Detection;
 
 namespace Microsoft.AspNetCore.Mvc.TagHelpers
@@ -31,6 +32,10 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
             Resolver = resolver;
         }
 
+        public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
+        {
+            Process(context, output);
+        }
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             if (context == null) throw new ArgumentNullException(nameof(context));
