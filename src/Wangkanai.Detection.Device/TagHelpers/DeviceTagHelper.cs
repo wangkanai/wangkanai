@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Wangkanai.Detection;
 
-namespace Wangkanai.Detection.TagHelpers
+namespace Microsoft.AspNetCore.Mvc.TagHelpers
 {
     [HtmlTargetElement(ElementName, Attributes = IncludeAttributeName)]
     [HtmlTargetElement(ElementName, Attributes = ExcludeAttributeName)]
@@ -32,10 +32,10 @@ namespace Wangkanai.Detection.TagHelpers
             Resolver = resolver;
         }
 
-        public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
-        {
-            Process(context, output);
-        }
+        //public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
+        //{
+        //    Process(context, output);
+        //}
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             if (context == null) throw new ArgumentNullException(nameof(context));
