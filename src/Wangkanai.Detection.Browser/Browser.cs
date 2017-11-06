@@ -1,6 +1,8 @@
 // Copyright (c) 2016 Sarin Na Wangkanai, All Rights Reserved.
 // The GNU GPLv3. See License.txt in the project root for license information.
 
+using System;
+
 namespace Wangkanai.Detection
 {
     public class Browser
@@ -11,5 +13,16 @@ namespace Wangkanai.Detection
         public byte Bits { get; set; }
         public string Version { get; set; }
         public Feature Feature { get; set; }
+
+        public Browser() { }
+        public Browser(string name)
+        {
+            BrowserType type;
+
+            if (!Enum.TryParse(name, true, out type))
+                throw new BrowserNotFoundException(name, "not found");
+
+            Type = type;
+        }
     }
 }
