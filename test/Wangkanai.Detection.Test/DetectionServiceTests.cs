@@ -1,7 +1,6 @@
 ﻿
 using Microsoft.AspNetCore.Http;
 using System;
-using System.IO;
 using Xunit;
 
 namespace Wangkanai.Detection.Test
