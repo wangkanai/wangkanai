@@ -2,9 +2,9 @@
 // The GNU GPLv3. See License.txt in the project root for license information.
 
 using System;
+using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
-using System.Linq;
 
 namespace Wangkanai.Detection
 {
@@ -18,18 +18,17 @@ namespace Wangkanai.Detection
 
         public DetectionService(IServiceProvider services)
         {
-            if (services != null) Context = services.GetService<IHttpContextAccessor>()?.HttpContext;
-
-            UserAgent = CreateUserAgent(Context);
+            if (services == null) throw new ArgumentNullException(nameof(services));
+            
+            this.Context = services.GetRequiredService<IHttpContextAccessor>().HttpContext;
+            this.UserAgent = CreateUserAgent(this.Context);
         }
 
         private IUserAgent CreateUserAgent(HttpContext context)
         {
-            // fail in unit testing
-            //if (Context == null) throw new ArgumentNullException(nameof(Context));  
-            if (context != null) return new UserAgent(Context.Request.Headers["User-Agent"].FirstOrDefault());
-
-            return new UserAgent();
+            if (context == null) throw new ArgumentNullException(nameof(Context)); 
+            
+            return new UserAgent(Context.Request.Headers["User-Agent"].FirstOrDefault());
         }
     }
 }
