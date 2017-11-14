@@ -21,8 +21,10 @@ namespace Wangkanai.Detection
         public Device(string name)
         {
             DeviceType deviceType;
+
             if (!Enum.TryParse(name, true, out deviceType))
                 throw new DeviceNotFoundException(name, "not found");
+
             Type = deviceType;
         }
     }
