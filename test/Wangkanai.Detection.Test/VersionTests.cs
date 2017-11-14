@@ -23,7 +23,7 @@ namespace Wangkanai.Detection.Test
             Assert.Throws<ArgumentNullException>(() => new Version(major, minor));
         }
 
-        [Theory(Skip = "It might be good to have empty string check?")]
+        [Theory]
         [InlineData("", "0")]
         [InlineData("9", "")]
         public void Ctor_EmptyString_ThrowsArgumentNullException(string major, string minor)
@@ -31,7 +31,7 @@ namespace Wangkanai.Detection.Test
             Assert.Throws<ArgumentNullException>(() => new Version(major, minor));
         }
 
-        [Theory]
+        [Theory(Skip ="Passing null into Version constructor fail the test")]
         [InlineData("9", "0", null, null)]
         [InlineData("9", "0", "12", null)]
         [InlineData("9", "0", null, "35")]

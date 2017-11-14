@@ -3,8 +3,8 @@
 
 namespace Wangkanai.Detection
 {
-    public interface IBrowserResolver : IVersion
+    public interface IVersionResolver : IResolver
     {
-        IBrowser Browser { get; }
+        IVersion Version { get; }
     }
 }

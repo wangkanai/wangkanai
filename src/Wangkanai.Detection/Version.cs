@@ -9,25 +9,29 @@ namespace Wangkanai.Detection
     {
         public Version(string major, string minor)
         {
-            if (major == null) throw new ArgumentNullException(nameof(major));
-            if (minor == null) throw new ArgumentNullException(nameof(minor));
+            if (major == null || major == string.Empty)
+                throw new ArgumentNullException(nameof(major));
+            if (minor == null || minor == string.Empty)
+                throw new ArgumentNullException(nameof(minor));
 
             Major = major;
             Minor = minor;
         }
         public Version(string major, string minor, string patch, string build)
-            :this(major, minor)
+            : this(major, minor)
         {
-            if (patch == null) throw new ArgumentNullException(nameof(patch));
-            if (build == null) throw new ArgumentNullException(nameof(build));
+            if (patch == null || patch == string.Empty)
+                throw new ArgumentNullException(nameof(patch));
+            if (build == null || build == string.Empty)
+                throw new ArgumentNullException(nameof(build));
 
             Patch = patch;
             Build = build;
         }
 
-        public string Major { get;  }
-        public string Minor { get;  }
-        public string Patch { get;  }
-        public string Build { get;  }
+        public string Major { get; }
+        public string Minor { get; }
+        public string Patch { get; }
+        public string Build { get; }
     }
 }
