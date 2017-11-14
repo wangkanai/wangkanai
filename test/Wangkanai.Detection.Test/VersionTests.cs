@@ -15,7 +15,7 @@ namespace Wangkanai.Detection.Test
             AssertVersion(major, minor, null, null, version);
         }
 
-        [Theory(Skip = "It might be good to have null check?")]
+        [Theory]//(Skip = "It might be good to have null check?")]
         [InlineData(null, "0")]
         [InlineData("9", null)]
         public void Ctor_Null_ThrowsArgumentNullException(string major, string minor)
