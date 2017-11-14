@@ -18,29 +18,28 @@ namespace Wangkanai.Detection.Test
         [Theory]        
         [InlineData(null, "0")]
         [InlineData("9", null)]
-        public void Ctor_Null_ThrowsArgumentNullException(string major, string minor)
+        public void Ctor_Null_ThrowsArgumentNullException(string value1, string value2)
         {
-            Assert.Throws<ArgumentNullException>(() => new Version(major, minor));
+            Assert.Throws<ArgumentNullException>(() => new Version(value1, value2));
+            Assert.Throws<ArgumentNullException>(() => new Version("1", "0", value1, value2));
         }
 
         [Theory]
         [InlineData("", "0")]
         [InlineData("9", "")]
-        public void Ctor_EmptyString_ThrowsArgumentNullException(string major, string minor)
+        public void Ctor_EmptyString_ThrowsArgumentNullException(string value1, string value2)
         {
-            Assert.Throws<ArgumentNullException>(() => new Version(major, minor));
+            Assert.Throws<ArgumentNullException>(() => new Version(value1, value2));
+            Assert.Throws<ArgumentNullException>(() => new Version("1", "0", value1, value2));
         }
 
-        [Theory(Skip ="Passing null into Version constructor fail the test")]
-        [InlineData("9", "0", null, null)]
-        [InlineData("9", "0", "12", null)]
-        [InlineData("9", "0", null, "35")]
-        [InlineData("9", "0", "", "")]
-        [InlineData("9", "0", "12", "")]
-        [InlineData("9", "0", "", "35")]
-        [InlineData("9", "0", "12", "34")]
-        public void Ctor_StringStringStringString_Success(string major, string minor, string patch, string build)
+        [Fact]
+        public void Ctor_StringStringStringString_Success()
         {
+            string major = "1";
+            string minor = "0";
+            string patch = "1";
+            string build = "0";
             var version = new Version(major, minor, patch, build);
 
             AssertVersion(major, minor, patch, build, version);
