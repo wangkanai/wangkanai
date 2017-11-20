@@ -7,5 +7,6 @@ namespace Wangkanai.Detection
     {
         public IBrowser Browser { get; }
         public IUserAgent UserAgent { get; }
+        public Version Version { get; set; }
     }
 }
