@@ -35,12 +35,17 @@ namespace Wangkanai.Detection
         }
 
         public override string ToString()
-        {            
-            if (Build is null) return $"{Major}.{Minor}.{Patch}";
-            if (Patch is null) return $"{Major}.{Minor}";
-            if (Minor is null) return $"{Major}";
+        {   
+            if( Major != null && Minor != null && Patch != null && Build != null)
+                return $"{Major}.{Minor}.{Patch}.{Build}";
+            if (Major != null && Minor != null && Patch != null)
+                return $"{Major}.{Minor}.{Patch}";
+            if (Major != null && Minor != null)
+                return $"{Major}.{Minor}";
+            if (Minor != null)
+                return $"{Major}";
 
-            return $"{Major}.{Minor}.{Patch}.{Build}";
+            return "No version resolved";
         }
     }
 }

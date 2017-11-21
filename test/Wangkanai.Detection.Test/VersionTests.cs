@@ -13,6 +13,7 @@ namespace Wangkanai.Detection.Test
             var version = new Version(major, minor);
 
             AssertVersion(major, minor, null, null, version);
+            Assert.Equal("1.0", version.ToString());
         }
 
         [Theory]        
@@ -43,6 +44,7 @@ namespace Wangkanai.Detection.Test
             var version = new Version(major, minor, patch, build);
 
             AssertVersion(major, minor, patch, build, version);
+            Assert.Equal("1.0.1.0", version.ToString());
         }
 
         private void AssertVersion(string major, string minor, string patch, string build, Version version)
