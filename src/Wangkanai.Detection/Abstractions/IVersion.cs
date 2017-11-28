@@ -4,7 +4,10 @@
 namespace Wangkanai.Detection
 {
     public interface IVersion
-    {        
-        Version Version { get; set; }
+    {
+        string Major { get; }
+        string Minor { get; }
+        string Patch { get; }
+        string Build { get; }
     }
 }

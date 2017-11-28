@@ -5,7 +5,7 @@ using System;
 
 namespace Wangkanai.Detection
 {
-    public class Version
+    public class Version : IVersion
     {
         public string Major { get; }
         public string Minor { get; }
