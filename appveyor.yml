@@ -14,5 +14,7 @@ environment:
     DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
     DOTNET_CLI_TELEMETRY_OPTOUT: 1
 test: off
+artifacts:
+  - path: '**\*.nupkg'
 deploy: off
 os: Visual Studio 2017

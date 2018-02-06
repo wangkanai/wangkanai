@@ -23,7 +23,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Wangkanai.Detection" Version="2.0.0-beta5" />
+    <ProjectReference Include="..\Wangkanai.Detection\Wangkanai.Detection.csproj" />
   </ItemGroup>
 
 </Project>
