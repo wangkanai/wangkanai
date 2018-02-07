@@ -8,6 +8,18 @@ namespace Wangkanai.Detection.Test
 {
     public class VersionTests
     {
+        [Theory]
+        [InlineData("1")]
+        [InlineData("1.1")]
+        [InlineData("1.1.0")]
+        [InlineData("1.1.1.1")]
+        public void VersionString_To_VersionObj(string value)
+        {
+            var version = new Version(value);
+
+            Assert.Equal(value, version.ToString());
+        }
+
         [Fact]
         public void Ctor_StringString_Success()
         {
@@ -19,7 +31,7 @@ namespace Wangkanai.Detection.Test
             Assert.Equal("1.0", version.ToString());
         }
 
-        [Theory]        
+        [Theory]
         [InlineData(null, "0")]
         [InlineData("9", null)]
         public void Ctor_Null_ThrowsArgumentNullException(string value1, string value2)

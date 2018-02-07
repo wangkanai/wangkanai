@@ -3,8 +3,9 @@
 
 namespace Wangkanai.Detection
 {
-    public interface IPlatform : IVersion
+    public interface IPlatform
     {
         PlatformType Type { get; set; }
+        IVersion Version { get; set; }
     }
 }
