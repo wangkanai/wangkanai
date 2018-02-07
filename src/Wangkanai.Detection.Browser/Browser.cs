@@ -5,16 +5,22 @@ using System;
 
 namespace Wangkanai.Detection
 {
-    public class Browser
+    public class Browser : IBrowser
     {
         public string Name { get; set; }
         public string Maker { get; set; }
         public BrowserType Type { get; set; }
+        public IVersion Version { get; set; }
         public byte Bits { get; set; }
-        public string Version { get; set; }
         public Feature Feature { get; set; }
 
         public Browser() { }
+        public Browser(BrowserType browserType)
+            => Type = browserType;
+        public Browser(BrowserType browserType, IVersion version)
+            : this(browserType)
+            => Version = version;
+
         public Browser(string name)
         {
             BrowserType type;

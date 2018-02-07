@@ -11,12 +11,11 @@ namespace Wangkanai.Detection
         public bool Crawler { get; set; }
 
         public Device() { }
-
+        public Device(DeviceType deviceType)
+            => Type = deviceType;
         public Device(DeviceType deviceType, bool isCrawler)
-        {
-            Type = deviceType;
-            Crawler = isCrawler;
-        }
+            : this(deviceType)
+            => Crawler = isCrawler;
 
         public Device(string name)
         {
