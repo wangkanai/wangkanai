@@ -26,8 +26,8 @@ namespace Microsoft.Extensions.DependencyInjection
 
             // Hosting doesn't add IHttpContextAccessor by default
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            // Client Services                        
-            services.TryAddTransient<IDetectionService, DetectionService>();            
+            // Client Services
+            services.TryAddTransient<IDetectionService, DetectionService>();
 
             return new DetectionBuilder(services);
         }

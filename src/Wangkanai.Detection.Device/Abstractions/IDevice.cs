@@ -3,9 +3,13 @@
 
 namespace Wangkanai.Detection
 {
+    /// <summary>
+    /// IDevice is the interface result of the <see cref="DeviceResolver"/>.
+    /// </summary>
     public interface IDevice
     {
         DeviceType Type { get; set; }
+        IVersion Version { get; set; }
         bool Crawler { get; set; }
     }
 }

@@ -13,16 +13,20 @@ namespace Wangkanai.Detection
         /// Get device result of device result
         /// </summary>
         public IDevice Device => _device;
+
         /// <summary>
         /// Get user agnet of the request client
         /// </summary>
+
         public IUserAgent UserAgent => _service.UserAgent;
         /// <summary>
         /// Get HttpContext of the application service
         /// </summary>
         private HttpContext _context => _service.Context;
+
         private readonly Device _device;
         private readonly IDetectionService _service;
+
         public DeviceResolver(IDetectionService service)
         {
             if (service == null) throw new ArgumentNullException(nameof(service));
@@ -39,7 +43,7 @@ namespace Wangkanai.Detection
             var agent = GetUserAgent();
             var request = _context.Request;
 
-            // tablet user agent keyword detection       
+            // tablet user agent keyword detection
             if (agent != null && TabletCollection.Keywords.Any(keyword => agent.Contains(keyword)))
                 return DeviceType.Tablet;
             // mobile user agent keyword detection

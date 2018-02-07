@@ -35,7 +35,7 @@ namespace Wangkanai.Detection
         }
 
         public override string ToString()
-        {   
+        {
             if( Major != null && Minor != null && Patch != null && Build != null)
                 return $"{Major}.{Minor}.{Patch}.{Build}";
             if (Major != null && Minor != null && Patch != null)

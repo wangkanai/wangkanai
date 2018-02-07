@@ -8,15 +8,18 @@ namespace Wangkanai.Detection
     public class Device : IDevice
     {
         public DeviceType Type { get; set; }
+        public IVersion Version { get; set; }
         public bool Crawler { get; set; }
 
         public Device() { }
-
+        public Device(DeviceType deviceType)
+            => Type = deviceType;
         public Device(DeviceType deviceType, bool isCrawler)
-        {
-            Type = deviceType;
-            Crawler = isCrawler;
-        }
+            : this(deviceType)
+            => Crawler = isCrawler;
+        public Device(DeviceType deviceType, IVersion version, bool isCrawler)
+            : this(deviceType, isCrawler)
+            => Version = version;
 
         public Device(string name)
         {
