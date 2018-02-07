@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Wangkanai.Detection;
 
-namespace Microsoft.AspNetCore.Mvc.TagHelpers
+namespace Wangkanai.Detection
 {
     [HtmlTargetElement(ElementName, Attributes = IncludeAttributeName)]
     [HtmlTargetElement(ElementName, Attributes = ExcludeAttributeName)]
@@ -50,7 +50,6 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
 
             var device = Resolver.Device;
             var currentDeviceName = device.Type.ToString();
-            
 
             if(Exclude != null)
             {
