@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2016 Sarin Na Wangkanai, All Rights Reserved.
+﻿// Copyright (c) 2018 Sarin Na Wangkanai, All Rights Reserved.
 // The GNU GPLv3. See License.txt in the project root for license information.
 
 using Wangkanai.Detection;
@@ -12,6 +12,6 @@ namespace Microsoft.AspNetCore.Http
         public static Browser Browser(this HttpRequest request)
         {
             return new Browser();
-        }        
+        }
     }
 }
