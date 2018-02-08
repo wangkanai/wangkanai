@@ -5,7 +5,7 @@ using Wangkanai.Detection;
 
 // ReSharper disable once CheckNamespace
 namespace Microsoft.Extensions.DependencyInjection
-{    
+{
     public static class DeviceBuilderExtensions
     {
         /// <summary>

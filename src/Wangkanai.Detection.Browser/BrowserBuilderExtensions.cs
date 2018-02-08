@@ -5,10 +5,14 @@ using Wangkanai.Detection;
 
 // ReSharper disable once CheckNamespace
 namespace Microsoft.Extensions.DependencyInjection
-{    
+{
     public static class BrowserBuilderExtensions
     {
-        // concept idea on adding platform detection to client service
+        /// <summary>
+        /// Adds the BrowserResolver service to the specific <see cref="IServiceCollection"/>
+        /// </summary>
+        /// <param name="builder">The <see cref="IDetectionBuilder"/> to add services to</param>
+        /// <returns>An <see cref="IDetectionBuilder"/> that can be used to further configure the Detection services.</returns>
         public static IDetectionBuilder AddBrowser(this IDetectionBuilder builder)
         {
             builder.Services.AddTransient<IBrowserResolver, BrowserResolver>();
