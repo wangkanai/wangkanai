@@ -1,4 +1,7 @@
-﻿namespace Wangkanai.Detection.Collections
+﻿// Copyright (c) 2018 Sarin Na Wangkanai, All Rights Reserved.
+// The GNU GPLv3. See License.txt in the project root for license information.
+
+namespace Wangkanai.Detection.Collections
 {
     public class InternetExplorer : Browser
     {
