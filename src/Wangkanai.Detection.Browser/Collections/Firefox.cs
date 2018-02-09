@@ -17,6 +17,7 @@ namespace Wangkanai.Detection.Collections
             {
                 var first = _agent.IndexOf(firefox);
                 var version = _agent.Substring(first + firefox.Length + 1);
+                //var version = cut.Substring(0, cut.IndexOf(' '));
                 Version = new Version(version);
                 Type = BrowserType.Firefox;
             }
