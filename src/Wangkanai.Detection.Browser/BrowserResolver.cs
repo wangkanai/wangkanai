@@ -3,6 +3,7 @@
 
 using Microsoft.AspNetCore.Http;
 using System;
+using Wangkanai.Detection.Collections;
 
 namespace Wangkanai.Detection
 {
@@ -22,15 +23,21 @@ namespace Wangkanai.Detection
 
             _service = service;
 
-            _browser = new Browser(GetBrowserType());
+            _browser = GetBrowser();
         }
 
-        private BrowserType GetBrowserType()
+        private Browser GetBrowser()
         {
-            if (UserAgent == null)
-                return BrowserType.Generic;
+            var agent = UserAgent.ToString();
 
-            return BrowserType.Generic;
+            var firefox = new Firefox(agent);
+            if (firefox.Type == BrowserType.Firefox)
+                return firefox;
+            var chrome = new Chrome(agent);
+            if (chrome.Type == BrowserType.Chrome)
+                return chrome;
+
+            return new Browser();
         }
     }
 }

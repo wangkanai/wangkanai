@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Wangkanai.Detection.Collections
 {
-    internal class Firefox : BrowserFactory
+    public class Firefox : Browser
     {
         private readonly string _agent;
 
@@ -18,7 +18,7 @@ namespace Wangkanai.Detection.Collections
                 var first = _agent.IndexOf(firefox);
                 var version = _agent.Substring(first + firefox.Length + 1);
                 Version = new Version(version);
-                Valid = true;
+                Type = BrowserType.Firefox;
             }
         }
     }
