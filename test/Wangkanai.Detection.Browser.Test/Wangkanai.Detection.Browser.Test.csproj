@@ -5,9 +5,9 @@
 
     <IsPackable>false</IsPackable>
 
-    <AssemblyName>Wangkanai.Detection.Test</AssemblyName>
+    <AssemblyName>Wangkanai.Detection.Browser.Test</AssemblyName>
 
-    <RootNamespace>Wangkanai.Detection.Test</RootNamespace>
+    <RootNamespace>Wangkanai.Detection</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
