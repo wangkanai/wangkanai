@@ -1,15 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Description>ASP.NET Core Detection Browser resolver components</Description>
+    <Description>ASP.NET Core Detection service components for identifying details about client device, browser, engine, and platform.</Description>
     <Copyright>Copyright © 2018 Sarin Na Wangkanai</Copyright>
     <Authors>Sarin Na Wangkanai</Authors>
     <TargetFramework>netstandard2.0</TargetFramework>
     <NoWarn>$(NoWarn);CS1591</NoWarn>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <AssemblyName>Wangkanai.Detection.Browser</AssemblyName>
-    <PackageId>Wangkanai.Detection.Browser</PackageId>
-    <PackageTags>aspnetcore;detection;browser</PackageTags>
+    <AssemblyName>Wangkanai.Detection.Core</AssemblyName>
+    <PackageId>Wangkanai.Detection.Core</PackageId>
+    <PackageTags>aspnetcore;detection;core</PackageTags>
     <PackageIconUrl>http://0.gravatar.com/avatar/f58457d38ab3bc43526c6e52af17494e</PackageIconUrl>
     <PackageProjectUrl>https://github.com/wangkanai/Detection</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/wangkanai/Detection/blob/master/LICENSE</PackageLicenseUrl>
@@ -21,11 +21,11 @@
     <VersionPrefix>2.0.0</VersionPrefix>
     <VersionSuffix>beta7</VersionSuffix>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <RootNamespace>Wangkanai.Detection</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Wangkanai.Detection.Core\Wangkanai.Detection.Core.csproj" />
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Runtime" Version="2.0.0" />
   </ItemGroup>
 
 </Project>
