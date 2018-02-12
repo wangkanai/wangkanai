@@ -32,8 +32,8 @@ namespace Sandbox
         {
             // Add detection services.
             services.AddDetection()
-                .AddBrowser();                
-                      
+                .AddBrowser();
+
             // Add framework services.
             services.AddMvc();
         }
@@ -46,7 +46,7 @@ namespace Sandbox
 
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();                
+                app.UseDeveloperExceptionPage();
             }
             else
             {
