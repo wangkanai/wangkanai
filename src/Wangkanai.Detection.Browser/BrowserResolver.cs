@@ -19,7 +19,7 @@ namespace Wangkanai.Detection
 
         public BrowserResolver(IDetectionService service)
         {
-            if (_service == null) throw new ArgumentNullException(nameof(service));
+            if (service == null) throw new ArgumentNullException(nameof(service));
 
             _service = service;
 
@@ -33,9 +33,6 @@ namespace Wangkanai.Detection
             var firefox = new Firefox(agent);
             if (firefox.Type == BrowserType.Firefox)
                 return firefox;
-            var chrome = new Chrome(agent);
-            if (chrome.Type == BrowserType.Chrome)
-                return chrome;
             var safari = new Safari(agent);
             if (safari.Type == BrowserType.Safari)
                 return safari;
@@ -48,6 +45,9 @@ namespace Wangkanai.Detection
             var opera = new Opera(agent);
             if (opera.Type == BrowserType.Opera)
                 return opera;
+            var chrome = new Chrome(agent);
+            if (chrome.Type == BrowserType.Chrome)
+                return chrome;
 
             return new Browser();
         }
