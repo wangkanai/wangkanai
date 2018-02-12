@@ -25,6 +25,18 @@ namespace Wangkanai.Detection.Test
         }
 
         [Theory]
+        [InlineData("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.79 Safari/537.36 Edge/14.14393")]
+        public void Resolve_Edge(string agent)
+        {
+            // arrange
+            var service = CreateService(agent);
+            // act
+            var resolver = new BrowserResolver(service);
+            // assert
+            Assert.Equal(BrowserType.Edge, resolver.Browser.Type);
+        }
+
+        [Theory]
         [InlineData("Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0)")]
         [InlineData("Mozilla/5.0 (IE 11.0; Windows NT 6.3; Trident/7.0; .NET4.0E; .NET4.0C; rv:11.0) like Gecko")]
         public void Resolve_IE(string agent)
@@ -50,15 +62,15 @@ namespace Wangkanai.Detection.Test
         }
 
         [Theory]
-        [InlineData("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.79 Safari/537.36 Edge/14.14393")]
-        public void Resolve_Edge(string agent)
+        [InlineData("Mozilla/5.0 (Windows NT x.y; rv:10.0) Gecko/20100101 Firefox/10.0")]
+        public void Resolve_FireFox(string agent)
         {
             // arrange
             var service = CreateService(agent);
             // act
             var resolver = new BrowserResolver(service);
             // assert
-            Assert.Equal(BrowserType.Edge, resolver.Browser.Type);
+            Assert.Equal(BrowserType.Firefox, resolver.Browser.Type);
         }
 
         private IDetectionService CreateService(string agent)
