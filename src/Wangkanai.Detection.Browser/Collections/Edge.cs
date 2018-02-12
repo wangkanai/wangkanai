@@ -3,22 +3,23 @@
 
 namespace Wangkanai.Detection.Collections
 {
-    public class Safari : Browser
+    public class Edge : Browser
     {
         private readonly string _agent;
 
-        public Safari(string agent)
+        public Edge(string agent)
         {
             _agent = agent.ToLower();
-            var safari = BrowserType.Safari.ToString().ToLower();
+            var edge = BrowserType.Edge.ToString().ToLower();
 
-            if (_agent.Contains(safari))
+            if (_agent.Contains(edge))
             {
-                var first = _agent.IndexOf(safari);
-                var version = _agent.Substring(first + safari.Length + 1);
+                var first = _agent.IndexOf(edge);
+                var version = _agent.Substring(first + edge.Length + 1);
                 Version = new Version(version);
-                Type = BrowserType.Safari;
+                Type = BrowserType.Edge;
             }
+
         }
     }
 }
