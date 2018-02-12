@@ -13,6 +13,6 @@ namespace Microsoft.AspNetCore.Http
         public static Device Device(this HttpRequest request)
         {
             return new Device();
-        }        
+        }
     }
 }

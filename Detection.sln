@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2006
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{30E11A87-E8E1-4BB7-BB21-7D486B1511C2}"
 EndProject
@@ -44,11 +44,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "collection", "collection", 
 		collection\useragents.tsv = collection\useragents.tsv
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Detection.Browser.Test", "test\Wangkanai.Detection.Browser.Test\Wangkanai.Detection.Browser.Test.csproj", "{17C9BAE8-86DA-4CEA-BE6E-F01AC306601D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection.Browser.Test", "test\Wangkanai.Detection.Browser.Test\Wangkanai.Detection.Browser.Test.csproj", "{17C9BAE8-86DA-4CEA-BE6E-F01AC306601D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Detection.Engine.Test", "test\Wangkanai.Detection.Engine.Test\Wangkanai.Detection.Engine.Test.csproj", "{E561985A-81F1-4648-9281-8CA68A507E87}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection.Engine.Test", "test\Wangkanai.Detection.Engine.Test\Wangkanai.Detection.Engine.Test.csproj", "{E561985A-81F1-4648-9281-8CA68A507E87}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Detection.Platform.Test", "test\Wangkanai.Detection.Platform.Test\Wangkanai.Detection.Platform.Test.csproj", "{3EEFB310-6C99-4190-911A-ED31FF167BCF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection.Platform.Test", "test\Wangkanai.Detection.Platform.Test\Wangkanai.Detection.Platform.Test.csproj", "{3EEFB310-6C99-4190-911A-ED31FF167BCF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

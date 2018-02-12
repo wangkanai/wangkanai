@@ -18,7 +18,7 @@ namespace Wangkanai.Detection.Test
             }
             catch (DeviceNotFoundException)
             {
-                
+
             }
             Assert.Equal(DeviceType.Mobile, device.Type);
         }
@@ -37,6 +37,11 @@ namespace Wangkanai.Detection.Test
                 actual = e.GetType();
             }
             Assert.Equal(typeof(DeviceNotFoundException), actual);
+
+            Assert.Throws<DeviceNotFoundException>(() =>
+            {
+                new Device("xxx");
+            });
         }
     }
 }
