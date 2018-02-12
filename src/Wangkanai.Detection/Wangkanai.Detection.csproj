@@ -28,4 +28,11 @@
     <PackageReference Include="Microsoft.AspNetCore.Razor.Runtime" Version="2.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Wangkanai.Detection.Browser\Wangkanai.Detection.Browser.csproj" />
+    <ProjectReference Include="..\Wangkanai.Detection.Device\Wangkanai.Detection.Device.csproj" />
+    <ProjectReference Include="..\Wangkanai.Detection.Engine\Wangkanai.Detection.Engine.csproj" />
+    <ProjectReference Include="..\Wangkanai.Detection.Platform\Wangkanai.Detection.Platform.csproj" />
+  </ItemGroup>
+
 </Project>
