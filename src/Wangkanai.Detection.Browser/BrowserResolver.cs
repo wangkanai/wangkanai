@@ -36,6 +36,18 @@ namespace Wangkanai.Detection
             var chrome = new Chrome(agent);
             if (chrome.Type == BrowserType.Chrome)
                 return chrome;
+            var safari = new Safari(agent);
+            if (safari.Type == BrowserType.Safari)
+                return safari;
+            var ie = new InternetExplorer(agent);
+            if (ie.Type == BrowserType.IE)
+                return ie;
+            var edge = new Edge(agent);
+            if (edge.Type == BrowserType.Edge)
+                return edge;
+            var opera = new Opera(agent);
+            if (opera.Type == BrowserType.Opera)
+                return opera;
 
             return new Browser();
         }
