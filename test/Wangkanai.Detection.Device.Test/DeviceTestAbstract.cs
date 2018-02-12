@@ -8,7 +8,6 @@ namespace Wangkanai.Detection.Test
 {
     public abstract class DeviceTestAbstract
     {
-        private HttpRequest CreateRequest() => new DefaultHttpContext().Request;
         private HttpContext CreateContext() => new DefaultHttpContext();
         protected IDetectionService CreateService(string agent)
         {
@@ -38,25 +37,8 @@ namespace Wangkanai.Detection.Test
         protected HttpContext CreateContext(string header, string value)
         {
             var context = CreateContext();
-            context.Request.Headers.Add(header, new[] {value});
+            context.Request.Headers.Add(header, new[] { value });
             return context;
         }
-        protected HttpRequest CreateRequest(string value)
-        {
-            var request = CreateRequest();
-            var header = "User-Agent";
-            request.Headers.Add(header, new[] { value });
-
-            return request;
-        }
-
-        protected HttpRequest CreateRequest(string header, string value)
-        {
-            var request = CreateRequest();
-            request.Headers.Add(header, new[] { value });
-
-            return request;
-        }
-
     }
 }

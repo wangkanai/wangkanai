@@ -10,6 +10,7 @@ namespace Wangkanai.Detection
         Safari,
         Firefox,
         Edge,
-        Opera
+        Opera,
+        Generic
     }
 }
