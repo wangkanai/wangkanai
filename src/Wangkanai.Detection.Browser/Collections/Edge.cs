@@ -19,7 +19,6 @@ namespace Wangkanai.Detection.Collections
                 Version = new Version(version);
                 Type = BrowserType.Edge;
             }
-
         }
     }
 }
