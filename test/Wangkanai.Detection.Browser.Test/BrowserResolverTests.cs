@@ -70,7 +70,7 @@ namespace Wangkanai.Detection.Test
             return service.Object;
         }
 
-        protected HttpContext CreateContext(string value)
+        private HttpContext CreateContext(string value)
         {
             var context = new DefaultHttpContext();
             var header = "User-Agent";
