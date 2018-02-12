@@ -6,7 +6,7 @@ using Xunit;
 
 namespace Wangkanai.Detection.Test
 {
-    public class BrowserTest
+    public class BrowserClassTests
     {
         [Fact]
         public void cast_valid_type()

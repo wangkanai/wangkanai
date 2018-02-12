@@ -8,12 +8,14 @@ namespace Wangkanai.Detection
     [System.Runtime.InteropServices.ComVisible(true)]
     public class DeviceNotFoundException : ArgumentException
     {
-        private string m_invalidDeviceName; // unrecognized device name
+        private string _invalidDeviceName; // unrecognized device name
         private static string DefaultMessage => "Device Not Supported";
-        public virtual string InvalidDeviceName => m_invalidDeviceName;        
+        public virtual string InvalidDeviceName => _invalidDeviceName;
 
-        public DeviceNotFoundException() : base(DefaultMessage) { }
-        public DeviceNotFoundException(string message) : base(message) { }
+        public DeviceNotFoundException()
+            : base(DefaultMessage) { }
+        public DeviceNotFoundException(string message)
+            : base(message) { }
         public DeviceNotFoundException(string paramName, string message)
             : base(message, paramName) { }
         public DeviceNotFoundException(string message, Exception innerException)
@@ -22,20 +24,20 @@ namespace Wangkanai.Detection
         public DeviceNotFoundException(string message, string invalidDeviceName, Exception innerException)
             : base(message, innerException)
         {
-            m_invalidDeviceName = invalidDeviceName;
+            _invalidDeviceName = invalidDeviceName;
         }
 
         public DeviceNotFoundException(string paramName, string invalidDeviceName, string message)
             : base(message, paramName)
         {
-            m_invalidDeviceName = invalidDeviceName;
+            _invalidDeviceName = invalidDeviceName;
         }
         public override string Message
         {
             get
             {
                 var s = base.Message;
-                if (m_invalidDeviceName != null)
+                if (_invalidDeviceName != null)
                     return s + Environment.NewLine + InvalidDeviceName;
 
                 return s;
