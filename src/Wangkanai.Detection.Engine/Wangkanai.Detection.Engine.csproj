@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <Description>ASP.NET Core Detection Engine resolver components</Description>
-    <Copyright>Copyright © 2016 Sarin Na Wangkanai</Copyright>
+    <Copyright>Copyright © 2018 Sarin Na Wangkanai</Copyright>
     <Authors>Sarin Na Wangkanai</Authors>
     <TargetFramework>netstandard2.0</TargetFramework>
     <NoWarn>$(NoWarn);CS1591</NoWarn>
