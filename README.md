@@ -62,8 +62,8 @@ public class HomeController : Controller
 
     public HomeController(IDeviceResolver deviceResolver)
     {
-        _useragent = deviceResolver.UserAgent,
-        _device = deviceResolver.Device
+        _useragent = deviceResolver.UserAgent;
+        _device = deviceResolver.Device;
     }
 
     public IActionResult Index()
@@ -152,10 +152,10 @@ public class HomeController : Controller
         IEngineResolver engineResolver, 
         IPlatformResolver platformResolver)
     {
-        _useragent = browserResolver.UserAgent,        
-        _browser = browserResolver.Browser,
-        _engine = engineResolver.Engine,
-        _platform = platformResolver.Platform
+        _useragent = browserResolver.UserAgent;        
+        _browser = browserResolver.Browser;
+        _engine = engineResolver.Engine;
+        _platform = platformResolver.Platform;
     }
 
     public IActionResult Index()
