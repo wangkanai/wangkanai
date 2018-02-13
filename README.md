@@ -156,9 +156,9 @@ public class HomeController : Controller
     public HomeController(IEngineResolver engineResolver, 
         IPlatformResolver platformResolver)
     {
-        _useragent = browserResolver.UserAgent,                
-        _engine = engineResolver.Engine,
-        _platform = platformResolver.Platform
+        _useragent = browserResolver.UserAgent;                
+        _engine = engineResolver.Engine;
+        _platform = platformResolver.Platform;
     }
 
     public IActionResult Index()
