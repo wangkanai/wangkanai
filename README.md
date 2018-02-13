@@ -122,47 +122,6 @@ public class HomeController : Controller
 ```
 * `IDetectionService` is main service for you to access UserAgent.
 
-## Browser Resolver (beta7)
-
-This library host the component to resolve the access client browser type and version.
-
-Implement of the library into your web application is done by configuring the `Startup.cs` by adding the detection service in the `ConfigureServices` method.
-
-```csharp
-public void ConfigureServices(IServiceCollection services)
-{
-	// Add detection services container and device resolver service.
-    services.AddDetection()
-		.AddBrowser();
-
-    // Add framework services.
-    services.AddMvc();
-}
-```
-* `AddDetection()` Adds the detection services to the services container.
-* `AddBrowser()` Adds the browser resolver service to the detection services builder.
-
-Example of calling the detection service in the `Controller` using dependency injection.
-
-```csharp
-public class HomeController : Controller
-{    
-    private readonly IUserAgent _useragent;
-    private readonly IBrowser _browser;   
-
-    public HomeController(IBrowser browserResolver)
-    {
-        _useragent = browserResolver.UserAgent;
-        _browser = browserResolver.Browser;
-    }
-
-    public IActionResult Index()
-    {            
-        return View();
-    }
-}
-```
-* `IDetectionService` is main service for you to access UserAgent
 
 ## Concept waiting for development
 
