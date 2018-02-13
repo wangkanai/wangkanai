@@ -23,7 +23,7 @@ Installation of detection library is now done with a single package reference po
 PM> install-package Wangkanai.Detection -pre
 ```
 
-While is you can still install the individual package if you just need that specific resolver.
+While it is still possible to install the individual package if you just need that specific resolver.
 
 ```powershell
 PM> install-package Wangkanai.Detection.Device -pre  
@@ -77,12 +77,6 @@ public class HomeController : Controller
 ## Browser Resolver (beta7)
 
 This library host the component to resolve the access client browser type and version.
-
-Installation of device resolver library components. 
-
-```powershell
-PM> install-package Wangkanai.Detection.Browser -pre
-```
 
 Implement of the library into your web application is done by configuring the `Startup.cs` by adding the detection service in the `ConfigureServices` method.
 
