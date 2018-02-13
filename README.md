@@ -62,8 +62,56 @@ public class HomeController : Controller
 
     public HomeController(IDeviceResolver deviceResolver)
     {
-        _useragent = deviceResolver.UserAgent,
-        _device = deviceResolver.Device
+        _useragent = deviceResolver.UserAgent;
+        _device = deviceResolver.Device;
+    }
+
+    public IActionResult Index()
+    {            
+        return View();
+    }
+}
+```
+* `IDetectionService` is main service for you to access UserAgent
+
+## Browser Resolver (beta7)
+
+This library host the component to resolve the access client browser type and version.
+
+Installation of device resolver library components. 
+
+```powershell
+PM> install-package Wangkanai.Detection.Browser -pre
+```
+
+Implement of the library into your web application is done by configuring the `Startup.cs` by adding the detection service in the `ConfigureServices` method.
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+	// Add detection services container and device resolver service.
+    services.AddDetection()
+		.AddBrowser();
+
+    // Add framework services.
+    services.AddMvc();
+}
+```
+* `AddDetection()` Adds the detection services to the services container.
+* `AddBrowser()` Adds the browser resolver service to the detection services builder.
+
+Example of calling the detection service in the `Controller` using dependency injection.
+
+```csharp
+public class HomeController : Controller
+{    
+    private readonly IUserAgent _useragent;
+    private readonly IBrowser _browser;   
+
+    public HomeController(IBrowser browserResolver)
+    {
+        _useragent = browserResolver.UserAgent;
+        _browser = browserResolver.Browser;
     }
 
     public IActionResult Index()
@@ -123,7 +171,7 @@ Configuring the `Startup.cs` by adding the Client Service in the `ConfigureServi
 public void ConfigureServices(IServiceCollection services)
 {
 	// Add browser detection services.
-    services.AddDetection()
+    services.AddDetection()		
 		.AddEngine()    // concept
 		.AddPlatform(); // concept
 
@@ -132,7 +180,6 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 * `AddDetection()` Adds the detection services to the services container.
-* `AddBrowser()` Adds the browser resolver service to the detection services builder.
 * `AddEngine()` Adds the engine resolver service to the detection services builder.
 * `AddPlatform()` Adds the platform resolver service to the detection services builder.
 
@@ -143,17 +190,14 @@ Example of calling the client service in the `Controller`.
 ```csharp
 public class HomeController : Controller
 {    
-    private readonly IUserAgent _useragent;    
-    private readonly IBrowser _browser;
+    private readonly IUserAgent _useragent;        
     private readonly IEngine _engine;
     private readonly IPlatform _platform;
 
-    public HomeController(IBrowserResolver browserResolver, 
-        IEngineResolver engineResolver, 
+    public HomeController(IEngineResolver engineResolver, 
         IPlatformResolver platformResolver)
     {
-        _useragent = browserResolver.UserAgent,        
-        _browser = browserResolver.Browser,
+        _useragent = browserResolver.UserAgent,                
         _engine = engineResolver.Engine,
         _platform = platformResolver.Platform
     }
