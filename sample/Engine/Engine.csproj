@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Wangkanai.Detection\Wangkanai.Detection.csproj" />
+    <ProjectReference Include="..\..\src\Wangkanai.Detection.Engine\Wangkanai.Detection.Engine.csproj" />
   </ItemGroup>
 
 </Project>
