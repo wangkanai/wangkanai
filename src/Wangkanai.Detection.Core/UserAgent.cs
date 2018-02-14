@@ -11,7 +11,7 @@ namespace Wangkanai.Detection
         public UserAgent(string useragent)
         {
             if (useragent != null)
-                this.useragent = useragent.ToLowerInvariant();
+                this.useragent = useragent;
         }
 
         public override string ToString()

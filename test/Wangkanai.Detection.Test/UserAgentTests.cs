@@ -19,10 +19,9 @@ namespace Wangkanai.Detection.Test
         public void Ctor_String_Success()
         {
             var name = "Agent";
-            var expectedName = "agent";
             var userAgent = new UserAgent(name);
 
-            Assert.Equal(expectedName, userAgent.ToString());
+            Assert.Equal(name, userAgent.ToString());
         }
 
         [Fact]

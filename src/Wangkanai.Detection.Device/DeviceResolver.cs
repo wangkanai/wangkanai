@@ -75,7 +75,7 @@ namespace Wangkanai.Detection
         {
             if (_context == null) return "";
             if (!_context.Request.Headers["User-Agent"].Any()) return "";
-            return new UserAgent(_context.Request.Headers["User-Agent"].FirstOrDefault()).ToString();
+            return new UserAgent(_context.Request.Headers["User-Agent"].FirstOrDefault()).ToString().ToLowerInvariant();
         }
     }
 }

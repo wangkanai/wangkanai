@@ -27,7 +27,7 @@ namespace Wangkanai.Detection.Test
 
             Assert.NotNull(detectionService.Context);
             Assert.NotNull(detectionService.UserAgent);
-            Assert.Equal(userAgent.ToLowerInvariant(), detectionService.UserAgent.ToString());
+            Assert.Equal(userAgent, detectionService.UserAgent.ToString());
         }
 
         [Fact]

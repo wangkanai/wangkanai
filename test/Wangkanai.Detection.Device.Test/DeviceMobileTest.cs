@@ -19,8 +19,8 @@ namespace Wangkanai.Detection.Test
         [InlineData("Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543 Safari/419.3")]
         public void Keywords(string agents)
         {
-            // arrange 
-            var service = CreateService(agents);            
+            // arrange
+            var service = CreateService(agents);
             // act
             var resolver = new DeviceResolver(service);
             // assert
@@ -35,8 +35,8 @@ namespace Wangkanai.Detection.Test
         [InlineData("WinWAP 3.0 PRO")]
         public void Prefix(string agent)
         {
-            // Arrange            
-            var service = CreateService(agent);                
+            // Arrange
+            var service = CreateService(agent);
             // Act
             var device = new DeviceResolver(service).Device;
             // Assert
@@ -48,8 +48,8 @@ namespace Wangkanai.Detection.Test
         [InlineData("Profile")]
         public void UAProf(string agent)
         {
-            // Arrange               
-            var service = CreateService(agent, "<xml><doc></doc>");          
+            // Arrange
+            var service = CreateService(agent, "<xml><doc></doc>");
             // Act
             var device = new DeviceResolver(service).Device;
             // Assert
