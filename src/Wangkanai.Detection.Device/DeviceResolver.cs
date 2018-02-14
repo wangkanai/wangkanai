@@ -35,7 +35,7 @@ namespace Wangkanai.Detection
 
             // testing failed because no default Httpcontext
             //if (_context == null) throw new ArgumentNullException(nameof(_context));
-            _device = new Device(GetDeviceType(), GetCrawler());
+            _device = new Device(GetDeviceType());
         }
 
         private DeviceType GetDeviceType()
@@ -64,13 +64,7 @@ namespace Wangkanai.Detection
 
             return DeviceType.Desktop;
         }
-        private bool GetCrawler()
-        {
-            var agent = GetUserAgent();
-            if (agent == null) return false;
-            if (CrawlerCollection.Keywords.Any(keyword => agent.Contains(keyword))) return true;
-            return false;
-        }
+
         private string GetUserAgent()
         {
             if (_context == null) return "";
