@@ -24,6 +24,58 @@ namespace Wangkanai.Detection.Test
             Assert.NotNull(resolver.Crawler);
         }
 
+        [Fact]
+        public void Google_Bot()
+        {
+            // arrange
+            var agent = "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)";
+            var service = CreateService(agent);
+            // act
+            var resolver = new CrawlerResolver(service);
+            // assert
+            Assert.Equal("Googlebot", resolver.Crawler.Name);
+            Assert.Equal(CrawlerType.Google, resolver.Crawler.Type);
+        }
+
+        [Fact]
+        public void Bing_Bot()
+        {
+            // arrange
+            var agent = "Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)";
+            var service = CreateService(agent);
+            // act
+            var resolver = new CrawlerResolver(service);
+            // assert
+            Assert.Equal("bingbot", resolver.Crawler.Name);
+            Assert.Equal(CrawlerType.Bing, resolver.Crawler.Type);
+        }
+
+        [Fact]
+        public void Yahoo_Bot()
+        {
+            // arrange
+            var agent = "Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp)";
+            var service = CreateService(agent);
+            // act
+            var resolver = new CrawlerResolver(service);
+            // assert
+            Assert.Equal("Yahoo!Slurp", resolver.Crawler.Name);
+            Assert.Equal(CrawlerType.Yahoo, resolver.Crawler.Type);
+        }
+
+        [Fact]
+        public void Baidu_Bot()
+        {
+            // arrange
+            var agent = "Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)";
+            var service = CreateService(agent);
+            // act
+            var resolver = new CrawlerResolver(service);
+            // assert
+            Assert.Equal("Baiduspider", resolver.Crawler.Name);
+            Assert.Equal(CrawlerType.Baidu, resolver.Crawler.Type);
+        }
+
         private IDetectionService CreateService(string agent)
         {
             var context = CreateContext(agent);

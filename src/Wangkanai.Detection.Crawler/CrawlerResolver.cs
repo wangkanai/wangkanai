@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
@@ -14,7 +13,7 @@ namespace Wangkanai.Detection
         private HttpContext _context => _service.Context;
 
         private readonly IDetectionService _service;
-        private readonly Crawer _crawler;
+        private readonly Crawler _crawler;
 
         public CrawlerResolver(IDetectionService service)
         {
@@ -25,14 +24,28 @@ namespace Wangkanai.Detection
             _crawler = GetCrawler();
         }
 
-        private Crawer GetCrawler()
+        private Crawler GetCrawler()
         {
             if (!IsCrawler()) return null;
 
-            var split = UserAgent.ToString().Split(' ');
-            var bot = split.FirstOrDefault()
+            var agent = UserAgent.ToString();
+            if (agent.Contains("Yahoo"))
+                agent = agent.Replace("Yahoo! Slurp", "Yahoo!Slurp");
 
-            return new Crawer("test");
+            var split = agent.ToString().Split(' ');
+            var bot = split.Where(x => CrawlerCollection.Keywords.Count(y => x.ToLower().Contains(y)) == 1)
+                           .FirstOrDefault();
+
+            var index = bot.IndexOf('/');
+            if (index < 0)
+                index = bot.IndexOf(';');
+
+            var name = bot.Substring(0, index);
+            var version = bot.Substring(index + 1).TrimEnd(';');
+            if (version == string.Empty)
+                return new Crawler(name);
+
+            return new Crawler(name, version);
         }
 
         private bool IsCrawler()
