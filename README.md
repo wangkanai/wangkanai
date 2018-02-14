@@ -30,6 +30,7 @@ PM> install-package Wangkanai.Detection.Device -pre
 PM> install-package Wangkanai.Detection.Browser -pre  
 PM> install-package Wangkanai.Detection.Engine -pre   //concept
 PM> install-package Wangkanai.Detection.Platform -pre //concept
+PM> install-package Wangkanai.Detection.Crawler -pre  
 ```
 
 ## Device Resolver
@@ -116,6 +117,47 @@ public class HomeController : Controller
 ```
 * `IDetectionService` is main service for you to access UserAgent.
 
+## Crawler Resolver (beta8)
+
+This library host the component to resolve the access client crawler type and version.
+
+Implement of the library into your web application is done by configuring the `Startup.cs` by adding the detection service in the `ConfigureServices` method.
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+	// Add detection services container and device resolver service.
+    services.AddDetection()
+		.AddCrawler();
+
+    // Add framework services.
+    services.AddMvc();
+}
+```
+* `AddDetection()` Adds the detection services to the services container.
+* `AddCrawler()` Adds the crawler resolver service to the detection services builder.
+
+Example of calling the detection service in the `Controller` using dependency injection.
+
+```csharp
+public class HomeController : Controller
+{    
+    private readonly IUserAgent _useragent;
+    private readonly ICrawler _crawler;   
+
+    public HomeController(ICrawler crawlerResolver)
+    {
+        _useragent = crawlerResolver.UserAgent;
+        _crawler = crawlerResolver.Crawler;
+    }
+
+    public IActionResult Index()
+    {            
+        return View();
+    }
+}
+```
+* `IDetectionService` is main service for you to access UserAgent.
 
 ## Concept waiting for development
 
