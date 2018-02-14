@@ -1,7 +1,7 @@
 extensions: designer.cs generated.cs
 extensions: .cs .cpp .h
 // Copyright (c) 2018 Sarin Na Wangkanai, All Rights Reserved.
-// The GNU GPLv3. See License.txt in the project root for license information.
+// The Apache v2. See License.txt in the project root for license information.
 
 extensions: .aspx .ascx
 <%--
