@@ -103,7 +103,7 @@ public class HomeController : Controller
     private readonly IUserAgent _useragent;
     private readonly IBrowser _browser;   
 
-    public HomeController(IBrowser browserResolver)
+    public HomeController(IBrowserResolver browserResolver)
     {
         _useragent = browserResolver.UserAgent;
         _browser = browserResolver.Browser;
@@ -145,7 +145,7 @@ public class HomeController : Controller
     private readonly IUserAgent _useragent;
     private readonly ICrawler _crawler;   
 
-    public HomeController(ICrawler crawlerResolver)
+    public HomeController(ICrawlerResolver crawlerResolver)
     {
         _useragent = crawlerResolver.UserAgent;
         _crawler = crawlerResolver.Crawler;
