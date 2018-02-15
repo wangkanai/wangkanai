@@ -31,11 +31,8 @@ namespace Sandbox
         public void ConfigureServices(IServiceCollection services)
         {
             // Add detection services.
-            services.AddDetectionCore()
-                .AddDevice()
-                .AddBrowser()
-                .AddEngine()
-                .AddPlatform();
+            services.AddDetection();
+
             // Add framework services.
             services.AddMvc();
         }

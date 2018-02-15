@@ -5,12 +5,21 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Wangkanai.Detection;
 using Wangkanai.Detection.Builder;
 
-namespace Wangkanai.Detection
+namespace Microsoft.Extensions.DependencyInjection
 {
+    /// <summary>
+    /// Contains extension method to <see cref="IServiceCollection"/> for configuring client services.
+    /// </summary>
     public static class DetectionCollectionExtensions
     {
+        /// <summary>
+        /// Adds the default client service to the services container.
+        /// </summary>
+        /// <param name="services">The services available in the application.</param>
+        /// <returns>An <see cref="IServiceCollection"/> so that additional calls can be chained.</returns>
         public static IDetectionBuilder AddDetection(this IServiceCollection services)
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
