@@ -56,7 +56,7 @@ public void ConfigureServices(IServiceCollection services)
 
 * `AddDetection()` Adds the detection services to the services container.
 
-While the detection service is congifured globally, its can also be configure individually if you only need some functions.
+While the detection service is configured globally, its can also be configure individually if you only need some functions.
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
