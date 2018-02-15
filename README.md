@@ -7,7 +7,6 @@ The library is the base foundation for [ASP.NET Core Responsive](https://github.
 ![ASP.NET Core Responsive](https://raw.githubusercontent.com/wangkanai/Detection/dev/asset/aspnet-core-detection.svg?sanitize=true)
 
 [![Build status](https://ci.appveyor.com/api/projects/status/033qv4nqv8g4altq?svg=true&retina=true)](https://ci.appveyor.com/project/wangkanai/detection)
-
 [![NuGet Badge](https://buildstats.info/nuget/wangkanai.detection?includePreReleases=true)](https://www.nuget.org/packages/wangkanai/detection)
 
 [![Build history](https://buildstats.info/appveyor/chart/wangkanai/detection)](https://ci.appveyor.com/project//wangkanai/detection/history)
@@ -19,8 +18,6 @@ Wangkanai.Detection.Browser | [![NuGet Pre Release](https://img.shields.io/nuget
 Wangkanai.Detection.Engine | [![NuGet Pre Release](https://img.shields.io/nuget/vpre/Wangkanai.Detection.Engine.svg?maxAge=3600)](https://www.nuget.org/packages/Wangkanai.Detection.Engine/) | 
 Wangkanai.Detection.Platform | [![NuGet Pre Release](https://img.shields.io/nuget/vpre/Wangkanai.Detection.Platform.svg?maxAge=3600)](https://www.nuget.org/packages/Wangkanai.Detection.Platform/) |
 Wangkanai.Detection.Crawler | [![NuGet Pre Release](https://img.shields.io/nuget/vpre/Wangkanai.Detection.Crawler.svg?maxAge=3600)](https://www.nuget.org/packages/Wangkanai.Detection.Crawler/) | 
-
-[![Build history](https://buildstats.info/appveyor/chart/wangkanai/detection)](https://ci.appveyor.com/project//wangkanai/detection/history)
 
 ## Installation (beta7)
 
