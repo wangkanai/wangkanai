@@ -11,11 +11,23 @@
 <h4>Device</h4>
 <table>
     <tr>
-        <th>DeviceType</th>
-        <td>@Model.Device.Type.ToString()</td>
+        <th>Device</th>
+        <td>@Model.Device?.Type.ToString()</td>
+    </tr>
+    <tr>
+        <th>Browser</th>
+        <td>@Model.Browser?.Type.ToString()</td>
+    </tr>
+    <tr>
+        <th>Platform</th>
+        <td>@Model.Platform?.Type.ToString()</td>
+    </tr>
+    <tr>
+        <th>Engine</th>
+        <td>@Model.Engine?.Type.ToString()</td>
     </tr>
     <tr>
         <th>Crawler</th>
-        <td>@Model.Device.Crawler</td>
+        <td>@Model.Crawler?.Type.ToString()</td>
     </tr>
 </table>
