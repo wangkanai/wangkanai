@@ -3,9 +3,9 @@
 
 using System;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Wangkanai.Detection;
 using Wangkanai.Detection.Builder;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 
 // ReSharper disable once CheckNamespace
 namespace Microsoft.Extensions.DependencyInjection
@@ -13,14 +13,14 @@ namespace Microsoft.Extensions.DependencyInjection
     /// <summary>
     /// Contains extension method to <see cref="IServiceCollection"/> for configuring client services.
     /// </summary>
-    public static class DetectionServiceCollectionExtensions
+    public static class DetectionCoreCollectionExtensions
     {
         /// <summary>
         /// Adds the default client service to the services container.
         /// </summary>
         /// <param name="services">The services available in the application.</param>
         /// <returns>An <see cref="IServiceCollection"/> so that additional calls can be chained.</returns>
-        public static IDetectionBuilder AddDetection(this IServiceCollection services)
+        public static IDetectionCoreBuilder AddDetectionCore(this IServiceCollection services)
         {
             if(services == null) throw new ArgumentNullException(nameof(services));
 
@@ -29,7 +29,7 @@ namespace Microsoft.Extensions.DependencyInjection
             // Client Services
             services.TryAddTransient<IDetectionService, DetectionService>();
 
-            return new DetectionBuilder(services);
+            return new DetectionCoreBuilder(services);
         }
     }
 }

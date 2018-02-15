@@ -14,13 +14,14 @@ namespace Sandbox.Controllers
     public class HomeController : Controller
     {
         private readonly ClientInfo client;
-        
+
         public HomeController(
             IDetectionService detectionService,
-            IDeviceResolver deviceResolver, 
-            IBrowserResolver browserResolver, 
-            IEngineResolver engineResolver, 
-            IPlatformResolver platformResolver)
+            IDeviceResolver deviceResolver,
+            IBrowserResolver browserResolver,
+            IEngineResolver engineResolver,
+            IPlatformResolver platformResolver,
+            ICrawlerResolver crawlerResolver)
         {
             client = new ClientInfo
             {
@@ -28,14 +29,15 @@ namespace Sandbox.Controllers
                 Device = deviceResolver.Device,
                 Browser = browserResolver.Browser,
                 Engine = engineResolver.Engine,
-                Platform = platformResolver.Platform
+                Platform = platformResolver.Platform,
+                Crawler = crawlerResolver.Crawler
             };
         }
 
         public IActionResult Index()
         {
             return View(client);
-        }        
+        }
     }
 
     public class ClientInfo
@@ -45,5 +47,6 @@ namespace Sandbox.Controllers
         public IBrowser Browser { get; set; }
         public IEngine Engine { get; set; }
         public IPlatform Platform { get; set; }
+        public ICrawler Crawler { get; set; }
     }
 }

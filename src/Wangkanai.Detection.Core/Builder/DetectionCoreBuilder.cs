@@ -7,15 +7,15 @@ using Microsoft.Extensions.DependencyInjection;
 namespace Wangkanai.Detection.Builder
 {
     /// <summary>
-    /// Helper functions for configuring detection services.
+    /// Helper functions for configuring detection core services.
     /// </summary>
-    public class DetectionBuilder : IDetectionBuilder
+    public class DetectionCoreBuilder : IDetectionCoreBuilder
     {
         /// <summary>
-        /// Creates a new instance of <see cref="DetectionBuilder"/>.
+        /// Creates a new instance of <see cref="DetectionCoreBuilder"/>.
         /// </summary>
         /// <param name="services">The <see cref="IServiceCollection"/> to attach to.</param>
-        public DetectionBuilder(IServiceCollection services)
+        public DetectionCoreBuilder(IServiceCollection services)
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
 

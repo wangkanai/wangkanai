@@ -31,7 +31,7 @@ namespace Sandbox
         public void ConfigureServices(IServiceCollection services)
         {
             // Add detection services.
-            services.AddDetection()
+            services.AddDetectionCore()
                 .AddPlatform();                
                       
             // Add framework services.

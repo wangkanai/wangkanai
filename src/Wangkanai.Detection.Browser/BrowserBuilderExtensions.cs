@@ -11,9 +11,9 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <summary>
         /// Adds the BrowserResolver service to the specific <see cref="IServiceCollection"/>
         /// </summary>
-        /// <param name="builder">The <see cref="IDetectionBuilder"/> to add services to</param>
-        /// <returns>An <see cref="IDetectionBuilder"/> that can be used to further configure the Detection services.</returns>
-        public static IDetectionBuilder AddBrowser(this IDetectionBuilder builder)
+        /// <param name="builder">The <see cref="IDetectionCoreBuilder"/> to add services to</param>
+        /// <returns>An <see cref="IDetectionCoreBuilder"/> that can be used to further configure the Detection services.</returns>
+        public static IDetectionCoreBuilder AddBrowser(this IDetectionCoreBuilder builder)
         {
             builder.Services.AddTransient<IBrowserResolver, BrowserResolver>();
 

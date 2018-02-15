@@ -9,7 +9,7 @@ namespace Microsoft.Extensions.DependencyInjection
     public static class PlatformBuilderExtensions
     {
         // Concept idea on adding platform detection to client service
-        public static IDetectionBuilder AddPlatform(this IDetectionBuilder builder)
+        public static IDetectionCoreBuilder AddPlatform(this IDetectionCoreBuilder builder)
         {
             builder.Services.AddTransient<IPlatformResolver, PlatformResolver>();
 
