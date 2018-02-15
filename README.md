@@ -50,6 +50,8 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
+* `AddDetection()` Adds the detection services to the services container.
+
 While the detection service is congifured globally, its can also be configure individually if you only need some functions.
 
 ```csharp
@@ -68,25 +70,16 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
+* `AddDetectionCore()` Adds the detection services to the services container.
+* `AddDevice()` Adds the device resolver service to the detection core services builder.
+* `AddBrowser()` Adds the browser resolver service to the detection core services builder.
+* `AddPlatform()` Adds the platform resolver service to the detection core services builder.
+* `AddEngine()` Adds the engine resolver service to the detection core services builder.
+* `AddCrawler()` Adds the crawler resolver service to the detection core services builder.
+
 ## Device Resolver
 
 This library host the component to resolve the access client device type.
-
-Implement of the library into your web application is done by configuring the `Startup.cs` by adding the detection service in the `ConfigureServices` method.
-
-```csharp
-public void ConfigureServices(IServiceCollection services)
-{
-	// Add detection services container and device resolver service.
-    services.AddDetectionCore()
-		.AddDevice();
-
-    // Add framework services.
-    services.AddMvc();
-}
-```
-* `AddDetection()` Adds the detection services to the services container.
-* `AddDevice()` Adds the device resolver service to the detection services builder.
 
 Example of calling the detection service in the `Controller` using dependency injection.
 
@@ -114,22 +107,6 @@ public class HomeController : Controller
 
 This library host the component to resolve the access client browser type and version.
 
-Implement of the library into your web application is done by configuring the `Startup.cs` by adding the detection service in the `ConfigureServices` method.
-
-```csharp
-public void ConfigureServices(IServiceCollection services)
-{
-	// Add detection services container and device resolver service.
-    services.AddDetectionCore()
-		.AddBrowser();
-
-    // Add framework services.
-    services.AddMvc();
-}
-```
-* `AddDetection()` Adds the detection services to the services container.
-* `AddBrowser()` Adds the browser resolver service to the detection services builder.
-
 Example of calling the detection service in the `Controller` using dependency injection.
 
 ```csharp
@@ -155,22 +132,6 @@ public class HomeController : Controller
 ## Crawler Resolver (beta8)
 
 This library host the component to resolve the access client crawler type and version.
-
-Implement of the library into your web application is done by configuring the `Startup.cs` by adding the detection service in the `ConfigureServices` method.
-
-```csharp
-public void ConfigureServices(IServiceCollection services)
-{
-	// Add detection services container and device resolver service.
-    services.AddDetectionCore()
-		.AddCrawler();
-
-    // Add framework services.
-    services.AddMvc();
-}
-```
-* `AddDetection()` Adds the detection services to the services container.
-* `AddCrawler()` Adds the crawler resolver service to the detection services builder.
 
 Example of calling the detection service in the `Controller` using dependency injection.
 
