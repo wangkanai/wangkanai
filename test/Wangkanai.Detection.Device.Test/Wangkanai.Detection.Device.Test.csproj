@@ -10,6 +10,11 @@
     <RootNamespace>Wangkanai.Detection.Test</RootNamespace>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\..\src\Wangkanai.Detection.Device\Wangkanai.Detection.Device.csproj" />
   </ItemGroup>
@@ -24,5 +29,5 @@
   <ItemGroup>
     <Folder Include="Properties\" />
   </ItemGroup>
-  
+
 </Project>
