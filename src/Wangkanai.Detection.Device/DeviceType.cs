@@ -7,6 +7,9 @@ namespace Wangkanai.Detection
     {
         Desktop,
         Tablet,
-        Mobile
+        Mobile,
+        Tv,
+        Console,
+        Car
     }
 }
