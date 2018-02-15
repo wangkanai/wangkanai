@@ -14,7 +14,10 @@ Wangkanai.Detection | [![NuGet Pre Release](https://img.shields.io/nuget/vpre/Wa
 Wangkanai.Detection.Device | [![NuGet Pre Release](https://img.shields.io/nuget/vpre/Wangkanai.Detection.Device.svg?maxAge=3600)](https://www.nuget.org/packages/Wangkanai.Detection.Device/) | 
 Wangkanai.Detection.Browser | [![NuGet Pre Release](https://img.shields.io/nuget/vpre/Wangkanai.Detection.Browser.svg?maxAge=3600)](https://www.nuget.org/packages/Wangkanai.Detection.Browser/) | 
 Wangkanai.Detection.Engine | [![NuGet Pre Release](https://img.shields.io/nuget/vpre/Wangkanai.Detection.Engine.svg?maxAge=3600)](https://www.nuget.org/packages/Wangkanai.Detection.Engine/) | 
-Wangkanai.Detection.Platform | [![NuGet Pre Release](https://img.shields.io/nuget/vpre/Wangkanai.Detection.Platform.svg?maxAge=3600)](https://www.nuget.org/packages/Wangkanai.Detection.Platform/) | 
+Wangkanai.Detection.Platform | [![NuGet Pre Release](https://img.shields.io/nuget/vpre/Wangkanai.Detection.Platform.svg?maxAge=3600)](https://www.nuget.org/packages/Wangkanai.Detection.Platform/) |
+Wangkanai.Detection.Crawler | [![NuGet Pre Release](https://img.shields.io/nuget/vpre/Wangkanai.Detection.Crawler.svg?maxAge=3600)](https://www.nuget.org/packages/Wangkanai.Detection.Crawler/) | 
+
+
 ## Installation (beta7)
 
 Installation of detection library is now done with a single package reference point.
@@ -32,6 +35,7 @@ PM> install-package Wangkanai.Detection.Engine -pre   //concept
 PM> install-package Wangkanai.Detection.Platform -pre //concept
 PM> install-package Wangkanai.Detection.Crawler -pre  
 ```
+
 
 ## Configuration (beta8) {[Breaking change #59](/../../issues/59)}
 
@@ -129,6 +133,59 @@ public class HomeController : Controller
 ```
 * `IDetectionService` is main service for you to access UserAgent.
 
+## Platform Resolver (concept)
+
+This library host the component to resolve the access client platform type and version.
+
+Example of calling the detection service in the `Controller` using dependency injection.
+
+```csharp
+public class HomeController : Controller
+{    
+    private readonly IUserAgent _useragent;
+    private readonly IPlatform _platform;   
+
+    public HomeController(IPlatformResolver platformResolver)
+    {
+        _useragent = platformResolver.UserAgent;
+        _platform = platformResolver.Platform;
+    }
+
+    public IActionResult Index()
+    {            
+        return View();
+    }
+}
+```
+* `IDetectionService` is main service for you to access UserAgent.
+
+## Engine Resolver (concept)
+
+This library host the component to resolve the access client engine type and version.
+
+Example of calling the detection service in the `Controller` using dependency injection.
+
+```csharp
+public class HomeController : Controller
+{    
+    private readonly IUserAgent _useragent;
+    private readonly IEngine _engine;   
+
+    public HomeController(IEngineResolver engineResolver)
+    {
+        _useragent = engineResolver.UserAgent;
+        _engine = engineResolver.Engine;
+    }
+
+    public IActionResult Index()
+    {            
+        return View();
+    }
+}
+```
+* `IDetectionService` is main service for you to access UserAgent.
+
+
 ## Crawler Resolver (beta8)
 
 This library host the component to resolve the access client crawler type and version.
@@ -155,51 +212,10 @@ public class HomeController : Controller
 ```
 * `IDetectionService` is main service for you to access UserAgent.
 
-## Concept waiting for development
+## *(Concept)* Add extensions to `HttpRequest` [Learn more #1](/../../issues/1)
 
-Configuring the `Startup.cs` by adding the Client Service in the `ConfigureServices` method.
-```csharp
-public void ConfigureServices(IServiceCollection services)
-{
-	// Add browser detection services.
-    services.AddDetectionCore()		
-		.AddEngine()    // concept
-		.AddPlatform(); // concept
+This would allow quick access to the Detection in any client request.
 
-    // Add framework services.
-    services.AddMvc();
-}
-```
-* `AddDetection()` Adds the detection services to the services container.
-* `AddEngine()` Adds the engine resolver service to the detection services builder.
-* `AddPlatform()` Adds the platform resolver service to the detection services builder.
-
-
-#### Usage
-
-Example of calling the client service in the `Controller`.
-```csharp
-public class HomeController : Controller
-{    
-    private readonly IUserAgent _useragent;        
-    private readonly IEngine _engine;
-    private readonly IPlatform _platform;
-
-    public HomeController(IEngineResolver engineResolver, 
-        IPlatformResolver platformResolver)
-    {
-        _useragent = browserResolver.UserAgent;                
-        _engine = engineResolver.Engine;
-        _platform = platformResolver.Platform;
-    }
-
-    public IActionResult Index()
-    {            
-        return View();
-    }
-}
-```
-*(Concept)* Add extensions to `HttpRequest` [Learn more #1](/../../issues/1)
 ```csharp
 var browser = Request.Browser();
 var device = Request.Device();
