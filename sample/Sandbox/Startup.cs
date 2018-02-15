@@ -31,12 +31,11 @@ namespace Sandbox
         public void ConfigureServices(IServiceCollection services)
         {
             // Add detection services.
-            services.AddDetection()
+            services.AddDetectionCore()
                 .AddDevice()
                 .AddBrowser()
                 .AddEngine()
-                .AddPlatform();                
-                      
+                .AddPlatform();
             // Add framework services.
             services.AddMvc();
         }
@@ -49,7 +48,7 @@ namespace Sandbox
 
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();                
+                app.UseDeveloperExceptionPage();
             }
             else
             {

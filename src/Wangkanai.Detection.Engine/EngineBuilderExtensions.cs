@@ -10,7 +10,7 @@ namespace Microsoft.Extensions.DependencyInjection
     public static class EngineBuilderExtensions
     {
         // Concept idea on adding engine detection to client service
-        public static IDetectionBuilder AddEngine(this IDetectionBuilder builder)
+        public static IDetectionCoreBuilder AddEngine(this IDetectionCoreBuilder builder)
         {
             builder.Services.TryAddTransient<IEngineResolver, EngineResolver>();
 

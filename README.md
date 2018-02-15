@@ -33,6 +33,41 @@ PM> install-package Wangkanai.Detection.Platform -pre //concept
 PM> install-package Wangkanai.Detection.Crawler -pre  
 ```
 
+## Configuration (beta8) {[Breaking change #59](/../../issues/59)}
+
+This library host the component to resolve the access client device type.
+
+Implement of the library into your web application is done by configuring the `Startup.cs` by adding the detection service in the `ConfigureServices` method.
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+	// Add detection services container and device resolver service.
+    services.AddDetection();
+
+    // Add framework services.
+    services.AddMvc();
+}
+```
+
+While the detection service is congifured globally, its can also be configure individually if you only need some functions.
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+	// Add detection services container and device resolver service.
+    services.AddDetectionCore()
+        .AddDevice()
+        .AddBrowser()
+        .AddPlatform()  // concept
+        .AddEngine()    // concept
+        .AddCrawler();
+
+    // Add framework services.
+    services.AddMvc();
+}
+```
+
 ## Device Resolver
 
 This library host the component to resolve the access client device type.
@@ -43,7 +78,7 @@ Implement of the library into your web application is done by configuring the `S
 public void ConfigureServices(IServiceCollection services)
 {
 	// Add detection services container and device resolver service.
-    services.AddDetection()
+    services.AddDetectionCore()
 		.AddDevice();
 
     // Add framework services.
@@ -85,7 +120,7 @@ Implement of the library into your web application is done by configuring the `S
 public void ConfigureServices(IServiceCollection services)
 {
 	// Add detection services container and device resolver service.
-    services.AddDetection()
+    services.AddDetectionCore()
 		.AddBrowser();
 
     // Add framework services.
@@ -127,7 +162,7 @@ Implement of the library into your web application is done by configuring the `S
 public void ConfigureServices(IServiceCollection services)
 {
 	// Add detection services container and device resolver service.
-    services.AddDetection()
+    services.AddDetectionCore()
 		.AddCrawler();
 
     // Add framework services.
@@ -166,7 +201,7 @@ Configuring the `Startup.cs` by adding the Client Service in the `ConfigureServi
 public void ConfigureServices(IServiceCollection services)
 {
 	// Add browser detection services.
-    services.AddDetection()		
+    services.AddDetectionCore()		
 		.AddEngine()    // concept
 		.AddPlatform(); // concept
 

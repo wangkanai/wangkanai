@@ -2,20 +2,23 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Wangkanai.Detection.Builder;
 
 namespace Wangkanai.Detection.Builder
 {
     /// <summary>
-    /// Helper functions for configuring detection services.
+    /// Helper functions for configuring detection core services.
     /// </summary>
-    public class DetectionBuilder : IDetectionBuilder
+    public class DetectionCoreBuilder : IDetectionCoreBuilder
     {
         /// <summary>
-        /// Creates a new instance of <see cref="DetectionBuilder"/>.
+        /// Creates a new instance of <see cref="DetectionCoreBuilder"/>.
         /// </summary>
         /// <param name="services">The <see cref="IServiceCollection"/> to attach to.</param>
-        public DetectionBuilder(IServiceCollection services)
+        public DetectionCoreBuilder(IServiceCollection services)
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
 

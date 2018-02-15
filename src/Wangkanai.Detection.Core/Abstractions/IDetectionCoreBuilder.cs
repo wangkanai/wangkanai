@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Wangkanai.Detection
 {
-    public interface IDetectionBuilder
+    public interface IDetectionCoreBuilder
     {
         IServiceCollection Services { get; }
     }

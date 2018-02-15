@@ -9,13 +9,13 @@ using Xunit;
 
 namespace Wangkanai.Detection.Test
 {
-    public class DetectionServiceCollectionExtensionsTests
+    public class DetectionCoreollectionExtensionsTests
     {
         [Fact]
         public void AddDetection_ReturnsExpected()
         {
             var serviceCollection = new ServiceCollection();
-            var builder = serviceCollection.AddDetection();
+            var builder = serviceCollection.AddDetectionCore();
             var serviceDescriptors = new List<ServiceDescriptor>
             {
                 new ServiceDescriptor(typeof(IHttpContextAccessor), typeof(HttpContextAccessor), ServiceLifetime.Singleton),
@@ -30,7 +30,7 @@ namespace Wangkanai.Detection.Test
         [Fact]
         public void AddDetection_Null_ArgumentNullException()
         {
-            Assert.Throws<ArgumentNullException>(() => ((IServiceCollection)null).AddDetection());
+            Assert.Throws<ArgumentNullException>(() => ((IServiceCollection)null).AddDetectionCore());
         }
 
         private void AssertServices(List<ServiceDescriptor> serviceDescriptors, IServiceCollection services)

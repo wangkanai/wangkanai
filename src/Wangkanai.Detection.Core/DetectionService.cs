@@ -19,15 +19,15 @@ namespace Wangkanai.Detection
         public DetectionService(IServiceProvider services)
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
-            
+
             this.Context = services.GetRequiredService<IHttpContextAccessor>().HttpContext;
             this.UserAgent = CreateUserAgent(this.Context);
         }
 
         private IUserAgent CreateUserAgent(HttpContext context)
         {
-            if (context == null) throw new ArgumentNullException(nameof(Context)); 
-            
+            if (context == null) throw new ArgumentNullException(nameof(Context));
+
             return new UserAgent(Context.Request.Headers["User-Agent"].FirstOrDefault());
         }
     }
