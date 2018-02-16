@@ -106,6 +106,58 @@ public class HomeController : Controller
 ```
 * `IDetection` is main service for you to access detection service.
 
+When the `Detection` is pass to the view you can render results like the following example.
+
+```
+@model Wangkanai.Detection.Detection
+
+@{
+    ViewData["Title"] = "Detection";
+}
+
+<h3>UserAgent</h3>
+<code>@Model.UserAgent</code>
+
+<h3>Results</h3>
+
+<table>
+    <thead>
+        <tr>
+            <th>Resolver</th>
+            <th>Type</th>
+            <th>Version</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>Device</th>
+            <td>@Model.Device?.Type.ToString()</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>Browser</th>
+            <td>@Model.Browser?.Type.ToString()</td>
+            <td>@Model.Browser?.Version</td>
+        </tr>
+        <tr>
+            <th>Platform</th>
+            <td>@Model.Platform?.Type.ToString()</td>
+            <td>@Model.Platform?.Version</td>
+        </tr>
+        <tr>
+            <th>Engine</th>
+            <td>@Model.Engine?.Type.ToString()</td>
+            <td>@Model.Engine?.Version</td>
+        </tr>
+        <tr>
+            <th>Crawler</th>
+            <td>@Model.Crawler?.Type.ToString()</td>
+            <td>@Model.Crawler?.Version</td>
+        </tr>
+    </tbody>
+</table>
+```
+
 ## Device Resolver
 
 This library host the component to resolve the access client device type.
