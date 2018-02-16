@@ -82,7 +82,7 @@ public void ConfigureServices(IServiceCollection services)
 * `AddEngine()` Adds the engine resolver service to the detection core services builder.
 * `AddCrawler()` Adds the crawler resolver service to the detection core services builder.
 
-## Global Resolver
+## Global Resolver (beta8)
 
 This library host the component to resolve all the access client related resolver that could resolve.
 
