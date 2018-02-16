@@ -7,7 +7,7 @@ using Xunit;
 
 namespace Wangkanai.Detection.Test
 {
-    public class DetectionServiceTests
+    public class UserAgentServiceTests
     {
         [Fact]
         public void Ctor_IServiceProvider_Success()
@@ -23,23 +23,23 @@ namespace Wangkanai.Detection.Test
                 }
             };
 
-            var detectionService = new DetectionService(serviceProvider);
+            var useragentService = new UserAgentService(serviceProvider);
 
-            Assert.NotNull(detectionService.Context);
-            Assert.NotNull(detectionService.UserAgent);
-            Assert.Equal(userAgent, detectionService.UserAgent.ToString());
+            Assert.NotNull(useragentService.Context);
+            Assert.NotNull(useragentService.UserAgent);
+            Assert.Equal(userAgent, useragentService.UserAgent.ToString());
         }
 
         [Fact]
         public void Ctor_Null_ThrowsArgumentNullException()
         {
-            Assert.Throws<ArgumentNullException>(() => new DetectionService(null));
+            Assert.Throws<ArgumentNullException>(() => new UserAgentService(null));
         }
 
         [Fact]
         public void Ctor_HttpContextAccessorNotResolved_ThrowsInvalidOperationException()
         {
-            Assert.Throws<InvalidOperationException>(() => new DetectionService(new ServiceProvider()));
+            Assert.Throws<InvalidOperationException>(() => new UserAgentService(new ServiceProvider()));
         }
 
         [Fact]
@@ -51,7 +51,7 @@ namespace Wangkanai.Detection.Test
             };
 
             Assert.Null(serviceProvider.HttpContextAccessor.HttpContext);
-            Assert.Throws<ArgumentNullException>(() => new DetectionService(serviceProvider));
+            Assert.Throws<ArgumentNullException>(() => new UserAgentService(serviceProvider));
         }
 
         private class ServiceProvider : IServiceProvider

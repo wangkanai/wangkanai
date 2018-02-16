@@ -15,10 +15,10 @@ namespace Wangkanai.Detection
 
         private HttpContext _context => _service.Context;
 
-        private readonly IDetectionService _service;
+        private readonly IUserAgentService _service;
         private readonly Crawler _crawler;
 
-        public CrawlerResolver(IDetectionService service)
+        public CrawlerResolver(IUserAgentService service)
         {
             if (service == null) throw new ArgumentNullException(nameof(service));
 

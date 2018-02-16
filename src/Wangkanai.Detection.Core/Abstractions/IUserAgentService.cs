@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace Wangkanai.Detection
 {
-    public interface IDetectionService
+    public interface IUserAgentService
     {
         HttpContext Context { get; }
         IUserAgent UserAgent { get; }

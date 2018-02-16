@@ -82,6 +82,30 @@ public void ConfigureServices(IServiceCollection services)
 * `AddEngine()` Adds the engine resolver service to the detection core services builder.
 * `AddCrawler()` Adds the crawler resolver service to the detection core services builder.
 
+## Global Resolver
+
+This library host the component to resolve all the access client related resolver that could resolve.
+
+Example of calling the detection service in the `Controller` using dependency injection.
+
+```csharp
+public class HomeController : Controller
+{      
+    private readonly IDetection _detection;   
+
+    public HomeController(IDetection detection)
+    {        
+        _detection = detection;
+    }
+
+    public IActionResult Index()
+    {            
+        return View();
+    }
+}
+```
+* `IDetection` is main service for you to access detection service.
+
 ## Device Resolver
 
 This library host the component to resolve the access client device type.

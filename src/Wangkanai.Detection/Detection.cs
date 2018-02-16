@@ -13,14 +13,14 @@ namespace Wangkanai.Detection
         public IEngine Engine => _engineResolver.Engine;
         public ICrawler Crawler => _crawlerResolver.Crawler;
 
-        private readonly IDetectionService _service;
+        private readonly IUserAgentService _service;
         private readonly IDeviceResolver _deviceResolver;
         private readonly IBrowserResolver _browserResolver;
         private readonly IPlatformResolver _platformResolver;
         private readonly IEngineResolver _engineResolver;
         private readonly ICrawlerResolver _crawlerResolver;
 
-        public Detection(IDetectionService service,
+        public Detection(IUserAgentService service,
             IDeviceResolver deviceResolver,
             IBrowserResolver browserResolver,
             IPlatformResolver platformResolver,

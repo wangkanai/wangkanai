@@ -9,19 +9,19 @@ namespace Wangkanai.Detection.Test
     public abstract class DeviceTestAbstract
     {
         private HttpContext CreateContext() => new DefaultHttpContext();
-        protected IDetectionService CreateService(string agent)
+        protected IUserAgentService CreateService(string agent)
         {
             var context = CreateContext(agent);
-            var service = new Mock<IDetectionService>();
+            var service = new Mock<IUserAgentService>();
             service.Setup(f => f.Context).Returns(context);
             service.Setup(f => f.UserAgent).Returns(new UserAgent(agent));
             return service.Object;
         }
 
-        protected IDetectionService CreateService(string header, string value)
+        protected IUserAgentService CreateService(string header, string value)
         {
             var context = CreateContext(header, value);
-            var service = new Mock<IDetectionService>();
+            var service = new Mock<IUserAgentService>();
             service.Setup(f => f.Context).Returns(context);
             service.Setup(f => f.UserAgent).Returns(new UserAgent());
             return service.Object;

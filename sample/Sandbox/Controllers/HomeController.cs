@@ -16,7 +16,7 @@ namespace Sandbox.Controllers
         private readonly ClientInfo client;
 
         public HomeController(
-            IDetectionService detectionService,
+            IUserAgentService useragentService,
             IDeviceResolver deviceResolver,
             IBrowserResolver browserResolver,
             IEngineResolver engineResolver,
@@ -25,7 +25,7 @@ namespace Sandbox.Controllers
         {
             client = new ClientInfo
             {
-                UserAgent = detectionService.UserAgent,
+                UserAgent = useragentService.UserAgent,
                 Device = deviceResolver.Device,
                 Browser = browserResolver.Browser,
                 Engine = engineResolver.Engine,
