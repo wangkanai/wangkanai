@@ -108,12 +108,8 @@ public class HomeController : Controller
 
 When the `Detection` is pass to the view you can render results like the following example.
 
-```
+```html
 @model Wangkanai.Detection.Detection
-
-@{
-    ViewData["Title"] = "Detection";
-}
 
 <h3>UserAgent</h3>
 <code>@Model.UserAgent</code>
