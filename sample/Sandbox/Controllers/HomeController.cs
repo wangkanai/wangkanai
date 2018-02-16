@@ -13,40 +13,16 @@ namespace Sandbox.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ClientInfo client;
+        private readonly IDetection _detection;
 
-        public HomeController(
-            IUserAgentService useragentService,
-            IDeviceResolver deviceResolver,
-            IBrowserResolver browserResolver,
-            IEngineResolver engineResolver,
-            IPlatformResolver platformResolver,
-            ICrawlerResolver crawlerResolver)
+        public HomeController(IDetection detection)
         {
-            client = new ClientInfo
-            {
-                UserAgent = useragentService.UserAgent,
-                Device = deviceResolver.Device,
-                Browser = browserResolver.Browser,
-                Engine = engineResolver.Engine,
-                Platform = platformResolver.Platform,
-                Crawler = crawlerResolver.Crawler
-            };
+            _detection = detection;
         }
 
         public IActionResult Index()
         {
-            return View(client);
+            return View(_detection);
         }
-    }
-
-    public class ClientInfo
-    {
-        public IUserAgent UserAgent { get; set; }
-        public IDevice Device { get; set; }
-        public IBrowser Browser { get; set; }
-        public IEngine Engine { get; set; }
-        public IPlatform Platform { get; set; }
-        public ICrawler Crawler { get; set; }
     }
 }

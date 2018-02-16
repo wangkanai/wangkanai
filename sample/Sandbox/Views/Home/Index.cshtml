@@ -1,33 +1,47 @@
-﻿@using System.Threading.Tasks
-@using Sandbox.Controllers
-@model Sandbox.Controllers.ClientInfo
+﻿@model Wangkanai.Detection.Detection
 
 @{
-    ViewData["Title"] = "Browser";
+    ViewData["Title"] = "Detection";
 }
 
-<h4>UserAgent</h4>
+<h3>UserAgent</h3>
 <code>@Model.UserAgent</code>
-<h4>Device</h4>
+
+<h3>Results</h3>
+
 <table>
-    <tr>
-        <th>Device</th>
-        <td>@Model.Device?.Type.ToString()</td>
-    </tr>
-    <tr>
-        <th>Browser</th>
-        <td>@Model.Browser?.Type.ToString()</td>
-    </tr>
-    <tr>
-        <th>Platform</th>
-        <td>@Model.Platform?.Type.ToString()</td>
-    </tr>
-    <tr>
-        <th>Engine</th>
-        <td>@Model.Engine?.Type.ToString()</td>
-    </tr>
-    <tr>
-        <th>Crawler</th>
-        <td>@Model.Crawler?.Type.ToString()</td>
-    </tr>
+    <thead>
+        <tr>
+            <th>Resolver</th>
+            <th>Type</th>
+            <th>Version</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>Device</th>
+            <td>@Model.Device?.Type.ToString()</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>Browser</th>
+            <td>@Model.Browser?.Type.ToString()</td>
+            <td>@Model.Browser?.Version</td>
+        </tr>
+        <tr>
+            <th>Platform</th>
+            <td>@Model.Platform?.Type.ToString()</td>
+            <td>@Model.Platform?.Version</td>
+        </tr>
+        <tr>
+            <th>Engine</th>
+            <td>@Model.Engine?.Type.ToString()</td>
+            <td>@Model.Engine?.Version</td>
+        </tr>
+        <tr>
+            <th>Crawler</th>
+            <td>@Model.Crawler?.Type.ToString()</td>
+            <td>@Model.Crawler?.Version</td>
+        </tr>
+    </tbody>
 </table>

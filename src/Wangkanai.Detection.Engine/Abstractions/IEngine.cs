@@ -6,5 +6,6 @@ namespace Wangkanai.Detection
     public interface IEngine
     {
         EngineType Type { get; set; }
+        IVersion Version { get; set; }
     }
 }
