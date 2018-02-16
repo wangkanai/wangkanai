@@ -90,17 +90,17 @@ Example of calling the detection service in the `Controller` using dependency in
 
 ```csharp
 public class HomeController : Controller
-{      
-    private readonly IDetection _detection;   
+{
+    private readonly IDetection _detection;
 
     public HomeController(IDetection detection)
-    {        
+    {
         _detection = detection;
     }
 
     public IActionResult Index()
-    {            
-        return View();
+    {
+        return View(_detection);
     }
 }
 ```
