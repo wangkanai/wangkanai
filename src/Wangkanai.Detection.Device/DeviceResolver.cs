@@ -25,9 +25,9 @@ namespace Wangkanai.Detection
         private HttpContext _context => _service.Context;
 
         private readonly Device _device;
-        private readonly IDetectionService _service;
+        private readonly IUserAgentService _service;
 
-        public DeviceResolver(IDetectionService service)
+        public DeviceResolver(IUserAgentService service)
         {
             if (service == null) throw new ArgumentNullException(nameof(service));
 

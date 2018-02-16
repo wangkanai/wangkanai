@@ -11,12 +11,12 @@ namespace Wangkanai.Detection
     /// <summary>
     /// Provides the APIs for query client access device.
     /// </summary>
-    public class DetectionService : IDetectionService
+    public class UserAgentService : IUserAgentService
     {
         public HttpContext Context { get; }
         public IUserAgent UserAgent { get; }
 
-        public DetectionService(IServiceProvider services)
+        public UserAgentService(IServiceProvider services)
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
 

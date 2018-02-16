@@ -19,7 +19,7 @@ namespace Wangkanai.Detection.Test
             var serviceDescriptors = new List<ServiceDescriptor>
             {
                 new ServiceDescriptor(typeof(IHttpContextAccessor), typeof(HttpContextAccessor), ServiceLifetime.Singleton),
-                new ServiceDescriptor(typeof(IDetectionService), typeof(DetectionService), ServiceLifetime.Transient)
+                new ServiceDescriptor(typeof(IUserAgentService), typeof(UserAgentService), ServiceLifetime.Transient)
             };
 
             Assert.NotNull(builder);

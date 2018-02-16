@@ -1,13 +1,15 @@
 ﻿// Copyright (c) 2018 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
-using Microsoft.AspNetCore.Http;
-
 namespace Wangkanai.Detection
 {
-    public interface IDetectionService
+    public interface IDetection
     {
-        HttpContext Context { get; }
+        IBrowser Browser { get; }
+        ICrawler Crawler { get; }
+        IDevice Device { get; }
+        IEngine Engine { get; }
+        IPlatform Platform { get; }
         IUserAgent UserAgent { get; }
     }
 }

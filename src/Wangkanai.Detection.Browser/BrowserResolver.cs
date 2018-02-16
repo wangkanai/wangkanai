@@ -15,9 +15,9 @@ namespace Wangkanai.Detection
         private HttpContext _context => _service.Context;
 
         private readonly Browser _browser;
-        private readonly IDetectionService _service;
+        private readonly IUserAgentService _service;
 
-        public BrowserResolver(IDetectionService service)
+        public BrowserResolver(IUserAgentService service)
         {
             if (service == null) throw new ArgumentNullException(nameof(service));
 

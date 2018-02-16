@@ -4,6 +4,7 @@
 using System;
 using Wangkanai.Detection;
 using Wangkanai.Detection.Builder;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -27,6 +28,8 @@ namespace Microsoft.Extensions.DependencyInjection
                 .AddPlatform()
                 .AddEngine()
                 .AddCrawler();
+
+            services.TryAddTransient<IDetection, Detection>();
 
             return new DetectionBuilder(services);
         }

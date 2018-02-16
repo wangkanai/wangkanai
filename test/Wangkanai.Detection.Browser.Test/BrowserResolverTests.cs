@@ -72,10 +72,10 @@ namespace Wangkanai.Detection.Test
             Assert.Equal(BrowserType.Firefox, resolver.Browser.Type);
         }
 
-        private IDetectionService CreateService(string agent)
+        private IUserAgentService CreateService(string agent)
         {
             var context = CreateContext(agent);
-            var service = new Mock<IDetectionService>();
+            var service = new Mock<IUserAgentService>();
             service.Setup(f => f.Context).Returns(context);
             service.Setup(f => f.UserAgent).Returns(new UserAgent(agent));
             return service.Object;
