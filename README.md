@@ -62,7 +62,7 @@ While the detection service is configured globally, its can also be configure in
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
-	// Add detection services container and device resolver service.
+    // Add detection services container and device resolver service.
     services.AddDetectionCore()
         .AddDevice()
         .AddBrowser()
