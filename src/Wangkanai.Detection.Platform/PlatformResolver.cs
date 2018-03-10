@@ -8,9 +8,15 @@ using System.Threading.Tasks;
 
 namespace Wangkanai.Detection
 {
-    public class PlatformResolver : IPlatformResolver
+    public class PlatformResolver : BaseResolver, IPlatformResolver
     {
-        public IPlatform Platform { get; }
-        public IUserAgent UserAgent { get; }
+        public IPlatform Platform => _platform;
+
+        private readonly Platform _platform;
+
+        public PlatformResolver(IUserAgentService service) : base(service)
+        {
+
+        }
     }
 }

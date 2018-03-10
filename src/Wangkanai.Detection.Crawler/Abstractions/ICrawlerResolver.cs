@@ -3,7 +3,7 @@
 
 namespace Wangkanai.Detection
 {
-    public interface ICrawlerResolver
+    public interface ICrawlerResolver : IResolver
     {
         ICrawler Crawler { get; }
     }
