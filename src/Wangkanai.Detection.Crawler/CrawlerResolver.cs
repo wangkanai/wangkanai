@@ -8,22 +8,14 @@ using System.Text;
 
 namespace Wangkanai.Detection
 {
-    public class CrawlerResolver : ICrawlerResolver
+    public class CrawlerResolver : BaseResolver, ICrawlerResolver
     {
         public ICrawler Crawler => _crawler;
-        public IUserAgent UserAgent => _service.UserAgent;
 
-        private HttpContext _context => _service.Context;
-
-        private readonly IUserAgentService _service;
         private readonly Crawler _crawler;
 
-        public CrawlerResolver(IUserAgentService service)
+        public CrawlerResolver(IUserAgentService service) : base(service)
         {
-            if (service == null) throw new ArgumentNullException(nameof(service));
-
-            _service = service;
-
             _crawler = GetCrawler();
         }
 
@@ -57,13 +49,6 @@ namespace Wangkanai.Detection
             if (agent == null) return false;
             if (CrawlerCollection.Keywords.Any(keyword => agent.Contains(keyword))) return true;
             return false;
-        }
-
-        private string GetUserAgent()
-        {
-            if (_context == null) return "";
-            if (!_context.Request.Headers["User-Agent"].Any()) return "";
-            return new UserAgent(_context.Request.Headers["User-Agent"].FirstOrDefault()).ToString().ToLowerInvariant();
         }
     }
 }

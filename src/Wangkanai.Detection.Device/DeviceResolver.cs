@@ -7,41 +7,24 @@ using System.Linq;
 
 namespace Wangkanai.Detection
 {
-    public sealed class DeviceResolver : IDeviceResolver
+    public sealed class DeviceResolver : BaseResolver, IDeviceResolver
     {
         /// <summary>
         /// Get device result of device result
         /// </summary>
         public IDevice Device => _device;
 
-        /// <summary>
-        /// Get user agnet of the request client
-        /// </summary>
-
-        public IUserAgent UserAgent => _service.UserAgent;
-        /// <summary>
-        /// Get HttpContext of the application service
-        /// </summary>
-        private HttpContext _context => _service.Context;
-
         private readonly Device _device;
-        private readonly IUserAgentService _service;
 
-        public DeviceResolver(IUserAgentService service)
+        public DeviceResolver(IUserAgentService service) : base(service)
         {
-            if (service == null) throw new ArgumentNullException(nameof(service));
-
-            _service = service;
-
-            // testing failed because no default Httpcontext
-            //if (_context == null) throw new ArgumentNullException(nameof(_context));
             _device = new Device(GetDeviceType());
         }
 
         private DeviceType GetDeviceType()
         {
             var agent = GetUserAgent();
-            var request = _context.Request;
+            var request = Context.Request;
 
             // tablet user agent keyword detection
             if (agent != null && TabletCollection.Keywords.Any(keyword => agent.Contains(keyword)))
@@ -63,13 +46,6 @@ namespace Wangkanai.Detection
                 return DeviceType.Mobile;
 
             return DeviceType.Desktop;
-        }
-
-        private string GetUserAgent()
-        {
-            if (_context == null) return "";
-            if (!_context.Request.Headers["User-Agent"].Any()) return "";
-            return new UserAgent(_context.Request.Headers["User-Agent"].FirstOrDefault()).ToString().ToLowerInvariant();
         }
     }
 }

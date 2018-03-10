@@ -7,22 +7,14 @@ using Wangkanai.Detection.Collections;
 
 namespace Wangkanai.Detection
 {
-    public class BrowserResolver : IBrowserResolver
+    public class BrowserResolver : BaseResolver, IBrowserResolver
     {
         public IBrowser Browser => _browser;
-        public IUserAgent UserAgent => _service.UserAgent;
-
-        private HttpContext _context => _service.Context;
 
         private readonly Browser _browser;
-        private readonly IUserAgentService _service;
 
-        public BrowserResolver(IUserAgentService service)
+        public BrowserResolver(IUserAgentService service) : base(service)
         {
-            if (service == null) throw new ArgumentNullException(nameof(service));
-
-            _service = service;
-
             _browser = GetBrowser();
         }
 
