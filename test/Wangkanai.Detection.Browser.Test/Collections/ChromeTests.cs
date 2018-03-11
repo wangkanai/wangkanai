@@ -18,7 +18,17 @@ namespace Wangkanai.Detection.Collections
             Assert.Equal(BrowserType.Chrome, chrome.Type);
             Assert.Equal("51.0.2704.103", chrome.Version.ToString());
         }
-
+        [Fact]
+        public void Second()
+        {
+            // arrange
+            var agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36";
+            // act
+            var chrome = new Chrome(agent);
+            // assert
+            Assert.Equal(BrowserType.Chrome, chrome.Type);
+            Assert.Equal("64.0.3282.186", chrome.Version.ToString());
+        }
         [Fact]
         public void Invalid()
         {
