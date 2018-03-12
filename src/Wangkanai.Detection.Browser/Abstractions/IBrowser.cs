@@ -6,7 +6,6 @@ namespace Wangkanai.Detection
     public interface IBrowser
     {
         string Name { get; set; }
-        string Maker { get; set; }
         BrowserType Type { get; set; }
         IVersion Version { get; set; }
     }

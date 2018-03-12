@@ -13,7 +13,7 @@ namespace Wangkanai.Detection.Test
         {
             // arrange
             var exception = new DeviceNotFoundException();
-            // act 
+            // act
             var message = exception.Message;
             // assert
             Assert.Equal("Device Not Supported", message);
@@ -22,7 +22,7 @@ namespace Wangkanai.Detection.Test
         [Fact]
         public void ExceptionNotNull()
         {
-            // arrange 
+            // arrange
             var exception = new DeviceNotFoundException("test");
             // act
             var message = exception.Message;
@@ -33,7 +33,7 @@ namespace Wangkanai.Detection.Test
         [Fact]
         public void ExceptionInvalidDeviceName()
         {
-            // arrange 
+            // arrange
             var exception = new DeviceNotFoundException("param", "watch", "test");
             // act
             var message = exception.Message;
@@ -51,7 +51,7 @@ namespace Wangkanai.Detection.Test
             // act
             var message = exception.Message;
             // assert
-            Assert.Equal("test",message);
+            Assert.Equal("test", message);
         }
     }
 }
