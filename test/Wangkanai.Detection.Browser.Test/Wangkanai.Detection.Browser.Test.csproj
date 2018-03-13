@@ -26,8 +26,4 @@
     <ProjectReference Include="..\..\src\Wangkanai.Detection.Browser\Wangkanai.Detection.Browser.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Compile Include="..\shared\**\*.cs"></Compile>
-  </ItemGroup>
-
 </Project>
