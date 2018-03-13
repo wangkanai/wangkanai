@@ -11,6 +11,18 @@ namespace Wangkanai.Detection.Test
     public class BrowserResolverTests
     {
         [Theory]
+        [UserAgentData(DeviceType.Desktop, BrowserType.Opera, PlatformType.Windows, EngineType.WebKit, "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.73 Safari/537.36 OPR/34.0.2036.42")]
+        public void Resolve_Opera_Data(DeviceType device, BrowserType browser, PlatformType platform, EngineType engine, string agent)
+        {
+            // arrange
+            var service = CreateService(agent);
+            // act
+            var resolver = new BrowserResolver(service);
+            // assert
+            Assert.Equal(browser, resolver.Browser.Type);
+        }
+
+        [Theory]
         [InlineData("Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.73 Safari/537.36 OPR/34.0.2036.42")]
         [InlineData("Opera / 9.80(X11; Linux i686; Ubuntu / 14.10) Presto/2.12.388 Version/12.16")]
         public void Resolve_Opera(string agent)
@@ -76,7 +88,8 @@ namespace Wangkanai.Detection.Test
         {
             var context = CreateContext(agent);
             var service = new Mock<IUserAgentService>();
-            service.Setup(f => f.Context).Returns(context);
+            // this can be left out, due to the resolver doesn't require HttpContext
+            //service.Setup(f => f.Context).Returns(context);
             service.Setup(f => f.UserAgent).Returns(new UserAgent(agent));
             return service.Object;
         }
