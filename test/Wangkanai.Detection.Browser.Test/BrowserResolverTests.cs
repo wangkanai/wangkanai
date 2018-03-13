@@ -76,7 +76,8 @@ namespace Wangkanai.Detection.Test
         {
             var context = CreateContext(agent);
             var service = new Mock<IUserAgentService>();
-            service.Setup(f => f.Context).Returns(context);
+            // this can be left out, due to the resolver doesn't require HttpContext
+            //service.Setup(f => f.Context).Returns(context);
             service.Setup(f => f.UserAgent).Returns(new UserAgent(agent));
             return service.Object;
         }

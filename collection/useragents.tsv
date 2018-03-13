@@ -5,9 +5,12 @@ Tablet	Firefox	Firefox	Gecko	Mozilla/5.0 (Tablet; rv:26.0) Gecko/26.0 Firefox/26
 Tablet	Android	Firefox	Gecko	Mozilla/5.0 (Android 4.4; Tablet; rv:41.0) Gecko/41.0 Firefox/41.0
 Mobile	iOS	Safari	AppleWebKit	Mozilla/5.0 (iPhone; CPU iPhone OS 8_3 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) FxiOS/1.0 Mobile/12F69 Safari/600.1.4
 Mobile	Android	Chrome	AppleWebKit	Mozilla/5.0 (Linux; Android 4.4.2); Nexus 5 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Mobile Safari/537.36 OPR/20.0.1396.72047
-
-
-
+Desktop	Windows	Chrome	AppleWebKit	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+Desktop	Linux	Chrome	AppleWebKit	Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.3
+Desktop	Windows	Chrome	AppleWebKit	Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.73 Safari/537.36 OPR/34.0.2036.42
+Desktop	Linux	Opera	Presto	Opera / 9.80(X11; Linux i686; Ubuntu / 14.10) Presto/2.12.388 Version/12.16
+Desktop	Windows	Opera	AppleWebKit	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.79 Safari/537.36 Edge/14.14393
+Desktop	Windows	IE	Trident	Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0)
 
 
 

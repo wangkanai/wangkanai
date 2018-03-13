@@ -52,9 +52,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection.Platfor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection.Core", "src\Wangkanai.Detection.Core\Wangkanai.Detection.Core.csproj", "{B6DCA0FE-A06A-4B21-B6EC-C5BC7F7D1B48}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Detection.Crawler", "src\Wangkanai.Detection.Crawler\Wangkanai.Detection.Crawler.csproj", "{32C0383F-D579-4124-8BA2-B2205A3AF27C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection.Crawler", "src\Wangkanai.Detection.Crawler\Wangkanai.Detection.Crawler.csproj", "{32C0383F-D579-4124-8BA2-B2205A3AF27C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Detection.Crawler.Test", "test\Wangkanai.Detection.Crawler.Test\Wangkanai.Detection.Crawler.Test.csproj", "{3E3BC543-DB56-4A0B-B19A-01C2F3F0AF46}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection.Crawler.Test", "test\Wangkanai.Detection.Crawler.Test\Wangkanai.Detection.Crawler.Test.csproj", "{3E3BC543-DB56-4A0B-B19A-01C2F3F0AF46}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
