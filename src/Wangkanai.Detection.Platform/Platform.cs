@@ -6,6 +6,7 @@ namespace Wangkanai.Detection
     public class Platform : IPlatform
     {
         public string Name { get; set; }
+        public string Maker { get; set; }
         public PlatformType Type { get; set; }
         public IVersion Version { get; set; }
         public byte Bits { get; set; }

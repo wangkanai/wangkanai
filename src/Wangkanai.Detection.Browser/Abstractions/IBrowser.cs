@@ -3,10 +3,9 @@
 
 namespace Wangkanai.Detection
 {
-    public interface IBrowser
+    public interface IBrowser : IManufacturer
     {
-        string Name { get; set; }
-        BrowserType Type { get; set; }
-        IVersion Version { get; set; }
+        string Name { get; }
+        BrowserType Type { get; }
     }
 }

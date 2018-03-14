@@ -14,7 +14,7 @@ namespace Wangkanai.Detection
         /// </summary>
         public IDevice Device => _device;
 
-        private readonly Device _device;
+        private readonly IDevice _device;
 
         public DeviceResolver(IUserAgentService service) : base(service)
         {
