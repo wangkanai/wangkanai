@@ -8,6 +8,7 @@ namespace Wangkanai.Detection
     public class Browser : IBrowser
     {
         public string Name { get; set; }
+        public string Maker { get; set; }
         public BrowserType Type { get; set; } = BrowserType.Generic;
         public IVersion Version { get; set; }
 

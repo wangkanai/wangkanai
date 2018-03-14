@@ -12,7 +12,7 @@ namespace Wangkanai.Detection
     {
         public IPlatform Platform => _platform;
 
-        private readonly Platform _platform;
+        private readonly IPlatform _platform;
 
         public PlatformResolver(IUserAgentService service) : base(service)
         {

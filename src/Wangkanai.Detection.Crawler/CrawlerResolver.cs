@@ -12,7 +12,7 @@ namespace Wangkanai.Detection
     {
         public ICrawler Crawler => _crawler;
 
-        private readonly Crawler _crawler;
+        private readonly ICrawler _crawler;
 
         public CrawlerResolver(IUserAgentService service) : base(service)
         {

@@ -11,7 +11,7 @@ namespace Wangkanai.Detection
     {
         public IBrowser Browser => _browser;
 
-        private readonly Browser _browser;
+        private readonly IBrowser _browser;
 
         public BrowserResolver(IUserAgentService service) : base(service)
         {
