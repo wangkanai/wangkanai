@@ -34,12 +34,12 @@ namespace Wangkanai.Detection
             var opera = new Opera(agent);
             if (opera.Type == BrowserType.Opera)
                 return opera;
-            var safari = new Safari(agent);
-            if (safari.Type == BrowserType.Safari)
-                return safari;
             var chrome = new Chrome(agent);
             if (chrome.Type == BrowserType.Chrome)
                 return chrome;
+            var safari = new Safari(agent);
+            if (safari.Type == BrowserType.Safari)
+                return safari;
 
             return new Browser();
         }
