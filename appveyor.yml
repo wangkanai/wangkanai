@@ -4,6 +4,7 @@ init:
 branches:
   only:
     - master
+    - dev
     - /^release\/.$/
     - /^(.*\/)?ci-.*$/
 build_script:
