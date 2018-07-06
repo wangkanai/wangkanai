@@ -10,6 +10,7 @@ branches:
 build_script:
   - ps: ./run.ps1
 clone_depth: 1
+test: 'off'
 deploy: 'off'
 artifacts:
   - path: '**\*.nupkg'
