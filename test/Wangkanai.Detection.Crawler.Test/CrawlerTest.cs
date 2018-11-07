@@ -10,6 +10,12 @@ namespace Wangkanai.Detection.Test
     public class CrawlerTest
     {
         [Theory]
+        [InlineData("Facebot")]
+        [InlineData("facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)")]
+        [InlineData("Mozilla/5.0 (Windows NT 6.1; WOW64) SkypeUriPreview Preview/0.5")]
+        [InlineData("Twitterbot/1.0")]
+        [InlineData("LinkedInBot/1.0 (compatible; Mozilla/5.0; Jakarta Commons-HttpClient/3.1 +http://www.linkedin.com)")]
+        [InlineData("Mozilla/5.0 (compatible; Google-Structured-Data-Testing-Tool +https://search.google.com/structured-data/testing-tool)")]
         [InlineData("Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)")]
         [InlineData("Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)")]
         [InlineData("Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp)")]
@@ -22,6 +28,61 @@ namespace Wangkanai.Detection.Test
             var resolver = new CrawlerResolver(service);
             // assert
             Assert.NotNull(resolver.Crawler);
+        }
+
+        [Fact]
+        public void Facebot_Bot() {
+            var agent = "Facebot";
+            var service = CreateService(agent);
+            // act
+            var resolver = new CrawlerResolver(service);
+
+            Assert.Equal("Facebot", resolver.Crawler.Name);
+            Assert.Equal(CrawlerType.Facebook, resolver.Crawler.Type);
+        }
+
+        [Fact]
+        public void Facebookbot_Bot() {
+            var agent = "facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)";
+            var service = CreateService(agent);
+            // act
+            var resolver = new CrawlerResolver(service);
+
+            Assert.Equal("facebookexternalhit", resolver.Crawler.Name);
+            Assert.Equal(CrawlerType.Facebook, resolver.Crawler.Type);
+        }
+
+        [Fact]
+        public void Twitterbot_Bot() {
+            var agent = "Twitterbot/1.0";
+            var service = CreateService(agent);
+            // act
+            var resolver = new CrawlerResolver(service);
+
+            Assert.Equal("Twitterbot", resolver.Crawler.Name);
+            Assert.Equal(CrawlerType.Twitter, resolver.Crawler.Type);
+        }
+
+        [Fact]
+        public void LinkedInBot_Bot() {
+            var agent = "LinkedInBot/1.0 (compatible; Mozilla/5.0; Jakarta Commons-HttpClient/3.1 +http://www.linkedin.com)";
+            var service = CreateService(agent);
+            // act
+            var resolver = new CrawlerResolver(service);
+
+            Assert.Equal("LinkedInBot", resolver.Crawler.Name);
+            Assert.Equal(CrawlerType.LinkedIn, resolver.Crawler.Type);
+        }
+
+        [Fact]
+        public void Skype_Messenger() {
+            var agent = "Mozilla/5.0 (Windows NT 6.1; WOW64) SkypeUriPreview Preview/0.5";
+            var service = CreateService(agent);
+            // act
+            var resolver = new CrawlerResolver(service);
+
+            Assert.Equal("SkypeUriPreview", resolver.Crawler.Name);
+            Assert.Equal(CrawlerType.Skype, resolver.Crawler.Type);
         }
 
         [Fact]

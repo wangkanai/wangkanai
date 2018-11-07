@@ -31,12 +31,22 @@ namespace Wangkanai.Detection
             var bot = split.Where(x => CrawlerCollection.Keywords.Count(y => x.ToLower().Contains(y)) == 1)
                            .FirstOrDefault();
 
+            string name, version;
             var index = bot.IndexOf('/');
             if (index < 0)
                 index = bot.IndexOf(';');
 
-            var name = bot.Substring(0, index);
-            var version = bot.Substring(index + 1).TrimEnd(';');
+            if (index < 0)
+            {
+                name = bot;
+                version = string.Empty;
+            }
+            else
+            {
+                name = bot.Substring(0, index);
+                version = bot.Substring(index + 1).TrimEnd(';');
+            }
+
             if (version == string.Empty)
                 return new Crawler(name);
 

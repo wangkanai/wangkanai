@@ -10,5 +10,9 @@ namespace Wangkanai.Detection
         Bing,
         Yahoo,
         Baidu,
+        Facebook,
+        Twitter,
+        LinkedIn,
+        Skype
     }
 }

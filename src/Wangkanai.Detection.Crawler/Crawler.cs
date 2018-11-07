@@ -37,6 +37,14 @@ namespace Wangkanai.Detection
                 return CrawlerType.Baidu;
             if (name.Contains("yahoo"))
                 return CrawlerType.Yahoo;
+            if(name.Contains("facebook") || name.Contains("facebot"))
+                return CrawlerType.Facebook;
+            if(name.Contains("twitter"))
+                return CrawlerType.Twitter;
+            if(name.Contains("linkedin"))
+                return CrawlerType.LinkedIn;
+            if(name.Contains("skype"))
+                return CrawlerType.Skype;
 
             return CrawlerType.Others;
         }

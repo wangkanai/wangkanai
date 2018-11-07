@@ -8,7 +8,10 @@ namespace Wangkanai.Detection
         public static string[] Keywords => new string[] {
             "bot",
             "slurp",
-            "spider"
+            "spider",
+            "google-structured-data-testing-tool",
+            "facebookexternalhit",
+            "skypeuripreview"
         };
     }
 }
