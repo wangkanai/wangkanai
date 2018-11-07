@@ -28,7 +28,11 @@ namespace Wangkanai.Detection
         {
             if (context == null) throw new ArgumentNullException(nameof(Context));
 
-            return new UserAgent(Context.Request.Headers["User-Agent"].FirstOrDefault());
+            var agent = Context.Request.Headers["User-Agent"].FirstOrDefault();
+
+            if (agent == null) return new UserAgent();
+
+            return new UserAgent(agent);
         }
     }
 }
