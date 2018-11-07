@@ -9,7 +9,7 @@ namespace Wangkanai.Detection
     {
         public string Name { get; set; }
         public CrawlerType Type { get; set; }
-        public IVersion Version { get; set; }
+        public Version Version { get; set; }
 
         public Crawler() { }
         public Crawler(string name)

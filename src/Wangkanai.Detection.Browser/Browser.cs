@@ -10,12 +10,12 @@ namespace Wangkanai.Detection
         public string Name { get; set; }
         public string Maker { get; set; }
         public BrowserType Type { get; set; } = BrowserType.Generic;
-        public IVersion Version { get; set; }
+        public Version Version { get; set; }
 
         public Browser() { }
         public Browser(BrowserType browserType)
             => Type = browserType;
-        public Browser(BrowserType browserType, IVersion version)
+        public Browser(BrowserType browserType, Version version)
             : this(browserType)
             => Version = version;
 
