@@ -72,6 +72,17 @@ namespace Wangkanai.Detection.Test
             Assert.Equal(BrowserType.Firefox, resolver.Browser.Type);
         }
 
+        [Fact]
+        public void Resolve_NullAgent()
+        {
+            // arrange
+            var service = CreateService(null);
+            // act
+            var resolver = new BrowserResolver(service);
+            // assert
+
+        }
+
         private IUserAgentService CreateService(string agent)
         {
             var context = CreateContext(agent);

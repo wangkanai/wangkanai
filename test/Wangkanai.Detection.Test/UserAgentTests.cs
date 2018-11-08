@@ -29,7 +29,7 @@ namespace Wangkanai.Detection.Test
         {
             var userAgent = new UserAgent(null);
 
-            Assert.Null(userAgent.ToString());
+            Assert.NotNull(userAgent.ToString());
         }
     }
 }
