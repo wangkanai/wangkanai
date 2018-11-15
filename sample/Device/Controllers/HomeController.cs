@@ -13,7 +13,7 @@ namespace Sandbox.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IDeviceResolver _resolver;        
+        private readonly IDeviceResolver _resolver;
 
         public HomeController(IDeviceResolver resolver)
         {
@@ -21,7 +21,8 @@ namespace Sandbox.Controllers
         }
 
         public IActionResult Index()
-        {                        
+        {
+            ViewData["Device"] = Request.Device().Type;
             return View(_resolver);
         }
     }

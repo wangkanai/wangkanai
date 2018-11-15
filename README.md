@@ -285,7 +285,7 @@ public class HomeController : Controller
 ```
 * `IDetectionService` is main service for you to access UserAgent.
 
-## *(Concept)* Add extensions to `HttpRequest` [Learn more #1](/../../issues/1)
+## `HttpRequest` extensions (beta10) [Learn more #1](/../../issues/1)
 
 This would allow quick access to the Detection in any client request.
 
@@ -294,6 +294,7 @@ var browser = Request.Browser();
 var device = Request.Device();
 var platform = Request.Platform();
 var engine = Request.Engine();
+var crawler = Request.Crawler();
 ```
 
 ### Directory Structure

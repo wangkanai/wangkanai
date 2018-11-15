@@ -31,7 +31,26 @@ namespace Wangkanai.Detection.Test
         }
 
         [Fact]
-        public void Facebot_Bot() {
+        public void CrawlerAgentNull()
+        {
+            var service = CreateService(null);
+            var resolver = new CrawlerResolver(service);
+
+            Assert.Null(resolver.Crawler);
+        }
+
+        [Fact]
+        public void CrawlerAgentEmpty()
+        {
+            var service = CreateService("");
+            var resolver = new CrawlerResolver(service);
+
+            Assert.Null(resolver.Crawler);
+        }
+
+        [Fact]
+        public void Facebot_Bot()
+        {
             var agent = "Facebot";
             var service = CreateService(agent);
             // act
@@ -42,7 +61,8 @@ namespace Wangkanai.Detection.Test
         }
 
         [Fact]
-        public void Facebookbot_Bot() {
+        public void Facebookbot_Bot()
+        {
             var agent = "facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)";
             var service = CreateService(agent);
             // act
@@ -53,7 +73,8 @@ namespace Wangkanai.Detection.Test
         }
 
         [Fact]
-        public void Twitterbot_Bot() {
+        public void Twitterbot_Bot()
+        {
             var agent = "Twitterbot/1.0";
             var service = CreateService(agent);
             // act
@@ -64,7 +85,8 @@ namespace Wangkanai.Detection.Test
         }
 
         [Fact]
-        public void LinkedInBot_Bot() {
+        public void LinkedInBot_Bot()
+        {
             var agent = "LinkedInBot/1.0 (compatible; Mozilla/5.0; Jakarta Commons-HttpClient/3.1 +http://www.linkedin.com)";
             var service = CreateService(agent);
             // act
@@ -75,7 +97,8 @@ namespace Wangkanai.Detection.Test
         }
 
         [Fact]
-        public void Skype_Messenger() {
+        public void Skype_Messenger()
+        {
             var agent = "Mozilla/5.0 (Windows NT 6.1; WOW64) SkypeUriPreview Preview/0.5";
             var service = CreateService(agent);
             // act

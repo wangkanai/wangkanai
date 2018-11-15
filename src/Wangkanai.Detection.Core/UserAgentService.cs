@@ -24,6 +24,14 @@ namespace Wangkanai.Detection
             this.UserAgent = CreateUserAgent(this.Context);
         }
 
+        public UserAgentService(HttpContext context)
+        {
+            if (context == null) throw new ArgumentNullException(nameof(context));
+
+            this.Context = context;
+            this.UserAgent = CreateUserAgent(this.Context);
+        }
+
         private IUserAgent CreateUserAgent(HttpContext context)
         {
             if (context == null) throw new ArgumentNullException(nameof(Context));
