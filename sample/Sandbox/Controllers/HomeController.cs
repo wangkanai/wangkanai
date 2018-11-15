@@ -22,6 +22,10 @@ namespace Sandbox.Controllers
 
         public IActionResult Index()
         {
+            var browser = Request.Browser();
+            var device = Request.Device();
+            var platform = Request.Platform();
+            var engine = Request.Engine();
             return View(_detection);
         }
     }
