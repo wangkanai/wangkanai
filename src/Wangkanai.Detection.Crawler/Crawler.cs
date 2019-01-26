@@ -20,7 +20,10 @@ namespace Wangkanai.Detection
 
         public Crawler(string name, string version) : this(name)
         {
-            Version = new Version(version);
+            if (System.Version.TryParse(version, out var parsedVersion))
+            {
+                Version = parsedVersion;
+            }
         }
 
         private CrawlerType GetType(string name)

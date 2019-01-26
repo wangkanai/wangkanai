@@ -18,7 +18,7 @@ namespace Wangkanai.Detection.Collections
             {
                 var first = _agent.IndexOf(safari);
                 var version = _agent.Substring(first + safari.Length + 1);
-                Version = new Version(version);
+                Version = ParseVersion(version);
                 Type = BrowserType.Safari;
             }
         }

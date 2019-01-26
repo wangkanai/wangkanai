@@ -2,6 +2,7 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
+using System.Reflection.Emit;
 
 namespace Wangkanai.Detection
 {
@@ -27,6 +28,21 @@ namespace Wangkanai.Detection
                 throw new BrowserNotFoundException(name, "not found");
 
             Type = type;
+        }
+
+        protected Version ParseVersion(string version)
+        {
+            // if request is going via google proxy then version will be appended with Firefox/11.0 (via ggpht.com GoogleImageProxy)
+            if (version.Contains(" "))
+            {
+                version = version.Substring(0, version.IndexOf(' '));
+            }
+
+            if (Version.TryParse(version, out var parsedVersion))
+            {
+                return parsedVersion;
+            }
+           return new Version(0, 0);
         }
     }
 }

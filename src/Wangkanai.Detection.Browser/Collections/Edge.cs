@@ -18,7 +18,7 @@ namespace Wangkanai.Detection.Collections
             {
                 var first = _agent.IndexOf(edge);
                 var version = _agent.Substring(first + edge.Length + 1);
-                Version = new Version(version);
+                Version = ParseVersion(version);
                 Type = BrowserType.Edge;
             }
         }

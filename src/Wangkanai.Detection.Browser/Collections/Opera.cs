@@ -18,7 +18,7 @@ namespace Wangkanai.Detection.Collections
             {
                 var first = _agent.IndexOf("version");
                 var version = _agent.Substring(first + "version".Length + 1);
-                Version = new Version(version);
+                Version = ParseVersion(version);
                 Type = BrowserType.Opera;
             }
 
@@ -27,7 +27,7 @@ namespace Wangkanai.Detection.Collections
             {
                 var first = _agent.IndexOf(opera15);
                 var version = _agent.Substring(first + opera15.Length + 1);
-                Version = new Version(version);
+                Version = ParseVersion(version);
                 Type = BrowserType.Opera;
             }
         }
