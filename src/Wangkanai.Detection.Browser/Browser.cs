@@ -2,7 +2,6 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
-using System.Reflection.Emit;
 
 namespace Wangkanai.Detection
 {
