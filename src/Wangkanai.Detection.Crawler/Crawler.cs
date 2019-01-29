@@ -21,7 +21,7 @@ namespace Wangkanai.Detection
 
         public Crawler(string name, string version) : this(name)
         {
-            Version = version.ToVersion();
+            Version = version.ToVersion();            
         }
 
         private CrawlerType GetType(string name)
