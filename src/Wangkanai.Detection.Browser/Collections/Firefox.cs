@@ -4,7 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Wangkanai.Detection.Extensions;
+using Wangkanai.Detection;
 
 namespace Wangkanai.Detection.Collections
 {
