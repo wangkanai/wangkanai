@@ -72,6 +72,31 @@ namespace Wangkanai.Detection.Test
             Assert.Equal(BrowserType.Firefox, resolver.Browser.Type);
         }
 
+        [Theory]
+        [InlineData("Mozilla/5.0 (Windows NT 5.1; rv:11.0) Gecko Firefox/11.0 (via ggpht.com GoogleImageProxy)")]
+        public void Resolve_FireFox_via_GoogleProxy(string agent)
+        {
+            // arrange
+            var service = CreateService(agent);
+            // act
+            var resolver = new BrowserResolver(service);
+            // assert
+            Assert.Equal(BrowserType.Firefox, resolver.Browser.Type);
+        }
+
+        [Theory]
+        [InlineData("Mozilla/5.0 (Windows NT 5.1; rv:11.0) Gecko Firefox/11.0-Beta")]
+        public void Resolve_FireFox_InvalidVersion(string agent)
+        {
+            // arrange
+            var service = CreateService(agent);
+            // act
+            var resolver = new BrowserResolver(service);
+            // assert
+            Assert.Equal(BrowserType.Firefox, resolver.Browser.Type);
+            Assert.Equal(0, resolver.Browser.Version.Major);
+        }
+
         [Fact]
         public void Resolve_NullAgent()
         {

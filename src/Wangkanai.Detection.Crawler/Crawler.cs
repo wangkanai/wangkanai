@@ -2,6 +2,7 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
+using Wangkanai.Detection;
 
 namespace Wangkanai.Detection
 {
@@ -20,7 +21,7 @@ namespace Wangkanai.Detection
 
         public Crawler(string name, string version) : this(name)
         {
-            Version = new Version(version);
+            Version = version.ToVersion();            
         }
 
         private CrawlerType GetType(string name)

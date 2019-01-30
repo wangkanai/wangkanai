@@ -2,6 +2,7 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
+using Wangkanai.Detection;
 
 namespace Wangkanai.Detection.Collections
 {
@@ -18,7 +19,7 @@ namespace Wangkanai.Detection.Collections
             {
                 var first = _agent.IndexOf(safari);
                 var version = _agent.Substring(first + safari.Length + 1);
-                Version = new Version(version);
+                Version = version.ToVersion();
                 Type = BrowserType.Safari;
             }
         }

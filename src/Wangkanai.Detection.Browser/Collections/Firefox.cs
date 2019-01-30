@@ -4,6 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Wangkanai.Detection;
 
 namespace Wangkanai.Detection.Collections
 {
@@ -20,8 +21,7 @@ namespace Wangkanai.Detection.Collections
             {
                 var first = _agent.IndexOf(firefox);
                 var version = _agent.Substring(first + firefox.Length + 1);
-                //var version = cut.Substring(0, cut.IndexOf(' '));
-                Version = new Version(version);
+                Version = version.ToVersion();
                 Type = BrowserType.Firefox;
             }
         }
