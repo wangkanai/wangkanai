@@ -22,6 +22,6 @@ namespace Wangkanai.Detection
         /// <param name="version"></param>
         /// <returns></returns>
         private static string RemoveWhitespace(this string version) =>            
-            version.Contains(" ") ? version.Remove(' ') : version;
+            version.Contains(" ") ? version.Replace(" ", "") : version;
     }
 }
