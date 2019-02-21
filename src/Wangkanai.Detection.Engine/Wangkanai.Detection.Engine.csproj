@@ -11,8 +11,7 @@
     <PackageId>Wangkanai.Detection.Engine</PackageId>
     <PackageTags>aspnetcore;detection;engine</PackageTags>
     <PackageIconUrl>http://0.gravatar.com/avatar/f58457d38ab3bc43526c6e52af17494e</PackageIconUrl>
-    <PackageProjectUrl>https://github.com/wangkanai/Detection</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/wangkanai/Detection/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/wangkanai/Detection</PackageProjectUrl>    
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>git://github.com/wangkanai/Detection</RepositoryUrl>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
