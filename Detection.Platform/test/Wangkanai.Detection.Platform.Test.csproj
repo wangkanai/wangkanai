@@ -21,4 +21,8 @@
     <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\src\Wangkanai.Detection.Platform.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -5,7 +5,7 @@
 
     <IsPackable>false</IsPackable>
 
-    <AssemblyName>Wangkanai.Detection.Browser.Test</AssemblyName>
+    <AssemblyName>Wangkanai.Detection.Crawler.Test</AssemblyName>
 
     <RootNamespace>Wangkanai.Detection</RootNamespace>
   </PropertyGroup>
@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Wangkanai.Detection.Browser\Wangkanai.Detection.Browser.csproj" />
+    <ProjectReference Include="..\src\Wangkanai.Detection.Crawler.csproj" />
   </ItemGroup>
 
 </Project>
