@@ -1,15 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Description>ASP.NET Core Platform Resolver components</Description>
+    <Description>ASP.NET Core Detection Crawler resolver components</Description>
     <Copyright>Copyright © 2018 Sarin Na Wangkanai</Copyright>
     <Authors>Sarin Na Wangkanai</Authors>
     <TargetFramework>netstandard2.0</TargetFramework>
     <NoWarn>$(NoWarn);CS1591</NoWarn>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <AssemblyName>Wangkanai.Detection.Platform</AssemblyName>
-    <PackageId>Wangkanai.Detection.Platform</PackageId>
-    <PackageTags>aspnetcore;detection;platform</PackageTags>
+    <AssemblyName>Wangkanai.Detection.Crawler</AssemblyName>
+    <PackageId>Wangkanai.Detection.Crawler</PackageId>
+    <PackageTags>aspnetcore;detection;crawler</PackageTags>
     <PackageIconUrl>http://0.gravatar.com/avatar/f58457d38ab3bc43526c6e52af17494e</PackageIconUrl>
     <PackageProjectUrl>https://github.com/wangkanai/Detection</PackageProjectUrl>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
@@ -25,7 +25,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Wangkanai.Detection.Core\Wangkanai.Detection.Core.csproj" />
+    <ProjectReference Include="..\..\Detection.Core\src\Wangkanai.Detection.Core.csproj" />
   </ItemGroup>
 
 </Project>

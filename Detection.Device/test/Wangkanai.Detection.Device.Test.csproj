@@ -5,9 +5,9 @@
 
     <IsPackable>false</IsPackable>
 
-    <AssemblyName>Wangkanai.Detection.Crawler.Test</AssemblyName>
+    <AssemblyName>Wangkanai.Detection.Test</AssemblyName>
 
-    <RootNamespace>Wangkanai.Detection</RootNamespace>
+    <RootNamespace>Wangkanai.Detection.Test</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -23,7 +23,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Wangkanai.Detection.Crawler\Wangkanai.Detection.Crawler.csproj" />
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\src\Wangkanai.Detection.Device.csproj" />
   </ItemGroup>
 
 </Project>

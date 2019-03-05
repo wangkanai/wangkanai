@@ -1,15 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Description>ASP.NET Core Detection service components for identifying details about client device, browser, engine, platform, and crawler.</Description>
+    <Description>ASP.NET Core Detection Device resolver components</Description>
     <Copyright>Copyright © 2018 Sarin Na Wangkanai</Copyright>
     <Authors>Sarin Na Wangkanai</Authors>
     <TargetFramework>netstandard2.0</TargetFramework>
     <NoWarn>$(NoWarn);CS1591</NoWarn>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <AssemblyName>Wangkanai.Detection</AssemblyName>
-    <PackageId>Wangkanai.Detection</PackageId>
-    <PackageTags>aspnetcore;detection</PackageTags>
+    <AssemblyName>Wangkanai.Detection.Device</AssemblyName>
+    <PackageId>Wangkanai.Detection.Device</PackageId>
+    <PackageTags>aspnetcore;detection;device</PackageTags>
     <PackageIconUrl>http://0.gravatar.com/avatar/f58457d38ab3bc43526c6e52af17494e</PackageIconUrl>
     <PackageProjectUrl>https://github.com/wangkanai/Detection</PackageProjectUrl>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
@@ -21,14 +21,11 @@
     <VersionPrefix>2.0.0</VersionPrefix>
     <VersionSuffix>beta11</VersionSuffix>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <RootNamespace>Wangkanai.Detection</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Wangkanai.Detection.Browser\Wangkanai.Detection.Browser.csproj" />
-    <ProjectReference Include="..\Wangkanai.Detection.Crawler\Wangkanai.Detection.Crawler.csproj" />
-    <ProjectReference Include="..\Wangkanai.Detection.Device\Wangkanai.Detection.Device.csproj" />
-    <ProjectReference Include="..\Wangkanai.Detection.Engine\Wangkanai.Detection.Engine.csproj" />
-    <ProjectReference Include="..\Wangkanai.Detection.Platform\Wangkanai.Detection.Platform.csproj" />
+    <ProjectReference Include="..\..\Detection.Core\src\Wangkanai.Detection.Core.csproj" />
   </ItemGroup>
 
 </Project>
