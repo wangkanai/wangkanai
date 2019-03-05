@@ -18,8 +18,9 @@ Wangkanai.Detection.Browser | [![NuGet Pre Release](https://img.shields.io/nuget
 Wangkanai.Detection.Engine | [![NuGet Pre Release](https://img.shields.io/nuget/vpre/Wangkanai.Detection.Engine.svg?maxAge=3600)](https://www.nuget.org/packages/Wangkanai.Detection.Engine/) | 
 Wangkanai.Detection.Platform | [![NuGet Pre Release](https://img.shields.io/nuget/vpre/Wangkanai.Detection.Platform.svg?maxAge=3600)](https://www.nuget.org/packages/Wangkanai.Detection.Platform/) |
 Wangkanai.Detection.Crawler | [![NuGet Pre Release](https://img.shields.io/nuget/vpre/Wangkanai.Detection.Crawler.svg?maxAge=3600)](https://www.nuget.org/packages/Wangkanai.Detection.Crawler/) | 
+Wangkanai.Responsive | [![NuGet Pre Release](https://img.shields.io/nuget/vpre/Wangkanai.Responsive.svg?maxAge=2592000)](https://www.nuget.org/packages/Wangkanai.Responsive/) |
 
-## Installation (beta7)
+## Installation
 
 Installation of detection library is now done with a single package reference point.
 
@@ -37,8 +38,13 @@ PM> install-package Wangkanai.Detection.Platform -pre //concept
 PM> install-package Wangkanai.Detection.Crawler -pre  
 ```
 
+Installation of Responsive library will bring in all dependency packages (This will include `Wangkanai.Detection.Device).
 
-## Configuration (beta8) {[Breaking change #59](/../../issues/59)}
+```powershell
+PM> install-package Wangkanai.Responsive -pre
+```
+
+## Configuration
 
 This library host the component to resolve the access client device type.
 
@@ -81,6 +87,61 @@ public void ConfigureServices(IServiceCollection services)
 * `AddPlatform()` Adds the platform resolver service to the detection core services builder.
 * `AddEngine()` Adds the engine resolver service to the detection core services builder.
 * `AddCrawler()` Adds the crawler resolver service to the detection core services builder.
+
+Responsive is configured in the `ConfigureServices` method:
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    // Add responsive services.
+    services.AddResponsive()
+        .AddViewSuffix()
+        .AddViewSubfolder();
+
+    // Add framework services.
+    services.AddMvc();  
+}
+```
+
+* `AddResponsive()` Adds the Responsive services to the services container.
+* `AddViewSuffix()` Adds support for device view files  to `Suffix`. In this sample view Responsive is based on the view file suffix. 
+
+  Ex `*views/[controller]/[action]/index.mobile.cshtml*`
+
+* `AddViewSubfolder()` Adds support for device view files to `Subfolder`. In this sample view Responsive is based on the view file subfolder. 
+
+  Ex `*views/[controller]/[action]/mobile/index.cshtml*`
+
+## Configure Middleware
+
+The current device on a request is set in the Responsive middleware. The Responsive middleware is enabled in the `Configure` method of *Startup.cs* file.
+
+```csharp
+public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+{
+    app.UseResponsive();
+
+    app.UseMvc(routes =>
+    {
+        routes.MapRoute(
+            name: "default",
+            template: "{controller=Home}/{action=Index}/{id?}");
+    });
+}
+```
+
+## Customized able options (beta 3)
+
+This enable the middleware to customized the default response for any type of request device to the configured options.
+
+```
+app.UseResponsive(new ResponsiveOptions
+{
+    TabletDefault = DeviceType.Mobile
+});
+```
+
+* `UseResponsive()` Add the responsive middleware into the http pipeline. Its will capture the request and resolve the device to responsive services container.
 
 ## Global Resolver (beta8)
 
