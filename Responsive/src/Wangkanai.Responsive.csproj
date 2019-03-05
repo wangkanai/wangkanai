@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>ASP.NET Core Responsive middleware for routing base upon request clientInfo device detection to specific view
+Being to target difference clientInfo devices with seperation of concern is crucial, due to you can mininize what is sent to the clientInfo directly from the service to only what is needed and nothing more. This increase performance and lower bandwidth usage.</Description>
+    <Copyright>Copyright © 2018 Sarin Na Wangkanai</Copyright>
+    <Authors>Sarin Na Wangkanai</Authors>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <AssemblyName>Wangkanai.Responsive</AssemblyName>
+    <PackageId>Wangkanai.Responsive</PackageId>
+    <PackageTags>aspnetcore;Responsive</PackageTags>
+    <PackageIconUrl>http://0.gravatar.com/avatar/f58457d38ab3bc43526c6e52af17494e</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/wangkanai/Responsive</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/wangkanai/Responsive/blob/master/LICENSE</PackageLicenseUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>git://github.com/wangkanai/Responsive</RepositoryUrl>
+    <VersionPrefix>2.0.0</VersionPrefix>
+    <VersionSuffix>beta5</VersionSuffix>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <RootNamespace>Wangkanai.Responsive</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Detection.Device\src\Wangkanai.Detection.Device.csproj" />
+  </ItemGroup>
+</Project>
