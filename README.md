@@ -7,12 +7,19 @@ The library is the base foundation for [ASP.NET Core Responsive](https://github.
 ![ASP.NET Core Responsive](https://raw.githubusercontent.com/wangkanai/Detection/dev/asset/aspnet-core-detection-2.svg?sanitize=true)
 
 [![Build status](https://ci.appveyor.com/api/projects/status/033qv4nqv8g4altq?svg=true&retina=true)](https://ci.appveyor.com/project/wangkanai/detection)
-[![NuGet Badge](https://buildstats.info/nuget/wangkanai.detection?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.detection)
 
 [![Build history](https://buildstats.info/appveyor/chart/wangkanai/detection)](https://ci.appveyor.com/project/wangkanai/detection/history)
 
 package | nuget    |
 --------|----------|
+Wangkanai.Detection | [![NuGet Badge](https://buildstats.info/nuget/wangkanai.detection?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.detection) |
+Wangkanai.Detection.Device | [![NuGet Badge](https://buildstats.info/nuget/wangkanai.detection.device?includePreReleases=true)](https://www.nuget.org/packages/Wangkanai.Detection.Device/) | 
+Wangkanai.Detection.Browser | [![NuGet Badge](https://buildstats.info/nuget/wangkanai.detection.browser?includePreReleases=true)](https://www.nuget.org/packages/Wangkanai.Detection.Browser/) | 
+Wangkanai.Detection.Engine | [![NuGet Badge](https://buildstats.info/nuget/wangkanai.detection.engine?includePreReleases=true)](https://www.nuget.org/packages/Wangkanai.Detection.Engine/) | 
+Wangkanai.Detection.Platform | [![NuGet Badge](https://buildstats.info/nuget/wangkanai.detection.platform?includePreReleases=true)](https://www.nuget.org/packages/Wangkanai.Detection.Platform/) |
+Wangkanai.Detection.Crawler | [![NuGet Badge](https://buildstats.info/nuget/wangkanai.detection.crawler?includePreReleases=true)](https://www.nuget.org/packages/Wangkanai.Detection.Crawler/) | 
+Wangkanai.Responsive | [![NuGet Badge](https://buildstats.info/nuget/wangkanai.responsive?includePreReleases=true)](https://www.nuget.org/packages/Wangkanai.Responsive/) |
+-|-|
 Wangkanai.Detection.Device | [![NuGet Pre Release](https://img.shields.io/nuget/vpre/Wangkanai.Detection.Device.svg?maxAge=3600)](https://www.nuget.org/packages/Wangkanai.Detection.Device/) | 
 Wangkanai.Detection.Browser | [![NuGet Pre Release](https://img.shields.io/nuget/vpre/Wangkanai.Detection.Browser.svg?maxAge=3600)](https://www.nuget.org/packages/Wangkanai.Detection.Browser/) | 
 Wangkanai.Detection.Engine | [![NuGet Pre Release](https://img.shields.io/nuget/vpre/Wangkanai.Detection.Engine.svg?maxAge=3600)](https://www.nuget.org/packages/Wangkanai.Detection.Engine/) | 
