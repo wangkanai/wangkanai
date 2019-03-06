@@ -77,6 +77,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Responsive", "Res
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Responsive.Test", "Responsive\test\Wangkanai.Responsive.Test.csproj", "{8BEEC191-7A38-49CB-A97C-A2602A90D344}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Responsive.Core", "Responsive.Core", "{7BE05FA0-6214-4FBC-939D-5704080F3E53}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Responsive.TagHelper", "Responsive.TagHelper", "{AC87FF81-E1A9-4022-8F28-AEE485B28E1A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
