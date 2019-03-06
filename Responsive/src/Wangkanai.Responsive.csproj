@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <Description>ASP.NET Core Responsive middleware for routing base upon request clientInfo device detection to specific view
@@ -23,12 +23,6 @@ Being to target difference clientInfo devices with seperation of concern is cruc
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor" Version="2.0.0" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\Detection.Device\src\Wangkanai.Detection.Device.csproj" />
+    <ProjectReference Include="..\..\Responsive.Core\src\Wangkanai.Responsive.Core.csproj" />
   </ItemGroup>
 </Project>
