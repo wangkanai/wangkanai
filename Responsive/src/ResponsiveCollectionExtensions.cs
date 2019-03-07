@@ -11,7 +11,7 @@ namespace Microsoft.Extensions.DependencyInjection
     /// ASP.NET Core middleware for routing to specific area base client request device
     /// Extension method for setting up Universal in an <see cref="IServiceCollection" />
     /// </summary>
-    public static class ResponsiveServiceCollectionExtensions
+    public static class ResponsiveCollectionExtensions
     {
         /// <summary>
         /// Adds services required for application Responsive.
