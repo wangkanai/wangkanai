@@ -58,7 +58,9 @@ namespace Sandbox
 
             app.UseStaticFiles();
 
-            app.UseResponsive();
+            app.UseResponsive(new ResponsiveOptions {
+                TabletDefault = DeviceType.Tablet
+            });
 
             app.UseMvc(routes =>
             {
