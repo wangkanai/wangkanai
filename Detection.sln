@@ -1,4 +1,3 @@
-﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28516.95
@@ -39,33 +38,33 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Detection.Engine", "Detecti
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Detection.Platform", "Detection.Platform", "{2209C169-8C27-4A18-A627-809E3369ED2F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection.Core", "Detection.Core\src\Wangkanai.Detection.Core.csproj", "{87FCE4BE-A879-4BCF-80A2-D005704EEAEA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection.Core", "src\Detection.Core\src\Wangkanai.Detection.Core.csproj", "{87FCE4BE-A879-4BCF-80A2-D005704EEAEA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection.Core.Test", "Detection.Core\test\Wangkanai.Detection.Core.Test.csproj", "{B2B4AF26-0235-41B7-8FD3-470A3E7EAFE1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection.Core.Test", "src\Detection.Core\test\Wangkanai.Detection.Core.Test.csproj", "{B2B4AF26-0235-41B7-8FD3-470A3E7EAFE1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection", "Detection\src\Wangkanai.Detection.csproj", "{FD31B4D4-C323-4A52-9801-EAAA0F155FD0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection", "src\Detection\src\Wangkanai.Detection.csproj", "{FD31B4D4-C323-4A52-9801-EAAA0F155FD0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection.Test", "Detection\test\Wangkanai.Detection.Test.csproj", "{22D33522-DD51-4436-97B7-DF9C497F7F00}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection.Test", "src\Detection\test\Wangkanai.Detection.Test.csproj", "{22D33522-DD51-4436-97B7-DF9C497F7F00}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection.Browser", "Detection.Browser\src\Wangkanai.Detection.Browser.csproj", "{7CC13CB8-90CD-4C10-8943-435DFDABBB6B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection.Browser", "src\Detection.Browser\src\Wangkanai.Detection.Browser.csproj", "{7CC13CB8-90CD-4C10-8943-435DFDABBB6B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection.Browser.Test", "Detection.Browser\test\Wangkanai.Detection.Browser.Test.csproj", "{E0329FBF-3799-4CB8-87D7-C44D236035BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection.Browser.Test", "src\Detection.Browser\test\Wangkanai.Detection.Browser.Test.csproj", "{E0329FBF-3799-4CB8-87D7-C44D236035BD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection.Crawler", "Detection.Crawler\src\Wangkanai.Detection.Crawler.csproj", "{BE6E545E-E9AC-4521-A33D-3713216084FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection.Crawler", "src\Detection.Crawler\src\Wangkanai.Detection.Crawler.csproj", "{BE6E545E-E9AC-4521-A33D-3713216084FD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection.Crawler.Test", "Detection.Crawler\test\Wangkanai.Detection.Crawler.Test.csproj", "{3071FFBD-45A3-4534-9616-696D3015A5AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection.Crawler.Test", "src\Detection.Crawler\test\Wangkanai.Detection.Crawler.Test.csproj", "{3071FFBD-45A3-4534-9616-696D3015A5AD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection.Device", "Detection.Device\src\Wangkanai.Detection.Device.csproj", "{C8C18BAF-19B7-4CA1-9257-86FF02408B25}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection.Device", "src\Detection.Device\src\Wangkanai.Detection.Device.csproj", "{C8C18BAF-19B7-4CA1-9257-86FF02408B25}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection.Device.Test", "Detection.Device\test\Wangkanai.Detection.Device.Test.csproj", "{27C2A7C6-E224-4462-A696-C43412339FEC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection.Device.Test", "src\Detection.Device\test\Wangkanai.Detection.Device.Test.csproj", "{27C2A7C6-E224-4462-A696-C43412339FEC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection.Engine", "Detection.Engine\src\Wangkanai.Detection.Engine.csproj", "{8D8A6175-59AD-4AB4-98A7-1145596B6A88}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection.Engine", "src\Detection.Engine\src\Wangkanai.Detection.Engine.csproj", "{8D8A6175-59AD-4AB4-98A7-1145596B6A88}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection.Engine.Test", "Detection.Engine\test\Wangkanai.Detection.Engine.Test.csproj", "{41438401-145A-4F48-9BC2-D3F9386C2232}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection.Engine.Test", "src\Detection.Engine\test\Wangkanai.Detection.Engine.Test.csproj", "{41438401-145A-4F48-9BC2-D3F9386C2232}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection.Platform", "Detection.Platform\src\Wangkanai.Detection.Platform.csproj", "{1ADD3794-8058-460A-B167-380F3A608E80}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection.Platform", "src\Detection.Platform\src\Wangkanai.Detection.Platform.csproj", "{1ADD3794-8058-460A-B167-380F3A608E80}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection.Platform.Test", "Detection.Platform\test\Wangkanai.Detection.Platform.Test.csproj", "{318ED809-7E00-4FFA-B2D7-C0839B207BB4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection.Platform.Test", "src\Detection.Platform\test\Wangkanai.Detection.Platform.Test.csproj", "{318ED809-7E00-4FFA-B2D7-C0839B207BB4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Detection", "sample\Detection\Detection.csproj", "{FA89F64C-D456-427F-B54B-3F9CA05D07BF}"
 EndProject
@@ -73,21 +72,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Responsive", "sample\Respon
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Responsive", "Responsive", "{46616A7F-0F88-4148-8108-3DD19E66D5B6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Responsive", "Responsive\src\Wangkanai.Responsive.csproj", "{C2CF6710-2B77-46E6-A6EE-90D8EE9E6B4B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Responsive", "src\Responsive\src\Wangkanai.Responsive.csproj", "{C2CF6710-2B77-46E6-A6EE-90D8EE9E6B4B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Responsive.Test", "Responsive\test\Wangkanai.Responsive.Test.csproj", "{8BEEC191-7A38-49CB-A97C-A2602A90D344}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Responsive.Test", "src\Responsive\test\Wangkanai.Responsive.Test.csproj", "{8BEEC191-7A38-49CB-A97C-A2602A90D344}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Responsive.Core", "Responsive.Core", "{7BE05FA0-6214-4FBC-939D-5704080F3E53}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Responsive.TagHelper", "Responsive.TagHelper", "{AC87FF81-E1A9-4022-8F28-AEE485B28E1A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Responsive.Core", "Responsive.Core\src\Wangkanai.Responsive.Core.csproj", "{362DBBA2-5279-49E3-8C7E-DC8486A1407E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Responsive.Core", "src\Responsive.Core\src\Wangkanai.Responsive.Core.csproj", "{362DBBA2-5279-49E3-8C7E-DC8486A1407E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Responsive.Core.Test", "Responsive.Core\test\Wangkanai.Responsive.Core.Test.csproj", "{3C98B6BA-D2B9-4BC8-BC57-77BF77171CA0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Responsive.Core.Test", "src\Responsive.Core\test\Wangkanai.Responsive.Core.Test.csproj", "{3C98B6BA-D2B9-4BC8-BC57-77BF77171CA0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Responsive.TagHelper", "Responsive.TagHelper\src\Wangkanai.Responsive.TagHelper.csproj", "{2B2DD8F3-7407-4BFA-97E8-72EB655DC30B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Responsive.TagHelper", "src\Responsive.TagHelper\src\Wangkanai.Responsive.TagHelper.csproj", "{2B2DD8F3-7407-4BFA-97E8-72EB655DC30B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Responsive.TagHelper.Test", "Responsive.TagHelper\test\Wangkanai.Responsive.TagHelper.Test.csproj", "{C1C60BD8-5E6E-4ECB-87A3-315B22AF480F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Responsive.TagHelper.Test", "src\Responsive.TagHelper\test\Wangkanai.Responsive.TagHelper.Test.csproj", "{C1C60BD8-5E6E-4ECB-87A3-315B22AF480F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -232,6 +231,6 @@ Global
 		{C1C60BD8-5E6E-4ECB-87A3-315B22AF480F} = {AC87FF81-E1A9-4022-8F28-AEE485B28E1A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {3127A458-807C-4225-A25F-B1900C7AD357}
+		SolutionGuid = {1BA0A192-D7BE-40A1-96AE-B3C8C6BC9B69}
 	EndGlobalSection
 EndGlobal
