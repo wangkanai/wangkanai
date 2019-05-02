@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Detection.Device\src\Wangkanai.Detection.Device.csproj" />
+    <ProjectReference Include="..\..\src\Detection.Device\src\Wangkanai.Detection.Device.csproj" />
   </ItemGroup>
 
 </Project>

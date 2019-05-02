@@ -1,7 +1,22 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <Authors>Sarin Na Wangkanai</Authors>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Wangkanai.Responsive.Core</AssemblyName>
+    <PackageId>Wangkanai.Responsive.Core</PackageId>
+    <PackageTags>aspnetcore;Responsive</PackageTags>
+    <PackageIconUrl>http://0.gravatar.com/avatar/f58457d38ab3bc43526c6e52af17494e</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/wangkanai/detection</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/wangkanai/detection/blob/master/LICENSE</PackageLicenseUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>git://github.com/wangkanai/detection</RepositoryUrl>
+    <VersionPrefix>2.0.0</VersionPrefix>
+    <VersionSuffix>beta5</VersionSuffix>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>

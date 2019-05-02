@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <Description>ASP.NET Core Responsive middleware for routing base upon request clientInfo device detection to specific view
@@ -12,10 +12,10 @@ Being to target difference clientInfo devices with seperation of concern is cruc
     <PackageId>Wangkanai.Responsive</PackageId>
     <PackageTags>aspnetcore;Responsive</PackageTags>
     <PackageIconUrl>http://0.gravatar.com/avatar/f58457d38ab3bc43526c6e52af17494e</PackageIconUrl>
-    <PackageProjectUrl>https://github.com/wangkanai/Responsive</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/wangkanai/Responsive/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/wangkanai/detection</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/wangkanai/detection/blob/master/LICENSE</PackageLicenseUrl>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>git://github.com/wangkanai/Responsive</RepositoryUrl>
+    <RepositoryUrl>git://github.com/wangkanai/detection</RepositoryUrl>
     <VersionPrefix>2.0.0</VersionPrefix>
     <VersionSuffix>beta5</VersionSuffix>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -24,5 +24,6 @@ Being to target difference clientInfo devices with seperation of concern is cruc
 
   <ItemGroup>
     <ProjectReference Include="..\..\Responsive.Core\src\Wangkanai.Responsive.Core.csproj" />
+    <ProjectReference Include="..\..\Responsive.TagHelper\src\Wangkanai.Responsive.TagHelper.csproj" />
   </ItemGroup>
 </Project>
