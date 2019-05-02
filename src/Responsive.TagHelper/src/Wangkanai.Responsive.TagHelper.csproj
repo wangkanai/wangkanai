@@ -1,9 +1,24 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <Authors>Sarin Na Wangkanai</Authors>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Wangkanai.Responsive.TagHelper</AssemblyName>
+    <PackageId>Wangkanai.Responsive.TagHelper</PackageId>
+    <PackageTags>aspnetcore;Responsive;TagHelper</PackageTags>
+    <PackageIconUrl>http://0.gravatar.com/avatar/f58457d38ab3bc43526c6e52af17494e</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/wangkanai/detection</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/wangkanai/detection/blob/master/LICENSE</PackageLicenseUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>git://github.com/wangkanai/detection</RepositoryUrl>
+    <VersionPrefix>2.0.0</VersionPrefix>
+    <VersionSuffix>beta11</VersionSuffix>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
-  
+
   <ItemGroup>
     <ProjectReference Include="..\..\Responsive.Core\src\Wangkanai.Responsive.Core.csproj" />
   </ItemGroup>
