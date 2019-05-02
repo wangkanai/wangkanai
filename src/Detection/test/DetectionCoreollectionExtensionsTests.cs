@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
+// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
 using Microsoft.AspNetCore.Http;
@@ -30,7 +30,13 @@ namespace Wangkanai.Detection.Test
         [Fact]
         public void AddDetection_Null_ArgumentNullException()
         {
-            Assert.Throws<ArgumentNullException>(() => ((IServiceCollection)null).AddDetectionCore());
+            Assert.Throws<AddDetectionArgumentNullException>(() => ((IServiceCollection)null).AddDetection());
+        }
+
+        [Fact]
+        public void AddDetectionCore_Null_ArgumentNullException()
+        {
+            Assert.Throws<AddDetectionCoreArgumentNullException>(() => ((IServiceCollection)null).AddDetectionCore());
         }
 
         private void AssertServices(List<ServiceDescriptor> serviceDescriptors, IServiceCollection services)

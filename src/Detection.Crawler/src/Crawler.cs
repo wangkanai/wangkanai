@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
+// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
@@ -20,7 +20,7 @@ namespace Wangkanai.Detection
 
         public Crawler(string name, string version) : this(name)
         {
-            Version = version.ToVersion();            
+            Version = version.ToVersion();
         }
 
         private CrawlerType GetType(string name)
@@ -37,13 +37,13 @@ namespace Wangkanai.Detection
                 return CrawlerType.Baidu;
             if (name.Contains("yahoo"))
                 return CrawlerType.Yahoo;
-            if(name.Contains("facebook") || name.Contains("facebot"))
+            if (name.Contains("facebook") || name.Contains("facebot"))
                 return CrawlerType.Facebook;
-            if(name.Contains("twitter"))
+            if (name.Contains("twitter"))
                 return CrawlerType.Twitter;
-            if(name.Contains("linkedin"))
+            if (name.Contains("linkedin"))
                 return CrawlerType.LinkedIn;
-            if(name.Contains("skype"))
+            if (name.Contains("skype"))
                 return CrawlerType.Skype;
 
             return CrawlerType.Others;
