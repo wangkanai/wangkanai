@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
+// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
@@ -13,14 +13,14 @@ namespace Microsoft.AspNetCore.Http
 
         public static void SetDevice(this HttpContext context, UserPerference perference)
         {
-            if (context == null) throw new ArgumentNullException(nameof(context));
-            if (perference == null) throw new ArgumentNullException(nameof(perference));
+            if (context == null) throw new SetDeviceArgumentNullException(nameof(context));
+            if (perference == null) throw new SetDeviceArgumentNullException(nameof(perference));
 
             context.Items[ResponsiveContextKey] = perference;
         }
         public static UserPerference GetDevice(this HttpContext context)
         {
-            if (context == null) throw new ArgumentNullException(nameof(context));
+            if (context == null) throw new GetDeviceArgumentNullException(nameof(context));
 
             object responsiveContext;
             if (context.Items.TryGetValue(ResponsiveContextKey, out responsiveContext))

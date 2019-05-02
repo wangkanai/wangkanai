@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
+// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
 using Microsoft.AspNetCore.Http;
@@ -17,7 +17,7 @@ namespace Wangkanai.Responsive
 
         public CookieManager(HttpContext context, ResponsiveOptions options)
         {
-            if (context == null) throw new ArgumentNullException(nameof(context));
+            if (context == null) throw new CookieManagerArgumentNullException(nameof(context));
 
             _context = context;
             _options = options;

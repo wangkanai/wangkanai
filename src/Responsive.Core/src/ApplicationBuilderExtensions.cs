@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
+// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
@@ -19,7 +19,7 @@ namespace Wangkanai.Responsive
         /// <returns>Return the <see cref="IApplicationBuilder"/> for further pipeline</returns>
         public static IApplicationBuilder UseResponsive(this IApplicationBuilder app)
         {
-            if (app == null) throw new ArgumentNullException(nameof(app));
+            if (app == null) throw new UseResponsiveArgumentNullException(nameof(app));
 
             return app.UseMiddleware<ResponsiveMiddleware>();
         }
@@ -31,8 +31,8 @@ namespace Wangkanai.Responsive
         /// <returns>Return the <see cref="IApplicationBuilder"/> for further pipeline</returns>
         public static IApplicationBuilder UseResponsive(this IApplicationBuilder app, ResponsiveOptions options)
         {
-            if (app == null) throw new ArgumentNullException(nameof(app));
-            if (options == null) throw new ArgumentNullException(nameof(options));
+            if (app == null) throw new UseResponsiveAppArgumentNullException(nameof(app));
+            if (options == null) throw new UseResponsiveOptionArgumentNullException(nameof(options));
 
             return app.UseMiddleware<ResponsiveMiddleware>(Options.Create(options));
         }

@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2016 Sarin Na Wangkanai, All Rights Reserved.
+// Copyright (c) 2016 Sarin Na Wangkanai, All Rights Reserved.
 // The GNU GPLv3. See License.txt in the project root for license information.
 
 using Microsoft.AspNetCore.Http;
@@ -27,13 +27,13 @@ namespace Wangkanai.Responsive.Test.Core
         [Fact]
         public void SetDevice_Null_UserPerference_ThrowsArgumentNullException()
         {
-            Assert.Throws<ArgumentNullException>(() => ((HttpContext)null).SetDevice(new UserPerference()));
+            Assert.Throws<SetDeviceArgumentNullException>(() => ((HttpContext)null).SetDevice(new UserPerference()));
         }
 
         [Fact]
         public void SetDevice_HttpContext_Null_ThrowsArgumentNullException()
         {
-            Assert.Throws<ArgumentNullException>(() => new DefaultHttpContext().SetDevice(null));
+            Assert.Throws<SetDeviceArgumentNullException>(() => new DefaultHttpContext().SetDevice(null));
         }
 
         [Fact]
@@ -49,9 +49,9 @@ namespace Wangkanai.Responsive.Test.Core
         }
 
         [Fact]
-        public void SetDevice_Null_ThrowsArgumentNullException()
+        public void GetDevice_Null_ThrowsArgumentNullException()
         {
-            Assert.Throws<ArgumentNullException>(() => ((HttpContext)null).GetDevice());
+            Assert.Throws<GetDeviceArgumentNullException>(() => ((HttpContext)null).GetDevice());
         }
 
         [Fact]
