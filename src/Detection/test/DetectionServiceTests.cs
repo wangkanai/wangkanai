@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
+// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
 using Microsoft.AspNetCore.Http;
@@ -51,7 +51,7 @@ namespace Wangkanai.Detection.Test
             };
 
             Assert.Null(serviceProvider.HttpContextAccessor.HttpContext);
-            Assert.Throws<ArgumentNullException>(() => new UserAgentService(serviceProvider));
+            Assert.Throws<UserAgentServiceArgumentNullException>(() => new UserAgentService(serviceProvider));
         }
 
         private class ServiceProvider : IServiceProvider

@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2016 Sarin Na Wangkanai, All Rights Reserved.
+// Copyright (c) 2016 Sarin Na Wangkanai, All Rights Reserved.
 // The GNU GPLv3. See License.txt in the project root for license information.
 
 using Microsoft.Extensions.DependencyInjection;
@@ -22,7 +22,7 @@ namespace Wangkanai.Responsive.Test
         [Fact]
         public void AddResponsive_Null_ArgumentNullException()
         {
-            Assert.Throws<ArgumentNullException>(() => ((IServiceCollection)null).AddResponsive());
+            Assert.Throws<AddResponsiveArgumentNullException>(() => ((IServiceCollection)null).AddResponsive());
         }
     }
 }
