@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2016 Sarin Na Wangkanai, All Rights Reserved.
+// Copyright (c) 2016 Sarin Na Wangkanai, All Rights Reserved.
 // The GNU GPLv3. See License.txt in the project root for license information.
 
 using Microsoft.AspNetCore.Builder;
@@ -13,14 +13,14 @@ namespace Wangkanai.Responsive.Test.Core
         [Fact]
         public void UseResponsive_Null_ThrowsArgumentNullException()
         {
-            Assert.Throws<ArgumentNullException>(() => ((IApplicationBuilder)null).UseResponsive());
+            Assert.Throws<UseResponsiveArgumentNullException>(() => ((IApplicationBuilder)null).UseResponsive());
         }
 
         [Fact]
         public void UseResponsive_IApplicationBuilder_Null_ThrowsArgumentNullException()
         {
             var app = new ApplicationBuilder(ServiceProvider.Instance);
-            Assert.Throws<ArgumentNullException>(() => app.UseResponsive(null));
+            Assert.Throws<UseResponsiveOptionArgumentNullException>(() => app.UseResponsive(null));
         }
 
         private static class ServiceProvider
