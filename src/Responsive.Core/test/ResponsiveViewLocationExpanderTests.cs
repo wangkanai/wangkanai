@@ -1,5 +1,5 @@
-// Copyright (c) 2016 Sarin Na Wangkanai, All Rights Reserved.
-// The GNU GPLv3. See License.txt in the project root for license information.
+// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
+// The Apache v2. See License.txt in the project root for license information.
 
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
