@@ -44,7 +44,7 @@ namespace Wangkanai.Responsive.Test.Core
             locationExpander.PopulateValues(context);
 
             Assert.NotEqual(0, context.Values.Count);
-            Assert.Same(context.ActionContext.HttpContext.GetDevice().Preferred, context.Values[deviceKey]);
+            Assert.Same(context.ActionContext.HttpContext.GetDevice().ToString(), context.Values[deviceKey]);
         }
 
         [Fact]
@@ -69,9 +69,9 @@ namespace Wangkanai.Responsive.Test.Core
                     new[]
                     {
                         // Why is there is Tablet expected here?
-                        //"/Views/{1}/{0}.Tablet.cshtml",
+                        "/Views/{1}/{0}.Tablet.cshtml",
                         "/Views/{1}/{0}.cshtml",
-                        //"/Views/Shared/{0}.Tablet.cshtml",
+                        "/Views/Shared/{0}.Tablet.cshtml",
                         "/Views/Shared/{0}.cshtml",
                     }
                 };
@@ -86,9 +86,9 @@ namespace Wangkanai.Responsive.Test.Core
                     },
                     new[]
                     {
-                        //"/Views/{1}/Tablet/{0}.cshtml",
+                        "/Views/{1}/Tablet/{0}.cshtml",
                         "/Views/{1}/{0}.cshtml",
-                        //"/Views/Shared/Tablet/{0}.cshtml",
+                        "/Views/Shared/Tablet/{0}.cshtml",
                         "/Views/Shared/{0}.cshtml",
                     }
                 };
@@ -140,7 +140,7 @@ namespace Wangkanai.Responsive.Test.Core
             var context = new ViewLocationExpanderContext(new ActionContext(), "View", "Controller", "Area", "Page", true);
             context.Values = new Dictionary<string, string>();
             context.ActionContext.HttpContext = new DefaultHttpContext();
-            context.ActionContext.HttpContext.SetDevice(new UserPerference() { Resolver = DeviceType.Tablet.ToString() });
+            context.ActionContext.HttpContext.SetDevice(DeviceType.Tablet);
 
             return context;
         }

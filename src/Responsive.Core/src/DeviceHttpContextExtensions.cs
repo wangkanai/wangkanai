@@ -3,7 +3,6 @@
 
 using System;
 using Wangkanai.Detection;
-using Wangkanai.Responsive;
 
 namespace Microsoft.AspNetCore.Http
 {
@@ -11,22 +10,19 @@ namespace Microsoft.AspNetCore.Http
     {
         private const string ResponsiveContextKey = "Responsive";
 
-        public static void SetDevice(this HttpContext context, UserPerference perference)
+        public static void SetDevice(this HttpContext context, DeviceType device)
         {
-            if (context == null) throw new SetDeviceArgumentNullException(nameof(context));
-            if (perference == null) throw new SetDeviceArgumentNullException(nameof(perference));
-
-            context.Items[ResponsiveContextKey] = perference;
+            context.Items[ResponsiveContextKey] = device;
         }
-        public static UserPerference GetDevice(this HttpContext context)
+        public static DeviceType GetDevice(this HttpContext context)
         {
             if (context == null) throw new GetDeviceArgumentNullException(nameof(context));
 
             object responsiveContext;
             if (context.Items.TryGetValue(ResponsiveContextKey, out responsiveContext))
-                return responsiveContext as UserPerference;
+                return (DeviceType)responsiveContext;
 
-            return new UserPerference(DeviceType.Desktop, DeviceType.Desktop);
+            return DeviceType.Desktop;
         }
     }
 }
