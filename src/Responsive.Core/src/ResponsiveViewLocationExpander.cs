@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
+// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
@@ -42,15 +42,15 @@ namespace Wangkanai.Responsive
 
         public void PopulateValues(ViewLocationExpanderContext context)
         {
-            if (context == null) throw new ArgumentNullException(nameof(context));
+            if (context == null) throw new ViewLocationExpanderPopulateValuesArgumentNullException(nameof(context));
 
             context.Values[DEVICE_KEY] = context.ActionContext.HttpContext.GetDevice().Preferred;
         }
 
         public IEnumerable<string> ExpandViewLocations(ViewLocationExpanderContext context, IEnumerable<string> viewLocations)
         {
-            if (context == null) throw new ArgumentNullException(nameof(context));
-            if (viewLocations == null) throw new ArgumentNullException(nameof(viewLocations));
+            if (context == null) throw new ViewLocationExpanderContextArgumentNullException(nameof(context));
+            if (viewLocations == null) throw new ViewLocationExpanderViewsArgumentNullException(nameof(viewLocations));
 
             string value;
             context.Values.TryGetValue(DEVICE_KEY, out value);
