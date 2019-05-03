@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2016 Sarin Na Wangkanai, All Rights Reserved.
+// Copyright (c) 2016 Sarin Na Wangkanai, All Rights Reserved.
 // The GNU GPLv3. See License.txt in the project root for license information.
 
 using Microsoft.Extensions.DependencyInjection;
@@ -21,7 +21,7 @@ namespace Wangkanai.Responsive.Test.Core
         [Fact]
         public void Ctor_Null_ThrowsArgumentNullException()
         {
-            Assert.Throws<ArgumentNullException>(() => new ResponsiveBuilder(null));
+            Assert.Throws<ResponsiveBuilderArgumentNullException>(() => new ResponsiveBuilder(null));
         }
 
         [Fact]

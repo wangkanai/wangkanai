@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
+// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
@@ -11,7 +11,7 @@ namespace Wangkanai.Responsive
         public IServiceCollection Services { get; }
         public ResponsiveBuilder(IServiceCollection services)
         {
-            if (services == null) throw new ArgumentNullException(nameof(services));
+            if (services == null) throw new ResponsiveBuilderArgumentNullException(nameof(services));
 
             Services = services;
         }
