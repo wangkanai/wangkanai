@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2016 Sarin Na Wangkanai, All Rights Reserved.
+// Copyright (c) 2016 Sarin Na Wangkanai, All Rights Reserved.
 // The GNU GPLv3. See License.txt in the project root for license information.
 
 using Microsoft.AspNetCore.Http;
@@ -51,7 +51,7 @@ namespace Wangkanai.Responsive.Test.Core
         public void PopulateValues_Null_ThrowsArgumentNullException()
         {
             var locationExpander = new ResponsiveViewLocationExpander();
-            Assert.Throws<ArgumentNullException>(() => locationExpander.PopulateValues(null));
+            Assert.Throws<ViewLocationExpanderPopulateValuesArgumentNullException >(() => locationExpander.PopulateValues(null));
         }
 
         public static IEnumerable<object[]> ViewLocationExpanderTestData
@@ -125,14 +125,14 @@ namespace Wangkanai.Responsive.Test.Core
         public void ExpandViewLocations_Null_IEnumerable_ThrowsArgumentNullException()
         {
             var locationExpander = new ResponsiveViewLocationExpander();
-            Assert.Throws<ArgumentNullException>(() => locationExpander.ExpandViewLocations(null, new List<string>()));
+            Assert.Throws<ViewLocationExpanderContextArgumentNullException>(() => locationExpander.ExpandViewLocations(null, new List<string>()));
         }
 
         [Fact]
         public void ExpandViewLocations_ViewLocationExpanderContext_Null_ThrowsArgumentNullException()
         {
             var locationExpander = new ResponsiveViewLocationExpander();
-            Assert.Throws<ArgumentNullException>(() => locationExpander.ExpandViewLocations(SetupViewLocationExpanderContext(), null));
+            Assert.Throws<ViewLocationExpanderViewsArgumentNullException>(() => locationExpander.ExpandViewLocations(SetupViewLocationExpanderContext(), null));
         }
 
         private ViewLocationExpanderContext SetupViewLocationExpanderContext()

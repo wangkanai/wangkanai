@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
+// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
@@ -12,14 +12,14 @@ namespace Microsoft.Extensions.DependencyInjection
     {
         public static IResponsiveBuilder AddViewSuffix(this IResponsiveBuilder builder)
         {
-            if (builder == null) throw new ArgumentNullException(nameof(builder));
+            if (builder == null) throw new ViewBuilderExtensionsSuffixArgumentNullException(nameof(builder));
 
             return AddViewLocation(builder, ResponsiveViewLocationFormat.Suffix);
         }
 
         public static IResponsiveBuilder AddViewSubfolder(this IResponsiveBuilder builder)
         {
-            if (builder == null) throw new ArgumentNullException(nameof(builder));
+            if (builder == null) throw new ViewBuilderExtensionsSubfolderArgumentNullException(nameof(builder));
 
             return AddViewLocation(builder, ResponsiveViewLocationFormat.Subfolder);
         }
