@@ -31,6 +31,8 @@ namespace Wangkanai.Responsive
             //var cookie = new CookieManager(context);
             //var preference = new UserPerference(detection, cookie);
 
+            //var perference = new PerferenceManager();
+
             // need return detect and preferred for the ViewLocation
             context.SetDevice(detection.Device);
 
