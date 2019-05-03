@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2016 Sarin Na Wangkanai, All Rights Reserved.
+// Copyright (c) 2016 Sarin Na Wangkanai, All Rights Reserved.
 // The GNU GPLv3. See License.txt in the project root for license information.
 
 using Microsoft.AspNetCore.Http;
@@ -22,13 +22,13 @@ namespace Wangkanai.Responsive.Test.Core
         [Fact]
         public void Ctor_Null_ResponsiveOptions_ThrowsArgumentNullException()
         {
-            Assert.Throws<ArgumentNullException>(() => new ResponsiveMiddleware(null, Options.Create(new ResponsiveOptions())));
+            Assert.Throws<ResponsiveMiddlewareNextArgumentNullException>(() => new ResponsiveMiddleware(null, Options.Create(new ResponsiveOptions())));
         }
 
         [Fact]
         public void Ctor_RequestDelegate_Null_ThrowsArgumentNullException()
         {
-            Assert.Throws<ArgumentNullException>(() => new ResponsiveMiddleware(d => Task.Factory.StartNew(() => d), null));
+            Assert.Throws<ResponsiveMiddlewareOptionArgumentNullException>(() => new ResponsiveMiddleware(d => Task.Factory.StartNew(() => d), null));
         }
 
         [Fact]
@@ -49,7 +49,7 @@ namespace Wangkanai.Responsive.Test.Core
             var options = Options.Create(new ResponsiveOptions());
             var middleware = new ResponsiveMiddleware(d => Task.Factory.StartNew(() => d), options);
 
-            await Assert.ThrowsAsync<ArgumentNullException>(async () => await middleware.Invoke(null, new DeviceResolver()));
+            await Assert.ThrowsAsync<ResponsiveMiddlewareInvokeArgumentNullException>(async () => await middleware.Invoke(null, new DeviceResolver()));
         }
 
         [Fact]
