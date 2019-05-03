@@ -28,11 +28,11 @@ namespace Wangkanai.Responsive
             if (context == null) throw new ResponsiveMiddlewareInvokeArgumentNullException(nameof(context));
 
             var detection = new ResolverManager(resolver, _options);
-            var cookie = new CookieManager(context, _options);
-            var preference = new UserPerference(detection.Device, cookie.Device);
+            //var cookie = new CookieManager(context);
+            //var preference = new UserPerference(detection, cookie);
 
             // need return detect and preferred for the ViewLocation
-            context.SetDevice(preference);
+            context.SetDevice(detection.Device);
 
             await _next(context);
         }

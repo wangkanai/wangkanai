@@ -40,7 +40,7 @@ namespace Wangkanai.Responsive.Test.Core
 
             await middleware.Invoke(context, new DeviceResolver());
 
-            Assert.Equal(DeviceType.Tablet.ToString(), context.GetDevice().Resolver);
+            Assert.Equal(DeviceType.Tablet, context.GetDevice());
         }
 
         [Fact]

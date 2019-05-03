@@ -11,41 +11,41 @@ namespace Wangkanai.Responsive.Test.Core
 {
     public class DeviceHttpContextExtensionsTests
     {
-        [Fact]
-        public void SetDevice_HttpContext_UserPerference_ReturnsExpected()
-        {
-            var context = new DefaultHttpContext();
-            var preference = new UserPerference();
-            string responsiveContextKey = "Responsive"; // May be we can make this constant public for testing purposes.
+        //[Fact]
+        //public void SetDevice_HttpContext_UserPerference_ReturnsExpected()
+        //{
+        //    var context = new DefaultHttpContext();
+        //    var preference = new UserPerference();
+        //    string responsiveContextKey = "Responsive"; // May be we can make this constant public for testing purposes.
 
-            context.SetDevice(preference);
+        //    context.SetDevice(preference);
 
-            Assert.True(context.Items.ContainsKey(responsiveContextKey));
-            Assert.Same(preference, context.Items[responsiveContextKey]);
-        }
+        //    Assert.True(context.Items.ContainsKey(responsiveContextKey));
+        //    Assert.Same(preference, context.Items[responsiveContextKey]);
+        //}
 
-        [Fact]
-        public void SetDevice_Null_UserPerference_ThrowsArgumentNullException()
-        {
-            Assert.Throws<SetDeviceArgumentNullException>(() => ((HttpContext)null).SetDevice(new UserPerference()));
-        }
+        //[Fact]
+        //public void SetDevice_Null_UserPerference_ThrowsArgumentNullException()
+        //{
+        //    Assert.Throws<SetDeviceArgumentNullException>(() => ((HttpContext)null).SetDevice(new UserPerference()));
+        //}
 
-        [Fact]
-        public void SetDevice_HttpContext_Null_ThrowsArgumentNullException()
-        {
-            Assert.Throws<SetDeviceArgumentNullException>(() => new DefaultHttpContext().SetDevice(null));
-        }
+        //[Fact]
+        //public void SetDevice_HttpContext_Null_ThrowsArgumentNullException()
+        //{
+        //    Assert.Throws<SetDeviceArgumentNullException>(() => new DefaultHttpContext().SetDevice(null));
+        //}
 
         [Fact]
         public void GetDevice_HttpContext_ReturnsExpected()
         {
-            string device = DeviceType.Tablet.ToString();
-            var preference = new UserPerference() { Resolver = device };
+            var device = DeviceType.Tablet;
+            //var preference = new UserPerference() { Resolver = device };
             var context = new DefaultHttpContext();
-            context.SetDevice(preference);
+            context.SetDevice(device);
 
-            Assert.Same(preference, context.GetDevice());
-            Assert.Same(preference.Resolver, context.GetDevice().Resolver);
+            Assert.Equal(device, context.GetDevice());
+            Assert.Equal(device, context.GetDevice());
         }
 
         [Fact]
@@ -60,7 +60,7 @@ namespace Wangkanai.Responsive.Test.Core
             var context = new DefaultHttpContext();
 
             Assert.NotNull(context.GetDevice());
-            Assert.Equal("Desktop", context.GetDevice().Resolver);
+            Assert.Equal("Desktop", context.GetDevice().ToString());
         }
     }
 }
