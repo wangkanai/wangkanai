@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <Description>ASP.NET Core Responsive middleware for routing base upon request clientInfo device detection to specific view
@@ -17,7 +17,7 @@ Being to target difference clientInfo devices with seperation of concern is cruc
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>git://github.com/wangkanai/detection</RepositoryUrl>
     <VersionPrefix>2.0.0</VersionPrefix>
-    <VersionSuffix>beta11</VersionSuffix>
+    <VersionSuffix>beta12</VersionSuffix>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <RootNamespace>Wangkanai.Responsive</RootNamespace>
   </PropertyGroup>
