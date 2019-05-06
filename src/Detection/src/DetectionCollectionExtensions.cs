@@ -3,7 +3,7 @@
 
 using System;
 using Wangkanai.Detection;
-using Wangkanai.Detection.Builder;
+using Wangkanai.Detection.Builders;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace Microsoft.Extensions.DependencyInjection

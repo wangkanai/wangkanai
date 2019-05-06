@@ -3,6 +3,7 @@
 
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using Wangkanai.Responsive.Builders;
 using Xunit;
 
 namespace Wangkanai.Responsive.Test.Core
