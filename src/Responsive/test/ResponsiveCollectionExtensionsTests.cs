@@ -7,7 +7,7 @@ using Xunit;
 
 namespace Wangkanai.Responsive.Test
 {
-    public partial class ResponsiveServiceCollectionExtensionsTests
+    public partial class ResponsiveCollectionExtensionsTests
     {
         [Fact]
         public void AddResponsive_Services()

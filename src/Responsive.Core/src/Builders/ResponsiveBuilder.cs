@@ -4,7 +4,7 @@
 using System;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Wangkanai.Responsive
+namespace Wangkanai.Responsive.Builders
 {
     public class ResponsiveBuilder : IResponsiveBuilder
     {

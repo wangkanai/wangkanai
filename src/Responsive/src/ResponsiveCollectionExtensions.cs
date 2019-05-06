@@ -3,6 +3,7 @@
 
 using System;
 using Wangkanai.Responsive;
+using Wangkanai.Responsive.Builders;
 
 // ReSharper disable once CheckNamespace
 namespace Microsoft.Extensions.DependencyInjection
@@ -22,7 +23,9 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             if (services == null) throw new AddResponsiveArgumentNullException(nameof(services));
 
-            services.AddDetectionCore().AddDevice();
+            services.AddResponsiveCore()
+                .AddViewSuffix()
+                .AddViewSubfolder();
 
             return new ResponsiveBuilder(services);
         }
