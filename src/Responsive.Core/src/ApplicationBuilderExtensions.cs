@@ -17,7 +17,8 @@ namespace Wangkanai.Responsive
         /// </summary>
         /// <param name="app"></param>
         /// <returns>Return the <see cref="IApplicationBuilder"/> for further pipeline</returns>
-        public static IApplicationBuilder UseResponsive(this IApplicationBuilder app)
+        public static IApplicationBuilder UseResponsive(
+            this IApplicationBuilder app)
         {
             if (app == null) throw new UseResponsiveArgumentNullException(nameof(app));
 
@@ -29,12 +30,29 @@ namespace Wangkanai.Responsive
         /// <param name="app"></param>
         /// <param name="options"></param>
         /// <returns>Return the <see cref="IApplicationBuilder"/> for further pipeline</returns>
-        public static IApplicationBuilder UseResponsive(this IApplicationBuilder app, ResponsiveOptions options)
+        public static IApplicationBuilder UseResponsive(
+            this IApplicationBuilder app,
+            ResponsiveOptions options)
         {
             if (app == null) throw new UseResponsiveAppArgumentNullException(nameof(app));
             if (options == null) throw new UseResponsiveOptionArgumentNullException(nameof(options));
 
             return app.UseMiddleware<ResponsiveMiddleware>(Options.Create(options));
+        }
+        /// <summary>
+        /// Adds the responsive to <see cref="IApplicationBuilder"/> request execution pipeline.
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="options"></param>
+        /// <returns>Return the <see cref="IApplicationBuilder"/> for further pipeline</returns>
+        public static IApplicationBuilder UseResponsive(
+            this IApplicationBuilder app,
+            Action<IResponsiveOptionsBuilder> options)
+        {
+            if (app == null) throw new UseResponsiveAppArgumentNullException(nameof(app));
+            if (options == null) throw new UseResponsiveOptionArgumentNullException(nameof(options));
+
+            return app.UseMiddleware<ResponsiveMiddleware>();
         }
     }
 }
