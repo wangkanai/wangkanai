@@ -10,7 +10,7 @@ namespace Wangkanai.Responsive
     /// <summary>
     /// Extension methods for adding the <see cref="ResponsiveMiddleware"/> to an application.
     /// </summary>
-    public static class ApplicationBuilderExtensions
+    public static class ResponsiveApplicationBuilderExtensions
     {
         /// <summary>
         /// Adds the Responsive to <see cref="IApplicationBuilder"/> request execution pipeline.
@@ -30,7 +30,7 @@ namespace Wangkanai.Responsive
         /// <param name="app"></param>
         /// <param name="options"></param>
         /// <returns>Return the <see cref="IApplicationBuilder"/> for further pipeline</returns>
-        [ObsoleteAttribute("This method will soon be deprecated. Use UseResponsive(options => {}) instead.")]
+        [Obsolete("This method will soon be deprecated. Use UseResponsive(options => {}) instead.")]
         public static IApplicationBuilder UseResponsive(
             this IApplicationBuilder app,
             ResponsiveOptions options)
