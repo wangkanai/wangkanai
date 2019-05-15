@@ -61,9 +61,9 @@ namespace Sandbox
             });
 
             app.UseResponsive(options => {
-                options.Default(
-                    expect: DeviceType.Tablet,
-                    actual: DeviceType.Desktop);
+                options.DefaultTablet(DeviceType.Tablet);
+                options.DefaultMobile(DeviceType.Mobile);
+                options.DefaultDesktop(DeviceType.Desktop);
             });
 
             app.UseMvc(routes =>
