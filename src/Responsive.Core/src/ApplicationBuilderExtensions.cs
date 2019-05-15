@@ -30,6 +30,7 @@ namespace Wangkanai.Responsive
         /// <param name="app"></param>
         /// <param name="options"></param>
         /// <returns>Return the <see cref="IApplicationBuilder"/> for further pipeline</returns>
+        [ObsoleteAttribute("This method will soon be deprecated. Use UseResponsive(options => {}) instead.")]
         public static IApplicationBuilder UseResponsive(
             this IApplicationBuilder app,
             ResponsiveOptions options)
