@@ -60,6 +60,12 @@ namespace Sandbox
                 TabletDefault = DeviceType.Tablet
             });
 
+            app.UseResponsive(options => {
+                options.Default(
+                    expect: DeviceType.Tablet,
+                    actual: DeviceType.Desktop);
+            });
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
