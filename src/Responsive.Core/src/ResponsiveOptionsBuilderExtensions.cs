@@ -11,7 +11,7 @@ namespace Microsoft.AspNetCore.Builder
         public static IResponsiveOptionsBuilder MapView(
             this IResponsiveOptionsBuilder optionsBuilder,
             DeviceType target,
-            DeviceType preferred)
+            DeviceType prefer)
         {
             throw new NotImplementedException();
         }
