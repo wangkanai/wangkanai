@@ -15,7 +15,7 @@ namespace Wangkanai.Responsive.Test.Core
         //public void SetDevice_HttpContext_UserPerference_ReturnsExpected()
         //{
         //    var context = new DefaultHttpContext();
-        //    var preference = new UserPerference();
+        //    var preference = new UserPreference();
         //    string responsiveContextKey = "Responsive"; // May be we can make this constant public for testing purposes.
 
         //    context.SetDevice(preference);
@@ -27,7 +27,7 @@ namespace Wangkanai.Responsive.Test.Core
         //[Fact]
         //public void SetDevice_Null_UserPerference_ThrowsArgumentNullException()
         //{
-        //    Assert.Throws<SetDeviceArgumentNullException>(() => ((HttpContext)null).SetDevice(new UserPerference()));
+        //    Assert.Throws<SetDeviceArgumentNullException>(() => ((HttpContext)null).SetDevice(new UserPreference()));
         //}
 
         //[Fact]
@@ -40,7 +40,7 @@ namespace Wangkanai.Responsive.Test.Core
         public void GetDevice_HttpContext_ReturnsExpected()
         {
             var device = DeviceType.Tablet;
-            //var preference = new UserPerference() { Resolver = device };
+            //var preference = new UserPreference() { Resolver = device };
             var context = new DefaultHttpContext();
             context.SetDevice(device);
 

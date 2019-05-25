@@ -62,7 +62,7 @@ namespace Sandbox
 
             app.UseResponsive(options =>
             {
-                options.MapView(DeviceType.Tablet, DeviceType.Desktop);
+                options.DefaultView(DeviceType.Tablet, DeviceType.Desktop);
                 options.DefaultTablet(DeviceType.Tablet);
                 options.DefaultMobile(DeviceType.Mobile);
                 options.DefaultDesktop(DeviceType.Desktop);
