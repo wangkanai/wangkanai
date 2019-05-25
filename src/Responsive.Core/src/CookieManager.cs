@@ -15,7 +15,9 @@ namespace Wangkanai.Responsive
         private const string ResponsiveContextKey = "Responsive";
         private readonly HttpContext _context;
 
-        public CookieManager(HttpContext context, ResponsiveOptions options)
+        public CookieManager(
+            HttpContext context,
+            ResponsiveOptions options)
         {
             _context = context
                 ?? throw new CookieManagerArgumentNullException(nameof(context));

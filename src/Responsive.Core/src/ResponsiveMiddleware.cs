@@ -25,7 +25,8 @@ namespace Wangkanai.Responsive
 
         public async Task Invoke(HttpContext context, IDeviceResolver resolver)
         {
-            if (context == null) throw new ResponsiveMiddlewareInvokeArgumentNullException(nameof(context));
+            if (context == null)
+                throw new ResponsiveMiddlewareInvokeArgumentNullException(nameof(context));
 
             var detection = new ResolverManager(resolver, _options);
             //var cookie = new CookieManager(context);
