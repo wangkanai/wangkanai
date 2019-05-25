@@ -10,21 +10,27 @@ namespace Microsoft.Extensions.DependencyInjection
 {
     public static class ViewBuilderExtensions
     {
-        public static IResponsiveCoreBuilder AddViewSuffix(this IResponsiveCoreBuilder builder)
+        public static IResponsiveCoreBuilder AddViewSuffix(
+            this IResponsiveCoreBuilder builder)
         {
-            if (builder == null) throw new ViewBuilderExtensionsSuffixArgumentNullException(nameof(builder));
+            if (builder == null)
+                throw new ViewBuilderExtensionsSuffixArgumentNullException(nameof(builder));
 
             return AddViewLocation(builder, ResponsiveViewLocationFormat.Suffix);
         }
 
-        public static IResponsiveCoreBuilder AddViewSubfolder(this IResponsiveCoreBuilder builder)
+        public static IResponsiveCoreBuilder AddViewSubfolder(
+            this IResponsiveCoreBuilder builder)
         {
-            if (builder == null) throw new ViewBuilderExtensionsSubfolderArgumentNullException(nameof(builder));
+            if (builder == null)
+                throw new ViewBuilderExtensionsSubfolderArgumentNullException(nameof(builder));
 
             return AddViewLocation(builder, ResponsiveViewLocationFormat.Subfolder);
         }
 
-        private static IResponsiveCoreBuilder AddViewLocation(this IResponsiveCoreBuilder builder, ResponsiveViewLocationFormat format)
+        private static IResponsiveCoreBuilder AddViewLocation(
+            this IResponsiveCoreBuilder builder,
+            ResponsiveViewLocationFormat format)
         {
             builder.Services.Configure<RazorViewEngineOptions>(
                 options =>
