@@ -18,8 +18,7 @@ namespace Microsoft.AspNetCore.Http
         {
             if (context == null) throw new GetDeviceArgumentNullException(nameof(context));
 
-            object responsiveContext;
-            if (context.Items.TryGetValue(ResponsiveContextKey, out responsiveContext))
+            if (context.Items.TryGetValue(ResponsiveContextKey, out var responsiveContext))
                 return (DeviceType)responsiveContext;
 
             return DeviceType.Desktop;

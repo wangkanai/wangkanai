@@ -17,6 +17,7 @@ namespace Wangkanai.Responsive
                 ?? throw new ArgumentNullException(nameof(applicationBuilder));
             DefaultHandler = defaultHandler
                 ?? throw new ArgumentNullException(nameof(applicationBuilder));
+
             ServiceProvider = ApplicationBuilder.ApplicationServices;
         }
 

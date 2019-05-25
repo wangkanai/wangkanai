@@ -20,7 +20,8 @@ namespace Wangkanai.Responsive
         public static IApplicationBuilder UseResponsive(
             this IApplicationBuilder app)
         {
-            if (app == null) throw new UseResponsiveArgumentNullException(nameof(app));
+            if (app == null)
+                throw new UseResponsiveArgumentNullException(nameof(app));
 
             return app.UseMiddleware<ResponsiveMiddleware>();
         }
@@ -35,8 +36,10 @@ namespace Wangkanai.Responsive
             this IApplicationBuilder app,
             ResponsiveOptions options)
         {
-            if (app == null) throw new UseResponsiveAppArgumentNullException(nameof(app));
-            if (options == null) throw new UseResponsiveOptionArgumentNullException(nameof(options));
+            if (app == null)
+                throw new UseResponsiveAppArgumentNullException(nameof(app));
+            if (options == null)
+                throw new UseResponsiveOptionArgumentNullException(nameof(options));
 
             return app.UseMiddleware<ResponsiveMiddleware>(Options.Create(options));
         }
@@ -50,8 +53,10 @@ namespace Wangkanai.Responsive
             this IApplicationBuilder app,
             Action<IResponsiveOptionsBuilder> options)
         {
-            if (app == null) throw new UseResponsiveAppArgumentNullException(nameof(app));
-            if (options == null) throw new UseResponsiveOptionArgumentNullException(nameof(options));
+            if (app == null)
+                throw new UseResponsiveAppArgumentNullException(nameof(app));
+            if (options == null)
+                throw new UseResponsiveOptionArgumentNullException(nameof(options));
 
             return app.UseMiddleware<ResponsiveMiddleware>();
         }
