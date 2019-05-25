@@ -11,9 +11,8 @@ namespace Wangkanai.Responsive.Builders
         public IServiceCollection Services { get; }
         public ResponsiveBuilder(IServiceCollection services)
         {
-            if (services == null) throw new ResponsiveBuilderArgumentNullException(nameof(services));
-
-            Services = services;
+            Services = services
+                ?? throw new ResponsiveBuilderArgumentNullException(nameof(services));
         }
     }
 }

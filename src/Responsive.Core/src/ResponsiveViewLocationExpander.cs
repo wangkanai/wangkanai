@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Razor;
-using Microsoft.Extensions.Options;
 using Wangkanai.Detection;
 using System.ComponentModel;
 
@@ -25,10 +24,11 @@ namespace Wangkanai.Responsive
     /// </example>
     public class ResponsiveViewLocationExpander : IViewLocationExpander
     {
-        private const string DEVICE_KEY = "device";
+        private const string DeviceKey = "device";
         private readonly ResponsiveViewLocationFormat _format;
 
-        public ResponsiveViewLocationExpander() : this(ResponsiveViewLocationFormat.Suffix)
+        public ResponsiveViewLocationExpander() :
+            this(ResponsiveViewLocationFormat.Suffix)
         {
 
         }
@@ -42,38 +42,42 @@ namespace Wangkanai.Responsive
 
         public void PopulateValues(ViewLocationExpanderContext context)
         {
-            if (context == null) throw new ViewLocationExpanderPopulateValuesArgumentNullException(nameof(context));
+            if (context == null)
+                throw new ViewLocationExpanderPopulateValuesArgumentNullException(nameof(context));
 
-            context.Values[DEVICE_KEY] = context.ActionContext.HttpContext.GetDevice().ToString();
+            context.Values[DeviceKey] = context.ActionContext.HttpContext.GetDevice().ToString();
         }
 
-        public IEnumerable<string> ExpandViewLocations(ViewLocationExpanderContext context, IEnumerable<string> viewLocations)
+        public IEnumerable<string> ExpandViewLocations(
+            ViewLocationExpanderContext context,
+            IEnumerable<string> viewLocations)
         {
-            if (context == null) throw new ViewLocationExpanderContextArgumentNullException(nameof(context));
-            if (viewLocations == null) throw new ViewLocationExpanderViewsArgumentNullException(nameof(viewLocations));
+            if (context == null)
+                throw new ViewLocationExpanderContextArgumentNullException(nameof(context));
+            if (viewLocations == null)
+                throw new ViewLocationExpanderViewsArgumentNullException(nameof(viewLocations));
 
-            string value;
-            context.Values.TryGetValue(DEVICE_KEY, out value);
+            context.Values.TryGetValue(DeviceKey, out var value);
 
-            if (!string.IsNullOrEmpty(value))
+            if (string.IsNullOrEmpty(value)) return viewLocations;
+
+            IDevice device;
+            try
             {
-                IDevice device;
-                try
-                {
-                    device = new Device(value);
-                }
-                catch (DeviceNotFoundException)
-                {
-                    return viewLocations;
-                }
-
-                return ExpandViewLocationsCore(viewLocations, device);
+                device = new Device(value);
+            }
+            catch (DeviceNotFoundException)
+            {
+                return viewLocations;
             }
 
-            return viewLocations;
+            return ExpandViewLocationsCore(viewLocations, device);
+
         }
 
-        private IEnumerable<string> ExpandViewLocationsCore(IEnumerable<string> viewLocations, IDevice device)
+        private IEnumerable<string> ExpandViewLocationsCore(
+            IEnumerable<string> viewLocations,
+            IDevice device)
         {
             foreach (var location in viewLocations)
             {

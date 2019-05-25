@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
+// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -12,8 +12,8 @@ using Wangkanai.Detection;
 
 namespace Wangkanai.Responsive.TagHelpers
 {
-    [HtmlTargetElement("device", Attributes = IncludeAttributeName)]
-    [HtmlTargetElement("device", Attributes = ExcludeAttributeName)]
+    [HtmlTargetElement(ElementName, Attributes = IncludeAttributeName)]
+    [HtmlTargetElement(ElementName, Attributes = ExcludeAttributeName)]
      public class DeviceTagHelper : TagHelper
     {
         private const string ElementName = "device";
@@ -33,14 +33,13 @@ namespace Wangkanai.Responsive.TagHelpers
         [ViewContext]
         public ViewContext ViewContext { get; set; }
 
-        
+
         public DeviceTagHelper(IDeviceResolver resolver)
         {
             _resolver = resolver;
-           
         }
 
-       
+
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             if (context == null) throw new ArgumentNullException(nameof(context));
