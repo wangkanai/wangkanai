@@ -8,10 +8,13 @@ namespace Wangkanai.Responsive
 {
     public class ResponsiveOptionsBuilder : IResponsiveOptionsBuilder
     {
-        public ResponsiveOptionsBuilder(IApplicationBuilder applicationBuilder)
+        public ResponsiveOptionsBuilder(
+            IApplicationBuilder applicationBuilder)
             : this(applicationBuilder, defaultHandler: null) { }
 
-        public ResponsiveOptionsBuilder(IApplicationBuilder applicationBuilder, IViewLocation defaultHandler)
+        public ResponsiveOptionsBuilder(
+            IApplicationBuilder applicationBuilder,
+            IViewLocation defaultHandler)
         {
             ApplicationBuilder = applicationBuilder
                 ?? throw new ArgumentNullException(nameof(applicationBuilder));
