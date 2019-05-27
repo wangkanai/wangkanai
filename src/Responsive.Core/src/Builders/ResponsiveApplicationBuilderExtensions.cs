@@ -3,7 +3,10 @@
 
 using System;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Mvc.Internal;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using Wangkanai.Responsive.Core.Internal;
 
 namespace Wangkanai.Responsive
 {
@@ -59,6 +62,13 @@ namespace Wangkanai.Responsive
                 throw new UseResponsiveOptionArgumentNullException(nameof(options));
 
             return app.UseMiddleware<ResponsiveMiddleware>();
+        }
+
+        private static void VerifyResponsiveIsRegistered(IApplicationBuilder app)
+        {
+            if (app.ApplicationServices.GetService(typeof(ResponsiveMarkerService)) == null)
+                throw new InvalidOperationException(
+                    "AddResponsive() is not added to ConfigureServices(...)");
         }
     }
 }

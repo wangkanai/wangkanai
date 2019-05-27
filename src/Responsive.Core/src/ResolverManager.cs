@@ -25,6 +25,7 @@ namespace Wangkanai.Responsive
             _options = options;
         }
 
-        public DeviceType Device => _options.Default(_resolved);
+        public DeviceType Device
+            => _options.Default(_resolved);
     }
 }
