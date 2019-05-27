@@ -11,7 +11,7 @@ using System.ComponentModel;
 namespace Wangkanai.Responsive
 {
     /// <summary>
-    /// a <see cref="IViewLocationExpander"/> that adds the lanuage as an extension prefix to view names.
+    /// a <see cref="IViewLocationExpander"/> that adds the responsive as an extension prefix to view names.
     /// device that is getting added as extensions prefix comes from <see cref="Microsoft.AspNetCore.Http.HttpContext"/>.
     /// </summary>
     /// <example>
@@ -24,28 +24,19 @@ namespace Wangkanai.Responsive
     /// </example>
     public class ResponsiveViewLocationExpander : IViewLocationExpander
     {
-        private const string DeviceKey = "device";
+        private const string ValueKey = "device";
         private readonly ResponsiveViewLocationFormat _format;
 
-        public ResponsiveViewLocationExpander() :
-            this(ResponsiveViewLocationFormat.Suffix)
-        {
+        public ResponsiveViewLocationExpander() : this(ResponsiveViewLocationFormat.Suffix) { }
 
-        }
-        public ResponsiveViewLocationExpander(ResponsiveViewLocationFormat format)
-        {
-            if (!Enum.IsDefined(typeof(ResponsiveViewLocationFormat), (int)format))
-                throw new InvalidEnumArgumentException(nameof(format));
-
-            _format = format;
-        }
+        public ResponsiveViewLocationExpander(ResponsiveViewLocationFormat format) => _format = format;
 
         public void PopulateValues(ViewLocationExpanderContext context)
         {
             if (context == null)
                 throw new ViewLocationExpanderPopulateValuesArgumentNullException(nameof(context));
 
-            context.Values[DeviceKey] = context.ActionContext.HttpContext.GetDevice().ToString();
+            context.Values[ValueKey] = context.ActionContext.HttpContext.GetDevice().ToString();
         }
 
         public IEnumerable<string> ExpandViewLocations(
@@ -57,7 +48,7 @@ namespace Wangkanai.Responsive
             if (viewLocations == null)
                 throw new ViewLocationExpanderViewsArgumentNullException(nameof(viewLocations));
 
-            context.Values.TryGetValue(DeviceKey, out var value);
+            context.Values.TryGetValue(ValueKey, out var value);
 
             if (string.IsNullOrEmpty(value)) return viewLocations;
 
