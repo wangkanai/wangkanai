@@ -26,7 +26,7 @@ namespace Wangkanai.Responsive
             if (app == null)
                 throw new UseResponsiveArgumentNullException(nameof(app));
 
-            return app.UseMiddleware<ResponsiveMiddleware>();
+            return app.UseResponsive(options => { });
         }
         /// <summary>
         /// Adds the responsive to <see cref="IApplicationBuilder"/> request execution pipeline.
@@ -44,6 +44,8 @@ namespace Wangkanai.Responsive
             if (options == null)
                 throw new UseResponsiveOptionArgumentNullException(nameof(options));
 
+            VerifyResponsiveIsRegistered(app);
+
             return app.UseMiddleware<ResponsiveMiddleware>(Options.Create(options));
         }
         /// <summary>
@@ -60,6 +62,8 @@ namespace Wangkanai.Responsive
                 throw new UseResponsiveAppArgumentNullException(nameof(app));
             if (options == null)
                 throw new UseResponsiveOptionArgumentNullException(nameof(options));
+
+            VerifyResponsiveIsRegistered(app);
 
             return app.UseMiddleware<ResponsiveMiddleware>();
         }
