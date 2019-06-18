@@ -27,9 +27,11 @@ namespace Wangkanai.Responsive
         private const string ValueKey = "device";
         private readonly ResponsiveViewLocationFormat _format;
 
-        public ResponsiveViewLocationExpander() : this(ResponsiveViewLocationFormat.Suffix) { }
+        public ResponsiveViewLocationExpander() :
+            this(ResponsiveViewLocationFormat.Suffix) { }
 
-        public ResponsiveViewLocationExpander(ResponsiveViewLocationFormat format) => _format = format;
+        public ResponsiveViewLocationExpander(ResponsiveViewLocationFormat format)
+            => _format = format;
 
         public void PopulateValues(ViewLocationExpanderContext context)
         {
