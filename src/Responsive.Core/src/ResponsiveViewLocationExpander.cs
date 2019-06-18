@@ -31,7 +31,12 @@ namespace Wangkanai.Responsive
             this(ResponsiveViewLocationFormat.Suffix) { }
 
         public ResponsiveViewLocationExpander(ResponsiveViewLocationFormat format)
-            => _format = format;
+        {
+            if (!Enum.IsDefined(typeof(ResponsiveViewLocationFormat), (int)format))
+                throw new InvalidEnumArgumentException(nameof(format));
+
+            _format = format;
+        }
 
         public void PopulateValues(ViewLocationExpanderContext context)
         {
