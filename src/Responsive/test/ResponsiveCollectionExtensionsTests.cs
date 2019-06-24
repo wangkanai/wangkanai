@@ -15,7 +15,7 @@ namespace Wangkanai.Responsive.Test
             var serviceCollection = new ServiceCollection();
             var builder = serviceCollection.AddResponsive();
 
-            Assert.Equal(5, builder.Services.Count);
+            Assert.Equal(6, builder.Services.Count);
             Assert.Same(serviceCollection, builder.Services);
         }
 
