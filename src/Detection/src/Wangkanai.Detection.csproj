@@ -19,7 +19,7 @@
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
     <VersionPrefix>2.0.0</VersionPrefix>
-    <VersionSuffix>beta12</VersionSuffix>
+    <VersionSuffix>beta13</VersionSuffix>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
