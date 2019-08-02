@@ -10,11 +10,11 @@ namespace Wangkanai.Responsive.Builders
     {
         public IServiceCollection Services { get; }
 
-        public ResponsiveCoreBuilder(IServiceCollection services)
+        public ResponsiveCoreBuilder(
+            IServiceCollection services)
         {
-            if (services == null) throw new ResponsiveCoreBuilderArgumentNullException(nameof(services));
-
-            Services = services;
+            Services = services
+                ?? throw new ResponsiveCoreBuilderArgumentNullException(nameof(services));
         }
     }
 }

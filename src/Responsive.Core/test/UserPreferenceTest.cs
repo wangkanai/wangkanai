@@ -9,12 +9,12 @@ using Xunit;
 
 namespace Wangkanai.Responsive.Test.Core
 {
-    public class UserPerferenceTest
+    public class UserPreferenceTest
     {
         [Fact]
         public void Preferred_Cookie_over_Resolver()
         {
-            var preference = new UserPerference(DeviceType.Mobile, DeviceType.Desktop);
+            var preference = new UserPreference(DeviceType.Mobile, DeviceType.Desktop);
 
             Assert.Equal("Desktop", preference.Preferred);
         }

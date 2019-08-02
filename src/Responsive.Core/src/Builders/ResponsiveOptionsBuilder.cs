@@ -8,10 +8,24 @@ namespace Wangkanai.Responsive
 {
     public class ResponsiveOptionsBuilder : IResponsiveOptionsBuilder
     {
-        public IApplicationBuilder ApplicationBuilder { get; }
-        public IServiceProvider ServiceProvider
+        public ResponsiveOptionsBuilder(
+            IApplicationBuilder applicationBuilder)
+            : this(applicationBuilder, defaultHandler: null) { }
+
+        public ResponsiveOptionsBuilder(
+            IApplicationBuilder applicationBuilder,
+            IViewLocation defaultHandler)
         {
-            get { return ApplicationBuilder.ApplicationServices; }
+            ApplicationBuilder = applicationBuilder
+                ?? throw new ArgumentNullException(nameof(applicationBuilder));
+            DefaultHandler = defaultHandler
+                ?? throw new ArgumentNullException(nameof(applicationBuilder));
+
+            ServiceProvider = ApplicationBuilder.ApplicationServices;
         }
+
+        public IApplicationBuilder ApplicationBuilder { get; }
+        public IServiceProvider ServiceProvider { get; }
+        public IViewLocation DefaultHandler { get; set; }
     }
 }

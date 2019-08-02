@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Wangkanai.Responsive;
 using Wangkanai.Responsive.Builders;
+using Wangkanai.Responsive.Core.Internal;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -13,7 +15,10 @@ namespace Microsoft.Extensions.DependencyInjection
             if (services == null)
                 throw new AddResponsiveArgumentNullException(nameof(services));
 
-            services.AddDetectionCore().AddDevice();
+            services.AddDetectionCore()
+                .AddDevice();
+
+            services.TryAddSingleton<ResponsiveMarkerService, ResponsiveMarkerService>();
 
             return new ResponsiveCoreBuilder(services);
         }

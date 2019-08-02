@@ -92,7 +92,19 @@ Responsive is configured in the `ConfigureServices` method:
 public void ConfigureServices(IServiceCollection services)
 {
     // Add responsive services.
-    services.AddResponsive()
+    services.AddResponsive();
+
+    // Add framework services.
+    services.AddMvc();  
+}
+```
+
+Or you could be more specific using the `AddResponsiveCore()` method:
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    // Add responsive services.
+    services.AddResponsiveCore()
         .AddViewSuffix()
         .AddViewSubfolder();
 

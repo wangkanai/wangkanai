@@ -10,16 +10,19 @@ namespace Microsoft.AspNetCore.Http
     {
         private const string ResponsiveContextKey = "Responsive";
 
-        public static void SetDevice(this HttpContext context, DeviceType device)
+        public static void SetDevice(
+            this HttpContext context,
+            DeviceType device)
         {
             context.Items[ResponsiveContextKey] = device;
         }
-        public static DeviceType GetDevice(this HttpContext context)
+        public static DeviceType GetDevice(
+            this HttpContext context)
         {
-            if (context == null) throw new GetDeviceArgumentNullException(nameof(context));
+            if (context == null)
+                throw new GetDeviceArgumentNullException(nameof(context));
 
-            object responsiveContext;
-            if (context.Items.TryGetValue(ResponsiveContextKey, out responsiveContext))
+            if (context.Items.TryGetValue(ResponsiveContextKey, out var responsiveContext))
                 return (DeviceType)responsiveContext;
 
             return DeviceType.Desktop;

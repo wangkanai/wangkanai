@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
+// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
@@ -13,7 +13,8 @@ namespace Wangkanai.Responsive
 
         public ResolverManager(IDeviceResolver resolver, ResponsiveOptions options)
         {
-            if (resolver == null) throw new ArgumentNullException(nameof(resolver));
+            if (resolver == null)
+                throw new ArgumentNullException(nameof(resolver));
 
             _resolved = resolver.Device.Type;
             _options = options;
@@ -24,6 +25,7 @@ namespace Wangkanai.Responsive
             _options = options;
         }
 
-        public DeviceType Device => _options.Default(_resolved);
+        public DeviceType Device
+            => _options.Default(_resolved);
     }
 }

@@ -3,7 +3,10 @@
 
 using System;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Mvc.Internal;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using Wangkanai.Responsive.Core.Internal;
 
 namespace Wangkanai.Responsive
 {
@@ -20,9 +23,10 @@ namespace Wangkanai.Responsive
         public static IApplicationBuilder UseResponsive(
             this IApplicationBuilder app)
         {
-            if (app == null) throw new UseResponsiveArgumentNullException(nameof(app));
+            if (app == null)
+                throw new UseResponsiveArgumentNullException(nameof(app));
 
-            return app.UseMiddleware<ResponsiveMiddleware>();
+            return app.UseResponsive(options => { });
         }
         /// <summary>
         /// Adds the responsive to <see cref="IApplicationBuilder"/> request execution pipeline.
@@ -35,8 +39,12 @@ namespace Wangkanai.Responsive
             this IApplicationBuilder app,
             ResponsiveOptions options)
         {
-            if (app == null) throw new UseResponsiveAppArgumentNullException(nameof(app));
-            if (options == null) throw new UseResponsiveOptionArgumentNullException(nameof(options));
+            if (app == null)
+                throw new UseResponsiveAppArgumentNullException(nameof(app));
+            if (options == null)
+                throw new UseResponsiveOptionArgumentNullException(nameof(options));
+
+            VerifyResponsiveIsRegistered(app);
 
             return app.UseMiddleware<ResponsiveMiddleware>(Options.Create(options));
         }
@@ -50,10 +58,21 @@ namespace Wangkanai.Responsive
             this IApplicationBuilder app,
             Action<IResponsiveOptionsBuilder> options)
         {
-            if (app == null) throw new UseResponsiveAppArgumentNullException(nameof(app));
-            if (options == null) throw new UseResponsiveOptionArgumentNullException(nameof(options));
+            if (app == null)
+                throw new UseResponsiveAppArgumentNullException(nameof(app));
+            if (options == null)
+                throw new UseResponsiveOptionArgumentNullException(nameof(options));
+
+            VerifyResponsiveIsRegistered(app);
 
             return app.UseMiddleware<ResponsiveMiddleware>();
+        }
+
+        private static void VerifyResponsiveIsRegistered(IApplicationBuilder app)
+        {
+            if (app.ApplicationServices.GetService(typeof(ResponsiveMarkerService)) == null)
+                throw new InvalidOperationException(
+                    "AddResponsive() is not added to ConfigureServices(...)");
         }
     }
 }

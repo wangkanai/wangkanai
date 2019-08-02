@@ -20,6 +20,9 @@ Being to target difference clientInfo devices with seperation of concern is cruc
     <VersionSuffix>beta13</VersionSuffix>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <RootNamespace>Wangkanai.Responsive</RootNamespace>
+
+    <LangVersion>8.0</LangVersion>
+    <NullableContextOptions>enable</NullableContextOptions>
   </PropertyGroup>
 
   <ItemGroup>

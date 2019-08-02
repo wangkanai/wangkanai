@@ -25,13 +25,14 @@ namespace Wangkanai.Responsive
 
         public async Task Invoke(HttpContext context, IDeviceResolver resolver)
         {
-            if (context == null) throw new ResponsiveMiddlewareInvokeArgumentNullException(nameof(context));
+            if (context == null)
+                throw new ResponsiveMiddlewareInvokeArgumentNullException(nameof(context));
 
             var detection = new ResolverManager(resolver, _options);
             //var cookie = new CookieManager(context);
-            //var preference = new UserPerference(detection, cookie);
+            //var preference = new UserPreference(detection, cookie);
 
-            //var perference = new PerferenceManager();
+            //var preference = new PreferenceManager();
 
             // need return detect and preferred for the ViewLocation
             context.SetDevice(detection.Device);

@@ -15,27 +15,34 @@ namespace Wangkanai.Responsive
         private const string ResponsiveContextKey = "Responsive";
         private readonly HttpContext _context;
 
-        public CookieManager(HttpContext context, ResponsiveOptions options)
+        public CookieManager(
+            HttpContext context,
+            ResponsiveOptions options)
         {
-            if (context == null) throw new CookieManagerArgumentNullException(nameof(context));
-
-            _context = context;
+            _context = context
+                ?? throw new CookieManagerArgumentNullException(nameof(context));
             _options = options;
+                //?? throw new CookieManagerArgumentNullException(nameof(context));
         }
-        public DeviceType Device => _options.Default(Get());
+
+        public DeviceType Device
+            => _options.Default(Get());
+
         public DeviceType Get()
         {
             var value = _context.Request.Cookies[ResponsiveContextKey];
-            DeviceType result;
-            Enum.TryParse<DeviceType>(value, out result);
+
+            Enum.TryParse<DeviceType>(value, out var result);
 
             return result;
         }
 
         public void Set(DeviceType value)
         {
-            var option = new CookieOptions();
-            option.Expires = DateTime.Now.AddMinutes(60);
+            var option = new CookieOptions
+            {
+                Expires = DateTime.Now.AddMinutes(60)
+            };
 
             _context.Response.Cookies.Append(ResponsiveContextKey, value.ToString(), option);
         }
