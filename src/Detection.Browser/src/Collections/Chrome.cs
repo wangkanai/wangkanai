@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
+// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
@@ -19,7 +19,7 @@ namespace Wangkanai.Detection.Collections
             {
                 var first = _agent.IndexOf(chrome);
                 var cut = _agent.Substring(first + chrome.Length + 1);
-                var version = cut.Substring(0, cut.IndexOf(' '));
+                var version = cut.Substring(0, cut.Contains(" ") ? cut.IndexOf(' ') : cut.Length);
                 Version = version.ToVersion();                
                 Type = BrowserType.Chrome;
             }

@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
+// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
 using Microsoft.AspNetCore.Http;
@@ -95,6 +95,20 @@ namespace Wangkanai.Detection.Test
             // assert
             Assert.Equal(BrowserType.Firefox, resolver.Browser.Type);
             Assert.Equal(0, resolver.Browser.Version.Major);
+        }
+
+        [Theory]
+        [InlineData("Mozilla/5.0 (compatible; YandexBot/3.0; +http://yandex.com/bots) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106")]
+        [InlineData("Mozilla/5.0 (compatible; YandexBot/3.0; +http://yandex.com/bots) AppleWebKit/537.36 (KHTML, like Gecko) Chrome")]
+        [InlineData("Mozilla/5.0 (compatible; YandexBot/3.0; +http://yandex.com/bots) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/NoIdea")]
+        public void Resolve_Bot_As_Chrome_Browser(string agent)
+        {
+            // arrange
+            var service = CreateService(agent);
+            // act
+            var resolver = new BrowserResolver(service);
+            // assert
+            Assert.Equal(BrowserType.Chrome, resolver.Browser.Type);
         }
 
         [Fact]
