@@ -24,7 +24,7 @@ namespace Wangkanai.Detection.Collections
                 Type = BrowserType.IE;
             }
 
-            if(_agent.Contains("ie 11.0"))
+            if (_agent.Contains("ie 11.0") || (_agent.Contains("trident/") && _agent.Contains("rv:11.0")))
             {
                 Type = BrowserType.IE;
                 Version = new Version("11.0");
