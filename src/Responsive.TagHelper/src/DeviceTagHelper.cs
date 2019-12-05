@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.Text;
 using Wangkanai.Detection;
 
-namespace Wangkanai.Responsive.TagHelpers
+namespace Microsoft.AspNetCore.Mvc.TagHelpers
 {
     [HtmlTargetElement(ElementName, Attributes = IncludeAttributeName)]
     [HtmlTargetElement(ElementName, Attributes = ExcludeAttributeName)]

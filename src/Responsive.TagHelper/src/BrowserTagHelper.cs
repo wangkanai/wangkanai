@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Wangkanai.Responsive.TagHelpers
+namespace Microsoft.AspNetCore.Mvc.TagHelpers
 {
     [HtmlTargetElement("browser", TagStructure = TagStructure.WithoutEndTag)]
     public class BrowserTagHelper : TagHelper

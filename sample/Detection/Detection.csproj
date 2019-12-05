@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Detection\src\Wangkanai.Detection.csproj" />
+    <ProjectReference Include="..\..\src\Responsive\src\Wangkanai.Responsive.csproj" />
   </ItemGroup>
 
 </Project>
