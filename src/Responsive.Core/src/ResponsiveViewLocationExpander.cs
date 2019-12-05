@@ -28,7 +28,8 @@ namespace Wangkanai.Responsive
         private readonly ResponsiveViewLocationFormat _format;
 
         public ResponsiveViewLocationExpander() :
-            this(ResponsiveViewLocationFormat.Suffix) { }
+            this(ResponsiveViewLocationFormat.Suffix)
+        { }
 
         public ResponsiveViewLocationExpander(ResponsiveViewLocationFormat format)
         {
@@ -79,12 +80,19 @@ namespace Wangkanai.Responsive
         {
             foreach (var location in viewLocations)
             {
-                if (_format == ResponsiveViewLocationFormat.Subfolder)
-                    yield return location.Replace("{0}", device.Type.ToString() + "/{0}");
-                else
+                if (location.ToLower().Contains("pages"))
+                {
                     yield return location.Replace("{0}", "{0}." + device.Type.ToString());
-
-                yield return location;
+                    yield return location;
+                }
+                else
+                {
+                    if (_format == ResponsiveViewLocationFormat.Subfolder)
+                        yield return location.Replace("{0}", device.Type.ToString() + "/{0}");
+                    else
+                        yield return location.Replace("{0}", "{0}." + device.Type.ToString());
+                    yield return location;
+                }
             }
         }
     }

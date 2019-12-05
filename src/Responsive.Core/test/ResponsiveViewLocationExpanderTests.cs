@@ -51,7 +51,7 @@ namespace Wangkanai.Responsive.Test.Core
         public void PopulateValues_Null_ThrowsArgumentNullException()
         {
             var locationExpander = new ResponsiveViewLocationExpander();
-            Assert.Throws<ViewLocationExpanderPopulateValuesArgumentNullException >(() => locationExpander.PopulateValues(null));
+            Assert.Throws<ViewLocationExpanderPopulateValuesArgumentNullException>(() => locationExpander.PopulateValues(null));
         }
 
         public static IEnumerable<object[]> ViewLocationExpanderTestData
@@ -69,7 +69,6 @@ namespace Wangkanai.Responsive.Test.Core
                     },
                     new[]
                     {
-                        // Why is there is Tablet expected here?
                         "/Views/{1}/{0}.Tablet.cshtml",
                         "/Views/{1}/{0}.cshtml",
                         "/Views/Shared/{0}.Tablet.cshtml",
@@ -94,6 +93,24 @@ namespace Wangkanai.Responsive.Test.Core
                         "/Views/Shared/{0}.cshtml",
                     }
                 };
+
+                yield return new object[]
+{
+                    ResponsiveViewLocationFormat.Suffix,
+                    DeviceType.Tablet,
+                    new[]
+                    {
+                        "/Pages/{1}/{0}.cshtml",
+                        "/Pages/Shared/{0}.cshtml"
+                    },
+                    new[]
+                    {
+                        "/Pages/{1}/{0}.Tablet.cshtml",
+                        "/Pages/{1}/{0}.cshtml",
+                        "/Pages/Shared/{0}.Tablet.cshtml",
+                        "/Pages/Shared/{0}.cshtml",
+                    }
+};
             }
         }
 
