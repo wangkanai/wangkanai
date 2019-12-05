@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
+// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
 using Microsoft.AspNetCore.Razor.TagHelpers;
@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Wangkanai.Responsive.TagHelpers
 {
-    [HtmlTargetElement("browser")]
+    [HtmlTargetElement("browser", TagStructure = TagStructure.WithoutEndTag)]
     public class BrowserTagHelper : TagHelper
     {
         public override void Process(TagHelperContext context, TagHelperOutput output)

@@ -13,7 +13,7 @@ using Microsoft.Extensions.Logging;
 using Wangkanai.Detection;
 using Wangkanai.Responsive;
 
-namespace Sandbox
+namespace Responsive
 {
     public class Startup
     {
