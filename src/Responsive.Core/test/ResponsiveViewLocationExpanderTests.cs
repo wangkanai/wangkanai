@@ -39,7 +39,7 @@ namespace Wangkanai.Responsive.Test.Core
         public void PopulateValues_ViewLocationExpanderContext_Success()
         {
             string deviceKey = "device"; // May this one can be public in ResponsiveViewLocationExpander.cs.
-            var context = SetupViewLocationExpanderContext();
+            var context = SetupViewLocationExpanderContext(DeviceType.Tablet);
             var locationExpander = new ResponsiveViewLocationExpander();
             locationExpander.PopulateValues(context);
 
@@ -102,7 +102,7 @@ namespace Wangkanai.Responsive.Test.Core
             IEnumerable<string> viewLocations,
             IEnumerable<string> expectedViewLocations)
         {
-            var context = SetupViewLocationExpanderContext();
+            var context = SetupViewLocationExpanderContext(DeviceType.Tablet);
             var locationExpander = new ResponsiveViewLocationExpander(format);
             locationExpander.PopulateValues(context);
             var resultLocations = locationExpander.ExpandViewLocations(context, viewLocations).ToList();
@@ -113,7 +113,7 @@ namespace Wangkanai.Responsive.Test.Core
         [Fact]
         public void ExpandViewLocations_NoDevice_ReturnsExpected()
         {
-            var context = SetupViewLocationExpanderContext();
+            var context = SetupViewLocationExpanderContext(DeviceType.Tablet);
             var viewLocations = new List<string>() { "/Views/{1}/{0}.cshtml", "/Views/Shared/{0}.cshtml" };
             var locationExpander = new ResponsiveViewLocationExpander();
             var resultLocations = locationExpander.ExpandViewLocations(context, viewLocations);
@@ -132,15 +132,15 @@ namespace Wangkanai.Responsive.Test.Core
         public void ExpandViewLocations_ViewLocationExpanderContext_Null_ThrowsArgumentNullException()
         {
             var locationExpander = new ResponsiveViewLocationExpander();
-            Assert.Throws<ViewLocationExpanderViewsArgumentNullException>(() => locationExpander.ExpandViewLocations(SetupViewLocationExpanderContext(), null));
+            Assert.Throws<ViewLocationExpanderViewsArgumentNullException>(() => locationExpander.ExpandViewLocations(SetupViewLocationExpanderContext(DeviceType.Tablet), null));
         }
 
-        private ViewLocationExpanderContext SetupViewLocationExpanderContext()
+        private ViewLocationExpanderContext SetupViewLocationExpanderContext(DeviceType deviceType)
         {
             var context = new ViewLocationExpanderContext(new ActionContext(), "View", "Controller", "Area", "Page", true);
             context.Values = new Dictionary<string, string>();
             context.ActionContext.HttpContext = new DefaultHttpContext();
-            context.ActionContext.HttpContext.SetDevice(DeviceType.Tablet);
+            context.ActionContext.HttpContext.SetDevice(deviceType);
 
             return context;
         }
