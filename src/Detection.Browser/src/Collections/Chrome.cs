@@ -18,9 +18,17 @@ namespace Wangkanai.Detection.Collections
             if (_agent.Contains(chrome))
             {
                 var first = _agent.IndexOf(chrome);
-                var cut = _agent.Substring(first + chrome.Length + 1);
+                string cut;
+                try
+                {
+                    cut = _agent.Substring(first + chrome.Length + 1);
+                }
+                catch
+                {
+                    cut = _agent.Substring(first + chrome.Length);
+                }
                 var version = cut.Substring(0, cut.Contains(" ") ? cut.IndexOf(' ') : cut.Length);
-                Version = version.ToVersion();                
+                Version = version.ToVersion();
                 Type = BrowserType.Chrome;
             }
         }
