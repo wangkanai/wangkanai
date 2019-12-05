@@ -61,6 +61,7 @@ namespace Wangkanai.Responsive.Test.Core
                 yield return new object[]
                 {
                     ResponsiveViewLocationFormat.Suffix,
+                    DeviceType.Tablet,
                     new[]
                     {
                         "/Views/{1}/{0}.cshtml",
@@ -79,6 +80,7 @@ namespace Wangkanai.Responsive.Test.Core
                 yield return new object[]
                 {
                     ResponsiveViewLocationFormat.Subfolder,
+                    DeviceType.Tablet,
                     new[]
                     {
                         "/Views/{1}/{0}.cshtml",
@@ -99,10 +101,12 @@ namespace Wangkanai.Responsive.Test.Core
         [MemberData(nameof(ViewLocationExpanderTestData))]
         public void ExpandViewLocations_ViewLocationExpanderContext_IEnumerable_ReturnsExpected(
             ResponsiveViewLocationFormat format,
+            DeviceType deviceType,
             IEnumerable<string> viewLocations,
-            IEnumerable<string> expectedViewLocations)
+            IEnumerable<string> expectedViewLocations
+            )
         {
-            var context = SetupViewLocationExpanderContext(DeviceType.Tablet);
+            var context = SetupViewLocationExpanderContext(deviceType);
             var locationExpander = new ResponsiveViewLocationExpander(format);
             locationExpander.PopulateValues(context);
             var resultLocations = locationExpander.ExpandViewLocations(context, viewLocations).ToList();
