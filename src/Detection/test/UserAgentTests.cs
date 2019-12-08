@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
+// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
 using Xunit;
@@ -12,7 +12,8 @@ namespace Wangkanai.Detection.Test
         {
             var userAgent = new UserAgent();
 
-            Assert.Null(userAgent.ToString());
+            Assert.NotNull(userAgent.ToString());
+            Assert.Equal(string.Empty, userAgent.ToString());
         }
 
         [Fact]
