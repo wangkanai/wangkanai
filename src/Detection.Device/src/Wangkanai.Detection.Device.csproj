@@ -19,7 +19,7 @@
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
     <VersionPrefix>2.0.0</VersionPrefix>
-    <VersionSuffix>beta13</VersionSuffix>
+    <VersionSuffix>beta14</VersionSuffix>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <RootNamespace>Wangkanai.Detection</RootNamespace>
 
