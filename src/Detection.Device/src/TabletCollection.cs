@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
+// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
@@ -15,7 +15,8 @@ namespace Wangkanai.Detection
             "playbook",
             "hp-tablet",
             "kindle",
-            "sm-t"
+            "sm-t",
+            "kfauwi"
         };
 
         public static string[] Prefixes => new string[] { };
