@@ -83,6 +83,7 @@ namespace Wangkanai.Detection.Test
             var resolver = new BrowserResolver(service);
             // assert
             Assert.Equal(BrowserType.Firefox, resolver.Browser.Type);
+            Assert.Equal(11, resolver.Browser.Version.Major);
         }
 
         [Theory]
@@ -95,7 +96,20 @@ namespace Wangkanai.Detection.Test
             var resolver = new BrowserResolver(service);
             // assert
             Assert.Equal(BrowserType.Firefox, resolver.Browser.Type);
-            Assert.Equal(0, resolver.Browser.Version.Major);
+            Assert.Equal(11, resolver.Browser.Version.Major);
+        }
+
+        [Theory]
+        [InlineData("Mozilla/5.0 (BB10; Touch) AppleWebKit/537.10+ (KHTML, like Gecko) Version/10.0.9.2372 Mobile Safari/537.10+")]
+        public void Resolve_Blackberry_InvalidVersion(string agent)
+        {
+            // arrange
+            var service = CreateService(agent);
+            // act
+            var resolver = new BrowserResolver(service);
+            // assert
+            Assert.Equal(BrowserType.Safari, resolver.Browser.Type);
+            Assert.Equal(537, resolver.Browser.Version.Major);
         }
 
         [Theory]
@@ -111,6 +125,8 @@ namespace Wangkanai.Detection.Test
             // assert
             Assert.Equal(BrowserType.Chrome, resolver.Browser.Type);
         }
+
+
 
         [Fact]
         public void Resolve_NullAgent()

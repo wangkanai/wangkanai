@@ -9,13 +9,11 @@ namespace Wangkanai.Detection
 {
     public class BrowserResolver : BaseResolver, IBrowserResolver
     {
-        public IBrowser Browser => _browser;
-
-        private readonly IBrowser _browser;
+        public IBrowser Browser { get; }
 
         public BrowserResolver(IUserAgentService service) : base(service)
         {
-            _browser = GetBrowser();
+            this.Browser = GetBrowser();
         }
 
         private Browser GetBrowser()

@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
+// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
@@ -20,7 +20,8 @@ namespace Wangkanai.Detection.Collections
             if(_agent.Contains(firefox))
             {
                 var first = _agent.IndexOf(firefox);
-                var version = _agent.Substring(first + firefox.Length + 1);
+                var last = _agent.Substring(first + firefox.Length + 1);
+                var version = last.Contains(" ")? last.Substring(0, last.IndexOf(' ')) : last;
                 Version = version.ToVersion();
                 Type = BrowserType.Firefox;
             }
