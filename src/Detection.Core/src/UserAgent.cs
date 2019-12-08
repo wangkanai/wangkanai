@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
+// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
 namespace Wangkanai.Detection
@@ -7,7 +7,10 @@ namespace Wangkanai.Detection
     {
         private readonly string useragent;
 
-        public UserAgent() { }
+        public UserAgent()
+        {
+            this.useragent = string.Empty;
+        }
         public UserAgent(string useragent)
         {
             if (useragent != null)
