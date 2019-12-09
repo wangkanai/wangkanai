@@ -28,5 +28,21 @@ namespace Wangkanai.Detection
 
             Type = type;
         }
+
+        protected static Version GetVersion(string agent, string browser)
+        {
+            var first = agent.IndexOf(browser);
+            string cut;
+            try
+            {
+                cut = agent.Substring(first + browser.Length + 1);
+            }
+            catch
+            {
+                cut = agent.Substring(first + browser.Length);
+            }
+            var version = cut.Contains(" ") ? cut.Substring(0, cut.IndexOf(' ')) : cut;
+            return version.ToVersion();
+        }
     }
 }
