@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
+// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
@@ -17,9 +17,7 @@ namespace Wangkanai.Detection.Collections
 
             if (_agent.Contains(edge))
             {
-                var first = _agent.IndexOf(edge);
-                var version = _agent.Substring(first + edge.Length + 1);
-                Version = version.ToVersion();
+                Version = GetVersion(_agent, edge);
                 Type = BrowserType.Edge;
             }
         }
