@@ -1,11 +1,13 @@
-// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
+// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
-using Microsoft.AspNetCore.Http;
 using System;
-using Wangkanai.Detection;
-using Xunit;
 
+using Microsoft.AspNetCore.Http;
+
+using Wangkanai.Detection;
+
+using Xunit;
 
 namespace Wangkanai.Responsive.Test.Core
 {

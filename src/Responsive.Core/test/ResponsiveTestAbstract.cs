@@ -1,10 +1,10 @@
-// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
+// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.DependencyInjection;
+
 using Moq;
-using System.ComponentModel.Design;
+
 using Wangkanai.Detection;
 
 namespace Wangkanai.Responsive.Test
@@ -12,6 +12,7 @@ namespace Wangkanai.Responsive.Test
     public class ResponsiveTestAbstract
     {
         private HttpContext CreateContext() => new DefaultHttpContext();
+
         public virtual IResponsiveService CreateService(string agent)
         {
             var context = CreateContext(agent);
@@ -20,6 +21,7 @@ namespace Wangkanai.Responsive.Test
             service.Setup(f => f.UserAgent).Returns(new UserAgent(agent));
             return service.Object;
         }
+
         public virtual HttpContext CreateContext(string value)
         {
             var context = CreateContext();

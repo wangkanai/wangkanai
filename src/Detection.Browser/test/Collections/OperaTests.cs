@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
+// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
 using Xunit;
@@ -30,6 +30,7 @@ namespace Wangkanai.Detection.Collections
             Assert.Equal(BrowserType.Opera, opera.Type);
             Assert.Equal("12.16", opera.Version.ToString());
         }
+
         [Fact]
         public void Invalid()
         {

@@ -1,6 +1,8 @@
+// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
+// The Apache v2. See License.txt in the project root for license information.
+
 using System;
-using System.Collections.Generic;
-using System.Text;
+
 using Wangkanai.Detection;
 using Wangkanai.Responsive;
 
@@ -23,6 +25,7 @@ namespace Microsoft.AspNetCore.Builder
         {
             throw new NotImplementedException();
         }
+
         [Obsolete("This is an experimental API, its might change when finalize.")]
         public static IResponsiveOptionsBuilder DefaultMobile(
             this IResponsiveOptionsBuilder optionsBuilder,
@@ -30,6 +33,7 @@ namespace Microsoft.AspNetCore.Builder
         {
             throw new NotImplementedException();
         }
+
         [Obsolete("This is an experimental API, its might change when finalize.")]
         public static IResponsiveOptionsBuilder DefaultDesktop(
             this IResponsiveOptionsBuilder optionsBuilder,

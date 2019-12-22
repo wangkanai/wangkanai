@@ -1,7 +1,8 @@
-// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
+// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
+
 using Xunit;
 
 namespace Wangkanai.Detection.Test
@@ -26,10 +27,12 @@ namespace Wangkanai.Detection.Test
         {
             Type actual = null;
             Browser browser = null;
-            try {
+            try
+            {
                 browser = new Browser("xxx");
             }
-            catch (BrowserNotFoundException e) {
+            catch (BrowserNotFoundException e)
+            {
                 actual = e.GetType();
             }
             Assert.Equal(typeof(BrowserNotFoundException), actual);

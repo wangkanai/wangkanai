@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
+// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
 namespace Wangkanai.Detection
@@ -31,6 +31,7 @@ namespace Wangkanai.Detection
             "wap",
             "windows ce"
         };
+
         // reference 4 chare from http://www.webcab.de/wapua.htm
         public static string[] Prefixes => new string[] {
             "w3c ",

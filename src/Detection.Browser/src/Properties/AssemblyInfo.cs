@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
+// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
 using System.Reflection;
@@ -20,5 +20,4 @@ using System.Runtime.InteropServices;
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 [assembly: Guid("dbbeb1f2-556e-49e0-aee7-894ff0c05043")]
-
 [assembly: InternalsVisibleTo("Wangkanai.Detection.Browser.Test")]

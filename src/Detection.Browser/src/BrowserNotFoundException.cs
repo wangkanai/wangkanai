@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
+// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
@@ -14,17 +14,22 @@ namespace Wangkanai.Detection
 
         public BrowserNotFoundException()
             : base(DefaultMessage) { }
+
         public BrowserNotFoundException(string message)
             : base(message) { }
+
         public BrowserNotFoundException(string paramName, string message)
             : base(message, paramName) { }
+
         public BrowserNotFoundException(string message, Exception innerException)
             : base(message, innerException) { }
+
         public BrowserNotFoundException(string message, string invalidBrowserName, Exception innerException)
             : base(message, innerException)
         {
             _invalidBrowserName = invalidBrowserName;
         }
+
         public BrowserNotFoundException(string paramName, string invalidBrowserName, string message)
             : base(message, paramName)
         {

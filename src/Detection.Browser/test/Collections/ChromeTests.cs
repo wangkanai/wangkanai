@@ -1,4 +1,4 @@
-// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
+// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
 using Xunit;
@@ -18,6 +18,7 @@ namespace Wangkanai.Detection.Collections
             Assert.Equal(BrowserType.Chrome, chrome.Type);
             Assert.Equal("51.0.2704.103", chrome.Version.ToString());
         }
+
         [Fact]
         public void Second()
         {
@@ -29,6 +30,7 @@ namespace Wangkanai.Detection.Collections
             Assert.Equal(BrowserType.Chrome, chrome.Type);
             Assert.Equal("64.0.3282.186", chrome.Version.ToString());
         }
+
         [Fact]
         public void Invalid()
         {

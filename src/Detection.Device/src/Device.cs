@@ -1,4 +1,4 @@
-// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
+// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
@@ -10,9 +10,13 @@ namespace Wangkanai.Detection
         public DeviceType Type { get; set; }
         public bool Crawler { get; set; }
 
-        public Device() { }
+        public Device()
+        {
+        }
+
         public Device(DeviceType deviceType)
             => Type = deviceType;
+
         public Device(DeviceType deviceType, bool isCrawler)
             : this(deviceType)
             => Crawler = isCrawler;

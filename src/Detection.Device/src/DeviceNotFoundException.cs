@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
+// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
@@ -14,10 +14,13 @@ namespace Wangkanai.Detection
 
         public DeviceNotFoundException()
             : base(DefaultMessage) { }
+
         public DeviceNotFoundException(string message)
             : base(message) { }
+
         public DeviceNotFoundException(string paramName, string message)
             : base(message, paramName) { }
+
         public DeviceNotFoundException(string message, Exception innerException)
             : base(message, innerException) { }
 
@@ -32,6 +35,7 @@ namespace Wangkanai.Detection
         {
             _invalidDeviceName = invalidDeviceName;
         }
+
         public override string Message
         {
             get

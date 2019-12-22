@@ -1,4 +1,4 @@
-// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
+// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
@@ -12,9 +12,13 @@ namespace Wangkanai.Detection
         public BrowserType Type { get; set; } = BrowserType.Generic;
         public Version Version { get; set; }
 
-        public Browser() { }
+        public Browser()
+        {
+        }
+
         public Browser(BrowserType browserType)
             => Type = browserType;
+
         public Browser(BrowserType browserType, Version version)
             : this(browserType)
             => Version = version;

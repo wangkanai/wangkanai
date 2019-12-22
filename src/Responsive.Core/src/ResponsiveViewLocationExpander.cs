@@ -1,12 +1,14 @@
-// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
+// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Razor;
+
 using Wangkanai.Detection;
-using System.ComponentModel;
 
 namespace Wangkanai.Responsive
 {
@@ -71,7 +73,6 @@ namespace Wangkanai.Responsive
             }
 
             return ExpandViewLocationsCore(viewLocations, device);
-
         }
 
         private IEnumerable<string> ExpandViewLocationsCore(

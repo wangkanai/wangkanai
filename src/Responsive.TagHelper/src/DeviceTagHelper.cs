@@ -1,20 +1,20 @@
-// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
+// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
+
+using System;
 
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.Primitives;
-using System;
-using System.Collections.Generic;
-using System.Text;
+
 using Wangkanai.Detection;
 
 namespace Microsoft.AspNetCore.Mvc.TagHelpers
 {
     [HtmlTargetElement(ElementName, Attributes = IncludeAttributeName)]
     [HtmlTargetElement(ElementName, Attributes = ExcludeAttributeName)]
-     public class DeviceTagHelper : TagHelper
+    public class DeviceTagHelper : TagHelper
     {
         private const string ElementName = "device";
         private const string IncludeAttributeName = "include";
@@ -24,6 +24,7 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
 
         [HtmlAttributeName(IncludeAttributeName)]
         public string Include { get; set; }
+
         [HtmlAttributeName(ExcludeAttributeName)]
         public string Exclude { get; set; }
 
@@ -33,12 +34,10 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
         [ViewContext]
         public ViewContext ViewContext { get; set; }
 
-
         public DeviceTagHelper(IDeviceResolver resolver)
         {
             _resolver = resolver;
         }
-
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
@@ -84,7 +83,6 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
             }
 
             if (hasDevice) output.SuppressOutput();
-
-          }
+        }
     }
 }

@@ -1,29 +1,70 @@
-﻿body {
+body {
     font-family: sans-serif;
     font-size: 10px;
 }
-code{ padding: 5px;background-color: #eeeeee;border: 1px solid #bbb;width: 95%;display: block;}
-table { min-width: 100%;border: 1px solid #ccc;}
-table tr {}
-table tr:first-child th,
-table tr:first-child td{ border-top: 0;} 
-table tr th,
-table tr td { padding: 5px;border-top: 1px solid #ccc;}
-table tr th { width: 60px;text-align: left;font-weight: normal;background-color: #d0f3ff;}
 
-footer{ padding: 40px 0;}
+code {
+    padding: 5px;
+    background-color: #eeeeee;
+    border: 1px solid #bbb;
+    width: 95%;
+    display: block;
+}
+
+table {
+    min-width: 100%;
+    border: 1px solid #ccc;
+}
+
+    table tr {
+    }
+
+        table tr:first-child th,
+        table tr:first-child td {
+            border-top: 0;
+        }
+
+        table tr th,
+        table tr td {
+            padding: 5px;
+            border-top: 1px solid #ccc;
+        }
+
+        table tr th {
+            width: 60px;
+            text-align: left;
+            font-weight: normal;
+            background-color: #d0f3ff;
+        }
+
+footer {
+    padding: 40px 0;
+}
 
 @media screen and (min-width: 768px) {
     body {
         font-size: 14px;
-    }    
-    table tr th{ width: 100px;}
+    }
+
+    table tr th {
+        width: 100px;
+    }
 }
+
 @media screen and (min-width: 992px) {
     body {
         font-size: 14px;
     }
-    code{ width: 946px;}
-    table{ min-width: 960px;}
-    table tr th{ width: 150px;}
+
+    code {
+        width: 946px;
+    }
+
+    table {
+        min-width: 960px;
+    }
+
+        table tr th {
+            width: 150px;
+        }
 }

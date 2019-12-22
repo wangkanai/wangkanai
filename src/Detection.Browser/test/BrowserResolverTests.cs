@@ -1,9 +1,10 @@
-// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
+// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
 using Microsoft.AspNetCore.Http;
+
 using Moq;
-using System;
+
 using Xunit;
 
 namespace Wangkanai.Detection.Test
@@ -126,8 +127,6 @@ namespace Wangkanai.Detection.Test
             Assert.Equal(BrowserType.Chrome, resolver.Browser.Type);
         }
 
-
-
         [Fact]
         public void Resolve_NullAgent()
         {
@@ -136,7 +135,6 @@ namespace Wangkanai.Detection.Test
             // act
             var resolver = new BrowserResolver(service);
             // assert
-
         }
 
         private IUserAgentService CreateService(string agent)

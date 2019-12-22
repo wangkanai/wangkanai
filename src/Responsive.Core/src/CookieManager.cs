@@ -1,10 +1,10 @@
-// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
+// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
-using Microsoft.AspNetCore.Http;
 using System;
-using System.Collections.Generic;
-using System.Text;
+
+using Microsoft.AspNetCore.Http;
+
 using Wangkanai.Detection;
 
 namespace Wangkanai.Responsive
@@ -22,7 +22,7 @@ namespace Wangkanai.Responsive
             _context = context
                 ?? throw new CookieManagerArgumentNullException(nameof(context));
             _options = options;
-                //?? throw new CookieManagerArgumentNullException(nameof(context));
+            //?? throw new CookieManagerArgumentNullException(nameof(context));
         }
 
         public DeviceType Device
