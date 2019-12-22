@@ -1,7 +1,8 @@
-// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
+// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
+
 using Wangkanai.Detection;
 
 namespace Wangkanai.Responsive
@@ -19,6 +20,7 @@ namespace Wangkanai.Responsive
             _resolved = resolver.Device.Type;
             _options = options;
         }
+
         public ResolverManager(DeviceType resolved, ResponsiveOptions options)
         {
             _resolved = resolved;

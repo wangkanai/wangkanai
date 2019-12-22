@@ -1,7 +1,8 @@
-// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
+// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
+
 using Wangkanai.Detection;
 
 namespace Microsoft.AspNetCore.Http
@@ -16,6 +17,7 @@ namespace Microsoft.AspNetCore.Http
         {
             context.Items[ResponsiveContextKey] = device;
         }
+
         public static DeviceType GetDevice(
             this HttpContext context)
         {

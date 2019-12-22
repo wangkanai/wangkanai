@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
+// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
 namespace Wangkanai.Detection
@@ -11,11 +11,11 @@ namespace Wangkanai.Detection
         Trident,  // IE, Outlook
         EdgeHTML, // Microsoft Edge
         KHTML,    // Konqueror
-        Presto,   // 
+        Presto,   //
         Goanna,   // Pale Moon
         NetSurf,  // NetSurf
         NetFront, // Access NetFront
-        Prince,   // 
+        Prince,   //
         Robin,    // The Bat!
         Servo,    // Mozilla & Samsung
         Tkhtml,   // hv3

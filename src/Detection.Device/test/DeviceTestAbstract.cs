@@ -1,7 +1,8 @@
-﻿// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
+// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
 using Microsoft.AspNetCore.Http;
+
 using Moq;
 
 namespace Wangkanai.Detection.Test
@@ -9,6 +10,7 @@ namespace Wangkanai.Detection.Test
     public abstract class DeviceTestAbstract
     {
         private HttpContext CreateContext() => new DefaultHttpContext();
+
         protected IUserAgentService CreateService(string agent)
         {
             var context = CreateContext(agent);
@@ -26,11 +28,12 @@ namespace Wangkanai.Detection.Test
             service.Setup(f => f.UserAgent).Returns(new UserAgent());
             return service.Object;
         }
+
         protected HttpContext CreateContext(string value)
         {
             var context = CreateContext();
             var header = "User-Agent";
-            context.Request.Headers.Add(header, new[] {value});
+            context.Request.Headers.Add(header, new[] { value });
             return context;
         }
 

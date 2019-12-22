@@ -1,9 +1,6 @@
-﻿// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
+// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
 namespace Wangkanai.Detection.Test
@@ -19,7 +16,7 @@ namespace Wangkanai.Detection.Test
             var version = temp.ToVersion();
 
             var result = version.ToString();
-            // asset 
+            // asset
             Assert.Equal("1.0.0", result);
         }
     }

@@ -1,7 +1,8 @@
-﻿// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
+// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
+
 using Xunit;
 
 namespace Wangkanai.Detection.Test
@@ -67,12 +68,14 @@ namespace Wangkanai.Detection.Test
             Assert.Equal(major, version.Major);
             Assert.Equal(minor, version.Minor);
         }
+
         private void AssertVersion(int major, int minor, int build, Version version)
         {
             Assert.Equal(major, version.Major);
             Assert.Equal(minor, version.Minor);
             Assert.Equal(build, version.Build);
         }
+
         private void AssertVersion(int major, int minor, int build, int revision, Version version)
         {
             Assert.Equal(major, version.Major);

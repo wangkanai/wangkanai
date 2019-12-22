@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2019 Sarin Na Wangkanai, All Rights Reserved.
+// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
 using Xunit;
@@ -18,10 +18,10 @@ namespace Wangkanai.Detection.Test
         [InlineData("Mozilla/5.0 (X11; Linux x86_64; rv:10.0) Gecko/20100101 Firefox/10.0")]
         public void Keyword(string agent)
         {
-            // arrange 
+            // arrange
             var service = CreateService(agent);
-            // act            
-            var resolver = new DeviceResolver(service);            
+            // act
+            var resolver = new DeviceResolver(service);
             // assert
             Assert.Equal(DeviceType.Desktop, resolver.Device.Type);
         }
