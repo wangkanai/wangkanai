@@ -21,8 +21,8 @@ namespace Wangkanai.Responsive
         {
             _context = context
                 ?? throw new CookieManagerArgumentNullException(nameof(context));
-            _options = options;
-            //?? throw new CookieManagerArgumentNullException(nameof(context));
+            _options = options
+                ?? throw new CookieManagerArgumentNullException(nameof(options));
         }
 
         public DeviceType Device
