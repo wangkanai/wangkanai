@@ -73,8 +73,7 @@ namespace Wangkanai.Responsive
         private static void VerifyResponsiveIsRegistered(IApplicationBuilder app)
         {
             if (app.ApplicationServices.GetService(typeof(ResponsiveMarkerService)) == null)
-                throw new InvalidOperationException(
-                    "AddResponsive() is not added to ConfigureServices(...)");
+                throw new InvalidOperationException("AddResponsive() is not added to ConfigureServices(...)");
         }
     }
 }
