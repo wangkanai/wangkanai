@@ -24,9 +24,11 @@ namespace Wangkanai.Responsive
             this IApplicationBuilder app)
         {
             if (app == null)
-                throw new UseResponsiveArgumentNullException(nameof(app));
+                throw new UseResponsiveAppArgumentNullException(nameof(app));
 
-            return app.UseResponsive(options => { });
+            VerifyResponsiveIsRegistered(app);
+
+            return app.UseMiddleware<ResponsiveMiddleware>();
         }
 
         /// <summary>
@@ -35,7 +37,7 @@ namespace Wangkanai.Responsive
         /// <param name="app"></param>
         /// <param name="options"></param>
         /// <returns>Return the <see cref="IApplicationBuilder"/> for further pipeline</returns>
-        [Obsolete("This method will soon be deprecated. Use UseResponsive(options => {}) instead.")]
+        [Obsolete("This will be refactor to add service of responsive in 2.0-beta-14. USe AddResponsive(options => {}) instead.")]
         public static IApplicationBuilder UseResponsive(
             this IApplicationBuilder app,
             ResponsiveOptions options)
@@ -56,6 +58,7 @@ namespace Wangkanai.Responsive
         /// <param name="app"></param>
         /// <param name="options"></param>
         /// <returns>Return the <see cref="IApplicationBuilder"/> for further pipeline</returns>
+        [Obsolete("This will be refactor to add service of responsive in 2.0-beta-14. USe AddResponsive(options => {}) instead.")]
         public static IApplicationBuilder UseResponsive(
             this IApplicationBuilder app,
             Action<IResponsiveOptionsBuilder> options)

@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Builder;
 
 using Xunit;
 
-namespace Wangkanai.Responsive.Test.Core
+namespace Wangkanai.Responsive.Core
 {
     public class ApplicationBuilderExtensionsTests
     {

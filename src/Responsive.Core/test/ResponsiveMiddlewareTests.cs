@@ -11,7 +11,7 @@ using Wangkanai.Detection;
 
 using Xunit;
 
-namespace Wangkanai.Responsive.Test.Core
+namespace Wangkanai.Responsive.Core
 {
     public class ResponsiveMiddlewareTests
     {

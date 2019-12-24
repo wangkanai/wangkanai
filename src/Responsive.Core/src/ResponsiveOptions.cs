@@ -6,7 +6,7 @@ using Wangkanai.Detection;
 
 namespace Wangkanai.Responsive
 {
-    [Obsolete("This is an experimental API, its might change when finalize.")]
+    //[Obsolete("This is an experimental API, its might change when finalize.")]
     public class ResponsiveOptions
     {
         public DeviceType MobileDefault { get; set; } = DeviceType.Mobile;

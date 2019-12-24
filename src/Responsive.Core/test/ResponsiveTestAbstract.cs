@@ -7,7 +7,7 @@ using Moq;
 
 using Wangkanai.Detection;
 
-namespace Wangkanai.Responsive.Test
+namespace Wangkanai.Responsive.Core
 {
     public class ResponsiveTestAbstract
     {
