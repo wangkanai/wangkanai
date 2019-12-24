@@ -1,7 +1,19 @@
+version: 2.0.0-beta14-build{build}
 image:
-  - Visual Studio 2017
+  - Visual Studio 2019
 init:
   - git config --global core.autocrlf true
+dotnet_csproj:
+  patch: true
+  file: '**\*.csproj'
+  version: '{version}'
+  version_prefix: '{version}'
+  package_version: '{version}'
+  assembly_version: '{version}'
+  file_version: '{version}'
+  informational_version: '{version}'
+pull_requests:
+  do_not_increment_build_number: true
 branches:
   only:
     - master
@@ -12,6 +24,5 @@ build_script:
   - ps: ./run.ps1
 clone_depth: 1
 test: 'off'
-deploy: 'off'
 artifacts:
   - path: '**\*.nupkg'
