@@ -10,8 +10,17 @@ namespace Wangkanai.Responsive
     /// </summary>
     public interface IResponsiveViewOptions
     {
+        /// <summary>
+        /// Gets or sets a value that determines the default view for Mobile
+        /// </summary>
         DeviceType DefaultMobile { get; set; }
+        /// <summary>
+        /// Gets or sets a value that determines the default view for Tablet
+        /// </summary>
         DeviceType DefaultTablet { get; set; }
+        /// <summary>
+        /// Gets or sets a value that determines the default view for Desktop
+        /// </summary>
         DeviceType DefaultDesktop { get; set; }
     }
 }

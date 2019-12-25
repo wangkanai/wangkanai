@@ -12,9 +12,6 @@ namespace Wangkanai.Responsive
     //[Obsolete("This is an experimental API, its might change when finalize.")]
     public class ResponsiveOptions : IResponsiveOptions
     {
-        public DeviceType DefaultMobile { get; set; } = DeviceType.Mobile;
-        public DeviceType DefaultTablet { get; set; } = DeviceType.Tablet;
-        public DeviceType DefaultDesktop { get; set; } = DeviceType.Desktop;
         public IResponsiveViewOptions View { get; set; } = new ResponsiveViewOptions();
 
         public ResponsiveOptions() { }
