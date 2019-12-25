@@ -32,4 +32,4 @@ deploy:
     secure: YY8jIrOCrsuVBg/iqwS2jVwZ462EWKFMZ+95fBEDqM1DiH0H2w7OMgUx3rQ3XTzl
   artifact: /.*\.nupkg/
   on:
-    branch: master
+    branch: dev
