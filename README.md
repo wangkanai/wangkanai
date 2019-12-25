@@ -3,7 +3,13 @@
 
 [![Financial Contributors on Open Collective](https://opencollective.com/wangkanai/all/badge.svg?label=financial+contributors)](https://opencollective.com/wangkanai)
 [![Build status](https://ci.appveyor.com/api/projects/status/033qv4nqv8g4altq?svg=true&retina=true)](https://ci.appveyor.com/project/wangkanai/detection)
-[![NuGet Badge](https://buildstats.info/nuget/wangkanai.detection?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.detection)
+
+- Wangkanai.Detection
+  [![NuGet Badge](https://buildstats.info/nuget/wangkanai.detection)](https://www.nuget.org/packages/wangkanai.detection)
+  [![NuGet Badge](https://buildstats.info/nuget/wangkanai.detection?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.detection)
+- Wangkanai.Responsive
+  [![NuGet Badge](https://buildstats.info/nuget/wangkanai.Responsive)](https://www.nuget.org/packages/wangkanai.detection)
+  [![NuGet Badge](https://buildstats.info/nuget/wangkanai.Responsive?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.detection)
 
 [![Build history](https://buildstats.info/appveyor/chart/wangkanai/detection)](https://ci.appveyor.com/project/wangkanai/detection/history)
 
