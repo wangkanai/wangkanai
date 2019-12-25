@@ -4,7 +4,7 @@
 using System;
 
 using Microsoft.AspNetCore.Builder;
-
+using Microsoft.AspNetCore.Builder.Internal;
 using Xunit;
 
 namespace Wangkanai.Responsive.Core
@@ -14,15 +14,8 @@ namespace Wangkanai.Responsive.Core
         [Fact]
         public void UseResponsive_Null_ThrowsArgumentNullException()
         {
-            Assert.Throws<UseResponsiveArgumentNullException>(() => ((IApplicationBuilder)null).UseResponsive());
+            Assert.Throws<UseResponsiveAppArgumentNullException>(() => ((IApplicationBuilder)null).UseResponsive());
         }
-
-        //[Fact]
-        //public void UseResponsive_IApplicationBuilder_Null_ThrowsArgumentNullException()
-        //{
-        //    var app = new ApplicationBuilder(ServiceProvider.Instance);
-        //    Assert.Throws<UseResponsiveOptionArgumentNullException>(() => app.UseResponsive(null));
-        //}
 
         private static class ServiceProvider
         {
