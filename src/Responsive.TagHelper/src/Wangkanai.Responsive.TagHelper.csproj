@@ -14,8 +14,6 @@
     <PackageLicenseUrl>https://github.com/wangkanai/detection/blob/master/LICENSE</PackageLicenseUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>git://github.com/wangkanai/detection</RepositoryUrl>
-    <VersionPrefix>2.0.0</VersionPrefix>
-    <VersionSuffix>beta14</VersionSuffix>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
