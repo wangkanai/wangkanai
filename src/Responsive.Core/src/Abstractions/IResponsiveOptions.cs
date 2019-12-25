@@ -16,6 +16,9 @@ namespace Wangkanai.Responsive
         IResponsiveViewOptions View { get; set; }
     }
 
+    /// <summary>
+    /// The IResponsiveViewOptions class is the View container for all configuration settings of Responsive.
+    /// </summary>
     public interface IResponsiveViewOptions
     {
         DeviceType DefaultMobile { get; set; }

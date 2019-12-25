@@ -9,4 +9,9 @@ namespace Wangkanai.Responsive
     {
         IServiceCollection Services { get; }
     }
+
+    public interface IResponsiveCoreBuilder
+    {
+        IServiceCollection Services { get; }
+    }
 }

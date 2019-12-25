@@ -7,9 +7,9 @@ using Wangkanai.Detection;
 
 namespace Wangkanai.Responsive
 {
-    public interface IResponsiveService
-    {
-        HttpContext Context { get; }
-        IUserAgent UserAgent { get; }
-    }
+    //public interface IResponsiveService
+    //{
+    //    HttpContext Context { get; }
+    //    IUserAgent UserAgent { get; }
+    //}
 }

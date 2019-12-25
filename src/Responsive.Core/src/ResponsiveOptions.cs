@@ -6,6 +6,9 @@ using Wangkanai.Detection;
 
 namespace Wangkanai.Responsive
 {
+    /// <summary>
+    /// Provides programmatic configuration for the Responsive framework.
+    /// </summary>
     //[Obsolete("This is an experimental API, its might change when finalize.")]
     public class ResponsiveOptions : IResponsiveOptions
     {
