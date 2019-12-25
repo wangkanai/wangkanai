@@ -14,7 +14,11 @@ namespace Wangkanai.Responsive.Core
         [Fact]
         public void UseResponsive_Null_ThrowsArgumentNullException()
         {
-            Assert.Throws<UseResponsiveAppArgumentNullException>(() => ((IApplicationBuilder)null).UseResponsive());
+            Func<object> testCode = () =>
+            {
+                return ((IApplicationBuilder)null).UseResponsive();
+            };
+            Assert.Throws<UseResponsiveAppArgumentNullException>(testCode);
         }
 
         private static class ServiceProvider
