@@ -27,8 +27,8 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddDetectionCore()
                 .AddDevice()
                 .AddBrowser()
-                .AddPlatform()
-                .AddEngine()
+                //.AddPlatform()
+                //.AddEngine()
                 .AddCrawler();
 
             services.TryAddTransient<IDetection, Detection>();
