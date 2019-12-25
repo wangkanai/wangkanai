@@ -2,11 +2,9 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
-
 using Wangkanai.Responsive;
 using Wangkanai.Responsive.Builders;
 
-// ReSharper disable once CheckNamespace
 namespace Microsoft.Extensions.DependencyInjection
 {
     /// <summary>
