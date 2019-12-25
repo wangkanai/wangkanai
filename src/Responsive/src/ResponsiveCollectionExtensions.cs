@@ -20,9 +20,27 @@ namespace Microsoft.Extensions.DependencyInjection
         /// </summary>
         /// <param name="services">The <see cref="IServiceCollection"/> to add the services to.</param>
         /// <returns>The <see cref="IServiceCollection"/> so that additional calls can be chained.</returns>
-        public static IResponsiveBuilder AddResponsive(this IServiceCollection services)
+        public static IResponsiveBuilder AddResponsive(
+            this IServiceCollection services)
         {
-            if (services == null) throw new AddResponsiveArgumentNullException(nameof(services));
+            if (services == null)
+                throw new AddResponsiveArgumentNullException(nameof(services));
+
+            services.AddResponsiveCore()
+                .AddViewSuffix()
+                .AddViewSubfolder();
+
+            return new ResponsiveBuilder(services);
+        }
+
+        public static IResponsiveBuilder AddResponsive(
+            this IServiceCollection services,
+            Action<IResponsiveOptions> setAction)
+        {
+            if (services == null)
+                throw new AddResponsiveArgumentNullException(nameof(services));
+
+            services.Configure<IResponsiveOptions>(setAction);
 
             services.AddResponsiveCore()
                 .AddViewSuffix()
