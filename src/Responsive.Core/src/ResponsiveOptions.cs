@@ -7,15 +7,23 @@ using Wangkanai.Detection;
 namespace Wangkanai.Responsive
 {
     //[Obsolete("This is an experimental API, its might change when finalize.")]
-    public class ResponsiveOptions
+    public class ResponsiveOptions : IResponsiveOptions
     {
-        public DeviceType MobileDefault { get; set; } = DeviceType.Mobile;
-        public DeviceType TabletDefault { get; set; } = DeviceType.Tablet;
-        public DeviceType DesktopDefault { get; set; } = DeviceType.Desktop;
+        public DeviceType DefaultMobile { get; set; } = DeviceType.Mobile;
+        public DeviceType DefaultTablet { get; set; } = DeviceType.Tablet;
+        public DeviceType DefaultDesktop { get; set; } = DeviceType.Desktop;
+        public IResponsiveViewOptions View { get; set; } = new ResponsiveViewOptions();
 
         public ResponsiveOptions()
         {
+
         }
+
+        #region Obsolete
+
+        public DeviceType MobileDefault { get; set; } = DeviceType.Mobile;
+        public DeviceType TabletDefault { get; set; } = DeviceType.Tablet;
+        public DeviceType DesktopDefault { get; set; } = DeviceType.Desktop;
 
         public ResponsiveOptions(DeviceType desktop, DeviceType tablet, DeviceType mobile)
         {
@@ -32,5 +40,7 @@ namespace Wangkanai.Responsive
 
             return type;
         }
+
+        #endregion
     }
 }
