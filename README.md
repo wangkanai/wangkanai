@@ -28,13 +28,13 @@ ASP.NET Core Responsive middleware for routing base upon request client device d
 Installation of detection library is now done with a single package reference point.
 
 ```powershell
-PM> install-package Wangkanai.Detection -pre
+PM> install-package Wangkanai.Detection
 ```
 
 Installation of Responsive library will bring in all dependency packages (This will include `Wangkanai.Detection.Device).
 
 ```powershell
-PM> install-package Wangkanai.Responsive -pre
+PM> install-package Wangkanai.Responsive
 ```
 
 ## Configuration
