@@ -2,12 +2,9 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
-
 using Microsoft.AspNetCore.Mvc.Razor;
-
 using Wangkanai.Responsive;
 
-// ReSharper disable once CheckNamespace
 namespace Microsoft.Extensions.DependencyInjection
 {
     public static class ViewBuilderExtensions

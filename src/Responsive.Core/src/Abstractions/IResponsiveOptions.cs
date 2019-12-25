@@ -1,8 +1,6 @@
 // Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
-using Wangkanai.Detection;
-
 namespace Wangkanai.Responsive
 {
     /// <summary>
@@ -14,22 +12,5 @@ namespace Wangkanai.Responsive
         /// Get or set the option to configure the default view.
         /// </summary>
         IResponsiveViewOptions View { get; set; }
-    }
-
-    /// <summary>
-    /// The IResponsiveViewOptions class is the View container for all configuration settings of Responsive.
-    /// </summary>
-    public interface IResponsiveViewOptions
-    {
-        DeviceType DefaultMobile { get; set; }
-        DeviceType DefaultTablet { get; set; }
-        DeviceType DefaultDesktop { get; set; }
-    }
-
-    public class ResponsiveViewOptions : IResponsiveViewOptions
-    {
-        public DeviceType DefaultMobile { get; set; }
-        public DeviceType DefaultTablet { get; set; }
-        public DeviceType DefaultDesktop { get; set; }
     }
 }

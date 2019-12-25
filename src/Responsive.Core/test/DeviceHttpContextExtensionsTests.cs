@@ -60,8 +60,6 @@ namespace Wangkanai.Responsive.Core
         public void SetDevice_InvalidContext_ReturnsNotNull()
         {
             var context = new DefaultHttpContext();
-
-            Assert.NotNull(context.GetDevice());
             Assert.Equal("Desktop", context.GetDevice().ToString());
         }
     }
