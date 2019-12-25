@@ -37,7 +37,7 @@ namespace Wangkanai.Responsive
         /// <param name="app"></param>
         /// <param name="options"></param>
         /// <returns>Return the <see cref="IApplicationBuilder"/> for further pipeline</returns>
-        [Obsolete("This will be refactor to add service of responsive in 2.0-beta-14. USe AddResponsive(options => {}) instead.")]
+        [Obsolete("This will be refactor to add service of responsive in 2.0-beta-14. Use AddResponsive(options => {}) instead.")]
         public static IApplicationBuilder UseResponsive(
             this IApplicationBuilder app,
             ResponsiveOptions options)

@@ -20,17 +20,20 @@ namespace Wangkanai.Responsive
         public ResponsiveOptions() { }
 
         #region Obsolete
+        [Obsolete("This will be refactor to add service of responsive in 2.0-beta-14. Use AddResponsive(options => {}) instead.")]
         public DeviceType MobileDefault { get; set; } = DeviceType.Mobile;
+        [Obsolete("This will be refactor to add service of responsive in 2.0-beta-14. Use AddResponsive(options => {}) instead.")]
         public DeviceType TabletDefault { get; set; } = DeviceType.Tablet;
+        [Obsolete("This will be refactor to add service of responsive in 2.0-beta-14. Use AddResponsive(options => {}) instead.")]
         public DeviceType DesktopDefault { get; set; } = DeviceType.Desktop;
-
+        [Obsolete("This will be refactor to add service of responsive in 2.0-beta-14. Use AddResponsive(options => {}) instead.")]
         public ResponsiveOptions(DeviceType desktop, DeviceType tablet, DeviceType mobile)
         {
             DesktopDefault = desktop;
             TabletDefault = tablet;
             MobileDefault = mobile;
         }
-
+        [Obsolete("This will be refactor to add service of responsive in 2.0-beta-14. Use AddResponsive(options => {}) instead.")]
         public DeviceType Default(DeviceType type)
         {
             if (type == DeviceType.Mobile) return MobileDefault;
@@ -39,6 +42,6 @@ namespace Wangkanai.Responsive
 
             return type;
         }
-        #endregion
+        #endregion Obsolete
     }
 }
