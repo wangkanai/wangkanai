@@ -48,7 +48,7 @@ public void ConfigureServices(IServiceCollection services)
 
 * `AddDetection()` Adds the detection services to the services container.
 
-Responsive is configured in the `ConfigureServices` method:
+If you would like to add Responsive is configured in the `ConfigureServices` method also:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -62,68 +62,24 @@ public void ConfigureServices(IServiceCollection services)
 ```
 Or you can customize the responsive
 ```csharp
-// Add responsive services.
-services.AddResponsive(options =>
-{
-    options.View.DefaultTablet = DeviceType.Desktop;
-    options.View.DefaultMobile = DeviceType.Desktop;
-    options.View.DefaultDesktop = DeviceType.Desktop;
-});
-```
-* `AddResponsive()` Adds the Responsive services to the services container.
-
-  * **Suffix** Ex `*views/[controller]/[action]/index.mobile.cshtml*`
-  * **SubFoler** Ex `*views/[controller]/[action]/mobile/index.cshtml*`
-
-While the detection service is configured globally, its can also be configure individually if you only need some functions.
-
-```csharp
-public void ConfigureServices(IServiceCollection services)
-{
-    // Add detection services container and device resolver service.
-    services.AddDetectionCore()
-        .AddDevice()
-        .AddBrowser()
-        .AddPlatform()  // concept
-        .AddEngine()    // concept
-        .AddCrawler();
-
-    // Add framework services.
-    services.AddMvc();
-}
-```
-
-* `AddDetectionCore()` Adds the detection services to the services container.
-* `AddDevice()` Adds the device resolver service to the detection core services builder.
-* `AddBrowser()` Adds the browser resolver service to the detection core services builder.
-* `AddPlatform()` Adds the platform resolver service to the detection core services builder.
-* `AddEngine()` Adds the engine resolver service to the detection core services builder.
-* `AddCrawler()` Adds the crawler resolver service to the detection core services builder.
-
-Or you could be more specific using the `AddResponsiveCore()` method:
-```csharp
 public void ConfigureServices(IServiceCollection services)
 {
     // Add responsive services.
-    services.AddResponsiveCore()
-        .AddViewSuffix()
-        .AddViewSubfolder();
+    services.AddResponsive(options =>
+    {
+        options.View.DefaultTablet = DeviceType.Desktop;
+        options.View.DefaultMobile = DeviceType.Desktop;
+        options.View.DefaultDesktop = DeviceType.Desktop;
+    });
 
     // Add framework services.
     services.AddMvc();  
 }
 ```
+* `AddResponsive()` Adds the Responsive services to the services container.
 
-* `AddResponsiveCore()` Adds the Responsive services to the services container.
-* `AddViewSuffix()` Adds support for device view files  to `Suffix`. In this sample view Responsive is based on the view file suffix. 
-
-  Ex `*views/[controller]/[action]/index.mobile.cshtml*`
-
-* `AddViewSubfolder()` Adds support for device view files to `Subfolder`. In this sample view Responsive is based on the view file subfolder. 
-
-  Ex `*views/[controller]/[action]/mobile/index.cshtml*`
-
-## Configure Middleware
+  * **Suffix** Ex `*views/[controller]/[action]/index.mobile.cshtml*`
+  * **SubFoler** Ex `*views/[controller]/[action]/mobile/index.cshtml*`
 
 The current device on a request is set in the Responsive middleware. The Responsive middleware is enabled in the `Configure` method of *Startup.cs* file.
 
@@ -141,7 +97,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 }
 ```
 
-## Global Resolver (beta8)
+## Global Resolver
 
 This library host the component to resolve all the access client related resolver that could resolve.
 
@@ -237,9 +193,8 @@ public class HomeController : Controller
     }
 }
 ```
-* `IDetectionService` is main service for you to access UserAgent
 
-## Browser Resolver (beta7)
+## Browser Resolver
 
 This library host the component to resolve the access client browser type and version.
 
@@ -263,7 +218,6 @@ public class HomeController : Controller
     }
 }
 ```
-* `IDetectionService` is main service for you to access UserAgent.
 
 ## Platform Resolver (concept)
 
@@ -289,7 +243,6 @@ public class HomeController : Controller
     }
 }
 ```
-* `IDetectionService` is main service for you to access UserAgent.
 
 ## Engine Resolver (concept)
 
@@ -315,8 +268,6 @@ public class HomeController : Controller
     }
 }
 ```
-* `IDetectionService` is main service for you to access UserAgent.
-
 
 ## Crawler Resolver (beta8)
 
@@ -342,7 +293,6 @@ public class HomeController : Controller
     }
 }
 ```
-* `IDetectionService` is main service for you to access UserAgent.
 
 ### Directory Structure
 * `src` - The code of this project lives here
