@@ -17,4 +17,16 @@ namespace Wangkanai.Responsive.Builders
                 ?? throw new ResponsiveBuilderArgumentNullException(nameof(services));
         }
     }
+
+    public class ResponsiveCoreBuilder : IResponsiveCoreBuilder
+    {
+        public IServiceCollection Services { get; }
+
+        public ResponsiveCoreBuilder(
+            IServiceCollection services)
+        {
+            Services = services
+                ?? throw new ResponsiveCoreBuilderArgumentNullException(nameof(services));
+        }
+    }
 }

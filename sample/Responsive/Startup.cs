@@ -67,9 +67,9 @@ namespace Responsive
 
             app.UseResponsive(options =>
             {
-                options.DefaultView(target: DeviceType.Tablet, prefer: DeviceType.Desktop);
-                options.DefaultView(target: DeviceType.Mobile, prefer: DeviceType.Desktop);
-                options.DefaultView(target: DeviceType.Tablet, prefer: DeviceType.Desktop);
+                options.View.DefaultTablet = DeviceType.Desktop;
+                options.View.DefaultMobile = DeviceType.Desktop;
+                options.View.DefaultDesktop = DeviceType.Desktop;
             });
 
             app.UseMvc(routes =>
