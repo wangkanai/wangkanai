@@ -56,48 +56,6 @@ namespace Wangkanai.Responsive
             // What should I validate?
         }
 
-        /// <summary>
-        /// Adds the responsive to <see cref="IApplicationBuilder"/> request execution pipeline.
-        /// </summary>
-        /// <param name="app"></param>
-        /// <param name="options"></param>
-        /// <returns>Return the <see cref="IApplicationBuilder"/> for further pipeline</returns>
-        [Obsolete("This will be refactor to add service of responsive in 2.0-beta-14. Use AddResponsive(options => {}) instead.")]
-        public static IApplicationBuilder UseResponsive(
-            this IApplicationBuilder app,
-            ResponsiveOptions options)
-        {
-            if (app == null)
-                throw new UseResponsiveAppArgumentNullException(nameof(app));
-            if (options == null)
-                throw new UseResponsiveOptionArgumentNullException(nameof(options));
-
-            VerifyResponsiveIsRegistered(app);
-
-            return app.UseMiddleware<ResponsiveMiddleware>(Options.Create(options));
-        }
-
-        /// <summary>
-        /// Adds the responsive to <see cref="IApplicationBuilder"/> request execution pipeline.
-        /// </summary>
-        /// <param name="app"></param>
-        /// <param name="options"></param>
-        /// <returns>Return the <see cref="IApplicationBuilder"/> for further pipeline</returns>
-        [Obsolete("This will be refactor to add service of responsive in 2.0-beta-14. USe AddResponsive(options => {}) instead.")]
-        public static IApplicationBuilder UseResponsive(
-            this IApplicationBuilder app,
-            Action<ResponsiveOptions> options)
-        {
-            if (app == null)
-                throw new UseResponsiveAppArgumentNullException(nameof(app));
-            if (options == null)
-                throw new UseResponsiveOptionArgumentNullException(nameof(options));
-
-            VerifyResponsiveIsRegistered(app);
-
-            return app.UseMiddleware<ResponsiveMiddleware>();
-        }
-
         private static void VerifyResponsiveIsRegistered(IApplicationBuilder app)
         {
             if (app.ApplicationServices.GetService(typeof(ResponsiveMarkerService)) == null)

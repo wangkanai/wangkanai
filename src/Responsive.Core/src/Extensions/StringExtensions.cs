@@ -13,12 +13,4 @@ namespace Wangkanai.Responsive
             return !string.IsNullOrWhiteSpace(value);
         }
     }
-
-    internal static class ResponsiveOptionsExtension
-    {
-        public static bool IsConfigured(this ResponsiveViewOptions options)
-        {
-            return options != null;
-        }
-    }
 }
