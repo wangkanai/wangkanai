@@ -4,6 +4,8 @@
 using System;
 
 using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 using Wangkanai.Responsive.Core.Internal;
@@ -23,12 +25,34 @@ namespace Wangkanai.Responsive
         public static IApplicationBuilder UseResponsive(
             this IApplicationBuilder app)
         {
-            if (app == null)
-                throw new UseResponsiveAppArgumentNullException(nameof(app));
+            if (app == null) throw new UseResponsiveAppArgumentNullException(nameof(app));
+
+            app.Validate();
 
             VerifyResponsiveIsRegistered(app);
 
-            return app.UseMiddleware<ResponsiveMiddleware>();
+            app.UseMiddleware<ResponsiveMiddleware>();
+
+            return app;
+        }
+
+        internal static void Validate(this IApplicationBuilder app)
+        {
+            var scopeFactory = app.ApplicationServices.GetService<IServiceScopeFactory>();
+
+            using var scope = scopeFactory.CreateScope();
+
+            var serviceProvider = scope.ServiceProvider;
+
+            var options = serviceProvider.GetRequiredService<ResponsiveOptions>();
+            ValidateOptions(options);
+        }
+
+        private static void ValidateOptions(ResponsiveOptions options)
+        {
+            //if (options.View.IsConfigured())
+
+            // What should I validate?
         }
 
         /// <summary>

@@ -46,11 +46,7 @@ namespace Microsoft.Extensions.DependencyInjection
 
             services.Configure<IResponsiveOptions>(setAction);
 
-            services.AddResponsiveCore()
-                .AddViewSuffix()
-                .AddViewSubfolder();
-
-            return new ResponsiveBuilder(services);
+            return services.AddResponsive();
         }
     }
 }

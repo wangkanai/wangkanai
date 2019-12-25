@@ -9,47 +9,47 @@ using Wangkanai.Detection;
 
 namespace Wangkanai.Responsive
 {
-    public class CookieManager : IDeviceManager
-    {
-        private readonly ResponsiveOptions _options;
-        private const string ResponsiveContextKey = "Responsive";
-        private readonly HttpContext _context;
+    //public class CookieManager : IDeviceManager
+    //{
+    //    private readonly ResponsiveOptions _options;
+    //    private const string ResponsiveContextKey = "Responsive";
+    //    private readonly HttpContext _context;
 
-        public CookieManager(
-            HttpContext context,
-            ResponsiveOptions options)
-        {
-            _context = context
-                ?? throw new CookieManagerArgumentNullException(nameof(context));
-            _options = options
-                ?? throw new CookieManagerArgumentNullException(nameof(options));
-        }
+    //    public CookieManager(
+    //        HttpContext context,
+    //        ResponsiveOptions options)
+    //    {
+    //        _context = context
+    //            ?? throw new CookieManagerArgumentNullException(nameof(context));
+    //        _options = options
+    //            ?? throw new CookieManagerArgumentNullException(nameof(options));
+    //    }
 
-        public DeviceType Device
-            => _options.Default(Get());
+    //    public DeviceType Device
+    //        => _options.Default(Get());
 
-        public DeviceType Get()
-        {
-            var value = _context.Request.Cookies[ResponsiveContextKey];
+    //    public DeviceType Get()
+    //    {
+    //        var value = _context.Request.Cookies[ResponsiveContextKey];
 
-            Enum.TryParse<DeviceType>(value, out var result);
+    //        Enum.TryParse<DeviceType>(value, out var result);
 
-            return result;
-        }
+    //        return result;
+    //    }
 
-        public void Set(DeviceType value)
-        {
-            var option = new CookieOptions
-            {
-                Expires = DateTime.Now.AddMinutes(60)
-            };
+    //    public void Set(DeviceType value)
+    //    {
+    //        var option = new CookieOptions
+    //        {
+    //            Expires = DateTime.Now.AddMinutes(60)
+    //        };
 
-            _context.Response.Cookies.Append(ResponsiveContextKey, value.ToString(), option);
-        }
+    //        _context.Response.Cookies.Append(ResponsiveContextKey, value.ToString(), option);
+    //    }
 
-        public void Remove()
-        {
-            _context.Response.Cookies.Delete(ResponsiveContextKey);
-        }
-    }
+    //    public void Remove()
+    //    {
+    //        _context.Response.Cookies.Delete(ResponsiveContextKey);
+    //    }
+    //}
 }
