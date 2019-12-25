@@ -1,22 +1,19 @@
 # ASP.NET Core Detection
 
-ASP.NET Core client web browser detection extension to resolve devices, platforms, engine of the client.
 
-![ASP.NET Core Responsive](https://raw.githubusercontent.com/wangkanai/Detection/dev/asset/aspnet-core-detection-2.svg?sanitize=true)
-
-[![Financial Contributors on Open Collective](https://opencollective.com/wangkanai/all/badge.svg?label=financial+contributors)](https://opencollective.com/wangkanai) [![Build status](https://ci.appveyor.com/api/projects/status/033qv4nqv8g4altq?svg=true&retina=true)](https://ci.appveyor.com/project/wangkanai/detection)
+[![Financial Contributors on Open Collective](https://opencollective.com/wangkanai/all/badge.svg?label=financial+contributors)](https://opencollective.com/wangkanai)
+[![Build status](https://ci.appveyor.com/api/projects/status/033qv4nqv8g4altq?svg=true&retina=true)](https://ci.appveyor.com/project/wangkanai/detection)
+[![NuGet Badge](https://buildstats.info/nuget/wangkanai.detection?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.detection)
 
 [![Build history](https://buildstats.info/appveyor/chart/wangkanai/detection)](https://ci.appveyor.com/project/wangkanai/detection/history)
 
-package | nuget    |
---------|----------|
-Wangkanai.Detection | [![NuGet Badge](https://buildstats.info/nuget/wangkanai.detection?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.detection) |
-Wangkanai.Detection.Device | [![NuGet Badge](https://buildstats.info/nuget/wangkanai.detection.device?includePreReleases=true)](https://www.nuget.org/packages/Wangkanai.Detection.Device/) | 
-Wangkanai.Detection.Browser | [![NuGet Badge](https://buildstats.info/nuget/wangkanai.detection.browser?includePreReleases=true)](https://www.nuget.org/packages/Wangkanai.Detection.Browser/) | 
-Wangkanai.Detection.Engine | [![NuGet Badge](https://buildstats.info/nuget/wangkanai.detection.engine?includePreReleases=true)](https://www.nuget.org/packages/Wangkanai.Detection.Engine/) | 
-Wangkanai.Detection.Platform | [![NuGet Badge](https://buildstats.info/nuget/wangkanai.detection.platform?includePreReleases=true)](https://www.nuget.org/packages/Wangkanai.Detection.Platform/) |
-Wangkanai.Detection.Crawler | [![NuGet Badge](https://buildstats.info/nuget/wangkanai.detection.crawler?includePreReleases=true)](https://www.nuget.org/packages/Wangkanai.Detection.Crawler/) | 
-Wangkanai.Responsive | [![NuGet Badge](https://buildstats.info/nuget/wangkanai.responsive?includePreReleases=true)](https://www.nuget.org/packages/Wangkanai.Responsive/) |
+ASP.NET Core client web browser detection extension to resolve devices, platforms, engine of the client.
+
+ASP.NET Core Responsive middleware for routing base upon request client device detection to specific view
+
+
+![ASP.NET Core Responsive](https://raw.githubusercontent.com/wangkanai/Detection/dev/asset/aspnet-core-detection-2.svg?sanitize=true)
+
 
 ## Installation
 
@@ -24,16 +21,6 @@ Installation of detection library is now done with a single package reference po
 
 ```powershell
 PM> install-package Wangkanai.Detection -pre
-```
-
-While it is still possible to install the individual package if you just need that specific resolver.
-
-```powershell
-PM> install-package Wangkanai.Detection.Device -pre  
-PM> install-package Wangkanai.Detection.Browser -pre  
-PM> install-package Wangkanai.Detection.Engine -pre   //concept
-PM> install-package Wangkanai.Detection.Platform -pre //concept
-PM> install-package Wangkanai.Detection.Crawler -pre  
 ```
 
 Installation of Responsive library will bring in all dependency packages (This will include `Wangkanai.Detection.Device).
@@ -61,6 +48,24 @@ public void ConfigureServices(IServiceCollection services)
 
 * `AddDetection()` Adds the detection services to the services container.
 
+Responsive is configured in the `ConfigureServices` method:
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    // Add responsive services.
+    services.AddResponsive();
+
+    // Add framework services.
+    services.AddMvc();  
+}
+```
+
+* `AddResponsive()` Adds the Responsive services to the services container.
+
+  * **Suffix** Ex `*views/[controller]/[action]/index.mobile.cshtml*`
+  * **SubFoler** Ex `*views/[controller]/[action]/mobile/index.cshtml*`
+
 While the detection service is configured globally, its can also be configure individually if you only need some functions.
 
 ```csharp
@@ -86,19 +91,6 @@ public void ConfigureServices(IServiceCollection services)
 * `AddEngine()` Adds the engine resolver service to the detection core services builder.
 * `AddCrawler()` Adds the crawler resolver service to the detection core services builder.
 
-Responsive is configured in the `ConfigureServices` method:
-
-```csharp
-public void ConfigureServices(IServiceCollection services)
-{
-    // Add responsive services.
-    services.AddResponsive();
-
-    // Add framework services.
-    services.AddMvc();  
-}
-```
-
 Or you could be more specific using the `AddResponsiveCore()` method:
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -113,7 +105,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-* `AddResponsive()` Adds the Responsive services to the services container.
+* `AddResponsiveCore()` Adds the Responsive services to the services container.
 * `AddViewSuffix()` Adds support for device view files  to `Suffix`. In this sample view Responsive is based on the view file suffix. 
 
   Ex `*views/[controller]/[action]/index.mobile.cshtml*`
@@ -139,19 +131,6 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
     });
 }
 ```
-
-## Customized able options (beta 3)
-
-This enable the middleware to customized the default response for any type of request device to the configured options.
-
-```
-app.UseResponsive(new ResponsiveOptions
-{
-    TabletDefault = DeviceType.Mobile
-});
-```
-
-* `UseResponsive()` Add the responsive middleware into the http pipeline. Its will capture the request and resolve the device to responsive services container.
 
 ## Global Resolver (beta8)
 
@@ -356,21 +335,9 @@ public class HomeController : Controller
 ```
 * `IDetectionService` is main service for you to access UserAgent.
 
-## `HttpRequest` extensions (beta10) [Learn more #1](/../../issues/1)
-
-This would allow quick access to the Detection in any client request.
-
-```csharp
-var browser = Request.Browser();
-var device = Request.Device();
-var platform = Request.Platform();
-var engine = Request.Engine();
-var crawler = Request.Crawler();
-```
-
 ### Directory Structure
 * `src` - The code of this project lives here
-* `test` - Unit tests of this project to valid that everything pass specs
+* `collection` - Collection of sample user agents for lab testing
 * `sample` - Contains sample web application of usage
 
 ### Contributing
