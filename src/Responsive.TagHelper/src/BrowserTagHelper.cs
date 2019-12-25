@@ -7,14 +7,14 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Microsoft.AspNetCore.Mvc.TagHelpers
 {
-    [HtmlTargetElement("browser", TagStructure = TagStructure.WithoutEndTag)]
-    public class BrowserTagHelper : TagHelper
-    {
-        public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
-        {
-            var content = await output.GetChildContentAsync();
-            output.TagName = "div";
-            output.Content.AppendHtml("browser");
-        }
-    }
+    //[HtmlTargetElement("browser", TagStructure = TagStructure.WithoutEndTag)]
+    //public class BrowserTagHelper : TagHelper
+    //{
+    //    public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
+    //    {
+    //        var content = await output.GetChildContentAsync();
+    //        output.TagName = "div";
+    //        output.Content.AppendHtml("browser");
+    //    }
+    //}
 }
