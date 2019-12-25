@@ -5,6 +5,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <LangVersion>8.0</LangVersion>
     <NullableContextOptions>enable</NullableContextOptions>
+    <Version>0.0.100</Version>
 
     <RootNamespace>Wangkanai.Responsive</RootNamespace>
     <Authors>Sarin Na Wangkanai</Authors>
