@@ -2,6 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <LangVersion>8.0</LangVersion>
+    <NullableContextOptions>enable</NullableContextOptions>
+    <Version>0.0.100</Version>
 
     <Authors>Sarin Na Wangkanai</Authors>
     <PackageTags>aspnetcore;Responsive;TagHelper</PackageTags>
@@ -9,7 +13,7 @@
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>git://github.com/wangkanai/detection</RepositoryUrl>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+
     <PackageIcon>avatar.png</PackageIcon>
   </PropertyGroup>
 
