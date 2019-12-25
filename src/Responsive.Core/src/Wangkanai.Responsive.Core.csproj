@@ -1,11 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Authors>Sarin Na Wangkanai</Authors>
-    <TargetFrameworks>netstandard2.0</TargetFrameworks>
-    <NoWarn>$(NoWarn);CS1591</NoWarn>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <TargetFramework>netstandard2.0</TargetFramework>
+
+    <Authors>Sarin Na Wangkanai</Authors>
     <AssemblyName>Wangkanai.Responsive.Core</AssemblyName>
     <PackageId>Wangkanai.Responsive.Core</PackageId>
     <PackageTags>aspnetcore;Responsive</PackageTags>

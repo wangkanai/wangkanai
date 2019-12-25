@@ -1,14 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+
+    <Authors>Sarin Na Wangkanai</Authors>
     <Description>ASP.NET Core Detection service components for identifying details about client device, browser, engine, and platform.</Description>
     <Copyright>Copyright © 2018 Sarin Na Wangkanai</Copyright>
-    <Authors>Sarin Na Wangkanai</Authors>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <NoWarn>$(NoWarn);CS1591</NoWarn>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <AssemblyName>Wangkanai.Detection.Core</AssemblyName>
-    <PackageId>Wangkanai.Detection.Core</PackageId>
     <PackageTags>aspnetcore;detection;core</PackageTags>
     <PackageIconUrl>http://0.gravatar.com/avatar/f58457d38ab3bc43526c6e52af17494e</PackageIconUrl>
     <PackageProjectUrl>https://github.com/wangkanai/Detection</PackageProjectUrl>

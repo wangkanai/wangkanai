@@ -1,15 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+
     <Description>ASP.NET Core Responsive middleware for routing base upon request clientInfo device detection to specific view
 Being to target difference clientInfo devices with seperation of concern is crucial, due to you can mininize what is sent to the clientInfo directly from the service to only what is needed and nothing more. This increase performance and lower bandwidth usage.</Description>
     <Copyright>Copyright © 2018 Sarin Na Wangkanai</Copyright>
     <Authors>Sarin Na Wangkanai</Authors>
-    <TargetFrameworks>netstandard2.0</TargetFrameworks>
-    <NoWarn>$(NoWarn);CS1591</NoWarn>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <AssemblyName>Wangkanai.Responsive</AssemblyName>
-    <PackageId>Wangkanai.Responsive</PackageId>
     <PackageTags>aspnetcore;Responsive</PackageTags>
     <PackageProjectUrl>https://github.com/wangkanai/detection</PackageProjectUrl>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
