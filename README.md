@@ -60,7 +60,16 @@ public void ConfigureServices(IServiceCollection services)
     services.AddMvc();  
 }
 ```
-
+Or you can customize the responsive
+```csharp
+// Add responsive services.
+services.AddResponsive(options =>
+{
+    options.View.DefaultTablet = DeviceType.Desktop;
+    options.View.DefaultMobile = DeviceType.Desktop;
+    options.View.DefaultDesktop = DeviceType.Desktop;
+});
+```
 * `AddResponsive()` Adds the Responsive services to the services container.
 
   * **Suffix** Ex `*views/[controller]/[action]/index.mobile.cshtml*`

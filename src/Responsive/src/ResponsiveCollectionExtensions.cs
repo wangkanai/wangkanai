@@ -2,11 +2,9 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
-
 using Wangkanai.Responsive;
 using Wangkanai.Responsive.Builders;
 
-// ReSharper disable once CheckNamespace
 namespace Microsoft.Extensions.DependencyInjection
 {
     /// <summary>
@@ -20,9 +18,33 @@ namespace Microsoft.Extensions.DependencyInjection
         /// </summary>
         /// <param name="services">The <see cref="IServiceCollection"/> to add the services to.</param>
         /// <returns>The <see cref="IServiceCollection"/> so that additional calls can be chained.</returns>
-        public static IResponsiveBuilder AddResponsive(this IServiceCollection services)
+        public static IResponsiveBuilder AddResponsive(
+            this IServiceCollection services)
         {
-            if (services == null) throw new AddResponsiveArgumentNullException(nameof(services));
+            if (services == null)
+                throw new AddResponsiveArgumentNullException(nameof(services));
+
+            services.AddResponsiveCore()
+                .AddViewSuffix()
+                .AddViewSubfolder();
+
+            return new ResponsiveBuilder(services);
+        }
+
+        /// <summary>
+        /// Adds services required for application Responsive
+        /// </summary>
+        /// <param name="services">The <see cref="IServiceCollection"/> to add the services to.</param>
+        /// <param name="setAction">The <see cref="Action{IResponsiveOptions}"/> to config the provided <see cref="IResponsiveOptions"/>.</param>
+        /// <returns>The <see cref="IServiceCollection"/> so that additional calls can be chained.</returns>
+        public static IResponsiveBuilder AddResponsive(
+            this IServiceCollection services,
+            Action<IResponsiveOptions> setAction)
+        {
+            if (services == null)
+                throw new AddResponsiveArgumentNullException(nameof(services));
+
+            services.Configure<IResponsiveOptions>(setAction);
 
             services.AddResponsiveCore()
                 .AddViewSuffix()

@@ -9,4 +9,11 @@ namespace System
         {
         }
     }
+
+    public class ResponsiveCoreBuilderArgumentNullException : ArgumentNullException
+    {
+        public ResponsiveCoreBuilderArgumentNullException(string paramName) : base(paramName)
+        {
+        }
+    }
 }
