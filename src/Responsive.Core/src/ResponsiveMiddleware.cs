@@ -18,8 +18,10 @@ namespace Wangkanai.Responsive
 
         public ResponsiveMiddleware(RequestDelegate next, IOptions<ResponsiveOptions> options)
         {
-            if (next == null) throw new ResponsiveMiddlewareNextArgumentNullException(nameof(next));
-            if (options == null) throw new ResponsiveMiddlewareOptionArgumentNullException(nameof(options));
+            if (next == null)
+                throw new ResponsiveMiddlewareNextArgumentNullException(nameof(next));
+            if (options == null)
+                throw new ResponsiveMiddlewareOptionArgumentNullException(nameof(options));
 
             _next = next;
             _options = options.Value;

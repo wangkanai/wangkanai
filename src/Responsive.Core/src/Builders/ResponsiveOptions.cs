@@ -9,10 +9,12 @@ namespace Wangkanai.Responsive
     /// <summary>
     /// Provides programmatic configuration for the Responsive framework.
     /// </summary>
-    //[Obsolete("This is an experimental API, its might change when finalize.")]
-    public class ResponsiveOptions : IResponsiveOptions
+    public class ResponsiveOptions
     {
-        public IResponsiveViewOptions View { get; set; } = new ResponsiveViewOptions();
+        /// <summary>
+        /// Get or set the option to configure the default view.
+        /// </summary>
+        public ResponsiveViewOptions View { get; set; } = new ResponsiveViewOptions();
 
         public ResponsiveOptions() { }
 
@@ -42,10 +44,22 @@ namespace Wangkanai.Responsive
         #endregion Obsolete
     }
 
-    public class ResponsiveViewOptions : IResponsiveViewOptions
+    /// <summary>
+    /// The IResponsiveViewOptions class is the View container for all configuration settings of Responsive.
+    /// </summary>
+    public class ResponsiveViewOptions
     {
-        public DeviceType DefaultMobile { get; set; }
-        public DeviceType DefaultTablet { get; set; }
-        public DeviceType DefaultDesktop { get; set; }
+        /// <summary>
+        /// Gets or sets a value that determines the default view for Mobile
+        /// </summary>
+        public DeviceType DefaultMobile { get; set; } = DeviceType.Mobile;
+        /// <summary>
+        /// Gets or sets a value that determines the default view for Tablet
+        /// </summary>
+        public DeviceType DefaultTablet { get; set; } = DeviceType.Tablet;
+        /// <summary>
+        /// Gets or sets a value that determines the default view for Desktop
+        /// </summary>
+        public DeviceType DefaultDesktop { get; set; } = DeviceType.Desktop;
     }
 }
