@@ -8,6 +8,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitignore = .gitignore
 		appveyor.yml = appveyor.yml
 		Detection.sln.licenseheader = Detection.sln.licenseheader
+		md-styles.css = md-styles.css
 		README.md = README.md
 		run.ps1 = run.ps1
 	EndProjectSection
