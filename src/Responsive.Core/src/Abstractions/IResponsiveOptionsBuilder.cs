@@ -11,6 +11,6 @@ namespace Wangkanai.Responsive
     {
         IApplicationBuilder ApplicationBuilder { get; }
         IServiceProvider ServiceProvider { get; }
-        IViewLocation DefaultHandler { get; set; }
+        //IViewLocation DefaultHandler { get; set; }
     }
 }

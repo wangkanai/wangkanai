@@ -14,13 +14,9 @@ namespace Wangkanai.Responsive
         public DeviceType DefaultDesktop { get; set; } = DeviceType.Desktop;
         public IResponsiveViewOptions View { get; set; } = new ResponsiveViewOptions();
 
-        public ResponsiveOptions()
-        {
-
-        }
+        public ResponsiveOptions() { }
 
         #region Obsolete
-
         public DeviceType MobileDefault { get; set; } = DeviceType.Mobile;
         public DeviceType TabletDefault { get; set; } = DeviceType.Tablet;
         public DeviceType DesktopDefault { get; set; } = DeviceType.Desktop;
@@ -40,7 +36,6 @@ namespace Wangkanai.Responsive
 
             return type;
         }
-
         #endregion
     }
 }

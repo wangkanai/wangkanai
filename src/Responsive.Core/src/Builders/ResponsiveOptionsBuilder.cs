@@ -9,24 +9,31 @@ namespace Wangkanai.Responsive
 {
     public class ResponsiveOptionsBuilder : IResponsiveOptionsBuilder
     {
+        public IApplicationBuilder ApplicationBuilder { get; }
+        public IServiceProvider ServiceProvider { get; }
+        //public IViewLocation DefaultHandler { get; set; }
+
         public ResponsiveOptionsBuilder(
             IApplicationBuilder applicationBuilder)
-            : this(applicationBuilder, defaultHandler: null) { }
+        {
+            ApplicationBuilder = applicationBuilder
+                ?? throw new ArgumentNullException(nameof(applicationBuilder));
 
+            ServiceProvider = ApplicationBuilder.ApplicationServices;
+        }
+
+        [Obsolete("This method will be remove in 2.0-beta14")]
         public ResponsiveOptionsBuilder(
             IApplicationBuilder applicationBuilder,
             IViewLocation defaultHandler)
         {
             ApplicationBuilder = applicationBuilder
                 ?? throw new ArgumentNullException(nameof(applicationBuilder));
-            DefaultHandler = defaultHandler
-                ?? throw new ArgumentNullException(nameof(applicationBuilder));
+            //DefaultHandler = defaultHandler
+            //    ?? throw new ArgumentNullException(nameof(applicationBuilder));
 
             ServiceProvider = ApplicationBuilder.ApplicationServices;
         }
 
-        public IApplicationBuilder ApplicationBuilder { get; }
-        public IServiceProvider ServiceProvider { get; }
-        public IViewLocation DefaultHandler { get; set; }
     }
 }
