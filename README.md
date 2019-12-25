@@ -219,6 +219,31 @@ public class HomeController : Controller
 }
 ```
 
+## Crawler Resolver
+
+This library host the component to resolve the access client crawler type and version.
+
+Example of calling the detection service in the `Controller` using dependency injection.
+
+```csharp
+public class HomeController : Controller
+{    
+    private readonly IUserAgent _useragent;
+    private readonly ICrawler _crawler;   
+
+    public HomeController(ICrawlerResolver crawlerResolver)
+    {
+        _useragent = crawlerResolver.UserAgent;
+        _crawler = crawlerResolver.Crawler;
+    }
+
+    public IActionResult Index()
+    {            
+        return View();
+    }
+}
+```
+
 ## Platform Resolver (concept)
 
 This library host the component to resolve the access client platform type and version.
@@ -260,31 +285,6 @@ public class HomeController : Controller
     {
         _useragent = engineResolver.UserAgent;
         _engine = engineResolver.Engine;
-    }
-
-    public IActionResult Index()
-    {            
-        return View();
-    }
-}
-```
-
-## Crawler Resolver (beta8)
-
-This library host the component to resolve the access client crawler type and version.
-
-Example of calling the detection service in the `Controller` using dependency injection.
-
-```csharp
-public class HomeController : Controller
-{    
-    private readonly IUserAgent _useragent;
-    private readonly ICrawler _crawler;   
-
-    public HomeController(ICrawlerResolver crawlerResolver)
-    {
-        _useragent = crawlerResolver.UserAgent;
-        _crawler = crawlerResolver.Crawler;
     }
 
     public IActionResult Index()
