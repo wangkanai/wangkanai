@@ -10,7 +10,6 @@
     <AssemblyName>Wangkanai.Detection.Engine</AssemblyName>
     <PackageId>Wangkanai.Detection.Engine</PackageId>
     <PackageTags>aspnetcore;detection;engine</PackageTags>
-    <PackageIconUrl>http://0.gravatar.com/avatar/f58457d38ab3bc43526c6e52af17494e</PackageIconUrl>
     <PackageProjectUrl>https://github.com/wangkanai/Detection</PackageProjectUrl>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <RepositoryType>git</RepositoryType>

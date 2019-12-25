@@ -9,15 +9,15 @@
     <AssemblyName>Wangkanai.Responsive.Core</AssemblyName>
     <PackageId>Wangkanai.Responsive.Core</PackageId>
     <PackageTags>aspnetcore;Responsive</PackageTags>
-    <PackageIconUrl>http://0.gravatar.com/avatar/f58457d38ab3bc43526c6e52af17494e</PackageIconUrl>
     <PackageProjectUrl>https://github.com/wangkanai/detection</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/wangkanai/detection/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>git://github.com/wangkanai/detection</RepositoryUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 
     <LangVersion>8.0</LangVersion>
     <NullableContextOptions>enable</NullableContextOptions>
+    <PackageIcon>avatar.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -28,6 +28,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Detection.Device\src\Wangkanai.Detection.Device.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\asset\avatar.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

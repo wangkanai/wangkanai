@@ -20,6 +20,7 @@
 
     <LangVersion>8.0</LangVersion>
     <NullableContextOptions>enable</NullableContextOptions>
+    <PackageIcon>avatar.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -27,4 +28,10 @@
     <PackageReference Include="Microsoft.AspNetCore.Razor.Runtime" Version="2.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="..\..\..\asset\avatar.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
 </Project>
