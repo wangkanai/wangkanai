@@ -33,6 +33,12 @@ namespace Microsoft.Extensions.DependencyInjection
             return new ResponsiveBuilder(services);
         }
 
+        /// <summary>
+        /// Adds services required for application Responsive
+        /// </summary>
+        /// <param name="services">The <see cref="IServiceCollection"/> to add the services to.</param>
+        /// <param name="setAction">The <see cref="Action{IResponsiveOptions}"/> to config the provided <see cref="IResponsiveOptions"/>.</param>
+        /// <returns>The <see cref="IServiceCollection"/> so that additional calls can be chained.</returns>
         public static IResponsiveBuilder AddResponsive(
             this IServiceCollection services,
             Action<IResponsiveOptions> setAction)
