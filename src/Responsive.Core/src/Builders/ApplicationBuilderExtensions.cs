@@ -49,7 +49,7 @@ namespace Wangkanai.Responsive
             }
         }
 
-        private static void ValidateOptions(IResponsiveOptions options)
+        private static void ValidateOptions(ResponsiveOptions options)
         {
             //if (options.View.IsConfigured())
 
@@ -86,7 +86,7 @@ namespace Wangkanai.Responsive
         [Obsolete("This will be refactor to add service of responsive in 2.0-beta-14. USe AddResponsive(options => {}) instead.")]
         public static IApplicationBuilder UseResponsive(
             this IApplicationBuilder app,
-            Action<IResponsiveOptions> options)
+            Action<ResponsiveOptions> options)
         {
             if (app == null)
                 throw new UseResponsiveAppArgumentNullException(nameof(app));

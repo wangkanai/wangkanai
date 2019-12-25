@@ -16,7 +16,7 @@ namespace Wangkanai.Responsive
 
     internal static class ResponsiveOptionsExtension
     {
-        public static bool IsConfigured(this IResponsiveViewOptions options)
+        public static bool IsConfigured(this ResponsiveViewOptions options)
         {
             return options != null;
         }
