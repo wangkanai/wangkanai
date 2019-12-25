@@ -21,8 +21,8 @@ namespace Sandbox.Controllers
         {
             var browser = Request.Browser();
             var device = Request.Device();
-            var platform = Request.Platform();
-            var engine = Request.Engine();
+            //var platform = Request.Platform();
+            //var engine = Request.Engine();
             return View(_detection);
         }
     }

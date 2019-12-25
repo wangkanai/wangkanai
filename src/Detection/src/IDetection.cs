@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
+// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
 namespace Wangkanai.Detection
@@ -8,8 +8,8 @@ namespace Wangkanai.Detection
         IBrowser Browser { get; }
         ICrawler Crawler { get; }
         IDevice Device { get; }
-        IEngine Engine { get; }
-        IPlatform Platform { get; }
+        //IEngine Engine { get; }
+        //IPlatform Platform { get; }
         IUserAgent UserAgent { get; }
     }
 }
