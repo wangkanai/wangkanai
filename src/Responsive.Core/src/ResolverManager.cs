@@ -7,7 +7,7 @@ using Wangkanai.Detection;
 
 namespace Wangkanai.Responsive
 {
-    public class ResolverManager : IDeviceManager
+    public class ResolverManager
     {
         private readonly ResponsiveOptions _options;
         private readonly DeviceType _resolved;
