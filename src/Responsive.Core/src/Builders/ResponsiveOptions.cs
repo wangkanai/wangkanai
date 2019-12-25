@@ -44,8 +44,8 @@ namespace Wangkanai.Responsive
 
     public class ResponsiveViewOptions : IResponsiveViewOptions
     {
-        public DeviceType DefaultMobile { get; set; }
-        public DeviceType DefaultTablet { get; set; }
-        public DeviceType DefaultDesktop { get; set; }
+        public DeviceType DefaultMobile { get; set; } = DeviceType.Mobile;
+        public DeviceType DefaultTablet { get; set; } = DeviceType.Tablet;
+        public DeviceType DefaultDesktop { get; set; } = DeviceType.Desktop;
     }
 }

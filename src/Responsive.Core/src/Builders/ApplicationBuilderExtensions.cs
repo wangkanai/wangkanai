@@ -27,7 +27,7 @@ namespace Wangkanai.Responsive
         {
             if (app == null) throw new UseResponsiveAppArgumentNullException(nameof(app));
 
-            app.Validate();
+            //app.Validate();
 
             VerifyResponsiveIsRegistered(app);
 
@@ -40,15 +40,16 @@ namespace Wangkanai.Responsive
         {
             var scopeFactory = app.ApplicationServices.GetService<IServiceScopeFactory>();
 
-            using var scope = scopeFactory.CreateScope();
+            using (var scope = scopeFactory.CreateScope())
+            {
+                var serviceProvider = scope.ServiceProvider;
 
-            var serviceProvider = scope.ServiceProvider;
-
-            var options = serviceProvider.GetRequiredService<ResponsiveOptions>();
-            ValidateOptions(options);
+                var options = serviceProvider.GetRequiredService<ResponsiveOptions>();
+                ValidateOptions(options);
+            }
         }
 
-        private static void ValidateOptions(ResponsiveOptions options)
+        private static void ValidateOptions(IResponsiveOptions options)
         {
             //if (options.View.IsConfigured())
 

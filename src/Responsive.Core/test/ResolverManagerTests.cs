@@ -19,20 +19,20 @@ namespace Wangkanai.Responsive.Core
             var manager = new ResolverManager(desktop, options);
         }
 
-        [Fact]
-        public void TabletDefault_is_Mobile()
-        {
-            var desktop = DeviceType.Desktop;
-            var tablet = DeviceType.Tablet;
-            var mobile = DeviceType.Mobile;
+        //[Fact]
+        //public void TabletDefault_is_Mobile()
+        //{
+        //    var desktop = DeviceType.Desktop;
+        //    var tablet = DeviceType.Tablet;
+        //    var mobile = DeviceType.Mobile;
 
-            var options = new ResponsiveOptions(desktop, mobile, mobile);
-            Assert.Equal(mobile, options.TabletDefault);
-            Assert.NotEqual(tablet, options.TabletDefault);
-            Assert.Equal(desktop, options.DesktopDefault);
+        //    var options = new ResponsiveOptions(desktop, mobile, mobile);
+        //    Assert.Equal(mobile, options.TabletDefault);
+        //    Assert.NotEqual(tablet, options.TabletDefault);
+        //    Assert.Equal(desktop, options.DesktopDefault);
 
-            var manager = new ResolverManager(tablet, options);
-            Assert.Equal(mobile, manager.Device);
-        }
+        //    var manager = new ResolverManager(tablet, options);
+        //    Assert.Equal(mobile, manager.Device);
+        //}
     }
 }

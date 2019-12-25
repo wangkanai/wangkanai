@@ -30,10 +30,11 @@ namespace Responsive
         public void ConfigureServices(IServiceCollection services)
         {
             // Add responsive services.
+            //services.AddResponsive();
             services.AddResponsive(options =>
             {
                 options.View.DefaultTablet = DeviceType.Desktop;
-                options.View.DefaultMobile = DeviceType.Desktop;
+                options.View.DefaultMobile = DeviceType.Mobile;
                 options.View.DefaultDesktop = DeviceType.Desktop;
             });
 
@@ -60,17 +61,17 @@ namespace Responsive
 
             app.UseResponsive();
 
-            app.UseResponsive(new ResponsiveOptions
-            {
-                TabletDefault = DeviceType.Tablet
-            });
+            //app.UseResponsive(new ResponsiveOptions
+            //{
+            //    TabletDefault = DeviceType.Tablet
+            //});
 
-            app.UseResponsive(options =>
-            {
-                options.View.DefaultTablet = DeviceType.Desktop;
-                options.View.DefaultMobile = DeviceType.Desktop;
-                options.View.DefaultDesktop = DeviceType.Desktop;
-            });
+            //app.UseResponsive(options =>
+            //{
+            //    options.View.DefaultTablet = DeviceType.Desktop;
+            //    options.View.DefaultMobile = DeviceType.Desktop;
+            //    options.View.DefaultDesktop = DeviceType.Desktop;
+            //});
 
             app.UseMvc(routes =>
             {

@@ -24,11 +24,7 @@ namespace Microsoft.Extensions.DependencyInjection
             if (services == null)
                 throw new AddResponsiveArgumentNullException(nameof(services));
 
-            services.AddResponsiveCore()
-                .AddViewSuffix()
-                .AddViewSubfolder();
-
-            return new ResponsiveBuilder(services);
+            return services.AddResponsive(options => { });
         }
 
         /// <summary>
@@ -39,14 +35,17 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <returns>The <see cref="IServiceCollection"/> so that additional calls can be chained.</returns>
         public static IResponsiveBuilder AddResponsive(
             this IServiceCollection services,
-            Action<IResponsiveOptions> setAction)
+            Action<ResponsiveOptions> setAction)
         {
             if (services == null)
                 throw new AddResponsiveArgumentNullException(nameof(services));
 
-            services.Configure<IResponsiveOptions>(setAction);
+            services.Configure<ResponsiveOptions>(setAction);
+            services.AddResponsiveCore()
+                .AddViewSuffix()
+                .AddViewSubfolder();
 
-            return services.AddResponsive();
+            return new ResponsiveBuilder(services);
         }
     }
 }
