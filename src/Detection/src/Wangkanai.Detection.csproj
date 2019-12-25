@@ -30,4 +30,8 @@
     <ProjectReference Include="..\..\Detection.Platform\src\Wangkanai.Detection.Platform.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
 </Project>

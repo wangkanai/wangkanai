@@ -3,4 +3,4 @@ dotnet --version
 dotnet restore
 dotnet build
 dotnet test
-dotnet pack .\src\**\*.csproj -c Release -o .\artifacts
+dotnet pack -c Release -o .\artifacts
