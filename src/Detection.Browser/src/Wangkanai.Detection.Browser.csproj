@@ -1,20 +1,18 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+
+    <Authors>Sarin Na Wangkanai</Authors>
     <Description>ASP.NET Core Detection Browser resolver components</Description>
     <Copyright>Copyright © 2018 Sarin Na Wangkanai</Copyright>
-    <Authors>Sarin Na Wangkanai</Authors>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <NoWarn>$(NoWarn);CS1591</NoWarn>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <AssemblyName>Wangkanai.Detection.Browser</AssemblyName>
-    <PackageId>Wangkanai.Detection.Browser</PackageId>
     <PackageTags>aspnetcore;detection;browser</PackageTags>
     <PackageProjectUrl>https://github.com/wangkanai/Detection</PackageProjectUrl>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>git://github.com/wangkanai/Detection</RepositoryUrl>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+
     <RootNamespace>Wangkanai.Detection</RootNamespace>
     <PackageIcon>avatar.png</PackageIcon>
 
