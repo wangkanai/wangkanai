@@ -2,7 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <LangVersion>8.0</LangVersion>
+    <NullableContextOptions>enable</NullableContextOptions>
 
+    <RootNamespace>Wangkanai.Detection</RootNamespace>
     <Authors>Sarin Na Wangkanai</Authors>
     <Description>ASP.NET Core Platform Resolver components</Description>
     <Copyright>Copyright © 2018 Sarin Na Wangkanai</Copyright>
@@ -11,11 +15,7 @@
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>git://github.com/wangkanai/Detection</RepositoryUrl>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <RootNamespace>Wangkanai.Detection</RootNamespace>
-
-    <LangVersion>8.0</LangVersion>
-    <NullableContextOptions>enable</NullableContextOptions>
+    <PackageIcon>avatar.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -23,7 +23,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Properties\" />
+    <None Include="..\..\..\asset\avatar.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

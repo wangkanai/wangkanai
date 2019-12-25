@@ -2,19 +2,17 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <LangVersion>8.0</LangVersion>
+    <NullableContextOptions>enable</NullableContextOptions>
 
+    <RootNamespace>Wangkanai.Responsive</RootNamespace>
     <Authors>Sarin Na Wangkanai</Authors>
-    <AssemblyName>Wangkanai.Responsive.Core</AssemblyName>
-    <PackageId>Wangkanai.Responsive.Core</PackageId>
     <PackageTags>aspnetcore;Responsive</PackageTags>
     <PackageProjectUrl>https://github.com/wangkanai/detection</PackageProjectUrl>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>git://github.com/wangkanai/detection</RepositoryUrl>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-
-    <LangVersion>8.0</LangVersion>
-    <NullableContextOptions>enable</NullableContextOptions>
     <PackageIcon>avatar.png</PackageIcon>
   </PropertyGroup>
 
