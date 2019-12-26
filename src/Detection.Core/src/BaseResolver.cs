@@ -22,18 +22,23 @@ namespace Wangkanai.Detection
 
         protected readonly IUserAgentService _service;
 
-        public BaseResolver(IUserAgentService service)
+        public BaseResolver(
+            IUserAgentService service)
         {
-            if (service == null) throw new BaseResolverArgumentNullException(nameof(service));
+            if (service == null)
+                throw new BaseResolverArgumentNullException(nameof(service));
 
             _service = service;
         }
 
         protected string GetUserAgent()
         {
-            if (Context == null) return "";
-            if (!Context.Request.Headers["User-Agent"].Any()) return "";
-            return new UserAgent(Context.Request.Headers["User-Agent"].FirstOrDefault()).ToString().ToLowerInvariant();
+            if (Context == null || !Context.Request.Headers["User-Agent"].Any())
+                return "";
+
+            return new UserAgent(Context.Request.Headers["User-Agent"].FirstOrDefault())
+                .ToString()
+                .ToLowerInvariant();
         }
     }
 }
