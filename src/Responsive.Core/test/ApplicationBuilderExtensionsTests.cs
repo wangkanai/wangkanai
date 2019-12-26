@@ -4,7 +4,6 @@
 using System;
 
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Builder.Internal;
 using Xunit;
 
 namespace Wangkanai.Responsive.Core
