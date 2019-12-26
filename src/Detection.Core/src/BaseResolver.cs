@@ -19,21 +19,19 @@ namespace Wangkanai.Detection
         /// Get HttpContext of the application service
         /// </summary>
         protected HttpContext Context => _service.Context;
-
         protected readonly IUserAgentService _service;
 
         public BaseResolver(IUserAgentService service)
-        {
-            if (service == null) throw new BaseResolverArgumentNullException(nameof(service));
-
-            _service = service;
-        }
+            => _service = service ?? throw new BaseResolverArgumentNullException(nameof(service));
 
         protected string GetUserAgent()
         {
-            if (Context == null) return "";
-            if (!Context.Request.Headers["User-Agent"].Any()) return "";
-            return new UserAgent(Context.Request.Headers["User-Agent"].FirstOrDefault()).ToString().ToLowerInvariant();
+            if (Context == null || !Context.Request.Headers["User-Agent"].Any())
+                return "";
+
+            return new UserAgent(Context.Request.Headers["User-Agent"].FirstOrDefault())
+                .ToString()
+                .ToLowerInvariant();
         }
     }
 }

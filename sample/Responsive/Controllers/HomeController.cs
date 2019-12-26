@@ -9,7 +9,7 @@ namespace Responsive.Controllers
     {
         public IActionResult Index()
         {
-            return View();//_resolver.DeviceInfo);
+            return View();
         }
 
         public IActionResult Error()

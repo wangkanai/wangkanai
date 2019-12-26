@@ -17,7 +17,7 @@ namespace Wangkanai.Responsive.Test
             var service = new ServiceCollection();
             var builder = service.AddResponsive();
 
-            Assert.Equal(6, builder.Services.Count);
+            Assert.Equal(12, builder.Services.Count);
             Assert.Same(service, builder.Services);
         }
 
@@ -41,7 +41,7 @@ namespace Wangkanai.Responsive.Test
                 options.View.DefaultTablet = Detection.DeviceType.Desktop;
             });
 
-            Assert.Equal(7, builder.Services.Count);
+            Assert.Equal(12, builder.Services.Count);
             Assert.Same(service, builder.Services);
         }
 
