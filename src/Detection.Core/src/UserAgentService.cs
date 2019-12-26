@@ -17,29 +17,36 @@ namespace Wangkanai.Detection
         public HttpContext Context { get; }
         public IUserAgent UserAgent { get; }
 
-        public UserAgentService(IServiceProvider services)
+        public UserAgentService(
+            IServiceProvider services)
         {
-            if (services == null) throw new UserAgentServiceArgumentNullException(nameof(services));
+            if (services == null)
+                throw new UserAgentServiceArgumentNullException(nameof(services));
 
             this.Context = services.GetRequiredService<IHttpContextAccessor>().HttpContext;
             this.UserAgent = CreateUserAgent(this.Context);
         }
 
-        public UserAgentService(HttpContext context)
+        public UserAgentService(
+            HttpContext context)
         {
-            if (context == null) throw new UserAgentServiceArgumentNullException(nameof(context));
+            if (context == null)
+                throw new UserAgentServiceArgumentNullException(nameof(context));
 
             this.Context = context;
             this.UserAgent = CreateUserAgent(this.Context);
         }
 
-        private IUserAgent CreateUserAgent(HttpContext context)
+        private IUserAgent CreateUserAgent(
+            HttpContext context)
         {
-            if (context == null) throw new UserAgentServiceArgumentNullException(nameof(Context));
+            if (context == null)
+                throw new UserAgentServiceArgumentNullException(nameof(Context));
 
             var agent = Context.Request.Headers["User-Agent"].FirstOrDefault();
 
-            if (agent == null) return new UserAgent();
+            if (agent == null)
+                return new UserAgent();
 
             return new UserAgent(agent);
         }

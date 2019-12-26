@@ -7,12 +7,9 @@ namespace Wangkanai.Detection
     {
         private readonly string useragent;
 
-        public UserAgent()
-        {
-            this.useragent = string.Empty;
-        }
+        public UserAgent() => useragent = string.Empty;
 
-        public UserAgent(string useragent)
+        public UserAgent(string useragent) : this()
         {
             if (useragent != null)
                 this.useragent = useragent;
@@ -20,9 +17,6 @@ namespace Wangkanai.Detection
                 this.useragent = string.Empty;
         }
 
-        public override string ToString()
-        {
-            return useragent;
-        }
+        public override string ToString() => useragent;
     }
 }

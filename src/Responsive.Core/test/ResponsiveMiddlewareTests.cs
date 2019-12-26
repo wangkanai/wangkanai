@@ -62,7 +62,7 @@ namespace Wangkanai.Responsive.Core
             var options = Options.Create(new ResponsiveOptions());
             var middleware = new ResponsiveMiddleware(d => Task.Factory.StartNew(() => d), options);
 
-            await Assert.ThrowsAsync<ArgumentNullException>(async () => await middleware.Invoke(context, null));
+            await Assert.ThrowsAsync<NullReferenceException>(async () => await middleware.Invoke(context, null));
         }
 
         private class DeviceResolver : IDeviceResolver
