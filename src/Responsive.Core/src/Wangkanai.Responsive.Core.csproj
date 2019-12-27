@@ -22,14 +22,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Detection.Device\src\Wangkanai.Detection.Device.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="..\..\..\asset\avatar.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Detection\src\Wangkanai.Detection.csproj" />
   </ItemGroup>
 
 </Project>
