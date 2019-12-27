@@ -10,7 +10,7 @@
   [![MyGet Badge](https://buildstats.info/myget/wangkanai/Wangkanai.detection)](https://www.myget.org/feed/wangkanai/package/nuget/Wangkanai.detection)
 - **Wangkanai.Responsive**
   [![NuGet Badge](https://buildstats.info/nuget/wangkanai.Responsive)](https://www.nuget.org/packages/wangkanai.detection)
-  [![NuGet Badge](https://buildstats.info/nuget/wangkanai.Responsive?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.detection)
+  [![NuGet Badge](https://buildstats.info/nuget/wangkanai.Responsive?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.Responsive)
   [![MyGet Badge](https://buildstats.info/myget/wangkanai/Wangkanai.Responsive)](https://www.myget.org/feed/wangkanai/package/nuget/Wangkanai.Responsive)
 
 [![Build history](https://buildstats.info/appveyor/chart/wangkanai/detection)](https://ci.appveyor.com/project/wangkanai/detection/history)
