@@ -27,8 +27,7 @@ namespace Microsoft.Extensions.DependencyInjection
             if (services == null)
                 throw new AddResponsiveArgumentNullException(nameof(services));
 
-            services.AddDetectionCore()
-                .AddDevice();
+            services.AddDetection();
 
             services.AddOptions();
             services.TryAddSingleton<ResponsiveMarkerService, ResponsiveMarkerService>();
