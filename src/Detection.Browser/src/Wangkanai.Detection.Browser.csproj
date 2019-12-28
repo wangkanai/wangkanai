@@ -13,6 +13,7 @@
     <PackageTags>aspnetcore;detection;browser</PackageTags>
     <PackageProjectUrl>https://github.com/wangkanai/Detection</PackageProjectUrl>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <NoWarn>NU5048;NU5104</NoWarn>
     <PackageIconUrl>https://raw.githubusercontent.com/wangkanai/Detection/dev/asset/avatar.png</PackageIconUrl>
     <RootNamespace>Wangkanai.Detection</RootNamespace>
 

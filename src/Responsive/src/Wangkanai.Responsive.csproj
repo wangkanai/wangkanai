@@ -15,6 +15,7 @@ Being to target difference clientInfo devices with seperation of concern is cruc
     <PackageTags>aspnetcore;Responsive</PackageTags>
     <PackageProjectUrl>https://github.com/wangkanai/detection</PackageProjectUrl>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <NoWarn>NU5048;NU5104</NoWarn>
     <PackageIconUrl>https://raw.githubusercontent.com/wangkanai/Detection/dev/asset/avatar.png</PackageIconUrl>
   </PropertyGroup>
 
