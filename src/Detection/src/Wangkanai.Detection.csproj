@@ -15,7 +15,7 @@
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>git://github.com/wangkanai/Detection</RepositoryUrl>
-    <PackageIcon>avatar.png</PackageIcon>
+    <PackageIconUrl>https://raw.githubusercontent.com/wangkanai/Detection/dev/asset/avatar.png</PackageIconUrl>
   </PropertyGroup>
 
   <ItemGroup>
@@ -24,13 +24,6 @@
     <ProjectReference Include="..\..\Detection.Device\src\Wangkanai.Detection.Device.csproj" />
     <ProjectReference Include="..\..\Detection.Engine\src\Wangkanai.Detection.Engine.csproj" />
     <ProjectReference Include="..\..\Detection.Platform\src\Wangkanai.Detection.Platform.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="..\..\..\asset\avatar.png">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
   </ItemGroup>
 
 </Project>
