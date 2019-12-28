@@ -3,7 +3,7 @@
 
 namespace Wangkanai.Detection
 {
-    public enum PlatformType
+    public enum OperatingSystem
     {
         Windows,
         Mac,

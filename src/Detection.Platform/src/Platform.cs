@@ -9,12 +9,11 @@ namespace Wangkanai.Detection
     {
         public string Name { get; set; }
         public string Maker { get; set; }
-        public PlatformType Type { get; set; }
+        public OperatingSystem OS { get; set; }
+        public Processor CPU { get; set; }
         public Version Version { get; set; }
         public byte Bits { get; set; }
 
-        public Platform()
-        {
-        }
+        public Platform() { }
     }
 }
