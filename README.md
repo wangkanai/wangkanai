@@ -68,7 +68,9 @@ public void ConfigureServices(IServiceCollection services)
     services.AddMvc();  
 }
 ```
+
 Or you can customize the responsive
+
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
@@ -84,6 +86,7 @@ public void ConfigureServices(IServiceCollection services)
     services.AddMvc();  
 }
 ```
+
 * `AddResponsive()` Adds the Responsive services to the services container.
 
   * **Suffix** Ex `*views/[controller]/[action]/index.mobile.cshtml*`
@@ -92,7 +95,7 @@ public void ConfigureServices(IServiceCollection services)
 The current device on a request is set in the Responsive middleware. The Responsive middleware is enabled in the `Configure` method of *Startup.cs* file.
 
 ```csharp
-public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 {
     app.UseResponsive();
 
