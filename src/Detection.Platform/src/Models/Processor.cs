@@ -3,9 +3,11 @@
 
 namespace Wangkanai.Detection
 {
-    public interface IPlatform : IManufacturer
+    public enum Processor
     {
-        OperatingSystem OS { get; }
-        Processor CPU { get; }
+        ARM,
+        x64,
+        x86,
+        None
     }
 }
