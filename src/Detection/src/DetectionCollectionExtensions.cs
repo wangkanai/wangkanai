@@ -27,11 +27,11 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddDetectionCore()
                 .AddDevice()
                 .AddBrowser()
-                //.AddPlatform()
-                //.AddEngine()
+                .AddPlatform()
+                .AddEngine()
                 .AddCrawler();
 
-            services.TryAddTransient<IDetection, Detection>();
+            //services.TryAddTransient<IDetection, Detection>();
 
             return new DetectionBuilder(services);
         }

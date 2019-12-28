@@ -10,20 +10,16 @@ namespace Sandbox.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IDetection _detection;
+        //private readonly IDetection _detection;
 
-        public HomeController(IDetection detection)
+        public HomeController()//IDetection detection)
         {
-            _detection = detection;
+            //_detection = detection;
         }
 
         public IActionResult Index()
         {
-            var browser = Request.Browser();
-            var device = Request.Device();
-            //var platform = Request.Platform();
-            //var engine = Request.Engine();
-            return View(_detection);
+            return View();// _detection);
         }
     }
 }
