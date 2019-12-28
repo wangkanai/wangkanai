@@ -3,9 +3,6 @@
 
 using System;
 
-using Microsoft.AspNetCore.Builder;
-using Xunit;
-
 namespace Wangkanai.Responsive.Core
 {
     public class ApplicationBuilderExtensionsTests

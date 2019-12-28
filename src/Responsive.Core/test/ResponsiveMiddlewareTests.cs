@@ -5,11 +5,6 @@ using System;
 using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Options;
-
-using Wangkanai.Detection;
-
-using Xunit;
 
 namespace Wangkanai.Responsive.Core
 {

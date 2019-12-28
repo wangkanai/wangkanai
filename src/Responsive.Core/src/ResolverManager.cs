@@ -3,8 +3,6 @@
 
 using System;
 
-using Wangkanai.Detection;
-
 namespace Wangkanai.Responsive
 {
     public class ResolverManager

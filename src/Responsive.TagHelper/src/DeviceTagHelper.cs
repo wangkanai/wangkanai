@@ -3,12 +3,6 @@
 
 using System;
 
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using Microsoft.AspNetCore.Razor.TagHelpers;
-using Microsoft.Extensions.Primitives;
-using Wangkanai.Detection;
-
 namespace Microsoft.AspNetCore.Mvc.TagHelpers
 {
     [HtmlTargetElement(ElementName, Attributes = IncludeAttributeName)]

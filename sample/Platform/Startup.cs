@@ -44,7 +44,6 @@ namespace Sandbox
 
             app.UseStaticFiles();
 
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

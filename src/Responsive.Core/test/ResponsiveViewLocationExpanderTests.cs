@@ -7,12 +7,6 @@ using System.ComponentModel;
 using System.Linq;
 
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Razor;
-
-using Wangkanai.Detection;
-
-using Xunit;
 
 namespace Wangkanai.Responsive.Core
 {

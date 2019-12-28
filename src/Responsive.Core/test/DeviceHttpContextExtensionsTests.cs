@@ -5,10 +5,6 @@ using System;
 
 using Microsoft.AspNetCore.Http;
 
-using Wangkanai.Detection;
-
-using Xunit;
-
 namespace Wangkanai.Responsive.Core
 {
     public class DeviceHttpContextExtensionsTests

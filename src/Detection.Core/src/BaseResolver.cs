@@ -19,6 +19,7 @@ namespace Wangkanai.Detection
         /// Get HttpContext of the application service
         /// </summary>
         protected HttpContext Context => _service.Context;
+
         protected readonly IUserAgentService _service;
 
         public BaseResolver(IUserAgentService service)

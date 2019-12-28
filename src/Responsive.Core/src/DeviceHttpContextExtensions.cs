@@ -3,8 +3,6 @@
 
 using System;
 
-using Wangkanai.Detection;
-
 namespace Microsoft.AspNetCore.Http
 {
     public static class DeviceHttpContextExtensions

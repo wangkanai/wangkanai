@@ -7,8 +7,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 
-using Wangkanai.Detection;
-
 namespace Wangkanai.Responsive
 {
     public class ResponsiveMiddleware

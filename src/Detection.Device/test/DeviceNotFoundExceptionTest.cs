@@ -3,8 +3,6 @@
 
 using System;
 
-using Xunit;
-
 namespace Wangkanai.Detection.Test
 {
     public class DeviceNotFoundExceptionTest

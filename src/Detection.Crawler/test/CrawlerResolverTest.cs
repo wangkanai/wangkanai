@@ -3,8 +3,6 @@
 
 using System.Linq;
 
-using Xunit;
-
 namespace Wangkanai.Detection
 {
     public class CrawlerResolverTest

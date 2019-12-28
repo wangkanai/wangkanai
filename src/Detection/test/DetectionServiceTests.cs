@@ -3,10 +3,6 @@
 
 using System;
 
-using Microsoft.AspNetCore.Http;
-
-using Xunit;
-
 namespace Wangkanai.Detection.Test
 {
     public class UserAgentServiceTests
