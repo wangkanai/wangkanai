@@ -4,7 +4,7 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <!--<IsPackable>false</IsPackable>-->
     <LangVersion>8.0</LangVersion>
-    <NullableContextOptions>enable</NullableContextOptions>
+    <Nullable>enable</Nullable>
     <Version>3.0.0</Version>
 
     <RootNamespace>Wangkanai.Detection</RootNamespace>
@@ -14,20 +14,12 @@
     <PackageTags>aspnetcore;detection;platform</PackageTags>
     <PackageProjectUrl>https://github.com/wangkanai/Detection</PackageProjectUrl>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-    <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>git://github.com/wangkanai/Detection</RepositoryUrl>
-    <PackageIcon>avatar.png</PackageIcon>
+    <PackageIconUrl>https://raw.githubusercontent.com/wangkanai/Detection/dev/asset/avatar.png</PackageIconUrl>
+    <RootNamespace>Wangkanai.Detection</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Detection.Core\src\Wangkanai.Detection.Core.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="..\..\..\asset\avatar.png">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
   </ItemGroup>
 
 </Project>
