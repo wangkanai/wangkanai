@@ -4,7 +4,7 @@
 [![Financial Contributors on Open Collective](https://opencollective.com/wangkanai/all/badge.svg?label=financial+contributors)](https://opencollective.com/wangkanai)
 [![Build status](https://ci.appveyor.com/api/projects/status/033qv4nqv8g4altq?svg=true&retina=true)](https://ci.appveyor.com/project/wangkanai/detection)
 
-### ASP.NET Core 3.X (Branch: [dev](/tree/dev))
+### ASP.NET Core 3.X (Branch: [dev](https://github.com/wangkanai/Detection/tree/dev))
 
 - **Wangkanai.Detection**
   [![NuGet Badge](https://buildstats.info/nuget/wangkanai.detection?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.detection)
@@ -13,7 +13,7 @@
   [![NuGet Badge](https://buildstats.info/nuget/wangkanai.Responsive?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.Responsive)
   [![MyGet Badge](https://buildstats.info/myget/wangkanai/Wangkanai.Responsive)](https://www.myget.org/feed/wangkanai/package/nuget/Wangkanai.Responsive)
 
-### ASP.NET Core 2.X (Branch: [master](/tree/master))
+### ASP.NET Core 2.X (Branch: [master](https://github.com/wangkanai/Detection/tree/master))
 
 - **Wangkanai.Detection**
   [![NuGet Badge](https://buildstats.info/nuget/wangkanai.detection)](https://www.nuget.org/packages/wangkanai.detection)
@@ -86,9 +86,9 @@ public void ConfigureServices(IServiceCollection services)
     // Add responsive services.
     services.AddResponsive(options =>
     {
-        options.View.DefaultTablet = DeviceType.Desktop;
-        options.View.DefaultMobile = DeviceType.Desktop;
-        options.View.DefaultDesktop = DeviceType.Desktop;
+        options.View.DefaultTablet = Device.Desktop;
+        options.View.DefaultMobile = Device.Desktop;
+        options.View.DefaultDesktop = Device.Desktop;
     });
 
     // Add framework services.
