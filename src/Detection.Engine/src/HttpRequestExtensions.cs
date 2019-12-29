@@ -5,7 +5,7 @@ using Wangkanai.Detection;
 
 namespace Microsoft.AspNetCore.Http
 {
-    public static class EngineHttpRequestExtensions
+    public static class HttpRequestExtensions
     {
         public static IEngine Engine(this HttpRequest request)
         {
