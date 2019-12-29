@@ -96,7 +96,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Responsive.TagHel
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RazorApp", "sample\RazorApp\RazorApp.csproj", "{D13A343E-1D8D-4483-8012-837D1329D5FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResponsiveOption", "sample\ResponsiveOption\ResponsiveOption.csproj", "{71407BC8-E9D1-4B8C-8BD1-911AC7A9E13E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResponsiveOption", "sample\ResponsiveOption\ResponsiveOption.csproj", "{71407BC8-E9D1-4B8C-8BD1-911AC7A9E13E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "doc", "doc\doc.csproj", "{A28073F7-AB45-4775-8E08-BDBB7B3CF1A8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -216,6 +218,10 @@ Global
 		{71407BC8-E9D1-4B8C-8BD1-911AC7A9E13E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71407BC8-E9D1-4B8C-8BD1-911AC7A9E13E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71407BC8-E9D1-4B8C-8BD1-911AC7A9E13E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A28073F7-AB45-4775-8E08-BDBB7B3CF1A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A28073F7-AB45-4775-8E08-BDBB7B3CF1A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A28073F7-AB45-4775-8E08-BDBB7B3CF1A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A28073F7-AB45-4775-8E08-BDBB7B3CF1A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
