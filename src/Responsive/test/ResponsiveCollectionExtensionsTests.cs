@@ -24,7 +24,7 @@ namespace Wangkanai.Responsive.Test
         [Fact]
         public void AddResponsive_Null_ArgumentNullException()
         {
-            Assert.Throws<AddResponsiveArgumentNullException>(CreateResponsiveNullService);
+            Assert.Throws<ArgumentNullException>(CreateResponsiveNullService);
         }
 
         [Fact]
@@ -43,7 +43,7 @@ namespace Wangkanai.Responsive.Test
         [Fact]
         public void AddResponsive_Options_Null_ArgumentNullException()
         {
-            Assert.Throws<AddResponsiveArgumentNullException>(CreateResponsiveNullService);
+            Assert.Throws<ArgumentNullException>(CreateResponsiveNullService);
         }
 
         private Func<object> CreateResponsiveNullService = () => ((IServiceCollection)null).AddResponsive();

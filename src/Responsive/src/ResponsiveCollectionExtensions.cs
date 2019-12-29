@@ -3,7 +3,7 @@
 
 using System;
 using Wangkanai.Responsive;
-using Wangkanai.Responsive.Builders;
+using Wangkanai.Responsive.Configuration;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -22,7 +22,7 @@ namespace Microsoft.Extensions.DependencyInjection
             this IServiceCollection services)
         {
             if (services == null)
-                throw new AddResponsiveArgumentNullException(nameof(services));
+                throw new ArgumentNullException(nameof(services));
 
             return services.AddResponsive(options => { });
         }
@@ -38,7 +38,7 @@ namespace Microsoft.Extensions.DependencyInjection
             Action<ResponsiveOptions> setAction)
         {
             if (services == null)
-                throw new AddResponsiveArgumentNullException(nameof(services));
+                throw new ArgumentNullException(nameof(services));
 
             services.Configure<ResponsiveOptions>(setAction);
             services.AddResponsiveCore()
