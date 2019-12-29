@@ -7,10 +7,10 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-
+using Wangkanai.Responsive;
 using Wangkanai.Responsive.Core.Internal;
 
-namespace Wangkanai.Responsive
+namespace Microsoft.AspNetCore.Builder
 {
     /// <summary>
     /// Extension methods for adding the <see cref="ResponsiveMiddleware"/> to an application.
@@ -27,7 +27,7 @@ namespace Wangkanai.Responsive
         {
             if (app == null) throw new UseResponsiveAppArgumentNullException(nameof(app));
 
-            //app.Validate();
+            app.Validate();
 
             VerifyResponsiveIsRegistered(app);
 
