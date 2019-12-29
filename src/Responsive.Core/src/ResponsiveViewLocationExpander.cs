@@ -62,10 +62,10 @@ namespace Wangkanai.Responsive
 
             if (string.IsNullOrEmpty(value)) return viewLocations;
 
-            IDevice device;
+            IDeviceFactory device;
             try
             {
-                device = new Device(value);
+                device = new DeviceFactory(value);
             }
             catch (DeviceNotFoundException)
             {
@@ -77,7 +77,7 @@ namespace Wangkanai.Responsive
 
         private IEnumerable<string> ExpandViewLocationsCore(
             IEnumerable<string> viewLocations,
-            IDevice device)
+            IDeviceFactory device)
         {
             foreach (var location in viewLocations)
             {

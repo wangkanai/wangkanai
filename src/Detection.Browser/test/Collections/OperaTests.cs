@@ -15,7 +15,7 @@ namespace Wangkanai.Detection.Collections
             // act
             var opera = new Opera(agent);
             // assert
-            Assert.Equal(BrowserType.Opera, opera.Type);
+            Assert.Equal(Browser.Opera, opera.Type);
             Assert.Equal("34.0.2036.42", opera.Version.ToString());
         }
 
@@ -27,7 +27,7 @@ namespace Wangkanai.Detection.Collections
             // act
             var opera = new Opera(agent);
             // assert
-            Assert.Equal(BrowserType.Opera, opera.Type);
+            Assert.Equal(Browser.Opera, opera.Type);
             Assert.Equal("12.16", opera.Version.ToString());
         }
 
@@ -39,7 +39,7 @@ namespace Wangkanai.Detection.Collections
             // act
             var opera = new Opera(agent);
             // assert
-            Assert.NotEqual(BrowserType.Opera, opera.Type);
+            Assert.NotEqual(Browser.Opera, opera.Type);
             Assert.Null(opera.Version);
         }
     }

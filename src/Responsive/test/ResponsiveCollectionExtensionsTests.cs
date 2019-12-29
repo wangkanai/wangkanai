@@ -35,7 +35,7 @@ namespace Wangkanai.Responsive.Test
             var expected = service.Count + 16;
             var builder = service.AddResponsive(options =>
             {
-                options.View.DefaultTablet = Detection.DeviceType.Desktop;
+                options.View.DefaultTablet = Detection.Device.Desktop;
             });
 
             Assert.Equal(expected, builder.Services.Count);

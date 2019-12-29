@@ -15,7 +15,7 @@ namespace Wangkanai.Detection.Collections
             // act
             var edge = new Edge(agent);
             // assert
-            Assert.Equal(BrowserType.Edge, edge.Type);
+            Assert.Equal(Browser.Edge, edge.Type);
             Assert.Equal("14.14393", edge.Version.ToString());
         }
 
@@ -27,7 +27,7 @@ namespace Wangkanai.Detection.Collections
             // act
             var edge = new Edge(agent);
             // assert
-            Assert.NotEqual(BrowserType.Edge, edge.Type);
+            Assert.NotEqual(Browser.Edge, edge.Type);
             Assert.Null(edge.Version);
         }
     }

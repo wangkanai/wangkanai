@@ -3,19 +3,19 @@
 
 namespace Wangkanai.Detection.Collections
 {
-    public class Edge : Browser
+    public class Edge : BrowserFactory
     {
         private readonly string _agent;
 
         public Edge(string agent)
         {
             _agent = agent.ToLower();
-            var edge = BrowserType.Edge.ToString().ToLower();
+            var edge = Browser.Edge.ToString().ToLower();
 
             if (_agent.Contains(edge))
             {
                 Version = GetVersion(_agent, edge);
-                Type = BrowserType.Edge;
+                Type = Browser.Edge;
             }
         }
     }

@@ -7,7 +7,7 @@ namespace Microsoft.AspNetCore.Http
 {
     public static class HttpRequestExtensions
     {
-        public static IDevice Device(this HttpRequest request)
+        public static IDeviceFactory Device(this HttpRequest request)
         {
             var service = new UserAgentService(request.HttpContext);
             var resolver = new DeviceResolver(service);

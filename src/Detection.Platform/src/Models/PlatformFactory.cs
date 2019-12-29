@@ -5,7 +5,7 @@ using System;
 
 namespace Wangkanai.Detection
 {
-    public class Platform : IPlatform
+    public class PlatformFactory : IPlatformFactory
     {
         public string? Name { get; set; }
         public string? Maker { get; set; }
@@ -13,6 +13,6 @@ namespace Wangkanai.Detection
         public Processor CPU { get; set; }
         public Version? Version { get; set; }
 
-        public Platform() { }
+        public PlatformFactory() { }
     }
 }

@@ -5,11 +5,12 @@ using System;
 
 namespace Wangkanai.Detection
 {
-    public interface IBrowser
+    public interface IPlatformFactory
     {
+        string? Name { get; }
         string? Maker { get; }
-        Version Version { get; }
-        string Name { get; }
-        BrowserType Type { get; }
+        Version? Version { get; }
+        OperatingSystem OS { get; }
+        Processor CPU { get; }
     }
 }

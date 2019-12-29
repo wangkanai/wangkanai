@@ -42,7 +42,7 @@ namespace Wangkanai.Responsive.Core
         public void PopulateValues_ViewLocationExpanderContext_Success()
         {
             string deviceKey = "device"; // May this one can be public in ResponsiveViewLocationExpander.cs.
-            var context = SetupViewLocationExpanderContext(DeviceType.Tablet);
+            var context = SetupViewLocationExpanderContext(Device.Tablet);
             var locationExpander = new ResponsiveViewLocationExpander();
             locationExpander.PopulateValues(context);
 
@@ -64,7 +64,7 @@ namespace Wangkanai.Responsive.Core
                 yield return new object[]
                 {
                     ResponsiveViewLocationFormat.Suffix,
-                    DeviceType.Tablet,
+                    Device.Tablet,
                     new[]
                     {
                         "/Views/{1}/{0}.cshtml",
@@ -82,7 +82,7 @@ namespace Wangkanai.Responsive.Core
                 yield return new object[]
                 {
                     ResponsiveViewLocationFormat.Subfolder,
-                    DeviceType.Tablet,
+                    Device.Tablet,
                     new[]
                     {
                         "/Views/{1}/{0}.cshtml",
@@ -100,7 +100,7 @@ namespace Wangkanai.Responsive.Core
                 yield return new object[]
 {
                     ResponsiveViewLocationFormat.Suffix,
-                    DeviceType.Tablet,
+                    Device.Tablet,
                     new[]
                     {
                         "/Pages/{1}/{0}.cshtml",
@@ -121,7 +121,7 @@ namespace Wangkanai.Responsive.Core
         [MemberData(nameof(ViewLocationExpanderTestData))]
         public void ExpandViewLocations_ViewLocationExpanderContext_IEnumerable_ReturnsExpected(
             ResponsiveViewLocationFormat format,
-            DeviceType deviceType,
+            Device deviceType,
             IEnumerable<string> viewLocations,
             IEnumerable<string> expectedViewLocations
             )
@@ -137,7 +137,7 @@ namespace Wangkanai.Responsive.Core
         [Fact]
         public void ExpandViewLocations_NoDevice_ReturnsExpected()
         {
-            var context = SetupViewLocationExpanderContext(DeviceType.Tablet);
+            var context = SetupViewLocationExpanderContext(Device.Tablet);
             var viewLocations = new List<string>() { "/Views/{1}/{0}.cshtml", "/Views/Shared/{0}.cshtml" };
             var locationExpander = new ResponsiveViewLocationExpander();
             var resultLocations = locationExpander.ExpandViewLocations(context, viewLocations);
@@ -156,10 +156,10 @@ namespace Wangkanai.Responsive.Core
         public void ExpandViewLocations_ViewLocationExpanderContext_Null_ThrowsArgumentNullException()
         {
             var locationExpander = new ResponsiveViewLocationExpander();
-            Assert.Throws<ViewLocationExpanderViewsArgumentNullException>(() => locationExpander.ExpandViewLocations(SetupViewLocationExpanderContext(DeviceType.Tablet), null));
+            Assert.Throws<ViewLocationExpanderViewsArgumentNullException>(() => locationExpander.ExpandViewLocations(SetupViewLocationExpanderContext(Device.Tablet), null));
         }
 
-        private ViewLocationExpanderContext SetupViewLocationExpanderContext(DeviceType deviceType)
+        private ViewLocationExpanderContext SetupViewLocationExpanderContext(Device deviceType)
         {
             var context = new ViewLocationExpanderContext(new ActionContext(), "View", "Controller", "Area", "Page", true);
             context.Values = new Dictionary<string, string>();

@@ -7,7 +7,7 @@ namespace Microsoft.AspNetCore.Http
 {
     public static class HttpRequestExtensions
     {
-        public static ICrawler Crawler(this HttpRequest request)
+        public static ICrawlerFactory Crawler(this HttpRequest request)
         {
             var service = new UserAgentService(request.HttpContext);
             var resolver = new CrawlerResolver(service);

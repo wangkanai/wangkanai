@@ -3,14 +3,14 @@
 
 namespace Wangkanai.Detection.Collections
 {
-    public class Chrome : Browser
+    public class Chrome : BrowserFactory
     {
         private readonly string _agent;
 
         public Chrome(string agent)
         {
             _agent = agent.ToLower();
-            var chrome = BrowserType.Chrome.ToString().ToLower();
+            var chrome = Browser.Chrome.ToString().ToLower();
 
             if (_agent.Contains(chrome))
             {
@@ -26,7 +26,7 @@ namespace Wangkanai.Detection.Collections
                 }
                 var version = cut.Substring(0, cut.Contains(" ") ? cut.IndexOf(' ') : cut.Length);
                 Version = GetVersion(_agent, chrome);
-                Type = BrowserType.Chrome;
+                Type = Browser.Chrome;
             }
         }
     }

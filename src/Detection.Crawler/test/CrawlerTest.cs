@@ -60,7 +60,7 @@ namespace Wangkanai.Detection.Test
             var resolver = new CrawlerResolver(service);
 
             Assert.Equal("Facebot", resolver.Crawler.Name);
-            Assert.Equal(CrawlerType.Facebook, resolver.Crawler.Type);
+            Assert.Equal(Crawler.Facebook, resolver.Crawler.Type);
         }
 
         [Fact]
@@ -72,7 +72,7 @@ namespace Wangkanai.Detection.Test
             var resolver = new CrawlerResolver(service);
 
             Assert.Equal("facebookexternalhit", resolver.Crawler.Name);
-            Assert.Equal(CrawlerType.Facebook, resolver.Crawler.Type);
+            Assert.Equal(Crawler.Facebook, resolver.Crawler.Type);
         }
 
         [Fact]
@@ -84,7 +84,7 @@ namespace Wangkanai.Detection.Test
             var resolver = new CrawlerResolver(service);
 
             Assert.Equal("Twitterbot", resolver.Crawler.Name);
-            Assert.Equal(CrawlerType.Twitter, resolver.Crawler.Type);
+            Assert.Equal(Crawler.Twitter, resolver.Crawler.Type);
         }
 
         [Fact]
@@ -96,7 +96,7 @@ namespace Wangkanai.Detection.Test
             var resolver = new CrawlerResolver(service);
 
             Assert.Equal("LinkedInBot", resolver.Crawler.Name);
-            Assert.Equal(CrawlerType.LinkedIn, resolver.Crawler.Type);
+            Assert.Equal(Crawler.LinkedIn, resolver.Crawler.Type);
         }
 
         [Fact]
@@ -108,7 +108,7 @@ namespace Wangkanai.Detection.Test
             var resolver = new CrawlerResolver(service);
 
             Assert.Equal("SkypeUriPreview", resolver.Crawler.Name);
-            Assert.Equal(CrawlerType.Skype, resolver.Crawler.Type);
+            Assert.Equal(Crawler.Skype, resolver.Crawler.Type);
         }
 
         [Fact]
@@ -121,7 +121,7 @@ namespace Wangkanai.Detection.Test
             var resolver = new CrawlerResolver(service);
             // assert
             Assert.Equal("Googlebot", resolver.Crawler.Name);
-            Assert.Equal(CrawlerType.Google, resolver.Crawler.Type);
+            Assert.Equal(Crawler.Google, resolver.Crawler.Type);
         }
 
         [Fact]
@@ -134,7 +134,7 @@ namespace Wangkanai.Detection.Test
             var resolver = new CrawlerResolver(service);
             // assert
             Assert.Equal("bingbot", resolver.Crawler.Name);
-            Assert.Equal(CrawlerType.Bing, resolver.Crawler.Type);
+            Assert.Equal(Crawler.Bing, resolver.Crawler.Type);
         }
 
         [Fact]
@@ -147,7 +147,7 @@ namespace Wangkanai.Detection.Test
             var resolver = new CrawlerResolver(service);
             // assert
             Assert.Equal("Yahoo!Slurp", resolver.Crawler.Name);
-            Assert.Equal(CrawlerType.Yahoo, resolver.Crawler.Type);
+            Assert.Equal(Crawler.Yahoo, resolver.Crawler.Type);
         }
 
         [Fact]
@@ -160,7 +160,7 @@ namespace Wangkanai.Detection.Test
             var resolver = new CrawlerResolver(service);
             // assert
             Assert.Equal("Baiduspider", resolver.Crawler.Name);
-            Assert.Equal(CrawlerType.Baidu, resolver.Crawler.Type);
+            Assert.Equal(Crawler.Baidu, resolver.Crawler.Type);
         }
 
         private IUserAgentService CreateService(string agent)

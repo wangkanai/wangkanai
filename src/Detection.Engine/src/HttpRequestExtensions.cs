@@ -7,7 +7,7 @@ namespace Microsoft.AspNetCore.Http
 {
     public static class HttpRequestExtensions
     {
-        public static IEngine Engine(this HttpRequest request)
+        public static IEngineFactory Engine(this HttpRequest request)
         {
             var service = new UserAgentService(request.HttpContext);
             var resolver = new EngineResolver(service);

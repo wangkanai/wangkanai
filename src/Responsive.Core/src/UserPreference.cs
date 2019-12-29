@@ -23,7 +23,7 @@ namespace Wangkanai.Responsive
             Cookie = cookie;
         }
 
-        public UserPreference(DeviceType resolver, DeviceType cookie)
+        public UserPreference(Device resolver, Device cookie)
             : this(resolver.ToString(), cookie.ToString())
         {
         }

@@ -43,7 +43,7 @@ namespace Wangkanai.Responsive.Core
 
             await middleware.Invoke(context, new DeviceResolver());
 
-            Assert.Equal(DeviceType.Tablet, context.GetDevice());
+            Assert.Equal(Device.Tablet, context.GetDevice());
         }
 
         [Fact]
@@ -67,14 +67,14 @@ namespace Wangkanai.Responsive.Core
 
         private class DeviceResolver : IDeviceResolver
         {
-            public IDevice Device => new MyTablet() { Type = DeviceType.Tablet };
+            public IDeviceFactory Device => new MyTablet() { Type = Detection.Device.Tablet };
 
             public IUserAgent UserAgent => throw new NotImplementedException();
         }
 
-        private class MyTablet : IDevice
+        private class MyTablet : IDeviceFactory
         {
-            public DeviceType Type { get; set; }
+            public Device Type { get; set; }
 
             public bool Crawler { get; set; }
         }

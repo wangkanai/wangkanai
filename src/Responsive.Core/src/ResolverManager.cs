@@ -10,12 +10,12 @@ namespace Wangkanai.Responsive
     public class ResolverManager
     {
         private readonly ResponsiveOptions _options;
-        private readonly DeviceType _resolved;
+        private readonly Device _resolved;
 
         public ResolverManager(IDeviceResolver resolver, ResponsiveOptions options)
             : this(resolver.Device.Type, options) { }
 
-        public ResolverManager(DeviceType resolved, ResponsiveOptions options)
+        public ResolverManager(Device resolved, ResponsiveOptions options)
         {
             if (options == null)
                 throw new ResponsiveMiddlewareOptionArgumentNullException(nameof(options));
@@ -24,13 +24,13 @@ namespace Wangkanai.Responsive
             _options = options;
         }
 
-        public DeviceType Device => Default(_resolved);
+        public Device Device => Default(_resolved);
 
-        private DeviceType Default(DeviceType type)
+        private Device Default(Device type)
         {
-            if (type == DeviceType.Mobile) return _options.View.DefaultMobile;
-            if (type == DeviceType.Tablet) return _options.View.DefaultTablet;
-            if (type == DeviceType.Desktop) return _options.View.DefaultDesktop;
+            if (type == Device.Mobile) return _options.View.DefaultMobile;
+            if (type == Device.Tablet) return _options.View.DefaultTablet;
+            if (type == Device.Desktop) return _options.View.DefaultDesktop;
 
             return type;
         }

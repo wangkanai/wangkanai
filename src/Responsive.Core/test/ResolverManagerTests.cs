@@ -15,7 +15,7 @@ namespace Wangkanai.Responsive.Core
         public void Ctor_ResolverManager_ResponsiveOptions_Success()
         {
             var options = (Options.Create(new ResponsiveOptions())).Value;
-            var desktop = DeviceType.Desktop;
+            var desktop = Device.Desktop;
             var manager = new ResolverManager(desktop, options);
         }
 

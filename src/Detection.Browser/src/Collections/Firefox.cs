@@ -3,19 +3,19 @@
 
 namespace Wangkanai.Detection.Collections
 {
-    public class Firefox : Browser
+    public class Firefox : BrowserFactory
     {
         private readonly string _agent;
 
         public Firefox(string agent)
         {
             _agent = agent.ToLower();
-            var firefox = BrowserType.Firefox.ToString().ToLower();
+            var firefox = Browser.Firefox.ToString().ToLower();
 
             if (_agent.Contains(firefox))
             {
                 Version = GetVersion(_agent, firefox);
-                Type = BrowserType.Firefox;
+                Type = Browser.Firefox;
             }
         }
     }

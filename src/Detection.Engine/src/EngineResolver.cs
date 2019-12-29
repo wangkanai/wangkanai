@@ -5,9 +5,9 @@ namespace Wangkanai.Detection
 {
     public class EngineResolver : BaseResolver, IEngineResolver
     {
-        public IEngine Engine => _engine;
+        public IEngineFactory Engine => _engine;
 
-        private readonly IEngine _engine;
+        private readonly IEngineFactory _engine;
 
         public EngineResolver(IUserAgentService service) : base(service)
         {

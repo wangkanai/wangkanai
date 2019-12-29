@@ -15,7 +15,7 @@ namespace Wangkanai.Detection.Collections
             // act
             var firefox = new Firefox(agent);
             // assert
-            Assert.Equal(BrowserType.Firefox, firefox.Type);
+            Assert.Equal(Browser.Firefox, firefox.Type);
             Assert.Equal("10.0", firefox.Version.ToString());
         }
 
@@ -27,7 +27,7 @@ namespace Wangkanai.Detection.Collections
             // act
             var firefox = new Firefox(agent);
             // assert
-            Assert.NotEqual(BrowserType.Firefox, firefox.Type);
+            Assert.NotEqual(Browser.Firefox, firefox.Type);
             Assert.Null(firefox.Version);
         }
     }

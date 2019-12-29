@@ -12,24 +12,24 @@ namespace Wangkanai.Detection.Test
         [Fact]
         public void cast_valid_type()
         {
-            Browser browser = null;
+            BrowserFactory browser = null;
             try
             {
-                browser = new Browser("chrome");
+                browser = new BrowserFactory("chrome");
             }
             catch (BrowserNotFoundException) { }
 
-            Assert.Equal(BrowserType.Chrome, browser.Type);
+            Assert.Equal(Browser.Chrome, browser.Type);
         }
 
         [Fact]
         public void cast_somthing_not_valid()
         {
             Type actual = null;
-            Browser browser = null;
+            BrowserFactory browser = null;
             try
             {
-                browser = new Browser("xxx");
+                browser = new BrowserFactory("xxx");
             }
             catch (BrowserNotFoundException e)
             {
