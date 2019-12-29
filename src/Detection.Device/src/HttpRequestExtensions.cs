@@ -5,7 +5,7 @@ using Wangkanai.Detection;
 
 namespace Microsoft.AspNetCore.Http
 {
-    public static class DeviceHttpRequestExtensions
+    public static class HttpRequestExtensions
     {
         public static IDevice Device(this HttpRequest request)
         {
