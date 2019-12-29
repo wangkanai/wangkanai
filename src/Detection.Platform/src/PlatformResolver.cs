@@ -9,7 +9,8 @@ namespace Wangkanai.Detection
 
         private readonly IPlatform _platform;
 
-        public PlatformResolver(IUserAgentService service) : base(service)
+        public PlatformResolver(IUserAgentService service)
+            : base(service)
         {
         }
     }

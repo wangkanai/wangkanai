@@ -9,7 +9,7 @@ namespace Wangkanai.Detection
     {
         string? Name { get; }
         string? Maker { get; }
-        Version Version { get; }
+        Version? Version { get; }
         OperatingSystem OS { get; }
         Processor CPU { get; }
     }
