@@ -4,14 +4,23 @@
 [![Financial Contributors on Open Collective](https://opencollective.com/wangkanai/all/badge.svg?label=financial+contributors)](https://opencollective.com/wangkanai)
 [![Build status](https://ci.appveyor.com/api/projects/status/033qv4nqv8g4altq?svg=true&retina=true)](https://ci.appveyor.com/project/wangkanai/detection)
 
+### ASP.NET Core 3.X (Branch: [dev](/tree/dev))
+
 - **Wangkanai.Detection**
-  [![NuGet Badge](https://buildstats.info/nuget/wangkanai.detection)](https://www.nuget.org/packages/wangkanai.detection)
   [![NuGet Badge](https://buildstats.info/nuget/wangkanai.detection?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.detection)
   [![MyGet Badge](https://buildstats.info/myget/wangkanai/Wangkanai.detection)](https://www.myget.org/feed/wangkanai/package/nuget/Wangkanai.detection)
 - **Wangkanai.Responsive**
-  [![NuGet Badge](https://buildstats.info/nuget/wangkanai.Responsive)](https://www.nuget.org/packages/wangkanai.Responsive)
   [![NuGet Badge](https://buildstats.info/nuget/wangkanai.Responsive?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.Responsive)
   [![MyGet Badge](https://buildstats.info/myget/wangkanai/Wangkanai.Responsive)](https://www.myget.org/feed/wangkanai/package/nuget/Wangkanai.Responsive)
+
+### ASP.NET Core 2.X (Branch: [master](/tree/master))
+
+- **Wangkanai.Detection**
+  [![NuGet Badge](https://buildstats.info/nuget/wangkanai.detection)](https://www.nuget.org/packages/wangkanai.detection)
+  [![NuGet Badge](https://buildstats.info/nuget/wangkanai.detection?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.detection)
+- **Wangkanai.Responsive**
+  [![NuGet Badge](https://buildstats.info/nuget/wangkanai.Responsive)](https://www.nuget.org/packages/wangkanai.Responsive)
+  [![NuGet Badge](https://buildstats.info/nuget/wangkanai.Responsive?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.Responsive)
 
 [![Build history](https://buildstats.info/appveyor/chart/wangkanai/detection)](https://ci.appveyor.com/project/wangkanai/detection/history)
 
@@ -50,7 +59,7 @@ public void ConfigureServices(IServiceCollection services)
     services.AddDetection();
 
     // Add framework services.
-    services.AddMvc();
+    services.AddControllersWithViews();
 }
 ```
 
@@ -65,7 +74,7 @@ public void ConfigureServices(IServiceCollection services)
     services.AddResponsive();
 
     // Add framework services.
-    services.AddMvc();  
+    services.AddControllersWithViews();
 }
 ```
 
@@ -83,7 +92,7 @@ public void ConfigureServices(IServiceCollection services)
     });
 
     // Add framework services.
-    services.AddMvc();  
+    services.AddControllersWithViews();
 }
 ```
 
@@ -97,14 +106,11 @@ The current device on a request is set in the Responsive middleware. The Respons
 ```csharp
 public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 {
+    app.UseRouting();
+
     app.UseResponsive();
 
-    app.UseMvc(routes =>
-    {
-        routes.MapRoute(
-            name: "default",
-            template: "{controller=Home}/{action=Index}/{id?}");
-    });
+    app.UseEndpoints(endpoints => endpoints.MapDefaultControllerRoute());
 }
 ```
 
