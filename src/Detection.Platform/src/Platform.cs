@@ -12,7 +12,6 @@ namespace Wangkanai.Detection
         public OperatingSystem OS { get; set; }
         public Processor CPU { get; set; }
         public Version? Version { get; set; }
-        //public byte Bits { get; set; }
 
         public Platform() { }
     }

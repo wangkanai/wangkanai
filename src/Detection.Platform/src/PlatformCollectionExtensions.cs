@@ -6,7 +6,7 @@ using Wangkanai.Detection;
 // ReSharper disable once CheckNamespace
 namespace Microsoft.Extensions.DependencyInjection
 {
-    public static class PlatformBuilderExtensions
+    public static class PlatformCollectionExtensions
     {
         // Concept idea on adding platform detection to client service
         public static IDetectionCoreBuilder AddPlatform(this IDetectionCoreBuilder builder)
