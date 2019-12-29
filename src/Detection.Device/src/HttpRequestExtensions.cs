@@ -5,13 +5,13 @@ using Wangkanai.Detection;
 
 namespace Microsoft.AspNetCore.Http
 {
-    public static class CrawlerHttpRequestExtensions
+    public static class HttpRequestExtensions
     {
-        public static ICrawler Crawler(this HttpRequest request)
+        public static IDevice Device(this HttpRequest request)
         {
             var service = new UserAgentService(request.HttpContext);
-            var resolver = new CrawlerResolver(service);
-            return resolver.Crawler;
+            var resolver = new DeviceResolver(service);
+            return resolver.Device;
         }
     }
 }

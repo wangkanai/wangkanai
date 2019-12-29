@@ -15,9 +15,10 @@ namespace Wangkanai.Responsive.Test
         public void AddResponsive_Services()
         {
             var service = new ServiceCollection();
+            var expected = service.Count + 16;
             var builder = service.AddResponsive();
 
-            Assert.Equal(16, builder.Services.Count);
+            Assert.Equal(expected, builder.Services.Count);
             Assert.Same(service, builder.Services);
         }
 
@@ -31,12 +32,13 @@ namespace Wangkanai.Responsive.Test
         public void AddResponsive_Option_Builder_Service()
         {
             var service = new ServiceCollection();
+            var expected = service.Count + 16;
             var builder = service.AddResponsive(options =>
             {
                 options.View.DefaultTablet = Detection.DeviceType.Desktop;
             });
 
-            Assert.Equal(16, builder.Services.Count);
+            Assert.Equal(expected, builder.Services.Count);
             Assert.Same(service, builder.Services);
         }
 
