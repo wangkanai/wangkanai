@@ -1,4 +1,4 @@
-version: 2.0.0-beta16-build{build}
+version: 2.0.0
 image:
   - Visual Studio 2019
 init:
