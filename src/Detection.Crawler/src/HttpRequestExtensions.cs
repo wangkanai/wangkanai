@@ -5,7 +5,7 @@ using Wangkanai.Detection;
 
 namespace Microsoft.AspNetCore.Http
 {
-    public static class CrawlerHttpRequestExtensions
+    public static class HttpRequestExtensions
     {
         public static ICrawler Crawler(this HttpRequest request)
         {
