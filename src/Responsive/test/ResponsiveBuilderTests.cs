@@ -5,7 +5,7 @@ using System;
 
 using Microsoft.Extensions.DependencyInjection;
 
-using Wangkanai.Responsive.Builders;
+using Wangkanai.Responsive.Configuration;
 
 using Xunit;
 

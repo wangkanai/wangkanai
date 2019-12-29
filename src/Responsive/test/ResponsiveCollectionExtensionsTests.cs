@@ -17,19 +17,14 @@ namespace Wangkanai.Responsive.Test
             var service = new ServiceCollection();
             var builder = service.AddResponsive();
 
-            Assert.Equal(12, builder.Services.Count);
+            Assert.Equal(16, builder.Services.Count);
             Assert.Same(service, builder.Services);
         }
 
         [Fact]
         public void AddResponsive_Null_ArgumentNullException()
         {
-            Func<object> CreateNullService = () =>
-            {
-                return ((IServiceCollection)null).AddResponsive();
-            };
-
-            Assert.Throws<AddResponsiveArgumentNullException>(CreateNullService);
+            Assert.Throws<ArgumentNullException>(CreateResponsiveNullService);
         }
 
         [Fact]
@@ -41,19 +36,16 @@ namespace Wangkanai.Responsive.Test
                 options.View.DefaultTablet = Detection.DeviceType.Desktop;
             });
 
-            Assert.Equal(12, builder.Services.Count);
+            Assert.Equal(16, builder.Services.Count);
             Assert.Same(service, builder.Services);
         }
 
         [Fact]
         public void AddResponsive_Options_Null_ArgumentNullException()
         {
-            Func<object> CreateNullService = () =>
-            {
-                return ((IServiceCollection)null).AddResponsive(options => { });
-            };
-
-            Assert.Throws<AddResponsiveArgumentNullException>(CreateNullService);
+            Assert.Throws<ArgumentNullException>(CreateResponsiveNullService);
         }
+
+        private Func<object> CreateResponsiveNullService = () => ((IServiceCollection)null).AddResponsive();
     }
 }

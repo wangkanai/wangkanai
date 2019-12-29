@@ -46,6 +46,8 @@ namespace RazorApp
 
             app.UseStaticFiles();
 
+            app.UseRouting();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();

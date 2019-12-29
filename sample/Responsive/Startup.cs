@@ -7,8 +7,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-using Wangkanai.Responsive;
-
 namespace Responsive
 {
     public class Startup
@@ -25,17 +23,9 @@ namespace Responsive
         {
             // Add responsive services.
             services.AddResponsive();
-            // Or
-            //services.AddResponsive(options =>
-            //{
-            //    options.View.DefaultTablet = DeviceType.Desktop;
-            //    options.View.DefaultMobile = DeviceType.Mobile;
-            //    options.View.DefaultDesktop = DeviceType.Desktop;
-            //});
 
             // Add framework services.
             services.AddControllersWithViews();
-            services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,19 +42,9 @@ namespace Responsive
 
             app.UseStaticFiles();
 
+            app.UseRouting();
+
             app.UseResponsive();
-
-            //app.UseResponsive(new ResponsiveOptions
-            //{
-            //    TabletDefault = DeviceType.Tablet
-            //});
-
-            //app.UseResponsive(options =>
-            //{
-            //    options.View.DefaultTablet = DeviceType.Desktop;
-            //    options.View.DefaultMobile = DeviceType.Desktop;
-            //    options.View.DefaultDesktop = DeviceType.Desktop;
-            //});
 
             app.UseEndpoints(endpoints =>
             {

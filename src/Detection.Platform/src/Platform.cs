@@ -7,14 +7,12 @@ namespace Wangkanai.Detection
 {
     public class Platform : IPlatform
     {
-        public string Name { get; set; }
-        public string Maker { get; set; }
-        public PlatformType Type { get; set; }
-        public Version Version { get; set; }
-        public byte Bits { get; set; }
+        public string? Name { get; set; }
+        public string? Maker { get; set; }
+        public OperatingSystem OS { get; set; }
+        public Processor CPU { get; set; }
+        public Version? Version { get; set; }
 
-        public Platform()
-        {
-        }
+        public Platform() { }
     }
 }
