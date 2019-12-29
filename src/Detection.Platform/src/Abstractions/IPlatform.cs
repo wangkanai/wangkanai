@@ -7,7 +7,8 @@ namespace Wangkanai.Detection
 {
     public interface IPlatform
     {
-        string Maker { get; }
+        string? Name { get; }
+        string? Maker { get; }
         Version Version { get; }
         OperatingSystem OS { get; }
         Processor CPU { get; }

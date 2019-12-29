@@ -8,6 +8,6 @@ namespace Wangkanai.Detection
         ARM,
         x64,
         x86,
-        None
+        Unknown
     }
 }
