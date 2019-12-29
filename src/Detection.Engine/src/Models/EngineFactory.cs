@@ -5,7 +5,7 @@ using System;
 
 namespace Wangkanai.Detection
 {
-    public class Engine : IEngine
+    public class EngineFactory : IEngineFactory
     {
         public string Name { get; set; }
         public string Maker { get; set; }

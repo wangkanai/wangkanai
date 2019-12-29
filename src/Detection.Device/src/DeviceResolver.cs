@@ -10,40 +10,40 @@ namespace Wangkanai.Detection
         /// <summary>
         /// Get device result of device result
         /// </summary>
-        public IDevice Device => _device;
+        public IDeviceFactory Device => _device;
 
-        private readonly IDevice _device;
+        private readonly IDeviceFactory _device;
 
         public DeviceResolver(IUserAgentService service) : base(service)
         {
-            _device = new Device(GetDeviceType());
+            _device = new DeviceFactory(GetDeviceType());
         }
 
-        private DeviceType GetDeviceType()
+        private Device GetDeviceType()
         {
             var agent = GetUserAgent();
             var request = Context.Request;
 
             // tablet user agent keyword detection
             if (agent != null && TabletCollection.Keywords.Any(keyword => agent.Contains(keyword)))
-                return DeviceType.Tablet;
+                return Detection.Device.Tablet;
             // mobile user agent keyword detection
             if (agent != null && MobileCollection.Keywords.Any(keyword => agent.Contains(keyword)))
-                return DeviceType.Mobile;
+                return Detection.Device.Mobile;
             // mobile user agent prefix detection
             if (agent?.Length >= 4 && MobileCollection.Prefixes.Any(prefix => agent.StartsWith(prefix)))
-                return DeviceType.Mobile;
+                return Detection.Device.Mobile;
             // mobile opera mini special case
             if (request.Headers.Any(header => header.Value.Any(value => value.Contains("OperaMini"))))
-                return DeviceType.Mobile;
+                return Detection.Device.Mobile;
             // mobile user agent prof detection
             if (request.Headers.ContainsKey("x-wap-profile") || request.Headers.ContainsKey("Profile"))
-                return DeviceType.Mobile;
+                return Detection.Device.Mobile;
             // mobile accept-header base detection
             if (request.Headers["Accept"].Any(accept => accept.ToLowerInvariant() == "wap"))
-                return DeviceType.Mobile;
+                return Detection.Device.Mobile;
 
-            return DeviceType.Desktop;
+            return Detection.Device.Desktop;
         }
     }
 }

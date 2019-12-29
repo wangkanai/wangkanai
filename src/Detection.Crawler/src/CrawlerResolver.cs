@@ -7,16 +7,16 @@ namespace Wangkanai.Detection
 {
     public class CrawlerResolver : BaseResolver, ICrawlerResolver
     {
-        public ICrawler Crawler => _crawler;
+        public ICrawlerFactory Crawler => _crawler;
 
-        private readonly ICrawler _crawler;
+        private readonly ICrawlerFactory _crawler;
 
         public CrawlerResolver(IUserAgentService service) : base(service)
         {
             _crawler = GetCrawler();
         }
 
-        private Crawler GetCrawler()
+        private CrawlerFactory GetCrawler()
         {
             if (!IsCrawler()) return null;
 
@@ -45,9 +45,9 @@ namespace Wangkanai.Detection
             }
 
             if (version == string.Empty)
-                return new Crawler(name);
+                return new CrawlerFactory(name);
 
-            return new Crawler(name, version);
+            return new CrawlerFactory(name, version);
         }
 
         private bool IsCrawler()

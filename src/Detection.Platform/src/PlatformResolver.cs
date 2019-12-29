@@ -5,9 +5,9 @@ namespace Wangkanai.Detection
 {
     public class PlatformResolver : BaseResolver, IPlatformResolver
     {
-        public IPlatform Platform => _platform;
+        public IPlatformFactory Platform => _platform;
 
-        private readonly IPlatform _platform;
+        private readonly IPlatformFactory _platform;
 
         public PlatformResolver(IUserAgentService service)
             : base(service)

@@ -15,7 +15,7 @@ namespace Wangkanai.Detection.Collections
             // act
             var safari = new Safari(agent);
             // assert
-            Assert.Equal(BrowserType.Safari, safari.Type);
+            Assert.Equal(Browser.Safari, safari.Type);
             Assert.Equal("601.1", safari.Version.ToString());
         }
 
@@ -27,7 +27,7 @@ namespace Wangkanai.Detection.Collections
             // act
             var safari = new Safari(agent);
             // assert
-            Assert.NotEqual(BrowserType.Safari, safari.Type);
+            Assert.NotEqual(Browser.Safari, safari.Type);
             Assert.Null(safari.Version);
         }
     }

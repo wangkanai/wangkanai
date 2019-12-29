@@ -13,14 +13,14 @@ namespace Wangkanai.Responsive
         /// <summary>
         /// Gets or sets a value that determines the default view for Mobile
         /// </summary>
-        public DeviceType DefaultMobile { get; set; } = DeviceType.Mobile;
+        public Device DefaultMobile { get; set; } = Device.Mobile;
         /// <summary>
         /// Gets or sets a value that determines the default view for Tablet
         /// </summary>
-        public DeviceType DefaultTablet { get; set; } = DeviceType.Tablet;
+        public Device DefaultTablet { get; set; } = Device.Tablet;
         /// <summary>
         /// Gets or sets a value that determines the default view for Desktop
         /// </summary>
-        public DeviceType DefaultDesktop { get; set; } = DeviceType.Desktop;
+        public Device DefaultDesktop { get; set; } = Device.Desktop;
     }
 }

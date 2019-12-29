@@ -5,6 +5,6 @@ namespace Wangkanai.Detection
 {
     public interface IPlatformResolver : IResolver
     {
-        IPlatform Platform { get; }
+        IPlatformFactory Platform { get; }
     }
 }

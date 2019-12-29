@@ -21,7 +21,7 @@ namespace Wangkanai.Detection.Test
             // act
             var resolver = new BrowserResolver(service);
             // assert
-            Assert.Equal(BrowserType.Opera, resolver.Browser.Type);
+            Assert.Equal(Browser.Opera, resolver.Browser.Type);
         }
 
         [Theory]
@@ -33,7 +33,7 @@ namespace Wangkanai.Detection.Test
             // act
             var resolver = new BrowserResolver(service);
             // assert
-            Assert.Equal(BrowserType.Edge, resolver.Browser.Type);
+            Assert.Equal(Browser.Edge, resolver.Browser.Type);
         }
 
         [Theory]
@@ -47,7 +47,7 @@ namespace Wangkanai.Detection.Test
             // act
             var resolver = new BrowserResolver(service);
             // assert
-            Assert.Equal(BrowserType.IE, resolver.Browser.Type);
+            Assert.Equal(Browser.IE, resolver.Browser.Type);
         }
 
         [Theory]
@@ -59,7 +59,7 @@ namespace Wangkanai.Detection.Test
             // act
             var resolver = new BrowserResolver(service);
             // assert
-            Assert.Equal(BrowserType.Safari, resolver.Browser.Type);
+            Assert.Equal(Browser.Safari, resolver.Browser.Type);
         }
 
         [Theory]
@@ -71,7 +71,7 @@ namespace Wangkanai.Detection.Test
             // act
             var resolver = new BrowserResolver(service);
             // assert
-            Assert.Equal(BrowserType.Firefox, resolver.Browser.Type);
+            Assert.Equal(Browser.Firefox, resolver.Browser.Type);
         }
 
         [Theory]
@@ -83,7 +83,7 @@ namespace Wangkanai.Detection.Test
             // act
             var resolver = new BrowserResolver(service);
             // assert
-            Assert.Equal(BrowserType.Firefox, resolver.Browser.Type);
+            Assert.Equal(Browser.Firefox, resolver.Browser.Type);
             Assert.Equal(11, resolver.Browser.Version.Major);
         }
 
@@ -96,7 +96,7 @@ namespace Wangkanai.Detection.Test
             // act
             var resolver = new BrowserResolver(service);
             // assert
-            Assert.Equal(BrowserType.Firefox, resolver.Browser.Type);
+            Assert.Equal(Browser.Firefox, resolver.Browser.Type);
             Assert.Equal(11, resolver.Browser.Version.Major);
         }
 
@@ -109,7 +109,7 @@ namespace Wangkanai.Detection.Test
             // act
             var resolver = new BrowserResolver(service);
             // assert
-            Assert.Equal(BrowserType.Safari, resolver.Browser.Type);
+            Assert.Equal(Browser.Safari, resolver.Browser.Type);
             Assert.Equal(537, resolver.Browser.Version.Major);
         }
 
@@ -124,7 +124,7 @@ namespace Wangkanai.Detection.Test
             // act
             var resolver = new BrowserResolver(service);
             // assert
-            Assert.Equal(BrowserType.Chrome, resolver.Browser.Type);
+            Assert.Equal(Browser.Chrome, resolver.Browser.Type);
         }
 
         [Fact]

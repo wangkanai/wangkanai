@@ -6,9 +6,9 @@ namespace Wangkanai.Detection
     /// <summary>
     /// IDevice is the interface result of the <see cref="DeviceResolver"/>.
     /// </summary>
-    public interface IDevice
+    public interface IDeviceFactory
     {
-        DeviceType Type { get; set; }
+        Device Type { get; set; }
         bool Crawler { get; set; }
     }
 }

@@ -5,27 +5,27 @@ using System;
 
 namespace Wangkanai.Detection
 {
-    public class Browser : IBrowser
+    public class BrowserFactory : IBrowserFactory
     {
         public string Name { get; set; }
         public string Maker { get; set; }
-        public BrowserType Type { get; set; } = BrowserType.Generic;
+        public Browser Type { get; set; } = Browser.Generic;
         public Version Version { get; set; }
 
-        public Browser()
+        public BrowserFactory()
         {
         }
 
-        public Browser(BrowserType browserType)
+        public BrowserFactory(Browser browserType)
             => Type = browserType;
 
-        public Browser(BrowserType browserType, Version version)
+        public BrowserFactory(Browser browserType, Version version)
             : this(browserType)
             => Version = version;
 
-        public Browser(string name)
+        public BrowserFactory(string name)
         {
-            BrowserType type;
+            Browser type;
 
             if (!Enum.TryParse(name, true, out type))
                 throw new BrowserNotFoundException(name, "not found");

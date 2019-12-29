@@ -24,7 +24,7 @@ namespace Wangkanai.Detection.Test
             // act
             var resolver = new DeviceResolver(service);
             // assert
-            Assert.Equal(DeviceType.Mobile, resolver.Device.Type);
+            Assert.Equal(Device.Mobile, resolver.Device.Type);
         }
 
         [Theory]
@@ -40,7 +40,7 @@ namespace Wangkanai.Detection.Test
             // Act
             var device = new DeviceResolver(service).Device;
             // Assert
-            Assert.Equal(DeviceType.Mobile, device.Type);
+            Assert.Equal(Device.Mobile, device.Type);
         }
 
         [Theory]
@@ -53,7 +53,7 @@ namespace Wangkanai.Detection.Test
             // Act
             var device = new DeviceResolver(service).Device;
             // Assert
-            Assert.Equal(DeviceType.Mobile, device.Type);
+            Assert.Equal(Device.Mobile, device.Type);
         }
 
         [Fact]
@@ -64,7 +64,7 @@ namespace Wangkanai.Detection.Test
             // Act
             var device = new DeviceResolver(service).Device;
             // Assert
-            Assert.Equal(DeviceType.Mobile, device.Type);
+            Assert.Equal(Device.Mobile, device.Type);
         }
     }
 }

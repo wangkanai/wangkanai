@@ -13,21 +13,21 @@ namespace Microsoft.AspNetCore.Http
 
         public static void SetDevice(
             this HttpContext context,
-            DeviceType device)
+            Device device)
         {
             context.Items[ResponsiveContextKey] = device;
         }
 
-        public static DeviceType GetDevice(
+        public static Device GetDevice(
             this HttpContext context)
         {
             if (context == null)
                 throw new GetDeviceArgumentNullException(nameof(context));
 
             if (context.Items.TryGetValue(ResponsiveContextKey, out var responsiveContext))
-                return (DeviceType)responsiveContext;
+                return (Device)responsiveContext;
 
-            return DeviceType.Desktop;
+            return Device.Desktop;
         }
     }
 }

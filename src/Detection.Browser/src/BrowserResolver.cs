@@ -7,37 +7,37 @@ namespace Wangkanai.Detection
 {
     public class BrowserResolver : BaseResolver, IBrowserResolver
     {
-        public IBrowser Browser { get; }
+        public IBrowserFactory Browser { get; }
 
         public BrowserResolver(IUserAgentService service) : base(service)
         {
             this.Browser = GetBrowser();
         }
 
-        private Browser GetBrowser()
+        private BrowserFactory GetBrowser()
         {
             var agent = UserAgent.ToString();
 
             var ie = new InternetExplorer(agent);
-            if (ie.Type == BrowserType.IE)
+            if (ie.Type == Detection.Browser.IE)
                 return ie;
             var firefox = new Firefox(agent);
-            if (firefox.Type == BrowserType.Firefox)
+            if (firefox.Type == Detection.Browser.Firefox)
                 return firefox;
             var edge = new Edge(agent);
-            if (edge.Type == BrowserType.Edge)
+            if (edge.Type == Detection.Browser.Edge)
                 return edge;
             var opera = new Opera(agent);
-            if (opera.Type == BrowserType.Opera)
+            if (opera.Type == Detection.Browser.Opera)
                 return opera;
             var chrome = new Chrome(agent);
-            if (chrome.Type == BrowserType.Chrome)
+            if (chrome.Type == Detection.Browser.Chrome)
                 return chrome;
             var safari = new Safari(agent);
-            if (safari.Type == BrowserType.Safari)
+            if (safari.Type == Detection.Browser.Safari)
                 return safari;
 
-            return new Browser();
+            return new BrowserFactory();
         }
     }
 }

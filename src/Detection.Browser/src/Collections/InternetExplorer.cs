@@ -5,7 +5,7 @@ using System;
 
 namespace Wangkanai.Detection.Collections
 {
-    public class InternetExplorer : Browser
+    public class InternetExplorer : BrowserFactory
     {
         private readonly string _agent;
 
@@ -20,12 +20,12 @@ namespace Wangkanai.Detection.Collections
                 var cut = _agent.Substring(first + ie10.Length + 1);
                 var version = cut.Substring(0, cut.IndexOf(';'));
                 Version = version.ToVersion();
-                Type = BrowserType.IE;
+                Type = Browser.IE;
             }
 
             if (_agent.Contains("ie 11.0") || (_agent.Contains("trident/") && _agent.Contains("rv:11.0")))
             {
-                Type = BrowserType.IE;
+                Type = Browser.IE;
                 Version = new Version("11.0");
             }
         }

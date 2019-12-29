@@ -12,25 +12,25 @@ namespace Wangkanai.Detection.Test
         [Fact]
         public void cast_valid_type()
         {
-            Device device = null;
+            DeviceFactory device = null;
             try
             {
-                device = new Device("mobile");
+                device = new DeviceFactory("mobile");
             }
             catch (DeviceNotFoundException)
             {
             }
-            Assert.Equal(DeviceType.Mobile, device.Type);
+            Assert.Equal(Device.Mobile, device.Type);
         }
 
         [Fact]
         public void cast_something_not_valid()
         {
             Type actual = null;
-            Device device = null;
+            DeviceFactory device = null;
             try
             {
-                device = new Device("xxx");
+                device = new DeviceFactory("xxx");
             }
             catch (DeviceNotFoundException e)
             {
@@ -40,7 +40,7 @@ namespace Wangkanai.Detection.Test
 
             Assert.Throws<DeviceNotFoundException>(() =>
             {
-                new Device("xxx");
+                new DeviceFactory("xxx");
             });
         }
     }

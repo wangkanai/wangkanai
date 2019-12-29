@@ -41,7 +41,7 @@ namespace Wangkanai.Responsive.Core
         [Fact]
         public void GetDevice_HttpContext_ReturnsExpected()
         {
-            var device = DeviceType.Tablet;
+            var device = Device.Tablet;
             //var preference = new UserPreference() { Resolver = device };
             var context = new DefaultHttpContext();
             context.SetDevice(device);

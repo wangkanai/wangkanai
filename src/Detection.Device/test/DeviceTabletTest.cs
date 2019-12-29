@@ -21,7 +21,7 @@ namespace Wangkanai.Detection.Test
             // act
             var resolver = new DeviceResolver(service);
             // assert
-            Assert.Equal(DeviceType.Tablet, resolver.Device.Type);
+            Assert.Equal(Device.Tablet, resolver.Device.Type);
         }
     }
 }

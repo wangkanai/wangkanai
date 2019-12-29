@@ -26,9 +26,9 @@ namespace ResponsiveOption
         {
             services.AddResponsive(options =>
             {
-                options.View.DefaultTablet = DeviceType.Desktop;
-                options.View.DefaultMobile = DeviceType.Mobile;
-                options.View.DefaultDesktop = DeviceType.Desktop;
+                options.View.DefaultTablet = Device.Desktop;
+                options.View.DefaultMobile = Device.Mobile;
+                options.View.DefaultDesktop = Device.Desktop;
             });
 
             services.AddControllersWithViews();

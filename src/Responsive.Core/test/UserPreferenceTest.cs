@@ -12,7 +12,7 @@ namespace Wangkanai.Responsive.Core
         [Fact]
         public void Preferred_Cookie_over_Resolver()
         {
-            var preference = new UserPreference(DeviceType.Mobile, DeviceType.Desktop);
+            var preference = new UserPreference(Device.Mobile, Device.Desktop);
 
             Assert.Equal("Desktop", preference.Preferred);
         }

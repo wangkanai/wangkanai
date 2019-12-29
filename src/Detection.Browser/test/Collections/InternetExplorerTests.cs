@@ -15,7 +15,7 @@ namespace Wangkanai.Detection.Collections
             // act
             var ie = new InternetExplorer(agent);
             // assert
-            Assert.Equal(BrowserType.IE, ie.Type);
+            Assert.Equal(Browser.IE, ie.Type);
             Assert.Equal("10.0", ie.Version.ToString());
         }
 
@@ -27,7 +27,7 @@ namespace Wangkanai.Detection.Collections
             // act
             var ie = new InternetExplorer(agent);
             // assert
-            Assert.Equal(BrowserType.IE, ie.Type);
+            Assert.Equal(Browser.IE, ie.Type);
             Assert.Equal("11.0", ie.Version.ToString());
         }
 
@@ -39,7 +39,7 @@ namespace Wangkanai.Detection.Collections
             // act
             var ie = new InternetExplorer(agent);
             // assert
-            Assert.NotEqual(BrowserType.IE, ie.Type);
+            Assert.NotEqual(Browser.IE, ie.Type);
             Assert.Null(ie.Version);
         }
     }

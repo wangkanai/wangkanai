@@ -8,6 +8,6 @@ namespace Wangkanai.Detection
     /// </summary>
     public interface IDeviceResolver : IResolver
     {
-        IDevice Device { get; }
+        IDeviceFactory Device { get; }
     }
 }

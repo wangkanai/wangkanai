@@ -5,6 +5,6 @@ namespace Wangkanai.Detection
 {
     public interface ICrawlerResolver : IResolver
     {
-        ICrawler Crawler { get; }
+        ICrawlerFactory Crawler { get; }
     }
 }

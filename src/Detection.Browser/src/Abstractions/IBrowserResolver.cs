@@ -5,6 +5,6 @@ namespace Wangkanai.Detection
 {
     public interface IBrowserResolver : IResolver
     {
-        IBrowser Browser { get; }
+        IBrowserFactory Browser { get; }
     }
 }

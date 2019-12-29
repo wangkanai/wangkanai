@@ -5,9 +5,9 @@ using Wangkanai.Detection;
 
 namespace Microsoft.AspNetCore.Http
 {
-    public static class BrowserHttpRequestExtensions
+    public static class HttpRequestExtensions
     {
-        public static IBrowser Browser(this HttpRequest request)
+        public static IBrowserFactory Browser(this HttpRequest request)
         {
             var service = new UserAgentService(request.HttpContext);
             var resolver = new BrowserResolver(service);
