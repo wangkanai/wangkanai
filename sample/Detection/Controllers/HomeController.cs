@@ -12,8 +12,9 @@ namespace Sandbox.Controllers
     {
         //private readonly IDetection _detection;
 
-        public HomeController()//IDetection detection)
+        public HomeController(HttpContext context)//IDetection detection)
         {
+            context.GetDevice
             //_detection = detection;
         }
 
