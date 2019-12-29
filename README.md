@@ -1,6 +1,5 @@
 # ASP.NET Core Detection
 
-
 [![Financial Contributors on Open Collective](https://opencollective.com/wangkanai/all/badge.svg?label=financial+contributors)](https://opencollective.com/wangkanai)
 [![Build status](https://ci.appveyor.com/api/projects/status/033qv4nqv8g4altq?svg=true&retina=true)](https://ci.appveyor.com/project/wangkanai/detection)
 
