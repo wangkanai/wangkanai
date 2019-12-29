@@ -9,7 +9,7 @@
   [![NuGet Badge](https://buildstats.info/nuget/wangkanai.detection?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.detection)
   [![MyGet Badge](https://buildstats.info/myget/wangkanai/Wangkanai.detection)](https://www.myget.org/feed/wangkanai/package/nuget/Wangkanai.detection)
 - **Wangkanai.Responsive**
-  [![NuGet Badge](https://buildstats.info/nuget/wangkanai.Responsive)](https://www.nuget.org/packages/wangkanai.detection)
+  [![NuGet Badge](https://buildstats.info/nuget/wangkanai.Responsive)](https://www.nuget.org/packages/wangkanai.Responsive)
   [![NuGet Badge](https://buildstats.info/nuget/wangkanai.Responsive?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.Responsive)
   [![MyGet Badge](https://buildstats.info/myget/wangkanai/Wangkanai.Responsive)](https://www.myget.org/feed/wangkanai/package/nuget/Wangkanai.Responsive)
 
