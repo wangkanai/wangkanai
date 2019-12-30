@@ -60,7 +60,8 @@ namespace Wangkanai.Responsive
 
             context.Values.TryGetValue(ValueKey, out var value);
 
-            if (string.IsNullOrEmpty(value)) return viewLocations;
+            if (string.IsNullOrEmpty(value))
+                return viewLocations;
 
             IDeviceFactory device;
             try
