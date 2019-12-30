@@ -1,8 +1,11 @@
 # ASP.NET Core Detection
 
-
-[![Financial Contributors on Open Collective](https://opencollective.com/wangkanai/all/badge.svg?label=financial+contributors)](https://opencollective.com/wangkanai)
 [![Build status](https://ci.appveyor.com/api/projects/status/033qv4nqv8g4altq?svg=true&retina=true)](https://ci.appveyor.com/project/wangkanai/detection)
+![GitHub](https://img.shields.io/github/license/wangkanai/detection)
+
+
+[![Open Collective](https://img.shields.io/badge/open%20collective-support%20us-3385FF.svg)](https://opencollective.com/wangkanai)
+[![Patreon](https://img.shields.io/badge/patreon-become%20a%20patron-d9643a.svg)](https://www.patreon.com/wangkanai)
 
 ### ASP.NET Core 3.X (Branch: [dev](https://github.com/wangkanai/Detection/tree/dev))
 
