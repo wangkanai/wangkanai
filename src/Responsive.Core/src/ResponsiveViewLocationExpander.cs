@@ -33,7 +33,8 @@ namespace Wangkanai.Responsive
             this(ResponsiveViewLocationFormat.Suffix)
         { }
 
-        public ResponsiveViewLocationExpander(ResponsiveViewLocationFormat format)
+        public ResponsiveViewLocationExpander(
+            ResponsiveViewLocationFormat format)
         {
             if (!Enum.IsDefined(typeof(ResponsiveViewLocationFormat), (int)format))
                 throw new InvalidEnumArgumentException(nameof(format));
@@ -41,10 +42,11 @@ namespace Wangkanai.Responsive
             _format = format;
         }
 
-        public void PopulateValues(ViewLocationExpanderContext context)
+        public void PopulateValues(
+            ViewLocationExpanderContext context)
         {
             if (context == null)
-                throw new ViewLocationExpanderPopulateValuesArgumentNullException(nameof(context));
+                throw new ArgumentNullException(nameof(context));
 
             context.Values[ValueKey] = context.ActionContext.HttpContext.GetDevice().ToString();
         }
@@ -54,9 +56,9 @@ namespace Wangkanai.Responsive
             IEnumerable<string> viewLocations)
         {
             if (context == null)
-                throw new ViewLocationExpanderContextArgumentNullException(nameof(context));
+                throw new ArgumentNullException(nameof(context));
             if (viewLocations == null)
-                throw new ViewLocationExpanderViewsArgumentNullException(nameof(viewLocations));
+                throw new ArgumentNullException(nameof(viewLocations));
 
             context.Values.TryGetValue(ValueKey, out var value);
 
