@@ -9,6 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		appveyor.yml = appveyor.yml
 		Detection.sln.DotSettings = Detection.sln.DotSettings
 		Detection.sln.licenseheader = Detection.sln.licenseheader
+		.github\FUNDING.yml = .github\FUNDING.yml
 		md-styles.css = md-styles.css
 		NuGet.config = NuGet.config
 		README.md = README.md
@@ -98,7 +99,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RazorApp", "sample\RazorApp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResponsiveOption", "sample\ResponsiveOption\ResponsiveOption.csproj", "{71407BC8-E9D1-4B8C-8BD1-911AC7A9E13E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "doc", "doc\doc.csproj", "{A28073F7-AB45-4775-8E08-BDBB7B3CF1A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "doc", "doc\doc.csproj", "{A28073F7-AB45-4775-8E08-BDBB7B3CF1A8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
