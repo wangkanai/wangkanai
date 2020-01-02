@@ -38,7 +38,7 @@ namespace Wangkanai.Detection.Test
         [Fact]
         public void AddDetectionCore_Null_ArgumentNullException()
         {
-            Assert.Throws<AddDetectionCoreArgumentNullException>(() => ((IServiceCollection)null).AddDetectionCore());
+            Assert.Throws<ArgumentNullException>(() => ((IServiceCollection)null).AddDetectionCore());
         }
 
         private void AssertServices(List<ServiceDescriptor> serviceDescriptors, IServiceCollection services)

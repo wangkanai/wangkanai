@@ -54,7 +54,7 @@ namespace Wangkanai.Responsive.Core
         public void PopulateValues_Null_ThrowsArgumentNullException()
         {
             var locationExpander = new ResponsiveViewLocationExpander();
-            Assert.Throws<ViewLocationExpanderPopulateValuesArgumentNullException>(() => locationExpander.PopulateValues(null));
+            Assert.Throws<ArgumentNullException>(() => locationExpander.PopulateValues(null));
         }
 
         public static IEnumerable<object[]> ViewLocationExpanderTestData
@@ -149,14 +149,14 @@ namespace Wangkanai.Responsive.Core
         public void ExpandViewLocations_Null_IEnumerable_ThrowsArgumentNullException()
         {
             var locationExpander = new ResponsiveViewLocationExpander();
-            Assert.Throws<ViewLocationExpanderContextArgumentNullException>(() => locationExpander.ExpandViewLocations(null, new List<string>()));
+            Assert.Throws<ArgumentNullException>(() => locationExpander.ExpandViewLocations(null, new List<string>()));
         }
 
         [Fact]
         public void ExpandViewLocations_ViewLocationExpanderContext_Null_ThrowsArgumentNullException()
         {
             var locationExpander = new ResponsiveViewLocationExpander();
-            Assert.Throws<ViewLocationExpanderViewsArgumentNullException>(() => locationExpander.ExpandViewLocations(SetupViewLocationExpanderContext(Device.Tablet), null));
+            Assert.Throws<ArgumentNullException>(() => locationExpander.ExpandViewLocations(SetupViewLocationExpanderContext(Device.Tablet), null));
         }
 
         private ViewLocationExpanderContext SetupViewLocationExpanderContext(Device deviceType)
