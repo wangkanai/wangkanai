@@ -18,7 +18,8 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <param name="services">The <see cref="IServiceCollection"/> to attach to.</param>
         public DetectionBuilder(IServiceCollection services)
         {
-            if (services == null) throw new ArgumentNullException(nameof(services));
+            if (services == null)
+                throw new ArgumentNullException(nameof(services));
 
             Services = services;
         }

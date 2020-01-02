@@ -22,7 +22,7 @@ namespace Wangkanai.Detection
         protected readonly IUserAgentService _service;
 
         public BaseResolver(IUserAgentService service)
-            => _service = service ?? throw new BaseResolverArgumentNullException(nameof(service));
+            => _service = service ?? throw new ArgumentNullException(nameof(service));
 
         protected string GetUserAgent()
         {
