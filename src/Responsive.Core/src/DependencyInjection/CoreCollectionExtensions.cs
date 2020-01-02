@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
 using Wangkanai.Responsive;
-using Wangkanai.Responsive.Configuration;
 using Wangkanai.Responsive.Core.Internal;
 
 namespace Microsoft.Extensions.DependencyInjection

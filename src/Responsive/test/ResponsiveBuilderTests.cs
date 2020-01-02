@@ -5,8 +5,6 @@ using System;
 
 using Microsoft.Extensions.DependencyInjection;
 
-using Wangkanai.Responsive.Configuration;
-
 using Xunit;
 
 namespace Wangkanai.Responsive.Test.Core

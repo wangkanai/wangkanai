@@ -4,13 +4,12 @@
 using System;
 
 using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Wangkanai.Responsive;
 using Wangkanai.Responsive.Core.Internal;
 
-namespace Microsoft.AspNetCore.Builder
+namespace Microsoft.Extensions.DependencyInjection
 {
     /// <summary>
     /// Extension methods for adding the <see cref="ResponsiveMiddleware"/> to an application.
