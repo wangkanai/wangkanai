@@ -12,4 +12,15 @@
     <RootNamespace>Wangkanai.Detection</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="xunit.extensibility.core" Version="2.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Detection.Browser\src\Wangkanai.Detection.Browser.csproj" />
+    <ProjectReference Include="..\..\Detection.Device\src\Wangkanai.Detection.Device.csproj" />
+    <ProjectReference Include="..\..\Detection.Engine\src\Wangkanai.Detection.Engine.csproj" />
+    <ProjectReference Include="..\..\Detection.Platform\src\Wangkanai.Detection.Platform.csproj" />
+  </ItemGroup>
+
 </Project>
