@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+
+    <LangVersion>8.0</LangVersion>
+    <Nullable>enable</Nullable>
+    <Version>3.0.0</Version>
+
+    <IsTestAssetProject>true</IsTestAssetProject>
+
+    <RootNamespace>Wangkanai.Detection</RootNamespace>
+  </PropertyGroup>
+
+</Project>
