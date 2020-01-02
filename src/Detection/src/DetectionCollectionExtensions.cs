@@ -3,11 +3,6 @@
 
 using System;
 
-using Microsoft.Extensions.DependencyInjection.Extensions;
-
-using Wangkanai.Detection;
-using Wangkanai.Detection.Builders;
-
 namespace Microsoft.Extensions.DependencyInjection
 {
     /// <summary>

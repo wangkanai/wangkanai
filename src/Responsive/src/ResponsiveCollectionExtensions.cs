@@ -3,7 +3,6 @@
 
 using System;
 using Wangkanai.Responsive;
-using Wangkanai.Responsive.Configuration;
 
 namespace Microsoft.Extensions.DependencyInjection
 {

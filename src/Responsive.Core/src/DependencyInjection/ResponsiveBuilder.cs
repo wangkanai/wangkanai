@@ -3,9 +3,7 @@
 
 using System;
 
-using Microsoft.Extensions.DependencyInjection;
-
-namespace Wangkanai.Responsive.Configuration
+namespace Microsoft.Extensions.DependencyInjection
 {
     public class ResponsiveBuilder : IResponsiveBuilder
     {

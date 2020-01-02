@@ -3,9 +3,7 @@
 
 using System;
 
-using Microsoft.Extensions.DependencyInjection;
-
-namespace Wangkanai.Detection.Builders
+namespace Microsoft.Extensions.DependencyInjection
 {
     /// <summary>
     /// Helper functions for configuring detection core services.
