@@ -29,7 +29,7 @@ namespace Wangkanai.Responsive.Test
         }
 
         [Fact]
-        public void AddResponsive_Option_Builder_Service()
+        public void AddResponsive_Options_Builder_Service()
         {
             var service = new ServiceCollection();
             var expected = service.Count + 16;
