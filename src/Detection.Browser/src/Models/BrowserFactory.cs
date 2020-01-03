@@ -7,10 +7,10 @@ namespace Wangkanai.Detection
 {
     public class BrowserFactory : IBrowserFactory
     {
-        public string Name { get; set; }
-        public string Maker { get; set; }
+        public string? Name { get; set; }
+        public string? Maker { get; set; }
         public Browser Type { get; set; } = Browser.Generic;
-        public Version Version { get; set; }
+        public Version? Version { get; set; }
 
         public BrowserFactory()
         {

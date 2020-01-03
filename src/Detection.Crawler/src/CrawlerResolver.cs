@@ -7,18 +7,17 @@ namespace Wangkanai.Detection
 {
     public class CrawlerResolver : BaseResolver, ICrawlerResolver
     {
-        public ICrawlerFactory Crawler => _crawler;
-
-        private readonly ICrawlerFactory _crawler;
+        public ICrawlerFactory Crawler { get; }
 
         public CrawlerResolver(IUserAgentService service) : base(service)
         {
-            _crawler = GetCrawler();
+            Crawler = GetCrawler();
         }
 
         private CrawlerFactory GetCrawler()
         {
-            if (!IsCrawler()) return null;
+            if (!IsCrawler())
+                return new CrawlerFactory();
 
             var agent = UserAgent.ToString();
             if (agent.Contains("Yahoo"))
@@ -30,6 +29,7 @@ namespace Wangkanai.Detection
 
             string name, version;
             var index = bot.IndexOf('/');
+
             if (index < 0)
                 index = bot.IndexOf(';');
 
@@ -44,7 +44,7 @@ namespace Wangkanai.Detection
                 version = bot.Substring(index + 1).TrimEnd(';');
             }
 
-            if (version == string.Empty)
+            if (string.IsNullOrEmpty(version))
                 return new CrawlerFactory(name);
 
             return new CrawlerFactory(name, version);
@@ -53,8 +53,11 @@ namespace Wangkanai.Detection
         private bool IsCrawler()
         {
             var agent = GetUserAgent();
-            if (agent == null) return false;
-            if (CrawlerCollection.Keywords.Any(keyword => agent.Contains(keyword))) return true;
+
+            if (agent == null)
+                return false;
+            if (CrawlerCollection.Keywords.Any(keyword => agent.Contains(keyword)))
+                return true;
             return false;
         }
     }

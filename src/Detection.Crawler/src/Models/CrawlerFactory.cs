@@ -7,9 +7,9 @@ namespace Wangkanai.Detection
 {
     public class CrawlerFactory : ICrawlerFactory
     {
-        public string Name { get; set; }
+        public string? Name { get; set; }
         public Crawler Type { get; set; }
-        public Version Version { get; set; }
+        public Version? Version { get; set; }
 
         public CrawlerFactory()
         {

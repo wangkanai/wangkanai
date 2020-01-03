@@ -22,16 +22,16 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
         private static readonly char[] NameSeparator = new[] { ',' };
 
         [HtmlAttributeName(IncludeAttributeName)]
-        public string Include { get; set; }
+        public string? Include { get; set; }
 
         [HtmlAttributeName(ExcludeAttributeName)]
-        public string Exclude { get; set; }
+        public string? Exclude { get; set; }
 
         private readonly IDeviceResolver _resolver;
 
         [HtmlAttributeNotBound]
         [ViewContext]
-        public ViewContext ViewContext { get; set; }
+        public ViewContext? ViewContext { get; set; }
 
         public DeviceTagHelper(IDeviceResolver resolver)
         {
@@ -40,12 +40,16 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
-            if (context == null) throw new ArgumentNullException(nameof(context));
-            if (output == null) throw new ArgumentNullException(nameof(output));
+            if (context == null)
+                throw new ArgumentNullException(nameof(context));
+            if (output == null)
+                throw new ArgumentNullException(nameof(output));
 
             output.TagName = null;
 
-            if (string.IsNullOrWhiteSpace(Include) && string.IsNullOrWhiteSpace(Exclude)) return;
+            if (string.IsNullOrWhiteSpace(Include) &&
+                string.IsNullOrWhiteSpace(Exclude))
+                return;
 
             var device = _resolver.Device;
             var currentDeviceName = device.Type.ToString();
