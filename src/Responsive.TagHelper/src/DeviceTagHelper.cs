@@ -33,7 +33,7 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
         [ViewContext]
         public ViewContext? ViewContext { get; set; }
 
-        public DevicdfeTagHelper(IDeviceResolver resolver)
+        public DeviceTagHelper(IDeviceResolver resolver)
         {
             _resolver = resolver;
         }
