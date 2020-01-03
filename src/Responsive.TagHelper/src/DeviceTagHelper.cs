@@ -22,16 +22,16 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
         private static readonly char[] NameSeparator = new[] { ',' };
 
         [HtmlAttributeName(IncludeAttributeName)]
-        public string Include { get; set; }
+        public string? Include { get; set; }
 
         [HtmlAttributeName(ExcludeAttributeName)]
-        public string Exclude { get; set; }
+        public string? Exclude { get; set; }
 
         private readonly IDeviceResolver _resolver;
 
         [HtmlAttributeNotBound]
         [ViewContext]
-        public ViewContext ViewContext { get; set; }
+        public ViewContext? ViewContext { get; set; }
 
         public DevicdfeTagHelper(IDeviceResolver resolver)
         {
