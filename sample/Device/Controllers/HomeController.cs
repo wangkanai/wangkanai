@@ -19,7 +19,7 @@ namespace Sandbox.Controllers
 
         public IActionResult Index()
         {
-            ViewData["Device"] = Request.Device().Type;
+            //ViewData["Device"] = Request.Device().Type;
             return View(_resolver);
         }
     }

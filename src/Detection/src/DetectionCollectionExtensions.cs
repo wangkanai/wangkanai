@@ -17,7 +17,7 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <returns>An <see cref="IServiceCollection"/> so that additional calls can be chained.</returns>
         public static IDetectionBuilder AddDetection(this IServiceCollection services)
         {
-            if (services == null) throw new AddDetectionArgumentNullException(nameof(services));
+            if (services == null) throw new ArgumentNullException(nameof(services));
 
             services.AddDetectionCore()
                 .AddDevice()
@@ -25,8 +25,6 @@ namespace Microsoft.Extensions.DependencyInjection
                 .AddPlatform()
                 .AddEngine()
                 .AddCrawler();
-
-            //services.TryAddTransient<IDetection, Detection>();
 
             return new DetectionBuilder(services);
         }

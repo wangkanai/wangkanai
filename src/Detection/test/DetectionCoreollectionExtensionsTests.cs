@@ -32,7 +32,7 @@ namespace Wangkanai.Detection.Test
         [Fact]
         public void AddDetection_Null_ArgumentNullException()
         {
-            Assert.Throws<AddDetectionArgumentNullException>(() => ((IServiceCollection)null).AddDetection());
+            Assert.Throws<ArgumentNullException>(() => ((IServiceCollection)null).AddDetection());
         }
 
         [Fact]
