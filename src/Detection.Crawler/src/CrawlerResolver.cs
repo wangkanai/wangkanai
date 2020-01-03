@@ -17,7 +17,7 @@ namespace Wangkanai.Detection
         private CrawlerFactory GetCrawler()
         {
             if (!IsCrawler())
-                return null;
+                return new CrawlerFactory();
 
             var agent = UserAgent.ToString();
             if (agent.Contains("Yahoo"))
