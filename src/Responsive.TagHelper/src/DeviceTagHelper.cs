@@ -33,19 +33,23 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
         [ViewContext]
         public ViewContext ViewContext { get; set; }
 
-        public DeviceTagHelper(IDeviceResolver resolver)
+        public DevicdfeTagHelper(IDeviceResolver resolver)
         {
             _resolver = resolver;
         }
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
-            if (context == null) throw new ArgumentNullException(nameof(context));
-            if (output == null) throw new ArgumentNullException(nameof(output));
+            if (context == null)
+                throw new ArgumentNullException(nameof(context));
+            if (output == null)
+                throw new ArgumentNullException(nameof(output));
 
             output.TagName = null;
 
-            if (string.IsNullOrWhiteSpace(Include) && string.IsNullOrWhiteSpace(Exclude)) return;
+            if (string.IsNullOrWhiteSpace(Include) &&
+                string.IsNullOrWhiteSpace(Exclude))
+                return;
 
             var device = _resolver.Device;
             var currentDeviceName = device.Type.ToString();

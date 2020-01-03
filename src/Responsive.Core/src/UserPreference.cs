@@ -13,14 +13,12 @@ namespace Wangkanai.Responsive
 
         public string Preferred => (Resolver != Cookie) ? Cookie : Resolver;
 
-        public UserPreference()
-        {
-        }
-
         public UserPreference(string resolver, string cookie)
         {
-            Resolver = resolver;
-            Cookie = cookie;
+            Resolver = resolver
+                ?? throw new System.ArgumentNullException(nameof(resolver));
+            Cookie = cookie
+                ?? throw new System.ArgumentNullException(nameof(cookie));
         }
 
         public UserPreference(Device resolver, Device cookie)

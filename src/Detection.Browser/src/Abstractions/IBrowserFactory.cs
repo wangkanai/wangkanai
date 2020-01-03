@@ -8,8 +8,8 @@ namespace Wangkanai.Detection
     public interface IBrowserFactory
     {
         string? Maker { get; }
-        Version Version { get; }
-        string Name { get; }
+        Version? Version { get; }
+        string? Name { get; }
         Browser Type { get; }
     }
 }
