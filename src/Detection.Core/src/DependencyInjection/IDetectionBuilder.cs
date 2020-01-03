@@ -3,8 +3,17 @@
 
 namespace Microsoft.Extensions.DependencyInjection
 {
+    /// <summary>
+    /// Detection builder Interface
+    /// </summary>
     public interface IDetectionBuilder
     {
+        /// <summary>
+        /// Gets the services.
+        /// </summary>
+        /// <value>
+        /// The services.
+        /// </value>
         IServiceCollection Services { get; }
     }
 }

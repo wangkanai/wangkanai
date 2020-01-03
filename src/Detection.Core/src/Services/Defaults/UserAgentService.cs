@@ -23,8 +23,8 @@ namespace Wangkanai.Detection
             if (services == null)
                 throw new UserAgentServiceArgumentNullException(nameof(services));
 
-            this.Context = services.GetRequiredService<IHttpContextAccessor>().HttpContext;
-            this.UserAgent = CreateUserAgent(this.Context);
+            Context = services.GetRequiredService<IHttpContextAccessor>().HttpContext;
+            UserAgent = CreateUserAgent(this.Context);
         }
 
         public UserAgentService(
@@ -33,8 +33,8 @@ namespace Wangkanai.Detection
             if (context == null)
                 throw new UserAgentServiceArgumentNullException(nameof(context));
 
-            this.Context = context;
-            this.UserAgent = CreateUserAgent(this.Context);
+            Context = context;
+            UserAgent = CreateUserAgent(Context);
         }
 
         private UserAgent CreateUserAgent(
