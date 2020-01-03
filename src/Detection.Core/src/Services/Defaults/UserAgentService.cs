@@ -15,7 +15,7 @@ namespace Wangkanai.Detection
     public class UserAgentService : IUserAgentService
     {
         public HttpContext Context { get; }
-        public IUserAgent UserAgent { get; }
+        public UserAgent UserAgent { get; }
 
         public UserAgentService(
             IServiceProvider services)
@@ -37,7 +37,7 @@ namespace Wangkanai.Detection
             this.UserAgent = CreateUserAgent(this.Context);
         }
 
-        private IUserAgent CreateUserAgent(
+        private UserAgent CreateUserAgent(
             HttpContext context)
         {
             if (context == null)

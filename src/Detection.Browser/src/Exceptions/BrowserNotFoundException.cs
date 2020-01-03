@@ -8,9 +8,9 @@ namespace Wangkanai.Detection
     [System.Runtime.InteropServices.ComVisible(true)]
     public class BrowserNotFoundException : ArgumentException
     {
-        private readonly string _invalidBrowserName; // unrecognized browser name
-        public virtual string InvalidBrowserName => _invalidBrowserName;
-        private static string DefaultMessage => "Browser Not Supported";
+        private readonly string? _invalidBrowserName; // unrecognized browser name
+        public virtual string? InvalidBrowserName => _invalidBrowserName;
+        private static string? DefaultMessage => "Browser Not Supported";
 
         public BrowserNotFoundException()
             : base(DefaultMessage) { }

@@ -5,6 +5,6 @@ namespace Wangkanai.Detection
 {
     public interface IResolver
     {
-        IUserAgent UserAgent { get; }
+        UserAgent UserAgent { get; }
     }
 }

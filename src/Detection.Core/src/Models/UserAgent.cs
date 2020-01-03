@@ -3,7 +3,7 @@
 
 namespace Wangkanai.Detection
 {
-    public class UserAgent : IUserAgent
+    public class UserAgent //: IUserAgent
     {
         private readonly string useragent;
 

@@ -3,8 +3,8 @@
 
 namespace Wangkanai.Detection
 {
-    public interface IUserAgent
-    {
-        string ToString();
-    }
+    //public interface IUserAgent
+    //{
+    //    string ToString();
+    //}
 }

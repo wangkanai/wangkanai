@@ -69,7 +69,7 @@ namespace Wangkanai.Responsive.Core
         {
             public IDeviceFactory Device => new MyTablet() { Type = Detection.Device.Tablet };
 
-            public IUserAgent UserAgent => throw new NotImplementedException();
+            public UserAgent UserAgent => throw new NotImplementedException();
         }
 
         private class MyTablet : IDeviceFactory
