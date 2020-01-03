@@ -2,12 +2,13 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using Microsoft.AspNetCore.Http;
+using Wangkanai.Detection;
 
 namespace Wangkanai.Detection
 {
     public interface IUserAgentService
     {
         HttpContext Context { get; }
-        IUserAgent UserAgent { get; }
+        UserAgent UserAgent { get; }
     }
 }

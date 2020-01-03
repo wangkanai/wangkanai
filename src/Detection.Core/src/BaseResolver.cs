@@ -13,7 +13,7 @@ namespace Wangkanai.Detection
         /// <summary>
         /// Get user agnet of the request client
         /// </summary>
-        public IUserAgent UserAgent => _service.UserAgent;
+        public UserAgent UserAgent => _service.UserAgent;
 
         /// <summary>
         /// Get HttpContext of the application service
