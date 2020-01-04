@@ -5,9 +5,8 @@ using System;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Wangkanai.Responsive;
-using Wangkanai.Responsive.Core.Internal;
+using Wangkanai.Responsive.Internal;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -19,16 +18,17 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <summary>
         /// Adds the Responsive to <see cref="IApplicationBuilder"/> request execution pipeline.
         /// </summary>
-        /// <param name="app"></param>
+        /// <param name="app">The application.</param>
         /// <returns>Return the <see cref="IApplicationBuilder"/> for further pipeline</returns>
         public static IApplicationBuilder UseResponsive(
             this IApplicationBuilder app)
         {
-            if (app == null) throw new UseResponsiveAppArgumentNullException(nameof(app));
+            if (app is null)
+                throw new UseResponsiveAppArgumentNullException(nameof(app));
 
             app.Validate();
 
-            VerifyResponsiveIsRegistered(app);
+            VerifyMarkerIsRegistered(app);
 
             app.UseMiddleware<ResponsiveMiddleware>();
 
@@ -37,6 +37,13 @@ namespace Microsoft.Extensions.DependencyInjection
 
         internal static void Validate(this IApplicationBuilder app)
         {
+            var loggerFactory = app.ApplicationServices.GetService(typeof(ILoggerFactory)) as ILoggerFactory;
+            if (loggerFactory == null)
+                throw new ArgumentNullException(nameof(loggerFactory));
+
+            var logger = loggerFactory.CreateLogger("Responsive.Startup");
+            logger.LogInformation("Starting Responsive version {version}", typeof(ResponsiveApplicationBuilderExtensions).Assembly.GetName().Version.ToString());
+
             var scopeFactory = app.ApplicationServices.GetService<IServiceScopeFactory>();
 
             using (var scope = scopeFactory.CreateScope())
@@ -55,7 +62,7 @@ namespace Microsoft.Extensions.DependencyInjection
             // What should I validate?
         }
 
-        private static void VerifyResponsiveIsRegistered(IApplicationBuilder app)
+        private static void VerifyMarkerIsRegistered(IApplicationBuilder app)
         {
             if (app.ApplicationServices.GetService(typeof(ResponsiveMarkerService)) == null)
                 throw new InvalidOperationException("AddResponsive() is not added to ConfigureServices(...)");

@@ -11,9 +11,7 @@ namespace Wangkanai.Detection
         public Crawler Type { get; set; }
         public Version? Version { get; set; }
 
-        public CrawlerFactory()
-        {
-        }
+        public CrawlerFactory() { }
 
         public CrawlerFactory(string name)
         {

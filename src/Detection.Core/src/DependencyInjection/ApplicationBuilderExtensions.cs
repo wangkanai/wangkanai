@@ -4,6 +4,8 @@
 using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Logging;
+using Wangkanai.Detection.DependencyInjection.Options;
+using Wangkanai.Detection.Internal;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -13,13 +15,18 @@ namespace Microsoft.Extensions.DependencyInjection
     public static class DetectionApplicationBuilderExtensions
     {
         /// <summary>
-        /// Adds Detection to the pipeline.
+        /// Adds Detection to <see cref="IApplicationBuilder"/> request execution pipeline.
         /// </summary>
         /// <param name="app">The application.</param>
-        /// <returns></returns>
+        /// <returns>Return the <see cref="IApplicationBuilder"/> for further pipeline</returns>
         public static IApplicationBuilder UseDetection(this IApplicationBuilder app)
         {
+            if (app is null)
+                throw new ArgumentNullException(nameof(app));
+
             app.Validate();
+
+            VerifyMarkerIsRegistered(app);
 
             return app;
         }
@@ -32,6 +39,27 @@ namespace Microsoft.Extensions.DependencyInjection
 
             var logger = loggerFactory.CreateLogger("Detection.Startup");
             logger.LogInformation("Starting Detection version {version}", typeof(DetectionApplicationBuilderExtensions).Assembly.GetName().Version.ToString());
+
+            var scopeFactory = app.ApplicationServices.GetService<IServiceScopeFactory>();
+
+            using (var scope = scopeFactory.CreateScope())
+            {
+                var serviceProvider = scope.ServiceProvider;
+
+                var options = serviceProvider.GetRequiredService<DetectionOptions>();
+                ValidateOptions(options);
+            }
+        }
+
+        private static void ValidateOptions(DetectionOptions options)
+        {
+            // What should I validate?
+        }
+
+        private static void VerifyMarkerIsRegistered(IApplicationBuilder app)
+        {
+            if (app.ApplicationServices.GetService(typeof(DetectionMarkerService)) == null)
+                throw new InvalidOperationException("AddDetection() is not added to ConfigureSerivce");
         }
     }
 }
