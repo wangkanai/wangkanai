@@ -19,6 +19,9 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <returns></returns>
         public static IApplicationBuilder UseDetection(this IApplicationBuilder app)
         {
+            if (app is null)
+                throw new ArgumentNullException(nameof(app));
+
             app.Validate();
 
             return app;

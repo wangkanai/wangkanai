@@ -24,7 +24,8 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IApplicationBuilder UseResponsive(
             this IApplicationBuilder app)
         {
-            if (app == null) throw new UseResponsiveAppArgumentNullException(nameof(app));
+            if (app is null)
+                throw new UseResponsiveAppArgumentNullException(nameof(app));
 
             app.Validate();
 
@@ -37,6 +38,13 @@ namespace Microsoft.Extensions.DependencyInjection
 
         internal static void Validate(this IApplicationBuilder app)
         {
+            var loggerFactory = app.ApplicationServices.GetService(typeof(ILoggerFactory)) as ILoggerFactory;
+            if (loggerFactory == null)
+                throw new ArgumentNullException(nameof(loggerFactory));
+
+            var logger = loggerFactory.CreateLogger("Responsive.Startup");
+            logger.LogInformation("Starting Responsive version {version}", typeof(ResponsiveApplicationBuilderExtensions).Assembly.GetName().Version.ToString());
+
             var scopeFactory = app.ApplicationServices.GetService<IServiceScopeFactory>();
 
             using (var scope = scopeFactory.CreateScope())
