@@ -39,7 +39,8 @@ namespace Wangkanai.Detection.Test
             var service = CreateService(null);
             var resolver = new CrawlerResolver(service);
 
-            Assert.Null(resolver.Crawler);
+            Assert.NotNull(resolver.Crawler);
+            Assert.Null(resolver.Crawler.Name);
         }
 
         [Fact]
@@ -48,7 +49,8 @@ namespace Wangkanai.Detection.Test
             var service = CreateService("");
             var resolver = new CrawlerResolver(service);
 
-            Assert.Null(resolver.Crawler);
+            Assert.NotNull(resolver.Crawler);
+            Assert.Null(resolver.Crawler.Name);
         }
 
         [Fact]

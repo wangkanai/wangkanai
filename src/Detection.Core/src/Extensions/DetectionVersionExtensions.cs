@@ -3,7 +3,7 @@
 
 using System;
 
-namespace Wangkanai.Detection
+namespace Wangkanai.Detection.Extensions
 {
     public static class DetectionVersionExtensions
     {
