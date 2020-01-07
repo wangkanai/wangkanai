@@ -7,7 +7,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Wangkanai.Detection
+namespace Wangkanai.Detection.Services
 {
     /// <summary>
     /// Provides the APIs for query client access device.

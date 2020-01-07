@@ -4,7 +4,7 @@
 using Microsoft.AspNetCore.Http;
 using Wangkanai.Detection;
 
-namespace Wangkanai.Detection
+namespace Wangkanai.Detection.Services
 {
     public interface IUserAgentService
     {

@@ -4,8 +4,7 @@
 using System;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using Microsoft.Extensions.Logging;
-using Wangkanai.Detection;
+using Wangkanai.Detection.Services;
 
 namespace Microsoft.Extensions.DependencyInjection
 {

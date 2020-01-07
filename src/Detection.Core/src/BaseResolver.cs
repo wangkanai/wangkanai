@@ -5,6 +5,7 @@ using System;
 using System.Linq;
 
 using Microsoft.AspNetCore.Http;
+using Wangkanai.Detection.Services;
 
 namespace Wangkanai.Detection
 {
