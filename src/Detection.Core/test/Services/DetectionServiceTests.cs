@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Http;
 
 using Xunit;
 
-namespace Wangkanai.Detection.Test
+namespace Wangkanai.Detection.Services
 {
     public class UserAgentServiceTests
     {
