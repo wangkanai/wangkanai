@@ -11,19 +11,17 @@ namespace Wangkanai.Detection
         /// <summary>
         /// Get device result of device result
         /// </summary>
-        public IDeviceFactory Device => _device;
-
-        private readonly IDeviceFactory _device;
+        public IDeviceFactory Device { get; }
 
         public DeviceResolver(IUserAgentService service) : base(service)
         {
-            _device = new DeviceFactory(GetDeviceType());
+            Device = new DeviceFactory(GetDeviceType());
         }
 
         private Device GetDeviceType()
         {
-            var agent = GetUserAgent();
-            var request = Context.Request;
+            var agent = _service.UserAgent.ToString().ToLower().ToLowerInvariant();
+            var request = _service.Context.Request;
 
             // tablet user agent keyword detection
             if (agent != null && TabletCollection.Keywords.Any(keyword => agent.Contains(keyword)))
