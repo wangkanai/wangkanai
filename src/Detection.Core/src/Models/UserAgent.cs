@@ -3,20 +3,17 @@
 
 namespace Wangkanai.Detection
 {
-    public class UserAgent //: IUserAgent
+    public class UserAgent
     {
-        private readonly string useragent;
+        private readonly string _useragent;
 
-        public UserAgent() => useragent = string.Empty;
+        public UserAgent()
+            => _useragent = string.Empty;
 
         public UserAgent(string useragent) : this()
-        {
-            if (useragent != null)
-                this.useragent = useragent;
-            else
-                this.useragent = string.Empty;
-        }
+            => _useragent = useragent ?? string.Empty;
 
-        public override string ToString() => useragent;
+        public override string ToString()
+            => _useragent;
     }
 }
