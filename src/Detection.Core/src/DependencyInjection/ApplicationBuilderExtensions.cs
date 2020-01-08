@@ -24,7 +24,7 @@ namespace Microsoft.Extensions.DependencyInjection
             if (app is null)
                 throw new ArgumentNullException(nameof(app));
 
-            // app.Validate();
+            app.Validate();
 
             VerifyMarkerIsRegistered(app);
 
@@ -42,13 +42,13 @@ namespace Microsoft.Extensions.DependencyInjection
 
             var scopeFactory = app.ApplicationServices.GetService<IServiceScopeFactory>();
 
-            using (var scope = scopeFactory.CreateScope())
-            {
-                var serviceProvider = scope.ServiceProvider;
+            //using (var scope = scopeFactory.CreateScope())
+            //{
+            //    var serviceProvider = scope.ServiceProvider;
 
-                var options = serviceProvider.GetRequiredService<DetectionOptions>();
-                ValidateOptions(options);
-            }
+            //    var options = serviceProvider.GetRequiredService<DetectionOptions>();
+            //    ValidateOptions(options);
+            //}
         }
 
         private static void ValidateOptions(DetectionOptions options)

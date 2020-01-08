@@ -23,8 +23,6 @@ namespace Sandbox
         {
             // Add detection services.
             services.AddDetection();
-            services.AddDetectionCore()
-                .AddDevice();
 
             // Add framework services.
             services.AddControllersWithViews();
@@ -46,6 +44,8 @@ namespace Sandbox
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseDetection();
 
             app.UseEndpoints(endpoints =>
             {
