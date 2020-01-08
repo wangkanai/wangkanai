@@ -4,6 +4,7 @@
 using System;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Wangkanai.Detection.Internal;
 using Wangkanai.Detection.Services;
 
 namespace Microsoft.Extensions.DependencyInjection
@@ -28,6 +29,9 @@ namespace Microsoft.Extensions.DependencyInjection
 
             // Client Services
             services.TryAddTransient<IUserAgentService, UserAgentService>();
+
+            services.AddOptions();
+            services.TryAddSingleton<DetectionMarkerService, DetectionMarkerService>();
 
             return new DetectionCoreBuilder(services);
         }
