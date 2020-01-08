@@ -11,8 +11,10 @@ namespace Microsoft.Extensions.DependencyInjection
 
         public ResponsiveBuilder(IServiceCollection services)
         {
-            Services = services
-                ?? throw new ResponsiveBuilderArgumentNullException(nameof(services));
+            if (services is null)
+                throw new ArgumentNullException(nameof(services));
+
+            Services = services;
         }
     }
 }

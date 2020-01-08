@@ -18,9 +18,9 @@ namespace Wangkanai.Responsive
 
         public ResponsiveMiddleware(RequestDelegate next, IOptions<ResponsiveOptions> options)
         {
-            if (next == null)
+            if (next is null)
                 throw new ResponsiveMiddlewareNextArgumentNullException(nameof(next));
-            if (options == null)
+            if (options is null)
                 throw new ResponsiveMiddlewareOptionArgumentNullException(nameof(options));
 
             _next = next;
@@ -29,7 +29,7 @@ namespace Wangkanai.Responsive
 
         public async Task Invoke(HttpContext context, IDeviceResolver resolver)
         {
-            if (context == null)
+            if (context is null)
                 throw new ResponsiveMiddlewareInvokeArgumentNullException(nameof(context));
 
             var detection = new ResolverManager(resolver, _options);

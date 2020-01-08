@@ -17,7 +17,7 @@ namespace Wangkanai.Responsive
 
         public ResolverManager(Device resolved, ResponsiveOptions options)
         {
-            if (options == null)
+            if (options is null)
                 throw new ResponsiveMiddlewareOptionArgumentNullException(nameof(options));
 
             _resolved = resolved;
@@ -28,9 +28,12 @@ namespace Wangkanai.Responsive
 
         private Device Default(Device type)
         {
-            if (type == Device.Mobile) return _options.View.DefaultMobile;
-            if (type == Device.Tablet) return _options.View.DefaultTablet;
-            if (type == Device.Desktop) return _options.View.DefaultDesktop;
+            if (type is Device.Mobile)
+                return _options.View.DefaultMobile;
+            if (type is Device.Tablet)
+                return _options.View.DefaultTablet;
+            if (type is Device.Desktop)
+                return _options.View.DefaultDesktop;
 
             return type;
         }

@@ -20,7 +20,7 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <returns>The <see cref="IServiceCollection"/> so that additional calls can be chained.</returns>
         public static IResponsiveCoreBuilder AddResponsiveCore(this IServiceCollection services)
         {
-            if (services == null)
+            if (services is null)
                 throw new AddResponsiveArgumentNullException(nameof(services));
 
             services.AddDetection();

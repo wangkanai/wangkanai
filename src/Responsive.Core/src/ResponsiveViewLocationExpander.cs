@@ -45,7 +45,7 @@ namespace Wangkanai.Responsive
         public void PopulateValues(
             ViewLocationExpanderContext context)
         {
-            if (context == null)
+            if (context is null)
                 throw new ArgumentNullException(nameof(context));
 
             context.Values[ValueKey] = context.ActionContext.HttpContext.GetDevice().ToString();
@@ -55,9 +55,9 @@ namespace Wangkanai.Responsive
             ViewLocationExpanderContext context,
             IEnumerable<string> viewLocations)
         {
-            if (context == null)
+            if (context is null)
                 throw new ArgumentNullException(nameof(context));
-            if (viewLocations == null)
+            if (viewLocations is null)
                 throw new ArgumentNullException(nameof(viewLocations));
 
             context.Values.TryGetValue(ValueKey, out var value);

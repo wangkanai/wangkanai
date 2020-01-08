@@ -38,7 +38,7 @@ namespace Microsoft.Extensions.DependencyInjection
         internal static void Validate(this IApplicationBuilder app)
         {
             var loggerFactory = app.ApplicationServices.GetService(typeof(ILoggerFactory)) as ILoggerFactory;
-            if (loggerFactory == null)
+            if (loggerFactory is null)
                 throw new ArgumentNullException(nameof(loggerFactory));
 
             var logger = loggerFactory.CreateLogger("Responsive.Startup");
@@ -64,7 +64,7 @@ namespace Microsoft.Extensions.DependencyInjection
 
         private static void VerifyMarkerIsRegistered(IApplicationBuilder app)
         {
-            if (app.ApplicationServices.GetService(typeof(ResponsiveMarkerService)) == null)
+            if (app.ApplicationServices.GetService(typeof(ResponsiveMarkerService)) is null)
                 throw new InvalidOperationException("AddResponsive() is not added to ConfigureServices(...)");
         }
     }

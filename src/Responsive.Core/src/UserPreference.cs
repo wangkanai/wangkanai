@@ -15,15 +15,16 @@ namespace Wangkanai.Responsive
 
         public UserPreference(string resolver, string cookie)
         {
-            Resolver = resolver
-                ?? throw new System.ArgumentNullException(nameof(resolver));
-            Cookie = cookie
-                ?? throw new System.ArgumentNullException(nameof(cookie));
+            if (resolver is null)
+                throw new System.ArgumentNullException(nameof(resolver));
+            if (cookie is null)
+                throw new System.ArgumentNullException(nameof(cookie));
+
+            Resolver = resolver;
+            Cookie = cookie;
         }
 
         public UserPreference(Device resolver, Device cookie)
-            : this(resolver.ToString(), cookie.ToString())
-        {
-        }
+            : this(resolver.ToString(), cookie.ToString()) { }
     }
 }

@@ -14,7 +14,7 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IResponsiveCoreBuilder AddViewSuffix(
             this IResponsiveCoreBuilder builder)
         {
-            if (builder == null)
+            if (builder is null)
                 throw new ViewBuilderExtensionsSuffixArgumentNullException(nameof(builder));
 
             return AddViewLocation(builder, ResponsiveViewLocationFormat.Suffix);
@@ -23,7 +23,7 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IResponsiveCoreBuilder AddViewSubfolder(
             this IResponsiveCoreBuilder builder)
         {
-            if (builder == null)
+            if (builder is null)
                 throw new ViewBuilderExtensionsSubfolderArgumentNullException(nameof(builder));
 
             return AddViewLocation(builder, ResponsiveViewLocationFormat.Subfolder);

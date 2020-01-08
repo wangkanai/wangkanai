@@ -21,7 +21,7 @@ namespace Microsoft.AspNetCore.Http
         public static Device GetDevice(
             this HttpContext context)
         {
-            if (context == null)
+            if (context is null)
                 throw new GetDeviceArgumentNullException(nameof(context));
 
             if (context.Items.TryGetValue(ResponsiveContextKey, out var responsiveContext))
