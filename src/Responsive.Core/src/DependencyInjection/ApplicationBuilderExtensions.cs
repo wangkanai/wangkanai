@@ -26,7 +26,7 @@ namespace Microsoft.Extensions.DependencyInjection
             if (app is null)
                 throw new UseResponsiveAppArgumentNullException(nameof(app));
 
-            //app.Validate();
+            app.Validate();
 
             VerifyMarkerIsRegistered(app);
 
@@ -46,13 +46,13 @@ namespace Microsoft.Extensions.DependencyInjection
 
             var scopeFactory = app.ApplicationServices.GetService<IServiceScopeFactory>();
 
-            using (var scope = scopeFactory.CreateScope())
-            {
-                var serviceProvider = scope.ServiceProvider;
+            //using (var scope = scopeFactory.CreateScope())
+            //{
+            //    var serviceProvider = scope.ServiceProvider;
 
-                var options = serviceProvider.GetRequiredService<ResponsiveOptions>();
-                ValidateOptions(options);
-            }
+            //    var options = serviceProvider.GetRequiredService<ResponsiveOptions>();
+            //    ValidateOptions(options);
+            //}
         }
 
         private static void ValidateOptions(ResponsiveOptions options)
