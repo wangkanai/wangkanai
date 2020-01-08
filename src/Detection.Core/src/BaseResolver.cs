@@ -25,7 +25,8 @@ namespace Wangkanai.Detection
         public BaseResolver(IUserAgentService service)
             => _service = service ?? throw new ArgumentNullException(nameof(service));
 
-        protected string GetUserAgent()
+        [Obsolete]
+        private string GetUserAgent()
         {
             if (Context == null || !Context.Request.Headers["User-Agent"].Any())
                 return "";

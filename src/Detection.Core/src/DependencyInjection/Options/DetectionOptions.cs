@@ -6,6 +6,6 @@ namespace Wangkanai.Detection.DependencyInjection.Options
 {
     public class DetectionOptions
     {
-        public bool Demo { get; set; } = true;
+        public bool Demo { get; set; } = false;
     }
 }

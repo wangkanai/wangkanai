@@ -53,7 +53,7 @@ namespace Wangkanai.Detection.Services
             };
 
             Assert.Null(serviceProvider.HttpContextAccessor.HttpContext);
-            Assert.Throws<UserAgentServiceArgumentNullException>(() => new UserAgentService(serviceProvider));
+            Assert.Throws<ArgumentNullException>(() => new UserAgentService(serviceProvider));
         }
 
         private class ServiceProvider : IServiceProvider

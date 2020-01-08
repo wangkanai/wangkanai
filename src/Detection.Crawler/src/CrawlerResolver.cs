@@ -53,13 +53,9 @@ namespace Wangkanai.Detection
 
         private bool IsCrawler()
         {
-            var agent = GetUserAgent();
+            var agent = _service.UserAgent.ToString().ToLower().ToLowerInvariant();
 
-            if (agent == null)
-                return false;
-            if (CrawlerCollection.Keywords.Any(keyword => agent.Contains(keyword)))
-                return true;
-            return false;
+            return CrawlerCollection.Keywords.Any(keyword => agent.Contains(keyword));
         }
     }
 }
