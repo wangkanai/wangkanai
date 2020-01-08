@@ -16,7 +16,7 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <param name="services">The <see cref="IServiceCollection"/> to attach to.</param>
         public DetectionCoreBuilder(IServiceCollection services)
         {
-            if (services == null)
+            if (services is null)
                 throw new ArgumentNullException(nameof(services));
 
             Services = services;

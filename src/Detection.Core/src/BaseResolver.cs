@@ -28,7 +28,7 @@ namespace Wangkanai.Detection
         [Obsolete]
         private string GetUserAgent()
         {
-            if (Context == null || !Context.Request.Headers["User-Agent"].Any())
+            if (Context is null || !Context.Request.Headers["User-Agent"].Any())
                 return "";
 
             return new UserAgent(Context.Request.Headers["User-Agent"].FirstOrDefault())

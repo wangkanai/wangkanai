@@ -26,7 +26,7 @@ namespace Microsoft.Extensions.DependencyInjection
             if (app is null)
                 throw new UseResponsiveAppArgumentNullException(nameof(app));
 
-            //app.Validate();
+            app.Validate();
 
             VerifyMarkerIsRegistered(app);
 
@@ -38,7 +38,7 @@ namespace Microsoft.Extensions.DependencyInjection
         internal static void Validate(this IApplicationBuilder app)
         {
             var loggerFactory = app.ApplicationServices.GetService(typeof(ILoggerFactory)) as ILoggerFactory;
-            if (loggerFactory == null)
+            if (loggerFactory is null)
                 throw new ArgumentNullException(nameof(loggerFactory));
 
             var logger = loggerFactory.CreateLogger("Responsive.Startup");
@@ -46,13 +46,13 @@ namespace Microsoft.Extensions.DependencyInjection
 
             var scopeFactory = app.ApplicationServices.GetService<IServiceScopeFactory>();
 
-            using (var scope = scopeFactory.CreateScope())
-            {
-                var serviceProvider = scope.ServiceProvider;
+            //using (var scope = scopeFactory.CreateScope())
+            //{
+            //    var serviceProvider = scope.ServiceProvider;
 
-                var options = serviceProvider.GetRequiredService<ResponsiveOptions>();
-                ValidateOptions(options);
-            }
+            //    var options = serviceProvider.GetRequiredService<ResponsiveOptions>();
+            //    ValidateOptions(options);
+            //}
         }
 
         private static void ValidateOptions(ResponsiveOptions options)
@@ -64,7 +64,7 @@ namespace Microsoft.Extensions.DependencyInjection
 
         private static void VerifyMarkerIsRegistered(IApplicationBuilder app)
         {
-            if (app.ApplicationServices.GetService(typeof(ResponsiveMarkerService)) == null)
+            if (app.ApplicationServices.GetService(typeof(ResponsiveMarkerService)) is null)
                 throw new InvalidOperationException("AddResponsive() is not added to ConfigureServices(...)");
         }
     }

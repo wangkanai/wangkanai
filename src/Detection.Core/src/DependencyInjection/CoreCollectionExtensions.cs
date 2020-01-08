@@ -21,7 +21,7 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <returns>An <see cref="IServiceCollection"/> so that additional calls can be chained.</returns>
         public static IDetectionCoreBuilder AddDetectionCore(this IServiceCollection services)
         {
-            if (services == null)
+            if (services is null)
                 throw new ArgumentNullException(nameof(services));
 
             // Hosting doesn't add IHttpContextAccessor by default

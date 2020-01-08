@@ -20,7 +20,7 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IResponsiveBuilder AddResponsive(
             this IServiceCollection services)
         {
-            if (services == null)
+            if (services is null)
                 throw new ArgumentNullException(nameof(services));
 
             return services.AddResponsive(options => { });
@@ -36,7 +36,7 @@ namespace Microsoft.Extensions.DependencyInjection
             this IServiceCollection services,
             Action<ResponsiveOptions> setAction)
         {
-            if (services == null)
+            if (services is null)
                 throw new ArgumentNullException(nameof(services));
 
             services.Configure<ResponsiveOptions>(setAction);

@@ -25,16 +25,16 @@ namespace Wangkanai.Detection.Extensions
         /// </summary>
         /// <param name="version"></param>
         /// <returns></returns>
-        private static string RemoveWhitespace(this string version) =>
-            version.Contains(" ") ? version.Replace(" ", "") : version;
+        private static string RemoveWhitespace(this string version)
+            => version.Contains(" ") ? version.Replace(" ", "") : version;
 
-        private static string RemovePlus(this string version) =>
-            version.Contains("+") ? version.Replace("+", "") : version;
+        private static string RemovePlus(this string version)
+            => version.Contains("+") ? version.Replace("+", "") : version;
 
-        private static string RemoveMinus(this string version) =>
-            version.Contains("-") ? version.Replace("-", "") : version;
+        private static string RemoveMinus(this string version)
+            => version.Contains("-") ? version.Replace("-", "") : version;
 
-        private static string RemoveBeta(this string version) =>
-            version.Contains("beta") ? version.Replace("beta", "") : version;
+        private static string RemoveBeta(this string version)
+            => version.Contains("beta") ? version.Replace("beta", "") : version;
     }
 }
