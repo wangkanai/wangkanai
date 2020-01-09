@@ -4,18 +4,20 @@
 using System;
 
 using Microsoft.Extensions.DependencyInjection;
-
+using Wangkanai.Detection;
 using Xunit;
 
 namespace Wangkanai.Responsive.Test
 {
     public class ResponsiveCollectionExtensionsTests
     {
+        private readonly int total = 17;
+
         [Fact]
         public void AddResponsive_Services()
         {
             var service = new ServiceCollection();
-            var expected = service.Count + 16;
+            var expected = service.Count + total;
             var builder = service.AddResponsive();
 
             Assert.Equal(expected, builder.Services.Count);
@@ -32,10 +34,10 @@ namespace Wangkanai.Responsive.Test
         public void AddResponsive_Options_Builder_Service()
         {
             var service = new ServiceCollection();
-            var expected = service.Count + 16;
+            var expected = service.Count + total;
             var builder = service.AddResponsive(options =>
             {
-                options.View.DefaultTablet = Detection.Device.Desktop;
+                options.View.DefaultTablet = Device.Desktop;
             });
 
             Assert.Equal(expected, builder.Services.Count);
@@ -48,6 +50,7 @@ namespace Wangkanai.Responsive.Test
             Assert.Throws<ArgumentNullException>(CreateResponsiveNullService);
         }
 
-        private Func<object> CreateResponsiveNullService = () => ((IServiceCollection)null).AddResponsive();
+        private Func<object> CreateResponsiveNullService =
+            () => ((IServiceCollection)null).AddResponsive();
     }
 }
