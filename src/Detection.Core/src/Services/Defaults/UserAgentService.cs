@@ -14,7 +14,13 @@ namespace Wangkanai.Detection.Services
     /// </summary>
     public class UserAgentService : IUserAgentService
     {
+        /// <summary>
+        /// Get HttpContext of the application service
+        /// </summary>
         public HttpContext Context { get; }
+        /// <summary>
+        /// Get user agnet of the request client
+        /// </summary>
         public UserAgent UserAgent { get; }
 
         public UserAgentService(IServiceProvider services)
