@@ -3,7 +3,7 @@
 
 namespace Wangkanai.Responsive.Internal
 {
-    public class ResponsiveMarkerService
+    internal class ResponsiveMarkerService
     {
     }
 }
