@@ -20,7 +20,7 @@ namespace Wangkanai.Detection
         /// </summary>
         protected HttpContext Context => _service.Context;
 
-        private readonly IUserAgentService _service;
+        protected readonly IUserAgentService _service;
 
         public BaseResolver(IUserAgentService service)
             => _service = service ?? throw new ArgumentNullException(nameof(service));
