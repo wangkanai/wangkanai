@@ -2,9 +2,10 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
-
+using Castle.Core.Logging;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging.Abstractions;
 using Moq;
 using Xunit;
 
@@ -16,10 +17,14 @@ namespace Wangkanai.Responsive.Core
         public void UseResponsive_ThrowsInvalidOptionException_IfResponsiveMarkerServiceIsNotRegistered()
         {
             // Arrange
+            var serviceProvider = new Mock<IServiceProvider>();
+            serviceProvider
+                .Setup(s => s.GetService(typeof(ILoggerFactory)))
+                .Returns(Mock.Of<NullLoggerFactory>());
             var applicationBuilderMock = new Mock<IApplicationBuilder>();
             applicationBuilderMock
                 .Setup(s => s.ApplicationServices)
-                .Returns(Mock.Of<IServiceProvider>());
+                .Returns(serviceProvider.Object);
 
             // Act
             var exception = Assert.Throws<InvalidOperationException>(

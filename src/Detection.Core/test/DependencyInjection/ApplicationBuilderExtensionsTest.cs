@@ -19,7 +19,7 @@ namespace Wangkanai.Detection.DependencyInjection
         public void UseDetection_ThrowsInvalidOptionException_IfDetectionMarkerServiceIsNotRegistered()
         {
             // Arrange
-            var serviceProvider =new Mock<IServiceProvider>();
+            var serviceProvider = new Mock<IServiceProvider>();
             serviceProvider
                 .Setup(s => s.GetService(typeof(ILoggerFactory)))
                 .Returns(Mock.Of<NullLoggerFactory>());
