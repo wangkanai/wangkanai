@@ -24,7 +24,7 @@ namespace Microsoft.Extensions.DependencyInjection
             this IApplicationBuilder app)
         {
             if (app is null)
-                throw new UseResponsiveAppArgumentNullException(nameof(app));
+                throw new ArgumentNullException(nameof(app));
 
             app.Validate();
 

@@ -23,7 +23,7 @@ namespace Wangkanai.Responsive.Test.Core
         [Fact]
         public void Ctor_Null_ThrowsArgumentNullException()
         {
-            Assert.Throws<ResponsiveBuilderArgumentNullException>(() => new ResponsiveBuilder(null));
+            Assert.Throws<ArgumentNullException>(() => new ResponsiveBuilder(null));
         }
 
         [Fact]
