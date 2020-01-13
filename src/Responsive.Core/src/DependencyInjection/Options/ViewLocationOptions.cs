@@ -6,7 +6,7 @@ using Wangkanai.Detection;
 namespace Wangkanai.Responsive
 {
     /// <summary>
-    /// The IResponsiveViewOptions class is the View container for all configuration settings of Responsive.
+    /// The ViewLocationOptions class is the View container for all configuration settings of Responsive.
     /// </summary>
     public class ViewLocationOptions
     {
