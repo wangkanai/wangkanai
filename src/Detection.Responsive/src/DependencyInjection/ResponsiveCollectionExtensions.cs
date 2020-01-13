@@ -4,6 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Wangkanai.Detection.DependencyInjection.Options;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -14,6 +15,17 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             if (builder is null)
                 throw new ArgumentNullException(nameof(builder));
+
+            return builder;
+        }
+
+        public static IDetectionCoreBuilder AddResponsive(
+            this IDetectionCoreBuilder builder,
+            Action<ResponsiveOptions> options)
+        {
+            if (builder is null)
+                throw new ArgumentNullException(nameof(builder));
+
 
             return builder;
         }

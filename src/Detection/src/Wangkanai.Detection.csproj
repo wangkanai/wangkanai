@@ -25,6 +25,7 @@
     <ProjectReference Include="..\..\Detection.Device\src\Wangkanai.Detection.Device.csproj" />
     <ProjectReference Include="..\..\Detection.Engine\src\Wangkanai.Detection.Engine.csproj" />
     <ProjectReference Include="..\..\Detection.Platform\src\Wangkanai.Detection.Platform.csproj" />
+    <ProjectReference Include="..\..\Detection.Responsive\src\Wangkanai.Detection.Responsive.csproj" />
   </ItemGroup>
 
 </Project>

@@ -8,4 +8,9 @@ namespace Wangkanai.Detection.DependencyInjection.Options
     {
         public bool Demo { get; set; } = false;
     }
+
+    public class ResponsiveOptions
+    {
+
+    }
 }

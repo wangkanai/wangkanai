@@ -25,7 +25,8 @@ namespace Microsoft.Extensions.DependencyInjection
                 .AddBrowser()
                 .AddPlatform()
                 .AddEngine()
-                .AddCrawler();
+                .AddCrawler()
+                .AddResponsive();
 
             return new DetectionBuilder(services);
         }
