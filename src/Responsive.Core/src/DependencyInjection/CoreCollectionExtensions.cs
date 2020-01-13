@@ -21,7 +21,7 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IResponsiveCoreBuilder AddResponsiveCore(this IServiceCollection services)
         {
             if (services is null)
-                throw new AddResponsiveArgumentNullException(nameof(services));
+                throw new ArgumentNullException(nameof(services));
 
             services.AddDetection();
 
