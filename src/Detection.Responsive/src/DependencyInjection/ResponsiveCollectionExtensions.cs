@@ -16,16 +16,17 @@ namespace Microsoft.Extensions.DependencyInjection
             if (builder is null)
                 throw new ArgumentNullException(nameof(builder));
 
-            return builder;
+            return builder.AddResponsive(options => { });
         }
 
         public static IDetectionCoreBuilder AddResponsive(
             this IDetectionCoreBuilder builder,
-            Action<ResponsiveOptions> options)
+            Action<ResponsiveOptions> setAction)
         {
             if (builder is null)
                 throw new ArgumentNullException(nameof(builder));
 
+            builder.Services.Configure<ResponsiveOptions>(setAction);
 
             return builder;
         }
