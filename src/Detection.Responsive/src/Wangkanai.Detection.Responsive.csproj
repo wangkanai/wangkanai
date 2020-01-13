@@ -19,7 +19,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <ProjectReference Include="..\..\Detection.Core\src\Wangkanai.Detection.Core.csproj" />
   </ItemGroup>
 
 </Project>
