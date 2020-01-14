@@ -20,12 +20,14 @@ namespace Microsoft.Extensions.DependencyInjection
             if (services is null)
                 throw new ArgumentNullException(nameof(services));
 
-            services.AddDetectionCore()
-                .AddDevice()
-                .AddBrowser()
-                .AddPlatform()
-                .AddEngine()
-                .AddCrawler();
+            services
+                .AddCoreServices()
+                .AddDeviceService()
+                .AddBrowserService()
+                .AddPlatformService()
+                .AddEngineService()
+                .AddCrawlerService()
+                .AddResponsiveService();
 
             return new DetectionBuilder(services);
         }

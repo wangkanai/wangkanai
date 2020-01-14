@@ -4,6 +4,7 @@
 using System;
 
 using Wangkanai.Detection;
+using Wangkanai.Detection.DependencyInjection.Options;
 
 namespace Wangkanai.Responsive
 {
@@ -29,11 +30,11 @@ namespace Wangkanai.Responsive
         private Device Default(Device type)
         {
             if (type is Device.Mobile)
-                return _options.View.DefaultMobile;
+                return _options.DefaultMobile;
             if (type is Device.Tablet)
-                return _options.View.DefaultTablet;
+                return _options.DefaultTablet;
             if (type is Device.Desktop)
-                return _options.View.DefaultDesktop;
+                return _options.DefaultDesktop;
 
             return type;
         }

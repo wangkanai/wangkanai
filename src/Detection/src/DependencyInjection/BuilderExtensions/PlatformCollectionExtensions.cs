@@ -7,7 +7,7 @@ namespace Microsoft.Extensions.DependencyInjection
 {
     public static class PlatformCollectionExtensions
     {
-        public static IDetectionCoreBuilder AddPlatform(
+        public static IDetectionCoreBuilder AddPlatformService(
             this IDetectionCoreBuilder builder)
         {
             builder.Services.AddTransient<PlatformResolver>();

@@ -17,7 +17,7 @@ namespace Wangkanai.Detection.Test
         public void AddDetection_ReturnsExpected()
         {
             var serviceCollection = new ServiceCollection();
-            var builder = serviceCollection.AddDetectionCore();
+            var builder = serviceCollection.AddCoreServices();
             var serviceDescriptors = new List<ServiceDescriptor>
             {
                 new ServiceDescriptor(typeof(IHttpContextAccessor), typeof(HttpContextAccessor), ServiceLifetime.Singleton),
@@ -38,7 +38,7 @@ namespace Wangkanai.Detection.Test
         [Fact]
         public void AddDetectionCore_Null_ArgumentNullException()
         {
-            Assert.Throws<ArgumentNullException>(() => ((IServiceCollection)null).AddDetectionCore());
+            Assert.Throws<ArgumentNullException>(() => ((IServiceCollection)null).AddCoreServices());
         }
 
         private void AssertServices(List<ServiceDescriptor> serviceDescriptors, IServiceCollection services)

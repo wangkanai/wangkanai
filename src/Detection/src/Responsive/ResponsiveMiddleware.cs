@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 
 using Wangkanai.Detection;
+using Wangkanai.Detection.DependencyInjection.Options;
 
 namespace Wangkanai.Responsive
 {

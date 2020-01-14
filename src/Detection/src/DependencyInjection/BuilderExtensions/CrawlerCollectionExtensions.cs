@@ -7,7 +7,7 @@ namespace Microsoft.Extensions.DependencyInjection
 {
     public static class CrawlerCollectionExtensions
     {
-        public static IDetectionCoreBuilder AddCrawler(this IDetectionCoreBuilder builder)
+        public static IDetectionCoreBuilder AddCrawlerService(this IDetectionCoreBuilder builder)
         {
             builder.Services.AddTransient<CrawlerResolver>();
 
