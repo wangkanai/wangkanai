@@ -1,3 +1,5 @@
+using Wangkanai.Detection.Models;
+
 namespace Wangkanai.Detection
 {
     public class Client
@@ -8,6 +10,6 @@ namespace Wangkanai.Detection
         //public Platform Platform { get; set; }
         public Engine Engine { get; set; }
 
-        public string? Agent { get; set; }
+        public string Agent { get; set; }
     }
 }

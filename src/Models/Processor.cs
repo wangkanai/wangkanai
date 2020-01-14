@@ -1,16 +1,13 @@
 // Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
-namespace Wangkanai.Detection
+namespace Wangkanai.Detection.Models
 {
-    public enum Browser
+    public enum Processor
     {
-        IE,
-        Chrome,
-        Safari,
-        Firefox,
-        Edge,
-        Opera,
-        Generic
+        ARM,
+        x64,
+        x86,
+        Unknown
     }
 }

@@ -8,10 +8,10 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 
 using Wangkanai.Detection.DependencyInjection.Options;
-
+using Wangkanai.Detection.Models;
 using Xunit;
 
-namespace Wangkanai.Detection.Responsive
+namespace Wangkanai.Detection.Hosting
 {
     public class ResponsiveMiddlewareTests
     {
@@ -67,7 +67,7 @@ namespace Wangkanai.Detection.Responsive
 
         private class DeviceResolver : IDeviceResolver
         {
-            public IDeviceFactory Device => new MyTablet() { Type = Detection.Device.Tablet };
+            public IDeviceFactory Device => new MyTablet() { Type = Models.Device.Tablet };
 
             public UserAgent UserAgent => throw new NotImplementedException();
         }

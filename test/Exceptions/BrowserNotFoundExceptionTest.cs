@@ -5,7 +5,7 @@ using System;
 
 using Xunit;
 
-namespace Wangkanai.Detection.BrowserTest
+namespace Wangkanai.Detection.Exceptions
 {
     public class BrowserNotFoundExceptionTest
     {

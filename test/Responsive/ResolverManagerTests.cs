@@ -4,7 +4,7 @@
 using Microsoft.Extensions.Options;
 
 using Wangkanai.Detection.DependencyInjection.Options;
-
+using Wangkanai.Detection.Models;
 using Xunit;
 
 namespace Wangkanai.Detection.Responsive

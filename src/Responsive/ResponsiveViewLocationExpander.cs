@@ -8,8 +8,6 @@ using System.ComponentModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Razor;
 
-using Wangkanai.Detection;
-
 namespace Wangkanai.Detection.Responsive
 {
     /// <summary>

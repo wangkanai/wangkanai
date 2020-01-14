@@ -7,6 +7,8 @@ using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 
+using Wangkanai.Detection.Models;
+
 namespace Wangkanai.Detection.Services
 {
     /// <summary>
@@ -18,6 +20,7 @@ namespace Wangkanai.Detection.Services
         /// Get HttpContext of the application service
         /// </summary>
         public HttpContext Context { get; }
+
         /// <summary>
         /// Get user agnet of the request client
         /// </summary>

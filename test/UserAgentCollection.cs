@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Reflection;
-
+using Wangkanai.Detection.Models;
 using Xunit.Sdk;
 
 namespace Wangkanai.Detection

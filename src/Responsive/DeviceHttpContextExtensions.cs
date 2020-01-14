@@ -3,7 +3,7 @@
 
 using System;
 
-using Wangkanai.Detection;
+using Wangkanai.Detection.Models;
 
 namespace Microsoft.AspNetCore.Http
 {

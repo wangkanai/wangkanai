@@ -2,11 +2,13 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Logging;
+
 using Wangkanai.Detection.DependencyInjection.Options;
-using Wangkanai.Detection.Internal;
-using Wangkanai.Detection.Responsive;
+using Wangkanai.Detection.Hosting;
+using Wangkanai.Detection.Services;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -41,7 +43,7 @@ namespace Microsoft.Extensions.DependencyInjection
                 throw new ArgumentNullException(nameof(loggerFactory));
 
             var logger = loggerFactory.CreateLogger("Detection.Startup");
-            logger.LogInformation("Starting Detection version {version}", typeof(DetectionApplicationBuilderExtensions).Assembly.GetName().Version.ToString());
+            logger.LogInformation("Starting Detection version {version}", typeof(DetectionApplicationBuilderExtensions)?.Assembly?.GetName()?.Version?.ToString());
 
             var scopeFactory = app.ApplicationServices.GetService<IServiceScopeFactory>();
 

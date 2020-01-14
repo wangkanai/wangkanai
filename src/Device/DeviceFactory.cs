@@ -3,6 +3,8 @@
 
 using System;
 
+using Wangkanai.Detection.Models;
+
 namespace Wangkanai.Detection
 {
     public class DeviceFactory : IDeviceFactory

@@ -3,6 +3,10 @@
 
 using System;
 
+using Wangkanai.Detection.Models;
+
+using OperatingSystem = Wangkanai.Detection.Models.OperatingSystem;
+
 namespace Wangkanai.Detection
 {
     public interface IPlatformFactory
