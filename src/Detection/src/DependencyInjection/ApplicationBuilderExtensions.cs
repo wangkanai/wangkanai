@@ -24,14 +24,14 @@ namespace Microsoft.Extensions.DependencyInjection
             if (app is null)
                 throw new ArgumentNullException(nameof(app));
 
-            app.Validate();
+            app.DetectionValidate();
 
             VerifyMarkerIsRegistered(app);
 
             return app;
         }
 
-        internal static void Validate(this IApplicationBuilder app)
+        internal static void DetectionValidate(this IApplicationBuilder app)
         {
             var loggerFactory = app.ApplicationServices.GetService(typeof(ILoggerFactory)) as ILoggerFactory;
             if (loggerFactory is null)

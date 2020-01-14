@@ -26,7 +26,7 @@ namespace Microsoft.Extensions.DependencyInjection
             if (app is null)
                 throw new ArgumentNullException(nameof(app));
 
-            app.Validate();
+            app.ResponsiveValidate();
 
             VerifyMarkerIsRegistered(app);
 
@@ -35,7 +35,7 @@ namespace Microsoft.Extensions.DependencyInjection
             return app;
         }
 
-        internal static void Validate(this IApplicationBuilder app)
+        internal static void ResponsiveValidate(this IApplicationBuilder app)
         {
             var loggerFactory = app.ApplicationServices.GetService(typeof(ILoggerFactory)) as ILoggerFactory;
             if (loggerFactory is null)

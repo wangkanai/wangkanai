@@ -19,9 +19,4 @@ Being to target difference clientInfo devices with seperation of concern is cruc
     <PackageIconUrl>https://raw.githubusercontent.com/wangkanai/Detection/dev/asset/avatar.png</PackageIconUrl>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\Responsive.Core\src\Wangkanai.Responsive.Core.csproj" />
-    <ProjectReference Include="..\..\Responsive.TagHelper\src\Wangkanai.Responsive.TagHelper.csproj" />
-  </ItemGroup>
-
 </Project>

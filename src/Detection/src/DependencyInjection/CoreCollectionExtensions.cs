@@ -12,7 +12,7 @@ namespace Microsoft.Extensions.DependencyInjection
     /// <summary>
     /// Contains extension method to <see cref="IServiceCollection"/> for configuring client services.
     /// </summary>
-    public static class CoreCollectionExtensions
+    public static class DetectionCoreCollectionExtensions
     {
         /// <summary>
         /// Adds the default client service to the services container.
