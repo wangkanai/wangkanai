@@ -4,10 +4,4 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Detection\Detection.csproj" />
-  </ItemGroup>
-
-
-
 </Project>

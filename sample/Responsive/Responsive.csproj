@@ -6,8 +6,4 @@
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Detection\Detection.csproj" />
-  </ItemGroup>
-
 </Project>
