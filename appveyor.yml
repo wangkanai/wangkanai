@@ -17,8 +17,7 @@ branches:
   only:
     - master
     - dev
-    - merge
-    - /^merges\/.$/
+    - /^feature\/.$/
     - /^release\/.$/
     - /^(.*\/)?ci-.*$/
 build_script:
