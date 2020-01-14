@@ -5,15 +5,16 @@ using Wangkanai.Detection.Services;
 
 namespace Wangkanai.Detection
 {
-    public class PlatformResolver : BaseResolver, IPlatformResolver
+    public class PlatformResolver : BaseResolver//, IPlatformResolver
     {
         public IPlatformFactory Platform => _platform;
 
         private readonly IPlatformFactory _platform;
 
-        public PlatformResolver(IUserAgentService service)
-            : base(service)
+        public PlatformResolver(IUserAgentService service) : base(service)
         {
+            if (service is null)
+                throw new System.ArgumentNullException(nameof(service));
         }
     }
 }

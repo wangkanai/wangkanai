@@ -10,7 +10,7 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IDetectionCoreBuilder AddPlatform(
             this IDetectionCoreBuilder builder)
         {
-            builder.Services.AddTransient<IPlatformResolver, PlatformResolver>();
+            builder.Services.AddTransient<PlatformResolver>();
 
             return builder;
         }
