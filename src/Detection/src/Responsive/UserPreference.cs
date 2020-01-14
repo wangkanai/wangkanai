@@ -3,7 +3,7 @@
 
 using Wangkanai.Detection;
 
-namespace Wangkanai.Responsive
+namespace Wangkanai.Detection.Responsive
 {
     public class UserPreference
     {

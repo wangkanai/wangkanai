@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Http;
 
 using Wangkanai.Detection;
 
-namespace Wangkanai.Responsive
+namespace Wangkanai.Detection.Responsive
 {
     //public class CookieManager : IDeviceManager
     //{

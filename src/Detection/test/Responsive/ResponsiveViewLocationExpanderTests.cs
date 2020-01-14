@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Razor;
 
 using Wangkanai.Detection;
-
+using Wangkanai.Detection.Responsive;
 using Xunit;
 
 namespace Wangkanai.Responsive.Core

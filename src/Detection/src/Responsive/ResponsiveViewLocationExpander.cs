@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc.Razor;
 
 using Wangkanai.Detection;
 
-namespace Wangkanai.Responsive
+namespace Wangkanai.Detection.Responsive
 {
     /// <summary>
     /// a <see cref="IViewLocationExpander"/> that adds the responsive as an extension prefix to view names.

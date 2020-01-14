@@ -6,7 +6,7 @@ using System;
 using Wangkanai.Detection;
 using Wangkanai.Detection.DependencyInjection.Options;
 
-namespace Wangkanai.Responsive
+namespace Wangkanai.Detection.Responsive
 {
     public class ResolverManager
     {

@@ -4,7 +4,7 @@
 using System;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Wangkanai.Detection.DependencyInjection.Options;
-using Wangkanai.Responsive;
+using Wangkanai.Detection.Responsive;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
