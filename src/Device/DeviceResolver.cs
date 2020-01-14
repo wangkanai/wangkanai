@@ -2,6 +2,7 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System.Linq;
+using Wangkanai.Detection.Models;
 using Wangkanai.Detection.Services;
 
 namespace Wangkanai.Detection
@@ -25,24 +26,24 @@ namespace Wangkanai.Detection
 
             // tablet user agent keyword detection
             if (agent != null && TabletCollection.Keywords.Any(keyword => agent.Contains(keyword)))
-                return Detection.Device.Tablet;
+                return Models.Device.Tablet;
             // mobile user agent keyword detection
             if (agent != null && MobileCollection.Keywords.Any(keyword => agent.Contains(keyword)))
-                return Detection.Device.Mobile;
+                return Models.Device.Mobile;
             // mobile user agent prefix detection
             if (agent?.Length >= 4 && MobileCollection.Prefixes.Any(prefix => agent.StartsWith(prefix)))
-                return Detection.Device.Mobile;
+                return Models.Device.Mobile;
             // mobile opera mini special case
             if (request.Headers.Any(header => header.Value.Any(value => value.Contains("OperaMini"))))
-                return Detection.Device.Mobile;
+                return Models.Device.Mobile;
             // mobile user agent prof detection
             if (request.Headers.ContainsKey("x-wap-profile") || request.Headers.ContainsKey("Profile"))
-                return Detection.Device.Mobile;
+                return Models.Device.Mobile;
             // mobile accept-header base detection
             if (request.Headers["Accept"].Any(accept => accept.ToLowerInvariant() == "wap"))
-                return Detection.Device.Mobile;
+                return Models.Device.Mobile;
 
-            return Detection.Device.Desktop;
+            return Models.Device.Desktop;
         }
     }
 }

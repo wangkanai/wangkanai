@@ -3,6 +3,7 @@
 
 using System;
 using Wangkanai.Detection.Extensions;
+using Wangkanai.Detection.Models;
 
 namespace Wangkanai.Detection
 {

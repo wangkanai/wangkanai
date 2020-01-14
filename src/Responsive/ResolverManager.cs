@@ -5,6 +5,7 @@ using System;
 
 using Wangkanai.Detection;
 using Wangkanai.Detection.DependencyInjection.Options;
+using Wangkanai.Detection.Models;
 
 namespace Wangkanai.Detection.Responsive
 {

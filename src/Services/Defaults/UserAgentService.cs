@@ -6,6 +6,7 @@ using System.Linq;
 
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using Wangkanai.Detection.Models;
 
 namespace Wangkanai.Detection.Services
 {

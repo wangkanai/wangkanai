@@ -2,6 +2,7 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using Wangkanai.Detection;
+using Wangkanai.Detection.Models;
 
 namespace Wangkanai.Detection.Responsive
 {
