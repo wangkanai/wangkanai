@@ -3,17 +3,17 @@
 
 namespace System
 {
-    public class ResponsiveBuilderArgumentNullException : ArgumentNullException
-    {
-        public ResponsiveBuilderArgumentNullException(string paramName) : base(paramName)
-        {
-        }
-    }
+    //public class ResponsiveBuilderArgumentNullException : ArgumentNullException
+    //{
+    //    public ResponsiveBuilderArgumentNullException(string paramName) : base(paramName)
+    //    {
+    //    }
+    //}
 
-    public class ResponsiveCoreBuilderArgumentNullException : ArgumentNullException
-    {
-        public ResponsiveCoreBuilderArgumentNullException(string paramName) : base(paramName)
-        {
-        }
-    }
+    //public class ResponsiveCoreBuilderArgumentNullException : ArgumentNullException
+    //{
+    //    public ResponsiveCoreBuilderArgumentNullException(string paramName) : base(paramName)
+    //    {
+    //    }
+    //}
 }

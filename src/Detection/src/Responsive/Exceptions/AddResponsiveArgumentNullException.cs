@@ -3,10 +3,10 @@
 
 namespace System
 {
-    public class AddResponsiveArgumentNullException : ArgumentNullException
-    {
-        public AddResponsiveArgumentNullException(string paramName) : base(paramName)
-        {
-        }
-    }
+    //public class AddResponsiveArgumentNullException : ArgumentNullException
+    //{
+    //    public AddResponsiveArgumentNullException(string paramName) : base(paramName)
+    //    {
+    //    }
+    //}
 }
