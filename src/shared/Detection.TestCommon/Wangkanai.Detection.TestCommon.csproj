@@ -16,4 +16,8 @@
     <PackageReference Include="xunit.extensibility.core" Version="2.4.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\sample\Detection\Detection.csproj" />
+  </ItemGroup>
+
 </Project>
