@@ -13,8 +13,4 @@
     <PackageReference Include="Moq" Version="4.13.1" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\src\Wangkanai.Detection.Crawler.csproj" />
-  </ItemGroup>
-
 </Project>

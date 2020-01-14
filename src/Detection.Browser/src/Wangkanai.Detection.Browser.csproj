@@ -19,8 +19,4 @@
 
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\Detection.Core\src\Wangkanai.Detection.Core.csproj" />
-  </ItemGroup>
-
 </Project>
