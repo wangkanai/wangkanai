@@ -18,10 +18,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{C26D86D6-4B4E-407E-9F1D-9CA1765768CE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection", "src\Detection\src\Wangkanai.Detection.csproj", "{FD31B4D4-C323-4A52-9801-EAAA0F155FD0}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection.Test", "src\Detection\test\Wangkanai.Detection.Test.csproj", "{22D33522-DD51-4436-97B7-DF9C497F7F00}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Detection", "sample\Detection\Detection.csproj", "{FA89F64C-D456-427F-B54B-3F9CA05D07BF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Responsive", "sample\Responsive\Responsive.csproj", "{4B54E689-97E0-47A0-96F9-B44E29110C59}"
@@ -30,20 +26,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RazorApp", "sample\RazorApp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResponsiveOption", "sample\ResponsiveOption\ResponsiveOption.csproj", "{71407BC8-E9D1-4B8C-8BD1-911AC7A9E13E}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection", "src\Wangkanai.Detection.csproj", "{51A6265E-2C74-43C8-9A5A-A23F88671DED}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection.Test", "test\Wangkanai.Detection.Test.csproj", "{A72D51C5-D90B-4624-B6B6-B67028D64B63}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FD31B4D4-C323-4A52-9801-EAAA0F155FD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FD31B4D4-C323-4A52-9801-EAAA0F155FD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FD31B4D4-C323-4A52-9801-EAAA0F155FD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FD31B4D4-C323-4A52-9801-EAAA0F155FD0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{22D33522-DD51-4436-97B7-DF9C497F7F00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{22D33522-DD51-4436-97B7-DF9C497F7F00}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{22D33522-DD51-4436-97B7-DF9C497F7F00}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{22D33522-DD51-4436-97B7-DF9C497F7F00}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FA89F64C-D456-427F-B54B-3F9CA05D07BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FA89F64C-D456-427F-B54B-3F9CA05D07BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA89F64C-D456-427F-B54B-3F9CA05D07BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -60,6 +52,14 @@ Global
 		{71407BC8-E9D1-4B8C-8BD1-911AC7A9E13E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71407BC8-E9D1-4B8C-8BD1-911AC7A9E13E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71407BC8-E9D1-4B8C-8BD1-911AC7A9E13E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51A6265E-2C74-43C8-9A5A-A23F88671DED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51A6265E-2C74-43C8-9A5A-A23F88671DED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51A6265E-2C74-43C8-9A5A-A23F88671DED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51A6265E-2C74-43C8-9A5A-A23F88671DED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A72D51C5-D90B-4624-B6B6-B67028D64B63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A72D51C5-D90B-4624-B6B6-B67028D64B63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A72D51C5-D90B-4624-B6B6-B67028D64B63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A72D51C5-D90B-4624-B6B6-B67028D64B63}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
