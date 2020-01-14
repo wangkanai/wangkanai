@@ -18,11 +18,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{C26D86D6-4B4E-407E-9F1D-9CA1765768CE}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "collection", "collection", "{69C93D15-B5AA-451C-A7A5-8E8D2DD91E9E}"
-	ProjectSection(SolutionItems) = preProject
-		collection\useragents.tsv = collection\useragents.tsv
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Detection", "Detection", "{E293761D-469D-4C21-AB88-AC6AA392DFF1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Detection.Core", "Detection.Core", "{C6E66325-D322-4127-A1F7-511CFFF4BC9E}"
@@ -90,8 +85,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RazorApp", "sample\RazorApp\RazorApp.csproj", "{D13A343E-1D8D-4483-8012-837D1329D5FA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResponsiveOption", "sample\ResponsiveOption\ResponsiveOption.csproj", "{71407BC8-E9D1-4B8C-8BD1-911AC7A9E13E}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "doc", "doc\doc.csproj", "{A28073F7-AB45-4775-8E08-BDBB7B3CF1A8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{93F6805D-F105-4D4E-91EB-39DEF3600B39}"
 EndProject
@@ -199,10 +192,6 @@ Global
 		{71407BC8-E9D1-4B8C-8BD1-911AC7A9E13E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71407BC8-E9D1-4B8C-8BD1-911AC7A9E13E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71407BC8-E9D1-4B8C-8BD1-911AC7A9E13E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A28073F7-AB45-4775-8E08-BDBB7B3CF1A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A28073F7-AB45-4775-8E08-BDBB7B3CF1A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A28073F7-AB45-4775-8E08-BDBB7B3CF1A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A28073F7-AB45-4775-8E08-BDBB7B3CF1A8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{085D0DC7-C833-4D4F-AA78-67366FD65C43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{085D0DC7-C833-4D4F-AA78-67366FD65C43}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{085D0DC7-C833-4D4F-AA78-67366FD65C43}.Release|Any CPU.ActiveCfg = Release|Any CPU
