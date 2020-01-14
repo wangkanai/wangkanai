@@ -5,7 +5,7 @@ using Wangkanai.Detection.Services;
 
 namespace Wangkanai.Detection
 {
-    public class PlatformResolver : BaseResolver
+    public class PlatformResolver : BaseResolver, IPlatformResolver
     {
         public IPlatformFactory Platform => _platform;
 
