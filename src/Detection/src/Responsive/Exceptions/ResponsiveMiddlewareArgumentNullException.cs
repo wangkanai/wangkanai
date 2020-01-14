@@ -3,13 +3,6 @@
 
 namespace System
 {
-    //public class ResponsiveMiddlewareArgumentNullException : ArgumentNullException
-    //{
-    //    public ResponsiveMiddlewareArgumentNullException(string paramName) : base(paramName)
-    //    {
-    //    }
-    //}
-
     public class ResponsiveMiddlewareNextArgumentNullException : ArgumentNullException
     {
         public ResponsiveMiddlewareNextArgumentNullException(string paramName) : base(paramName)
