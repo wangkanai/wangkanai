@@ -6,7 +6,7 @@ using Wangkanai.Detection.Services;
 
 namespace Wangkanai.Detection
 {
-    public class BrowserResolver : BaseResolver//, IBrowserResolver
+    public class BrowserResolver : BaseResolver
     {
         public IBrowserFactory Browser { get; }
 

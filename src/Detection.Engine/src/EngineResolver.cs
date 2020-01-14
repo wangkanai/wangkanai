@@ -5,7 +5,7 @@ using Wangkanai.Detection.Services;
 
 namespace Wangkanai.Detection
 {
-    public class EngineResolver : BaseResolver//, IEngineResolver
+    public class EngineResolver : BaseResolver
     {
         public IEngineFactory Engine => _engine;
 
