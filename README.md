@@ -11,8 +11,6 @@
 
 - **Wangkanai.Detection**
   [![MyGet Badge](https://buildstats.info/myget/wangkanai/Wangkanai.detection)](https://www.myget.org/feed/wangkanai/package/nuget/Wangkanai.detection)
-- **Wangkanai.Responsive**
-  [![MyGet Badge](https://buildstats.info/myget/wangkanai/Wangkanai.Responsive)](https://www.myget.org/feed/wangkanai/package/nuget/Wangkanai.Responsive)
 
 ### ASP.NET Core 2.X (Branch: [master](https://github.com/wangkanai/Detection/tree/master))
 
@@ -40,12 +38,6 @@ Installation of detection library is now done with a single package reference po
 PM> install-package Wangkanai.Detection
 ```
 
-Installation of Responsive library will bring in all dependency packages (This will include `Wangkanai.Detection.Device).
-
-```powershell
-PM> install-package Wangkanai.Responsive
-```
-
 ## Configuration
 
 This library host the component to resolve the access client device type.
@@ -65,26 +57,13 @@ public void ConfigureServices(IServiceCollection services)
 
 * `AddDetection()` Adds the detection services to the services container.
 
-If you would like to add Responsive is configured in the `ConfigureServices` method also:
-
-```csharp
-public void ConfigureServices(IServiceCollection services)
-{
-    // Add responsive services.
-    services.AddResponsive();
-
-    // Add framework services.
-    services.AddControllersWithViews();
-}
-```
-
 Or you can customize the responsive
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
     // Add responsive services.
-    services.AddResponsive(options =>
+    services.AddDetection(options =>
     {
         options.View.DefaultTablet = Device.Desktop;
         options.View.DefaultMobile = Device.Desktop;
@@ -96,10 +75,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-* `AddResponsive()` Adds the Responsive services to the services container.
-
-  * **Suffix** Ex `*views/[controller]/[action]/index.mobile.cshtml*`
-  * **SubFoler** Ex `*views/[controller]/[action]/mobile/index.cshtml*`
+* `AddDetection()` Adds the detection services to the services container.
 
 The current device on a request is set in the Responsive middleware. The Responsive middleware is enabled in the `Configure` method of *Startup.cs* file.
 
@@ -108,7 +84,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 {
     app.UseRouting();
 
-    app.UseResponsive();
+    app.UseDetection();
 
     app.UseEndpoints(endpoints => endpoints.MapDefaultControllerRoute());
 }
