@@ -2,11 +2,13 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
+using System.Diagnostics;
 
 namespace Wangkanai.Detection.Extensions
 {
     public static class DetectionVersionExtensions
     {
+        [DebuggerStepThrough]
         public static Version ToVersion(this string version)
         {
             version = version.ToLower()

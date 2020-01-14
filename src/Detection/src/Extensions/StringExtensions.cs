@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 
-namespace Wangkanai.Responsive
+namespace Wangkanai.Detection.Extensions
 {
     internal static class StringExtensions
     {
