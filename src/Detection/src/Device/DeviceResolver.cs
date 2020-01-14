@@ -6,7 +6,7 @@ using Wangkanai.Detection.Services;
 
 namespace Wangkanai.Detection
 {
-    public sealed class DeviceResolver : BaseResolver
+    public sealed class DeviceResolver : BaseResolver, IDeviceResolver
     {
         /// <summary>
         /// Get device result of device result
