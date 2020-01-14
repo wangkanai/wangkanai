@@ -3,9 +3,9 @@
 
 using Xunit;
 
-namespace Wangkanai.Detection.EngineTest
+namespace Wangkanai.Detection.Models
 {
-    public class EngineTest
+    public class PlatformTest
     {
         [Fact]
         public void cast_valid_type()
