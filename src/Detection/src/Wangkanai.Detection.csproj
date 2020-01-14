@@ -20,11 +20,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Detection.Browser\src\Wangkanai.Detection.Browser.csproj" />
-    <ProjectReference Include="..\..\Detection.Crawler\src\Wangkanai.Detection.Crawler.csproj" />
-    <ProjectReference Include="..\..\Detection.Device\src\Wangkanai.Detection.Device.csproj" />
-    <ProjectReference Include="..\..\Detection.Engine\src\Wangkanai.Detection.Engine.csproj" />
-    <ProjectReference Include="..\..\Detection.Platform\src\Wangkanai.Detection.Platform.csproj" />
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 
 </Project>

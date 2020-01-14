@@ -24,12 +24,13 @@ namespace ResponsiveOption
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddResponsive(options =>
-            {
-                options.View.DefaultTablet = Device.Desktop;
-                options.View.DefaultMobile = Device.Mobile;
-                options.View.DefaultDesktop = Device.Desktop;
-            });
+            services.AddDetection();
+            //services.AddResponsive(options =>
+            //{
+            //    options.View.DefaultTablet = Device.Desktop;
+            //    options.View.DefaultMobile = Device.Mobile;
+            //    options.View.DefaultDesktop = Device.Desktop;
+            //});
 
             services.AddControllersWithViews();
         }
@@ -50,7 +51,7 @@ namespace ResponsiveOption
 
             app.UseRouting();
 
-            app.UseResponsive();
+            app.UseDetection();
 
             app.UseEndpoints(endpoints =>
             {

@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Wangkanai.Detection;
 
 namespace Responsive
 {
@@ -23,7 +22,7 @@ namespace Responsive
         public void ConfigureServices(IServiceCollection services)
         {
             // Add responsive services.
-            services.AddResponsive();
+            services.AddDetection();
 
             // Add framework services.
             services.AddControllersWithViews();
@@ -45,7 +44,7 @@ namespace Responsive
 
             app.UseRouting();
 
-            app.UseResponsive();
+            app.UseDetection();
 
             app.UseEndpoints(endpoints => endpoints.MapDefaultControllerRoute());
         }

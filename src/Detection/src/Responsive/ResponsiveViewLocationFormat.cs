@@ -1,0 +1,14 @@
+// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
+// The Apache v2. See License.txt in the project root for license information.
+
+namespace Wangkanai.Detection.Responsive
+{
+    /// <summary>
+    /// Specifies the GetDevice view formar for <see cref="ResponsiveViewLocationExpander"/>.
+    /// </summary>
+    public enum ResponsiveViewLocationFormat
+    {
+        Subfolder,
+        Suffix
+    }
+}

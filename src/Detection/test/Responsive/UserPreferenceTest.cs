@@ -1,0 +1,20 @@
+// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
+// The Apache v2. See License.txt in the project root for license information.
+
+using Wangkanai.Detection;
+using Wangkanai.Detection.Responsive;
+using Xunit;
+
+namespace Wangkanai.Responsive.Core
+{
+    public class UserPreferenceTest
+    {
+        [Fact]
+        public void Preferred_Cookie_over_Resolver()
+        {
+            var preference = new UserPreference(Device.Mobile, Device.Desktop);
+
+            Assert.Equal("Desktop", preference.Preferred);
+        }
+    }
+}
