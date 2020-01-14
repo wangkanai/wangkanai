@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Logging;
 using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Services;
-using Wangkanai.Detection.Responsive;
+using Wangkanai.Detection.Hosting;
 
 namespace Microsoft.Extensions.DependencyInjection
 {

@@ -11,7 +11,7 @@ using Wangkanai.Detection.DependencyInjection.Options;
 
 using Xunit;
 
-namespace Wangkanai.Detection.Responsive
+namespace Wangkanai.Detection.Hosting
 {
     public class ResponsiveMiddlewareTests
     {

@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 
-using Wangkanai.Detection;
 using Wangkanai.Detection.DependencyInjection.Options;
+using Wangkanai.Detection.Responsive;
 
-namespace Wangkanai.Detection.Responsive
+namespace Wangkanai.Detection.Hosting
 {
     public class ResponsiveMiddleware
     {
