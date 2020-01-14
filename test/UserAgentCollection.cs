@@ -1,7 +1,6 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
+
 using Xunit.Sdk;
 
 namespace Wangkanai.Detection
@@ -23,8 +22,10 @@ namespace Wangkanai.Detection
     {
         private readonly Device device;
         private readonly Browser browser;
+
         //private readonly PlatformType platform;
         private readonly Engine engine;
+
         private readonly string agent;
 
         public UserAgentDataAttribute(Device device, Browser browser, Engine engine, string agent)

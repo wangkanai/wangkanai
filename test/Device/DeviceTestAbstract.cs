@@ -4,6 +4,7 @@
 using Microsoft.AspNetCore.Http;
 
 using Moq;
+
 using Wangkanai.Detection.Services;
 
 namespace Wangkanai.Detection.Test

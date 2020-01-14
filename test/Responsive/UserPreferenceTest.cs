@@ -1,11 +1,9 @@
 // Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
-using Wangkanai.Detection;
-using Wangkanai.Detection.Responsive;
 using Xunit;
 
-namespace Wangkanai.Responsive.Core
+namespace Wangkanai.Detection.Responsive
 {
     public class UserPreferenceTest
     {

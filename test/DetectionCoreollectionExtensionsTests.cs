@@ -6,7 +6,9 @@ using System.Collections.Generic;
 
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+
 using Wangkanai.Detection.Services;
+
 using Xunit;
 
 namespace Wangkanai.Detection.Test
