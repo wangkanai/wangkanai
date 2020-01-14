@@ -9,11 +9,11 @@ namespace Wangkanai.Responsive
     /// <summary>
     /// Provides programmatic configuration for the Responsive framework.
     /// </summary>
-    public class ResponsiveOptions
-    {
-        /// <summary>
-        /// Get or set the option to configure the default view.
-        /// </summary>
-        public ViewLocationOptions View { get; set; } = new ViewLocationOptions();
-    }
+    //public class ResponsiveOptions
+    //{
+    //    /// <summary>
+    //    /// Get or set the option to configure the default view.
+    //    /// </summary>
+    //    public ViewLocationOptions View { get; set; } = new ViewLocationOptions();
+    //}
 }

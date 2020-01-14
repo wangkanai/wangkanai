@@ -5,16 +5,16 @@ using System;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
-    public class ResponsiveBuilder : IResponsiveBuilder
-    {
-        public IServiceCollection Services { get; }
+    //public class ResponsiveBuilder : IResponsiveBuilder
+    //{
+    //    public IServiceCollection Services { get; }
 
-        public ResponsiveBuilder(IServiceCollection services)
-        {
-            if (services is null)
-                throw new ArgumentNullException(nameof(services));
+    //    public ResponsiveBuilder(IServiceCollection services)
+    //    {
+    //        if (services is null)
+    //            throw new ArgumentNullException(nameof(services));
 
-            Services = services;
-        }
-    }
+    //        Services = services;
+    //    }
+    //}
 }

@@ -23,7 +23,7 @@ namespace RazorApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddResponsive();
+            services.AddDetection();
 
             services.AddRazorPages();
         }
@@ -42,7 +42,7 @@ namespace RazorApp
                 app.UseHsts();
             }
 
-            app.UseResponsive();
+            app.UseDetection();
 
             app.UseStaticFiles();
 

@@ -9,37 +9,37 @@ using Wangkanai.Responsive;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
-    public static class ViewBuilderExtensions
-    {
-        public static IResponsiveCoreBuilder AddViewSuffix(
-            this IResponsiveCoreBuilder builder)
-        {
-            if (builder is null)
-                throw new ViewBuilderExtensionsSuffixArgumentNullException(nameof(builder));
+    //public static class ViewBuilderExtensions
+    //{
+    //    public static IResponsiveCoreBuilder AddViewSuffix(
+    //        this IResponsiveCoreBuilder builder)
+    //    {
+    //        if (builder is null)
+    //            throw new ViewBuilderExtensionsSuffixArgumentNullException(nameof(builder));
 
-            return AddViewLocation(builder, ResponsiveViewLocationFormat.Suffix);
-        }
+    //        return AddViewLocation(builder, ResponsiveViewLocationFormat.Suffix);
+    //    }
 
-        public static IResponsiveCoreBuilder AddViewSubfolder(
-            this IResponsiveCoreBuilder builder)
-        {
-            if (builder is null)
-                throw new ViewBuilderExtensionsSubfolderArgumentNullException(nameof(builder));
+    //    public static IResponsiveCoreBuilder AddViewSubfolder(
+    //        this IResponsiveCoreBuilder builder)
+    //    {
+    //        if (builder is null)
+    //            throw new ViewBuilderExtensionsSubfolderArgumentNullException(nameof(builder));
 
-            return AddViewLocation(builder, ResponsiveViewLocationFormat.Subfolder);
-        }
+    //        return AddViewLocation(builder, ResponsiveViewLocationFormat.Subfolder);
+    //    }
 
-        private static IResponsiveCoreBuilder AddViewLocation(
-            this IResponsiveCoreBuilder builder,
-            ResponsiveViewLocationFormat format)
-        {
-            builder.Services.Configure<RazorViewEngineOptions>(
-                options =>
-                {
-                    options.ViewLocationExpanders.Add(new ResponsiveViewLocationExpander(format));
-                });
+    //    private static IResponsiveCoreBuilder AddViewLocation(
+    //        this IResponsiveCoreBuilder builder,
+    //        ResponsiveViewLocationFormat format)
+    //    {
+    //        builder.Services.Configure<RazorViewEngineOptions>(
+    //            options =>
+    //            {
+    //                options.ViewLocationExpanders.Add(new ResponsiveViewLocationExpander(format));
+    //            });
 
-            return builder;
-        }
-    }
+    //        return builder;
+    //    }
+    //}
 }

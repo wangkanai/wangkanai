@@ -3,8 +3,8 @@
 
 namespace Microsoft.Extensions.DependencyInjection
 {
-    public interface IResponsiveBuilder
-    {
-        IServiceCollection Services { get; }
-    }
+    //public interface IResponsiveBuilder
+    //{
+    //    IServiceCollection Services { get; }
+    //}
 }

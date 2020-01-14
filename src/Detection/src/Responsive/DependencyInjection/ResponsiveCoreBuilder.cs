@@ -8,26 +8,26 @@ namespace Microsoft.Extensions.DependencyInjection
     /// <summary>
     /// Helper functions for configuring detection core services.
     /// </summary>
-    public class ResponsiveCoreBuilder : IResponsiveCoreBuilder
-    {
-        /// <summary>
-        /// Creates a new instance of <see cref="DetectionCoreBuilder"/>.
-        /// </summary>
-        /// <param name="services">The <see cref="IServiceCollection"/> to attach to.</param>
-        public ResponsiveCoreBuilder(IServiceCollection services)
-        {
-            if (services is null)
-                throw new ArgumentNullException(nameof(services));
+    //public class ResponsiveCoreBuilder : IResponsiveCoreBuilder
+    //{
+    //    /// <summary>
+    //    /// Creates a new instance of <see cref="DetectionCoreBuilder"/>.
+    //    /// </summary>
+    //    /// <param name="services">The <see cref="IServiceCollection"/> to attach to.</param>
+    //    public ResponsiveCoreBuilder(IServiceCollection services)
+    //    {
+    //        if (services is null)
+    //            throw new ArgumentNullException(nameof(services));
 
-            Services = services;
-        }
+    //        Services = services;
+    //    }
 
-        /// <summary>
-        /// Gets the <see cref="IServiceCollection"/> services are attached to.
-        /// </summary>
-        /// <value>
-        /// The <see cref="IServiceCollection"/> services are attached to.
-        /// </value>
-        public IServiceCollection Services { get; }
-    }
+    //    /// <summary>
+    //    /// Gets the <see cref="IServiceCollection"/> services are attached to.
+    //    /// </summary>
+    //    /// <value>
+    //    /// The <see cref="IServiceCollection"/> services are attached to.
+    //    /// </value>
+    //    public IServiceCollection Services { get; }
+    //}
 }

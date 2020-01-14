@@ -6,14 +6,14 @@ namespace Microsoft.Extensions.DependencyInjection
     /// <summary>
     /// Responsive Core builder Interface
     /// </summary>
-    public interface IResponsiveCoreBuilder
-    {
-        /// <summary>
-        /// Gets the services.
-        /// </summary>
-        /// <value>
-        /// The services.
-        /// </value>
-        IServiceCollection Services { get; }
-    }
+    //public interface IResponsiveCoreBuilder
+    //{
+    //    /// <summary>
+    //    /// Gets the services.
+    //    /// </summary>
+    //    /// <value>
+    //    /// The services.
+    //    /// </value>
+    //    IServiceCollection Services { get; }
+    //}
 }

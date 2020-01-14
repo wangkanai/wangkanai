@@ -9,48 +9,48 @@ using Xunit;
 
 namespace Wangkanai.Responsive.Test
 {
-    public class ResponsiveCollectionExtensionsTests
-    {
-        private readonly int total = 17;
+    //public class ResponsiveCollectionExtensionsTests
+    //{
+    //    private readonly int total = 17;
 
-        [Fact]
-        public void AddResponsive_Services()
-        {
-            var service = new ServiceCollection();
-            var expected = service.Count + total;
-            var builder = service.AddResponsive();
+    //    [Fact]
+    //    public void AddResponsive_Services()
+    //    {
+    //        var service = new ServiceCollection();
+    //        var expected = service.Count + total;
+    //        var builder = service.AddResponsive();
 
-            Assert.Equal(expected, builder.Services.Count);
-            Assert.Same(service, builder.Services);
-        }
+    //        Assert.Equal(expected, builder.Services.Count);
+    //        Assert.Same(service, builder.Services);
+    //    }
 
-        [Fact]
-        public void AddResponsive_Null_ArgumentNullException()
-        {
-            Assert.Throws<ArgumentNullException>(CreateResponsiveNullService);
-        }
+    //    [Fact]
+    //    public void AddResponsive_Null_ArgumentNullException()
+    //    {
+    //        Assert.Throws<ArgumentNullException>(CreateResponsiveNullService);
+    //    }
 
-        [Fact]
-        public void AddResponsive_Options_Builder_Service()
-        {
-            var service = new ServiceCollection();
-            var expected = service.Count + total;
-            var builder = service.AddResponsive(options =>
-            {
-                options.View.DefaultTablet = Device.Desktop;
-            });
+    //    [Fact]
+    //    public void AddResponsive_Options_Builder_Service()
+    //    {
+    //        var service = new ServiceCollection();
+    //        var expected = service.Count + total;
+    //        var builder = service.AddResponsive(options =>
+    //        {
+    //            options.View.DefaultTablet = Device.Desktop;
+    //        });
 
-            Assert.Equal(expected, builder.Services.Count);
-            Assert.Same(service, builder.Services);
-        }
+    //        Assert.Equal(expected, builder.Services.Count);
+    //        Assert.Same(service, builder.Services);
+    //    }
 
-        [Fact]
-        public void AddResponsive_Options_Null_ArgumentNullException()
-        {
-            Assert.Throws<ArgumentNullException>(CreateResponsiveNullService);
-        }
+    //    [Fact]
+    //    public void AddResponsive_Options_Null_ArgumentNullException()
+    //    {
+    //        Assert.Throws<ArgumentNullException>(CreateResponsiveNullService);
+    //    }
 
-        private Func<object> CreateResponsiveNullService =
-            () => ((IServiceCollection)null).AddResponsive();
-    }
+    //    private Func<object> CreateResponsiveNullService =
+    //        () => ((IServiceCollection)null).AddResponsive();
+    //}
 }
