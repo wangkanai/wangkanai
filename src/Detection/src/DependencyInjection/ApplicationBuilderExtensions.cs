@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Logging;
 using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Internal;
+using Wangkanai.Responsive;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -27,6 +28,8 @@ namespace Microsoft.Extensions.DependencyInjection
             app.DetectionValidate();
 
             VerifyMarkerIsRegistered(app);
+
+            app.UseMiddleware<ResponsiveMiddleware>();
 
             return app;
         }
