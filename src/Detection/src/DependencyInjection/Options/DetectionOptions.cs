@@ -10,5 +10,6 @@ namespace Wangkanai.Detection.DependencyInjection.Options
     public class DetectionOptions
     {
         public bool Demo { get; set; } = false;
+        public ResponsiveOptions Responsive { get; set; } = new ResponsiveOptions();
     }
 }
