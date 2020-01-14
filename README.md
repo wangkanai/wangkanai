@@ -10,6 +10,7 @@
 ### ASP.NET Core 3.X (Branch: [dev](https://github.com/wangkanai/Detection/tree/dev))
 
 - **Wangkanai.Detection**
+  [![NuGet Badge](https://buildstats.info/nuget/wangkanai.detection?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.detection)
   [![MyGet Badge](https://buildstats.info/myget/wangkanai/Wangkanai.detection)](https://www.myget.org/feed/wangkanai/package/nuget/Wangkanai.detection)
 
 ### ASP.NET Core 2.X (Branch: [master](https://github.com/wangkanai/Detection/tree/master))
