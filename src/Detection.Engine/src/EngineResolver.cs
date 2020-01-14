@@ -5,7 +5,7 @@ using Wangkanai.Detection.Services;
 
 namespace Wangkanai.Detection
 {
-    public class EngineResolver : BaseResolver, IEngineResolver
+    public class EngineResolver : BaseResolver
     {
         public IEngineFactory Engine => _engine;
 
@@ -13,6 +13,8 @@ namespace Wangkanai.Detection
 
         public EngineResolver(IUserAgentService service) : base(service)
         {
+            if (service is null)
+                throw new System.ArgumentNullException(nameof(service));
         }
     }
 }

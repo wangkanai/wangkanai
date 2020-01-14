@@ -6,7 +6,7 @@ using Wangkanai.Detection.Services;
 
 namespace Wangkanai.Detection
 {
-    public class CrawlerResolver : BaseResolver, ICrawlerResolver
+    public class CrawlerResolver : BaseResolver
     {
         public ICrawlerFactory Crawler { get; }
 

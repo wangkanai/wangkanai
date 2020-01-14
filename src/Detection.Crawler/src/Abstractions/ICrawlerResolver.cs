@@ -3,8 +3,9 @@
 
 namespace Wangkanai.Detection
 {
-    public interface ICrawlerResolver : IResolver
+    public interface ICrawlerResolver// : IResolver
     {
         ICrawlerFactory Crawler { get; }
+        UserAgent UserAgent { get; }
     }
 }

@@ -3,8 +3,9 @@
 
 namespace Wangkanai.Detection
 {
-    public interface IEngineResolver : IResolver
+    public interface IEngineResolver// : IResolver
     {
         IEngineFactory Engine { get; }
+        UserAgent UserAgent { get; }
     }
 }

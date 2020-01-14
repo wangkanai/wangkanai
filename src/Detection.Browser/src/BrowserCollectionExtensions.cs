@@ -14,7 +14,7 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <returns>An <see cref="IDetectionCoreBuilder"/> that can be used to further configure the Detection services.</returns>
         public static IDetectionCoreBuilder AddBrowser(this IDetectionCoreBuilder builder)
         {
-            builder.Services.AddTransient<IBrowserResolver, BrowserResolver>();
+            builder.Services.AddTransient<BrowserResolver, BrowserResolver>();
 
             return builder;
         }

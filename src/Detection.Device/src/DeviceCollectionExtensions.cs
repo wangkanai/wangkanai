@@ -15,7 +15,7 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <returns>An <see cref="IDetectionCoreBuilder"/> that can be used to further configure the Detection services.</returns>
         public static IDetectionCoreBuilder AddDevice(this IDetectionCoreBuilder builder)
         {
-            builder.Services.AddTransient<IDeviceResolver, DeviceResolver>();
+            builder.Services.AddTransient<DeviceResolver>();
 
             return builder;
         }
