@@ -3,8 +3,9 @@
 
 namespace Wangkanai.Detection
 {
-    public interface IBrowserResolver : IResolver
+    public interface IBrowserResolver// : IResolver
     {
         IBrowserFactory Browser { get; }
+        UserAgent UserAgent { get; }
     }
 }

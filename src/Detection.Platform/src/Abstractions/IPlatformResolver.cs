@@ -3,8 +3,9 @@
 
 namespace Wangkanai.Detection
 {
-    public interface IPlatformResolver : IResolver
+    public interface IPlatformResolver //: IResolver
     {
         IPlatformFactory Platform { get; }
+        UserAgent UserAgent { get; }
     }
 }
