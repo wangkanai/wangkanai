@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Detection\src\Wangkanai.Detection.csproj" />
+    <None Include="Wangkanai.Detection.csproj" />
   </ItemGroup>
 
 </Project>
