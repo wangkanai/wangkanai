@@ -8,7 +8,7 @@ namespace Wangkanai.Detection
         public Device Device { get; set; }
         public Browser Browser { get; set; }
         //public Platform Platform { get; set; }
-        public EngineType Engine { get; set; }
+        public Engine Engine { get; set; }
         public string? Agent { get; set; }
     }
 }

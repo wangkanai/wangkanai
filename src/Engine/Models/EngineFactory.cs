@@ -9,7 +9,7 @@ namespace Wangkanai.Detection
     {
         public string Name { get; set; }
         public string Maker { get; set; }
-        public EngineType Type { get; set; }
+        public Engine Type { get; set; }
         public Version Version { get; set; }
     }
 }

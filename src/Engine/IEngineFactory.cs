@@ -9,6 +9,6 @@ namespace Wangkanai.Detection
     {
         string Maker { get; }
         Version Version { get; }
-        EngineType Type { get; }
+        Engine Type { get; }
     }
 }

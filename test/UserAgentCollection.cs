@@ -14,7 +14,7 @@ namespace Wangkanai.Detection
                 Device.Desktop,
                 Browser.Opera,
                 //PlatformType.Windows,
-                EngineType.WebKit
+                Engine.WebKit
             },
         };
     }
@@ -24,10 +24,10 @@ namespace Wangkanai.Detection
         private readonly Device device;
         private readonly Browser browser;
         //private readonly PlatformType platform;
-        private readonly EngineType engine;
+        private readonly Engine engine;
         private readonly string agent;
 
-        public UserAgentDataAttribute(Device device, Browser browser, EngineType engine, string agent)
+        public UserAgentDataAttribute(Device device, Browser browser, Engine engine, string agent)
         {
             this.device = device;
             this.browser = browser;
