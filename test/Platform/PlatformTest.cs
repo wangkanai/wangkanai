@@ -3,7 +3,7 @@
 
 using Xunit;
 
-namespace Wangkanai.Detection.Test
+namespace Wangkanai.Detection.PlatformTest
 {
     public class PlatformTest
     {

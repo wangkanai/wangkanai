@@ -9,7 +9,7 @@ using Wangkanai.Detection.Services;
 
 using Xunit;
 
-namespace Wangkanai.Detection.Test
+namespace Wangkanai.Detection.CrawlerTest
 {
     public class CrawlerTest
     {

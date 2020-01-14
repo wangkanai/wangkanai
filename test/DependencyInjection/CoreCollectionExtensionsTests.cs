@@ -11,9 +11,9 @@ using Wangkanai.Detection.Services;
 
 using Xunit;
 
-namespace Wangkanai.Detection.Test
+namespace Wangkanai.Detection.DependencyInjection
 {
-    public class DetectionCoreollectionExtensionsTests
+    public class DetectionCoreCollectionExtensionsTests
     {
         [Fact]
         public void AddDetection_ReturnsExpected()
