@@ -2,7 +2,9 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
+
 using Wangkanai.Detection.Extensions;
+using Wangkanai.Detection.Models;
 
 namespace Wangkanai.Detection.Collections
 {

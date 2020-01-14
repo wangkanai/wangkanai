@@ -1,3 +1,5 @@
+using Wangkanai.Detection.Models;
+
 namespace Wangkanai.Detection
 {
     public class Client

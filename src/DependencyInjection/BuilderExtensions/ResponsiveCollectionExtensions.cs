@@ -2,7 +2,9 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
+
 using Microsoft.AspNetCore.Mvc.Razor;
+
 using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Responsive;
 

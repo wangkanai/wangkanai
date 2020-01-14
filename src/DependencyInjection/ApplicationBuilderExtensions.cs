@@ -2,11 +2,13 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Logging;
+
 using Wangkanai.Detection.DependencyInjection.Options;
-using Wangkanai.Detection.Services;
 using Wangkanai.Detection.Hosting;
+using Wangkanai.Detection.Services;
 
 namespace Microsoft.Extensions.DependencyInjection
 {

@@ -14,10 +14,12 @@ namespace Wangkanai.Detection.DependencyInjection.Options
         /// Gets or sets a value that determine the default view for Mobile
         /// </summary>
         public Device DefaultMobile { get; set; } = Device.Mobile;
+
         /// <summary>
         /// Gets or sets a value that determine the default view for Tablet
         /// </summary>
         public Device DefaultTablet { get; set; } = Device.Tablet;
+
         /// <summary>
         /// Gets or sets a value that determine the default view for Desktop
         /// </summary>

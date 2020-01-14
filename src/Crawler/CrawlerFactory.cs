@@ -2,6 +2,7 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
+
 using Wangkanai.Detection.Extensions;
 using Wangkanai.Detection.Models;
 
@@ -13,7 +14,9 @@ namespace Wangkanai.Detection
         public Crawler Type { get; set; }
         public Version? Version { get; set; }
 
-        public CrawlerFactory() { }
+        public CrawlerFactory()
+        {
+        }
 
         public CrawlerFactory(string name)
         {

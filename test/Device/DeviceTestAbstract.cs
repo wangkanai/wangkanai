@@ -4,7 +4,7 @@
 using Microsoft.AspNetCore.Http;
 
 using Moq;
-
+using Wangkanai.Detection.Models;
 using Wangkanai.Detection.Services;
 
 namespace Wangkanai.Detection.DeviceTest

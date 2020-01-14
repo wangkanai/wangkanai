@@ -2,6 +2,7 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
+
 using Wangkanai.Detection.Models;
 
 namespace Wangkanai.Detection
@@ -14,6 +15,8 @@ namespace Wangkanai.Detection
         public Processor CPU { get; set; }
         public Version? Version { get; set; }
 
-        public PlatformFactory() { }
+        public PlatformFactory()
+        {
+        }
     }
 }

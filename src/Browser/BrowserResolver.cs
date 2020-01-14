@@ -20,22 +20,22 @@ namespace Wangkanai.Detection
             var agent = UserAgent.ToString();
 
             var ie = new InternetExplorer(agent);
-            if (ie.Type == Detection.Browser.IE)
+            if (ie.Type == Models.Browser.IE)
                 return ie;
             var firefox = new Firefox(agent);
-            if (firefox.Type == Detection.Browser.Firefox)
+            if (firefox.Type == Models.Browser.Firefox)
                 return firefox;
             var edge = new Edge(agent);
-            if (edge.Type == Detection.Browser.Edge)
+            if (edge.Type == Models.Browser.Edge)
                 return edge;
             var opera = new Opera(agent);
-            if (opera.Type == Detection.Browser.Opera)
+            if (opera.Type == Models.Browser.Opera)
                 return opera;
             var chrome = new Chrome(agent);
-            if (chrome.Type == Detection.Browser.Chrome)
+            if (chrome.Type == Models.Browser.Chrome)
                 return chrome;
             var safari = new Safari(agent);
-            if (safari.Type == Detection.Browser.Safari)
+            if (safari.Type == Models.Browser.Safari)
                 return safari;
 
             return new BrowserFactory();

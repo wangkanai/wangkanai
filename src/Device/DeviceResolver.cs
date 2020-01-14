@@ -2,6 +2,7 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System.Linq;
+
 using Wangkanai.Detection.Models;
 using Wangkanai.Detection.Services;
 

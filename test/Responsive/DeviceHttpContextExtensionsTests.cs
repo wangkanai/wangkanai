@@ -4,7 +4,7 @@
 using System;
 
 using Microsoft.AspNetCore.Http;
-
+using Wangkanai.Detection.Models;
 using Xunit;
 
 namespace Wangkanai.Detection.Responsive

@@ -2,7 +2,9 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
+
 using Wangkanai.Detection.Models;
+
 using OperatingSystem = Wangkanai.Detection.Models.OperatingSystem;
 
 namespace Wangkanai.Detection
