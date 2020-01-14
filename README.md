@@ -29,7 +29,6 @@ ASP.NET Core Responsive middleware for routing base upon request client device d
 
 ![ASP.NET Core Responsive](https://raw.githubusercontent.com/wangkanai/Detection/dev/asset/aspnet-core-detection-2.svg?sanitize=true)
 
-
 ## Installation
 
 Installation of detection library is now done with a single package reference point.
