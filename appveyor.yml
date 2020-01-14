@@ -1,4 +1,4 @@
-version: 3.0.0-alpha01-build{build}
+version: 3.0.0-alpha02-build{build}
 image:
   - Visual Studio 2019
 init:
