@@ -5,7 +5,7 @@ using System;
 
 using Xunit;
 
-namespace Wangkanai.Detection.Test
+namespace Wangkanai.Detection.Exceptions
 {
     public class DeviceNotFoundExceptionTest
     {

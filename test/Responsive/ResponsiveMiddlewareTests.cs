@@ -7,12 +7,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 
-using Wangkanai.Detection;
 using Wangkanai.Detection.DependencyInjection.Options;
-using Wangkanai.Detection.Responsive;
+
 using Xunit;
 
-namespace Wangkanai.Responsive.Core
+namespace Wangkanai.Detection.Responsive
 {
     public class ResponsiveMiddlewareTests
     {

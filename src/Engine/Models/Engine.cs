@@ -3,7 +3,7 @@
 
 namespace Wangkanai.Detection
 {
-    public enum EngineType
+    public enum Engine
     {
         WebKit,   // iOs (Safari, WebViews, Chrome <28)
         Blink,    // Google Chrome, Opera v15+

@@ -4,9 +4,10 @@
 using Microsoft.AspNetCore.Http;
 
 using Moq;
+
 using Wangkanai.Detection.Services;
 
-namespace Wangkanai.Detection.Test
+namespace Wangkanai.Detection.DeviceTest
 {
     public abstract class DeviceTestAbstract
     {
