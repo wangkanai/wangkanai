@@ -17,6 +17,7 @@ branches:
   only:
     - master
     - dev
+    - merge
     - /^merges\/.$/
     - /^release\/.$/
     - /^(.*\/)?ci-.*$/
