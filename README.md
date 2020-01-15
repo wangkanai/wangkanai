@@ -90,6 +90,16 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 }
 ```
 
+Adding the TagHelper features to your web application with following in your `_ViewImports.cshtml`
+
+```csharp
+@using WebApplication1
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, Wangkanai.Detection
+
+```
+
 ### Directory Structure
 * `src` - The code of this project lives here
 * `collection` - Collection of sample user agents for lab testing
