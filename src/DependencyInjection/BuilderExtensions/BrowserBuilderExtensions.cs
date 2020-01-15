@@ -3,19 +3,18 @@
 
 using Wangkanai.Detection;
 
-// ReSharper disable once CheckNamespace
 namespace Microsoft.Extensions.DependencyInjection
 {
-    public static class DeviceCollectionExtensions
+    public static class BrowserBuilderExtensions
     {
         /// <summary>
-        /// Adds the DeviceResolver service the specified <see cref="IServiceCollection" />.
+        /// Adds the BrowserResolver service to the specific <see cref="IServiceCollection"/>
         /// </summary>
-        /// <param name="builder">The <see cref="IDetectionCoreBuilder" /> to add services to</param>
+        /// <param name="builder">The <see cref="IDetectionCoreBuilder"/> to add services to</param>
         /// <returns>An <see cref="IDetectionCoreBuilder"/> that can be used to further configure the Detection services.</returns>
-        public static IDetectionCoreBuilder AddDeviceService(this IDetectionCoreBuilder builder)
+        public static IDetectionCoreBuilder AddBrowserService(this IDetectionCoreBuilder builder)
         {
-            builder.Services.AddTransient<IDeviceResolver, DeviceResolver>();
+            builder.Services.AddTransient<IBrowserResolver, BrowserResolver>();
 
             return builder;
         }

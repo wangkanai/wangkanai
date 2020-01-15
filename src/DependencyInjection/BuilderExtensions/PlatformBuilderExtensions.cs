@@ -5,7 +5,7 @@ using Wangkanai.Detection;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
-    public static class PlatformCollectionExtensions
+    public static class PlatformBuilderExtensions
     {
         public static IDetectionCoreBuilder AddPlatformService(
             this IDetectionCoreBuilder builder)

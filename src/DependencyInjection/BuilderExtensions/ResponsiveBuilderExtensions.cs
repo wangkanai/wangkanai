@@ -10,7 +10,7 @@ using Wangkanai.Detection.Responsive;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
-    public static class ResponsiveCollectionExtensions
+    public static class ResponsiveBuilderExtensions
     {
         public static IDetectionCoreBuilder AddResponsiveService(
             this IDetectionCoreBuilder builder)

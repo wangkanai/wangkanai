@@ -8,9 +8,8 @@ using Wangkanai.Detection;
 // ReSharper disable once CheckNamespace
 namespace Microsoft.Extensions.DependencyInjection
 {
-    public static class EngineCollectionExtensions
+    public static class EngineBuilderExtensions
     {
-        // Concept idea on adding engine detection to client service
         public static IDetectionCoreBuilder AddEngineService(this IDetectionCoreBuilder builder)
         {
             builder.Services.TryAddTransient<IEngineResolver, EngineResolver>();

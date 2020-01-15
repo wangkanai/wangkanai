@@ -5,7 +5,7 @@ using Wangkanai.Detection;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
-    public static class CrawlerCollectionExtensions
+    public static class CrawlerBuilderExtensions
     {
         public static IDetectionCoreBuilder AddCrawlerService(this IDetectionCoreBuilder builder)
         {
