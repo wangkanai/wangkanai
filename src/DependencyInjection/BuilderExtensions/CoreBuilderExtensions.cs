@@ -29,7 +29,7 @@ namespace Microsoft.Extensions.DependencyInjection
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             // Client Services
-            services.TryAddTransient<IUserAgentService, UserAgentService>();
+            services.TryAddTransient<IUserAgentService, DefaultUserAgentService>();
 
             services.AddOptions();
             services.TryAddSingleton<DetectionMarkerService, DetectionMarkerService>();

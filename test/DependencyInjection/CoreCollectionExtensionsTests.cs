@@ -23,7 +23,7 @@ namespace Wangkanai.Detection.DependencyInjection
             var serviceDescriptors = new List<ServiceDescriptor>
             {
                 new ServiceDescriptor(typeof(IHttpContextAccessor), typeof(HttpContextAccessor), ServiceLifetime.Singleton),
-                new ServiceDescriptor(typeof(IUserAgentService), typeof(UserAgentService), ServiceLifetime.Transient)
+                new ServiceDescriptor(typeof(IUserAgentService), typeof(DefaultUserAgentService), ServiceLifetime.Transient)
             };
 
             Assert.NotNull(builder);
