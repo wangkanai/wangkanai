@@ -1,10 +1,12 @@
 // Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
+using System;
 using System.Collections.Generic;
 
 namespace Wangkanai.Detection
 {
+    [Obsolete]
     public class BotComparer : IEqualityComparer<string>
     {
         public bool Equals(string x, string y)

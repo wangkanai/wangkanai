@@ -8,6 +8,7 @@ using Wangkanai.Detection.Models;
 
 namespace Wangkanai.Detection
 {
+    [Obsolete]
     public class CrawlerFactory : ICrawlerFactory
     {
         public string? Name { get; set; }

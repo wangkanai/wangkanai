@@ -13,7 +13,7 @@ namespace Microsoft.Extensions.DependencyInjection
     /// <summary>
     /// Contains extension method to <see cref="IServiceCollection"/> for configuring client services.
     /// </summary>
-    public static class DetectionCoreCollectionExtensions
+    public static class CoreBuilderExtensions
     {
         /// <summary>
         /// Adds the default client service to the services container.
@@ -29,7 +29,7 @@ namespace Microsoft.Extensions.DependencyInjection
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             // Client Services
-            services.TryAddTransient<IUserAgentService, UserAgentService>();
+            services.TryAddTransient<IUserAgentService, DefaultUserAgentService>();
 
             services.AddOptions();
             services.TryAddSingleton<DetectionMarkerService, DetectionMarkerService>();

@@ -25,7 +25,7 @@ namespace Wangkanai.Detection.Services
                 }
             };
 
-            var useragentService = new UserAgentService(serviceProvider);
+            var useragentService = new DefaultUserAgentService(serviceProvider);
 
             Assert.NotNull(useragentService.Context);
             Assert.NotNull(useragentService.UserAgent);
@@ -41,7 +41,7 @@ namespace Wangkanai.Detection.Services
         [Fact]
         public void Ctor_HttpContextAccessorNotResolved_ThrowsInvalidOperationException()
         {
-            Assert.Throws<InvalidOperationException>(() => new UserAgentService(new ServiceProvider()));
+            Assert.Throws<InvalidOperationException>(() => new DefaultUserAgentService(new ServiceProvider()));
         }
 
         [Fact]
@@ -53,7 +53,7 @@ namespace Wangkanai.Detection.Services
             };
 
             Assert.Null(serviceProvider.HttpContextAccessor.HttpContext);
-            Assert.Throws<ArgumentNullException>(() => new UserAgentService(serviceProvider));
+            Assert.Throws<ArgumentNullException>(() => new DefaultUserAgentService(serviceProvider));
         }
 
         private class ServiceProvider : IServiceProvider
