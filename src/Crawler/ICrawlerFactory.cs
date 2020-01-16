@@ -7,6 +7,7 @@ using Wangkanai.Detection.Models;
 
 namespace Wangkanai.Detection
 {
+    [Obsolete]
     public interface ICrawlerFactory
     {
         string? Name { get; set; }

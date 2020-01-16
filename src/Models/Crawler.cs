@@ -5,7 +5,7 @@ namespace Wangkanai.Detection.Models
 {
     public enum Crawler
     {
-        Others,
+        Unknown,
         Google,
         Bing,
         Yahoo,
@@ -13,6 +13,7 @@ namespace Wangkanai.Detection.Models
         Facebook,
         Twitter,
         LinkedIn,
-        Skype
+        Skype,
+        Others
     }
 }
