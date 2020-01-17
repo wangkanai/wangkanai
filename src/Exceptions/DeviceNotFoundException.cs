@@ -2,10 +2,11 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
+using System.Runtime.InteropServices;
 
 namespace Wangkanai.Detection
 {
-    [System.Runtime.InteropServices.ComVisible(true)]
+    [ComVisible(true)]
     public class DeviceNotFoundException : ArgumentException
     {
         private string _invalidDeviceName; // unrecognized device name
