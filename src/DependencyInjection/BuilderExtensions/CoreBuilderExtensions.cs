@@ -28,10 +28,20 @@ namespace Microsoft.Extensions.DependencyInjection
             // Hosting doesn't add IHttpContextAccessor by default
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-            // Client Services
-            services.TryAddTransient<IUserAgentService, DefaultUserAgentService>();
-
             services.AddOptions();
+            // Add Basic core to services
+            services.TryAddTransient<IUserAgentService, DefaultUserAgentService>();
+            services.TryAddTransient<IDeviceService, DefaultDeviceService>();
+            services.TryAddTransient<IEngineService, DefaultEngineService>();
+            services.TryAddTransient<IPlatformService, DefaultPlatformService>();
+            services.TryAddTransient<IBrowserService, DefaultBrowserService>();
+            services.TryAddTransient<ICrawlerService, DefaultCrawlerService>();
+            services.TryAddTransient<IDetectionService, DefaultDetectionService>();
+
+            // Add Advance featuures to service
+            services.TryAddTransient<IResponsiveService, DefaultResponsiveService>();
+
+            // Completed adding services
             services.TryAddSingleton<DetectionMarkerService, DetectionMarkerService>();
 
             return new DetectionCoreBuilder(services);
