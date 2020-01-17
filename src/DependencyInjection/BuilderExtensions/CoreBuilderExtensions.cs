@@ -31,7 +31,7 @@ namespace Microsoft.Extensions.DependencyInjection
 
             // Add Detection Options
             services.AddOptions();
-            services.AddSingleton(resolver => resolver.GetRequiredService<IOptions<DetectionOptions>>().Value);
+            services.TryAddSingleton(resolver => resolver.GetRequiredService<IOptions<DetectionOptions>>().Value);
 
             // Add Basic core to services
             services.TryAddTransient<IUserAgentService, DefaultUserAgentService>();

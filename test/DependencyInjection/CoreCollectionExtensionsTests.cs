@@ -24,6 +24,14 @@ namespace Wangkanai.Detection.DependencyInjection
             var serviceDescriptors = new List<ServiceDescriptor>
             {
                 new ServiceDescriptor(typeof(IHttpContextAccessor), typeof(HttpContextAccessor), ServiceLifetime.Singleton),
+                // DetectionOptions
+                new ServiceDescriptor(typeof(IOptions<>), typeof(DetectionOptions), ServiceLifetime.Singleton),
+                new ServiceDescriptor(typeof(IOptionsSnapshot<>), typeof(DetectionOptions), ServiceLifetime.Scoped),
+                new ServiceDescriptor(typeof(IOptionsMonitor<>), typeof(DetectionOptions), ServiceLifetime.Singleton),
+                new ServiceDescriptor(typeof(IOptionsFactory<>), typeof(DetectionOptions), ServiceLifetime.Transient),
+                new ServiceDescriptor(typeof(IOptionsMonitorCache<>), typeof(DetectionOptions), ServiceLifetime.Singleton),
+                new ServiceDescriptor(typeof(DetectionOptions), typeof(DetectionOptions), ServiceLifetime.Singleton),
+                // Basic features
                 new ServiceDescriptor(typeof(IUserAgentService), typeof(DefaultUserAgentService), ServiceLifetime.Transient),
                 new ServiceDescriptor(typeof(IDeviceService), typeof(DefaultDeviceService), ServiceLifetime.Transient),
                 new ServiceDescriptor(typeof(IEngineService), typeof(DefaultEngineService), ServiceLifetime.Transient),
