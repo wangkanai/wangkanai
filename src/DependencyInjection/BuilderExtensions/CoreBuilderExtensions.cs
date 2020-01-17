@@ -5,6 +5,7 @@ using System;
 
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.Options;
 using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Services;
 
@@ -27,6 +28,10 @@ namespace Microsoft.Extensions.DependencyInjection
 
             // Hosting doesn't add IHttpContextAccessor by default
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            // Add Detection Options
+            services.AddOptions();
+            services.TryAddSingleton(resolver => resolver.GetRequiredService<IOptions<DetectionOptions>>().Value);
 
             // Add Basic core to services
             services.TryAddTransient<IUserAgentService, DefaultUserAgentService>();
