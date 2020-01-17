@@ -2,6 +2,7 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
+using Microsoft.Extensions.Configuration;
 using Wangkanai.Detection.DependencyInjection.Options;
 
 namespace Microsoft.Extensions.DependencyInjection
@@ -16,31 +17,32 @@ namespace Microsoft.Extensions.DependencyInjection
         /// </summary>
         /// <param name="services">The services available in the application.</param>
         /// <returns>An <see cref="IServiceCollection"/> so that additional calls can be chained.</returns>
-        public static IDetectionBuilder AddDetection(
-            this IServiceCollection services)
-        {
-            return services.AddDetection(options => { });
-        }
-
-        public static IDetectionBuilder AddDetection(
-            this IServiceCollection services,
-            Action<DetectionOptions> setAction            )
+        public static IDetectionBuilder AddDetection(this IServiceCollection services)
         {
             if (services is null)
                 throw new ArgumentNullException(nameof(services));
 
-            services.Configure<DetectionOptions>(setAction);
-
-            services
-                .AddDetectionCore()
-                .AddDevice()
-                .AddBrowser()
-                .AddPlatform()
-                .AddEngine()
-                .AddCrawler()
+            services.AddDetectionCore()
+                //.AddDevice()
+                //.AddBrowser()
+                //.AddPlatform()
+                //.AddEngine()
+                //.AddCrawler()
                 .AddResponsive();
 
             return new DetectionBuilder(services);
+        }
+
+        public static IDetectionBuilder AddDetection(this IServiceCollection services, Action<DetectionOptions> setAction)
+        {
+            services.Configure<DetectionOptions>(setAction);
+            return services.AddDetection();
+        }
+
+        public static IDetectionBuilder AddDetection(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.Configure<DetectionOptions>(configuration);
+            return services.AddDetection();
         }
     }
 }

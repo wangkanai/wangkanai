@@ -3,7 +3,7 @@
 
 using System;
 using System.Linq;
-
+using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Extensions;
 using Wangkanai.Detection.Models;
 
@@ -16,7 +16,7 @@ namespace Wangkanai.Detection.Services
         public Version Version { get; }
         private readonly UserAgent _useragent;
 
-        public DefaultCrawlerService(IUserAgentService useragent)
+        public DefaultCrawlerService(IUserAgentService useragent, DetectionOptions options)
         {
             _useragent = useragent.UserAgent;
             Type = FindCrawlerInUserAgent(_useragent);
@@ -32,6 +32,8 @@ namespace Wangkanai.Detection.Services
             foreach (var name in Enum.GetNames(typeof(Crawler)))
                 if (agent.Contains(name.ToLower()))
                     return (Crawler)Enum.Parse(typeof(Crawler), name);
+
+            //foreach(var name in )
 
             if (useragent.ToString().ToLower().Contains("bot"))
                 return Crawler.Others;
