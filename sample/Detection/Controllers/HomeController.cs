@@ -4,6 +4,7 @@
 using System;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Wangkanai.Detection.Services;
 
 //using Wangkanai.Detection;
 
@@ -11,16 +12,16 @@ namespace Sandbox.Controllers
 {
     public class HomeController : Controller
     {
-        //private readonly IDetection _detection;
+        private readonly IDetectionService _detection;
 
-        public HomeController()//IDetection detection)
+        public HomeController(IDetectionService detection)
         {
-            //_detection = detection;
+            _detection = detection;
         }
 
         public IActionResult Index()
         {
-            return View();// _detection);
+            return View(_detection);
         }
     }
 }

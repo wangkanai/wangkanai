@@ -1,11 +1,11 @@
-@*@model Wangkanai.Detection.Detection*@
+@model Wangkanai.Detection.Services.IDetectionService
 
 @{
     ViewData["Title"] = "Detection";
 }
 
 <h3>UserAgent</h3>
-@*<code>@Model.UserAgent</code>*@
+<code>@Model.UserAgent</code>
 
 <h3>Results</h3>
 
@@ -39,11 +39,11 @@
             <th>Engine</th>
             <td>@Model.Engine?.Type.ToString()</td>
             <td>@Model.Engine?.Version</td>
-        </tr>
+        </tr>*@
         <tr>
             <th>Crawler</th>
             <td>@Model.Crawler?.Type.ToString()</td>
             <td>@Model.Crawler?.Version</td>
-        </tr>*@
+        </tr>
     </tbody>
 </table>
