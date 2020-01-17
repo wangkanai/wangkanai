@@ -154,6 +154,22 @@ namespace Wangkanai.Detection.Services
         }
 
         [Fact]
+        public void WhatsAppBot()
+        {
+            // arrange
+            var userAgent = "WhatsApp/2.18.61 i";
+            var service = CreateService(userAgent);
+
+            // act
+            var resolver = new DefaultCrawlerService(service);
+
+            // assert
+            Assert.True(resolver.IsCrawler);
+            Assert.Equal(Crawler.WhatsApp, resolver.Type);
+            Assert.Equal(new Version(2, 18, 61), resolver.Version);
+        }
+
+        [Fact]
         public void OthersBot()
         {
             // arrange

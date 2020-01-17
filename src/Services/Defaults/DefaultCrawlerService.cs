@@ -27,6 +27,9 @@ namespace Wangkanai.Detection.Services
         {
             if (agent.IsNullOrEmpty())
                 return Crawler.Unknown;
+
+            var crawler = SearchCrawler(agent);
+
             if (IsBot(agent, Crawler.Google))
                 return Crawler.Google;
             if (IsBot(agent, Crawler.Facebook))
@@ -39,6 +42,8 @@ namespace Wangkanai.Detection.Services
                 return Crawler.Yahoo;
             if (IsBot(agent, Crawler.Baidu))
                 return Crawler.Baidu;
+            if (IsBot(agent, Crawler.WhatsApp))
+                return Crawler.Baidu;
             if (IsBot(agent, Crawler.LinkedIn))
                 return Crawler.LinkedIn;
             if (IsBot(agent, Crawler.Skype))
@@ -48,6 +53,19 @@ namespace Wangkanai.Detection.Services
 
             return Crawler.Unknown;
         }
+
+        private static Crawler SearchCrawler(UserAgent useragent)
+        {
+            var agent = useragent.ToString().ToLower();
+            foreach (var name in Enum.GetNames(typeof(Crawler)))
+            {
+                if (agent.Contains(name.ToLower()))
+                    return Enum.Parse(typeof(Crawler), name);
+            }
+
+            return Crawler.Others;
+        }
+
         private static Version GetVersion(UserAgent useragent)
         {
             var agent = useragent.ToString();

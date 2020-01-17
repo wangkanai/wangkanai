@@ -13,7 +13,7 @@ namespace Wangkanai.Detection.Models
         Facebook,
         Twitter,
         LinkedIn,
-        WhatApp,
+        WhatsApp,
         Skype,
         Others
     }
