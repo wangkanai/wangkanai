@@ -7,11 +7,17 @@ using Wangkanai.Detection.Models;
 
 namespace Wangkanai.Detection
 {
-    public class EngineFactory : IEngineFactory
+    [Obsolete]
+    public class PlatformFactory : IPlatformFactory
     {
         public string? Name { get; set; }
         public string? Maker { get; set; }
-        public Engine Type { get; set; }
+        public Models.OperatingSystem OS { get; set; }
+        public Processor CPU { get; set; }
         public Version? Version { get; set; }
+
+        public PlatformFactory()
+        {
+        }
     }
 }

@@ -3,14 +3,11 @@
 
 using System;
 
-using Wangkanai.Detection.Models;
-
 namespace Wangkanai.Detection
 {
-    public interface IEngineFactory
+    [Obsolete]
+    public interface IEngineResolver : IResolver
     {
-        string Maker { get; }
-        Version Version { get; }
-        Engine Type { get; }
+        IEngineFactory Engine { get; }
     }
 }

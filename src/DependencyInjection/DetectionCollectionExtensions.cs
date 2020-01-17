@@ -12,6 +12,11 @@ namespace Microsoft.Extensions.DependencyInjection
     /// </summary>
     public static class DetectionCollectionExtensions
     {
+        private static IDetectionBuilder AddDetectionBuilder(this IServiceCollection services)
+        {
+            return new DetectionBuilder(services);
+        }
+
         /// <summary>
         /// Adds the default client service to the services container.
         /// </summary>
@@ -19,17 +24,18 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <returns>An <see cref="IServiceCollection"/> so that additional calls can be chained.</returns>
         public static IDetectionBuilder AddDetection(this IServiceCollection services)
         {
-            if (services is null)
-                throw new ArgumentNullException(nameof(services));
+            var builder = services.AddDetectionBuilder();
 
-            services.AddDetectionCore()
+            builder.AddRequiredPlatformServices();
+
+            builder.Services.AddDetectionCore()
                 .AddDevice()
                 .AddBrowser()
                 .AddPlatform()
                 .AddEngine()
                 .AddResponsive();
 
-            return new DetectionBuilder(services);
+            return builder;
         }
 
         public static IDetectionBuilder AddDetection(this IServiceCollection services, Action<DetectionOptions> setAction)

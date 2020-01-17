@@ -16,6 +16,19 @@ namespace Microsoft.Extensions.DependencyInjection
     /// </summary>
     public static class CoreBuilderExtensions
     {
+        public static IDetectionBuilder AddRequiredPlatformServices(this IDetectionBuilder builder)
+        {
+            // Hosting doesn't add IHttpContextAccessor by default
+            builder.Services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            // Add Detection Options
+            builder.Services.AddOptions();
+            builder.Services.TryAddSingleton(
+                resolver => resolver.GetRequiredService<IOptions<DetectionOptions>>().Value);
+
+            return builder;
+        }
+
         /// <summary>
         /// Adds the default client service to the services container.
         /// </summary>
