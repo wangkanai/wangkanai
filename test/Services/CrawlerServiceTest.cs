@@ -7,6 +7,7 @@ using System.Text;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
+using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Models;
 using Wangkanai.Detection.Services;
 using Xunit;
@@ -197,6 +198,22 @@ namespace Wangkanai.Detection.Services
             // assert
             Assert.False(resolver.IsCrawler);
             Assert.Equal(Crawler.Unknown, resolver.Type);
+        }
+
+        [Fact]
+        public void OptionCrawlerForOthers()
+        {
+            // arrange
+            var userAgent = "starnic";
+            var service = CreateService(userAgent);
+            var options = new DetectionOptions();
+            options.Crawler.Others.Add("starnic");
+            // act
+            var resolver = new DefaultCrawlerService(service, options);
+
+            // assert
+            Assert.True(resolver.IsCrawler);
+            Assert.Equal(Crawler.Others, resolver.Type);
         }
 
         private IUserAgentService CreateService(string agent)
