@@ -12,7 +12,7 @@ namespace Microsoft.Extensions.DependencyInjection
     /// </summary>
     public static class DetectionCollectionExtensions
     {
-        private static IDetectionBuilder AddDetectionBuilder(this IServiceCollection services)
+        public static IDetectionBuilder AddDetectionBuilder(this IServiceCollection services)
         {
             return new DetectionBuilder(services);
         }
@@ -27,12 +27,14 @@ namespace Microsoft.Extensions.DependencyInjection
             var builder = services.AddDetectionBuilder();
 
             builder.AddRequiredPlatformServices();
+            builder.AddCoreServices();
+            // Will evaluate if need to add more advance services
+            //builder.AddResponsive();
+            builder.AddMarkerService();
 
             builder.Services.AddDetectionCore()
                 .AddDevice()
                 .AddBrowser()
-                .AddPlatform()
-                .AddEngine()
                 .AddResponsive();
 
             return builder;
