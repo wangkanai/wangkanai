@@ -5,7 +5,7 @@ using System;
 
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-
+using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Services;
 
 namespace Microsoft.Extensions.DependencyInjection
@@ -28,7 +28,6 @@ namespace Microsoft.Extensions.DependencyInjection
             // Hosting doesn't add IHttpContextAccessor by default
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-            services.AddOptions();
             // Add Basic core to services
             services.TryAddTransient<IUserAgentService, DefaultUserAgentService>();
             services.TryAddTransient<IDeviceService, DefaultDeviceService>();
@@ -37,9 +36,6 @@ namespace Microsoft.Extensions.DependencyInjection
             services.TryAddTransient<IBrowserService, DefaultBrowserService>();
             services.TryAddTransient<ICrawlerService, DefaultCrawlerService>();
             services.TryAddTransient<IDetectionService, DefaultDetectionService>();
-
-            // Add Advance featuures to service
-            services.TryAddTransient<IResponsiveService, DefaultResponsiveService>();
 
             // Completed adding services
             services.TryAddSingleton<DetectionMarkerService, DetectionMarkerService>();

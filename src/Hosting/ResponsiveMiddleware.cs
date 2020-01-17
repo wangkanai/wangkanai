@@ -20,9 +20,9 @@ namespace Wangkanai.Detection.Hosting
         public ResponsiveMiddleware(RequestDelegate next, IOptions<ResponsiveOptions> options)
         {
             if (next is null)
-                throw new ResponsiveMiddlewareNextArgumentNullException(nameof(next));
+                throw new ArgumentNullException(nameof(next));
             if (options is null)
-                throw new ResponsiveMiddlewareOptionArgumentNullException(nameof(options));
+                throw new ArgumentNullException(nameof(options));
 
             _next = next;
             _options = options.Value;
@@ -31,7 +31,7 @@ namespace Wangkanai.Detection.Hosting
         public async Task Invoke(HttpContext context, IDeviceResolver resolver)
         {
             if (context is null)
-                throw new ResponsiveMiddlewareInvokeArgumentNullException(nameof(context));
+                throw new ArgumentNullException(nameof(context));
 
             var detection = new ResolverManager(resolver, _options);
             //var cookie = new CookieManager(context);
