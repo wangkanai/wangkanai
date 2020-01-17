@@ -20,7 +20,7 @@ namespace Microsoft.Extensions.DependencyInjection
         /// </summary>
         /// <param name="services">The services available in the application.</param>
         /// <returns>An <see cref="IServiceCollection"/> so that additional calls can be chained.</returns>
-        public static IDetectionCoreBuilder AddCoreServices(this IServiceCollection services)
+        public static IDetectionCoreBuilder AddDetectionCore(this IServiceCollection services)
         {
             if (services is null)
                 throw new ArgumentNullException(nameof(services));

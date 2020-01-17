@@ -21,13 +21,13 @@ namespace Microsoft.Extensions.DependencyInjection
                 throw new ArgumentNullException(nameof(services));
 
             services
-                .AddCoreServices()
-                .AddDeviceService()
-                .AddBrowserService()
-                .AddPlatformService()
-                .AddEngineService()
-                .AddCrawlerService()
-                .AddResponsiveService();
+                .AddDetectionCore()
+                .AddDevice()
+                .AddBrowser()
+                .AddPlatform()
+                .AddEngine()
+                .AddCrawler()
+                .AddResponsive();
 
             return new DetectionBuilder(services);
         }

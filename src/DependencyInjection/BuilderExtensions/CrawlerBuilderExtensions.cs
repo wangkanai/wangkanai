@@ -9,10 +9,9 @@ namespace Microsoft.Extensions.DependencyInjection
 {
     public static class CrawlerBuilderExtensions
     {
-        public static IDetectionCoreBuilder AddCrawlerService(this IDetectionCoreBuilder builder)
+        [Obsolete("3.0-Alpha02 Will merge this into the adding core services DI.")]
+        public static IDetectionCoreBuilder AddCrawler(this IDetectionCoreBuilder builder)
         {
-            builder.Services.AddTransient<ICrawlerService, DefaultCrawlerService>();
-            // waiting to retire
             builder.Services.AddTransient<ICrawlerResolver, CrawlerResolver>();
 
             return builder;

@@ -19,7 +19,7 @@ namespace Wangkanai.Detection.DependencyInjection
         public void AddDetection_ReturnsExpected()
         {
             var serviceCollection = new ServiceCollection();
-            var builder = serviceCollection.AddCoreServices();
+            var builder = serviceCollection.AddDetectionCore();
             var serviceDescriptors = new List<ServiceDescriptor>
             {
                 new ServiceDescriptor(typeof(IHttpContextAccessor), typeof(HttpContextAccessor), ServiceLifetime.Singleton),
@@ -40,7 +40,7 @@ namespace Wangkanai.Detection.DependencyInjection
         [Fact]
         public void AddDetectionCore_Null_ArgumentNullException()
         {
-            Assert.Throws<ArgumentNullException>(() => ((IServiceCollection)null).AddCoreServices());
+            Assert.Throws<ArgumentNullException>(() => ((IServiceCollection)null).AddDetectionCore());
         }
 
         private void AssertServices(List<ServiceDescriptor> serviceDescriptors, IServiceCollection services)

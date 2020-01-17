@@ -10,7 +10,7 @@ namespace Microsoft.Extensions.DependencyInjection
 {
     public static class EngineBuilderExtensions
     {
-        public static IDetectionCoreBuilder AddEngineService(this IDetectionCoreBuilder builder)
+        public static IDetectionCoreBuilder AddEngine(this IDetectionCoreBuilder builder)
         {
             builder.Services.TryAddTransient<IEngineResolver, EngineResolver>();
 
