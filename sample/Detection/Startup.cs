@@ -25,6 +25,7 @@ namespace Sandbox
             services.AddDetection(options =>
             {
                 options.Crawler.Others.Add("WhatApp");
+                options.Crawler.Others.Add("MeToo");
             });
 
             // Add framework services.
