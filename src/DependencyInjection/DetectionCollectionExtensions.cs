@@ -34,7 +34,7 @@ namespace Microsoft.Extensions.DependencyInjection
 
         public static IDetectionBuilder AddDetection(this IServiceCollection services, Action<DetectionOptions> setAction)
         {
-            services.Configure<DetectionOptions>(setAction);
+            services.Configure(setAction);
             return services.AddDetection();
         }
 
