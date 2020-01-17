@@ -4,19 +4,20 @@
 using System;
 
 using Microsoft.AspNetCore.Mvc.Razor;
-
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Responsive;
+using Wangkanai.Detection.Services;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
     public static class ResponsiveBuilderExtensions
     {
-        public static IDetectionCoreBuilder AddResponsiveService(
+        public static IDetectionCoreBuilder AddResponsive(
             this IDetectionCoreBuilder builder)
-            => builder.AddResponsiveService(options => { });
+            => builder.AddResponsive(options => { });
 
-        public static IDetectionCoreBuilder AddResponsiveService(
+        public static IDetectionCoreBuilder AddResponsive(
             this IDetectionCoreBuilder builder,
             Action<ResponsiveOptions> setAction)
         {
@@ -24,8 +25,12 @@ namespace Microsoft.Extensions.DependencyInjection
                 throw new ArgumentNullException(nameof(builder));
 
             builder.Services.Configure<ResponsiveOptions>(setAction);
+
             builder.AddViewLocation(ResponsiveViewLocationFormat.Suffix);
             builder.AddViewLocation(ResponsiveViewLocationFormat.Subfolder);
+
+            // waiting for development
+            builder.Services.TryAddTransient<IResponsiveService, DefaultResponsiveService>();
 
             return builder;
         }

@@ -5,7 +5,8 @@ using System;
 
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-
+using Microsoft.Extensions.Options;
+using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Services;
 
 namespace Microsoft.Extensions.DependencyInjection
@@ -20,7 +21,7 @@ namespace Microsoft.Extensions.DependencyInjection
         /// </summary>
         /// <param name="services">The services available in the application.</param>
         /// <returns>An <see cref="IServiceCollection"/> so that additional calls can be chained.</returns>
-        public static IDetectionCoreBuilder AddCoreServices(this IServiceCollection services)
+        public static IDetectionCoreBuilder AddDetectionCore(this IServiceCollection services)
         {
             if (services is null)
                 throw new ArgumentNullException(nameof(services));
@@ -28,10 +29,20 @@ namespace Microsoft.Extensions.DependencyInjection
             // Hosting doesn't add IHttpContextAccessor by default
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-            // Client Services
-            services.TryAddTransient<IUserAgentService, DefaultUserAgentService>();
-
+            // Add Detection Options
             services.AddOptions();
+            services.TryAddSingleton(resolver => resolver.GetRequiredService<IOptions<DetectionOptions>>().Value);
+
+            // Add Basic core to services
+            services.TryAddTransient<IUserAgentService, DefaultUserAgentService>();
+            services.TryAddTransient<IDeviceService, DefaultDeviceService>();
+            services.TryAddTransient<IEngineService, DefaultEngineService>();
+            services.TryAddTransient<IPlatformService, DefaultPlatformService>();
+            services.TryAddTransient<IBrowserService, DefaultBrowserService>();
+            services.TryAddTransient<ICrawlerService, DefaultCrawlerService>();
+            services.TryAddTransient<IDetectionService, DefaultDetectionService>();
+
+            // Completed adding services
             services.TryAddSingleton<DetectionMarkerService, DetectionMarkerService>();
 
             return new DetectionCoreBuilder(services);

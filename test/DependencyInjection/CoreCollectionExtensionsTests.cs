@@ -6,24 +6,39 @@ using System.Collections.Generic;
 
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
-
+using Microsoft.Extensions.Options;
+using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Services;
 
 using Xunit;
 
 namespace Wangkanai.Detection.DependencyInjection
 {
-    public class DetectionCoreCollectionExtensionsTests
+    public class CoreCollectionExtensionsTests
     {
         [Fact]
         public void AddDetection_ReturnsExpected()
         {
             var serviceCollection = new ServiceCollection();
-            var builder = serviceCollection.AddCoreServices();
+            var builder = serviceCollection.AddDetectionCore();
             var serviceDescriptors = new List<ServiceDescriptor>
             {
                 new ServiceDescriptor(typeof(IHttpContextAccessor), typeof(HttpContextAccessor), ServiceLifetime.Singleton),
-                new ServiceDescriptor(typeof(IUserAgentService), typeof(DefaultUserAgentService), ServiceLifetime.Transient)
+                // DetectionOptions
+                new ServiceDescriptor(typeof(IOptions<>), typeof(DetectionOptions), ServiceLifetime.Singleton),
+                new ServiceDescriptor(typeof(IOptionsSnapshot<>), typeof(DetectionOptions), ServiceLifetime.Scoped),
+                new ServiceDescriptor(typeof(IOptionsMonitor<>), typeof(DetectionOptions), ServiceLifetime.Singleton),
+                new ServiceDescriptor(typeof(IOptionsFactory<>), typeof(DetectionOptions), ServiceLifetime.Transient),
+                new ServiceDescriptor(typeof(IOptionsMonitorCache<>), typeof(DetectionOptions), ServiceLifetime.Singleton),
+                new ServiceDescriptor(typeof(DetectionOptions), typeof(DetectionOptions), ServiceLifetime.Singleton),
+                // Basic features
+                new ServiceDescriptor(typeof(IUserAgentService), typeof(DefaultUserAgentService), ServiceLifetime.Transient),
+                new ServiceDescriptor(typeof(IDeviceService), typeof(DefaultDeviceService), ServiceLifetime.Transient),
+                new ServiceDescriptor(typeof(IEngineService), typeof(DefaultEngineService), ServiceLifetime.Transient),
+                new ServiceDescriptor(typeof(IPlatformService), typeof(DefaultPlatformService), ServiceLifetime.Transient),
+                new ServiceDescriptor(typeof(IBrowserService), typeof(DefaultBrowserService), ServiceLifetime.Transient),
+                new ServiceDescriptor(typeof(ICrawlerService), typeof(DefaultCrawlerService), ServiceLifetime.Transient),
+                new ServiceDescriptor(typeof(IDetectionService), typeof(DefaultDetectionService), ServiceLifetime.Transient),
             };
 
             Assert.NotNull(builder);
@@ -40,7 +55,7 @@ namespace Wangkanai.Detection.DependencyInjection
         [Fact]
         public void AddDetectionCore_Null_ArgumentNullException()
         {
-            Assert.Throws<ArgumentNullException>(() => ((IServiceCollection)null).AddCoreServices());
+            Assert.Throws<ArgumentNullException>(() => ((IServiceCollection)null).AddDetectionCore());
         }
 
         private void AssertServices(List<ServiceDescriptor> serviceDescriptors, IServiceCollection services)

@@ -6,7 +6,7 @@ using System.Diagnostics;
 
 namespace Wangkanai.Detection.Extensions
 {
-    public static class DetectionVersionExtensions
+    public static class VersionExtensions
     {
         [DebuggerStepThrough]
         public static Version ToVersion(this string version)

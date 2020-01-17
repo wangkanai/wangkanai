@@ -25,13 +25,13 @@ namespace Wangkanai.Detection.Hosting
         [Fact]
         public void Ctor_Null_ResponsiveOptions_ThrowsArgumentNullException()
         {
-            Assert.Throws<ResponsiveMiddlewareNextArgumentNullException>(() => new ResponsiveMiddleware(null, Options.Create(new ResponsiveOptions())));
+            Assert.Throws<ArgumentNullException>(() => new ResponsiveMiddleware(null, Options.Create(new ResponsiveOptions())));
         }
 
         [Fact]
         public void Ctor_RequestDelegate_Null_ThrowsArgumentNullException()
         {
-            Assert.Throws<ResponsiveMiddlewareOptionArgumentNullException>(() => new ResponsiveMiddleware(d => Task.Factory.StartNew(() => d), null));
+            Assert.Throws<ArgumentNullException>(() => new ResponsiveMiddleware(d => Task.Factory.StartNew(() => d), null));
         }
 
         [Fact]
@@ -52,7 +52,7 @@ namespace Wangkanai.Detection.Hosting
             var options = Options.Create(new ResponsiveOptions());
             var middleware = new ResponsiveMiddleware(d => Task.Factory.StartNew(() => d), options);
 
-            await Assert.ThrowsAsync<ResponsiveMiddlewareInvokeArgumentNullException>(async () => await middleware.Invoke(null, new DeviceResolver()));
+            await Assert.ThrowsAsync<ArgumentNullException>(async () => await middleware.Invoke(null, new DeviceResolver()));
         }
 
         [Fact]

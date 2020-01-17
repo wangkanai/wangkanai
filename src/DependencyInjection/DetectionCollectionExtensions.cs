@@ -2,6 +2,8 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
+using Microsoft.Extensions.Configuration;
+using Wangkanai.Detection.DependencyInjection.Options;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -20,16 +22,26 @@ namespace Microsoft.Extensions.DependencyInjection
             if (services is null)
                 throw new ArgumentNullException(nameof(services));
 
-            services
-                .AddCoreServices()
-                .AddDeviceService()
-                .AddBrowserService()
-                .AddPlatformService()
-                .AddEngineService()
-                .AddCrawlerService()
-                .AddResponsiveService();
+            services.AddDetectionCore()
+                .AddDevice()
+                .AddBrowser()
+                .AddPlatform()
+                .AddEngine()
+                .AddResponsive();
 
             return new DetectionBuilder(services);
+        }
+
+        public static IDetectionBuilder AddDetection(this IServiceCollection services, Action<DetectionOptions> setAction)
+        {
+            services.Configure(setAction);
+            return services.AddDetection();
+        }
+
+        public static IDetectionBuilder AddDetection(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.Configure<DetectionOptions>(configuration);
+            return services.AddDetection();
         }
     }
 }

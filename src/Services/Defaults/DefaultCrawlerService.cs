@@ -2,8 +2,9 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
-
+using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Extensions;
 using Wangkanai.Detection.Models;
 
@@ -14,40 +15,20 @@ namespace Wangkanai.Detection.Services
         public bool IsCrawler { get; } = false;
         public Crawler Type { get; } = Crawler.Unknown;
         public Version Version { get; }
-        private readonly UserAgent _useragent;
 
-        public DefaultCrawlerService(IUserAgentService useragent)
+        private readonly UserAgent _useragent;
+        private readonly DetectionOptions _options;
+
+        public DefaultCrawlerService(IUserAgentService useragent, DetectionOptions options)
         {
             _useragent = useragent.UserAgent;
-            Type = FindCrawlerInUserAgent(_useragent);
-            IsCrawler = isCrawler(Type);
+            _options = options;
+
+            Type = FindCrawlerInUserAgent(_useragent, _options?.Crawler.Others);
+            IsCrawler = IsUnknown(Type);
             Version = GetVersion(_useragent);
         }
-        private static Crawler FindCrawlerInUserAgent(UserAgent agent)
-        {
-            if (agent.IsNullOrEmpty())
-                return Crawler.Unknown;
-            if (IsBot(agent, Crawler.Google))
-                return Crawler.Google;
-            if (IsBot(agent, Crawler.Facebook))
-                return Crawler.Facebook;
-            if (IsBot(agent, Crawler.Bing))
-                return Crawler.Bing;
-            if (IsBot(agent, Crawler.Twitter))
-                return Crawler.Twitter;
-            if (IsBot(agent, Crawler.Yahoo))
-                return Crawler.Yahoo;
-            if (IsBot(agent, Crawler.Baidu))
-                return Crawler.Baidu;
-            if (IsBot(agent, Crawler.LinkedIn))
-                return Crawler.LinkedIn;
-            if (IsBot(agent, Crawler.Skype))
-                return Crawler.Skype;
-            if (agent.ToString().ToLower().Contains("bot"))
-                return Crawler.Others;
 
-            return Crawler.Unknown;
-        }
         private static Version GetVersion(UserAgent useragent)
         {
             var agent = useragent.ToString();
@@ -66,22 +47,47 @@ namespace Wangkanai.Detection.Services
             return version.ToVersion();
         }
 
+        private static Crawler FindCrawlerInUserAgent(UserAgent useragent, List<string> others)
+        {
+            if (useragent.IsNullOrEmpty())
+                return Crawler.Unknown;
+
+            var agent = useragent.ToString().ToLower();
+            foreach (var name in GetCrawlerNames())
+                if (agent.Contains(name.ToLower()))
+                    return TryParseCrawler(name);
+            if (others != null)
+                foreach (var name in others)
+                    if (agent.Contains(name.ToLower()))
+                        return Crawler.Others;
+
+            if (useragent.ToString().ToLower().Contains("bot"))
+                return Crawler.Others;
+
+            return Crawler.Unknown;
+        }
+
+        private static string[] GetCrawlerNames()
+            => Enum.GetNames(typeof(Crawler));
+
+        private static Crawler TryParseCrawler(string name)
+            => (Crawler)Enum.Parse(typeof(Crawler), name);
+
         private static string FindBot(string agent)
         {
             var split = agent.ToString().Split(' ');
-            return split.Where(x => Enum.GetNames(typeof(Crawler))
-                                        .Count(y => x.ToLower().Contains(y.ToLower())) == 1)
+            return split.Where(x => CrawlerLookup(x))
                         .FirstOrDefault();
         }
 
-        private static bool isCrawler(Crawler type)
-            => type != Crawler.Unknown;
-
-        private static bool IsBot(UserAgent agent, Crawler expected)
+        private static bool CrawlerLookup(string x)
         {
-            return agent.ToString()
-                .ToLower()
-                .Contains(expected.ToString().ToLower());
+            var count = Enum.GetNames(typeof(Crawler))
+                       .Count(y => x.ToLower().Contains(y.ToLower()));
+            return count > 0;
         }
+
+        private static bool IsUnknown(Crawler type)
+            => type != Crawler.Unknown;
     }
 }

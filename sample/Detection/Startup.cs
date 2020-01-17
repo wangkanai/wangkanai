@@ -22,7 +22,11 @@ namespace Sandbox
         public void ConfigureServices(IServiceCollection services)
         {
             // Add detection services.
-            services.AddDetection();
+            services.AddDetection(options =>
+            {
+                options.Crawler.Others.Add("WhatApp");
+                options.Crawler.Others.Add("MeToo");
+            });
 
             // Add framework services.
             services.AddControllersWithViews();

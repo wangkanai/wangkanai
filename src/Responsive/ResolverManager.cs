@@ -19,7 +19,7 @@ namespace Wangkanai.Detection.Responsive
         public ResolverManager(Device resolved, ResponsiveOptions options)
         {
             if (options is null)
-                throw new ResponsiveMiddlewareOptionArgumentNullException(nameof(options));
+                throw new ArgumentNullException(nameof(options));
 
             _resolved = resolved;
             _options = options;
