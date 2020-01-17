@@ -24,29 +24,9 @@ namespace Wangkanai.Detection.Services
             _useragent = useragent.UserAgent;
             _options = options;
 
-            Type = FindCrawlerInUserAgent(_useragent, _options.Crawler.Others);
-            IsCrawler = isCrawler(Type);
+            Type = FindCrawlerInUserAgent(_useragent, _options?.Crawler.Others);
+            IsCrawler = IsUnknown(Type);
             Version = GetVersion(_useragent);
-        }
-
-        private static Crawler FindCrawlerInUserAgent(UserAgent useragent, List<string> others)
-        {
-            if (useragent.IsNullOrEmpty())
-                return Crawler.Unknown;
-
-            var agent = useragent.ToString().ToLower();
-            foreach (var name in Enum.GetNames(typeof(Crawler)))
-                if (agent.Contains(name.ToLower()))
-                    return (Crawler)Enum.Parse(typeof(Crawler), name);
-
-            foreach (var name in others)
-                if (agent.Contains(name.ToLower()))
-                    return Crawler.Others;
-
-            if (useragent.ToString().ToLower().Contains("bot"))
-                return Crawler.Others;
-
-            return Crawler.Unknown;
         }
 
         private static Version GetVersion(UserAgent useragent)
@@ -67,6 +47,32 @@ namespace Wangkanai.Detection.Services
             return version.ToVersion();
         }
 
+        private static Crawler FindCrawlerInUserAgent(UserAgent useragent, List<string> others)
+        {
+            if (useragent.IsNullOrEmpty())
+                return Crawler.Unknown;
+
+            var agent = useragent.ToString().ToLower();
+            foreach (var name in GetCrawlerNames())
+                if (agent.Contains(name.ToLower()))
+                    return TryParseCrawler(name);
+            if (others != null)
+                foreach (var name in others)
+                    if (agent.Contains(name.ToLower()))
+                        return Crawler.Others;
+
+            if (useragent.ToString().ToLower().Contains("bot"))
+                return Crawler.Others;
+
+            return Crawler.Unknown;
+        }
+
+        private static string[] GetCrawlerNames()
+            => Enum.GetNames(typeof(Crawler));
+
+        private static Crawler TryParseCrawler(string name)
+            => (Crawler)Enum.Parse(typeof(Crawler), name);
+
         private static string FindBot(string agent)
         {
             var split = agent.ToString().Split(' ');
@@ -81,7 +87,7 @@ namespace Wangkanai.Detection.Services
             return count > 0;
         }
 
-        private static bool isCrawler(Crawler type)
+        private static bool IsUnknown(Crawler type)
             => type != Crawler.Unknown;
     }
 }
