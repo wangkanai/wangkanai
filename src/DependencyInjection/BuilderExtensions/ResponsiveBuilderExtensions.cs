@@ -15,9 +15,9 @@ namespace Microsoft.Extensions.DependencyInjection
     {
         public static IDetectionCoreBuilder AddResponsive(
             this IDetectionCoreBuilder builder)
-            => builder.AddResponsiveService(options => { });
+            => builder.AddResponsive(options => { });
 
-        public static IDetectionCoreBuilder AddResponsiveService(
+        public static IDetectionCoreBuilder AddResponsive(
             this IDetectionCoreBuilder builder,
             Action<ResponsiveOptions> setAction)
         {
