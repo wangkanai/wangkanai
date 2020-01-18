@@ -37,15 +37,6 @@ namespace Wangkanai.Detection.Services
             Context = context;
             UserAgent = CreateUserAgentFromContext(Context);
         }
-        [Obsolete]
-        public DefaultUserAgentService(HttpContext context)
-        {
-            if (context is null)
-                throw new ArgumentNullException(nameof(context));
-
-            Context = context;
-            UserAgent = CreateUserAgentFromContext(Context);
-        }
 
         private static UserAgent CreateUserAgentFromContext(HttpContext context)
             => new UserAgent(context.Request.Headers["User-Agent"].FirstOrDefault());
