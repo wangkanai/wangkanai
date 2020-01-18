@@ -21,7 +21,7 @@ namespace Wangkanai.Detection.Services
         {
             _useragent = userAgentService.UserAgent;
             _request = userAgentService.Context.Request;
-            _options = options.Responsive;
+            _options = options?.Responsive ?? new ResponsiveOptions();
 
             Type = DeviceFromUserAgent(_useragent, _request, _options);
         }

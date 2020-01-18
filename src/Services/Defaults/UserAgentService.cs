@@ -6,7 +6,7 @@ using System.Linq;
 
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
-
+using Wangkanai.Detection.Extensions;
 using Wangkanai.Detection.Models;
 
 namespace Wangkanai.Detection.Services
@@ -35,10 +35,7 @@ namespace Wangkanai.Detection.Services
                 throw new ArgumentNullException(nameof(context));
 
             Context = context;
-            UserAgent = CreateUserAgentFromContext(Context);
+            UserAgent = Context.UserAgentFromHeader();
         }
-
-        private static UserAgent CreateUserAgentFromContext(HttpContext context)
-            => new UserAgent(context.Request.Headers["User-Agent"].FirstOrDefault());
     }
 }

@@ -25,7 +25,7 @@ namespace Wangkanai.Detection.Services
             _useragent = useragent.UserAgent;
             _options = options;
 
-            Type = CrawlerFromUserAgent(_useragent, _options.Crawler.Others);
+            Type = CrawlerFromUserAgent(_useragent, _options?.Crawler.Others);
             IsCrawler = !IsUnknown(Type);
             Version = GetVersion(_useragent);
         }
