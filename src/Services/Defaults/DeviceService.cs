@@ -3,6 +3,7 @@
 
 using System.Linq;
 using Microsoft.AspNetCore.Http;
+using Wangkanai.Detection.Collections;
 using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Extensions;
 using Wangkanai.Detection.Models;

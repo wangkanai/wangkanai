@@ -14,7 +14,7 @@ namespace Wangkanai.Detection.Extensions
 
         public static bool IsNullOrEmpty(this UserAgent agent)
             => agent == null
-            || string.IsNullOrEmpty(agent.ToString());
+            || string.IsNullOrEmpty(agent.ToLower());
 
         public static string ToLower(this UserAgent agent)
             => agent.ToString().ToLower();
