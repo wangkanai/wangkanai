@@ -15,23 +15,16 @@ namespace Wangkanai.Detection.Services
         public static IUserAgentService CreateService(string agent)
             => MockUserAgentService(agent).Object;
         public static IUserAgentService CreateService(string value, string header)
-        {
-            var context = CreateContext(value, header);
-            var service = new Mock<IUserAgentService>();
-            service.SetupUserAgent(context, null);
-            return service.Object;
-        }
-
+            => MockUserAgentService(value, header).Object;
+        private static Mock<IUserAgentService> MockUserAgentService(string value, string header)
+            => CreateContext(value, header).SetupUserAgent(null);
         private static Mock<IUserAgentService> MockUserAgentService(string agent)
-        {
-            var context = CreateContext(agent);
-            var service = new Mock<IUserAgentService>();
-            service.SetupUserAgent(context, agent);
-            return service;
-        }
+            => CreateContext(agent).SetupUserAgent(agent);
 
-        private static Mock<IUserAgentService> SetupUserAgent(this Mock<IUserAgentService> service,HttpContext context, string agent)
+        private static Mock<IUserAgentService> SetupUserAgent(
+            this HttpContext context, string agent)
         {
+            var service = new Mock<IUserAgentService>();
             service.Setup(f => f.Context).Returns(context);
             service.Setup(f => f.UserAgent).Returns(new UserAgent(agent));
             return service;

@@ -31,9 +31,6 @@ namespace Wangkanai.Detection.Services
             HttpRequest request,
             ResponsiveOptions options)
         {
-            // fail fast and return default desktop
-            if (agent.IsNullOrEmpty())
-                return options.DefaultDesktop;
             // tablet user agent keyword detection
             if (agent.Contains(TabletCollection.Keywords))
                 return options.DefaultTablet;

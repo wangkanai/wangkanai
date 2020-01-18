@@ -79,10 +79,10 @@ namespace Wangkanai.Detection.Services
         [Theory]
         [InlineData("x-wap-profile")]
         [InlineData("Profile")]
-        public void MobileUAProf(string agent)
+        public void MobileUAProf(string header)
         {
             // Arrange
-            var service = MockService.CreateService(agent,"<xml><doc></doc>");
+            var service = MockService.CreateService("<doc></doc>", header);
             // Act
             var resolver = new DeviceService(service, null);
             // Assert
