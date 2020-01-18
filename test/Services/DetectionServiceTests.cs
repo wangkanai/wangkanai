@@ -35,7 +35,7 @@ namespace Wangkanai.Detection.Services
         [Fact]
         public void Ctor_Null_ThrowsArgumentNullException()
         {
-            //Assert.Throws<ArgumentNullException>(() => new UserAgentService(null));
+            Assert.Throws<ArgumentNullException>(() => new DefaultUserAgentService(null));
         }
 
         [Fact]

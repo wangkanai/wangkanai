@@ -5,7 +5,7 @@ using Xunit;
 
 namespace Wangkanai.Detection.Extensions
 {
-    public class DetectionVersionExtensionsTest
+    public class VersionExtensionsTest
     {
         [Fact]
         public void RemoveWritespaceTest()
