@@ -53,14 +53,14 @@ namespace Wangkanai.Detection.Services
             if (useragent.IsNullOrEmpty())
                 return Crawler.Unknown;
 
-            var agent = useragent.ToString().ToLower();
+            var agent = useragent.ToLower();
             foreach (var name in Crawlers)
                 if (agent.Contains(name))
                     return TryParseCrawler(name);
 
             if (others != null)
                 foreach (var name in others)
-                    if (agent.Contains(name.ToLower()))
+                    if (agent.Contains(name))
                         return Crawler.Others;
 
             if (useragent.Contains("bot"))

@@ -9,16 +9,6 @@ namespace Wangkanai.Detection.Extensions
 {
     internal static class DeviceExtensions
     {
-        public static bool IsTablet(this UserAgent agent)
-            => TabletCollection.Keywords.Any(keyword => agent.Contains(keyword)
-);
-        public static bool IsMobileKeyword(this UserAgent agent)
-            => MobileCollection.Keywords.Any(keyword => agent.Contains(keyword));
-
-        public static bool IsMobilePrefix(this UserAgent agent)
-            => agent.Length() >= 4
-            && MobileCollection.Prefixes.Any(prefix => agent.StartsWith(prefix));
-
         public static bool IsOperaMini(this HttpRequest request)
             => request.Headers.Any(header => header.Value.Any(value => value.Contains("OperaMini")));
 

@@ -16,13 +16,26 @@ namespace Wangkanai.Detection.Extensions
             => agent == null
             || string.IsNullOrEmpty(agent.ToString());
 
+        public static string ToLower(this UserAgent agent)
+            => agent.ToString().ToLower();
+
         public static int Length(this UserAgent agent)
             => agent.ToString().Length;
 
         public static bool Contains(this UserAgent agent, string word)
-            => agent.ToString().ToLower().ToLowerInvariant().Contains(word);
+            => agent.ToLower().Contains(word.ToLower());
+
+        public static bool Contains(this UserAgent agent, string[] array)
+            => array.Any(key => agent.Contains(key));
 
         public static bool StartsWith(this UserAgent agent, string word)
-            => agent.ToString().StartsWith(word);
+            => agent.ToLower().StartsWith(word.ToLower());
+
+        public static bool StartsWith(this UserAgent agent, string[] array)
+            => array.Any(key => agent.StartsWith(key));
+
+        public static bool StartsWith(this UserAgent agent, string[] array, int minimum)
+            => agent.Length() >= minimum
+            && agent.StartsWith(array);
     }
 }

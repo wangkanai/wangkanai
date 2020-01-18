@@ -35,13 +35,13 @@ namespace Wangkanai.Detection.Services
             if (agent.IsNullOrEmpty())
                 return options.DefaultDesktop;
             // tablet user agent keyword detection
-            if (agent.IsTablet())
+            if (agent.Contains(TabletCollection.Keywords))
                 return options.DefaultTablet;
             // mobile user agent keyword detection
-            if (agent.IsMobileKeyword())
+            if (agent.Contains(MobileCollection.Keywords))
                 return options.DefaultMobile;
             // mobile user agent prefix detection
-            if (agent.IsMobilePrefix())
+            if (agent.StartsWith(MobileCollection.Prefixes, 4))
                 return options.DefaultMobile;
             // mobile opera mini special case
             if (request.IsOperaMini())
