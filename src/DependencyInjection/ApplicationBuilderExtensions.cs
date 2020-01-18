@@ -63,7 +63,7 @@ namespace Microsoft.Extensions.DependencyInjection
 
         private static void VerifyMarkerIsRegistered(IApplicationBuilder app)
         {
-            if (app.ApplicationServices.GetService(typeof(DetectionMarkerService)) == null)
+            if (app.ApplicationServices.GetService(typeof(MarkerService)) == null)
                 throw new InvalidOperationException("AddDetection() is not added to ConfigureSerivces(...)");
         }
     }

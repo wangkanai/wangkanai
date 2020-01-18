@@ -5,9 +5,11 @@ using System;
 
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+
 using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Responsive;
 using Wangkanai.Detection.Services;
+using static Microsoft.Extensions.DependencyInjection.DetectionCollectionExtensions;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -30,7 +32,7 @@ namespace Microsoft.Extensions.DependencyInjection
             builder.AddViewLocation(ResponsiveViewLocationFormat.Subfolder);
 
             // waiting for development
-            builder.Services.TryAddTransient<IResponsiveService, DefaultResponsiveService>();
+            builder.Services.TryAddTransient<IResponsiveService, ResponsiveService>();
 
             return builder;
         }

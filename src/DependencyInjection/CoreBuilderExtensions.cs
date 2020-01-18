@@ -6,6 +6,7 @@ using System;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
+
 using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Services;
 
@@ -32,44 +33,22 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IDetectionBuilder AddCoreServices(this IDetectionBuilder builder)
         {
             // Add Basic core to services
-            builder.Services.TryAddTransient<IUserAgentService, DefaultUserAgentService>();
-            builder.Services.TryAddTransient<IDeviceService, DefaultDeviceService>();
-            builder.Services.TryAddTransient<IEngineService, DefaultEngineService>();
-            builder.Services.TryAddTransient<IPlatformService, DefaultPlatformService>();
-            builder.Services.TryAddTransient<IBrowserService, DefaultBrowserService>();
-            builder.Services.TryAddTransient<ICrawlerService, DefaultCrawlerService>();
-            builder.Services.TryAddTransient<IDetectionService, DefaultDetectionService>();
+            builder.Services.TryAddTransient<IUserAgentService, UserAgentService>();
+            builder.Services.TryAddTransient<IDeviceService, DeviceService>();
+            builder.Services.TryAddTransient<IEngineService, EngineService>();
+            builder.Services.TryAddTransient<IPlatformService, PlatformService>();
+            builder.Services.TryAddTransient<IBrowserService, BrowserService>();
+            builder.Services.TryAddTransient<ICrawlerService, CrawlerService>();
+            builder.Services.TryAddTransient<IDetectionService, DetectionService>();
 
             return builder;
         }
 
         public static IDetectionBuilder AddMarkerService(this IDetectionBuilder builder)
         {
-            builder.Services.TryAddSingleton<DetectionMarkerService, DetectionMarkerService>();
+            builder.Services.TryAddSingleton<MarkerService, MarkerService>();
 
             return builder;
-        }
-
-        /// <summary>
-        /// Adds the default client service to the services container.
-        /// </summary>
-        /// <param name="services">The services available in the application.</param>
-        /// <returns>An <see cref="IServiceCollection"/> so that additional calls can be chained.</returns>
-        public static IDetectionCoreBuilder AddDetectionCore(this IServiceCollection services)
-        {
-            if (services is null)
-                throw new ArgumentNullException(nameof(services));
-
-            // Hosting doesn't add IHttpContextAccessor by default
-            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-
-            // Add Basic core to services
-            services.TryAddTransient<IUserAgentService, DefaultUserAgentService>();
-
-            // Completed adding services
-            services.TryAddSingleton<DetectionMarkerService, DetectionMarkerService>();
-
-            return new DetectionCoreBuilder(services);
         }
     }
 }

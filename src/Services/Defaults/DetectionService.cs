@@ -5,7 +5,7 @@ using Wangkanai.Detection.Models;
 
 namespace Wangkanai.Detection.Services
 {
-    public class DefaultDetectionService : IDetectionService
+    public class DetectionService : IDetectionService
     {
         public UserAgent UserAgent { get; }
         public IDeviceService Device { get; }
@@ -14,7 +14,7 @@ namespace Wangkanai.Detection.Services
         public IEngineService Engine { get; }
         public IPlatformService Platform { get; }
 
-        public DefaultDetectionService(
+        public DetectionService(
             IUserAgentService userAgentService,
             IDeviceService device,
             ICrawlerService crawler,

@@ -6,7 +6,7 @@ using System.Linq;
 
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
-
+using Wangkanai.Detection.Extensions;
 using Wangkanai.Detection.Models;
 
 namespace Wangkanai.Detection.Services
@@ -14,7 +14,7 @@ namespace Wangkanai.Detection.Services
     /// <summary>
     /// Provides the APIs for query client access device.
     /// </summary>
-    public class DefaultUserAgentService : IUserAgentService
+    public class UserAgentService : IUserAgentService
     {
         /// <summary>
         /// Get HttpContext of the application service
@@ -26,19 +26,16 @@ namespace Wangkanai.Detection.Services
         /// </summary>
         public UserAgent UserAgent { get; }
 
-        public DefaultUserAgentService(IServiceProvider services)
-            : this(services.GetRequiredService<IHttpContextAccessor>().HttpContext) { }
-
-        public DefaultUserAgentService(HttpContext context)
+        public UserAgentService(IServiceProvider services)
         {
+            if (services is null)
+                throw new ArgumentNullException(nameof(services));
+            var context = services.GetRequiredService<IHttpContextAccessor>().HttpContext;
             if (context is null)
                 throw new ArgumentNullException(nameof(context));
 
             Context = context;
-            UserAgent = CreateUserAgentFromContext(Context);
+            UserAgent = Context.UserAgentFromHeader();
         }
-
-        private static UserAgent CreateUserAgentFromContext(HttpContext context)
-            => new UserAgent(context.Request.Headers["User-Agent"].FirstOrDefault());
     }
 }
