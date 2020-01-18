@@ -4,6 +4,7 @@
 using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("Wangkanai.Detection.Test")]
+
 namespace Wangkanai.Detection.Services
 {
     internal class DetectionMarkerService

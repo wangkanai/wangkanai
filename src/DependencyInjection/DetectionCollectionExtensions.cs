@@ -2,7 +2,9 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
+
 using Microsoft.Extensions.Configuration;
+
 using Wangkanai.Detection.DependencyInjection.Options;
 
 namespace Microsoft.Extensions.DependencyInjection
