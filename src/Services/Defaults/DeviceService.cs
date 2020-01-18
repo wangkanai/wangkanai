@@ -13,13 +13,13 @@ namespace Wangkanai.Detection.Services
     {
         public Device Type { get; }
 
-        private readonly string _useragent;
+        private readonly UserAgent _useragent;
         private readonly HttpRequest _request;
         private readonly ResponsiveOptions _options;
 
         public DeviceService(IUserAgentService userAgentService, DetectionOptions options)
         {
-            _useragent = userAgentService.UserAgent.ToString().ToLower().ToLowerInvariant();
+            _useragent = userAgentService.UserAgent;
             _request = userAgentService.Context.Request;
             _options = options.Responsive;
 
@@ -27,7 +27,7 @@ namespace Wangkanai.Detection.Services
         }
 
         private static Device DeviceFromUserAgent(
-            string agent,
+            UserAgent agent,
             HttpRequest request,
             ResponsiveOptions options)
         {
@@ -35,13 +35,13 @@ namespace Wangkanai.Detection.Services
             if (agent.IsNullOrEmpty())
                 return options.DefaultDesktop;
             // tablet user agent keyword detection
-            if (TabletCollection.Keywords.Any(keyword => agent.Contains(keyword)))
+            if (agent.IsTablet())
                 return options.DefaultTablet;
             // mobile user agent keyword detection
-            if (MobileCollection.Keywords.Any(keyword => agent.Contains(keyword)))
+            if (agent.IsMobileKeyword())
                 return options.DefaultMobile;
             // mobile user agent prefix detection
-            if (agent?.Length >= 4 && MobileCollection.Prefixes.Any(prefix => agent.StartsWith(prefix)))
+            if (agent.IsMobilePrefix())
                 return options.DefaultMobile;
             // mobile opera mini special case
             if (request.IsOperaMini())
