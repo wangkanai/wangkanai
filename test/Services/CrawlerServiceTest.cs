@@ -22,7 +22,7 @@ namespace Wangkanai.Detection.Services
             // arrange
             var service = CreateService(null);
             // act
-            var defaultCrawler = new DefaultCrawlerService(service, null);
+            var defaultCrawler = new CrawlerService(service, null);
 
             Assert.NotNull(defaultCrawler);
         }
@@ -35,7 +35,7 @@ namespace Wangkanai.Detection.Services
             var service = CreateService(userAgent);
 
             // act
-            var resolver = new DefaultCrawlerService(service, null);
+            var resolver = new CrawlerService(service, null);
 
             // assert
             Assert.True(resolver.IsCrawler);
@@ -51,7 +51,7 @@ namespace Wangkanai.Detection.Services
             var service = CreateService(userAgent);
 
             // act
-            var resolver = new DefaultCrawlerService(service, null);
+            var resolver = new CrawlerService(service, null);
 
             // assert
             Assert.True(resolver.IsCrawler);
@@ -67,7 +67,7 @@ namespace Wangkanai.Detection.Services
             var service = CreateService(userAgent);
 
             // act
-            var resolver = new DefaultCrawlerService(service, null);
+            var resolver = new CrawlerService(service, null);
 
             // assert
             Assert.True(resolver.IsCrawler);
@@ -83,7 +83,7 @@ namespace Wangkanai.Detection.Services
             var service = CreateService(userAgent);
 
             // act
-            var resolver = new DefaultCrawlerService(service, null);
+            var resolver = new CrawlerService(service, null);
 
             // assert
             Assert.True(resolver.IsCrawler);
@@ -99,7 +99,7 @@ namespace Wangkanai.Detection.Services
             var service = CreateService(userAgent);
 
             // act
-            var resolver = new DefaultCrawlerService(service, null);
+            var resolver = new CrawlerService(service, null);
 
             // assert
             Assert.True(resolver.IsCrawler);
@@ -115,7 +115,7 @@ namespace Wangkanai.Detection.Services
             var service = CreateService(userAgent);
 
             // act
-            var resolver = new DefaultCrawlerService(service, null);
+            var resolver = new CrawlerService(service, null);
 
             // assert
             Assert.True(resolver.IsCrawler);
@@ -131,7 +131,7 @@ namespace Wangkanai.Detection.Services
             var service = CreateService(userAgent);
 
             // act
-            var resolver = new DefaultCrawlerService(service, null);
+            var resolver = new CrawlerService(service, null);
 
             // assert
             Assert.True(resolver.IsCrawler);
@@ -147,7 +147,7 @@ namespace Wangkanai.Detection.Services
             var service = CreateService(userAgent);
 
             // act
-            var resolver = new DefaultCrawlerService(service, null);
+            var resolver = new CrawlerService(service, null);
 
             // assert
             Assert.True(resolver.IsCrawler);
@@ -162,7 +162,7 @@ namespace Wangkanai.Detection.Services
             var service = CreateService(userAgent);
 
             // act
-            var resolver = new DefaultCrawlerService(service, null);
+            var resolver = new CrawlerService(service, null);
 
             // assert
             Assert.True(resolver.IsCrawler);
@@ -178,7 +178,7 @@ namespace Wangkanai.Detection.Services
             var service = CreateService(userAgent);
 
             // act
-            var resolver = new DefaultCrawlerService(service, null);
+            var resolver = new CrawlerService(service, null);
 
             // assert
             Assert.True(resolver.IsCrawler);
@@ -193,7 +193,7 @@ namespace Wangkanai.Detection.Services
             var service = CreateService(userAgent);
 
             // act
-            var resolver = new DefaultCrawlerService(service, null);
+            var resolver = new CrawlerService(service, null);
 
             // assert
             Assert.False(resolver.IsCrawler);
@@ -209,7 +209,7 @@ namespace Wangkanai.Detection.Services
             var options = new DetectionOptions();
             options.Crawler.Others.Add("starnic");
             // act
-            var resolver = new DefaultCrawlerService(service, options);
+            var resolver = new CrawlerService(service, options);
 
             // assert
             Assert.True(resolver.IsCrawler);

@@ -14,7 +14,7 @@ namespace Wangkanai.Detection.Services
     /// <summary>
     /// Provides the APIs for query client access device.
     /// </summary>
-    public class DefaultUserAgentService : IUserAgentService
+    public class UserAgentService : IUserAgentService
     {
         /// <summary>
         /// Get HttpContext of the application service
@@ -26,7 +26,7 @@ namespace Wangkanai.Detection.Services
         /// </summary>
         public UserAgent UserAgent { get; }
 
-        public DefaultUserAgentService(IServiceProvider services)
+        public UserAgentService(IServiceProvider services)
         {
             if (services is null)
                 throw new ArgumentNullException(nameof(services));

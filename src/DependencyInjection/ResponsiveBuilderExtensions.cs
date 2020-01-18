@@ -32,7 +32,7 @@ namespace Microsoft.Extensions.DependencyInjection
             builder.AddViewLocation(ResponsiveViewLocationFormat.Subfolder);
 
             // waiting for development
-            builder.Services.TryAddTransient<IResponsiveService, DefaultResponsiveService>();
+            builder.Services.TryAddTransient<IResponsiveService, ResponsiveService>();
 
             return builder;
         }

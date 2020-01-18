@@ -33,20 +33,20 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IDetectionBuilder AddCoreServices(this IDetectionBuilder builder)
         {
             // Add Basic core to services
-            builder.Services.TryAddTransient<IUserAgentService, DefaultUserAgentService>();
+            builder.Services.TryAddTransient<IUserAgentService, UserAgentService>();
             builder.Services.TryAddTransient<IDeviceService, DefaultDeviceService>();
-            builder.Services.TryAddTransient<IEngineService, DefaultEngineService>();
-            builder.Services.TryAddTransient<IPlatformService, DefaultPlatformService>();
-            builder.Services.TryAddTransient<IBrowserService, DefaultBrowserService>();
+            builder.Services.TryAddTransient<IEngineService, EngineService>();
+            builder.Services.TryAddTransient<IPlatformService, PlatformService>();
+            builder.Services.TryAddTransient<IBrowserService, BrowserService>();
             builder.Services.TryAddTransient<ICrawlerService, DefaultCrawlerService>();
-            builder.Services.TryAddTransient<IDetectionService, DefaultDetectionService>();
+            builder.Services.TryAddTransient<IDetectionService, DetectionService>();
 
             return builder;
         }
 
         public static IDetectionBuilder AddMarkerService(this IDetectionBuilder builder)
         {
-            builder.Services.TryAddSingleton<DetectionMarkerService, DetectionMarkerService>();
+            builder.Services.TryAddSingleton<MarkerService, MarkerService>();
 
             return builder;
         }

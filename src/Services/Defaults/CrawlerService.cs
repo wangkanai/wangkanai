@@ -11,7 +11,7 @@ using Wangkanai.Detection.Models;
 
 namespace Wangkanai.Detection.Services
 {
-    public class DefaultCrawlerService : ICrawlerService
+    public class CrawlerService : ICrawlerService
     {
         public bool IsCrawler { get; } = false;
         public Crawler Type { get; } = Crawler.Unknown;
@@ -20,7 +20,7 @@ namespace Wangkanai.Detection.Services
         private readonly UserAgent _useragent;
         private readonly DetectionOptions _options;
 
-        public DefaultCrawlerService(IUserAgentService useragent, DetectionOptions options)
+        public CrawlerService(IUserAgentService useragent, DetectionOptions options)
         {
             _useragent = useragent.UserAgent;
             _options = options;

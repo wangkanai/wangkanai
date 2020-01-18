@@ -3,5 +3,5 @@
 
 namespace Wangkanai.Detection.Services
 {
-    public class DefaultPlatformService : IPlatformService { }
+    public class PlatformService : IPlatformService { }
 }

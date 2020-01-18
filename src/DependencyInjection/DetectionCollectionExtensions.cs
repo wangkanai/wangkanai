@@ -71,10 +71,10 @@ namespace Microsoft.Extensions.DependencyInjection
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             // Add Basic core to services
-            services.TryAddTransient<IUserAgentService, DefaultUserAgentService>();
+            services.TryAddTransient<IUserAgentService, UserAgentService>();
 
             // Completed adding services
-            services.TryAddSingleton<DetectionMarkerService, DetectionMarkerService>();
+            services.TryAddSingleton<MarkerService, MarkerService>();
 
             return new DetectionCoreBuilder(services);
         }
