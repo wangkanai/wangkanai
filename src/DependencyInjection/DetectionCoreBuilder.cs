@@ -5,9 +5,7 @@ using System;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
-    /// <summary>
-    /// Helper functions for configuring detection core services.
-    /// </summary>
+    [Obsolete]
     public class DetectionCoreBuilder : IDetectionCoreBuilder
     {
         /// <summary>

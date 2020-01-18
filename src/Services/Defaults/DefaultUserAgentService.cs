@@ -27,8 +27,17 @@ namespace Wangkanai.Detection.Services
         public UserAgent UserAgent { get; }
 
         public DefaultUserAgentService(IServiceProvider services)
-            : this(services.GetRequiredService<IHttpContextAccessor>().HttpContext) { }
+        {
+            if (services is null)
+                throw new ArgumentNullException(nameof(services));
+            var context = services.GetRequiredService<IHttpContextAccessor>().HttpContext;
+            if (context is null)
+                throw new ArgumentNullException(nameof(context));
 
+            Context = context;
+            UserAgent = CreateUserAgentFromContext(Context);
+        }
+        [Obsolete]
         public DefaultUserAgentService(HttpContext context)
         {
             if (context is null)
