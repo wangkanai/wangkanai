@@ -25,8 +25,8 @@ namespace Wangkanai.Detection.Services
             _useragent = useragent.UserAgent;
             _options = options;
 
-            Type = CrawlerFromUserAgent(_useragent, _options?.Crawler.Others);
-            IsCrawler = IsUnknown(Type);
+            Type = CrawlerFromUserAgent(_useragent, _options.Crawler.Others);
+            IsCrawler = !IsUnknown(Type);
             Version = GetVersion(_useragent);
         }
 
@@ -57,12 +57,13 @@ namespace Wangkanai.Detection.Services
             foreach (var name in Crawlers)
                 if (agent.Contains(name))
                     return TryParseCrawler(name);
+
             if (others != null)
                 foreach (var name in others)
                     if (agent.Contains(name.ToLower()))
                         return Crawler.Others;
 
-            if (useragent.ToString().ToLower().Contains("bot"))
+            if (useragent.Contains("bot"))
                 return Crawler.Others;
 
             return Crawler.Unknown;
@@ -83,6 +84,6 @@ namespace Wangkanai.Detection.Services
             => Enum.GetNames(typeof(Crawler)).Select(s => s.ToLower()).ToArray();
 
         private static bool IsUnknown(Crawler type)
-            => type != Crawler.Unknown;
+            => type == Crawler.Unknown;
     }
 }

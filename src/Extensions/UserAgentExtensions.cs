@@ -8,15 +8,16 @@ namespace Wangkanai.Detection.Extensions
     internal static class UserAgentExtensions
     {
         public static bool IsNullOrEmpty(this UserAgent agent)
-            => agent is null || string.IsNullOrEmpty(agent.ToString());
+            => agent == null
+            || string.IsNullOrEmpty(agent.ToString());
 
         public static int Length(this UserAgent agent)
             => agent.ToString().Length;
 
-        public static bool Contains(this UserAgent agent, string keyword)
-            => agent.ToString().ToLower().ToLowerInvariant().Contains(keyword);
+        public static bool Contains(this UserAgent agent, string word)
+            => agent.ToString().ToLower().ToLowerInvariant().Contains(word);
 
-        public static bool StartsWith(this UserAgent agent, string prefix)
-            => agent.ToString().StartsWith(prefix);
+        public static bool StartsWith(this UserAgent agent, string word)
+            => agent.ToString().StartsWith(word);
     }
 }
