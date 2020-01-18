@@ -6,8 +6,8 @@ using System;
 namespace Wangkanai.Detection
 {
     [Obsolete]
-    public interface IEngineResolver : IResolver
+    public interface IDeviceResolver : IResolver
     {
-        IEngineFactory Engine { get; }
+        IDeviceFactory Device { get; }
     }
 }

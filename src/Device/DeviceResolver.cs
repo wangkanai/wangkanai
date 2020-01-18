@@ -1,6 +1,7 @@
 // Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
+using System;
 using System.Linq;
 
 using Wangkanai.Detection.Models;
@@ -8,6 +9,7 @@ using Wangkanai.Detection.Services;
 
 namespace Wangkanai.Detection
 {
+    [Obsolete]
     public sealed class DeviceResolver : BaseResolver, IDeviceResolver
     {
         /// <summary>

@@ -7,6 +7,7 @@ using Wangkanai.Detection.Models;
 
 namespace Wangkanai.Detection
 {
+    [Obsolete]
     public class DeviceFactory : IDeviceFactory
     {
         public Device Type { get; set; }
