@@ -34,7 +34,7 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             // Add Basic core to services
             builder.Services.TryAddTransient<IUserAgentService, UserAgentService>();
-            builder.Services.TryAddTransient<IDeviceService, DefaultDeviceService>();
+            builder.Services.TryAddTransient<IDeviceService, DeviceService>();
             builder.Services.TryAddTransient<IEngineService, EngineService>();
             builder.Services.TryAddTransient<IPlatformService, PlatformService>();
             builder.Services.TryAddTransient<IBrowserService, BrowserService>();

@@ -3,11 +3,11 @@
 
 namespace Wangkanai.Detection.Services
 {
-    public class DefaultDeviceService : IDeviceService
+    public class DeviceService : IDeviceService
     {
         private readonly IUserAgentService _userAgentService;
 
-        public DefaultDeviceService(IUserAgentService userAgentService)
+        public DeviceService(IUserAgentService userAgentService)
         {
             _userAgentService = userAgentService;
         }

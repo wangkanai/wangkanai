@@ -45,7 +45,7 @@ namespace Wangkanai.Detection.DependencyInjection
             var serviceDescriptors = new List<ServiceDescriptor>
             {
                 new ServiceDescriptor(typeof(IUserAgentService), typeof(UserAgentService), ServiceLifetime.Transient),
-                new ServiceDescriptor(typeof(IDeviceService), typeof(DefaultDeviceService), ServiceLifetime.Transient),
+                new ServiceDescriptor(typeof(IDeviceService), typeof(DeviceService), ServiceLifetime.Transient),
                 new ServiceDescriptor(typeof(IEngineService), typeof(EngineService), ServiceLifetime.Transient),
                 new ServiceDescriptor(typeof(IPlatformService), typeof(PlatformService), ServiceLifetime.Transient),
                 new ServiceDescriptor(typeof(IBrowserService), typeof(BrowserService), ServiceLifetime.Transient),
