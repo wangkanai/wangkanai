@@ -9,5 +9,14 @@ namespace Wangkanai.Detection.Extensions
     {
         public static bool IsNullOrEmpty(this UserAgent agent)
             => agent is null || string.IsNullOrEmpty(agent.ToString());
+
+        public static int Length(this UserAgent agent)
+            => agent.ToString().Length;
+
+        public static bool Contains(this UserAgent agent, string keyword)
+            => agent.ToString().ToLower().ToLowerInvariant().Contains(keyword);
+
+        public static bool StartsWith(this UserAgent agent, string prefix)
+            => agent.ToString().StartsWith(prefix);
     }
 }
