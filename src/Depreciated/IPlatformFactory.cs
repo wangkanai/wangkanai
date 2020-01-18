@@ -9,6 +9,7 @@ using OperatingSystem = Wangkanai.Detection.Models.OperatingSystem;
 
 namespace Wangkanai.Detection
 {
+    [Obsolete]
     public interface IPlatformFactory
     {
         string? Name { get; }

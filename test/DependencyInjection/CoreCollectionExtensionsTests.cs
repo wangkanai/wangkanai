@@ -17,21 +17,33 @@ namespace Wangkanai.Detection.DependencyInjection
     public class CoreCollectionExtensionsTests
     {
         [Fact]
-        public void AddDetection_ReturnsExpected()
+        public void AddRequiredPlatformServices_ReturnsExpected()
         {
             var serviceCollection = new ServiceCollection();
-            var builder = serviceCollection.AddDetectionCore();
+            var builder = serviceCollection.AddDetectionBuilder().AddRequiredPlatformServices();
             var serviceDescriptors = new List<ServiceDescriptor>
             {
                 new ServiceDescriptor(typeof(IHttpContextAccessor), typeof(HttpContextAccessor), ServiceLifetime.Singleton),
-                // DetectionOptions
                 new ServiceDescriptor(typeof(IOptions<>), typeof(DetectionOptions), ServiceLifetime.Singleton),
                 new ServiceDescriptor(typeof(IOptionsSnapshot<>), typeof(DetectionOptions), ServiceLifetime.Scoped),
                 new ServiceDescriptor(typeof(IOptionsMonitor<>), typeof(DetectionOptions), ServiceLifetime.Singleton),
                 new ServiceDescriptor(typeof(IOptionsFactory<>), typeof(DetectionOptions), ServiceLifetime.Transient),
                 new ServiceDescriptor(typeof(IOptionsMonitorCache<>), typeof(DetectionOptions), ServiceLifetime.Singleton),
-                new ServiceDescriptor(typeof(DetectionOptions), typeof(DetectionOptions), ServiceLifetime.Singleton),
-                // Basic features
+                new ServiceDescriptor(typeof(DetectionOptions), typeof(DetectionOptions), ServiceLifetime.Singleton)
+            };
+
+            Assert.NotNull(builder);
+            Assert.NotNull(builder.Services);
+            AssertServices(serviceDescriptors, builder.Services);
+        }
+
+        [Fact]
+        public void AddCoreServices_ReturnsExpected()
+        {
+            var serviceCollection = new ServiceCollection();
+            var builder = serviceCollection.AddDetectionBuilder().AddCoreServices();
+            var serviceDescriptors = new List<ServiceDescriptor>
+            {
                 new ServiceDescriptor(typeof(IUserAgentService), typeof(DefaultUserAgentService), ServiceLifetime.Transient),
                 new ServiceDescriptor(typeof(IDeviceService), typeof(DefaultDeviceService), ServiceLifetime.Transient),
                 new ServiceDescriptor(typeof(IEngineService), typeof(DefaultEngineService), ServiceLifetime.Transient),
@@ -39,6 +51,21 @@ namespace Wangkanai.Detection.DependencyInjection
                 new ServiceDescriptor(typeof(IBrowserService), typeof(DefaultBrowserService), ServiceLifetime.Transient),
                 new ServiceDescriptor(typeof(ICrawlerService), typeof(DefaultCrawlerService), ServiceLifetime.Transient),
                 new ServiceDescriptor(typeof(IDetectionService), typeof(DefaultDetectionService), ServiceLifetime.Transient),
+            };
+
+            Assert.NotNull(builder);
+            Assert.NotNull(builder.Services);
+            AssertServices(serviceDescriptors, builder.Services);
+        }
+
+        [Fact]
+        public void AddMarkerServices_ReturnsExpected()
+        {
+            var serviceCollection = new ServiceCollection();
+            var builder = serviceCollection.AddDetectionBuilder().AddMarkerService();
+            var serviceDescriptors = new List<ServiceDescriptor>
+            {
+                new ServiceDescriptor(typeof(DetectionMarkerService), typeof(DetectionMarkerService), ServiceLifetime.Singleton),
             };
 
             Assert.NotNull(builder);
@@ -55,7 +82,7 @@ namespace Wangkanai.Detection.DependencyInjection
         [Fact]
         public void AddDetectionCore_Null_ArgumentNullException()
         {
-            Assert.Throws<ArgumentNullException>(() => ((IServiceCollection)null).AddDetectionCore());
+            Assert.Throws<ArgumentNullException>(() => ((IServiceCollection)null).AddDetectionBuilder());
         }
 
         private void AssertServices(List<ServiceDescriptor> serviceDescriptors, IServiceCollection services)

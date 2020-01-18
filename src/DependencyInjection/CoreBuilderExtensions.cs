@@ -16,6 +16,40 @@ namespace Microsoft.Extensions.DependencyInjection
     /// </summary>
     public static class CoreBuilderExtensions
     {
+        public static IDetectionBuilder AddRequiredPlatformServices(this IDetectionBuilder builder)
+        {
+            // Hosting doesn't add IHttpContextAccessor by default
+            builder.Services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            // Add Detection Options
+            builder.Services.AddOptions();
+            builder.Services.TryAddSingleton(
+                resolver => resolver.GetRequiredService<IOptions<DetectionOptions>>().Value);
+
+            return builder;
+        }
+
+        public static IDetectionBuilder AddCoreServices(this IDetectionBuilder builder)
+        {
+            // Add Basic core to services
+            builder.Services.TryAddTransient<IUserAgentService, DefaultUserAgentService>();
+            builder.Services.TryAddTransient<IDeviceService, DefaultDeviceService>();
+            builder.Services.TryAddTransient<IEngineService, DefaultEngineService>();
+            builder.Services.TryAddTransient<IPlatformService, DefaultPlatformService>();
+            builder.Services.TryAddTransient<IBrowserService, DefaultBrowserService>();
+            builder.Services.TryAddTransient<ICrawlerService, DefaultCrawlerService>();
+            builder.Services.TryAddTransient<IDetectionService, DefaultDetectionService>();
+
+            return builder;
+        }
+
+        public static IDetectionBuilder AddMarkerService(this IDetectionBuilder builder)
+        {
+            builder.Services.TryAddSingleton<DetectionMarkerService, DetectionMarkerService>();
+
+            return builder;
+        }
+
         /// <summary>
         /// Adds the default client service to the services container.
         /// </summary>
@@ -29,18 +63,8 @@ namespace Microsoft.Extensions.DependencyInjection
             // Hosting doesn't add IHttpContextAccessor by default
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-            // Add Detection Options
-            services.AddOptions();
-            services.TryAddSingleton(resolver => resolver.GetRequiredService<IOptions<DetectionOptions>>().Value);
-
             // Add Basic core to services
             services.TryAddTransient<IUserAgentService, DefaultUserAgentService>();
-            services.TryAddTransient<IDeviceService, DefaultDeviceService>();
-            services.TryAddTransient<IEngineService, DefaultEngineService>();
-            services.TryAddTransient<IPlatformService, DefaultPlatformService>();
-            services.TryAddTransient<IBrowserService, DefaultBrowserService>();
-            services.TryAddTransient<ICrawlerService, DefaultCrawlerService>();
-            services.TryAddTransient<IDetectionService, DefaultDetectionService>();
 
             // Completed adding services
             services.TryAddSingleton<DetectionMarkerService, DetectionMarkerService>();
