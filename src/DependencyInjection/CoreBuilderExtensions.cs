@@ -38,7 +38,7 @@ namespace Microsoft.Extensions.DependencyInjection
             builder.Services.TryAddTransient<IEngineService, EngineService>();
             builder.Services.TryAddTransient<IPlatformService, PlatformService>();
             builder.Services.TryAddTransient<IBrowserService, BrowserService>();
-            builder.Services.TryAddTransient<ICrawlerService, DefaultCrawlerService>();
+            builder.Services.TryAddTransient<ICrawlerService, CrawlerService>();
             builder.Services.TryAddTransient<IDetectionService, DetectionService>();
 
             return builder;
