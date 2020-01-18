@@ -14,9 +14,9 @@ namespace Wangkanai.Detection.Services
             // arrange
             var service = MockService.CreateService(null);
             // act
-            var device = new DeviceService(service, null);
+            var resolver = new DeviceService(service, null);
             // assert
-            Assert.NotNull(device);
+            Assert.NotNull(resolver);
         }
 
 

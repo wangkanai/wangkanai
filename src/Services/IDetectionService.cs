@@ -9,7 +9,7 @@ namespace Wangkanai.Detection.Services
     {
         public UserAgent UserAgent { get; }
 
-        //public IDeviceService Device { get; }
+        public IDeviceService Device { get; }
         public ICrawlerService Crawler { get; }
 
         //public IBrowserService Browser { get; }
