@@ -59,6 +59,21 @@ namespace Wangkanai.Detection.DependencyInjection
         }
 
         [Fact]
+        public void AddMarkerServices_ReturnsExpected()
+        {
+            var serviceCollection = new ServiceCollection();
+            var builder = serviceCollection.AddDetectionBuilder().AddMarkerService();
+            var serviceDescriptors = new List<ServiceDescriptor>
+            {
+                new ServiceDescriptor(typeof(DetectionMarkerService), typeof(DetectionMarkerService), ServiceLifetime.Singleton),
+            };
+
+            Assert.NotNull(builder);
+            Assert.NotNull(builder.Services);
+            AssertServices(serviceDescriptors, builder.Services);
+        }
+
+        [Fact]
         public void AddDetection_Null_ArgumentNullException()
         {
             Assert.Throws<ArgumentNullException>(() => ((IServiceCollection)null).AddDetection());
