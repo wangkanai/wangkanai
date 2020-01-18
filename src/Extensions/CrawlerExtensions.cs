@@ -2,7 +2,7 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System.Collections.Generic;
-
+using Microsoft.AspNetCore.Http;
 using Wangkanai.Detection.Models;
 
 namespace Wangkanai.Detection.Extensions
