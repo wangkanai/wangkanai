@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Responsive;
 using Wangkanai.Detection.Services;
+using static Microsoft.Extensions.DependencyInjection.DetectionCollectionExtensions;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
