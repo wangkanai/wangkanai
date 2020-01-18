@@ -1,7 +1,7 @@
 # ASP.NET Core Detection
 
 [![Build status](https://ci.appveyor.com/api/projects/status/033qv4nqv8g4altq?svg=true&retina=true)](https://ci.appveyor.com/project/wangkanai/detection)
-![GitHub](https://img.shields.io/github/license/wangkanai/detection)
+[![GitHub](https://img.shields.io/github/license/wangkanai/detection)](https://github.com/wangkanai/Detection/blob/dev/LICENSE)
 
 
 [![Open Collective](https://img.shields.io/badge/open%20collective-support%20us-3385FF.svg)](https://opencollective.com/wangkanai)
