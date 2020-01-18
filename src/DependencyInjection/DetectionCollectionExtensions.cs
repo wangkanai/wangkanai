@@ -79,6 +79,7 @@ namespace Microsoft.Extensions.DependencyInjection
             return new DetectionCoreBuilder(services);
         }
 
+        [Obsolete]
         /// <summary>
         /// Adds the DeviceResolver service the specified <see cref="IServiceCollection" />.
         /// </summary>

@@ -9,19 +9,40 @@ namespace Wangkanai.Detection.Services
 {
     public static class MockService
     {
+        private static HttpContext DefaultHttpContext()
+            => new DefaultHttpContext();
+
         public static IUserAgentService CreateService(string agent)
+            => MockUserAgentService(agent).Object;
+        public static IUserAgentService CreateService(string value, string header)
         {
-            var context = CreateContext(agent);
+            var context = CreateContext(value, header);
             var service = new Mock<IUserAgentService>();
-            service.Setup(f => f.Context).Returns(context);
-            service.Setup(f => f.UserAgent).Returns(new UserAgent(agent));
+            service.SetupUserAgent(context, null);
             return service.Object;
         }
 
-        public static HttpContext CreateContext(string value)
+        private static Mock<IUserAgentService> MockUserAgentService(string agent)
         {
-            var context = new DefaultHttpContext();
-            var header = "User-Agent";
+            var context = CreateContext(agent);
+            var service = new Mock<IUserAgentService>();
+            service.SetupUserAgent(context, agent);
+            return service;
+        }
+
+        private static Mock<IUserAgentService> SetupUserAgent(this Mock<IUserAgentService> service,HttpContext context, string agent)
+        {
+            service.Setup(f => f.Context).Returns(context);
+            service.Setup(f => f.UserAgent).Returns(new UserAgent(agent));
+            return service;
+        }
+
+        public static HttpContext CreateContext(string value)
+            => CreateContext(value, "User-Agent");
+
+        public static HttpContext CreateContext(string value, string header)
+        {
+            var context = DefaultHttpContext();
             context.Request.Headers.Add(header, new[] { value });
             return context;
         }
