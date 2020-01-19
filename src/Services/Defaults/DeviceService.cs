@@ -45,10 +45,10 @@ namespace Wangkanai.Detection.Services
             if (request.IsOperaMini())
                 return options.DefaultMobile;
             // mobile user agent prof detection
-            if (request.IsUserAgentWAP())
+            if (request.IsUserAgentWap())
                 return options.DefaultMobile;
             // mobile accept-header base detection
-            if (request.IsAcceptHeaderWAP())
+            if (request.IsAcceptHeaderWap())
                 return options.DefaultMobile;
 
             return options.DefaultDesktop;
