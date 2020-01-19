@@ -5,6 +5,7 @@ using System;
 
 using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Models;
+using Wangkanai.Detection.Services;
 
 namespace Wangkanai.Detection.Responsive
 {
@@ -13,8 +14,8 @@ namespace Wangkanai.Detection.Responsive
         private readonly ResponsiveOptions _options;
         private readonly Device _resolved;
 
-        public ResolverManager(IDeviceResolver resolver, ResponsiveOptions options)
-            : this(resolver.Device.Type, options) { }
+        public ResolverManager(IDeviceService resolver, ResponsiveOptions options)
+            : this(resolver.Type, options) { }
 
         public ResolverManager(Device resolved, ResponsiveOptions options)
         {

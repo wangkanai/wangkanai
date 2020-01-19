@@ -7,10 +7,10 @@ using Wangkanai.Detection.Models;
 
 namespace Wangkanai.Detection
 {
-    [Obsolete]
-    public interface IDeviceFactory
-    {
-        Device Type { get; set; }
-        bool Crawler { get; set; }
-    }
+    // [Obsolete]
+    // public interface IDeviceFactory
+    // {
+    //     Device Type { get; set; }
+    //     bool Crawler { get; set; }
+    // }
 }

@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.Primitives;
 
 using Wangkanai.Detection;
+using Wangkanai.Detection.Models;
+using Wangkanai.Detection.Services;
 
 namespace Microsoft.AspNetCore.Mvc.TagHelpers
 {
@@ -28,13 +30,13 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
         [HtmlAttributeName(ExcludeAttributeName)]
         public string? Exclude { get; set; }
 
-        private readonly IDeviceResolver _resolver;
+        private readonly IDeviceService _resolver;
 
         [HtmlAttributeNotBound]
         [ViewContext]
         public ViewContext? ViewContext { get; set; }
 
-        public DeviceTagHelper(IDeviceResolver resolver)
+        public DeviceTagHelper(IDeviceService resolver)
         {
             _resolver = resolver;
         }
@@ -52,8 +54,7 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
                 string.IsNullOrWhiteSpace(Exclude))
                 return;
 
-            var device = _resolver.Device;
-            var currentDeviceName = device.Type.ToString();
+            var currentDeviceName = _resolver.Type.ToString();
 
             if (Exclude != null)
             {

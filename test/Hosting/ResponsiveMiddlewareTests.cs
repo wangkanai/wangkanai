@@ -9,6 +9,7 @@ using Microsoft.Extensions.Options;
 
 using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Models;
+using Wangkanai.Detection.Services;
 using Xunit;
 
 namespace Wangkanai.Detection.Hosting
@@ -40,8 +41,9 @@ namespace Wangkanai.Detection.Hosting
             var context = new DefaultHttpContext();
             var options = Options.Create(new ResponsiveOptions());
             var middleware = new ResponsiveMiddleware(d => Task.Factory.StartNew(() => d), options);
+            var deviceService = new DeviceService(MockService.CreateService(null), null);
 
-            await middleware.Invoke(context, new DeviceResolver());
+            await middleware.Invoke(context, deviceService);
 
             Assert.Equal(Device.Tablet, context.GetDevice());
         }
@@ -51,8 +53,9 @@ namespace Wangkanai.Detection.Hosting
         {
             var options = Options.Create(new ResponsiveOptions());
             var middleware = new ResponsiveMiddleware(d => Task.Factory.StartNew(() => d), options);
+            var deviceService = new DeviceService(MockService.CreateService(null), null);
 
-            await Assert.ThrowsAsync<ArgumentNullException>(async () => await middleware.Invoke(null, new DeviceResolver()));
+            await Assert.ThrowsAsync<ArgumentNullException>(async () => await middleware.Invoke(null, deviceService));
         }
 
         [Fact]
@@ -63,20 +66,6 @@ namespace Wangkanai.Detection.Hosting
             var middleware = new ResponsiveMiddleware(d => Task.Factory.StartNew(() => d), options);
 
             await Assert.ThrowsAsync<NullReferenceException>(async () => await middleware.Invoke(context, null));
-        }
-
-        private class DeviceResolver : IDeviceResolver
-        {
-            public IDeviceFactory Device => new MyTablet() { Type = Models.Device.Tablet };
-
-            public UserAgent UserAgent => throw new NotImplementedException();
-        }
-
-        private class MyTablet : IDeviceFactory
-        {
-            public Device Type { get; set; }
-
-            public bool Crawler { get; set; }
         }
     }
 }
