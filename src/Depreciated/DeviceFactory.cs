@@ -13,9 +13,7 @@ namespace Wangkanai.Detection
         public Device Type { get; set; }
         public bool Crawler { get; set; }
 
-        public DeviceFactory()
-        {
-        }
+        public DeviceFactory() { }
 
         public DeviceFactory(Device deviceType)
             => Type = deviceType;
