@@ -3,22 +3,27 @@
 
 using System.Linq;
 using Microsoft.AspNetCore.Http;
-using Wangkanai.Detection.Models;
 
 namespace Wangkanai.Detection.Extensions
 {
     internal static class DeviceExtensions
     {
         public static bool IsOperaMini(this HttpRequest request)
-            => request.Headers.Any(header
+        {
+            return request.Headers.Any(header
                 => header.Value.Any(value
-                    => (value is null) ? false : value.Contains("OperaMini")));
+                    => value?.Contains("OperaMini") ?? false));
+        }
 
         public static bool IsUserAgentWap(this HttpRequest request)
-            => request.Headers.ContainsKey("x-wap-profile")
-            || request.Headers.ContainsKey("Profile");
+        {
+            return request.Headers.ContainsKey("x-wap-profile")
+                   || request.Headers.ContainsKey("Profile");
+        }
 
         public static bool IsAcceptHeaderWap(this HttpRequest request)
-            => request.Headers["Accept"].Any(accept => accept.ToLower() == "wap");
+        {
+            return request.Headers["Accept"].Any(accept => accept.ToLower() == "wap");
+        }
     }
 }

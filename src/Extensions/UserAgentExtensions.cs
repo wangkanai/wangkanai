@@ -10,34 +10,52 @@ namespace Wangkanai.Detection.Extensions
     internal static class UserAgentExtensions
     {
         public static UserAgent UserAgentFromHeader(this HttpContext context)
-            => new UserAgent(context.Request.Headers["User-Agent"].FirstOrDefault());
+        {
+            return new UserAgent(context.Request.Headers["User-Agent"].FirstOrDefault());
+        }
 
         public static bool IsNullOrEmpty(this UserAgent agent)
-            => agent == null
-            || string.IsNullOrEmpty(agent.ToLower());
+        {
+            return agent == null
+                   || string.IsNullOrEmpty(agent.ToLower());
+        }
 
         public static string ToLower(this UserAgent agent)
-            => agent.ToString().ToLower();
+        {
+            return agent.ToString().ToLower();
+        }
 
         public static int Length(this UserAgent agent)
-            => agent.ToString().Length;
+        {
+            return agent.ToString().Length;
+        }
 
         public static bool Contains(this UserAgent agent, string word)
-            => agent.ToLower().Contains(word.ToLower());
+        {
+            return agent.ToLower().Contains(word.ToLower());
+        }
 
         public static bool Contains(this UserAgent agent, string[] array)
-            => array.Any(key => agent.Contains(key))
-            && !agent.IsNullOrEmpty();
+        {
+            return array.Any(agent.Contains)
+                   && !agent.IsNullOrEmpty();
+        }
 
         public static bool StartsWith(this UserAgent agent, string word)
-            => agent.ToLower().StartsWith(word.ToLower())
-            && !agent.IsNullOrEmpty();
+        {
+            return agent.ToLower().StartsWith(word.ToLower())
+                   && !agent.IsNullOrEmpty();
+        }
 
         public static bool StartsWith(this UserAgent agent, string[] array)
-            => array.Any(key => agent.StartsWith(key));
+        {
+            return array.Any(agent.StartsWith);
+        }
 
         public static bool StartsWith(this UserAgent agent, string[] array, int minimum)
-            => agent.Length() >= minimum
-            && agent.StartsWith(array);
+        {
+            return agent.Length() >= minimum
+                   && agent.StartsWith(array);
+        }
     }
 }
