@@ -12,7 +12,7 @@ using Wangkanai.Detection.Services;
 namespace Microsoft.Extensions.DependencyInjection
 {
     /// <summary>
-    /// Contains extension method to <see cref="IServiceCollection"/> for configuring client services.
+    ///     Contains extension method to <see cref="IServiceCollection" /> for configuring client services.
     /// </summary>
     public static class DetectionCollectionExtensions
     {
@@ -21,7 +21,8 @@ namespace Microsoft.Extensions.DependencyInjection
             return new DetectionBuilder(services);
         }
 
-        public static IDetectionBuilder AddDetection(this IServiceCollection services, Action<DetectionOptions> setAction)
+        public static IDetectionBuilder AddDetection(this IServiceCollection services,
+            Action<DetectionOptions> setAction)
         {
             services.Configure(setAction);
             return services.AddDetection();
@@ -34,10 +35,10 @@ namespace Microsoft.Extensions.DependencyInjection
         }
 
         /// <summary>
-        /// Adds the default client service to the services container.
+        ///     Adds the default client service to the services container.
         /// </summary>
         /// <param name="services">The services available in the application.</param>
-        /// <returns>An <see cref="IServiceCollection"/> so that additional calls can be chained.</returns>
+        /// <returns>An <see cref="IServiceCollection" /> so that additional calls can be chained.</returns>
         public static IDetectionBuilder AddDetection(this IServiceCollection services)
         {
             var builder = services.AddDetectionBuilder();
@@ -47,22 +48,21 @@ namespace Microsoft.Extensions.DependencyInjection
             builder.AddResponsive();
             builder.AddMarkerService();
 
-            builder.Services.AddDetectionCore()
-                .AddBrowser();
+            builder.Services.AddDetectionCore().AddBrowser();
 
             return builder;
         }
 
         #region deprecated
+
         /// <summary>
-        /// Adds the default client service to the services container.
+        ///     Adds the default client service to the services container.
         /// </summary>
         /// <param name="services">The services available in the application.</param>
-        /// <returns>An <see cref="IServiceCollection"/> so that additional calls can be chained.</returns>
+        /// <returns>An <see cref="IServiceCollection" /> so that additional calls can be chained.</returns>
         public static IDetectionCoreBuilder AddDetectionCore(this IServiceCollection services)
         {
-            if (services is null)
-                throw new ArgumentNullException(nameof(services));
+            if (services is null) throw new ArgumentNullException(nameof(services));
 
             // Hosting doesn't add IHttpContextAccessor by default
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
@@ -77,10 +77,10 @@ namespace Microsoft.Extensions.DependencyInjection
         }
 
         /// <summary>
-        /// Adds the BrowserResolver service to the specific <see cref="IServiceCollection"/>
+        ///     Adds the BrowserResolver service to the specific <see cref="IServiceCollection" />
         /// </summary>
-        /// <param name="builder">The <see cref="IDetectionCoreBuilder"/> to add services to</param>
-        /// <returns>An <see cref="IDetectionCoreBuilder"/> that can be used to further configure the Detection services.</returns>
+        /// <param name="builder">The <see cref="IDetectionCoreBuilder" /> to add services to</param>
+        /// <returns>An <see cref="IDetectionCoreBuilder" /> that can be used to further configure the Detection services.</returns>
         public static IDetectionCoreBuilder AddBrowser(this IDetectionCoreBuilder builder)
         {
             builder.Services.AddTransient<IBrowserResolver, BrowserResolver>();
@@ -89,16 +89,16 @@ namespace Microsoft.Extensions.DependencyInjection
         }
 
         /// <summary>
-        /// Detection Core builder Interface
+        ///     Detection Core builder Interface
         /// </summary>
         [Obsolete]
         public interface IDetectionCoreBuilder
         {
             /// <summary>
-            /// Gets the services.
+            ///     Gets the services.
             /// </summary>
             /// <value>
-            /// The services.
+            ///     The services.
             /// </value>
             IServiceCollection Services { get; }
         }
@@ -107,9 +107,9 @@ namespace Microsoft.Extensions.DependencyInjection
         public class DetectionCoreBuilder : IDetectionCoreBuilder
         {
             /// <summary>
-            /// Creates a new instance of <see cref="DetectionCoreBuilder"/>.
+            ///     Creates a new instance of <see cref="DetectionCoreBuilder" />.
             /// </summary>
-            /// <param name="services">The <see cref="IServiceCollection"/> to attach to.</param>
+            /// <param name="services">The <see cref="IServiceCollection" /> to attach to.</param>
             public DetectionCoreBuilder(IServiceCollection services)
             {
                 if (services is null)
@@ -119,13 +119,14 @@ namespace Microsoft.Extensions.DependencyInjection
             }
 
             /// <summary>
-            /// Gets the <see cref="IServiceCollection"/> services are attached to.
+            ///     Gets the <see cref="IServiceCollection" /> services are attached to.
             /// </summary>
             /// <value>
-            /// The <see cref="IServiceCollection"/> services are attached to.
+            ///     The <see cref="IServiceCollection" /> services are attached to.
             /// </value>
-            public IServiceCollection Services { get; private set; }
+            public IServiceCollection Services { get; }
         }
+
         #endregion
     }
 }
