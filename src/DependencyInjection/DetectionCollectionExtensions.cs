@@ -55,12 +55,7 @@ namespace Microsoft.Extensions.DependencyInjection
 
         #region deprecated
 
-        /// <summary>
-        ///     Adds the default client service to the services container.
-        /// </summary>
-        /// <param name="services">The services available in the application.</param>
-        /// <returns>An <see cref="IServiceCollection" /> so that additional calls can be chained.</returns>
-        public static IDetectionCoreBuilder AddDetectionCore(this IServiceCollection services)
+        private static IDetectionCoreBuilder AddDetectionCore(this IServiceCollection services)
         {
             if (services is null) throw new ArgumentNullException(nameof(services));
 
@@ -76,54 +71,27 @@ namespace Microsoft.Extensions.DependencyInjection
             return new DetectionCoreBuilder(services);
         }
 
-        /// <summary>
-        ///     Adds the BrowserResolver service to the specific <see cref="IServiceCollection" />
-        /// </summary>
-        /// <param name="builder">The <see cref="IDetectionCoreBuilder" /> to add services to</param>
-        /// <returns>An <see cref="IDetectionCoreBuilder" /> that can be used to further configure the Detection services.</returns>
-        public static IDetectionCoreBuilder AddBrowser(this IDetectionCoreBuilder builder)
+        private static IDetectionCoreBuilder AddBrowser(this IDetectionCoreBuilder builder)
         {
             builder.Services.AddTransient<IBrowserResolver, BrowserResolver>();
 
             return builder;
         }
 
-        /// <summary>
-        ///     Detection Core builder Interface
-        /// </summary>
         [Obsolete]
-        public interface IDetectionCoreBuilder
+        private interface IDetectionCoreBuilder
         {
-            /// <summary>
-            ///     Gets the services.
-            /// </summary>
-            /// <value>
-            ///     The services.
-            /// </value>
             IServiceCollection Services { get; }
         }
 
         [Obsolete]
-        public class DetectionCoreBuilder : IDetectionCoreBuilder
+        private class DetectionCoreBuilder : IDetectionCoreBuilder
         {
-            /// <summary>
-            ///     Creates a new instance of <see cref="DetectionCoreBuilder" />.
-            /// </summary>
-            /// <param name="services">The <see cref="IServiceCollection" /> to attach to.</param>
             public DetectionCoreBuilder(IServiceCollection services)
             {
-                if (services is null)
-                    throw new ArgumentNullException(nameof(services));
-
-                Services = services;
+                Services = services ?? throw new ArgumentNullException(nameof(services));
             }
 
-            /// <summary>
-            ///     Gets the <see cref="IServiceCollection" /> services are attached to.
-            /// </summary>
-            /// <value>
-            ///     The <see cref="IServiceCollection" /> services are attached to.
-            /// </value>
             public IServiceCollection Services { get; }
         }
 
