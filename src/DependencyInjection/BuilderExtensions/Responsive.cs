@@ -2,14 +2,11 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
-
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-
 using Wangkanai.Detection.DependencyInjection.Options;
-using Wangkanai.Detection.Responsive;
+using Wangkanai.Detection.Hosting;
 using Wangkanai.Detection.Services;
-using static Microsoft.Extensions.DependencyInjection.DetectionCollectionExtensions;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -17,7 +14,9 @@ namespace Microsoft.Extensions.DependencyInjection
     {
         public static IDetectionBuilder AddResponsive(
             this IDetectionBuilder builder)
-            => builder.AddResponsive(options => { });
+        {
+            return builder.AddResponsive(options => { });
+        }
 
         public static IDetectionBuilder AddResponsive(
             this IDetectionBuilder builder,
@@ -26,10 +25,10 @@ namespace Microsoft.Extensions.DependencyInjection
             if (builder is null)
                 throw new ArgumentNullException(nameof(builder));
 
-            builder.Services.Configure<ResponsiveOptions>(setAction);
+            builder.Services.Configure(setAction);
 
-            builder.AddViewLocation(ResponsiveViewLocationFormat.Suffix);
-            builder.AddViewLocation(ResponsiveViewLocationFormat.Subfolder);
+            builder.AddViewLocation(ViewLocationFormat.Suffix);
+            builder.AddViewLocation(ViewLocationFormat.Subfolder);
 
             // waiting for development
             builder.Services.TryAddTransient<IResponsiveService, ResponsiveService>();
@@ -39,11 +38,11 @@ namespace Microsoft.Extensions.DependencyInjection
 
         private static IDetectionBuilder AddViewLocation(
             this IDetectionBuilder builder,
-            ResponsiveViewLocationFormat format)
+            ViewLocationFormat format)
         {
             builder.Services.Configure<RazorViewEngineOptions>(options =>
             {
-                options.ViewLocationExpanders.Add(new ResponsiveViewLocationExpander(format));
+                options.ViewLocationExpanders.Add(new ViewLocationExpander(format));
             });
 
             return builder;

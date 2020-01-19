@@ -2,12 +2,11 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
-
 using Microsoft.AspNetCore.Http;
 using Wangkanai.Detection.Models;
 using Xunit;
 
-namespace Wangkanai.Detection.Responsive
+namespace Wangkanai.Detection.Hosting
 {
     public class DeviceHttpContextExtensionsTests
     {
@@ -51,7 +50,7 @@ namespace Wangkanai.Detection.Responsive
         [Fact]
         public void GetDevice_Null_ThrowsArgumentNullException()
         {
-            Assert.Throws<GetDeviceArgumentNullException>(() => ((HttpContext)null).GetDevice());
+            Assert.Throws<GetDeviceArgumentNullException>(() => ((HttpContext) null).GetDevice());
         }
 
         [Fact]
