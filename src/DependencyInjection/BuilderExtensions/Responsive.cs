@@ -15,12 +15,12 @@ namespace Microsoft.Extensions.DependencyInjection
 {
     public static class ResponsiveBuilderExtensions
     {
-        public static IDetectionCoreBuilder AddResponsive(
-            this IDetectionCoreBuilder builder)
+        public static IDetectionBuilder AddResponsive(
+            this IDetectionBuilder builder)
             => builder.AddResponsive(options => { });
 
-        public static IDetectionCoreBuilder AddResponsive(
-            this IDetectionCoreBuilder builder,
+        public static IDetectionBuilder AddResponsive(
+            this IDetectionBuilder builder,
             Action<ResponsiveOptions> setAction)
         {
             if (builder is null)
@@ -37,8 +37,8 @@ namespace Microsoft.Extensions.DependencyInjection
             return builder;
         }
 
-        private static IDetectionCoreBuilder AddViewLocation(
-            this IDetectionCoreBuilder builder,
+        private static IDetectionBuilder AddViewLocation(
+            this IDetectionBuilder builder,
             ResponsiveViewLocationFormat format)
         {
             builder.Services.Configure<RazorViewEngineOptions>(options =>
