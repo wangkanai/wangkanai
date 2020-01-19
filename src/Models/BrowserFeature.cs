@@ -3,14 +3,14 @@
 
 namespace Wangkanai.Detection.Models
 {
-    public class Feature
+    public class BrowserFeature
     {
         public bool Frames { get; set; }
         public bool Iframes { get; set; }
         public bool Cookie { get; set; }
-        public bool Javascript { get; set; }
-        public bool Vbscript { get; set; }
-        public bool Javaapplets { get; set; }
+        public bool JavaScript { get; set; }
+        public bool VbScript { get; set; }
+        public bool JavaApplets { get; set; }
         public bool ActiveX { get; set; }
     }
 }

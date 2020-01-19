@@ -68,19 +68,15 @@ namespace Wangkanai.Detection.Hosting
         private IEnumerable<string> ExpandViewLocationsCore(IEnumerable<string> viewLocations, Device device)
         {
             foreach (var location in viewLocations)
+            {
                 if (location.ToLower().Contains("pages"))
-                {
                     yield return location.Replace("{0}", "{0}." + device);
-                    yield return location;
-                }
                 else
-                {
-                    if (_format == ViewLocationFormat.Subfolder)
-                        yield return location.Replace("{0}", device + "/{0}");
-                    else
-                        yield return location.Replace("{0}", "{0}." + device);
-                    yield return location;
-                }
+                    yield return _format == ViewLocationFormat.Subfolder
+                        ? location.Replace("{0}", device + "/{0}")
+                        : location.Replace("{0}", "{0}." + device);
+                yield return location;
+            }
         }
     }
 }

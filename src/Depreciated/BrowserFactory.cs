@@ -18,8 +18,7 @@ namespace Wangkanai.Detection
             Type = browserType;
         }
 
-        public BrowserFactory(Browser browserType, Version version)
-            : this(browserType)
+        public BrowserFactory(Browser browserType, Version version) : this(browserType)
         {
             Version = version;
         }
@@ -34,7 +33,7 @@ namespace Wangkanai.Detection
 
         public string? Name { get; set; }
         public string? Maker { get; set; }
-        public Browser Type { get; set; } = Browser.Generic;
+        public Browser Type { get; set; } = Browser.Others;
         public Version? Version { get; set; }
 
         protected static Version GetVersion(string agent, string browser)

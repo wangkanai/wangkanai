@@ -29,6 +29,8 @@ namespace Microsoft.Extensions.DependencyInjection
 
             VerifyMarkerIsRegistered(app);
 
+            ValidateOptions(app.ApplicationServices.GetRequiredService<DetectionOptions>());
+
             app.UseMiddleware<ResponsiveMiddleware>();
 
             return app;
@@ -44,7 +46,7 @@ namespace Microsoft.Extensions.DependencyInjection
             logger.LogInformation("Starting Detection version {version}",
                 typeof(DetectionApplicationBuilderExtensions)?.Assembly?.GetName()?.Version?.ToString());
 
-            var scopeFactory = app.ApplicationServices.GetService<IServiceScopeFactory>();
+            //var scopeFactory = app.ApplicationServices.GetService<IServiceScopeFactory>();
 
             //using (var scope = scopeFactory.CreateScope())
             //{

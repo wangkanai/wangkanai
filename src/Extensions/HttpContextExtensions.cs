@@ -6,7 +6,7 @@ using Wangkanai.Detection.Models;
 
 namespace Microsoft.AspNetCore.Http
 {
-    public static class DeviceHttpContextExtensions
+    public static class HttpContextExtensions
     {
         private const string ResponsiveContextKey = "Responsive";
 

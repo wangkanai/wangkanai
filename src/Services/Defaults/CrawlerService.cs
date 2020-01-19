@@ -4,7 +4,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
 using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Extensions;
 using Wangkanai.Detection.Models;
@@ -13,22 +12,21 @@ namespace Wangkanai.Detection.Services
 {
     public class CrawlerService : ICrawlerService
     {
-        public bool IsCrawler { get; } = false;
-        public Crawler Type { get; } = Crawler.Unknown;
-        public Version Version { get; }
-
-        private readonly UserAgent _useragent;
-        private readonly DetectionOptions _options;
-
         public CrawlerService(IUserAgentService useragent, DetectionOptions options)
         {
-            _useragent = useragent.UserAgent;
-            _options = options;
+            var useragent1 = useragent.UserAgent;
 
-            Type = CrawlerFromUserAgent(_useragent, _options?.Crawler.Others);
+            Type = CrawlerFromUserAgent(useragent1, options?.Crawler.Others);
             IsCrawler = !IsUnknown(Type);
-            Version = GetVersion(_useragent);
+            Version = GetVersion(useragent1);
         }
+
+        private static string[] Crawlers
+            => Enum.GetNames(typeof(Crawler)).Select(s => s.ToLower()).ToArray();
+
+        public bool IsCrawler { get; }
+        public Crawler Type { get; }
+        public Version Version { get; }
 
         private static Version GetVersion(UserAgent useragent)
         {
@@ -70,20 +68,24 @@ namespace Wangkanai.Detection.Services
         }
 
         private static Crawler TryParseCrawler(string name)
-            => (Crawler)Enum.Parse(typeof(Crawler), name, true);
+        {
+            return (Crawler) Enum.Parse(typeof(Crawler), name, true);
+        }
 
         private static string FindBot(string agent)
-            => agent.ToString().Split(' ')
-                    .Where(x => CrawlerCount(x) > 0)
-                    .FirstOrDefault();
+        {
+            return agent.Split(' ')
+                .FirstOrDefault(x => CrawlerCount(x) > 0);
+        }
 
         private static int CrawlerCount(string x)
-            => Crawlers.Count(y => x.ToLower().Contains(y.ToLower()));
-
-        private static string[] Crawlers
-            => Enum.GetNames(typeof(Crawler)).Select(s => s.ToLower()).ToArray();
+        {
+            return Crawlers.Count(y => x.ToLower().Contains(y.ToLower()));
+        }
 
         private static bool IsUnknown(Crawler type)
-            => type == Crawler.Unknown;
+        {
+            return type == Crawler.Unknown;
+        }
     }
 }
