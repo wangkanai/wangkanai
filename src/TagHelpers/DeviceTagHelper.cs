@@ -2,14 +2,10 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
-
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.Primitives;
-
-using Wangkanai.Detection;
-using Wangkanai.Detection.Models;
 using Wangkanai.Detection.Services;
 
 namespace Microsoft.AspNetCore.Mvc.TagHelpers
@@ -22,7 +18,7 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
         private const string IncludeAttributeName = "include";
         private const string ExcludeAttributeName = "exclude";
 
-        private static readonly char[] NameSeparator = new[] { ',' };
+        private static readonly char[] NameSeparator = new[] {','};
 
         [HtmlAttributeName(IncludeAttributeName)]
         public string? Include { get; set; }
@@ -32,14 +28,10 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
 
         private readonly IDeviceService _resolver;
 
-        [HtmlAttributeNotBound]
-        [ViewContext]
-        public ViewContext? ViewContext { get; set; }
+        [HtmlAttributeNotBound] [ViewContext] public ViewContext? ViewContext { get; set; }
 
         public DeviceTagHelper(IDeviceService resolver)
-        {
-            _resolver = resolver;
-        }
+            => _resolver = resolver;
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {

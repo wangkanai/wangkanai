@@ -1,7 +1,6 @@
 // Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
-using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Wangkanai.Detection.Collections;
 using Wangkanai.Detection.DependencyInjection.Options;
@@ -14,23 +13,16 @@ namespace Wangkanai.Detection.Services
     {
         public Device Type { get; }
 
-        private readonly UserAgent _useragent;
-        private readonly HttpRequest _request;
-        private readonly ResponsiveOptions _options;
-
         public DeviceService(IUserAgentService userAgentService, DetectionOptions options)
         {
-            _useragent = userAgentService.UserAgent;
-            _request = userAgentService.Context.Request;
-            _options = options?.Responsive ?? new ResponsiveOptions();
+            var useragent = userAgentService.UserAgent;
+            var request = userAgentService.Context.Request;
+            var responsiveOptions = options?.Responsive ?? new ResponsiveOptions();
 
-            Type = DeviceFromUserAgent(_useragent, _request, _options);
+            Type = DeviceFromUserAgent(useragent, request, responsiveOptions);
         }
 
-        private static Device DeviceFromUserAgent(
-            UserAgent agent,
-            HttpRequest request,
-            ResponsiveOptions options)
+        private static Device DeviceFromUserAgent(UserAgent agent, HttpRequest request, ResponsiveOptions options)
         {
             // tablet user agent keyword detection
             if (agent.Contains(TabletCollection.Keywords))

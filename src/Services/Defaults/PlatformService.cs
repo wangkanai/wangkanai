@@ -7,15 +7,15 @@ namespace Wangkanai.Detection.Services
 {
     public class PlatformService : IPlatformService
     {
+        public Processor Processor { get; }
+        public OperatingSystem OperatingSystem { get; }
+
         public PlatformService(IUserAgentService userAgentService)
         {
             var userAgent = userAgentService.UserAgent;
             Processor = TryParseProcessor(userAgent);
             OperatingSystem = TryParseOperatingSystem(userAgent);
         }
-
-        public Processor Processor { get; }
-        public OperatingSystem OperatingSystem { get; }
 
         private static OperatingSystem TryParseOperatingSystem(UserAgent agent)
         {

@@ -6,9 +6,19 @@ using Wangkanai.Detection.Models;
 
 namespace Wangkanai.Detection.Services
 {
+    /// <summary>
+    /// Provides the APIs for query client access device.
+    /// </summary>
     public interface IUserAgentService
     {
+        /// <summary>
+        /// Get HttpContext of the application service
+        /// </summary>
         HttpContext Context { get; }
+
+        /// <summary>
+        /// Get user agnet of the request client
+        /// </summary>
         UserAgent UserAgent { get; }
     }
 }
