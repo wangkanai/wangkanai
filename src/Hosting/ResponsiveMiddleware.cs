@@ -3,12 +3,11 @@
 
 using System;
 using System.Threading.Tasks;
-
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
-
 using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Responsive;
+using Wangkanai.Detection.Services;
 
 namespace Wangkanai.Detection.Hosting
 {
@@ -28,12 +27,12 @@ namespace Wangkanai.Detection.Hosting
             _options = options.Value;
         }
 
-        public async Task Invoke(HttpContext context, IDeviceResolver resolver)
+        public async Task Invoke(HttpContext context, IDeviceService resolver)
         {
             if (context is null)
                 throw new ArgumentNullException(nameof(context));
 
-            var detection = new ResolverManager(resolver, _options);
+            var detection = new ResolverManager(resolver.Type, _options);
             //var cookie = new CookieManager(context);
             //var preference = new UserPreference(detection, cookie);
 

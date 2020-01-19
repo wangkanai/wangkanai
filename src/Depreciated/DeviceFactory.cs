@@ -7,31 +7,29 @@ using Wangkanai.Detection.Models;
 
 namespace Wangkanai.Detection
 {
-    [Obsolete]
-    public class DeviceFactory : IDeviceFactory
-    {
-        public Device Type { get; set; }
-        public bool Crawler { get; set; }
-
-        public DeviceFactory()
-        {
-        }
-
-        public DeviceFactory(Device deviceType)
-            => Type = deviceType;
-
-        public DeviceFactory(Device deviceType, bool isCrawler)
-            : this(deviceType)
-            => Crawler = isCrawler;
-
-        public DeviceFactory(string name)
-        {
-            Device deviceType;
-
-            if (!Enum.TryParse(name, true, out deviceType))
-                throw new DeviceNotFoundException(name, "not found");
-
-            Type = deviceType;
-        }
-    }
+    // [Obsolete]
+    // public class DeviceFactory : IDeviceFactory
+    // {
+    //     public Device Type { get; set; }
+    //     public bool Crawler { get; set; }
+    //
+    //     public DeviceFactory() { }
+    //
+    //     public DeviceFactory(Device deviceType)
+    //         => Type = deviceType;
+    //
+    //     public DeviceFactory(Device deviceType, bool isCrawler)
+    //         : this(deviceType)
+    //         => Crawler = isCrawler;
+    //
+    //     public DeviceFactory(string name)
+    //     {
+    //         Device deviceType;
+    //
+    //         if (!Enum.TryParse(name, true, out deviceType))
+    //             throw new DeviceNotFoundException(name, "not found");
+    //
+    //         Type = deviceType;
+    //     }
+    // }
 }

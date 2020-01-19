@@ -5,9 +5,9 @@ using System;
 
 namespace Wangkanai.Detection
 {
-    [Obsolete]
-    public interface IDeviceResolver : IResolver
-    {
-        IDeviceFactory Device { get; }
-    }
+    // [Obsolete]
+    // public interface IDeviceResolver : IResolver
+    // {
+    //     IDeviceFactory Device { get; }
+    // }
 }

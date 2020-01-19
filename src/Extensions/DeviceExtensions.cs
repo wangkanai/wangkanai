@@ -14,11 +14,11 @@ namespace Wangkanai.Detection.Extensions
                 => header.Value.Any(value
                     => (value is null) ? false : value.Contains("OperaMini")));
 
-        public static bool IsUserAgentWAP(this HttpRequest request)
+        public static bool IsUserAgentWap(this HttpRequest request)
             => request.Headers.ContainsKey("x-wap-profile")
             || request.Headers.ContainsKey("Profile");
 
-        public static bool IsAcceptHeaderWAP(this HttpRequest request)
+        public static bool IsAcceptHeaderWap(this HttpRequest request)
             => request.Headers["Accept"].Any(accept => accept.ToLower() == "wap");
     }
 }
