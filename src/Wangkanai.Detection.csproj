@@ -23,8 +23,4 @@
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Depreciated" />
-  </ItemGroup>
-
 </Project>
