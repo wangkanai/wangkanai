@@ -24,7 +24,7 @@ namespace Wangkanai.Detection
 
         protected readonly IUserAgentService _service;
 
-        public BaseResolver(IUserAgentService service)
+        protected BaseResolver(IUserAgentService service)
             => _service = service ?? throw new ArgumentNullException(nameof(service));
     }
 }
