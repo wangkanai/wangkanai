@@ -5,12 +5,12 @@ namespace Wangkanai.Detection.Models
 {
     public enum Browser
     {
-        IE,
         Chrome,
+        InternetExplorer,
         Safari,
         Firefox,
         Edge,
         Opera,
-        Generic
+        Others
     }
 }

@@ -26,7 +26,7 @@ namespace Wangkanai.Detection
             var agent = UserAgent.ToString();
 
             var ie = new InternetExplorer(agent);
-            if (ie.Type == Models.Browser.IE)
+            if (ie.Type == Models.Browser.InternetExplorer)
                 return ie;
             var firefox = new Firefox(agent);
             if (firefox.Type == Models.Browser.Firefox)

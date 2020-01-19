@@ -2,7 +2,6 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
-
 using Wangkanai.Detection.Extensions;
 using Wangkanai.Detection.Models;
 
@@ -23,12 +22,12 @@ namespace Wangkanai.Detection.Collections
                 var cut = _agent.Substring(first + ie10.Length + 1);
                 var version = cut.Substring(0, cut.IndexOf(';'));
                 Version = version.ToVersion();
-                Type = Browser.IE;
+                Type = Browser.InternetExplorer;
             }
 
-            if (_agent.Contains("ie 11.0") || (_agent.Contains("trident/") && _agent.Contains("rv:11.0")))
+            if (_agent.Contains("ie 11.0") || _agent.Contains("trident/") && _agent.Contains("rv:11.0"))
             {
-                Type = Browser.IE;
+                Type = Browser.InternetExplorer;
                 Version = new Version("11.0");
             }
         }

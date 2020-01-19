@@ -8,8 +8,8 @@ namespace Wangkanai.Detection.Models
         Windows,
         Mac,
         iOS,
-        Android,
         Linux,
-        Other
+        Android,
+        Others
     }
 }

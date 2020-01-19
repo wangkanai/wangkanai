@@ -2,11 +2,9 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using Microsoft.AspNetCore.Http;
-
 using Moq;
 using Wangkanai.Detection.Models;
 using Wangkanai.Detection.Services;
-
 using Xunit;
 
 namespace Wangkanai.Detection.BrowserTest
@@ -14,7 +12,8 @@ namespace Wangkanai.Detection.BrowserTest
     public class BrowserResolverTests
     {
         [Theory]
-        [InlineData("Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.73 Safari/537.36 OPR/34.0.2036.42")]
+        [InlineData(
+            "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.73 Safari/537.36 OPR/34.0.2036.42")]
         [InlineData("Opera / 9.80(X11; Linux i686; Ubuntu / 14.10) Presto/2.12.388 Version/12.16")]
         public void Resolve_Opera(string agent)
         {
@@ -27,7 +26,8 @@ namespace Wangkanai.Detection.BrowserTest
         }
 
         [Theory]
-        [InlineData("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.79 Safari/537.36 Edge/14.14393")]
+        [InlineData(
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.79 Safari/537.36 Edge/14.14393")]
         public void Resolve_Edge(string agent)
         {
             // arrange
@@ -49,11 +49,12 @@ namespace Wangkanai.Detection.BrowserTest
             // act
             var resolver = new BrowserResolver(service);
             // assert
-            Assert.Equal(Browser.IE, resolver.Browser.Type);
+            Assert.Equal(Browser.InternetExplorer, resolver.Browser.Type);
         }
 
         [Theory]
-        [InlineData("Mozilla/5.0 (iPad; CPU OS 9_3_2 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13F69 Safari/601.1")]
+        [InlineData(
+            "Mozilla/5.0 (iPad; CPU OS 9_3_2 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13F69 Safari/601.1")]
         public void Resolve_Safari(string agent)
         {
             // arrange
@@ -103,7 +104,8 @@ namespace Wangkanai.Detection.BrowserTest
         }
 
         [Theory]
-        [InlineData("Mozilla/5.0 (BB10; Touch) AppleWebKit/537.10+ (KHTML, like Gecko) Version/10.0.9.2372 Mobile Safari/537.10+")]
+        [InlineData(
+            "Mozilla/5.0 (BB10; Touch) AppleWebKit/537.10+ (KHTML, like Gecko) Version/10.0.9.2372 Mobile Safari/537.10+")]
         public void Resolve_Blackberry_InvalidVersion(string agent)
         {
             // arrange
@@ -116,9 +118,12 @@ namespace Wangkanai.Detection.BrowserTest
         }
 
         [Theory]
-        [InlineData("Mozilla/5.0 (compatible; YandexBot/3.0; +http://yandex.com/bots) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106")]
-        [InlineData("Mozilla/5.0 (compatible; YandexBot/3.0; +http://yandex.com/bots) AppleWebKit/537.36 (KHTML, like Gecko) Chrome")]
-        [InlineData("Mozilla/5.0 (compatible; YandexBot/3.0; +http://yandex.com/bots) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/NoIdea")]
+        [InlineData(
+            "Mozilla/5.0 (compatible; YandexBot/3.0; +http://yandex.com/bots) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106")]
+        [InlineData(
+            "Mozilla/5.0 (compatible; YandexBot/3.0; +http://yandex.com/bots) AppleWebKit/537.36 (KHTML, like Gecko) Chrome")]
+        [InlineData(
+            "Mozilla/5.0 (compatible; YandexBot/3.0; +http://yandex.com/bots) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/NoIdea")]
         public void Resolve_Bot_As_Chrome_Browser(string agent)
         {
             // arrange
@@ -127,16 +132,6 @@ namespace Wangkanai.Detection.BrowserTest
             var resolver = new BrowserResolver(service);
             // assert
             Assert.Equal(Browser.Chrome, resolver.Browser.Type);
-        }
-
-        [Fact]
-        public void Resolve_NullAgent()
-        {
-            // arrange
-            var service = CreateService(null);
-            // act
-            var resolver = new BrowserResolver(service);
-            // assert
         }
 
         private IUserAgentService CreateService(string agent)
@@ -153,8 +148,18 @@ namespace Wangkanai.Detection.BrowserTest
         {
             var context = new DefaultHttpContext();
             var header = "User-Agent";
-            context.Request.Headers.Add(header, new[] { value });
+            context.Request.Headers.Add(header, new[] {value});
             return context;
+        }
+
+        [Fact]
+        public void Resolve_NullAgent()
+        {
+            // arrange
+            var service = CreateService(null);
+            // act
+            var resolver = new BrowserResolver(service);
+            // assert
         }
     }
 }

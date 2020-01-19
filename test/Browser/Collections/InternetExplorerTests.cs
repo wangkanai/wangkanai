@@ -16,8 +16,21 @@ namespace Wangkanai.Detection.Collections
             // act
             var ie = new InternetExplorer(agent);
             // assert
-            Assert.Equal(Browser.IE, ie.Type);
+            Assert.Equal(Browser.InternetExplorer, ie.Type);
             Assert.Equal("10.0", ie.Version.ToString());
+        }
+
+        [Fact]
+        public void NotIE()
+        {
+            // arrange
+            var agent =
+                "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36";
+            // act
+            var ie = new InternetExplorer(agent);
+            // assert
+            Assert.NotEqual(Browser.InternetExplorer, ie.Type);
+            Assert.Null(ie.Version);
         }
 
         [Fact]
@@ -28,20 +41,8 @@ namespace Wangkanai.Detection.Collections
             // act
             var ie = new InternetExplorer(agent);
             // assert
-            Assert.Equal(Browser.IE, ie.Type);
+            Assert.Equal(Browser.InternetExplorer, ie.Type);
             Assert.Equal("11.0", ie.Version.ToString());
-        }
-
-        [Fact]
-        public void NotIE()
-        {
-            // arrange
-            var agent = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36";
-            // act
-            var ie = new InternetExplorer(agent);
-            // assert
-            Assert.NotEqual(Browser.IE, ie.Type);
-            Assert.Null(ie.Version);
         }
     }
 }
