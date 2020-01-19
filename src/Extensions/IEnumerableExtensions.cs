@@ -14,9 +14,7 @@ namespace Wangkanai.Detection.Extensions
         public static bool IsNullOrEmpty<T>(this IEnumerable<T> list)
         {
             if (list is null) return true;
-            if (!list.Any()) return true;
-
-            return false;
+            return !list.Any();
         }
 
         [DebuggerStepThrough]
@@ -24,7 +22,8 @@ namespace Wangkanai.Detection.Extensions
         {
             var duplicate = new HashSet<TProp>();
             foreach (var t in list)
-                if (!duplicate.Add(selector(t))) return true;
+                if (!duplicate.Add(selector(t)))
+                    return true;
 
             return false;
         }

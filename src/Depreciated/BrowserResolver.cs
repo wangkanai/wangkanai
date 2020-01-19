@@ -1,19 +1,25 @@
 // Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
+using System;
 using Wangkanai.Detection.Collections;
+using Wangkanai.Detection.Models;
 using Wangkanai.Detection.Services;
 
 namespace Wangkanai.Detection
 {
-    public class BrowserResolver : BaseResolver, IBrowserResolver
+    public class BrowserResolver : IBrowserResolver
     {
-        public IBrowserFactory Browser { get; }
+        private readonly IUserAgentService _service;
 
-        public BrowserResolver(IUserAgentService service) : base(service)
+        public BrowserResolver(IUserAgentService service)
         {
-            this.Browser = GetBrowser();
+            _service = service ?? throw new ArgumentNullException(nameof(service));
+            Browser = GetBrowser();
         }
+
+        public UserAgent UserAgent => _service.UserAgent;
+        public IBrowserFactory Browser { get; }
 
         private BrowserFactory GetBrowser()
         {

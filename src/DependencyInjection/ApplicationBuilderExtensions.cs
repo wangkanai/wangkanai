@@ -2,10 +2,8 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
-
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Logging;
-
 using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Hosting;
 using Wangkanai.Detection.Services;
@@ -13,15 +11,15 @@ using Wangkanai.Detection.Services;
 namespace Microsoft.Extensions.DependencyInjection
 {
     /// <summary>
-    /// Pipeline extension methods for adding Detection
+    ///     Pipeline extension methods for adding Detection
     /// </summary>
     public static class DetectionApplicationBuilderExtensions
     {
         /// <summary>
-        /// Adds Detection to <see cref="IApplicationBuilder"/> request execution pipeline.
+        ///     Adds Detection to <see cref="IApplicationBuilder" /> request execution pipeline.
         /// </summary>
         /// <param name="app">The application.</param>
-        /// <returns>Return the <see cref="IApplicationBuilder"/> for further pipeline</returns>
+        /// <returns>Return the <see cref="IApplicationBuilder" /> for further pipeline</returns>
         public static IApplicationBuilder UseDetection(this IApplicationBuilder app)
         {
             if (app is null)
@@ -36,14 +34,15 @@ namespace Microsoft.Extensions.DependencyInjection
             return app;
         }
 
-        internal static void Validate(this IApplicationBuilder app)
+        private static void Validate(this IApplicationBuilder app)
         {
             var loggerFactory = app.ApplicationServices.GetService(typeof(ILoggerFactory)) as ILoggerFactory;
             if (loggerFactory is null)
                 throw new ArgumentNullException(nameof(loggerFactory));
 
             var logger = loggerFactory.CreateLogger("Detection.Startup");
-            logger.LogInformation("Starting Detection version {version}", typeof(DetectionApplicationBuilderExtensions)?.Assembly?.GetName()?.Version?.ToString());
+            logger.LogInformation("Starting Detection version {version}",
+                typeof(DetectionApplicationBuilderExtensions)?.Assembly?.GetName()?.Version?.ToString());
 
             var scopeFactory = app.ApplicationServices.GetService<IServiceScopeFactory>();
 
@@ -64,7 +63,7 @@ namespace Microsoft.Extensions.DependencyInjection
         private static void VerifyMarkerIsRegistered(IApplicationBuilder app)
         {
             if (app.ApplicationServices.GetService(typeof(MarkerService)) == null)
-                throw new InvalidOperationException("AddDetection() is not added to ConfigureSerivces(...)");
+                throw new InvalidOperationException("AddDetection() is not added to ConfigureServices(...)");
         }
     }
 }
