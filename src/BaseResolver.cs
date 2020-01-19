@@ -13,7 +13,7 @@ namespace Wangkanai.Detection
     public class BaseResolver : IResolver
     {
         /// <summary>
-        /// Get user agnet of the request client
+        /// Get user agent of the request client
         /// </summary>
         public UserAgent UserAgent => _service.UserAgent;
 
