@@ -12,18 +12,18 @@ namespace Wangkanai.Detection.Services
 {
     public class CrawlerService : ICrawlerService
     {
-        public CrawlerService(IUserAgentService useragent, DetectionOptions options)
-        {
-            var useragent1 = useragent.UserAgent;
-
-            Type = CrawlerFromUserAgent(useragent1, options?.Crawler?.Others);
-            IsCrawler = !IsUnknown(Type);
-            Version = GetVersion(useragent1);
-        }
-
         public bool IsCrawler { get; }
         public Crawler Type { get; }
         public Version Version { get; }
+
+        public CrawlerService(IUserAgentService useragent, DetectionOptions options)
+        {
+            var agent = useragent.UserAgent;
+
+            Type = CrawlerFromUserAgent(agent, options?.Crawler?.Others);
+            IsCrawler = !IsUnknown(Type);
+            Version = GetVersion(agent);
+        }
 
         private static Version GetVersion(UserAgent useragent)
         {
