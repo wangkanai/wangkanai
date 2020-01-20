@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Wangkanai.Detection;
+using Wangkanai.Detection.Models;
 
 namespace ResponsiveOption
 {
@@ -24,14 +25,15 @@ namespace ResponsiveOption
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDetection();
-            //services.AddResponsive(options =>
-            //{
-            //    options.View.DefaultTablet = Device.Desktop;
-            //    options.View.DefaultMobile = Device.Mobile;
-            //    options.View.DefaultDesktop = Device.Desktop;
-            //});
+            // Add responsive services.
+            services.AddDetection(options =>
+            {
+                options.Responsive.DefaultTablet = Device.Desktop;
+                options.Responsive.DefaultMobile = Device.Mobile;
+                options.Responsive.DefaultDesktop = Device.Desktop;
+            });
 
+            // Add framework services.
             services.AddControllersWithViews();
         }
 
