@@ -22,12 +22,19 @@ namespace Wangkanai.Detection.Services
         {
             if (agent.Contains(OperatingSystem.Android))
                 return OperatingSystem.Android;
+            if (agent.Contains(OperatingSystem.Windows))
+                return OperatingSystem.Windows;
+            if (agent.Contains(OperatingSystem.Mac))
+                return OperatingSystem.Mac;
 
             return OperatingSystem.Others;
         }
 
         private static Processor ParseProcessor(UserAgent agent)
         {
+            if (agent.Contains(Processor.ARM))
+                return Processor.ARM;
+
             return Processor.Others;
         }
     }
