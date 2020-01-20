@@ -10,6 +10,7 @@ namespace Wangkanai.Detection.Models
         Mobile,
         Tv,
         Console,
-        Car
+        Car,
+        IoT
     }
 }

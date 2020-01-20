@@ -27,6 +27,9 @@ namespace Wangkanai.Detection.Services
             // tablet user agent keyword detection
             if (agent.Contains(TabletCollection.Keywords))
                 return options.DefaultTablet;
+            // Tv     user agent keywork detection
+            if (agent.Contains(Device.Tv) || agent.Contains("BRAVIA"))
+                return Device.Tv;
             // mobile user agent keyword detection
             if (agent.Contains(MobileCollection.Keywords))
                 return options.DefaultMobile;
@@ -42,6 +45,15 @@ namespace Wangkanai.Detection.Services
             // mobile accept-header base detection
             if (request.IsAcceptHeaderWap())
                 return options.DefaultMobile;
+            // console user agent keyword detection
+            if (agent.Contains(Device.Console))
+                return Device.Console;
+            // car    user agent keyword detection
+            if (agent.Contains(Device.Car))
+                return Device.Car;
+            // iot    user agent keyword detection
+            if (agent.Contains(Device.IoT))
+                return Device.IoT;
 
             return options.DefaultDesktop;
         }
