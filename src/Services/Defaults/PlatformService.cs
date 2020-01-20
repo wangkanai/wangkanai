@@ -34,6 +34,10 @@ namespace Wangkanai.Detection.Services
         {
             if (agent.Contains(Processor.ARM))
                 return Processor.ARM;
+            if (agent.Contains(Processor.x86))
+                return Processor.x86;
+            if (agent.Contains(Processor.x64))
+                return Processor.x64;
 
             return Processor.Others;
         }
