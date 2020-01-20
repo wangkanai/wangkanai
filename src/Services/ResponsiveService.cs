@@ -3,5 +3,7 @@
 
 namespace Wangkanai.Detection.Services
 {
-    public interface IResponsiveService { }
+    public class ResponsiveService : IResponsiveService
+    {
+    }
 }

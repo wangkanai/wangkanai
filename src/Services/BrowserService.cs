@@ -3,5 +3,7 @@
 
 namespace Wangkanai.Detection.Services
 {
-    public interface IEngineService { }
+    public class BrowserService : IBrowserService
+    {
+    }
 }

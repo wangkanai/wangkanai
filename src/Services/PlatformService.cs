@@ -40,7 +40,7 @@ namespace Wangkanai.Detection.Services
                 return Processor.ARM;
             if (agent.Contains(Processor.x64) || agent.Contains("x86_64"))
                 return Processor.x64;
-            var x86 = new[]{"i86","i686"};
+            var x86 = new[] {"i86", "i686"};
             if (agent.Contains(Processor.x86) || agent.Contains(x86))
                 return Processor.x86;
             if (os == OperatingSystem.Mac && !agent.Contains("PPC"))
