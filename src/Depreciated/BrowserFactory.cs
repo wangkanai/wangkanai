@@ -9,19 +9,14 @@ namespace Wangkanai.Detection
 {
     public class BrowserFactory : IBrowserFactory
     {
-        public BrowserFactory()
-        {
-        }
+        public BrowserFactory() { }
 
         public BrowserFactory(Browser browserType)
-        {
-            Type = browserType;
-        }
+            => Type = browserType;
 
-        public BrowserFactory(Browser browserType, Version version) : this(browserType)
-        {
-            Version = version;
-        }
+        public BrowserFactory(Browser browserType, Version version)
+            : this(browserType)
+            => Version = version;
 
         public BrowserFactory(string name)
         {
