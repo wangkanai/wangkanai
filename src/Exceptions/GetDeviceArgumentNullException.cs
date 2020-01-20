@@ -5,8 +5,6 @@ namespace System
 {
     public class GetDeviceArgumentNullException : ArgumentNullException
     {
-        public GetDeviceArgumentNullException(string paramName) : base(paramName)
-        {
-        }
+        public GetDeviceArgumentNullException(string paramName) : base(paramName) { }
     }
 }
