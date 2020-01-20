@@ -46,12 +46,11 @@ namespace Wangkanai.Detection.Services
             return version.ToVersion();
         }
 
-        private static Crawler CrawlerFromUserAgent(UserAgent useragent, List<string> others)
+        private static Crawler CrawlerFromUserAgent(UserAgent agent, List<string> others)
         {
-            if (useragent.IsNullOrEmpty())
+            if (agent.IsNullOrEmpty())
                 return Crawler.Unknown;
 
-            var agent = useragent.ToLower();
             foreach (var name in Crawlers)
                 if (agent.Contains(name))
                     return TryParseCrawler(name);
@@ -61,7 +60,7 @@ namespace Wangkanai.Detection.Services
                     if (agent.Contains(name))
                         return Crawler.Others;
 
-            if (useragent.Contains("bot"))
+            if (agent.Contains("bot"))
                 return Crawler.Others;
 
             return Crawler.Unknown;
