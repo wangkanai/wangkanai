@@ -43,19 +43,17 @@ namespace Wangkanai.Detection.Services
             return version.ToVersion();
         }
 
-        private static Crawler CrawlerFromUserAgent(UserAgent agent, List<string> others)
+        private static Crawler CrawlerFromUserAgent(UserAgent agent, IReadOnlyCollection<string> others)
         {
             if (agent.IsNullOrEmpty())
                 return Crawler.Unknown;
 
             foreach (var name in Crawlers)
                 if (agent.Contains(name))
-                    return TryParseCrawler(name);
+                    return ParseCrawler(name);
 
-            if (others != null)
-                foreach (var name in others)
-                    if (agent.Contains(name))
-                        return Crawler.Others;
+            if (others != null && others.Any(agent.Contains)) 
+                return Crawler.Others;
 
             if (agent.Contains("bot"))
                 return Crawler.Others;
@@ -63,12 +61,12 @@ namespace Wangkanai.Detection.Services
             return Crawler.Unknown;
         }
 
-        private static Crawler TryParseCrawler(string name)
+        private static Crawler ParseCrawler(string name)
             => (Crawler) Enum.Parse(typeof(Crawler), name, true);
 
         private static string FindBot(string agent)
             => agent.Split(' ')
-                    .FirstOrDefault(x => CrawlerCount(x) > 0);
+                .FirstOrDefault(x => CrawlerCount(x) > 0);
 
         private static int CrawlerCount(string x)
             => Crawlers.Count(y => x.ToLower().Contains(y.ToLower()));
