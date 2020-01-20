@@ -45,7 +45,7 @@ namespace Wangkanai.Detection.Hosting
 
             await middleware.Invoke(context, deviceService);
 
-            Assert.Equal(Device.Tablet, context.GetDevice());
+            Assert.Equal(Device.Desktop, context.GetDevice());
         }
 
         [Fact]

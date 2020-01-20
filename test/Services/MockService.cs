@@ -1,12 +1,14 @@
 // Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
+using System.Diagnostics;
 using Microsoft.AspNetCore.Http;
 using Moq;
 using Wangkanai.Detection.Models;
 
 namespace Wangkanai.Detection.Services
 {
+    [DebuggerStepThrough]
     public static class MockService
     {
         private static HttpContext DefaultHttpContext()
@@ -14,10 +16,13 @@ namespace Wangkanai.Detection.Services
 
         public static IUserAgentService CreateService(string agent)
             => MockUserAgentService(agent).Object;
+
         public static IUserAgentService CreateService(string value, string header)
             => MockUserAgentService(value, header).Object;
+
         private static Mock<IUserAgentService> MockUserAgentService(string value, string header)
             => CreateContext(value, header).SetupUserAgent(null);
+
         private static Mock<IUserAgentService> MockUserAgentService(string agent)
             => CreateContext(agent).SetupUserAgent(agent);
 
@@ -36,7 +41,7 @@ namespace Wangkanai.Detection.Services
         public static HttpContext CreateContext(string value, string header)
         {
             var context = DefaultHttpContext();
-            context.Request.Headers.Add(header, new[] { value });
+            context.Request.Headers.Add(header, new[] {value});
             return context;
         }
     }

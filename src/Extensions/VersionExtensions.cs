@@ -27,23 +27,15 @@ namespace Wangkanai.Detection.Extensions
         /// <param name="version"></param>
         /// <returns></returns>
         private static string RemoveWhitespace(this string version)
-        {
-            return version.Contains(" ") ? version.Replace(" ", "") : version;
-        }
+            => version.Contains(" ") ? version.Replace(" ", "") : version;
 
         private static string RemovePlus(this string version)
-        {
-            return version.Contains("+") ? version.Replace("+", "") : version;
-        }
+            => version.Contains("+") ? version.Replace("+", "") : version;
 
         private static string RemoveMinus(this string version)
-        {
-            return version.Contains("-") ? version.Replace("-", "") : version;
-        }
+            => version.Contains("-") ? version.Replace("-", "") : version;
 
         private static string RemoveBeta(this string version)
-        {
-            return version.Contains("beta") ? version.Replace("beta", "") : version;
-        }
+            => version.Contains("beta") ? version.Replace("beta", "") : version;
     }
 }
