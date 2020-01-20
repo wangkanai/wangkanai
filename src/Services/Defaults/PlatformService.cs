@@ -26,6 +26,10 @@ namespace Wangkanai.Detection.Services
                 return OperatingSystem.Windows;
             if (agent.Contains(OperatingSystem.Mac))
                 return OperatingSystem.Mac;
+            if (agent.Contains(OperatingSystem.iOS))
+                return OperatingSystem.iOS;
+            if (agent.Contains(OperatingSystem.Linux))
+                return OperatingSystem.Linux;
 
             return OperatingSystem.Others;
         }
