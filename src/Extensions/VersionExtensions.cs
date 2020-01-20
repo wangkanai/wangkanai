@@ -17,7 +17,9 @@ namespace Wangkanai.Detection.Extensions
                 .RemovePlus()
                 .RemoveMinus();
 
-            return Version.TryParse(version, out var parsedVersion) ? parsedVersion : new Version(0, 0);
+            return Version.TryParse(version, out var parsedVersion)
+                ? parsedVersion
+                : new Version(0, 0);
         }
 
         /// <summary>
