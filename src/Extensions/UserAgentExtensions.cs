@@ -1,7 +1,7 @@
 // Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
-using System.Collections;
+using System;
 using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Wangkanai.Detection.Models;
@@ -32,6 +32,9 @@ namespace Wangkanai.Detection.Extensions
 
         public static bool Contains<T>(this UserAgent agent, T t)
             => agent.Contains(t.ToString().ToLower());
+
+        public static bool Contains<T>(this UserAgent agent, Type type) where T : Enum
+            => Enum.GetValues(type).Cast<T>().Any(agent.Contains);
 
         public static bool StartsWith(this UserAgent agent, string word)
             => agent.ToLower().StartsWith(word.ToLower())
