@@ -3,5 +3,7 @@
 
 namespace Wangkanai.Detection.Services
 {
-    public class EngineService : IEngineService { }
+    public class EngineService : IEngineService
+    {
+    }
 }
