@@ -30,7 +30,7 @@ namespace Wangkanai.Detection.Extensions
             => array.Any(agent.Contains)
                && !agent.IsNullOrEmpty();
 
-        public static bool Contains<T>(this UserAgent agent, T t)
+        public static bool Contains<T>(this UserAgent agent, T t) where T : Enum
             => agent.Contains(t.ToString().ToLower());
 
         public static bool Contains<T>(this UserAgent agent, Type type) where T : Enum
