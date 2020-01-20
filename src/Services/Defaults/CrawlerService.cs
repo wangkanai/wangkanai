@@ -16,7 +16,7 @@ namespace Wangkanai.Detection.Services
         {
             var useragent1 = useragent.UserAgent;
 
-            Type = CrawlerFromUserAgent(useragent1, options?.Crawler.Others);
+            Type = CrawlerFromUserAgent(useragent1, options?.Crawler?.Others);
             IsCrawler = !IsUnknown(Type);
             Version = GetVersion(useragent1);
         }
