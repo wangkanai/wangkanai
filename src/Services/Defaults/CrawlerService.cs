@@ -21,9 +21,6 @@ namespace Wangkanai.Detection.Services
             Version = GetVersion(useragent1);
         }
 
-        private static string[] Crawlers
-            => Enum.GetNames(typeof(Crawler)).Select(s => s.ToLower()).ToArray();
-
         public bool IsCrawler { get; }
         public Crawler Type { get; }
         public Version Version { get; }
@@ -67,24 +64,19 @@ namespace Wangkanai.Detection.Services
         }
 
         private static Crawler TryParseCrawler(string name)
-        {
-            return (Crawler) Enum.Parse(typeof(Crawler), name, true);
-        }
+            => (Crawler) Enum.Parse(typeof(Crawler), name, true);
 
         private static string FindBot(string agent)
-        {
-            return agent.Split(' ')
-                .FirstOrDefault(x => CrawlerCount(x) > 0);
-        }
+            => agent.Split(' ')
+                    .FirstOrDefault(x => CrawlerCount(x) > 0);
 
         private static int CrawlerCount(string x)
-        {
-            return Crawlers.Count(y => x.ToLower().Contains(y.ToLower()));
-        }
+            => Crawlers.Count(y => x.ToLower().Contains(y.ToLower()));
+
+        private static string[] Crawlers
+            => Enum.GetNames(typeof(Crawler)).Select(s => s.ToLower()).ToArray();
 
         private static bool IsUnknown(Crawler type)
-        {
-            return type == Crawler.Unknown;
-        }
+            => type == Crawler.Unknown;
     }
 }
