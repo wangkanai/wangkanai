@@ -52,7 +52,7 @@ namespace Wangkanai.Detection.Services
                 if (agent.Contains(name))
                     return ParseCrawler(name);
 
-            if (others != null && others.Any(agent.Contains)) 
+            if (others != null && others.Any(agent.Contains))
                 return Crawler.Others;
 
             if (agent.Contains("bot"))
