@@ -24,10 +24,10 @@ namespace Wangkanai.Detection.Services
                 return OperatingSystem.Android;
             if (agent.Contains(OperatingSystem.Windows))
                 return OperatingSystem.Windows;
+            if (agent.Contains(OperatingSystem.iOS) || agent.Contains(new[] {"iPad", "iPhone", "iPod"}))
+                return OperatingSystem.iOS;
             if (agent.Contains(OperatingSystem.Mac))
                 return OperatingSystem.Mac;
-            if (agent.Contains(OperatingSystem.iOS))
-                return OperatingSystem.iOS;
             if (agent.Contains(OperatingSystem.Linux))
                 return OperatingSystem.Linux;
 
@@ -36,7 +36,8 @@ namespace Wangkanai.Detection.Services
 
         private static Processor ParseProcessor(UserAgent agent, OperatingSystem os)
         {
-            if (agent.Contains(Processor.ARM) || agent.Contains(OperatingSystem.Android))
+            if (agent.Contains(Processor.ARM) || agent.Contains(OperatingSystem.Android) ||
+                os == Models.OperatingSystem.iOS)
                 return Processor.ARM;
             if (agent.Contains(Processor.x64) || agent.Contains("x86_64"))
                 return Processor.x64;

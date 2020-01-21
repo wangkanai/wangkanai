@@ -24,12 +24,12 @@ namespace Wangkanai.Detection.Services
                 return Engine.Unknown;
             if (agent.Contains(Engine.WebKit))
                 return Engine.WebKit;
+            if (agent.Contains(Engine.Trident))
+                return Engine.Trident;
             if (agent.Contains(Engine.Blink))
                 return Engine.Blink;
             if (agent.Contains(Engine.Gecko))
                 return Engine.Gecko;
-            if (agent.Contains(Engine.Trident))
-                return Engine.Trident;
             if (agent.Contains(Engine.EdgeHTML))
                 return Engine.EdgeHTML;
             if (agent.Contains(Engine.Servo))

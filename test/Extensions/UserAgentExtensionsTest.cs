@@ -86,8 +86,8 @@ namespace Wangkanai.Detection.Extensions
             Assert.False(agent.Contains(new List<string> {null}));
             Assert.False(agent.Contains(new List<string> {""}));
             Assert.False(agent.Contains(new List<string> {null, ""}));
-            Assert.True(agent.Contains(new List<string> {"google"}));
             Assert.False(agent.Contains(new List<string> {"abc"}));
+            Assert.True(agent.Contains(new List<string> {"google"}));
             Assert.True(agent.Contains(new List<string> {"google", "abc"}));
             Assert.True(agent.Contains(new List<string> {"abc", "google"}));
         }

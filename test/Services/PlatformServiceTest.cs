@@ -12,8 +12,7 @@ namespace Wangkanai.Detection.Services
         public void Windows(Processor processor, string agent)
         {
             var os = OperatingSystem.Windows;
-            var service = MockService.CreateService(agent);
-            var resolver = new PlatformService(service);
+            var resolver = MockPlatformService(agent);
             Assert.Equal(os, resolver.OperatingSystem);
             Assert.Equal(processor, resolver.Processor);
         }
@@ -26,8 +25,20 @@ namespace Wangkanai.Detection.Services
         {
             var os = OperatingSystem.Android;
             var processor = Processor.ARM;
-            var service = MockService.CreateService(agent);
-            var resolver = new PlatformService(service);
+            var resolver = MockPlatformService(agent);
+            Assert.Equal(os, resolver.OperatingSystem);
+            Assert.Equal(processor, resolver.Processor);
+        }
+
+        [Theory]
+        [InlineData("Mozilla/5.0 (iPad; U; CPU OS 4_3_5 like Mac OS X; en-us) AppleWebKit/533.17.9 (KHTML, like Gecko) Version/5.0.2 Mobile/8L1 Safari/6533.18.5")]
+        [InlineData("Mozilla/5.0 (iPhone; CPU iPhone OS 8_3 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) FxiOS/1.0 Mobile/12F69 Safari/600.1.4")]
+        [InlineData("Mozilla/5.0 (iPod touch; CPU iPhone OS 8_3 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) FxiOS/1.0 Mobile/12F69 Safari/600.1.4")]
+        public void iOS(string agent)
+        {
+            var os = OperatingSystem.iOS;
+            var processor = Processor.ARM;
+            var resolver = MockPlatformService(agent);
             Assert.Equal(os, resolver.OperatingSystem);
             Assert.Equal(processor, resolver.Processor);
         }
@@ -39,8 +50,7 @@ namespace Wangkanai.Detection.Services
         public void Mac(Processor processor, string agent)
         {
             var os = OperatingSystem.Mac;
-            var service = MockService.CreateService(agent);
-            var resolver = new PlatformService(service);
+            var resolver = MockPlatformService(agent);
             Assert.Equal(os, resolver.OperatingSystem);
             Assert.Equal(processor, resolver.Processor);
         }
@@ -52,8 +62,7 @@ namespace Wangkanai.Detection.Services
         public void Linux(Processor processor, string agent)
         {
             var os = OperatingSystem.Linux;
-            var service = MockService.CreateService(agent);
-            var resolver = new PlatformService(service);
+            var resolver = MockPlatformService(agent);
             Assert.Equal(os, resolver.OperatingSystem);
             Assert.Equal(processor, resolver.Processor);
         }
@@ -64,10 +73,16 @@ namespace Wangkanai.Detection.Services
         public void Others(Processor processor, string agent)
         {
             var os = OperatingSystem.Others;
-            var service = MockService.CreateService(agent);
-            var resolver = new PlatformService(service);
+            var resolver = MockPlatformService(agent);
             Assert.Equal(os, resolver.OperatingSystem);
             Assert.Equal(processor, resolver.Processor);
+        }
+
+        private static PlatformService MockPlatformService(string agent)
+        {
+            var service = MockService.CreateService(agent);
+            var resolver = new PlatformService(service);
+            return resolver;
         }
     }
 }
