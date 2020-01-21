@@ -14,16 +14,7 @@ namespace Wangkanai.Detection.Models
         Gecko      = 1 << 2,  // Firefox, Netscape
         Trident    = 1 << 3,  // IE, Outlook
         EdgeHTML   = 1 << 4,  // Microsoft Edge
-        KHTML      = 1 << 5,  // Konqueror
-        Presto     = 1 << 6,  //
-        Goanna     = 1 << 7,  // Pale Moon
-        NetSurf    = 1 << 8,  // NetSurf
-        NetFront   = 1 << 9,  // Access NetFront
-        Prince     = 1 << 10, //
-        Robin      = 1 << 11, // The Bat!
         Servo      = 1 << 12, // Mozilla & Samsung
-        Tkhtml     = 1 << 13, // hv3
-        Links2     = 1 << 14, // launched with -g
         Others     = 1 << 15  // Others
     }
 }
