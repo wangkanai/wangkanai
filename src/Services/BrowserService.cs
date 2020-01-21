@@ -1,6 +1,8 @@
 // Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
+using Wangkanai.Detection.Collections;
+using Wangkanai.Detection.Extensions;
 using Wangkanai.Detection.Models;
 
 namespace Wangkanai.Detection.Services
@@ -17,7 +19,20 @@ namespace Wangkanai.Detection.Services
 
         private static Browser ParseBrowser(UserAgent agent)
         {
-            return Browser.Chrome;
+            if (agent.IsNullOrEmpty())
+                return Browser.Unknown;
+            if (agent.Contains(Browser.Chrome))
+                return Browser.Chrome;
+            if (agent.Contains("MSIE"))
+                return Browser.InternetExplorer;
+            if (agent.Contains(Browser.Safari))
+                return Browser.Firefox;
+            if (agent.Contains(Browser.Edge))
+                return Browser.Edge;
+            if (agent.Contains(Browser.Opera))
+                return Browser.Opera;
+
+            return Browser.Others;
         }
     }
 }
