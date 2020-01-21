@@ -5,12 +5,12 @@ namespace Wangkanai.Detection.Models
 {
     public class BrowserFeature
     {
-        public bool Frames { get; set; }
-        public bool Iframes { get; set; }
-        public bool Cookie { get; set; }
-        public bool JavaScript { get; set; }
-        public bool VbScript { get; set; }
-        public bool JavaApplets { get; set; }
-        public bool ActiveX { get; set; }
+        public bool Frames { get; set; } = false;
+        public bool Iframes { get; set; } = false;
+        public bool Cookie { get; set; } = false;
+        public bool JavaScript { get; set; } = false;
+        public bool VbScript { get; set; } = false;
+        public bool JavaApplets { get; set; } = false;
+        public bool ActiveX { get; set; } = false;
     }
 }

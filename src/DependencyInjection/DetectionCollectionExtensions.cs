@@ -44,9 +44,6 @@ namespace Microsoft.Extensions.DependencyInjection
             builder.AddResponsive();
             builder.AddMarkerService();
 
-            // Waiting to refactor browser detection into the core services
-            builder.Services.AddTransient<IBrowserResolver, BrowserResolver>();
-
             return builder;
         }
     }

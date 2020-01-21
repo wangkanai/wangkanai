@@ -17,6 +17,6 @@ namespace Wangkanai.Detection.Models
 
         [DebuggerStepThrough]
         public override string ToString()
-            => _useragent;//.ToLower();
+            => _useragent;
     }
 }
