@@ -22,7 +22,7 @@ namespace Wangkanai.Detection.Services
         [Fact]
         public void Google()
         {
-            var agent = "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)";
+            var agent   = "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)";
             var crawler = MockCrawlerService(agent);
             Assert.True(crawler.IsCrawler);
             Assert.Equal(Crawler.Google, crawler.Type);
@@ -32,7 +32,7 @@ namespace Wangkanai.Detection.Services
         [Fact]
         public void Facebook()
         {
-            var agent = "facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)";
+            var agent   = "facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)";
             var crawler = MockCrawlerService(agent);
             Assert.True(crawler.IsCrawler);
             Assert.Equal(Crawler.Facebook, crawler.Type);
@@ -42,7 +42,7 @@ namespace Wangkanai.Detection.Services
         [Fact]
         public void BingBot()
         {
-            var agent = "Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)";
+            var agent    = "Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)";
             var resolver = MockCrawlerService(agent);
             Assert.True(resolver.IsCrawler);
             Assert.Equal(Crawler.Bing, resolver.Type);
@@ -52,7 +52,7 @@ namespace Wangkanai.Detection.Services
         [Fact]
         public void Twitter()
         {
-            var agent = "Twitterbot/1.0";
+            var agent    = "Twitterbot/1.0";
             var resolver = MockCrawlerService(agent);
             Assert.True(resolver.IsCrawler);
             Assert.Equal(Crawler.Twitter, resolver.Type);
@@ -62,7 +62,7 @@ namespace Wangkanai.Detection.Services
         [Fact]
         public void Yahoo()
         {
-            var agent = "Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp)";
+            var agent    = "Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp)";
             var resolver = MockCrawlerService(agent);
             Assert.Equal(Crawler.Yahoo, resolver.Type);
             Assert.Equal(new Version(), resolver.Version);
@@ -71,7 +71,7 @@ namespace Wangkanai.Detection.Services
         [Fact]
         public void Baidu()
         {
-            var agent = "Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)";
+            var agent    = "Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)";
             var resolver = MockCrawlerService(agent);
             Assert.True(resolver.IsCrawler);
             Assert.Equal(Crawler.Baidu, resolver.Type);
@@ -81,7 +81,7 @@ namespace Wangkanai.Detection.Services
         [Fact]
         public void LinkedIn()
         {
-            var agent = "LinkedInBot/1.0 (compatible; Mozilla/5.0; Jakarta Commons-HttpClient/3.1 +http://www.linkedin.com)";
+            var agent    = "LinkedInBot/1.0 (compatible; Mozilla/5.0; Jakarta Commons-HttpClient/3.1 +http://www.linkedin.com)";
             var resolver = MockCrawlerService(agent);
             Assert.True(resolver.IsCrawler);
             Assert.Equal(Crawler.LinkedIn, resolver.Type);
@@ -91,7 +91,7 @@ namespace Wangkanai.Detection.Services
         [Fact]
         public void Skype()
         {
-            var agent = "Mozilla/5.0 (Windows NT 6.1; WOW64) SkypeUriPreview Preview/0.5";
+            var agent    = "Mozilla/5.0 (Windows NT 6.1; WOW64) SkypeUriPreview Preview/0.5";
             var resolver = MockCrawlerService(agent);
             Assert.True(resolver.IsCrawler);
             Assert.Equal(Crawler.Skype, resolver.Type);
@@ -100,7 +100,7 @@ namespace Wangkanai.Detection.Services
         [Fact]
         public void WhatsApp()
         {
-            var agent = "WhatsApp/2.18.61 i";
+            var agent    = "WhatsApp/2.18.61 i";
             var resolver = MockCrawlerService(agent);
             Assert.True(resolver.IsCrawler);
             Assert.Equal(Crawler.WhatsApp, resolver.Type);
@@ -121,7 +121,7 @@ namespace Wangkanai.Detection.Services
         public void Unknown()
         {
             // arrange
-            var agent = "Mozilla/5.0 (X11; Linux x86_64; rv:10.0) Gecko/20100101 Firefox/10.0";
+            var agent    = "Mozilla/5.0 (X11; Linux x86_64; rv:10.0) Gecko/20100101 Firefox/10.0";
             var resolver = MockCrawlerService(agent);
             Assert.False(resolver.IsCrawler);
             Assert.Equal(Crawler.Unknown, resolver.Type);
@@ -130,17 +130,17 @@ namespace Wangkanai.Detection.Services
         [Fact]
         public void OptionCrawlerForOthers()
         {
-            var agent = "starnic";
-            var options   = new DetectionOptions();
+            var agent   = "starnic";
+            var options = new DetectionOptions();
             options.Crawler.Others.Add("starnic");
-            var resolver = MockCrawlerService(agent,options);
+            var resolver = MockCrawlerService(agent, options);
             Assert.True(resolver.IsCrawler);
             Assert.Equal(Crawler.Others, resolver.Type);
         }
 
         private static CrawlerService MockCrawlerService(string agent, DetectionOptions options = null)
         {
-            var service = MockService.CreateService(agent);
+            var service  = MockService.CreateService(agent);
             var resolver = new CrawlerService(service, options);
             return resolver;
         }
