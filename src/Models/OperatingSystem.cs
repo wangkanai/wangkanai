@@ -8,11 +8,11 @@ namespace Wangkanai.Detection.Models
     [Flags]
     public enum OperatingSystem
     {
-        Windows = 0, // Microsoft Windows
+        Windows = 0,      // Microsoft Windows
         Mac     = 1 << 0, // Apple MacOS
         iOS     = 1 << 1, // Apple iOS
         Linux   = 1 << 2, // Linux Distribution (Red Hat, Mint, Ubuntu)
         Android = 1 << 3, // Google Android
-        Others  = 1 << 4 // Others
+        Others  = 1 << 4  // Others
     }
 }
