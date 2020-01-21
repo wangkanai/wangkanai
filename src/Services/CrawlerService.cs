@@ -72,7 +72,9 @@ namespace Wangkanai.Detection.Services
             => Crawlers.Count(y => x.ToLower().Contains(y.ToLower()));
 
         private static string[] Crawlers
-            => Enum.GetNames(typeof(Crawler)).Select(s => s.ToLower()).ToArray();
+            => Enum.GetNames(typeof(Crawler))
+                .Select(s => s.ToLower())
+                .ToArray();
 
         private static bool IsUnknown(Crawler type)
             => type == Crawler.Unknown;
