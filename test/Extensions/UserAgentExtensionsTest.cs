@@ -74,6 +74,8 @@ namespace Wangkanai.Detection.Extensions
             var google = new UserAgent("Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)");
             Assert.False(abc.Contains(Crawler.Google));
             Assert.True(google.Contains(Crawler.Google));
+            Assert.True(google.Contains(Crawler.Google | Crawler.Bing));
+            Assert.True(google.Contains(Crawler.Yahoo | Crawler.Bing));
         }
 
         [Fact]

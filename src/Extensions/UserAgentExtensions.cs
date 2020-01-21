@@ -35,7 +35,15 @@ namespace Wangkanai.Detection.Extensions
                && array.Any(agent.Contains);
 
         public static bool Contains<T>(this UserAgent agent, T t) where T : Enum
-            => agent.Contains(t.ToString().ToLower());
+        {
+            foreach (Enum value in Enum.GetValues(t.GetType()))
+                if (t.HasFlag(value))
+                    return agent.Contains(value);
+            return false;
+        }
+
+        public static bool Contains(this UserAgent agent, Enum flags)
+            => agent.Contains(flags.ToString().ToLower());
 
         public static bool Contains(this UserAgent agent, IEnumerable<string> list)
             => list != null
