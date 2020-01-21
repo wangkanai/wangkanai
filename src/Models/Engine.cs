@@ -5,7 +5,6 @@ using System;
 
 namespace Wangkanai.Detection.Models
 {
-    [Flags]
     public enum Engine
     {
         Unknown    = 0,       // Unknown engine
