@@ -10,9 +10,8 @@ namespace Wangkanai.Detection.Services
         public UserAgent UserAgent { get; }
         public IDeviceService Device { get; }
         public ICrawlerService Crawler { get; }
-
         public IPlatformService Platform { get; }
+        public IEngineService Engine { get; }
         //public IBrowserService Browser { get; }
-        //public IEngineService Engine { get; }
     }
 }

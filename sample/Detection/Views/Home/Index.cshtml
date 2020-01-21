@@ -9,8 +9,6 @@
 
 <h3>Results</h3>
 
-@*<p>@Model</p>*@
-
 <table>
     <thead>
         <tr>
@@ -22,24 +20,24 @@
     <tbody>
         <tr>
             <th>Device</th>
-            <td>@Model.Device?.Type.ToString()</td>
+            <td>@Model.Device?.Type</td>
             <td></td>
-        </tr>
-        @*<tr>
-            <th>Browser</th>
-            <td>@Model.Browser?.Type.ToString()</td>
-            <td>@Model.Browser?.Version</td>
         </tr>
         <tr>
             <th>Platform</th>
-            <td>@Model.Platform?.Type.ToString()</td>
-            <td>@Model.Platform?.Version</td>
+            <td>@Model.Platform?.OperatingSystem</td>
+            <td>@Model.Platform?.Processor</td>
         </tr>
         <tr>
             <th>Engine</th>
-            <td>@Model.Engine?.Type.ToString()</td>
-            <td>@Model.Engine?.Version</td>
-        </tr>*@
+            <td>@Model.Engine?.Type</td>
+            <td></td>
+        </tr>
+        @*<tr>
+                            <th>Browser</th>
+                            <td>@Model.Browser?.Type.ToString()</td>
+                            <td>@Model.Browser?.Version</td>
+                        </tr>*@
         <tr>
             <th>Crawler</th>
             <td>@Model.Crawler?.Type.ToString()</td>
