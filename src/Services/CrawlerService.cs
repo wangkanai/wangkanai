@@ -43,7 +43,7 @@ namespace Wangkanai.Detection.Services
             return version.ToVersion();
         }
 
-        private static Crawler CrawlerFromUserAgent(UserAgent agent, IReadOnlyCollection<string> others)
+        private static Crawler CrawlerFromUserAgent(UserAgent agent, IEnumerable<string> others)
         {
             if (agent.IsNullOrEmpty())
                 return Crawler.Unknown;
@@ -52,7 +52,7 @@ namespace Wangkanai.Detection.Services
                 if (agent.Contains(name))
                     return ParseCrawler(name);
 
-            if (others != null && others.Any(agent.Contains))
+            if (agent.Contains(others))
                 return Crawler.Others;
 
             if (agent.Contains("bot"))
@@ -72,7 +72,9 @@ namespace Wangkanai.Detection.Services
             => Crawlers.Count(y => x.ToLower().Contains(y.ToLower()));
 
         private static string[] Crawlers
-            => Enum.GetNames(typeof(Crawler)).Select(s => s.ToLower()).ToArray();
+            => Enum.GetNames(typeof(Crawler))
+                .Select(s => s.ToLower())
+                .ToArray();
 
         private static bool IsUnknown(Crawler type)
             => type == Crawler.Unknown;
