@@ -22,16 +22,19 @@ namespace Wangkanai.Detection.Services
         {
             if (agent.IsNullOrEmpty())
                 return Engine.Unknown;
+            if (agent.Contains(Engine.EdgeHTML)
+                || agent.Contains("Edg")
+                && (OperatingSystem.Windows | OperatingSystem.Android).HasFlag(os))
+                return Engine.EdgeHTML;
+            if (agent.Contains(Browser.Chrome) && agent.Contains(Engine.WebKit))
+                return Engine.Blink;
             if (agent.Contains(Engine.WebKit))
                 return Engine.WebKit;
             if (agent.Contains(Engine.Trident))
                 return Engine.Trident;
-            if (agent.Contains(Engine.Blink))
-                return Engine.Blink;
             if (agent.Contains(Engine.Gecko))
                 return Engine.Gecko;
-            if (agent.Contains(Engine.EdgeHTML))
-                return Engine.EdgeHTML;
+
             if (agent.Contains(Engine.Servo))
                 return Engine.Servo;
 
