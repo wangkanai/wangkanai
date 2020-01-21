@@ -38,7 +38,7 @@ namespace Wangkanai.Detection.Services
         {
             if (agent.Contains(Processor.ARM) || agent.Contains(OperatingSystem.Android))
                 return Processor.ARM;
-            if (agent.Contains(Processor.x64) || agent.Contains("x86_64"))
+            if (agent.Contains(Processor.x64) || agent.Contains("x86_64") || agent.Contains("wow64"))
                 return Processor.x64;
             var x86 = new[] {"i86", "i686"};
             if (agent.Contains(Processor.x86) || agent.Contains(x86))
