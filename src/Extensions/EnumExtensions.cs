@@ -7,22 +7,18 @@ namespace Wangkanai.Detection.Extensions
     internal static class EnumExtensions
     {
         public static IEnumerable<Enum> GetFlags(this Enum value)
-        {
-            return GetFlags(value, Enum.GetValues(value.GetType()).Cast<Enum>().ToArray());
-        }
+            => GetFlags(value, Enum.GetValues(value.GetType()).Cast<Enum>().ToArray());
 
         public static IEnumerable<Enum> GetIndividualFlags(this Enum value)
-        {
-            return GetFlags(value, GetFlagValues(value.GetType()).ToArray());
-        }
+            => GetFlags(value, GetFlagValues(value.GetType()).ToArray());
 
         private static IEnumerable<Enum> GetFlags(Enum value, Enum[] values)
         {
-            ulong bits = Convert.ToUInt64(value);
-            List<Enum> results = new List<Enum>();
-            for (int i = values.Length - 1; i >= 0; i--)
+            var bits = Convert.ToUInt64(value);
+            var results = new List<Enum>();
+            for (var i = values.Length - 1; i >= 0; i--)
             {
-                ulong mask = Convert.ToUInt64(values[i]);
+                var mask = Convert.ToUInt64(values[i]);
                 if (i == 0 && mask == 0L)
                     break;
                 if ((bits & mask) == mask)
@@ -46,11 +42,11 @@ namespace Wangkanai.Detection.Extensions
             ulong flag = 0x1;
             foreach (var value in Enum.GetValues(enumType).Cast<Enum>())
             {
-                ulong bits = Convert.ToUInt64(value);
+                var bits = Convert.ToUInt64(value);
                 if (bits == 0L)
-                    //yield return value;
-                    continue; // skip the zero value
-                while (flag < bits) flag <<= 1;
+                    continue;
+                while (flag < bits)
+                    flag <<= 1;
                 if (flag == bits)
                     yield return value;
             }
