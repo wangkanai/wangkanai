@@ -1,5 +1,7 @@
 # ASP.NET Core Detection
 
+ASP.NET Core Detection service components for identifying details about client device, browser, engine, platform, & crawler. Responsive middleware for routing base upon request client device detection to specific view.
+
 [![Build status](https://ci.appveyor.com/api/projects/status/033qv4nqv8g4altq?svg=true&retina=true)](https://ci.appveyor.com/project/wangkanai/detection)
 [![GitHub](https://img.shields.io/github/license/wangkanai/detection)](https://github.com/wangkanai/Detection/blob/dev/LICENSE)
 
@@ -22,10 +24,6 @@
 
 
 [![Build history](https://buildstats.info/appveyor/chart/wangkanai/detection)](https://ci.appveyor.com/project/wangkanai/detection/history)
-
-ASP.NET Core client web browser detection extension to resolve devices, platforms, engine of the client.
-
-ASP.NET Core Responsive middleware for routing base upon request client device detection to specific view
 
 
 ![ASP.NET Core Responsive](https://raw.githubusercontent.com/wangkanai/Detection/dev/asset/aspnet-core-detection-2.svg?sanitize=true)
