@@ -2,6 +2,7 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Wangkanai.Detection.Models;
@@ -24,14 +25,21 @@ namespace Wangkanai.Detection.Extensions
             => agent.ToString().Length;
 
         public static bool Contains(this UserAgent agent, string word)
-            => agent.ToLower().Contains(word.ToLower());
+            => !word.IsNullOrEmpty()
+               && !agent.IsNullOrEmpty()
+               && agent.ToLower().Contains(word.ToLower());
 
         public static bool Contains(this UserAgent agent, string[] array)
             => !agent.IsNullOrEmpty()
+               && array.Length > 0
                && array.Any(agent.Contains);
 
         public static bool Contains<T>(this UserAgent agent, T t) where T : Enum
             => agent.Contains(t.ToString().ToLower());
+
+        public static bool Contains(this UserAgent agent, IEnumerable<string> list)
+            => list != null
+               && list.Any(agent.Contains);
 
         public static bool StartsWith(this UserAgent agent, string word)
             => !agent.IsNullOrEmpty()
