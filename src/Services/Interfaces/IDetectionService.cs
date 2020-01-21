@@ -12,6 +12,6 @@ namespace Wangkanai.Detection.Services
         public ICrawlerService Crawler { get; }
         public IPlatformService Platform { get; }
         public IEngineService Engine { get; }
-        //public IBrowserService Browser { get; }
+        public IBrowserService Browser { get; }
     }
 }
