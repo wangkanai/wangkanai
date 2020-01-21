@@ -10,22 +10,11 @@ namespace Wangkanai.Detection.Extensions
 {
     internal static class IEnumerableExtensions
     {
-        [DebuggerStepThrough]
         public static bool IsNullOrEmpty<T>(this IEnumerable<T> list)
-        {
-            if (list is null) return true;
-            return !list.Any();
-        }
+            => list is null
+               || !list.Any();
 
-        [DebuggerStepThrough]
         public static bool HasDuplicates<T, TProp>(this IEnumerable<T> list, Func<T, TProp> selector)
-        {
-            var duplicate = new HashSet<TProp>();
-            foreach (var t in list)
-                if (!duplicate.Add(selector(t)))
-                    return true;
-
-            return false;
-        }
+            => list.Any(t => !new HashSet<TProp>().Add(selector(t)));
     }
 }
