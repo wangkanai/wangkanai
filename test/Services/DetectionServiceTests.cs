@@ -2,9 +2,7 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
-
 using Microsoft.AspNetCore.Http;
-
 using Xunit;
 
 namespace Wangkanai.Detection.Services
@@ -15,7 +13,7 @@ namespace Wangkanai.Detection.Services
         public void Ctor_IServiceProvider_Success()
         {
             string userAgent = "Agent";
-            var context = new DefaultHttpContext();
+            var    context   = new DefaultHttpContext();
             context.Request.Headers["User-Agent"] = userAgent;
             var serviceProvider = new ServiceProvider()
             {
@@ -61,9 +59,7 @@ namespace Wangkanai.Detection.Services
             public IHttpContextAccessor HttpContextAccessor { get; set; }
 
             public object GetService(Type serviceType)
-            {
-                return this.HttpContextAccessor;
-            }
+                => HttpContextAccessor;
         }
     }
 }
