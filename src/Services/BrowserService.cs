@@ -11,7 +11,7 @@ namespace Wangkanai.Detection.Services
     {
         public Browser Type { get; }
 
-        public BrowserService(IUserAgentService userAgentService)
+        public BrowserService(IUserAgentService userAgentService, IPlatformService platformService, IEngineService engineService)
         {
             var agent = userAgentService.UserAgent;
             Type = ParseBrowser(agent);
