@@ -91,5 +91,40 @@ namespace Wangkanai.Detection.Extensions
             Assert.True(agent.Contains(new List<string> {"google", "abc"}));
             Assert.True(agent.Contains(new List<string> {"abc", "google"}));
         }
+
+        [Fact]
+        public void StartsWithString()
+        {
+            var agent = new UserAgent("abc");
+            Assert.False(agent.StartsWith((string) null));
+            Assert.False(agent.StartsWith(""));
+            Assert.True(agent.StartsWith("ab"));
+            Assert.True(agent.StartsWith("AB"));
+            Assert.False(agent.StartsWith("BC"));
+        }
+
+        [Fact]
+        public void StartsWithArray()
+        {
+            var agent = new UserAgent("abc");
+            Assert.False(agent.StartsWith(new[] {(string) null}));
+            Assert.False(agent.StartsWith(new[] {""}));
+            Assert.False(agent.StartsWith(new[] {(string) null, ""}));
+            Assert.True(agent.StartsWith(new[] {"AB"}));
+            Assert.True(agent.StartsWith(new[] {"AB", "ab"}));
+            Assert.False(agent.StartsWith(new[] {"ABCD"}));
+        }
+
+        [Fact]
+        public void StartsWithArrayMinumum()
+        {
+            var agent = new UserAgent("abcdefg");
+            Assert.False(agent.StartsWith(new[] {(string) null}, 4));
+            Assert.False(agent.StartsWith(new[] {""}, 4));
+            Assert.False(agent.StartsWith(new[] {(string) null, ""}, 4));
+            Assert.True(agent.StartsWith(new[] {"ABCD"}, 4));
+            Assert.True(agent.StartsWith(new[] {"ABCD", "abcd"}, 4));
+            Assert.True(agent.StartsWith(new[] {"ABCDEF"}, 4));
+        }
     }
 }

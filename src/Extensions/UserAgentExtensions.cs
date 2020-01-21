@@ -44,7 +44,8 @@ namespace Wangkanai.Detection.Extensions
                && list.Any(agent.Contains);
 
         public static bool StartsWith(this UserAgent agent, string word)
-            => !agent.IsNullOrEmpty()
+            => !word.IsNullOrEmpty()
+               && !agent.IsNullOrEmpty()
                && agent.ToLower().StartsWith(word.ToLower());
 
         public static bool StartsWith(this UserAgent agent, string[] array)
