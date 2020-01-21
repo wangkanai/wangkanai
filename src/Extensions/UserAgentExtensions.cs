@@ -47,8 +47,19 @@ namespace Wangkanai.Detection.Extensions
         //     => flags.ToString().Contains(",")
         //        && agent.Contains((Enum)flags);
 
-        public static bool Contains<T>(this UserAgent agent, T flags) where T : Enum
+
+        public static bool Contains<T>(this UserAgent agent, Enum flags) where T : Enum
             => agent.Contains(flags.ToString());
+
+        public static bool Contains<T>(this UserAgent agent, T flags) where T : Enum
+        {
+            if (!flags.ToString().Contains(','))
+                return agent.Contains(flags.ToString());
+            foreach (Enum value in flags.GetFlags())
+                if (flags.HasFlag(value))
+                    return agent.Contains(value.ToString());
+            return false;
+        }
 
         // public static bool Contains(this UserAgent agent, Enum flags)
         //     => agent.Contains(flags.ToString().ToLower());

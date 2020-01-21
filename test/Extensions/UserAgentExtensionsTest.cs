@@ -75,8 +75,8 @@ namespace Wangkanai.Detection.Extensions
             Assert.False(abc.Contains(Crawler.Google));
             Assert.True(google.Contains(Crawler.Google));
             Assert.False(google.Contains(Crawler.Yahoo));
-            //Assert.False(google.Contains(Crawler.Yahoo | Crawler.Bing));
-            //Assert.True(google.Contains(Crawler.Google | Crawler.Bing));
+            Assert.False(google.Contains(Crawler.Yahoo | Crawler.Bing));
+            Assert.True(google.Contains(Crawler.Google | Crawler.Bing));
         }
 
         [Fact]
