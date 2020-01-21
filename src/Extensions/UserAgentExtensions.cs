@@ -40,8 +40,8 @@ namespace Wangkanai.Detection.Extensions
                 : agent.Contains(flags.ToString());
 
         public static bool Contains(this UserAgent agent, IEnumerable<string> list)
-            => list != null
-               && agent.IsNullOrEmpty()
+            => !agent.IsNullOrEmpty()
+               && list != null
                && list.Any(agent.Contains);
 
         public static bool StartsWith(this UserAgent agent, string word)

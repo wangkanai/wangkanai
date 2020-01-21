@@ -1,25 +1,19 @@
 // Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
+using System;
+
 namespace Wangkanai.Detection.Models
 {
     public enum Engine
     {
-        WebKit,   // iOs (Safari, WebViews, Chrome <28)
-        Blink,    // Google Chrome, Opera v15+
-        Gecko,    // Firefox, Netscape
-        Trident,  // IE, Outlook
-        EdgeHTML, // Microsoft Edge
-        KHTML,    // Konqueror
-        Presto,   //
-        Goanna,   // Pale Moon
-        NetSurf,  // NetSurf
-        NetFront, // Access NetFront
-        Prince,   //
-        Robin,    // The Bat!
-        Servo,    // Mozilla & Samsung
-        Tkhtml,   // hv3
-        Links2,   // launched with -g
-        Others
+        Unknown    = 0,       // Unknown engine
+        WebKit     = 1,       // iOs (Safari, WebViews, Chrome <28) (https://webkit.org/)
+        Blink      = 1 << 1,  // Google Chrome, Opera v15+ (https://www.chromium.org/Home)
+        Gecko      = 1 << 2,  // Firefox, Netscape (https://hg.mozilla.org/mozilla-central/)
+        Trident    = 1 << 3,  // IE, Outlook
+        EdgeHTML   = 1 << 4,  // Microsoft Edge
+        Servo      = 1 << 5,  // Mozilla & Samsung (https://github.com/servo/servo)
+        Others     = 1 << 6   // Others
     }
 }
