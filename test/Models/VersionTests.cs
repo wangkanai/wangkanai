@@ -2,7 +2,6 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
-
 using Xunit;
 
 namespace Wangkanai.Detection.Models
@@ -24,8 +23,8 @@ namespace Wangkanai.Detection.Models
         [Fact]
         public void Ctor_StringString_Success()
         {
-            int major = 1;
-            int minor = 0;
+            int major   = 1;
+            int minor   = 0;
             var version = new Version(major, minor);
 
             AssertVersion(major, minor, version);
@@ -53,11 +52,11 @@ namespace Wangkanai.Detection.Models
         [Fact]
         public void Ctor_StringStringStringString_Success()
         {
-            int major = 1;
-            int minor = 0;
-            int build = 1;
-            int revision = 0;
-            var version = new Version(major, minor, build, revision);
+            var major    = 1;
+            var minor    = 0;
+            var build    = 1;
+            var revision = 0;
+            var version  = new Version(major, minor, build, revision);
 
             AssertVersion(major, minor, build, revision, version);
             Assert.Equal("1.0.1.0", version.ToString());
