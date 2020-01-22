@@ -3,10 +3,8 @@
 
 using System;
 using System.Threading.Tasks;
-
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
-
 using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Models;
 using Wangkanai.Detection.Services;
@@ -19,7 +17,7 @@ namespace Wangkanai.Detection.Hosting
         [Fact]
         public void Ctor_RequestDelegate_ResponsiveOptions_Success()
         {
-            var options = Options.Create(new ResponsiveOptions());
+            var options    = Options.Create(new ResponsiveOptions());
             var middleware = new ResponsiveMiddleware(d => Task.Factory.StartNew(() => d), options);
         }
 
@@ -38,10 +36,10 @@ namespace Wangkanai.Detection.Hosting
         [Fact]
         public async void Invoke_HttpContext_IDeviceResolver_Success()
         {
-            var context = new DefaultHttpContext();
-            var options = Options.Create(new ResponsiveOptions());
-            var middleware = new ResponsiveMiddleware(d => Task.Factory.StartNew(() => d), options);
-            var deviceService = new DeviceService(MockService.CreateService(null), null);
+            var context       = new DefaultHttpContext();
+            var options       = Options.Create(new ResponsiveOptions());
+            var middleware    = new ResponsiveMiddleware(d => Task.Factory.StartNew(() => d), options);
+            var deviceService = new DeviceService(MockService.CreateService(null));
 
             await middleware.Invoke(context, deviceService);
 
@@ -51,9 +49,9 @@ namespace Wangkanai.Detection.Hosting
         [Fact]
         public async void Invoke_Null_IDeviceResolver_ThrowsArgumentNullException()
         {
-            var options = Options.Create(new ResponsiveOptions());
-            var middleware = new ResponsiveMiddleware(d => Task.Factory.StartNew(() => d), options);
-            var deviceService = new DeviceService(MockService.CreateService(null), null);
+            var options       = Options.Create(new ResponsiveOptions());
+            var middleware    = new ResponsiveMiddleware(d => Task.Factory.StartNew(() => d), options);
+            var deviceService = new DeviceService(MockService.CreateService(null));
 
             await Assert.ThrowsAsync<ArgumentNullException>(async () => await middleware.Invoke(null, deviceService));
         }
@@ -61,8 +59,8 @@ namespace Wangkanai.Detection.Hosting
         [Fact]
         public async void Invoke_HttpContext_Null_ThrowsNullReferenceException()
         {
-            var context = new DefaultHttpContext();
-            var options = Options.Create(new ResponsiveOptions());
+            var context    = new DefaultHttpContext();
+            var options    = Options.Create(new ResponsiveOptions());
             var middleware = new ResponsiveMiddleware(d => Task.Factory.StartNew(() => d), options);
 
             await Assert.ThrowsAsync<NullReferenceException>(async () => await middleware.Invoke(context, null));

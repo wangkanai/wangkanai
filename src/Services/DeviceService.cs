@@ -1,9 +1,9 @@
 // Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
+using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Wangkanai.Detection.Collections;
-using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Extensions;
 using Wangkanai.Detection.Models;
 
@@ -13,50 +13,60 @@ namespace Wangkanai.Detection.Services
     {
         public Device Type { get; }
 
-        public DeviceService(IUserAgentService userAgentService, DetectionOptions options)
+        public DeviceService(IUserAgentService userAgentService)
         {
-            var useragent         = userAgentService.UserAgent;
-            var request           = userAgentService.Context.Request;
-            var responsiveOptions = options?.Responsive ?? new ResponsiveOptions();
+            var useragent = userAgentService.UserAgent;
+            var request   = userAgentService.Context.Request;
 
-            Type = DeviceFromUserAgent(useragent, request, responsiveOptions);
+            Type = DeviceFromUserAgent(useragent, request);
         }
 
-        private static Device DeviceFromUserAgent(UserAgent agent, HttpRequest request, ResponsiveOptions options)
+        private static Device DeviceFromUserAgent(UserAgent agent, HttpRequest request)
         {
-            // tablet user agent keyword detection
+            // Tablet
             if (agent.Contains(TabletCollection.Keywords))
-                return options.DefaultTablet;
-            // Tv     user agent keywork detection
+                return Device.Tablet;
+            // Tv
             if (IsTV(agent))
                 return Device.Tv;
-            // mobile user agent keyword detection
-            if (agent.Contains(MobileCollection.Keywords))
-                return options.DefaultMobile;
-            // mobile user agent prefix detection
-            if (agent.StartsWith(MobileCollection.Prefixes, 4))
-                return options.DefaultMobile;
-            // mobile opera mini special case
-            if (request.IsOperaMini())
-                return options.DefaultMobile;
-            // mobile user agent prof detection
-            if (request.IsUserAgentWap())
-                return options.DefaultMobile;
-            // mobile accept-header base detection
-            if (request.IsAcceptHeaderWap())
-                return options.DefaultMobile;
-            // console user agent keyword detection
+            // Mobile
+            if (IsMobile(agent, request))
+                return Device.Mobile;
+            // Console
             if (agent.Contains(Device.Console))
                 return Device.Console;
-            // car    user agent keyword detection
+            // Car
             if (agent.Contains(Device.Car))
                 return Device.Car;
-            // iot    user agent keyword detection
+            // IoT
             if (agent.Contains(Device.IoT))
                 return Device.IoT;
-
-            return options.DefaultDesktop;
+            // Desktop
+            return Device.Desktop;
         }
+
+
+        private static bool IsMobile(UserAgent agent, HttpRequest request)
+            => agent.Contains(MobileCollection.Keywords)
+               || agent.StartsWith(MobileCollection.Prefixes, 4)
+               || IsOperaMini(request)
+               || IsUserAgentWap(request)
+               || IsAcceptHeaderWap(request);
+
+        #region Mobile
+
+        public static bool IsOperaMini(HttpRequest request)
+            => request.Headers.Any(header
+                => header.Value.Any(value => value?.Contains("OperaMini") ?? false));
+
+        public static bool IsUserAgentWap(HttpRequest request)
+            => request.Headers.ContainsKey("x-wap-profile")
+               || request.Headers.ContainsKey("Profile");
+
+        public static bool IsAcceptHeaderWap(HttpRequest request)
+            => request.Headers["Accept"].Any(accept => accept.ToLower() == "wap");
+
+        #endregion
 
         private static bool IsTV(UserAgent agent)
             => agent.Contains(Device.Tv) || agent.Contains("BRAVIA");

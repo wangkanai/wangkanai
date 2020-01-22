@@ -3,7 +3,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 
 namespace Wangkanai.Detection.Extensions
@@ -11,8 +10,7 @@ namespace Wangkanai.Detection.Extensions
     internal static class IEnumerableExtensions
     {
         public static bool IsNullOrEmpty<T>(this IEnumerable<T> list)
-            => list is null
-               || !list.Any();
+            => list == null || !list.Any();
 
         public static bool HasDuplicates<T, TProp>(this IEnumerable<T> list, Func<T, TProp> selector)
             => list.Any(t => !new HashSet<TProp>().Add(selector(t)));
