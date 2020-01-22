@@ -13,7 +13,7 @@ namespace Wangkanai.Detection.Extensions
         public static bool Search(this IEnumerable<string> list, UserAgent agent)
             => list != null && list.Any(agent.Contains);
 
-        public static IEnumerable<Crawler> All(this Crawler c)
+        public static IEnumerable<Crawler> All()
             => Enum.GetValues(typeof(Crawler)).Cast<Crawler>();
     }
 }

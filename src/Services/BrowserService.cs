@@ -16,19 +16,22 @@ namespace Wangkanai.Detection.Services
             var os     = platformService.OperatingSystem;
             var cpu    = platformService.Processor;
             var engine = engineService.Type;
-            Type = ParseBrowser(agent);
+            Type = ParseBrowser(agent, os, engine);
         }
 
-        private static Browser ParseBrowser(UserAgent agent)
+        private static Browser ParseBrowser(UserAgent agent, OperatingSystem os, Engine engine)
         {
             // fail and return fast
             if (agent.IsNullOrEmpty())
                 return Browser.Unknown;
+            // Microsoft Edge
+            if (IsEdge(agent))
+                return Browser.Edge;
             // Google chrome
             if (agent.Contains(Browser.Chrome))
                 return Browser.Chrome;
             // Microsoft Internet Explorer
-            if (IsInternetExplorer(agent))
+            if (IsInternetExplorer(agent, os, engine))
                 return Browser.InternetExplorer;
             // Apple Safari
             if (agent.Contains(Browser.Safari))
@@ -36,9 +39,7 @@ namespace Wangkanai.Detection.Services
             // Firefox
             if (agent.Contains(Browser.Firefox))
                 return Browser.Firefox;
-            // Microsoft Edge
-            if (agent.Contains(Browser.Edge))
-                return Browser.Edge;
+
             // Opera
             if (agent.Contains(Browser.Opera))
                 return Browser.Opera;
@@ -46,7 +47,10 @@ namespace Wangkanai.Detection.Services
             return Browser.Others;
         }
 
-        private static bool IsInternetExplorer(UserAgent agent)
-            => agent.Contains("MSIE");
+        private static bool IsEdge(UserAgent agent)
+            => agent.Contains(Browser.Edge) || (agent.Contains("Win64") && agent.Contains("Edg"));
+
+        private static bool IsInternetExplorer(UserAgent agent, OperatingSystem os, Engine engine)
+            => engine == Engine.Trident || agent.Contains("MSIE") && !agent.Contains(Browser.Opera);
     }
 }

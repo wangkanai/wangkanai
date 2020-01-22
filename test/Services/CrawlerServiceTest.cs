@@ -15,8 +15,18 @@ namespace Wangkanai.Detection.Services
         [Fact]
         public void Null()
         {
-            var crawler = MockCrawlerService(null);
-            Assert.NotNull(crawler);
+            var resolver = MockCrawlerService(null);
+            Assert.NotNull(resolver);
+            Assert.Equal(Crawler.Unknown, resolver.Type);
+        }
+
+        [Fact]
+        public void Unknown()
+        {
+            var agent    = "Mozilla/5.0 (X11; Linux x86_64; rv:10.0) Gecko/20100101 Firefox/10.0";
+            var resolver = MockCrawlerService(agent);
+            Assert.False(resolver.IsCrawler);
+            Assert.Equal(Crawler.Unknown, resolver.Type);
         }
 
         [Fact]
@@ -115,16 +125,6 @@ namespace Wangkanai.Detection.Services
             var resolver = MockCrawlerService(agent);
             Assert.True(resolver.IsCrawler);
             Assert.Equal(Crawler.Others, resolver.Type);
-        }
-
-        [Fact]
-        public void Unknown()
-        {
-            // arrange
-            var agent    = "Mozilla/5.0 (X11; Linux x86_64; rv:10.0) Gecko/20100101 Firefox/10.0";
-            var resolver = MockCrawlerService(agent);
-            Assert.False(resolver.IsCrawler);
-            Assert.Equal(Crawler.Unknown, resolver.Type);
         }
 
         [Fact]
