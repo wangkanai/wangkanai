@@ -20,6 +20,8 @@ namespace Wangkanai.Detection.Services
 
         private static OperatingSystem ParseOperatingSystem(UserAgent agent)
         {
+            if (agent.IsNullOrEmpty())
+                return Models.OperatingSystem.Unknown;
             if (agent.Contains(OperatingSystem.Android))
                 return OperatingSystem.Android;
             if (agent.Contains(OperatingSystem.Windows))

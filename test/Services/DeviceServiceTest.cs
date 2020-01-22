@@ -1,6 +1,7 @@
 // Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
+using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Models;
 using Xunit;
 
@@ -11,16 +12,12 @@ namespace Wangkanai.Detection.Services
         [Fact]
         public void UserAgentIsNull()
         {
-            // arrange
-            var service = MockService.CreateService(null);
-            // act
-            var resolver = new DeviceService(service, null);
-            // assert
+            var resolver = MockDeviceService(null);
             Assert.NotNull(resolver);
         }
 
-
         #region Tablet
+
         [Theory]
         [InlineData("Mozilla/5.0 (Android 4.4; Tablet; rv:41.0) Gecko/41.0 Firefox/41.0")]
         [InlineData("Mozilla/5.0 (Tablet; rv:26.0) Gecko/26.0 Firefox/26.0")]
@@ -30,16 +27,14 @@ namespace Wangkanai.Detection.Services
         [InlineData("Mozilla/5.0 (Linux; Android 5.1.1; KFAUWI) AppleWebKit/537.36 (KHTML, like Gecko) Silk/77.2.19 like Chrome/77.0.3865.92 Safari/537.36")]
         public void Tablet(string agent)
         {
-            // arrange
-            var service = MockService.CreateService(agent);
-            // act
-            var resolver = new DeviceService(service, null);
-            // assert
+            var resolver = MockDeviceService(agent);
             Assert.Equal(Device.Tablet, resolver.Type);
         }
+
         #endregion
 
         #region Mobile
+
         [Theory]
         [InlineData("Mozilla/5.0 (iPhone; CPU iPhone OS 8_3 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) FxiOS/1.0 Mobile/12F69 Safari/600.1.4")]
         [InlineData("Mozilla/5.0 (Linux; Android 4.4.2); Nexus 5 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Mobile Safari/537.36 OPR/20.0.1396.72047")]
@@ -52,11 +47,7 @@ namespace Wangkanai.Detection.Services
         [InlineData("Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543 Safari/419.3")]
         public void MobileKeywords(string agent)
         {
-            // arrange
-            var service = MockService.CreateService(agent);
-            // act
-            var resolver = new DeviceService(service, null);
-            // assert
+            var resolver = MockDeviceService(agent);
             Assert.Equal(Device.Mobile, resolver.Type);
         }
 
@@ -68,11 +59,7 @@ namespace Wangkanai.Detection.Services
         [InlineData("WinWAP 3.0 PRO")]
         public void MobilePrefix(string agent)
         {
-            // Arrange
-            var service = MockService.CreateService(agent);
-            // Act
-            var resolver = new DeviceService(service, null);
-            // Assert
+            var resolver = MockDeviceService(agent);
             Assert.Equal(Device.Mobile, resolver.Type);
         }
 
@@ -81,27 +68,21 @@ namespace Wangkanai.Detection.Services
         [InlineData("Profile")]
         public void MobileUAProf(string header)
         {
-            // Arrange
-            var service = MockService.CreateService("<doc></doc>", header);
-            // Act
-            var resolver = new DeviceService(service, null);
-            // Assert
+            var resolver = MockDeviceService("<doc></doc>", header);
             Assert.Equal(Device.Mobile, resolver.Type);
         }
 
         [Fact]
         public void MobileWap()
         {
-            // Arrange
-            var service = MockService.CreateService("wap", "Accept");
-            // Act
-            var resolver = new DeviceService(service, null);
-            // Assert
+            var resolver = MockDeviceService("wap", "Accept");
             Assert.Equal(Device.Mobile, resolver.Type);
         }
+
         #endregion
 
         #region Desktop
+
         [Theory]
         [InlineData("Mozilla/5.0 (Windows NT x.y; rv:10.0) Gecko/20100101 Firefox/10.0")]
         [InlineData("Mozilla/5.0 (Windows NT x.y; Win64; x64; rv:10.0) Gecko/20100101 Firefox/10.0")]
@@ -113,16 +94,14 @@ namespace Wangkanai.Detection.Services
         [InlineData("Mozilla/5.0 (X11; Linux x86_64; rv:10.0) Gecko/20100101 Firefox/10.0")]
         public void Desktop(string agent)
         {
-            // arrange
-            var service = MockService.CreateService(agent);
-            // act
-            var resolver = new DeviceService(service, null);
-            // assert
+            var resolver = MockDeviceService(agent);
             Assert.Equal(Device.Desktop, resolver.Type);
         }
+
         #endregion
 
         #region TV
+
         [Theory]
         [InlineData("Mozilla/5.0 (SMART-TV; Linux; Tizen 2.3) AppleWebkit/538.1 (KHTML, like Gecko) SamsungBrowser/1.0 TV Safari/538.1")]
         [InlineData("AppleCoreMedia/1.0.0.12B466 (Apple TV; U; CPU OS 8_1_3 like Mac OS X; en_us)")]
@@ -132,13 +111,23 @@ namespace Wangkanai.Detection.Services
         [InlineData("Opera/9.80 (Linux armv7l; HbbTV/1.2.1 (; Philips; 40HFL5010T12; ; PHILIPSTV; CE-HTML/1.0 NETTV/4.4.1 SmartTvA/3.0.0 Firmware/004.002.036.135 (PhilipsTV, 3.1.1,)en) ) Presto/2.12.407 Version/12.50")]
         public void Tv(string agent)
         {
-            // arrange
-            var service = MockService.CreateService(agent);
-            // act
-            var resolver = new DeviceService(service, null);
-            // assert
+            var resolver = MockDeviceService(agent);
             Assert.Equal(Device.Tv, resolver.Type);
         }
+
         #endregion
+
+        private static DeviceService MockDeviceService(string value, string header, DetectionOptions options = null)
+        {
+            var service  = MockService.CreateService(value, header);
+            var resolver = new DeviceService(service, options);
+            return resolver;
+        }
+        private static DeviceService MockDeviceService(string agent, DetectionOptions options = null)
+        {
+            var service  = MockService.CreateService(agent);
+            var resolver = new DeviceService(service, options);
+            return resolver;
+        }
     }
 }
