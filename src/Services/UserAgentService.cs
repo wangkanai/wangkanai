@@ -11,18 +11,21 @@ namespace Wangkanai.Detection.Services
 {
     public class UserAgentService : IUserAgentService
     {
-        public HttpContext Context { get; }
-        public UserAgent UserAgent { get; }
+        public HttpContext Context   { get; }
+        public UserAgent   UserAgent { get; }
 
         public UserAgentService(IServiceProvider services)
         {
-            if (services is null)
+            if (services.IsNull())
                 throw new ArgumentNullException(nameof(services));
-            var context = services.GetRequiredService<IHttpContextAccessor>().HttpContext;
-            if (context is null)
-                throw new ArgumentNullException(nameof(context));
 
-            Context = context;
+            Context = services.GetRequiredService<IHttpContextAccessor>().HttpContext
+                      ?? throw new ArgumentNullException(nameof(Context));
+            ;
+
+            // if (Context.IsNull())
+            //     throw new ArgumentNullException(nameof(Context));
+
             UserAgent = Context.UserAgentFromHeader();
         }
     }

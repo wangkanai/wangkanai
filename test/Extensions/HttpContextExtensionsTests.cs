@@ -8,7 +8,7 @@ using Xunit;
 
 namespace Wangkanai.Detection.Hosting
 {
-    public class DeviceHttpContextExtensionsTests
+    public class HttpContextExtensionsTests
     {
         //[Fact]
         //public void SetDevice_HttpContext_UserPerference_ReturnsExpected()

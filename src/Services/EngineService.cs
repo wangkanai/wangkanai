@@ -13,8 +13,8 @@ namespace Wangkanai.Detection.Services
         public EngineService(IUserAgentService userAgentService, IPlatformService platformService)
         {
             var agent = userAgentService.UserAgent;
-            var os = platformService.OperatingSystem;
-            var cpu = platformService.Processor;
+            var os    = platformService.OperatingSystem;
+            var cpu   = platformService.Processor;
             Type = ParseEngine(agent, os, cpu);
         }
 
@@ -22,11 +22,9 @@ namespace Wangkanai.Detection.Services
         {
             if (agent.IsNullOrEmpty())
                 return Engine.Unknown;
-            if (agent.Contains(Engine.EdgeHTML)
-                || agent.Contains("Edg")
-                && (OperatingSystem.Windows | OperatingSystem.Android).HasFlag(os))
+            if (IsEdge(agent, os))
                 return Engine.EdgeHTML;
-            if (agent.Contains(Browser.Chrome) && agent.Contains(Engine.WebKit))
+            if (IsBlink(agent))
                 return Engine.Blink;
             if (agent.Contains(Engine.WebKit))
                 return Engine.WebKit;
@@ -40,5 +38,13 @@ namespace Wangkanai.Detection.Services
 
             return Engine.Others;
         }
+
+        private static bool IsBlink(UserAgent agent)
+            => agent.Contains(Browser.Chrome) && agent.Contains(Engine.WebKit);
+
+        private static bool IsEdge(UserAgent agent, OperatingSystem os)
+            => agent.Contains(Engine.EdgeHTML)
+               || agent.Contains("Edg")
+               && (OperatingSystem.Windows | OperatingSystem.Android).HasFlag(os);
     }
 }

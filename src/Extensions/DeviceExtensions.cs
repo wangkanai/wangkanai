@@ -10,8 +10,7 @@ namespace Wangkanai.Detection.Extensions
     {
         public static bool IsOperaMini(this HttpRequest request)
             => request.Headers.Any(header
-                => header.Value.Any(value
-                    => value?.Contains("OperaMini") ?? false));
+                => header.Value.Any(value => value?.Contains("OperaMini") ?? false));
 
         public static bool IsUserAgentWap(this HttpRequest request)
             => request.Headers.ContainsKey("x-wap-profile")

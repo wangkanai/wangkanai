@@ -10,6 +10,9 @@ namespace Microsoft.AspNetCore.Http
     {
         private const string ResponsiveContextKey = "Responsive";
 
+        public static bool IsNull(this HttpContext context)
+            => context == null;
+
         public static void SetDevice(this HttpContext context, Device device)
             => context.Items[ResponsiveContextKey] = device;
 

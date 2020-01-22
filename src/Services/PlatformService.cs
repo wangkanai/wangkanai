@@ -8,14 +8,14 @@ namespace Wangkanai.Detection.Services
 {
     public class PlatformService : IPlatformService
     {
-        public Processor Processor { get; }
+        public Processor       Processor       { get; }
         public OperatingSystem OperatingSystem { get; }
 
         public PlatformService(IUserAgentService userAgentService)
         {
             var userAgent = userAgentService.UserAgent;
             OperatingSystem = ParseOperatingSystem(userAgent);
-            Processor = ParseProcessor(userAgent, OperatingSystem);
+            Processor       = ParseProcessor(userAgent, OperatingSystem);
         }
 
         private static OperatingSystem ParseOperatingSystem(UserAgent agent)
@@ -24,7 +24,7 @@ namespace Wangkanai.Detection.Services
                 return OperatingSystem.Android;
             if (agent.Contains(OperatingSystem.Windows))
                 return OperatingSystem.Windows;
-            if (agent.Contains(OperatingSystem.iOS) || agent.Contains(new[] {"iPad", "iPhone", "iPod"}))
+            if (IsiOS(agent))
                 return OperatingSystem.iOS;
             if (agent.Contains(OperatingSystem.Mac))
                 return OperatingSystem.Mac;
@@ -36,18 +36,38 @@ namespace Wangkanai.Detection.Services
 
         private static Processor ParseProcessor(UserAgent agent, OperatingSystem os)
         {
-            if (agent.Contains(Processor.ARM) || agent.Contains(OperatingSystem.Android) ||
-                os == Models.OperatingSystem.iOS)
+            if (IsArm(agent, os))
                 return Processor.ARM;
-            if (agent.Contains(Processor.x64) || agent.Contains("x86_64") || agent.Contains("wow64"))
+            if (IsX64(agent))
                 return Processor.x64;
-            var x86 = new[] {"i86", "i686"};
-            if (agent.Contains(Processor.x86) || agent.Contains(x86))
+            if (isX86(agent))
                 return Processor.x86;
-            if (os == OperatingSystem.Mac && !agent.Contains("PPC"))
+            if (IsPowerPC(agent, os))
                 return Processor.x64;
 
             return Processor.Others;
         }
+
+        private static bool IsArm(UserAgent agent, OperatingSystem os)
+            => agent.Contains(Processor.ARM)
+               || agent.Contains(OperatingSystem.Android)
+               || os == OperatingSystem.iOS;
+
+        private static bool IsPowerPC(UserAgent agent, OperatingSystem os)
+            => os == OperatingSystem.Mac
+               && !agent.Contains("PPC");
+
+        private static bool isX86(UserAgent agent)
+            => agent.Contains(Processor.x86)
+               || agent.Contains(new[] {"i86", "i686"});
+
+        private static bool IsX64(UserAgent agent)
+            => agent.Contains(Processor.x64)
+               || agent.Contains("x86_64")
+               || agent.Contains("wow64");
+
+        private static bool IsiOS(UserAgent agent)
+            => agent.Contains(OperatingSystem.iOS)
+               || agent.Contains(new[] {"iPad", "iPhone", "iPod"});
     }
 }

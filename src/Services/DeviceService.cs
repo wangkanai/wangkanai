@@ -15,8 +15,8 @@ namespace Wangkanai.Detection.Services
 
         public DeviceService(IUserAgentService userAgentService, DetectionOptions options)
         {
-            var useragent = userAgentService.UserAgent;
-            var request = userAgentService.Context.Request;
+            var useragent         = userAgentService.UserAgent;
+            var request           = userAgentService.Context.Request;
             var responsiveOptions = options?.Responsive ?? new ResponsiveOptions();
 
             Type = DeviceFromUserAgent(useragent, request, responsiveOptions);
@@ -28,7 +28,7 @@ namespace Wangkanai.Detection.Services
             if (agent.Contains(TabletCollection.Keywords))
                 return options.DefaultTablet;
             // Tv     user agent keywork detection
-            if (agent.Contains(Device.Tv) || agent.Contains("BRAVIA"))
+            if (IsTV(agent))
                 return Device.Tv;
             // mobile user agent keyword detection
             if (agent.Contains(MobileCollection.Keywords))
@@ -57,5 +57,8 @@ namespace Wangkanai.Detection.Services
 
             return options.DefaultDesktop;
         }
+
+        private static bool IsTV(UserAgent agent)
+            => agent.Contains(Device.Tv) || agent.Contains("BRAVIA");
     }
 }

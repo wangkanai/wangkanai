@@ -10,10 +10,12 @@ namespace Wangkanai.Detection.Services
     {
         public Browser Type { get; }
 
-        public BrowserService(IUserAgentService userAgentService, IPlatformService platformService,
-            IEngineService engineService)
+        public BrowserService(IUserAgentService userAgentService, IPlatformService platformService, IEngineService engineService)
         {
-            var agent = userAgentService.UserAgent;
+            var agent  = userAgentService.UserAgent;
+            var os     = platformService.OperatingSystem;
+            var cpu    = platformService.Processor;
+            var engine = engineService.Type;
             Type = ParseBrowser(agent);
         }
 
@@ -26,7 +28,7 @@ namespace Wangkanai.Detection.Services
             if (agent.Contains(Browser.Chrome))
                 return Browser.Chrome;
             // Microsoft Internet Explorer
-            if (agent.Contains("MSIE"))
+            if (IsInternetExplorer(agent))
                 return Browser.InternetExplorer;
             // Apple Safari
             if (agent.Contains(Browser.Safari))
@@ -43,5 +45,8 @@ namespace Wangkanai.Detection.Services
 
             return Browser.Others;
         }
+
+        private static bool IsInternetExplorer(UserAgent agent)
+            => agent.Contains("MSIE");
     }
 }
