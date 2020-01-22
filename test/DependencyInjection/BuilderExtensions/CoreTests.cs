@@ -3,13 +3,11 @@
 
 using System;
 using System.Collections.Generic;
-
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Services;
-
 using Xunit;
 
 namespace Wangkanai.Detection.DependencyInjection
@@ -20,7 +18,7 @@ namespace Wangkanai.Detection.DependencyInjection
         public void AddRequiredPlatformServices_ReturnsExpected()
         {
             var serviceCollection = new ServiceCollection();
-            var builder = serviceCollection.AddDetectionBuilder().AddRequiredPlatformServices();
+            var builder           = serviceCollection.AddDetectionBuilder().AddRequiredPlatformServices();
             var serviceDescriptors = new List<ServiceDescriptor>
             {
                 new ServiceDescriptor(typeof(IHttpContextAccessor), typeof(HttpContextAccessor), ServiceLifetime.Singleton),
@@ -41,7 +39,7 @@ namespace Wangkanai.Detection.DependencyInjection
         public void AddCoreServices_ReturnsExpected()
         {
             var serviceCollection = new ServiceCollection();
-            var builder = serviceCollection.AddDetectionBuilder().AddCoreServices();
+            var builder           = serviceCollection.AddDetectionBuilder().AddCoreServices();
             var serviceDescriptors = new List<ServiceDescriptor>
             {
                 new ServiceDescriptor(typeof(IUserAgentService), typeof(UserAgentService), ServiceLifetime.Transient),
@@ -62,7 +60,7 @@ namespace Wangkanai.Detection.DependencyInjection
         public void AddMarkerServices_ReturnsExpected()
         {
             var serviceCollection = new ServiceCollection();
-            var builder = serviceCollection.AddDetectionBuilder().AddMarkerService();
+            var builder           = serviceCollection.AddDetectionBuilder().AddMarkerService();
             var serviceDescriptors = new List<ServiceDescriptor>
             {
                 new ServiceDescriptor(typeof(MarkerService), typeof(MarkerService), ServiceLifetime.Singleton),
@@ -76,13 +74,13 @@ namespace Wangkanai.Detection.DependencyInjection
         [Fact]
         public void AddDetection_Null_ArgumentNullException()
         {
-            Assert.Throws<ArgumentNullException>(() => ((IServiceCollection)null).AddDetection());
+            Assert.Throws<ArgumentNullException>(() => ((IServiceCollection) null).AddDetection());
         }
 
         [Fact]
         public void AddDetectionCore_Null_ArgumentNullException()
         {
-            Assert.Throws<ArgumentNullException>(() => ((IServiceCollection)null).AddDetectionBuilder());
+            Assert.Throws<ArgumentNullException>(() => ((IServiceCollection) null).AddDetectionBuilder());
         }
 
         private void AssertServices(List<ServiceDescriptor> serviceDescriptors, IServiceCollection services)

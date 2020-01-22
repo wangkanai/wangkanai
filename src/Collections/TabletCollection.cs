@@ -5,7 +5,8 @@ namespace Wangkanai.Detection.Collections
 {
     internal static class TabletCollection
     {
-        public static string[] Keywords => new string[] {
+        public static string[] Keywords => new[]
+        {
             "tablet",
             "ipad",
             "playbook",
@@ -15,6 +16,9 @@ namespace Wangkanai.Detection.Collections
             "kfauwi"
         };
 
-        public static string[] Prefixes => new string[] { };
+        public static string[] Prefixes => new[]
+        {
+            "tablet"
+        };
     }
 }

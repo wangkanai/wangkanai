@@ -11,8 +11,9 @@ namespace Wangkanai.Detection.Extensions
     internal static class CrawlerExtensions
     {
         public static bool Search(this IEnumerable<string> list, UserAgent agent)
-        {
-            return list != null && list.Any(agent.Contains);
-        }
+            => list != null && list.Any(agent.Contains);
+
+        public static IEnumerable<Crawler> All()
+            => Enum.GetValues(typeof(Crawler)).Cast<Crawler>();
     }
 }

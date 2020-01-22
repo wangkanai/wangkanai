@@ -7,33 +7,32 @@ using Wangkanai.Detection.Models;
 
 namespace Wangkanai.Detection
 {
-    public class BrowserFactory : IBrowserFactory
+    public class BrowserFactory
     {
-        public BrowserFactory() { }
+        public BrowserFactory()
+        {
+        }
 
         public BrowserFactory(Browser browserType)
             => Type = browserType;
 
-        public BrowserFactory(Browser browserType, Version version)
-            : this(browserType)
+        public BrowserFactory(Browser browserType, Version version) : this(browserType)
             => Version = version;
 
         public BrowserFactory(string name)
         {
             if (!Enum.TryParse(name, true, out Browser type))
-                throw new BrowserNotFoundException(name, "not found");
+                throw new NotSupportedException(name);
 
             Type = type;
         }
 
-        public string? Name { get; set; }
-        public string? Maker { get; set; }
-        public Browser Type { get; set; } = Browser.Others;
-        public Version? Version { get; set; }
+        public Browser Type { get; } = Browser.Others;
+        public Version? Version { get; }
 
         protected static Version GetVersion(string agent, string browser)
         {
-            var first = agent.IndexOf(browser);
+            var    first = agent.IndexOf(browser);
             string cut;
             try
             {
