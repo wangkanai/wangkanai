@@ -15,7 +15,7 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
     public class DeviceTagHelper : TagHelper
     {
         protected IHtmlGenerator Generator { get; }
-        private const string ElementName = "device";
+        private const string ElementName          = "device";
         private const string IncludeAttributeName = "include";
         private const string ExcludeAttributeName = "exclude";
 
@@ -29,7 +29,9 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
 
         private readonly IDeviceService _resolver;
 
-        [HtmlAttributeNotBound] [ViewContext] public ViewContext ViewContext { get; set; }
+        [HtmlAttributeNotBound]
+        [ViewContext]
+        public ViewContext ViewContext { get; set; }
 
         public DeviceTagHelper(IHtmlGenerator generator, IDeviceService resolver)
         {
@@ -46,8 +48,7 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
 
             output.TagName = null;
 
-            if (string.IsNullOrWhiteSpace(Include) &&
-                string.IsNullOrWhiteSpace(Exclude))
+            if (string.IsNullOrWhiteSpace(Include) && string.IsNullOrWhiteSpace(Exclude))
                 return;
 
             var currentDeviceName = _resolver.Type.ToString();

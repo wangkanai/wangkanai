@@ -5,15 +5,20 @@ namespace Wangkanai.Detection.Collections
 {
     internal static class MobileCollection
     {
-        public static string[] Keywords => new string[] {
+        // mobile device keywords
+        public static string[] Keywords => new[]
+        {
+            "iphone",
+            "mobile",
             "blackberry",
+            "phone",
+            "smartphone",
             "webos",
             "ipod",
             "lge vx",
             "midp",
             "maemo",
             "mmp",
-            "mobile",
             "netfront",
             "hiptop",
             "nintendo DS",
@@ -23,17 +28,18 @@ namespace Wangkanai.Detection.Collections
             "opera mini",
             "palm",
             "psp",
-            "phone",
             "smartphone",
             "symbian",
             "up.browser",
             "up.link",
             "wap",
-            "windows ce"
+            "windows ce",
+            "windows phone"
         };
 
-        // reference 4 chare from http://www.webcab.de/wapua.htm
-        public static string[] Prefixes => new string[] {
+        // reference 4 character from http://www.webcab.de/wapua.htm
+        public static string[] Prefixes => new[]
+        {
             "w3c ",
             "w3c-",
             "acs-",
