@@ -4,7 +4,6 @@
 using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Wangkanai.Detection.Collections;
-using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Extensions;
 using Wangkanai.Detection.Models;
 
@@ -14,26 +13,25 @@ namespace Wangkanai.Detection.Services
     {
         public Device Type { get; }
 
-        public DeviceService(IUserAgentService userAgentService, DetectionOptions options)
+        public DeviceService(IUserAgentService userAgentService)
         {
-            var useragent         = userAgentService.UserAgent;
-            var request           = userAgentService.Context.Request;
-            var responsiveOptions = options?.Responsive ?? new ResponsiveOptions();
+            var useragent = userAgentService.UserAgent;
+            var request   = userAgentService.Context.Request;
 
-            Type = DeviceFromUserAgent(useragent, request, responsiveOptions);
+            Type = DeviceFromUserAgent(useragent, request);
         }
 
-        private static Device DeviceFromUserAgent(UserAgent agent, HttpRequest request, ResponsiveOptions options)
+        private static Device DeviceFromUserAgent(UserAgent agent, HttpRequest request)
         {
             // Tablet
             if (agent.Contains(TabletCollection.Keywords))
-                return options.DefaultTablet;
+                return Device.Tablet;
             // Tv
             if (IsTV(agent))
                 return Device.Tv;
             // Mobile
             if (IsMobile(agent, request))
-                return options.DefaultMobile;
+                return Device.Mobile;
             // Console
             if (agent.Contains(Device.Console))
                 return Device.Console;
@@ -44,7 +42,7 @@ namespace Wangkanai.Detection.Services
             if (agent.Contains(Device.IoT))
                 return Device.IoT;
             // Desktop
-            return options.DefaultDesktop;
+            return Device.Desktop;
         }
 
 

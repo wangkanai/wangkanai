@@ -1,7 +1,6 @@
 // Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
-using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Models;
 using Xunit;
 
@@ -105,7 +104,8 @@ namespace Wangkanai.Detection.Services
         [Theory]
         [InlineData("Mozilla/5.0 (SMART-TV; Linux; Tizen 2.3) AppleWebkit/538.1 (KHTML, like Gecko) SamsungBrowser/1.0 TV Safari/538.1")]
         [InlineData("AppleCoreMedia/1.0.0.12B466 (Apple TV; U; CPU OS 8_1_3 like Mac OS X; en_us)")]
-        [InlineData("Mozilla/5.0 (Web0S; Linux/SmartTV) AppleWebKit/537.36 (KHTML, like Gecko) QtWebEngine/5.2.1 Chr0me/38.0.2125.122 Safari/537.36 LG Browser/8.00.00(LGE; 60UH6550-UB; 03.00.15; 1; DTV_W16N); webOS.TV-2016; LG NetCast.TV-2013 Compatible (LGE, 60UH6550-UB, wireless)")]
+        [InlineData(
+            "Mozilla/5.0 (Web0S; Linux/SmartTV) AppleWebKit/537.36 (KHTML, like Gecko) QtWebEngine/5.2.1 Chr0me/38.0.2125.122 Safari/537.36 LG Browser/8.00.00(LGE; 60UH6550-UB; 03.00.15; 1; DTV_W16N); webOS.TV-2016; LG NetCast.TV-2013 Compatible (LGE, 60UH6550-UB, wireless)")]
         [InlineData("Mozilla/5.0 (Linux; BRAVIA 4K 2015 Build/LMY48E.S265) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.101 Safari/537.36 OPR/28.0.1754.0")]
         [InlineData("Mozilla/5.0 (Linux; U; Linux; ja-jp; DTV; TSBNetTV/T3E01CD.0203.DDD) AppleWebKit/536(KHTML, like Gecko) NX/3.0 (DTV; HTML; R1.0;) DTVNetBrowser/2.2 (000039;T3E01CD;0203;DDD) InettvBrowser/2.2 (000039;T3E01CD;0203;DDD)")]
         [InlineData("Opera/9.80 (Linux armv7l; HbbTV/1.2.1 (; Philips; 40HFL5010T12; ; PHILIPSTV; CE-HTML/1.0 NETTV/4.4.1 SmartTvA/3.0.0 Firmware/004.002.036.135 (PhilipsTV, 3.1.1,)en) ) Presto/2.12.407 Version/12.50")]
@@ -117,16 +117,17 @@ namespace Wangkanai.Detection.Services
 
         #endregion
 
-        private static DeviceService MockDeviceService(string value, string header, DetectionOptions options = null)
+        private static DeviceService MockDeviceService(string value, string header)
         {
             var service  = MockService.CreateService(value, header);
-            var resolver = new DeviceService(service, options);
+            var resolver = new DeviceService(service);
             return resolver;
         }
-        private static DeviceService MockDeviceService(string agent, DetectionOptions options = null)
+
+        private static DeviceService MockDeviceService(string agent)
         {
             var service  = MockService.CreateService(agent);
-            var resolver = new DeviceService(service, options);
+            var resolver = new DeviceService(service);
             return resolver;
         }
     }
