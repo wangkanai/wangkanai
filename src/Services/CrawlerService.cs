@@ -12,9 +12,9 @@ namespace Wangkanai.Detection.Services
 {
     public class CrawlerService : ICrawlerService
     {
-        public bool IsCrawler { get; }
-        public Crawler Type { get; }
-        public Version Version { get; }
+        public bool    IsCrawler { get; }
+        public Crawler Type      { get; }
+        public Version Version   { get; }
 
         public CrawlerService(IUserAgentService useragent, DetectionOptions options)
         {
@@ -30,13 +30,11 @@ namespace Wangkanai.Detection.Services
             if (agent.IsNullOrEmpty())
                 return Crawler.Unknown;
 
-            foreach (var name in Crawlers)
-                if (agent.Contains(name))
-                    return ParseCrawler(name);
+            foreach (var crawler in Crawlers)
+                if (agent.Contains(crawler))
+                    return crawler;
 
-            return agent.Contains(others) || agent.Contains("bot")
-                ? Crawler.Others
-                : Crawler.Unknown;
+            return HasOthers(agent, others) ? Crawler.Others : Crawler.Unknown;
         }
 
         private static Version GetVersion(UserAgent useragent)
@@ -44,7 +42,8 @@ namespace Wangkanai.Detection.Services
             var agent = useragent.ToString();
 
             var bot = FindBot(agent);
-            if (bot.IsNullOrEmpty()) return new Version();
+            if (bot.IsNullOrEmpty())
+                return new Version();
 
             var index = bot.IndexOf('/');
             if (index < 0)
@@ -57,16 +56,16 @@ namespace Wangkanai.Detection.Services
             return version.ToVersion();
         }
 
-        private static Crawler ParseCrawler(string name)
-            => (Crawler) Enum.Parse(typeof(Crawler), name, true);
+        private static bool HasOthers(UserAgent agent, IEnumerable<string> others)
+            => agent.Contains(others) || agent.Contains("bot");
 
         private static string FindBot(string agent)
             => agent.Split(' ').FirstOrDefault(x => CrawlerCount(x) > 0);
 
         private static int CrawlerCount(string x)
-            => Crawlers.Count(y => x.ToLower().Contains(y.ToLower()));
+            => Crawlers.Count(y => x.ToLower().Contains(y.ToString().ToLower()));
 
-        private static string[] Crawlers
-            => Enum.GetNames(typeof(Crawler)).Select(s => s.ToLower()).ToArray();
+        private static IEnumerable<Crawler> Crawlers
+            => Enum.GetValues(typeof(Crawler)).Cast<Crawler>();
     }
 }
