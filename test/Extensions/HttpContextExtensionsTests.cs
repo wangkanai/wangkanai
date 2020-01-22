@@ -27,7 +27,6 @@ namespace Wangkanai.Detection.Hosting
         //public void SetDevice_Null_UserPerference_ThrowsArgumentNullException()
         //{
         //    Assert.Throws<SetDeviceArgumentNullException>(() => ((HttpContext)null).SetDevice(new UserPreference()));
-        //}
 
         //[Fact]
         //public void SetDevice_HttpContext_Null_ThrowsArgumentNullException()
