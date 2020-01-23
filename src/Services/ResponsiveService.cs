@@ -11,7 +11,7 @@ namespace Wangkanai.Detection.Services
     {
         public Device View { get; }
 
-        public ResponsiveService(IDeviceService deviceService, IUserPreferenceService preferenceService, DetectionOptions options)
+        public ResponsiveService(IDeviceService deviceService, IPreferenceService preferenceService, DetectionOptions options)
         {
             if (options == null)
                 options = new DetectionOptions();

@@ -2,7 +2,7 @@
 
 namespace Wangkanai.Detection.Services
 {
-    public interface IUserPreferenceService
+    public interface IPreferenceService
     {
         public Device Preferred { get; }
     }

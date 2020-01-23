@@ -28,11 +28,11 @@ namespace Wangkanai.Detection.Hosting
         [Fact]
         public async void Invoke_HttpContext_ResponsiveService_Success()
         {
-            var service  = MockService.CreateService(null);
-            var options  = new DetectionOptions();
-            var device   = new DeviceService(service);
-            var preference = new UserPreferenceService();
-            var resolver = new ResponsiveService(device, preference,  options);
+            var service    = MockService.CreateService(null);
+            var options    = new DetectionOptions();
+            var device     = new DeviceService(service);
+            var preference = new PreferenceService();
+            var resolver   = new ResponsiveService(device, preference, options);
 
             var middleware = new ResponsiveMiddleware(Next);
 
@@ -54,7 +54,7 @@ namespace Wangkanai.Detection.Hosting
         [Fact]
         public async void Invoke_HttpContext_ResponsiveService_Null_ThrowsNullReferenceException()
         {
-            var service  = MockService.CreateService(null);
+            var service    = MockService.CreateService(null);
             var middleware = new ResponsiveMiddleware(Next);
 
             await Assert.ThrowsAsync<NullReferenceException>(

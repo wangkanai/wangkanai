@@ -2,11 +2,11 @@
 
 namespace Wangkanai.Detection.Services
 {
-    public class UserPreferenceService : IUserPreferenceService
+    public class PreferenceService : IPreferenceService
     {
         public Device Preferred { get; }
 
-        public UserPreferenceService()
+        public PreferenceService()
         {
             Preferred = Device.Desktop;
         }

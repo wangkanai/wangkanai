@@ -19,7 +19,7 @@ namespace Microsoft.Extensions.DependencyInjection
                 throw new ArgumentNullException(nameof(builder));
 
             builder.Services.TryAddTransient<IResponsiveService, ResponsiveService>();
-            builder.Services.TryAddScoped<IUserPreferenceService, UserPreferenceService>();
+            builder.Services.TryAddScoped<IPreferenceService, PreferenceService>();
             builder.AddViewLocation(ViewLocationFormat.Suffix);
             builder.AddViewLocation(ViewLocationFormat.Subfolder);
 

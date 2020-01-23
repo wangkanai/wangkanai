@@ -31,7 +31,7 @@ namespace Wangkanai.Detection.Services
         {
             var service    = MockService.CreateService(agent);
             var device     = new DeviceService(service);
-            var preference = new UserPreferenceService();
+            var preference = new PreferenceService();
             var resolver   = new ResponsiveService(device, preference, options);
             return resolver;
         }
