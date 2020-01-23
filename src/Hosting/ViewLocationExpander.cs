@@ -27,9 +27,7 @@ namespace Wangkanai.Detection.Hosting
         private const string ValueKey = "device";
         private readonly ViewLocationFormat _format;
 
-        public ViewLocationExpander() : this(ViewLocationFormat.Suffix)
-        {
-        }
+        public ViewLocationExpander() : this(ViewLocationFormat.Suffix) { }
 
         public ViewLocationExpander(ViewLocationFormat format)
         {
@@ -47,8 +45,7 @@ namespace Wangkanai.Detection.Hosting
             context.Values[ValueKey] = context.ActionContext.HttpContext.GetDevice().ToString();
         }
 
-        public IEnumerable<string> ExpandViewLocations(ViewLocationExpanderContext context,
-            IEnumerable<string> viewLocations)
+        public IEnumerable<string> ExpandViewLocations(ViewLocationExpanderContext context, IEnumerable<string> viewLocations)
         {
             if (context is null)
                 throw new ArgumentNullException(nameof(context));

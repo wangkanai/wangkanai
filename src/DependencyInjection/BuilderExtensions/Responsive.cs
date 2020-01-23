@@ -3,6 +3,7 @@
 
 using System;
 using Microsoft.AspNetCore.Mvc.Razor;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Hosting;
@@ -14,15 +15,8 @@ namespace Microsoft.Extensions.DependencyInjection
     {
         public static IDetectionBuilder AddResponsive(this IDetectionBuilder builder)
         {
-            return builder.AddResponsive(options => { });
-        }
-
-        public static IDetectionBuilder AddResponsive(this IDetectionBuilder builder, Action<ResponsiveOptions> setAction)
-        {
             if (builder is null)
                 throw new ArgumentNullException(nameof(builder));
-
-            builder.Services.Configure(setAction);
 
             builder.AddViewLocation(ViewLocationFormat.Suffix);
             builder.AddViewLocation(ViewLocationFormat.Subfolder);
@@ -33,12 +27,26 @@ namespace Microsoft.Extensions.DependencyInjection
             return builder;
         }
 
+        #region options
+
+        // Do we even need this? because the AddDetection() already has ResponsiveOptions as property in DetectionOptions
+        public static IDetectionBuilder AddResponsive(this IDetectionBuilder builder, Action<ResponsiveOptions> setAction)
+        {
+            builder.Services.Configure(setAction);
+            return builder.AddResponsive();
+        }
+
+        public static IDetectionBuilder AddResponsive(this IDetectionBuilder builder, IConfiguration configuration)
+        {
+            builder.Services.Configure<ResponsiveOptions>(configuration);
+            return builder.AddResponsive();
+        }
+
+        #endregion
+
         private static IDetectionBuilder AddViewLocation(this IDetectionBuilder builder, ViewLocationFormat format)
         {
-            builder.Services.Configure<RazorViewEngineOptions>(options =>
-            {
-                options.ViewLocationExpanders.Add(new ViewLocationExpander(format));
-            });
+            builder.Services.Configure<RazorViewEngineOptions>(options => { options.ViewLocationExpanders.Add(new ViewLocationExpander(format)); });
 
             return builder;
         }
