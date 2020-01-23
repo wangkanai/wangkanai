@@ -29,7 +29,9 @@ dotnet_style_qualification_for_property=false:suggestion
 dotnet_style_require_accessibility_modifiers=for_non_interface_members:suggestion
 
 # ReSharper properties
+resharper_align_multiline_array_and_object_initializer=true
 resharper_autodetect_indent_settings=true
+resharper_enforce_line_ending_style=true
 resharper_int_align_assignments=true
 resharper_int_align_comments=true
 resharper_int_align_fields=true
