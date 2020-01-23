@@ -44,7 +44,7 @@ namespace Sandbox
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();

@@ -1,17 +1,88 @@
+root=true
 # You can modify the rules from these initially generated values to suit your own policies
 # You can learn more about editorconfig here: https://docs.microsoft.com/en-us/visualstudio/ide/editorconfig-code-style-settings-reference
 
-root = true
 
 [*]
-indent_style = tabs
-charset = utf-8
-trim_trailing_whitespace = true
-insert_final_newline = true
+indent_style=space
+charset=utf-8
+trim_trailing_whitespace=false
+insert_final_newline=false
+end_of_line=crlf
+indent_size=4
+
+# Microsoft .NET properties
+csharp_new_line_before_members_in_object_initializers=false
+csharp_preferred_modifier_order=public, private, protected, internal, new, abstract, virtual, sealed, override, static, readonly, extern, unsafe, volatile, async:suggestion
+csharp_style_var_elsewhere=true:suggestion
+csharp_style_var_for_built_in_types=true:suggestion
+csharp_style_var_when_type_is_apparent=true:suggestion
+dotnet_style_parentheses_in_arithmetic_binary_operators=never_if_unnecessary:none
+dotnet_style_parentheses_in_other_binary_operators=never_if_unnecessary:none
+dotnet_style_parentheses_in_relational_binary_operators=never_if_unnecessary:none
+dotnet_style_predefined_type_for_locals_parameters_members=true:suggestion
+dotnet_style_predefined_type_for_member_access=true:suggestion
+dotnet_style_qualification_for_event=false:suggestion
+dotnet_style_qualification_for_field=false:suggestion
+dotnet_style_qualification_for_method=false:suggestion
+dotnet_style_qualification_for_property=false:suggestion
+dotnet_style_require_accessibility_modifiers=for_non_interface_members:suggestion
+
+# ReSharper properties
+resharper_align_multiline_array_and_object_initializer=true
+resharper_autodetect_indent_settings=true
+resharper_enforce_line_ending_style=true
+resharper_int_align_assignments=true
+resharper_int_align_comments=true
+resharper_int_align_fields=true
+resharper_int_align_methods=true
+resharper_int_align_nested_ternary=true
+resharper_int_align_parameters=true
+resharper_int_align_properties=true
+resharper_int_align_switch_expressions=true
+resharper_int_align_switch_sections=true
+resharper_int_align_variables=true
+resharper_keep_existing_enum_arrangement=true
+resharper_use_indent_from_vs=false
+resharper_wrap_array_initializer_style=chop_if_long
+resharper_wrap_before_arrow_with_expressions=true
+resharper_wrap_enum_declaration=chop_if_long
+
+# ReSharper inspection severities
+resharper_arrange_redundant_parentheses_highlighting=hint
+resharper_arrange_this_qualifier_highlighting=hint
+resharper_arrange_type_member_modifiers_highlighting=hint
+resharper_arrange_type_modifiers_highlighting=hint
+resharper_built_in_type_reference_style_for_member_access_highlighting=hint
+resharper_built_in_type_reference_style_highlighting=hint
+resharper_redundant_base_qualifier_highlighting=warning
+resharper_suggest_var_or_type_built_in_types_highlighting=hint
+resharper_suggest_var_or_type_elsewhere_highlighting=hint
+resharper_suggest_var_or_type_simple_types_highlighting=hint
+resharper_web_config_module_not_resolved_highlighting=warning
+resharper_web_config_type_not_resolved_highlighting=warning
+resharper_web_config_wrong_module_highlighting=warning
 
 [*.cs]
-dotnet_sort_system_directives_first = true
-dotnet_separate_import_directive_groups = true
+dotnet_sort_system_directives_first=true
+dotnet_separate_import_directive_groups=true
 
 [*.sh]
-end_of_line = lf
+end_of_line=lf
+
+[*.js.map]
+indent_style=space
+indent_size=2
+
+[{*.yml,*.yaml}]
+indent_style=space
+indent_size=2
+
+[{.eslintrc,.stylelintrc,jest.config,.babelrc,bowerrc,*.jsb3,*.jsb2,*.json}]
+indent_style=space
+indent_size=2
+
+[*.{appxmanifest,asax,ascx,aspx,build,cs,cshtml,dtd,fs,fsi,fsscript,fsx,master,ml,mli,nuspec,razor,resw,resx,skin,vb,xaml,xamlx,xoml,xsd}]
+indent_style=space
+indent_size=4
+tab_width=4
