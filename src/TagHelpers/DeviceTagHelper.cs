@@ -35,8 +35,8 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
 
         public DeviceTagHelper(IHtmlGenerator generator, IDeviceService resolver)
         {
-            Generator = generator;
-            _resolver = resolver;
+            Generator = generator ?? throw new ArgumentNullException(nameof(generator));
+            _resolver = resolver ?? throw new ArgumentNullException(nameof(resolver));
         }
 
         public override void Process(TagHelperContext context, TagHelperOutput output)

@@ -17,7 +17,6 @@ namespace Wangkanai.Detection.Services
         {
             var agent  = userAgentService.UserAgent;
             var os     = platformService.OperatingSystem;
-            var cpu    = platformService.Processor;
             var engine = engineService.Type;
             Type = GetBrowser(agent, os, engine);
             Version = GetVersion(agent.ToLower(), Type.ToString());
@@ -55,6 +54,13 @@ namespace Wangkanai.Detection.Services
         {
             if(agent.IsNullOrEmpty())
                 return new Version();
+
+            if(agent.Contains("rv:11.0") || agent.Contains("ie 11.0"))
+                return new Version(11,0);
+            if(agent.Contains("msie 10"))
+                return new Version(10,0);
+            if(agent.Contains("msie 9"))
+                return new Version(9,0);
 
             var    first = agent.IndexOf(browser.ToLower(), StringComparison.Ordinal);
             string cut;
