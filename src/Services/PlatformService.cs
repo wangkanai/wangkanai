@@ -20,16 +20,23 @@ namespace Wangkanai.Detection.Services
 
         private static OperatingSystem ParseOperatingSystem(UserAgent agent)
         {
+            // Unknown
             if (agent.IsNullOrEmpty())
-                return Models.OperatingSystem.Unknown;
+                return OperatingSystem.Unknown;
+
+            // Google Android
             if (agent.Contains(OperatingSystem.Android))
                 return OperatingSystem.Android;
+            // Microsoft Windows
             if (agent.Contains(OperatingSystem.Windows))
                 return OperatingSystem.Windows;
+            // Apple iOS
             if (IsiOS(agent))
                 return OperatingSystem.iOS;
+            // Apple Mac
             if (agent.Contains(OperatingSystem.Mac))
                 return OperatingSystem.Mac;
+            // Linux Distribution
             if (agent.Contains(OperatingSystem.Linux))
                 return OperatingSystem.Linux;
 
@@ -42,7 +49,7 @@ namespace Wangkanai.Detection.Services
                 return Processor.ARM;
             if (IsX64(agent))
                 return Processor.x64;
-            if (isX86(agent))
+            if (IsX86(agent))
                 return Processor.x86;
             if (IsPowerPC(agent, os))
                 return Processor.x64;
@@ -59,7 +66,7 @@ namespace Wangkanai.Detection.Services
             => os == OperatingSystem.Mac
                && !agent.Contains("PPC");
 
-        private static bool isX86(UserAgent agent)
+        private static bool IsX86(UserAgent agent)
             => agent.Contains(Processor.x86)
                || agent.Contains(new[] {"i86", "i686"});
 

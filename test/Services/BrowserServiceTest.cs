@@ -1,4 +1,5 @@
-﻿using Wangkanai.Detection.Models;
+﻿using System;
+using Wangkanai.Detection.Models;
 using Xunit;
 
 namespace Wangkanai.Detection.Services
@@ -11,6 +12,7 @@ namespace Wangkanai.Detection.Services
             var resolver = MockBrowserService(null);
             Assert.NotNull(resolver);
             Assert.Equal(Browser.Unknown, resolver.Type);
+            Assert.Equal(new Version(0,0), resolver.Version);
         }
 
         [Fact]
@@ -19,6 +21,7 @@ namespace Wangkanai.Detection.Services
             var resolver = MockBrowserService("");
             Assert.NotNull(resolver);
             Assert.Equal(Browser.Unknown, resolver.Type);
+            Assert.Equal(new Version(0,0), resolver.Version);
         }
 
         [Theory]

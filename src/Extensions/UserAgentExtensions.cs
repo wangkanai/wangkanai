@@ -11,9 +11,6 @@ namespace Wangkanai.Detection.Extensions
 {
     internal static class UserAgentExtensions
     {
-        public static UserAgent UserAgentFromHeader(this HttpContext context)
-            => new UserAgent(context.Request.Headers["User-Agent"].FirstOrDefault());
-
         public static bool IsNullOrEmpty(this UserAgent agent)
             => agent == null
                || string.IsNullOrEmpty(agent.ToLower());
