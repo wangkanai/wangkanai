@@ -19,6 +19,7 @@ namespace Microsoft.Extensions.DependencyInjection
                 throw new ArgumentNullException(nameof(builder));
 
             builder.Services.TryAddTransient<IResponsiveService, ResponsiveService>();
+            builder.Services.TryAddScoped<IUserPreferenceService, UserPreferenceService>();
             builder.AddViewLocation(ViewLocationFormat.Suffix);
             builder.AddViewLocation(ViewLocationFormat.Subfolder);
 
@@ -44,7 +45,9 @@ namespace Microsoft.Extensions.DependencyInjection
 
         private static IDetectionBuilder AddViewLocation(this IDetectionBuilder builder, ViewLocationFormat format)
         {
-            builder.Services.Configure<RazorViewEngineOptions>(options => { options.ViewLocationExpanders.Add(new ViewLocationExpander(format)); });
+            builder.Services.Configure<RazorViewEngineOptions>(
+                options => options.ViewLocationExpanders.Add(new ViewLocationExpander(format))
+            );
 
             return builder;
         }

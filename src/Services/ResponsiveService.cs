@@ -11,22 +11,24 @@ namespace Wangkanai.Detection.Services
     {
         public Device View { get; }
 
-        public ResponsiveService(IDeviceService deviceService, DetectionOptions options)
+        public ResponsiveService(IDeviceService deviceService, IUserPreferenceService preferenceService, DetectionOptions options)
         {
             if (options == null)
                 options = new DetectionOptions();
             View = deviceService != null
-                       ? GetView(deviceService.Type, options?.Responsive)
-                       : Device.Desktop;
+                ? GetView(deviceService.Type, options?.Responsive)
+                : Device.Desktop;
+            if (preferenceService != null && preferenceService.Preferred != View)
+                View = preferenceService.Preferred;
         }
 
         private static Device GetView(Device device, ResponsiveOptions options)
             => device switch
-               {
-                   Device.Mobile  => options.DefaultMobile,
-                   Device.Tablet  => options.DefaultTablet,
-                   Device.Desktop => options.DefaultDesktop,
-                   _              => device
-               };
+            {
+                Device.Mobile  => options.DefaultMobile,
+                Device.Tablet  => options.DefaultTablet,
+                Device.Desktop => options.DefaultDesktop,
+                _              => device
+            };
     }
 }

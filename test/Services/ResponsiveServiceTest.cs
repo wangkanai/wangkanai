@@ -25,13 +25,14 @@ namespace Wangkanai.Detection.Services
         [Fact]
         public void DefaultDesktop()
         {
-
         }
+
         private static ResponsiveService MockResponsiveService(string agent, DetectionOptions options = null)
         {
-            var service  = MockService.CreateService(agent);
-            var device   = new DeviceService(service);
-            var resolver = new ResponsiveService(device, options);
+            var service    = MockService.CreateService(agent);
+            var device     = new DeviceService(service);
+            var preference = new UserPreferenceService();
+            var resolver   = new ResponsiveService(device, preference, options);
             return resolver;
         }
     }

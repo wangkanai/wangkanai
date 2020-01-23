@@ -11,10 +11,11 @@ namespace Wangkanai.Detection.Responsive
         public UserPreference(string resolver, string cookie)
         {
             Resolver = resolver ?? throw new ArgumentNullException(nameof(resolver));
-            Cookie = cookie ?? throw new ArgumentNullException(nameof(cookie));
+            Cookie   = cookie ?? throw new ArgumentNullException(nameof(cookie));
         }
 
-        public UserPreference(Device resolver, Device cookie) : this(resolver.ToString(), cookie.ToString())
+        public UserPreference(Device resolver, Device cookie)
+            : this(resolver.ToString(), cookie.ToString())
         {
         }
 
