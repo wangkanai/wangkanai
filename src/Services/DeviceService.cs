@@ -24,7 +24,7 @@ namespace Wangkanai.Detection.Services
         private static Device DeviceFromUserAgent(UserAgent agent, HttpRequest request)
         {
             // Tablet
-            if (agent.Contains(TabletCollection.Keywords))
+            if (IsTablet(agent))
                 return Device.Tablet;
             // Tv
             if (IsTV(agent))
@@ -45,6 +45,9 @@ namespace Wangkanai.Detection.Services
             return Device.Desktop;
         }
 
+        private static bool IsTablet(UserAgent agent)
+            => agent.Contains(TabletCollection.Keywords)
+               || agent.Contains(TabletCollection.Prefixes);
 
         private static bool IsMobile(UserAgent agent, HttpRequest request)
             => agent.Contains(MobileCollection.Keywords)
@@ -55,15 +58,17 @@ namespace Wangkanai.Detection.Services
 
         #region Mobile
 
-        public static bool IsOperaMini(HttpRequest request)
-            => request.Headers.Any(header
-                => header.Value.Any(value => value?.Contains("OperaMini") ?? false));
+        private static bool IsOperaMini(HttpRequest request)
+            => request.Headers.Any(header => header.Value.Any(IsOperaMini));
 
-        public static bool IsUserAgentWap(HttpRequest request)
+        private static bool IsOperaMini(string value)
+            => value?.Contains("OperaMini") ?? false;
+
+        private static bool IsUserAgentWap(HttpRequest request)
             => request.Headers.ContainsKey("x-wap-profile")
                || request.Headers.ContainsKey("Profile");
 
-        public static bool IsAcceptHeaderWap(HttpRequest request)
+        private static bool IsAcceptHeaderWap(HttpRequest request)
             => request.Headers["Accept"].Any(accept => accept.ToLower() == "wap");
 
         #endregion
