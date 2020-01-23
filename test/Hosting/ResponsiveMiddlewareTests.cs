@@ -14,56 +14,51 @@ namespace Wangkanai.Detection.Hosting
 {
     public class ResponsiveMiddlewareTests
     {
-        [Fact]
-        public void Ctor_RequestDelegate_ResponsiveOptions_Success()
-        {
-            var options    = Options.Create(new ResponsiveOptions());
-            var middleware = new ResponsiveMiddleware(d => Task.Factory.StartNew(() => d), options);
-        }
-
-        [Fact]
-        public void Ctor_Null_ResponsiveOptions_ThrowsArgumentNullException()
-        {
-            Assert.Throws<ArgumentNullException>(() => new ResponsiveMiddleware(null, Options.Create(new ResponsiveOptions())));
-        }
+        private static Task Next(HttpContext d)
+            => Task.Factory.StartNew(() => d);
 
         [Fact]
         public void Ctor_RequestDelegate_Null_ThrowsArgumentNullException()
         {
-            Assert.Throws<ArgumentNullException>(() => new ResponsiveMiddleware(d => Task.Factory.StartNew(() => d), null));
+            Assert.Throws<ArgumentNullException>(
+                () => new ResponsiveMiddleware(null)
+            );
         }
 
         [Fact]
-        public async void Invoke_HttpContext_IDeviceResolver_Success()
+        public async void Invoke_HttpContext_ResponsiveService_Success()
         {
-            var context       = new DefaultHttpContext();
-            var options       = Options.Create(new ResponsiveOptions());
-            var middleware    = new ResponsiveMiddleware(d => Task.Factory.StartNew(() => d), options);
-            var deviceService = new DeviceService(MockService.CreateService(null));
+            var service  = MockService.CreateService(null);
+            var options  = new DetectionOptions();
+            var device   = new DeviceService(service);
+            var resolver = new ResponsiveService(device, options);
 
-            await middleware.Invoke(context, deviceService);
+            var middleware = new ResponsiveMiddleware(Next);
 
-            Assert.Equal(Device.Desktop, context.GetDevice());
+            await middleware.Invoke(service.Context, resolver);
+
+            Assert.Equal(Device.Desktop, service.Context.GetDevice());
         }
 
         [Fact]
-        public async void Invoke_Null_IDeviceResolver_ThrowsArgumentNullException()
+        public async void Invoke_HttpContext_Null_ResponsiveService_Null_ThrowsArgumentNullException()
         {
-            var options       = Options.Create(new ResponsiveOptions());
-            var middleware    = new ResponsiveMiddleware(d => Task.Factory.StartNew(() => d), options);
-            var deviceService = new DeviceService(MockService.CreateService(null));
+            var middleware = new ResponsiveMiddleware(Next);
 
-            await Assert.ThrowsAsync<ArgumentNullException>(async () => await middleware.Invoke(null, deviceService));
+            await Assert.ThrowsAsync<ArgumentNullException>(
+                async () => await middleware.Invoke(null, null)
+            );
         }
 
         [Fact]
-        public async void Invoke_HttpContext_Null_ThrowsNullReferenceException()
+        public async void Invoke_HttpContext_ResponsiveService_Null_ThrowsNullReferenceException()
         {
-            var context    = new DefaultHttpContext();
-            var options    = Options.Create(new ResponsiveOptions());
-            var middleware = new ResponsiveMiddleware(d => Task.Factory.StartNew(() => d), options);
+            var service  = MockService.CreateService(null);
+            var middleware = new ResponsiveMiddleware(Next);
 
-            await Assert.ThrowsAsync<NullReferenceException>(async () => await middleware.Invoke(context, null));
+            await Assert.ThrowsAsync<NullReferenceException>(
+                async () => await middleware.Invoke(service.Context, null)
+            );
         }
     }
 }

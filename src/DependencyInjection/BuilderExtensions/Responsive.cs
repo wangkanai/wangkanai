@@ -18,11 +18,9 @@ namespace Microsoft.Extensions.DependencyInjection
             if (builder is null)
                 throw new ArgumentNullException(nameof(builder));
 
+            builder.Services.TryAddTransient<IResponsiveService, ResponsiveService>();
             builder.AddViewLocation(ViewLocationFormat.Suffix);
             builder.AddViewLocation(ViewLocationFormat.Subfolder);
-
-            // waiting for development
-            builder.Services.TryAddTransient<IResponsiveService, ResponsiveService>();
 
             return builder;
         }
