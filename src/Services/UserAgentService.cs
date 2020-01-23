@@ -19,14 +19,12 @@ namespace Wangkanai.Detection.Services
             if (services.IsNull())
                 throw new ArgumentNullException(nameof(services));
 
-            Context = services.GetRequiredService<IHttpContextAccessor>().HttpContext
-                      ?? throw new ArgumentNullException(nameof(Context));
-            ;
+            Context = services.GetRequiredService<IHttpContextAccessor>().HttpContext;
 
-            // if (Context.IsNull())
-            //     throw new ArgumentNullException(nameof(Context));
+            if (Context.IsNull())
+                throw new ArgumentNullException(nameof(Context));
 
-            UserAgent = Context.UserAgentFromHeader();
+            UserAgent = Context.GetUserAgent();
         }
     }
 }

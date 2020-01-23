@@ -20,7 +20,7 @@ namespace Wangkanai.Detection.Services
         {
             var agent = useragent.UserAgent;
 
-            Type      = GetCrawler(agent, options?.Crawler?.Others);
+            Type      = GetCrawler(agent, options?.Crawler.Others);
             IsCrawler = Type != Crawler.Unknown;
             Version   = GetVersion(agent);
         }

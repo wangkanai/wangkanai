@@ -1,4 +1,6 @@
-﻿using Wangkanai.Detection.Models;
+﻿using System;
+using Wangkanai.Detection.Extensions;
+using Wangkanai.Detection.Models;
 using Xunit;
 
 namespace Wangkanai.Detection.Services
@@ -11,6 +13,7 @@ namespace Wangkanai.Detection.Services
             var resolver = MockBrowserService(null);
             Assert.NotNull(resolver);
             Assert.Equal(Browser.Unknown, resolver.Type);
+            Assert.Equal(new Version(0, 0), resolver.Version);
         }
 
         [Fact]
@@ -19,27 +22,30 @@ namespace Wangkanai.Detection.Services
             var resolver = MockBrowserService("");
             Assert.NotNull(resolver);
             Assert.Equal(Browser.Unknown, resolver.Type);
+            Assert.Equal(new Version(0, 0), resolver.Version);
         }
 
         [Theory]
-        [InlineData("Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US) AppleWebKit/525.19 (KHTML, like Gecko) Chrome/1.0.154.53 Safari/525.19")]
-        [InlineData("Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.90 Atom/4.0.0.141 Safari/537.36")]
-        [InlineData("Mozilla/5.0 (X11; U; Linux x86_64; en-US) AppleWebKit/534.10 (KHTML, like Gecko) Ubuntu/10.10 Chromium/8.0.552.237 Chrome/8.0.552.237 Safari/534.10")]
-        public void Chrome(string agent)
+        [InlineData("1.0.154.53", "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US) AppleWebKit/525.19 (KHTML, like Gecko) Chrome/1.0.154.53 Safari/525.19")]
+        [InlineData("75.0.3770.90", "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.90 Atom/4.0.0.141 Safari/537.36")]
+        [InlineData("8.0.552.237", "Mozilla/5.0 (X11; U; Linux x86_64; en-US) AppleWebKit/534.10 (KHTML, like Gecko) Ubuntu/10.10 Chromium/8.0.552.237 Chrome/8.0.552.237 Safari/534.10")]
+        public void Chrome(string version, string agent)
         {
             var resolver = MockBrowserService(agent);
             Assert.Equal(Browser.Chrome, resolver.Type);
+            Assert.Equal(new Version(version), resolver.Version);
         }
 
         [Theory]
-        [InlineData("Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko")]
-        [InlineData("Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; WOW64; Trident/6.0)")]
-        [InlineData("Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 7.1; Trident/5.0)")]
-        [InlineData("Mozilla/5.0 (IE 11.0; Windows NT 6.3; Trident/7.0; .NET4.0E; .NET4.0C; rv:11.0) like Gecko")]
-        public void InternetExplorer(string agent)
+        [InlineData("11.0", "Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko")]
+        [InlineData("11.0", "Mozilla/5.0 (IE 11.0; Windows NT 6.3; Trident/7.0; .NET4.0E; .NET4.0C; rv:11.0) like Gecko")]
+        [InlineData("10.0", "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; WOW64; Trident/6.0)")]
+        [InlineData("9.0", "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 7.1; Trident/5.0)")]
+        public void InternetExplorer(string version, string agent)
         {
             var resolver = MockBrowserService(agent);
             Assert.Equal(Browser.InternetExplorer, resolver.Type);
+            Assert.Equal(new Version(version), resolver.Version);
         }
 
         [Theory]

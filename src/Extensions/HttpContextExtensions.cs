@@ -2,6 +2,7 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
+using System.Linq;
 using Wangkanai.Detection.Models;
 
 namespace Microsoft.AspNetCore.Http
@@ -9,6 +10,12 @@ namespace Microsoft.AspNetCore.Http
     public static class HttpContextExtensions
     {
         private const string ResponsiveContextKey = "Responsive";
+
+        public static bool IsNull(this HttpContext context)
+            => context == null;
+
+        public static UserAgent GetUserAgent(this HttpContext context)
+            => new UserAgent(context.Request.Headers["User-Agent"].FirstOrDefault());
 
         public static void SetDevice(this HttpContext context, Device device)
             => context.Items[ResponsiveContextKey] = device;
