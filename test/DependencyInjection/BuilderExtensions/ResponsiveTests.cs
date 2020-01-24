@@ -54,8 +54,11 @@ namespace Wangkanai.Detection.Hosting
             Assert.Throws<ArgumentNullException>(CreateResponsiveNullService);
         }
         
+        private readonly Func<object> CreateResponsiveNullService =
+            () => ((IServiceCollection)null).AddDetection();
+        
         [Fact]
-        public void AddResponsive_Options_Disable_Configure()
+        public void AddResponsive_Options_Disable_True()
         {
             var services  = new ServiceCollection();
             services.AddLogging();
@@ -67,30 +70,48 @@ namespace Wangkanai.Detection.Hosting
             
             app.UseDetection();
             
-            var context = MockService.CreateContext("mobile");
+            var service = MockService.CreateService("mobile");
             var request = app.Build();
-            request.Invoke(context);
+            request.Invoke(service.Context);
         }
         
         [Fact]
-        public void AddResponsive_Options_Disable_Not()
+        public void AddResponsive_Options_Disable_False()
         {
             var services = new ServiceCollection();
-            services.AddDetection();
+            services.AddHttpContextAccessor();
             services.AddLogging();
+            services.AddDetection();
+            
+            var provider = services.BuildServiceProvider();
+            var mock = new Mock<IServiceProvider>();
 
+            var app = new ApplicationBuilder(provider);
+            
+            app.UseDetection();
+
+            var service = MockService.CreateService("mobile");
+            var request = app.Build();
+            request.Invoke(service.Context);
+        }
+        
+        [Fact]
+        public void AddResponsive_Options_Disable_False_Failed()
+        {
+            var services = new ServiceCollection();
+            services.AddHttpContextAccessor();
+            services.AddLogging();
+            services.AddDetection();
+            
             var provider = services.BuildServiceProvider();
 
             var app = new ApplicationBuilder(provider);
             
             app.UseDetection();
 
-            var context = MockService.CreateContext("mobile");
+            var service = MockService.CreateService("mobile");
             var request = app.Build();
-            request.Invoke(context);
+            request.Invoke(service.Context);
         }
-
-        private readonly Func<object> CreateResponsiveNullService =
-            () => ((IServiceCollection)null).AddDetection();
     }
 }
