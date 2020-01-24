@@ -22,7 +22,6 @@ namespace Wangkanai.Detection.Hosting
             if (context is null)
                 throw new ArgumentNullException(nameof(context));
             
-
             //var cookie = new CookieManager(context);
             //var preference = new UserPreference(detection, cookie);
 
