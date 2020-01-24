@@ -64,21 +64,7 @@ namespace Wangkanai.Detection.Hosting
             var preference = new PreferenceService();
             var resolver   = new ResponsiveService(device, preference, options);
 
-            var serviceProvider = new Mock<IServiceProvider>();
-            serviceProvider
-                .Setup(s => s.GetService(typeof(ILoggerFactory)))
-                .Returns(Mock.Of<NullLoggerFactory>());
-            serviceProvider
-                .Setup(s => s.GetService(typeof(DetectionOptions)))
-                .Returns(options);
-            serviceProvider
-                .Setup(s => s.GetService(typeof(IResponsiveService)))
-                .Returns(resolver);
-            serviceProvider
-                .Setup(s => s.GetService(typeof(MarkerService)))
-                .Returns(new MarkerService());
-
-            var app = new ApplicationBuilder(serviceProvider.Object);
+            var app = MockApplicationBuilder(options, resolver);
 
             app.UseDetection();
 
@@ -95,7 +81,18 @@ namespace Wangkanai.Detection.Hosting
             var preference = new PreferenceService();
             var resolver   = new ResponsiveService(device, preference, options);
 
+            var app = MockApplicationBuilder(options, resolver);
+
+            app.UseDetection();
+
+            var request = app.Build();
+            request.Invoke(service.Context);
+        }
+
+        private static ApplicationBuilder MockApplicationBuilder(DetectionOptions options, ResponsiveService resolver)
+        {
             var serviceProvider = new Mock<IServiceProvider>();
+
             serviceProvider
                 .Setup(s => s.GetService(typeof(ILoggerFactory)))
                 .Returns(Mock.Of<NullLoggerFactory>());
@@ -109,12 +106,7 @@ namespace Wangkanai.Detection.Hosting
                 .Setup(s => s.GetService(typeof(MarkerService)))
                 .Returns(new MarkerService());
 
-            var app = new ApplicationBuilder(serviceProvider.Object);
-
-            app.UseDetection();
-
-            var request = app.Build();
-            request.Invoke(service.Context);
+            return new ApplicationBuilder(serviceProvider.Object);
         }
     }
 }
