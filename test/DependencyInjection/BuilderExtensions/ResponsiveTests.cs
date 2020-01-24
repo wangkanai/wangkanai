@@ -2,11 +2,12 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
-using System.Reflection;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
 using Moq;
+using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Models;
 using Wangkanai.Detection.Services;
 using Xunit;
@@ -20,9 +21,9 @@ namespace Wangkanai.Detection.Hosting
         [Fact]
         public void AddResponsive_Services()
         {
-            var service = new ServiceCollection();
+            var service  = new ServiceCollection();
             var expected = service.Count + total;
-            var builder = service.AddDetection();
+            var builder  = service.AddDetection();
 
             //Assert.Equal(expected, builder.Services.Count);
             Assert.Same(service, builder.Services);
@@ -37,12 +38,9 @@ namespace Wangkanai.Detection.Hosting
         [Fact]
         public void AddResponsive_Options_Builder_Service()
         {
-            var service = new ServiceCollection();
+            var service  = new ServiceCollection();
             var expected = service.Count + total;
-            var builder = service.AddDetection(options =>
-                                               {
-                                                   options.Responsive.DefaultTablet = Device.Desktop;
-                                               });
+            var builder  = service.AddDetection(options => { options.Responsive.DefaultTablet = Device.Desktop; });
 
             //Assert.Equal(expected, builder.Services.Count);
             Assert.Same(service, builder.Services);
@@ -53,63 +51,68 @@ namespace Wangkanai.Detection.Hosting
         {
             Assert.Throws<ArgumentNullException>(CreateResponsiveNullService);
         }
-        
+
         private readonly Func<object> CreateResponsiveNullService =
-            () => ((IServiceCollection)null).AddDetection();
-        
+            () => ((IServiceCollection) null).AddDetection();
+
         [Fact]
         public void AddResponsive_Options_Disable_True()
         {
-            var services  = new ServiceCollection();
-            services.AddLogging();
-            services.AddDetection(options => options.Responsive.Disable = true);
-            
-            var provider = services.BuildServiceProvider();
+            var service    = MockService.CreateService("mobile");
+            var options    = new DetectionOptions {Responsive = {Disable = true}};
+            var device     = new DeviceService(service);
+            var preference = new PreferenceService();
+            var resolver   = new ResponsiveService(device, preference, options);
 
-            var app = new ApplicationBuilder(provider);
-            
+            var serviceProvider = new Mock<IServiceProvider>();
+            serviceProvider
+                .Setup(s => s.GetService(typeof(ILoggerFactory)))
+                .Returns(Mock.Of<NullLoggerFactory>());
+            serviceProvider
+                .Setup(s => s.GetService(typeof(DetectionOptions)))
+                .Returns(options);
+            serviceProvider
+                .Setup(s => s.GetService(typeof(IResponsiveService)))
+                .Returns(resolver);
+            serviceProvider
+                .Setup(s => s.GetService(typeof(MarkerService)))
+                .Returns(new MarkerService());
+
+            var app = new ApplicationBuilder(serviceProvider.Object);
+
             app.UseDetection();
-            
-            var service = MockService.CreateService("mobile");
+
             var request = app.Build();
             request.Invoke(service.Context);
         }
-        
+
         [Fact]
         public void AddResponsive_Options_Disable_False()
         {
-            var services = new ServiceCollection();
-            services.AddHttpContextAccessor();
-            services.AddLogging();
-            services.AddDetection();
-            
-            var provider = services.BuildServiceProvider();
-            var mock = new Mock<IServiceProvider>();
+            var service    = MockService.CreateService("mobile");
+            var options    = new DetectionOptions {Responsive = {Disable = false}};
+            var device     = new DeviceService(service);
+            var preference = new PreferenceService();
+            var resolver   = new ResponsiveService(device, preference, options);
 
-            var app = new ApplicationBuilder(provider);
-            
+            var serviceProvider = new Mock<IServiceProvider>();
+            serviceProvider
+                .Setup(s => s.GetService(typeof(ILoggerFactory)))
+                .Returns(Mock.Of<NullLoggerFactory>());
+            serviceProvider
+                .Setup(s => s.GetService(typeof(DetectionOptions)))
+                .Returns(options);
+            serviceProvider
+                .Setup(s => s.GetService(typeof(IResponsiveService)))
+                .Returns(resolver);
+            serviceProvider
+                .Setup(s => s.GetService(typeof(MarkerService)))
+                .Returns(new MarkerService());
+
+            var app = new ApplicationBuilder(serviceProvider.Object);
+
             app.UseDetection();
 
-            var service = MockService.CreateService("mobile");
-            var request = app.Build();
-            request.Invoke(service.Context);
-        }
-        
-        [Fact]
-        public void AddResponsive_Options_Disable_False_Failed()
-        {
-            var services = new ServiceCollection();
-            services.AddHttpContextAccessor();
-            services.AddLogging();
-            services.AddDetection();
-            
-            var provider = services.BuildServiceProvider();
-
-            var app = new ApplicationBuilder(provider);
-            
-            app.UseDetection();
-
-            var service = MockService.CreateService("mobile");
             var request = app.Build();
             request.Invoke(service.Context);
         }
