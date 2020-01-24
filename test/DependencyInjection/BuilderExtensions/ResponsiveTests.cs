@@ -3,6 +3,7 @@
 
 using System;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
@@ -56,37 +57,47 @@ namespace Wangkanai.Detection.Hosting
             () => ((IServiceCollection) null).AddDetection();
 
         [Fact]
-        public void AddResponsive_Options_Disable_True()
+        public async void AddResponsive_Options_Disable_True()
         {
-            var service    = MockService.CreateService("mobile");
-            var options    = new DetectionOptions {Responsive = {Disable = true}};
-            var device     = new DeviceService(service);
-            var preference = new PreferenceService();
-            var resolver   = new ResponsiveService(device, preference, options);
+            var service  = MockService.CreateService("mobile");
+            var options  = new DetectionOptions {Responsive = {Disable = true}};
+            var resolver = MockResponsiveService(service, options);
 
             var app = MockApplicationBuilder(options, resolver);
 
             app.UseDetection();
 
             var request = app.Build();
-            request.Invoke(service.Context);
+
+            Assert.NotEqual(service.Context, new DefaultHttpContext());
+
+            await request.Invoke(service.Context);
         }
 
         [Fact]
-        public void AddResponsive_Options_Disable_False()
+        public async void AddResponsive_Options_Disable_False()
         {
-            var service    = MockService.CreateService("mobile");
-            var options    = new DetectionOptions {Responsive = {Disable = false}};
-            var device     = new DeviceService(service);
-            var preference = new PreferenceService();
-            var resolver   = new ResponsiveService(device, preference, options);
+            var service  = MockService.CreateService("mobile");
+            var options  = new DetectionOptions {Responsive = {Disable = false}};
+            var resolver = MockResponsiveService(service, options);
 
             var app = MockApplicationBuilder(options, resolver);
 
             app.UseDetection();
 
             var request = app.Build();
-            request.Invoke(service.Context);
+
+            Assert.NotEqual(service.Context, new DefaultHttpContext());
+
+            await request.Invoke(service.Context);
+        }
+
+        private static ResponsiveService MockResponsiveService(IUserAgentService service, DetectionOptions options)
+        {
+            var device     = new DeviceService(service);
+            var preference = new PreferenceService();
+            var resolver   = new ResponsiveService(device, preference, options);
+            return resolver;
         }
 
         private static ApplicationBuilder MockApplicationBuilder(DetectionOptions options, ResponsiveService resolver)

@@ -13,7 +13,7 @@ namespace Microsoft.Extensions.DependencyInjection
 {
     public static class ResponsiveBuilderExtensions
     {
-        public static IDetectionBuilder AddResponsive(this IDetectionBuilder builder)
+        public static IDetectionBuilder AddResponsiveService(this IDetectionBuilder builder)
         {
             if (builder is null)
                 throw new ArgumentNullException(nameof(builder));
@@ -29,16 +29,18 @@ namespace Microsoft.Extensions.DependencyInjection
         #region options
 
         // Do we even need this? because the AddDetection() already has ResponsiveOptions as property in DetectionOptions
-        public static IDetectionBuilder AddResponsive(this IDetectionBuilder builder, Action<ResponsiveOptions> setAction)
+        [Obsolete("Not sure the use of this feature yet")]
+        public static IDetectionBuilder AddResponsiveService(this IDetectionBuilder builder, Action<ResponsiveOptions> setAction)
         {
             builder.Services.Configure(setAction);
-            return builder.AddResponsive();
+            return builder.AddResponsiveService();
         }
 
-        public static IDetectionBuilder AddResponsive(this IDetectionBuilder builder, IConfiguration configuration)
+        [Obsolete("Not sure the use of this feature yet")]
+        public static IDetectionBuilder AddResponsiveService(this IDetectionBuilder builder, IConfiguration configuration)
         {
             builder.Services.Configure<ResponsiveOptions>(configuration);
-            return builder.AddResponsive();
+            return builder.AddResponsiveService();
         }
 
         #endregion
