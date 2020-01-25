@@ -72,6 +72,8 @@ namespace Wangkanai.Detection.Hosting
             Assert.NotEqual(service.Context, new DefaultHttpContext());
 
             await request.Invoke(service.Context);
+
+            Assert.Equal(Device.Mobile, service.Context.GetDevice());
         }
 
         [Fact]
@@ -90,6 +92,29 @@ namespace Wangkanai.Detection.Hosting
             Assert.NotEqual(service.Context, new DefaultHttpContext());
 
             await request.Invoke(service.Context);
+
+            Assert.Equal(Device.Mobile, service.Context.GetDevice());
+        }
+
+        [Fact]
+        public async void AddResponsive_Include_WebApi()
+        {
+            var service = MockService.CreateService("mobile");
+            service.Context.Request.Path = "/api/dog";
+            var options  = new DetectionOptions {Responsive = {IncludeWebApi = true}};
+            var resolver = MockResponsiveService(service, options);
+
+            var app = MockApplicationBuilder(options, resolver);
+
+            app.UseDetection();
+
+            var requestDelegate = app.Build();
+
+            Assert.NotEqual(service.Context, new DefaultHttpContext());
+
+            await requestDelegate.Invoke(service.Context);
+
+            Assert.Equal(Device.Mobile, service.Context.GetDevice());
         }
 
         private static ResponsiveService MockResponsiveService(IUserAgentService service, DetectionOptions options)

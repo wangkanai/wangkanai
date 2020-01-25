@@ -30,16 +30,19 @@ namespace Microsoft.Extensions.DependencyInjection
             VerifyMarkerIsRegistered(app);
 
             var options = app.ApplicationServices.GetRequiredService<DetectionOptions>();
-            
+
             ValidateOptions(options);
 
             if (!options.Responsive.Disable)
-                app.UseResponsive();
+                app.MapWhen(
+                    context => !context.Request.Path.StartsWithSegments("/api"),
+                    appBuilder => appBuilder.UseResponsive()
+                );
 
             return app;
         }
 
-        private static IApplicationBuilder UseResponsive(this IApplicationBuilder app) 
+        private static IApplicationBuilder UseResponsive(this IApplicationBuilder app)
             => app.UseMiddleware<ResponsiveMiddleware>();
 
         private static void Validate(this IApplicationBuilder app)
