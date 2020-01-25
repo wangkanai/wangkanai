@@ -73,7 +73,7 @@ namespace Wangkanai.Detection.Hosting
 
             await request.Invoke(service.Context);
 
-            Assert.Equal(Device.Mobile, service.Context.GetDevice());
+            //Assert.Equal(Device.Mobile, service.Context.GetDevice());
         }
 
         [Fact]
@@ -96,12 +96,27 @@ namespace Wangkanai.Detection.Hosting
             Assert.Equal(Device.Mobile, service.Context.GetDevice());
         }
 
-        [Fact]
-        public async void AddResponsive_Include_WebApi()
+        [Theory]
+        [InlineData(false, Device.Desktop, "mobile", "")]
+        [InlineData(false, Device.Desktop, "mobile", "/api/dog")]
+        [InlineData(false, Device.Desktop, "desktop", "")]
+        [InlineData(false, Device.Desktop, "desktop", "/api/dog")]
+        [InlineData(false, Device.Mobile, "desktop", "")]
+        [InlineData(false, Device.Mobile, "desktop", "/api/dog")]
+        [InlineData(false, Device.Mobile, "mobile", "")]
+        [InlineData(false, Device.Mobile, "mobile", "/api/dog")]
+        [InlineData(true, Device.Desktop, "mobile", "")]
+        [InlineData(true, Device.Desktop, "mobile", "/api/dog")]
+        [InlineData(true, Device.Desktop, "desktop", "")]
+        [InlineData(true, Device.Desktop, "desktop", "/api/dog")]
+        [InlineData(true, Device.Mobile, "desktop", "")]
+        [InlineData(true, Device.Mobile, "desktop", "/api/dog")]
+        [InlineData(true, Device.Mobile, "mobile", "")]
+        [InlineData(true, Device.Mobile, "mobile", "/api/dog")]
+        public async void AddResponsive_WebApi(bool include, Device device, string agent, string path)
         {
-            var service = MockService.CreateService("mobile");
-            service.Context.Request.Path = "/api/dog";
-            var options  = new DetectionOptions {Responsive = {IncludeWebApi = true}};
+            var service  = MockService.CreateService(agent);
+            var options  = new DetectionOptions {Responsive = {IncludeWebApi = include}};
             var resolver = MockResponsiveService(service, options);
 
             var app = MockApplicationBuilder(options, resolver);
@@ -110,11 +125,11 @@ namespace Wangkanai.Detection.Hosting
 
             var requestDelegate = app.Build();
 
-            Assert.NotEqual(service.Context, new DefaultHttpContext());
-
+            service.Context.SetDevice(resolver.View);
+            service.Context.Request.Path = path;
+            Assert.Equal(path, service.Context.Request.Path);
             await requestDelegate.Invoke(service.Context);
-
-            Assert.Equal(Device.Mobile, service.Context.GetDevice());
+            Assert.Equal(device, service.Context.GetDevice());
         }
 
         private static ResponsiveService MockResponsiveService(IUserAgentService service, DetectionOptions options)
