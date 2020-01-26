@@ -1,7 +1,6 @@
 // Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
-using System;
 using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Models;
 
@@ -15,12 +14,11 @@ namespace Wangkanai.Detection.Services
         {
             if (options == null)
                 options = new DetectionOptions();
-            
-            if (deviceService != null)
-                View = GetView(deviceService.Type, options?.Responsive);
-            
-            if (preferenceService.IsSet && preferenceService.Preferred != View)
-                View = preferenceService.Preferred;
+            View = deviceService != null
+                ? GetView(deviceService.Type, options?.Responsive)
+                : Device.Desktop;
+            // if (preferenceService != null && preferenceService.Preferred != View)
+            //     View = preferenceService.Preferred;
         }
 
         private static Device GetView(Device device, ResponsiveOptions options)

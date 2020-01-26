@@ -24,5 +24,12 @@ namespace Wangkanai.Detection.DependencyInjection.Options
         /// Gets or sets a value that determine the default view for Desktop
         /// </summary>
         public Device DefaultDesktop { get; set; } = Device.Desktop;
+
+        /// <summary>
+        /// Gets or sets a value that determine the responsive middleware to include Web Api Endpoint also.
+        /// </summary>
+        public bool IncludeWebApi { get; set; } = false;
+
+        public bool Disable { get; set; } = false;
     }
 }

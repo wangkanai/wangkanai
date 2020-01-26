@@ -28,9 +28,10 @@ namespace ResponsiveOption
             // Add responsive services.
             services.AddDetection(options =>
             {
-                options.Responsive.DefaultTablet = Device.Desktop;
-                options.Responsive.DefaultMobile = Device.Mobile;
+                options.Responsive.DefaultTablet  = Device.Desktop;
+                options.Responsive.DefaultMobile  = Device.Mobile;
                 options.Responsive.DefaultDesktop = Device.Desktop;
+                options.Responsive.IncludeWebApi  = true;
             });
 
             // Add framework services.
@@ -48,6 +49,7 @@ namespace ResponsiveOption
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
@@ -55,12 +57,7 @@ namespace ResponsiveOption
 
             app.UseDetection();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
-            });
+            app.UseEndpoints(endpoints => endpoints.MapDefaultControllerRoute());
         }
     }
 }

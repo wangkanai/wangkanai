@@ -29,12 +29,24 @@ namespace Microsoft.Extensions.DependencyInjection
 
             VerifyMarkerIsRegistered(app);
 
-            ValidateOptions(app.ApplicationServices.GetRequiredService<DetectionOptions>());
+            var options = app.ApplicationServices.GetRequiredService<DetectionOptions>();
 
-            app.UseMiddleware<ResponsiveMiddleware>();
+            ValidateOptions(options);
+
+            if (!options.Responsive.Disable)
+                if (options.Responsive.IncludeWebApi)
+                    app.UseResponsive();
+                else
+                    app.MapWhen(
+                        context => !context.Request.Path.StartsWithSegments("/api"),
+                        appBuilder => appBuilder.UseResponsive()
+                    );
 
             return app;
         }
+
+        private static IApplicationBuilder UseResponsive(this IApplicationBuilder app)
+            => app.UseMiddleware<ResponsiveMiddleware>();
 
         private static void Validate(this IApplicationBuilder app)
         {

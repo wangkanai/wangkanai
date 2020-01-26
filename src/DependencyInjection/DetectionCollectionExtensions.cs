@@ -3,7 +3,6 @@
 
 using System;
 using Microsoft.Extensions.Configuration;
-using Wangkanai.Detection;
 using Wangkanai.Detection.DependencyInjection.Options;
 
 namespace Microsoft.Extensions.DependencyInjection
@@ -41,7 +40,7 @@ namespace Microsoft.Extensions.DependencyInjection
 
             builder.AddRequiredPlatformServices();
             builder.AddCoreServices();
-            builder.AddResponsive();
+            builder.AddResponsiveService();
             builder.AddMarkerService();
 
             return builder;

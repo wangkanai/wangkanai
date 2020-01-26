@@ -78,14 +78,14 @@ namespace Wangkanai.Detection.DependencyInjection
         }
 
         [Fact]
-        public void AddDetectionCore_Null_ArgumentNullException()
+        public void AddDetectionBuilder_Null_ArgumentNullException()
         {
             Assert.Throws<ArgumentNullException>(() => ((IServiceCollection) null).AddDetectionBuilder());
         }
 
         private void AssertServices(List<ServiceDescriptor> serviceDescriptors, IServiceCollection services)
         {
-            for (int i = 0; i < serviceDescriptors.Count; i++)
+            for (var i = 0; i < serviceDescriptors.Count; i++)
             {
                 Assert.Equal(serviceDescriptors[i].ServiceType, services[i].ServiceType);
                 Assert.Equal(serviceDescriptors[i].ImplementationInstance, services[i].ImplementationInstance);
