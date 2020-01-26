@@ -35,12 +35,10 @@ namespace Microsoft.Extensions.DependencyInjection
 
             if (options.Responsive.Disable) return app;
 
-            //app.UseResponsive();
-
             if (options.Responsive.IncludeWebApi)
                 app.UseResponsive();
             else
-                app.MapWhen(
+                app.UseWhen(
                     context => !context.Request.Path.StartsWithSegments("/api"),
                     appBuilder => appBuilder.UseResponsive()
                 );

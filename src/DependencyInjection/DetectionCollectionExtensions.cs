@@ -13,9 +13,7 @@ namespace Microsoft.Extensions.DependencyInjection
     public static class DetectionCollectionExtensions
     {
         public static IDetectionBuilder AddDetectionBuilder(this IServiceCollection services)
-        {
-            return new DetectionBuilder(services);
-        }
+            => new DetectionBuilder(services);
 
         public static IDetectionBuilder AddDetection(this IServiceCollection services, Action<DetectionOptions> setAction)
         {
