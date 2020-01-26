@@ -101,7 +101,7 @@ namespace Wangkanai.Detection.Hosting
         [InlineData(false, Device.Desktop, "mobile", "/api/dog")]
         [InlineData(false, Device.Desktop, "desktop", "")]
         [InlineData(false, Device.Desktop, "desktop", "/api/dog")]
-        //[InlineData(false, Device.Mobile, "desktop", "")]
+        [InlineData(false, Device.Mobile, "desktop", "")]
         [InlineData(false, Device.Mobile, "desktop", "/api/dog")]
         [InlineData(false, Device.Mobile, "mobile", "")]
         [InlineData(false, Device.Mobile, "mobile", "/api/dog")]
