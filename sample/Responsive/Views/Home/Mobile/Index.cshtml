@@ -4,4 +4,15 @@
 
 <p>Views/Home/Mobile/Index.cshtml</p>
 
-@Html.PartialAsync("_TagHelper")
+<div class="taghelper">
+    <h4>desktop</h4>
+    <device include="desktop">is desktop</device>
+    <device exclude="desktop">not desktop</device>
+    <h4>tablet</h4>
+    <device include="tablet">is tablet</device>
+    <device exclude="tablet">not tablet</device>
+    <h4>mobile</h4>
+    <device include="mobile">is mobile</device>
+    <device exclude="mobile">not mobile</device>
+    <browser />
+</div>
