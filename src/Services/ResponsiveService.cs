@@ -8,7 +8,7 @@ namespace Wangkanai.Detection.Services
 {
     public class ResponsiveService : IResponsiveService
     {
-        public Device View { get; }
+        public Device View { get; } = Device.Desktop;
 
         public ResponsiveService(IDeviceService deviceService, IPreferenceService preferenceService, DetectionOptions options)
         {
