@@ -101,7 +101,7 @@ namespace Wangkanai.Detection.Hosting
         [InlineData(false, Device.Desktop, "mobile", "/api/dog")]
         [InlineData(false, Device.Desktop, "desktop", "")]
         [InlineData(false, Device.Desktop, "desktop", "/api/dog")]
-        [InlineData(false, Device.Mobile, "desktop", "")]
+        //[InlineData(false, Device.Mobile, "desktop", "")]
         [InlineData(false, Device.Mobile, "desktop", "/api/dog")]
         [InlineData(false, Device.Mobile, "mobile", "")]
         [InlineData(false, Device.Mobile, "mobile", "/api/dog")]
@@ -115,8 +115,18 @@ namespace Wangkanai.Detection.Hosting
         [InlineData(true, Device.Mobile, "mobile", "/api/dog")]
         public async void AddResponsive_WebApi(bool include, Device device, string agent, string path)
         {
-            var service  = MockService.CreateService(agent);
-            var options  = new DetectionOptions {Responsive = {IncludeWebApi = include}};
+            var service = MockService.CreateService(agent);
+            service.Context.Request.Path = path;
+            var options = new DetectionOptions
+            {
+                Responsive =
+                {
+                    DefaultMobile  = device,
+                    DefaultTablet  = device,
+                    DefaultDesktop = device,
+                    IncludeWebApi  = include
+                }
+            };
             var resolver = MockResponsiveService(service, options);
 
             var app = MockApplicationBuilder(options, resolver);
@@ -125,10 +135,9 @@ namespace Wangkanai.Detection.Hosting
 
             var requestDelegate = app.Build();
 
-            service.Context.SetDevice(resolver.View);
-            service.Context.Request.Path = path;
             Assert.Equal(path, service.Context.Request.Path);
             await requestDelegate.Invoke(service.Context);
+            //Assert.Throws<ArgumentNullException>(()=>service.Context.GetDevice());
             Assert.Equal(device, service.Context.GetDevice());
         }
 

@@ -33,7 +33,7 @@ namespace Microsoft.Extensions.DependencyInjection
 
             ValidateOptions(options);
 
-            if (!options.Responsive.Disable)
+            if (!options.Responsive.Disable && options.Responsive.IncludeWebApi)
                 app.MapWhen(
                     context => !context.Request.Path.StartsWithSegments("/api"),
                     appBuilder => appBuilder.UseResponsive()
