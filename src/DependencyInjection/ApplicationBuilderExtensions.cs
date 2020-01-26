@@ -33,7 +33,8 @@ namespace Microsoft.Extensions.DependencyInjection
 
             ValidateOptions(options);
 
-            if (options.Responsive.Disable) return app;
+            if (options.Responsive.Disable)
+                return app;
 
             if (options.Responsive.IncludeWebApi)
                 app.UseResponsive();
