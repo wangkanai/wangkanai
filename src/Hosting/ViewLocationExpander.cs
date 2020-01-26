@@ -22,16 +22,14 @@ namespace Wangkanai.Detection.Hosting
     ///     Views/Shared/mobile/Action
     ///     Views/Shared/Action
     /// </example>
-    public class ViewLocationExpander : IViewLocationExpander
+    public class ResponsiveViewLocationExpander : IViewLocationExpander
     {
-        private const string ValueKey = "device";
-        private readonly ViewLocationFormat _format;
+        private const    string                       ValueKey = "device";
+        private readonly ResponsiveViewLocationFormat _format;
 
-        public ViewLocationExpander() : this(ViewLocationFormat.Suffix) { }
-
-        public ViewLocationExpander(ViewLocationFormat format)
+        public ResponsiveViewLocationExpander(ResponsiveViewLocationFormat format)
         {
-            if (!Enum.IsDefined(typeof(ViewLocationFormat), (int) format))
+            if (!Enum.IsDefined(typeof(ResponsiveViewLocationFormat), (int) format))
                 throw new InvalidEnumArgumentException(nameof(format));
 
             _format = format;
@@ -69,7 +67,7 @@ namespace Wangkanai.Detection.Hosting
                 if (location.ToLower().Contains("pages"))
                     yield return location.Replace("{0}", "{0}." + device);
                 else
-                    yield return _format == ViewLocationFormat.Subfolder
+                    yield return _format == ResponsiveViewLocationFormat.Subfolder
                         ? location.Replace("{0}", device + "/{0}")
                         : location.Replace("{0}", "{0}." + device);
                 yield return location;

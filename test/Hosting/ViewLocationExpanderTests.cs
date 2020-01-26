@@ -21,7 +21,7 @@ namespace Wangkanai.Detection.Hosting
             {
                 yield return new object[]
                              {
-                                 ViewLocationFormat.Suffix,
+                                 ResponsiveViewLocationFormat.Suffix,
                                  Device.Tablet,
                                  new[]
                                  {
@@ -39,7 +39,7 @@ namespace Wangkanai.Detection.Hosting
 
                 yield return new object[]
                              {
-                                 ViewLocationFormat.Subfolder,
+                                 ResponsiveViewLocationFormat.Subfolder,
                                  Device.Tablet,
                                  new[]
                                  {
@@ -57,7 +57,7 @@ namespace Wangkanai.Detection.Hosting
 
                 yield return new object[]
                              {
-                                 ViewLocationFormat.Suffix,
+                                 ResponsiveViewLocationFormat.Suffix,
                                  Device.Tablet,
                                  new[]
                                  {
@@ -77,10 +77,10 @@ namespace Wangkanai.Detection.Hosting
 
         [Theory]
         [MemberData(nameof(ViewLocationExpanderTestData))]
-        public void ExpandViewLocations_ViewLocationExpanderContext_IEnumerable_ReturnsExpected(ViewLocationFormat format, Device deviceType, IEnumerable<string> viewLocations, IEnumerable<string> expectedViewLocations)
+        public void ExpandViewLocations_ViewLocationExpanderContext_IEnumerable_ReturnsExpected(ResponsiveViewLocationFormat format, Device deviceType, IEnumerable<string> viewLocations, IEnumerable<string> expectedViewLocations)
         {
             var context          = SetupViewLocationExpanderContext(deviceType);
-            var locationExpander = new ViewLocationExpander(format);
+            var locationExpander = new ResponsiveViewLocationExpander(format);
             locationExpander.PopulateValues(context);
             var resultLocations = locationExpander.ExpandViewLocations(context, viewLocations).ToList();
 
@@ -110,14 +110,14 @@ namespace Wangkanai.Detection.Hosting
         public void Ctor_InvalidFormat_InvalidEnumArgumentException()
         {
             var max            = int.MaxValue;
-            var locationFormat = (ViewLocationFormat) max;
-            Assert.Throws<InvalidEnumArgumentException>(() => new ViewLocationExpander(locationFormat));
+            var locationFormat = (ResponsiveViewLocationFormat) max;
+            Assert.Throws<InvalidEnumArgumentException>(() => new ResponsiveViewLocationExpander(locationFormat));
         }
 
         [Fact]
         public void Ctor_ResponsiveViewLocationFormat_Success()
         {
-            var locationExpander = new ViewLocationExpander(ViewLocationFormat.Subfolder);
+            var locationExpander = new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Subfolder);
         }
 
         [Fact]
@@ -125,7 +125,7 @@ namespace Wangkanai.Detection.Hosting
         {
             var context          = SetupViewLocationExpanderContext(Device.Tablet);
             var viewLocations    = new List<string> {"/Views/{1}/{0}.cshtml", "/Views/Shared/{0}.cshtml"};
-            var locationExpander = new ViewLocationExpander();
+            var locationExpander = new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Suffix);
             var resultLocations  = locationExpander.ExpandViewLocations(context, viewLocations);
 
             Assert.Equal(viewLocations, resultLocations);
@@ -134,14 +134,14 @@ namespace Wangkanai.Detection.Hosting
         [Fact]
         public void ExpandViewLocations_Null_IEnumerable_ThrowsArgumentNullException()
         {
-            var locationExpander = new ViewLocationExpander();
+            var locationExpander = new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Suffix);
             Assert.Throws<ArgumentNullException>(() => locationExpander.ExpandViewLocations(null, new List<string>()));
         }
 
         [Fact]
         public void ExpandViewLocations_ViewLocationExpanderContext_Null_ThrowsArgumentNullException()
         {
-            var locationExpander = new ViewLocationExpander();
+            var locationExpander = new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Suffix);
             Assert.Throws<ArgumentNullException>(() =>
                 locationExpander.ExpandViewLocations(SetupViewLocationExpanderContext(Device.Tablet), null));
         }
@@ -149,7 +149,7 @@ namespace Wangkanai.Detection.Hosting
         [Fact]
         public void PopulateValues_Null_ThrowsArgumentNullException()
         {
-            var locationExpander = new ViewLocationExpander();
+            var locationExpander = new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Suffix);
             Assert.Throws<ArgumentNullException>(() => locationExpander.PopulateValues(null));
         }
 
@@ -158,7 +158,7 @@ namespace Wangkanai.Detection.Hosting
         {
             var deviceKey        = "device"; // May this one can be public in ResponsiveViewLocationExpander.cs.
             var context          = SetupViewLocationExpanderContext(Device.Tablet);
-            var locationExpander = new ViewLocationExpander();
+            var locationExpander = new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Suffix);
             locationExpander.PopulateValues(context);
 
             Assert.NotEqual(0, context.Values.Count);

@@ -29,7 +29,7 @@ namespace Microsoft.AspNetCore.Http
             if (context.Items.TryGetValue(ResponsiveContextKey, out var responsive))
                 return (Device) responsive;
             // if (responsive == null)
-            //     throw new GetDeviceArgumentNullException(nameof(responsive));
+            //     throw new ArgumentNullException(nameof(responsive));
 
             return Device.Desktop;
         }
