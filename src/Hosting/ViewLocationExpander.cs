@@ -64,10 +64,9 @@ namespace Wangkanai.Detection.Hosting
         {
             foreach (var location in viewLocations)
             {
-                if (location.ToLower().Contains("pages"))
-                    yield return location.Replace("{0}", "{0}." + device);
-                else
-                    yield return _format == ResponsiveViewLocationFormat.Subfolder
+                yield return location.ToLower().Contains("pages")
+                    ? location.Replace("{0}", "{0}." + device)
+                    : _format == ResponsiveViewLocationFormat.Subfolder
                         ? location.Replace("{0}", device + "/{0}")
                         : location.Replace("{0}", "{0}." + device);
                 yield return location;
