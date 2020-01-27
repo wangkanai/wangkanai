@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.Primitives;
+using Wangkanai.Detection.Models;
 using Wangkanai.Detection.Services;
 
 namespace Microsoft.AspNetCore.Mvc.TagHelpers
@@ -14,10 +15,10 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
     [HtmlTargetElement(ElementName, Attributes = ExcludeAttributeName)]
     public class DeviceTagHelper : TagHelper
     {
-        protected IHtmlGenerator Generator { get; }
-        private const string ElementName          = "device";
-        private const string IncludeAttributeName = "include";
-        private const string ExcludeAttributeName = "exclude";
+        protected     IHtmlGenerator Generator { get; }
+        private const string         ElementName          = "device";
+        private const string         IncludeAttributeName = "include";
+        private const string         ExcludeAttributeName = "exclude";
 
         private static readonly char[] NameSeparator = new[] {','};
 
@@ -29,9 +30,7 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
 
         private readonly IDeviceService _resolver;
 
-        [HtmlAttributeNotBound]
-        [ViewContext]
-        public ViewContext ViewContext { get; set; }
+        [HtmlAttributeNotBound] [ViewContext] public ViewContext ViewContext { get; set; }
 
         public DeviceTagHelper(IHtmlGenerator generator, IDeviceService resolver)
         {
@@ -55,17 +54,12 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
 
             if (Exclude != null)
             {
-                var tokenizer = new StringTokenizer(Exclude, NameSeparator);
-                foreach (var item in tokenizer)
+                if (DeviceSelectedEqualCurrent(output, _resolver.Type, () =>
                 {
-                    var client = item.Trim();
-                    if (client.HasValue && client.Length > 0)
-                        if (client.Equals(currentDeviceName, StringComparison.OrdinalIgnoreCase))
-                        {
-                            output.SuppressOutput();
-                            return;
-                        }
-                }
+                    output.SuppressOutput();
+                    return true;
+                }))
+                    return;
             }
 
             var hasDevice = false;
@@ -84,7 +78,25 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
                 }
             }
 
-            if (hasDevice) output.SuppressOutput();
+            if (hasDevice)
+                output.SuppressOutput();
+        }
+
+        private bool DeviceSelectedEqualCurrent(TagHelperOutput output, Device current, Func<bool> process)
+        {
+            var tokenizer = new StringTokenizer(Exclude, NameSeparator);
+            foreach (var item in tokenizer)
+            {
+                var client = item.Trim();
+                if (client.HasValue && client.Length > 0)
+                    if (client.Equals(current.ToString(), StringComparison.OrdinalIgnoreCase))
+                    {
+                        process.Invoke();
+                        return true;
+                    }
+            }
+
+            return false;
         }
     }
 }
