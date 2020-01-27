@@ -20,72 +20,67 @@ namespace Wangkanai.Detection.Hosting
             get
             {
                 yield return new object[]
-                {
-                    ViewLocationFormat.Suffix,
-                    Device.Tablet,
-                    new[]
-                    {
-                        "/Views/{1}/{0}.cshtml",
-                        "/Views/Shared/{0}.cshtml"
-                    },
-                    new[]
-                    {
-                        "/Views/{1}/{0}.Tablet.cshtml",
-                        "/Views/{1}/{0}.cshtml",
-                        "/Views/Shared/{0}.Tablet.cshtml",
-                        "/Views/Shared/{0}.cshtml"
-                    }
-                };
+                             {
+                                 ResponsiveViewLocationFormat.Suffix,
+                                 Device.Tablet,
+                                 new[]
+                                 {
+                                     "/Views/{1}/{0}.cshtml",
+                                     "/Views/Shared/{0}.cshtml"
+                                 },
+                                 new[]
+                                 {
+                                     "/Views/{1}/{0}.Tablet.cshtml",
+                                     "/Views/{1}/{0}.cshtml",
+                                     "/Views/Shared/{0}.Tablet.cshtml",
+                                     "/Views/Shared/{0}.cshtml"
+                                 }
+                             };
 
                 yield return new object[]
-                {
-                    ViewLocationFormat.Subfolder,
-                    Device.Tablet,
-                    new[]
-                    {
-                        "/Views/{1}/{0}.cshtml",
-                        "/Views/Shared/{0}.cshtml"
-                    },
-                    new[]
-                    {
-                        "/Views/{1}/Tablet/{0}.cshtml",
-                        "/Views/{1}/{0}.cshtml",
-                        "/Views/Shared/Tablet/{0}.cshtml",
-                        "/Views/Shared/{0}.cshtml"
-                    }
-                };
+                             {
+                                 ResponsiveViewLocationFormat.Subfolder,
+                                 Device.Tablet,
+                                 new[]
+                                 {
+                                     "/Views/{1}/{0}.cshtml",
+                                     "/Views/Shared/{0}.cshtml"
+                                 },
+                                 new[]
+                                 {
+                                     "/Views/{1}/Tablet/{0}.cshtml",
+                                     "/Views/{1}/{0}.cshtml",
+                                     "/Views/Shared/Tablet/{0}.cshtml",
+                                     "/Views/Shared/{0}.cshtml"
+                                 }
+                             };
 
                 yield return new object[]
-                {
-                    ViewLocationFormat.Suffix,
-                    Device.Tablet,
-                    new[]
-                    {
-                        "/Pages/{1}/{0}.cshtml",
-                        "/Pages/Shared/{0}.cshtml"
-                    },
-                    new[]
-                    {
-                        "/Pages/{1}/{0}.Tablet.cshtml",
-                        "/Pages/{1}/{0}.cshtml",
-                        "/Pages/Shared/{0}.Tablet.cshtml",
-                        "/Pages/Shared/{0}.cshtml"
-                    }
-                };
+                             {
+                                 ResponsiveViewLocationFormat.Suffix,
+                                 Device.Tablet,
+                                 new[]
+                                 {
+                                     "/Pages/{1}/{0}.cshtml",
+                                     "/Pages/Shared/{0}.cshtml"
+                                 },
+                                 new[]
+                                 {
+                                     "/Pages/{1}/{0}.Tablet.cshtml",
+                                     "/Pages/{1}/{0}.cshtml",
+                                     "/Pages/Shared/{0}.Tablet.cshtml",
+                                     "/Pages/Shared/{0}.cshtml"
+                                 }
+                             };
             }
         }
 
         [Theory]
         [MemberData(nameof(ViewLocationExpanderTestData))]
-        public void ExpandViewLocations_ViewLocationExpanderContext_IEnumerable_ReturnsExpected(
-            ViewLocationFormat format,
-            Device deviceType,
-            IEnumerable<string> viewLocations,
-            IEnumerable<string> expectedViewLocations
-        )
+        public void ExpandViewLocations_ViewLocationExpanderContext_IEnumerable_ReturnsExpected(ResponsiveViewLocationFormat format, Device deviceType, IEnumerable<string> viewLocations, IEnumerable<string> expectedViewLocations)
         {
-            var context = SetupViewLocationExpanderContext(deviceType);
-            var locationExpander = new ViewLocationExpander(format);
+            var context          = SetupViewLocationExpanderContext(deviceType);
+            var locationExpander = new ResponsiveViewLocationExpander(format);
             locationExpander.PopulateValues(context);
             var resultLocations = locationExpander.ExpandViewLocations(context, viewLocations).ToList();
 
@@ -94,9 +89,11 @@ namespace Wangkanai.Detection.Hosting
 
         private ViewLocationExpanderContext SetupViewLocationExpanderContext(Device deviceType)
         {
-            var context =
-                new ViewLocationExpanderContext(new ActionContext(), "View", "Controller", "Area", "Page", true);
-            context.Values = new Dictionary<string, string>();
+            var action = new ActionContext();
+            var context = new ViewLocationExpanderContext(action, "View", "Controller", "Area", "Page", true)
+                          {
+                              Values = new Dictionary<string, string>()
+                          };
             context.ActionContext.HttpContext = new DefaultHttpContext();
             context.ActionContext.HttpContext.SetDevice(deviceType);
 
@@ -106,30 +103,30 @@ namespace Wangkanai.Detection.Hosting
         [Fact]
         public void Ctor_Default_Success()
         {
-            var locationExpander = new ViewLocationExpander();
+            //var locationExpander = new ViewLocationExpander();
         }
 
         [Fact]
         public void Ctor_InvalidFormat_InvalidEnumArgumentException()
         {
-            var max = int.MaxValue;
-            var locationFormat = (ViewLocationFormat) max;
-            Assert.Throws<InvalidEnumArgumentException>(() => new ViewLocationExpander(locationFormat));
+            var max            = int.MaxValue;
+            var locationFormat = (ResponsiveViewLocationFormat) max;
+            Assert.Throws<InvalidEnumArgumentException>(() => new ResponsiveViewLocationExpander(locationFormat));
         }
 
         [Fact]
         public void Ctor_ResponsiveViewLocationFormat_Success()
         {
-            var locationExpander = new ViewLocationExpander(ViewLocationFormat.Subfolder);
+            var locationExpander = new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Subfolder);
         }
 
         [Fact]
         public void ExpandViewLocations_NoDevice_ReturnsExpected()
         {
-            var context = SetupViewLocationExpanderContext(Device.Tablet);
-            var viewLocations = new List<string> {"/Views/{1}/{0}.cshtml", "/Views/Shared/{0}.cshtml"};
-            var locationExpander = new ViewLocationExpander();
-            var resultLocations = locationExpander.ExpandViewLocations(context, viewLocations);
+            var context          = SetupViewLocationExpanderContext(Device.Tablet);
+            var viewLocations    = new List<string> {"/Views/{1}/{0}.cshtml", "/Views/Shared/{0}.cshtml"};
+            var locationExpander = new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Suffix);
+            var resultLocations  = locationExpander.ExpandViewLocations(context, viewLocations);
 
             Assert.Equal(viewLocations, resultLocations);
         }
@@ -137,14 +134,14 @@ namespace Wangkanai.Detection.Hosting
         [Fact]
         public void ExpandViewLocations_Null_IEnumerable_ThrowsArgumentNullException()
         {
-            var locationExpander = new ViewLocationExpander();
+            var locationExpander = new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Suffix);
             Assert.Throws<ArgumentNullException>(() => locationExpander.ExpandViewLocations(null, new List<string>()));
         }
 
         [Fact]
         public void ExpandViewLocations_ViewLocationExpanderContext_Null_ThrowsArgumentNullException()
         {
-            var locationExpander = new ViewLocationExpander();
+            var locationExpander = new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Suffix);
             Assert.Throws<ArgumentNullException>(() =>
                 locationExpander.ExpandViewLocations(SetupViewLocationExpanderContext(Device.Tablet), null));
         }
@@ -152,16 +149,16 @@ namespace Wangkanai.Detection.Hosting
         [Fact]
         public void PopulateValues_Null_ThrowsArgumentNullException()
         {
-            var locationExpander = new ViewLocationExpander();
+            var locationExpander = new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Suffix);
             Assert.Throws<ArgumentNullException>(() => locationExpander.PopulateValues(null));
         }
 
         [Fact]
         public void PopulateValues_ViewLocationExpanderContext_Success()
         {
-            var deviceKey = "device"; // May this one can be public in ResponsiveViewLocationExpander.cs.
-            var context = SetupViewLocationExpanderContext(Device.Tablet);
-            var locationExpander = new ViewLocationExpander();
+            var deviceKey        = "device"; // May this one can be public in ResponsiveViewLocationExpander.cs.
+            var context          = SetupViewLocationExpanderContext(Device.Tablet);
+            var locationExpander = new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Suffix);
             locationExpander.PopulateValues(context);
 
             Assert.NotEqual(0, context.Values.Count);

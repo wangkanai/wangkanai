@@ -3,9 +3,7 @@
 
 using System;
 using Microsoft.AspNetCore.Mvc.Razor;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Hosting;
 using Wangkanai.Detection.Services;
 
@@ -18,38 +16,20 @@ namespace Microsoft.Extensions.DependencyInjection
             if (builder is null)
                 throw new ArgumentNullException(nameof(builder));
 
-            builder.Services.TryAddTransient<IResponsiveService, ResponsiveService>();
             builder.Services.TryAddScoped<IPreferenceService, PreferenceService>();
-            builder.AddViewLocation(ViewLocationFormat.Suffix);
-            builder.AddViewLocation(ViewLocationFormat.Subfolder);
+            builder.Services.TryAddTransient<IResponsiveService, ResponsiveService>();
 
-            return builder;
-        }
-
-        #region options
-
-        // Do we even need this? because the AddDetection() already has ResponsiveOptions as property in DetectionOptions
-        [Obsolete("Not sure the use of this feature yet")]
-        public static IDetectionBuilder AddResponsiveService(this IDetectionBuilder builder, Action<ResponsiveOptions> setAction)
-        {
-            builder.Services.Configure(setAction);
-            return builder.AddResponsiveService();
-        }
-
-        [Obsolete("Not sure the use of this feature yet")]
-        public static IDetectionBuilder AddResponsiveService(this IDetectionBuilder builder, IConfiguration configuration)
-        {
-            builder.Services.Configure<ResponsiveOptions>(configuration);
-            return builder.AddResponsiveService();
-        }
-
-        #endregion
-
-        private static IDetectionBuilder AddViewLocation(this IDetectionBuilder builder, ViewLocationFormat format)
-        {
             builder.Services.Configure<RazorViewEngineOptions>(
-                options => options.ViewLocationExpanders.Add(new ViewLocationExpander(format))
-            );
+                options =>
+                {
+                    options.ViewLocationExpanders.Add(new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Suffix));
+                    options.ViewLocationExpanders.Add(new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Subfolder));
+                    // options.ViewLocationFormats.Clear();
+                    // options.ViewLocationFormats.Add
+                    //     ("/MyViewsFolder/{1}/{0}" + RazorViewEngine.ViewExtension);
+                    // options.ViewLocationFormats.Add
+                    //     ("/MyViewsFolder/Shared/{0}" + RazorViewEngine.ViewExtension);
+                });
 
             return builder;
         }

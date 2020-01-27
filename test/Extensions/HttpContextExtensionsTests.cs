@@ -10,35 +10,10 @@ namespace Wangkanai.Detection.Hosting
 {
     public class HttpContextExtensionsTests
     {
-        //[Fact]
-        //public void SetDevice_HttpContext_UserPerference_ReturnsExpected()
-        //{
-        //    var context = new DefaultHttpContext();
-        //    var preference = new UserPreference();
-        //    string responsiveContextKey = "Responsive"; // May be we can make this constant public for testing purposes.
-
-        //    context.SetDevice(preference);
-
-        //    Assert.True(context.Items.ContainsKey(responsiveContextKey));
-        //    Assert.Same(preference, context.Items[responsiveContextKey]);
-        //}
-
-        //[Fact]
-        //public void SetDevice_Null_UserPerference_ThrowsArgumentNullException()
-        //{
-        //    Assert.Throws<SetDeviceArgumentNullException>(() => ((HttpContext)null).SetDevice(new UserPreference()));
-
-        //[Fact]
-        //public void SetDevice_HttpContext_Null_ThrowsArgumentNullException()
-        //{
-        //    Assert.Throws<SetDeviceArgumentNullException>(() => new DefaultHttpContext().SetDevice(null));
-        //}
-
         [Fact]
         public void GetDevice_HttpContext_ReturnsExpected()
         {
-            var device = Device.Tablet;
-            //var preference = new UserPreference() { Resolver = device };
+            var device  = Device.Tablet;
             var context = new DefaultHttpContext();
             context.SetDevice(device);
 
@@ -49,7 +24,7 @@ namespace Wangkanai.Detection.Hosting
         [Fact]
         public void GetDevice_Null_ThrowsArgumentNullException()
         {
-            Assert.Throws<GetDeviceArgumentNullException>(() => ((HttpContext) null).GetDevice());
+            Assert.Throws<ArgumentNullException>(() => ((HttpContext) null).GetDevice());
         }
 
         [Fact]

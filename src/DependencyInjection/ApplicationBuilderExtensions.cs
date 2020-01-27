@@ -33,14 +33,20 @@ namespace Microsoft.Extensions.DependencyInjection
 
             ValidateOptions(options);
 
-            if (!options.Responsive.Disable)
-                if (options.Responsive.IncludeWebApi)
-                    app.UseResponsive();
-                else
-                    app.MapWhen(
-                        context => !context.Request.Path.StartsWithSegments("/api"),
-                        appBuilder => appBuilder.UseResponsive()
-                    );
+            #region Responsive
+
+            if (options.Responsive.Disable)
+                return app;
+
+            if (options.Responsive.IncludeWebApi)
+                app.UseResponsive();
+            else
+                app.UseWhen(
+                    context => !context.Request.Path.StartsWithSegments("/api"),
+                    appBuilder => appBuilder.UseResponsive()
+                );
+
+            #endregion
 
             return app;
         }
