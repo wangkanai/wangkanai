@@ -1,16 +1,8 @@
-@using Wangkanai.Detection.Services
-@inject IPreferenceService PreferenceService
-
-@{
-    if (PreferenceService.IsSet)
-    {
-        <device include="desktop">
-            <div class="alert alert-light" role="alert">
-                    Switch to mobile version
-                </div>
-        </device>
-    }
-}
+<preference>
+    <div class="alert alert-light" role="alert">
+        Switch to mobile version
+    </div>
+</preference>
 
 <p>Views/Home/Index.cshtml</p>
 
