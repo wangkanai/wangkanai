@@ -5,13 +5,15 @@ using Wangkanai.Detection.Services;
 
 namespace Microsoft.AspNetCore.Mvc.TagHelpers
 {
-    [HtmlTargetElement(ElementName, TagStructure = TagStructure.NormalOrSelfClosing)]
+    [HtmlTargetElement(ElementName, Attributes = OnlyAttributeName, TagStructure = TagStructure.NormalOrSelfClosing)]
     public class PreferenceTagHelper : TagHelper
     {
-        private const string ElementName = "preference";
-
+        private const    string             ElementName       = "preference";
+        private const    string             OnlyAttributeName = "only";
         protected        IHtmlGenerator     Generator { get; }
         private readonly IPreferenceService _preference;
+
+        [HtmlAttributeName(OnlyAttributeName)] public string? Include { get; set; }
 
         public PreferenceTagHelper(IHtmlGenerator generator, IPreferenceService preference)
         {
@@ -28,7 +30,7 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
 
             output.TagName = null;
 
-            if (!_preference.IsSet) 
+            if (!_preference.IsSet)
                 output.SuppressOutput();
         }
     }
