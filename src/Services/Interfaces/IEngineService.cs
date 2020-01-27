@@ -7,6 +7,6 @@ namespace Wangkanai.Detection.Services
 {
     public interface IEngineService
     {
-        public Engine Type { get; }
+        Engine Type { get; }
     }
 }

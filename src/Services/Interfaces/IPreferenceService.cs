@@ -4,9 +4,9 @@ namespace Wangkanai.Detection.Services
 {
     public interface IPreferenceService
     {
-        public Device Preferred { get; }
-        public bool   IsSet     { get; }
-        public void   Set(Device preferred);
-        public void   Clear();
+        Device Preferred { get; }
+        bool   IsSet     { get; }
+        void   Set(Device preferred);
+        void   Clear();
     }
 }

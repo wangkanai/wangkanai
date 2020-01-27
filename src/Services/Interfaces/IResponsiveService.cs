@@ -7,6 +7,6 @@ namespace Wangkanai.Detection.Services
 {
     public interface IResponsiveService
     {
-        public Device View { get; }
+        Device View { get; }
     }
 }

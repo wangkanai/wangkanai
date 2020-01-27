@@ -7,7 +7,7 @@ namespace Wangkanai.Detection.Services
 {
     public interface IPlatformService
     {
-        public Processor Processor { get; }
-        public OperatingSystem OperatingSystem { get; }
+        Processor       Processor       { get; }
+        OperatingSystem OperatingSystem { get; }
     }
 }

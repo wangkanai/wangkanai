@@ -8,7 +8,7 @@ namespace Wangkanai.Detection.Services
 {
     public interface IBrowserService
     {
-        public Browser Type { get; }
-        public Version Version { get; }
+        Browser Type    { get; }
+        Version Version { get; }
     }
 }

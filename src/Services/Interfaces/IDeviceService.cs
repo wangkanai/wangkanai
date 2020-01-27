@@ -7,6 +7,6 @@ namespace Wangkanai.Detection.Services
 {
     public interface IDeviceService
     {
-        public Device Type { get; }
+        Device Type { get; }
     }
 }

@@ -42,6 +42,6 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
 
         private bool DisplayOnlyDevice => _device.Type == OnlyDevice;
 
-        private Device OnlyDevice => Enum.Parse<Device>(Only, true);
+        private Device OnlyDevice => (Device) Enum.Parse(typeof(Device), Only, true);
     }
 }

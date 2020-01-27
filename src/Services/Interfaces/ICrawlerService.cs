@@ -8,8 +8,8 @@ namespace Wangkanai.Detection.Services
 {
     public interface ICrawlerService
     {
-        public bool IsCrawler { get; }
-        public Crawler Type { get; }
-        public Version Version { get; }
+        bool    IsCrawler { get; }
+        Crawler Type      { get; }
+        Version Version   { get; }
     }
 }
