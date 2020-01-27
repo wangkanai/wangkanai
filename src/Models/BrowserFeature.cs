@@ -3,14 +3,14 @@
 
 namespace Wangkanai.Detection.Models
 {
-    public class BrowserFeature
-    {
-        public bool Frames { get; set; } = false;
-        public bool Iframes { get; set; } = false;
-        public bool Cookie { get; set; } = false;
-        public bool JavaScript { get; set; } = false;
-        public bool VbScript { get; set; } = false;
-        public bool JavaApplets { get; set; } = false;
-        public bool ActiveX { get; set; } = false;
-    }
+    // public class BrowserFeature
+    // {
+    //     public bool Frames { get; set; } = false;
+    //     public bool Iframes { get; set; } = false;
+    //     public bool Cookie { get; set; } = false;
+    //     public bool JavaScript { get; set; } = false;
+    //     public bool VbScript { get; set; } = false;
+    //     public bool JavaApplets { get; set; } = false;
+    //     public bool ActiveX { get; set; } = false;
+    // }
 }
