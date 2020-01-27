@@ -33,6 +33,8 @@ namespace Microsoft.Extensions.DependencyInjection
 
             ValidateOptions(options);
 
+            #region Responsive
+
             if (options.Responsive.Disable)
                 return app;
 
@@ -43,6 +45,8 @@ namespace Microsoft.Extensions.DependencyInjection
                     context => !context.Request.Path.StartsWithSegments("/api"),
                     appBuilder => appBuilder.UseResponsive()
                 );
+
+            #endregion
 
             return app;
         }
