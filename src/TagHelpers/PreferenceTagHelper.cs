@@ -36,8 +36,12 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
             if (string.IsNullOrWhiteSpace(Only))
                 return;
 
-            if (!_preference.IsSet && _device.Type == Enum.Parse<Device>(Only))
+            if (!_preference.IsSet && !DisplayOnlyDevice)
                 output.SuppressOutput();
         }
+
+        private bool DisplayOnlyDevice => _device.Type == OnlyDevice;
+
+        private Device OnlyDevice => Enum.Parse<Device>(Only, true);
     }
 }
