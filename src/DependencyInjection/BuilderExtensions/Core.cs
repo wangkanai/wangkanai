@@ -2,11 +2,9 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
-
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
-
 using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Services;
 
@@ -25,7 +23,8 @@ namespace Microsoft.Extensions.DependencyInjection
             // Add Detection Options
             builder.Services.AddOptions();
             builder.Services.TryAddSingleton(
-                resolver => resolver.GetRequiredService<IOptions<DetectionOptions>>().Value);
+                resolver => resolver.GetRequiredService<IOptions<DetectionOptions>>().Value
+            );
 
             return builder;
         }

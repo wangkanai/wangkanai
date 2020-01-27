@@ -15,12 +15,23 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IDetectionBuilder AddDetectionBuilder(this IServiceCollection services)
             => new DetectionBuilder(services);
 
+        /// <summary>
+        ///     Add Detection Service to the services container.
+        /// </summary>
+        /// <param name="services">The services available in the application.</param>
+        /// <param name="setAction">An <see cref="Action{DetectionOptions}"/> to configure the provided <see cref="DetectionOptions"/>.</param>
+        /// <returns>An <see cref="IServiceCollection" /> so that additional calls can be chained.</returns>
         public static IDetectionBuilder AddDetection(this IServiceCollection services, Action<DetectionOptions> setAction)
         {
             services.Configure(setAction);
             return services.AddDetection();
         }
-
+        /// <summary>
+        ///     Add Detection Service to the services container.
+        /// </summary>
+        /// <param name="services">The services available in the application.</param>
+        /// <param name="configuration">Configuration</param>
+        /// <returns>An <see cref="IServiceCollection" /> so that additional calls can be chained.</returns>
         public static IDetectionBuilder AddDetection(this IServiceCollection services, IConfiguration configuration)
         {
             services.Configure<DetectionOptions>(configuration);
@@ -28,7 +39,7 @@ namespace Microsoft.Extensions.DependencyInjection
         }
 
         /// <summary>
-        ///     Adds the default client service to the services container.
+        ///     Add Detection Service to the services container.
         /// </summary>
         /// <param name="services">The services available in the application.</param>
         /// <returns>An <see cref="IServiceCollection" /> so that additional calls can be chained.</returns>
