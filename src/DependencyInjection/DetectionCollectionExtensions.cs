@@ -2,7 +2,6 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
-using Microsoft.Extensions.Configuration;
 using Wangkanai.Detection.DependencyInjection.Options;
 
 namespace Microsoft.Extensions.DependencyInjection
@@ -24,17 +23,6 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IDetectionBuilder AddDetection(this IServiceCollection services, Action<DetectionOptions> setAction)
         {
             services.Configure(setAction);
-            return services.AddDetection();
-        }
-        /// <summary>
-        ///     Add Detection Service to the services container.
-        /// </summary>
-        /// <param name="services">The services available in the application.</param>
-        /// <param name="configuration">Configuration</param>
-        /// <returns>An <see cref="IServiceCollection" /> so that additional calls can be chained.</returns>
-        public static IDetectionBuilder AddDetection(this IServiceCollection services, IConfiguration configuration)
-        {
-            services.Configure<DetectionOptions>(configuration);
             return services.AddDetection();
         }
 
