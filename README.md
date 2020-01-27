@@ -15,7 +15,7 @@ ASP.NET Core Detection service components for identifying details about client d
 [![Build history](https://buildstats.info/appveyor/chart/wangkanai/detection)](https://ci.appveyor.com/project/wangkanai/detection/history)
 
 
-![ASP.NET Core Detection](https://raw.githubusercontent.com/wangkanai/Detection/dev/asset/aspnet-core-detection-2.svg?sanitize=true)
+![ASP.NET Core Detection](https://raw.githubusercontent.com/wangkanai/Detection/doc/asset/aspnet-core-detection-3.svg?sanitize=true)
 
 ## Installation
 
