@@ -2,7 +2,7 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
-using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Builder.Internal;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
