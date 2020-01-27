@@ -1,1 +1,0 @@
-# Wangkanai.Detection
