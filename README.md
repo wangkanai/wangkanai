@@ -4,7 +4,7 @@ ASP.NET Core Detection service components for identifying details about client d
 
 ![ASP.NET Core Detection](https://raw.githubusercontent.com/wangkanai/Detection/doc/asset/aspnet-core-detection-3.svg?sanitize=true | height=50% )
 
-<img src="https://raw.githubusercontent.com/wangkanai/Detection/doc/asset/aspnet-core-detection-3.svg?sanitize=true" height="50%"
+<img src="https://raw.githubusercontent.com/wangkanai/Detection/doc/asset/aspnet-core-detection-3.svg?sanitize=true" height="50%" />
 
 [![Build status](https://ci.appveyor.com/api/projects/status/033qv4nqv8g4altq?svg=true&retina=true)](https://ci.appveyor.com/project/wangkanai/detection)
 [![GitHub](https://img.shields.io/github/license/wangkanai/detection)](https://github.com/wangkanai/Detection/blob/dev/LICENSE)
