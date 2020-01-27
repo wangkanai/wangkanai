@@ -12,6 +12,14 @@ namespace Wangkanai.Detection.Services
     [DebuggerStepThrough]
     public static class MockService
     {
+        public static ResponsiveService CreateResponsiveService(string agent, DetectionOptions options = null)
+        {
+            var service    = CreateService(agent);
+            var device     = new DeviceService(service);
+            var preference = new PreferenceService();
+            return new ResponsiveService(device, preference, options);;
+        }
+        
         public static PlatformService CreatePlatformService(string agent) 
             => new PlatformService(CreateService(agent));
 
