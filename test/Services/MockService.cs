@@ -12,6 +12,9 @@ namespace Wangkanai.Detection.Services
     [DebuggerStepThrough]
     public static class MockService
     {
+        public static PlatformService CreatePlatformService(string agent) 
+            => new PlatformService(CreateService(agent));
+
         public static EngineService CreateEngineService(string agent)
         {
             var service  = CreateService(agent);
