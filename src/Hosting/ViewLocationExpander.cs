@@ -66,9 +66,9 @@ namespace Wangkanai.Detection.Hosting
             {
                 yield return location.ToLower().Contains("pages")
                     ? location.Replace("{0}", "{0}." + device)
-                    : _format == ResponsiveViewLocationFormat.Subfolder
-                        ? location.Replace("{0}", device + "/{0}")
-                        : location.Replace("{0}", "{0}." + device);
+                    : _format == ResponsiveViewLocationFormat.Suffix
+                        ? location.Replace("{0}", "{0}." + device)
+                        : location.Replace("{0}", device + "/{0}");
                 yield return location;
             }
         }
