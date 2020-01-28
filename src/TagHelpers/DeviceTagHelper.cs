@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.Primitives;
-using Wangkanai.Detection.Models;
 using Wangkanai.Detection.Services;
 
 namespace Microsoft.AspNetCore.Mvc.TagHelpers
@@ -54,12 +53,17 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
 
             if (Exclude != null)
             {
-                if (DeviceSelectedEqualCurrent(output, _resolver.Type, () =>
+                var tokenizer = new StringTokenizer(Exclude, NameSeparator);
+                foreach (var item in tokenizer)
                 {
-                    output.SuppressOutput();
-                    return true;
-                }))
-                    return;
+                    var client = item.Trim();
+                    if (client.HasValue && client.Length > 0)
+                        if (client.Equals(currentDeviceName, StringComparison.OrdinalIgnoreCase))
+                        {
+                            output.SuppressOutput();
+                            return;
+                        }
+                }
             }
 
             var hasDevice = false;
@@ -80,23 +84,6 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
 
             if (hasDevice)
                 output.SuppressOutput();
-        }
-
-        private bool DeviceSelectedEqualCurrent(TagHelperOutput output, Device current, Func<bool> process)
-        {
-            var tokenizer = new StringTokenizer(Exclude, NameSeparator);
-            foreach (var item in tokenizer)
-            {
-                var client = item.Trim();
-                if (client.HasValue && client.Length > 0)
-                    if (client.Equals(current.ToString(), StringComparison.OrdinalIgnoreCase))
-                    {
-                        process.Invoke();
-                        return true;
-                    }
-            }
-
-            return false;
         }
     }
 }
