@@ -2,7 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>netcoreapp3.0</TargetFramework>
-        
+
+        <LangVersion>8.0</LangVersion>
         <Nullable>enable</Nullable>
         <Version>3.0.0</Version>
 
@@ -16,8 +17,6 @@
         <RepositoryType>git</RepositoryType>
         <RepositoryUrl>git://github.com/wangkanai/Detection</RepositoryUrl>
         <PackageIconUrl>https://raw.githubusercontent.com/wangkanai/Detection/dev/asset/avatar.png</PackageIconUrl>
-        <ProvideApplicationPartFactoryAttributeTypeName>Microsoft.AspNetCore.Mvc.ApplicationParts.NullApplicationPartFactory, Microsoft.AspNetCore.Mvc.Core</ProvideApplicationPartFactoryAttributeTypeName>
-        <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
     </PropertyGroup>
 
     <ItemGroup>
