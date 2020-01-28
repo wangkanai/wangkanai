@@ -9,13 +9,17 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
     [HtmlTargetElement(ElementName, Attributes = OnlyAttributeName, TagStructure = TagStructure.NormalOrSelfClosing)]
     public class PreferenceTagHelper : TagHelper
     {
-        private const    string             ElementName       = "preference";
-        private const    string             OnlyAttributeName = "only";
-        protected        IHtmlGenerator     Generator { get; }
+        protected     IHtmlGenerator Generator { get; }
+        private const string         ElementName       = "preference";
+        private const string         OnlyAttributeName = "only";
+
+        private static readonly char[] NameSeparator = {','};
+
         private readonly IPreferenceService _preference;
         private readonly IDeviceService     _device;
 
-        [HtmlAttributeName(OnlyAttributeName)] public string? Only { get; set; }
+        [HtmlAttributeName(OnlyAttributeName)]
+        public string? Only { get; set; }
 
         public PreferenceTagHelper(IHtmlGenerator generator, IPreferenceService preference, IDeviceService device)
         {

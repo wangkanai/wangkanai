@@ -19,15 +19,15 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
         private const string         IncludeAttributeName = "include";
         private const string         ExcludeAttributeName = "exclude";
 
-        private static readonly char[] NameSeparator = new[] {','};
+        private static readonly char[] NameSeparator = {','};
+        
+        private readonly IDeviceService _resolver;
 
         [HtmlAttributeName(IncludeAttributeName)]
         public string? Include { get; set; }
 
         [HtmlAttributeName(ExcludeAttributeName)]
         public string? Exclude { get; set; }
-
-        private readonly IDeviceService _resolver;
 
         [HtmlAttributeNotBound]
         [ViewContext]
