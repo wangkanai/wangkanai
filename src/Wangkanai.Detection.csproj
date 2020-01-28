@@ -17,10 +17,17 @@
         <RepositoryType>git</RepositoryType>
         <RepositoryUrl>git://github.com/wangkanai/Detection</RepositoryUrl>
         <PackageIconUrl>https://raw.githubusercontent.com/wangkanai/Detection/dev/asset/avatar.png</PackageIconUrl>
+
+        <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
     </PropertyGroup>
 
     <ItemGroup>
         <FrameworkReference Include="Microsoft.AspNetCore.App"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Content Include="Areas\Detection\Views\**\*" CopyToOutputDirectory="Always"/>
+        <RazorGenerate Include="@(_RazorGenerate)" Link="Areas\Detection\**\*.cshtml"/>
     </ItemGroup>
 
 </Project>

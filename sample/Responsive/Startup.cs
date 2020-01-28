@@ -47,7 +47,13 @@ namespace Responsive
 
             app.UseDetection();
 
-            app.UseEndpoints(endpoints => endpoints.MapDefaultControllerRoute());
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapDefaultControllerRoute();
+                endpoints.MapControllerRoute(
+                    name: "areas",
+                    pattern: "{area:exists}/{controller}/{action=Index}/{id?}");
+            });
         }
     }
 }
