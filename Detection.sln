@@ -33,8 +33,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection.Test", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection.UI", "UI\Wangkanai.Detection.UI\Wangkanai.Detection.UI.csproj", "{AA33913C-2C0B-4F26-837C-E1D3396CA1CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Detection.Design", "UI\Wangkanai.Detection.Design\Wangkanai.Detection.Design.csproj", "{26F73FDB-00EF-4A39-917D-4AAD3CE1F33A}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,10 +67,6 @@ Global
 		{AA33913C-2C0B-4F26-837C-E1D3396CA1CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA33913C-2C0B-4F26-837C-E1D3396CA1CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA33913C-2C0B-4F26-837C-E1D3396CA1CC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{26F73FDB-00EF-4A39-917D-4AAD3CE1F33A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{26F73FDB-00EF-4A39-917D-4AAD3CE1F33A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{26F73FDB-00EF-4A39-917D-4AAD3CE1F33A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{26F73FDB-00EF-4A39-917D-4AAD3CE1F33A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
