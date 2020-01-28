@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Wangkanai.Detection.Hosting;
 using Wangkanai.Detection.Services;
 
-namespace Wangkanai.Detection.Pages.Internal
+namespace Wangkanai.Detection.UI.Pages.Internal
 {
     [ResponsiveDefaultUI(typeof(ClearModel))]
     public class ClearModel : PageModel
@@ -16,7 +16,7 @@ namespace Wangkanai.Detection.Pages.Internal
             _preferenceService = preferenceService;
         }
         
-        public IActionResult OnPost(string returnUrl = null)
+        public IActionResult OnGet(string returnUrl = null)
         {
             _preferenceService.Clear();
             

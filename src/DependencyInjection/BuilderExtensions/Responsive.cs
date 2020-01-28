@@ -2,6 +2,8 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
+using System.Linq;
+using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Wangkanai.Detection.Hosting;
@@ -25,9 +27,7 @@ namespace Microsoft.Extensions.DependencyInjection
                     options.ViewLocationExpanders.Add(new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Suffix));
                     options.ViewLocationExpanders.Add(new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Subfolder));
                 });
-
-            builder.Services.ConfigureOptions<ResponsiveDefaultUIConfigurationOptions>();
-
+            
             return builder;
         }
     }

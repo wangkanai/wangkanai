@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
-namespace Wangkanai.Detection.Hosting
+namespace Wangkanai.Detection.UI
 {
     internal class ResponsiveDefaultUIConfigurationOptions : IPostConfigureOptions<RazorPagesOptions>
     {

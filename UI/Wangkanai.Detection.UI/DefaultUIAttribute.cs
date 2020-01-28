@@ -1,6 +1,6 @@
 using System;
 
-namespace Wangkanai.Detection.Hosting
+namespace Wangkanai.Detection.UI
 {
     [AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = false)]
     internal sealed class ResponsiveDefaultUIAttribute : Attribute

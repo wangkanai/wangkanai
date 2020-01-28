@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+      <TargetFramework>netcoreapp3.0</TargetFramework>
+      <Nullable>enable</Nullable>
+      <AssemblyVersion>3.0.0</AssemblyVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Wangkanai.Detection.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Areas\MyFeature\Pages\Page1.cshtml" />
+  </ItemGroup>
+</Project>

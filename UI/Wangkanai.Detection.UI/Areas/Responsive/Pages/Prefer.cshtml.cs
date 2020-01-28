@@ -4,7 +4,7 @@ using Wangkanai.Detection.Hosting;
 using Wangkanai.Detection.Models;
 using Wangkanai.Detection.Services;
 
-namespace Wangkanai.Detection.Pages.Internal
+namespace Wangkanai.Detection.UI.Pages.Internal
 {
     [ResponsiveDefaultUI(typeof(PreferModel))]
     public class PreferModel : PageModel
@@ -18,29 +18,14 @@ namespace Wangkanai.Detection.Pages.Internal
             _preferenceService = preferenceService;
         }
 
-        public void OnGet(string returnUrl = null)
+        public IActionResult OnGet(string returnUrl = null)
         {
-            if(!string.IsNullOrEmpty(ErrorMessage))
-                ModelState.AddModelError(string.Empty, ErrorMessage);
-
-            returnUrl = returnUrl ?? Url.Content("~/");
-
-            _preferenceService.Clear();
+            _preferenceService.Set(Device.Mobile);
             
-            ReturnUrl = returnUrl;
-        }
-
-        public IActionResult OnPost(Device prefer, string returnUrl = null)
-        {
-            returnUrl = returnUrl ?? Url.Content("~/");
-
-            if (ModelState.IsValid)
-            {
-                _preferenceService.Set(prefer);
+            if (returnUrl != null)
                 return LocalRedirect(returnUrl);
-            }
-
-            return Page();
+            else
+                return RedirectToPage();
         }
     }
 }

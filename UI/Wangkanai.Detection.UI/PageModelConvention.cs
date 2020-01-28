@@ -2,7 +2,7 @@ using System;
 using System.Reflection;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 
-namespace Wangkanai.Detection.Hosting
+namespace Wangkanai.Detection.UI
 {
     internal class ResponsivePageModelConvention : IPageApplicationModelConvention
     {

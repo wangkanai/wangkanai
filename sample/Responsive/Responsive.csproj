@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Wangkanai.Detection.csproj" />
+    <ProjectReference Include="..\..\UI\Wangkanai.Detection.UI\Wangkanai.Detection.UI.csproj" />
   </ItemGroup>
 
 </Project>

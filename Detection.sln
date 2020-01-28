@@ -1,3 +1,4 @@
+﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28516.95
@@ -30,6 +31,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection", "src\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection.Test", "test\Wangkanai.Detection.Test.csproj", "{A72D51C5-D90B-4624-B6B6-B67028D64B63}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Detection.UI", "UI\Wangkanai.Detection.UI\Wangkanai.Detection.UI.csproj", "{AA33913C-2C0B-4F26-837C-E1D3396CA1CC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -60,6 +63,10 @@ Global
 		{A72D51C5-D90B-4624-B6B6-B67028D64B63}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A72D51C5-D90B-4624-B6B6-B67028D64B63}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A72D51C5-D90B-4624-B6B6-B67028D64B63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA33913C-2C0B-4F26-837C-E1D3396CA1CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA33913C-2C0B-4F26-837C-E1D3396CA1CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA33913C-2C0B-4F26-837C-E1D3396CA1CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA33913C-2C0B-4F26-837C-E1D3396CA1CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
