@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Wangkanai.Detection.Services;
 
-namespace Wangkanai.Detection.Responsive.Pages.Internal
+namespace Wangkanai.Detection.Pages.Internal
 {
     public class ClearModel : PageModel
     {

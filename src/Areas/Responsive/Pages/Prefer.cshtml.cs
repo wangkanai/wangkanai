@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Wangkanai.Detection.Models;
 using Wangkanai.Detection.Services;
 
-namespace Wangkanai.Detection.Responsive.Pages.Internal
+namespace Wangkanai.Detection.Pages.Internal
 {
     public class PreferModel : PageModel
     {
