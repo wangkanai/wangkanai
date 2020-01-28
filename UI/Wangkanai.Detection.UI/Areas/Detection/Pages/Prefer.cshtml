@@ -1,15 +1,18 @@
-﻿@page
+﻿@inject IWebHostEnvironment Environment
+@page
+@using Microsoft.AspNetCore.Hosting
 @model Wangkanai.Detection.UI.Areas.Detection.Pages.Prefer
 
 @{
-    ViewData["Title"] = "Prefer View";
+    ViewData["Title"] = "Set Preference";
 }
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width"/>
-    <title>@ViewData["Title"]</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>@ViewData["Title"] - @Environment.ApplicationName</title>
 </head>
 <body>
 <h1>@ViewData["Title"]</h1>
