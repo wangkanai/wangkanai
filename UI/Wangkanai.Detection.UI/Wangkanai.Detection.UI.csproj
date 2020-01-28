@@ -6,6 +6,10 @@
         <LangVersion>8.0</LangVersion>
         <Nullable>enable</Nullable>
         <AssemblyVersion>3.0.0</AssemblyVersion>
+
+        <RazorCompileOnBuild>false</RazorCompileOnBuild>
+        <RazorCompileOnPublish>false</RazorCompileOnPublish>
+        <EnableDefaultRazorGenerateItems>false</EnableDefaultRazorGenerateItems>
     </PropertyGroup>
 
     <ItemGroup>
