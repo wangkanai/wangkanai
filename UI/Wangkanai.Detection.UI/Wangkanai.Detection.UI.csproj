@@ -16,4 +16,12 @@
         <ProjectReference Include="..\..\src\Wangkanai.Detection.csproj"/>
     </ItemGroup>
 
+    <ItemGroup>
+        <_ContentIncludedByDefault Remove="Areas\Responsive\Pages\Clear.cshtml"/>
+        <_ContentIncludedByDefault Remove="Areas\Responsive\Pages\Prefer.cshtml"/>
+        <_ContentIncludedByDefault Remove="Areas\Responsive\Pages\_Layout.cshtml"/>
+        <_ContentIncludedByDefault Remove="Areas\Responsive\Pages\_ViewImports.cshtml"/>
+        <_ContentIncludedByDefault Remove="Areas\Responsive\Pages\_ViewStart.cshtml"/>
+    </ItemGroup>
+
 </Project>

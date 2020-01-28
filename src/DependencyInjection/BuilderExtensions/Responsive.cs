@@ -5,7 +5,6 @@ using System;
 using System.Reflection;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.AspNetCore.Mvc.Razor;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Wangkanai.Detection.Hosting;
 using Wangkanai.Detection.Services;
@@ -29,13 +28,14 @@ namespace Microsoft.Extensions.DependencyInjection
                 options.ViewLocationExpanders.Add(new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Suffix));
                 options.ViewLocationExpanders.Add(new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Subfolder));
             });
-            builder.Services.Configure<RazorPagesOptions>(options =>
-            {
-                var convention = new ResponsivePageModelConvention();
-                options.Conventions.AddAreaPageApplicationModelConvention(
-                    DetectionUIDefaultAreaName, "/", pam => convention.Apply(pam)
-                );
-            });
+
+            // builder.Services.Configure<RazorPagesOptions>(options =>
+            // {
+            //     var convention = new ResponsivePageModelConvention();
+            //     options.Conventions.AddAreaPageApplicationModelConvention(
+            //         DetectionUIDefaultAreaName, "/", pam => convention.Apply(pam)
+            //     );
+            // });
 
             return builder;
         }
@@ -55,7 +55,7 @@ namespace Microsoft.Extensions.DependencyInjection
 
         private void ValidateTemplate(Type template)
         {
-            if (template.IsAbstract || template.IsGenericTypeDefinition)
+            if (template.IsAbstract || !template.IsGenericTypeDefinition)
                 throw new InvalidOperationException("Implementation type can't be abstract or generic");
         }
     }

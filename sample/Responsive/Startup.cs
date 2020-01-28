@@ -22,7 +22,8 @@ namespace Responsive
         public void ConfigureServices(IServiceCollection services)
         {
             // Add responsive services.
-            services.AddDetection();
+            services.AddDetection()
+                .AddDefaultUI();
 
             // Add framework services.
             services.AddControllersWithViews();
