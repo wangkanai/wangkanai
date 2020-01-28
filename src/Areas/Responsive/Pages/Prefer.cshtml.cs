@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Wangkanai.Detection.Hosting;
 using Wangkanai.Detection.Models;
 using Wangkanai.Detection.Services;
 
 namespace Wangkanai.Detection.Pages.Internal
 {
+    [ResponsiveDefaultUI(typeof(PreferModel))]
     public class PreferModel : PageModel
     {
         private readonly  IPreferenceService _preferenceService;
