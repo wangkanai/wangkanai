@@ -4,7 +4,7 @@ using Wangkanai.Detection.Services;
 
 namespace Wangkanai.Detection.UI.Pages.Internal
 {
-    [ResponsiveDefaultUI(typeof(ClearModel))]
+    //[ResponsiveDefaultUI(typeof(ClearModel))]
     public class ClearModel : PageModel
     {
         private readonly IPreferenceService _preferenceService;
