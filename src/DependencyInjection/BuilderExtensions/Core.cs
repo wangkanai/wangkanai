@@ -2,11 +2,9 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
-
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
-
 using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Services;
 
@@ -24,10 +22,28 @@ namespace Microsoft.Extensions.DependencyInjection
 
             // Add Detection Options
             builder.Services.AddOptions();
-            builder.Services.TryAddSingleton(
-                resolver => resolver.GetRequiredService<IOptions<DetectionOptions>>().Value);
-
+            builder.Services.TryAddSingleton(resolver => resolver.GetDetectionOptions());
+            
             return builder;
+        }
+
+        public static IDetectionBuilder AddSessionServices(this IDetectionBuilder builder)
+        {
+            builder.Services.AddDistributedMemoryCache();
+            builder.Services.AddSession(
+                options =>
+                {
+                    options.Cookie.Name        = "Detection";
+                    options.IdleTimeout        = TimeSpan.FromSeconds(10);
+                    options.Cookie.IsEssential = true;
+                });
+            
+            return builder;
+        }
+
+        private static DetectionOptions GetDetectionOptions(this IServiceProvider resolver)
+        {
+            return resolver.GetRequiredService<IOptions<DetectionOptions>>().Value;
         }
 
         public static IDetectionBuilder AddCoreServices(this IDetectionBuilder builder)

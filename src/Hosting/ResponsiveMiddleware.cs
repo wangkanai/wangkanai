@@ -22,12 +22,6 @@ namespace Wangkanai.Detection.Hosting
             if (context is null)
                 throw new ArgumentNullException(nameof(context));
             
-            //var cookie = new CookieManager(context);
-            //var preference = new UserPreference(detection, cookie);
-
-            //var preference = new PreferenceManager();
-
-            // need return detect and preferred for the ViewLocation
             context.SetDevice(responsive.View);
 
             await _next(context);

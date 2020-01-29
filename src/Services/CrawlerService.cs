@@ -34,7 +34,9 @@ namespace Wangkanai.Detection.Services
                 if (agent.Contains(crawler))
                     return crawler;
 
-            return HasOthers(agent, others) ? Crawler.Others : Crawler.Unknown;
+            return HasOthers(agent, others)
+                       ? Crawler.Others
+                       : Crawler.Unknown;
         }
 
         private static Version GetVersion(UserAgent useragent)

@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Wangkanai.Detection.Models;
 
 namespace Responsive
 {
@@ -40,19 +39,23 @@ namespace Responsive
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-            app.UseRouting();
-
             app.UseDetection();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
-            });
+            app.UseRouting();
+
+            app.UseEndpoints(
+                endpoints =>
+                {
+                    endpoints.MapDefaultControllerRoute();
+                    endpoints.MapControllerRoute(
+                        "areas",
+                        "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                    );
+                });
         }
     }
 }

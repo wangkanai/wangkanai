@@ -41,9 +41,9 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
-            if (context is null)
+            if (context == null)
                 throw new ArgumentNullException(nameof(context));
-            if (output is null)
+            if (output == null)
                 throw new ArgumentNullException(nameof(output));
 
             output.TagName = null;

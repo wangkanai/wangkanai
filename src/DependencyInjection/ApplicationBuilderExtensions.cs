@@ -25,6 +25,8 @@ namespace Microsoft.Extensions.DependencyInjection
             if (app is null)
                 throw new ArgumentNullException(nameof(app));
 
+            app.UseSession();
+            
             app.Validate();
 
             VerifyMarkerIsRegistered(app);
@@ -33,14 +35,16 @@ namespace Microsoft.Extensions.DependencyInjection
 
             ValidateOptions(options);
 
-            if (!options.Responsive.Disable)
-                if (options.Responsive.IncludeWebApi)
-                    app.UseResponsive();
-                else
-                    app.MapWhen(
-                        context => !context.Request.Path.StartsWithSegments("/api"),
-                        appBuilder => appBuilder.UseResponsive()
-                    );
+            if (options.Responsive.Disable)
+                return app;
+
+            if (options.Responsive.IncludeWebApi)
+                app.UseResponsive();
+            else
+                app.UseWhen(
+                    context => !context.Request.Path.StartsWithSegments("/api"),
+                    appBuilder => appBuilder.UseResponsive()
+                );
 
             return app;
         }

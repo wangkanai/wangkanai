@@ -23,7 +23,7 @@ namespace Wangkanai.Detection.Services
             // Null check
             if (agent.IsNullOrEmpty())
                 return Engine.Unknown;
-            
+
             // Microsoft Edge
             if (IsEdge(agent, os))
                 return Engine.EdgeHTML;
