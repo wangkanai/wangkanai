@@ -8,12 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Abstractions;
-using Moq;
-using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Models;
-using Wangkanai.Detection.Services;
 using Xunit;
 
 namespace Wangkanai.Detection.Hosting
@@ -211,32 +206,32 @@ namespace Wangkanai.Detection.Hosting
             Assert.Contains(device.ToString(), await response.Content.ReadAsStringAsync(), StringComparison.OrdinalIgnoreCase);
         }
 
-        private static ResponsiveService MockResponsiveService(IUserAgentService service, DetectionOptions options)
-        {
-            var device     = new DeviceService(service);
-            var preference = Mock.Of<IPreferenceService>();
-            var resolver   = new ResponsiveService(device, preference, options);
-            return resolver;
-        }
+        // private static ResponsiveService MockResponsiveService(IUserAgentService service, DetectionOptions options)
+        // {
+        //     var device     = new DeviceService(service);
+        //     var preference = Mock.Of<IPreferenceService>();
+        //     var resolver   = new ResponsiveService(device, preference, options);
+        //     return resolver;
+        // }
 
-        private static ApplicationBuilder MockApplicationBuilder(DetectionOptions options, ResponsiveService resolver)
-        {
-            var serviceProvider = new Mock<IServiceProvider>();
-
-            serviceProvider
-                .Setup(s => s.GetService(typeof(ILoggerFactory)))
-                .Returns(Mock.Of<NullLoggerFactory>());
-            serviceProvider
-                .Setup(s => s.GetService(typeof(DetectionOptions)))
-                .Returns(options);
-            serviceProvider
-                .Setup(s => s.GetService(typeof(IResponsiveService)))
-                .Returns(resolver);
-            serviceProvider
-                .Setup(s => s.GetService(typeof(MarkerService)))
-                .Returns(new MarkerService());
-
-            return new ApplicationBuilder(serviceProvider.Object);
-        }
+        // private static ApplicationBuilder MockApplicationBuilder(DetectionOptions options, ResponsiveService resolver)
+        // {
+        //     var serviceProvider = new Mock<IServiceProvider>();
+        //
+        //     serviceProvider
+        //         .Setup(s => s.GetService(typeof(ILoggerFactory)))
+        //         .Returns(Mock.Of<NullLoggerFactory>());
+        //     serviceProvider
+        //         .Setup(s => s.GetService(typeof(DetectionOptions)))
+        //         .Returns(options);
+        //     serviceProvider
+        //         .Setup(s => s.GetService(typeof(IResponsiveService)))
+        //         .Returns(resolver);
+        //     serviceProvider
+        //         .Setup(s => s.GetService(typeof(MarkerService)))
+        //         .Returns(new MarkerService());
+        //
+        //     return new ApplicationBuilder(serviceProvider.Object);
+        // }
     }
 }

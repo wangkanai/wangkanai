@@ -26,7 +26,7 @@ namespace Microsoft.Extensions.DependencyInjection
                 throw new ArgumentNullException(nameof(app));
 
             app.UseSession();
-            
+
             app.Validate();
 
             VerifyMarkerIsRegistered(app);
@@ -76,6 +76,8 @@ namespace Microsoft.Extensions.DependencyInjection
         private static void ValidateOptions(DetectionOptions options)
         {
             // What should I validate?
+            if (options.Responsive.Disable && options.Responsive.IncludeWebApi)
+                throw new InvalidOperationException("IncludeWebApi is not needed if already Disable");
         }
 
         private static void VerifyMarkerIsRegistered(IApplicationBuilder app)

@@ -36,8 +36,8 @@ namespace Microsoft.Extensions.DependencyInjection
             var builder = services.AddDetectionBuilder();
 
             builder.AddRequiredPlatformServices();
-            builder.AddSessionServices();
             builder.AddCoreServices();
+            builder.AddSessionServices();
             builder.AddResponsiveService();
             builder.AddMarkerService();
 
