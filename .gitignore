@@ -256,3 +256,4 @@ paket-files/
 
 *.ncrunchproject
 *.ncrunchprojectsolution
+/Wangkanai.Detection.UI/obj/
