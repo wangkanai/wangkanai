@@ -15,7 +15,26 @@ namespace Wangkanai.Detection.Hosting
 {
     public class ResponsiveCollectionExtensionsTests
     {
-        private readonly int total = 17;
+        private readonly int          total                       = 17;
+        private readonly Func<object> CreateResponsiveNullService = () => ((IServiceCollection) null).AddDetection();
+
+        private static RequestDelegate ResponsiveContextHandler()
+        {
+            return context => context.GetDevice() switch
+            {
+                Device.Desktop => context.Response.WriteAsync("Response: Desktop"),
+                Device.Tablet  => context.Response.WriteAsync("Response: Tablet"),
+                Device.Mobile  => context.Response.WriteAsync("Response: Mobile"),
+                _              => context.Response.WriteAsync("Response: Who?")
+            };
+        }
+
+        private static HttpRequestMessage CreateHttpRequestMessage(string agent, string url = "/")
+        {
+            var request = new HttpRequestMessage(HttpMethod.Get, url);
+            request.SetUserAgent(agent);
+            return request;
+        }
 
         [Fact]
         public void AddResponsive_Services()
@@ -26,8 +45,6 @@ namespace Wangkanai.Detection.Hosting
 
             Assert.Same(service, builder.Services);
         }
-
-        private readonly Func<object> CreateResponsiveNullService = () => ((IServiceCollection) null).AddDetection();
 
         [Fact]
         public void AddResponsive_Null_ArgumentNullException()
@@ -51,15 +68,6 @@ namespace Wangkanai.Detection.Hosting
             Assert.Same(service, builder.Services);
         }
 
-        private static RequestDelegate ResponsiveContextHandler
-            => context => context.GetDevice() switch
-            {
-                Device.Desktop => context.Response.WriteAsync("Response: Desktop"),
-                Device.Tablet  => context.Response.WriteAsync("Response: Tablet"),
-                Device.Mobile  => context.Response.WriteAsync("Response: Mobile"),
-                _              => context.Response.WriteAsync("Response: Who?")
-            };
-
         [Fact]
         public async void AddResponsive_Options_Disable_True()
         {
@@ -70,7 +78,7 @@ namespace Wangkanai.Detection.Hosting
                 .Configure(app =>
                 {
                     app.UseDetection();
-                    app.Run(ResponsiveContextHandler);
+                    app.Run(ResponsiveContextHandler());
                 });
 
             using var server   = new TestServer(builder);
@@ -81,12 +89,6 @@ namespace Wangkanai.Detection.Hosting
             Assert.Contains("desktop", await response.Content.ReadAsStringAsync(), StringComparison.OrdinalIgnoreCase);
         }
 
-        private static HttpRequestMessage CreateHttpRequestMessage(string agent, string url = "/")
-        {
-            var request = new HttpRequestMessage(HttpMethod.Get, url);
-            request.SetUserAgent(agent);
-            return request;
-        }
 
         [Fact]
         public async void AddResponsive_Options_Disable_False()
@@ -98,7 +100,7 @@ namespace Wangkanai.Detection.Hosting
                 .Configure(app =>
                 {
                     app.UseDetection();
-                    app.Run(ResponsiveContextHandler);
+                    app.Run(ResponsiveContextHandler());
                 });
 
             using var server   = new TestServer(builder);
@@ -107,6 +109,30 @@ namespace Wangkanai.Detection.Hosting
             var       response = await client.SendAsync(request);
             response.EnsureSuccessStatusCode();
             Assert.Contains("mobile", await response.Content.ReadAsStringAsync(), StringComparison.OrdinalIgnoreCase);
+        }
+
+        [Fact]
+        public async void AddResponsive_Options_Disable_IncludeWebApi()
+        {
+            var builder = new WebHostBuilder()
+                .ConfigureServices(services =>
+                    services.AddDetection(options =>
+                    {
+                        options.Responsive.Disable       = true;
+                        options.Responsive.IncludeWebApi = true;
+                    })
+                )
+                .Configure(app =>
+                {
+                    app.UseDetection();
+                    app.Run(ResponsiveContextHandler());
+                });
+
+            var exception = Assert.Throws<InvalidOperationException>(() =>
+            {
+                using var server = new TestServer(builder);
+            });
+            Assert.Equal("IncludeWebApi is not needed if already Disable", exception.Message);
         }
 
         [Theory]
@@ -127,7 +153,7 @@ namespace Wangkanai.Detection.Hosting
                 .Configure(app =>
                 {
                     app.UseDetection();
-                    app.Run(ResponsiveContextHandler);
+                    app.Run(ResponsiveContextHandler());
                 });
 
             using var server   = new TestServer(builder);
@@ -160,7 +186,7 @@ namespace Wangkanai.Detection.Hosting
                 .Configure(app =>
                 {
                     app.UseDetection();
-                    app.Run(ResponsiveContextHandler);
+                    app.Run(ResponsiveContextHandler());
                 });
 
             using var server   = new TestServer(builder);
@@ -195,7 +221,7 @@ namespace Wangkanai.Detection.Hosting
                 .Configure(app =>
                 {
                     app.UseDetection();
-                    app.Run(ResponsiveContextHandler);
+                    app.Run(ResponsiveContextHandler());
                 });
 
             using var server   = new TestServer(builder);
@@ -205,33 +231,5 @@ namespace Wangkanai.Detection.Hosting
             response.EnsureSuccessStatusCode();
             Assert.Contains(device.ToString(), await response.Content.ReadAsStringAsync(), StringComparison.OrdinalIgnoreCase);
         }
-
-        // private static ResponsiveService MockResponsiveService(IUserAgentService service, DetectionOptions options)
-        // {
-        //     var device     = new DeviceService(service);
-        //     var preference = Mock.Of<IPreferenceService>();
-        //     var resolver   = new ResponsiveService(device, preference, options);
-        //     return resolver;
-        // }
-
-        // private static ApplicationBuilder MockApplicationBuilder(DetectionOptions options, ResponsiveService resolver)
-        // {
-        //     var serviceProvider = new Mock<IServiceProvider>();
-        //
-        //     serviceProvider
-        //         .Setup(s => s.GetService(typeof(ILoggerFactory)))
-        //         .Returns(Mock.Of<NullLoggerFactory>());
-        //     serviceProvider
-        //         .Setup(s => s.GetService(typeof(DetectionOptions)))
-        //         .Returns(options);
-        //     serviceProvider
-        //         .Setup(s => s.GetService(typeof(IResponsiveService)))
-        //         .Returns(resolver);
-        //     serviceProvider
-        //         .Setup(s => s.GetService(typeof(MarkerService)))
-        //         .Returns(new MarkerService());
-        //
-        //     return new ApplicationBuilder(serviceProvider.Object);
-        // }
     }
 }
