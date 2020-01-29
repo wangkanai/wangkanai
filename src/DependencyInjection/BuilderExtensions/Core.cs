@@ -22,11 +22,28 @@ namespace Microsoft.Extensions.DependencyInjection
 
             // Add Detection Options
             builder.Services.AddOptions();
-            builder.Services.TryAddSingleton(
-                resolver => resolver.GetRequiredService<IOptions<DetectionOptions>>().Value
-            );
-
+            builder.Services.TryAddSingleton(resolver => resolver.GetDetectionOptions());
+            
             return builder;
+        }
+
+        public static IDetectionBuilder AddSessionServices(this IDetectionBuilder builder)
+        {
+            builder.Services.AddDistributedMemoryCache();
+            builder.Services.AddSession(
+                options =>
+                {
+                    options.Cookie.Name        = "Detection";
+                    options.IdleTimeout        = TimeSpan.FromSeconds(10);
+                    options.Cookie.IsEssential = true;
+                });
+            
+            return builder;
+        }
+
+        private static DetectionOptions GetDetectionOptions(this IServiceProvider resolver)
+        {
+            return resolver.GetRequiredService<IOptions<DetectionOptions>>().Value;
         }
 
         public static IDetectionBuilder AddCoreServices(this IDetectionBuilder builder)

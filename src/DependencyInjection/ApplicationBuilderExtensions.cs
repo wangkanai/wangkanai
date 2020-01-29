@@ -25,6 +25,8 @@ namespace Microsoft.Extensions.DependencyInjection
             if (app is null)
                 throw new ArgumentNullException(nameof(app));
 
+            app.UseSession();
+            
             app.Validate();
 
             VerifyMarkerIsRegistered(app);

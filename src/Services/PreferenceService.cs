@@ -1,14 +1,28 @@
-﻿using Wangkanai.Detection.Models;
+﻿using Microsoft.AspNetCore.Http;
+using Wangkanai.Detection.Models;
 
 namespace Wangkanai.Detection.Services
 {
     public class PreferenceService : IPreferenceService
     {
-        public Device Preferred { get; private set; }
-        public bool   IsSet     { get; private set; }
+        private readonly IUserAgentService _userAgentService;
 
-        public PreferenceService()
-            => Clear();
+        public Device Preferred
+        {
+            get => _userAgentService.Context.GetPreference();
+            private set => _userAgentService.Context.SetPreference(value);
+        }
+
+        public bool IsSet
+        {
+            get => _userAgentService.Context.GetMark();
+            private set => _userAgentService.Context.SetMark(value);
+        }
+        
+        public PreferenceService(IUserAgentService userAgentService)
+        {
+            _userAgentService = userAgentService;
+        }
 
         public void Set(Device preferred)
         {

@@ -17,7 +17,7 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
 
         [HtmlAttributeName(OnlyAttributeName)] public string? Only { get; set; }
 
-        public PreferenceTagHelper(IHtmlGenerator generator, IPreferenceService preference, IDeviceService device)
+        public PreferenceTagHelper(IHtmlGenerator generator, IPreferenceService preference, IResponsiveService responsive, IDeviceService device)
         {
             Generator   = generator ?? throw new ArgumentNullException(nameof(generator));
             _preference = preference ?? throw new ArgumentNullException(nameof(preference));

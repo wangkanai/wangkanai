@@ -13,8 +13,6 @@ namespace Microsoft.Extensions.DependencyInjection
 {
     public static class ResponsiveBuilderExtensions
     {
-        private const string DetectionUIDefaultAreaName = "Detection";
-
         public static IDetectionBuilder AddResponsiveService(this IDetectionBuilder builder)
         {
             if (builder == null)
