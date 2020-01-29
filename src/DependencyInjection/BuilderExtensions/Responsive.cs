@@ -28,46 +28,8 @@ namespace Microsoft.Extensions.DependencyInjection
                 options.ViewLocationExpanders.Add(new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Suffix));
                 options.ViewLocationExpanders.Add(new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Subfolder));
             });
-
-            // builder.Services.Configure<RazorPagesOptions>(options =>
-            // {
-            //     var convention = new ResponsivePageModelConvention();
-            //     options.Conventions.AddAreaPageApplicationModelConvention(
-            //         DetectionUIDefaultAreaName, "/", pam => convention.Apply(pam)
-            //     );
-            // });
-
+            
             return builder;
-        }
-    }
-
-    internal class ResponsivePageModelConvention : IPageApplicationModelConvention
-    {
-        public void Apply(PageApplicationModel model)
-        {
-            var defaultUIAttribute = model.ModelType.GetCustomAttribute<ResponsiveDefaultUIAttribute>();
-            if (defaultUIAttribute == null)
-                return;
-
-            ValidateTemplate(defaultUIAttribute.Template);
-            model.ModelType = defaultUIAttribute.Template.GetTypeInfo();
-        }
-
-        private void ValidateTemplate(Type template)
-        {
-            if (template.IsAbstract || !template.IsGenericTypeDefinition)
-                throw new InvalidOperationException("Implementation type can't be abstract or generic");
-        }
-    }
-
-    [AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = false)]
-    internal sealed class ResponsiveDefaultUIAttribute : Attribute
-    {
-        public Type Template { get; }
-
-        public ResponsiveDefaultUIAttribute(Type implementationTemplate)
-        {
-            Template = implementationTemplate;
         }
     }
 }
