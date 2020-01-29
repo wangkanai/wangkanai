@@ -35,7 +35,7 @@ namespace Wangkanai.Detection.Hosting
             var service    = MockService.CreateService(null);
             var options    = new DetectionOptions();
             var device     = new DeviceService(service);
-            var preference = new PreferenceService();
+            var preference = new PreferenceService(service);
             var resolver   = new ResponsiveService(device, preference, options);
 
             var middleware = new ResponsiveMiddleware(Next);

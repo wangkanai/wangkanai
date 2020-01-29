@@ -13,11 +13,16 @@ namespace Wangkanai.Detection.Services
     [DebuggerStepThrough]
     public static class MockService
     {
-        public static ResponsiveService CreateResponsiveService(string agent, DetectionOptions options = null) 
-            => CreateResponsiveService(agent, new PreferenceService(), options);
+        public static ResponsiveService CreateResponsiveService(string agent, DetectionOptions options = null)
+        {
+            var service = CreateService(agent);
+            var device  = new DeviceService(service);
+            var preference = new PreferenceService(service);
+            return CreateResponsiveService(device, preference, options);
+        }
 
-        public static ResponsiveService CreateResponsiveService(string agent, IPreferenceService preference, DetectionOptions options = null) 
-            => new ResponsiveService(new DeviceService(CreateService(agent)), preference, options);
+        public static ResponsiveService CreateResponsiveService(IDeviceService device, IPreferenceService preference, DetectionOptions options = null)
+            => new ResponsiveService(device, preference, options);
 
         public static EngineService CreateEngineService(string agent)
         {

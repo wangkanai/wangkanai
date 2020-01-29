@@ -199,7 +199,7 @@ namespace Wangkanai.Detection.Hosting
         private static ResponsiveService MockResponsiveService(IUserAgentService service, DetectionOptions options)
         {
             var device     = new DeviceService(service);
-            var preference = new PreferenceService();
+            var preference = new PreferenceService(service);
             var resolver   = new ResponsiveService(device, preference, options);
             return resolver;
         }

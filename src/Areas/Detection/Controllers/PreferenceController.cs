@@ -27,7 +27,7 @@ namespace Wangkanai.Detection.Areas.Detection.Controllers
             if (returnUrl != null)
                 return LocalRedirect(returnUrl);
             else
-                return Redirect("/");
+                return LocalRedirect("/");
         }
         
         // GET
@@ -38,7 +38,7 @@ namespace Wangkanai.Detection.Areas.Detection.Controllers
             if (returnUrl != null)
                 return LocalRedirect(returnUrl);
             else
-                return Redirect("/");
+                return LocalRedirect("/");
         }
     }
 }
