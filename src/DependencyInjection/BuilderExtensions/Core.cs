@@ -22,13 +22,14 @@ namespace Microsoft.Extensions.DependencyInjection
 
             // Add Detection Options
             builder.Services.AddOptions();
-            builder.Services.TryAddSingleton(resolver => resolver.GetDetectionOptions());
-            
+            builder.Services.TryAddSingleton(provider => provider.GetDetectionOptions());
+
             return builder;
         }
 
         public static IDetectionBuilder AddSessionServices(this IDetectionBuilder builder)
         {
+            // Add Session to services
             builder.Services.AddDistributedMemoryCache();
             builder.Services.AddSession(
                 options =>
@@ -37,14 +38,12 @@ namespace Microsoft.Extensions.DependencyInjection
                     options.IdleTimeout        = TimeSpan.FromSeconds(10);
                     options.Cookie.IsEssential = true;
                 });
-            
+
             return builder;
         }
 
-        private static DetectionOptions GetDetectionOptions(this IServiceProvider resolver)
-        {
-            return resolver.GetRequiredService<IOptions<DetectionOptions>>().Value;
-        }
+        private static DetectionOptions GetDetectionOptions(this IServiceProvider provider)
+            => provider.GetRequiredService<IOptions<DetectionOptions>>().Value;
 
         public static IDetectionBuilder AddCoreServices(this IDetectionBuilder builder)
         {
