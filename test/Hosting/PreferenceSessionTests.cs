@@ -16,32 +16,27 @@ namespace Wangkanai.Detection.Hosting
         public async Task ReadingEmptySessionDoesNotCreateCookie()
         {
             var builder = new WebHostBuilder()
+                .ConfigureServices(services =>
+                {
+                    services.AddDetection();
+                })
                 .Configure(app =>
                 {
                     app.UseDetection();
                     app.Run(context =>
                     {
-                        context.GetUserAgent();
-                        Assert.Null(context.Session.GetString("Key"));
-                        context.SetMark(true);
-                        Assert.True(context.GetMark());
+                        context.Session.SetString("Key","Value");
                         return Task.FromResult(0);
                     });
-                })
-                .ConfigureServices(services =>
-                {
-                    services.AddDetection();
                 });
 
             using (var server = new TestServer(builder))
             {
                 var client = server.CreateClient();
-                var response = await client.GetAsync(string.Empty);
+                var response = await client.GetAsync("/");
                 response.EnsureSuccessStatusCode();
-                
                 Assert.True(response.Headers.TryGetValues("Set-Cookie", out var values));
                 Assert.Single(values);
-                Assert.True(!string.IsNullOrWhiteSpace(values.First()));
             }
         }
     }

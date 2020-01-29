@@ -29,22 +29,6 @@ namespace Wangkanai.Detection.Hosting
         }
 
         [Fact]
-        public async void Invoke_HttpContext_ResponsiveService_Success()
-        {
-            var service    = MockService.CreateService(null);
-            var options    = new DetectionOptions();
-            var device     = new DeviceService(service);
-            var preference = new PreferenceService(service);
-            var resolver   = new ResponsiveService(device, preference, options);
-
-            var middleware = new ResponsiveMiddleware(Next);
-
-            await middleware.Invoke(service.Context, resolver);
-
-            Assert.Equal(Device.Desktop, service.Context.GetDevice());
-        }
-
-        [Fact]
         public async void Invoke_HttpContext_Null_ResponsiveService_Null_ThrowsArgumentNullException()
         {
             var middleware = new ResponsiveMiddleware(Next);
@@ -63,6 +47,22 @@ namespace Wangkanai.Detection.Hosting
             await Assert.ThrowsAsync<NullReferenceException>(
                 async () => await middleware.Invoke(service.Context, null)
             );
+        }
+
+        [Fact]
+        public async void Invoke_HttpContext_ResponsiveService_Success()
+        {
+            var service    = MockService.CreateService(null);
+            var options    = new DetectionOptions();
+            var device     = new DeviceService(service);
+            var preference = Mock.Of<IPreferenceService>();
+            var resolver   = new ResponsiveService(device, preference, options);
+
+            var middleware = new ResponsiveMiddleware(Next);
+
+            await middleware.Invoke(service.Context, resolver);
+
+            Assert.Equal(Device.Desktop, service.Context.GetDevice());
         }
     }
 }

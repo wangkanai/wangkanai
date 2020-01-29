@@ -2,9 +2,13 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
+using System.Net.Http;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Session;
+using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
@@ -26,12 +30,20 @@ namespace Wangkanai.Detection.Hosting
             var service  = new ServiceCollection();
             var expected = service.Count + total;
             var builder  = service.AddDetection();
-            
+
             Assert.Same(service, builder.Services);
         }
 
+        private readonly Func<object> CreateResponsiveNullService = () => ((IServiceCollection) null).AddDetection();
+
         [Fact]
         public void AddResponsive_Null_ArgumentNullException()
+        {
+            Assert.Throws<ArgumentNullException>(CreateResponsiveNullService);
+        }
+
+        [Fact]
+        public void AddResponsive_Options_Null_ArgumentNullException()
         {
             Assert.Throws<ArgumentNullException>(CreateResponsiveNullService);
         }
@@ -47,16 +59,47 @@ namespace Wangkanai.Detection.Hosting
         }
 
         [Fact]
-        public void AddResponsive_Options_Null_ArgumentNullException()
+        public async void AddResponsive_Options_Disable_True()
         {
-            Assert.Throws<ArgumentNullException>(CreateResponsiveNullService);
+            var builder = new WebHostBuilder()
+                .ConfigureServices(services =>
+                    services.AddDetection(options => { options.Responsive.Disable = true; })
+                )
+                .Configure(app =>
+                {
+                    app.UseDetection();
+                    app.Run(context => context.Response.WriteAsync("0"));
+                });
+
+            using var server = new TestServer(builder);
+            var client  = server.CreateClient();
+            var request = new HttpRequestMessage(HttpMethod.Get, "/");
+            request.SetUserAgent("mobile");
+            var response = await client.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+            Assert.Equal("0", await response.Content.ReadAsStringAsync());
+        }
+        
+        [Fact]
+        public async void AddResponsive_Options_Disable_False()
+        {
+            var builder = new WebHostBuilder()
+                .ConfigureServices(services =>
+                    services.AddDetection(options => { options.Responsive.Disable = false; })
+                )
+                .Configure(app =>
+                {
+                    app.UseDetection();
+                    app.Run(context => context.Response.WriteAsync("0"));
+                });
+
+            using var server  = new TestServer(builder);
+            var request = server.CreateRequest("/");
+            var response = await request.GetAsync();
         }
 
-        private readonly Func<object> CreateResponsiveNullService =
-            () => ((IServiceCollection) null).AddDetection();
-
         [Fact]
-        public async void AddResponsive_Options_Disable_True()
+        public async void AddResponsive_Options_Disable_True_Old()
         {
             var service  = MockService.CreateService("mobile");
             var options  = new DetectionOptions {Responsive = {Disable = true}};
@@ -76,7 +119,7 @@ namespace Wangkanai.Detection.Hosting
         }
 
         [Fact]
-        public async void AddResponsive_Options_Disable_False()
+        public async void AddResponsive_Options_Disable_False_Old()
         {
             var service  = MockService.CreateService("mobile");
             var options  = new DetectionOptions {Responsive = {Disable = false}};
@@ -207,7 +250,7 @@ namespace Wangkanai.Detection.Hosting
         private static ApplicationBuilder MockApplicationBuilder(DetectionOptions options, ResponsiveService resolver)
         {
             var serviceProvider = new Mock<IServiceProvider>();
-            
+
             serviceProvider
                 .Setup(s => s.GetService(typeof(ILoggerFactory)))
                 .Returns(Mock.Of<NullLoggerFactory>());
