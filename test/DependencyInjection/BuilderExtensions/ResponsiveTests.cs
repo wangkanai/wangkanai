@@ -4,6 +4,7 @@
 using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Session;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
@@ -25,8 +26,7 @@ namespace Wangkanai.Detection.Hosting
             var service  = new ServiceCollection();
             var expected = service.Count + total;
             var builder  = service.AddDetection();
-
-            //Assert.Equal(expected, builder.Services.Count);
+            
             Assert.Same(service, builder.Services);
         }
 
@@ -43,7 +43,6 @@ namespace Wangkanai.Detection.Hosting
             var expected = service.Count + total;
             var builder  = service.AddDetection(options => { options.Responsive.DefaultTablet = Device.Desktop; });
 
-            //Assert.Equal(expected, builder.Services.Count);
             Assert.Same(service, builder.Services);
         }
 
@@ -173,6 +172,7 @@ namespace Wangkanai.Detection.Hosting
         {
             var service = MockService.CreateService(agent);
             service.Context.Request.Path = path;
+            service.Context.SetMark(true);
             var options = new DetectionOptions
                           {
                               Responsive =
@@ -207,7 +207,7 @@ namespace Wangkanai.Detection.Hosting
         private static ApplicationBuilder MockApplicationBuilder(DetectionOptions options, ResponsiveService resolver)
         {
             var serviceProvider = new Mock<IServiceProvider>();
-
+            
             serviceProvider
                 .Setup(s => s.GetService(typeof(ILoggerFactory)))
                 .Returns(Mock.Of<NullLoggerFactory>());

@@ -22,9 +22,7 @@ namespace Microsoft.Extensions.DependencyInjection
 
             // Add Detection Options
             builder.Services.AddOptions();
-            builder.Services.TryAddSingleton(
-                resolver => resolver.GetRequiredService<IOptions<DetectionOptions>>().Value
-            );
+            builder.Services.TryAddSingleton(resolver => resolver.GetDetectionOptions());
 
             builder.Services.AddSession(
                 options =>
@@ -35,6 +33,11 @@ namespace Microsoft.Extensions.DependencyInjection
                 });
 
             return builder;
+        }
+
+        private static DetectionOptions GetDetectionOptions(this IServiceProvider resolver)
+        {
+            return resolver.GetRequiredService<IOptions<DetectionOptions>>().Value;
         }
 
         public static IDetectionBuilder AddCoreServices(this IDetectionBuilder builder)

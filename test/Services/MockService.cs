@@ -1,9 +1,9 @@
 // Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
-using System;
 using System.Diagnostics;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Session;
 using Moq;
 using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Models;
@@ -73,8 +73,7 @@ namespace Wangkanai.Detection.Services
         private static Mock<IUserAgentService> MockUserAgentService(string agent)
             => CreateContext(agent).SetupUserAgent(agent);
 
-        private static Mock<IUserAgentService> SetupUserAgent(
-            this HttpContext context, string agent)
+        private static Mock<IUserAgentService> SetupUserAgent(this HttpContext context, string agent)
         {
             var service = new Mock<IUserAgentService>();
             service.Setup(f => f.Context).Returns(context);
