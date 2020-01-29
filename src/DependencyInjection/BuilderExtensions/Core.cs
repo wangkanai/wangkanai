@@ -23,7 +23,13 @@ namespace Microsoft.Extensions.DependencyInjection
             // Add Detection Options
             builder.Services.AddOptions();
             builder.Services.TryAddSingleton(resolver => resolver.GetDetectionOptions());
+            
+            return builder;
+        }
 
+        public static IDetectionBuilder AddSessionServices(this IDetectionBuilder builder)
+        {
+            builder.Services.AddDistributedMemoryCache();
             builder.Services.AddSession(
                 options =>
                 {
@@ -31,7 +37,7 @@ namespace Microsoft.Extensions.DependencyInjection
                     options.IdleTimeout        = TimeSpan.FromSeconds(10);
                     options.Cookie.IsEssential = true;
                 });
-
+            
             return builder;
         }
 
