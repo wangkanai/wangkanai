@@ -50,9 +50,7 @@ namespace Responsive
             app.UseEndpoints(
                 endpoints =>
                 {
-                    endpoints.MapControllerRoute(
-                        "default",
-                        "{controller=Home}/{action=Index}/{id?}");
+                    endpoints.MapDefaultControllerRoute();
                     endpoints.MapControllerRoute(
                         "areas",
                         "{area:exists}/{controller=Home}/{action=Index}/{id?}"

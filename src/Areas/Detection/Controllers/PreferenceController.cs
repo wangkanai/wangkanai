@@ -13,16 +13,21 @@ namespace Wangkanai.Detection.Areas.Detection.Controllers
         {
             _preferenceService = preferenceService;
         }
+
+        public IActionResult Index()
+        {
+            return Content("Preference");
+        }
         
         // GET
         public IActionResult Prefer(string returnUrl = null)
         {
-            _preferenceService.Set(Device.Mobile);
+            _preferenceService.Set(Device.Desktop);
 
             if (returnUrl != null)
                 return LocalRedirect(returnUrl);
             else
-                return RedirectToRoute("/");
+                return Redirect("/");
         }
         
         // GET
@@ -33,7 +38,7 @@ namespace Wangkanai.Detection.Areas.Detection.Controllers
             if (returnUrl != null)
                 return LocalRedirect(returnUrl);
             else
-                return RedirectToRoute("/");
+                return Redirect("/");
         }
     }
 }
