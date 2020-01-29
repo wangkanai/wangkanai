@@ -50,7 +50,7 @@ namespace Microsoft.AspNetCore.Http
         }
 
         public static void SetMark(this HttpContext context, bool set)
-            => context.Items[MarkContextKey] = set;
+            => context.Session.SetString(MarkContextKey, set.ToString());
 
         public static bool GetMark(this HttpContext context)
         {
@@ -59,8 +59,8 @@ namespace Microsoft.AspNetCore.Http
             if (context.Items == null)
                 throw new ArgumentNullException(nameof(context.Items));
 
-            return context.Items.TryGetValue(PreferenceContextKey, out var mark)
-                   && (bool) mark;
+            bool.TryParse(context.Session.GetString(MarkContextKey), out var mark);
+            return mark;
         }
     }
 }

@@ -26,6 +26,14 @@ namespace Microsoft.Extensions.DependencyInjection
                 resolver => resolver.GetRequiredService<IOptions<DetectionOptions>>().Value
             );
 
+            builder.Services.AddSession(
+                options =>
+                {
+                    options.Cookie.Name        = "Detection";
+                    options.IdleTimeout        = TimeSpan.FromSeconds(10);
+                    options.Cookie.IsEssential = true;
+                });
+
             return builder;
         }
 
