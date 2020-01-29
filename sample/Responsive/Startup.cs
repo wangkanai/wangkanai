@@ -22,12 +22,10 @@ namespace Responsive
         public void ConfigureServices(IServiceCollection services)
         {
             // Add responsive services.
-            services.AddDetection()
-                .AddDefaultUI();
+            services.AddDetection();
 
             // Add framework services.
             services.AddControllersWithViews();
-            services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,11 +47,7 @@ namespace Responsive
 
             app.UseRouting();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapDefaultControllerRoute();
-                endpoints.MapRazorPages();
-            });
+            app.UseEndpoints(endpoints => endpoints.MapDefaultControllerRoute());
         }
     }
 }
