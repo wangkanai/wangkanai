@@ -3,7 +3,6 @@
 
 using System;
 using System.Linq;
-using System.Net.Http;
 using Wangkanai.Detection.Models;
 
 namespace Microsoft.AspNetCore.Http
@@ -66,14 +65,5 @@ namespace Microsoft.AspNetCore.Http
             bool.TryParse(context.Session.GetString(MarkContextKey), out var mark);
             return mark;
         }
-    }
-
-    internal static class HttpRequestMessageExtensions
-    {
-        public static void SetUserAgent(this HttpRequestMessage request, string agent)
-            => request.Headers.Add(agent, "User-Agent");
-        
-        //public static Device GetDevice(this HttpResponseMessage response)
-        
     }
 }
