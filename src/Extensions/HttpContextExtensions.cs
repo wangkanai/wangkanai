@@ -11,6 +11,7 @@ namespace Microsoft.AspNetCore.Http
     {
         private const string ResponsiveContextKey = "Responsive";
         private const string PreferenceContextKey = "Preference";
+        private const string MarkContextKey       = "Mark";
 
         public static bool IsNull(this HttpContext context)
             => context == null;
@@ -38,14 +39,28 @@ namespace Microsoft.AspNetCore.Http
 
         public static Device GetPreference(this HttpContext context)
         {
-            if(context == null)
-                throw  new ArgumentNullException(nameof(context));
+            if (context == null)
+                throw new ArgumentNullException(nameof(context));
             if (context.Items == null)
-                throw  new ArgumentNullException(nameof(context.Items));
+                throw new ArgumentNullException(nameof(context.Items));
 
             return context.Items.TryGetValue(PreferenceContextKey, out var preference)
                        ? (Device) preference
                        : Device.Desktop;
+        }
+
+        public static void SetMark(this HttpContext context, bool set)
+            => context.Items[MarkContextKey] = set;
+
+        public static bool GetMark(this HttpContext context)
+        {
+            if (context == null)
+                throw new ArgumentNullException(nameof(context));
+            if (context.Items == null)
+                throw new ArgumentNullException(nameof(context.Items));
+
+            return context.Items.TryGetValue(PreferenceContextKey, out var mark)
+                   && (bool) mark;
         }
     }
 }

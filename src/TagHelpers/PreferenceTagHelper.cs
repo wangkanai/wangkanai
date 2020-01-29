@@ -13,7 +13,6 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
         private const    string             OnlyAttributeName = "only";
         protected        IHtmlGenerator     Generator { get; }
         private readonly IPreferenceService _preference;
-        private readonly IResponsiveService _responsive;
         private readonly IDeviceService     _device;
 
         [HtmlAttributeName(OnlyAttributeName)] public string? Only { get; set; }
@@ -22,7 +21,6 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
         {
             Generator   = generator ?? throw new ArgumentNullException(nameof(generator));
             _preference = preference ?? throw new ArgumentNullException(nameof(preference));
-            _responsive = responsive ?? throw new ArgumentNullException(nameof(responsive));
             _device     = device ?? throw new ArgumentNullException(nameof(device));
         }
 
@@ -38,7 +36,7 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
             if (string.IsNullOrWhiteSpace(Only))
                 return;
 
-            if (_preference.Preferred != _responsive.View && !DisplayOnlyDevice)
+            if (!_preference.IsSet && !DisplayOnlyDevice)
                 output.SuppressOutput();
         }
 

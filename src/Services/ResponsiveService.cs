@@ -17,7 +17,7 @@ namespace Wangkanai.Detection.Services
             View = deviceService != null
                 ? GetView(deviceService.Type, options.Responsive)
                 : Device.Desktop;
-            if (preferenceService.Preferred != View)
+            if (preferenceService.IsSet && preferenceService.Preferred != View)
                 View = preferenceService.Preferred;
         }
 
