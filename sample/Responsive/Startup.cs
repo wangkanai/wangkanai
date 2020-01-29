@@ -43,11 +43,19 @@ namespace Responsive
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-            app.UseRouting();
-
             app.UseDetection();
 
-            app.UseEndpoints(endpoints => endpoints.MapDefaultControllerRoute());
+            app.UseRouting();
+
+            app.UseEndpoints(
+                endpoints =>
+                {
+                    endpoints.MapDefaultControllerRoute();
+                    endpoints.MapControllerRoute(
+                        "areas",
+                        "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                    );
+                });
         }
     }
 }

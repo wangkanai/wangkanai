@@ -2,6 +2,8 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
+using System.Reflection;
+using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Wangkanai.Detection.Hosting;
@@ -11,26 +13,22 @@ namespace Microsoft.Extensions.DependencyInjection
 {
     public static class ResponsiveBuilderExtensions
     {
+        private const string DetectionUIDefaultAreaName = "Detection";
+
         public static IDetectionBuilder AddResponsiveService(this IDetectionBuilder builder)
         {
-            if (builder is null)
+            if (builder == null)
                 throw new ArgumentNullException(nameof(builder));
 
             builder.Services.TryAddScoped<IPreferenceService, PreferenceService>();
             builder.Services.TryAddTransient<IResponsiveService, ResponsiveService>();
 
-            builder.Services.Configure<RazorViewEngineOptions>(
-                options =>
-                {
-                    options.ViewLocationExpanders.Add(new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Suffix));
-                    options.ViewLocationExpanders.Add(new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Subfolder));
-                    // options.ViewLocationFormats.Clear();
-                    // options.ViewLocationFormats.Add
-                    //     ("/MyViewsFolder/{1}/{0}" + RazorViewEngine.ViewExtension);
-                    // options.ViewLocationFormats.Add
-                    //     ("/MyViewsFolder/Shared/{0}" + RazorViewEngine.ViewExtension);
-                });
-
+            builder.Services.Configure<RazorViewEngineOptions>(options =>
+            {
+                options.ViewLocationExpanders.Add(new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Suffix));
+                options.ViewLocationExpanders.Add(new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Subfolder));
+            });
+            
             return builder;
         }
     }
