@@ -3,9 +3,9 @@
 
 using System;
 using System.Net.Http;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;
+using Wangkanai.Detection.Mocks;
 using Wangkanai.Detection.Models;
 using Xunit;
 
@@ -15,24 +15,6 @@ namespace Wangkanai.Detection.Hosting
     {
         private readonly int          total                       = 17;
         private readonly Func<object> CreateResponsiveNullService = () => ((IServiceCollection) null).AddDetection();
-
-        private static RequestDelegate ResponsiveContextHandler()
-        {
-            return context => context.GetDevice() switch
-            {
-                Device.Desktop => context.Response.WriteAsync("Response: Desktop"),
-                Device.Tablet  => context.Response.WriteAsync("Response: Tablet"),
-                Device.Mobile  => context.Response.WriteAsync("Response: Mobile"),
-                _              => context.Response.WriteAsync("Response: Who?")
-            };
-        }
-
-        private static HttpRequestMessage CreateHttpRequestMessage(string agent, string url = "/")
-        {
-            var request = new HttpRequestMessage(HttpMethod.Get, url);
-            request.SetUserAgent(agent);
-            return request;
-        }
 
         [Fact]
         public void AddResponsive_Services()
@@ -72,7 +54,7 @@ namespace Wangkanai.Detection.Hosting
             using var server = MockServer.CreateServer(options => { options.Responsive.Disable = true; });
 
             var client   = server.CreateClient();
-            var request  = CreateHttpRequestMessage("mobile");
+            var request  = MockClient.CreateRequest(Device.Mobile);
             var response = await client.SendAsync(request);
             response.EnsureSuccessStatusCode();
             Assert.Contains("desktop", await response.Content.ReadAsStringAsync(), StringComparison.OrdinalIgnoreCase);
@@ -82,10 +64,11 @@ namespace Wangkanai.Detection.Hosting
         [Fact]
         public async void AddResponsive_Options_Disable_False()
         {
-            using var server   = MockServer.CreateServer(options => { options.Responsive.Disable = false; });
-            var       client   = server.CreateClient();
-            var       request  = CreateHttpRequestMessage("mobile");
-            var       response = await client.SendAsync(request);
+            using var server = MockServer.CreateServer(options => { options.Responsive.Disable = false; });
+
+            var client   = server.CreateClient();
+            var request  = MockClient.CreateRequest(Device.Mobile);
+            var response = await client.SendAsync(request);
             response.EnsureSuccessStatusCode();
             Assert.Contains("mobile", await response.Content.ReadAsStringAsync(), StringComparison.OrdinalIgnoreCase);
         }
@@ -120,7 +103,7 @@ namespace Wangkanai.Detection.Hosting
             });
 
             var client   = server.CreateClient();
-            var request  = CreateHttpRequestMessage(agent, path);
+            var request  = MockClient.CreateRequest(agent, path);
             var response = await client.SendAsync(request);
             response.EnsureSuccessStatusCode();
             Assert.Contains("desktop", await response.Content.ReadAsStringAsync(), StringComparison.OrdinalIgnoreCase);
@@ -144,7 +127,7 @@ namespace Wangkanai.Detection.Hosting
             });
 
             var client   = server.CreateClient();
-            var request  = CreateHttpRequestMessage(agent, path);
+            var request  = MockClient.CreateRequest(agent, path);
             var response = await client.SendAsync(request);
             response.EnsureSuccessStatusCode();
             Assert.Contains(device.ToString(), await response.Content.ReadAsStringAsync(), StringComparison.OrdinalIgnoreCase);
@@ -170,16 +153,10 @@ namespace Wangkanai.Detection.Hosting
             });
 
             var client   = server.CreateClient();
-            var request  = CreateHttpRequestMessage(agent, path);
+            var request  = MockClient.CreateRequest(agent, path);
             var response = await client.SendAsync(request);
             response.EnsureSuccessStatusCode();
             Assert.Contains(device.ToString(), await response.Content.ReadAsStringAsync(), StringComparison.OrdinalIgnoreCase);
         }
-    }
-
-    internal static class HttpRequestMessageExtensions
-    {
-        public static void SetUserAgent(this HttpRequestMessage request, string agent)
-            => request.Headers.Add("User-Agent", agent);
     }
 }
