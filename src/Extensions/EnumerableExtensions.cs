@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace Wangkanai.Detection.Extensions
 {
-    internal static class IEnumerableExtensions
+    internal static class EnumerableExtensions
     {
         public static bool IsNullOrEmpty<T>(this IEnumerable<T> list)
             => list == null || !list.Any();

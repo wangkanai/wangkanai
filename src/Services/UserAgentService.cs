@@ -14,15 +14,14 @@ namespace Wangkanai.Detection.Services
         public HttpContext Context   { get; }
         public UserAgent   UserAgent { get; }
 
-        public UserAgentService(IServiceProvider services)//, HttpContext context)
+        public UserAgentService(IHttpContextAccessor accessor)
         {
-            if (services == null)
-                throw new ArgumentNullException(nameof(services));
-
-            Context = services.GetRequiredService<IHttpContextAccessor>().HttpContext;
-
-            if (Context == null)
-                throw new ArgumentNullException(nameof(Context));
+            if (accessor == null) 
+                throw new ArgumentNullException(nameof(accessor));
+            if (accessor.HttpContext == null) 
+                throw new ArgumentNullException(nameof(accessor.HttpContext));
+            
+            Context = accessor.HttpContext;
 
             var agent = Context.Request.Headers["User-Agent"].FirstOrDefault();
             UserAgent = new UserAgent(agent);

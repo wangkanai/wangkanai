@@ -15,15 +15,10 @@ namespace Wangkanai.Detection.Services
             string userAgent = "Agent";
             var    context   = new DefaultHttpContext();
             context.Request.Headers["User-Agent"] = userAgent;
-            var serviceProvider = new ServiceProvider()
-            {
-                HttpContextAccessor = new HttpContextAccessor()
-                {
-                    HttpContext = context
-                }
-            };
 
-            var useragentService = new UserAgentService(serviceProvider);
+            var accessor = new HttpContextAccessor {HttpContext = context};
+
+            var useragentService = new UserAgentService(accessor);
 
             Assert.NotNull(useragentService.Context);
             Assert.NotNull(useragentService.UserAgent);
@@ -37,21 +32,18 @@ namespace Wangkanai.Detection.Services
         }
 
         [Fact]
-        public void Ctor_HttpContextAccessorNotResolved_ThrowsInvalidOperationException()
+        public void Ctor_HttpContextAccessorNotResolved_ThrowsArgumentNullException()
         {
-            Assert.Throws<InvalidOperationException>(() => new UserAgentService(new ServiceProvider()));
+            Assert.Throws<ArgumentNullException>(() => new UserAgentService(new HttpContextAccessor()));
         }
 
         [Fact]
         public void Ctor_HttpContextNull_ThrowsArgumentNullException()
         {
-            var serviceProvider = new ServiceProvider()
-            {
-                HttpContextAccessor = new HttpContextAccessor()
-            };
-
-            Assert.Null(serviceProvider.HttpContextAccessor.HttpContext);
-            Assert.Throws<ArgumentNullException>(() => new UserAgentService(serviceProvider));
+            var accessor = new HttpContextAccessor();
+            
+            Assert.Null(accessor.HttpContext);
+            Assert.Throws<ArgumentNullException>(() => new UserAgentService(accessor));
         }
 
         private class ServiceProvider : IServiceProvider
