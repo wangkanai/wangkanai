@@ -3,8 +3,6 @@
 
 using System;
 using System.Net.Http;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;
@@ -71,20 +69,11 @@ namespace Wangkanai.Detection.Hosting
         [Fact]
         public async void AddResponsive_Options_Disable_True()
         {
-            var builder = new WebHostBuilder()
-                .ConfigureServices(services =>
-                    services.AddDetection(options => { options.Responsive.Disable = true; })
-                )
-                .Configure(app =>
-                {
-                    app.UseDetection();
-                    app.Run(ResponsiveContextHandler());
-                });
+            using var server = MockServer.CreateServer(options => { options.Responsive.Disable = true; });
 
-            using var server   = new TestServer(builder);
-            var       client   = server.CreateClient();
-            var       request  = CreateHttpRequestMessage("mobile");
-            var       response = await client.SendAsync(request);
+            var client   = server.CreateClient();
+            var request  = CreateHttpRequestMessage("mobile");
+            var response = await client.SendAsync(request);
             response.EnsureSuccessStatusCode();
             Assert.Contains("desktop", await response.Content.ReadAsStringAsync(), StringComparison.OrdinalIgnoreCase);
         }
@@ -93,17 +82,7 @@ namespace Wangkanai.Detection.Hosting
         [Fact]
         public async void AddResponsive_Options_Disable_False()
         {
-            var builder = new WebHostBuilder()
-                .ConfigureServices(services =>
-                    services.AddDetection(options => { options.Responsive.Disable = false; })
-                )
-                .Configure(app =>
-                {
-                    app.UseDetection();
-                    app.Run(ResponsiveContextHandler());
-                });
-
-            using var server   = new TestServer(builder);
+            using var server   = MockServer.CreateServer(options => { options.Responsive.Disable = false; });
             var       client   = server.CreateClient();
             var       request  = CreateHttpRequestMessage("mobile");
             var       response = await client.SendAsync(request);
@@ -112,21 +91,13 @@ namespace Wangkanai.Detection.Hosting
         }
 
         [Fact]
-        public async void AddResponsive_Options_Disable_IncludeWebApi()
+        public void AddResponsive_Options_Disable_IncludeWebApi()
         {
-            var builder = new WebHostBuilder()
-                .ConfigureServices(services =>
-                    services.AddDetection(options =>
-                    {
-                        options.Responsive.Disable       = true;
-                        options.Responsive.IncludeWebApi = true;
-                    })
-                )
-                .Configure(app =>
-                {
-                    app.UseDetection();
-                    app.Run(ResponsiveContextHandler());
-                });
+            var builder = MockServer.CreateWebHostBuilder(options =>
+            {
+                options.Responsive.Disable       = true;
+                options.Responsive.IncludeWebApi = true;
+            });
 
             var exception = Assert.Throws<InvalidOperationException>(() =>
             {
@@ -140,26 +111,17 @@ namespace Wangkanai.Detection.Hosting
         [InlineData(Device.Mobile, "mobile", "/api/dog")]
         public async void AddResponsive_WebApi_Exclude_Api(Device device, string agent, string path)
         {
-            var builder = new WebHostBuilder()
-                .ConfigureServices(services =>
-                    services.AddDetection(options =>
-                    {
-                        options.Responsive.DefaultMobile  = device;
-                        options.Responsive.DefaultTablet  = device;
-                        options.Responsive.DefaultDesktop = device;
-                        options.Responsive.IncludeWebApi  = false;
-                    })
-                )
-                .Configure(app =>
-                {
-                    app.UseDetection();
-                    app.Run(ResponsiveContextHandler());
-                });
+            using var server = MockServer.CreateServer(options =>
+            {
+                options.Responsive.DefaultMobile  = device;
+                options.Responsive.DefaultTablet  = device;
+                options.Responsive.DefaultDesktop = device;
+                options.Responsive.IncludeWebApi  = false;
+            });
 
-            using var server   = new TestServer(builder);
-            var       client   = server.CreateClient();
-            var       request  = CreateHttpRequestMessage(agent, path);
-            var       response = await client.SendAsync(request);
+            var client   = server.CreateClient();
+            var request  = CreateHttpRequestMessage(agent, path);
+            var response = await client.SendAsync(request);
             response.EnsureSuccessStatusCode();
             Assert.Contains("desktop", await response.Content.ReadAsStringAsync(), StringComparison.OrdinalIgnoreCase);
         }
@@ -173,26 +135,17 @@ namespace Wangkanai.Detection.Hosting
         [InlineData(Device.Mobile, "mobile", "")]
         public async void AddResponsive_WebApi_Exclude_NonApi(Device device, string agent, string path)
         {
-            var builder = new WebHostBuilder()
-                .ConfigureServices(services =>
-                    services.AddDetection(options =>
-                    {
-                        options.Responsive.DefaultMobile  = device;
-                        options.Responsive.DefaultTablet  = device;
-                        options.Responsive.DefaultDesktop = device;
-                        options.Responsive.IncludeWebApi  = false;
-                    })
-                )
-                .Configure(app =>
-                {
-                    app.UseDetection();
-                    app.Run(ResponsiveContextHandler());
-                });
+            using var server = MockServer.CreateServer(options =>
+            {
+                options.Responsive.DefaultMobile  = device;
+                options.Responsive.DefaultTablet  = device;
+                options.Responsive.DefaultDesktop = device;
+                options.Responsive.IncludeWebApi  = false;
+            });
 
-            using var server   = new TestServer(builder);
-            var       client   = server.CreateClient();
-            var       request  = CreateHttpRequestMessage(agent, path);
-            var       response = await client.SendAsync(request);
+            var client   = server.CreateClient();
+            var request  = CreateHttpRequestMessage(agent, path);
+            var response = await client.SendAsync(request);
             response.EnsureSuccessStatusCode();
             Assert.Contains(device.ToString(), await response.Content.ReadAsStringAsync(), StringComparison.OrdinalIgnoreCase);
         }
@@ -208,28 +161,25 @@ namespace Wangkanai.Detection.Hosting
         [InlineData(Device.Mobile, "mobile", "/api/dog")]
         public async void AddResponsive_WebApi_Include_Api(Device device, string agent, string path)
         {
-            var builder = new WebHostBuilder()
-                .ConfigureServices(services =>
-                    services.AddDetection(options =>
-                    {
-                        options.Responsive.DefaultMobile  = device;
-                        options.Responsive.DefaultTablet  = device;
-                        options.Responsive.DefaultDesktop = device;
-                        options.Responsive.IncludeWebApi  = true;
-                    })
-                )
-                .Configure(app =>
-                {
-                    app.UseDetection();
-                    app.Run(ResponsiveContextHandler());
-                });
+            using var server = MockServer.CreateServer(options =>
+            {
+                options.Responsive.DefaultMobile  = device;
+                options.Responsive.DefaultTablet  = device;
+                options.Responsive.DefaultDesktop = device;
+                options.Responsive.IncludeWebApi  = true;
+            });
 
-            using var server   = new TestServer(builder);
-            var       client   = server.CreateClient();
-            var       request  = CreateHttpRequestMessage(agent, path);
-            var       response = await client.SendAsync(request);
+            var client   = server.CreateClient();
+            var request  = CreateHttpRequestMessage(agent, path);
+            var response = await client.SendAsync(request);
             response.EnsureSuccessStatusCode();
             Assert.Contains(device.ToString(), await response.Content.ReadAsStringAsync(), StringComparison.OrdinalIgnoreCase);
         }
+    }
+
+    internal static class HttpRequestMessageExtensions
+    {
+        public static void SetUserAgent(this HttpRequestMessage request, string agent)
+            => request.Headers.Add("User-Agent", agent);
     }
 }
