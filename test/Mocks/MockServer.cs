@@ -24,16 +24,14 @@ namespace Wangkanai.Detection.Hosting
             => CreateWebHostBuilder(options => { });
 
         public static IWebHostBuilder CreateWebHostBuilder(Action<DetectionOptions> options)
-        {
-            return new WebHostBuilder()
-                .ConfigureServices(services =>
-                    services.AddDetection(options))
-                .Configure(app =>
-                {
-                    app.UseDetection();
-                    app.Run(ResponsiveContextHandler());
-                });
-        }
+            => new WebHostBuilder()
+               .ConfigureServices(services =>
+                   services.AddDetection(options))
+               .Configure(app =>
+               {
+                   app.UseDetection();
+                   app.Run(ResponsiveContextHandler());
+               });
 
         private static RequestDelegate ResponsiveContextHandler()
         {
@@ -42,6 +40,7 @@ namespace Wangkanai.Detection.Hosting
                 Device.Desktop => context.Response.WriteAsync("Response: Desktop"),
                 Device.Tablet  => context.Response.WriteAsync("Response: Tablet"),
                 Device.Mobile  => context.Response.WriteAsync("Response: Mobile"),
+                Device.Watch   => context.Response.WriteAsync("Response: Watch"),
                 Device.Tv      => context.Response.WriteAsync("Response: TV"),
                 Device.Console => context.Response.WriteAsync("Response: Console"),
                 Device.Car     => context.Response.WriteAsync("Response: Car"),

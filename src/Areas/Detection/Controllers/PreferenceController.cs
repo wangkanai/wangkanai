@@ -12,6 +12,7 @@ namespace Wangkanai.Detection.Areas.Detection.Controllers
         public PreferenceController(IPreferenceService preferenceService)
             => _preferenceService = preferenceService;
 
+        // GET
         public IActionResult Index()
             => Content("Preference");
 
