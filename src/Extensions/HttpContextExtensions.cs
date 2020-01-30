@@ -16,9 +16,6 @@ namespace Microsoft.AspNetCore.Http
         public static bool IsNull(this HttpContext context)
             => context == null;
 
-        public static void SetUserAgent(this HttpContext context, string agent)
-            => context.Request.Headers.Add(agent, "User-Agent");
-
         public static UserAgent GetUserAgent(this HttpContext context)
             => new UserAgent(context.Request.Headers["User-Agent"].FirstOrDefault());
 
@@ -33,8 +30,8 @@ namespace Microsoft.AspNetCore.Http
                 throw new ArgumentNullException(nameof(context.Items));
 
             return context.Items.TryGetValue(ResponsiveContextKey, out var responsive)
-                ? (Device) responsive
-                : Device.Desktop;
+                       ? (Device) responsive
+                       : Device.Desktop;
         }
 
         public static void SetPreference(this HttpContext context, Device device)
@@ -48,8 +45,8 @@ namespace Microsoft.AspNetCore.Http
                 throw new ArgumentNullException(nameof(context.Items));
 
             return context.Items.TryGetValue(PreferenceContextKey, out var preference)
-                ? (Device) preference
-                : Device.Desktop;
+                       ? (Device) preference
+                       : Device.Desktop;
         }
 
         public static void SetMark(this HttpContext context, bool set)

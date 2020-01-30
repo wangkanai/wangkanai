@@ -28,8 +28,13 @@ namespace Wangkanai.Detection.DependencyInjection.Options
         /// <summary>
         /// Gets or sets a value that determine the responsive middleware to include Web Api Endpoint also.
         /// </summary>
+        /// <remarks><b>false</b> by default</remarks>
         public bool IncludeWebApi { get; set; } = false;
 
+        /// <summary>
+        /// Gets or sets a value that determine the responsive middleware is totally disable.
+        /// </summary>
+        /// <remarks><b>false</b> by default</remarks>
         public bool Disable { get; set; } = false;
     }
 }
