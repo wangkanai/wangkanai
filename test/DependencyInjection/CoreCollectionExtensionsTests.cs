@@ -20,15 +20,15 @@ namespace Wangkanai.Detection.DependencyInjection
             var serviceCollection = new ServiceCollection();
             var builder           = serviceCollection.AddDetectionBuilder().AddRequiredPlatformServices();
             var serviceDescriptors = new List<ServiceDescriptor>
-                                     {
-                                         new ServiceDescriptor(typeof(IHttpContextAccessor), typeof(HttpContextAccessor), ServiceLifetime.Singleton),
-                                         new ServiceDescriptor(typeof(IOptions<>), typeof(DetectionOptions), ServiceLifetime.Singleton),
-                                         new ServiceDescriptor(typeof(IOptionsSnapshot<>), typeof(DetectionOptions), ServiceLifetime.Scoped),
-                                         new ServiceDescriptor(typeof(IOptionsMonitor<>), typeof(DetectionOptions), ServiceLifetime.Singleton),
-                                         new ServiceDescriptor(typeof(IOptionsFactory<>), typeof(DetectionOptions), ServiceLifetime.Transient),
-                                         new ServiceDescriptor(typeof(IOptionsMonitorCache<>), typeof(DetectionOptions), ServiceLifetime.Singleton),
-                                         new ServiceDescriptor(typeof(DetectionOptions), typeof(DetectionOptions), ServiceLifetime.Singleton)
-                                     };
+            {
+                new ServiceDescriptor(typeof(IHttpContextAccessor), typeof(HttpContextAccessor), ServiceLifetime.Singleton),
+                new ServiceDescriptor(typeof(IOptions<>), typeof(DetectionOptions), ServiceLifetime.Singleton),
+                new ServiceDescriptor(typeof(IOptionsSnapshot<>), typeof(DetectionOptions), ServiceLifetime.Scoped),
+                new ServiceDescriptor(typeof(IOptionsMonitor<>), typeof(DetectionOptions), ServiceLifetime.Singleton),
+                new ServiceDescriptor(typeof(IOptionsFactory<>), typeof(DetectionOptions), ServiceLifetime.Transient),
+                new ServiceDescriptor(typeof(IOptionsMonitorCache<>), typeof(DetectionOptions), ServiceLifetime.Singleton),
+                new ServiceDescriptor(typeof(DetectionOptions), typeof(DetectionOptions), ServiceLifetime.Singleton)
+            };
 
             Assert.NotNull(builder);
             Assert.NotNull(builder.Services);
@@ -41,15 +41,15 @@ namespace Wangkanai.Detection.DependencyInjection
             var serviceCollection = new ServiceCollection();
             var builder           = serviceCollection.AddDetectionBuilder().AddCoreServices();
             var serviceDescriptors = new List<ServiceDescriptor>
-                                     {
-                                         new ServiceDescriptor(typeof(IUserAgentService), typeof(UserAgentService), ServiceLifetime.Transient),
-                                         new ServiceDescriptor(typeof(IDeviceService), typeof(DeviceService), ServiceLifetime.Transient),
-                                         new ServiceDescriptor(typeof(IEngineService), typeof(EngineService), ServiceLifetime.Transient),
-                                         new ServiceDescriptor(typeof(IPlatformService), typeof(PlatformService), ServiceLifetime.Transient),
-                                         new ServiceDescriptor(typeof(IBrowserService), typeof(BrowserService), ServiceLifetime.Transient),
-                                         new ServiceDescriptor(typeof(ICrawlerService), typeof(CrawlerService), ServiceLifetime.Transient),
-                                         new ServiceDescriptor(typeof(IDetectionService), typeof(DetectionService), ServiceLifetime.Transient),
-                                     };
+            {
+                new ServiceDescriptor(typeof(IUserAgentService), typeof(UserAgentService), ServiceLifetime.Transient),
+                new ServiceDescriptor(typeof(IDeviceService), typeof(DeviceService), ServiceLifetime.Transient),
+                new ServiceDescriptor(typeof(IEngineService), typeof(EngineService), ServiceLifetime.Transient),
+                new ServiceDescriptor(typeof(IPlatformService), typeof(PlatformService), ServiceLifetime.Transient),
+                new ServiceDescriptor(typeof(IBrowserService), typeof(BrowserService), ServiceLifetime.Transient),
+                new ServiceDescriptor(typeof(ICrawlerService), typeof(CrawlerService), ServiceLifetime.Transient),
+                new ServiceDescriptor(typeof(IDetectionService), typeof(DetectionService), ServiceLifetime.Transient),
+            };
 
             Assert.NotNull(builder);
             Assert.NotNull(builder.Services);
@@ -62,9 +62,9 @@ namespace Wangkanai.Detection.DependencyInjection
             var serviceCollection = new ServiceCollection();
             var builder           = serviceCollection.AddDetectionBuilder().AddMarkerService();
             var serviceDescriptors = new List<ServiceDescriptor>
-                                     {
-                                         new ServiceDescriptor(typeof(MarkerService), typeof(MarkerService), ServiceLifetime.Singleton),
-                                     };
+            {
+                new ServiceDescriptor(typeof(MarkerService), typeof(MarkerService), ServiceLifetime.Singleton),
+            };
 
             Assert.NotNull(builder);
             Assert.NotNull(builder.Services);

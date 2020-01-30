@@ -30,7 +30,7 @@ dotnet_style_qualification_for_property = false:suggestion
 dotnet_style_require_accessibility_modifiers = for_non_interface_members:suggestion
 
 # ReSharper properties
-resharper_align_multiline_array_and_object_initializer = true
+# resharper_align_multiline_array_and_object_initializer = true
 resharper_autodetect_indent_settings = true
 resharper_enforce_line_ending_style = true
 resharper_int_align_assignments = true
@@ -53,13 +53,12 @@ resharper_wrap_before_arrow_with_expressions = true
 resharper_wrap_chained_method_calls = chop_if_long
 resharper_wrap_enum_declaration = chop_if_long
 resharper_wrap_multiple_type_parameter_constraints_style = wrap_if_long
-
-# resharper_align_multiline_calls_chain = true
-# resharper_align_multiline_expression = true
-# resharper_align_multiple_declaration = true
-# resharper_align_multline_type_parameter_constrains = true
-# resharper_enforce_line_ending_style = true
-# resharper_csharp_max_line_length = 300
+resharper_align_multiline_calls_chain = true
+resharper_align_multiline_expression = true
+resharper_align_multiple_declaration = true
+resharper_align_multline_type_parameter_constrains = true
+resharper_enforce_line_ending_style = true
+resharper_csharp_max_line_length = 300
 
 # ReSharper inspection severities
 resharper_arrange_redundant_parentheses_highlighting = hint
