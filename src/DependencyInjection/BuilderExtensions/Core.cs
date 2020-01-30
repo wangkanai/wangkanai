@@ -18,7 +18,7 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IDetectionBuilder AddRequiredPlatformServices(this IDetectionBuilder builder)
         {
             // Hosting doesn't add IHttpContextAccessor by default
-            builder.Services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            builder.Services.AddHttpContextAccessor();//.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             // Add Detection Options
             builder.Services.AddOptions();
