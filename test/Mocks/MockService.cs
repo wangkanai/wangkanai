@@ -3,7 +3,6 @@
 
 using System.Diagnostics;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Session;
 using Moq;
 using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Models;
@@ -15,8 +14,8 @@ namespace Wangkanai.Detection.Services
     {
         public static ResponsiveService CreateResponsiveService(string agent, DetectionOptions options = null)
         {
-            var service = CreateService(agent);
-            var device  = new DeviceService(service);
+            var service    = CreateService(agent);
+            var device     = new DeviceService(service);
             var preference = Mock.Of<IPreferenceService>();
             return CreateResponsiveService(device, preference, options);
         }
