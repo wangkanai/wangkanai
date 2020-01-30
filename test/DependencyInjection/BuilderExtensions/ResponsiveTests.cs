@@ -232,4 +232,10 @@ namespace Wangkanai.Detection.Hosting
             Assert.Contains(device.ToString(), await response.Content.ReadAsStringAsync(), StringComparison.OrdinalIgnoreCase);
         }
     }
+
+    internal static class HttpRequestMessageExtensions
+    {
+        public static void SetUserAgent(this HttpRequestMessage request, string agent)
+            => request.Headers.Add("User-Agent", agent);
+    }
 }
