@@ -25,8 +25,6 @@ namespace Microsoft.Extensions.DependencyInjection
             if (app is null)
                 throw new ArgumentNullException(nameof(app));
 
-            app.UseSession();
-
             app.Validate();
 
             VerifyMarkerIsRegistered(app);
@@ -50,7 +48,11 @@ namespace Microsoft.Extensions.DependencyInjection
         }
 
         private static IApplicationBuilder UseResponsive(this IApplicationBuilder app)
-            => app.UseMiddleware<ResponsiveMiddleware>();
+        {
+            app.UseSession();
+            app.UseMiddleware<ResponsiveMiddleware>();
+            return app;
+        }
 
         private static void Validate(this IApplicationBuilder app)
         {
