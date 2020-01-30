@@ -11,9 +11,6 @@ namespace Microsoft.Extensions.DependencyInjection
     /// </summary>
     public static class DetectionCollectionExtensions
     {
-        public static IDetectionBuilder AddDetectionBuilder(this IServiceCollection services)
-            => new DetectionBuilder(services);
-
         /// <summary>
         ///     Add Detection Service to the services container.
         /// </summary>
@@ -43,5 +40,8 @@ namespace Microsoft.Extensions.DependencyInjection
 
             return builder;
         }
+
+        internal static IDetectionBuilder AddDetectionBuilder(this IServiceCollection services)
+            => new DetectionBuilder(services);
     }
 }
