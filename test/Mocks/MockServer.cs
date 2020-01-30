@@ -21,7 +21,7 @@ namespace Wangkanai.Detection.Hosting
             => new TestServer(builder);
 
         public static IWebHostBuilder CreateWebHostBuilder()
-            => CreateWebHostBuilder(null);
+            => CreateWebHostBuilder(options => { });
 
         public static IWebHostBuilder CreateWebHostBuilder(Action<DetectionOptions> options)
         {
