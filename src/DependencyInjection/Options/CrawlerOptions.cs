@@ -5,8 +5,14 @@ using System.Collections.Generic;
 
 namespace Wangkanai.Detection.DependencyInjection.Options
 {
+    /// <summary>
+    /// The <see cref="CrawlerOptions"/> class is the Crawler container for all the configuration settings of Crawler Resolver.
+    /// </summary>
     public class CrawlerOptions
     {
+        /// <summary>
+        /// Gets a list of crawlers name you would like to add to this application. 
+        /// </summary>
         public List<string> Others { get; set; } = new List<string>();
     }
 }
