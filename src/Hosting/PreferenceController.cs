@@ -2,7 +2,7 @@
 using Wangkanai.Detection.Models;
 using Wangkanai.Detection.Services;
 
-namespace Wangkanai.Detection.Areas.Detection.Controllers
+namespace Wangkanai.Detection.Hosting
 {
     [Area("Detection")]
     public class PreferenceController : Controller
