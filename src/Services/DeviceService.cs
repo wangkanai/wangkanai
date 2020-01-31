@@ -32,6 +32,9 @@ namespace Wangkanai.Detection.Services
             // Mobile
             if (IsMobile(agent, request))
                 return Device.Mobile;
+            // Watch
+            if (agent.Contains(Device.Watch))
+                return Device.Watch;
             // Console
             if (agent.Contains(Device.Console))
                 return Device.Console;

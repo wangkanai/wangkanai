@@ -10,7 +10,7 @@ namespace Wangkanai.Detection.Services
 {
     public class BrowserService : IBrowserService
     {
-        public Browser Type { get; }
+        public Browser Type    { get; }
         public Version Version { get; }
 
         public BrowserService(IUserAgentService userAgentService, IPlatformService platformService, IEngineService engineService)
@@ -18,7 +18,7 @@ namespace Wangkanai.Detection.Services
             var agent  = userAgentService.UserAgent;
             var os     = platformService.OperatingSystem;
             var engine = engineService.Type;
-            Type = GetBrowser(agent, os, engine);
+            Type    = GetBrowser(agent, os, engine);
             Version = GetVersion(agent.ToLower(), Type.ToString());
         }
 
@@ -42,7 +42,6 @@ namespace Wangkanai.Detection.Services
             // Firefox
             if (agent.Contains(Browser.Firefox))
                 return Browser.Firefox;
-
             // Opera
             if (agent.Contains(Browser.Opera))
                 return Browser.Opera;
@@ -52,15 +51,15 @@ namespace Wangkanai.Detection.Services
 
         private static Version GetVersion(string agent, string browser)
         {
-            if(agent.IsNullOrEmpty())
+            if (agent.IsNullOrEmpty())
                 return new Version();
 
-            if(agent.Contains("rv:11.0") || agent.Contains("ie 11.0"))
-                return new Version(11,0);
-            if(agent.Contains("msie 10"))
-                return new Version(10,0);
-            if(agent.Contains("msie 9"))
-                return new Version(9,0);
+            if (agent.Contains("rv:11.0") || agent.Contains("ie 11.0"))
+                return new Version(11, 0);
+            if (agent.Contains("msie 10"))
+                return new Version(10, 0);
+            if (agent.Contains("msie 9"))
+                return new Version(9, 0);
 
             var    first = agent.IndexOf(browser.ToLower(), StringComparison.Ordinal);
             string cut;
