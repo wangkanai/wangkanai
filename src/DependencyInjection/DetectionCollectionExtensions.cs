@@ -18,10 +18,8 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <param name="setAction">An <see cref="Action{DetectionOptions}"/> to configure the provided <see cref="DetectionOptions"/>.</param>
         /// <returns>An <see cref="IServiceCollection" /> so that additional calls can be chained.</returns>
         public static IDetectionBuilder AddDetection(this IServiceCollection services, Action<DetectionOptions> setAction)
-        {
-            services.Configure(setAction);
-            return services.AddDetection();
-        }
+            => services.Configure(setAction)
+                       .AddDetection();
 
         /// <summary>
         ///     Add Detection Service to the services container.
@@ -29,17 +27,12 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <param name="services">The services available in the application.</param>
         /// <returns>An <see cref="IServiceCollection" /> so that additional calls can be chained.</returns>
         public static IDetectionBuilder AddDetection(this IServiceCollection services)
-        {
-            var builder = services.AddDetectionBuilder();
-
-            builder.AddRequiredPlatformServices();
-            builder.AddCoreServices();
-            builder.AddSessionServices();
-            builder.AddResponsiveService();
-            builder.AddMarkerService();
-
-            return builder;
-        }
+            => services.AddDetectionBuilder()
+                       .AddRequiredPlatformServices()
+                       .AddCoreServices()
+                       .AddSessionServices()
+                       .AddResponsiveService()
+                       .AddMarkerService();
 
         internal static IDetectionBuilder AddDetectionBuilder(this IServiceCollection services)
             => new DetectionBuilder(services);
