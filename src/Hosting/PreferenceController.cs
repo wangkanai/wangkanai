@@ -4,10 +4,11 @@ using Wangkanai.Detection.Services;
 
 namespace Wangkanai.Detection.Hosting
 {
-    [Area("Detection")]
+    [Area(AreaName)]
     public class PreferenceController : Controller
     {
         private readonly IPreferenceService _preferenceService;
+        private const    string             AreaName = "Detection";
 
         public PreferenceController(IPreferenceService preferenceService)
             => _preferenceService = preferenceService;
