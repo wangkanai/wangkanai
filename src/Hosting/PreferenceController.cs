@@ -1,15 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Models;
 using Wangkanai.Detection.Services;
 
-namespace Wangkanai.Detection.Areas.Detection.Controllers
+namespace Wangkanai.Detection.Hosting
 {
-    [Area("Detection")]
+    [Area(AreaName)]
     public class PreferenceController : Controller
     {
         private readonly IPreferenceService _preferenceService;
+        private const string AreaName = "Detection";
 
-        public PreferenceController(IPreferenceService preferenceService)
+        public PreferenceController(IPreferenceService preferenceService) 
             => _preferenceService = preferenceService;
 
         // GET

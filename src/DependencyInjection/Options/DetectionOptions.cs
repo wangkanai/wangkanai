@@ -3,9 +3,28 @@
 
 namespace Wangkanai.Detection.DependencyInjection.Options
 {
+    /// <summary>
+    /// Provides programmatic configuration for the Detection library.
+    /// </summary>
     public class DetectionOptions
     {
-        public CrawlerOptions Crawler { get; set; } = new CrawlerOptions();
-        public ResponsiveOptions Responsive { get; set; } = new ResponsiveOptions();
+        /// <summary>
+        /// Creates a new instamce of <see cref="DetectionOptions"/>
+        /// </summary>
+        public DetectionOptions()
+        {
+            Crawler = new CrawlerOptions();
+            Responsive = new ResponsiveOptions();
+        }
+        
+        /// <summary>
+        /// Gets the default <see cref="CrawlerOptions"/> used by this application.
+        /// </summary>
+        public CrawlerOptions Crawler { get; }
+        
+        /// <summary>
+        /// Gets the default <see cref="ResponsiveOptions"/> used by this application.
+        /// </summary>
+        public ResponsiveOptions Responsive { get; }
     }
 }

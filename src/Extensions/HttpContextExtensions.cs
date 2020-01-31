@@ -13,12 +13,6 @@ namespace Microsoft.AspNetCore.Http
         private const string PreferenceContextKey = "Preference";
         private const string MarkContextKey       = "Mark";
 
-        public static bool IsNull(this HttpContext context)
-            => context == null;
-
-        public static UserAgent GetUserAgent(this HttpContext context)
-            => new UserAgent(context.Request.Headers["User-Agent"].FirstOrDefault());
-
         public static void SetDevice(this HttpContext context, Device device)
             => context.Items[ResponsiveContextKey] = device;
 
