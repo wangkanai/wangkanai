@@ -28,8 +28,7 @@ namespace Wangkanai.Detection.Services
             var preference = new Preference {Configured = configured, Device = preferred};
             _context.Session.Set(PreferenceContextKey, Encoding.ASCII.GetBytes(preference.Serialized()));
         }
-
-
+        
         private Preference Get()
         {
             _context.Session.TryGetValue(PreferenceContextKey, out var raw);

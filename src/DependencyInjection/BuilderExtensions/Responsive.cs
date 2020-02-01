@@ -2,8 +2,6 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
-using System.Reflection;
-using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Wangkanai.Detection.Hosting;
