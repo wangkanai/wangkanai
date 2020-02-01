@@ -14,41 +14,41 @@ namespace Wangkanai.Detection.Services
     {
         public static ResponsiveService CreateResponsiveService(string agent, DetectionOptions options = null)
         {
-            var service    = CreateService(agent);
-            var device     = new DeviceService(service);
-            var preference = Mock.Of<IPreferenceService>();
-            return CreateResponsiveService(device, preference, options);
+            var agentService = CreateUserAgentService(agent);
+            var device       = new DeviceService(agentService);
+            var accessor     = new HttpContextAccessor();
+            return CreateResponsiveService(accessor, device, options);
         }
 
-        public static ResponsiveService CreateResponsiveService(IDeviceService device, IPreferenceService preference, DetectionOptions options = null)
-            => new ResponsiveService(device, preference, options);
+        public static ResponsiveService CreateResponsiveService(IHttpContextAccessor accessor, IDeviceService device, DetectionOptions options = null)
+            => new ResponsiveService(accessor, device, options);
 
         public static EngineService CreateEngineService(string agent)
         {
-            var service  = CreateService(agent);
+            var service  = CreateUserAgentService(agent);
             var platform = CreatePlatformService(service);
             return new EngineService(service, platform);
         }
 
         public static PlatformService CreatePlatformService(string agent)
-            => new PlatformService(CreateService(agent));
+            => new PlatformService(CreateUserAgentService(agent));
 
         private static PlatformService CreatePlatformService(IUserAgentService service)
             => new PlatformService(service);
 
         public static CrawlerService CreateCrawlerService(string agent, DetectionOptions options = null)
-            => new CrawlerService(CreateService(agent), options);
+            => new CrawlerService(CreateUserAgentService(agent), options);
 
         public static DeviceService CreateDeviceService(string value, string header)
-            => new DeviceService(CreateService(value, header));
+            => new DeviceService(CreateUserAgentService(value, header));
 
         public static DeviceService CreateDeviceService(string agent)
-            => new DeviceService(CreateService(agent));
+            => new DeviceService(CreateUserAgentService(agent));
 
-        public static IUserAgentService CreateService(string agent)
+        public static IUserAgentService CreateUserAgentService(string agent)
             => MockUserAgentService(agent).Object;
 
-        public static IUserAgentService CreateService(string value, string header)
+        public static IUserAgentService CreateUserAgentService(string value, string header)
             => MockUserAgentService(value, header).Object;
 
         #region internal

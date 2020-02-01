@@ -4,7 +4,6 @@
 using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
-using Moq;
 using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Models;
 using Wangkanai.Detection.Services;
@@ -38,7 +37,7 @@ namespace Wangkanai.Detection.Hosting
         [Fact]
         public async void Invoke_HttpContext_ResponsiveService_Null_ThrowsNullReferenceException()
         {
-            var service    = MockService.CreateService(null);
+            var service    = MockService.CreateUserAgentService(null);
             var middleware = new ResponsiveMiddleware(Next);
 
             await Assert.ThrowsAsync<NullReferenceException>(
@@ -49,11 +48,11 @@ namespace Wangkanai.Detection.Hosting
         [Fact]
         public async void Invoke_HttpContext_ResponsiveService_Success()
         {
-            var service    = MockService.CreateService(null);
-            var options    = new DetectionOptions();
-            var device     = new DeviceService(service);
-            var preference = Mock.Of<IPreferenceService>();
-            var resolver   = new ResponsiveService(device, preference, options);
+            var service  = MockService.CreateUserAgentService(null);
+            var accessor = new HttpContextAccessor();
+            var options  = new DetectionOptions();
+            var device   = new DeviceService(service);
+            var resolver = new ResponsiveService(accessor, device, options);
 
             var middleware = new ResponsiveMiddleware(Next);
 

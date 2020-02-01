@@ -1,5 +1,4 @@
 ﻿using System;
-using Wangkanai.Detection.Extensions;
 using Wangkanai.Detection.Models;
 using Xunit;
 
@@ -100,7 +99,7 @@ namespace Wangkanai.Detection.Services
 
         private static BrowserService MockBrowserService(string agent)
         {
-            var service  = MockService.CreateService(agent);
+            var service  = MockService.CreateUserAgentService(agent);
             var platform = new PlatformService(service);
             var engine   = new EngineService(service, platform);
             var resolver = new BrowserService(service, platform, engine);
