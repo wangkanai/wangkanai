@@ -52,10 +52,10 @@ public void ConfigureServices(IServiceCollection services)
     // Add responsive services.
     services.AddDetection(options =>
     {
-        options.Responsive.DefaultTablet = Device.Desktop;
-        options.Responsive.DefaultMobile = Device.Mobile;
+        options.Responsive.DefaultTablet  = Device.Desktop;
+        options.Responsive.DefaultMobile  = Device.Mobile;
         options.Responsive.DefaultDesktop = Device.Desktop;
-        options.Responsive.IncludeWebApi = true;
+        options.Responsive.IncludeWebApi  = true;
     });
 
     // Add framework services.
