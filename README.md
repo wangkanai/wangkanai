@@ -2,8 +2,6 @@
 
 ASP.NET Core Detection service components for identifying details about client device, browser, engine, platform, & crawler. Responsive middleware for routing base upon request client device detection to specific view. Also in the added feature of user preference made this library even more comprehensive must for developers whom to target multiple devices with view rendered and optimized directly from the server side.
 
-This project development has been in the long making of my little spare time. Please show your appreciation and help me provide feedback on you think will improve this library. All developers are welcome to come and improve the code by submit a pull request. We will have constructive good discussion together to the greater good.
-
 <img src="https://raw.githubusercontent.com/wangkanai/Detection/dev/asset/aspnet-core-detection-3.svg?sanitize=true" width="650" alt="ASP.NET Core Detection" />
 
 [![Build status](https://ci.appveyor.com/api/projects/status/033qv4nqv8g4altq?svg=true&retina=true)](https://ci.appveyor.com/project/wangkanai/detection)
@@ -17,6 +15,7 @@ This project development has been in the long making of my little spare time. Pl
 
 [![Build history](https://buildstats.info/appveyor/chart/wangkanai/detection)](https://ci.appveyor.com/project/wangkanai/detection/history)
 
+This project development has been in the long making of my little spare time. Please show your appreciation and help me provide feedback on you think will improve this library. All developers are welcome to come and improve the code by submit a pull request. We will have constructive good discussion together to the greater good.
 
 ## Installation
 
@@ -90,6 +89,7 @@ Adding the TagHelper features to your web application with following in your `_V
 ```
 
 ### Directory Structure
+
 * `src` - The code of this project lives here
 * `collection` - Collection of sample user agents for lab testing
 * `sample` - Contains sample web application of usage
@@ -112,11 +112,12 @@ Become a financial contributor and help us sustain our community. [[Contribute](
 
 #### Individuals
 
-<a href="https://opencollective.com/wangkanai"><img src="https://opencollective.com/wangkanai/individuals.svg?width=890"></a>
+[![Individuals Contributors](https://opencollective.com/wangkanai/individuals.svg?width=890)](https://opencollective.com/wangkanai)
 
 #### Organizations
 
-Support this project with your organization. Your logo will show up here with a link to your website. [[Contribute](https://opencollective.com/wangkanai/contribute)]
+Support this project with your organization. Your logo will show up here with a link to your website. 
+[[Contribute](https://opencollective.com/wangkanai/contribute)]
 
 <a href="https://opencollective.com/wangkanai/organization/0/website"><img src="https://opencollective.com/wangkanai/organization/0/avatar.svg"></a>
 <a href="https://opencollective.com/wangkanai/organization/1/website"><img src="https://opencollective.com/wangkanai/organization/1/avatar.svg"></a>
