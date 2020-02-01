@@ -4,9 +4,6 @@
 using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Abstractions;
-using Microsoft.Extensions.Options;
 using Moq;
 using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Models;
