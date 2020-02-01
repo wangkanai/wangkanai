@@ -16,7 +16,7 @@ namespace Microsoft.Extensions.DependencyInjection
             if (builder == null)
                 throw new ArgumentNullException(nameof(builder));
 
-            builder.Services.TryAddScoped<IPreferenceService, PreferenceService>();
+            //builder.Services.TryAddScoped<IPreferenceService, PreferenceService>();
             builder.Services.TryAddTransient<IResponsiveService, ResponsiveService>();
 
             builder.Services.Configure<RazorViewEngineOptions>(options =>
@@ -24,7 +24,7 @@ namespace Microsoft.Extensions.DependencyInjection
                 options.ViewLocationExpanders.Add(new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Suffix));
                 options.ViewLocationExpanders.Add(new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Subfolder));
             });
-            
+
             return builder;
         }
     }

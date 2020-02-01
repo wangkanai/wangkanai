@@ -34,6 +34,28 @@ namespace Wangkanai.Detection.Services
                 View = PreferView();
         }
 
+        public void PreferSet(Device desktop)
+            => _context.Session.SetString(ResponsiveContextKey, desktop.ToString());
+
+        public void PreferClear()
+            => _context.Session.Remove(ResponsiveContextKey);
+
+        public bool IsPreferred()
+            => _context.SafeSession() != null;
+
+        private Device PreferView()
+        {
+            if (!IsPreferred())
+                return Device.Unknown;
+            var session = _context.SafeSession();
+            if (session.Keys.All(k => k != ResponsiveContextKey))
+                return Device.Unknown;
+
+            _context.Session.TryGetValue(ResponsiveContextKey, out var raw);
+            Enum.TryParse<Device>(Encoding.ASCII.GetString(raw), out var preferred);
+            return preferred;
+        }
+
         private static Device DefaultView(Device device, ResponsiveOptions options)
             => device switch
             {
@@ -42,19 +64,5 @@ namespace Wangkanai.Detection.Services
                 Device.Desktop => options.DefaultDesktop,
                 _              => device
             };
-
-        private Device PreferView()
-        {
-            var session = _context.SafeSession();
-            if (session == null)
-                return Device.Unknown;
-            if (session.Keys.All(k => k != ResponsiveContextKey))
-                return Device.Unknown;
-
-            _context.Session.TryGetValue(ResponsiveContextKey, out var raw);
-            var preferred = Encoding.ASCII.GetString(raw);
-            Enum.TryParse<Device>(preferred, out var result);
-            return result;
-        }
     }
 }
