@@ -41,7 +41,7 @@ namespace Wangkanai.Detection.Services
             => _context.Session.Remove(ResponsiveContextKey);
 
         public bool IsPreferred()
-            => _context.SafeSession() != null;
+            => _context.SafeSession().Keys.Any(k => k == ResponsiveContextKey);
 
         private Device PreferView()
         {
