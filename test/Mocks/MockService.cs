@@ -51,17 +51,18 @@ namespace Wangkanai.Detection.Services
         public static IUserAgentService CreateUserAgentService(string value, string header)
             => MockUserAgentService(value, header).Object;
 
+        public static IHttpContextAccessor CreateHttpContextAccessor(string agent, string header = null)
+            => new HttpContextAccessor {HttpContext = CreateContext(agent, header)};
+
         #region internal
 
-        private static HttpContext DefaultHttpContext()
+        private static HttpContext DefaultHttpContext
             => new DefaultHttpContext();
 
-        private static HttpContext CreateContext(string value)
-            => CreateContext(value, "User-Agent");
-
-        private static HttpContext CreateContext(string value, string header)
+        private static HttpContext CreateContext(string value, string header = null)
         {
-            var context = DefaultHttpContext();
+            if (header == null) header = "User-Agent";
+            var context                = DefaultHttpContext;
             context.Request.Headers.Add(header, new[] {value});
             return context;
         }

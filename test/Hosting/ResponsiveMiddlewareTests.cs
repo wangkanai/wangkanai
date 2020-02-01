@@ -48,17 +48,17 @@ namespace Wangkanai.Detection.Hosting
         [Fact]
         public async void Invoke_HttpContext_ResponsiveService_Success()
         {
-            var service  = MockService.CreateUserAgentService(null);
-            var accessor = new HttpContextAccessor();
+            var accessor = MockService.CreateHttpContextAccessor("desktop");
             var options  = new DetectionOptions();
-            var device   = new DeviceService(service);
+            var agent    = new UserAgentService(accessor);
+            var device   = new DeviceService(agent);
             var resolver = new ResponsiveService(accessor, device, options);
 
             var middleware = new ResponsiveMiddleware(Next);
 
-            await middleware.Invoke(service.Context, resolver);
+            await middleware.Invoke(accessor.HttpContext, resolver);
 
-            Assert.Equal(Device.Desktop, service.Context.GetDevice());
+            Assert.Equal(Device.Desktop, accessor.HttpContext.GetDevice());
         }
     }
 }
