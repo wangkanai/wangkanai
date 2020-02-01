@@ -2,6 +2,7 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
+using System.Linq;
 using System.Text;
 using Microsoft.AspNetCore.Http;
 using Wangkanai.Detection.DependencyInjection.Options;
@@ -44,8 +45,13 @@ namespace Wangkanai.Detection.Services
 
         private Device PreferView()
         {
-            if (!_context.Session.TryGetValue(ResponsiveContextKey, out var raw))
+            var session = _context.SafeSession();
+            if (session == null)
                 return Device.Unknown;
+            if (session.Keys.All(k => k != ResponsiveContextKey))
+                return Device.Unknown;
+
+            _context.Session.TryGetValue(ResponsiveContextKey, out var raw);
             var preferred = Encoding.ASCII.GetString(raw);
             Enum.TryParse<Device>(preferred, out var result);
             return result;

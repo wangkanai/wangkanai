@@ -4,7 +4,7 @@
 using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
-using Wangkanai.Detection.DependencyInjection.Options;
+using Wangkanai.Detection.Mocks;
 using Wangkanai.Detection.Models;
 using Wangkanai.Detection.Services;
 using Xunit;
@@ -48,17 +48,15 @@ namespace Wangkanai.Detection.Hosting
         [Fact]
         public async void Invoke_HttpContext_ResponsiveService_Success()
         {
-            var accessor = MockService.CreateHttpContextAccessor("desktop");
-            var options  = new DetectionOptions();
-            var agent    = new UserAgentService(accessor);
-            var device   = new DeviceService(agent);
-            var resolver = new ResponsiveService(accessor, device, options);
-
-            var middleware = new ResponsiveMiddleware(Next);
-
-            await middleware.Invoke(accessor.HttpContext, resolver);
-
-            Assert.Equal(Device.Desktop, accessor.HttpContext.GetDevice());
+            using var server   = MockServer.CreateServer();
+            var       request  = MockClient.CreateRequest(Device.Desktop);
+            var       client   = server.CreateClient();
+            var       response = await client.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+            Assert.Contains(
+                "desktop",
+                await response.Content.ReadAsStringAsync(),
+                StringComparison.OrdinalIgnoreCase);
         }
     }
 }

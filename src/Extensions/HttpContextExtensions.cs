@@ -2,6 +2,7 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
+using Microsoft.AspNetCore.Http.Features;
 using Wangkanai.Detection.Models;
 
 namespace Microsoft.AspNetCore.Http
@@ -9,8 +10,12 @@ namespace Microsoft.AspNetCore.Http
     internal static class HttpContextExtensions
     {
         private const string ResponsiveContextKey = "Responsive";
-        private const string PreferenceContextKey = "Preference";
-        private const string MarkContextKey       = "Mark";
+
+        public static ISession SafeSession(this HttpContext httpContext)
+        {
+            var sessionFeature = httpContext.Features.Get<ISessionFeature>();
+            return sessionFeature == null ? null : httpContext.Session;
+        }
 
         public static void SetDevice(this HttpContext context, Device device)
             => context.Items[ResponsiveContextKey] = device;

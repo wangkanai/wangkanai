@@ -14,9 +14,8 @@ namespace Wangkanai.Detection.Services
     {
         public static ResponsiveService CreateResponsiveService(string agent, DetectionOptions options = null)
         {
-            var agentService = CreateUserAgentService(agent);
-            var device       = new DeviceService(agentService);
-            var accessor     = new HttpContextAccessor();
+            var accessor = CreateHttpContextAccessor(agent);
+            var device   = CreateDeviceService(agent);
             return CreateResponsiveService(accessor, device, options);
         }
 
