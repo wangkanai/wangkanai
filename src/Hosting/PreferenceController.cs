@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Models;
 using Wangkanai.Detection.Services;
 
@@ -8,11 +7,11 @@ namespace Wangkanai.Detection.Hosting
     [Area(AreaName)]
     public class PreferenceController : Controller
     {
-        private readonly IPreferenceService _preferenceService;
-        private const string AreaName = "Detection";
+        private readonly IResponsiveService _responsive;
+        private const    string             AreaName = "Detection";
 
-        public PreferenceController(IPreferenceService preferenceService) 
-            => _preferenceService = preferenceService;
+        public PreferenceController(IResponsiveService responsive)
+            => _responsive = responsive;
 
         // GET
         public IActionResult Index()
@@ -21,7 +20,7 @@ namespace Wangkanai.Detection.Hosting
         // GET
         public IActionResult Prefer(string returnUrl = null)
         {
-            _preferenceService.Set(Device.Desktop);
+            _responsive.PreferSet(Device.Desktop);
 
             return LocalRedirect(returnUrl ?? "/");
         }
@@ -29,7 +28,7 @@ namespace Wangkanai.Detection.Hosting
         // GET
         public IActionResult Clear(string returnUrl = null)
         {
-            _preferenceService.Clear();
+            _responsive.PreferClear();
 
             return LocalRedirect(returnUrl ?? "/");
         }

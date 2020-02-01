@@ -1,6 +1,10 @@
 // Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
+using System;
+using System.Linq;
+using System.Text;
+using Microsoft.AspNetCore.Http;
 using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Models;
 
@@ -10,18 +14,47 @@ namespace Wangkanai.Detection.Services
     {
         public Device View { get; }
 
-        public ResponsiveService(IDeviceService deviceService, IPreferenceService preferenceService, DetectionOptions options)
+        private readonly HttpContext _context;
+        private const    string      ResponsiveContextKey = "Responsive";
+
+        public ResponsiveService(IHttpContextAccessor accessor, IDeviceService deviceService, DetectionOptions options)
         {
+            if (accessor == null)
+                throw new ArgumentNullException(nameof(accessor));
+            if (deviceService == null)
+                throw new ArgumentNullException(nameof(deviceService));
             if (options == null)
                 options = new DetectionOptions();
-            View = deviceService != null
-                ? GetView(deviceService.Type, options.Responsive)
-                : Device.Desktop;
-            if (preferenceService.IsSet && preferenceService.Preferred != View)
-                View = preferenceService.Preferred;
+
+            _context = accessor.HttpContext;
+
+            View = DefaultView(deviceService.Type, options.Responsive);
+            var preferView = PreferView();
+            if (preferView != Device.Unknown && preferView != View)
+                View = PreferView();
         }
 
-        private static Device GetView(Device device, ResponsiveOptions options)
+        public void PreferSet(Device desktop)
+            => _context.Session.SetString(ResponsiveContextKey, desktop.ToString());
+
+        public void PreferClear()
+            => _context.Session.Remove(ResponsiveContextKey);
+
+        public bool IsPreferred()
+            => _context.SafeSession() != null
+               && _context.SafeSession().Keys.Any(k => k == ResponsiveContextKey);
+
+        private Device PreferView()
+        {
+            if (!IsPreferred())
+                return Device.Unknown;
+
+            _context.Session.TryGetValue(ResponsiveContextKey, out var raw);
+            Enum.TryParse<Device>(Encoding.ASCII.GetString(raw), out var preferred);
+            return preferred;
+        }
+
+        private static Device DefaultView(Device device, ResponsiveOptions options)
             => device switch
             {
                 Device.Mobile  => options.DefaultMobile,

@@ -2,7 +2,7 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
-using System.Linq;
+using Microsoft.AspNetCore.Http.Features;
 using Wangkanai.Detection.Models;
 
 namespace Microsoft.AspNetCore.Http
@@ -10,8 +10,12 @@ namespace Microsoft.AspNetCore.Http
     internal static class HttpContextExtensions
     {
         private const string ResponsiveContextKey = "Responsive";
-        private const string PreferenceContextKey = "Preference";
-        private const string MarkContextKey       = "Mark";
+
+        public static ISession SafeSession(this HttpContext httpContext)
+        {
+            var sessionFeature = httpContext.Features.Get<ISessionFeature>();
+            return sessionFeature == null ? null : httpContext.Session;
+        }
 
         public static void SetDevice(this HttpContext context, Device device)
             => context.Items[ResponsiveContextKey] = device;
@@ -26,35 +30,6 @@ namespace Microsoft.AspNetCore.Http
             return context.Items.TryGetValue(ResponsiveContextKey, out var responsive)
                        ? (Device) responsive
                        : Device.Desktop;
-        }
-
-        public static void SetPreference(this HttpContext context, Device device)
-            => context.Items[PreferenceContextKey] = device;
-
-        public static Device GetPreference(this HttpContext context)
-        {
-            if (context == null)
-                throw new ArgumentNullException(nameof(context));
-            if (context.Items == null)
-                throw new ArgumentNullException(nameof(context.Items));
-
-            return context.Items.TryGetValue(PreferenceContextKey, out var preference)
-                       ? (Device) preference
-                       : Device.Desktop;
-        }
-
-        public static void SetMark(this HttpContext context, bool set)
-            => context.Session.SetString(MarkContextKey, set.ToString());
-
-        public static bool GetMark(this HttpContext context)
-        {
-            if (context == null)
-                throw new ArgumentNullException(nameof(context));
-            if (context.Items == null)
-                throw new ArgumentNullException(nameof(context.Items));
-
-            bool.TryParse(context.Session.GetString(MarkContextKey), out var mark);
-            return mark;
         }
     }
 }
