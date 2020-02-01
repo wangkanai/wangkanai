@@ -28,33 +28,33 @@ namespace Microsoft.AspNetCore.Http
                        : Device.Desktop;
         }
 
-        public static void SetPreference(this HttpContext context, Device device)
-            => context.Items[PreferenceContextKey] = device;
-
-        public static Device GetPreference(this HttpContext context)
-        {
-            if (context == null)
-                throw new ArgumentNullException(nameof(context));
-            if (context.Items == null)
-                throw new ArgumentNullException(nameof(context.Items));
-
-            return context.Items.TryGetValue(PreferenceContextKey, out var preference)
-                       ? (Device) preference
-                       : Device.Desktop;
-        }
-
-        public static void SetMark(this HttpContext context, bool set)
-            => context.Session.SetString(MarkContextKey, set.ToString());
-
-        public static bool GetMark(this HttpContext context)
-        {
-            if (context == null)
-                throw new ArgumentNullException(nameof(context));
-            if (context.Items == null)
-                throw new ArgumentNullException(nameof(context.Items));
-
-            bool.TryParse(context.Session.GetString(MarkContextKey), out var mark);
-            return mark;
-        }
+        // public static void SetPreference(this HttpContext context, Device device)
+        //     => context.Items[PreferenceContextKey] = device;
+        //
+        // public static Device GetPreference(this HttpContext context)
+        // {
+        //     if (context == null)
+        //         throw new ArgumentNullException(nameof(context));
+        //     if (context.Items == null)
+        //         throw new ArgumentNullException(nameof(context.Items));
+        //
+        //     return context.Items.TryGetValue(PreferenceContextKey, out var preference)
+        //                ? (Device) preference
+        //                : Device.Desktop;
+        // }
+        //
+        // public static void SetMark(this HttpContext context, bool set)
+        //     => context.Session.SetString(MarkContextKey, set.ToString());
+        //
+        // public static bool GetMark(this HttpContext context)
+        // {
+        //     if (context == null)
+        //         throw new ArgumentNullException(nameof(context));
+        //     if (context.Items == null)
+        //         throw new ArgumentNullException(nameof(context.Items));
+        //
+        //     bool.TryParse(context.Session.GetString(MarkContextKey), out var mark);
+        //     return mark;
+        // }
     }
 }

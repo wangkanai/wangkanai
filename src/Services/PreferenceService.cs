@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using System.Text;
+using System.Text.Json;
 using Microsoft.AspNetCore.Http;
 using Wangkanai.Detection.Models;
 
@@ -9,25 +10,31 @@ namespace Wangkanai.Detection.Services
         private readonly HttpContext _context;
         private const    string      PreferenceContextKey = "Preference";
 
-        public Device Preferred => _context.GetPreference();
+        public Device Preferred => Get().Device;
 
-        public bool IsSet => _context.GetMark();
+        public bool IsSet => Get().Configured;
 
         public PreferenceService(IHttpContextAccessor accessor)
         {
             _context = accessor.HttpContext;
+            Set(Device.Desktop, false);
         }
 
         public void Set(Device preferred)
+            => Set(preferred, true);
+
+        private void Set(Device preferred, bool configured)
         {
-            var preference = new Preference {Configured = true, Device = preferred};
-            _context.Session.SetString(PreferenceContextKey, preference.Serialized());
+            var preference = new Preference {Configured = configured, Device = preferred};
+            _context.Session.Set(PreferenceContextKey, Encoding.ASCII.GetBytes(preference.Serialized()));
         }
 
-        public void Get()
+
+        private Preference Get()
         {
-            _context.Session.TryGetValue(PreferenceContextKey, out var json);
-            var preference = Preference.Deserialized(json.ToString());
+            _context.Session.TryGetValue(PreferenceContextKey, out var raw);
+            var json = Encoding.ASCII.GetString(raw);
+            return Preference.Deserialized(json);
         }
 
         public void Clear()
