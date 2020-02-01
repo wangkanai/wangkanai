@@ -1,6 +1,5 @@
-﻿using System;
+﻿using System.Text.Json;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.DependencyInjection;
 using Wangkanai.Detection.Models;
 
 namespace Wangkanai.Detection.Services
@@ -8,19 +7,12 @@ namespace Wangkanai.Detection.Services
     public class PreferenceService : IPreferenceService
     {
         private readonly HttpContext _context;
+        private const    string      PreferenceContextKey = "Preference";
 
-        public Device Preferred
-        {
-            get => _context.GetPreference();
-            private set => _context.SetPreference(value);
-        }
+        public Device Preferred => _context.GetPreference();
 
-        public bool IsSet
-        {
-            get => _context.GetMark();
-            private set => _context.SetMark(value);
-        }
-        
+        public bool IsSet => _context.GetMark();
+
         public PreferenceService(IHttpContextAccessor accessor)
         {
             _context = accessor.HttpContext;
@@ -28,14 +20,32 @@ namespace Wangkanai.Detection.Services
 
         public void Set(Device preferred)
         {
-            IsSet     = true;
-            Preferred = preferred;
+            var preference = new Preference {Configured = true, Device = preferred};
+            _context.Session.SetString(PreferenceContextKey, preference.Serialized());
+        }
+
+        public void Get()
+        {
+            _context.Session.TryGetValue(PreferenceContextKey, out var json);
+            var preference = Preference.Deserialized(json.ToString());
         }
 
         public void Clear()
         {
-            IsSet     = false;
-            Preferred = Device.Desktop;
+            _context.Session.Remove(PreferenceContextKey);
         }
+    }
+
+    public class Preference
+    {
+        public Device Device { get; set; }
+
+        public bool Configured { get; set; }
+
+        public string Serialized()
+            => JsonSerializer.Serialize(this);
+
+        public static Preference Deserialized(string json)
+            => JsonSerializer.Deserialize<Preference>(json);
     }
 }
