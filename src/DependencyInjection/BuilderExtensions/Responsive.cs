@@ -20,6 +20,21 @@ namespace Microsoft.Extensions.DependencyInjection
             builder.Services.TryAddTransient<IResponsiveService, ResponsiveService>();
             builder.Services.AddRazorViewLocation();
             builder.Services.AddRazorPageLocation();
+            
+            return builder;
+        }
+        
+        public static IDetectionBuilder AddSessionServices(this IDetectionBuilder builder)
+        {
+            // Add Session to services
+            builder.Services.AddDistributedMemoryCache();
+            builder.Services.AddSession(
+                options =>
+                {
+                    options.Cookie.Name        = "Detection";
+                    options.IdleTimeout        = TimeSpan.FromSeconds(10);
+                    options.Cookie.IsEssential = true;
+                });
 
             return builder;
         }

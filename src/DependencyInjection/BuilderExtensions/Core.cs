@@ -26,21 +26,6 @@ namespace Microsoft.Extensions.DependencyInjection
             return builder;
         }
 
-        public static IDetectionBuilder AddSessionServices(this IDetectionBuilder builder)
-        {
-            // Add Session to services
-            builder.Services.AddDistributedMemoryCache();
-            builder.Services.AddSession(
-                options =>
-                {
-                    options.Cookie.Name        = "Detection";
-                    options.IdleTimeout        = TimeSpan.FromSeconds(10);
-                    options.Cookie.IsEssential = true;
-                });
-
-            return builder;
-        }
-
         private static DetectionOptions GetDetectionOptions(this IServiceProvider provider)
             => provider.GetRequiredService<IOptions<DetectionOptions>>().Value;
 
