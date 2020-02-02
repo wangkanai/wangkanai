@@ -29,9 +29,7 @@ namespace Wangkanai.Detection.Services
             _context = accessor.HttpContext;
 
             View = DefaultView(deviceService.Type, options.Responsive);
-            var preferView = PreferView();
-            if (preferView != Device.Unknown && preferView != View)
-                View = PreferView();
+            View = PreferView(_context, View);
         }
 
         public void PreferSet(Device desktop)
@@ -44,14 +42,20 @@ namespace Wangkanai.Detection.Services
             => _context.SafeSession() != null
                && _context.SafeSession().Keys.Any(k => k == ResponsiveContextKey);
 
-        private Device PreferView()
+        private static Device PreferView(HttpContext context, Device defaultView)
         {
-            if (!IsPreferred())
-                return Device.Unknown;
+            if (context.SafeSession() == null)
+                return defaultView;
+            if (context.SafeSession().Keys.All(k => k != ResponsiveContextKey))
+                return defaultView;
 
-            _context.Session.TryGetValue(ResponsiveContextKey, out var raw);
-            Enum.TryParse<Device>(Encoding.ASCII.GetString(raw), out var preferred);
-            return preferred;
+            context.Session.TryGetValue(ResponsiveContextKey, out var raw);
+            Enum.TryParse<Device>(Encoding.ASCII.GetString(raw), out var preferView);
+
+            if (preferView != Device.Unknown && preferView != defaultView)
+                return preferView;
+
+            return defaultView;
         }
 
         private static Device DefaultView(Device device, ResponsiveOptions options)
