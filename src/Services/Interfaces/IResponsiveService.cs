@@ -10,6 +10,6 @@ namespace Wangkanai.Detection.Services
         public Device View { get; }
         void          PreferSet(Device desktop);
         void          PreferClear();
-        bool          IsPreferred();
+        bool          HasPreferred();
     }
 }

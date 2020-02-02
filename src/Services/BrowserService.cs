@@ -77,9 +77,12 @@ namespace Wangkanai.Detection.Services
         }
 
         private static bool IsEdge(UserAgent agent)
-            => agent.Contains(Browser.Edge) || (agent.Contains("Win64") && agent.Contains("Edg"));
+            => agent.Contains(Browser.Edge) 
+               || (agent.Contains("Win64") && agent.Contains("Edg"));
 
         private static bool IsInternetExplorer(UserAgent agent, OperatingSystem os, Engine engine)
-            => engine == Engine.Trident || agent.Contains("MSIE") && !agent.Contains(Browser.Opera);
+            => engine == Engine.Trident 
+               || agent.Contains("MSIE") 
+               && !agent.Contains(Browser.Opera);
     }
 }
