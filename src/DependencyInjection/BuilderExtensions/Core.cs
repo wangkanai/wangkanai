@@ -2,7 +2,6 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
 using Wangkanai.Detection.DependencyInjection.Options;
@@ -18,7 +17,7 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IDetectionBuilder AddRequiredPlatformServices(this IDetectionBuilder builder)
         {
             // Hosting doesn't add IHttpContextAccessor by default
-            builder.Services.AddHttpContextAccessor();//.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            builder.Services.AddHttpContextAccessor();
 
             // Add Detection Options
             builder.Services.AddOptions();
