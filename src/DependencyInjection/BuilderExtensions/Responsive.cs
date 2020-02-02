@@ -2,10 +2,8 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
-using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Wangkanai.Detection.Hosting;
 using Wangkanai.Detection.Services;
@@ -16,7 +14,7 @@ namespace Microsoft.Extensions.DependencyInjection
     {
         public static IDetectionBuilder AddResponsiveService(this IDetectionBuilder builder)
         {
-            if (builder == null)
+            if (builder is null)
                 throw new ArgumentNullException(nameof(builder));
 
             builder.Services.TryAddTransient<IResponsiveService, ResponsiveService>();

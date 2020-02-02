@@ -21,6 +21,7 @@ namespace Wangkanai.Detection.Services
             Context = accessor.HttpContext ?? throw new ArgumentNullException(nameof(accessor.HttpContext));
 
             var agent = Context.Request.Headers["User-Agent"].FirstOrDefault();
+
             UserAgent = new UserAgent(agent);
         }
     }
