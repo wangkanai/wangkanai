@@ -3,6 +3,7 @@
 
 using System;
 using Microsoft.AspNetCore.Mvc.Razor;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Wangkanai.Detection.Hosting;
 using Wangkanai.Detection.Services;
@@ -23,6 +24,8 @@ namespace Microsoft.Extensions.DependencyInjection
                 options.ViewLocationExpanders.Add(new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Suffix));
                 options.ViewLocationExpanders.Add(new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Subfolder));
             });
+
+            builder.Services.Configure<RazorPagesOptions>(options => { });
 
             return builder;
         }
