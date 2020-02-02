@@ -10,7 +10,7 @@ namespace Wangkanai.Detection.Extensions
     internal static class EnumerableExtensions
     {
         public static bool IsNullOrEmpty<T>(this IEnumerable<T> list)
-            => list == null || !list.Any();
+            => list is null || !list.Any();
 
         public static bool HasDuplicates<T, TProp>(this IEnumerable<T> list, Func<T, TProp> selector)
             => list.Any(t => !new HashSet<TProp>().Add(selector(t)));

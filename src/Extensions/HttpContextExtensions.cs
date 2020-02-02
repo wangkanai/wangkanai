@@ -14,7 +14,7 @@ namespace Microsoft.AspNetCore.Http
         public static ISession SafeSession(this HttpContext httpContext)
         {
             var sessionFeature = httpContext.Features.Get<ISessionFeature>();
-            return sessionFeature == null ? null : httpContext.Session;
+            return sessionFeature is null ? null : httpContext.Session;
         }
 
         public static void SetDevice(this HttpContext context, Device device)

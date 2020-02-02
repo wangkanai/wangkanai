@@ -14,10 +14,10 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
     [HtmlTargetElement(ElementName, Attributes = ExcludeAttributeName)]
     public class DeviceTagHelper : TagHelper
     {
-        protected IHtmlGenerator Generator { get; }
-        private const string ElementName          = "device";
-        private const string IncludeAttributeName = "include";
-        private const string ExcludeAttributeName = "exclude";
+        protected     IHtmlGenerator Generator { get; }
+        private const string         ElementName          = "device";
+        private const string         IncludeAttributeName = "include";
+        private const string         ExcludeAttributeName = "exclude";
 
         private static readonly char[] NameSeparator = new[] {','};
 
@@ -41,9 +41,9 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
-            if (context == null)
+            if (context is null)
                 throw new ArgumentNullException(nameof(context));
-            if (output == null)
+            if (output is null)
                 throw new ArgumentNullException(nameof(output));
 
             output.TagName = null;
@@ -84,7 +84,8 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
                 }
             }
 
-            if (hasDevice) output.SuppressOutput();
+            if (hasDevice)
+                output.SuppressOutput();
         }
     }
 }
