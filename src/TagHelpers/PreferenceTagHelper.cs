@@ -36,8 +36,13 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
             if (string.IsNullOrWhiteSpace(Only))
                 return;
 
-            if (!_responsive.IsPreferred() && !DisplayOnlyDevice)
-                output.SuppressOutput();
+            if (_responsive.HasPreferred())
+                return;
+
+            if (DisplayOnlyDevice)
+                return;
+
+            output.SuppressOutput();
         }
 
         private bool DisplayOnlyDevice => _device.Type == OnlyDevice;
