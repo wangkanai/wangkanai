@@ -38,7 +38,7 @@ namespace Wangkanai.Detection.Services
         public void PreferClear()
             => _context.Session.Remove(ResponsiveContextKey);
 
-        public bool IsPreferred()
+        public bool HasPreferred()
             => _context.SafeSession() != null
                && _context.SafeSession().Keys.Any(k => k == ResponsiveContextKey);
 
