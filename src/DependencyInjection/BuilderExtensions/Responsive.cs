@@ -22,10 +22,10 @@ namespace Microsoft.Extensions.DependencyInjection
             builder.Services.TryAddTransient<IResponsiveService, ResponsiveService>();
             builder.Services.AddRazorViewLocation();
             builder.Services.AddRazorPageLocation();
-            
+
             return builder;
         }
-        
+
         public static IDetectionBuilder AddSessionServices(this IDetectionBuilder builder)
         {
             // Add Session to services
@@ -46,10 +46,14 @@ namespace Microsoft.Extensions.DependencyInjection
             {
                 options.ViewLocationExpanders.Add(new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Suffix));
                 options.ViewLocationExpanders.Add(new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Subfolder));
-                options.ViewLocationExpanders.Add(new PageViewLocationExpander());
+                options.ViewLocationExpanders.Add(new ResponsivePageLocationExpander());
             });
 
         private static IServiceCollection AddRazorPageLocation(this IServiceCollection services)
-            => services.Configure<RazorPagesOptions>(options => { });
+            => services.Configure<RazorPagesOptions>(options =>
+            {
+                options.Conventions.AddPageRoute("", "");
+                options.Conventions.AddPageRoute("", "");
+            });
     }
 }
