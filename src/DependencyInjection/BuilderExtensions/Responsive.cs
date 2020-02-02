@@ -18,28 +18,20 @@ namespace Microsoft.Extensions.DependencyInjection
                 throw new ArgumentNullException(nameof(builder));
 
             builder.Services.TryAddTransient<IResponsiveService, ResponsiveService>();
-            builder.AddRazorViewLocation();
-            builder.AddRazorPageLocation();
+            builder.Services.AddRazorViewLocation();
+            builder.Services.AddRazorPageLocation();
 
             return builder;
         }
 
-        private static IDetectionBuilder AddRazorViewLocation(this IDetectionBuilder builder)
-        {
-            builder.Services.Configure<RazorViewEngineOptions>(options =>
+        private static IServiceCollection AddRazorViewLocation(this IServiceCollection services)
+            => services.Configure<RazorViewEngineOptions>(options =>
             {
                 options.ViewLocationExpanders.Add(new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Suffix));
                 options.ViewLocationExpanders.Add(new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Subfolder));
             });
 
-            return builder;
-        }
-
-        private static IDetectionBuilder AddRazorPageLocation(this IDetectionBuilder builder)
-        {
-            builder.Services.Configure<RazorPagesOptions>(options => { });
-
-            return builder;
-        }
+        private static IServiceCollection AddRazorPageLocation(this IServiceCollection services)
+            => services.Configure<RazorPagesOptions>(options => { });
     }
 }
