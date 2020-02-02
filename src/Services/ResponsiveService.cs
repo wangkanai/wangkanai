@@ -19,11 +19,11 @@ namespace Wangkanai.Detection.Services
 
         public ResponsiveService(IHttpContextAccessor accessor, IDeviceService deviceService, DetectionOptions options)
         {
-            if (accessor == null)
+            if (accessor is null)
                 throw new ArgumentNullException(nameof(accessor));
-            if (deviceService == null)
+            if (deviceService is null)
                 throw new ArgumentNullException(nameof(deviceService));
-            if (options == null)
+            if (options is null)
                 options = new DetectionOptions();
 
             _context = accessor.HttpContext;
@@ -44,7 +44,7 @@ namespace Wangkanai.Detection.Services
 
         private static Device PreferView(HttpContext context, Device defaultView)
         {
-            if (context.SafeSession() == null)
+            if (context.SafeSession() is null)
                 return defaultView;
             if (context.SafeSession().Keys.All(k => k != ResponsiveContextKey))
                 return defaultView;

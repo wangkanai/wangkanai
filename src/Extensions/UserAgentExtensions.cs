@@ -4,7 +4,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.AspNetCore.Http;
 using Wangkanai.Detection.Models;
 
 namespace Wangkanai.Detection.Extensions
@@ -12,7 +11,7 @@ namespace Wangkanai.Detection.Extensions
     internal static class UserAgentExtensions
     {
         public static bool IsNullOrEmpty(this UserAgent agent)
-            => agent == null
+            => agent is null
                || string.IsNullOrEmpty(agent.ToLower());
 
         public static string ToLower(this UserAgent agent)
@@ -33,12 +32,12 @@ namespace Wangkanai.Detection.Extensions
 
         public static bool Contains<T>(this UserAgent agent, T flags) where T : Enum
             => flags.ToString().Contains(',')
-                ? flags.GetFlags().Any(agent.Contains)
-                : agent.Contains(flags.ToString());
+                   ? flags.GetFlags().Any(agent.Contains)
+                   : agent.Contains(flags.ToString());
 
         public static bool Contains(this UserAgent agent, IEnumerable<string> list)
             => !agent.IsNullOrEmpty()
-               && list != null
+               && list is { }
                && list.Any(agent.Contains);
 
         public static bool StartsWith(this UserAgent agent, string word)
