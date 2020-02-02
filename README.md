@@ -56,6 +56,8 @@ public void ConfigureServices(IServiceCollection services)
         options.Responsive.DefaultMobile  = Device.Mobile;
         options.Responsive.DefaultDesktop = Device.Desktop;
         options.Responsive.IncludeWebApi  = true;
+        options.Responsive.Disable        = true;
+        options.Responsive.WebApiPath     = "/MyApi";
     });
 
     // Add framework services.
