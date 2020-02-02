@@ -4,7 +4,6 @@
 using System;
 using System.Linq;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.DependencyInjection;
 using Wangkanai.Detection.Models;
 
 namespace Wangkanai.Detection.Services
@@ -16,12 +15,10 @@ namespace Wangkanai.Detection.Services
 
         public UserAgentService(IHttpContextAccessor accessor)
         {
-            if (accessor == null) 
+            if (accessor == null)
                 throw new ArgumentNullException(nameof(accessor));
-            if (accessor.HttpContext == null) 
-                throw new ArgumentNullException(nameof(accessor.HttpContext));
-            
-            Context = accessor.HttpContext;
+
+            Context = accessor.HttpContext ?? throw new ArgumentNullException(nameof(accessor.HttpContext));
 
             var agent = Context.Request.Headers["User-Agent"].FirstOrDefault();
             UserAgent = new UserAgent(agent);
