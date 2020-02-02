@@ -19,11 +19,11 @@ namespace Wangkanai.Detection.Services
 
         public ResponsiveService(IHttpContextAccessor accessor, IDeviceService deviceService, DetectionOptions options)
         {
-            if (accessor == null)
+            if (accessor is null)
                 throw new ArgumentNullException(nameof(accessor));
-            if (deviceService == null)
+            if (deviceService is null)
                 throw new ArgumentNullException(nameof(deviceService));
-            if (options == null)
+            if (options is null)
                 options = new DetectionOptions();
 
             _context = accessor.HttpContext;

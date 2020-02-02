@@ -15,7 +15,7 @@ namespace Wangkanai.Detection.Services
 
         public UserAgentService(IHttpContextAccessor accessor)
         {
-            if (accessor == null)
+            if (accessor is null)
                 throw new ArgumentNullException(nameof(accessor));
 
             Context = accessor.HttpContext ?? throw new ArgumentNullException(nameof(accessor.HttpContext));

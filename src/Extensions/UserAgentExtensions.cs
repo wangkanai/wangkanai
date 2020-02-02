@@ -12,7 +12,7 @@ namespace Wangkanai.Detection.Extensions
     internal static class UserAgentExtensions
     {
         public static bool IsNullOrEmpty(this UserAgent agent)
-            => agent == null
+            => agent is null
                || string.IsNullOrEmpty(agent.ToLower());
 
         public static string ToLower(this UserAgent agent)
