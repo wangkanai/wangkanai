@@ -32,6 +32,9 @@ namespace ResponsiveOption
                 options.Responsive.DefaultMobile  = Device.Mobile;
                 options.Responsive.DefaultDesktop = Device.Desktop;
                 options.Responsive.IncludeWebApi  = true;
+                options.Responsive.PathWebApi     = "/Api";
+                options.Responsive.PathViews      = "/Views";
+                options.Responsive.PathPages      = "/Pages";
             });
 
             // Add framework services.

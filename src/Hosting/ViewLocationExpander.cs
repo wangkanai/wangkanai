@@ -59,8 +59,8 @@ namespace Wangkanai.Detection.Hosting
             Enum.TryParse(value, true, out Device device);
 
             var resultLocations = new List<string>();
-            resultLocations.AddRange(ExpandViewLocationsCore(ViewOnly(viewLocations), device));
-            resultLocations.AddRange(ExpandPageLocationsCore(PageOnly(viewLocations), device));
+            resultLocations.AddRange(ExpandViewLocationsCore(ViewOnly(viewLocations,"views"), device));
+            resultLocations.AddRange(ExpandPageLocationsCore(PageOnly(viewLocations,"pages"), device));
 
             return resultLocations;
         }
@@ -84,10 +84,10 @@ namespace Wangkanai.Detection.Hosting
             }
         }
 
-        private static IEnumerable<string> ViewOnly(IEnumerable<string> viewLocations)
-            => viewLocations.Where(location => location.Contains("views", StringComparison.OrdinalIgnoreCase));
-        private static IEnumerable<string> PageOnly(IEnumerable<string> viewLocations)
-            => viewLocations.Where(location => location.Contains("pages", StringComparison.OrdinalIgnoreCase));
+        private static IEnumerable<string> ViewOnly(IEnumerable<string> viewLocations, string path)
+            => viewLocations.Where(location => location.Contains(path, StringComparison.OrdinalIgnoreCase));
+        private static IEnumerable<string> PageOnly(IEnumerable<string> viewLocations, string path)
+            => viewLocations.Where(location => location.Contains(path, StringComparison.OrdinalIgnoreCase));
 
     }
 }

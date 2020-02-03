@@ -32,14 +32,24 @@ namespace Wangkanai.Detection.DependencyInjection.Options
         public bool IncludeWebApi { get; set; } = false;
 
         /// <summary>
-        /// Gets or sets a value that determine the default Web Api convention path.
-        /// </summary>
-        public string WebApiPath { get; set; } = "/api";
-
-        /// <summary>
         /// Gets or sets a value that determine the responsive middleware is totally disable.
         /// </summary>
         /// <remarks><b>false</b> by default</remarks>
         public bool Disable { get; set; } = false;
+        
+        /// <summary>
+        /// Gets or sets a value that determine the default Web Api convention path.
+        /// </summary>
+        public string PathWebApi { get; set; } = "/api";
+
+        /// <summary>
+        /// Gets or sets a value that determine the default Views path of your web application.
+        /// </summary>
+        public string PathViews { get; set; } = "/Views";
+        
+        /// <summary>
+        /// Gets or sets a value that determine the default Pages path of your web application.
+        /// </summary>
+        public string PathPages { get; set; } = "/Pages";
     }
 }

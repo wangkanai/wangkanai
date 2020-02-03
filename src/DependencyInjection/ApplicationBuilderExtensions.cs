@@ -40,7 +40,7 @@ namespace Microsoft.Extensions.DependencyInjection
                 return app.UseResponsive();
 
             return app.UseWhen(
-                context => !context.Request.Path.StartsWithSegments(options.Responsive.WebApiPath),
+                context => !context.Request.Path.StartsWithSegments(options.Responsive.PathWebApi),
                 appBuilder => appBuilder.UseResponsive()
             );
         }
