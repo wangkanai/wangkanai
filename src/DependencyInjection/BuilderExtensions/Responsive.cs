@@ -3,6 +3,7 @@
 
 using System;
 using Microsoft.AspNetCore.Mvc.Razor;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Wangkanai.Detection.Hosting;
 using Wangkanai.Detection.Services;
@@ -17,14 +18,41 @@ namespace Microsoft.Extensions.DependencyInjection
                 throw new ArgumentNullException(nameof(builder));
 
             builder.Services.TryAddTransient<IResponsiveService, ResponsiveService>();
+            builder.Services.AddRazorViewLocation();
+            
+            // For future development and exploration
+            //builder.Services.AddRazorPageLocation();
 
-            builder.Services.Configure<RazorViewEngineOptions>(options =>
+            return builder;
+        }
+
+        public static IDetectionBuilder AddSessionServices(this IDetectionBuilder builder)
+        {
+            // Add Session to services
+            builder.Services.AddDistributedMemoryCache();
+            builder.Services.AddSession(
+                options =>
+                {
+                    options.Cookie.Name        = "Detection";
+                    options.IdleTimeout        = TimeSpan.FromSeconds(10);
+                    options.Cookie.IsEssential = true;
+                });
+
+            return builder;
+        }
+
+        private static IServiceCollection AddRazorViewLocation(this IServiceCollection services)
+            => services.Configure<RazorViewEngineOptions>(options =>
             {
                 options.ViewLocationExpanders.Add(new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Suffix));
                 options.ViewLocationExpanders.Add(new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Subfolder));
             });
 
-            return builder;
-        }
+        private static IServiceCollection AddRazorPageLocation(this IServiceCollection services)
+            => services.Configure<RazorPagesOptions>(options =>
+            {
+                options.Conventions.AddPageRoute("", "");
+                options.Conventions.AddPageRoute("", "");
+            });
     }
 }

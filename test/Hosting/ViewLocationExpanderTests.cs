@@ -87,25 +87,6 @@ namespace Wangkanai.Detection.Hosting
             Assert.Equal(expectedViewLocations, resultLocations.ToList());
         }
 
-        private ViewLocationExpanderContext SetupViewLocationExpanderContext(Device deviceType)
-        {
-            var action = new ActionContext();
-            var context = new ViewLocationExpanderContext(action, "View", "Controller", "Area", "Page", true)
-                          {
-                              Values = new Dictionary<string, string>()
-                          };
-            context.ActionContext.HttpContext = new DefaultHttpContext();
-            context.ActionContext.HttpContext.SetDevice(deviceType);
-
-            return context;
-        }
-
-        [Fact]
-        public void Ctor_Default_Success()
-        {
-            //var locationExpander = new ViewLocationExpander();
-        }
-
         [Fact]
         public void Ctor_InvalidFormat_InvalidEnumArgumentException()
         {
@@ -118,6 +99,7 @@ namespace Wangkanai.Detection.Hosting
         public void Ctor_ResponsiveViewLocationFormat_Success()
         {
             var locationExpander = new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Subfolder);
+            Assert.NotNull(locationExpander);
         }
 
         [Fact]
@@ -163,6 +145,19 @@ namespace Wangkanai.Detection.Hosting
 
             Assert.NotEqual(0, context.Values.Count);
             Assert.Same(context.ActionContext.HttpContext.GetDevice().ToString(), context.Values[deviceKey]);
+        }
+        
+        private ViewLocationExpanderContext SetupViewLocationExpanderContext(Device deviceType)
+        {
+            var action = new ActionContext();
+            var context = new ViewLocationExpanderContext(action, "View", "Controller", "Area", "Page", true)
+                          {
+                              Values = new Dictionary<string, string>()
+                          };
+            context.ActionContext.HttpContext = new DefaultHttpContext();
+            context.ActionContext.HttpContext.SetDevice(deviceType);
+
+            return context;
         }
     }
 }

@@ -4,6 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Wangkanai.Detection.Models;
@@ -26,7 +27,7 @@ namespace Wangkanai.Detection.Hosting
     {
         private const    string                       ValueKey = "device";
         private readonly ResponsiveViewLocationFormat _format;
-
+        
         public ResponsiveViewLocationExpander(ResponsiveViewLocationFormat format)
         {
             if (!Enum.IsDefined(typeof(ResponsiveViewLocationFormat), (int) format))
@@ -57,20 +58,36 @@ namespace Wangkanai.Detection.Hosting
 
             Enum.TryParse(value, true, out Device device);
 
-            return ExpandViewLocationsCore(viewLocations, device);
-        }
+            var resultLocations = new List<string>();
+            resultLocations.AddRange(ExpandViewLocationsCore(ViewOnly(viewLocations), device));
+            resultLocations.AddRange(ExpandPageLocationsCore(PageOnly(viewLocations), device));
 
+            return resultLocations;
+        }
+        
         private IEnumerable<string> ExpandViewLocationsCore(IEnumerable<string> viewLocations, Device device)
         {
             foreach (var location in viewLocations)
             {
-                yield return location.ToLower().Contains("pages")
+                yield return _format == ResponsiveViewLocationFormat.Suffix
                                  ? location.Replace("{0}", "{0}." + device)
-                                 : _format == ResponsiveViewLocationFormat.Suffix
-                                     ? location.Replace("{0}", "{0}." + device)
-                                     : location.Replace("{0}", device + "/{0}");
+                                 : location.Replace("{0}", device + "/{0}");
                 yield return location;
             }
         }
+        private IEnumerable<string> ExpandPageLocationsCore(IEnumerable<string> viewLocations, Device device)
+        {
+            foreach (var location in viewLocations)
+            {
+                yield return location.Replace("{0}", "{0}." + device);
+                yield return location;
+            }
+        }
+
+        private static IEnumerable<string> ViewOnly(IEnumerable<string> viewLocations)
+            => viewLocations.Where(location => location.Contains("views", StringComparison.OrdinalIgnoreCase));
+        private static IEnumerable<string> PageOnly(IEnumerable<string> viewLocations)
+            => viewLocations.Where(location => location.Contains("pages", StringComparison.OrdinalIgnoreCase));
+
     }
 }
