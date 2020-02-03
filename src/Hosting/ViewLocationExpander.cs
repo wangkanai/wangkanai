@@ -60,7 +60,7 @@ namespace Wangkanai.Detection.Hosting
 
             var resultLocations = new List<string>();
             resultLocations.AddRange(ExpandViewLocationsCore(ViewOnly(viewLocations), device));
-            resultLocations.AddRange(ExpandViewLocationsCore(PageOnly(viewLocations), device));
+            resultLocations.AddRange(ExpandPageLocationsCore(PageOnly(viewLocations), device));
 
             return resultLocations;
         }
@@ -75,7 +75,7 @@ namespace Wangkanai.Detection.Hosting
                 yield return location;
             }
         }
-        private IEnumerable<string> ExpandPagesLocationCore(IEnumerable<string> viewLocations, Device device)
+        private IEnumerable<string> ExpandPageLocationsCore(IEnumerable<string> viewLocations, Device device)
         {
             foreach (var location in viewLocations)
             {
@@ -84,9 +84,9 @@ namespace Wangkanai.Detection.Hosting
             }
         }
 
-        private IEnumerable<string> ViewOnly(IEnumerable<string> viewLocations)
+        private static IEnumerable<string> ViewOnly(IEnumerable<string> viewLocations)
             => viewLocations.Where(location => location.Contains("views", StringComparison.OrdinalIgnoreCase));
-        private IEnumerable<string> PageOnly(IEnumerable<string> viewLocations)
+        private static IEnumerable<string> PageOnly(IEnumerable<string> viewLocations)
             => viewLocations.Where(location => location.Contains("pages", StringComparison.OrdinalIgnoreCase));
 
     }
