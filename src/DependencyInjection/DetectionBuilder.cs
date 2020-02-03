@@ -2,6 +2,7 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
+using Wangkanai.Detection.DependencyInjection.Options;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -15,7 +16,15 @@ namespace Microsoft.Extensions.DependencyInjection
         /// </summary>
         /// <param name="services">The <see cref="IServiceCollection" /> to attach to.</param>
         public DetectionBuilder(IServiceCollection services)
-            => Services = services ?? throw new ArgumentNullException(nameof(services));
+        {
+            Services = services ?? throw new ArgumentNullException(nameof(services));
+        }
+
+        public DetectionBuilder(IServiceCollection services, DetectionOptions options)
+        {
+            Services = services ?? throw new ArgumentNullException(nameof(services));
+            Options = options ?? throw new ArgumentNullException(nameof(options));
+        }
 
         /// <summary>
         ///     Gets the <see cref="IServiceCollection" /> services are attached to.
@@ -24,5 +33,7 @@ namespace Microsoft.Extensions.DependencyInjection
         ///     The <see cref="IServiceCollection" /> services are attached to.
         /// </value>
         public IServiceCollection Services { get; }
+        
+        public DetectionOptions Options { get; }
     }
 }

@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Razor;
+using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Models;
 
 namespace Wangkanai.Detection.Hosting
@@ -27,14 +28,19 @@ namespace Wangkanai.Detection.Hosting
     {
         private const    string                       ValueKey = "device";
         private readonly ResponsiveViewLocationFormat _format;
-        
+        private readonly ResponsiveOptions            _options;
+
+
         public ResponsiveViewLocationExpander(ResponsiveViewLocationFormat format)
         {
             if (!Enum.IsDefined(typeof(ResponsiveViewLocationFormat), (int) format))
                 throw new InvalidEnumArgumentException(nameof(format));
 
-            _format = format;
+            _format  = format;
         }
+        
+        public ResponsiveViewLocationExpander(ResponsiveViewLocationFormat format, ResponsiveOptions options) : this(format) 
+            => _options = options ?? new ResponsiveOptions();
 
         public void PopulateValues(ViewLocationExpanderContext context)
         {
@@ -59,12 +65,12 @@ namespace Wangkanai.Detection.Hosting
             Enum.TryParse(value, true, out Device device);
 
             var resultLocations = new List<string>();
-            resultLocations.AddRange(ExpandViewLocationsCore(ViewOnly(viewLocations,"views"), device));
-            resultLocations.AddRange(ExpandPageLocationsCore(PageOnly(viewLocations,"pages"), device));
+            resultLocations.AddRange(ExpandViewLocationsCore(ViewOnly(viewLocations, _options.PathViews), device));
+            resultLocations.AddRange(ExpandPageLocationsCore(PageOnly(viewLocations, _options.PathPages), device));
 
             return resultLocations;
         }
-        
+
         private IEnumerable<string> ExpandViewLocationsCore(IEnumerable<string> viewLocations, Device device)
         {
             foreach (var location in viewLocations)
@@ -75,6 +81,7 @@ namespace Wangkanai.Detection.Hosting
                 yield return location;
             }
         }
+
         private IEnumerable<string> ExpandPageLocationsCore(IEnumerable<string> viewLocations, Device device)
         {
             foreach (var location in viewLocations)
@@ -86,8 +93,8 @@ namespace Wangkanai.Detection.Hosting
 
         private static IEnumerable<string> ViewOnly(IEnumerable<string> viewLocations, string path)
             => viewLocations.Where(location => location.Contains(path, StringComparison.OrdinalIgnoreCase));
+
         private static IEnumerable<string> PageOnly(IEnumerable<string> viewLocations, string path)
             => viewLocations.Where(location => location.Contains(path, StringComparison.OrdinalIgnoreCase));
-
     }
 }

@@ -1,6 +1,8 @@
 // Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
+using Wangkanai.Detection.DependencyInjection.Options;
+
 namespace Microsoft.Extensions.DependencyInjection
 {
     /// <summary>
@@ -15,5 +17,7 @@ namespace Microsoft.Extensions.DependencyInjection
         /// The services.
         /// </value>
         IServiceCollection Services { get; }
+        
+        DetectionOptions Options { get; }
     }
 }

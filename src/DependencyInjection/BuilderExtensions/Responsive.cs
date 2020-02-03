@@ -5,6 +5,7 @@ using System;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Hosting;
 using Wangkanai.Detection.Services;
 
@@ -18,6 +19,8 @@ namespace Microsoft.Extensions.DependencyInjection
                 throw new ArgumentNullException(nameof(builder));
 
             builder.Services.TryAddTransient<IResponsiveService, ResponsiveService>();
+            
+            
             builder.Services.AddRazorViewLocation();
             
             // For future development and exploration
