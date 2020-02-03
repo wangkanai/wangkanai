@@ -25,9 +25,9 @@ namespace Wangkanai.Detection.Hosting
     /// </example>
     public class ResponsiveViewLocationExpander : IViewLocationExpander
     {
-        private const    string                       ValueKey = "device-view";
+        private const    string                       ValueKey = "device";
         private readonly ResponsiveViewLocationFormat _format;
-
+        
         public ResponsiveViewLocationExpander(ResponsiveViewLocationFormat format)
         {
             if (!Enum.IsDefined(typeof(ResponsiveViewLocationFormat), (int) format))
@@ -58,11 +58,13 @@ namespace Wangkanai.Detection.Hosting
 
             Enum.TryParse(value, true, out Device device);
 
-            viewLocations = viewLocations.Where(l => l.Contains("views", StringComparison.OrdinalIgnoreCase));
-            
-            return ExpandViewLocationsCore(viewLocations, device);
-        }
+            var resultLocations = new List<string>();
+            resultLocations.AddRange(ExpandViewLocationsCore(ViewOnly(viewLocations), device));
+            resultLocations.AddRange(ExpandViewLocationsCore(PageOnly(viewLocations), device));
 
+            return resultLocations;
+        }
+        
         private IEnumerable<string> ExpandViewLocationsCore(IEnumerable<string> viewLocations, Device device)
         {
             foreach (var location in viewLocations)
@@ -73,5 +75,19 @@ namespace Wangkanai.Detection.Hosting
                 yield return location;
             }
         }
+        private IEnumerable<string> ExpandPagesLocationCore(IEnumerable<string> viewLocations, Device device)
+        {
+            foreach (var location in viewLocations)
+            {
+                yield return location.Replace("{0}", "{0}." + device);
+                yield return location;
+            }
+        }
+
+        private IEnumerable<string> ViewOnly(IEnumerable<string> viewLocations)
+            => viewLocations.Where(location => location.Contains("views", StringComparison.OrdinalIgnoreCase));
+        private IEnumerable<string> PageOnly(IEnumerable<string> viewLocations)
+            => viewLocations.Where(location => location.Contains("pages", StringComparison.OrdinalIgnoreCase));
+
     }
 }
