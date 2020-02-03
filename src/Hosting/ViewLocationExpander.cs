@@ -37,6 +37,7 @@ namespace Wangkanai.Detection.Hosting
                 throw new InvalidEnumArgumentException(nameof(format));
 
             _format  = format;
+            _options ??= new ResponsiveOptions();
         }
         
         public ResponsiveViewLocationExpander(ResponsiveViewLocationFormat format, ResponsiveOptions options) : this(format) 
