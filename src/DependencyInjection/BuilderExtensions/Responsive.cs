@@ -19,7 +19,9 @@ namespace Microsoft.Extensions.DependencyInjection
 
             builder.Services.TryAddTransient<IResponsiveService, ResponsiveService>();
             builder.Services.AddRazorViewLocation();
-            builder.Services.AddRazorPageLocation();
+            
+            // For future development and exploration
+            //builder.Services.AddRazorPageLocation();
 
             return builder;
         }
