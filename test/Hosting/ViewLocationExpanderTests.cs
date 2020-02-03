@@ -55,23 +55,23 @@ namespace Wangkanai.Detection.Hosting
                                  }
                              };
 
-                // yield return new object[]
-                //              {
-                //                  ResponsiveViewLocationFormat.Suffix,
-                //                  Device.Tablet,
-                //                  new[]
-                //                  {
-                //                      "/Pages/{1}/{0}.cshtml",
-                //                      "/Pages/Shared/{0}.cshtml"
-                //                  },
-                //                  new[]
-                //                  {
-                //                      "/Pages/{1}/{0}.Tablet.cshtml",
-                //                      "/Pages/{1}/{0}.cshtml",
-                //                      "/Pages/Shared/{0}.Tablet.cshtml",
-                //                      "/Pages/Shared/{0}.cshtml"
-                //                  }
-                //              };
+                yield return new object[]
+                             {
+                                 ResponsiveViewLocationFormat.Suffix,
+                                 Device.Tablet,
+                                 new[]
+                                 {
+                                     "/Pages/{1}/{0}.cshtml",
+                                     "/Pages/Shared/{0}.cshtml"
+                                 },
+                                 new[]
+                                 {
+                                     "/Pages/{1}/{0}.Tablet.cshtml",
+                                     "/Pages/{1}/{0}.cshtml",
+                                     "/Pages/Shared/{0}.Tablet.cshtml",
+                                     "/Pages/Shared/{0}.cshtml"
+                                 }
+                             };
             }
         }
 
@@ -88,12 +88,6 @@ namespace Wangkanai.Detection.Hosting
         }
 
         [Fact]
-        public void Ctor_Default_Success()
-        {
-            //var locationExpander = new ViewLocationExpander();
-        }
-
-        [Fact]
         public void Ctor_InvalidFormat_InvalidEnumArgumentException()
         {
             var max            = int.MaxValue;
@@ -105,6 +99,7 @@ namespace Wangkanai.Detection.Hosting
         public void Ctor_ResponsiveViewLocationFormat_Success()
         {
             var locationExpander = new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Subfolder);
+            Assert.NotNull(locationExpander);
         }
 
         [Fact]
@@ -143,7 +138,7 @@ namespace Wangkanai.Detection.Hosting
         [Fact]
         public void PopulateValues_ViewLocationExpanderContext_Success()
         {
-            var deviceKey        = "device-view"; // May this one can be public in ResponsiveViewLocationExpander.cs.
+            var deviceKey        = "device"; // May this one can be public in ResponsiveViewLocationExpander.cs.
             var context          = SetupViewLocationExpanderContext(Device.Tablet);
             var locationExpander = new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Suffix);
             locationExpander.PopulateValues(context);
