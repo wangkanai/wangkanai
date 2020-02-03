@@ -8,7 +8,7 @@
         <Version>3.0.0</Version>
 
         <Authors>Sarin Na Wangkanai</Authors>
-        <Description>ASP.NET Core Detection service components for identifying details about client device, browser, engine, platform, and crawler.</Description>
+        <Description>ASP.NET Core Detection service components for identifying details about client device, browser, engine, platform, and crawler. Responsive middleware for routing base upon request client device detection to specific view. Also in the added feature of user preference made this library even more comprehensive must for developers whom to target multiple devices with view rendered and optimized directly from the server side.</Description>
         <Copyright>Copyright © 2018 Sarin Na Wangkanai</Copyright>
         <PackageTags>aspnetcore;detection</PackageTags>
         <PackageProjectUrl>https://github.com/wangkanai/Detection</PackageProjectUrl>
@@ -17,10 +17,15 @@
         <RepositoryType>git</RepositoryType>
         <RepositoryUrl>git://github.com/wangkanai/Detection</RepositoryUrl>
         <PackageIconUrl>https://raw.githubusercontent.com/wangkanai/Detection/dev/asset/avatar.png</PackageIconUrl>
+        <PackageReadmeFile>readme.md</PackageReadmeFile>
     </PropertyGroup>
 
     <ItemGroup>
         <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="..\assets\readme.md" Pack="true" PackagePath=""/>
     </ItemGroup>
 
 </Project>
