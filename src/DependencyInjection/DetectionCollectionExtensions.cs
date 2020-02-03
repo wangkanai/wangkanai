@@ -39,5 +39,7 @@ namespace Microsoft.Extensions.DependencyInjection
 
         internal static IDetectionBuilder AddDetectionBuilder(this IServiceCollection services)
             => new DetectionBuilder(services);
+        internal static IDetectionBuilder AddDetectionBuilder(this IServiceCollection services, DetectionOptions options)
+            => new DetectionBuilder(services, options);
     }
 }
