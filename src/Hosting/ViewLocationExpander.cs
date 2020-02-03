@@ -7,7 +7,6 @@ using System.ComponentModel;
 using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Razor;
-using Wangkanai.Detection.Models;
 
 namespace Wangkanai.Detection.Hosting
 {
@@ -51,21 +50,20 @@ namespace Wangkanai.Detection.Hosting
             if (viewLocations is null)
                 throw new ArgumentNullException(nameof(viewLocations));
 
-            context.Values.TryGetValue(ValueKey, out var value);
+            context.Values.TryGetValue(ValueKey, out var device);
 
-            if (string.IsNullOrEmpty(value))
-                return viewLocations;
+            // if (string.IsNullOrEmpty(value))
+            //     return viewLocations;
+            //
+            // Enum.TryParse(value, true, out Device device);
 
-            Enum.TryParse(value, true, out Device device);
-
-            var resultLocations = new List<string>();
-            resultLocations.AddRange(ExpandViewLocationsCore(ViewOnly(viewLocations), device));
-            resultLocations.AddRange(ExpandPageLocationsCore(PageOnly(viewLocations), device));
+            var filterLocations = ViewOnly(viewLocations);
+            var resultLocations = ExpandViewLocationsCore(filterLocations, device).Concat(viewLocations);
 
             return resultLocations;
         }
         
-        private IEnumerable<string> ExpandViewLocationsCore(IEnumerable<string> viewLocations, Device device)
+        private IEnumerable<string> ExpandViewLocationsCore(IEnumerable<string> viewLocations, string device)
         {
             foreach (var location in viewLocations)
             {
@@ -75,19 +73,10 @@ namespace Wangkanai.Detection.Hosting
                 yield return location;
             }
         }
-        private IEnumerable<string> ExpandPageLocationsCore(IEnumerable<string> viewLocations, Device device)
-        {
-            foreach (var location in viewLocations)
-            {
-                yield return location.Replace("{0}", "{0}." + device);
-                yield return location;
-            }
-        }
 
         private static IEnumerable<string> ViewOnly(IEnumerable<string> viewLocations)
             => viewLocations.Where(location => location.Contains("views", StringComparison.OrdinalIgnoreCase));
         private static IEnumerable<string> PageOnly(IEnumerable<string> viewLocations)
             => viewLocations.Where(location => location.Contains("pages", StringComparison.OrdinalIgnoreCase));
-
     }
 }
