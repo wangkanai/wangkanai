@@ -15,16 +15,11 @@ namespace Microsoft.Extensions.DependencyInjection
         ///     Creates a new instance of <see cref="DetectionBuilder" />.
         /// </summary>
         /// <param name="services">The <see cref="IServiceCollection" /> to attach to.</param>
-        public DetectionBuilder(IServiceCollection services)
-        {
-            Services = services ?? throw new ArgumentNullException(nameof(services));
-        }
+        public DetectionBuilder(IServiceCollection services) 
+            => Services = services ?? throw new ArgumentNullException(nameof(services));
 
-        public DetectionBuilder(IServiceCollection services, DetectionOptions options)
-        {
-            Services = services ?? throw new ArgumentNullException(nameof(services));
-            Options = options ?? throw new ArgumentNullException(nameof(options));
-        }
+        public DetectionBuilder(IServiceCollection services, DetectionOptions options) : this(services) 
+            => Options = options ?? throw new ArgumentNullException(nameof(options));
 
         /// <summary>
         ///     Gets the <see cref="IServiceCollection" /> services are attached to.
