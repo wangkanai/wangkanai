@@ -6,6 +6,7 @@
         <LangVersion>8.0</LangVersion>
         <Nullable>enable</Nullable>
         <Version>3.0.0</Version>
+        <NoWarn>NU5048;NU5104</NoWarn>
 
         <Authors>Sarin Na Wangkanai</Authors>
         <Description>ASP.NET Core Detection service components for identifying details about client device, browser, engine, platform, and crawler. Responsive middleware for routing base upon request client device detection to specific view. Also in the added feature of user preference made this library even more comprehensive must for developers whom to target multiple devices with view rendered and optimized directly from the server side.</Description>
@@ -13,7 +14,6 @@
         <PackageTags>aspnetcore;detection</PackageTags>
         <PackageProjectUrl>https://github.com/wangkanai/Detection</PackageProjectUrl>
         <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-        <NoWarn>NU5048;NU5104</NoWarn>
         <RepositoryType>git</RepositoryType>
         <RepositoryUrl>git://github.com/wangkanai/Detection</RepositoryUrl>
         <PackageIconUrl>https://raw.githubusercontent.com/wangkanai/Detection/dev/asset/avatar.png</PackageIconUrl>

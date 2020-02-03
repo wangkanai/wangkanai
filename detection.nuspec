@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="https://raw.githubusercontent.com/NuGet/NuGet.Client/dev/src/NuGet.Core/NuGet.Packaging/compiler/resources/nuspec.xsd">
+    <metadata>
+        <!-- Required elements-->
+        <id>wangkanai.detection</id>
+        <version>3.0.0</version>
+        <authors>Sarin Na Wangkanai</authors>
+        <description>ASP.NET Core Detection service components for identifying details about client device, browser, engine, platform, and crawler. Responsive middleware for routing base upon request client device detection to specific view. Also in the added feature of user preference made this library even more comprehensive must for developers whom to target multiple devices with view rendered and optimized directly from the server side.</description>
+        <!-- Optional elements -->
+        <copyright>Copyright © 2018 Sarin Na Wangkanai</copyright>
+        <tags>aspnetcore;detection</tags>
+        <projectUrl>https://github.com/wangkanai/Detection</projectUrl>
+        <license type="expression">Apache-2.0</license>
+        <repository type="git" url="https://github.com/wangkanai/Detection.git" />
+        <icon>images\avatar.png</icon>
+    </metadata>
+    <files>
+        <file src="asset\avatar.png" target="images\" />
+    </files>
+</package>
