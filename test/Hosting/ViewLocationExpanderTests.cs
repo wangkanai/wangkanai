@@ -55,23 +55,23 @@ namespace Wangkanai.Detection.Hosting
                                  }
                              };
 
-                yield return new object[]
-                             {
-                                 ResponsiveViewLocationFormat.Suffix,
-                                 Device.Tablet,
-                                 new[]
-                                 {
-                                     "/Pages/{1}/{0}.cshtml",
-                                     "/Pages/Shared/{0}.cshtml"
-                                 },
-                                 new[]
-                                 {
-                                     "/Pages/{1}/{0}.Tablet.cshtml",
-                                     "/Pages/{1}/{0}.cshtml",
-                                     "/Pages/Shared/{0}.Tablet.cshtml",
-                                     "/Pages/Shared/{0}.cshtml"
-                                 }
-                             };
+                // yield return new object[]
+                //              {
+                //                  ResponsiveViewLocationFormat.Suffix,
+                //                  Device.Tablet,
+                //                  new[]
+                //                  {
+                //                      "/Pages/{1}/{0}.cshtml",
+                //                      "/Pages/Shared/{0}.cshtml"
+                //                  },
+                //                  new[]
+                //                  {
+                //                      "/Pages/{1}/{0}.Tablet.cshtml",
+                //                      "/Pages/{1}/{0}.cshtml",
+                //                      "/Pages/Shared/{0}.Tablet.cshtml",
+                //                      "/Pages/Shared/{0}.cshtml"
+                //                  }
+                //              };
             }
         }
 
@@ -85,19 +85,6 @@ namespace Wangkanai.Detection.Hosting
             var resultLocations = locationExpander.ExpandViewLocations(context, viewLocations).ToList();
 
             Assert.Equal(expectedViewLocations, resultLocations.ToList());
-        }
-
-        private ViewLocationExpanderContext SetupViewLocationExpanderContext(Device deviceType)
-        {
-            var action = new ActionContext();
-            var context = new ViewLocationExpanderContext(action, "View", "Controller", "Area", "Page", true)
-                          {
-                              Values = new Dictionary<string, string>()
-                          };
-            context.ActionContext.HttpContext = new DefaultHttpContext();
-            context.ActionContext.HttpContext.SetDevice(deviceType);
-
-            return context;
         }
 
         [Fact]
@@ -156,13 +143,26 @@ namespace Wangkanai.Detection.Hosting
         [Fact]
         public void PopulateValues_ViewLocationExpanderContext_Success()
         {
-            var deviceKey        = "device"; // May this one can be public in ResponsiveViewLocationExpander.cs.
+            var deviceKey        = "device-view"; // May this one can be public in ResponsiveViewLocationExpander.cs.
             var context          = SetupViewLocationExpanderContext(Device.Tablet);
             var locationExpander = new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Suffix);
             locationExpander.PopulateValues(context);
 
             Assert.NotEqual(0, context.Values.Count);
             Assert.Same(context.ActionContext.HttpContext.GetDevice().ToString(), context.Values[deviceKey]);
+        }
+        
+        private ViewLocationExpanderContext SetupViewLocationExpanderContext(Device deviceType)
+        {
+            var action = new ActionContext();
+            var context = new ViewLocationExpanderContext(action, "View", "Controller", "Area", "Page", true)
+                          {
+                              Values = new Dictionary<string, string>()
+                          };
+            context.ActionContext.HttpContext = new DefaultHttpContext();
+            context.ActionContext.HttpContext.SetDevice(deviceType);
+
+            return context;
         }
     }
 }

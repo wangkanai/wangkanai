@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Wangkanai.Detection.Models;
@@ -31,8 +32,18 @@ namespace Wangkanai.Detection.Hosting
 
             Enum.TryParse(value, true, out Device device);
 
-            // What should I manipulate? 
-            return viewLocations;
+            viewLocations = viewLocations.Where(l => l.Contains("pages", StringComparison.OrdinalIgnoreCase));
+            
+            return ExpandViewLocationCore(viewLocations, device);
+        }
+
+        private IEnumerable<string> ExpandViewLocationCore(IEnumerable<string> viewLocations, Device device)
+        {
+            foreach (var location in viewLocations)
+            {
+                yield return location.Replace("{0}", "{0}." + device);
+                yield return location;
+            }
         }
     }
 }
