@@ -17,15 +17,10 @@
         <RepositoryType>git</RepositoryType>
         <RepositoryUrl>git://github.com/wangkanai/Detection</RepositoryUrl>
         <PackageIconUrl>https://raw.githubusercontent.com/wangkanai/Detection/dev/asset/avatar.png</PackageIconUrl>
-        <PackageReadmeFile>readme.md</PackageReadmeFile>
     </PropertyGroup>
 
     <ItemGroup>
         <FrameworkReference Include="Microsoft.AspNetCore.App" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <None Include="..\README.md" Pack="true" PackagePath="." /> 
     </ItemGroup>
 
 </Project>
