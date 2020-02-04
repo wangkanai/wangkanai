@@ -14,15 +14,15 @@ namespace Wangkanai.Detection.Hosting
         {
             context.Values.TryGetValue(ValueKey, out var device);
 
-            if (context.ActionContext.ActionDescriptor is PageActionDescriptor
-                && !string.IsNullOrEmpty(context.PageName))
-            {
-                var expandLocations = ExpandPageHierarchy().ToList();
-                return expandLocations;
-            }
+            if (!(context.ActionContext.ActionDescriptor is PageActionDescriptor)) 
+                return viewLocations;
+            
+            if (string.IsNullOrEmpty(context.PageName)) 
+                return viewLocations;
 
-            // Not a page - just act natural.
-            return viewLocations;
+            var expandLocations = ExpandPageHierarchy().ToList();
+            return expandLocations;
+            
 
             IEnumerable<string> ExpandPageHierarchy()
             {
@@ -38,9 +38,6 @@ namespace Wangkanai.Detection.Hosting
                     yield return location;
                 }
             }
-            
-            static string ReplacePageName(ViewLocationExpanderContext context, string location, int end) 
-                => location.Replace("/{1}/", context.PageName.Substring(0, end + 1));
         }
 
         public void PopulateValues(ViewLocationExpanderContext context)
