@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -13,15 +14,10 @@ namespace Wangkanai.Detection.Hosting
         {
             context.Values.TryGetValue(ValueKey, out var device);
 
-            // if (value.IsNullOrEmpty())
-            //     return viewLocations;
-            //
-            // Enum.TryParse(value, true, out Device device);
-
             if (context.ActionContext.ActionDescriptor is PageActionDescriptor
                 && !string.IsNullOrEmpty(context.PageName))
             {
-                var expandLocations = ExpandPageHierarchy();
+                var expandLocations = ExpandPageHierarchy().ToList();
                 return expandLocations;
             }
 
@@ -38,16 +34,8 @@ namespace Wangkanai.Detection.Hosting
                         continue;
                     }
 
-                    // yield return location.Replace("{0}", "{0}." + device);
-                    // yield return location;
-
-                    var end = context.PageName.Length;
-
-                    while (end > 0 && (end = context.PageName.LastIndexOf('/', end - 1)) != -1)
-                    {
-                        yield return ReplacePageName(context, location, end).Replace("{0}", "{0}." + device);
-                        yield return ReplacePageName(context, location, end);
-                    }
+                    yield return location.Replace("{0}", "{0}." + device);
+                    yield return location;
                 }
             }
             
