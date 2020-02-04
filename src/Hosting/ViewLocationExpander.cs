@@ -26,7 +26,7 @@ namespace Wangkanai.Detection.Hosting
     {
         private const    string                       ValueKey = "device";
         private readonly ResponsiveViewLocationFormat _format;
-        
+
         public ResponsiveViewLocationExpander(ResponsiveViewLocationFormat format)
         {
             if (!Enum.IsDefined(typeof(ResponsiveViewLocationFormat), (int) format))
@@ -52,17 +52,15 @@ namespace Wangkanai.Detection.Hosting
 
             context.Values.TryGetValue(ValueKey, out var device);
 
-            // if (string.IsNullOrEmpty(value))
-            //     return viewLocations;
-            //
-            // Enum.TryParse(value, true, out Device device);
+            if (string.IsNullOrEmpty(device))
+                return viewLocations;
 
             var filterLocations = ViewOnly(viewLocations);
             var resultLocations = ExpandViewLocationsCore(filterLocations, device).Concat(viewLocations);
 
             return resultLocations;
         }
-        
+
         private IEnumerable<string> ExpandViewLocationsCore(IEnumerable<string> viewLocations, string device)
         {
             foreach (var location in viewLocations)
@@ -76,6 +74,7 @@ namespace Wangkanai.Detection.Hosting
 
         private static IEnumerable<string> ViewOnly(IEnumerable<string> viewLocations)
             => viewLocations.Where(location => location.Contains("views", StringComparison.OrdinalIgnoreCase));
+
         private static IEnumerable<string> PageOnly(IEnumerable<string> viewLocations)
             => viewLocations.Where(location => location.Contains("pages", StringComparison.OrdinalIgnoreCase));
     }

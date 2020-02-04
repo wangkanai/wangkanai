@@ -14,15 +14,14 @@ namespace Wangkanai.Detection.Hosting
         {
             context.Values.TryGetValue(ValueKey, out var device);
 
-            if (!(context.ActionContext.ActionDescriptor is PageActionDescriptor)) 
+            if (!(context.ActionContext.ActionDescriptor is PageActionDescriptor))
                 return viewLocations;
-            
-            if (string.IsNullOrEmpty(context.PageName)) 
+
+            if (string.IsNullOrEmpty(context.PageName) || string.IsNullOrEmpty(device))
                 return viewLocations;
 
             var expandLocations = ExpandPageHierarchy().ToList();
             return expandLocations;
-            
 
             IEnumerable<string> ExpandPageHierarchy()
             {
