@@ -4,15 +4,15 @@
 namespace Microsoft.Extensions.DependencyInjection
 {
     /// <summary>
-    /// Detection builder Interface
+    /// Helper functions for configuring detection services.
     /// </summary>
     public interface IDetectionBuilder
     {
         /// <summary>
-        /// Gets the services.
+        /// Gets the <see cref="IServiceCollection" /> services are attached to.
         /// </summary>
         /// <value>
-        /// The services.
+        /// The <see cref="IServiceCollection" /> services are attached to.
         /// </value>
         IServiceCollection Services { get; }
     }
