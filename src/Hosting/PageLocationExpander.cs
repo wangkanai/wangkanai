@@ -30,7 +30,7 @@ namespace Wangkanai.Detection.Hosting
             {
                 foreach (var location in viewLocations)
                 {
-                    if (!location.Contains("/Shared/") && !location.Contains("/{1}/") || location.Contains("/Views/"))
+                    if (!location.Contains("/{1}/") && !location.Contains("/Shared/") || location.Contains("/Views/"))
                     {
                         yield return location;
                         continue;
