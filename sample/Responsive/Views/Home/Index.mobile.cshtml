@@ -1,6 +1,6 @@
 <p>Views/Home/Index.mobile.cshtml</p>
 
-<div class="taghelper">
+<section id="device">
     <h4>desktop</h4>
     <device include="desktop">is desktop</device>
     <device exclude="desktop">not desktop</device>
@@ -10,8 +10,16 @@
     <h4>mobile</h4>
     <device include="mobile">is mobile</device>
     <device exclude="mobile">not mobile</device>
-    <browser/>
-</div>
+</section>
+
+<section id="browser">
+    <h4>google chrome</h4>
+    <browser include="chrome">is chrome</browser>
+    <browser exclude="chrome">not chrome</browser>
+    <h4>microsoft edge</h4>
+    <browser include="edge">is edge</browser>
+    <browser exclude="edge">not edge</browser>
+</section>
 
 <a href="/Detection/Preference/Prefer">
     <div class="alert alert-light" role="alert">
