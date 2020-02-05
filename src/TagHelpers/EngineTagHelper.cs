@@ -1,9 +1,7 @@
-// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
+﻿// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.Primitives;
 using Wangkanai.Detection.Services;
@@ -12,46 +10,39 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
 {
     [HtmlTargetElement(ElementName, Attributes = IncludeAttributeName)]
     [HtmlTargetElement(ElementName, Attributes = ExcludeAttributeName)]
-    public class DeviceTagHelper : TagHelper
+    public class EngineTagHelper : TagHelper
     {
-        protected IHtmlGenerator Generator { get; }
-        private const string ElementName          = "device";
+        private readonly IEngineService _resolver;
+        private const string ElementName          = "engine";
         private const string IncludeAttributeName = "include";
         private const string ExcludeAttributeName = "exclude";
-
+        
         private static readonly char[] NameSeparator = {','};
-
+        
         [HtmlAttributeName(IncludeAttributeName)]
-        public string? Include { get; set; }
+        public string Include { get; set; }
 
         [HtmlAttributeName(ExcludeAttributeName)]
-        public string? Exclude { get; set; }
+        public string Exclude { get; set; }
 
-        private readonly IDeviceService _resolver;
-
-        [HtmlAttributeNotBound]
-        [ViewContext]
-        public ViewContext ViewContext { get; set; }
-
-        public DeviceTagHelper(IHtmlGenerator generator, IDeviceService resolver)
+        public EngineTagHelper(IEngineService resolver)
         {
-            Generator = generator ?? throw new ArgumentNullException(nameof(generator));
             _resolver = resolver ?? throw new ArgumentNullException(nameof(resolver));
         }
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
-            if (context is null)
+            if (context is null) 
                 throw new ArgumentNullException(nameof(context));
-            if (output is null)
+            if (output is null) 
                 throw new ArgumentNullException(nameof(output));
 
             output.TagName = null;
-
-            if (string.IsNullOrWhiteSpace(Include) && string.IsNullOrWhiteSpace(Exclude))
+            
+            if (string.IsNullOrEmpty(Include) && string.IsNullOrEmpty(Exclude))
                 return;
-
-            var device = _resolver.Type.ToString();
+            
+            var engine = _resolver.Type.ToString();
 
             if (Exclude != null)
             {
@@ -59,12 +50,14 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
                 foreach (var item in tokenizer)
                 {
                     var client = item.Trim();
-                    if (client.HasValue && client.Length > 0)
-                        if (client.Equals(device, StringComparison.OrdinalIgnoreCase))
-                        {
-                            output.SuppressOutput();
-                            return;
-                        }
+                    if (!client.HasValue || client.Length <= 0)
+                        continue;
+
+                    if (!client.Equals(engine, StringComparison.OrdinalIgnoreCase))
+                        continue;
+
+                    output.SuppressOutput();
+                    return;
                 }
             }
 
@@ -78,13 +71,13 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
                     if (client.HasValue && client.Length > 0)
                     {
                         has = true;
-                        if (client.Equals(device, StringComparison.OrdinalIgnoreCase))
+                        if (client.Equals(engine, StringComparison.OrdinalIgnoreCase))
                             return;
                     }
                 }
             }
 
-            if (has) 
+            if (has)
                 output.SuppressOutput();
         }
     }

@@ -12,10 +12,10 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
     [HtmlTargetElement(ElementName, Attributes = ExcludeAttributeName)]
     public class BrowserTagHelper : TagHelper
     {
+        private readonly IBrowserService _resolver;
         private const    string          ElementName          = "browser";
         private const    string          IncludeAttributeName = "include";
         private const    string          ExcludeAttributeName = "exclude";
-        private readonly IBrowserService _resolver;
 
         private static readonly char[] NameSeparator = {','};
 
@@ -61,7 +61,7 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
                 }
             }
 
-            var hasBrowser = false;
+            var has = false;
             if (Include != null)
             {
                 var tokenizer = new StringTokenizer(Include, NameSeparator);
@@ -70,14 +70,14 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
                     var client = item.Trim();
                     if (client.HasValue && client.Length > 0)
                     {
-                        hasBrowser = true;
+                        has = true;
                         if (client.Equals(browser, StringComparison.OrdinalIgnoreCase))
                             return;
                     }
                 }
             }
 
-            if (hasBrowser)
+            if (has)
                 output.SuppressOutput();
         }
     }
