@@ -6,8 +6,9 @@ using Microsoft.AspNetCore.Http;
 using Moq;
 using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Models;
+using Wangkanai.Detection.Services;
 
-namespace Wangkanai.Detection.Services
+namespace Wangkanai.Detection
 {
     [DebuggerStepThrough]
     public static class MockService

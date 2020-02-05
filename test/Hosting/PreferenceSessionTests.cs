@@ -1,14 +1,9 @@
-using System;
-using System.Linq;
-using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;
-using Wangkanai.Detection.Mocks;
-using Wangkanai.Detection.Models;
 using Xunit;
 
 namespace Wangkanai.Detection.Hosting

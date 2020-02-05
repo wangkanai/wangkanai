@@ -2,11 +2,11 @@
 using Wangkanai.Detection.Models;
 using Xunit;
 
-namespace Wangkanai.Detection.Mocks
+namespace Wangkanai.Detection
 {
     internal static class MockClient
     {
-        public static HttpRequestMessage CreateRequest(Device agent, string url = "/") 
+        public static HttpRequestMessage CreateRequest(Device agent, string url = "/")
             => CreateRequest(agent.ToString(), url);
 
         public static HttpRequestMessage CreateRequest(string agent, string url = "/")

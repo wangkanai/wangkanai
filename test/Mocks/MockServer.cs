@@ -7,7 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Models;
 
-namespace Wangkanai.Detection.Hosting
+namespace Wangkanai.Detection
 {
     internal static class MockServer
     {
