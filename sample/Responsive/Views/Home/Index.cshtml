@@ -8,15 +8,55 @@
 
 <p>Views/Home/Index.cshtml</p>
 
-<div class="taghelper">
-    <h4>desktop</h4>
+<section id="device">
+    <h3>device</h3>
+    <h5>desktop</h5>
     <device include="desktop">is desktop</device>
     <device exclude="desktop">not desktop</device>
-    <h4>tablet</h4>
+    <h5>tablet</h5>
     <device include="tablet">is tablet</device>
     <device exclude="tablet">not tablet</device>
     <h4>mobile</h4>
     <device include="mobile">is mobile</device>
     <device exclude="mobile">not mobile</device>
-    <browser/>
-</div>
+</section>
+
+<section id="browser">
+    <h3>browser</h3>
+    <h5>google chrome</h5>
+    <browser include="chrome">is chrome</browser>
+    <browser exclude="chrome">not chrome</browser>
+    <h5>microsoft edge</h5>
+    <browser include="edge">is edge</browser>
+    <browser exclude="edge">not edge</browser>
+</section>
+
+<section id="platform">
+    <h3>platform</h3>
+    <h5>microsoft windows</h5>
+    <platform include="windows">is windows</platform>
+    <platform exclude="windows">not windows</platform>
+    <h5>apple ios</h5>
+    <platform include="ios">is ios</platform>
+    <platform exclude="ios">not ios</platform>
+</section>
+
+<section id="engine">
+    <h3>engine</h3>
+    <h5>blink</h5>
+    <engine include="blink">is blink</engine>
+    <engine exclude="blink">not blink</engine>
+    <h5>webkit</h5>
+    <engine include="webkit">is webkit</engine>
+    <engine exclude="webkit">not webkit</engine>
+</section>
+
+<section id="crawler">
+    <h3>crawler</h3>
+    <h5>google</h5>
+    <engine include="google">is google</engine>
+    <engine exclude="google">not google</engine>
+    <h5>bing</h5>
+    <engine include="bing">is bing</engine>
+    <engine exclude="bing">not bing</engine>
+</section>

@@ -7,12 +7,12 @@ using Wangkanai.Detection.DependencyInjection.Options;
 namespace Microsoft.Extensions.DependencyInjection
 {
     /// <summary>
-    ///     Contains extension method to <see cref="IServiceCollection" /> for configuring client services.
+    /// Contains extension method to <see cref="IServiceCollection" /> for configuring client services.
     /// </summary>
     public static class DetectionCollectionExtensions
     {
         /// <summary>
-        ///     Add Detection Service to the services container.
+        /// Add Detection Service to the services container.
         /// </summary>
         /// <param name="services">The services available in the application.</param>
         /// <param name="setAction">An <see cref="Action{DetectionOptions}"/> to configure the provided <see cref="DetectionOptions"/>.</param>
@@ -22,7 +22,7 @@ namespace Microsoft.Extensions.DependencyInjection
                        .AddDetection();
 
         /// <summary>
-        ///     Add Detection Service to the services container.
+        /// Add Detection Service to the services container.
         /// </summary>
         /// <param name="services">The services available in the application.</param>
         /// <returns>An <see cref="IServiceCollection" /> so that additional calls can be chained.</returns>
