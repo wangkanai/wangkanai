@@ -36,7 +36,9 @@ namespace Wangkanai.Detection.Hosting
                         continue;
                     }
 
+                    // Device View if exist on disk
                     yield return location.Replace("{0}", "{0}." + device);
+                    // Fallback to the original default view
                     yield return location;
                 }
             }
