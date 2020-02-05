@@ -6,22 +6,22 @@ using System;
 namespace Microsoft.Extensions.DependencyInjection
 {
     /// <summary>
-    ///     Helper functions for configuring detection services.
+    /// Helper functions for configuring detection services.
     /// </summary>
     public class DetectionBuilder : IDetectionBuilder
     {
         /// <summary>
-        ///     Creates a new instance of <see cref="DetectionBuilder" />.
+        /// Creates a new instance of <see cref="DetectionBuilder" />.
         /// </summary>
         /// <param name="services">The <see cref="IServiceCollection" /> to attach to.</param>
         public DetectionBuilder(IServiceCollection services)
             => Services = services ?? throw new ArgumentNullException(nameof(services));
 
         /// <summary>
-        ///     Gets the <see cref="IServiceCollection" /> services are attached to.
+        /// Gets the <see cref="IServiceCollection" /> services are attached to.
         /// </summary>
         /// <value>
-        ///     The <see cref="IServiceCollection" /> services are attached to.
+        /// The <see cref="IServiceCollection" /> services are attached to.
         /// </value>
         public IServiceCollection Services { get; }
     }
