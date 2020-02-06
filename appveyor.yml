@@ -43,6 +43,7 @@ deploy:
     branch: master
 - provider: NuGet
   server: https://nuget.pkg.github.com/wangkanai/index.json
+  username: wangkanai
   api_key:
     secure: +WL9sBLNxRSwSRTu5btK/smYjwDFZjIGjg5P676G7O9UpGyJr5Hzi32SQruRS9EF
   artifact: /.*\.nupkg/ 
