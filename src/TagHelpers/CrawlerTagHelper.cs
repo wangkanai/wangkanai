@@ -45,7 +45,7 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
             if(!_resolver.IsCrawler)
                 return;
 
-            var crawler = _resolver.Type.ToString();
+            var crawler = _resolver.Name.ToString();
 
             if (Exclude != null)
             {
