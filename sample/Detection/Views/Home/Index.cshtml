@@ -1,47 +1,8 @@
-@model Wangkanai.Detection.Services.IDetectionService
-
-@{
-    ViewData["Title"] = "Detection";
+﻿@{
+    ViewData["Title"] = "Home Page";
 }
 
-<h3>UserAgent</h3>
-<code>@Model.UserAgent</code>
-
-<h3>Results</h3>
-
-<table>
-    <thead>
-        <tr>
-            <th>Resolver</th>
-            <th>Type</th>
-            <th>Version</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th>Device</th>
-            <td>@Model.Device?.Type</td>
-            <td></td>
-        </tr>
-        <tr>
-            <th>Platform</th>
-            <td>@Model.Platform?.OperatingSystem</td>
-            <td>@Model.Platform?.Processor</td>
-        </tr>
-        <tr>
-            <th>Engine</th>
-            <td>@Model.Engine?.Type</td>
-            <td></td>
-        </tr>
-        <tr>
-            <th>Browser</th>
-            <td>@Model.Browser?.Type</td>
-            <td>@Model.Browser?.Version</td>
-        </tr>
-        <tr>
-            <th>Crawler</th>
-            <td>@Model.Crawler?.Type</td>
-            <td>@Model.Crawler?.Version</td>
-        </tr>
-    </tbody>
-</table>
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
