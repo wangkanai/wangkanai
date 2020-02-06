@@ -13,7 +13,7 @@ namespace Wangkanai.Detection.Services
         {
             var resolver = MockService.CreateEngineService(null);
             Assert.NotNull(resolver);
-            Assert.Equal(Engine.Unknown, resolver.Type);
+            Assert.Equal(Engine.Unknown, resolver.Name);
         }
 
         [Theory]
@@ -24,7 +24,7 @@ namespace Wangkanai.Detection.Services
         public void Trident(Engine engine, string agent)
         {
             var resolver = MockService.CreateEngineService(agent);
-            Assert.Equal(engine, resolver.Type);
+            Assert.Equal(engine, resolver.Name);
         }
 
 
@@ -35,7 +35,7 @@ namespace Wangkanai.Detection.Services
         public void WebKit(Engine engine, string agent)
         {
             var resolver = MockService.CreateEngineService(agent);
-            Assert.Equal(engine, resolver.Type);
+            Assert.Equal(engine, resolver.Name);
         }
 
         [Theory]
@@ -45,7 +45,7 @@ namespace Wangkanai.Detection.Services
         public void Blink(Engine engine, string agent)
         {
             var resolver = MockService.CreateEngineService(agent);
-            Assert.Equal(engine, resolver.Type);
+            Assert.Equal(engine, resolver.Name);
         }
 
         [Theory]
@@ -55,7 +55,7 @@ namespace Wangkanai.Detection.Services
         public void Gecko(Engine engine, string agent)
         {
             var resolver = MockService.CreateEngineService(agent);
-            Assert.Equal(engine, resolver.Type);
+            Assert.Equal(engine, resolver.Name);
         }
 
         [Theory]
@@ -66,7 +66,7 @@ namespace Wangkanai.Detection.Services
         public void Edge(Engine engine, string agent)
         {
             var resolver = MockService.CreateEngineService(agent);
-            Assert.Equal(engine, resolver.Type);
+            Assert.Equal(engine, resolver.Name);
         }
 
         [Theory]
@@ -76,7 +76,7 @@ namespace Wangkanai.Detection.Services
         public void Servo(Engine engine, string agent)
         {
             var resolver = MockService.CreateEngineService(agent);
-            Assert.Equal(engine, resolver.Type);
+            Assert.Equal(engine, resolver.Name);
         }
     }
 }

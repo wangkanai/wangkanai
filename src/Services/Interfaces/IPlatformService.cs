@@ -5,9 +5,19 @@ using Wangkanai.Detection.Models;
 
 namespace Wangkanai.Detection.Services
 {
+    /// <summary>
+    /// Provides the APIs for query client platform.
+    /// </summary>
     public interface IPlatformService
     {
+        /// <summary>
+        /// Gets the <see cref="Processor"/> of the request client.
+        /// </summary>
         public Processor Processor { get; }
-        public OperatingSystem OperatingSystem { get; }
+        
+        /// <summary>
+        /// Gets the <see cref="OperatingSystem"/> of the request client.
+        /// </summary>
+        public OperatingSystem Name { get; }
     }
 }

@@ -4,9 +4,7 @@
 using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
-using Wangkanai.Detection.Mocks;
 using Wangkanai.Detection.Models;
-using Wangkanai.Detection.Services;
 using Xunit;
 
 namespace Wangkanai.Detection.Hosting
