@@ -11,11 +11,10 @@ namespace Microsoft.AspNetCore.Http
     {
         private const string ResponsiveContextKey = "Responsive";
 
-        public static ISession SafeSession(this HttpContext httpContext)
-        {
-            var sessionFeature = httpContext.Features.Get<ISessionFeature>();
-            return sessionFeature == null ? null : httpContext.Session;
-        }
+        public static ISession? SafeSession(this HttpContext httpContext)
+            => httpContext.Features.Get<ISessionFeature>() == null
+                   ? null
+                   : httpContext.Session;
 
         public static void SetDevice(this HttpContext context, Device device)
             => context.Items[ResponsiveContextKey] = device;

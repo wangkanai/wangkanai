@@ -36,7 +36,10 @@ namespace Wangkanai.Detection
         private static PlatformService CreatePlatformService(IUserAgentService service)
             => new PlatformService(service);
 
-        public static CrawlerService CreateCrawlerService(string agent, DetectionOptions options = null)
+        public static CrawlerService CreateCrawlerService(string agent) 
+            => CreateCrawlerService(agent, new DetectionOptions());
+
+        public static CrawlerService CreateCrawlerService(string agent, DetectionOptions options)
             => new CrawlerService(CreateUserAgentService(agent), options);
 
         public static DeviceService CreateDeviceService(string value, string header)

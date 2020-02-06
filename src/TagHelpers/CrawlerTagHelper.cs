@@ -18,12 +18,12 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
         private const string ExcludeAttributeName = "exclude";
         
         private static readonly char[] NameSeparator = {','};
-        
+
         [HtmlAttributeName(IncludeAttributeName)]
-        public string Include { get; set; }
+        public string? Include { get; set; }
 
         [HtmlAttributeName(ExcludeAttributeName)]
-        public string Exclude { get; set; }
+        public string? Exclude { get; set; }
 
         public CrawlerTagHelper(ICrawlerService resolver)
         {

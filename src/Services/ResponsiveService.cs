@@ -40,16 +40,18 @@ namespace Wangkanai.Detection.Services
 
         public bool HasPreferred()
             => _context.SafeSession() != null
-               && _context.SafeSession().Keys.Any(k => k == ResponsiveContextKey);
+               && _context.Session.Keys.Any(k => k == ResponsiveContextKey);
 
         private static Device PreferView(HttpContext context, Device defaultView)
         {
             if (context.SafeSession() is null)
                 return defaultView;
-            if (context.SafeSession().Keys.All(k => k != ResponsiveContextKey))
-                return defaultView;
 
             context.Session.TryGetValue(ResponsiveContextKey, out var raw);
+
+            if (raw == null)
+                return defaultView;
+
             Enum.TryParse<Device>(Encoding.ASCII.GetString(raw), out var preferView);
 
             if (preferView != Device.Unknown && preferView != defaultView)
