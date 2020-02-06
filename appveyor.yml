@@ -46,5 +46,7 @@ deploy:
   auth_token:
     secure: +WL9sBLNxRSwSRTu5btK/smYjwDFZjIGjg5P676G7O9UpGyJr5Hzi32SQruRS9EF
   artifact: /.*\.nupkg/
+  draft: true
+  prerelease: true  
   on:
     branch: dev
