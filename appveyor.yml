@@ -41,3 +41,10 @@ deploy:
   artifact: /.*\.nupkg/
   on:
     branch: master
+- provider: GitHub
+  description: 'Release description'
+  auth_token:
+    secure: +WL9sBLNxRSwSRTu5btK/smYjwDFZjIGjg5P676G7O9UpGyJr5Hzi32SQruRS9EF
+  artifact: /.*\.nupkg/
+  on:
+    branch: dev
