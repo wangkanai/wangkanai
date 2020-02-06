@@ -256,3 +256,5 @@ paket-files/
 
 *.ncrunchproject
 *.ncrunchprojectsolution
+
+**/wwwroot/lib/

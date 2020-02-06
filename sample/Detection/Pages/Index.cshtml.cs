@@ -2,7 +2,7 @@
 
 namespace Detection.Pages
 {
-    public class Index : PageModel
+    public class IndexModel : PageModel
     {
         public void OnGet()
         {

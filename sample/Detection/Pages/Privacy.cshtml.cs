@@ -2,7 +2,7 @@
 
 namespace Detection.Pages
 {
-    public class Privacy : PageModel
+    public class PrivacyModel : PageModel
     {
         public void OnGet()
         {
