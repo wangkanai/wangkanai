@@ -42,7 +42,6 @@ deploy:
   on:
     branch: master
 - provider: GitHub
-  release: '{version}'
   description: 'Release description'
   auth_token:
     secure: +WL9sBLNxRSwSRTu5btK/smYjwDFZjIGjg5P676G7O9UpGyJr5Hzi32SQruRS9EF
