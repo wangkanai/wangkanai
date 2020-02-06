@@ -87,15 +87,15 @@ Adding the TagHelper features to your web application with following in your `_V
 
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @addTagHelper *, Wangkanai.Detection
-
 ```
 
 ### Directory Structure
 
-* `src` - The code of this project lives here
+* `src` - The source code of this project lives here
+* `test` - The test code of this project lives here
 * `collection` - Collection of sample user agents for lab testing
 * `sample` - Contains sample web application of usage
-* `doc` - Contains the documetation on how utilized this library
+* `doc` - Contains the documentation on how utilized this library
 
 ### Contributing
 
