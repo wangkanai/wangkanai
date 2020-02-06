@@ -18,7 +18,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{C26D86D6-4B4E-407E-9F1D-9CA1765768CE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Detection", "sample\Detection\Detection.csproj", "{FA89F64C-D456-427F-B54B-3F9CA05D07BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DetectionOld", "sample\DetectionOld\DetectionOld.csproj", "{FA89F64C-D456-427F-B54B-3F9CA05D07BF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Responsive", "sample\Responsive\Responsive.csproj", "{4B54E689-97E0-47A0-96F9-B44E29110C59}"
 EndProject

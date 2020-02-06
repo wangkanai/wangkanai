@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Wangkanai.Detection.Services;
 
-//using Wangkanai.Detection;
+//using Wangkanai.DetectionOld;
 
 namespace Sandbox.Controllers
 {
