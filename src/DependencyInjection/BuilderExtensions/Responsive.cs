@@ -44,9 +44,9 @@ namespace Microsoft.Extensions.DependencyInjection
         private static IServiceCollection AddRazorViewLocation(this IServiceCollection services)
             => services.Configure<RazorViewEngineOptions>(options =>
             {
-                //options.ViewLocationExpanders.Add(new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Suffix));
-                //options.ViewLocationExpanders.Add(new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Subfolder));
                 options.ViewLocationExpanders.Add(new ResponsivePageLocationExpander());
+                options.ViewLocationExpanders.Add(new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Suffix));
+                //options.ViewLocationExpanders.Add(new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Subfolder));
             });
 
         private static IServiceCollection AddRazorPageLocation(this IServiceCollection services)
