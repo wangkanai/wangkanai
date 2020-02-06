@@ -42,7 +42,7 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
             if (string.IsNullOrEmpty(Include) && string.IsNullOrEmpty(Exclude))
                 return;
 
-            var browser = _resolver.Type.ToString();
+            var browser = _resolver.Name.ToString();
 
             if (Exclude != null)
             {

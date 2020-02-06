@@ -11,7 +11,7 @@ namespace Wangkanai.Detection.Services
         {
             var resolver = MockBrowserService(null);
             Assert.NotNull(resolver);
-            Assert.Equal(Browser.Unknown, resolver.Type);
+            Assert.Equal(Browser.Unknown, resolver.Name);
             Assert.Equal(new Version(0, 0), resolver.Version);
         }
 
@@ -20,7 +20,7 @@ namespace Wangkanai.Detection.Services
         {
             var resolver = MockBrowserService("");
             Assert.NotNull(resolver);
-            Assert.Equal(Browser.Unknown, resolver.Type);
+            Assert.Equal(Browser.Unknown, resolver.Name);
             Assert.Equal(new Version(0, 0), resolver.Version);
         }
 
@@ -31,7 +31,7 @@ namespace Wangkanai.Detection.Services
         public void Chrome(string version, string agent)
         {
             var resolver = MockBrowserService(agent);
-            Assert.Equal(Browser.Chrome, resolver.Type);
+            Assert.Equal(Browser.Chrome, resolver.Name);
             Assert.Equal(new Version(version), resolver.Version);
         }
 
@@ -43,7 +43,7 @@ namespace Wangkanai.Detection.Services
         public void InternetExplorer(string version, string agent)
         {
             var resolver = MockBrowserService(agent);
-            Assert.Equal(Browser.InternetExplorer, resolver.Type);
+            Assert.Equal(Browser.InternetExplorer, resolver.Name);
             Assert.Equal(new Version(version), resolver.Version);
         }
 
@@ -54,7 +54,7 @@ namespace Wangkanai.Detection.Services
         public void Safari(string agent)
         {
             var resolver = MockBrowserService(agent);
-            Assert.Equal(Browser.Safari, resolver.Type);
+            Assert.Equal(Browser.Safari, resolver.Name);
         }
 
         [Theory]
@@ -64,7 +64,7 @@ namespace Wangkanai.Detection.Services
         public void Firefox(string agent)
         {
             var resolver = MockBrowserService(agent);
-            Assert.Equal(Browser.Firefox, resolver.Type);
+            Assert.Equal(Browser.Firefox, resolver.Name);
         }
 
         [Theory]
@@ -75,7 +75,7 @@ namespace Wangkanai.Detection.Services
         public void Edge(string agent)
         {
             var resolver = MockBrowserService(agent);
-            Assert.Equal(Browser.Edge, resolver.Type);
+            Assert.Equal(Browser.Edge, resolver.Name);
         }
 
         [Theory]
@@ -86,7 +86,7 @@ namespace Wangkanai.Detection.Services
         public void Opera(string agent)
         {
             var resolver = MockBrowserService(agent);
-            Assert.Equal(Browser.Opera, resolver.Type);
+            Assert.Equal(Browser.Opera, resolver.Name);
         }
 
         [Theory]
@@ -94,7 +94,7 @@ namespace Wangkanai.Detection.Services
         public void Others(string agent)
         {
             var resolver = MockBrowserService(agent);
-            Assert.Equal(Browser.Others, resolver.Type);
+            Assert.Equal(Browser.Others, resolver.Name);
         }
 
         private static BrowserService MockBrowserService(string agent)

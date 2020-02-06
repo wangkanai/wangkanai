@@ -9,13 +9,13 @@ namespace Wangkanai.Detection.Services
     public class PlatformService : IPlatformService
     {
         public Processor       Processor       { get; }
-        public OperatingSystem OperatingSystem { get; }
+        public OperatingSystem Name { get; }
 
         public PlatformService(IUserAgentService userAgentService)
         {
             var userAgent = userAgentService.UserAgent;
-            OperatingSystem = ParseOperatingSystem(userAgent);
-            Processor       = ParseProcessor(userAgent, OperatingSystem);
+            Name = ParseOperatingSystem(userAgent);
+            Processor       = ParseProcessor(userAgent, Name);
         }
 
         private static OperatingSystem ParseOperatingSystem(UserAgent agent)
