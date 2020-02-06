@@ -28,13 +28,10 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <returns>An <see cref="IServiceCollection" /> so that additional calls can be chained.</returns>
         public static IDetectionBuilder AddDetection(this IServiceCollection services)
             => services.AddDetectionBuilder()
-                       // Detection
                        .AddRequiredPlatformServices()
                        .AddCoreServices()
-                       // Responsive
                        .AddSessionServices()
                        .AddResponsiveService()
-                       // Validation
                        .AddMarkerService();
 
         internal static IDetectionBuilder AddDetectionBuilder(this IServiceCollection services)
