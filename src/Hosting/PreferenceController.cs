@@ -21,7 +21,7 @@ namespace Wangkanai.Detection.Hosting
             => Content("Preference");
 
         // GET
-        public IActionResult Prefer(string returnUrl = null)
+        public IActionResult Prefer(string? returnUrl = null)
         {
             _responsive.PreferSet(Device.Desktop);
 
@@ -29,7 +29,7 @@ namespace Wangkanai.Detection.Hosting
         }
 
         // GET
-        public IActionResult Clear(string returnUrl = null)
+        public IActionResult Clear(string? returnUrl = null)
         {
             _responsive.PreferClear();
 

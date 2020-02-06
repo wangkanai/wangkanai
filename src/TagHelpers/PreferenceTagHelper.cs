@@ -18,7 +18,8 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
         private readonly IResponsiveService _responsive;
         private readonly IDeviceService     _device;
 
-        [HtmlAttributeName(OnlyAttributeName)] public string? Only { get; set; }
+        [HtmlAttributeName(OnlyAttributeName)]
+        public string? Only { get; set; }
 
         public PreferenceTagHelper(IHtmlGenerator generator, IResponsiveService responsive, IDeviceService device)
         {
@@ -50,6 +51,6 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers
 
         private bool DisplayOnlyDevice => _device.Type == OnlyDevice;
 
-        private Device OnlyDevice => Enum.Parse<Device>(Only, true);
+        private Device OnlyDevice => Enum.Parse<Device>(Only ?? "desktop", true);
     }
 }

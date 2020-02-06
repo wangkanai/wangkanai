@@ -10,16 +10,16 @@ namespace Wangkanai.Detection.Services
 {
     public class BrowserService : IBrowserService
     {
-        public Browser Type    { get; }
+        public Browser Name    { get; }
         public Version Version { get; }
 
         public BrowserService(IUserAgentService userAgentService, IPlatformService platformService, IEngineService engineService)
         {
             var agent  = userAgentService.UserAgent;
-            var os     = platformService.OperatingSystem;
-            var engine = engineService.Type;
-            Type    = GetBrowser(agent, os, engine);
-            Version = GetVersion(agent.ToLower(), Type.ToString());
+            var os     = platformService.Name;
+            var engine = engineService.Name;
+            Name    = GetBrowser(agent, os, engine);
+            Version = GetVersion(agent.ToLower(), Name.ToString());
         }
 
         private static Browser GetBrowser(UserAgent agent, OperatingSystem os, Engine engine)

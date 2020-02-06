@@ -13,15 +13,15 @@ namespace Wangkanai.Detection.Services
     public class CrawlerService : ICrawlerService
     {
         public bool    IsCrawler { get; }
-        public Crawler Type      { get; }
+        public Crawler Name      { get; }
         public Version Version   { get; }
 
         public CrawlerService(IUserAgentService useragent, DetectionOptions options)
         {
             var agent = useragent.UserAgent;
 
-            Type      = GetCrawler(agent, options?.Crawler.Others);
-            IsCrawler = Type != Crawler.Unknown;
+            Name      = GetCrawler(agent, options.Crawler.Others);
+            IsCrawler = Name != Crawler.Unknown;
             Version   = GetVersion(agent);
         }
 
