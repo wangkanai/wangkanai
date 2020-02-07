@@ -28,7 +28,7 @@ namespace Wangkanai.Detection.Hosting
             var middleware = new ResponsiveMiddleware(Next);
 
             await Assert.ThrowsAsync<ArgumentNullException>(
-                async () => await middleware.Invoke(null, null)
+                async () => await middleware.InvokeAsync(null, null)
             );
         }
 
@@ -39,7 +39,7 @@ namespace Wangkanai.Detection.Hosting
             var middleware = new ResponsiveMiddleware(Next);
 
             await Assert.ThrowsAsync<NullReferenceException>(
-                async () => await middleware.Invoke(service.Context, null)
+                async () => await middleware.InvokeAsync(service.Context, null)
             );
         }
 
