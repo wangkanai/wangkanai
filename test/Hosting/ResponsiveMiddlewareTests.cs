@@ -4,6 +4,7 @@
 using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using Wangkanai.Detection.Mocks;
 using Wangkanai.Detection.Models;
 using Xunit;
 
@@ -28,25 +29,25 @@ namespace Wangkanai.Detection.Hosting
             var middleware = new ResponsiveMiddleware(Next);
 
             await Assert.ThrowsAsync<ArgumentNullException>(
-                async () => await middleware.Invoke(null, null)
+                async () => await middleware.InvokeAsync(null, null)
             );
         }
 
         [Fact]
         public async void Invoke_HttpContext_ResponsiveService_Null_ThrowsNullReferenceException()
         {
-            var service    = MockService.CreateUserAgentService(null);
+            var service    = MockService.UserAgent(null);
             var middleware = new ResponsiveMiddleware(Next);
 
             await Assert.ThrowsAsync<NullReferenceException>(
-                async () => await middleware.Invoke(service.Context, null)
+                async () => await middleware.InvokeAsync(service.Context, null)
             );
         }
 
         [Fact]
         public async void Invoke_HttpContext_ResponsiveService_Success()
         {
-            using var server   = MockServer.CreateServer();
+            using var server   = MockServer.Server();
             var       request  = MockClient.CreateRequest(Device.Desktop);
             var       client   = server.CreateClient();
             var       response = await client.SendAsync(request);

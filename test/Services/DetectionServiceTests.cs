@@ -12,9 +12,9 @@ namespace Wangkanai.Detection.Services
         [Fact]
         public void Ctor_IServiceProvider_Success()
         {
-            string userAgent = "Agent";
-            var    context   = new DefaultHttpContext();
-            context.Request.Headers["User-Agent"] = userAgent;
+            var agent = "Agent";
+            var context   = new DefaultHttpContext();
+            context.Request.Headers["User-Agent"] = agent;
 
             var accessor = new HttpContextAccessor {HttpContext = context};
 
@@ -22,7 +22,7 @@ namespace Wangkanai.Detection.Services
 
             Assert.NotNull(useragentService.Context);
             Assert.NotNull(useragentService.UserAgent);
-            Assert.Equal(userAgent, useragentService.UserAgent.ToString());
+            Assert.Equal(agent, useragentService.UserAgent.ToString());
         }
 
         [Fact]
@@ -41,17 +41,9 @@ namespace Wangkanai.Detection.Services
         public void Ctor_HttpContextNull_ThrowsArgumentNullException()
         {
             var accessor = new HttpContextAccessor();
-            
+
             Assert.Null(accessor.HttpContext);
             Assert.Throws<ArgumentNullException>(() => new UserAgentService(accessor));
-        }
-
-        private class ServiceProvider : IServiceProvider
-        {
-            public IHttpContextAccessor HttpContextAccessor { get; set; }
-
-            public object GetService(Type serviceType)
-                => HttpContextAccessor;
         }
     }
 }

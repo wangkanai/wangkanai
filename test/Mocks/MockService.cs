@@ -8,64 +8,98 @@ using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Models;
 using Wangkanai.Detection.Services;
 
-namespace Wangkanai.Detection
+namespace Wangkanai.Detection.Mocks
 {
     [DebuggerStepThrough]
     public static class MockService
     {
-        public static ResponsiveService CreateResponsiveService(string agent, DetectionOptions options = null)
+        #region Responsive
+
+        public static ResponsiveService Responsive(string agent, DetectionOptions options = null)
         {
-            var accessor = CreateHttpContextAccessor(agent);
-            var device   = CreateDeviceService(agent);
-            return CreateResponsiveService(accessor, device, options);
+            var accessor = HttpContextAccessor(agent);
+            var device   = Device(agent);
+            return Responsive(accessor, device, options);
         }
 
-        public static ResponsiveService CreateResponsiveService(IHttpContextAccessor accessor, IDeviceService device, DetectionOptions options = null)
+        private static ResponsiveService Responsive(IHttpContextAccessor accessor, IDeviceService device, DetectionOptions options = null)
             => new ResponsiveService(accessor, device, options);
 
-        public static EngineService CreateEngineService(string agent)
+        #endregion
+
+        #region Browser
+
+        public static BrowserService Browser(string agent)
+            => Browser(UserAgent(agent));
+
+        private static BrowserService Browser(IUserAgentService agent)
         {
-            var service  = CreateUserAgentService(agent);
-            var platform = CreatePlatformService(service);
-            return new EngineService(service, platform);
+            var platform = Platform(agent);
+            var engine   = Engine(agent);
+            return new BrowserService(agent, platform, engine);
         }
 
-        public static PlatformService CreatePlatformService(string agent)
-            => new PlatformService(CreateUserAgentService(agent));
+        #endregion
 
-        private static PlatformService CreatePlatformService(IUserAgentService service)
-            => new PlatformService(service);
+        #region Platform
 
-        public static CrawlerService CreateCrawlerService(string agent) 
-            => CreateCrawlerService(agent, new DetectionOptions());
+        public static PlatformService Platform(string agent)
+            => new PlatformService(UserAgent(agent));
 
-        public static CrawlerService CreateCrawlerService(string agent, DetectionOptions options)
-            => new CrawlerService(CreateUserAgentService(agent), options);
+        private static PlatformService Platform(IUserAgentService agent)
+            => new PlatformService(agent);
 
-        public static DeviceService CreateDeviceService(string value, string header)
-            => new DeviceService(CreateUserAgentService(value, header));
+        #endregion
 
-        public static DeviceService CreateDeviceService(string agent)
-            => new DeviceService(CreateUserAgentService(agent));
+        #region Engine
 
-        public static IUserAgentService CreateUserAgentService(string agent)
+        public static EngineService Engine(string agent)
+            => Engine(UserAgent(agent));
+
+        private static EngineService Engine(IUserAgentService agent)
+            => new EngineService(agent, Platform(agent));
+
+        #endregion
+
+        #region Crawler
+
+        public static CrawlerService Crawler(string agent)
+            => Crawler(agent, new DetectionOptions());
+
+        public static CrawlerService Crawler(string agent, DetectionOptions options)
+            => new CrawlerService(UserAgent(agent), options);
+
+        #endregion
+
+        #region Device
+
+        public static DeviceService Device(string value, string header)
+            => new DeviceService(UserAgent(value, header));
+
+        public static DeviceService Device(string agent)
+            => new DeviceService(UserAgent(agent));
+
+        #endregion
+
+        #region UserAgent
+
+        public static IUserAgentService UserAgent(string agent)
             => MockUserAgentService(agent).Object;
 
-        public static IUserAgentService CreateUserAgentService(string value, string header)
+        private static IUserAgentService UserAgent(string value, string header)
             => MockUserAgentService(value, header).Object;
 
-        public static IHttpContextAccessor CreateHttpContextAccessor(string agent, string header = null)
+        #endregion
+
+        #region Internal
+
+        private static IHttpContextAccessor HttpContextAccessor(string agent, string header = null)
             => new HttpContextAccessor {HttpContext = CreateContext(agent, header)};
-
-        #region internal
-
-        private static HttpContext DefaultHttpContext
-            => new DefaultHttpContext();
 
         private static HttpContext CreateContext(string value, string header = null)
         {
             if (header == null) header = "User-Agent";
-            var context                = DefaultHttpContext;
+            var context                = new DefaultHttpContext();
             context.Request.Headers.Add(header, new[] {value});
             return context;
         }
@@ -79,8 +113,10 @@ namespace Wangkanai.Detection
         private static Mock<IUserAgentService> SetupUserAgent(this HttpContext context, string agent)
         {
             var service = new Mock<IUserAgentService>();
-            service.Setup(f => f.Context).Returns(context);
-            service.Setup(f => f.UserAgent).Returns(new UserAgent(agent));
+            service.Setup(f => f.Context)
+                   .Returns(context);
+            service.Setup(f => f.UserAgent)
+                   .Returns(new UserAgent(agent));
             return service;
         }
 

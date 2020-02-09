@@ -10,35 +10,34 @@ using Microsoft.Extensions.DependencyInjection;
 using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Models;
 
-namespace Wangkanai.Detection
+namespace Wangkanai.Detection.Mocks
 {
     internal static class MockServer
     {
-        public static TestServer CreateServer()
-            => CreateServer(CreateWebHostBuilder());
+        public static TestServer Server()
+            => Server(WebHostBuilder());
 
-        public static TestServer CreateServer(Action<DetectionOptions> options)
-            => CreateServer(CreateWebHostBuilder(options));
+        public static TestServer Server(Action<DetectionOptions> options)
+            => Server(WebHostBuilder(options));
 
-        public static TestServer CreateServer(IWebHostBuilder builder)
+        public static TestServer Server(IWebHostBuilder builder)
             => new TestServer(builder);
 
-        public static IWebHostBuilder CreateWebHostBuilder()
-            => CreateWebHostBuilder(options => { });
+        public static IWebHostBuilder WebHostBuilder()
+            => WebHostBuilder(options => { });
 
-        public static IWebHostBuilder CreateWebHostBuilder(Action<DetectionOptions> options)
+        public static IWebHostBuilder WebHostBuilder(Action<DetectionOptions> options)
             => new WebHostBuilder()
                .ConfigureServices(services =>
                    services.AddDetection(options))
                .Configure(app =>
                {
                    app.UseDetection();
-                   app.Run(ResponsiveContextHandler());
+                   app.Run(ContextHandler());
                });
 
-        private static RequestDelegate ResponsiveContextHandler()
-        {
-            return context => context.GetDevice() switch
+        private static RequestDelegate ContextHandler()
+            => context => context.GetDevice() switch
             {
                 Device.Desktop => context.Response.WriteAsync("Response: Desktop"),
                 Device.Tablet  => context.Response.WriteAsync("Response: Tablet"),
@@ -49,6 +48,5 @@ namespace Wangkanai.Detection
                 Device.Car     => context.Response.WriteAsync("Response: Car"),
                 _              => context.Response.WriteAsync("Response: Who?")
             };
-        }
     }
 }

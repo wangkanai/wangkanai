@@ -1,7 +1,8 @@
-// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
+﻿// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
+using Wangkanai.Detection.Mocks;
 using Wangkanai.Detection.Models;
 using Xunit;
 
@@ -12,7 +13,7 @@ namespace Wangkanai.Detection.Services
         [Fact]
         public void Null()
         {
-            var resolver = MockBrowserService(null);
+            var resolver = MockService.Browser(null);
             Assert.NotNull(resolver);
             Assert.Equal(Browser.Unknown, resolver.Name);
             Assert.Equal(new Version(0, 0), resolver.Version);
@@ -21,7 +22,7 @@ namespace Wangkanai.Detection.Services
         [Fact]
         public void Unknown()
         {
-            var resolver = MockBrowserService("");
+            var resolver = MockService.Browser("");
             Assert.NotNull(resolver);
             Assert.Equal(Browser.Unknown, resolver.Name);
             Assert.Equal(new Version(0, 0), resolver.Version);
@@ -33,7 +34,7 @@ namespace Wangkanai.Detection.Services
         [InlineData("8.0.552.237", "Mozilla/5.0 (X11; U; Linux x86_64; en-US) AppleWebKit/534.10 (KHTML, like Gecko) Ubuntu/10.10 Chromium/8.0.552.237 Chrome/8.0.552.237 Safari/534.10")]
         public void Chrome(string version, string agent)
         {
-            var resolver = MockBrowserService(agent);
+            var resolver = MockService.Browser(agent);
             Assert.Equal(Browser.Chrome, resolver.Name);
             Assert.Equal(new Version(version), resolver.Version);
         }
@@ -45,7 +46,7 @@ namespace Wangkanai.Detection.Services
         [InlineData("9.0", "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 7.1; Trident/5.0)")]
         public void InternetExplorer(string version, string agent)
         {
-            var resolver = MockBrowserService(agent);
+            var resolver = MockService.Browser(agent);
             Assert.Equal(Browser.InternetExplorer, resolver.Name);
             Assert.Equal(new Version(version), resolver.Version);
         }
@@ -56,7 +57,7 @@ namespace Wangkanai.Detection.Services
         [InlineData("Mozilla/5.0 (Macintosh; U; PPC Mac OS X; de-ch) AppleWebKit/85 (KHTML, like Gecko) Safari/85")]
         public void Safari(string agent)
         {
-            var resolver = MockBrowserService(agent);
+            var resolver = MockService.Browser(agent);
             Assert.Equal(Browser.Safari, resolver.Name);
         }
 
@@ -66,7 +67,7 @@ namespace Wangkanai.Detection.Services
         [InlineData("Mozilla/5.0 (Linux arm) Gecko/20110318 Firefox/4.0b13pre Fennec/4.0")]
         public void Firefox(string agent)
         {
-            var resolver = MockBrowserService(agent);
+            var resolver = MockService.Browser(agent);
             Assert.Equal(Browser.Firefox, resolver.Name);
         }
 
@@ -77,7 +78,7 @@ namespace Wangkanai.Detection.Services
         [InlineData("Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML like Gecko) Chrome/46.0.2486.0 Safari/537.36 Edge/13.9200")]
         public void Edge(string agent)
         {
-            var resolver = MockBrowserService(agent);
+            var resolver = MockService.Browser(agent);
             Assert.Equal(Browser.Edge, resolver.Name);
         }
 
@@ -88,7 +89,7 @@ namespace Wangkanai.Detection.Services
         [InlineData("Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0) Opera 12.14")]
         public void Opera(string agent)
         {
-            var resolver = MockBrowserService(agent);
+            var resolver = MockService.Browser(agent);
             Assert.Equal(Browser.Opera, resolver.Name);
         }
 
@@ -96,17 +97,8 @@ namespace Wangkanai.Detection.Services
         [InlineData("x-men")]
         public void Others(string agent)
         {
-            var resolver = MockBrowserService(agent);
+            var resolver = MockService.Browser(agent);
             Assert.Equal(Browser.Others, resolver.Name);
-        }
-
-        private static BrowserService MockBrowserService(string agent)
-        {
-            var service  = MockService.CreateUserAgentService(agent);
-            var platform = new PlatformService(service);
-            var engine   = new EngineService(service, platform);
-            var resolver = new BrowserService(service, platform, engine);
-            return resolver;
         }
     }
 }

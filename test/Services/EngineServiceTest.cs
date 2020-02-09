@@ -1,6 +1,7 @@
 // Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
+using Wangkanai.Detection.Mocks;
 using Wangkanai.Detection.Models;
 using Xunit;
 
@@ -11,7 +12,7 @@ namespace Wangkanai.Detection.Services
         [Fact]
         public void Null()
         {
-            var resolver = MockService.CreateEngineService(null);
+            var resolver = MockService.Engine(null);
             Assert.NotNull(resolver);
             Assert.Equal(Engine.Unknown, resolver.Name);
         }
@@ -23,7 +24,7 @@ namespace Wangkanai.Detection.Services
         [InlineData(Engine.Trident, "Mozilla/5.0 (IE 11.0; Windows NT 6.3; Trident/7.0; .NET4.0E; .NET4.0C; rv:11.0) like Gecko")]
         public void Trident(Engine engine, string agent)
         {
-            var resolver = MockService.CreateEngineService(agent);
+            var resolver = MockService.Engine(agent);
             Assert.Equal(engine, resolver.Name);
         }
 
@@ -34,7 +35,7 @@ namespace Wangkanai.Detection.Services
         [InlineData(Engine.WebKit, "Mozilla/5.0 (Macintosh; U; PPC Mac OS X; de-ch) AppleWebKit/85 (KHTML, like Gecko) Safari/85")]
         public void WebKit(Engine engine, string agent)
         {
-            var resolver = MockService.CreateEngineService(agent);
+            var resolver = MockService.Engine(agent);
             Assert.Equal(engine, resolver.Name);
         }
 
@@ -44,7 +45,7 @@ namespace Wangkanai.Detection.Services
         [InlineData(Engine.Blink, "Mozilla/5.0 (X11; U; Linux x86_64; en-US) AppleWebKit/534.10 (KHTML, like Gecko) Ubuntu/10.10 Chromium/8.0.552.237 Chrome/8.0.552.237 Safari/534.10")]
         public void Blink(Engine engine, string agent)
         {
-            var resolver = MockService.CreateEngineService(agent);
+            var resolver = MockService.Engine(agent);
             Assert.Equal(engine, resolver.Name);
         }
 
@@ -54,7 +55,7 @@ namespace Wangkanai.Detection.Services
         [InlineData(Engine.Gecko, "Mozilla/5.0 (Linux arm) Gecko/20110318 Firefox/4.0b13pre Fennec/4.0")]
         public void Gecko(Engine engine, string agent)
         {
-            var resolver = MockService.CreateEngineService(agent);
+            var resolver = MockService.Engine(agent);
             Assert.Equal(engine, resolver.Name);
         }
 
@@ -65,7 +66,7 @@ namespace Wangkanai.Detection.Services
         [InlineData(Engine.EdgeHTML, "Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML like Gecko) Chrome/46.0.2486.0 Safari/537.36 Edge/13.9200")]
         public void Edge(Engine engine, string agent)
         {
-            var resolver = MockService.CreateEngineService(agent);
+            var resolver = MockService.Engine(agent);
             Assert.Equal(engine, resolver.Name);
         }
 
@@ -75,7 +76,7 @@ namespace Wangkanai.Detection.Services
         [InlineData(Engine.Servo, "Mozilla/5.0 (X11; Linux i686) Servo/1.0 Firefox/36.0")]
         public void Servo(Engine engine, string agent)
         {
-            var resolver = MockService.CreateEngineService(agent);
+            var resolver = MockService.Engine(agent);
             Assert.Equal(engine, resolver.Name);
         }
     }

@@ -21,13 +21,11 @@ namespace Microsoft.Extensions.DependencyInjection
 
             // Add Detection Options
             builder.Services.AddOptions();
-            builder.Services.TryAddSingleton(provider => provider.GetDetectionOptions());
+            builder.Services.TryAddSingleton(
+                provider => provider.GetRequiredService<IOptions<DetectionOptions>>().Value);
 
             return builder;
         }
-
-        private static DetectionOptions GetDetectionOptions(this IServiceProvider provider)
-            => provider.GetRequiredService<IOptions<DetectionOptions>>().Value;
 
         public static IDetectionBuilder AddCoreServices(this IDetectionBuilder builder)
         {

@@ -17,7 +17,7 @@ namespace Wangkanai.Detection.Hosting
             _next = next ?? throw new ArgumentNullException(nameof(next));
         }
 
-        public async Task Invoke(HttpContext context, IResponsiveService responsive)
+        public async Task InvokeAsync(HttpContext context, IResponsiveService responsive)
         {
             if (context is null)
                 throw new ArgumentNullException(nameof(context));
