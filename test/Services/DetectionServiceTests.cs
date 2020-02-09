@@ -45,13 +45,5 @@ namespace Wangkanai.Detection.Services
             Assert.Null(accessor.HttpContext);
             Assert.Throws<ArgumentNullException>(() => new UserAgentService(accessor));
         }
-
-        private class ServiceProvider : IServiceProvider
-        {
-            public IHttpContextAccessor HttpContextAccessor { get; set; }
-
-            public object GetService(Type serviceType)
-                => HttpContextAccessor;
-        }
     }
 }
