@@ -91,7 +91,7 @@ namespace Wangkanai.Detection
 
         #endregion
 
-        #region internal
+        #region Internal
 
         private static HttpContext DefaultHttpContext => new DefaultHttpContext();
 
