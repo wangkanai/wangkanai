@@ -11,7 +11,7 @@ namespace Wangkanai.Detection.Services
         [Fact]
         public void UserAgentIsNull()
         {
-            var resolver = MockService.CreateDeviceService(null);
+            var resolver = MockService.Device(null);
             Assert.NotNull(resolver);
         }
 
@@ -26,7 +26,7 @@ namespace Wangkanai.Detection.Services
         [InlineData("Mozilla/5.0 (Linux; Android 5.1.1; KFAUWI) AppleWebKit/537.36 (KHTML, like Gecko) Silk/77.2.19 like Chrome/77.0.3865.92 Safari/537.36")]
         public void Tablet(string agent)
         {
-            var resolver = MockService.CreateDeviceService(agent);
+            var resolver = MockService.Device(agent);
             Assert.Equal(Device.Tablet, resolver.Type);
         }
 
@@ -46,7 +46,7 @@ namespace Wangkanai.Detection.Services
         [InlineData("Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543 Safari/419.3")]
         public void MobileKeywords(string agent)
         {
-            var resolver = MockService.CreateDeviceService(agent);
+            var resolver = MockService.Device(agent);
             Assert.Equal(Device.Mobile, resolver.Type);
         }
 
@@ -58,7 +58,7 @@ namespace Wangkanai.Detection.Services
         [InlineData("WinWAP 3.0 PRO")]
         public void MobilePrefix(string agent)
         {
-            var resolver = MockService.CreateDeviceService(agent);
+            var resolver = MockService.Device(agent);
             Assert.Equal(Device.Mobile, resolver.Type);
         }
 
@@ -67,14 +67,14 @@ namespace Wangkanai.Detection.Services
         [InlineData("Profile")]
         public void MobileUAProf(string header)
         {
-            var resolver = MockService.CreateDeviceService("<doc></doc>", header);
+            var resolver = MockService.Device("<doc></doc>", header);
             Assert.Equal(Device.Mobile, resolver.Type);
         }
 
         [Fact]
         public void MobileWap()
         {
-            var resolver = MockService.CreateDeviceService("wap", "Accept");
+            var resolver = MockService.Device("wap", "Accept");
             Assert.Equal(Device.Mobile, resolver.Type);
         }
 
@@ -93,7 +93,7 @@ namespace Wangkanai.Detection.Services
         [InlineData("Mozilla/5.0 (X11; Linux x86_64; rv:10.0) Gecko/20100101 Firefox/10.0")]
         public void Desktop(string agent)
         {
-            var resolver = MockService.CreateDeviceService(agent);
+            var resolver = MockService.Device(agent);
             Assert.Equal(Device.Desktop, resolver.Type);
         }
 
@@ -110,7 +110,7 @@ namespace Wangkanai.Detection.Services
         [InlineData("Opera/9.80 (Linux armv7l; HbbTV/1.2.1 (; Philips; 40HFL5010T12; ; PHILIPSTV; CE-HTML/1.0 NETTV/4.4.1 SmartTvA/3.0.0 Firmware/004.002.036.135 (PhilipsTV, 3.1.1,)en) ) Presto/2.12.407 Version/12.50")]
         public void Tv(string agent)
         {
-            var resolver = MockService.CreateDeviceService(agent);
+            var resolver = MockService.Device(agent);
             Assert.Equal(Device.Tv, resolver.Type);
         }
 
