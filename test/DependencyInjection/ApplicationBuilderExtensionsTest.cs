@@ -12,7 +12,7 @@ using Moq;
 
 using Xunit;
 
-namespace Microsoft.Extensions.DependencyInjection
+namespace Wangkanai.Detection.DependencyInjection
 {
     public class DetectionApplicationBuilderExtensionsTest
     {
