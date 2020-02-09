@@ -8,7 +8,7 @@ using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Models;
 using Wangkanai.Detection.Services;
 
-namespace Wangkanai.Detection
+namespace Wangkanai.Detection.Mocks
 {
     [DebuggerStepThrough]
     public static class MockService
@@ -17,7 +17,7 @@ namespace Wangkanai.Detection
 
         public static ResponsiveService Responsive(string agent, DetectionOptions options = null)
         {
-            var accessor = CreateHttpContextAccessor(agent);
+            var accessor = HttpContextAccessor(agent);
             var device   = Device(agent);
             return Responsive(accessor, device, options);
         }
@@ -93,15 +93,13 @@ namespace Wangkanai.Detection
 
         #region Internal
 
-        private static HttpContext DefaultHttpContext => new DefaultHttpContext();
-
-        private static IHttpContextAccessor CreateHttpContextAccessor(string agent, string header = null)
+        private static IHttpContextAccessor HttpContextAccessor(string agent, string header = null)
             => new HttpContextAccessor {HttpContext = CreateContext(agent, header)};
 
         private static HttpContext CreateContext(string value, string header = null)
         {
             if (header == null) header = "User-Agent";
-            var context                = DefaultHttpContext;
+            var context                = new DefaultHttpContext();
             context.Request.Headers.Add(header, new[] {value});
             return context;
         }
@@ -115,8 +113,10 @@ namespace Wangkanai.Detection
         private static Mock<IUserAgentService> SetupUserAgent(this HttpContext context, string agent)
         {
             var service = new Mock<IUserAgentService>();
-            service.Setup(f => f.Context).Returns(context);
-            service.Setup(f => f.UserAgent).Returns(new UserAgent(agent));
+            service.Setup(f => f.Context)
+                   .Returns(context);
+            service.Setup(f => f.UserAgent)
+                   .Returns(new UserAgent(agent));
             return service;
         }
 

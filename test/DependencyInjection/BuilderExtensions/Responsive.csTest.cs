@@ -1,55 +1,53 @@
-// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
+﻿// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;
+using Wangkanai.Detection.Mocks;
 using Wangkanai.Detection.Models;
 using Xunit;
 
-namespace Wangkanai.Detection.Hosting
+namespace Wangkanai.Detection.DependencyInjection
 {
-    public class ResponsiveCollectionExtensionsTests
+    public class ResponsiveBuilderExtensionsTest
     {
-        private readonly int          total                       = 17;
-        private readonly Func<object> CreateResponsiveNullService = () => ((IServiceCollection) null).AddDetection();
+        private readonly Func<object> CreateDetectionNullService = () => ((IServiceCollection) null).AddDetection();
 
         [Fact]
-        public void AddResponsive_Services()
+        public void AddDetection_Services()
         {
             var service  = new ServiceCollection();
-            var expected = service.Count + total;
             var builder  = service.AddDetection();
 
             Assert.Same(service, builder.Services);
         }
 
         [Fact]
-        public void AddResponsive_Null_ArgumentNullException()
+        public void AddDetection_Null_ArgumentNullException()
         {
-            Assert.Throws<ArgumentNullException>(CreateResponsiveNullService);
+            Assert.Throws<ArgumentNullException>(CreateDetectionNullService);
         }
 
         [Fact]
-        public void AddResponsive_Options_Null_ArgumentNullException()
+        public void AddDetection_Options_Null_ArgumentNullException()
         {
-            Assert.Throws<ArgumentNullException>(CreateResponsiveNullService);
+            Assert.Throws<ArgumentNullException>(CreateDetectionNullService);
         }
 
         [Fact]
-        public void AddResponsive_Options_Builder_Service()
+        public void AddDetection_Options_Builder_Service()
         {
             var service  = new ServiceCollection();
-            var expected = service.Count + total;
             var builder  = service.AddDetection(options => { options.Responsive.DefaultTablet = Device.Desktop; });
 
             Assert.Same(service, builder.Services);
         }
 
         [Fact]
-        public async void AddResponsive_Options_Disable_True()
+        public async void AddDetection_Options_Disable_True()
         {
-            using var server = MockServer.CreateServer(options => { options.Responsive.Disable = true; });
+            using var server = MockServer.Server(options => { options.Responsive.Disable = true; });
 
             var client   = server.CreateClient();
             var request  = MockClient.CreateRequest(Device.Mobile);
@@ -60,9 +58,9 @@ namespace Wangkanai.Detection.Hosting
 
 
         [Fact]
-        public async void AddResponsive_Options_Disable_False()
+        public async void AddDetection_Options_Disable_False()
         {
-            using var server = MockServer.CreateServer(options => { options.Responsive.Disable = false; });
+            using var server = MockServer.Server(options => { options.Responsive.Disable = false; });
 
             var client   = server.CreateClient();
             var request  = MockClient.CreateRequest(Device.Mobile);
@@ -72,9 +70,9 @@ namespace Wangkanai.Detection.Hosting
         }
 
         [Fact]
-        public void AddResponsive_Options_Disable_IncludeWebApi()
+        public void AddDetection_ResponsiveOptions_Disable_IncludeWebApi()
         {
-            var builder = MockServer.CreateWebHostBuilder(options =>
+            var builder = MockServer.WebHostBuilder(options =>
             {
                 options.Responsive.Disable       = true;
                 options.Responsive.IncludeWebApi = true;
@@ -90,9 +88,9 @@ namespace Wangkanai.Detection.Hosting
         [Theory]
         [InlineData(Device.Mobile, "desktop", "/api/dog")]
         [InlineData(Device.Mobile, "mobile", "/api/dog")]
-        public async void AddResponsive_WebApi_Exclude_Api(Device device, string agent, string path)
+        public async void AddDetection_WebApi_Exclude_Api(Device device, string agent, string path)
         {
-            using var server = MockServer.CreateServer(options =>
+            using var server = MockServer.Server(options =>
             {
                 options.Responsive.DefaultMobile  = device;
                 options.Responsive.DefaultTablet  = device;
@@ -114,9 +112,9 @@ namespace Wangkanai.Detection.Hosting
         [InlineData(Device.Desktop, "desktop", "/api/dog")]
         [InlineData(Device.Mobile, "desktop", "")]
         [InlineData(Device.Mobile, "mobile", "")]
-        public async void AddResponsive_WebApi_Exclude_NonApi(Device device, string agent, string path)
+        public async void AddDetection_WebApi_Exclude_NonApi(Device device, string agent, string path)
         {
-            using var server = MockServer.CreateServer(options =>
+            using var server = MockServer.Server(options =>
             {
                 options.Responsive.DefaultMobile  = device;
                 options.Responsive.DefaultTablet  = device;
@@ -140,9 +138,9 @@ namespace Wangkanai.Detection.Hosting
         [InlineData(Device.Mobile, "desktop", "/api/dog")]
         [InlineData(Device.Mobile, "mobile", "")]
         [InlineData(Device.Mobile, "mobile", "/api/dog")]
-        public async void AddResponsive_WebApi_Include_Api(Device device, string agent, string path)
+        public async void AddDetection_WebApi_Include_Api(Device device, string agent, string path)
         {
-            using var server = MockServer.CreateServer(options =>
+            using var server = MockServer.Server(options =>
             {
                 options.Responsive.DefaultMobile  = device;
                 options.Responsive.DefaultTablet  = device;
