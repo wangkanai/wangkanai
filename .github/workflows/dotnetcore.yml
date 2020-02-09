@@ -31,5 +31,3 @@ jobs:
       run: dotnet test
     - name: Pack with dotnet
       run: dotnet pack --configuration Release
-    - name: Publish with dotnet to GibHub
-      run: dotnet nuget push **/*.nupkg
