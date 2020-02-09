@@ -1,7 +1,4 @@
-// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
-// The Apache v2. See License.txt in the project root for license information.
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,9 +7,9 @@ using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Services;
 using Xunit;
 
-namespace Wangkanai.Detection.DependencyInjection
+namespace Wangkanai.Detection.Test.DependencyInjection
 {
-    public class CoreCollectionExtensionsTests
+    public class CoreBuilderExtensionsTest
     {
         [Fact]
         public void AddRequiredPlatformServices_ReturnsExpected()
@@ -34,8 +31,8 @@ namespace Wangkanai.Detection.DependencyInjection
             Assert.NotNull(builder.Services);
             AssertServices(serviceDescriptors, builder.Services);
         }
-
-        [Fact]
+        
+                [Fact]
         public void AddCoreServices_ReturnsExpected()
         {
             var serviceCollection = new ServiceCollection();

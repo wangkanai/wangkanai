@@ -4,6 +4,7 @@
 using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using Wangkanai.Detection.Mocks;
 using Wangkanai.Detection.Models;
 using Xunit;
 
@@ -46,7 +47,7 @@ namespace Wangkanai.Detection.Hosting
         [Fact]
         public async void Invoke_HttpContext_ResponsiveService_Success()
         {
-            using var server   = MockServer.CreateServer();
+            using var server   = MockServer.Server();
             var       request  = MockClient.CreateRequest(Device.Desktop);
             var       client   = server.CreateClient();
             var       response = await client.SendAsync(request);

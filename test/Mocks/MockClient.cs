@@ -3,9 +3,8 @@
 
 using System.Net.Http;
 using Wangkanai.Detection.Models;
-using Xunit;
 
-namespace Wangkanai.Detection
+namespace Wangkanai.Detection.Mocks
 {
     internal static class MockClient
     {
