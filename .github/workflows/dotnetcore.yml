@@ -1,11 +1,21 @@
 name: Detection-CI
 
-on: [push]
+on:
+  pull_request:
+  push:
+    branches:
+      - dev
+      - master
+      - releases/*
+      - features/*
 
 jobs:
   build:
 
-    runs-on: windows-latest
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      matrix:
+        operating-system: [ubuntu-latest, windows-latest, macOS-latest]
 
     steps:
     - uses: actions/checkout@v2
@@ -20,4 +30,6 @@ jobs:
     - name: Test with dotnet
       run: dotnet test
     - name: Pack with dotnet
-      run: dotnet pack --configuration Release --output .\artifacts
+      run: dotnet pack --configuration Release
+    - name: Publish with dotnet to GibHub
+      run: dotnet nuget push **/*.nupkg
