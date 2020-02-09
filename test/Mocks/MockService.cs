@@ -13,6 +13,8 @@ namespace Wangkanai.Detection
     [DebuggerStepThrough]
     public static class MockService
     {
+        #region Responsive
+
         public static ResponsiveService CreateResponsiveService(string agent, DetectionOptions options = null)
         {
             var accessor = CreateHttpContextAccessor(agent);
@@ -20,27 +22,56 @@ namespace Wangkanai.Detection
             return CreateResponsiveService(accessor, device, options);
         }
 
-        public static ResponsiveService CreateResponsiveService(IHttpContextAccessor accessor, IDeviceService device, DetectionOptions options = null)
+        private static ResponsiveService CreateResponsiveService(IHttpContextAccessor accessor, IDeviceService device, DetectionOptions options = null)
             => new ResponsiveService(accessor, device, options);
 
-        public static EngineService CreateEngineService(string agent)
+        #endregion
+
+        #region Browser
+
+        public static BrowserService CreateBrowserService(string agent)
+            => CreateBrowserService(CreateUserAgentService(agent));
+
+        private static BrowserService CreateBrowserService(IUserAgentService agent)
         {
-            var service  = CreateUserAgentService(agent);
-            var platform = CreatePlatformService(service);
-            return new EngineService(service, platform);
+            var platform = CreatePlatformService(agent);
+            var engine   = CreateEngineService(agent);
+            return new BrowserService(agent, platform, engine);
         }
+
+        #endregion
+
+        #region Platform
 
         public static PlatformService CreatePlatformService(string agent)
             => new PlatformService(CreateUserAgentService(agent));
 
-        private static PlatformService CreatePlatformService(IUserAgentService service)
-            => new PlatformService(service);
+        private static PlatformService CreatePlatformService(IUserAgentService agent)
+            => new PlatformService(agent);
 
-        public static CrawlerService CreateCrawlerService(string agent) 
+        #endregion
+
+        #region Engine
+
+        public static EngineService CreateEngineService(string agent)
+            => CreateEngineService(CreateUserAgentService(agent));
+
+        private static EngineService CreateEngineService(IUserAgentService agent)
+            => new EngineService(agent, CreatePlatformService(agent));
+
+        #endregion
+
+        #region Crawler
+
+        public static CrawlerService CreateCrawlerService(string agent)
             => CreateCrawlerService(agent, new DetectionOptions());
 
         public static CrawlerService CreateCrawlerService(string agent, DetectionOptions options)
             => new CrawlerService(CreateUserAgentService(agent), options);
+
+        #endregion
+
+        #region Device
 
         public static DeviceService CreateDeviceService(string value, string header)
             => new DeviceService(CreateUserAgentService(value, header));
@@ -48,19 +79,25 @@ namespace Wangkanai.Detection
         public static DeviceService CreateDeviceService(string agent)
             => new DeviceService(CreateUserAgentService(agent));
 
+        #endregion
+
+        #region UserAgent
+
         public static IUserAgentService CreateUserAgentService(string agent)
             => MockUserAgentService(agent).Object;
 
         public static IUserAgentService CreateUserAgentService(string value, string header)
             => MockUserAgentService(value, header).Object;
 
-        public static IHttpContextAccessor CreateHttpContextAccessor(string agent, string header = null)
-            => new HttpContextAccessor {HttpContext = CreateContext(agent, header)};
+        #endregion
 
         #region internal
 
         private static HttpContext DefaultHttpContext
             => new DefaultHttpContext();
+
+        private static IHttpContextAccessor CreateHttpContextAccessor(string agent, string header = null)
+            => new HttpContextAccessor {HttpContext = CreateContext(agent, header)};
 
         private static HttpContext CreateContext(string value, string header = null)
         {
