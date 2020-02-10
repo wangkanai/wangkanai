@@ -4,7 +4,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.AspNetCore.Http;
 using Wangkanai.Detection.Models;
 
 namespace Wangkanai.Detection.Extensions
