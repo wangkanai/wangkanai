@@ -4,7 +4,6 @@
 using System;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;
-using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Mocks;
 using Wangkanai.Detection.Models;
 using Xunit;

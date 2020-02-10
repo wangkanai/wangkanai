@@ -18,7 +18,7 @@ namespace Wangkanai.Detection.Services
             Name = ParseEngine(agent, os, cpu);
         }
 
-        private static Engine ParseEngine(UserAgent agent, OperatingSystem os, Processor cpu)
+        private static Engine ParseEngine(UserAgent agent, Platform os, Processor cpu)
         {
             // Null check
             if (agent.IsNullOrEmpty())
@@ -50,9 +50,9 @@ namespace Wangkanai.Detection.Services
             => agent.Contains(Browser.Chrome)
                && agent.Contains(Engine.WebKit);
 
-        private static bool IsEdge(UserAgent agent, OperatingSystem os)
+        private static bool IsEdge(UserAgent agent, Platform os)
             => agent.Contains(Engine.EdgeHTML)
                || agent.Contains("Edg")
-               && (OperatingSystem.Windows | OperatingSystem.Android).HasFlag(os);
+               && (Platform.Windows | Platform.Android).HasFlag(os);
     }
 }

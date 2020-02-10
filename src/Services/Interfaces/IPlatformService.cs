@@ -16,8 +16,8 @@ namespace Wangkanai.Detection.Services
         public Processor Processor { get; }
         
         /// <summary>
-        /// Gets the <see cref="OperatingSystem"/> of the request client.
+        /// Gets the <see cref="Platform"/> of the request client.
         /// </summary>
-        public OperatingSystem Name { get; }
+        public Platform Name { get; }
     }
 }

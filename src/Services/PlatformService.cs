@@ -8,42 +8,42 @@ namespace Wangkanai.Detection.Services
 {
     public class PlatformService : IPlatformService
     {
-        public Processor       Processor       { get; }
-        public OperatingSystem Name { get; }
+        public Processor Processor { get; }
+        public Platform  Name      { get; }
 
         public PlatformService(IUserAgentService userAgentService)
         {
             var userAgent = userAgentService.UserAgent;
-            Name = ParseOperatingSystem(userAgent);
-            Processor       = ParseProcessor(userAgent, Name);
+            Name      = ParseOperatingSystem(userAgent);
+            Processor = ParseProcessor(userAgent, Name);
         }
 
-        private static OperatingSystem ParseOperatingSystem(UserAgent agent)
+        private static Platform ParseOperatingSystem(UserAgent agent)
         {
             // Unknown
             if (agent.IsNullOrEmpty())
-                return OperatingSystem.Unknown;
+                return Platform.Unknown;
 
             // Google Android
-            if (agent.Contains(OperatingSystem.Android))
-                return OperatingSystem.Android;
+            if (agent.Contains(Platform.Android))
+                return Platform.Android;
             // Microsoft Windows
-            if (agent.Contains(OperatingSystem.Windows))
-                return OperatingSystem.Windows;
+            if (agent.Contains(Platform.Windows))
+                return Platform.Windows;
             // Apple iOS
             if (IsiOS(agent))
-                return OperatingSystem.iOS;
+                return Platform.iOS;
             // Apple Mac
-            if (agent.Contains(OperatingSystem.Mac))
-                return OperatingSystem.Mac;
+            if (agent.Contains(Platform.Mac))
+                return Platform.Mac;
             // Linux Distribution
-            if (agent.Contains(OperatingSystem.Linux))
-                return OperatingSystem.Linux;
+            if (agent.Contains(Platform.Linux))
+                return Platform.Linux;
 
-            return OperatingSystem.Others;
+            return Platform.Others;
         }
 
-        private static Processor ParseProcessor(UserAgent agent, OperatingSystem os)
+        private static Processor ParseProcessor(UserAgent agent, Platform os)
         {
             if (IsArm(agent, os))
                 return Processor.ARM;
@@ -57,13 +57,13 @@ namespace Wangkanai.Detection.Services
             return Processor.Others;
         }
 
-        private static bool IsArm(UserAgent agent, OperatingSystem os)
+        private static bool IsArm(UserAgent agent, Platform os)
             => agent.Contains(Processor.ARM)
-               || agent.Contains(OperatingSystem.Android)
-               || os == OperatingSystem.iOS;
+               || agent.Contains(Platform.Android)
+               || os == Platform.iOS;
 
-        private static bool IsPowerPC(UserAgent agent, OperatingSystem os)
-            => os == OperatingSystem.Mac
+        private static bool IsPowerPC(UserAgent agent, Platform os)
+            => os == Platform.Mac
                && !agent.Contains("PPC");
 
         private static bool IsX86(UserAgent agent)
@@ -76,7 +76,7 @@ namespace Wangkanai.Detection.Services
                || agent.Contains("wow64");
 
         private static bool IsiOS(UserAgent agent)
-            => agent.Contains(OperatingSystem.iOS)
+            => agent.Contains(Platform.iOS)
                || agent.Contains(new[] {"iPad", "iPhone", "iPod"});
     }
 }
