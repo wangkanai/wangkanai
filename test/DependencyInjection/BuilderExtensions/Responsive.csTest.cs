@@ -4,6 +4,7 @@
 using System;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;
+using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Mocks;
 using Wangkanai.Detection.Models;
 using Xunit;
@@ -12,13 +13,11 @@ namespace Wangkanai.Detection.DependencyInjection
 {
     public class ResponsiveBuilderExtensionsTest
     {
-        private readonly Func<object> CreateDetectionNullService = () => ((IServiceCollection) null).AddDetection();
-
         [Fact]
         public void AddDetection_Services()
         {
-            var service  = new ServiceCollection();
-            var builder  = service.AddDetection();
+            var service = new ServiceCollection();
+            var builder = service.AddDetection();
 
             Assert.Same(service, builder.Services);
         }
@@ -26,20 +25,23 @@ namespace Wangkanai.Detection.DependencyInjection
         [Fact]
         public void AddDetection_Null_ArgumentNullException()
         {
-            Assert.Throws<ArgumentNullException>(CreateDetectionNullService);
+            Assert.Throws<ArgumentNullException>(
+                () => ((IServiceCollection) null).AddDetection());
         }
 
         [Fact]
         public void AddDetection_Options_Null_ArgumentNullException()
         {
-            Assert.Throws<ArgumentNullException>(CreateDetectionNullService);
+            Assert.Throws<ArgumentNullException>(
+                () => ((IServiceCollection) null).AddDetection(null));
         }
 
         [Fact]
         public void AddDetection_Options_Builder_Service()
         {
-            var service  = new ServiceCollection();
-            var builder  = service.AddDetection(options => { options.Responsive.DefaultTablet = Device.Desktop; });
+            var service = new ServiceCollection();
+            var builder = service.AddDetection(
+                options => { options.Responsive.DefaultTablet = Device.Desktop; });
 
             Assert.Same(service, builder.Services);
         }
