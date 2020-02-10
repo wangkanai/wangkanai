@@ -83,6 +83,9 @@ dotnet_separate_import_directive_groups = true
 [*.csproj]
 indent_size = 2
 
+[{*.css, *.scss, *.less}]
+indent_size = 2
+
 [*.sh]
 end_of_line = lf
 
