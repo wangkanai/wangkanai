@@ -43,7 +43,7 @@ namespace Microsoft.Extensions.DependencyInjection
 
         public static IDetectionBuilder AddMarkerService(this IDetectionBuilder builder)
         {
-            builder.Services.TryAddSingleton<MarkerService, MarkerService>();
+            builder.Services.TryAddSingleton<DetectionMarkerService, DetectionMarkerService>();
 
             return builder;
         }

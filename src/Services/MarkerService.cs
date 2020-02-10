@@ -3,7 +3,7 @@
 
 namespace Wangkanai.Detection.Services
 {
-    internal class MarkerService
+    internal class DetectionMarkerService
     {
     }
 }
