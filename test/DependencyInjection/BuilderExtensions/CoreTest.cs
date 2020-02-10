@@ -63,7 +63,7 @@ namespace Wangkanai.Detection.DependencyInjection
             var builder           = serviceCollection.AddDetectionBuilder().AddMarkerService();
             var serviceDescriptors = new List<ServiceDescriptor>
             {
-                new ServiceDescriptor(typeof(MarkerService), typeof(MarkerService), ServiceLifetime.Singleton),
+                new ServiceDescriptor(typeof(DetectionMarkerService), typeof(DetectionMarkerService), ServiceLifetime.Singleton),
             };
 
             Assert.NotNull(builder);

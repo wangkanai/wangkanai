@@ -9,22 +9,13 @@ namespace Wangkanai.Detection.DependencyInjection.Options
     public class DetectionOptions
     {
         /// <summary>
-        /// Creates a new instamce of <see cref="DetectionOptions"/>
-        /// </summary>
-        public DetectionOptions()
-        {
-            Crawler = new CrawlerOptions();
-            Responsive = new ResponsiveOptions();
-        }
-        
-        /// <summary>
         /// Gets the default <see cref="CrawlerOptions"/> used by this application.
         /// </summary>
-        public CrawlerOptions Crawler { get; }
+        public CrawlerOptions Crawler { get; } = new CrawlerOptions();
         
         /// <summary>
         /// Gets the default <see cref="ResponsiveOptions"/> used by this application.
         /// </summary>
-        public ResponsiveOptions Responsive { get; }
+        public ResponsiveOptions Responsive { get; } = new ResponsiveOptions();
     }
 }
