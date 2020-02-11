@@ -32,7 +32,7 @@ namespace Wangkanai.Detection.Hosting
                 {
                     if (!location.Contains("/{1}/") && !location.Contains("/Shared/") || location.Contains("/Views/"))
                     {
-                        yield return location;
+                        //yield return location;
                         continue;
                     }
 

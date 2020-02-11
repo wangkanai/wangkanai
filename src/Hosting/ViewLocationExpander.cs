@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Razor;
+using Wangkanai.Detection.Models;
 
 namespace Wangkanai.Detection.Hosting
 {
@@ -54,11 +55,8 @@ namespace Wangkanai.Detection.Hosting
 
             if (string.IsNullOrEmpty(device))
                 return viewLocations;
-
-            var filterLocations = ViewOnly(viewLocations);
-            var resultLocations = ExpandViewLocationsCore(filterLocations, device).Concat(viewLocations);
-
-            return resultLocations;
+            
+            return ExpandViewLocationsCore(ViewOnly(viewLocations), device).Concat(viewLocations);
         }
 
         private IEnumerable<string> ExpandViewLocationsCore(IEnumerable<string> viewLocations, string device)
@@ -74,8 +72,5 @@ namespace Wangkanai.Detection.Hosting
 
         private static IEnumerable<string> ViewOnly(IEnumerable<string> viewLocations)
             => viewLocations.Where(location => location.Contains("views", StringComparison.OrdinalIgnoreCase));
-
-        private static IEnumerable<string> PageOnly(IEnumerable<string> viewLocations)
-            => viewLocations.Where(location => location.Contains("pages", StringComparison.OrdinalIgnoreCase));
     }
 }

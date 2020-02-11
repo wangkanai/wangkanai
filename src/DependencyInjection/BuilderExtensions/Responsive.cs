@@ -20,15 +20,7 @@ namespace Microsoft.Extensions.DependencyInjection
 
             builder.Services.TryAddTransient<IResponsiveService, ResponsiveService>();
             builder.Services.AddRazorViewLocation();
-
-            builder.Services.AddRazorPages(options =>
-            {
-                options.Conventions.Add(new ResponsivePageRouteModelConvention());
-            });
-            builder.Services.AddSingleton<MatcherPolicy, ResponsivePageMatcherPolicy>();
-
-            // For future development and exploration
-            //builder.Services.AddRazorPageLocation();
+            builder.Services.AddRazorPagesLocation();
 
             return builder;
         }
@@ -53,14 +45,18 @@ namespace Microsoft.Extensions.DependencyInjection
             {
                 options.ViewLocationExpanders.Add(new ResponsivePageLocationExpander());
                 options.ViewLocationExpanders.Add(new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Suffix));
-                //options.ViewLocationExpanders.Add(new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Subfolder));
+                options.ViewLocationExpanders.Add(new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Subfolder));
             });
 
-        private static IServiceCollection AddRazorPageLocation(this IServiceCollection services)
-            => services.Configure<RazorPagesOptions>(options =>
+        private static IServiceCollection AddRazorPagesLocation(this IServiceCollection services)
+        {
+            services.AddRazorPages(options =>
             {
-                options.Conventions.AddPageRoute("", "");
-                options.Conventions.AddPageRoute("", "");
+                options.Conventions.Add(new ResponsivePageRouteModelConvention());
             });
+            services.AddSingleton<MatcherPolicy, ResponsivePageMatcherPolicy>();
+            
+            return services;
+        }
     }
 }
