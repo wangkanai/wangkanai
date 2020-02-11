@@ -4,6 +4,7 @@
 using System;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Wangkanai.Detection.Hosting;
 using Wangkanai.Detection.Services;
@@ -19,7 +20,13 @@ namespace Microsoft.Extensions.DependencyInjection
 
             builder.Services.TryAddTransient<IResponsiveService, ResponsiveService>();
             builder.Services.AddRazorViewLocation();
-            
+
+            builder.Services.AddRazorPages(options =>
+            {
+                options.Conventions.Add(new ResponsivePageRouteModelConvention());
+            });
+            builder.Services.AddSingleton<MatcherPolicy, ResponsivePageMatcherPolicy>();
+
             // For future development and exploration
             //builder.Services.AddRazorPageLocation();
 
@@ -33,8 +40,8 @@ namespace Microsoft.Extensions.DependencyInjection
             builder.Services.AddSession(
                 options =>
                 {
-                    options.Cookie.Name        = "Detection";
-                    options.IdleTimeout        = TimeSpan.FromSeconds(10);
+                    options.Cookie.Name = "Detection";
+                    options.IdleTimeout = TimeSpan.FromSeconds(10);
                     options.Cookie.IsEssential = true;
                 });
 

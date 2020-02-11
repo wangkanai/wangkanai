@@ -61,7 +61,7 @@ namespace Wangkanai.Detection.Hosting
             return resultLocations;
         }
 
-        private IEnumerable<string> ExpandViewLocationsCore(IEnumerable<string> viewLocations, Device device)
+        private IEnumerable<string> ExpandViewLocationsCore(IEnumerable<string> viewLocations, string device)
         {
             foreach (var location in viewLocations)
             {
