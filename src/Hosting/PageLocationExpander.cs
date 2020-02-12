@@ -22,17 +22,19 @@ namespace Wangkanai.Detection.Hosting
 
             if (string.IsNullOrEmpty(context.PageName) || string.IsNullOrEmpty(device))
                 return viewLocations;
-
-            var expandLocations = ExpandPageHierarchy().ToList();
-            return expandLocations;
+            
+            return ExpandPageHierarchy();
 
             IEnumerable<string> ExpandPageHierarchy()
             {
                 foreach (var location in viewLocations)
                 {
-                    if (!location.Contains("/{1}/") && !location.Contains("/Shared/") || location.Contains("/Views/"))
+                    if (!location.Contains("/{1}/") 
+                        && !location.Contains("/Shared/") 
+                        && !location.Contains("/Areas/")
+                        || location.Contains("/Views/"))
                     {
-                        //yield return location;
+                        yield return location;
                         continue;
                     }
 
