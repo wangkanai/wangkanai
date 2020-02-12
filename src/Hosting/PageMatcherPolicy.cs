@@ -1,7 +1,6 @@
 // Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -12,10 +11,8 @@ namespace Wangkanai.Detection.Hosting
 {
     internal class ResponsivePageMatcherPolicy : MatcherPolicy, IEndpointComparerPolicy, IEndpointSelectorPolicy
     {
-        public ResponsivePageMatcherPolicy()
-        {
-            Comparer = EndpointMetadataComparer<IResponsiveMetadata>.Default;
-        }
+        public ResponsivePageMatcherPolicy() 
+            => Comparer = EndpointMetadataComparer<IResponsiveMetadata>.Default;
 
         public IComparer<Endpoint> Comparer { get; }
 
@@ -24,12 +21,8 @@ namespace Wangkanai.Detection.Hosting
         public bool AppliesToEndpoints(IReadOnlyList<Endpoint> endpoints)
         {
             for (var i = 0; i < endpoints.Count; i++)
-            {
                 if (endpoints[i].Metadata.GetMetadata<IResponsiveMetadata>() != null)
-                {
                     return true;
-                }
-            }
 
             return false;
         }
