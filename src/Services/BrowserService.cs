@@ -4,7 +4,6 @@
 using System;
 using Wangkanai.Detection.Extensions;
 using Wangkanai.Detection.Models;
-using OperatingSystem = Wangkanai.Detection.Models.OperatingSystem;
 
 namespace Wangkanai.Detection.Services
 {
@@ -22,7 +21,7 @@ namespace Wangkanai.Detection.Services
             Version = GetVersion(agent.ToLower(), Name.ToString());
         }
 
-        private static Browser GetBrowser(UserAgent agent, OperatingSystem os, Engine engine)
+        private static Browser GetBrowser(UserAgent agent, Platform os, Engine engine)
         {
             // fail and return fast
             if (agent.IsNullOrEmpty())
@@ -80,7 +79,7 @@ namespace Wangkanai.Detection.Services
             => agent.Contains(Browser.Edge) 
                || (agent.Contains("Win64") && agent.Contains("Edg"));
 
-        private static bool IsInternetExplorer(UserAgent agent, OperatingSystem os, Engine engine)
+        private static bool IsInternetExplorer(UserAgent agent, Platform os, Engine engine)
             => engine == Engine.Trident 
                || agent.Contains("MSIE") 
                && !agent.Contains(Browser.Opera);

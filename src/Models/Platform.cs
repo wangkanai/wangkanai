@@ -6,7 +6,7 @@ using System;
 namespace Wangkanai.Detection.Models
 {
     [Flags]
-    public enum OperatingSystem
+    public enum Platform
     {
         Unknown = 0,
         Windows = 1 << 0, // Microsoft Windows
