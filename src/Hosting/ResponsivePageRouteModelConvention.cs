@@ -10,27 +10,23 @@ namespace Wangkanai.Detection.Hosting
     {
         public void Apply(PageRouteModel model)
         {
+            // Very interesting use of C# 8.0 array index from end operator
+            // https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/csharp-8.0/ranges
             var fileNameWithoutExtension = model.ViewEnginePath.Split('/')[^1];
+            // Normal page, nothing to do!
             if (!fileNameWithoutExtension.Contains('.'))
-            {
-                // Normal page, nothing to do!
                 return;
-            }
 
             // This just implements the 'suffix' strategy
             var split = fileNameWithoutExtension.Split('.');
             if (split.Length != 2)
-            {
                 throw new InvalidOperationException($"Page '{model.RelativePath}' does not follow the required format.");
-            }
 
             var pageName = split[0];
             var deviceName = split[1];
 
             if (!Enum.TryParse<Device>(deviceName, ignoreCase: true, out var device))
-            {
                 throw new InvalidOperationException($"Device name could not be parsed for page '{model.RelativePath}'.");
-            }
 
             // Since the page name has something like `.mobile` in it, the special cased rules for Index.cshtml
             // don't apply. We know there's going to be one selector.
