@@ -26,17 +26,23 @@ namespace Wangkanai.Detection.Mocks
         public static IWebHostBuilder WebHostBuilder()
             => WebHostBuilder(options => { });
 
+        public static IWebHostBuilder WebHostBuilder(RequestDelegate contextHandler)
+            => WebHostBuilder(contextHandler, options => { });
+        
         public static IWebHostBuilder WebHostBuilder(Action<DetectionOptions> options)
+            => WebHostBuilder(ContextHandler, options);
+
+        public static IWebHostBuilder WebHostBuilder(RequestDelegate contextHandler, Action<DetectionOptions> options)
             => new WebHostBuilder()
                .ConfigureServices(services =>
                    services.AddDetection(options))
                .Configure(app =>
                {
                    app.UseDetection();
-                   app.Run(ContextHandler());
+                   app.Run(contextHandler);
                });
 
-        private static RequestDelegate ContextHandler()
+        private static RequestDelegate ContextHandler
             => context => context.GetDevice() switch
             {
                 Device.Desktop => context.Response.WriteAsync("Response: Desktop"),

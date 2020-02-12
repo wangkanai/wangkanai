@@ -8,14 +8,14 @@ namespace Wangkanai.Detection.Services
 {
     public class PlatformService : IPlatformService
     {
-        public Processor       Processor       { get; }
-        public Platform Name { get; }
+        public Processor Processor { get; }
+        public Platform  Name      { get; }
 
         public PlatformService(IUserAgentService userAgentService)
         {
             var userAgent = userAgentService.UserAgent;
-            Name = ParseOperatingSystem(userAgent);
-            Processor       = ParseProcessor(userAgent, Name);
+            Name      = ParseOperatingSystem(userAgent);
+            Processor = ParseProcessor(userAgent, Name);
         }
 
         private static Platform ParseOperatingSystem(UserAgent agent)

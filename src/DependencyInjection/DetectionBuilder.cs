@@ -11,7 +11,7 @@ namespace Microsoft.Extensions.DependencyInjection
     public class DetectionBuilder : IDetectionBuilder
     {
         /// <summary>
-        /// Creates a new instance of <see cref="DetectionBuilder" />.
+        /// Creates a new instance of <see cref="IDetectionBuilder" />.
         /// </summary>
         /// <param name="services">The <see cref="IServiceCollection" /> to attach to.</param>
         public DetectionBuilder(IServiceCollection services)

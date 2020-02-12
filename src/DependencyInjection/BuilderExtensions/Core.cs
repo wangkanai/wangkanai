@@ -1,7 +1,6 @@
 // Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
-using System;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
 using Wangkanai.Detection.DependencyInjection.Options;
@@ -43,7 +42,7 @@ namespace Microsoft.Extensions.DependencyInjection
 
         public static IDetectionBuilder AddMarkerService(this IDetectionBuilder builder)
         {
-            builder.Services.TryAddSingleton<MarkerService, MarkerService>();
+            builder.Services.TryAddSingleton<DetectionMarkerService, DetectionMarkerService>();
 
             return builder;
         }
