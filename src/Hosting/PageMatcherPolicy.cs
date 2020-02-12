@@ -11,8 +11,7 @@ namespace Wangkanai.Detection.Hosting
 {
     internal class ResponsivePageMatcherPolicy : MatcherPolicy, IEndpointComparerPolicy, IEndpointSelectorPolicy
     {
-        public ResponsivePageMatcherPolicy() 
-            => Comparer = EndpointMetadataComparer<IResponsiveMetadata>.Default;
+        public ResponsivePageMatcherPolicy() => Comparer = EndpointMetadataComparer<IResponsiveMetadata>.Default;
 
         public IComparer<Endpoint> Comparer { get; }
 
