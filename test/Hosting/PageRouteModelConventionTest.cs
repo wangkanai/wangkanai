@@ -1,5 +1,8 @@
 ﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Logging.Abstractions;
+using Wangkanai.Detection.Mocks;
 using Xunit;
 
 namespace Wangkanai.Detection.Hosting
@@ -30,7 +33,9 @@ namespace Wangkanai.Detection.Hosting
         [InlineData(null, "Privacy", "/Pages/Privacy.tablet.cshtml", "/Privacy.tablet")]
         public void Apply_Area(string areaName, string template, string relativePath, string viewEnginePath)
         {
-            var model      = new PageRouteModel(relativePath, viewEnginePath, areaName);
+            var options = new RazorPagesOptions();
+            var factory = new MockPageRouteModel(options);
+            var model = factory.CreateAreaRouteModel(relativePath, template);
             var convention = new ResponsivePageRouteModelConvention();
             convention.Apply(model);
             Assert.Equal(template, model.Selectors.Single().AttributeRouteModel.Template);
