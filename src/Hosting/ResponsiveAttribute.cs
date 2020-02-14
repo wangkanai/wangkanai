@@ -1,7 +1,7 @@
 using System;
 using Wangkanai.Detection.Models;
 
-namespace Wangkanai.Detection
+namespace Wangkanai.Detection.Hosting
 {
     public sealed class ResponsiveAttribute : Attribute, IResponsiveMetadata
     {
@@ -11,5 +11,10 @@ namespace Wangkanai.Detection
         }
 
         public Device Device { get; }
+    }
+
+    public interface IResponsiveMetadata
+    {
+        Device Device { get; }
     }
 }
