@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
+using Wangkanai.Detection.Extensions;
 using Wangkanai.Detection.Models;
 
 namespace Wangkanai.Detection.Hosting
@@ -22,7 +23,8 @@ namespace Wangkanai.Detection.Hosting
             if (split.Length != 2)
                 throw new InvalidOperationException($"Page '{model.RelativePath}' does not follow the required format.");
 
-            var pageName = split[0];
+            var areaName   = model.AreaName;
+            var pageName   = split[0];
             var deviceName = split[1];
 
             if (!Enum.TryParse<Device>(deviceName, ignoreCase: true, out var device))
@@ -30,21 +32,29 @@ namespace Wangkanai.Detection.Hosting
 
             // Since the page name has something like `.mobile` in it, the special cased rules for Index.cshtml
             // don't apply. We know there's going to be one selector.
-            var selector = model.Selectors.Single(); 
+            var selector = model.Selectors.Single();
+
+            // If the pages in an area, then add it to the route template too.
+            var area = areaName.IsNullOrEmpty() ? "" : areaName + "/";
 
             // Remove the device name from the route template. This is complicated because the route template
             // can additional parameters defined in the page itself.
             //
             // Ex: we need to turn `About/Help.mobile/{id?}` into `About/Help/{id?}`
-            
+
             // prefix = `About/`
             // 
+            var viewEnginePath = model.ViewEnginePath;
+            var relativePath   = model.RelativePath;
+
             var prefix = model.ViewEnginePath.Substring(1, model.ViewEnginePath.LastIndexOf('/'));
 
             // We can get the route parameter that the user put in after `@page` by substringing.
             //
             // suffix = '/{id?}'
-            var suffix = selector.AttributeRouteModel.Template.Substring(prefix.Length + fileNameWithoutExtension.Length);
+            var templateOld = selector.AttributeRouteModel.Template;
+
+            var suffix = selector.AttributeRouteModel.Template.Substring(area.Length + prefix.Length + fileNameWithoutExtension.Length);
 
             if (pageName.Equals("Index", StringComparison.OrdinalIgnoreCase))
             {
@@ -54,7 +64,8 @@ namespace Wangkanai.Detection.Hosting
                 // Add another selector with matches the URL without `Index`
                 var another = new SelectorModel(selector);
                 model.Selectors.Add(another);
-                another.AttributeRouteModel.Template = prefix.TrimEnd('/') + suffix;
+                var templateIndex = area + prefix.TrimEnd('/') + suffix;
+                another.AttributeRouteModel.Template = templateIndex;
 
                 // Disable link generation for the original selector, to prefer the shorter URL.
                 selector.AttributeRouteModel.SuppressLinkGeneration = true;
@@ -64,7 +75,12 @@ namespace Wangkanai.Detection.Hosting
             }
 
             // Now rewrite the original selector
-            selector.AttributeRouteModel.Template = prefix + pageName + suffix;
+            var templateNew = area + prefix + pageName + suffix;
+
+            if (!templateNew.Equals(templateOld))
+                Console.WriteLine($"{templateNew} != {templateOld}");
+
+            selector.AttributeRouteModel.Template = templateNew;
 
             // Allow routing to filter by device type.
             selector.EndpointMetadata.Add(new ResponsiveAttribute(device));
