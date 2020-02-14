@@ -33,12 +33,29 @@ namespace Wangkanai.Detection.Hosting
         [InlineData(null, "Privacy", "/Pages/Privacy.tablet.cshtml", "/Privacy.tablet")]
         public void Apply_Area(string areaName, string template, string relativePath, string viewEnginePath)
         {
-            var options = new RazorPagesOptions();
-            var factory = new MockPageRouteModel(options);
-            var model = factory.CreateAreaRouteModel(relativePath, template);
+            var options    = new RazorPagesOptions();
+            var factory    = new MockPageRouteModel(options);
+            var model      = factory.CreateAreaRouteModel(relativePath, template);
             var convention = new ResponsivePageRouteModelConvention();
             convention.Apply(model);
             Assert.Equal(template, model.Selectors.Single().AttributeRouteModel.Template);
+        }
+
+        [Fact]
+        public void Apply_Index()
+        {
+            var relativePath  = "/Pages/Index.mobile.cshtml";
+            var routeTemplate = "/Index.mobile";
+            var template      = "Index";
+            var options       = new RazorPagesOptions();
+            var factory       = new MockPageRouteModel(options);
+            var model         = factory.CreateRouteModel(relativePath, routeTemplate);
+            var convention    = new ResponsivePageRouteModelConvention();
+
+            convention.Apply(model);
+            Assert.Equal(2, model.Selectors.Count);
+            var selector = model.Selectors.Single();
+            Assert.Equal(template, selector.AttributeRouteModel.Template);
         }
     }
 }
