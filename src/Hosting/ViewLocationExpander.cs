@@ -51,21 +51,15 @@ namespace Wangkanai.Detection.Hosting
             if (viewLocations is null)
                 throw new ArgumentNullException(nameof(viewLocations));
 
-            context.Values.TryGetValue(ValueKey, out var value);
+            context.Values.TryGetValue(ValueKey, out var device);
 
-            if (string.IsNullOrEmpty(value))
+            if (string.IsNullOrEmpty(device))
                 return viewLocations;
-
-            Enum.TryParse(value, true, out Device device);
-
-            var resultLocations = new List<string>();
-            resultLocations.AddRange(ExpandViewLocationsCore(ViewOnly(viewLocations), device));
-            resultLocations.AddRange(ExpandPageLocationsCore(PageOnly(viewLocations), device));
-
-            return resultLocations;
+            
+            return ExpandViewLocationsCore(ViewOnly(viewLocations), device).Concat(viewLocations);
         }
 
-        private IEnumerable<string> ExpandViewLocationsCore(IEnumerable<string> viewLocations, Device device)
+        private IEnumerable<string> ExpandViewLocationsCore(IEnumerable<string> viewLocations, string device)
         {
             foreach (var location in viewLocations)
             {
@@ -76,19 +70,7 @@ namespace Wangkanai.Detection.Hosting
             }
         }
 
-        private IEnumerable<string> ExpandPageLocationsCore(IEnumerable<string> viewLocations, Device device)
-        {
-            foreach (var location in viewLocations)
-            {
-                yield return location.Replace("{0}", "{0}." + device);
-                yield return location;
-            }
-        }
-
         private static IEnumerable<string> ViewOnly(IEnumerable<string> viewLocations)
             => viewLocations.Where(location => location.Contains("views", StringComparison.OrdinalIgnoreCase));
-
-        private static IEnumerable<string> PageOnly(IEnumerable<string> viewLocations)
-            => viewLocations.Where(location => location.Contains("pages", StringComparison.OrdinalIgnoreCase));
     }
 }

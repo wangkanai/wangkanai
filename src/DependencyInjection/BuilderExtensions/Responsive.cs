@@ -4,6 +4,7 @@
 using System;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Wangkanai.Detection.Hosting;
 using Wangkanai.Detection.Services;
@@ -19,9 +20,7 @@ namespace Microsoft.Extensions.DependencyInjection
 
             builder.Services.TryAddTransient<IResponsiveService, ResponsiveService>();
             builder.Services.AddRazorViewLocation();
-            
-            // For future development and exploration
-            //builder.Services.AddRazorPageLocation();
+            builder.Services.AddRazorPagesLocation();
 
             return builder;
         }
@@ -33,8 +32,8 @@ namespace Microsoft.Extensions.DependencyInjection
             builder.Services.AddSession(
                 options =>
                 {
-                    options.Cookie.Name        = "Detection";
-                    options.IdleTimeout        = TimeSpan.FromSeconds(10);
+                    options.Cookie.Name = "Detection";
+                    options.IdleTimeout = TimeSpan.FromSeconds(10);
                     options.Cookie.IsEssential = true;
                 });
 
@@ -44,15 +43,20 @@ namespace Microsoft.Extensions.DependencyInjection
         private static IServiceCollection AddRazorViewLocation(this IServiceCollection services)
             => services.Configure<RazorViewEngineOptions>(options =>
             {
-                options.ViewLocationExpanders.Add(new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Suffix));
-                options.ViewLocationExpanders.Add(new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Subfolder));
+                //options.ViewLocationExpanders.Add(new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Suffix));
+                //options.ViewLocationExpanders.Add(new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Subfolder));
+                options.ViewLocationExpanders.Add(new ResponsivePageLocationExpander());
             });
 
-        private static IServiceCollection AddRazorPageLocation(this IServiceCollection services)
-            => services.Configure<RazorPagesOptions>(options =>
+        private static IServiceCollection AddRazorPagesLocation(this IServiceCollection services)
+        {
+            services.AddRazorPages(options =>
             {
-                options.Conventions.AddPageRoute("", "");
-                options.Conventions.AddPageRoute("", "");
+                options.Conventions.Add(new ResponsivePageRouteModelConvention());
             });
+            services.AddSingleton<MatcherPolicy, ResponsivePageMatcherPolicy>();
+            
+            return services;
+        }
     }
 }

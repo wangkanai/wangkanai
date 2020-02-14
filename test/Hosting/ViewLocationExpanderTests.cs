@@ -55,23 +55,31 @@ namespace Wangkanai.Detection.Hosting
                                  }
                              };
 
+
+            }
+        }
+
+        public static IEnumerable<object[]> RazorPagesLocationTestData
+        {
+            get
+            {
                 yield return new object[]
-                             {
-                                 ResponsiveViewLocationFormat.Suffix,
-                                 Device.Tablet,
-                                 new[]
-                                 {
-                                     "/Pages/{1}/{0}.cshtml",
-                                     "/Pages/Shared/{0}.cshtml"
-                                 },
-                                 new[]
-                                 {
-                                     "/Pages/{1}/{0}.Tablet.cshtml",
-                                     "/Pages/{1}/{0}.cshtml",
-                                     "/Pages/Shared/{0}.Tablet.cshtml",
-                                     "/Pages/Shared/{0}.cshtml"
-                                 }
-                             };
+                {
+                    ResponsiveViewLocationFormat.Suffix,
+                    Device.Tablet,
+                    new[]
+                    {
+                        "/Pages/{1}/{0}.cshtml",
+                        "/Pages/Shared/{0}.cshtml"
+                    },
+                    new[]
+                    {
+                        "/Pages/{1}/{0}.Tablet.cshtml",
+                        "/Pages/{1}/{0}.cshtml",
+                        "/Pages/Shared/{0}.Tablet.cshtml",
+                        "/Pages/Shared/{0}.cshtml"
+                    }
+                };
             }
         }
 
@@ -146,6 +154,7 @@ namespace Wangkanai.Detection.Hosting
             Assert.NotEqual(0, context.Values.Count);
             Assert.Same(context.ActionContext.HttpContext.GetDevice().ToString(), context.Values[deviceKey]);
         }
+        
         
         private ViewLocationExpanderContext SetupViewLocationExpanderContext(Device deviceType)
         {

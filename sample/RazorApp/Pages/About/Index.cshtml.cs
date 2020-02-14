@@ -3,12 +3,13 @@
 
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace RazorApp
+namespace RazorApp.Pages.About
 {
-    public class IndexTabletModel : PageModel
+    public class IndexModel : PageModel
     {
         public void OnGet()
         {
+            
         }
     }
 }
