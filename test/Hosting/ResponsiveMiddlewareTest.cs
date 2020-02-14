@@ -10,7 +10,7 @@ using Xunit;
 
 namespace Wangkanai.Detection.Hosting
 {
-    public class ResponsiveMiddlewareTests
+    public class ResponsiveMiddlewareTest
     {
         private static Task Next(HttpContext d)
             => Task.Factory.StartNew(() => d);

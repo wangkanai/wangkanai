@@ -12,7 +12,7 @@ using Xunit;
 
 namespace Wangkanai.Detection.Hosting
 {
-    public class PreferenceSessionTests
+    public class PreferenceSessionTest
     {
         [Fact]
         public async Task ReadingEmptySessionDoesNotCreateCookie()

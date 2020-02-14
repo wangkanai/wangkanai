@@ -5,7 +5,7 @@ using Xunit;
 
 namespace Wangkanai.Detection.Models
 {
-    public class UserAgentTests
+    public class UserAgentTest
     {
         [Fact]
         public void Ctor_Default_Success()

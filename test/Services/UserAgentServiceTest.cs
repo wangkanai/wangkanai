@@ -1,19 +1,16 @@
-// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
-// The Apache v2. See License.txt in the project root for license information.
-
-using System;
+﻿using System;
 using Microsoft.AspNetCore.Http;
 using Xunit;
 
 namespace Wangkanai.Detection.Services
 {
-    public class UserAgentServiceTests
+    public class UserAgentServiceTest
     {
         [Fact]
         public void Ctor_IServiceProvider_Success()
         {
-            var agent = "Agent";
-            var context   = new DefaultHttpContext();
+            var agent   = "Agent";
+            var context = new DefaultHttpContext();
             context.Request.Headers["User-Agent"] = agent;
 
             var accessor = new HttpContextAccessor {HttpContext = context};

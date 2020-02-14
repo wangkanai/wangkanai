@@ -13,7 +13,7 @@ using Xunit;
 
 namespace Wangkanai.Detection.Hosting
 {
-    public class ResponsiveViewLocationExpanderTests
+    public class ResponsiveViewLocationExpanderTest
     {
         public static IEnumerable<object[]> ViewLocationExpanderTestData
         {
