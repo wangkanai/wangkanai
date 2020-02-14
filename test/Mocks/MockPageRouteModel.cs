@@ -81,7 +81,7 @@ namespace Wangkanai.Detection.Mocks
         {
             // path = "/Areas/Admin/Pages/Manage/Home.cshtml"
             // Result ("Admin", "/Manage/Home")
-            const string areaPagesRoot = "/Pages";
+            const string areaPagesRoot = "/Pages/";
 
             result = default;
             // Parse the area root directory
