@@ -92,7 +92,7 @@ namespace Wangkanai.Detection.Hosting
             locationExpander.PopulateValues(context);
             var resultLocations = locationExpander.ExpandViewLocations(context, viewLocations).ToList();
 
-            Assert.Equal(expectedViewLocations, resultLocations.ToList());
+            Assert.Equal(expectedViewLocations, resultLocations.ToArray());
         }
 
         [Fact]
