@@ -56,7 +56,7 @@ namespace Wangkanai.Detection.Hosting
             if (string.IsNullOrEmpty(device))
                 return viewLocations;
             
-            return ExpandViewLocationsCore(ViewOnly(viewLocations), device).Concat(viewLocations);
+            return ExpandViewLocationsCore(ViewOnly(viewLocations), device);//.Concat(viewLocations);
         }
 
         private IEnumerable<string> ExpandViewLocationsCore(IEnumerable<string> viewLocations, string device)
