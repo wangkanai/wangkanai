@@ -42,20 +42,58 @@ namespace Wangkanai.Detection.Hosting
         }
 
         [Fact]
-        public void Apply_Index()
+        public void Apply_Index_Mobile()
         {
             var relativePath  = "/Pages/Index.mobile.cshtml";
             var routeTemplate = "/Index.mobile";
-            var template      = "Index";
-            var options       = new RazorPagesOptions();
-            var factory       = new MockPageRouteModel(options);
-            var model         = factory.CreateRouteModel(relativePath, routeTemplate);
+            var template      = "";
+            var model         = CreatePageRouteModel(relativePath, routeTemplate);
             var convention    = new ResponsivePageRouteModelConvention();
-
             convention.Apply(model);
-            Assert.Equal(2, model.Selectors.Count);
-            var selector = model.Selectors.Single();
+            var selector = model.Selectors.Last();
             Assert.Equal(template, selector.AttributeRouteModel.Template);
+        }
+
+        [Fact]
+        public void Apply_Privacy_Mobile()
+        {
+            var relativePath  = "/Pages/Privacy.mobile.cshtml";
+            var routeTemplate = "/Privacy.mobile";
+            var template      = "Privacy";
+            var model         = CreatePageRouteModel(relativePath, routeTemplate);
+            var convention    = new ResponsivePageRouteModelConvention();
+            convention.Apply(model);
+            var selector = model.Selectors.Last();
+            Assert.Equal(template, selector.AttributeRouteModel.Template);
+        }
+
+        [Fact]
+        public void Apply_Admin_Index_Mobile()
+        {
+            var relativePath  = "/Areas/Admin/Pages/Index.mobile.cshtml";
+            var routeTemplate = "/Index.mobile";
+            var template      = "Admin/Index";
+            var model         = CreatePageRouteModel(relativePath, routeTemplate);
+            var convention    = new ResponsivePageRouteModelConvention();
+            convention.Apply(model);
+            var selector = model.Selectors.Last();
+            Assert.Equal(template, selector.AttributeRouteModel.Template);
+        }
+
+        private static PageRouteModel CreatePageRouteModel(string relativePath, string routeTemplate)
+        {
+            var options = new RazorPagesOptions();
+            var factory = new MockPageRouteModel(options);
+            var model   = factory.CreateRouteModel(relativePath, routeTemplate);
+            return model;
+        }
+
+        private static PageRouteModel CreateAreaPageRouteModel(string relativePath, string routeTemplate)
+        {
+            var options = new RazorPagesOptions();
+            var factory = new MockPageRouteModel(options);
+            var model   = factory.CreateAreaRouteModel(relativePath, routeTemplate);
+            return model;
         }
     }
 }

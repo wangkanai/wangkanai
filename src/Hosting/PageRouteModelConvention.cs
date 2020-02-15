@@ -43,7 +43,6 @@ namespace Wangkanai.Detection.Hosting
             // Ex: we need to turn `About/Help.mobile/{id?}` into `About/Help/{id?}`
 
             // prefix = `About/`
-            // 
             var viewEnginePath = model.ViewEnginePath;
             var relativePath   = model.RelativePath;
 
