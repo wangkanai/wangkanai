@@ -109,6 +109,11 @@ namespace Wangkanai.Detection.Mocks
 
         private string GetViewEnginePath(string rootDirectory, string path)
         {
+            if (rootDirectory is null) 
+                throw new ArgumentNullException(nameof(rootDirectory));
+            if (path is null) 
+                throw new ArgumentNullException(nameof(path));
+            
             var start = rootDirectory.Length - 1;
             var end   = path.Length - RazorViewEngine.ViewExtension.Length;
 

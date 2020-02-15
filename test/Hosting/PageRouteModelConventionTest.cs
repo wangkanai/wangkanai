@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging.Abstractions;
@@ -10,11 +11,18 @@ namespace Wangkanai.Detection.Hosting
     public class PageRouteModelConventionTest
     {
         [Fact]
-        public void Apply_Index_Mobile()
+        public void Apply_Null_Empty()
         {
-            var relativePath  = "/Pages/Index.mobile.cshtml";
-            var routeTemplate = "/Index.mobile";
-            var template      = "";
+            Assert.Throws<ArgumentNullException>(() => CreatePageRouteModel(null, null));
+            Assert.Throws<ArgumentOutOfRangeException>(() => CreatePageRouteModel("", null));
+            Assert.Throws<ArgumentOutOfRangeException>(() => CreatePageRouteModel("", ""));
+        }
+        
+        [Theory]
+        [InlineData("", "/Index.mobile", "/Pages/Index.mobile.cshtml")]
+        [InlineData("", "/Index.tablet", "/Pages/Index.tablet.cshtml")]
+        public void Apply_Index(string template, string routeTemplate, string relativePath)
+        {
             var model         = CreatePageRouteModel(relativePath, routeTemplate);
             var convention    = new ResponsivePageRouteModelConvention();
             convention.Apply(model);
@@ -22,12 +30,11 @@ namespace Wangkanai.Detection.Hosting
             Assert.Equal(template, selector.AttributeRouteModel.Template);
         }
 
-        [Fact]
-        public void Apply_Privacy_Mobile()
+        [Theory]
+        [InlineData("Privacy", "/Privacy.mobile", "/Pages/Privacy.mobile.cshtml")]
+        [InlineData("Privacy", "/Privacy.tablet", "/Pages/Privacy.tablet.cshtml")]
+        public void Apply_Privacy(string template, string routeTemplate, string relativePath)
         {
-            var relativePath  = "/Pages/Privacy.mobile.cshtml";
-            var routeTemplate = "/Privacy.mobile";
-            var template      = "Privacy";
             var model         = CreatePageRouteModel(relativePath, routeTemplate);
             var convention    = new ResponsivePageRouteModelConvention();
             convention.Apply(model);
@@ -35,12 +42,11 @@ namespace Wangkanai.Detection.Hosting
             Assert.Equal(template, selector.AttributeRouteModel.Template);
         }
 
-        [Fact]
-        public void Apply_Admin_Index_Mobile()
+        [Theory]
+        [InlineData("Admin/", "/Admin/Index.mobile","/Areas/Admin/Pages/Index.mobile.cshtml")]
+        [InlineData("Admin/", "/Admin/Index.tablet","/Areas/Admin/Pages/Index.tablet.cshtml")]
+        public void Apply_Admin_Index(string template, string routeTemplate, string relativePath)
         {
-            var relativePath  = "/Areas/Admin/Pages/Index.mobile.cshtml";
-            var routeTemplate = "/Admin/Index.mobile";
-            var template      = "Admin/";
             var model         = CreateAreaPageRouteModel(relativePath, routeTemplate);
             var convention    = new ResponsivePageRouteModelConvention();
             convention.Apply(model);
@@ -48,12 +54,11 @@ namespace Wangkanai.Detection.Hosting
             Assert.Equal(template, selector.AttributeRouteModel.Template);
         }
 
-        [Fact]
-        public void Apply_Admin_Report_Mobile()
+        [Theory]
+        [InlineData("Admin/Report", "/Admin/Report.mobile","/Areas/Admin/Pages/Report.mobile.cshtml")]
+        [InlineData("Admin/Report", "/Admin/Report.tablet","/Areas/Admin/Pages/Report.tablet.cshtml")]
+        public void Apply_Admin_Report(string template, string routeTemplate, string relativePath)
         {
-            var relativePath  = "/Areas/Admin/Pages/Report.mobile.cshtml";
-            var routeTemplate = "/Admin/Report.mobile";
-            var template      = "Admin/Report";
             var model         = CreateAreaPageRouteModel(relativePath, routeTemplate);
             var convention    = new ResponsivePageRouteModelConvention();
             convention.Apply(model);
