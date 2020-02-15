@@ -47,7 +47,7 @@ namespace Wangkanai.Detection.Hosting
             var selector = model.Selectors.Last();
             Assert.Equal(template, selector.AttributeRouteModel.Template);
         }
-        
+
         [Fact]
         public void Apply_Admin_Report_Mobile()
         {
@@ -62,19 +62,14 @@ namespace Wangkanai.Detection.Hosting
         }
 
         private static PageRouteModel CreatePageRouteModel(string relativePath, string routeTemplate)
-        {
-            var options = new RazorPagesOptions();
-            var factory = new MockPageRouteModel(options);
-            var model   = factory.CreateRouteModel(relativePath, routeTemplate);
-            return model;
-        }
+            => CreatePageRouteModelFactory()
+                .CreateRouteModel(relativePath, routeTemplate);
 
         private static PageRouteModel CreateAreaPageRouteModel(string relativePath, string routeTemplate)
-        {
-            var options = new RazorPagesOptions();
-            var factory = new MockPageRouteModel(options);
-            var model   = factory.CreateAreaRouteModel(relativePath, routeTemplate);
-            return model;
-        }
+            => CreatePageRouteModelFactory()
+                .CreateAreaRouteModel(relativePath, routeTemplate);
+
+        private static MockPageRouteModel CreatePageRouteModelFactory()
+            => new MockPageRouteModel(new RazorPagesOptions());
     }
 }
