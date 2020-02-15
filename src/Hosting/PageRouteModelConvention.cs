@@ -53,7 +53,8 @@ namespace Wangkanai.Detection.Hosting
             // suffix = '/{id?}'
             var templateOld = selector.AttributeRouteModel.Template;
 
-            var suffix = selector.AttributeRouteModel.Template.Substring(area.Length + prefix.Length + fileNameWithoutExtension.Length);
+            var suffixStartIndex = area.Length + prefix.Length + fileNameWithoutExtension.Length;
+            var suffix = templateOld.Substring(suffixStartIndex);
 
             if (pageName.Equals("Index", StringComparison.OrdinalIgnoreCase))
             {
