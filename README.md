@@ -176,11 +176,23 @@ public class MyCustomMiddleware
 
 ### Fundamentals
 
-Detection services would extract information about the visitor web client by parsing the [user agent](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent) that the web browser gives to the web server on every http/https request. There have total of 5 resolver services the our detection services.
+Detection services would extract information about the visitor web client by parsing the [user agent](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent) that the web browser gives to the web server on every http/https request. We would make the requester is using common Mozilla syntax: _Mozilla/[version] ([system and browser information]) [platform] ([platform details]) [extensions]_. There have total of 5 resolver services the our detection services.
 
 #### Device Resolver
 
+This would be the basic resolver that you might be thinking using to identify what kind client `Device` is access your web app, which include Desktop, Tablet, and Mobile for the basic stuff. While we can also use to identify is the device a Watch, Tv, Game Console, Car, and Internet of Things.
+
+```c#
+var isMobile = detectionService.Device.Type == Device.Mobile;
+```
+
 #### Browser Resolver
+
+Moving the stack we get what `Browser` is the client using to access your web app. We only include the common web browser detection starting from Chrome, Internet Explorer, Safari, Firefox, Edge, and Opera. For the rest we would mark them as others or unknown (aka Crawler).
+
+```c#
+var isIE = detectionService.Browser.Name == Browser.InternetExplorer;
+```
 
 #### Platform Resolver
 
