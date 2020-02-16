@@ -196,9 +196,27 @@ var isIE = detectionService.Browser.Name == Browser.InternetExplorer;
 
 #### Platform Resolver
 
+Now we can also identify what `Platform` is the client using to access your web app starting in [version 3.0](https://github.com/wangkanai/Detection/milestone/13). We got Windows, Mac, iOS, Linux, and Android.
+
+```c#
+var isMac = detectionService.Platform.Name == Platform.Mac;
+```
+
 #### Engine Resolver
 
+Now we can also identify what `Engine` is the client using to access your web app starting in [version 3.0](https://github.com/wangkanai/Detection/milestone/13). We got WebKit, Blink, Gecko, Trident, EdgeHTML, and Servo.
+
+```c#
+var isTrident = detectionService.Engine.Name == Engine.Trident;
+```
+
 #### Crawler Resolver
+
+This would be something that web analytics to keep track on how are web crawler are access your website for indexing. We got starting everybody favorite that is Google, Bing, Yahoo, Baidu, Facebook, Twitter, LinkedIn, WhatsApp, and Skype.
+
+```c#
+var isGoogle = detectionService.Crawler.Name == Crawler.Google;
+```
 
 ## Responsive Service
 
