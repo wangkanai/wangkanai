@@ -78,11 +78,15 @@ Adding the TagHelper features to your web application with following in your `_V
 
 ## Detection Service
 
+After you have added the basic of the detection services, let us learn how to utilized the library in your web application. In which we have got the help from [dependency injection](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection) to access all functionality of `IDetectionService` has to offer.
+
 ### Make your web app able to detect what client is accessing
+
+Detection service support usage in both Model-View-Controller (MVC) and Razor Pages.
 
 #### MVC
 
-After you have added the basic of the Detection Services, let us learn how to utilized in your web application. Which we got the help from [dependency injection](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection) to access to `IDetectionService`. Here is how you would use in `Controller` of a [MVC pattern](https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/) by injecting the detection service into the constructor of the controller. 
+Here is how you would use the library in `Controller` of a [MVC pattern](https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/) by injecting the detection service into the constructor of the controller. 
 
 ```c#
 public class AboutController : Controller
@@ -103,7 +107,7 @@ public class AboutController : Controller
 
 #### Razor Pages
 
-For [razor pages](https://docs.microsoft.com/en-us/aspnet/core/tutorials/razor-pages/) web application that only have the pages without page behind, you can access the detection service via the `@inject` tag after the `@page` in your _.cshtml_ files. Here would be the example below;
+For [razor pages](https://docs.microsoft.com/en-us/aspnet/core/tutorials/razor-pages/) web application that only have the pages without `PageModel` behind, you can access the detection service via the `@inject` tag after the `@page` in your _.cshtml_ files. Here would be the example below;
 
 ```razor
 @page
@@ -120,7 +124,7 @@ For [razor pages](https://docs.microsoft.com/en-us/aspnet/core/tutorials/razor-p
 </ul>
 ```
 
-While if you razor pages use the code behind model, you can still inject the detection service into it via the constructor just like the way MVC controller does it also.
+What if you razor pages use the code behind model, you can still inject the detection service into it via the constructor just similar way as MVC controller does it.
 
 ```c#
 public class IndexModel : PageModel
@@ -141,7 +145,9 @@ public class IndexModel : PageModel
 
 ### Detection in Middleware
 
-Would you think that [Middleware](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/) can also use this detection service. Actually it can! and our [Responsive](#responsive-service) make good use of it too. Let us learn how that you would use detection service in your custom middleware which we would use the [Per-request middleware dependencies](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/write#per-request-middleware-dependencies). But why would we use pre-request injection for our middleware you may ask? Easy! because every user is unique. Technically answer would be that `IDetectionService` by using `TryAddTransient<TInterface, TClass>` where you can [learn more about transient](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection#transient). So now we know about the basic lets look at the code:
+Would you think that [Middleware](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/) can also use this detection service. Actually it can! and our [Responsive](#responsive-service) make good use of it too. Let us learn how that you would use detection service in your custom middleware which we would use the [Per-request middleware dependencies](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/write#per-request-middleware-dependencies). But why would we use pre-request injection for our middleware you may ask? Easy! because every user is unique. Technically answer would be that `IDetectionService` by using `TryAddTransient<TInterface, TClass>` where you can [learn more about transient](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection#transient). If you inject `IDetectionServices` into the middleware constructor, then the service would become a singleton. Meaning to subject to application not per client request.
+
+So now we know about the basic lets look at the code:
 
 ```c#
 public class MyCustomMiddleware
@@ -227,23 +233,25 @@ public void ConfigureServices(IServiceCollection services)
 
 ## Responsive Service
 
-This is where thing get more interesting that is built upon detection service, or matter a fact detection service was built because of responsive service. The concept is that we would like to have views that correspond to what kind of device to accessing to our web app. For ASP.NET Core is the use of `.cshtml`
+This is where thing get more interesting that is built upon detection service, or matter a fact detection service was built because of responsive service. The concept is that we would like to have views that correspond to what kind of device to accessing to our web app. 
 
 ### Responsive MVC
+
+Responsive Views for MVC has 2 format for you to utilize. First is would be to most common is `Suffix` and the secord format is `SubFolder`. Lets make this follow example a `suffix` as of my opinionated would be the most common way to managed all the views. This `suffix` format is done by add device type before the file extension **_.cshtml_** like **_.mobile.cshtml_**. Below is how you would structure your Views folder. 
 
 ![Responsive view file structure](doc/responsive-views-file-structure.png)
 
 ### Responsive Razor Pages
 
+Responsive for razor pages newly added in [wangkanai.detection 3.0](https://github.com/wangkanai/Detection/pull/297). This enable completed responsive in asp.net core ecosystem. Same like Views in MVC we have `suffix` format where we add the device type in before the file extension **_.cshtml_** like **_.mobile.cshtml_**.
+
 ![Responsive razor pages file structure](doc/responsive-pages-file-structure.png)
 
 ### Responsive Tag Helpers
 
+The next exciting feature add in [wangkanai.detection 3.0](https://github.com/wangkanai/Detection/pull/301) is Tag Helpers. This make you able to use the same view and just show/hide specific part of the views to the client base upon their type, this include Device, Browser, Platform, Engine, and Crawler that our detection resolver could determine from the resolver parsing services.
+
 ```razor
-<device include="desktop">is desktop</device>
-<device exclude="desktop">not desktop</device>
-<device include="tablet">is tablet</device>
-<device exclude="tablet">not tablet</device>
 <device include="mobile">is mobile</device>
 <device exclude="mobile">not mobile</device>
 ```
@@ -281,6 +289,7 @@ When a client visit your web application by using a mobile device and you have r
 ```
 
 If the client selected to view in desktop view, he/she can switch back mobile view by the follow example;
+
 ```razor
 <preference only="mobile">
     <a href="/Detection/Preference/Clear">
