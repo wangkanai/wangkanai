@@ -264,8 +264,8 @@ This is where thing get more interesting that is built upon detection service, o
 ```
 
 ```razor
-<engine include="google">is google</engine>
-<engine exclude="google">not google</engine>
+<crawler include="google">is google</crawler>
+<crawler exclude="google">not google</crawler>
 ```
 
 ### User Preference
