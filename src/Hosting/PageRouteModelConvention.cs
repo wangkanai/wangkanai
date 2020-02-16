@@ -1,3 +1,6 @@
+// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
+// The Apache v2. See License.txt in the project root for license information.
+
 using System;
 using System.IO;
 using System.Linq;
@@ -43,18 +46,12 @@ namespace Wangkanai.Detection.Hosting
             // Ex: we need to turn `About/Help.mobile/{id?}` into `About/Help/{id?}`
 
             // prefix = `About/`
-            var viewEnginePath = model.ViewEnginePath;
-            var relativePath   = model.RelativePath;
-
             var prefix = model.ViewEnginePath.Substring(1, model.ViewEnginePath.LastIndexOf('/'));
 
             // We can get the route parameter that the user put in after `@page` by substringing.
             //
             // suffix = '/{id?}'
-            var templateOld = selector.AttributeRouteModel.Template;
-
-            var suffixStartIndex = area.Length + prefix.Length + fileNameWithoutExtension.Length;
-            var suffix = templateOld.Substring(suffixStartIndex);
+            var suffix = selector.AttributeRouteModel.Template.Substring(area.Length + prefix.Length + fileNameWithoutExtension.Length);
 
             if (pageName.Equals("Index", StringComparison.OrdinalIgnoreCase))
             {
@@ -64,8 +61,7 @@ namespace Wangkanai.Detection.Hosting
                 // Add another selector with matches the URL without `Index`
                 var another = new SelectorModel(selector);
                 model.Selectors.Add(another);
-                var templateIndex = area + prefix.TrimEnd('/') + suffix;
-                another.AttributeRouteModel.Template = templateIndex;
+                another.AttributeRouteModel.Template = area + prefix.TrimEnd('/') + suffix;
 
                 // Disable link generation for the original selector, to prefer the shorter URL.
                 selector.AttributeRouteModel.SuppressLinkGeneration = true;
@@ -75,12 +71,7 @@ namespace Wangkanai.Detection.Hosting
             }
 
             // Now rewrite the original selector
-            var templateNew = area + prefix + pageName + suffix;
-
-            if (!templateNew.Equals(templateOld))
-                Console.WriteLine($"{templateNew} != {templateOld}");
-
-            selector.AttributeRouteModel.Template = templateNew;
+            selector.AttributeRouteModel.Template = area + prefix + pageName + suffix;;
 
             // Allow routing to filter by device type.
             selector.EndpointMetadata.Add(new ResponsiveAttribute(device));

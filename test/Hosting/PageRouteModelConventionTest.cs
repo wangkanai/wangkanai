@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
+// The Apache v2. See License.txt in the project root for license information.
+
+using System;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -17,50 +20,63 @@ namespace Wangkanai.Detection.Hosting
             Assert.Throws<ArgumentOutOfRangeException>(() => CreatePageRouteModel("", null));
             Assert.Throws<ArgumentOutOfRangeException>(() => CreatePageRouteModel("", ""));
         }
-        
+
         [Theory]
-        [InlineData("", "/Index.mobile", "/Pages/Index.mobile.cshtml")]
-        [InlineData("", "/Index.tablet", "/Pages/Index.tablet.cshtml")]
-        public void Apply_Index(string template, string routeTemplate, string relativePath)
+        // Why is Index is not a normal page?
+        // [InlineData("/Pages/Index.cshtml", "/Index")]
+        [InlineData("/Pages/Privacy.cshtml", "/Privacy")]
+        [InlineData("/Areas/Admin/Pages/Report.cshtml", "/Admin/Report")]
+        public void Apply_Normal_Page(string relativePath, string routeTemplate)
         {
-            var model         = CreatePageRouteModel(relativePath, routeTemplate);
-            var convention    = new ResponsivePageRouteModelConvention();
+            var model      = CreatePageRouteModel(relativePath, routeTemplate);
+            var convention = new ResponsivePageRouteModelConvention();
+            convention.Apply(model);
+            Assert.Equal(1, model.Selectors.Count);
+        }
+
+        [Theory]
+        [InlineData("/Pages/Index.mobile.cshtml", "/Index.mobile", "")]
+        [InlineData("/Pages/Index.tablet.cshtml", "/Index.tablet", "")]
+        public void Apply_Index(string relativePath, string routeTemplate, string template)
+        {
+            var model      = CreatePageRouteModel(relativePath, routeTemplate);
+            var convention = new ResponsivePageRouteModelConvention();
             convention.Apply(model);
             var selector = model.Selectors.Last();
             Assert.Equal(template, selector.AttributeRouteModel.Template);
         }
 
         [Theory]
-        [InlineData("Privacy", "/Privacy.mobile", "/Pages/Privacy.mobile.cshtml")]
-        [InlineData("Privacy", "/Privacy.tablet", "/Pages/Privacy.tablet.cshtml")]
-        public void Apply_Privacy(string template, string routeTemplate, string relativePath)
+        [InlineData("/Pages/Privacy.mobile.cshtml", "/Privacy.mobile", "Privacy")]
+        [InlineData("/Pages/Privacy.tablet.cshtml", "/Privacy.tablet", "Privacy")]
+        public void Apply_Privacy(string relativePath, string routeTemplate, string template)
         {
-            var model         = CreatePageRouteModel(relativePath, routeTemplate);
-            var convention    = new ResponsivePageRouteModelConvention();
+            var model      = CreatePageRouteModel(relativePath, routeTemplate);
+            var convention = new ResponsivePageRouteModelConvention();
             convention.Apply(model);
             var selector = model.Selectors.Last();
             Assert.Equal(template, selector.AttributeRouteModel.Template);
         }
 
         [Theory]
-        [InlineData("Admin/", "/Admin/Index.mobile","/Areas/Admin/Pages/Index.mobile.cshtml")]
-        [InlineData("Admin/", "/Admin/Index.tablet","/Areas/Admin/Pages/Index.tablet.cshtml")]
-        public void Apply_Admin_Index(string template, string routeTemplate, string relativePath)
+        [InlineData("/Areas/Admin/Pages/Index.mobile.cshtml", "/Admin/Index.mobile", "Admin/")]
+        [InlineData("/Areas/Admin/Pages/Index.tablet.cshtml", "/Admin/Index.tablet", "Admin/")]
+        public void Apply_Admin_Index(string relativePath, string routeTemplate, string template)
         {
-            var model         = CreateAreaPageRouteModel(relativePath, routeTemplate);
-            var convention    = new ResponsivePageRouteModelConvention();
+            var model      = CreateAreaPageRouteModel(relativePath, routeTemplate);
+            var convention = new ResponsivePageRouteModelConvention();
             convention.Apply(model);
             var selector = model.Selectors.Last();
             Assert.Equal(template, selector.AttributeRouteModel.Template);
         }
 
         [Theory]
-        [InlineData("Admin/Report", "/Admin/Report.mobile","/Areas/Admin/Pages/Report.mobile.cshtml")]
-        [InlineData("Admin/Report", "/Admin/Report.tablet","/Areas/Admin/Pages/Report.tablet.cshtml")]
-        public void Apply_Admin_Report(string template, string routeTemplate, string relativePath)
+        [InlineData("/Areas/Admin/Pages/Report.mobile.cshtml", "/Admin/Report.mobile", "Admin/Report")]
+        [InlineData("/Areas/Admin/Pages/Report.tablet.cshtml", "/Admin/Report.tablet", "Admin/Report")]
+        public void Apply_Admin_Report(string relativePath, string routeTemplate, string template)
         {
-            var model         = CreateAreaPageRouteModel(relativePath, routeTemplate);
-            var convention    = new ResponsivePageRouteModelConvention();
+            var model      = CreateAreaPageRouteModel(relativePath, routeTemplate);
+            var convention = new ResponsivePageRouteModelConvention();
             convention.Apply(model);
             var selector = model.Selectors.Last();
             Assert.Equal(template, selector.AttributeRouteModel.Template);
