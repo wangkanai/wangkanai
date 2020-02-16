@@ -1,10 +1,6 @@
 ﻿@{
     Layout = "_Layout";
 }
-<nav class="navbar navbar-dark bg-dark ">
-    <div class="container-fluid">
-        <a class="navbar-brand" asp-area="Admin" asp-page="/Index">Admin</a>
-        <span class="navbar-text">Areas/Admin/Views/Shared/_AdminLayout.tablet.cshtml</span>
-    </div>
-</nav>
+<partial name="_AdminNavigation"/>
 @RenderBody()
+<span class="alert alert-info">Areas/Admin/Views/Shared/_AdminLayout.tablet.cshtml</span>
