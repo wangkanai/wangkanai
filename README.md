@@ -89,7 +89,7 @@ Adding the TagHelper features to your web application with following in your `_V
 
 ## Detection Service
 
-### Web Application
+### Make your web app able to detect what client is accessing
 
 #### MVC
 
