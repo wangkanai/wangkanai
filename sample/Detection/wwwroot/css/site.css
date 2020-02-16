@@ -78,3 +78,11 @@ body {
 .alert-info {
   background-color: #00708a;
 }
+
+.alert-warning {
+  background-color: #a16d24;
+}
+
+.bg-admin{
+  background-color: #2d000e !important;
+}

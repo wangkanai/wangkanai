@@ -56,6 +56,7 @@ namespace Detection
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapAreaControllerRoute("Admin", "Admin", "Admin/{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapDefaultControllerRoute();
                 endpoints.MapRazorPages();
             });
