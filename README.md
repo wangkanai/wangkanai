@@ -25,11 +25,10 @@ This project development has been in the long making of my little spare time. Pl
   - [Middleware](#detection-in-middleware)
   - [Fundamentals](#detection-fundamentals)
 * [Responsive Service](#responsive-service)
-  - [Web App](#make-your-web-app-responsive)
-    - [MVC]()
-    - [Razor Pages]()
-    - [Tag Helpers]()
-    - [User Preference]()
+  - [MVC](#responsive-mvc)
+  - [Razor Pages](#responsive-razor-pages)
+  - [Tag Helpers](#responsive-tag-helpers)
+  - [User Preference](#user-preference)
 
 ## Installation
 
@@ -232,15 +231,13 @@ var isGoogle = detectionService.Crawler.Name == Crawler.Google;
 
 ## Responsive Service
 
-### Make your web app responsive
+### Responsive MVC
 
-#### MVC
+### Responsive Razor Pages
 
-#### Razor Pages
+### Responsive Tag Helpers
 
-#### Tag Helpers
-
-#### User Preference
+### User Preference
 
 ### Directory Structure
 
