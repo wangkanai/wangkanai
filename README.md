@@ -249,11 +249,9 @@ Responsive for razor pages newly added in [wangkanai.detection 3.0](https://gith
 
 ### Responsive Tag Helpers
 
+The next exciting feature add in [wangkanai.detection 3.0](https://github.com/wangkanai/Detection/pull/301) is Tag Helpers. This make you able to use the same view and just show/hide specific part of the views to the client base upon their type, this include Device, Browser, Platform, Engine, and Crawler that our detection resolver could determine from the resolver parsing services.
+
 ```razor
-<device include="desktop">is desktop</device>
-<device exclude="desktop">not desktop</device>
-<device include="tablet">is tablet</device>
-<device exclude="tablet">not tablet</device>
 <device include="mobile">is mobile</device>
 <device exclude="mobile">not mobile</device>
 ```
@@ -291,6 +289,7 @@ When a client visit your web application by using a mobile device and you have r
 ```
 
 If the client selected to view in desktop view, he/she can switch back mobile view by the follow example;
+
 ```razor
 <preference only="mobile">
     <a href="/Detection/Preference/Clear">
