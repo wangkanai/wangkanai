@@ -78,11 +78,15 @@ Adding the TagHelper features to your web application with following in your `_V
 
 ## Detection Service
 
+After you have added the basic of the detection services, let us learn how to utilized in your web application. Which we got the help from [dependency injection](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection) to access to `IDetectionService`.
+
 ### Make your web app able to detect what client is accessing
+
+Detection service support the usage in both Model-View-Controller (MVC) and Razor Pages.
 
 #### MVC
 
-After you have added the basic of the Detection Services, let us learn how to utilized in your web application. Which we got the help from [dependency injection](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection) to access to `IDetectionService`. Here is how you would use in `Controller` of a [MVC pattern](https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/) by injecting the detection service into the constructor of the controller. 
+Here is how you would use in `Controller` of a [MVC pattern](https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/) by injecting the detection service into the constructor of the controller. 
 
 ```c#
 public class AboutController : Controller
