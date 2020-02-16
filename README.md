@@ -29,6 +29,7 @@ This project development has been in the long making of my little spare time. Pl
   - [Razor Pages](#responsive-razor-pages)
   - [Tag Helpers](#responsive-tag-helpers)
   - [User Preference](#user-preference)
+  - [Options](#responsive-options)
 
 ## Installation
 
@@ -52,29 +53,6 @@ public void ConfigureServices(IServiceCollection services)
 ```
 
 * `AddDetection()` Adds the detection services to the services container.
-
-Or you can customize the responsive
-
-```c#
-public void ConfigureServices(IServiceCollection services)
-{
-    // Add responsive services.
-    services.AddDetection(options =>
-    {
-        options.Responsive.DefaultTablet  = Device.Desktop;
-        options.Responsive.DefaultMobile  = Device.Mobile;
-        options.Responsive.DefaultDesktop = Device.Desktop;
-        options.Responsive.IncludeWebApi  = false;
-        options.Responsive.Disable        = false;
-        options.Responsive.WebApiPath     = "/Api";
-    });
-
-    // Add framework services.
-    services.AddControllersWithViews();
-}
-```
-
-* `AddDetection(Action<DetectionOptions> options)` Adds the detection services to the services container.
 
 The current device on a request is set in the Responsive middleware. The Responsive middleware is enabled in the `Configure` method of `Startup.cs` file.
 
@@ -229,6 +207,8 @@ This would be something that web analytics to keep track on how are web crawler 
 var isGoogle = detectionService.Crawler.Name == Crawler.Google;
 ```
 
+#### Detection Options
+
 ## Responsive Service
 
 ### Responsive MVC
@@ -239,7 +219,32 @@ var isGoogle = detectionService.Crawler.Name == Crawler.Google;
 
 ### User Preference
 
-### Directory Structure
+### Responsive Options
+
+You can customize the default behaviour of how responsive service would react to client request. You can go in deep by examining `ResponsiveOptions`.
+
+```c#
+public void ConfigureServices(IServiceCollection services)
+{
+    // Add responsive services.
+    services.AddDetection(options =>
+    {
+        options.Responsive.DefaultTablet  = Device.Desktop;
+        options.Responsive.DefaultMobile  = Device.Mobile;
+        options.Responsive.DefaultDesktop = Device.Desktop;
+        options.Responsive.IncludeWebApi  = false;
+        options.Responsive.Disable        = false;
+        options.Responsive.WebApiPath     = "/Api";
+    });
+
+    // Add framework services.
+    services.AddControllersWithViews();
+}
+```
+
+* `AddDetection(Action<DetectionOptions> options)` Adds the detection services to the services container.
+
+## Directory Structure
 
 * `src` - The source code of this project lives here
 * `test` - The test code of this project lives here
