@@ -87,6 +87,75 @@ Adding the TagHelper features to your web application with following in your `_V
 @addTagHelper *, Wangkanai.Detection
 ```
 
+## Detection
+
+### Web Application
+
+#### MVC
+
+After you have added the basic of the Detection Services, let us learn how to utilized in your web application. Which we got the help from [dependency injection](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection) to access to `IDetectionService`. Here is how you would use in `Controller` of a [MVC pattern](https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/) by injecting the detection service into the constructor of the controller. 
+
+```c#
+public class AboutController : Controller
+{
+    private readonly IDetectionService _detectionService;
+
+    public AboutController(IDetectionService detectionService)
+    {
+        _detectionService = detectionService;
+    }
+
+    public IActionResult Index()
+    {
+        return View(_detectionService);
+    }
+}
+```
+
+#### Razor Pages
+
+For [razor pages](https://docs.microsoft.com/en-us/aspnet/core/tutorials/razor-pages/) web application that only have the pages without page behind, you can access the detection service via the `@inject` tag after the `@page` in your _.cshtml_ files. Here would be the example below;
+
+```razor
+@page
+@inject Wangkanai.Detection.Services.IDetectionService DetectionService
+@{
+    ViewData["Title"] = "Detection";
+}
+<ul>
+    <li>@DetectionService.Device.Type</li>
+    <li>@DetectionService.Browser.Name</li>
+    <li>@DetectionService.Platform.Name</li>
+    <li>@DetectionService.Engine.Name</li>
+    <li>@DetectionService.Crawler.Name</li>
+</ul>
+```
+
+While if you razor pages use the code behind model, you can still inject the detection service into it via the constructor just like the way MVC controller does it also.
+
+```c#
+public class IndexModel : PageModel
+{
+    private readonly IDetectionService _detectionService;
+
+    public IndexModel(IDetectionService detectionService)
+    {
+        _detectionService = detectionService;
+    }
+    
+    public void OnGet()
+    {
+        var device = _detectionService.Device.Type;
+    }
+}
+```
+
+### Middleware
+
+Would you think that [Middleware](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/) can also use this detection service. Actually it can! and our [Responsive](#responsive-service) make good use of it too.
+
+## Responsive Service
+
 ### Directory Structure
 
 * `src` - The source code of this project lives here
