@@ -64,7 +64,7 @@ public void ConfigureServices(IServiceCollection services)
     services.AddResponsive();
 
     // Add framework services.
-    services.AddMvc();  
+    services.AddMvc();
 }
 ```
 Or you can customize the responsive
@@ -80,7 +80,7 @@ public void ConfigureServices(IServiceCollection services)
     });
 
     // Add framework services.
-    services.AddMvc();  
+    services.AddMvc();
 }
 ```
 * `AddResponsive()` Adds the Responsive services to the services container.
@@ -184,9 +184,9 @@ Example of calling the detection service in the `Controller` using dependency in
 
 ```csharp
 public class HomeController : Controller
-{    
+{
     private readonly IUserAgent _useragent;
-    private readonly IDevice _device;   
+    private readonly IDevice _device;
 
     public HomeController(IDeviceResolver deviceResolver)
     {
@@ -195,7 +195,7 @@ public class HomeController : Controller
     }
 
     public IActionResult Index()
-    {            
+    {
         return View();
     }
 }
@@ -209,9 +209,9 @@ Example of calling the detection service in the `Controller` using dependency in
 
 ```csharp
 public class HomeController : Controller
-{    
+{
     private readonly IUserAgent _useragent;
-    private readonly IBrowser _browser;   
+    private readonly IBrowser _browser;
 
     public HomeController(IBrowserResolver browserResolver)
     {
@@ -220,7 +220,7 @@ public class HomeController : Controller
     }
 
     public IActionResult Index()
-    {            
+    {
         return View();
     }
 }
@@ -234,9 +234,9 @@ Example of calling the detection service in the `Controller` using dependency in
 
 ```csharp
 public class HomeController : Controller
-{    
+{
     private readonly IUserAgent _useragent;
-    private readonly ICrawler _crawler;   
+    private readonly ICrawler _crawler;
 
     public HomeController(ICrawlerResolver crawlerResolver)
     {
@@ -245,66 +245,19 @@ public class HomeController : Controller
     }
 
     public IActionResult Index()
-    {            
-        return View();
-    }
-}
-```
-
-## Platform Resolver (concept)
-
-This library host the component to resolve the access client platform type and version.
-
-Example of calling the detection service in the `Controller` using dependency injection.
-
-```csharp
-public class HomeController : Controller
-{    
-    private readonly IUserAgent _useragent;
-    private readonly IPlatform _platform;   
-
-    public HomeController(IPlatformResolver platformResolver)
     {
-        _useragent = platformResolver.UserAgent;
-        _platform = platformResolver.Platform;
-    }
-
-    public IActionResult Index()
-    {            
-        return View();
-    }
-}
-```
-
-## Engine Resolver (concept)
-
-This library host the component to resolve the access client engine type and version.
-
-Example of calling the detection service in the `Controller` using dependency injection.
-
-```csharp
-public class HomeController : Controller
-{    
-    private readonly IUserAgent _useragent;
-    private readonly IEngine _engine;   
-
-    public HomeController(IEngineResolver engineResolver)
-    {
-        _useragent = engineResolver.UserAgent;
-        _engine = engineResolver.Engine;
-    }
-
-    public IActionResult Index()
-    {            
         return View();
     }
 }
 ```
 
 ### Directory Structure
-* `src` - The code of this project lives here
+
+* `src` - The source code of this project lives here
+* `test` - The test code of this project lives here
 * `collection` - Collection of sample user agents for lab testing
 * `sample` - Contains sample web application of usage
+* `doc` - Contains the documentation on how utilized this library
 
 ### Contributing
 
