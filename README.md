@@ -239,7 +239,57 @@ This is where thing get more interesting that is built upon detection service, o
 
 ### Responsive Tag Helpers
 
+```razor
+<device include="desktop">is desktop</device>
+<device exclude="desktop">not desktop</device>
+<device include="tablet">is tablet</device>
+<device exclude="tablet">not tablet</device>
+<device include="mobile">is mobile</device>
+<device exclude="mobile">not mobile</device>
+```
+
+```razor
+<browser include="chrome">is chrome</browser>
+<browser exclude="chrome">not chrome</browser>
+```
+
+```razor
+<platform include="windows">is windows</platform>
+<platform exclude="windows">not windows</platform>
+```
+
+```razor
+<engine include="blink">is blink</engine>
+<engine exclude="blink">not blink</engine>
+```
+
+```razor
+<engine include="google">is google</engine>
+<engine exclude="google">not google</engine>
+```
+
 ### User Preference
+
+When a client visit your web application by using a mobile device and you have responsive view for mobile device. But the visitor would like to view the web app with a desktop view, their click this link to change their preference to desktop view.
+
+```razor
+<a href="/Detection/Preference/Prefer">
+    <div class="alert alert-light" role="alert">
+        Desktop version
+    </div>
+</a>
+```
+
+If the client selected to view in desktop view, he/she can switch back mobile view by the follow example;
+```razor
+<preference only="mobile">
+    <a href="/Detection/Preference/Clear">
+        <div class="alert alert-light" role="alert">
+            Switch to mobile version
+        </div>
+    </a>
+</preference>
+```
 
 ### Responsive Options
 
