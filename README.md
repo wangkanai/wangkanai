@@ -1,4 +1,4 @@
-## ASP.NET Core Detection with Responsive
+## ASP.NET Core Detection with Responsive View
 
 ASP.NET Core Detection service components for identifying details about client device, browser, engine, platform, & crawler. Responsive middleware for routing base upon request client device detection to specific view. Also in the added feature of user preference made this library even more comprehensive must for developers whom to target multiple devices with view rendered and optimized directly from the server side.
 
@@ -18,6 +18,18 @@ ASP.NET Core Detection service components for identifying details about client d
 [![Build history](https://buildstats.info/appveyor/chart/wangkanai/detection)](https://ci.appveyor.com/project/wangkanai/detection/history)
 
 This project development has been in the long making of my little spare time. Please show your appreciation and help me provide feedback on you think will improve this library. All developers are welcome to come and improve the code by submit a pull request. We will have constructive good discussion together to the greater good.
+
+* [Installation](#installation)
+* [Detection Service](#detection-service)
+  - [Web App](#make-your-web-app-able-to-detect-what-client-is-accessing)
+  - [Middleware](#detection-in-middleware)
+  - [Fundamentals](#detection-fundamentals)
+* [Responsive Service](#responsive-service)
+  - [Web App](#make-your-web-app-responsive)
+    - [MVC]()
+    - [Razor Pages]()
+    - [Tag Helpers]()
+    - [User Preference]()
 
 ## Installation
 
@@ -150,7 +162,7 @@ public class IndexModel : PageModel
 }
 ```
 
-### Middleware
+### Detection in Middleware
 
 Would you think that [Middleware](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/) can also use this detection service. Actually it can! and our [Responsive](#responsive-service) make good use of it too. Let us learn how that you would use detection service in your custom middleware which we would use the [Per-request middleware dependencies](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/write#per-request-middleware-dependencies). But why would we use pre-request injection for our middleware you may ask? Easy! because every user is unique. Technically answer would be that `IDetectionService` by using `TryAddTransient<TInterface, TClass>` where you can [learn more about transient](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection#transient). So now we know about the basic lets look at the code:
 
@@ -174,9 +186,9 @@ public class MyCustomMiddleware
 }
 ```
 
-### Fundamentals
+### Detection Fundamentals
 
-Detection services would extract information about the visitor web client by parsing the [user agent](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent) that the web browser gives to the web server on every http/https request. We would make the requester is using common Mozilla syntax: _Mozilla/[version] ([system and browser information]) [platform] ([platform details]) [extensions]_. There have total of 5 resolver services the our detection services.
+Detection services would extract information about the visitor web client by parsing the [user agent](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent) that the web browser gives to the web server on every http/https request. We would make the assumption that every requester is using common Mozilla syntax: _Mozilla/[version] ([system and browser information]) [platform] ([platform details]) [extensions]_. If detection service can not identify the information, it will we have give you `Unknown` enum flag. There are total of 5 resolver services the our detection services.
 
 #### Device Resolver
 
