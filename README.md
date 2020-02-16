@@ -1,4 +1,4 @@
-## ASP.NET Core Detection with Responsive
+## ASP.NET Core Detection with Responsive View
 
 ASP.NET Core Detection service components for identifying details about client device, browser, engine, platform, & crawler. Responsive middleware for routing base upon request client device detection to specific view. Also in the added feature of user preference made this library even more comprehensive must for developers whom to target multiple devices with view rendered and optimized directly from the server side.
 
@@ -19,9 +19,21 @@ ASP.NET Core Detection service components for identifying details about client d
 
 This project development has been in the long making of my little spare time. Please show your appreciation and help me provide feedback on you think will improve this library. All developers are welcome to come and improve the code by submit a pull request. We will have constructive good discussion together to the greater good.
 
+* [Installation](#installation)
+* [Detection Service](#detection-service)
+  - [Web App](#make-your-web-app-able-to-detect-what-client-is-accessing)
+  - [Middleware](#detection-in-middleware)
+  - [Fundamentals](#detection-fundamentals)
+* [Responsive Service](#responsive-service)
+  - [MVC](#responsive-mvc)
+  - [Razor Pages](#responsive-razor-pages)
+  - [Tag Helpers](#responsive-tag-helpers)
+  - [User Preference](#user-preference)
+  - [Options](#responsive-options)
+
 ## Installation
 
-Installation of detection library is now done with a single package reference point.
+Installation of detection library is now done with a single package reference point. If you are using ASP.NET Core 2.X please use [detection version 2.0 installation](https://github.com/wangkanai/Detection/tree/master).
 
 ```powershell
 PM> install-package Wangkanai.Detection
@@ -41,29 +53,6 @@ public void ConfigureServices(IServiceCollection services)
 ```
 
 * `AddDetection()` Adds the detection services to the services container.
-
-Or you can customize the responsive
-
-```c#
-public void ConfigureServices(IServiceCollection services)
-{
-    // Add responsive services.
-    services.AddDetection(options =>
-    {
-        options.Responsive.DefaultTablet  = Device.Desktop;
-        options.Responsive.DefaultMobile  = Device.Mobile;
-        options.Responsive.DefaultDesktop = Device.Desktop;
-        options.Responsive.IncludeWebApi  = false;
-        options.Responsive.Disable        = false;
-        options.Responsive.WebApiPath     = "/Api";
-    });
-
-    // Add framework services.
-    services.AddControllersWithViews();
-}
-```
-
-* `AddDetection(Action<DetectionOptions> options)` Adds the detection services to the services container.
 
 The current device on a request is set in the Responsive middleware. The Responsive middleware is enabled in the `Configure` method of `Startup.cs` file.
 
@@ -150,7 +139,7 @@ public class IndexModel : PageModel
 }
 ```
 
-### Middleware
+### Detection in Middleware
 
 Would you think that [Middleware](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/) can also use this detection service. Actually it can! and our [Responsive](#responsive-service) make good use of it too. Let us learn how that you would use detection service in your custom middleware which we would use the [Per-request middleware dependencies](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/write#per-request-middleware-dependencies). But why would we use pre-request injection for our middleware you may ask? Easy! because every user is unique. Technically answer would be that `IDetectionService` by using `TryAddTransient<TInterface, TClass>` where you can [learn more about transient](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection#transient). So now we know about the basic lets look at the code:
 
@@ -174,9 +163,9 @@ public class MyCustomMiddleware
 }
 ```
 
-### Fundamentals
+### Detection Fundamentals
 
-Detection services would extract information about the visitor web client by parsing the [user agent](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent) that the web browser gives to the web server on every http/https request. We would make the requester is using common Mozilla syntax: _Mozilla/[version] ([system and browser information]) [platform] ([platform details]) [extensions]_. There have total of 5 resolver services the our detection services.
+Detection services would extract information about the visitor web client by parsing the [user agent](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent) that the web browser gives to the web server on every http/https request. We would make the assumption that every requester is using common Mozilla syntax: _Mozilla/[version] ([system and browser information]) [platform] ([platform details]) [extensions]_. If detection service can not identify the information, it will we have give you `Unknown` enum flag. There are total of 5 resolver services the our detection services.
 
 #### Device Resolver
 
@@ -218,19 +207,116 @@ This would be something that web analytics to keep track on how are web crawler 
 var isGoogle = detectionService.Crawler.Name == Crawler.Google;
 ```
 
+#### Detection Options
+
+There are basic options that you can add to detection services. Like to adding something that detection does not identify by default to the `Others` list.
+
+```c#
+public void ConfigureServices(IServiceCollection services)
+{
+    // Add responsive services.
+    services.AddDetection(options =>
+    {
+        options.Crawler.Others.Add("goodbot");
+    });
+
+    // Add framework services.
+    services.AddControllersWithViews();
+}
+```
+
 ## Responsive Service
 
-### Make your web app responsive
+This is where thing get more interesting that is built upon detection service, or matter a fact detection service was built because of responsive service. The concept is that we would like to have views that correspond to what kind of device to accessing to our web app. For ASP.NET Core is the use of `.cshtml`
 
-#### MVC
+### Responsive MVC
 
-#### Razor Pages
+![Responsive view file structure](doc/responsive-views-file-structure.png)
 
-#### Tag Helpers
+### Responsive Razor Pages
 
-#### User Preference
+![Responsive razor pages file structure](doc/responsive-pages-file-structure.png)
 
-### Directory Structure
+### Responsive Tag Helpers
+
+```razor
+<device include="desktop">is desktop</device>
+<device exclude="desktop">not desktop</device>
+<device include="tablet">is tablet</device>
+<device exclude="tablet">not tablet</device>
+<device include="mobile">is mobile</device>
+<device exclude="mobile">not mobile</device>
+```
+
+```razor
+<browser include="chrome">is chrome</browser>
+<browser exclude="chrome">not chrome</browser>
+```
+
+```razor
+<platform include="windows">is windows</platform>
+<platform exclude="windows">not windows</platform>
+```
+
+```razor
+<engine include="blink">is blink</engine>
+<engine exclude="blink">not blink</engine>
+```
+
+```razor
+<crawler include="google">is google</crawler>
+<crawler exclude="google">not google</crawler>
+```
+
+### User Preference
+
+When a client visit your web application by using a mobile device and you have responsive view for mobile device. But the visitor would like to view the web app with a desktop view, their click this link to change their preference to desktop view.
+
+```razor
+<a href="/Detection/Preference/Prefer">
+    <div class="alert alert-light" role="alert">
+        Desktop version
+    </div>
+</a>
+```
+
+If the client selected to view in desktop view, he/she can switch back mobile view by the follow example;
+```razor
+<preference only="mobile">
+    <a href="/Detection/Preference/Clear">
+        <div class="alert alert-light" role="alert">
+            Switch to mobile version
+        </div>
+    </a>
+</preference>
+```
+
+### Responsive Options
+
+You can customize the default behaviour of how responsive service would react to client request. You can go in deep by examining `ResponsiveOptions`.
+
+```c#
+public void ConfigureServices(IServiceCollection services)
+{
+    // Add responsive services.
+    services.AddDetection(options =>
+    {
+        options.Responsive.DefaultTablet  = Device.Desktop;
+        options.Responsive.DefaultMobile  = Device.Mobile;
+        options.Responsive.DefaultDesktop = Device.Desktop;
+        options.Responsive.IncludeWebApi  = false;
+        options.Responsive.Disable        = false;
+        options.Responsive.WebApiPath     = "/Api";
+    });
+
+    // Add framework services.
+    services.AddControllersWithViews();
+}
+```
+
+* `AddDetection(Action<DetectionOptions> options)` Adds the detection services to the services container.
+
+## Directory Structure
 
 * `src` - The source code of this project lives here
 * `test` - The test code of this project lives here
