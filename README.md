@@ -87,7 +87,7 @@ Adding the TagHelper features to your web application with following in your `_V
 @addTagHelper *, Wangkanai.Detection
 ```
 
-## Detection
+## Detection Service
 
 ### Web Application
 
@@ -152,7 +152,33 @@ public class IndexModel : PageModel
 
 ### Middleware
 
-Would you think that [Middleware](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/) can also use this detection service. Actually it can! and our [Responsive](#responsive-service) make good use of it too.
+Would you think that [Middleware](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/) can also use this detection service. Actually it can! and our [Responsive](#responsive-service) make good use of it too. Let us learn how that you would use detection service in your custom middleware which we would use the [Per-request middleware dependencies](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/write#per-request-middleware-dependencies). But why would we use pre-request injection for our middleware you may ask? Easy! because every user is unique. Technically answer would be that `IDetectionService` by using `TryAddTransient<TInterface, TClass>` where you can [learn more about transient](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection#transient). So now we know about the basic lets look at the code:
+
+```c#
+public class MyCustomMiddleware
+{
+    private readonly RequestDelegate _next;
+
+    public MyCustomMiddleware(RequestDelegate next)
+    {
+        _next = next ?? throw new ArgumentNullException(nameof(next));
+    }
+
+    public async Task InvokeAsync(HttpContext context, IDetectionService detection)
+    {
+        if(detection.Device.Type == Device.Mobile)
+            context.Response.WriteAsync("You are Mobile!");
+
+        await _next(context);
+    }
+}
+```
+
+### Fundamentals
+
+Detection services would extract information about the visitor web client by parsing the [user agent](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent) that the web browser gives to the web server on every http/https request. There have total of 5 resolver services the our detection services.
+
+####
 
 ## Responsive Service
 
