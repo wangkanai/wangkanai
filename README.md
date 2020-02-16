@@ -11,7 +11,6 @@ ASP.NET Core Detection service components for identifying details about client d
 [![NuGet Badge](https://buildstats.info/nuget/wangkanai.detection?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.detection)
 [![MyGet Badge](https://buildstats.info/myget/wangkanai/wangkanai.detection)](https://www.myget.org/feed/wangkanai/package/nuget/wangkanai.detection)
 
-
 [![GitHub](https://img.shields.io/github/license/wangkanai/detection)](https://github.com/wangkanai/Detection/blob/dev/LICENSE)
 [![Open Collective](https://img.shields.io/badge/open%20collective-support%20me-3385FF.svg)](https://opencollective.com/wangkanai)
 [![Patreon](https://img.shields.io/badge/patreon-support%20me-d9643a.svg)](https://www.patreon.com/wangkanai)
@@ -28,11 +27,9 @@ Installation of detection library is now done with a single package reference po
 PM> install-package Wangkanai.Detection
 ```
 
-This library host the component to resolve the access client device type.
+This library host the component services to resolve the access client device type. To the servoces your web application is done by configuring the `Startup.cs` by adding the detection service in the `ConfigureServices` method.
 
-Implement of the library into your web application is done by configuring the `Startup.cs` by adding the detection service in the `ConfigureServices` method.
-
-```csharp
+```c#
 public void ConfigureServices(IServiceCollection services)
 {
     // Add detection services container and device resolver service.
@@ -47,7 +44,7 @@ public void ConfigureServices(IServiceCollection services)
 
 Or you can customize the responsive
 
-```csharp
+```c#
 public void ConfigureServices(IServiceCollection services)
 {
     // Add responsive services.
@@ -66,11 +63,11 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-* `AddDetection()` Adds the detection services to the services container.
+* `AddDetection(Action<DetectionOptions> options)` Adds the detection services to the services container.
 
-The current device on a request is set in the Responsive middleware. The Responsive middleware is enabled in the `Configure` method of *Startup.cs* file.
+The current device on a request is set in the Responsive middleware. The Responsive middleware is enabled in the `Configure` method of `Startup.cs` file.
 
-```csharp
+```c#
 public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 {
     app.UseRouting();
@@ -83,7 +80,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 Adding the TagHelper features to your web application with following in your `_ViewImports.cshtml`
 
-```csharp
+```razor
 @using WebApplication1
 
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
