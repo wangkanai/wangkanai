@@ -178,9 +178,27 @@ public class MyCustomMiddleware
 
 Detection services would extract information about the visitor web client by parsing the [user agent](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent) that the web browser gives to the web server on every http/https request. There have total of 5 resolver services the our detection services.
 
-####
+#### Device Resolver
+
+#### Browser Resolver
+
+#### Platform Resolver
+
+#### Engine Resolver
+
+#### Crawler Resolver
 
 ## Responsive Service
+
+### Make your web app responsive
+
+#### MVC
+
+#### Razor Pages
+
+#### Tag Helpers
+
+#### User Preference
 
 ### Directory Structure
 
