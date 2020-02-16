@@ -57,6 +57,7 @@ namespace Detection
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapDefaultControllerRoute();
+                endpoints.MapAreaControllerRoute("areas", "Admin", "{area:exists}/{controller=Report}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
         }
