@@ -209,11 +209,33 @@ var isGoogle = detectionService.Crawler.Name == Crawler.Google;
 
 #### Detection Options
 
+There are basic options that you can add to detection services. Like to adding something that detection does not identify by default to the `Others` list.
+
+```c#
+public void ConfigureServices(IServiceCollection services)
+{
+    // Add responsive services.
+    services.AddDetection(options =>
+    {
+        options.Crawler.Others.Add("goodbot");
+    });
+
+    // Add framework services.
+    services.AddControllersWithViews();
+}
+```
+
 ## Responsive Service
+
+This is where thing get more interesting that is built upon detection service, or matter a fact detection service was built because of responsive service. The concept is that we would like to have views that correspond to what kind of device to accessing to our web app. For ASP.NET Core is the use of `.cshtml`
 
 ### Responsive MVC
 
+![Responsive view file structure](doc/responsive-views-file-structure.png)
+
 ### Responsive Razor Pages
+
+![Responsive razor pages file structure](doc/responsive-pages-file-structure.png)
 
 ### Responsive Tag Helpers
 
