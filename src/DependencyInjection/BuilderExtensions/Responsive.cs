@@ -20,7 +20,7 @@ namespace Microsoft.Extensions.DependencyInjection
 
             builder.Services.TryAddTransient<IResponsiveService, ResponsiveService>();
             builder.Services.AddRazorViewLocation();
-            builder.Services.AddRazorPagesLocation();
+            builder.Services.AddRazorPagesConventions();
 
             return builder;
         }
@@ -43,12 +43,12 @@ namespace Microsoft.Extensions.DependencyInjection
         private static IServiceCollection AddRazorViewLocation(this IServiceCollection services)
             => services.Configure<RazorViewEngineOptions>(options =>
             {
-                //options.ViewLocationExpanders.Add(new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Suffix));
-                //options.ViewLocationExpanders.Add(new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Subfolder));
+                options.ViewLocationExpanders.Add(new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Suffix));
+                options.ViewLocationExpanders.Add(new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Subfolder));
                 options.ViewLocationExpanders.Add(new ResponsivePageLocationExpander());
             });
 
-        private static IServiceCollection AddRazorPagesLocation(this IServiceCollection services)
+        private static IServiceCollection AddRazorPagesConventions(this IServiceCollection services)
         {
             services.AddRazorPages(options =>
             {
