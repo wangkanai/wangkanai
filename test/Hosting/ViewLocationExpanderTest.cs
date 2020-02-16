@@ -13,7 +13,7 @@ using Xunit;
 
 namespace Wangkanai.Detection.Hosting
 {
-    public class ResponsiveViewLocationExpanderTests
+    public class ResponsiveViewLocationExpanderTest
     {
         public static IEnumerable<object[]> ViewLocationExpanderTestData
         {
@@ -92,7 +92,7 @@ namespace Wangkanai.Detection.Hosting
             locationExpander.PopulateValues(context);
             var resultLocations = locationExpander.ExpandViewLocations(context, viewLocations).ToList();
 
-            Assert.Equal(expectedViewLocations, resultLocations.ToList());
+            Assert.Equal(expectedViewLocations, resultLocations.ToArray());
         }
 
         [Fact]

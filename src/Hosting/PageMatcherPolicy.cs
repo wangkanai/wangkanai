@@ -19,8 +19,8 @@ namespace Wangkanai.Detection.Hosting
 
         public bool AppliesToEndpoints(IReadOnlyList<Endpoint> endpoints)
         {
-            for (var i = 0; i < endpoints.Count; i++)
-                if (endpoints[i].Metadata.GetMetadata<IResponsiveMetadata>() != null)
+            foreach (var endpoint in endpoints)
+                if (endpoint?.Metadata.GetMetadata<IResponsiveMetadata>() != null)
                     return true;
 
             return false;
