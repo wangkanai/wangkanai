@@ -28,8 +28,9 @@ namespace Detection
         {
             services.AddDetection();
 
-            services.AddControllersWithViews();
-            services.AddRazorPages();
+            // services.AddRazorPages();
+            // services.AddControllersWithViews();
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,8 +57,8 @@ namespace Detection
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapDefaultControllerRoute();
                 endpoints.MapRazorPages();
+                endpoints.MapDefaultControllerRoute();
             });
         }
     }
