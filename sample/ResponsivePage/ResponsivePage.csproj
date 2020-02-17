@@ -12,5 +12,9 @@
     <ProjectReference Include="..\..\src\Wangkanai.Detection.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Admin" />
+  </ItemGroup>
+
 
 </Project>
