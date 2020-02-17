@@ -51,7 +51,8 @@ namespace Wangkanai.Detection.Hosting
             // We can get the route parameter that the user put in after `@page` by substringing.
             //
             // suffix = '/{id?}'
-            var suffix = selector.AttributeRouteModel.Template.Substring(area.Length + prefix.Length + fileNameWithoutExtension.Length);
+            var templateOld = selector.AttributeRouteModel.Template;
+            var suffix = templateOld.Substring(area.Length + prefix.Length + fileNameWithoutExtension.Length);
 
             if (pageName.Equals("Index", StringComparison.OrdinalIgnoreCase))
             {
@@ -70,8 +71,9 @@ namespace Wangkanai.Detection.Hosting
                 another.EndpointMetadata.Add(new ResponsiveAttribute(device));
             }
 
+            var templateNew = area + prefix + pageName + suffix;
             // Now rewrite the original selector
-            selector.AttributeRouteModel.Template = area + prefix + pageName + suffix;;
+            selector.AttributeRouteModel.Template = templateNew;
 
             // Allow routing to filter by device type.
             selector.EndpointMetadata.Add(new ResponsiveAttribute(device));
