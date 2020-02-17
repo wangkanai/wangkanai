@@ -49,11 +49,11 @@ namespace Detection
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+            app.UseDetection();
+            
             app.UseRouting();
 
             app.UseAuthorization();
-
-            app.UseDetection();
 
             app.UseEndpoints(endpoints =>
             {
