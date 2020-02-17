@@ -54,7 +54,7 @@ public void ConfigureServices(IServiceCollection services)
 
 * `AddDetection()` Adds the detection services to the services container.
 
-The current device on a request is set in the Responsive middleware. The Responsive middleware is enabled in the `Configure` method of `Startup.cs` file. [Make sure that you have app.UseDetection() before app.UseRouting](#355).
+The current device on a request is set in the Responsive middleware. The Responsive middleware is enabled in the `Configure` method of `Startup.cs` file. [Make sure that you have app.UseDetection() before app.UseRouting](https://github.com/wangkanai/Detection/issues/355).
 
 ```c#
 public void Configure(IApplicationBuilder app, IHostingEnvironment env)
