@@ -53,8 +53,8 @@ namespace ResponsiveView
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapAreaControllerRoute("admin", "Admin", "{area:exists}/{controller=Home}/{action=Index}/{id?}");
-                endpoints.MapDefaultControllerRoute();
+                endpoints.MapAreaControllerRoute("admin", "Admin", "Admin/{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute("default","{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
