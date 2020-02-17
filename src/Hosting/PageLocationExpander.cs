@@ -1,6 +1,7 @@
 // Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
+using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Razor;
@@ -22,23 +23,23 @@ namespace Wangkanai.Detection.Hosting
             if (string.IsNullOrEmpty(context.PageName) || string.IsNullOrEmpty(device))
                 return viewLocations;
             
-            return ExpandPageHierarchy();
+            var expand =ExpandPageHierarchy();
+
+            return expand;
 
             IEnumerable<string> ExpandPageHierarchy()
             {
                 foreach (var location in viewLocations)
                 {
-                    if (!location.Contains("/{1}/") 
-                        && !location.Contains("/Shared/") 
-                        && !location.Contains("/Areas/")
-                        || location.Contains("/Views/"))
+                    // If the location doesn't have the 'page' replacement token just return it as-is.
+                    if (!location.Contains("/Pages/", StringComparison.OrdinalIgnoreCase))
                     {
                         yield return location;
                         continue;
                     }
 
                     // Device View if exist on disk
-                    yield return location.Replace("{0}", "{0}." + device);
+                    // yield return location.Replace("{0}", "{0}." + device);
                     // Fallback to the original default view
                     yield return location;
                 }

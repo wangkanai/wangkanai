@@ -1,6 +1,3 @@
-// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
-// The Apache v2. See License.txt in the project root for license information.
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace Detection
+namespace ResponsivePage
 {
     public class Startup
     {
@@ -27,10 +24,8 @@ namespace Detection
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDetection();
-
-            // services.AddRazorPages();
-            // services.AddControllersWithViews();
-            services.AddMvc();
+            
+            services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,10 +37,11 @@ namespace Detection
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
@@ -55,11 +51,7 @@ namespace Detection
 
             app.UseDetection();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapRazorPages();
-                endpoints.MapDefaultControllerRoute();
-            });
+            app.UseEndpoints(endpoints => { endpoints.MapRazorPages(); });
         }
     }
 }
