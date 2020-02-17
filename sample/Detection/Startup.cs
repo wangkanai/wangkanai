@@ -27,7 +27,8 @@ namespace Detection
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDetection();
-            
+
+            services.AddControllersWithViews();
             services.AddRazorPages();
         }
 
@@ -55,6 +56,7 @@ namespace Detection
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapDefaultControllerRoute();
                 endpoints.MapRazorPages();
             });
         }
