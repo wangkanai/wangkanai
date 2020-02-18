@@ -24,7 +24,7 @@ namespace ResponsivePage
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDetection();
-            
+
             services.AddRazorPages();
         }
 
@@ -41,17 +41,17 @@ namespace ResponsivePage
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-            
+
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseDetection();
-            
+
             app.UseRouting();
 
             app.UseAuthorization();
-            
+
             app.UseEndpoints(endpoints => { endpoints.MapRazorPages(); });
         }
     }
