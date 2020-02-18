@@ -3,6 +3,7 @@
 
 using System;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Logging;
 using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Hosting;
@@ -28,6 +29,8 @@ namespace Microsoft.Extensions.DependencyInjection
             app.Validate();
 
             VerifyMarkerIsRegistered(app);
+
+            VerifyEndpointRoutingMiddlewareIsNotRegistered(app);
 
             var options = app.ApplicationServices.GetRequiredService<DetectionOptions>();
 
@@ -82,7 +85,14 @@ namespace Microsoft.Extensions.DependencyInjection
         private static void VerifyMarkerIsRegistered(IApplicationBuilder app)
         {
             if (app.ApplicationServices.GetService(typeof(DetectionMarkerService)) == null)
-                throw new InvalidOperationException("AddDetection() is not added to ConfigureServices(...)");
+                throw new InvalidOperationException($"{nameof(DetectionCollectionExtensions.AddDetection)} is not added to ConfigureServices(...)");
+        }
+
+        private static void VerifyEndpointRoutingMiddlewareIsNotRegistered(IApplicationBuilder app)
+        {
+            var EndpointRouteBuilder = "__EndpointRouteBuilder";
+            if (app.Properties.TryGetValue(EndpointRouteBuilder, out var obj))
+                throw new InvalidOperationException($"{nameof(UseDetection)} must be in execution pipeline before {nameof(EndpointRoutingApplicationBuilderExtensions.UseRouting)} to 'Configure(...)' in the application startup code.");
         }
     }
 }
