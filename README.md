@@ -36,7 +36,7 @@ This project development has been in the long making of my little spare time. Pl
 Installation of detection library is now done with a single package reference point. If you are using ASP.NET Core 2.X please use [detection version 2.0 installation](https://github.com/wangkanai/Detection/tree/master).
 
 ```powershell
-PM> install-package Wangkanai.Detection
+PM> install-package Wangkanai.Detection -pre
 ```
 
 This library host the component services to resolve the access client device type. To the servoces your web application is done by configuring the `Startup.cs` by adding the detection service in the `ConfigureServices` method.
