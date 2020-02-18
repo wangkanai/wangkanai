@@ -40,9 +40,9 @@ The current device on a request is set in the Responsive middleware. The Respons
 ```csharp
 public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 {
-    app.UseRouting();
-
     app.UseDetection();
+    
+    app.UseRouting();  
 
     app.UseEndpoints(endpoints => endpoints.MapDefaultControllerRoute());
 }
