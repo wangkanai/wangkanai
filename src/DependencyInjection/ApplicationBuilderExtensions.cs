@@ -84,5 +84,32 @@ namespace Microsoft.Extensions.DependencyInjection
             if (app.ApplicationServices.GetService(typeof(DetectionMarkerService)) == null)
                 throw new InvalidOperationException("AddDetection() is not added to ConfigureServices(...)");
         }
+        
+        private static void VerifyEndpointRoutingMiddlewareIsNotRegistered(IApplicationBuilder app)
+        {
+            if (!app.Properties.TryGetValue(EndpointRouteBuilder, out var obj))
+            {
+                var message =
+                    $"{nameof(EndpointRoutingMiddleware)} matches endpoints setup by {nameof(EndpointMiddleware)} and so must be added to the request " +
+                    $"execution pipeline before {nameof(EndpointMiddleware)}. " +
+                    $"Please add {nameof(EndpointRoutingMiddleware)} by calling '{nameof(IApplicationBuilder)}.{nameof(UseRouting)}' inside the call " +
+                    $"to 'Configure(...)' in the application startup code.";
+                throw new InvalidOperationException(message);
+            }
+
+            // If someone messes with this, just let it crash.
+            endpointRouteBuilder = (DefaultEndpointRouteBuilder)obj;
+
+            // This check handles the case where Map or something else that forks the pipeline is called between the two
+            // routing middleware.
+            if (!object.ReferenceEquals(app, endpointRouteBuilder.ApplicationBuilder))
+            {
+                var message =
+                    $"The {nameof(EndpointRoutingMiddleware)} and {nameof(EndpointMiddleware)} must be added to the same {nameof(IApplicationBuilder)} instance. " +
+                    $"To use Endpoint Routing with 'Map(...)', make sure to call '{nameof(IApplicationBuilder)}.{nameof(UseRouting)}' before " +
+                    $"'{nameof(IApplicationBuilder)}.{nameof(UseEndpoints)}' for each branch of the middleware pipeline.";
+                throw new InvalidOperationException(message);
+            }
+        }
     }
 }
