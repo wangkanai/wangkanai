@@ -30,6 +30,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResponsiveView", "sample\Re
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResponsivePage", "sample\ResponsivePage\ResponsivePage.csproj", "{75375405-FA1D-4180-A128-DED0809AE891}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Benchmarks", "Wangkanai.Benchmarks\Wangkanai.Benchmarks.csproj", "{4EF175C1-1F7A-4AE9-BB83-FAC1118DE917}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -56,6 +58,10 @@ Global
 		{75375405-FA1D-4180-A128-DED0809AE891}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75375405-FA1D-4180-A128-DED0809AE891}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75375405-FA1D-4180-A128-DED0809AE891}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EF175C1-1F7A-4AE9-BB83-FAC1118DE917}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EF175C1-1F7A-4AE9-BB83-FAC1118DE917}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EF175C1-1F7A-4AE9-BB83-FAC1118DE917}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EF175C1-1F7A-4AE9-BB83-FAC1118DE917}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
