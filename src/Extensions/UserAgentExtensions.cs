@@ -13,10 +13,7 @@ namespace Wangkanai.Detection.Extensions
         public static bool IsNullOrEmpty(this UserAgent agent)
             => agent is null
                || string.IsNullOrEmpty(agent.ToLower());
-
-        public static string ToLower(this UserAgent agent)
-            => agent.ToString().ToLower();
-
+        
         public static int Length(this UserAgent agent)
             => agent.ToString().Length;
 
@@ -28,12 +25,15 @@ namespace Wangkanai.Detection.Extensions
         public static bool Contains(this UserAgent agent, string[] array)
             => !agent.IsNullOrEmpty()
                && array.Length > 0
-               && array.Any(agent.Contains);
+               && array.AnyContains(agent);
 
         public static bool Contains<T>(this UserAgent agent, T flags) where T : Enum
-            => flags.ToString().Contains(',')
-                ? flags.GetFlags().Any(agent.Contains)
-                : agent.Contains(flags.ToString());
+        {
+            var strFlags = flags.ToString();
+            return strFlags.Contains(',')
+                       ? flags.GetFlags().Any(agent.Contains)
+                       : agent.Contains(strFlags);
+        }
 
         public static bool Contains(this UserAgent agent, IEnumerable<string> list)
             => !agent.IsNullOrEmpty()
@@ -46,10 +46,30 @@ namespace Wangkanai.Detection.Extensions
                && agent.ToLower().StartsWith(word.ToLower());
 
         public static bool StartsWith(this UserAgent agent, string[] array)
-            => array.Any(agent.StartsWith);
+            => array.AnyStartsWith(agent);
 
         public static bool StartsWith(this UserAgent agent, string[] array, int minimum)
             => agent.Length() >= minimum
                && agent.StartsWith(array);
+
+        private static bool AnyStartsWith(this string[] array, UserAgent agent)
+        {
+            foreach (var str in array)
+            {
+                if (agent.StartsWith(str)) return true;
+            }
+
+            return false;
+        }
+        
+        private static bool AnyContains(this string[] array, UserAgent agent)
+        {
+            foreach (var str in array)
+            {
+                if (agent.Contains(str)) return true;
+            }
+
+            return false;
+        }
     }
 }
