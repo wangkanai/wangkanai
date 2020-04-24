@@ -6,7 +6,7 @@ namespace Wangkanai.Detection.Collections
     internal static class MobileCollection
     {
         // mobile device keywords
-        public static string[] Keywords => new[]
+        public static readonly string[] Keywords = 
         {
             "iphone",
             "mobile",
@@ -38,7 +38,7 @@ namespace Wangkanai.Detection.Collections
         };
 
         // reference 4 character from http://www.webcab.de/wapua.htm
-        public static string[] Prefixes => new[]
+        public static readonly string[] Prefixes =
         {
             "w3c ",
             "w3c-",
