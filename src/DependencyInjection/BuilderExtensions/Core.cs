@@ -29,13 +29,13 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IDetectionBuilder AddCoreServices(this IDetectionBuilder builder)
         {
             // Add Basic core to services
-            builder.Services.TryAddTransient<IUserAgentService, UserAgentService>();
-            builder.Services.TryAddTransient<IDeviceService, DeviceService>();
-            builder.Services.TryAddTransient<IEngineService, EngineService>();
-            builder.Services.TryAddTransient<IPlatformService, PlatformService>();
-            builder.Services.TryAddTransient<IBrowserService, BrowserService>();
-            builder.Services.TryAddTransient<ICrawlerService, CrawlerService>();
-            builder.Services.TryAddTransient<IDetectionService, DetectionService>();
+            builder.Services.TryAddScoped<IUserAgentService, UserAgentService>();
+            builder.Services.TryAddScoped<IDeviceService, DeviceService>();
+            builder.Services.TryAddScoped<IEngineService, EngineService>();
+            builder.Services.TryAddScoped<IPlatformService, PlatformService>();
+            builder.Services.TryAddScoped<IBrowserService, BrowserService>();
+            builder.Services.TryAddScoped<ICrawlerService, CrawlerService>();
+            builder.Services.TryAddScoped<IDetectionService, DetectionService>();
 
             return builder;
         }
