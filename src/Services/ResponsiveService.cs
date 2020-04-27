@@ -12,24 +12,24 @@ namespace Wangkanai.Detection.Services
 {
     public class ResponsiveService : IResponsiveService
     {
-        public Device View { get; }
+        public Device View => PreferView(_context, _defaultView);
 
         private readonly HttpContext _context;
+        private readonly Device      _defaultView;
         private const    string      ResponsiveContextKey = "Responsive";
 
         public ResponsiveService(IHttpContextAccessor accessor, IDeviceService deviceService, DetectionOptions options)
         {
             if (accessor is null)
                 throw new ArgumentNullException(nameof(accessor));
+
             if (deviceService is null)
                 throw new ArgumentNullException(nameof(deviceService));
-            if (options is null)
-                options = new DetectionOptions();
 
-            _context = accessor.HttpContext;
+            options = options ?? new DetectionOptions();
 
-            View = DefaultView(deviceService.Type, options.Responsive);
-            View = PreferView(_context, View);
+            _context     = accessor.HttpContext;
+            _defaultView = DefaultView(deviceService.Type, options.Responsive);
         }
 
         public void PreferSet(Device desktop)
