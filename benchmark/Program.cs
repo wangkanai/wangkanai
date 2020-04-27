@@ -4,7 +4,7 @@ using BenchmarkDotNet.Running;
 using Microsoft.AspNetCore.Http;
 using Wangkanai.Detection.Services;
 
-namespace Wangkanai.Benchmarks
+namespace Wangkanai.Detection.Benchmark
 {
     public static class Program
     {
