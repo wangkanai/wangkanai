@@ -50,6 +50,6 @@ deploy:
   on:
     branch: dev
 - provider: Webhook
-  url: https://app.signpath.io/API/v1/897a9096-aab4-4f7e-9dc8-7d6dd73192b8/Integrations/AppVeyor?ProjectKey=Detection&SigningPolicyKey=release-signing
+  url: https://app.signpath.io/API/v1/897a9096-aab4-4f7e-9dc8-7d6dd73192b8/Integrations/AppVeyor?ProjectKey=Detection&SigningPolicyKey=test-signing
   authorization:
      secure: j0gep+3S+hNJx29G0JG6uq4yz+eacgA+8Qyu2o/6mSAIzJolstoDP95wr081TCqW7eDFdnBqNE6WQ9zKkY0w+A==
