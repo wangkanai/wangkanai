@@ -31,24 +31,6 @@ namespace Wangkanai.Detection.Models
             Assert.Equal("1.0", version.ToString());
         }
 
-        //[Theory]
-        //[InlineData(null, "0")]
-        //[InlineData("9", null)]
-        //public void Ctor_Null_ThrowsArgumentNullException(string value1, string value2)
-        //{
-        //    Assert.Throws<ArgumentNullException>(() => new Version(int.Parse(value1), int.Parse(value2)));
-        //    Assert.Throws<ArgumentNullException>(() => new Version(1, 0, int.Parse(value1), int.Parse(value2)));
-        //}
-
-        //[Theory]
-        //[InlineData("", "0")]
-        //[InlineData("9", "")]
-        //public void Ctor_EmptyString_ThrowsArgumentNullException(string value1, string value2)
-        //{
-        //    Assert.Throws<ArgumentNullException>(() => new Version(int.Parse(value1), int.Parse(value2)));
-        //    Assert.Throws<ArgumentNullException>(() => new Version(1, 0, int.Parse(value1), int.Parse(value2)));
-        //}
-
         [Fact]
         public void Ctor_StringStringStringString_Success()
         {
