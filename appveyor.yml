@@ -38,10 +38,7 @@ deploy:
   authorization:
     secure: j0gep+3S+hNJx29G0JG6uq4yz+eacgA+8Qyu2o/6mSAIzJolstoDP95wr081TCqW7eDFdnBqNE6WQ9zKkY0w+A==
   on:
-    branches: 
-      only:
-        - master
-        - /^release\/.$/
+    APPVEYOR_REPO_TAG: true
 - provider: NuGet
   server: https://www.myget.org/F/wangkanai/api/v2/package
   api_key:
