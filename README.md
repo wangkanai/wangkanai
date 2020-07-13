@@ -1,5 +1,11 @@
 ## ASP.NET Core Detection with Responsive View
 
+
+I love you
+
+
+
+
 ASP.NET Core Detection service components for identifying details about client device, browser, engine, platform, & crawler. Responsive middleware for routing base upon request client device detection to specific view. Also in the added feature of user preference made this library even more comprehensive must for developers whom to target multiple devices with view rendered and optimized directly from the server side.
 
 **Please show me some love and click the** :star:
@@ -19,17 +25,33 @@ ASP.NET Core Detection service components for identifying details about client d
 
 This project development has been in the long making of my little spare time. Please show your appreciation and help me provide feedback on you think will improve this library. All developers are welcome to come and improve the code by submit a pull request. We will have constructive good discussion together to the greater good.
 
-* [Installation](#installation)
-* [Detection Service](#detection-service)
-  - [Web App](#make-your-web-app-able-to-detect-what-client-is-accessing)
-  - [Middleware](#detection-in-middleware)
-  - [Fundamentals](#detection-fundamentals)
-* [Responsive Service](#responsive-service)
-  - [MVC](#responsive-mvc)
-  - [Razor Pages](#responsive-razor-pages)
-  - [Tag Helpers](#responsive-tag-helpers)
+- [ASP.NET Core Detection with Responsive View](#aspnet-core-detection-with-responsive-view)
+- [Installation](#installation)
+- [Detection Service](#detection-service)
+  - [Make your web app able to detect what client is accessing](#make-your-web-app-able-to-detect-what-client-is-accessing)
+    - [MVC](#mvc)
+    - [Razor Pages](#razor-pages)
+  - [Detection in Middleware](#detection-in-middleware)
+  - [Detection Fundamentals](#detection-fundamentals)
+    - [Device Resolver](#device-resolver)
+    - [Browser Resolver](#browser-resolver)
+    - [Platform Resolver](#platform-resolver)
+    - [Engine Resolver](#engine-resolver)
+    - [Crawler Resolver](#crawler-resolver)
+    - [Detection Options](#detection-options)
+- [Responsive Service](#responsive-service)
+  - [Responsive MVC](#responsive-mvc)
+  - [Responsive Razor Pages](#responsive-razor-pages)
+  - [Responsive Tag Helpers](#responsive-tag-helpers)
   - [User Preference](#user-preference)
-  - [Options](#responsive-options)
+  - [Responsive Options](#responsive-options)
+- [Directory Structure](#directory-structure)
+  - [Contributing](#contributing)
+- [Contributors](#contributors)
+  - [Code Contributors](#code-contributors)
+  - [Financial Contributors](#financial-contributors)
+    - [Individuals](#individuals)
+    - [Organizations](#organizations)
 
 ## Installation
 
