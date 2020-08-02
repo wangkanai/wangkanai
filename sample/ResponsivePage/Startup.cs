@@ -26,7 +26,10 @@ namespace ResponsivePage
         {
             services.AddDetection(options =>
             {
-                //options.Responsive.DefaultTablet.Tablet = Device.Mobile;
+                options.Responsive.DefaultTablet  = Device.Mobile;
+                options.Responsive.DefaultMobile  = Device.Mobile;
+                options.Responsive.DefaultDesktop = Device.Desktop;
+
             });
 
             services.AddRazorPages();
