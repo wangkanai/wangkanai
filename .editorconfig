@@ -2,7 +2,6 @@ root = true
 # You can modify the rules from these initially generated values to suit your own policies
 # You can learn more about editorconfig here: https://docs.microsoft.com/en-us/visualstudio/ide/editorconfig-code-style-settings-reference
 
-
 [*]
 indent_style = space
 charset = utf-8
@@ -77,6 +76,7 @@ resharper_web_config_wrong_module_highlighting = warning
 # resharper_check_namespace_highlighting = hint
 
 [*.cs]
+file_header_template = Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.\nThe Apache v2. See License.txt in the project root for license information.
 dotnet_sort_system_directives_first = true
 dotnet_separate_import_directive_groups = true
 
