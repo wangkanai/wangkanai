@@ -19,7 +19,7 @@ ASP.NET Core client web browser detection extension to resolve devices, platform
 ASP.NET Core Responsive middleware for routing base upon request client device detection to specific view
 
 
-![ASP.NET Core Responsive](https://raw.githubusercontent.com/wangkanai/Detection/dev/asset/aspnet-core-detection-2.svg?sanitize=true)
+![ASP.NET Core Detection](https://raw.githubusercontent.com/wangkanai/Detection/dev/asset/aspnet-core-detection-3.svg?sanitize=true)
 
 
 ## Installation
