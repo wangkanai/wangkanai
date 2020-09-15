@@ -5,7 +5,7 @@
     <IsPackable>false</IsPackable>
     <LangVersion>8.0</LangVersion>
     <NullableContextOptions>enable</NullableContextOptions>
-    <Version>2.0.0</Version>
+    <Version>2.0.1</Version>
 
     <Authors>Sarin Na Wangkanai</Authors>
     <Description>ASP.NET Core Detection Engine resolver components</Description>
@@ -17,6 +17,7 @@
     <RepositoryUrl>git://github.com/wangkanai/Detection</RepositoryUrl>
     <RootNamespace>Wangkanai.Detection</RootNamespace>
     <PackageIcon>avatar.png</PackageIcon>
+      <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>

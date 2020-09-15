@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <LangVersion>8.0</LangVersion>
     <NullableContextOptions>enable</NullableContextOptions>
-    <Version>2.0.0</Version>
+    <Version>2.0.1</Version>
 
     <Authors>Sarin Na Wangkanai</Authors>
     <Description>ASP.NET Core Detection service components for identifying details about client device, browser, engine, platform, and crawler.</Description>
@@ -15,6 +15,7 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>git://github.com/wangkanai/Detection</RepositoryUrl>
     <PackageIcon>avatar.png</PackageIcon>
+      <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>

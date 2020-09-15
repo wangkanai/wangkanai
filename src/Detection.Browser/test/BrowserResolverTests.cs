@@ -51,8 +51,9 @@ namespace Wangkanai.Detection.Test
         }
 
         [Theory]
-        [InlineData("Mozilla/5.0 (iPad; CPU OS 9_3_2 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13F69 Safari/601.1")]
-        public void Resolve_Safari(string agent)
+        [InlineData(9,0,"Mozilla/5.0 (iPad; CPU OS 9_3_2 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13F69 Safari/601.1")]
+        [InlineData(13,0,"Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1")]
+        public void Resolve_Safari(int major, int minor,string agent)
         {
             // arrange
             var service = CreateService(agent);
@@ -60,6 +61,8 @@ namespace Wangkanai.Detection.Test
             var resolver = new BrowserResolver(service);
             // assert
             Assert.Equal(BrowserType.Safari, resolver.Browser.Type);
+            Assert.Equal(major, resolver.Browser.Version.Major);
+            Assert.Equal(minor, resolver.Browser.Version.Minor);
         }
 
         [Theory]

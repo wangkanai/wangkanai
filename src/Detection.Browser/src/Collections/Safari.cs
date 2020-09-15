@@ -14,8 +14,17 @@ namespace Wangkanai.Detection.Collections
 
             if (_agent.Contains(safari))
             {
-                Version = GetVersion(_agent, safari);
                 Type = BrowserType.Safari;
+                string version = null;
+                try
+                {
+                    version = _agent.Substring(_agent.IndexOf("version/") + "version/".Length);
+                    version = version.Substring(0, version.IndexOf(" "));
+                    Version = version.ToVersion();
+                }
+                catch
+                {
+                }
             }
         }
     }
