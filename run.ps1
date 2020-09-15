@@ -1,4 +1,4 @@
-./dotnet-install.ps1 -version 2.1.810
+#./dotnet-install.ps1 -version 2.1.810
 dotnet --version
 dotnet restore
 dotnet build
