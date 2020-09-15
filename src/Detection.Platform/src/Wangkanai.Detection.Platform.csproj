@@ -17,6 +17,7 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>git://github.com/wangkanai/Detection</RepositoryUrl>
     <PackageIcon>avatar.png</PackageIcon>
+      <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>

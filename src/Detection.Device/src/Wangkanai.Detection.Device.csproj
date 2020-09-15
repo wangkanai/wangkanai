@@ -16,6 +16,7 @@
     <RepositoryUrl>git://github.com/wangkanai/Detection</RepositoryUrl>
     <RootNamespace>Wangkanai.Detection</RootNamespace>
     <PackageIcon>avatar.png</PackageIcon>
+      <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
