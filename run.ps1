@@ -2,6 +2,5 @@
 dotnet --version
 dotnet restore
 dotnet build
-dotnet publish
 dotnet test
 dotnet pack -c Release -o .\artifacts
