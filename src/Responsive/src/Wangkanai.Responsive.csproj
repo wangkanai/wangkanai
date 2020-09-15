@@ -17,7 +17,6 @@ Being to target difference clientInfo devices with seperation of concern is cruc
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>git://github.com/wangkanai/detection</RepositoryUrl>
     <PackageIcon>avatar.png</PackageIcon>
-      <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
