@@ -31,6 +31,14 @@ deploy:
   url: https://app.signpath.io/API/v1/897a9096-aab4-4f7e-9dc8-7d6dd73192b8/Integrations/AppVeyor?ProjectSlug=Detection&SigningPolicySlug=release-signing
   authorization:
     secure: DHHClI0f91kw4CQG5tyHixww6pqDe/KAsixV0u42GJDcGrMuYFwoRpnRzSleovW2rBRjxNuJ6jwOnmBHmTyr2g==
+  on:
+    branch: dev
+- provider: Webhook
+  url: https://app.signpath.io/API/v1/897a9096-aab4-4f7e-9dc8-7d6dd73192b8/Integrations/AppVeyor?ProjectSlug=Detection&SigningPolicySlug=test-signing
+  authorization:
+    secure: DHHClI0f91kw4CQG5tyHixww6pqDe/KAsixV0u42GJDcGrMuYFwoRpnRzSleovW2rBRjxNuJ6jwOnmBHmTyr2g==
+  on:
+    branch: master
 - provider: NuGet
   server: https://www.myget.org/F/wangkanai/api/v2/package
   api_key:
