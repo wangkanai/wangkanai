@@ -34,7 +34,7 @@ deploy:
   on:
     branch: dev
 - provider: Webhook
-  url: https://app.signpath.io/API/v1/897a9096-aab4-4f7e-9dc8-7d6dd73192b8/Integrations/AppVeyor?ProjectSlug=Detection&SigningPolicySlug=test-signing
+  url: https://app.signpath.io/API/v1/897a9096-aab4-4f7e-9dc8-7d6dd73192b8/Integrations/AppVeyor?ProjectSlug=Detection&SigningPolicySlug=master-policy
   authorization:
     secure: DHHClI0f91kw4CQG5tyHixww6pqDe/KAsixV0u42GJDcGrMuYFwoRpnRzSleovW2rBRjxNuJ6jwOnmBHmTyr2g==
   on:
