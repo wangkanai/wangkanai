@@ -2,6 +2,7 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
+
 using Wangkanai.Detection.Extensions;
 using Wangkanai.Detection.Models;
 
@@ -9,15 +10,15 @@ namespace Wangkanai.Detection.Services
 {
     public class BrowserService : IBrowserService
     {
-        public Browser Name    { get; }
+        public Browser Name { get; }
         public Version Version { get; }
 
         public BrowserService(IUserAgentService userAgentService, IPlatformService platformService, IEngineService engineService)
         {
-            var agent  = userAgentService.UserAgent;
-            var os     = platformService.Name;
+            var agent = userAgentService.UserAgent;
+            var os = platformService.Name;
             var engine = engineService.Name;
-            Name    = GetBrowser(agent, os, engine);
+            Name = GetBrowser(agent, os, engine);
             Version = GetVersion(agent.ToLower(), Name.ToString());
         }
 
@@ -60,7 +61,10 @@ namespace Wangkanai.Detection.Services
             if (agent.Contains("msie 9"))
                 return new Version(9, 0);
 
-            var    first = agent.IndexOf(browser.ToLower(), StringComparison.Ordinal);
+            if (IsEdge(new UserAgent(agent)) && agent.Contains("Edg/", StringComparison.InvariantCultureIgnoreCase))
+                agent = agent.Replace("edg", "edge", StringComparison.InvariantCultureIgnoreCase);
+
+            var first = agent.IndexOf(browser.ToLower(), StringComparison.Ordinal);
             string cut;
             try
             {
@@ -76,12 +80,12 @@ namespace Wangkanai.Detection.Services
         }
 
         private static bool IsEdge(UserAgent agent)
-            => agent.Contains(Browser.Edge) 
+            => agent.Contains(Browser.Edge)
                || (agent.Contains("Win64") && agent.Contains("Edg"));
 
         private static bool IsInternetExplorer(UserAgent agent, Platform os, Engine engine)
-            => engine == Engine.Trident 
-               || agent.Contains("MSIE") 
+            => engine == Engine.Trident
+               || agent.Contains("MSIE")
                && !agent.Contains(Browser.Opera);
     }
 }
