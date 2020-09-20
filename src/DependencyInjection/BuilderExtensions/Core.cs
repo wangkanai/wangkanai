@@ -1,8 +1,9 @@
-// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
+﻿// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
+
 using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Services;
 
@@ -36,6 +37,7 @@ namespace Microsoft.Extensions.DependencyInjection
             builder.Services.TryAddScoped<IBrowserService, BrowserService>();
             builder.Services.TryAddScoped<ICrawlerService, CrawlerService>();
             builder.Services.TryAddScoped<IDetectionService, DetectionService>();
+            builder.Services.TryAddScoped<IDetectionService, ManualDetectionService>();
 
             return builder;
         }
