@@ -21,9 +21,7 @@ namespace Wangkanai.Detection.Services
             IBrowserService   browser,
             IEngineService    engine,
             IPlatformService  platform)
-            : this(userAgentService.UserAgent, device, crawler, browser, engine, platform)
-        {
-        }
+            : this(userAgentService.UserAgent, device, crawler, browser, engine, platform) { }
 
         public DetectionService(
             UserAgent ua,
