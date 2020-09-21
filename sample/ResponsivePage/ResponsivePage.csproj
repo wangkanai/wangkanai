@@ -7,6 +7,5 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\Wangkanai.Detection.csproj" />
   </ItemGroup>
-
-
+  
 </Project>
