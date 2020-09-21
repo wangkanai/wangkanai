@@ -18,7 +18,7 @@ namespace Wangkanai.Detection.Services
             var os     = platformService.Name;
             var engine = engineService.Name;
             Name    = GetBrowser(agent, os, engine);
-            Version = GetVersion(agent.ToLower(), Name.ToString());
+            Version = GetVersion(agent.ToLower(), Name;
         }
 
         private static Browser GetBrowser(UserAgent agent, Platform os, Engine engine)
@@ -48,7 +48,7 @@ namespace Wangkanai.Detection.Services
             return Browser.Others;
         }
 
-        private static Version GetVersion(string agent, string browser)
+        private static Version GetVersion(string agent, Browser browser)
         {
             if (agent.IsNullOrEmpty())
                 return new Version();
@@ -60,15 +60,16 @@ namespace Wangkanai.Detection.Services
             if (agent.Contains("msie 9"))
                 return new Version(9, 0);
 
-            var    first = agent.IndexOf(browser.ToLower(), StringComparison.Ordinal);
+            var    name  = browser.ToString();
+            var    first = agent.IndexOf(name.ToLower(), StringComparison.Ordinal);
             string cut;
             try
             {
-                cut = agent.Substring(first + browser.Length + 1);
+                cut = agent.Substring(first + name.Length + 1);
             }
             catch
             {
-                cut = agent.Substring(first + browser.Length);
+                cut = agent.Substring(first + name.Length);
             }
 
             var version = cut.Contains(" ") ? cut.Substring(0, cut.IndexOf(' ')) : cut;

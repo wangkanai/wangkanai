@@ -34,8 +34,8 @@ namespace Wangkanai.Detection.DependencyInjection
             Assert.NotNull(builder.Services);
             AssertServices(serviceDescriptors, builder.Services);
         }
-        
-                [Fact]
+
+        [Fact]
         public void AddCoreServices_ReturnsExpected()
         {
             var serviceCollection = new ServiceCollection();
