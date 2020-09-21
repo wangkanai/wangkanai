@@ -16,18 +16,29 @@ namespace Wangkanai.Detection.Services
 
         public DetectionService(
             IUserAgentService userAgentService,
-            IDeviceService device,
-            ICrawlerService crawler,
-            IBrowserService browser,
-            IEngineService engine,
-            IPlatformService platform)
+            IDeviceService    device,
+            ICrawlerService   crawler,
+            IBrowserService   browser,
+            IEngineService    engine,
+            IPlatformService  platform)
+            : this(userAgentService.UserAgent, device, crawler, browser, engine, platform)
         {
-            UserAgent = userAgentService.UserAgent;
-            Device = device;
-            Crawler = crawler;
-            Browser = browser;
-            Engine = engine;
-            Platform = platform;
+        }
+
+        public DetectionService(
+            UserAgent ua,
+            IDeviceService    device,
+            ICrawlerService   crawler,
+            IBrowserService   browser,
+            IEngineService    engine,
+            IPlatformService  platform)
+        {
+            UserAgent = ua;
+            Device    = device;
+            Crawler   = crawler;
+            Browser   = browser;
+            Engine    = engine;
+            Platform  = platform;
         }
     }
 }
