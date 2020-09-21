@@ -15,8 +15,8 @@ namespace Wangkanai.Detection.Services
 
         public BrowserService(IUserAgentService userAgentService, IPlatformService platformService, IEngineService engineService)
         {
-            var agent = userAgentService.UserAgent;
-            var os = platformService.Name;
+            var agent =  userAgentService.UserAgent;
+            var os =     platformService.Name;
             var engine = engineService.Name;
             Name = GetBrowser(agent, os, engine);
             Version = GetVersion(agent.ToLower(), Name.ToString());
