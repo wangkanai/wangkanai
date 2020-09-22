@@ -34,21 +34,21 @@ namespace Wangkanai.Detection.DependencyInjection
             Assert.NotNull(builder.Services);
             AssertServices(serviceDescriptors, builder.Services);
         }
-        
-                [Fact]
+
+        [Fact]
         public void AddCoreServices_ReturnsExpected()
         {
             var serviceCollection = new ServiceCollection();
             var builder           = serviceCollection.AddDetectionBuilder().AddCoreServices();
             var serviceDescriptors = new List<ServiceDescriptor>
             {
-                new ServiceDescriptor(typeof(IUserAgentService), typeof(UserAgentService), ServiceLifetime.Transient),
-                new ServiceDescriptor(typeof(IDeviceService), typeof(DeviceService), ServiceLifetime.Transient),
-                new ServiceDescriptor(typeof(IEngineService), typeof(EngineService), ServiceLifetime.Transient),
-                new ServiceDescriptor(typeof(IPlatformService), typeof(PlatformService), ServiceLifetime.Transient),
-                new ServiceDescriptor(typeof(IBrowserService), typeof(BrowserService), ServiceLifetime.Transient),
-                new ServiceDescriptor(typeof(ICrawlerService), typeof(CrawlerService), ServiceLifetime.Transient),
-                new ServiceDescriptor(typeof(IDetectionService), typeof(DetectionService), ServiceLifetime.Transient),
+                new ServiceDescriptor(typeof(IUserAgentService), typeof(UserAgentService), ServiceLifetime.Scoped),
+                new ServiceDescriptor(typeof(IDeviceService), typeof(DeviceService), ServiceLifetime.Scoped),
+                new ServiceDescriptor(typeof(IEngineService), typeof(EngineService), ServiceLifetime.Scoped),
+                new ServiceDescriptor(typeof(IPlatformService), typeof(PlatformService), ServiceLifetime.Scoped),
+                new ServiceDescriptor(typeof(IBrowserService), typeof(BrowserService), ServiceLifetime.Scoped),
+                new ServiceDescriptor(typeof(ICrawlerService), typeof(CrawlerService), ServiceLifetime.Scoped),
+                new ServiceDescriptor(typeof(IDetectionService), typeof(DetectionService), ServiceLifetime.Scoped),
             };
 
             Assert.NotNull(builder);

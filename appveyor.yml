@@ -20,37 +20,33 @@ branches:
     - /^feature\/.$/
     - /^release\/.$/
     - /^(.*\/)?ci-.*$/
-build_script:
-  - ps: ./run.ps1
 clone_depth: 1
-test: 'off'
+build_script:
+  - ps: |
+      dotnet --version
+      dotnet restore
+      dotnet build -c Release
+      dotnet pack -c Release -o .\artifacts
+test_script:
+  - ps: |
+      dotnet test      
 artifacts:
   - path: '**\*.nupkg'
 deploy:
 - provider: Webhook
-  url: https://app.signpath.io/API/v1/897a9096-aab4-4f7e-9dc8-7d6dd73192b8/Integrations/AppVeyor?ProjectKey=Detection&SigningPolicyKey=test-signing
+  url: https://app.signpath.io/API/v1/897a9096-aab4-4f7e-9dc8-7d6dd73192b8/Integrations/AppVeyor?ProjectSlug=Detection&SigningPolicySlug=release-signing
   authorization:
-    secure: j0gep+3S+hNJx29G0JG6uq4yz+eacgA+8Qyu2o/6mSAIzJolstoDP95wr081TCqW7eDFdnBqNE6WQ9zKkY0w+A==
+    secure: DHHClI0f91kw4CQG5tyHixww6pqDe/KAsixV0u42GJDcGrMuYFwoRpnRzSleovW2rBRjxNuJ6jwOnmBHmTyr2g==
   on:
-    branch: dev  
+    branch: dev
 - provider: Webhook
-  url: https://app.signpath.io/API/v1/897a9096-aab4-4f7e-9dc8-7d6dd73192b8/Integrations/AppVeyor?ProjectKey=Detection&SigningPolicyKey=release-signing
+  url: https://app.signpath.io/API/v1/897a9096-aab4-4f7e-9dc8-7d6dd73192b8/Integrations/AppVeyor?ProjectSlug=Detection&SigningPolicySlug=master-policy
   authorization:
-    secure: j0gep+3S+hNJx29G0JG6uq4yz+eacgA+8Qyu2o/6mSAIzJolstoDP95wr081TCqW7eDFdnBqNE6WQ9zKkY0w+A==
+    secure: DHHClI0f91kw4CQG5tyHixww6pqDe/KAsixV0u42GJDcGrMuYFwoRpnRzSleovW2rBRjxNuJ6jwOnmBHmTyr2g==
   on:
-    APPVEYOR_REPO_TAG: true
+    branch: master
 - provider: NuGet
   server: https://www.myget.org/F/wangkanai/api/v2/package
   api_key:
     secure: YY8jIrOCrsuVBg/iqwS2jVwZ462EWKFMZ+95fBEDqM1DiH0H2w7OMgUx3rQ3XTzl
   artifact: /.*\.nupkg/
-  on:
-    branch: dev
-- provider: NuGet
-  server: https://nuget.pkg.github.com/wangkanai/index.json
-  username: wangkanai
-  api_key:
-    secure: +WL9sBLNxRSwSRTu5btK/smYjwDFZjIGjg5P676G7O9UpGyJr5Hzi32SQruRS9EF
-  artifact: /.*\.nupkg/ 
-  on:
-    branch: dev
