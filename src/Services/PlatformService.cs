@@ -23,7 +23,6 @@ namespace Wangkanai.Detection.Services
             // Unknown
             if (agent.IsNullOrEmpty())
                 return Platform.Unknown;
-
             // Google Android
             if (agent.Contains(Platform.Android))
                 return Platform.Android;

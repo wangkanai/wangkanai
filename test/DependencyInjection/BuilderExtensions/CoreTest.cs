@@ -48,7 +48,7 @@ namespace Wangkanai.Detection.DependencyInjection
                 new ServiceDescriptor(typeof(IPlatformService), typeof(PlatformService), ServiceLifetime.Transient),
                 new ServiceDescriptor(typeof(IBrowserService), typeof(BrowserService), ServiceLifetime.Transient),
                 new ServiceDescriptor(typeof(ICrawlerService), typeof(CrawlerService), ServiceLifetime.Transient),
-                new ServiceDescriptor(typeof(IDetectionService), typeof(DetectionService), ServiceLifetime.Transient),
+                new ServiceDescriptor(typeof(IDetectionService), typeof(DetectionService), ServiceLifetime.Scoped),
             };
 
             Assert.NotNull(builder);
