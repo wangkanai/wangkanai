@@ -20,10 +20,18 @@ branches:
     - /^feature\/.$/
     - /^release\/.$/
     - /^(.*\/)?ci-.*$/
-build_script:
-  - ps: ./run.ps1
 clone_depth: 1
-test: 'off'
+build_script:
+  - ps: |
+      dotnet --version
+      dotnet restore
+      dotnet build -c Release
+test_script:
+  - ps: |
+      dotnet test
+before_deploy:
+  - ps: |
+      dotnet pack -c Release -o .\artifacts
 artifacts:
   - path: '**\*.nupkg'
 deploy:
