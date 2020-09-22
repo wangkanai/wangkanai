@@ -1,6 +1,8 @@
 // Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
+using System;
+using System.Linq;
 using Wangkanai.Detection.Extensions;
 using Wangkanai.Detection.Models;
 
@@ -10,15 +12,17 @@ namespace Wangkanai.Detection.Services
     {
         public Processor Processor { get; }
         public Platform  Name      { get; }
+        public Version   Version   { get; }
 
         public PlatformService(IUserAgentService userAgentService)
         {
-            var userAgent = userAgentService.UserAgent;
-            Name      = ParseOperatingSystem(userAgent);
-            Processor = ParseProcessor(userAgent, Name);
+            var agent = userAgentService.UserAgent;
+            Name      = GetPlatform(agent);
+            Processor = GetProcessor(agent, Name);
+            Version   = GetVersion(agent.ToString(), Name);
         }
 
-        private static Platform ParseOperatingSystem(UserAgent agent)
+        private static Platform GetPlatform(UserAgent agent)
         {
             // Unknown
             if (agent.IsNullOrEmpty())
@@ -42,7 +46,32 @@ namespace Wangkanai.Detection.Services
             return Platform.Others;
         }
 
-        private static Processor ParseProcessor(UserAgent agent, Platform os)
+        private static Version GetVersion(string agent, Platform platform) 
+            => platform switch
+        {
+            Platform.Unknown => new Version(),
+            Platform.Others  => new Version(),
+            Platform.Windows => ParseOsVersion(agent, "windowsnt"),
+            Platform.Android => ParseOsVersion(agent, "android"),
+            Platform.Mac     => ParseOsVersion(agent, "intelmacosx"),
+            Platform.iOS     => ParseOsVersion(agent, "cpuiphoneos"),
+            Platform.Linux   => ParseOsVersion(agent, "rv:"),
+            _                => new Version()
+        };
+
+        private static Version ParseOsVersion(string agent, string versionPrefix) =>
+            (agent.RegexMatch(@"\(([^\)]+)\)")
+                  .Captures[0]
+                  .Value
+                  .RemoveAll(" ", "(", ")")
+                  .Split(';')
+                  .FirstOrDefault(x => x.StartsWith(versionPrefix, StringComparison.InvariantCultureIgnoreCase)) ?? string.Empty)
+            .Replace("_", ".")
+            .RegexMatch(@"(?:(\d+)\.)?(?:(\d+)\.)?(?:(\d+)\.\d+)")
+            .Value
+            .ToVersion();
+
+        private static Processor GetProcessor(UserAgent agent, Platform os)
         {
             if (IsArm(agent, os))
                 return Processor.ARM;

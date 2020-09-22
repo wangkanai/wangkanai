@@ -1,8 +1,11 @@
 // Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
+using System;
+
 using Wangkanai.Detection.Mocks;
 using Wangkanai.Detection.Models;
+
 using Xunit;
 
 namespace Wangkanai.Detection.Services
@@ -25,7 +28,7 @@ namespace Wangkanai.Detection.Services
         [InlineData(Processor.ARM, "Mozilla/5.0 (Windows NT 10.0; ARM; RM-1096) AppleWebKit/537.36 (KHTML like Gecko) Chrome/51.0.2704.79 Safari/537.36 Edge/14.14393")]
         public void Windows(Processor processor, string agent)
         {
-            var os       = Platform.Windows;
+            var os = Platform.Windows;
             var resolver = MockService.Platform(agent);
             Assert.Equal(os, resolver.Name);
             Assert.Equal(processor, resolver.Processor);
@@ -37,9 +40,9 @@ namespace Wangkanai.Detection.Services
         [InlineData("Mozilla/5.0 (Linux; Android 4.4.2); Nexus 5 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Mobile Safari/537.36 OPR/20.0.1396.72047")]
         public void Android(string agent)
         {
-            var os        = Platform.Android;
+            var os = Platform.Android;
             var processor = Processor.ARM;
-            var resolver  = MockService.Platform(agent);
+            var resolver = MockService.Platform(agent);
             Assert.Equal(os, resolver.Name);
             Assert.Equal(processor, resolver.Processor);
         }
@@ -50,9 +53,9 @@ namespace Wangkanai.Detection.Services
         [InlineData("Mozilla/5.0 (iPod touch; CPU iPhone OS 8_3 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) FxiOS/1.0 Mobile/12F69 Safari/600.1.4")]
         public void iOS(string agent)
         {
-            var os        = Platform.iOS;
+            var os = Platform.iOS;
             var processor = Processor.ARM;
-            var resolver  = MockService.Platform(agent);
+            var resolver = MockService.Platform(agent);
             Assert.Equal(os, resolver.Name);
             Assert.Equal(processor, resolver.Processor);
         }
@@ -63,7 +66,7 @@ namespace Wangkanai.Detection.Services
         [InlineData(Processor.Others, "Mozilla/5.0 (Macintosh; PPC Mac OS X x.y; rv:10.0) Gecko/20100101 Firefox/10.0")]
         public void Mac(Processor processor, string agent)
         {
-            var os       = Platform.Mac;
+            var os = Platform.Mac;
             var resolver = MockService.Platform(agent);
             Assert.Equal(os, resolver.Name);
             Assert.Equal(processor, resolver.Processor);
@@ -75,7 +78,7 @@ namespace Wangkanai.Detection.Services
         [InlineData(Processor.ARM, "Mozilla/5.0 (Linux arm) Gecko/20110318 Firefox/4.0b13pre Fennec/4.0")]
         public void Linux(Processor processor, string agent)
         {
-            var os       = Platform.Linux;
+            var os = Platform.Linux;
             var resolver = MockService.Platform(agent);
             Assert.Equal(os, resolver.Name);
             Assert.Equal(processor, resolver.Processor);
@@ -86,10 +89,25 @@ namespace Wangkanai.Detection.Services
         [InlineData(Processor.Others, "Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.8.1.11) Gecko/20080118 Firefox/2.0.0.11")]
         public void Others(Processor processor, string agent)
         {
-            var os       = Platform.Others;
+            var os = Platform.Others;
             var resolver = MockService.Platform(agent);
             Assert.Equal(os, resolver.Name);
             Assert.Equal(processor, resolver.Processor);
+        }
+
+        [Theory]
+        [InlineData("1.9.2.17", "Mozilla / 5.0(X11; U; Linux x86_64; en - US; rv: 1.9.2.17) Gecko/20110428 Fedora/3.6.17-1.fc13 Firefox/3.6.17")] // Linux
+        [InlineData("5.0.2", "Mozilla / 5.0(Linux; Android 5.0.2; SGH - T679 Build / LRX22G) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/37.0.0.0 Mobile Safari/537.36")] // Android
+        [InlineData("5.1", "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.7pre) Gecko/20070815 Firefox/2.0.0.6 Navigator/9.0b3")] // XP
+        [InlineData("6.1", "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2302.0 Safari/537.36")] // Vista
+        [InlineData("8.4.1", "Mozilla/5.0 (iPhone; CPU iPhone OS 8_4_1 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) FxiOS/1.0 Mobile/12H321 Safari/600.1.4")] // iOS
+        [InlineData("10.0", "Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; Touch; LCJB; rv:11.0) like Gecko")] // Win10
+        [InlineData("10.9.3", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/7046A194A")] // OSX
+        [InlineData("0.0", "")] // Other
+        public void GetVersion(string version, string agent)
+        {
+            var resolver = MockService.Platform(agent);
+            Assert.Equal(new Version(version), resolver.Version);
         }
     }
 }
