@@ -11,6 +11,8 @@ namespace Wangkanai.Detection.Extensions
             return match.Success ? match : Match.Empty;
         }
 
-        public static string RemoveAll(this string source, params string[] strings) => strings.Aggregate(source, (current, value) => current.Replace(value, ""));
+        public static string RemoveAll(this string source, params string[] strings) 
+            => strings.Aggregate(source, (current, value) 
+                => current.Replace(value, ""));
     }
 }
