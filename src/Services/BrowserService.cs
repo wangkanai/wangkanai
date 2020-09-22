@@ -18,7 +18,7 @@ namespace Wangkanai.Detection.Services
             var os     = platformService.Name;
             var engine = engineService.Name;
             Name    = GetBrowser(agent, os, engine);
-            Version = GetVersion(agent.ToLower(), Name;
+            Version = GetVersion(agent.ToLower(), Name);
         }
 
         private static Browser GetBrowser(UserAgent agent, Platform os, Engine engine)
