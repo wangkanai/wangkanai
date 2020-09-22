@@ -96,13 +96,13 @@ namespace Wangkanai.Detection.Services
         }
 
         [Theory]
+        [InlineData("1.9.2.17", "Mozilla / 5.0(X11; U; Linux x86_64; en - US; rv: 1.9.2.17) Gecko/20110428 Fedora/3.6.17-1.fc13 Firefox/3.6.17")] // Linux
+        [InlineData("5.0.2", "Mozilla / 5.0(Linux; Android 5.0.2; SGH - T679 Build / LRX22G) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/37.0.0.0 Mobile Safari/537.36")] // Android
         [InlineData("5.1", "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.7pre) Gecko/20070815 Firefox/2.0.0.6 Navigator/9.0b3")] // XP
         [InlineData("6.1", "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2302.0 Safari/537.36")] // Vista
-        [InlineData("10.0", "Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; Touch; LCJB; rv:11.0) like Gecko")] // Win10
-        [InlineData("5.0.2", "Mozilla / 5.0(Linux; Android 5.0.2; SGH - T679 Build / LRX22G) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/37.0.0.0 Mobile Safari/537.36")] // Android
-        [InlineData("10.9.3", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/7046A194A")] // OSX
         [InlineData("8.4.1", "Mozilla/5.0 (iPhone; CPU iPhone OS 8_4_1 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) FxiOS/1.0 Mobile/12H321 Safari/600.1.4")] // iOS
-        [InlineData("1.9.2.17", "Mozilla / 5.0(X11; U; Linux x86_64; en - US; rv: 1.9.2.17) Gecko/20110428 Fedora/3.6.17-1.fc13 Firefox/3.6.17")] // Linux
+        [InlineData("10.0", "Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; Touch; LCJB; rv:11.0) like Gecko")] // Win10
+        [InlineData("10.9.3", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/7046A194A")] // OSX
         [InlineData("0.0", "")] // Other
         public void GetVersion(string version, string agent)
         {
