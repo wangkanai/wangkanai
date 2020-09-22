@@ -31,7 +31,7 @@ namespace Wangkanai.Detection.DependencyInjection
                 () => applicationBuilderMock.Object.UseDetection());
 
             // Assert
-            Assert.Equal("AddDetection() is not added to ConfigureServices(...)", exception.Message);
+            Assert.Equal("AddDetection is not added to ConfigureServices(...)", exception.Message);
         }
     }
 }
