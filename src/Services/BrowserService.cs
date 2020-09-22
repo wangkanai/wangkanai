@@ -60,7 +60,7 @@ namespace Wangkanai.Detection.Services
             if (agent.Contains("msie 9"))
                 return new Version(9, 0);
 
-            if (browser == Browser.Edge)
+            if (browser == Browser.Edge && !agent.Contains("edge"))
                 agent = agent.Replace("edg", "edge");
 
             var    name  = browser.ToString();
