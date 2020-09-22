@@ -16,13 +16,13 @@ namespace Wangkanai.Detection.Services
 
         public PlatformService(IUserAgentService userAgentService)
         {
-            var userAgent = userAgentService.UserAgent;
-            Name      = ParseOperatingSystem(userAgent);
-            Processor = ParseProcessor(userAgent, Name);
-            Version   = GetVersion(userAgent.ToString(), Name);
+            var agent = userAgentService.UserAgent;
+            Name      = GetPlatform(agent);
+            Processor = GetProcessor(agent, Name);
+            Version   = GetVersion(agent.ToString(), Name);
         }
 
-        private static Platform ParseOperatingSystem(UserAgent agent)
+        private static Platform GetPlatform(UserAgent agent)
         {
             // Unknown
             if (agent.IsNullOrEmpty())
@@ -46,7 +46,8 @@ namespace Wangkanai.Detection.Services
             return Platform.Others;
         }
 
-        public static Version GetVersion(string agent, Platform platform) => platform switch
+        private static Version GetVersion(string agent, Platform platform) 
+            => platform switch
         {
             Platform.Unknown => new Version(),
             Platform.Others  => new Version(),
@@ -70,7 +71,7 @@ namespace Wangkanai.Detection.Services
             .Value
             .ToVersion();
 
-        private static Processor ParseProcessor(UserAgent agent, Platform os)
+        private static Processor GetProcessor(UserAgent agent, Platform os)
         {
             if (IsArm(agent, os))
                 return Processor.ARM;
