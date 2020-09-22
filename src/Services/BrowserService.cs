@@ -60,6 +60,9 @@ namespace Wangkanai.Detection.Services
             if (agent.Contains("msie 9"))
                 return new Version(9, 0);
 
+            if (browser == Browser.Edge && !agent.Contains("edge"))
+                agent = agent.Replace("edg", "edge");
+
             var    name  = browser.ToString();
             var    first = agent.IndexOf(name.ToLower(), StringComparison.Ordinal);
             string cut;
@@ -77,12 +80,12 @@ namespace Wangkanai.Detection.Services
         }
 
         private static bool IsEdge(UserAgent agent)
-            => agent.Contains(Browser.Edge) 
+            => agent.Contains(Browser.Edge)
                || (agent.Contains("Win64") && agent.Contains("Edg"));
 
         private static bool IsInternetExplorer(UserAgent agent, Platform os, Engine engine)
-            => engine == Engine.Trident 
-               || agent.Contains("MSIE") 
+            => engine == Engine.Trident
+               || agent.Contains("MSIE")
                && !agent.Contains(Browser.Opera);
     }
 }
