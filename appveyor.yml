@@ -26,12 +26,10 @@ build_script:
       dotnet --version
       dotnet restore
       dotnet build -c Release
+      dotnet pack -c Release -o .\artifacts
 test_script:
   - ps: |
-      dotnet test
-before_deploy:
-  - ps: |
-      dotnet pack -c Release -o .\artifacts
+      dotnet test      
 artifacts:
   - path: '**\*.nupkg'
 deploy:
