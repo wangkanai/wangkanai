@@ -1,32 +1,33 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <NullableContextOptions>enable</NullableContextOptions>
-    <Version>2.0.0</Version>
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <NullableContextOptions>enable</NullableContextOptions>
+        <Version>2.0.0</Version>
 
-    <Authors>Sarin Na Wangkanai</Authors>
-    <Description>ASP.NET Core Detection service components for identifying details about client device, browser, engine, platform, and crawler.</Description>
-    <Copyright>Copyright © 2018 Sarin Na Wangkanai</Copyright>
-    <PackageTags>aspnetcore;detection</PackageTags>
-    <PackageProjectUrl>https://github.com/wangkanai/Detection</PackageProjectUrl>
-    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-    <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>git://github.com/wangkanai/Detection</RepositoryUrl>
-    <PackageIcon>avatar.png</PackageIcon>
-  </PropertyGroup>
+        <Authors>Sarin Na Wangkanai</Authors>
+        <Description>ASP.NET Core Detection service components for identifying details about client device, browser, engine, platform, and crawler.</Description>
+        <Copyright>Copyright © 2018 Sarin Na Wangkanai</Copyright>
+        <PackageTags>aspnetcore;detection</PackageTags>
+        <PackageProjectUrl>https://github.com/wangkanai/Detection</PackageProjectUrl>
+        <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+        <RepositoryType>git</RepositoryType>
+        <RepositoryUrl>git://github.com/wangkanai/Detection</RepositoryUrl>
+        <PackageIcon>avatar.png</PackageIcon>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\Detection.Browser\src\Wangkanai.Detection.Browser.csproj" />
-    <ProjectReference Include="..\..\Detection.Crawler\src\Wangkanai.Detection.Crawler.csproj" />
-    <ProjectReference Include="..\..\Detection.Device\src\Wangkanai.Detection.Device.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\..\Detection.Browser\src\Wangkanai.Detection.Browser.csproj"/>
+        <ProjectReference Include="..\..\Detection.Crawler\src\Wangkanai.Detection.Crawler.csproj"/>
+        <ProjectReference Include="..\..\Detection.Device\src\Wangkanai.Detection.Device.csproj"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <None Include="..\..\..\asset\avatar.png">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-  </ItemGroup>
+    <ItemGroup>
+        <None Include="..\..\..\asset\avatar.png">
+            <Pack>True</Pack>
+            <PackagePath></PackagePath>
+        </None>
+    </ItemGroup>
 
 </Project>

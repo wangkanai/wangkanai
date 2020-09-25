@@ -1,32 +1,33 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <NullableContextOptions>enable</NullableContextOptions>
-    <Version>2.0.0</Version>
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <NullableContextOptions>enable</NullableContextOptions>
+        <Version>2.0.0</Version>
 
-    <Authors>Sarin Na Wangkanai</Authors>
-    <Description>ASP.NET Core Detection service components for identifying details about client device, browser, engine, and platform.</Description>
-    <Copyright>Copyright © 2018 Sarin Na Wangkanai</Copyright>
-    <PackageTags>aspnetcore;detection;core</PackageTags>
-    <PackageIconUrl>http://0.gravatar.com/avatar/f58457d38ab3bc43526c6e52af17494e</PackageIconUrl>
-    <PackageProjectUrl>https://github.com/wangkanai/Detection</PackageProjectUrl>
-    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-    <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>git://github.com/wangkanai/Detection</RepositoryUrl>
-    <RootNamespace>Wangkanai.Detection</RootNamespace>
-    <PackageIcon>avatar.png</PackageIcon>
-  </PropertyGroup>
+        <Authors>Sarin Na Wangkanai</Authors>
+        <Description>ASP.NET Core Detection service components for identifying details about client device, browser, engine, and platform.</Description>
+        <Copyright>Copyright © 2018 Sarin Na Wangkanai</Copyright>
+        <PackageTags>aspnetcore;detection;core</PackageTags>
+        <PackageIconUrl>http://0.gravatar.com/avatar/f58457d38ab3bc43526c6e52af17494e</PackageIconUrl>
+        <PackageProjectUrl>https://github.com/wangkanai/Detection</PackageProjectUrl>
+        <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+        <RepositoryType>git</RepositoryType>
+        <RepositoryUrl>git://github.com/wangkanai/Detection</RepositoryUrl>
+        <RootNamespace>Wangkanai.Detection</RootNamespace>
+        <PackageIcon>avatar.png</PackageIcon>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Razor.Runtime" Version="2.0.0" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.0.0"/>
+        <PackageReference Include="Microsoft.AspNetCore.Razor.Runtime" Version="2.0.0"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <None Include="..\..\..\asset\avatar.png">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-  </ItemGroup>
+    <ItemGroup>
+        <None Include="..\..\..\asset\avatar.png">
+            <Pack>True</Pack>
+            <PackagePath></PackagePath>
+        </None>
+    </ItemGroup>
 </Project>

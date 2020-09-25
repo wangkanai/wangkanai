@@ -1,33 +1,35 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <NullableContextOptions>enable</NullableContextOptions>
-    <Version>2.0.0</Version>
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <NullableContextOptions>enable</NullableContextOptions>
+        <Version>2.0.0</Version>
 
-    <RootNamespace>Wangkanai.Responsive</RootNamespace>
-    <Authors>Sarin Na Wangkanai</Authors>
-    <Description>ASP.NET Core Responsive middleware for routing base upon request clientInfo device detection to specific view
-Being to target difference clientInfo devices with seperation of concern is crucial, due to you can mininize what is sent to the clientInfo directly from the service to only what is needed and nothing more. This increase performance and lower bandwidth usage.</Description>
-    <Copyright>Copyright © 2018 Sarin Na Wangkanai</Copyright>
-    <PackageTags>aspnetcore;Responsive</PackageTags>
-    <PackageProjectUrl>https://github.com/wangkanai/detection</PackageProjectUrl>
-    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-    <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>git://github.com/wangkanai/detection</RepositoryUrl>
-    <PackageIcon>avatar.png</PackageIcon>
-  </PropertyGroup>
+        <RootNamespace>Wangkanai.Responsive</RootNamespace>
+        <Authors>Sarin Na Wangkanai</Authors>
+        <Description>ASP.NET Core Responsive middleware for routing base upon request clientInfo device detection to specific view
+            Being to target difference clientInfo devices with seperation of concern is crucial, due to you can mininize what is sent to the clientInfo directly from the service to only what is needed and nothing more. This increase performance and lower bandwidth usage.
+        </Description>
+        <Copyright>Copyright © 2018 Sarin Na Wangkanai</Copyright>
+        <PackageTags>aspnetcore;Responsive</PackageTags>
+        <PackageProjectUrl>https://github.com/wangkanai/detection</PackageProjectUrl>
+        <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+        <RepositoryType>git</RepositoryType>
+        <RepositoryUrl>git://github.com/wangkanai/detection</RepositoryUrl>
+        <PackageIcon>avatar.png</PackageIcon>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\Responsive.Core\src\Wangkanai.Responsive.Core.csproj" />
-    <ProjectReference Include="..\..\Responsive.TagHelper\src\Wangkanai.Responsive.TagHelper.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\..\Responsive.Core\src\Wangkanai.Responsive.Core.csproj"/>
+        <ProjectReference Include="..\..\Responsive.TagHelper\src\Wangkanai.Responsive.TagHelper.csproj"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <None Include="..\..\..\asset\avatar.png">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-  </ItemGroup>
+    <ItemGroup>
+        <None Include="..\..\..\asset\avatar.png">
+            <Pack>True</Pack>
+            <PackagePath></PackagePath>
+        </None>
+    </ItemGroup>
 
 </Project>
