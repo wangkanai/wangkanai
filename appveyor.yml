@@ -1,4 +1,4 @@
-version: 3.0.0-build{build} 
+version: 3.0.0-build{build}
 image:
   - Visual Studio 2019
 init:
@@ -16,11 +16,15 @@ pull_requests:
 branches:
   only:
     - master
+    - main
     - dev
     - /^feature\/.$/
     - /^release\/.$/
     - /^(.*\/)?ci-.*$/
 clone_depth: 1
+before_build:
+  - ps: |
+      dotnet tool install --global AzureSignTool
 build_script:
   - ps: |
       dotnet --version
@@ -29,24 +33,24 @@ build_script:
       dotnet pack -c Release -o .\artifacts
 test_script:
   - ps: |
-      dotnet test      
+      dotnet test 
 artifacts:
   - path: '**\*.nupkg'
 deploy:
-- provider: Webhook
-  url: https://app.signpath.io/API/v1/897a9096-aab4-4f7e-9dc8-7d6dd73192b8/Integrations/AppVeyor?ProjectSlug=Detection&SigningPolicySlug=release-signing
-  authorization:
-    secure: DHHClI0f91kw4CQG5tyHixww6pqDe/KAsixV0u42GJDcGrMuYFwoRpnRzSleovW2rBRjxNuJ6jwOnmBHmTyr2g==
-  on:
-    branch: dev
-- provider: Webhook
-  url: https://app.signpath.io/API/v1/897a9096-aab4-4f7e-9dc8-7d6dd73192b8/Integrations/AppVeyor?ProjectSlug=Detection&SigningPolicySlug=master-policy
-  authorization:
-    secure: DHHClI0f91kw4CQG5tyHixww6pqDe/KAsixV0u42GJDcGrMuYFwoRpnRzSleovW2rBRjxNuJ6jwOnmBHmTyr2g==
-  on:
-    branch: master
-- provider: NuGet
-  server: https://www.myget.org/F/wangkanai/api/v2/package
-  api_key:
-    secure: YY8jIrOCrsuVBg/iqwS2jVwZ462EWKFMZ+95fBEDqM1DiH0H2w7OMgUx3rQ3XTzl
-  artifact: /.*\.nupkg/
+  - provider: Webhook
+    url: https://app.signpath.io/API/v1/897a9096-aab4-4f7e-9dc8-7d6dd73192b8/Integrations/AppVeyor?ProjectSlug=Detection&SigningPolicySlug=release-signing
+    authorization:
+      secure: DHHClI0f91kw4CQG5tyHixww6pqDe/KAsixV0u42GJDcGrMuYFwoRpnRzSleovW2rBRjxNuJ6jwOnmBHmTyr2g==
+    on:
+      branch: dev
+  - provider: Webhook
+    url: https://app.signpath.io/API/v1/897a9096-aab4-4f7e-9dc8-7d6dd73192b8/Integrations/AppVeyor?ProjectSlug=Detection&SigningPolicySlug=master-policy
+    authorization:
+      secure: DHHClI0f91kw4CQG5tyHixww6pqDe/KAsixV0u42GJDcGrMuYFwoRpnRzSleovW2rBRjxNuJ6jwOnmBHmTyr2g==
+    on:
+      branch: master
+  - provider: NuGet
+    server: https://www.myget.org/F/wangkanai/api/v2/package
+    api_key:
+      secure: YY8jIrOCrsuVBg/iqwS2jVwZ462EWKFMZ+95fBEDqM1DiH0H2w7OMgUx3rQ3XTzl
+    artifact: /.*\.nupkg/
