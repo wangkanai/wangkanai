@@ -3,14 +3,14 @@
   <PropertyGroup>
     <Version>3.0.0</Version>
     <TargetFramework>netcoreapp3.0</TargetFramework>
-    
+
     <LangVersion>8.0</LangVersion>
     <Nullable>enable</Nullable>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <IncludeSymbols>true</IncludeSymbols>
+    <!--<IncludeSymbols>true</IncludeSymbols>-->
     <NoWarn>NU5048;NU5104</NoWarn>
   </PropertyGroup>
-  
+
   <!-- -->
   <PropertyGroup>
     <Product>Wangkanai Detection</Product>
@@ -18,12 +18,12 @@
     <Authors>Sarin Na Wangkanai</Authors>
     <Copyright>Sarin Na Wangkanai</Copyright>
     <Description>ASP.NET Core Detection service components for identifying details about client device, browser, engine, platform, and crawler. Responsive middleware for routing base upon request client device detection to specific view. Also in the added feature of user preference made this library even more comprehensive must for developers whom to target multiple devices with view rendered and optimized directly from the server side.</Description>
-    
+
     <PackageTags>aspnetcore;detection</PackageTags>
     <PackageProjectUrl>https://github.com/wangkanai/detection</PackageProjectUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/wangkanai/detection/dev/asset/avatar.png</PackageIconUrl>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-    
+
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>git://github.com/wangkanai/detection</RepositoryUrl>
   </PropertyGroup>
