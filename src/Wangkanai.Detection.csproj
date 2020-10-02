@@ -1,19 +1,21 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Version>3.0.0</Version>
+    <Version>3.0.0-alpha12</Version>
     <TargetFramework>netcoreapp3.0</TargetFramework>
 
     <LangVersion>8.0</LangVersion>
     <Nullable>enable</Nullable>
-    
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <NoWarn>NU5048;NU5104</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <StrongNameKeyId>WangkanaiDetection</StrongNameKeyId>
   </PropertyGroup>
   
   <PropertyGroup>
     <Product>Wangkanai Detection</Product>
-    <StrongNameKeyId>WangkanaiDetection</StrongNameKeyId>
     <Authors>Sarin Na Wangkanai</Authors>
     <Copyright>©2020 Sarin Na Wangkanai, All rights Reserved</Copyright>
     
