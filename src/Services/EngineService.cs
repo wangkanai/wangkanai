@@ -1,6 +1,7 @@
 // Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
+using System;
 using Wangkanai.Detection.Extensions;
 using Wangkanai.Detection.Models;
 
@@ -8,14 +9,16 @@ namespace Wangkanai.Detection.Services
 {
     public class EngineService : IEngineService
     {
-        public Engine Name { get; }
-
+        public Engine  Name    { get; }
+        public Version Version { get; }
+        
         public EngineService(IUserAgentService userAgentService, IPlatformService platformService)
         {
             var agent = userAgentService.UserAgent;
             var os    = platformService.Name;
             var cpu   = platformService.Processor;
-            Name = ParseEngine(agent, os, cpu);
+            Name    = ParseEngine(agent, os, cpu);
+            Version = GetVersion(agent.ToString(), Name);
         }
 
         private static Engine ParseEngine(UserAgent agent, Platform os, Processor cpu)
@@ -45,6 +48,12 @@ namespace Wangkanai.Detection.Services
 
             return Engine.Others;
         }
+
+        private static Version GetVersion(string agent, Engine engine)
+        {
+            // Not yet implemented
+            return new Version();
+        } 
 
         private static bool IsBlink(UserAgent agent)
             => agent.Contains(Browser.Chrome)
