@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Version>3.0.0</Version>
+    <Version>3.0.0-alpha12</Version>
     <TargetFramework>netcoreapp3.0</TargetFramework>
 
     <LangVersion>8.0</LangVersion>
