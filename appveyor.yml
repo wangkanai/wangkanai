@@ -20,10 +20,12 @@ branches:
     - /^release\/.$/
     - /^(.*\/)?ci-.*$/
 clone_depth: 1
-build_script:
+before_build:
   - ps: |
       dotnet --version
       dotnet restore
+build_script:
+  - ps: |
       dotnet build -c Release
       dotnet pack -c Release -o .\artifacts
 test_script:
