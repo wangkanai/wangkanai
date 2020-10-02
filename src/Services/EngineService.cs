@@ -17,11 +17,11 @@ namespace Wangkanai.Detection.Services
             var agent = userAgentService.UserAgent;
             var os    = platformService.Name;
             var cpu   = platformService.Processor;
-            Name    = ParseEngine(agent, os, cpu);
+            Name    = GetEngine(agent, os, cpu);
             Version = GetVersion(agent.ToString(), Name);
         }
 
-        private static Engine ParseEngine(UserAgent agent, Platform os, Processor cpu)
+        private static Engine GetEngine(UserAgent agent, Platform os, Processor cpu)
         {
             // Null check
             if (agent.IsNullOrEmpty())
