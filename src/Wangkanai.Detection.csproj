@@ -6,13 +6,11 @@
 
     <LangVersion>8.0</LangVersion>
     <Nullable>enable</Nullable>
+    
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <NoWarn>NU5048;NU5104</NoWarn>
-    <Title>Wangkanai Detection</Title>
-    
   </PropertyGroup>
-
-  <!-- -->
+  
   <PropertyGroup>
     <Product>Wangkanai Detection</Product>
     <StrongNameKeyId>WangkanaiDetection</StrongNameKeyId>
@@ -25,7 +23,6 @@
     <PackageProjectUrl>https://github.com/wangkanai/detection</PackageProjectUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/wangkanai/detection/dev/asset/avatar.png</PackageIconUrl>
     <PackageLicenseUrl>https://github.com/wangkanai/Detection/blob/main/LICENSE</PackageLicenseUrl>
-    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
 
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>git://github.com/wangkanai/detection</RepositoryUrl>

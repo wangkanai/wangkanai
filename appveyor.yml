@@ -23,7 +23,7 @@ clone_depth: 1
 before_build:
   - ps: |
       dotnet --version
-      dotnet restore 
+      dotnet restore
 build_script:
   - ps: |
       dotnet build -c Release
