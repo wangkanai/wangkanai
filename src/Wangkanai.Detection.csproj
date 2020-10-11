@@ -22,7 +22,7 @@
 
     <PackageTags>aspnetcore;detection</PackageTags>
     <PackageProjectUrl>https://github.com/wangkanai/detection</PackageProjectUrl>
-    <PackageIconUrl>https://raw.githubusercontent.com/wangkanai/detection/dev/asset/avatar.png</PackageIconUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/wangkanai/detection/main/asset/wangkanai-logo.png</PackageIconUrl>
     <PackageLicenseUrl>https://github.com/wangkanai/Detection/blob/main/LICENSE</PackageLicenseUrl>
 
     <RepositoryType>git</RepositoryType>
