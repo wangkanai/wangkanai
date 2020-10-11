@@ -55,11 +55,14 @@ namespace Wangkanai.Detection.Extensions
         public static int IndexOf(this UserAgent agent, Browser browser)
             => agent.IndexOf(browser.ToString());
         
-        public static string Substring(this UserAgent agent, int startindex)
-            => agent.ToLower().Substring(startindex);
+        public static string Substring(this UserAgent agent, int start)
+            => agent.ToLower().Substring(start);
 
-        public static string Substring(this UserAgent agent, int startindex, int length)
-            => agent.ToLower().Substring(startindex, length);
+        public static string Substring(this UserAgent agent, int start, int length)
+            => agent.ToLower().Substring(start, length);
+
+        public static string[] Split(this UserAgent agent, char separator)
+            => agent.ToLower().Split(separator);
         
         public static bool StartsWith(this UserAgent agent, string word)
             => !word.IsNullOrEmpty()

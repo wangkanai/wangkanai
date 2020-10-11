@@ -39,10 +39,8 @@ namespace Wangkanai.Detection.Services
                        : Crawler.Unknown;
         }
 
-        private static Version GetVersion(UserAgent useragent)
+        private static Version GetVersion(UserAgent agent)
         {
-            var agent = useragent.ToString();
-
             var bot = FindBot(agent);
             if (bot.IsNullOrEmpty())
                 return new Version();
@@ -59,10 +57,12 @@ namespace Wangkanai.Detection.Services
         }
 
         private static bool HasOthers(UserAgent agent, IEnumerable<string> others)
-            => agent.Contains(others) || agent.Contains("bot");
+            => agent.Contains(others) 
+               || agent.Contains("bot");
 
-        private static string FindBot(string agent)
-            => agent.Split(' ').FirstOrDefault(x => CrawlerCount(x) > 0);
+        private static string FindBot(UserAgent agent)
+            => agent.Split(' ')
+                    .FirstOrDefault(x => CrawlerCount(x) > 0);
 
         private static int CrawlerCount(string x)
             => Crawlers.Count(y => x.ToLower().Contains(y.ToString().ToLower()));
