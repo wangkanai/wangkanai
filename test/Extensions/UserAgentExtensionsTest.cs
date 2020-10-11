@@ -166,5 +166,25 @@ namespace Wangkanai.Detection.Extensions
             Assert.Equal(2, two.Split(' ').Length);
             Assert.Equal(3, three.Split(' ').Length);
         }
+
+        [Fact]
+        public void SubstringStart()
+        {
+            var agent = new UserAgent("abcdef");
+            Assert.Equal("def", agent.Substring(3));
+            Assert.Equal("abcdef", agent.Substring(0));
+            Assert.Equal("", agent.Substring(6));
+            Assert.Throws<ArgumentOutOfRangeException>(()=> agent.Substring(7));
+        }
+
+        [Fact]
+        public void SubstringStartLength()
+        {
+            var agent = new UserAgent("abcdef");
+            Assert.Equal("de", agent.Substring(3, 2));
+            Assert.Equal("abc", agent.Substring(0, 3));
+            Assert.Throws<ArgumentOutOfRangeException>(()=>  agent.Substring(6, 2));
+            Assert.Throws<ArgumentOutOfRangeException>(()=>  agent.Substring(7, 2));
+        }
     }
 }
