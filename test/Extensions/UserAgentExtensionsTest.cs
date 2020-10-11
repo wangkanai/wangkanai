@@ -1,9 +1,11 @@
 // Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
+using System;
 using System.Collections.Generic;
 using Wangkanai.Detection.Models;
 using Xunit;
+using Xunit.Sdk;
 
 namespace Wangkanai.Detection.Extensions
 {
@@ -73,7 +75,7 @@ namespace Wangkanai.Detection.Extensions
         [Fact]
         public void ContainsGeneric()
         {
-            var abc = new UserAgent("abc");
+            var abc    = new UserAgent("abc");
             var google = new UserAgent("Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)");
             Assert.False(abc.Contains(Crawler.Google));
             Assert.True(google.Contains(Crawler.Google));
@@ -119,7 +121,7 @@ namespace Wangkanai.Detection.Extensions
         }
 
         [Fact]
-        public void StartsWithArrayMinumum()
+        public void StartsWithArrayMinimum()
         {
             var agent = new UserAgent("abcdefg");
             Assert.False(agent.StartsWith(new[] {(string) null}, 4));
@@ -128,6 +130,41 @@ namespace Wangkanai.Detection.Extensions
             Assert.True(agent.StartsWith(new[] {"ABCD"}, 4));
             Assert.True(agent.StartsWith(new[] {"ABCD", "abcd"}, 4));
             Assert.True(agent.StartsWith(new[] {"ABCDEF"}, 4));
+        }
+
+        [Fact]
+        public void Replacement()
+        {
+            var agent = new UserAgent("abcdefg");
+            Assert.Equal("cbadefg", agent.Replace("abc", "cba").ToString());
+            Assert.Equal("abc", agent.Replace("abcdefg", "abc").ToString());
+        }
+
+        [Fact]
+        public void IndexOf()
+        {
+            var agent = new UserAgent("abc");
+            Assert.Equal(1, agent.IndexOf("b"));
+            Assert.Equal(-1, agent.IndexOf("d"));
+            Assert.Equal(0, agent.IndexOf("a"));
+            Assert.Equal(0, agent.IndexOf(""));
+            Assert.Equal(-1, agent.IndexOf(" "));
+        }
+
+        [Fact]
+        public void IndexOfNull()
+        {
+            var agent = new UserAgent("abc");
+            Assert.Throws<NullReferenceException>(() => agent.IndexOf(null));
+        }
+
+        [Fact]
+        public void Split()
+        {
+            var two   = new UserAgent("abc def");
+            var three = new UserAgent("abc def abc");
+            Assert.Equal(2, two.Split(' ').Length);
+            Assert.Equal(3, three.Split(' ').Length);
         }
     }
 }
