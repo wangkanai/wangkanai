@@ -15,14 +15,21 @@ namespace Wangkanai.Detection.Services
 
         public UserAgentService(IHttpContextAccessor accessor)
         {
-            if (accessor is null)
-                throw new ArgumentNullException(nameof(accessor));
+            // Ref issue #442 Error in Blazor Server
+            // if (accessor is null)
+            //     throw new ArgumentNullException(nameof(accessor));
+            // if (accessor.HttpContext is null)
+            //     throw new ArgumentNullException(nameof(accessor.HttpContext));
+            if (accessor is null && accessor.HttpContext is null)
+                UserAgent = new UserAgent();
+            else
+            {
+                Context = accessor.HttpContext;
 
-            Context = accessor.HttpContext ?? throw new ArgumentNullException(nameof(accessor.HttpContext));
+                var agent = Context.Request.Headers["User-Agent"].FirstOrDefault();
 
-            var agent = Context.Request.Headers["User-Agent"].FirstOrDefault();
-
-            UserAgent = new UserAgent(agent);
+                UserAgent = new UserAgent(agent ?? "");
+            }
         }
     }
 }
