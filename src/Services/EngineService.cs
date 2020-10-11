@@ -29,7 +29,7 @@ namespace Wangkanai.Detection.Services
 
             // Microsoft Edge
             if (IsEdge(agent, os))
-                return Engine.EdgeHTML;
+                return Engine.Edge;
             // Google Blink
             if (IsBlink(agent))
                 return Engine.Blink;
@@ -60,7 +60,7 @@ namespace Wangkanai.Detection.Services
                && agent.Contains(Engine.WebKit);
 
         private static bool IsEdge(UserAgent agent, Platform os)
-            => agent.Contains(Engine.EdgeHTML)
+            => agent.Contains(Engine.Edge)
                || agent.Contains("Edg")
                && (Platform.Windows | Platform.Android).HasFlag(os);
     }
