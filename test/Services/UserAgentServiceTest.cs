@@ -28,13 +28,13 @@ namespace Wangkanai.Detection.Services
         [Fact]
         public void Ctor_Null_ThrowsArgumentNullException()
         {
-            Assert.Throws<ArgumentNullException>(() => new UserAgentService(null));
+            Assert.Throws<NullReferenceException>(() => new UserAgentService(null));
         }
 
         [Fact]
         public void Ctor_HttpContextAccessorNotResolved_ThrowsArgumentNullException()
         {
-            Assert.Throws<ArgumentNullException>(() => new UserAgentService(new HttpContextAccessor()));
+            Assert.Throws<NullReferenceException>(() => new UserAgentService(new HttpContextAccessor()));
         }
 
         [Fact]
@@ -43,7 +43,7 @@ namespace Wangkanai.Detection.Services
             var accessor = new HttpContextAccessor();
 
             Assert.Null(accessor.HttpContext);
-            Assert.Throws<ArgumentNullException>(() => new UserAgentService(accessor));
+            Assert.Throws<NullReferenceException>(() => new UserAgentService(accessor));
         }
     }
 }
