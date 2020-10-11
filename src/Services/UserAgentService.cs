@@ -17,12 +17,14 @@ namespace Wangkanai.Detection.Services
         {
             if (accessor is null)
                 throw new ArgumentNullException(nameof(accessor));
+            if (accessor.HttpContext is null)
+                throw new ArgumentNullException(nameof(accessor.HttpContext));
 
-            Context = accessor.HttpContext ?? throw new ArgumentNullException(nameof(accessor.HttpContext));
+            Context = accessor.HttpContext;
 
             var agent = Context.Request.Headers["User-Agent"].FirstOrDefault();
 
-            UserAgent = new UserAgent(agent);
+            UserAgent = new UserAgent(agent ?? "");
         }
     }
 }
