@@ -26,6 +26,7 @@ namespace Wangkanai.Detection.Extensions
             => !agent.IsNullOrEmpty()
                && array.Length > 0
                && array.AnyContains(agent);
+        
 
         public static bool Contains<T>(this UserAgent agent, T flags) where T : Enum
         {
@@ -39,7 +40,27 @@ namespace Wangkanai.Detection.Extensions
             => !agent.IsNullOrEmpty()
                && list is { }
                && list.Any(agent.Contains);
+        
+        public static UserAgent Replace(this UserAgent agent, string oldValue, string newValue)
+        {
+            if (agent.IsNullOrEmpty() && oldValue.IsNullOrEmpty())
+                return agent;
+            return new UserAgent(agent.ToLower().Replace(oldValue,newValue));
+        }
 
+        public static int IndexOf(this UserAgent agent, string word)
+            => agent.ToLower()
+                    .IndexOf(word.ToLower(), StringComparison.Ordinal);
+
+        public static int IndexOf(this UserAgent agent, Browser browser)
+            => agent.IndexOf(browser.ToString());
+        
+        public static string Substring(this UserAgent agent, int startindex)
+            => agent.ToLower().Substring(startindex);
+
+        public static string Substring(this UserAgent agent, int startindex, int length)
+            => agent.ToLower().Substring(startindex, length);
+        
         public static bool StartsWith(this UserAgent agent, string word)
             => !word.IsNullOrEmpty()
                && !agent.IsNullOrEmpty()
