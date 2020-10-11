@@ -3,12 +3,13 @@ root = true
 # You can learn more about editorconfig here: https://docs.microsoft.com/en-us/visualstudio/ide/editorconfig-code-style-settings-reference
 
 [*]
-indent_style = space
 charset = utf-8
+indent_style = space
+indent_size = 4
+tab_width = 4
+end_of_line = crlf
 trim_trailing_whitespace = false
 insert_final_newline = false
-end_of_line = crlf
-indent_size = 4
 
 # Microsoft .NET properties
 csharp_new_line_before_members_in_object_initializers = false
@@ -76,32 +77,20 @@ resharper_web_config_wrong_module_highlighting = warning
 # resharper_check_namespace_highlighting = hint
 
 [*.cs]
-file_header_template = Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.\nThe Apache v2. See License.txt in the project root for license information.
 dotnet_sort_system_directives_first = true
 dotnet_separate_import_directive_groups = true
 
 [*.csproj]
 indent_size = 2
 
-[{*.css, *.scss, *.less}]
+[*.{css, scss, less, sass}]
 indent_size = 2
 
-[*.sh]
-end_of_line = lf
-
-[*.js.map]
-indent_style = space
+[*.{js, js.map}]
 indent_size = 2
 
-[{*.yml, *.yaml}]
-indent_style = space
+[*.{yml, yaml}]
 indent_size = 2
 
-[{.eslintrc, .stylelintrc, jest.config, .babelrc, bowerrc, *.jsb3, *.jsb2, *.json}]
-indent_style = space
+[*.{eslintrc, stylelintrc, jest.config, babelrc, bowerrc, jsb3, jsb2, json}]
 indent_size = 2
-
-[*.{appxmanifest, asax, ascx, aspx, build, cs, cshtml, dtd, fs, fsi, fsscript, fsx, master, ml, mli, nuspec, razor, resw, resx, skin, vb, xaml, xamlx, xoml, xsd}]
-indent_style = space
-indent_size = 4
-tab_width = 4
