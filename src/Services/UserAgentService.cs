@@ -20,7 +20,7 @@ namespace Wangkanai.Detection.Services
             //     throw new ArgumentNullException(nameof(accessor));
             // if (accessor.HttpContext is null)
             //     throw new ArgumentNullException(nameof(accessor.HttpContext));
-            if (accessor is null && accessor.HttpContext is null)
+            if (accessor is null || accessor.HttpContext is null)
                 UserAgent = new UserAgent();
             else
             {
