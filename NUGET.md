@@ -2,7 +2,7 @@
 
 ASP.NET Core Detection service components for identifying details about client device, browser, engine, platform, & crawler. Responsive middleware for routing base upon request client device detection to specific view. Also in the added feature of user preference made this library even more comprehensive must for developers whom to target multiple devices with view rendered and optimized directly from the server side.
 
-![ASP.NET Core Detection](https://raw.githubusercontent.com/wangkanai/Detection/dev/asset/aspnet-core-detection-3.svg?sanitize=true)
+![ASP.NET Core Detection](https://raw.githubusercontent.com/wangkanai/Detection/main/asset/aspnet-core-detection-3.svg?sanitize=true)
 
 [![GitHub](https://img.shields.io/github/license/wangkanai/detection)](https://github.com/wangkanai/Detection/blob/dev/LICENSE)
 [![Open Collective](https://img.shields.io/badge/open%20collective-support%20me-3385FF.svg)](https://opencollective.com/wangkanai)
