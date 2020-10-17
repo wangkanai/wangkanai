@@ -11,7 +11,7 @@ namespace Wangkanai.Detection.Extensions
     internal static class UserAgentExtensions
     {
         public static bool IsNullOrEmpty(this UserAgent agent)
-            => agent is null || string.IsNullOrEmpty(agent.ToLower());
+            => string.IsNullOrEmpty(agent.ToString());
         
         public static int Length(this UserAgent agent)
             => agent.ToString().Length;
@@ -37,15 +37,12 @@ namespace Wangkanai.Detection.Extensions
 
         public static bool Contains(this UserAgent agent, IEnumerable<string> list)
             => !agent.IsNullOrEmpty()
-               && list is { }
                && list.Any(agent.Contains);
         
-        public static UserAgent Replace(this UserAgent agent, string oldValue, string newValue)
-        {
-            if (agent.IsNullOrEmpty() && oldValue.IsNullOrEmpty())
-                return agent;
-            return new UserAgent(agent.ToLower().Replace(oldValue,newValue));
-        }
+        public static UserAgent Replace(this UserAgent agent, string oldValue, string newValue) 
+            => agent.IsNullOrEmpty() && oldValue.IsNullOrEmpty() 
+                   ? agent 
+                   : new UserAgent(agent.ToLower().Replace(oldValue, newValue));
 
         public static int IndexOf(this UserAgent agent, string word)
             => agent.ToLower()
@@ -55,18 +52,22 @@ namespace Wangkanai.Detection.Extensions
             => agent.IndexOf(browser.ToString());
         
         public static string Substring(this UserAgent agent, int start)
-            => agent.ToLower().Substring(start);
+            => agent.ToLower()
+                    .Substring(start);
 
         public static string Substring(this UserAgent agent, int start, int length)
-            => agent.ToLower().Substring(start, length);
+            => agent.ToLower()
+                    .Substring(start, length);
 
         public static string[] Split(this UserAgent agent, char separator)
-            => agent.ToLower().Split(separator);
+            => agent.ToLower()
+                    .Split(separator);
         
         public static bool StartsWith(this UserAgent agent, string word)
             => !word.IsNullOrEmpty()
                && !agent.IsNullOrEmpty()
-               && agent.ToLower().StartsWith(word.ToLower());
+               && agent.ToLower()
+                       .StartsWith(word.ToLower());
 
         public static bool StartsWith(this UserAgent agent, string[] array)
             => array.AnyStartsWith(agent);
@@ -75,24 +76,10 @@ namespace Wangkanai.Detection.Extensions
             => agent.Length() >= minimum
                && agent.StartsWith(array);
 
-        private static bool AnyStartsWith(this string[] array, UserAgent agent)
-        {
-            foreach (var str in array)
-            {
-                if (agent.StartsWith(str)) return true;
-            }
+        private static bool AnyStartsWith(this string[] array, UserAgent agent) 
+            => array.Any(agent.StartsWith);
 
-            return false;
-        }
-        
-        private static bool AnyContains(this string[] array, UserAgent agent)
-        {
-            foreach (var str in array)
-            {
-                if (agent.Contains(str)) return true;
-            }
-
-            return false;
-        }
+        private static bool AnyContains(this string[] array, UserAgent agent) 
+            => array.Any(agent.Contains);
     }
 }
