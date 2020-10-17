@@ -3,7 +3,6 @@
 
 using System;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Logging;
 using Wangkanai.Detection.DependencyInjection.Options;
 using Wangkanai.Detection.Hosting;

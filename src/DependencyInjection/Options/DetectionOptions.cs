@@ -11,11 +11,11 @@ namespace Wangkanai.Detection.DependencyInjection.Options
         /// <summary>
         /// Gets the default <see cref="CrawlerOptions"/> used by this application.
         /// </summary>
-        public CrawlerOptions Crawler { get; set; } = new CrawlerOptions();
+        public CrawlerOptions Crawler { get; } = new CrawlerOptions();
         
         /// <summary>
         /// Gets the default <see cref="ResponsiveOptions"/> used by this application.
         /// </summary>
-        public ResponsiveOptions Responsive { get; set; } = new ResponsiveOptions();
+        public ResponsiveOptions Responsive { get; } = new ResponsiveOptions();
     }
 }
