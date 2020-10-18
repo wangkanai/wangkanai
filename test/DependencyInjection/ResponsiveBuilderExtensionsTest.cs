@@ -3,12 +3,11 @@
 
 using System;
 using Microsoft.AspNetCore.TestHost;
-using Microsoft.Extensions.DependencyInjection;
 using Wangkanai.Detection.Mocks;
 using Wangkanai.Detection.Models;
 using Xunit;
 
-namespace Wangkanai.Detection.DependencyInjection
+namespace Microsoft.Extensions.DependencyInjection
 {
     public class ResponsiveBuilderExtensionsTest
     {

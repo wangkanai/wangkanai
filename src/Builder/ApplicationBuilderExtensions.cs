@@ -4,7 +4,7 @@
 using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Logging;
-using Wangkanai.Detection.DependencyInjection;
+using Wangkanai.Detection;
 using Wangkanai.Detection.Hosting;
 using Wangkanai.Detection.Services;
 
@@ -80,18 +80,18 @@ namespace Microsoft.Extensions.DependencyInjection
             if (options.Responsive.Disable && options.Responsive.IncludeWebApi)
                 throw new InvalidOperationException("IncludeWebApi is not needed if already Disable");
         }
-
-        private static void VerifyMarkerIsRegistered(IApplicationBuilder app)
-        {
-            if (app.ApplicationServices.GetService(typeof(DetectionMarkerService)) == null)
-                throw new InvalidOperationException($"{nameof(DetectionCollectionExtensions.AddDetection)} is not added to ConfigureServices(...)");
-        }
-
+        
         private static void VerifyEndpointRoutingMiddlewareIsNotRegistered(IApplicationBuilder app)
         {
             var EndpointRouteBuilder = "__EndpointRouteBuilder";
             if (app.Properties.TryGetValue(EndpointRouteBuilder, out var obj))
                 throw new InvalidOperationException($"{nameof(UseDetection)} must be in execution pipeline before {nameof(EndpointRoutingApplicationBuilderExtensions.UseRouting)} to 'Configure(...)' in the application startup code.");
+        }
+        
+        private static void VerifyMarkerIsRegistered(IApplicationBuilder app)
+        {
+            if (app.ApplicationServices.GetService(typeof(DetectionMarkerService)) == null)
+                throw new InvalidOperationException($"{nameof(DetectionCollectionExtensions.AddDetection)} is not added to ConfigureServices(...)");
         }
     }
 }

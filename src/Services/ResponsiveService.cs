@@ -5,7 +5,7 @@ using System;
 using System.Linq;
 using System.Text;
 using Microsoft.AspNetCore.Http;
-using Wangkanai.Detection.DependencyInjection;
+using Wangkanai.Detection;
 using Wangkanai.Detection.Models;
 
 namespace Wangkanai.Detection.Services

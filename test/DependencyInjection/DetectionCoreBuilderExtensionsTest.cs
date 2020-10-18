@@ -4,12 +4,12 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using Wangkanai.Detection;
 using Wangkanai.Detection.Services;
 using Xunit;
 
-namespace Wangkanai.Detection.DependencyInjection
+namespace Microsoft.Extensions.DependencyInjection
 {
     public class CoreBuilderExtensionsTest
     {

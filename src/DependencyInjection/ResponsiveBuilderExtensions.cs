@@ -53,6 +53,7 @@ namespace Microsoft.Extensions.DependencyInjection
             {
                 options.Conventions.Add(new ResponsivePageRouteModelConvention());
             });
+            
             services.AddSingleton<MatcherPolicy, ResponsivePageMatcherPolicy>();
             
             return services;
