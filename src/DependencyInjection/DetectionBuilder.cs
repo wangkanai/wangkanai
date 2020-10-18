@@ -15,7 +15,8 @@ namespace Microsoft.Extensions.DependencyInjection
         /// </summary>
         /// <param name="services">The <see cref="IServiceCollection" /> to attach to.</param>
         public DetectionBuilder(IServiceCollection services)
-            => Services = services ?? throw new ArgumentNullException(nameof(services));
+            => Services = services ?? 
+                          throw new ArgumentNullException(nameof(services));
 
         /// <summary>
         /// Gets the <see cref="IServiceCollection" /> services are attached to.
