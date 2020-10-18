@@ -4,7 +4,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Http;
 using Moq;
-using Wangkanai.Detection.DependencyInjection.Options;
+using Wangkanai.Detection.DependencyInjection;
 using Wangkanai.Detection.Models;
 using Wangkanai.Detection.Services;
 

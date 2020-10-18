@@ -3,7 +3,7 @@
 
 using Wangkanai.Detection.Models;
 
-namespace Wangkanai.Detection.DependencyInjection.Options
+namespace Wangkanai.Detection.DependencyInjection
 {
     /// <summary>
     /// The <see cref="ResponsiveOptions"/> class is the View container for all configuration settings of Responsive.

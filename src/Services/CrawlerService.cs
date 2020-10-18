@@ -4,7 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Wangkanai.Detection.DependencyInjection.Options;
+using Wangkanai.Detection.DependencyInjection;
 using Wangkanai.Detection.Extensions;
 using Wangkanai.Detection.Models;
 

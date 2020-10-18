@@ -3,7 +3,7 @@
 
 using System.Collections.Generic;
 
-namespace Wangkanai.Detection.DependencyInjection.Options
+namespace Wangkanai.Detection.DependencyInjection
 {
     /// <summary>
     /// The <see cref="CrawlerOptions"/> class is the Crawler container for all the configuration settings of Crawler Resolver.
