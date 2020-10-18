@@ -17,7 +17,7 @@ namespace Wangkanai.Detection.Extensions
 
         private static IEnumerable<Enum> GetFlags(Enum value, Enum[] values)
         {
-            var bits = Convert.ToUInt64(value);
+            var bits    = Convert.ToUInt64(value);
             var results = new List<Enum>();
             for (var i = values.Length - 1; i >= 0; i--)
             {
@@ -46,11 +46,11 @@ namespace Wangkanai.Detection.Extensions
             foreach (var value in Enum.GetValues(enumType).Cast<Enum>())
             {
                 var bits = Convert.ToUInt64(value);
-                if (bits == 0L)
+                if (bits == 0L) 
                     continue;
-                while (flag < bits)
+                while (flag < bits) 
                     flag <<= 1;
-                if (flag == bits)
+                if (flag == bits) 
                     yield return value;
             }
         }
