@@ -49,7 +49,7 @@ This project development has been in the long making of my little spare time. Pl
 
 ## Installation
 
-Installation of detection library is now done with a single package reference point. If you are using ASP.NET Core 2.X please use [detection version 2.0 installation](https://github.com/wangkanai/Detection/tree/master).
+Installation of detection library is now done with a single package reference point. If you are using ASP.NET Core 2.X please use [detection version 2.0 installation](https://github.com/wangkanai/Detection/tree/release/2.0).
 
 ```powershell
 PM> install-package Wangkanai.Detection -pre
