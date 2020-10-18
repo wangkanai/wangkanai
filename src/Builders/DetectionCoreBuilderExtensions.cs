@@ -4,7 +4,7 @@
 using System;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
-using Wangkanai.Detection.DependencyInjection.Options;
+using Wangkanai.Detection.DependencyInjection;
 using Wangkanai.Detection.Services;
 
 namespace Microsoft.Extensions.DependencyInjection
