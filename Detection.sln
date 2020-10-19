@@ -30,7 +30,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResponsivePage", "sample\Re
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Detection.Benchmark", "benchmark\Wangkanai.Detection.Benchmark.csproj", "{E33C2C22-4CB0-4CC0-81AC-905E4A9311D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorServerApp", "sample\BlazorServerApp\BlazorServerApp.csproj", "{C1F41274-39A0-4889-A669-CDC3506FF1AB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorServer", "sample\BlazorServer\BlazorServer.csproj", "{C1F41274-39A0-4889-A669-CDC3506FF1AB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
