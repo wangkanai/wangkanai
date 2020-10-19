@@ -14,7 +14,7 @@ namespace Wangkanai.Detection.Services
         /// <summary>
         /// Get the <see cref="HttpContext"/> of the application service.
         /// </summary>
-        HttpContext Context { get; }
+        HttpContext? Context { get; }
 
         /// <summary>
         /// Get the <see cref="UserAgent"/> of the request client.
