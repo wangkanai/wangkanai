@@ -17,8 +17,7 @@ namespace Wangkanai.Detection.Extensions
             => agent.ToString().Length;
 
         public static bool Contains(this UserAgent agent, string word)
-            => !word.IsNullOrEmpty()
-               && !agent.IsNullOrEmpty()
+            => (!agent.IsNullOrEmpty() && !word.IsNullOrEmpty())
                && agent.ToLower().Contains(word.ToLower());
 
         public static bool Contains(this UserAgent agent, string[] array)
