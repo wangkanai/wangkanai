@@ -61,10 +61,19 @@ namespace Wangkanai.Detection.Services
                 return new Version(9, 0);
 
             if (browser == Browser.Edge && !agent.Contains("edge"))
-                agent = agent.Replace("edg", "edge");
+                return GetVersionCommon(agent.Replace("edg", "edge"), browser);
 
-            var    name  = browser.ToString();
-            var    first = agent.IndexOf(browser);
+            if (browser == Browser.Safari && agent.Contains("version/"))
+                return GetVersionSafari(agent, browser);
+            
+            return GetVersionCommon(agent, browser);
+        }
+
+        private static Version GetVersionCommon(UserAgent agent, Browser browser)
+        {
+            var name  = browser.ToString();
+            var first = agent.IndexOf(browser);
+
             string cut;
             try
             {
@@ -76,6 +85,21 @@ namespace Wangkanai.Detection.Services
             }
 
             var version = cut.Contains(" ") ? cut.Substring(0, cut.IndexOf(' ')) : cut;
+            return version.ToVersion();
+        }
+
+        private static Version GetVersionSafari(UserAgent agent, Browser browser)
+        {
+            string version = "";
+            try
+            {
+                version = agent.Substring(agent.IndexOf("version/") + "version/".Length);
+                version = version.Substring(0, version.IndexOf(" "));
+            }
+            catch
+            {
+            }
+
             return version.ToVersion();
         }
 

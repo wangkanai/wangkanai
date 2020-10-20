@@ -3,12 +3,13 @@
 
 using System;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using Moq;
 using Xunit;
 
-namespace Microsoft.Extensions.DependencyInjection
+namespace Wangkanai.Detection.Builder
 {
     public class DetectionApplicationBuilderExtensionsTest
     {
