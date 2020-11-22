@@ -22,11 +22,12 @@ namespace Wangkanai.Detection.Services
         {
             if (accessor is null)
                 throw new ArgumentNullException(nameof(accessor));
-
+            if (accessor.HttpContext is null)
+                throw new ArgumentNullException(nameof(accessor.HttpContext));
             if (deviceService is null)
                 throw new ArgumentNullException(nameof(deviceService));
 
-            options = options ?? new DetectionOptions();
+            options ??= new DetectionOptions();
 
             _context     = accessor.HttpContext;
             _defaultView = DefaultView(deviceService.Type, options.Responsive);

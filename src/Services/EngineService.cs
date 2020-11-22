@@ -42,7 +42,7 @@ namespace Wangkanai.Detection.Services
             // Mozilla Gecko
             if (agent.Contains(Engine.Gecko))
                 return Engine.Gecko;
-            // Sumsang Servo
+            // Samsung Servo
             if (agent.Contains(Engine.Servo))
                 return Engine.Servo;
 

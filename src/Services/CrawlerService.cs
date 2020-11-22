@@ -62,7 +62,7 @@ namespace Wangkanai.Detection.Services
 
         private static string FindBot(UserAgent agent)
             => agent.Split(' ')
-                    .FirstOrDefault(x => CrawlerCount(x) > 0);
+                    .FirstOrDefault(x => CrawlerCount(x) > 0) ?? "";
 
         private static int CrawlerCount(string x)
             => Crawlers.Count(y => x.ToLower().Contains(y.ToString().ToLower()));
