@@ -4,6 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+
 using Wangkanai.Detection;
 using Wangkanai.Detection.Extensions;
 using Wangkanai.Detection.Models;
@@ -57,12 +58,12 @@ namespace Wangkanai.Detection.Services
         }
 
         private static bool HasOthers(UserAgent agent, IEnumerable<string> others)
-            => agent.Contains(others) 
+            => agent.Contains(others)
                || agent.Contains("bot");
 
         private static string FindBot(UserAgent agent)
             => agent.Split(' ')
-                    .FirstOrDefault(x => CrawlerCount(x) > 0);
+                    .FirstOrDefault(x => CrawlerCount(x) > 0) ?? string.Empty;
 
         private static int CrawlerCount(string x)
             => Crawlers.Count(y => x.ToLower().Contains(y.ToString().ToLower()));
