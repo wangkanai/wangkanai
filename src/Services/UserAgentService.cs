@@ -24,20 +24,4 @@ namespace Wangkanai.Detection.Services
             UserAgent = new UserAgent(Context.Request.Headers["User-Agent"].FirstOrDefault() ?? "");
         }
     }
-
-    public class ParserService : IUserAgentService
-    {
-        public HttpContext Context   { get; }
-        public UserAgent   UserAgent { get; }
-        
-        public ParserService(string useragent)
-        {
-            if (useragent is null)
-                throw new ArgumentNullException(nameof(useragent));
-
-            Context = new DefaultHttpContext();
-
-            UserAgent = new UserAgent(useragent);
-        }
-    }
 }

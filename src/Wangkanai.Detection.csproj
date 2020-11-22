@@ -27,11 +27,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <FrameworkReference Include="Microsoft.AspNetCore.App"/>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\asset\wangkanai-logo.png" Pack="true" PackagePath="\"/>
+    <None Include="..\asset\wangkanai-logo.png" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>

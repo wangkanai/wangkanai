@@ -18,7 +18,7 @@ namespace Wangkanai.Detection.Services
         private readonly Device      _defaultView;
         private const    string      ResponsiveContextKey = "Responsive";
 
-        public ResponsiveService(IHttpContextAccessor accessor, IDeviceService deviceService, DetectionOptions options)
+        public ResponsiveService(IHttpContextAccessor accessor, IDeviceService deviceService, DetectionOptions? options)
         {
             if (accessor is null)
                 throw new ArgumentNullException(nameof(accessor));
