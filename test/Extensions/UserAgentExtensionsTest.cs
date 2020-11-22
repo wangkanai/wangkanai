@@ -42,7 +42,7 @@ namespace Wangkanai.Detection.Extensions
         [Fact]
         public void Length()
         {
-            var agentNull = new UserAgent(null);
+            var agentNull = new UserAgent(null!);
             Assert.Equal(0, agentNull.Length());
             var agentEmpty = new UserAgent("");
             Assert.Equal(0, agentEmpty.Length());
@@ -54,7 +54,7 @@ namespace Wangkanai.Detection.Extensions
         public void ContainsString()
         {
             var agent = new UserAgent("abc");
-            Assert.False(agent.Contains((string) null));
+            Assert.False(agent.Contains((string) null!));
             Assert.False(agent.Contains(""));
             Assert.True(agent.Contains("abc"));
             Assert.True(agent.Contains("ABC"));
@@ -64,9 +64,9 @@ namespace Wangkanai.Detection.Extensions
         public void ContainsArray()
         {
             var agent = new UserAgent("abc");
-            Assert.False(agent.Contains(new[] {(string) null}));
+            Assert.False(agent.Contains(new[] {((string) null!)!}));
             Assert.False(agent.Contains(new[] {""}));
-            Assert.False(agent.Contains(new[] {(string) null, ""}));
+            Assert.False(agent.Contains(new[] {((string) null!)!, ""}));
             Assert.True(agent.Contains(new[] {"ABC"}));
             Assert.True(agent.Contains(new[] {"ABC", "abc"}));
             Assert.False(agent.Contains(new[] {"ABCD"}));
@@ -88,9 +88,9 @@ namespace Wangkanai.Detection.Extensions
         public void ContainsListString()
         {
             var agent = new UserAgent("Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)");
-            Assert.False(agent.Contains(new List<string> {null}));
+            Assert.False(agent.Contains(new List<string> {null!}));
             Assert.False(agent.Contains(new List<string> {""}));
-            Assert.False(agent.Contains(new List<string> {null, ""}));
+            Assert.False(agent.Contains(new List<string> {null!, ""}));
             Assert.False(agent.Contains(new List<string> {"abc"}));
             Assert.True(agent.Contains(new List<string> {"google"}));
             Assert.True(agent.Contains(new List<string> {"google", "abc"}));
@@ -101,7 +101,7 @@ namespace Wangkanai.Detection.Extensions
         public void StartsWithString()
         {
             var agent = new UserAgent("abc");
-            Assert.False(agent.StartsWith((string) null));
+            Assert.False(agent.StartsWith((string) null!));
             Assert.False(agent.StartsWith(""));
             Assert.True(agent.StartsWith("ab"));
             Assert.True(agent.StartsWith("AB"));
@@ -112,9 +112,9 @@ namespace Wangkanai.Detection.Extensions
         public void StartsWithArray()
         {
             var agent = new UserAgent("abc");
-            Assert.False(agent.StartsWith(new[] {(string) null}));
+            Assert.False(agent.StartsWith(new[] {((string) null!)!}));
             Assert.False(agent.StartsWith(new[] {""}));
-            Assert.False(agent.StartsWith(new[] {(string) null, ""}));
+            Assert.False(agent.StartsWith(new[] {((string) null!)!, ""}));
             Assert.True(agent.StartsWith(new[] {"AB"}));
             Assert.True(agent.StartsWith(new[] {"AB", "ab"}));
             Assert.False(agent.StartsWith(new[] {"ABCD"}));
@@ -124,9 +124,9 @@ namespace Wangkanai.Detection.Extensions
         public void StartsWithArrayMinimum()
         {
             var agent = new UserAgent("abcdefg");
-            Assert.False(agent.StartsWith(new[] {(string) null}, 4));
+            Assert.False(agent.StartsWith(new[] {((string) null!)!}, 4));
             Assert.False(agent.StartsWith(new[] {""}, 4));
-            Assert.False(agent.StartsWith(new[] {(string) null, ""}, 4));
+            Assert.False(agent.StartsWith(new[] {((string) null!)!, ""}, 4));
             Assert.True(agent.StartsWith(new[] {"ABCD"}, 4));
             Assert.True(agent.StartsWith(new[] {"ABCD", "abcd"}, 4));
             Assert.True(agent.StartsWith(new[] {"ABCDEF"}, 4));
@@ -155,7 +155,7 @@ namespace Wangkanai.Detection.Extensions
         public void IndexOfNull()
         {
             var agent = new UserAgent("abc");
-            Assert.Throws<NullReferenceException>(() => agent.IndexOf(null));
+            Assert.Throws<NullReferenceException>(() => agent.IndexOf(null!));
         }
 
         [Fact]

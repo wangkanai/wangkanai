@@ -13,7 +13,7 @@ namespace Wangkanai.Detection.Services
         [Fact]
         public void Null()
         {
-            var resolver = MockService.CrawlerService(null);
+            var resolver = MockService.CrawlerService(null!);
             Assert.NotNull(resolver);
             Assert.Equal(Crawler.Unknown, resolver.Name);
         }

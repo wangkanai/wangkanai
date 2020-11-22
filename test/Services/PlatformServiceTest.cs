@@ -15,7 +15,7 @@ namespace Wangkanai.Detection.Services
         [Fact]
         public void Null()
         {
-            var resolver = MockService.PlatformService((string) null);
+            var resolver = MockService.PlatformService((string) null!);
             Assert.NotNull(resolver);
             Assert.Equal(Platform.Unknown, resolver.Name);
             Assert.Equal(Processor.Others, resolver.Processor);

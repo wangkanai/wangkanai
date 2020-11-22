@@ -24,7 +24,7 @@ namespace Wangkanai.Detection.Hosting
         [Fact]
         public void GetDevice_Null_ThrowsArgumentNullException()
         {
-            Assert.Throws<ArgumentNullException>(() => ((HttpContext) null).GetDevice());
+            Assert.Throws<ArgumentNullException>(() => ((HttpContext) null!).GetDevice());
         }
 
         [Fact]

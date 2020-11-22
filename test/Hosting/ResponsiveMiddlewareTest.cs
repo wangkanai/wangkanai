@@ -19,7 +19,7 @@ namespace Wangkanai.Detection.Hosting
         public void Ctor_RequestDelegate_Null_ThrowsArgumentNullException()
         {
             Assert.Throws<ArgumentNullException>(
-                () => new ResponsiveMiddleware(null)
+                () => new ResponsiveMiddleware(null!)
             );
         }
 
@@ -29,18 +29,18 @@ namespace Wangkanai.Detection.Hosting
             var middleware = new ResponsiveMiddleware(Next);
 
             await Assert.ThrowsAsync<ArgumentNullException>(
-                async () => await middleware.InvokeAsync(null, null)
+                async () => await middleware.InvokeAsync(null!, null!)
             );
         }
 
         [Fact]
         public async void Invoke_HttpContext_ResponsiveService_Null_ThrowsNullReferenceException()
         {
-            var service    = MockService.HttpContextService(null);
+            var service    = MockService.HttpContextService(null!);
             var middleware = new ResponsiveMiddleware(Next);
 
             await Assert.ThrowsAsync<NullReferenceException>(
-                async () => await middleware.InvokeAsync(service.Context, null)
+                async () => await middleware.InvokeAsync(service.Context, null!)
             );
         }
 

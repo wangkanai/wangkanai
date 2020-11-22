@@ -12,7 +12,7 @@ namespace Wangkanai.Detection.Services
         [Fact]
         public void Null()
         {
-            var resolver = MockService.EngineService((string) null);
+            var resolver = MockService.EngineService((string) null!);
             Assert.NotNull(resolver);
             Assert.Equal(Engine.Unknown, resolver.Name);
         }

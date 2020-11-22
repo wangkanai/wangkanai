@@ -37,7 +37,7 @@ namespace Wangkanai.Detection.Mocks
         public PageRouteModel CreateAreaRouteModel(string relativePath, string routeTemplate)
         {
             if (!TryParseAreaPath(relativePath, out var areaResult))
-                return null;
+                return null!;
 
             var model  = new PageRouteModel(relativePath, areaResult.viewEnginePath, areaResult.areaName);
             var prefix = CreateAreaRoute(areaResult.areaName, areaResult.viewEnginePath);

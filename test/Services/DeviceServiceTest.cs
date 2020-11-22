@@ -12,7 +12,7 @@ namespace Wangkanai.Detection.Services
         [Fact]
         public void UserAgentIsNull()
         {
-            var resolver = MockService.DeviceService(null);
+            var resolver = MockService.DeviceService(null!);
             Assert.NotNull(resolver);
         }
 

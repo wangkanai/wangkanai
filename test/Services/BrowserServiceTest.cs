@@ -15,7 +15,7 @@ namespace Wangkanai.Detection.Services
         [Fact]
         public void Null()
         {
-            var resolver = MockService.BrowserService(null as string);
+            var resolver = MockService.BrowserService((null as string)!);
             Assert.NotNull(resolver);
             Assert.Equal(Browser.Unknown, resolver.Name);
             Assert.Equal(new Version(0, 0), resolver.Version);

@@ -16,8 +16,8 @@ namespace Wangkanai.Detection.Hosting
         [Fact]
         public void Apply_Null_Empty()
         {
-            Assert.Throws<ArgumentNullException>(() => CreatePageRouteModel(null, null));
-            Assert.Throws<ArgumentOutOfRangeException>(() => CreatePageRouteModel("", null));
+            Assert.Throws<ArgumentNullException>(() => CreatePageRouteModel(null!, null!));
+            Assert.Throws<ArgumentOutOfRangeException>(() => CreatePageRouteModel("", null!));
             Assert.Throws<ArgumentOutOfRangeException>(() => CreatePageRouteModel("", ""));
         }
 

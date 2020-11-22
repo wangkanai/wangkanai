@@ -12,7 +12,7 @@ namespace Wangkanai.Detection.Services
         [Fact]
         public void Ctor_Null()
         {
-            var resolver = MockService.ResponsiveService(null);
+            var resolver = MockService.ResponsiveService(null!);
             Assert.NotNull(resolver);
             Assert.Equal(Device.Desktop, resolver.View);
         }
@@ -20,7 +20,7 @@ namespace Wangkanai.Detection.Services
         [Fact]
         public void Ctor_Null_Options_Null()
         {
-            var resolver = MockService.ResponsiveService(null, null);
+            var resolver = MockService.ResponsiveService(null!, null!);
             Assert.NotNull(resolver);
             Assert.Equal(Device.Desktop, resolver.View);
         }

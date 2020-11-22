@@ -25,14 +25,14 @@ namespace Wangkanai.Detection.DependencyInjection
         public void AddDetection_Null_ArgumentNullException()
         {
             Assert.Throws<ArgumentNullException>(
-                () => ((IServiceCollection) null).AddDetection());
+                () => ((IServiceCollection) null!).AddDetection());
         }
 
         [Fact]
         public void AddDetection_Options_Null_ArgumentNullException()
         {
             Assert.Throws<ArgumentNullException>(
-                () => ((IServiceCollection) null).AddDetection(null));
+                () => ((IServiceCollection) null!).AddDetection(null!));
         }
 
         [Fact]
