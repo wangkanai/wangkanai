@@ -12,7 +12,7 @@ namespace Wangkanai.Detection.Services
         [Fact]
         public void Ctor_Null()
         {
-            var resolver = MockService.Responsive(null);
+            var resolver = MockService.ResponsiveService(null);
             Assert.NotNull(resolver);
             Assert.Equal(Device.Desktop, resolver.View);
         }
@@ -20,7 +20,7 @@ namespace Wangkanai.Detection.Services
         [Fact]
         public void Ctor_Null_Options_Null()
         {
-            var resolver = MockService.Responsive(null, null);
+            var resolver = MockService.ResponsiveService(null, null);
             Assert.NotNull(resolver);
             Assert.Equal(Device.Desktop, resolver.View);
         }
@@ -33,9 +33,9 @@ namespace Wangkanai.Detection.Services
             options.Responsive.DefaultTablet  = Device.Desktop;
             options.Responsive.DefaultMobile  = Device.Desktop;
 
-            Assert.Equal(Device.Desktop, MockService.Responsive("mobile", options).View);
-            Assert.Equal(Device.Desktop, MockService.Responsive("tablet", options).View);
-            Assert.Equal(Device.Desktop, MockService.Responsive("desktop", options).View);
+            Assert.Equal(Device.Desktop, MockService.ResponsiveService("mobile", options).View);
+            Assert.Equal(Device.Desktop, MockService.ResponsiveService("tablet", options).View);
+            Assert.Equal(Device.Desktop, MockService.ResponsiveService("desktop", options).View);
         }
 
         [Fact]
@@ -46,9 +46,9 @@ namespace Wangkanai.Detection.Services
             options.Responsive.DefaultTablet  = Device.Tablet;
             options.Responsive.DefaultMobile  = Device.Tablet;
 
-            Assert.Equal(Device.Tablet, MockService.Responsive("mobile", options).View);
-            Assert.Equal(Device.Tablet, MockService.Responsive("tablet", options).View);
-            Assert.Equal(Device.Tablet, MockService.Responsive("desktop", options).View);
+            Assert.Equal(Device.Tablet, MockService.ResponsiveService("mobile", options).View);
+            Assert.Equal(Device.Tablet, MockService.ResponsiveService("tablet", options).View);
+            Assert.Equal(Device.Tablet, MockService.ResponsiveService("desktop", options).View);
         }
 
         [Fact]
@@ -59,9 +59,9 @@ namespace Wangkanai.Detection.Services
             options.Responsive.DefaultTablet  = Device.Mobile;
             options.Responsive.DefaultMobile  = Device.Mobile;
 
-            Assert.Equal(Device.Mobile, MockService.Responsive("mobile", options).View);
-            Assert.Equal(Device.Mobile, MockService.Responsive("tablet", options).View);
-            Assert.Equal(Device.Mobile, MockService.Responsive("desktop", options).View);
+            Assert.Equal(Device.Mobile, MockService.ResponsiveService("mobile", options).View);
+            Assert.Equal(Device.Mobile, MockService.ResponsiveService("tablet", options).View);
+            Assert.Equal(Device.Mobile, MockService.ResponsiveService("desktop", options).View);
         }
     }
 }

@@ -37,12 +37,12 @@ namespace Wangkanai.Detection.Hosting
         //     using var server = MockServer.CreateServer();
         //
         //     var client   = server.CreateClient();
-        //     var request  = MockClient.CreateRequest(Device.Mobile);
+        //     var request  = MockClient.CreateRequest(DeviceService.Mobile);
         //     var response = await client.SendAsync(request);
         //     response.EnsureSuccessStatusCode();
         //     Assert.Contains("mobile", await response.Content.ReadAsStringAsync(), StringComparison.OrdinalIgnoreCase);
         //
-        //     request  = MockClient.CreateRequest(Device.Mobile, "/detection/preference/prefer");
+        //     request  = MockClient.CreateRequest(DeviceService.Mobile, "/detection/preference/prefer");
         //     response = await client.SendAsync(request);
         //     response.EnsureSuccessStatusCode();
         //     Assert.Contains("desktop", await response.Content.ReadAsStringAsync(), StringComparison.OrdinalIgnoreCase);

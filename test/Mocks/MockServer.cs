@@ -2,36 +2,40 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;
+
 using Wangkanai.Detection.Models;
 
 namespace Wangkanai.Detection.Mocks
 {
     internal static class MockServer
     {
-        public static TestServer Server()
+        internal static TestServer Server()
             => Server(WebHostBuilder());
 
-        public static TestServer Server(Action<DetectionOptions> options)
+        internal static TestServer Server(Action<DetectionOptions> options)
             => Server(WebHostBuilder(options));
 
-        public static TestServer Server(IWebHostBuilder builder)
-            => new TestServer(builder);
+        internal static TestServer Server(IWebHostBuilder builder)
+            => new(builder);
 
-        public static IWebHostBuilder WebHostBuilder()
+        #region Private
+
+        internal static IWebHostBuilder WebHostBuilder()
             => WebHostBuilder(options => { });
 
-        public static IWebHostBuilder WebHostBuilder(RequestDelegate contextHandler)
-            => WebHostBuilder(contextHandler, options => { });
-        
-        public static IWebHostBuilder WebHostBuilder(Action<DetectionOptions> options)
+        internal static IWebHostBuilder WebHostBuilder(Action<DetectionOptions> options)
             => WebHostBuilder(ContextHandler, options);
+        
+        internal static IWebHostBuilder WebHostBuilder(RequestDelegate contextHandler)
+            => WebHostBuilder(contextHandler, options => { });
 
-        public static IWebHostBuilder WebHostBuilder(RequestDelegate contextHandler, Action<DetectionOptions> options)
+        private static IWebHostBuilder WebHostBuilder(RequestDelegate contextHandler, Action<DetectionOptions> options)
             => new WebHostBuilder()
                .ConfigureServices(services =>
                    services.AddDetection(options))
@@ -53,5 +57,7 @@ namespace Wangkanai.Detection.Mocks
                 Device.Car     => context.Response.WriteAsync("Response: Car"),
                 _              => context.Response.WriteAsync("Response: Who?")
             };
+
+        #endregion
     }
 }

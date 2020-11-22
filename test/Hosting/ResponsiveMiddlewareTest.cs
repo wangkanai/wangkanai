@@ -36,7 +36,7 @@ namespace Wangkanai.Detection.Hosting
         [Fact]
         public async void Invoke_HttpContext_ResponsiveService_Null_ThrowsNullReferenceException()
         {
-            var service    = MockService.HttpContext();
+            var service    = MockService.HttpContextService(null);
             var middleware = new ResponsiveMiddleware(Next);
 
             await Assert.ThrowsAsync<NullReferenceException>(
