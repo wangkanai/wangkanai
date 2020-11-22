@@ -9,12 +9,11 @@ namespace Wangkanai.Detection.Services
         public HttpContext Context { get; }
         public HttpRequest Request => Context.Request;
 
-        public HttpContextService(IHttpContextAccessor accessor)
-        {
-            if (accessor is null)
-                throw new ArgumentNullException(nameof(accessor));
-            
-            Context = accessor.HttpContext ?? new DefaultHttpContext();
-        }
+        public HttpContextService(IHttpContextAccessor accessor) 
+            => Context = accessor?.HttpContext 
+                         ?? new DefaultHttpContext();
+
+        public static HttpContextService CreateService()
+            => new(null!);
     }
 }
