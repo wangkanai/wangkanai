@@ -21,13 +21,13 @@ namespace Wangkanai.Detection.DependencyInjection
             var builder           = serviceCollection.AddDetectionBuilder().AddRequiredPlatformServices();
             var serviceDescriptors = new List<ServiceDescriptor>
             {
-                new ServiceDescriptor(typeof(IHttpContextAccessor), typeof(HttpContextAccessor), ServiceLifetime.Singleton),
-                new ServiceDescriptor(typeof(IOptions<>), typeof(DetectionOptions), ServiceLifetime.Singleton),
-                new ServiceDescriptor(typeof(IOptionsSnapshot<>), typeof(DetectionOptions), ServiceLifetime.Scoped),
-                new ServiceDescriptor(typeof(IOptionsMonitor<>), typeof(DetectionOptions), ServiceLifetime.Singleton),
-                new ServiceDescriptor(typeof(IOptionsFactory<>), typeof(DetectionOptions), ServiceLifetime.Transient),
-                new ServiceDescriptor(typeof(IOptionsMonitorCache<>), typeof(DetectionOptions), ServiceLifetime.Singleton),
-                new ServiceDescriptor(typeof(DetectionOptions), typeof(DetectionOptions), ServiceLifetime.Singleton)
+                new (typeof(IHttpContextAccessor), typeof(HttpContextAccessor), ServiceLifetime.Singleton),
+                new (typeof(IOptions<>), typeof(DetectionOptions), ServiceLifetime.Singleton),
+                new (typeof(IOptionsSnapshot<>), typeof(DetectionOptions), ServiceLifetime.Scoped),
+                new (typeof(IOptionsMonitor<>), typeof(DetectionOptions), ServiceLifetime.Singleton),
+                new (typeof(IOptionsFactory<>), typeof(DetectionOptions), ServiceLifetime.Transient),
+                new (typeof(IOptionsMonitorCache<>), typeof(DetectionOptions), ServiceLifetime.Singleton),
+                new (typeof(DetectionOptions), typeof(DetectionOptions), ServiceLifetime.Singleton)
             };
 
             Assert.NotNull(builder);
@@ -37,19 +37,19 @@ namespace Wangkanai.Detection.DependencyInjection
 
         [Fact]
         public void AddCoreServices_ReturnsExpected()
-        {
+        { 
             var serviceCollection = new ServiceCollection();
             var builder           = serviceCollection.AddDetectionBuilder().AddCoreServices();
             var serviceDescriptors = new List<ServiceDescriptor>
             {
-                new(typeof(IHttpContextService), typeof(HttpContextService), ServiceLifetime.Scoped),
-                new(typeof(IUserAgentService), typeof(UserAgentService), ServiceLifetime.Scoped),
-                new(typeof(IDeviceService), typeof(DeviceService), ServiceLifetime.Scoped),
-                new(typeof(IEngineService), typeof(EngineService), ServiceLifetime.Scoped),
-                new(typeof(IPlatformService), typeof(PlatformService), ServiceLifetime.Scoped),
-                new(typeof(IBrowserService), typeof(BrowserService), ServiceLifetime.Scoped),
-                new(typeof(ICrawlerService), typeof(CrawlerService), ServiceLifetime.Scoped),
-                new(typeof(IDetectionService), typeof(DetectionService), ServiceLifetime.Scoped),
+                new (typeof(IHttpContextService), typeof(HttpContextService), ServiceLifetime.Scoped),
+                new (typeof(IUserAgentService), typeof(UserAgentService), ServiceLifetime.Scoped),
+                new (typeof(IDeviceService), typeof(DeviceService), ServiceLifetime.Scoped),
+                new (typeof(IEngineService), typeof(EngineService), ServiceLifetime.Scoped),
+                new (typeof(IPlatformService), typeof(PlatformService), ServiceLifetime.Scoped),
+                new (typeof(IBrowserService), typeof(BrowserService), ServiceLifetime.Scoped),
+                new (typeof(ICrawlerService), typeof(CrawlerService), ServiceLifetime.Scoped),
+                new (typeof(IDetectionService), typeof(DetectionService), ServiceLifetime.Scoped),
             };
 
             Assert.NotNull(builder);
@@ -64,7 +64,7 @@ namespace Wangkanai.Detection.DependencyInjection
             var builder           = serviceCollection.AddDetectionBuilder().AddMarkerService();
             var serviceDescriptors = new List<ServiceDescriptor>
             {
-                new ServiceDescriptor(typeof(DetectionMarkerService), typeof(DetectionMarkerService), ServiceLifetime.Singleton),
+                new(typeof(DetectionMarkerService), typeof(DetectionMarkerService), ServiceLifetime.Singleton),
             };
 
             Assert.NotNull(builder);
