@@ -13,10 +13,8 @@ namespace Wangkanai.Detection.Mocks
 
         public static HttpRequestMessage CreateRequest(string agent, string url = "/")
         {
-            var context = MockService.HttpContextService(agent);
-            context.Request.Headers.Add("User-Agent", agent);
-            context.Request.Path = url;
             var request = new HttpRequestMessage(HttpMethod.Get, url);
+            request.Headers.Add("User-Agent", agent);
             return request;
         }
     }

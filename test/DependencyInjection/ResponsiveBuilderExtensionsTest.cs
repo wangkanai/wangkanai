@@ -122,6 +122,7 @@ namespace Wangkanai.Detection.DependencyInjection
                 options.Responsive.DefaultDesktop = device;
                 options.Responsive.IncludeWebApi  = false;
             });
+            await server.Host.StartAsync();
 
             var client   = server.CreateClient();
             var request  = MockClient.CreateRequest(agent, path);

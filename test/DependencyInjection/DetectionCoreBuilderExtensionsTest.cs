@@ -42,13 +42,14 @@ namespace Wangkanai.Detection.DependencyInjection
             var builder           = serviceCollection.AddDetectionBuilder().AddCoreServices();
             var serviceDescriptors = new List<ServiceDescriptor>
             {
-                new ServiceDescriptor(typeof(IUserAgentService), typeof(UserAgentService), ServiceLifetime.Scoped),
-                new ServiceDescriptor(typeof(IDeviceService), typeof(DeviceService), ServiceLifetime.Scoped),
-                new ServiceDescriptor(typeof(IEngineService), typeof(EngineService), ServiceLifetime.Scoped),
-                new ServiceDescriptor(typeof(IPlatformService), typeof(PlatformService), ServiceLifetime.Scoped),
-                new ServiceDescriptor(typeof(IBrowserService), typeof(BrowserService), ServiceLifetime.Scoped),
-                new ServiceDescriptor(typeof(ICrawlerService), typeof(CrawlerService), ServiceLifetime.Scoped),
-                new ServiceDescriptor(typeof(IDetectionService), typeof(DetectionService), ServiceLifetime.Scoped),
+                new(typeof(IHttpContextService), typeof(HttpContextService), ServiceLifetime.Scoped),
+                new(typeof(IUserAgentService), typeof(UserAgentService), ServiceLifetime.Scoped),
+                new(typeof(IDeviceService), typeof(DeviceService), ServiceLifetime.Scoped),
+                new(typeof(IEngineService), typeof(EngineService), ServiceLifetime.Scoped),
+                new(typeof(IPlatformService), typeof(PlatformService), ServiceLifetime.Scoped),
+                new(typeof(IBrowserService), typeof(BrowserService), ServiceLifetime.Scoped),
+                new(typeof(ICrawlerService), typeof(CrawlerService), ServiceLifetime.Scoped),
+                new(typeof(IDetectionService), typeof(DetectionService), ServiceLifetime.Scoped),
             };
 
             Assert.NotNull(builder);

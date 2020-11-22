@@ -33,6 +33,7 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IDetectionBuilder AddCoreServices(this IDetectionBuilder builder)
         {
             // Add Basic core to services
+            builder.Services.TryAddScoped<IHttpContextService, HttpContextService>();
             builder.Services.TryAddScoped<IUserAgentService, UserAgentService>();
             builder.Services.TryAddScoped<IDeviceService, DeviceService>();
             builder.Services.TryAddScoped<IEngineService, EngineService>();
