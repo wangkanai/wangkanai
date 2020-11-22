@@ -2,7 +2,9 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System.Linq;
+
 using Microsoft.AspNetCore.Http;
+
 using Wangkanai.Detection.Collections;
 using Wangkanai.Detection.Extensions;
 using Wangkanai.Detection.Models;
@@ -16,7 +18,8 @@ namespace Wangkanai.Detection.Services
         public DeviceService(IUserAgentService userAgentService)
         {
             var useragent = userAgentService.UserAgent;
-            var request   = userAgentService.Context?.Request?? new DefaultHttpContext().Request;
+            var request = userAgentService.Context?.Request
+                          ?? new DefaultHttpContext().Request;
 
             Type = DeviceFromUserAgent(useragent, request);
         }

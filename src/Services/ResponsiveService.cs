@@ -5,7 +5,6 @@ using System;
 using System.Linq;
 using System.Text;
 using Microsoft.AspNetCore.Http;
-using Wangkanai.Detection;
 using Wangkanai.Detection.Models;
 
 namespace Wangkanai.Detection.Services
@@ -49,6 +48,9 @@ namespace Wangkanai.Detection.Services
                 return defaultView;
 
             context.Session.TryGetValue(ResponsiveContextKey, out var raw);
+            
+            if (raw == null)
+                return defaultView;
 
             Enum.TryParse<Device>(Encoding.ASCII.GetString(raw), out var preferView);
 
