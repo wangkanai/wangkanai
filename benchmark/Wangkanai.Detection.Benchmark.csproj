@@ -1,18 +1,18 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
-    <LangVersion>8.0</LangVersion>
+    <TargetFramework>net5.0</TargetFramework>
     <IsPackable>false</IsPackable>
     <OutputType>Exe</OutputType>
+    <Nullable>annotations</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="BenchmarkDotNet" Version="0.12.1" />
+    <PackageReference Include="BenchmarkDotNet" Version="0.12.1"/>
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\Wangkanai.Detection.csproj" />
+    <ProjectReference Include="..\src\Wangkanai.Detection.csproj"/>
   </ItemGroup>
 
 </Project>
