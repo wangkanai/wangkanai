@@ -12,11 +12,6 @@ namespace Wangkanai.Detection.Services
     public interface IUserAgentService
     {
         /// <summary>
-        /// Get the <see cref="HttpContext"/> of the application service.
-        /// </summary>
-        HttpContext? Context { get; }
-
-        /// <summary>
         /// Get the <see cref="UserAgent"/> of the request client.
         /// </summary>
         UserAgent UserAgent { get; }

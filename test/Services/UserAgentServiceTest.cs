@@ -16,11 +16,11 @@ namespace Wangkanai.Detection.Services
             var context = new DefaultHttpContext();
             context.Request.Headers["User-Agent"] = agent;
 
-            var accessor = new HttpContextAccessor {HttpContext = context};
+            var accessor       = new HttpContextAccessor {HttpContext = context};
+            var contextService = new HttpContextService(accessor);
 
-            var useragentService = new UserAgentService(accessor);
-
-            Assert.NotNull(useragentService.Context);
+            var useragentService = new UserAgentService(contextService);
+            
             Assert.NotNull(useragentService.UserAgent);
             Assert.Equal(agent, useragentService.UserAgent.ToString());
         }

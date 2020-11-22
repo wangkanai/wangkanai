@@ -26,7 +26,6 @@ namespace Wangkanai.Detection.Services
             // Null check
             if (agent.IsNullOrEmpty())
                 return Engine.Unknown;
-
             // Microsoft Edge
             if (IsEdge(agent, os))
                 return Engine.Edge;
@@ -42,7 +41,7 @@ namespace Wangkanai.Detection.Services
             // Mozilla Gecko
             if (agent.Contains(Engine.Gecko))
                 return Engine.Gecko;
-            // Samsang Servo
+            // Samsung Servo
             if (agent.Contains(Engine.Servo))
                 return Engine.Servo;
 

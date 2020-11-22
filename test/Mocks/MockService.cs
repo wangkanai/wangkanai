@@ -2,8 +2,11 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System.Diagnostics;
+
 using Microsoft.AspNetCore.Http;
+
 using Moq;
+
 using Wangkanai.Detection.Models;
 using Wangkanai.Detection.Services;
 
@@ -82,7 +85,7 @@ namespace Wangkanai.Detection.Mocks
 
         #region UserAgent
 
-        public static IUserAgentService UserAgent(string agent)
+        private static IUserAgentService UserAgent(string agent)
             => MockUserAgentService(agent).Object;
 
         private static IUserAgentService UserAgent(string value, string header)
@@ -90,32 +93,59 @@ namespace Wangkanai.Detection.Mocks
 
         #endregion
 
+        #region HttpContext
+
+        public static IHttpContextService HttpContext(string agent)
+            => MockHttpContextService(agent).Object;
+
+        #endregion
+
         #region Internal
 
         private static IHttpContextAccessor HttpContextAccessor(string agent, string header = null)
-            => new HttpContextAccessor {HttpContext = CreateContext(agent, header)};
-
-        private static HttpContext CreateContext(string value, string header = null)
         {
-            if (header == null) header = "User-Agent";
-            var context                = new DefaultHttpContext();
+            var accessor = new HttpContextAccessor {HttpContext = CreateContext(agent, header)};
+            return accessor;
+        }
+
+        private static HttpContext CreateContext(string agent)
+        {
+            var context = new DefaultHttpContext();
+            context.Request.Headers.Add("User-Agent", new[] {agent});
+            return context;
+        }
+
+        private static HttpContext CreateContext(string value, string header)
+        {
+            var context = new DefaultHttpContext();
             context.Request.Headers.Add(header, new[] {value});
             return context;
         }
 
         private static Mock<IUserAgentService> MockUserAgentService(string value, string header)
-            => CreateContext(value, header).SetupUserAgent(null);
+            => CreateContext(value, header)
+                .SetupUserAgent(null);
 
         private static Mock<IUserAgentService> MockUserAgentService(string agent)
-            => CreateContext(agent).SetupUserAgent(agent);
+            => CreateContext(agent)
+                .SetupUserAgent(agent);
 
-        private static Mock<IUserAgentService> SetupUserAgent(this HttpContext context, string agent)
+        private static Mock<IHttpContextService> MockHttpContextService(string agent)
+            => CreateContext(agent).SetupHttpContextService();
+
+        private static Mock<IUserAgentService> SetupUserAgent(this UserAgent agent)
         {
             var service = new Mock<IUserAgentService>();
+            service.Setup(f => f.UserAgent)
+                   .Returns(agent);
+            return service;
+        }
+
+        private static Mock<IHttpContextService> SetupHttpContextService(this HttpContext context)
+        {
+            var service = new Mock<IHttpContextService>();
             service.Setup(f => f.Context)
                    .Returns(context);
-            service.Setup(f => f.UserAgent)
-                   .Returns(new UserAgent(agent));
             return service;
         }
 

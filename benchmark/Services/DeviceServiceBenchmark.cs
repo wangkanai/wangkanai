@@ -46,7 +46,9 @@ namespace Wangkanai.Detection.Services
         {
             foreach (var accessor in Accessors)
             {
-                var deviceService = new DeviceService(new UserAgentService(accessor));
+                var contextService   = new HttpContextService(accessor);
+                var userAgentService = new UserAgentService(contextService);
+                var deviceService    = new DeviceService(userAgentService);
                 _ = deviceService.Type;
             }
         }

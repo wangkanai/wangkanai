@@ -16,8 +16,9 @@ namespace Backend
             var context = new DefaultHttpContext();
             context.Request.Headers["User-Agent"] = agent;
 
-            var accessor  = new HttpContextAccessor {HttpContext = context};
-            var useragent = new UserAgentService(accessor);
+            var accessor       = new HttpContextAccessor {HttpContext = context};
+            var contextService = new HttpContextService(accessor);
+            var useragent      = new UserAgentService(contextService);
             Console.WriteLine(useragent.UserAgent);
         }
     }

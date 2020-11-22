@@ -17,14 +17,12 @@ namespace Wangkanai.Detection.Services
 
         public DeviceService(IUserAgentService userAgentService)
         {
-            var useragent = userAgentService.UserAgent;
-            var request = userAgentService.Context?.Request
-                          ?? new DefaultHttpContext().Request;
+            var useragent = userAgentService.UserAgent; ;
 
-            Type = DeviceFromUserAgent(useragent, request);
+            Type = DeviceFromUserAgent(useragent);
         }
 
-        private static Device DeviceFromUserAgent(UserAgent agent, HttpRequest request)
+        private static Device DeviceFromUserAgent(UserAgent agent)
         {
             // Tablet
             if (IsTablet(agent))
@@ -33,7 +31,7 @@ namespace Wangkanai.Detection.Services
             if (IsTV(agent))
                 return Device.Tv;
             // Mobile
-            if (IsMobile(agent, request))
+            if (IsMobile(agent))
                 return Device.Mobile;
             // Watch
             if (agent.Contains(Device.Watch))
@@ -55,29 +53,9 @@ namespace Wangkanai.Detection.Services
             => agent.Contains(TabletCollection.Keywords)
                || agent.Contains(TabletCollection.Prefixes);
 
-        private static bool IsMobile(UserAgent agent, HttpRequest request)
+        private static bool IsMobile(UserAgent agent)
             => agent.Contains(MobileCollection.Keywords)
-               || agent.StartsWith(MobileCollection.Prefixes, 4)
-               || IsOperaMini(request)
-               || IsUserAgentWap(request)
-               || IsAcceptHeaderWap(request);
-
-        #region Mobile
-
-        private static bool IsOperaMini(HttpRequest request)
-            => request.Headers.Any(header => header.Value.Any(IsOperaMini));
-
-        private static bool IsOperaMini(string value)
-            => value?.Contains("OperaMini") ?? false;
-
-        private static bool IsUserAgentWap(HttpRequest request)
-            => request.Headers.ContainsKey("x-wap-profile")
-               || request.Headers.ContainsKey("Profile");
-
-        private static bool IsAcceptHeaderWap(HttpRequest request)
-            => request.Headers["Accept"].Any(accept => accept.ToLower() == "wap");
-
-        #endregion
+               || agent.StartsWith(MobileCollection.Prefixes, 4);
 
         private static bool IsTV(UserAgent agent)
             => agent.Contains(Device.Tv) || agent.Contains("BRAVIA");

@@ -4,8 +4,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
-using Wangkanai.Detection;
 using Wangkanai.Detection.Extensions;
 using Wangkanai.Detection.Models;
 
