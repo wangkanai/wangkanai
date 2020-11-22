@@ -102,11 +102,11 @@ namespace Wangkanai.Detection.Mocks
 
         #region Internal
 
-        private static IHttpContextAccessor HttpContextAccessor(string agent, string header = null)
-        {
-            var accessor = new HttpContextAccessor {HttpContext = CreateContext(agent, header)};
-            return accessor;
-        }
+        private static IHttpContextAccessor HttpContextAccessor(string agent, string header = null) 
+            => new HttpContextAccessor
+            {
+                HttpContext = CreateContext(agent, header)
+            };
 
         private static HttpContext CreateContext(string agent)
         {
