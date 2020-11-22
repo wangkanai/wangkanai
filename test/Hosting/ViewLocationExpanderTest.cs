@@ -125,7 +125,7 @@ namespace Wangkanai.Detection.Hosting
         public void ExpandViewLocations_Null_IEnumerable_ThrowsArgumentNullException()
         {
             var locationExpander = new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Suffix);
-            Assert.Throws<ArgumentNullException>(() => locationExpander.ExpandViewLocations(null, new List<string>()));
+            Assert.Throws<ArgumentNullException>(() => locationExpander.ExpandViewLocations(null!, new List<string>()));
         }
 
         [Fact]
@@ -133,14 +133,14 @@ namespace Wangkanai.Detection.Hosting
         {
             var locationExpander = new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Suffix);
             Assert.Throws<ArgumentNullException>(() =>
-                locationExpander.ExpandViewLocations(SetupViewLocationExpanderContext(Device.Tablet), null));
+                locationExpander.ExpandViewLocations(SetupViewLocationExpanderContext(Device.Tablet), null!));
         }
 
         [Fact]
         public void PopulateValues_Null_ThrowsArgumentNullException()
         {
             var locationExpander = new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Suffix);
-            Assert.Throws<ArgumentNullException>(() => locationExpander.PopulateValues(null));
+            Assert.Throws<ArgumentNullException>(() => locationExpander.PopulateValues(null!));
         }
 
         [Fact]

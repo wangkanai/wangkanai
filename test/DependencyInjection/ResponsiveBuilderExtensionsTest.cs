@@ -25,14 +25,14 @@ namespace Wangkanai.Detection.DependencyInjection
         public void AddDetection_Null_ArgumentNullException()
         {
             Assert.Throws<ArgumentNullException>(
-                () => ((IServiceCollection) null).AddDetection());
+                () => ((IServiceCollection) null!).AddDetection());
         }
 
         [Fact]
         public void AddDetection_Options_Null_ArgumentNullException()
         {
             Assert.Throws<ArgumentNullException>(
-                () => ((IServiceCollection) null).AddDetection(null));
+                () => ((IServiceCollection) null!).AddDetection(null!));
         }
 
         [Fact]
@@ -122,6 +122,7 @@ namespace Wangkanai.Detection.DependencyInjection
                 options.Responsive.DefaultDesktop = device;
                 options.Responsive.IncludeWebApi  = false;
             });
+            await server.Host.StartAsync();
 
             var client   = server.CreateClient();
             var request  = MockClient.CreateRequest(agent, path);

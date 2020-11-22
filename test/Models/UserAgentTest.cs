@@ -28,7 +28,7 @@ namespace Wangkanai.Detection.Models
         [Fact]
         public void Ctor_Null_Success()
         {
-            var userAgent = new UserAgent(null);
+            var userAgent = new UserAgent(null!);
 
             Assert.NotNull(userAgent.ToString());
         }
