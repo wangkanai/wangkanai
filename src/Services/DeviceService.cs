@@ -16,7 +16,7 @@ namespace Wangkanai.Detection.Services
         public DeviceService(IUserAgentService userAgentService)
         {
             var useragent = userAgentService.UserAgent;
-            var request   = userAgentService.Context.Request;
+            var request   = userAgentService.Context?.Request?? new DefaultHttpContext().Request;
 
             Type = DeviceFromUserAgent(useragent, request);
         }

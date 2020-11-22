@@ -18,15 +18,16 @@ namespace Wangkanai.Detection.Services
         private readonly Device      _defaultView;
         private const    string      ResponsiveContextKey = "Responsive";
 
-        public ResponsiveService(IHttpContextAccessor accessor, IDeviceService deviceService, DetectionOptions options)
+        public ResponsiveService(IHttpContextAccessor accessor, IDeviceService deviceService, DetectionOptions? options)
         {
             if (accessor is null)
                 throw new ArgumentNullException(nameof(accessor));
-
+            if (accessor.HttpContext is null)
+                throw new ArgumentNullException(nameof(accessor.HttpContext));
             if (deviceService is null)
                 throw new ArgumentNullException(nameof(deviceService));
 
-            options = options ?? new DetectionOptions();
+            options ??= new DetectionOptions();
 
             _context     = accessor.HttpContext;
             _defaultView = DefaultView(deviceService.Type, options.Responsive);
@@ -48,9 +49,6 @@ namespace Wangkanai.Detection.Services
                 return defaultView;
 
             context.Session.TryGetValue(ResponsiveContextKey, out var raw);
-
-            if (raw == null)
-                return defaultView;
 
             Enum.TryParse<Device>(Encoding.ASCII.GetString(raw), out var preferView);
 
