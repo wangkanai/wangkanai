@@ -20,7 +20,7 @@ namespace Microsoft.Extensions.DependencyInjection
             => services.AddDetectionBuilder()
                        .AddRequiredPlatformServices()
                        .AddCoreServices()
-                       .AddSessionServices()
+                       //.AddSessionServices()
                        .AddResponsiveService()
                        .AddMarkerService();
 
