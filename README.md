@@ -63,6 +63,14 @@ public void ConfigureServices(IServiceCollection services)
     // Add detection services container and device resolver service.
     services.AddDetection();
 
+    // Needed by Wangkanai Detection
+    services.AddSession(options =>
+    {
+        options.IdleTimeout = TimeSpan.FromSeconds(10);
+        options.Cookie.HttpOnly = true;
+        options.Cookie.IsEssential = true;
+    });
+
     // Add framework services.
     services.AddControllersWithViews();
 }
@@ -78,6 +86,8 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
     app.UseDetection();
     
     app.UseRouting();
+
+    app.UseSession();
 
     app.UseEndpoints(endpoints => endpoints.MapDefaultControllerRoute());
 }
