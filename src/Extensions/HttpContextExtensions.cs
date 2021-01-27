@@ -27,7 +27,7 @@ namespace Microsoft.AspNetCore.Http
                 throw new ArgumentNullException(nameof(context.Items));
 
             return context.Items.TryGetValue(ResponsiveContextKey, out var responsive)
-                       ? (Device) responsive
+                       ? (Device) (responsive ?? Device.Unknown)
                        : Device.Desktop;
         }
     }

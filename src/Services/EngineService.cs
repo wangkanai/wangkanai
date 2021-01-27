@@ -59,8 +59,6 @@ namespace Wangkanai.Detection.Services
                && agent.Contains(Engine.WebKit);
 
         private static bool IsEdge(UserAgent agent, Platform os)
-            => agent.Contains(Engine.Edge)
-               || agent.Contains("Edg")
-               && (Platform.Windows | Platform.Android).HasFlag(os);
+            => agent.Contains(Engine.Edge);
     }
 }
