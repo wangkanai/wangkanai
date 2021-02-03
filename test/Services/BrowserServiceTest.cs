@@ -1,4 +1,5 @@
-﻿// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
+// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
+// Modifications Copyright (c) 2020 Kapok Marketing, Inc.
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
@@ -102,6 +103,7 @@ namespace Wangkanai.Detection.Services
 
         [Theory]
         [InlineData("x-men")]
+        [InlineData("{version:6.2104.2-x86_64,platform:server_android,osversion:10}")]
         public void Others(string agent)
         {
             var resolver = MockService.BrowserService(agent);

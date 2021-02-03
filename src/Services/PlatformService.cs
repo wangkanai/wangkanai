@@ -1,8 +1,10 @@
 // Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
+// Modifications Copyright (c) 2020 Kapok Marketing, Inc.
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
 using System.Linq;
+
 using Wangkanai.Detection.Extensions;
 using Wangkanai.Detection.Models;
 
@@ -11,15 +13,15 @@ namespace Wangkanai.Detection.Services
     public class PlatformService : IPlatformService
     {
         public Processor Processor { get; }
-        public Platform  Name      { get; }
-        public Version   Version   { get; }
+        public Platform Name { get; }
+        public Version Version { get; }
 
         public PlatformService(IUserAgentService userAgentService)
         {
             var agent = userAgentService.UserAgent;
-            Name      = GetPlatform(agent);
+            Name = GetPlatform(agent);
             Processor = GetProcessor(agent, Name);
-            Version   = GetVersion(agent.ToString(), Name);
+            Version = GetVersion(agent.ToString(), Name);
         }
 
         private static Platform GetPlatform(UserAgent agent)
@@ -46,23 +48,25 @@ namespace Wangkanai.Detection.Services
             return Platform.Others;
         }
 
-        private static Version GetVersion(string agent, Platform platform) 
+        private static Version GetVersion(string agent, Platform platform)
             => platform switch
-        {
-            Platform.Unknown => new Version(),
-            Platform.Others  => new Version(),
-            Platform.Windows => ParseOsVersion(agent, "windowsnt"),
-            Platform.Android => ParseOsVersion(agent, "android"),
-            Platform.Mac     => ParseOsVersion(agent, "intelmacosx"),
-            Platform.iOS     => ParseOsVersion(agent, "cpuiphoneos"),
-            Platform.Linux   => ParseOsVersion(agent, "rv:"),
-            _                => new Version()
-        };
+            {
+                Platform.Unknown => new Version(),
+                Platform.Others => new Version(),
+                Platform.Windows => ParseOsVersion(agent, "windowsnt"),
+                Platform.Android => ParseOsVersion(agent, "android"),
+                Platform.Mac => ParseOsVersion(agent, "intelmacosx"),
+                Platform.iOS => ParseOsVersion(agent, "cpuiphoneos"),
+                Platform.Linux => ParseOsVersion(agent, "rv:"),
+                _ => new Version()
+            };
 
-        private static Version ParseOsVersion(string agent, string versionPrefix) =>
-            (agent.RegexMatch(@"\(([^\)]+)\)")
-                  .Captures[0]
-                  .Value
+        private static Version ParseOsVersion(string agent, string versionPrefix)
+        {
+            return (agent.RegexMatch(@"\(([^\)]+)\)")
+                  .Captures
+                  .FirstOrDefault()
+                  ?.Value
                   .RemoveAll(" ", "(", ")")
                   .Split(';')
                   .FirstOrDefault(x => x.StartsWith(versionPrefix, StringComparison.InvariantCultureIgnoreCase)) ?? string.Empty)
@@ -70,6 +74,7 @@ namespace Wangkanai.Detection.Services
             .RegexMatch(@"(?:(\d+)\.)?(?:(\d+)\.)?(?:(\d+)\.\d+)")
             .Value
             .ToVersion();
+        }
 
         private static Processor GetProcessor(UserAgent agent, Platform os)
         {
@@ -96,7 +101,7 @@ namespace Wangkanai.Detection.Services
 
         private static bool IsX86(UserAgent agent)
             => agent.Contains(Processor.x86)
-               || agent.Contains(new[] {"i86", "i686"});
+               || agent.Contains(new[] { "i86", "i686" });
 
         private static bool IsX64(UserAgent agent)
             => agent.Contains(Processor.x64)
@@ -105,6 +110,6 @@ namespace Wangkanai.Detection.Services
 
         private static bool IsiOS(UserAgent agent)
             => agent.Contains(Platform.iOS)
-               || agent.Contains(new[] {"iPad", "iPhone", "iPod"});
+               || agent.Contains(new[] { "iPad", "iPhone", "iPod" });
     }
 }
