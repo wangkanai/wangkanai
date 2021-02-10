@@ -103,6 +103,7 @@ namespace Wangkanai.Detection.Services
 
         [Theory]
         [InlineData("x-men")]
+        [InlineData("UGO")]
         [InlineData("{version:6.2104.2-x86_64,platform:server_android,osversion:10}")]
         public void Others(string agent)
         {

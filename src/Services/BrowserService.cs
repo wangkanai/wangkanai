@@ -1,4 +1,5 @@
 // Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
+// Modifications Copyright (c) 2020 Kapok Marketing, Inc.
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
@@ -74,6 +75,11 @@ namespace Wangkanai.Detection.Services
             var name  = browser.ToString();
             var first = agent.IndexOf(browser);
 
+            if (first < 0 || first + name.Length > agent.Length)
+                return new Version();
+
+            // TODO: The below is rather inefficient, especially given the above tweak
+            // Reconsider this entire method if we run into additional problematic UA strings.
             string cut;
             try
             {
