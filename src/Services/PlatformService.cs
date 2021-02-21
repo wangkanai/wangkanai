@@ -3,6 +3,7 @@
 
 using System;
 using System.Linq;
+using System.Text.RegularExpressions;
 using Wangkanai.Detection.Extensions;
 using Wangkanai.Detection.Models;
 
@@ -17,94 +18,91 @@ namespace Wangkanai.Detection.Services
         public PlatformService(IUserAgentService userAgentService)
         {
             var agent = userAgentService.UserAgent;
-            Name      = GetPlatform(agent);
-            Processor = GetProcessor(agent, Name);
-            Version   = GetVersion(agent.ToString(), Name);
+
+            var match = Regex.Match(agent.ToString(), @"\(([^\)]+)\)");
+            var sysInfo = match.Success ? match.Groups[1].Value : String.Empty;
+
+            Name      = GetPlatform(sysInfo);
+            Processor = GetProcessor(sysInfo, Name);
+            Version   = GetVersion(sysInfo, Name);
         }
 
-        private static Platform GetPlatform(UserAgent agent)
+        private static Platform GetPlatform(string sysInfo)
         {
             // Unknown
-            if (agent.IsNullOrEmpty())
+            if (sysInfo.IsNullOrEmpty())
                 return Platform.Unknown;
             // Google Android
-            if (agent.Contains(Platform.Android))
+            if (sysInfo.HasAny(Platform.Android))
                 return Platform.Android;
             // Microsoft Windows
-            if (agent.Contains(Platform.Windows))
+            if (sysInfo.HasAny(Platform.Windows))
                 return Platform.Windows;
             // Apple iOS
-            if (IsiOS(agent))
+            if (sysInfo.HasAny(Platform.iOS, "iPad", "iPhone", "iPod"))
                 return Platform.iOS;
             // Apple Mac
-            if (agent.Contains(Platform.Mac))
+            if (sysInfo.HasAny(Platform.Mac))
                 return Platform.Mac;
             // Linux Distribution
-            if (agent.Contains(Platform.Linux))
+            if (sysInfo.HasAny(Platform.Linux))
                 return Platform.Linux;
 
             return Platform.Others;
         }
 
-        private static Version GetVersion(string agent, Platform platform) 
+        private static Version GetVersion(string sysInfo, Platform platform) 
             => platform switch
         {
             Platform.Unknown => new Version(),
             Platform.Others  => new Version(),
-            Platform.Windows => ParseOsVersion(agent, "windowsnt"),
-            Platform.Android => ParseOsVersion(agent, "android"),
-            Platform.Mac     => ParseOsVersion(agent, "intelmacosx"),
-            Platform.iOS     => ParseOsVersion(agent, "cpuiphoneos"),
-            Platform.Linux   => ParseOsVersion(agent, "rv:"),
+            Platform.Windows => ParseOsVersion(sysInfo, "windowsnt"),
+            Platform.Android => ParseOsVersion(sysInfo, "android"),
+            Platform.Mac     => ParseOsVersion(sysInfo, "intelmacosx"),
+            Platform.iOS     => ParseOsVersion(sysInfo, "cpuiphoneos"),
+            Platform.Linux   => ParseOsVersion(sysInfo, "rv:"),
             _                => new Version()
         };
 
-        private static Version ParseOsVersion(string agent, string versionPrefix) =>
-            (agent.RegexMatch(@"\(([^\)]+)\)")
-                  .Captures[0]
-                  .Value
-                  .RemoveAll(" ", "(", ")")
-                  .Split(';')
-                  .FirstOrDefault(x => x.StartsWith(versionPrefix, StringComparison.InvariantCultureIgnoreCase)) ?? string.Empty)
-            .Replace("_", ".")
-            .RegexMatch(@"(?:(\d+)\.)?(?:(\d+)\.)?(?:(\d+)\.\d+)")
-            .Value
-            .ToVersion();
-
-        private static Processor GetProcessor(UserAgent agent, Platform os)
+        private static Version ParseOsVersion(string sysInfo, string versionPrefix) 
         {
-            if (IsArm(agent, os))
+            var osPart = sysInfo
+                .RemoveAll(" ", "(", ")")
+                .Replace("_", ".")
+                .Split(';')
+                .FirstOrDefault(x => x.StartsWith(versionPrefix, StringComparison.InvariantCultureIgnoreCase)) ?? String.Empty;
+            var match = Regex.Match(osPart, @"(?:(\d+)\.)?(?:(\d+)\.)?(?:(\d+)\.\d+)");
+            
+            return (match.Success ? match.Value: String.Empty).ToVersion();
+        }
+                
+
+        private static Processor GetProcessor(string sysInfo, Platform os)
+        {
+            if (IsArm(sysInfo, os))
                 return Processor.ARM;
-            if (IsX64(agent))
+            if (IsX64(sysInfo))
                 return Processor.x64;
-            if (IsX86(agent))
+            if (IsX86(sysInfo))
                 return Processor.x86;
-            if (IsPowerPC(agent, os))
+            if (IsPowerPC(sysInfo, os))
                 return Processor.x64;
 
             return Processor.Others;
         }
 
-        private static bool IsArm(UserAgent agent, Platform os)
-            => agent.Contains(Processor.ARM)
-               || agent.Contains(Platform.Android)
+        private static bool IsArm(string sysInfo, Platform os)
+            => sysInfo.HasAny(Processor.ARM, Platform.Android)
                || os == Platform.iOS;
 
-        private static bool IsPowerPC(UserAgent agent, Platform os)
+        private static bool IsPowerPC(string sysInfo, Platform os)
             => os == Platform.Mac
-               && !agent.Contains("PPC");
+               && !sysInfo.HasAny("PPC");
 
-        private static bool IsX86(UserAgent agent)
-            => agent.Contains(Processor.x86)
-               || agent.Contains(new[] {"i86", "i686"});
+        private static bool IsX86(string sysInfo)
+            => sysInfo.HasAny(Processor.x86, "i86", "i686");
 
-        private static bool IsX64(UserAgent agent)
-            => agent.Contains(Processor.x64)
-               || agent.Contains("x86_64")
-               || agent.Contains("wow64");
-
-        private static bool IsiOS(UserAgent agent)
-            => agent.Contains(Platform.iOS)
-               || agent.Contains(new[] {"iPad", "iPhone", "iPod"});
+        private static bool IsX64(string sysInfo)
+            => sysInfo.HasAny(Processor.x64.ToString(), "x86_64", "wow64");
     }
 }

@@ -103,6 +103,7 @@ namespace Wangkanai.Detection.Services
         [InlineData("8.4.1", "Mozilla/5.0 (iPhone; CPU iPhone OS 8_4_1 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) FxiOS/1.0 Mobile/12H321 Safari/600.1.4")] // iOS
         [InlineData("10.0", "Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; Touch; LCJB; rv:11.0) like Gecko")] // Win10
         [InlineData("10.9.3", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/7046A194A")] // OSX
+        [InlineData("0.0", "axios/0.19.2")] // issue #481
         [InlineData("0.0", "")] // Other
         public void GetVersion(string version, string agent)
         {
