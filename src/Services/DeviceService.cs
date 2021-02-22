@@ -1,63 +1,54 @@
-// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
-// The Apache v2. See License.txt in the project root for license information.
-
-using System.Linq;
-
-using Microsoft.AspNetCore.Http;
+using System;
 
 using Wangkanai.Detection.Collections;
 using Wangkanai.Detection.Extensions;
 using Wangkanai.Detection.Models;
+using Wangkanai.Detection.Services.Interfaces;
 
 namespace Wangkanai.Detection.Services
 {
     public class DeviceService : IDeviceService
     {
-        public Device Type { get; }
+        private readonly IUserAgentService _userAgentService;
+        
+        private Device? _type;
+        public Device Type => _type ??= DeviceFromUserAgent();
 
         public DeviceService(IUserAgentService userAgentService)
         {
-            var useragent = userAgentService.UserAgent; ;
-
-            Type = DeviceFromUserAgent(useragent);
+            _userAgentService = userAgentService;
         }
 
-        private static Device DeviceFromUserAgent(UserAgent agent)
+        private Device DeviceFromUserAgent()
         {
-            // Tablet
+            var agent = _userAgentService.UserAgent.ToLower();
+            
             if (IsTablet(agent))
                 return Device.Tablet;
-            // Tv
             if (IsTV(agent))
                 return Device.Tv;
-            // Mobile
             if (IsMobile(agent))
                 return Device.Mobile;
-            // Watch
             if (agent.Contains(Device.Watch))
                 return Device.Watch;
-            // Console
             if (agent.Contains(Device.Console))
                 return Device.Console;
-            // Car
             if (agent.Contains(Device.Car))
                 return Device.Car;
-            // IoT
             if (agent.Contains(Device.IoT))
                 return Device.IoT;
-            // Desktop
+
             return Device.Desktop;
         }
 
-        private static bool IsTablet(UserAgent agent)
-            => agent.Contains(TabletCollection.Keywords)
-               || agent.Contains(TabletCollection.Prefixes);
+        private static bool IsTablet(string agent)
+            => agent.SearchContains(TabletCollection.KeywordsSearchTree);
 
-        private static bool IsMobile(UserAgent agent)
-            => agent.Contains(MobileCollection.Keywords)
-               || agent.StartsWith(MobileCollection.Prefixes, 4);
+        private static bool IsMobile(string agent)
+            => agent.Length >= 4 && agent.SearchStartsWith(MobileCollection.PrefixesSearchTree) ||
+               agent.SearchContains(MobileCollection.KeywordsSearchTree);
 
-        private static bool IsTV(UserAgent agent)
-            => agent.Contains(Device.Tv) || agent.Contains("BRAVIA");
+        private static bool IsTV(string agent)
+            => agent.Contains(Device.Tv) || agent.Contains("bravia", StringComparison.Ordinal);
     }
 }

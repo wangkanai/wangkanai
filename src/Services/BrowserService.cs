@@ -1,115 +1,118 @@
-// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
-// The Apache v2. See License.txt in the project root for license information.
-
 using System;
+
 using Wangkanai.Detection.Extensions;
 using Wangkanai.Detection.Models;
+using Wangkanai.Detection.Services.Interfaces;
 
 namespace Wangkanai.Detection.Services
 {
     public class BrowserService : IBrowserService
     {
-        public Browser Name    { get; }
-        public Version Version { get; }
+        private readonly IUserAgentService _userAgentService;
+        private readonly IEngineService _engineService;
 
-        public BrowserService(IUserAgentService userAgentService, IPlatformService platformService, IEngineService engineService)
+        public BrowserService(IUserAgentService userAgentService,
+            IEngineService engineService)
         {
-            var agent  = userAgentService.UserAgent;
-            var os     = platformService.Name;
-            var engine = engineService.Name;
-            Name    = GetBrowser(agent, os, engine);
-            Version = GetVersion(agent, Name);
+            _userAgentService = userAgentService;
+            _engineService = engineService;
         }
+        
+        private Browser? _browser;
+        private Version? _version;
+        public  Browser  Name    => _browser ??= GetBrowser();
+        public  Version  Version => _version ??= GetVersion();
 
-        private static Browser GetBrowser(UserAgent agent, Platform os, Engine engine)
+        private Browser GetBrowser()
         {
-            // fail and return fast
-            if (agent.IsNullOrEmpty())
+            var agent  = _userAgentService.UserAgent.ToLower();
+            var engine = _engineService.Name;
+            
+            if (string.IsNullOrEmpty(agent))
                 return Browser.Unknown;
-            // Microsoft Edge
             if (IsEdge(agent))
                 return Browser.Edge;
-            // Google chrome
             if (agent.Contains(Browser.Chrome))
                 return Browser.Chrome;
-            // Microsoft Internet Explorer
-            if (IsInternetExplorer(agent, os, engine))
+            if (IsInternetExplorer(agent, engine))
                 return Browser.InternetExplorer;
-            // Apple Safari
             if (agent.Contains(Browser.Safari))
                 return Browser.Safari;
-            // Firefox
             if (agent.Contains(Browser.Firefox))
                 return Browser.Firefox;
-            // Opera
             if (agent.Contains(Browser.Opera))
                 return Browser.Opera;
 
             return Browser.Others;
         }
 
-        private static Version GetVersion(UserAgent agent, Browser browser)
+        private Version GetVersion()
         {
-            if (agent.IsNullOrEmpty())
+            var agent = _userAgentService.UserAgent.ToLower();
+            var browser = Name;
+            
+            if (string.IsNullOrEmpty(agent))
                 return new Version();
 
-            if (agent.Contains("rv:11.0") || agent.Contains("ie 11.0"))
+            if (agent.Contains("rv:11.0", StringComparison.Ordinal) ||
+                agent.Contains("ie 11.0", StringComparison.Ordinal))
                 return new Version(11, 0);
-            if (agent.Contains("msie 10"))
+            if (agent.Contains("msie 10", StringComparison.Ordinal))
                 return new Version(10, 0);
-            if (agent.Contains("msie 9"))
+            if (agent.Contains("msie 9", StringComparison.Ordinal))
                 return new Version(9, 0);
 
-            if (browser == Browser.Edge && !agent.Contains("edge"))
-                return GetVersionCommon(agent.Replace("edg", "edge"), browser);
+            if (browser == Browser.Edge && !agent.Contains("edge", StringComparison.Ordinal))
+                return GetVersionCommon(agent.Replace("edg", "edge", StringComparison.Ordinal), browser);
 
-            if (browser == Browser.Safari && agent.Contains("version/"))
-                return GetVersionSafari(agent, browser);
-            
+            if (browser == Browser.Safari && agent.Contains("version/", StringComparison.Ordinal))
+                return GetVersionSafari(agent);
+
             return GetVersionCommon(agent, browser);
         }
 
-        private static Version GetVersionCommon(UserAgent agent, Browser browser)
+        private static Version GetVersionCommon(string agent, Browser browser)
         {
-            var name  = browser.ToString();
-            var first = agent.IndexOf(browser);
+            var name = browser.ToStringInvariant();
+            var first = agent.IndexOf(name, StringComparison.Ordinal);
 
             string cut;
-            try
+            if (agent.Length > first + name.Length + 1)
             {
                 cut = agent.Substring(first + name.Length + 1);
             }
-            catch
+            else
             {
                 cut = agent.Substring(first + name.Length);
             }
 
-            var version = cut.Contains(" ") ? cut.Substring(0, cut.IndexOf(' ')) : cut;
+            var indexOfSpace = cut.IndexOf(' ', StringComparison.Ordinal);
+            var version = indexOfSpace != -1 ? cut.Substring(0, indexOfSpace) : cut;
             return version.ToVersion();
         }
 
-        private static Version GetVersionSafari(UserAgent agent, Browser browser)
+        private static Version GetVersionSafari(string agent)
         {
             string version = "";
-            try
+            version = agent.Substring(agent.IndexOf("version/", StringComparison.Ordinal) +
+                                      "version/".Length);
+            var indexOfSpace = version.IndexOf(" ", StringComparison.Ordinal);
+            if (indexOfSpace != -1)
             {
-                version = agent.Substring(agent.IndexOf("version/") + "version/".Length);
-                version = version.Substring(0, version.IndexOf(" "));
-            }
-            catch
-            {
+                version = version.Substring(0, indexOfSpace);
             }
 
             return version.ToVersion();
         }
 
-        private static bool IsEdge(UserAgent agent)
+        private static bool IsEdge(string agent)
             => agent.Contains(Browser.Edge)
-               || (agent.Contains("Win64") && agent.Contains("Edg"));
+               || (agent.Contains("win64", StringComparison.Ordinal) &&
+                   agent.Contains("edg", StringComparison.Ordinal));
 
-        private static bool IsInternetExplorer(UserAgent agent, Platform os, Engine engine)
+        private static bool IsInternetExplorer(string agent, Engine engine)
             => engine == Engine.Trident
-               || agent.Contains("MSIE")
+               || agent.Contains("msie", StringComparison.Ordinal)
                && !agent.Contains(Browser.Opera);
     }
 }

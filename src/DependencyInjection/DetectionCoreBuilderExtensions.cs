@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
 using Wangkanai.Detection;
 using Wangkanai.Detection.Services;
+using Wangkanai.Detection.Services.Interfaces;
 
 namespace Microsoft.Extensions.DependencyInjection
 {

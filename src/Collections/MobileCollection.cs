@@ -1,12 +1,14 @@
 // Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
+using Wangkanai.Detection.Extensions;
+
 namespace Wangkanai.Detection.Collections
 {
     internal static class MobileCollection
     {
         // mobile device keywords
-        public static readonly string[] Keywords = 
+        private static readonly string[] Keywords = 
         {
             "iphone",
             "mobile",
@@ -37,8 +39,11 @@ namespace Wangkanai.Detection.Collections
             "windows phone"
         };
 
+        
+        public static readonly IndexTree KeywordsSearchTree = Keywords.BuildIndexTree();
+        
         // reference 4 character from http://www.webcab.de/wapua.htm
-        public static readonly string[] Prefixes =
+        private static readonly string[] Prefixes =
         {
             "w3c ",
             "w3c-",
@@ -129,5 +134,7 @@ namespace Wangkanai.Detection.Collections
             "xda ",
             "xda-"
         };
+        
+        public static readonly IndexTree PrefixesSearchTree = Prefixes.BuildIndexTree();
     }
 }

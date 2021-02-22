@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Wangkanai.Detection.Hosting;
 using Wangkanai.Detection.Services;
+using Wangkanai.Detection.Services.Interfaces;
 
 namespace Microsoft.Extensions.DependencyInjection
 {

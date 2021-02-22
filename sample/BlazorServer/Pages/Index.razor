@@ -1,6 +1,7 @@
 ﻿@page "/"
+@using Wangkanai.Detection.Services.Interfaces
 
-@inject Wangkanai.Detection.Services.IDetectionService Detection
+@inject IDetectionService Detection
 
 <div class="text-center">
     <div class="alert alert-primary">@Detection.UserAgent</div>

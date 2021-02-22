@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Moq;
 using Wangkanai.Detection.Models;
 using Wangkanai.Detection.Services;
+using Wangkanai.Detection.Services.Interfaces;
 
 namespace Wangkanai.Detection.Mocks
 {
@@ -35,7 +36,7 @@ namespace Wangkanai.Detection.Mocks
         {
             var platform = PlatformService(agent);
             var engine   = EngineService(agent);
-            return new BrowserService(agent, platform, engine);
+            return new BrowserService(agent, engine);
         }
 
         #endregion
