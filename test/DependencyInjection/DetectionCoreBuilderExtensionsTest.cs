@@ -6,9 +6,8 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
-using Wangkanai.Detection;
+
 using Wangkanai.Detection.Services;
-using Wangkanai.Detection.Services.Interfaces;
 
 using Xunit;
 

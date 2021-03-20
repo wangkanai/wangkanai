@@ -1,8 +1,4 @@
-﻿using System;
-
-using Microsoft.AspNetCore.Http;
-
-using Wangkanai.Detection.Services.Interfaces;
+﻿using Microsoft.AspNetCore.Http;
 
 namespace Wangkanai.Detection.Services
 {

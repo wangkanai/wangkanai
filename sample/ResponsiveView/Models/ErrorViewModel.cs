@@ -1,5 +1,3 @@
-using System;
-
 namespace ResponsiveView.Models
 {
     public class ErrorViewModel
