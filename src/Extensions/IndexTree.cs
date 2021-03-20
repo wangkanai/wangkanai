@@ -8,9 +8,7 @@ namespace Wangkanai.Detection.Extensions
         public IndexTree(string[]? keywords, int seed = 0)
         {
             if (seed > 0)
-            {
                 keywords = keywords?.Where(k => k.Length > seed).ToArray();
-            }
 
             if (keywords == null || keywords.Length == 0)
             {
@@ -25,18 +23,13 @@ namespace Wangkanai.Detection.Extensions
             _offset = lowerBound;
             _lookup = new IndexTree[upperBound - lowerBound + 1];
 
-            foreach (var (key, list) in keywords.GroupBy(k => k[seed])
-                .Select(x => (x.Key, x)))
+            foreach (var (key, list) in keywords.GroupBy(k => k[seed]).Select(x => (x.Key, x)))
             {
                 var newKeys = list.ToArray();
                 if (newKeys.Any(k => seed + 1 >= k.Length))
-                {
-                    _lookup[key - lowerBound] = new IndexTree(null, seed + 1);
-                }
+                    _lookup[key           - lowerBound] = new IndexTree(null, seed + 1);
                 else
-                {
                     _lookup[key - lowerBound] = new IndexTree(newKeys, seed + 1);
-                }
             }
         }
 
@@ -48,9 +41,9 @@ namespace Wangkanai.Detection.Extensions
             while (searchSource.Length > 0)
             {
                 var source = searchSource;
-                
+
                 var current = this;
-                var found = true;
+                var found   = true;
 
                 while (!current.IsEnd)
                 {
@@ -62,7 +55,7 @@ namespace Wangkanai.Detection.Extensions
                         break;
                     }
 
-                    var c = source[0];
+                    var c      = source[0];
                     var offset = current._offset;
 
                     if (c - offset < 0 || c - offset >= lookup.Length)
@@ -83,9 +76,7 @@ namespace Wangkanai.Detection.Extensions
                 }
 
                 if (found)
-                {
                     return true;
-                }
 
                 searchSource = searchSource.Slice(1);
             }
@@ -100,26 +91,20 @@ namespace Wangkanai.Detection.Extensions
             while (!current.IsEnd)
             {
                 var lookup = current._lookup;
-                
-                if (source.Length == 0 || lookup == null)
-                {
-                    return false;
-                }
 
-                var c = source[0];
+                if (source.Length == 0 || lookup == null)
+                    return false;
+
+                var c      = source[0];
                 var offset = current._offset;
 
                 if (c - offset < 0 || c - offset >= lookup.Length)
-                {
                     return false;
-                }
 
                 current = lookup[c - offset];
-                
+
                 if (current._lookup == null)
-                {
                     return false;
-                }
 
                 source = source.Slice(1);
             }

@@ -1,7 +1,6 @@
 ﻿using System;
 
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Primitives;
 
 using Wangkanai.Detection.Services;
 

@@ -11,31 +11,22 @@ namespace Wangkanai.Detection.Extensions
     {
         public static bool Contains<T>(this string agent, T flags)
             where T : Enum
-        {
-            if (EnumValues<T>.TryGetSingleName(flags, out var value) && value != null)
-                return agent.Contains(value, StringComparison.Ordinal);
-
-            return flags.GetFlags().Any(item => agent.Contains(item.ToStringInvariant(), StringComparison.Ordinal));
-        }
+            => EnumValues<T>.TryGetSingleName(flags, out var value) && value != null 
+                   ? agent.Contains(value, StringComparison.Ordinal) 
+                   : flags.GetFlags().Any(item => agent.Contains(item.ToStringInvariant(), StringComparison.Ordinal));
 
         public static string ToStringInvariant<T>(this T value)
             where T : Enum
-        {
-            return EnumValues<T>.GetName(value);
-        }
-        
+            => EnumValues<T>.GetName(value);
+
         public static IEnumerable<T> GetFlags<T>(this T value)
             where T : Enum
         {
             var values = EnumValues<T>.Values;
 
             foreach (var item in values)
-            {
                 if (value.HasFlag(item))
-                {
                     yield return item;
-                }
-            }
         }
     }
 }

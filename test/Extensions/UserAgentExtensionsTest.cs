@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using Wangkanai.Detection.Models;
 using Xunit;
-using Xunit.Sdk;
 
 namespace Wangkanai.Detection.Extensions
 {

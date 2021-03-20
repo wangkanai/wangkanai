@@ -4,10 +4,8 @@
 using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
-
 using Wangkanai.Detection.Extensions;
 using Wangkanai.Detection.Services;
-using Wangkanai.Detection.Services.Interfaces;
 
 namespace Wangkanai.Detection.Hosting
 {

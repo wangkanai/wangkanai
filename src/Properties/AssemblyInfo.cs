@@ -2,6 +2,5 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System.Runtime.CompilerServices;
-using System.Security.Cryptography.X509Certificates;
 
 [assembly: InternalsVisibleTo("Wangkanai.Detection.Test")]

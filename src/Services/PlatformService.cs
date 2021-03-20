@@ -4,7 +4,6 @@ using System.Text.RegularExpressions;
 
 using Wangkanai.Detection.Extensions;
 using Wangkanai.Detection.Models;
-using Wangkanai.Detection.Services.Interfaces;
 
 namespace Wangkanai.Detection.Services
 {

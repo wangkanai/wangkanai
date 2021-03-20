@@ -4,10 +4,8 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc.Razor;
 
+using Microsoft.AspNetCore.Mvc.Razor;
 using Wangkanai.Detection.Extensions;
 
 namespace Wangkanai.Detection.Hosting
