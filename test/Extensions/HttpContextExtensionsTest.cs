@@ -3,6 +3,8 @@
 
 using System;
 using Microsoft.AspNetCore.Http;
+
+using Wangkanai.Detection.Extensions;
 using Wangkanai.Detection.Models;
 using Xunit;
 

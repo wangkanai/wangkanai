@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 
-namespace Wangkanai.Detection.Services
+namespace Wangkanai.Detection.Services.Interfaces
 {
     /// <summary>
     /// Provides the APIs for HttpContext.

@@ -8,6 +8,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Wangkanai.Detection;
 using Wangkanai.Detection.Services;
+using Wangkanai.Detection.Services.Interfaces;
+
 using Xunit;
 
 namespace Wangkanai.Detection.DependencyInjection

@@ -2,6 +2,8 @@
 
 using Microsoft.AspNetCore.Http;
 
+using Wangkanai.Detection.Services.Interfaces;
+
 namespace Wangkanai.Detection.Services
 {
     public class HttpContextService : IHttpContextService

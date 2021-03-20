@@ -4,6 +4,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Wangkanai.Detection.Models;
 using Wangkanai.Detection.Services;
+using Wangkanai.Detection.Services.Interfaces;
 
 namespace Wangkanai.Detection.Hosting
 {

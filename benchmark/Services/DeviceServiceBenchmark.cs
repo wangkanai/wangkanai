@@ -48,7 +48,12 @@ namespace Wangkanai.Detection.Services
             {
                 var contextService   = new HttpContextService(accessor);
                 var userAgentService = new UserAgentService(contextService);
+                var platformService  = new PlatformService(userAgentService);
+                var engineService    = new EngineService(userAgentService, platformService);
+                var browserService   = new BrowserService(userAgentService, engineService);
                 var deviceService    = new DeviceService(userAgentService);
+                _ = browserService.Name;
+                _ = browserService.Version;
                 _ = deviceService.Type;
             }
         }

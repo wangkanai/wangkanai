@@ -3,7 +3,7 @@
 
 using Wangkanai.Detection.Models;
 
-namespace Wangkanai.Detection.Services
+namespace Wangkanai.Detection.Services.Interfaces
 {
     public interface IResponsiveService
     {

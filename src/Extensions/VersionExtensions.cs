@@ -4,48 +4,29 @@
 using System;
 using System.Diagnostics;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Wangkanai.Detection.Extensions
 {
     public static class VersionExtensions
     {
-        //[DebuggerStepThrough]
+        private static readonly Regex VersionCleanupRegex = new Regex(@"\+|\-|\s|beta",
+            RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
+        
         public static Version ToVersion(this string version)
         {
-            if (version.IsNullOrEmpty())
+            if (string.IsNullOrEmpty(version))
                 return new Version();
-            version = version.ToLower()
-                             .RemoveBeta()
-                             .RemoveWhitespace()
-                             .RemovePlus()
-                             .RemoveMinus();
 
-            if (!version.Contains("."))
+
+            version = VersionCleanupRegex.Replace(version, string.Empty);
+
+            if (!version.Contains(".", StringComparison.Ordinal))
                 version += ".0";
 
             return Version.TryParse(version, out var parsedVersion)
                        ? parsedVersion
                        : new Version(0, 0);
         }
-
-        private static string RemoveWhitespace(this string version)
-            => version.Contains(" ")
-                   ? version.Replace(" ", "")
-                   : version;
-
-        private static string RemovePlus(this string version)
-            => version.Contains("+")
-                   ? version.Replace("+", "")
-                   : version;
-
-        private static string RemoveMinus(this string version)
-            => version.Contains("-")
-                   ? version.Replace("-", "")
-                   : version;
-
-        private static string RemoveBeta(this string version)
-            => version.Contains("beta")
-                   ? version.Replace("beta", "")
-                   : version;
     }
 }

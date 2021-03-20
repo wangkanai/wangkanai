@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
+using Wangkanai.Detection.Extensions;
+
 namespace Wangkanai.Detection.Hosting
 {
     public class ResponsivePageLocationExpander : IViewLocationExpander
