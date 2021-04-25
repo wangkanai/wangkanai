@@ -3,6 +3,9 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <Nullable>enable</Nullable>
+
+<!--    <SignAssembly>true</SignAssembly>-->
+<!--    <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>-->
   </PropertyGroup>
   
   <ItemGroup>
