@@ -14,7 +14,7 @@
         <PackageLicense>https://github.com/wangkanai/detection/blob/main/LICENSE</PackageLicense>
         <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
 
-        <PackageIcon>wangkanai-logo.png</PackageIcon>
+        
     </PropertyGroup>
 
     <PropertyGroup>
@@ -39,7 +39,11 @@
         <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
     </ItemGroup>
 
-    <ItemGroup>
+    <PropertyGroup Condition="'$(Name)'=='Wangkanai.Detection'">
+        <PackageIcon>wangkanai-logo.png</PackageIcon>
+    </PropertyGroup>
+    
+    <ItemGroup Condition="'$(Name)'=='Wangkanai.Detection'">
         <None Include="..\asset\wangkanai-logo.png" Pack="true" PackagePath="\"/>
     </ItemGroup>
 </Project>
