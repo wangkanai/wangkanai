@@ -8,6 +8,10 @@
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Wangkanai.Runtime" Version="0.4.0" />
+  </ItemGroup>
 
 </Project>
 
