@@ -23,7 +23,7 @@ namespace Wangkanai.Detection.Mocks
             => Server(WebHostBuilder(options));
 
         internal static TestServer Server(IWebHostBuilder builder)
-            => new(builder);
+            => new TestServer(builder);
 
         #region Private
 
