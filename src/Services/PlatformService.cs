@@ -4,6 +4,7 @@
 
 using System;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 using Wangkanai.Detection.Extensions;
 using Wangkanai.Detection.Models;
@@ -13,43 +14,47 @@ namespace Wangkanai.Detection.Services
     public class PlatformService : IPlatformService
     {
         public Processor Processor { get; }
-        public Platform Name { get; }
-        public Version Version { get; }
+        public Platform  Name      { get; }
+        public Version   Version   { get; }
 
         public PlatformService(IUserAgentService userAgentService)
         {
-            var agent = userAgentService.UserAgent;
-            Name = GetPlatform(agent);
-            Processor = GetProcessor(agent, Name);
-            Version = GetVersion(agent.ToString(), Name);
+            _userAgentService = userAgentService;
         }
 
-        private static Platform GetPlatform(UserAgent agent)
+        private Processor? _processor;
+        private Platform?  _name;
+        private Version?   _version;
+        public  Processor  Processor => _processor ??= GetProcessor();
+        public  Platform   Name      => _name ??= GetPlatform();
+        public  Version    Version   => _version ??= GetVersion();
+
+        private Platform GetPlatform()
         {
-            // Unknown
-            if (agent.IsNullOrEmpty())
+            var agent = _userAgentService.UserAgent.ToLower();
+
+            if (string.IsNullOrEmpty(agent))
                 return Platform.Unknown;
-            // Google Android
+
             if (agent.Contains(Platform.Android))
                 return Platform.Android;
-            // Microsoft Windows
             if (agent.Contains(Platform.Windows))
                 return Platform.Windows;
-            // Apple iOS
             if (IsiOS(agent))
                 return Platform.iOS;
-            // Apple Mac
             if (agent.Contains(Platform.Mac))
                 return Platform.Mac;
-            // Linux Distribution
             if (agent.Contains(Platform.Linux))
                 return Platform.Linux;
 
             return Platform.Others;
         }
 
-        private static Version GetVersion(string agent, Platform platform)
-            => platform switch
+        private Version GetVersion()
+        {
+            var agent = _userAgentService.UserAgent.ToLower();
+            var platform = Name;
+            return platform switch
             {
                 Platform.Unknown => new Version(),
                 Platform.Others => new Version(),
@@ -60,24 +65,32 @@ namespace Wangkanai.Detection.Services
                 Platform.Linux => ParseOsVersion(agent, "rv:"),
                 _ => new Version()
             };
-
-        private static Version ParseOsVersion(string agent, string versionPrefix)
-        {
-            return (agent.RegexMatch(@"\(([^\)]+)\)")
-                  .Captures
-                  .FirstOrDefault()
-                  ?.Value
-                  .RemoveAll(" ", "(", ")")
-                  .Split(';')
-                  .FirstOrDefault(x => x.StartsWith(versionPrefix, StringComparison.InvariantCultureIgnoreCase)) ?? string.Empty)
-            .Replace("_", ".")
-            .RegexMatch(@"(?:(\d+)\.)?(?:(\d+)\.)?(?:(\d+)\.\d+)")
-            .Value
-            .ToVersion();
         }
 
-        private static Processor GetProcessor(UserAgent agent, Platform os)
+        private static readonly Regex _osStartRegex = new Regex(@"\(([^\)]+)\)", RegexOptions.Compiled);
+
+        private static readonly Regex _osParseRegex =
+            new Regex(@"(?:(\d+)\.)?(?:(\d+)\.)?(?:(\d+)\.\d+)", RegexOptions.Compiled);
+
+        private static Version ParseOsVersion(string agent, string versionPrefix) =>
+            _osParseRegex.RegexMatch(
+                    (_osStartRegex.RegexMatch(agent)
+                         .Captures[0]
+                         .Value
+                         .RemoveAll(" ", "(", ")")
+                         .Split(';')
+                         .FirstOrDefault(x => x.StartsWith(versionPrefix, StringComparison.Ordinal)) ??
+                     string.Empty)
+                    .Replace("_", ".")
+                )
+                .Value
+                .ToVersion();
+
+        private Processor GetProcessor()
         {
+            var agent = _userAgentService.UserAgent.ToLower();
+            var os = Name;
+
             if (IsArm(agent, os))
                 return Processor.ARM;
             if (IsX64(agent))
@@ -90,26 +103,29 @@ namespace Wangkanai.Detection.Services
             return Processor.Others;
         }
 
-        private static bool IsArm(UserAgent agent, Platform os)
+        private static bool IsArm(string agent, Platform os)
             => agent.Contains(Processor.ARM)
                || agent.Contains(Platform.Android)
                || os == Platform.iOS;
 
-        private static bool IsPowerPC(UserAgent agent, Platform os)
+        private static bool IsPowerPC(string agent, Platform os)
             => os == Platform.Mac
-               && !agent.Contains("PPC");
+               && !agent.Contains("ppc", StringComparison.Ordinal);
 
-        private static bool IsX86(UserAgent agent)
-            => agent.Contains(Processor.x86)
-               || agent.Contains(new[] { "i86", "i686" });
+        private static readonly string[] X86DeviceList = {"i86", "i686", Processor.x86.ToStringInvariant()};
 
-        private static bool IsX64(UserAgent agent)
-            => agent.Contains(Processor.x64)
-               || agent.Contains("x86_64")
-               || agent.Contains("wow64");
+        private static readonly IndexTree _x86DeviceIndex = X86DeviceList.BuildIndexTree();
 
-        private static bool IsiOS(UserAgent agent)
-            => agent.Contains(Platform.iOS)
-               || agent.Contains(new[] { "iPad", "iPhone", "iPod" });
+        private static bool IsX86(string agent) => agent.SearchContains(_x86DeviceIndex);
+
+        private static readonly string[] X64DeviceList = {"x86_64", "wow64", Processor.x64.ToStringInvariant()};
+
+        private static readonly IndexTree _x64DeviceIndex = X64DeviceList.BuildIndexTree();
+        private static bool IsX64(string agent) => agent.SearchContains(_x64DeviceIndex);
+
+        private static readonly string[] IosDeviceList = {"ipad", "iphone", "ipod", Platform.iOS.ToStringInvariant()};
+
+        private static readonly IndexTree _iosDeviceIndex = IosDeviceList.BuildIndexTree();
+        private static bool IsiOS(string agent) => agent.SearchContains(_iosDeviceIndex);
     }
 }

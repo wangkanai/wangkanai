@@ -35,7 +35,7 @@ namespace Wangkanai.Detection.Mocks
         {
             var platform = PlatformService(agent);
             var engine   = EngineService(agent);
-            return new BrowserService(agent, platform, engine);
+            return new BrowserService(agent, engine);
         }
 
         #endregion
