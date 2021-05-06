@@ -1,0 +1,38 @@
+<Project>
+    <PropertyGroup>
+        <VersionPrefix>4.0.0</VersionPrefix>
+        <VersionSuffix>beta2</VersionSuffix>
+
+        <Product>Wangkanai Detection</Product>
+        <Authors>Sarin Na Wangkanai</Authors>
+        <Copyright>©2014-2021 Sarin Na Wangkanai, All rights reserved</Copyright>
+        <Description>ASP.NET Core Detection service components for identifying details about client device, browser, engine, platform, and crawler. Responsive middleware for routing base upon request client device detection to specific view. Also in the added feature of user preference made this library even more comprehensive must for developers whom to target multiple devices with view rendered and optimized directly from the server side.</Description>
+
+        <RepositoryType>git</RepositoryType>
+        <RepositoryUrl>git://github.com/wangkanai/detection</RepositoryUrl>
+
+        <PackageProjectUrl>https://github.com/wangkanai/detection</PackageProjectUrl>
+        <PackageLicense>https://github.com/wangkanai/detection/blob/main/LICENSE</PackageLicense>
+        <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    </PropertyGroup>
+    
+    <PropertyGroup>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
+    </ItemGroup>
+
+    <PropertyGroup Condition="'$(Name)'=='Wangkanai.Detection'">
+        <PackageIcon>wangkanai-logo.png</PackageIcon>
+    </PropertyGroup>
+    
+    <ItemGroup Condition="'$(Name)'=='Wangkanai.Detection'">
+        <None Include="..\asset\wangkanai-logo.png" Pack="true" PackagePath="\"/>
+    </ItemGroup>
+</Project>

@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;
 
+using Wangkanai.Detection.Extensions;
 using Wangkanai.Detection.Models;
 
 namespace Wangkanai.Detection.Mocks
@@ -22,7 +23,7 @@ namespace Wangkanai.Detection.Mocks
             => Server(WebHostBuilder(options));
 
         internal static TestServer Server(IWebHostBuilder builder)
-            => new(builder);
+            => new TestServer(builder);
 
         #region Private
 

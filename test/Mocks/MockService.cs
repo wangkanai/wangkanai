@@ -22,7 +22,7 @@ namespace Wangkanai.Detection.Mocks
         }
 
         internal static ResponsiveService ResponsiveService(IHttpContextAccessor accessor, IDeviceService device, DetectionOptions options = null!)
-            => new(accessor, device, options);
+            => new ResponsiveService(accessor, device, options);
 
         #endregion
 
@@ -35,7 +35,7 @@ namespace Wangkanai.Detection.Mocks
         {
             var platform = PlatformService(agent);
             var engine   = EngineService(agent);
-            return new BrowserService(agent, platform, engine);
+            return new BrowserService(agent, engine);
         }
 
         #endregion
@@ -43,10 +43,10 @@ namespace Wangkanai.Detection.Mocks
         #region Platform
 
         internal static PlatformService PlatformService(string agent)
-            => new(UserAgentService(agent));
+            => new PlatformService(UserAgentService(agent));
 
         internal static PlatformService PlatformService(IUserAgentService service)
-            => new(service);
+            => new PlatformService(service);
 
         #endregion
 
@@ -56,7 +56,7 @@ namespace Wangkanai.Detection.Mocks
             => EngineService(UserAgentService(agent));
 
         internal static EngineService EngineService(IUserAgentService agent)
-            => new(agent, PlatformService(agent));
+            => new EngineService(agent, PlatformService(agent));
 
         #endregion
 
@@ -66,14 +66,14 @@ namespace Wangkanai.Detection.Mocks
             => CrawlerService(agent, new DetectionOptions());
 
         internal static CrawlerService CrawlerService(string agent, DetectionOptions options)
-            => new(UserAgentService(agent), options);
+            => new CrawlerService(UserAgentService(agent), options);
 
         #endregion
 
         #region Device
 
         internal static DeviceService DeviceService(string agent)
-            => new(UserAgentService(agent));
+            => new DeviceService(UserAgentService(agent));
 
         #endregion
 

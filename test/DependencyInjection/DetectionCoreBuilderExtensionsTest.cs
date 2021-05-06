@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
+// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
-using Wangkanai.Detection;
+
 using Wangkanai.Detection.Services;
+
 using Xunit;
 
 namespace Wangkanai.Detection.DependencyInjection
@@ -21,13 +22,13 @@ namespace Wangkanai.Detection.DependencyInjection
             var builder           = serviceCollection.AddDetectionBuilder().AddRequiredPlatformServices();
             var serviceDescriptors = new List<ServiceDescriptor>
             {
-                new (typeof(IHttpContextAccessor), typeof(HttpContextAccessor), ServiceLifetime.Singleton),
-                new (typeof(IOptions<>), typeof(DetectionOptions), ServiceLifetime.Singleton),
-                new (typeof(IOptionsSnapshot<>), typeof(DetectionOptions), ServiceLifetime.Scoped),
-                new (typeof(IOptionsMonitor<>), typeof(DetectionOptions), ServiceLifetime.Singleton),
-                new (typeof(IOptionsFactory<>), typeof(DetectionOptions), ServiceLifetime.Transient),
-                new (typeof(IOptionsMonitorCache<>), typeof(DetectionOptions), ServiceLifetime.Singleton),
-                new (typeof(DetectionOptions), typeof(DetectionOptions), ServiceLifetime.Singleton)
+                new ServiceDescriptor(typeof(IHttpContextAccessor), typeof(HttpContextAccessor), ServiceLifetime.Singleton),
+                new ServiceDescriptor(typeof(IOptions<>), typeof(DetectionOptions), ServiceLifetime.Singleton),
+                new ServiceDescriptor(typeof(IOptionsSnapshot<>), typeof(DetectionOptions), ServiceLifetime.Scoped),
+                new ServiceDescriptor(typeof(IOptionsMonitor<>), typeof(DetectionOptions), ServiceLifetime.Singleton),
+                new ServiceDescriptor(typeof(IOptionsFactory<>), typeof(DetectionOptions), ServiceLifetime.Transient),
+                new ServiceDescriptor(typeof(IOptionsMonitorCache<>), typeof(DetectionOptions), ServiceLifetime.Singleton),
+                new ServiceDescriptor(typeof(DetectionOptions), typeof(DetectionOptions), ServiceLifetime.Singleton)
             };
 
             Assert.NotNull(builder);
@@ -42,14 +43,14 @@ namespace Wangkanai.Detection.DependencyInjection
             var builder           = serviceCollection.AddDetectionBuilder().AddCoreServices();
             var serviceDescriptors = new List<ServiceDescriptor>
             {
-                new (typeof(IHttpContextService), typeof(HttpContextService), ServiceLifetime.Scoped),
-                new (typeof(IUserAgentService), typeof(UserAgentService), ServiceLifetime.Scoped),
-                new (typeof(IDeviceService), typeof(DeviceService), ServiceLifetime.Scoped),
-                new (typeof(IEngineService), typeof(EngineService), ServiceLifetime.Scoped),
-                new (typeof(IPlatformService), typeof(PlatformService), ServiceLifetime.Scoped),
-                new (typeof(IBrowserService), typeof(BrowserService), ServiceLifetime.Scoped),
-                new (typeof(ICrawlerService), typeof(CrawlerService), ServiceLifetime.Scoped),
-                new (typeof(IDetectionService), typeof(DetectionService), ServiceLifetime.Scoped),
+                new ServiceDescriptor(typeof(IHttpContextService), typeof(HttpContextService), ServiceLifetime.Scoped),
+                new ServiceDescriptor(typeof(IUserAgentService), typeof(UserAgentService), ServiceLifetime.Scoped),
+                new ServiceDescriptor(typeof(IDeviceService), typeof(DeviceService), ServiceLifetime.Scoped),
+                new ServiceDescriptor(typeof(IEngineService), typeof(EngineService), ServiceLifetime.Scoped),
+                new ServiceDescriptor(typeof(IPlatformService), typeof(PlatformService), ServiceLifetime.Scoped),
+                new ServiceDescriptor(typeof(IBrowserService), typeof(BrowserService), ServiceLifetime.Scoped),
+                new ServiceDescriptor(typeof(ICrawlerService), typeof(CrawlerService), ServiceLifetime.Scoped),
+                new ServiceDescriptor(typeof(IDetectionService), typeof(DetectionService), ServiceLifetime.Scoped),
             };
 
             Assert.NotNull(builder);
@@ -64,7 +65,7 @@ namespace Wangkanai.Detection.DependencyInjection
             var builder           = serviceCollection.AddDetectionBuilder().AddMarkerService();
             var serviceDescriptors = new List<ServiceDescriptor>
             {
-                new(typeof(DetectionMarkerService), typeof(DetectionMarkerService), ServiceLifetime.Singleton),
+                new ServiceDescriptor(typeof(DetectionMarkerService), typeof(DetectionMarkerService), ServiceLifetime.Singleton),
             };
 
             Assert.NotNull(builder);
