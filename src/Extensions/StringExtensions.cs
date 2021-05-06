@@ -1,3 +1,8 @@
+// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
+// Modifications Copyright (c) 2021 Kapok Marketing, Inc.
+// The Apache v2. See License.txt in the project root for license information.
+
+using System;
 using System.Linq;
 using System.Text.RegularExpressions;
 

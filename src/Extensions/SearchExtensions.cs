@@ -1,4 +1,8 @@
-﻿using System;
+// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
+// Modifications Copyright (c) 2021 Kapok Marketing, Inc.
+// The Apache v2. See License.txt in the project root for license information.
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -7,10 +11,10 @@ namespace Wangkanai.Detection.Extensions
     public static class SearchExtensions
     {
         public static IndexTree BuildIndexTree(this string[] keywords) 
-            => new(keywords);
+            => new IndexTree(keywords);
 
         public static IndexTree BuildIndexTree(this IEnumerable<string> keywords) 
-            => new(keywords.Distinct().ToArray());
+            => new IndexTree(keywords.Distinct().ToArray());
 
         public static bool SearchStartsWith(this string searchString, IndexTree searchTree) 
             => searchString.AsSpan().SearchStartsWith(searchTree);

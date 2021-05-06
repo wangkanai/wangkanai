@@ -1,5 +1,5 @@
 // Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
-// Modifications Copyright (c) 2020 Kapok Marketing, Inc.
+// Modifications Copyright (c) 2021 Kapok Marketing, Inc.
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
@@ -13,9 +13,7 @@ namespace Wangkanai.Detection.Services
 {
     public class PlatformService : IPlatformService
     {
-        public Processor Processor { get; }
-        public Platform  Name      { get; }
-        public Version   Version   { get; }
+        private readonly IUserAgentService _userAgentService;
 
         public PlatformService(IUserAgentService userAgentService)
         {

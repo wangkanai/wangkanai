@@ -1,4 +1,8 @@
-﻿using System;
+// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
+// Modifications Copyright (c) 2021 Kapok Marketing, Inc.
+// The Apache v2. See License.txt in the project root for license information.
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -9,7 +13,7 @@ namespace Wangkanai.Detection.Extensions
     {
         public static readonly T[] Values;
 
-        private static readonly Dictionary<T, string> Names = new();
+        private static readonly Dictionary<T, string> Names = new Dictionary<T, string>();
 
         static EnumValues()
         {
