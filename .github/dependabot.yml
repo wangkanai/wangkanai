@@ -13,3 +13,6 @@ updates:
       - dependency-name: "Microsoft.Extensions.*"
         # Ignore only new versions for 4.x+
         versions: "[4.0,10.0]"
+      - dependency-name: "Microsoft.AspNetCore.*"
+        # Ignore only new versions for 4.x+
+        versions: "[4.0,10.0]"
