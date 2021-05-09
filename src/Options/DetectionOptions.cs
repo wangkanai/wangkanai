@@ -12,7 +12,7 @@ namespace Wangkanai.Detection
         /// Gets the default <see cref="CrawlerOptions"/> used by this application.
         /// </summary>
         public CrawlerOptions Crawler { get; } = new CrawlerOptions();
-        
+
         /// <summary>
         /// Gets the default <see cref="ResponsiveOptions"/> used by this application.
         /// </summary>

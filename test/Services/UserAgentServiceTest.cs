@@ -2,6 +2,10 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
+
+using Moq;
+
 using Xunit;
 
 namespace Wangkanai.Detection.Services
@@ -17,8 +21,9 @@ namespace Wangkanai.Detection.Services
 
             var accessor       = new HttpContextAccessor {HttpContext = context};
             var contextService = new HttpContextService(accessor);
+            var logger         = Mock.Of<ILogger<UserAgentService>>();
 
-            var useragentService = new UserAgentService(contextService);
+            var useragentService = new UserAgentService(contextService, logger);
             
             Assert.NotNull(useragentService.UserAgent);
             Assert.Equal(agent, useragentService.UserAgent.ToString());

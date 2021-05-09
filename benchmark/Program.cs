@@ -1,4 +1,5 @@
-﻿using BenchmarkDotNet.Running;
+﻿using BenchmarkDotNet.Configs;
+using BenchmarkDotNet.Running;
 using Wangkanai.Detection.Services;
 
 namespace Wangkanai.Detection
@@ -7,7 +8,9 @@ namespace Wangkanai.Detection
     {
         public static void Main()
         {
-            BenchmarkRunner.Run<DeviceServiceBenchmark>();
+            var config = new ManualConfig();
+            config.WithOptions(ConfigOptions.DisableOptimizationsValidator);
+            BenchmarkRunner.Run<DeviceServiceBenchmark>(config);
         }
     }
 }
