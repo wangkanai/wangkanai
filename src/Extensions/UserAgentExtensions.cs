@@ -4,6 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+
 using Wangkanai.Detection.Models;
 
 namespace Wangkanai.Detection.Extensions
@@ -12,19 +13,16 @@ namespace Wangkanai.Detection.Extensions
     {
         public static bool IsNullOrEmpty(this UserAgent agent)
             => string.IsNullOrEmpty(agent.ToString());
-        
-        public static int Length(this UserAgent agent)
-            => agent.ToString().Length;
 
         public static bool Contains(this UserAgent agent, string word)
-            => (!agent.IsNullOrEmpty() && !word.IsNullOrEmpty())
+            => !agent.IsNullOrEmpty()
+               && !word.IsNullOrEmpty()
                && agent.ToLower().Contains(word.ToLower());
 
         public static bool Contains(this UserAgent agent, string[] array)
             => !agent.IsNullOrEmpty()
                && array.Length > 0
                && array.AnyContains(agent);
-        
 
         public static bool Contains<T>(this UserAgent agent, T flags) where T : Enum
         {
@@ -37,10 +35,10 @@ namespace Wangkanai.Detection.Extensions
         public static bool Contains(this UserAgent agent, IEnumerable<string> list)
             => !agent.IsNullOrEmpty()
                && list.Any(agent.Contains);
-        
-        public static UserAgent Replace(this UserAgent agent, string oldValue, string newValue) 
-            => agent.IsNullOrEmpty() && oldValue.IsNullOrEmpty() 
-                   ? agent 
+
+        public static UserAgent Replace(this UserAgent agent, string oldValue, string newValue)
+            => agent.IsNullOrEmpty() && oldValue.IsNullOrEmpty()
+                   ? agent
                    : new UserAgent(agent.ToLower().Replace(oldValue, newValue));
 
         public static int IndexOf(this UserAgent agent, string word)
@@ -49,10 +47,9 @@ namespace Wangkanai.Detection.Extensions
 
         public static int IndexOf(this UserAgent agent, Browser browser)
             => agent.IndexOf(browser.ToString());
-        
+
         public static string Substring(this UserAgent agent, int start)
-            => agent.ToLower()
-                    .Substring(start);
+            => agent.ToLower()[start..];
 
         public static string Substring(this UserAgent agent, int start, int length)
             => agent.ToLower()
@@ -61,7 +58,7 @@ namespace Wangkanai.Detection.Extensions
         public static string[] Split(this UserAgent agent, char separator)
             => agent.ToLower()
                     .Split(separator);
-        
+
         public static bool StartsWith(this UserAgent agent, string word)
             => !word.IsNullOrEmpty()
                && !agent.IsNullOrEmpty()
@@ -75,10 +72,10 @@ namespace Wangkanai.Detection.Extensions
             => agent.Length() >= minimum
                && agent.StartsWith(array);
 
-        private static bool AnyStartsWith(this string[] array, UserAgent agent) 
+        private static bool AnyStartsWith(this string[] array, UserAgent agent)
             => array.Any(agent.StartsWith);
 
-        private static bool AnyContains(this string[] array, UserAgent agent) 
+        private static bool AnyContains(this string[] array, UserAgent agent)
             => array.Any(agent.Contains);
     }
 }

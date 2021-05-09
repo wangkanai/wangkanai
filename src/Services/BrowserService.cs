@@ -75,6 +75,9 @@ namespace Wangkanai.Detection.Services
             var name = browser.ToStringInvariant();
             var first = agent.IndexOf(name, StringComparison.Ordinal);
 
+            if (first < 0 || first + name.Length > agent.Length)
+                return new Version();
+            
             string cut;
             if (agent.Length > first + name.Length + 1)
             {

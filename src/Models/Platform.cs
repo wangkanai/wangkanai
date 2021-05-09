@@ -12,8 +12,9 @@ namespace Wangkanai.Detection.Models
         Windows = 1 << 0, // Microsoft Windows
         Mac     = 1 << 1, // Apple MacOS
         iOS     = 1 << 2, // Apple iOS
-        Linux   = 1 << 3, // Linux Distribution (Red Hat, Mint, Ubuntu)
-        Android = 1 << 4, // Google Android
-        Others  = 1 << 5  // Others
+        iPadOS  = 1 << 3, // Apple iPadOS
+        Linux   = 1 << 4, // Linux Distribution (Red Hat, Mint, Ubuntu)
+        Android = 1 << 5, // Google Android
+        Others  = 1 << 6  // Others
     }
 }
