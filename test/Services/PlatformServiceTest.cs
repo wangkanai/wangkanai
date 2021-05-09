@@ -56,17 +56,32 @@ namespace Wangkanai.Detection.Services
         }
 
         [Theory]
-        [InlineData("Mozilla/5.0 (iPhone; CPU iPhone OS 8_3 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) FxiOS/1.0 Mobile/12F69 Safari/600.1.4")]
-        [InlineData("Mozilla/5.0 (iPod touch; CPU iPhone OS 8_3 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) FxiOS/1.0 Mobile/12F69 Safari/600.1.4")]
-        [InlineData("Mozilla/5.0 (iPad; U; CPU OS 4_3_5 like Mac OS X; en-us) AppleWebKit/533.17.9 (KHTML, like Gecko) Version/5.0.2 Mobile/8L1 Safari/6533.18.5")]
-        [InlineData("Mozilla/5.0 (iPad; CPU OS 12_4_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.1.2 Mobile/15E148 Safari/604.1")]
-        public void iOS(string agent)
+        [InlineData("8.3", "Mozilla/5.0 (iPhone; CPU iPhone OS 8_3 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) FxiOS/1.0 Mobile/12F69 Safari/600.1.4")]
+        [InlineData("8.3", "Mozilla/5.0 (iPod touch; CPU iPhone OS 8_3 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) FxiOS/1.0 Mobile/12F69 Safari/600.1.4")]
+        public void iOS(string target, string agent)
         {
-            var os = Platform.iOS;
+            var os        = Platform.iOS;
             var processor = Processor.ARM;
-            var resolver = MockService.PlatformService(agent);
+            var version   = new Version(target);
+            var resolver  = MockService.PlatformService(agent);
             Assert.Equal(os, resolver.Name);
             Assert.Equal(processor, resolver.Processor);
+            Assert.Equal(version, resolver.Version);
+            _testOutputHelper.WriteLine(resolver.Version.ToString());
+        }
+        
+        [Theory]
+        [InlineData("4.3.5", "Mozilla/5.0 (iPad; U; CPU OS 4_3_5 like Mac OS X; en-us) AppleWebKit/533.17.9 (KHTML, like Gecko) Version/5.0.2 Mobile/8L1 Safari/6533.18.5")]
+        [InlineData("12.4.2", "Mozilla/5.0 (iPad; CPU OS 12_4_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.1.2 Mobile/15E148 Safari/604.1")]
+        public void iPadOS(string target, string agent)
+        {
+            var os        = Platform.iPadOS;
+            var processor = Processor.ARM;
+            var version   = new Version(target);
+            var resolver  = MockService.PlatformService(agent);
+            Assert.Equal(os, resolver.Name);
+            Assert.Equal(processor, resolver.Processor);
+            Assert.Equal(version, resolver.Version);
             _testOutputHelper.WriteLine(resolver.Version.ToString());
         }
 
