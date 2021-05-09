@@ -29,7 +29,7 @@ namespace Wangkanai.Detection.Extensions
             Check.NotNull(context.Items, nameof(context.Items));
 
             return context.Items.TryGetValue(ResponsiveContextKey, out var responsive)
-                       ? (responsive as Device?) ?? Device.Unknown
+                       ? (Device) (responsive ?? Device.Unknown)
                        : Device.Desktop;
         }
     }
