@@ -23,6 +23,8 @@ namespace Wangkanai.Detection.Services
         public  Platform   Name      => _name ??= GetPlatform();
         public  Version    Version   => _version ??= GetVersion();
 
+        private const string AppleWebKit = "applewebkit";
+
         private Platform GetPlatform()
         {
             var agent = _userAgentService.UserAgent.ToLower();
@@ -113,7 +115,7 @@ namespace Wangkanai.Detection.Services
         private static readonly IndexTree X86DeviceIndex    = X86DeviceList.BuildIndexTree();
         private static readonly string[]  X64DeviceList     = {"x86_64", "wow64", Processor.x64.ToStringInvariant()};
         private static readonly IndexTree X64DeviceIndex    = X64DeviceList.BuildIndexTree();
-        private static readonly string[]  IosDeviceList     = {"ipad", "iphone", "ipod", Platform.iOS.ToStringInvariant()};
+        private static readonly string[]  IosDeviceList     = {"iphone", "ipod", Platform.iOS.ToStringInvariant()};
         private static readonly IndexTree IosDeviceIndex    = IosDeviceList.BuildIndexTree();
         private static readonly string[]  IPadosDeviceList  = {"ipad", Platform.iPadOS.ToStringInvariant()};
         private static readonly IndexTree IPadosDeviceIndex = IPadosDeviceList.BuildIndexTree();
@@ -125,9 +127,9 @@ namespace Wangkanai.Detection.Services
             => agent.SearchContains(X64DeviceIndex);
 
         private static bool IsiOS(string agent)
-            => agent.SearchContains(IosDeviceIndex);
+            => agent.SearchContains(IosDeviceIndex) && agent.Contains(AppleWebKit);
 
         private static bool IsiPadOS(string agent)
-            => agent.SearchContains(IPadosDeviceIndex);
+            => agent.SearchContains(IPadosDeviceIndex) && agent.Contains(AppleWebKit);
     }
 }
