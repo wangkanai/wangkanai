@@ -28,6 +28,25 @@ namespace Wangkanai.Detection.Services
             Assert.Equal(Platform.Unknown, resolver.Name);
             Assert.Equal(Processor.Others, resolver.Processor);
         }
+        
+        [Fact]
+        public void OutOfRange()
+        {
+            var resolver = MockService.PlatformService(string.Empty!);
+            Assert.NotNull(resolver);
+            Assert.Equal(Platform.Unknown, resolver.Name);
+            Assert.Equal(Processor.Others, resolver.Processor);
+        }
+
+        [Theory]
+        [InlineData("axios/0.19.2")]
+        public void Bots(string agent)
+        {
+            var resolver = MockService.PlatformService(agent);
+            Assert.NotNull(resolver);
+            Assert.Equal(Platform.Others, resolver.Name);
+            Assert.Equal(Processor.Others, resolver.Processor);
+        }
 
         [Theory]
         [InlineData(Processor.x64, "Mozilla/5.0 (Windows NT x.y; Win64; x64; rv:10.0) Gecko/20100101 Firefox/10.0")]
