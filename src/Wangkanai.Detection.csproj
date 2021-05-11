@@ -1,7 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFrameworks>net5.0;netcoreapp3.1</TargetFrameworks>
+    <LangVersion>9.0</LangVersion>
   </PropertyGroup>
   
   <ItemGroup>
@@ -9,7 +10,13 @@
   </ItemGroup>
   
   <ItemGroup>
-    <PackageReference Include="Wangkanai.Runtime" Version="*" />
+    <PackageReference Include="Wangkanai.Runtime" Version="0.6.102" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
+      <HintPath>C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.5\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
