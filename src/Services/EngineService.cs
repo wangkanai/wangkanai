@@ -1,6 +1,6 @@
 using System;
 
-using Wangkanai.Detection.Extensions;
+using Wangkanai.Runtime.Extensions;
 using Wangkanai.Detection.Models;
 
 namespace Wangkanai.Detection.Services

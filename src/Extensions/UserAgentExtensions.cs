@@ -4,7 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using Wangkanai.Runtime.Extensions;
 using Wangkanai.Detection.Models;
 
 namespace Wangkanai.Detection.Extensions

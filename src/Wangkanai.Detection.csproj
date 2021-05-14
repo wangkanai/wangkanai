@@ -10,7 +10,7 @@
   </ItemGroup>
   
   <ItemGroup>
-    <PackageReference Include="Wangkanai.Runtime" Version="0.6.102" />
+    <PackageReference Include="Wangkanai.Runtime" Version="0.6.103" />
   </ItemGroup>
   
   <ItemGroup>
