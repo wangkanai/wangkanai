@@ -12,12 +12,6 @@
   <ItemGroup>
     <PackageReference Include="Wangkanai.Runtime" Version="0.6.103" />
   </ItemGroup>
-  
-  <ItemGroup>
-    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
-      <HintPath>C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.5\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
-    </Reference>
-  </ItemGroup>
 
 </Project>
 
