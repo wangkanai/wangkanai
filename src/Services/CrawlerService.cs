@@ -4,6 +4,7 @@ using System.Linq;
 
 using Wangkanai.Detection.Extensions;
 using Wangkanai.Detection.Models;
+using Wangkanai.Runtime.Extensions;
 
 namespace Wangkanai.Detection.Services
 {

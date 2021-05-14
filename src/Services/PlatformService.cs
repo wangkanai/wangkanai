@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Text.RegularExpressions;
 
+using Wangkanai.Runtime.Extensions;
 using Wangkanai.Detection.Extensions;
 using Wangkanai.Detection.Models;
 
