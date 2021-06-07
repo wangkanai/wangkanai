@@ -15,8 +15,7 @@ namespace Wangkanai.Detection.Extensions
         {
             if (string.IsNullOrEmpty(version))
                 return new Version();
-
-
+            
             version = VersionCleanupRegex.Replace(version, string.Empty);
 
             if (!version.Contains(".", StringComparison.Ordinal))

@@ -6,7 +6,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Wangkanai.Detection.Extensions;
 using Wangkanai.Detection.Models;
-using Wangkanai.Runtime.Extensions;
+using Wangkanai.Extensions;
 
 namespace Wangkanai.Detection.Hosting
 {

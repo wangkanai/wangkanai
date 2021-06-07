@@ -1,40 +1,49 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+
+using Wangkanai.Extensions;
 
 namespace Wangkanai.Detection.Extensions
 {
     public readonly struct IndexTree
     {
+        private readonly IndexTree[]? _lookup;
+        private readonly int          _offset;
+
+        private bool IsEnd => _lookup?.Length == 0;
+
+        private static IEnumerable<(char Key, IGrouping<char, string> x)> KeywordsGroupBySeed(string[] keywords, int seed)
+            => keywords.GroupBy(k => k[seed])
+                       .Select(x => (x.Key, x));
+
         public IndexTree(string[]? keywords, int seed = 0)
         {
             if (seed > 0)
                 keywords = keywords?.Where(k => k.Length > seed).ToArray();
 
-            if (keywords == null || keywords.Length == 0)
+            if (keywords.IsNullOrEmpty())
             {
                 _lookup = Array.Empty<IndexTree>();
                 _offset = 0;
                 return;
             }
 
-            var lowerBound = keywords.Min(k => k[seed]);
-            var upperBound = keywords.Max(k => k[seed]);
+            var lower = keywords.Min(k => k[seed]);
+            var upper = keywords.Max(k => k[seed]);
 
-            _offset = lowerBound;
-            _lookup = new IndexTree[upperBound - lowerBound + 1];
+            _offset = lower;
+            _lookup = new IndexTree[upper - lower + 1];
 
-            foreach (var (key, list) in keywords.GroupBy(k => k[seed]).Select(x => (x.Key, x)))
+            foreach (var (key, list) in KeywordsGroupBySeed(keywords, seed))
             {
                 var newKeys = list.ToArray();
                 if (newKeys.Any(k => seed + 1 >= k.Length))
-                    _lookup[key           - lowerBound] = new IndexTree(null, seed + 1);
+                    _lookup[key           - lower] = new IndexTree(null, seed + 1);
                 else
-                    _lookup[key - lowerBound] = new IndexTree(newKeys, seed + 1);
+                    _lookup[key - lower] = new IndexTree(newKeys, seed + 1);
             }
         }
-
-        private readonly IndexTree[]? _lookup;
-        private readonly int          _offset;
 
         public bool ContainsWithAnyIn(ReadOnlySpan<char> searchSource)
         {
@@ -111,7 +120,5 @@ namespace Wangkanai.Detection.Extensions
 
             return true;
         }
-
-        private bool IsEnd => _lookup?.Length == 0;
     }
 }

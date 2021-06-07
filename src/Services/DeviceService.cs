@@ -1,6 +1,6 @@
 using System;
 
-using Wangkanai.Runtime.Extensions;
+using Wangkanai.Extensions;
 using Wangkanai.Detection.Collections;
 using Wangkanai.Detection.Extensions;
 using Wangkanai.Detection.Models;
