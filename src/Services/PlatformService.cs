@@ -75,7 +75,8 @@ namespace Wangkanai.Detection.Services
         private static Version ParseOsVersion(string agent, string versionPrefix) =>
             _osParseRegex.RegexMatch(
                              (_osStartRegex.RegexMatch(agent)
-                                           .Captures[0]
+                                           .Captures
+                                           .FirstOrDefault()?
                                            .Value
                                            .RemoveAll(" ", "(", ")")
                                            .Split(';')

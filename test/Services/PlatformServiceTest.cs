@@ -148,6 +148,13 @@ namespace Wangkanai.Detection.Services
         [InlineData("10.0", "Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; Touch; LCJB; rv:11.0) like Gecko")] // Win10
         [InlineData("10.9.3", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/7046A194A")] // OSX
         [InlineData("0.0", "")] // Other
+        [InlineData("0.0", "iphone applewebkit")]
+        [InlineData("0.0", "ipad applewebkit")]
+        [InlineData("0.0", "android")]
+        [InlineData("0.0", "windows")]
+        [InlineData("0.0", "mac")]
+        [InlineData("0.0", "linux")]
+        [InlineData("0.0", "random")]
         public void GetVersion(string version, string agent)
         {
             var resolver = MockService.PlatformService(agent);
