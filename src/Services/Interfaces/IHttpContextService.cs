@@ -1,17 +1,16 @@
 ﻿using Microsoft.AspNetCore.Http;
 
-namespace Wangkanai.Detection.Services
+namespace Wangkanai.Detection.Services;
+
+/// <summary>
+/// Provides the APIs for HttpContext.
+/// </summary>
+public interface IHttpContextService
 {
     /// <summary>
-    /// Provides the APIs for HttpContext.
+    /// Get the <see cref="HttpContext"/> of the application service.
     /// </summary>
-    public interface IHttpContextService
-    {
-        /// <summary>
-        /// Get the <see cref="HttpContext"/> of the application service.
-        /// </summary>
-        HttpContext Context { get; }
+    HttpContext Context { get; }
         
-        HttpRequest Request { get; }
-    }
+    HttpRequest Request { get; }
 }

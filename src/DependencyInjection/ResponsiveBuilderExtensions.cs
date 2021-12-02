@@ -1,62 +1,61 @@
 // Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
-using System;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Wangkanai.Detection.Hosting;
 using Wangkanai.Detection.Services;
 
-namespace Microsoft.Extensions.DependencyInjection
+namespace Microsoft.Extensions.DependencyInjection;
+
+public static class ResponsiveBuilderExtensions
 {
-    public static class ResponsiveBuilderExtensions
+    public static IDetectionBuilder AddResponsiveService(this IDetectionBuilder builder)
     {
-        public static IDetectionBuilder AddResponsiveService(this IDetectionBuilder builder)
-        {
-            if (builder is null)
-                throw new ArgumentNullException(nameof(builder));
+        if (builder is null)
+            throw new ArgumentNullException(nameof(builder));
 
-            builder.Services.TryAddTransient<IResponsiveService, ResponsiveService>();
-            builder.Services.AddRazorViewLocation();
-            builder.Services.AddRazorPagesConventions();
+        builder.Services.TryAddTransient<IResponsiveService, ResponsiveService>();
+        builder.AddSessionServices();
+        builder.Services.AddRazorViewLocation();
+        builder.Services.AddRazorPagesConventions();
 
-            return builder;
-        }
+        return builder;
+    }
 
-        public static IDetectionBuilder AddSessionServices(this IDetectionBuilder builder)
-        {
-            // Add Session to services
-            builder.Services.AddDistributedMemoryCache();
-            builder.Services.AddSession(
-                options =>
-                {
-                    options.Cookie.Name = "Detection";
-                    options.IdleTimeout = TimeSpan.FromSeconds(10);
-                    options.Cookie.IsEssential = true;
-                });
-
-            return builder;
-        }
-
-        private static IServiceCollection AddRazorViewLocation(this IServiceCollection services)
-            => services.Configure<RazorViewEngineOptions>(options =>
+    public static IDetectionBuilder AddSessionServices(this IDetectionBuilder builder)
+    {
+        // Add Session to services
+        builder.Services.AddDistributedMemoryCache();
+        builder.Services.AddSession(
+            options =>
             {
-                options.ViewLocationExpanders.Add(new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Suffix));
-                //options.ViewLocationExpanders.Add(new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Subfolder));
-                options.ViewLocationExpanders.Add(new ResponsivePageLocationExpander());
+                options.Cookie.Name        = "Detection";
+                options.IdleTimeout        = TimeSpan.FromSeconds(10);
+                options.Cookie.IsEssential = true;
             });
 
-        private static IServiceCollection AddRazorPagesConventions(this IServiceCollection services)
+        return builder;
+    }
+
+    private static IServiceCollection AddRazorViewLocation(this IServiceCollection services)
+        => services.Configure<RazorViewEngineOptions>(options =>
         {
-            services.AddRazorPages(options =>
-            {
-                options.Conventions.Add(new ResponsivePageRouteModelConvention());
-            });
+            options.ViewLocationExpanders.Add(new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Suffix));
+            //options.ViewLocationExpanders.Add(new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Subfolder));
+            options.ViewLocationExpanders.Add(new ResponsivePageLocationExpander());
+        });
+
+    private static IServiceCollection AddRazorPagesConventions(this IServiceCollection services)
+    {
+        services.AddRazorPages(options =>
+        {
+            options.Conventions.Add(new ResponsivePageRouteModelConvention());
+        });
             
-            services.AddSingleton<MatcherPolicy, ResponsivePageMatcherPolicy>();
+        services.AddSingleton<MatcherPolicy, ResponsivePageMatcherPolicy>();
             
-            return services;
-        }
+        return services;
     }
 }

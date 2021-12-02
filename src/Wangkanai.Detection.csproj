@@ -1,8 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net5.0;netcoreapp3.1</TargetFrameworks>
-    <LangVersion>9.0</LangVersion>
+    <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
   
   <ItemGroup>
@@ -10,7 +9,7 @@
   </ItemGroup>
   
   <ItemGroup>
-    <PackageReference Include="Wangkanai.Runtime" Version="0.7.302" />
+    <PackageReference Include="Wangkanai.Runtime" Version="0.8.100" />
     <PackageReference Update="Microsoft.SourceLink.GitHub" Version="1.1.1" />
   </ItemGroup>
 

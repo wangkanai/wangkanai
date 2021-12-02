@@ -1,4 +1,4 @@
-version: 4.0.0-build{build} 
+version: '{build}' 
 image:
   - Visual Studio 2022
 init:

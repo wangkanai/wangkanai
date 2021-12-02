@@ -3,13 +3,12 @@
 
 using Wangkanai.Detection.Models;
 
-namespace Wangkanai.Detection.Services
+namespace Wangkanai.Detection.Services;
+
+public interface IResponsiveService
 {
-    public interface IResponsiveService
-    {
-        public Device View { get; }
-        void          PreferSet(Device desktop);
-        void          PreferClear();
-        bool          HasPreferred();
-    }
+    public Device View { get; }
+    void          PreferSet(Device desktop);
+    void          PreferClear();
+    bool          HasPreferred();
 }

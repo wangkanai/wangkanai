@@ -1,97 +1,95 @@
 // Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
 // The Apache v2. See License.txt in the project root for license information.
 
-using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Logging;
 using Wangkanai.Detection;
 using Wangkanai.Detection.Hosting;
 using Wangkanai.Detection.Services;
 
-namespace Microsoft.Extensions.DependencyInjection
+namespace Microsoft.Extensions.DependencyInjection;
+
+/// <summary>
+/// Pipeline extension methods for adding Detection
+/// </summary>
+public static class DetectionApplicationBuilderExtensions
 {
     /// <summary>
-    /// Pipeline extension methods for adding Detection
+    /// Adds Detection to <see cref="IApplicationBuilder" /> request execution pipeline.
     /// </summary>
-    public static class DetectionApplicationBuilderExtensions
+    /// <param name="app">The application.</param>
+    /// <returns>Return the <see cref="IApplicationBuilder" /> for further pipeline</returns>
+    public static IApplicationBuilder UseDetection(this IApplicationBuilder app)
     {
-        /// <summary>
-        /// Adds Detection to <see cref="IApplicationBuilder" /> request execution pipeline.
-        /// </summary>
-        /// <param name="app">The application.</param>
-        /// <returns>Return the <see cref="IApplicationBuilder" /> for further pipeline</returns>
-        public static IApplicationBuilder UseDetection(this IApplicationBuilder app)
-        {
-            if (app is null)
-                throw new ArgumentNullException(nameof(app));
+        if (app is null)
+            throw new ArgumentNullException(nameof(app));
 
-            app.Validate();
+        app.Validate();
 
-            VerifyMarkerIsRegistered(app);
+        VerifyMarkerIsRegistered(app);
 
-            VerifyEndpointRoutingMiddlewareIsNotRegistered(app);
+        VerifyEndpointRoutingMiddlewareIsNotRegistered(app);
 
-            var options = app.ApplicationServices.GetRequiredService<DetectionOptions>();
+        var options = app.ApplicationServices.GetRequiredService<DetectionOptions>();
 
-            ValidateOptions(options);
+        ValidateOptions(options);
 
-            if (options.Responsive.Disable)
-                return app;
-
-            if (options.Responsive.IncludeWebApi)
-                return app.UseResponsive();
-
-            return app.UseWhen(
-                context => !context.Request.Path.StartsWithSegments(options.Responsive.WebApiPath),
-                appBuilder => appBuilder.UseResponsive()
-            );
-        }
-
-        private static IApplicationBuilder UseResponsive(this IApplicationBuilder app)
-        {
-            app.UseSession();
-            app.UseMiddleware<ResponsiveMiddleware>();
+        if (options.Responsive.Disable)
             return app;
-        }
 
-        private static void Validate(this IApplicationBuilder app)
-        {
-            var loggerFactory = app.ApplicationServices.GetService(typeof(ILoggerFactory)) as ILoggerFactory;
-            if (loggerFactory is null)
-                throw new ArgumentNullException(nameof(loggerFactory));
+        if (options.Responsive.IncludeWebApi)
+            return app.UseResponsive();
 
-            var logger = loggerFactory.CreateLogger("Detection.Startup");
-            logger.LogInformation("Starting Detection version {version}",
-                typeof(DetectionApplicationBuilderExtensions)?.Assembly?.GetName()?.Version?.ToString());
+        return app.UseWhen(
+            context => !context.Request.Path.StartsWithSegments(options.Responsive.WebApiPath),
+            appBuilder => appBuilder.UseResponsive()
+        );
+    }
 
-            //var scopeFactory = app.ApplicationServices.GetService<IServiceScopeFactory>();
+    private static IApplicationBuilder UseResponsive(this IApplicationBuilder app)
+    {
+        app.UseSession();
+        app.UseMiddleware<ResponsiveMiddleware>();
+        return app;
+    }
 
-            //using (var scope = scopeFactory.CreateScope())
-            //{
-            //    var serviceProvider = scope.ServiceProvider;
+    private static void Validate(this IApplicationBuilder app)
+    {
+        var loggerFactory = app.ApplicationServices.GetService(typeof(ILoggerFactory)) as ILoggerFactory;
+        if (loggerFactory is null)
+            throw new ArgumentNullException(nameof(loggerFactory));
 
-            //    var options = serviceProvider.GetRequiredService<DetectionOptions>();
-            //    ValidateOptions(options);
-            //}
-        }
+        var logger = loggerFactory.CreateLogger("Detection.Startup");
+        logger.LogInformation("Starting Detection version {version}",
+                              typeof(DetectionApplicationBuilderExtensions)?.Assembly?.GetName()?.Version?.ToString());
 
-        private static void ValidateOptions(DetectionOptions options)
-        {
-            if (options.Responsive.Disable && options.Responsive.IncludeWebApi)
-                throw new InvalidOperationException("IncludeWebApi is not needed if already Disable");
-        }
+        //var scopeFactory = app.ApplicationServices.GetService<IServiceScopeFactory>();
+
+        //using (var scope = scopeFactory.CreateScope())
+        //{
+        //    var serviceProvider = scope.ServiceProvider;
+
+        //    var options = serviceProvider.GetRequiredService<DetectionOptions>();
+        //    ValidateOptions(options);
+        //}
+    }
+
+    private static void ValidateOptions(DetectionOptions options)
+    {
+        if (options.Responsive.Disable && options.Responsive.IncludeWebApi)
+            throw new InvalidOperationException("IncludeWebApi is not needed if already Disable");
+    }
         
-        private static void VerifyEndpointRoutingMiddlewareIsNotRegistered(IApplicationBuilder app)
-        {
-            var EndpointRouteBuilder = "__EndpointRouteBuilder";
-            if (app.Properties.TryGetValue(EndpointRouteBuilder, out var obj))
-                throw new InvalidOperationException($"{nameof(UseDetection)} must be in execution pipeline before {nameof(EndpointRoutingApplicationBuilderExtensions.UseRouting)} to 'Configure(...)' in the application startup code.");
-        }
+    private static void VerifyEndpointRoutingMiddlewareIsNotRegistered(IApplicationBuilder app)
+    {
+        var EndpointRouteBuilder = "__EndpointRouteBuilder";
+        if (app.Properties.TryGetValue(EndpointRouteBuilder, out var obj))
+            throw new InvalidOperationException($"{nameof(UseDetection)} must be in execution pipeline before {nameof(EndpointRoutingApplicationBuilderExtensions.UseRouting)} to 'Configure(...)' in the application startup code.");
+    }
         
-        private static void VerifyMarkerIsRegistered(IApplicationBuilder app)
-        {
-            if (app.ApplicationServices.GetService(typeof(DetectionMarkerService)) == null)
-                throw new InvalidOperationException($"{nameof(DetectionCollectionExtensions.AddDetection)} is not added to ConfigureServices(...)");
-        }
+    private static void VerifyMarkerIsRegistered(IApplicationBuilder app)
+    {
+        if (app.ApplicationServices.GetService(typeof(DetectionMarkerService)) == null)
+            throw new InvalidOperationException($"{nameof(DetectionCollectionExtensions.AddDetection)} is not added to ConfigureServices(...)");
     }
 }
