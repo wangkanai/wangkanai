@@ -1,7 +1,7 @@
 <Project>
     <PropertyGroup>
         <VersionPrefix>4.0.0</VersionPrefix>
-        <VersionSuffix>beta3</VersionSuffix>
+        <VersionSuffix>beta4</VersionSuffix>
 
         <Product>Wangkanai Detection</Product>
         <Authors>Sarin Na Wangkanai</Authors>
