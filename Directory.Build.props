@@ -30,7 +30,7 @@
 
     <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Detection'">
         <PackageIcon>wangkanai-logo.png</PackageIcon>
-        <PackageReadmeFile>readme.md</PackageReadmeFile>
+        <PackageReadmeFile>NUGET.md</PackageReadmeFile>
     </PropertyGroup>
 
     <ItemGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Detection'">
