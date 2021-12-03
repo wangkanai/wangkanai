@@ -2,10 +2,13 @@
 // The Apache v2. See License.txt in the project root for license information.
 
 using System;
+
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;
+
 using Wangkanai.Detection.Mocks;
 using Wangkanai.Detection.Models;
+
 using Xunit;
 
 namespace Wangkanai.Detection.DependencyInjection
@@ -25,22 +28,22 @@ namespace Wangkanai.Detection.DependencyInjection
         public void AddDetection_Null_ArgumentNullException()
         {
             Assert.Throws<ArgumentNullException>(
-                () => ((IServiceCollection) null!).AddDetection());
+                () => ((IServiceCollection)null!).AddDetection());
         }
 
         [Fact]
         public void AddDetection_Options_Null_ArgumentNullException()
         {
             Assert.Throws<ArgumentNullException>(
-                () => ((IServiceCollection) null!).AddDetection(null!));
+                () => ((IServiceCollection)null!).AddDetection(null!));
         }
 
         [Fact]
         public void AddDetection_Options_Builder_Service()
         {
             var service = new ServiceCollection();
-            var builder = service.AddDetection(
-                options => { options.Responsive.DefaultTablet = Device.Desktop; });
+            var builder = service.AddResponsive(
+                options => { options.DefaultTablet = Device.Desktop; });
 
             Assert.Same(service, builder.Services);
         }
@@ -48,7 +51,7 @@ namespace Wangkanai.Detection.DependencyInjection
         [Fact]
         public async void AddDetection_Options_Disable_True()
         {
-            using var server = MockServer.Server(options => { options.Responsive.Disable = true; });
+            using var server = MockServer.Server(options => { options.Disable = true; });
 
             var client   = server.CreateClient();
             var request  = MockClient.CreateRequest(Device.Mobile);
@@ -61,7 +64,7 @@ namespace Wangkanai.Detection.DependencyInjection
         [Fact]
         public async void AddDetection_Options_Disable_False()
         {
-            using var server = MockServer.Server(options => { options.Responsive.Disable = false; });
+            using var server = MockServer.Server(options => { options.Disable = false; });
 
             var client   = server.CreateClient();
             var request  = MockClient.CreateRequest(Device.Mobile);
@@ -75,8 +78,8 @@ namespace Wangkanai.Detection.DependencyInjection
         {
             var builder = MockServer.WebHostBuilder(options =>
             {
-                options.Responsive.Disable       = true;
-                options.Responsive.IncludeWebApi = true;
+                options.Disable       = true;
+                options.IncludeWebApi = true;
             });
 
             var exception = Assert.Throws<InvalidOperationException>(() =>
@@ -93,10 +96,10 @@ namespace Wangkanai.Detection.DependencyInjection
         {
             using var server = MockServer.Server(options =>
             {
-                options.Responsive.DefaultMobile  = device;
-                options.Responsive.DefaultTablet  = device;
-                options.Responsive.DefaultDesktop = device;
-                options.Responsive.IncludeWebApi  = false;
+                options.DefaultMobile  = device;
+                options.DefaultTablet  = device;
+                options.DefaultDesktop = device;
+                options.IncludeWebApi  = false;
             });
 
             var client   = server.CreateClient();
@@ -117,10 +120,10 @@ namespace Wangkanai.Detection.DependencyInjection
         {
             using var server = MockServer.Server(options =>
             {
-                options.Responsive.DefaultMobile  = device;
-                options.Responsive.DefaultTablet  = device;
-                options.Responsive.DefaultDesktop = device;
-                options.Responsive.IncludeWebApi  = false;
+                options.DefaultMobile  = device;
+                options.DefaultTablet  = device;
+                options.DefaultDesktop = device;
+                options.IncludeWebApi  = false;
             });
             await server.Host.StartAsync();
 
@@ -144,10 +147,10 @@ namespace Wangkanai.Detection.DependencyInjection
         {
             using var server = MockServer.Server(options =>
             {
-                options.Responsive.DefaultMobile  = device;
-                options.Responsive.DefaultTablet  = device;
-                options.Responsive.DefaultDesktop = device;
-                options.Responsive.IncludeWebApi  = true;
+                options.DefaultMobile  = device;
+                options.DefaultTablet  = device;
+                options.DefaultDesktop = device;
+                options.IncludeWebApi  = true;
             });
 
             var client   = server.CreateClient();

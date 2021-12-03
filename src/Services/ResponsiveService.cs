@@ -17,7 +17,7 @@ public class ResponsiveService : IResponsiveService
     private readonly Device      _defaultView;
     private const    string      ResponsiveContextKey = "Responsive";
 
-    public ResponsiveService(IHttpContextAccessor accessor, IDeviceService deviceService, DetectionOptions? options)
+    public ResponsiveService(IHttpContextAccessor accessor, IDeviceService deviceService, ResponsiveOptions? options)
     {
         if (accessor is null)
             throw new ArgumentNullException(nameof(accessor));
@@ -26,10 +26,10 @@ public class ResponsiveService : IResponsiveService
         if (deviceService is null)
             throw new ArgumentNullException(nameof(deviceService));
 
-        options ??= new DetectionOptions();
+        options ??= new ResponsiveOptions();
 
         _context     = accessor.HttpContext;
-        _defaultView = DefaultView(deviceService.Type, options.Responsive);
+        _defaultView = DefaultView(deviceService.Type, options);
     }
 
     public void PreferSet(Device desktop)

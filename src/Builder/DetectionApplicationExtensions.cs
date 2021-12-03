@@ -3,6 +3,8 @@
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Logging;
+
+using Wangkanai;
 using Wangkanai.Detection;
 using Wangkanai.Detection.Hosting;
 using Wangkanai.Detection.Services;
@@ -12,7 +14,7 @@ namespace Microsoft.Extensions.DependencyInjection;
 /// <summary>
 /// Pipeline extension methods for adding Detection
 /// </summary>
-public static class DetectionApplicationBuilderExtensions
+public static class DetectionApplicationExtensions
 {
     /// <summary>
     /// Adds Detection to <see cref="IApplicationBuilder" /> request execution pipeline.
@@ -21,8 +23,7 @@ public static class DetectionApplicationBuilderExtensions
     /// <returns>Return the <see cref="IApplicationBuilder" /> for further pipeline</returns>
     public static IApplicationBuilder UseDetection(this IApplicationBuilder app)
     {
-        if (app is null)
-            throw new ArgumentNullException(nameof(app));
+        Check.NotNull(app, nameof(app));
 
         app.Validate();
 
@@ -33,26 +34,13 @@ public static class DetectionApplicationBuilderExtensions
         var options = app.ApplicationServices.GetRequiredService<DetectionOptions>();
 
         ValidateOptions(options);
-
-        if (options.Responsive.Disable)
-            return app;
-
-        if (options.Responsive.IncludeWebApi)
-            return app.UseResponsive();
-
-        return app.UseWhen(
-            context => !context.Request.Path.StartsWithSegments(options.Responsive.WebApiPath),
-            appBuilder => appBuilder.UseResponsive()
-        );
-    }
-
-    private static IApplicationBuilder UseResponsive(this IApplicationBuilder app)
-    {
-        app.UseSession();
-        app.UseMiddleware<ResponsiveMiddleware>();
+        
         return app;
     }
 
+    private static void ValidateOptions(DetectionOptions options)
+    {
+    }
     private static void Validate(this IApplicationBuilder app)
     {
         var loggerFactory = app.ApplicationServices.GetService(typeof(ILoggerFactory)) as ILoggerFactory;
@@ -61,7 +49,7 @@ public static class DetectionApplicationBuilderExtensions
 
         var logger = loggerFactory.CreateLogger("Detection.Startup");
         logger.LogInformation("Starting Detection version {version}",
-                              typeof(DetectionApplicationBuilderExtensions)?.Assembly?.GetName()?.Version?.ToString());
+                              typeof(DetectionApplicationExtensions)?.Assembly?.GetName()?.Version?.ToString());
 
         //var scopeFactory = app.ApplicationServices.GetService<IServiceScopeFactory>();
 
@@ -74,19 +62,14 @@ public static class DetectionApplicationBuilderExtensions
         //}
     }
 
-    private static void ValidateOptions(DetectionOptions options)
-    {
-        if (options.Responsive.Disable && options.Responsive.IncludeWebApi)
-            throw new InvalidOperationException("IncludeWebApi is not needed if already Disable");
-    }
-        
+    
     private static void VerifyEndpointRoutingMiddlewareIsNotRegistered(IApplicationBuilder app)
     {
         var EndpointRouteBuilder = "__EndpointRouteBuilder";
         if (app.Properties.TryGetValue(EndpointRouteBuilder, out var obj))
             throw new InvalidOperationException($"{nameof(UseDetection)} must be in execution pipeline before {nameof(EndpointRoutingApplicationBuilderExtensions.UseRouting)} to 'Configure(...)' in the application startup code.");
     }
-        
+
     private static void VerifyMarkerIsRegistered(IApplicationBuilder app)
     {
         if (app.ApplicationServices.GetService(typeof(DetectionMarkerService)) == null)

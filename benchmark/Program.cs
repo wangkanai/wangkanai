@@ -1,4 +1,6 @@
-﻿using BenchmarkDotNet.Running;
+﻿global using System.Linq;
+
+using BenchmarkDotNet.Running;
 using Wangkanai.Detection.Services;
 
 namespace Wangkanai.Detection

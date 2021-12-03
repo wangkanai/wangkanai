@@ -1,20 +1,17 @@
-// Copyright (c) 2014-2021 Sarin Na Wangkanai, All Rights Reserved.
-// The Apache v2. See License.txt in the project root for license information.
-
 using Wangkanai;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
 /// <summary>
-/// Helper function for configuring detection services
+/// Helper function for configuring responsive services
 /// </summary>
-public class DetectionBuilder : IDetectionBuilder
+public class ResponsiveBuilder : IResponsiveBuilder
 {
     /// <summary>
-    /// Creates a new instance of <see cref="IDetectionBuilder" />
+    /// Create a new instance of <see cref="IResponsiveBuilder"/>
     /// </summary>
-    /// <param name="services">The <see cref="IServiceCollection" /> to attach to.</param>
-    public DetectionBuilder(IServiceCollection services)
+    /// <param name="services">The <see cref="IServiceCollection" /> to attach to</param>
+    public ResponsiveBuilder(IServiceCollection services)
         => Services = services ?? Check.NotNull(services, nameof(services));
 
     /// <summary>

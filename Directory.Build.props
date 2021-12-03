@@ -28,13 +28,14 @@
         <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All"/>
     </ItemGroup>
 
-    <PropertyGroup>
+    <PropertyGroup Condition="'$(ProjectName)' == 'Wangkanai.Detection'">
         <PackageIcon>wangkanai-logo.png</PackageIcon>
         <PackageReadmeFile>NUGET.md</PackageReadmeFile>
     </PropertyGroup>
 
-    <ItemGroup>
+    <ItemGroup Condition="'$(ProjectName)' == 'Wangkanai.Detection'">
         <None Include="..\asset\wangkanai-logo.png" Pack="true" PackagePath="\"/>
+        <None Include="..\README.md" Pack="true" PackagePath="\"/>
         <None Include="..\NUGET.md" Pack="true" PackagePath="\"/>
     </ItemGroup>
 </Project>

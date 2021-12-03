@@ -19,11 +19,11 @@ namespace ResponsivePage
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDetection(options =>
+            services.AddResponsive(options =>
             {
-                options.Responsive.DefaultTablet  = Device.Tablet;
-                options.Responsive.DefaultMobile  = Device.Mobile;
-                options.Responsive.DefaultDesktop = Device.Desktop;
+                options.DefaultTablet  = Device.Tablet;
+                options.DefaultMobile  = Device.Tablet;
+                options.DefaultDesktop = Device.Desktop;
             });
 
             services.AddRazorPages();

@@ -14,14 +14,14 @@ namespace Wangkanai.Detection.Mocks
     {
         #region Responsive
 
-        internal static ResponsiveService ResponsiveService(string agent, DetectionOptions options = null!)
+        internal static ResponsiveService ResponsiveService(string agent, ResponsiveOptions options = null!)
         {
             var accessor = CreateHttpContextAccessor(agent);
             var device   = DeviceService(agent);
             return ResponsiveService(accessor, device, options);
         }
 
-        internal static ResponsiveService ResponsiveService(IHttpContextAccessor accessor, IDeviceService device, DetectionOptions options = null!)
+        internal static ResponsiveService ResponsiveService(IHttpContextAccessor accessor, IDeviceService device, ResponsiveOptions options = null!)
             => new(accessor, device, options);
 
         #endregion

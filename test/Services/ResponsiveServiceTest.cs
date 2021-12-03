@@ -3,6 +3,7 @@
 
 using Wangkanai.Detection.Mocks;
 using Wangkanai.Detection.Models;
+
 using Xunit;
 
 namespace Wangkanai.Detection.Services
@@ -28,10 +29,10 @@ namespace Wangkanai.Detection.Services
         [Fact]
         public void DefaultDesktop()
         {
-            var options = new DetectionOptions();
-            options.Responsive.DefaultDesktop = Device.Desktop;
-            options.Responsive.DefaultTablet  = Device.Desktop;
-            options.Responsive.DefaultMobile  = Device.Desktop;
+            var options = new ResponsiveOptions();
+            options.DefaultDesktop = Device.Desktop;
+            options.DefaultTablet  = Device.Desktop;
+            options.DefaultMobile  = Device.Desktop;
 
             Assert.Equal(Device.Desktop, MockService.ResponsiveService("mobile", options).View);
             Assert.Equal(Device.Desktop, MockService.ResponsiveService("tablet", options).View);
@@ -41,10 +42,10 @@ namespace Wangkanai.Detection.Services
         [Fact]
         public void DefaultTablet()
         {
-            var options = new DetectionOptions();
-            options.Responsive.DefaultDesktop = Device.Tablet;
-            options.Responsive.DefaultTablet  = Device.Tablet;
-            options.Responsive.DefaultMobile  = Device.Tablet;
+            var options = new ResponsiveOptions();
+            options.DefaultDesktop = Device.Tablet;
+            options.DefaultTablet  = Device.Tablet;
+            options.DefaultMobile  = Device.Tablet;
 
             Assert.Equal(Device.Tablet, MockService.ResponsiveService("mobile", options).View);
             Assert.Equal(Device.Tablet, MockService.ResponsiveService("tablet", options).View);
@@ -54,10 +55,10 @@ namespace Wangkanai.Detection.Services
         [Fact]
         public void DefaultMobile()
         {
-            var options = new DetectionOptions();
-            options.Responsive.DefaultDesktop = Device.Mobile;
-            options.Responsive.DefaultTablet  = Device.Mobile;
-            options.Responsive.DefaultMobile  = Device.Mobile;
+            var options = new ResponsiveOptions();
+            options.DefaultDesktop = Device.Mobile;
+            options.DefaultTablet  = Device.Mobile;
+            options.DefaultMobile  = Device.Mobile;
 
             Assert.Equal(Device.Mobile, MockService.ResponsiveService("mobile", options).View);
             Assert.Equal(Device.Mobile, MockService.ResponsiveService("tablet", options).View);

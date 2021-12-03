@@ -19,7 +19,7 @@ namespace Wangkanai.Detection.Mocks
         internal static TestServer Server()
             => Server(WebHostBuilder());
 
-        internal static TestServer Server(Action<DetectionOptions> options)
+        internal static TestServer Server(Action<ResponsiveOptions> options)
             => Server(WebHostBuilder(options));
 
         internal static TestServer Server(IWebHostBuilder builder)
@@ -30,16 +30,16 @@ namespace Wangkanai.Detection.Mocks
         internal static IWebHostBuilder WebHostBuilder()
             => WebHostBuilder(options => { });
 
-        internal static IWebHostBuilder WebHostBuilder(Action<DetectionOptions> options)
+        internal static IWebHostBuilder WebHostBuilder(Action<ResponsiveOptions> options)
             => WebHostBuilder(ContextHandler, options);
         
         internal static IWebHostBuilder WebHostBuilder(RequestDelegate contextHandler)
             => WebHostBuilder(contextHandler, options => { });
 
-        private static IWebHostBuilder WebHostBuilder(RequestDelegate contextHandler, Action<DetectionOptions> options)
+        private static IWebHostBuilder WebHostBuilder(RequestDelegate contextHandler, Action<ResponsiveOptions> options)
             => new WebHostBuilder()
                .ConfigureServices(services =>
-                   services.AddDetection(options))
+                   services.AddResponsive(options))
                .Configure(app =>
                {
                    app.UseDetection();
