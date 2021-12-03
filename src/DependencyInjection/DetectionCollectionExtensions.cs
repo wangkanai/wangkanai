@@ -19,7 +19,6 @@ public static class DetectionCollectionExtensions
         => services.AddDetectionBuilder()
                    .AddRequiredPlatformServices()
                    .AddCoreServices()
-                   .AddResponsiveService()
                    .AddMarkerService();
 
     /// <summary>

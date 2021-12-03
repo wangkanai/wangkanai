@@ -4,6 +4,9 @@
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.Options;
+
+using Wangkanai.Detection;
 using Wangkanai.Detection.Hosting;
 using Wangkanai.Detection.Services;
 
@@ -11,7 +14,31 @@ namespace Microsoft.Extensions.DependencyInjection;
 
 public static class ResponsiveCoreBuilderExtensions
 {
-    public static IDetectionBuilder AddResponsiveService(this IDetectionBuilder builder)
+    public static IResponsiveBuilder AddRequiredPlatformServices(this IResponsiveBuilder builder)
+    {
+        if (builder is null)
+            throw new ArgumentNullException(nameof(builder));
+
+        // Hosting doesn't add IHttpContextAccessor by default
+        builder.Services.AddHttpContextAccessor();
+
+        // Add Detection Options
+        builder.Services.AddOptions();
+        builder.Services.TryAddSingleton(
+            provider => provider.GetRequiredService<IOptions<ResponsiveOptions>>().Value);
+
+        return builder;
+    }
+
+    public static IResponsiveBuilder AddCoreServices(this IResponsiveBuilder builder)
+    {
+        // Add core to services
+        builder.Services.AddDetection();
+        
+        return builder;
+    }
+    
+    public static IResponsiveBuilder AddResponsiveService(this IResponsiveBuilder builder)
     {
         if (builder is null)
             throw new ArgumentNullException(nameof(builder));
@@ -24,7 +51,7 @@ public static class ResponsiveCoreBuilderExtensions
         return builder;
     }
 
-    public static IDetectionBuilder AddSessionServices(this IDetectionBuilder builder)
+    public static IResponsiveBuilder AddSessionServices(this IResponsiveBuilder builder)
     {
         // Add Session to services
         builder.Services.AddDistributedMemoryCache();
@@ -49,13 +76,10 @@ public static class ResponsiveCoreBuilderExtensions
 
     private static IServiceCollection AddRazorPagesConventions(this IServiceCollection services)
     {
-        services.AddRazorPages(options =>
-        {
-            options.Conventions.Add(new ResponsivePageRouteModelConvention());
-        });
-            
+        services.AddRazorPages(options => { options.Conventions.Add(new ResponsivePageRouteModelConvention()); });
+
         services.AddSingleton<MatcherPolicy, ResponsivePageMatcherPolicy>();
-            
+
         return services;
     }
 }

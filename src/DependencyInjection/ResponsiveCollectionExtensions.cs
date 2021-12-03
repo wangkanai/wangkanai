@@ -13,7 +13,11 @@ public static class ResponsiveCollectionExtensions
     /// <param name="services"></param>
     /// <returns></returns>
     public static IResponsiveBuilder AddResponsive(this IServiceCollection services)
-        => services.AddResponsiveBuilder();
+        => services.AddResponsiveBuilder()
+                   .AddRequiredPlatformServices()
+                   .AddCoreServices()
+                   .AddSessionServices()
+                   .AddResponsiveService();
 
     /// <summary>
     /// Add Responsive service to the service container
