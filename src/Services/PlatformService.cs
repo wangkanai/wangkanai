@@ -128,7 +128,8 @@ public class PlatformService : IPlatformService
 
     private static string AgentSourceStart(string agent, string prefix)
         => _osStartRegex.RegexMatch(agent)
-                        .Captures[0]
+                        .Captures
+                        .FirstOrDefault()?
                         .Value
                         .RemoveAll(" ", "(", ")")
                         .Split(';')
