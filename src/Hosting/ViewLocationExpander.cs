@@ -1,9 +1,9 @@
-// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
-// The Apache v2. See License.txt in the project root for license information.
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
 
 using System.ComponentModel;
 
 using Microsoft.AspNetCore.Mvc.Razor;
+
 using Wangkanai.Detection.Extensions;
 
 namespace Wangkanai.Detection.Hosting;
@@ -27,7 +27,7 @@ public class ResponsiveViewLocationExpander : IViewLocationExpander
 
     public ResponsiveViewLocationExpander(ResponsiveViewLocationFormat format)
     {
-        if (!Enum.IsDefined(typeof(ResponsiveViewLocationFormat), (int) format))
+        if (!Enum.IsDefined(typeof(ResponsiveViewLocationFormat), (int)format))
             throw new InvalidEnumArgumentException(nameof(format));
 
         _format = format;
@@ -52,7 +52,7 @@ public class ResponsiveViewLocationExpander : IViewLocationExpander
 
         if (string.IsNullOrEmpty(device))
             return viewLocations;
-            
+
         return ExpandViewLocationsCore(viewLocations, device); //.Concat(viewLocations);
     }
 

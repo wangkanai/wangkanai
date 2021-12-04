@@ -1,5 +1,4 @@
-// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
-// The Apache v2. See License.txt in the project root for license information.
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
 
 using Wangkanai.Detection.Models;
 
@@ -9,6 +8,6 @@ public class UserAgentService : IUserAgentService
 {
     public UserAgent UserAgent { get; }
 
-    public UserAgentService(IHttpContextService context) 
+    public UserAgentService(IHttpContextService context)
         => UserAgent = new UserAgent(context.Request.Headers["User-Agent"].FirstOrDefault() ?? "");
 }

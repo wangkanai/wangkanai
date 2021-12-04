@@ -1,5 +1,4 @@
-// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
-// The Apache v2. See License.txt in the project root for license information.
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
 
 using Wangkanai.Detection.Mocks;
 using Wangkanai.Detection.Models;
@@ -20,12 +19,12 @@ public class PlatformServiceTest
     [Fact]
     public void Null()
     {
-        var resolver = MockService.PlatformService((string) null!);
+        var resolver = MockService.PlatformService((string)null!);
         Assert.NotNull(resolver);
         Assert.Equal(Platform.Unknown, resolver.Name);
         Assert.Equal(Processor.Others, resolver.Processor);
     }
-        
+
     [Fact]
     public void OutOfRange()
     {
@@ -85,7 +84,7 @@ public class PlatformServiceTest
         Assert.Equal(version, resolver.Version);
         _testOutputHelper.WriteLine(resolver.Version.ToString());
     }
-        
+
     [Theory]
     [InlineData("4.3.5", "Mozilla/5.0 (iPad; U; CPU OS 4_3_5 like Mac OS X; en-us) AppleWebKit/533.17.9 (KHTML, like Gecko) Version/5.0.2 Mobile/8L1 Safari/6533.18.5")]
     [InlineData("12.4.2", "Mozilla/5.0 (iPad; CPU OS 12_4_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.1.2 Mobile/15E148 Safari/604.1")]

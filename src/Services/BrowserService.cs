@@ -1,3 +1,5 @@
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
+
 using Wangkanai.Extensions;
 using Wangkanai.Detection.Extensions;
 using Wangkanai.Detection.Models;
@@ -15,7 +17,7 @@ public class BrowserService : IBrowserService
         _userAgentService = userAgentService;
         _engineService    = engineService;
     }
-        
+
     private Browser? _browser;
     private Version? _version;
     public  Browser  Name    => _browser ??= GetBrowser();
@@ -25,7 +27,7 @@ public class BrowserService : IBrowserService
     {
         var agent  = _userAgentService.UserAgent.ToLower();
         var engine = _engineService.Name;
-            
+
         if (string.IsNullOrEmpty(agent))
             return Browser.Unknown;
         if (IsEdge(agent))
@@ -48,7 +50,7 @@ public class BrowserService : IBrowserService
     {
         var agent   = _userAgentService.UserAgent.ToLower();
         var browser = Name;
-            
+
         if (string.IsNullOrEmpty(agent))
             return new Version();
 
@@ -76,7 +78,7 @@ public class BrowserService : IBrowserService
 
         if (first < 0 || first + name.Length > agent.Length)
             return new Version();
-            
+
         string cut;
         if (agent.Length > first + name.Length + 1)
         {

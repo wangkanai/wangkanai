@@ -1,5 +1,4 @@
-﻿// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
-// The Apache v2. See License.txt in the project root for license information.
+﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
 
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.AspNetCore.Mvc.Razor;
@@ -74,7 +73,7 @@ internal class MockPageRouteModel
             {
                 Template = AttributeRouteModel.CombineTemplates(prefix, routeTemplate)
             },
-            EndpointMetadata = {new PageRouteMetadata(prefix, routeTemplate)}
+            EndpointMetadata = { new PageRouteMetadata(prefix, routeTemplate) }
         };
     }
 
@@ -110,11 +109,11 @@ internal class MockPageRouteModel
 
     private string GetViewEnginePath(string rootDirectory, string path)
     {
-        if (rootDirectory is null) 
+        if (rootDirectory is null)
             throw new ArgumentNullException(nameof(rootDirectory));
-        if (path is null) 
+        if (path is null)
             throw new ArgumentNullException(nameof(path));
-            
+
         var start = rootDirectory.Length - 1;
         var end   = path.Length          - RazorViewEngine.ViewExtension.Length;
 

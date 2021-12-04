@@ -1,5 +1,4 @@
-// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
-// The Apache v2. See License.txt in the project root for license information.
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
 
 namespace Wangkanai.Detection.Extensions;
 
@@ -17,7 +16,7 @@ public class VersionExtensionsTest
         // asset
         Assert.Equal("1.0.0", result);
     }
-        
+
     [Theory]
     [InlineData("1.1")]
     [InlineData("1.1.0")]

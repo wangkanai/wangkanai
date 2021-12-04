@@ -1,3 +1,5 @@
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 
@@ -17,20 +19,20 @@ public static class ResponsiveApplicationExtensions
         var context = app.ApplicationServices.GetRequiredService<HttpContext>();
 
         ValidateOptions(options);
-        
+
         if (options.Disable)
             return app;
 
         if (context.IsWebApi(options))
             return app;
-            
+
         app.UseSession();
         app.UseMiddleware<ResponsiveMiddleware>();
-        
+
         return app;
     }
-    
-    private static bool IsWebApi(this HttpContext context, ResponsiveOptions options) 
+
+    private static bool IsWebApi(this HttpContext context, ResponsiveOptions options)
         => context.Request.Path.StartsWithSegments(options.WebApiPath);
 
     private static void ValidateOptions(ResponsiveOptions options)

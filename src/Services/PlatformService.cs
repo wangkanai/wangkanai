@@ -1,3 +1,5 @@
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
+
 using System.Text.RegularExpressions;
 
 using Wangkanai.Extensions;
@@ -110,13 +112,13 @@ public class PlatformService : IPlatformService
         => os == Platform.Mac
            && !agent.Contains("ppc", StringComparison.Ordinal);
 
-    private static readonly string[]  X86DeviceList     = {"i86", "i686", Processor.x86.ToStringInvariant()};
+    private static readonly string[]  X86DeviceList     = { "i86", "i686", Processor.x86.ToStringInvariant() };
     private static readonly IndexTree X86DeviceIndex    = X86DeviceList.BuildIndexTree();
-    private static readonly string[]  X64DeviceList     = {"x86_64", "wow64", Processor.x64.ToStringInvariant()};
+    private static readonly string[]  X64DeviceList     = { "x86_64", "wow64", Processor.x64.ToStringInvariant() };
     private static readonly IndexTree X64DeviceIndex    = X64DeviceList.BuildIndexTree();
-    private static readonly string[]  IosDeviceList     = {"iphone", "ipod", Platform.iOS.ToStringInvariant()};
+    private static readonly string[]  IosDeviceList     = { "iphone", "ipod", Platform.iOS.ToStringInvariant() };
     private static readonly IndexTree IosDeviceIndex    = IosDeviceList.BuildIndexTree();
-    private static readonly string[]  IPadosDeviceList  = {"ipad", Platform.iPadOS.ToStringInvariant()};
+    private static readonly string[]  IPadosDeviceList  = { "ipad", Platform.iPadOS.ToStringInvariant() };
     private static readonly IndexTree IPadosDeviceIndex = IPadosDeviceList.BuildIndexTree();
 
     private static bool IsX86(string agent)

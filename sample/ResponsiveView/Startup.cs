@@ -1,3 +1,5 @@
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -19,7 +21,7 @@ namespace ResponsiveView
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddResponsive();
-            
+
             services.AddControllersWithViews();
         }
 
@@ -49,7 +51,7 @@ namespace ResponsiveView
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapAreaControllerRoute("admin", "Admin", "Admin/{controller=Home}/{action=Index}/{id?}");
-                endpoints.MapControllerRoute("default","{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

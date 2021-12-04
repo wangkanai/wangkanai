@@ -1,12 +1,16 @@
-﻿using BenchmarkDotNet.Attributes;
+﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
+
+using BenchmarkDotNet.Attributes;
+
 using Microsoft.AspNetCore.Http;
 
 namespace Wangkanai.Detection.Services;
 
 [MemoryDiagnoser]
-public class DeviceServiceBenchmark 
+public class DeviceServiceBenchmark
 {
-    private static readonly string[] RawUserAgents = {
+    private static readonly string[] RawUserAgents =
+    {
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.122 Safari/537.36",
         "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.122 Safari/537.36",
         "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.122 Safari/537.36",
@@ -25,20 +29,21 @@ public class DeviceServiceBenchmark
         "Mozilla/5.0 (Linux; Android 10; LM-Q710(FGN)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.117 Mobile Safari/537.36",
     };
 
-    private static readonly HttpContextAccessor[] Accessors = 
+    private static readonly HttpContextAccessor[] Accessors =
         RawUserAgents.Select(x => new HttpContextAccessor
-        {
-            HttpContext = new DefaultHttpContext
-            {
-                Request =
-                {
-                    Headers =
-                    {
-                        ["User-Agent"] = x
-                    }
-                }
-            }
-        }).ToArray();
+                     {
+                         HttpContext = new DefaultHttpContext
+                         {
+                             Request =
+                             {
+                                 Headers =
+                                 {
+                                     ["User-Agent"] = x
+                                 }
+                             }
+                         }
+                     })
+                     .ToArray();
 
     [Benchmark]
     public void Detect()

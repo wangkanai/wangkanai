@@ -1,7 +1,7 @@
-// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
-// The Apache v2. See License.txt in the project root for license information.
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
 
 using System.Text;
+
 using Microsoft.AspNetCore.Http;
 
 using Wangkanai.Detection.Extensions;
@@ -48,7 +48,7 @@ public class ResponsiveService : IResponsiveService
             return defaultView;
 
         context.Session.TryGetValue(ResponsiveContextKey, out var raw);
-            
+
         if (raw == null)
             return defaultView;
 

@@ -1,5 +1,4 @@
-// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
-// The Apache v2. See License.txt in the project root for license information.
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
 
 using System.Text.RegularExpressions;
 
@@ -9,12 +8,12 @@ public static class VersionExtensions
 {
     private static readonly Regex VersionCleanupRegex = new Regex(@"\+|\-|\s|beta",
                                                                   RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
-        
+
     public static Version ToVersion(this string version)
     {
         if (string.IsNullOrEmpty(version))
             return new Version();
-            
+
         version = VersionCleanupRegex.Replace(version, string.Empty);
 
         if (!version.Contains(".", StringComparison.Ordinal))

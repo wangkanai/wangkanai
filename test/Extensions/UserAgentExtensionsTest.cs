@@ -1,7 +1,5 @@
-// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
-// The Apache v2. See License.txt in the project root for license information.
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
 
-using System.Collections.Generic;
 using Wangkanai.Detection.Models;
 
 namespace Wangkanai.Detection.Extensions;
@@ -51,7 +49,7 @@ public class UserAgentExtensionsTest
     public void ContainsString()
     {
         var agent = new UserAgent("abc");
-        Assert.False(agent.Contains((string) null!));
+        Assert.False(agent.Contains((string)null!));
         Assert.False(agent.Contains(""));
         Assert.True(agent.Contains("abc"));
         Assert.True(agent.Contains("ABC"));
@@ -61,12 +59,12 @@ public class UserAgentExtensionsTest
     public void ContainsArray()
     {
         var agent = new UserAgent("abc");
-        Assert.False(agent.Contains(new[] {((string) null!)!}));
-        Assert.False(agent.Contains(new[] {""}));
-        Assert.False(agent.Contains(new[] {((string) null!)!, ""}));
-        Assert.True(agent.Contains(new[] {"ABC"}));
-        Assert.True(agent.Contains(new[] {"ABC", "abc"}));
-        Assert.False(agent.Contains(new[] {"ABCD"}));
+        Assert.False(agent.Contains(new[] { ((string)null!)! }));
+        Assert.False(agent.Contains(new[] { "" }));
+        Assert.False(agent.Contains(new[] { ((string)null!)!, "" }));
+        Assert.True(agent.Contains(new[] { "ABC" }));
+        Assert.True(agent.Contains(new[] { "ABC", "abc" }));
+        Assert.False(agent.Contains(new[] { "ABCD" }));
     }
 
     [Fact]
@@ -85,20 +83,20 @@ public class UserAgentExtensionsTest
     public void ContainsListString()
     {
         var agent = new UserAgent("Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)");
-        Assert.False(agent.Contains(new List<string> {null!}));
-        Assert.False(agent.Contains(new List<string> {""}));
-        Assert.False(agent.Contains(new List<string> {null!, ""}));
-        Assert.False(agent.Contains(new List<string> {"abc"}));
-        Assert.True(agent.Contains(new List<string> {"google"}));
-        Assert.True(agent.Contains(new List<string> {"google", "abc"}));
-        Assert.True(agent.Contains(new List<string> {"abc", "google"}));
+        Assert.False(agent.Contains(new List<string> { null! }));
+        Assert.False(agent.Contains(new List<string> { "" }));
+        Assert.False(agent.Contains(new List<string> { null!, "" }));
+        Assert.False(agent.Contains(new List<string> { "abc" }));
+        Assert.True(agent.Contains(new List<string> { "google" }));
+        Assert.True(agent.Contains(new List<string> { "google", "abc" }));
+        Assert.True(agent.Contains(new List<string> { "abc", "google" }));
     }
 
     [Fact]
     public void StartsWithString()
     {
         var agent = new UserAgent("abc");
-        Assert.False(agent.StartsWith((string) null!));
+        Assert.False(agent.StartsWith((string)null!));
         Assert.False(agent.StartsWith(""));
         Assert.True(agent.StartsWith("ab"));
         Assert.True(agent.StartsWith("AB"));
@@ -109,24 +107,24 @@ public class UserAgentExtensionsTest
     public void StartsWithArray()
     {
         var agent = new UserAgent("abc");
-        Assert.False(agent.StartsWith(new[] {((string) null!)!}));
-        Assert.False(agent.StartsWith(new[] {""}));
-        Assert.False(agent.StartsWith(new[] {((string) null!)!, ""}));
-        Assert.True(agent.StartsWith(new[] {"AB"}));
-        Assert.True(agent.StartsWith(new[] {"AB", "ab"}));
-        Assert.False(agent.StartsWith(new[] {"ABCD"}));
+        Assert.False(agent.StartsWith(new[] { ((string)null!)! }));
+        Assert.False(agent.StartsWith(new[] { "" }));
+        Assert.False(agent.StartsWith(new[] { ((string)null!)!, "" }));
+        Assert.True(agent.StartsWith(new[] { "AB" }));
+        Assert.True(agent.StartsWith(new[] { "AB", "ab" }));
+        Assert.False(agent.StartsWith(new[] { "ABCD" }));
     }
 
     [Fact]
     public void StartsWithArrayMinimum()
     {
         var agent = new UserAgent("abcdefg");
-        Assert.False(agent.StartsWith(new[] {((string) null!)!}, 4));
-        Assert.False(agent.StartsWith(new[] {""}, 4));
-        Assert.False(agent.StartsWith(new[] {((string) null!)!, ""}, 4));
-        Assert.True(agent.StartsWith(new[] {"ABCD"}, 4));
-        Assert.True(agent.StartsWith(new[] {"ABCD", "abcd"}, 4));
-        Assert.True(agent.StartsWith(new[] {"ABCDEF"}, 4));
+        Assert.False(agent.StartsWith(new[] { ((string)null!)! }, 4));
+        Assert.False(agent.StartsWith(new[] { "" }, 4));
+        Assert.False(agent.StartsWith(new[] { ((string)null!)!, "" }, 4));
+        Assert.True(agent.StartsWith(new[] { "ABCD" }, 4));
+        Assert.True(agent.StartsWith(new[] { "ABCD", "abcd" }, 4));
+        Assert.True(agent.StartsWith(new[] { "ABCDEF" }, 4));
     }
 
     [Fact]
@@ -171,7 +169,7 @@ public class UserAgentExtensionsTest
         Assert.Equal("def", agent.Substring(3));
         Assert.Equal("abcdef", agent.Substring(0));
         Assert.Equal("", agent.Substring(6));
-        Assert.Throws<ArgumentOutOfRangeException>(()=> agent.Substring(7));
+        Assert.Throws<ArgumentOutOfRangeException>(() => agent.Substring(7));
     }
 
     [Fact]
@@ -180,7 +178,7 @@ public class UserAgentExtensionsTest
         var agent = new UserAgent("abcdef");
         Assert.Equal("de", agent.Substring(3, 2));
         Assert.Equal("abc", agent.Substring(0, 3));
-        Assert.Throws<ArgumentOutOfRangeException>(()=>  agent.Substring(6, 2));
-        Assert.Throws<ArgumentOutOfRangeException>(()=>  agent.Substring(7, 2));
+        Assert.Throws<ArgumentOutOfRangeException>(() => agent.Substring(6, 2));
+        Assert.Throws<ArgumentOutOfRangeException>(() => agent.Substring(7, 2));
     }
 }

@@ -1,12 +1,10 @@
-// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
-// The Apache v2. See License.txt in the project root for license information.
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Logging;
 
 using Wangkanai;
 using Wangkanai.Detection;
-using Wangkanai.Detection.Hosting;
 using Wangkanai.Detection.Services;
 
 namespace Microsoft.Extensions.DependencyInjection;
@@ -34,13 +32,14 @@ public static class DetectionApplicationExtensions
         var options = app.ApplicationServices.GetRequiredService<DetectionOptions>();
 
         ValidateOptions(options);
-        
+
         return app;
     }
 
     private static void ValidateOptions(DetectionOptions options)
     {
     }
+
     private static void Validate(this IApplicationBuilder app)
     {
         var loggerFactory = app.ApplicationServices.GetService(typeof(ILoggerFactory)) as ILoggerFactory;
@@ -62,7 +61,7 @@ public static class DetectionApplicationExtensions
         //}
     }
 
-    
+
     private static void VerifyEndpointRoutingMiddlewareIsNotRegistered(IApplicationBuilder app)
     {
         var EndpointRouteBuilder = "__EndpointRouteBuilder";

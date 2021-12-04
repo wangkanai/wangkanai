@@ -1,5 +1,4 @@
-// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
-// The Apache v2. See License.txt in the project root for license information.
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
 
 using Wangkanai.Detection.Extensions;
 
@@ -7,7 +6,7 @@ namespace Wangkanai.Detection.Collections;
 
 internal static class TabletCollection
 {
-    private static readonly string[] Keywords = 
+    private static readonly string[] Keywords =
     {
         "tablet",
         "ipad",
@@ -17,6 +16,6 @@ internal static class TabletCollection
         "sm-t",
         "kfauwi"
     };
-        
+
     public static readonly IndexTree KeywordsSearchTree = Keywords.BuildIndexTree();
 }

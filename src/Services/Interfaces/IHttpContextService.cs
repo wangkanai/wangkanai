@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
+
+using Microsoft.AspNetCore.Http;
 
 namespace Wangkanai.Detection.Services;
 
@@ -11,6 +13,6 @@ public interface IHttpContextService
     /// Get the <see cref="HttpContext"/> of the application service.
     /// </summary>
     HttpContext Context { get; }
-        
+
     HttpRequest Request { get; }
 }

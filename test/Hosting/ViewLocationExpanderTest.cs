@@ -1,9 +1,5 @@
-// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
-// The Apache v2. See License.txt in the project root for license information.
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
 
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Razor;
@@ -54,8 +50,6 @@ public class ResponsiveViewLocationExpanderTest
                     "/Views/Shared/{0}.cshtml"
                 }
             };
-
-
         }
     }
 
@@ -99,7 +93,7 @@ public class ResponsiveViewLocationExpanderTest
     public void Ctor_InvalidFormat_InvalidEnumArgumentException()
     {
         var max            = int.MaxValue;
-        var locationFormat = (ResponsiveViewLocationFormat) max;
+        var locationFormat = (ResponsiveViewLocationFormat)max;
         Assert.Throws<InvalidEnumArgumentException>(() => new ResponsiveViewLocationExpander(locationFormat));
     }
 
@@ -114,7 +108,7 @@ public class ResponsiveViewLocationExpanderTest
     public void ExpandViewLocations_NoDevice_ReturnsExpected()
     {
         var context          = SetupViewLocationExpanderContext(Device.Tablet);
-        var viewLocations    = new List<string> {"/Views/{1}/{0}.cshtml", "/Views/Shared/{0}.cshtml"};
+        var viewLocations    = new List<string> { "/Views/{1}/{0}.cshtml", "/Views/Shared/{0}.cshtml" };
         var locationExpander = new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Suffix);
         var resultLocations  = locationExpander.ExpandViewLocations(context, viewLocations);
 
@@ -154,8 +148,8 @@ public class ResponsiveViewLocationExpanderTest
         Assert.NotEqual(0, context.Values.Count);
         Assert.Same(context.ActionContext.HttpContext.GetDevice().ToString(), context.Values[deviceKey]);
     }
-        
-        
+
+
     private ViewLocationExpanderContext SetupViewLocationExpanderContext(Device deviceType)
     {
         var action = new ActionContext();

@@ -1,5 +1,4 @@
-﻿// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
-// The Apache v2. See License.txt in the project root for license information.
+﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
 
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.Primitives;
@@ -16,9 +15,9 @@ public class EngineTagHelper : TagHelper
     private const    string         ElementName          = "engine";
     private const    string         IncludeAttributeName = "include";
     private const    string         ExcludeAttributeName = "exclude";
-        
-    private static readonly char[] NameSeparator = {','};
-        
+
+    private static readonly char[] NameSeparator = { ',' };
+
     [HtmlAttributeName(IncludeAttributeName)]
     public string? Include { get; set; }
 
@@ -32,16 +31,16 @@ public class EngineTagHelper : TagHelper
 
     public override void Process(TagHelperContext context, TagHelperOutput output)
     {
-        if (context is null) 
+        if (context is null)
             throw new ArgumentNullException(nameof(context));
-        if (output is null) 
+        if (output is null)
             throw new ArgumentNullException(nameof(output));
 
         output.TagName = null;
-            
+
         if (string.IsNullOrEmpty(Include) && string.IsNullOrEmpty(Exclude))
             return;
-            
+
         var engine = _resolver.Name.ToString();
 
         if (Exclude != null)

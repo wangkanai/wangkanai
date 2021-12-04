@@ -1,5 +1,4 @@
-﻿// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
-// The Apache v2. See License.txt in the project root for license information.
+﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
 
 using Microsoft.AspNetCore.Http;
 
@@ -14,11 +13,11 @@ public class UserAgentServiceTest
         var context = new DefaultHttpContext();
         context.Request.Headers["User-Agent"] = agent;
 
-        var accessor       = new HttpContextAccessor {HttpContext = context};
+        var accessor       = new HttpContextAccessor { HttpContext = context };
         var contextService = new HttpContextService(accessor);
 
         var useragentService = new UserAgentService(contextService);
-            
+
         Assert.NotNull(useragentService.UserAgent);
         Assert.Equal(agent, useragentService.UserAgent.ToString());
     }

@@ -1,8 +1,9 @@
-// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
-// The Apache v2. See License.txt in the project root for license information.
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
 
 using Microsoft.AspNetCore.Http;
+
 using Moq;
+
 using Wangkanai.Detection.Models;
 using Wangkanai.Detection.Services;
 
@@ -97,7 +98,7 @@ public static class MockService
 
     private static Mock<IUserAgentService> MockUserAgentService(string agent)
         => MockUserAgentService(new UserAgent(agent));
-        
+
     private static Mock<IUserAgentService> MockUserAgentService(UserAgent agent)
     {
         var service = new Mock<IUserAgentService>();
@@ -120,7 +121,7 @@ public static class MockService
 
     #region Internal
 
-    private static IHttpContextAccessor CreateHttpContextAccessor(string agent) 
+    private static IHttpContextAccessor CreateHttpContextAccessor(string agent)
         => new HttpContextAccessor
         {
             HttpContext = CreateHttpContext(agent)
@@ -129,7 +130,7 @@ public static class MockService
     private static HttpContext CreateHttpContext(string value)
     {
         var context = new DefaultHttpContext();
-        context.Request.Headers.Add("User-Agent", new[] {value});
+        context.Request.Headers.Add("User-Agent", new[] { value });
         return context;
     }
 

@@ -1,5 +1,4 @@
-// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
-// The Apache v2. See License.txt in the project root for license information.
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
 
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -21,8 +20,8 @@ public class ResponsivePageLocationExpander : IViewLocationExpander
 
         if (string.IsNullOrEmpty(context.PageName) || string.IsNullOrEmpty(device))
             return viewLocations;
-            
-        var expand =ExpandPageHierarchy();
+
+        var expand = ExpandPageHierarchy();
 
         return expand;
 

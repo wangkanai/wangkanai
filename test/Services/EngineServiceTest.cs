@@ -1,5 +1,4 @@
-// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
-// The Apache v2. See License.txt in the project root for license information.
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
 
 using Wangkanai.Detection.Mocks;
 using Wangkanai.Detection.Models;
@@ -11,7 +10,7 @@ public class EngineServiceTest
     [Fact]
     public void Null()
     {
-        var resolver = MockService.EngineService((string) null!);
+        var resolver = MockService.EngineService((string)null!);
         Assert.NotNull(resolver);
         Assert.Equal(Engine.Unknown, resolver.Name);
     }
@@ -47,7 +46,7 @@ public class EngineServiceTest
         var resolver = MockService.EngineService(agent);
         Assert.Equal(engine, resolver.Name);
     }
-        
+
     [Theory]
     [InlineData(Engine.Edge, "Mozilla/5.0 (Windows Mobile 10; Android 8.0.0; Microsoft; Lumia 950XL) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.116 Mobile Safari/537.36 Edge/40.15254.369")]
     [InlineData(Engine.Edge, "Mozilla/5.0 (Windows NT 10.0; Win64; x64; Xbox; Xbox One) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36 Edge/40.15063.0")]
@@ -68,7 +67,7 @@ public class EngineServiceTest
         var resolver = MockService.EngineService(agent);
         Assert.Equal(engine, resolver.Name);
     }
-        
+
     [Theory]
     [InlineData(Engine.Servo, "Mozilla/5.0 (Android; Mobile; rv:1.0) Servo/1.0 Firefox/36.0")]
     [InlineData(Engine.Servo, "Mozilla/5.0 (Mobile; rv:1.0) Servo/1.0 Firefox/36.0")]

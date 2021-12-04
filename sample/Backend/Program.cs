@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
+
+using System;
 
 using Microsoft.AspNetCore.Http;
 
@@ -15,7 +17,7 @@ namespace Backend
             var context = new DefaultHttpContext();
             context.Request.Headers["User-Agent"] = agent;
 
-            var accessor       = new HttpContextAccessor {HttpContext = context};
+            var accessor       = new HttpContextAccessor { HttpContext = context };
             var contextService = new HttpContextService(accessor);
             var useragent      = new UserAgentService(contextService);
             Console.WriteLine(useragent.UserAgent);

@@ -1,3 +1,5 @@
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
+
 using Wangkanai.Extensions;
 using Wangkanai.Detection.Collections;
 using Wangkanai.Detection.Extensions;
@@ -8,7 +10,7 @@ namespace Wangkanai.Detection.Services;
 public class DeviceService : IDeviceService
 {
     private readonly IUserAgentService _userAgentService;
-        
+
     private Device? _type;
     public  Device  Type => _type ??= DeviceFromUserAgent();
 
@@ -20,7 +22,7 @@ public class DeviceService : IDeviceService
     private Device DeviceFromUserAgent()
     {
         var agent = _userAgentService.UserAgent.ToLower();
-            
+
         if (IsTablet(agent))
             return Device.Tablet;
         if (IsTV(agent))
