@@ -21,8 +21,8 @@ internal static class HttpContextExtensions
 
     public static Device GetDevice(this HttpContext context)
     {
-        Check.NotNull(context, nameof(context));
-        Check.NotNull(context.Items, nameof(context.Items));
+        Check.NotNull(context);
+        Check.NotNull(context.Items);
 
         return context.Items.TryGetValue(ResponsiveContextKey, out var responsive)
                    ? (Device)(responsive ?? Device.Unknown)

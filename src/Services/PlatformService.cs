@@ -45,6 +45,8 @@ public class PlatformService : IPlatformService
             return Platform.Mac;
         if (agent.Contains(Platform.Linux))
             return Platform.Linux;
+        if (IsChromeOS(agent))
+            return Platform.ChromeOS;
 
         return Platform.Others;
     }
@@ -67,25 +69,6 @@ public class PlatformService : IPlatformService
                };
     }
 
-    private static readonly Regex _osStartRegex = new Regex(@"\(([^\)]+)\)", RegexOptions.Compiled);
-
-    private static readonly Regex _osParseRegex =
-        new Regex(@"(?:(\d+)\.)?(?:(\d+)\.)?(?:(\d+)\.\d+)", RegexOptions.Compiled);
-
-    private static Version ParseOsVersion(string agent, string versionPrefix) =>
-        _osParseRegex.RegexMatch(
-                         (_osStartRegex.RegexMatch(agent)
-                                       .Captures[0]
-                                       .Value
-                                       .RemoveAll(" ", "(", ")")
-                                       .Split(';')
-                                       .FirstOrDefault(x => x.StartsWith(versionPrefix, StringComparison.Ordinal)) ??
-                          string.Empty)
-                         .Replace("_", ".")
-                     )
-                     .Value
-                     .ToVersion();
-
     private Processor GetProcessor()
     {
         var agent = _userAgentService.UserAgent.ToLower();
@@ -103,24 +86,6 @@ public class PlatformService : IPlatformService
         return Processor.Others;
     }
 
-    private static bool IsArm(string agent, Platform os)
-        => agent.Contains(Processor.ARM)
-           || agent.Contains(Platform.Android)
-           || os is Platform.iOS or Platform.iPadOS;
-
-    private static bool IsPowerPC(string agent, Platform os)
-        => os == Platform.Mac
-           && !agent.Contains("ppc", StringComparison.Ordinal);
-
-    private static readonly string[]  X86DeviceList     = { "i86", "i686", Processor.x86.ToStringInvariant() };
-    private static readonly IndexTree X86DeviceIndex    = X86DeviceList.BuildIndexTree();
-    private static readonly string[]  X64DeviceList     = { "x86_64", "wow64", Processor.x64.ToStringInvariant() };
-    private static readonly IndexTree X64DeviceIndex    = X64DeviceList.BuildIndexTree();
-    private static readonly string[]  IosDeviceList     = { "iphone", "ipod", Platform.iOS.ToStringInvariant() };
-    private static readonly IndexTree IosDeviceIndex    = IosDeviceList.BuildIndexTree();
-    private static readonly string[]  IPadosDeviceList  = { "ipad", Platform.iPadOS.ToStringInvariant() };
-    private static readonly IndexTree IPadosDeviceIndex = IPadosDeviceList.BuildIndexTree();
-
     private static bool IsX86(string agent)
         => agent.SearchContains(X86DeviceIndex);
 
@@ -132,4 +97,54 @@ public class PlatformService : IPlatformService
 
     private static bool IsiPadOS(string agent)
         => agent.SearchContains(IPadosDeviceIndex) && agent.Contains(AppleWebKit);
+
+    private static bool IsChromeOS(string agent)
+        => agent.SearchContains(ChromeOSIndex);
+
+    private static bool IsArm(string agent, Platform os)
+        => agent.Contains(Processor.ARM)
+           || agent.Contains(Platform.Android)
+           || os is Platform.iOS or Platform.iPadOS;
+
+    private static bool IsPowerPC(string agent, Platform os)
+        => os == Platform.Mac
+           && !agent.Contains("ppc", StringComparison.Ordinal);
+
+    #region Internal
+
+    private static readonly Regex _osStartRegex = new Regex(@"\(([^\)]+)\)", RegexOptions.Compiled);
+    private static readonly Regex _osParseRegex = new Regex(@"(?:(\d+)\.)?(?:(\d+)\.)?(?:(\d+)\.\d+)", RegexOptions.Compiled);
+
+    private static Version ParseOsVersion(string agent, string prefix)
+        => _osParseRegex.RegexMatch(ReplaceUnderscore(AgentSourceParse(agent, prefix)))
+                        .Value
+                        .ToVersion();
+
+    private static string ReplaceUnderscore(string value)
+        => value.Replace("_", ".");
+
+    private static string AgentSourceParse(string agent, string prefix)
+        => (AgentSourceStart(agent, prefix) ?? string.Empty);
+
+    private static string AgentSourceStart(string agent, string prefix)
+        => _osStartRegex.RegexMatch(agent)
+                        .Captures[0]
+                        .Value
+                        .RemoveAll(" ", "(", ")")
+                        .Split(';')
+                        .FirstOrDefault(x => x.StartsWith(prefix, StringComparison.Ordinal));
+
+
+    private static readonly string[]  X86DeviceList     = { "i86", "i686", Processor.x86.ToStringInvariant() };
+    private static readonly IndexTree X86DeviceIndex    = X86DeviceList.BuildIndexTree();
+    private static readonly string[]  X64DeviceList     = { "x86_64", "wow64", Processor.x64.ToStringInvariant() };
+    private static readonly IndexTree X64DeviceIndex    = X64DeviceList.BuildIndexTree();
+    private static readonly string[]  IosDeviceList     = { "iphone", "ipod", Platform.iOS.ToStringInvariant() };
+    private static readonly IndexTree IosDeviceIndex    = IosDeviceList.BuildIndexTree();
+    private static readonly string[]  IPadosDeviceList  = { "ipad", Platform.iPadOS.ToStringInvariant() };
+    private static readonly IndexTree IPadosDeviceIndex = IPadosDeviceList.BuildIndexTree();
+    private static readonly string[]  ChromeOSList      = { "cros" };
+    private static readonly IndexTree ChromeOSIndex     = ChromeOSList.BuildIndexTree();
+
+    #endregion
 }

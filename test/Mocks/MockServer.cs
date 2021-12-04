@@ -13,10 +13,16 @@ namespace Wangkanai.Detection.Mocks;
 
 internal static class MockServer
 {
-    internal static TestServer Server()
-        => Server(WebHostBuilder());
+    internal static TestServer ServerDetection()
+        => Server(WebHostBuilderDetection());
 
-    internal static TestServer Server(Action<ResponsiveOptions> options)
+    internal static TestServer ServerDetection(Action<DetectionOptions> options)
+        => Server(WebHostBuilderDetection(options));
+
+    internal static TestServer ServerResponsive()
+        => Server(WebHostBuilderResponsive());
+
+    internal static TestServer ServerResponsive(Action<ResponsiveOptions> options)
         => Server(WebHostBuilderResponsive(options));
 
     internal static TestServer Server(IWebHostBuilder builder)
@@ -24,8 +30,8 @@ internal static class MockServer
 
     #region Private
 
-    internal static IWebHostBuilder WebHostBuilder()
-        => WebHostBuilderResponsive(options => { });
+    internal static IWebHostBuilder WebHostBuilderDetection()
+        => WebHostBuilderDetection(options => { });
 
     internal static IWebHostBuilder WebHostBuilderDetection(Action<DetectionOptions> options)
         => WebHostBuilderDetection(ContextHandler, options);
@@ -35,12 +41,21 @@ internal static class MockServer
 
     private static IWebHostBuilder WebHostBuilderDetection(RequestDelegate contextHandler, Action<DetectionOptions> options)
         => new WebHostBuilder()
-           .ConfigureServices(services => { services.AddDetection(options); })
+           .ConfigureServices(services =>
+           {
+               services.AddHttpContextAccessor();
+               services.AddSession();
+               services.AddDetection(options);
+           })
            .Configure(app =>
            {
+               app.UseSession();
                app.UseDetection();
                app.Run(contextHandler);
            });
+
+    internal static IWebHostBuilder WebHostBuilderResponsive()
+        => WebHostBuilderResponsive(options => { });
 
     internal static IWebHostBuilder WebHostBuilderResponsive(Action<ResponsiveOptions> options)
         => WebHostBuilderResponsive(ContextHandler, options);
@@ -52,11 +67,14 @@ internal static class MockServer
         => new WebHostBuilder()
            .ConfigureServices(services =>
            {
+               services.AddHttpContextAccessor();
                services.AddDetection();
+               services.AddSession();
                services.AddResponsive(options);
            })
            .Configure(app =>
            {
+               app.UseSession();
                app.UseDetection();
                app.UseResponsive();
                app.Run(contextHandler);

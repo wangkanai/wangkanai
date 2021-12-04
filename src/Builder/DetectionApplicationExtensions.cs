@@ -21,7 +21,7 @@ public static class DetectionApplicationExtensions
     /// <returns>Return the <see cref="IApplicationBuilder" /> for further pipeline</returns>
     public static IApplicationBuilder UseDetection(this IApplicationBuilder app)
     {
-        Check.NotNull(app, nameof(app));
+        Check.NotNull(app);
 
         app.Validate();
 
