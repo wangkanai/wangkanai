@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
 
+using Wangkanai;
 using Wangkanai.Detection;
 using Wangkanai.Detection.Hosting;
 using Wangkanai.Detection.Services;
@@ -23,8 +24,7 @@ public static class ResponsiveCoreBuilderExtensions
 
         // Add Detection Options
         builder.Services.AddOptions();
-        builder.Services.TryAddSingleton(
-            provider => provider.GetRequiredService<IOptions<ResponsiveOptions>>().Value);
+        builder.Services.TryAddSingleton(provider => provider.GetRequiredService<IOptions<ResponsiveOptions>>().Value);
 
         return builder;
     }
@@ -39,11 +39,10 @@ public static class ResponsiveCoreBuilderExtensions
 
     public static IResponsiveBuilder AddResponsiveService(this IResponsiveBuilder builder)
     {
-        if (builder is null)
-            throw new ArgumentNullException(nameof(builder));
+        Check.NotNull(builder);
 
-        builder.Services.TryAddTransient<IResponsiveService, ResponsiveService>();
         builder.AddSessionServices();
+        builder.Services.TryAddTransient<IResponsiveService, ResponsiveService>();
         builder.Services.AddRazorViewLocation();
         builder.Services.AddRazorPagesConventions();
 
