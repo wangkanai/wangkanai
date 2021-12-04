@@ -124,6 +124,16 @@ public class PlatformServiceTest
         Assert.Equal(processor, resolver.Processor);
     }
 
+[Theory]
+[inlineData(Processor.ARM, "Mozilla/5.0 (X11; CrOS x86_64 14092.77.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.107 Safari/537.36")]
+public void ChromeOS(Processor processor, string agent)
+{
+
+var os       = Platform.Linux;
+        var resolver = MockService.PlatformService(agent);
+        Assert.Equal(os, resolver.Name);
+        Assert.Equal(processor, resolver.Processor
+}
     [Theory]
     [InlineData(Processor.x86, "Mozilla/4.79 [en] (X11; U; SunOS 5.10 i86pc)")]
     [InlineData(Processor.Others, "Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.8.1.11) Gecko/20080118 Firefox/2.0.0.11")]
