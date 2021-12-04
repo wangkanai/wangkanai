@@ -16,8 +16,11 @@ internal static class MockServer
     internal static TestServer Server()
         => Server(WebHostBuilder());
 
-    internal static TestServer Server(Action<ResponsiveOptions> options)
+    internal static TestServer ServerResponsive(Action<ResponsiveOptions> options)
         => Server(WebHostBuilderResponsive(options));
+
+    internal static TestServer ServerDetection(Action<DetectionOptions> options)
+        => Server(WebHostBuilderDetection(options));
 
     internal static TestServer Server(IWebHostBuilder builder)
         => new(builder);
@@ -25,7 +28,7 @@ internal static class MockServer
     #region Private
 
     internal static IWebHostBuilder WebHostBuilder()
-        => WebHostBuilderResponsive(options => { });
+        => WebHostBuilderDetection(options => { });
 
     internal static IWebHostBuilder WebHostBuilderDetection(Action<DetectionOptions> options)
         => WebHostBuilderDetection(ContextHandler, options);
