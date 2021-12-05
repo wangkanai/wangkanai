@@ -13,6 +13,14 @@ namespace Wangkanai.Detection.Mocks;
 
 internal static class MockServer
 {
+    #region Server
+
+    internal static TestServer Server()
+        => Server();
+
+    internal static TestServer Server(IWebHostBuilder builder)
+        => new(builder);
+
     internal static TestServer ServerDetection()
         => Server(WebHostBuilderDetection());
 
@@ -25,10 +33,17 @@ internal static class MockServer
     internal static TestServer ServerResponsive(Action<ResponsiveOptions> options)
         => Server(WebHostBuilderResponsive(options));
 
-    internal static TestServer Server(IWebHostBuilder builder)
-        => new(builder);
+    #endregion
 
-    #region Private
+    #region Builder
+
+    internal static IWebHostBuilder WebHostBuilder()
+        => WebHostBuilder(ContextHandler);
+
+    internal static IWebHostBuilder WebHostBuilder(RequestDelegate contextHandler)
+        => new WebHostBuilder()
+           .ConfigureServices(services => { })
+           .Configure(app => { app.Run(contextHandler); });
 
     internal static IWebHostBuilder WebHostBuilderDetection()
         => WebHostBuilderDetection(options => { });
@@ -43,7 +58,6 @@ internal static class MockServer
         => new WebHostBuilder()
            .ConfigureServices(services =>
            {
-               services.AddHttpContextAccessor();
                services.AddSession();
                services.AddDetection(options);
            })
@@ -67,19 +81,19 @@ internal static class MockServer
         => new WebHostBuilder()
            .ConfigureServices(services =>
            {
-               services.AddHttpContextAccessor();
                services.AddDetection();
                services.AddSession();
                services.AddResponsive(options);
            })
            .Configure(app =>
            {
-               app.UseSession();
                app.UseDetection();
+               app.UseSession();
                app.UseResponsive();
                app.Run(contextHandler);
            });
 
+    #endregion
 
     private static RequestDelegate ContextHandler
         => context => context.GetDevice() switch
@@ -93,6 +107,4 @@ internal static class MockServer
                           Device.Car     => context.Response.WriteAsync("Response: Car"),
                           _              => context.Response.WriteAsync("Response: Who?")
                       };
-
-    #endregion
 }
