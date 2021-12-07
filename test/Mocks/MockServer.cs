@@ -21,21 +21,38 @@ internal static class MockServer
     internal static TestServer Server(IWebHostBuilder builder)
         => new(builder);
 
+    internal static TestServer Server(Action<DetectionOptions> detection)
+        => Server();
+
+    internal static TestServer Server(Action<DetectionOptions> detection, Action<ResponsiveOptions> responsive)
+        => Server();
+
+    [Obsolete]
     internal static TestServer ServerDetection()
         => Server(WebHostBuilderDetection());
 
+    [Obsolete]
     internal static TestServer ServerDetection(Action<DetectionOptions> options)
         => Server(WebHostBuilderDetection(options));
 
+    [Obsolete]
     internal static TestServer ServerResponsive()
         => Server(WebHostBuilderResponsive());
 
+    [Obsolete]
     internal static TestServer ServerResponsive(Action<ResponsiveOptions> options)
         => Server(WebHostBuilderResponsive(options));
 
     #endregion
 
-    #region Builder
+    #region WebApplicationBuilder
+
+    internal static WebApplicationBuilder WebApplicationBuilder()
+        => WebApplication.CreateBuilder();
+
+    #endregion
+
+    #region WebHostBuilder
 
     internal static IWebHostBuilder WebHostBuilder()
         => WebHostBuilder(ContextHandler);
