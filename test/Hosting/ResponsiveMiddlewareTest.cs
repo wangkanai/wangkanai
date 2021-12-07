@@ -44,7 +44,7 @@ public class ResponsiveMiddlewareTest
     [Fact]
     public async void Invoke_HttpContext_ResponsiveService_Success()
     {
-        using var server   = MockServer.ServerDetection();
+        using var server   = MockServer.ServerResponsive();
         var       request  = MockClient.CreateRequest(Device.Desktop);
         var       client   = server.CreateClient();
         var       response = await client.SendAsync(request);

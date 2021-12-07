@@ -24,7 +24,6 @@ public class PlatformService : IPlatformService
     public  Platform   Name      => _name ??= GetPlatform();
     public  Version    Version   => _version ??= GetVersion();
 
-    private const string AppleWebKit = "applewebkit";
 
     private Platform GetPlatform()
     {
@@ -92,11 +91,12 @@ public class PlatformService : IPlatformService
     private static bool IsX64(string agent)
         => agent.SearchContains(X64DeviceIndex);
 
+
     private static bool IsiOS(string agent)
-        => agent.SearchContains(IosDeviceIndex) && agent.Contains(AppleWebKit);
+        => agent.SearchContains(IosDeviceIndex) && agent.SearchContains(AppleWebKitIndex);
 
     private static bool IsiPadOS(string agent)
-        => agent.SearchContains(IPadosDeviceIndex) && agent.Contains(AppleWebKit);
+        => agent.SearchContains(IPadosDeviceIndex) && agent.SearchContains(AppleWebKitIndex);
 
     private static bool IsChromeOS(string agent)
         => agent.SearchContains(ChromeOSIndex);
@@ -129,7 +129,8 @@ public class PlatformService : IPlatformService
     private static string AgentSourceStart(string agent, string prefix)
         => _osStartRegex.RegexMatch(agent)
                         .Captures
-                        .FirstOrDefault()?
+                        .FirstOrDefault()
+                        ?
                         .Value
                         .RemoveAll(" ", "(", ")")
                         .Split(';')
@@ -146,6 +147,8 @@ public class PlatformService : IPlatformService
     private static readonly IndexTree IPadosDeviceIndex = IPadosDeviceList.BuildIndexTree();
     private static readonly string[]  ChromeOSList      = { "cros" };
     private static readonly IndexTree ChromeOSIndex     = ChromeOSList.BuildIndexTree();
+    private static readonly string[]  AppleWebKitList   = { "applewebkit", "webkit" };
+    private static readonly IndexTree AppleWebKitIndex  = AppleWebKitList.BuildIndexTree();
 
     #endregion
 }
