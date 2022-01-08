@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 using Wangkanai.Detection.Extensions;
 using Wangkanai.Detection.Models;
@@ -75,7 +76,9 @@ internal static class MockServer
         => new WebHostBuilder()
            .ConfigureServices(services =>
            {
-               services.AddSession();
+               // var accessor = MockService.MockHttpContextAccessor(agent);
+               // services.TryAddSingleton<IHttpContextAccessor, accessor>();
+               services.AddScoped(sp => sp.GetService<IHttpContextAccessor>().HttpContext.Session);
                services.AddDetection(options);
            })
            .Configure(app =>
@@ -98,8 +101,10 @@ internal static class MockServer
         => new WebHostBuilder()
            .ConfigureServices(services =>
            {
+               services.AddHttpContextAccessor();
+               //services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+               services.AddScoped(sp => sp.GetRequiredService<IHttpContextAccessor>().HttpContext.Session);
                services.AddDetection();
-               services.AddSession();
                services.AddResponsive(options);
            })
            .Configure(app =>

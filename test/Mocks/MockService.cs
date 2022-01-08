@@ -121,11 +121,11 @@ public static class MockService
 
     #region Internal
 
-    private static IHttpContextAccessor CreateHttpContextAccessor(string agent)
-        => new HttpContextAccessor
-        {
-            HttpContext = CreateHttpContext(agent)
-        };
+    internal static IHttpContextAccessor MockHttpContextAccessor(string agent)
+        => new MockHttpContextAccessor() { HttpContext = CreateHttpContext(agent) };
+
+    internal static IHttpContextAccessor CreateHttpContextAccessor(string agent)
+        => new HttpContextAccessor { HttpContext = CreateHttpContext(agent) };
 
     private static HttpContext CreateHttpContext(string value)
     {
