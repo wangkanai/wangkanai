@@ -1,3 +1,3 @@
 # Wangkanai
 
-Major merge library into one maega project
+Major merge library into one mega project
