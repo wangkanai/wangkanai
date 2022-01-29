@@ -24,10 +24,6 @@ steps:
       packageType: 'sdk'
       version: '6.x'
 
-  - task: NuGetCommand@2
-    inputs:
-      restoreSolution: '$(solution)'
-
   - task: DotNetCoreCLI@2
     inputs:
       command: 'restore'
