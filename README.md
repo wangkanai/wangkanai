@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="Files Logo" src="assets/wangkanai-logo.svg?sanitize=true" width="100px" />
+  <img alt="Files Logo" src="asset/wangkanai-logo.svg?sanitize=true" width="100px" />
 </p>
 
 
