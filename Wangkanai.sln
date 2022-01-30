@@ -35,6 +35,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Responsive", "Responsive", "{7C2D39ED-FF02-492B-84E0-958A4291B51C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Validation", "Validation", "{7FB8FAE5-9EFC-42D3-AA14-F9E1A9B7AB26}"
+	ProjectSection(SolutionItems) = preProject
+		Validation\Directory.Build.props = Validation\Directory.Build.props
+		Validation\README.md = Validation\README.md
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Runtime", "Runtime", "{3220F767-41DB-4C06-9952-619F50EB0567}"
 	ProjectSection(SolutionItems) = preProject
@@ -66,6 +70,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Blazor", "Blazor\src\Wangkanai.Blazor.csproj", "{4863718B-F7C6-4D77-87D0-C736901DF7E1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Blazor.Test", "Blazor\test\Wangkanai.Blazor.Test.csproj", "{2BF98B43-B1F7-4236-A418-425E9AFFB327}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Validation", "Validation\src\Wangkanai.Validation.csproj", "{973E7E37-27FD-404E-BBD2-D632470C67C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Validation.Tests", "Validation\test\Wangkanai.Validation.Tests.csproj", "{4C025D69-3B12-4AB9-8095-73970017E834}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -121,6 +129,14 @@ Global
 		{2BF98B43-B1F7-4236-A418-425E9AFFB327}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2BF98B43-B1F7-4236-A418-425E9AFFB327}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2BF98B43-B1F7-4236-A418-425E9AFFB327}.Release|Any CPU.Build.0 = Release|Any CPU
+		{973E7E37-27FD-404E-BBD2-D632470C67C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{973E7E37-27FD-404E-BBD2-D632470C67C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{973E7E37-27FD-404E-BBD2-D632470C67C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{973E7E37-27FD-404E-BBD2-D632470C67C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C025D69-3B12-4AB9-8095-73970017E834}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C025D69-3B12-4AB9-8095-73970017E834}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C025D69-3B12-4AB9-8095-73970017E834}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C025D69-3B12-4AB9-8095-73970017E834}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -140,6 +156,8 @@ Global
 		{C296FB1B-7FC9-4936-AD17-65005D025126} = {7C2D39ED-FF02-492B-84E0-958A4291B51C}
 		{4863718B-F7C6-4D77-87D0-C736901DF7E1} = {9D20D5E6-879B-463C-964A-3DA13FFAE9E3}
 		{2BF98B43-B1F7-4236-A418-425E9AFFB327} = {9D20D5E6-879B-463C-964A-3DA13FFAE9E3}
+		{973E7E37-27FD-404E-BBD2-D632470C67C9} = {7FB8FAE5-9EFC-42D3-AA14-F9E1A9B7AB26}
+		{4C025D69-3B12-4AB9-8095-73970017E834} = {7FB8FAE5-9EFC-42D3-AA14-F9E1A9B7AB26}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1BA0A192-D7BE-40A1-96AE-B3C8C6BC9B69}
