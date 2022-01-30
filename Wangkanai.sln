@@ -35,6 +35,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Responsive", "Responsive", "{7C2D39ED-FF02-492B-84E0-958A4291B51C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Validation", "Validation", "{7FB8FAE5-9EFC-42D3-AA14-F9E1A9B7AB26}"
+	ProjectSection(SolutionItems) = preProject
+		Validation\Directory.Build.props = Validation\Directory.Build.props
+		Validation\README.md = Validation\README.md
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Runtime", "Runtime", "{3220F767-41DB-4C06-9952-619F50EB0567}"
 	ProjectSection(SolutionItems) = preProject
@@ -56,6 +60,30 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Designs", "Designs", "{9967
 		asset\wangkanai-logo.svg = asset\wangkanai-logo.svg
 		asset\wangkanai-social.svg = asset\wangkanai-social.svg
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Blazor", "Blazor", "{9D20D5E6-879B-463C-964A-3DA13FFAE9E3}"
+	ProjectSection(SolutionItems) = preProject
+		Blazor\Directory.Build.props = Blazor\Directory.Build.props
+		Blazor\README.md = Blazor\README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Blazor", "Blazor\src\Wangkanai.Blazor.csproj", "{4863718B-F7C6-4D77-87D0-C736901DF7E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Blazor.Test", "Blazor\test\Wangkanai.Blazor.Test.csproj", "{2BF98B43-B1F7-4236-A418-425E9AFFB327}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Validation", "Validation\src\Wangkanai.Validation.csproj", "{973E7E37-27FD-404E-BBD2-D632470C67C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Validation.Tests", "Validation\test\Wangkanai.Validation.Tests.csproj", "{4C025D69-3B12-4AB9-8095-73970017E834}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Webmaster", "Webmaster", "{D7A979ED-443A-47D3-B34C-5D243D4F39D4}"
+	ProjectSection(SolutionItems) = preProject
+		Webmaster\Directory.Build.props = Webmaster\Directory.Build.props
+		Webmaster\README.md = Webmaster\README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Webmaster", "Webmaster\src\Wangkanai.Webmaster.csproj", "{40C64D52-CDFF-45DA-BC80-A5775C0EBBC0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Webmaster.Tests", "Webmaster\test\Wangkanai.Webmaster.Tests.csproj", "{46CD103A-5E5C-43D2-9ECF-7D012B720A08}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -103,6 +131,30 @@ Global
 		{C296FB1B-7FC9-4936-AD17-65005D025126}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C296FB1B-7FC9-4936-AD17-65005D025126}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C296FB1B-7FC9-4936-AD17-65005D025126}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4863718B-F7C6-4D77-87D0-C736901DF7E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4863718B-F7C6-4D77-87D0-C736901DF7E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4863718B-F7C6-4D77-87D0-C736901DF7E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4863718B-F7C6-4D77-87D0-C736901DF7E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BF98B43-B1F7-4236-A418-425E9AFFB327}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BF98B43-B1F7-4236-A418-425E9AFFB327}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BF98B43-B1F7-4236-A418-425E9AFFB327}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BF98B43-B1F7-4236-A418-425E9AFFB327}.Release|Any CPU.Build.0 = Release|Any CPU
+		{973E7E37-27FD-404E-BBD2-D632470C67C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{973E7E37-27FD-404E-BBD2-D632470C67C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{973E7E37-27FD-404E-BBD2-D632470C67C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{973E7E37-27FD-404E-BBD2-D632470C67C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C025D69-3B12-4AB9-8095-73970017E834}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C025D69-3B12-4AB9-8095-73970017E834}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C025D69-3B12-4AB9-8095-73970017E834}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C025D69-3B12-4AB9-8095-73970017E834}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40C64D52-CDFF-45DA-BC80-A5775C0EBBC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40C64D52-CDFF-45DA-BC80-A5775C0EBBC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40C64D52-CDFF-45DA-BC80-A5775C0EBBC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40C64D52-CDFF-45DA-BC80-A5775C0EBBC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46CD103A-5E5C-43D2-9ECF-7D012B720A08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46CD103A-5E5C-43D2-9ECF-7D012B720A08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46CD103A-5E5C-43D2-9ECF-7D012B720A08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46CD103A-5E5C-43D2-9ECF-7D012B720A08}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -120,6 +172,12 @@ Global
 		{0984F97E-7902-4263-AB0A-AD515C8958C7} = {3220F767-41DB-4C06-9952-619F50EB0567}
 		{0C42571F-C996-4C9C-BF66-979681BF395A} = {7C2D39ED-FF02-492B-84E0-958A4291B51C}
 		{C296FB1B-7FC9-4936-AD17-65005D025126} = {7C2D39ED-FF02-492B-84E0-958A4291B51C}
+		{4863718B-F7C6-4D77-87D0-C736901DF7E1} = {9D20D5E6-879B-463C-964A-3DA13FFAE9E3}
+		{2BF98B43-B1F7-4236-A418-425E9AFFB327} = {9D20D5E6-879B-463C-964A-3DA13FFAE9E3}
+		{973E7E37-27FD-404E-BBD2-D632470C67C9} = {7FB8FAE5-9EFC-42D3-AA14-F9E1A9B7AB26}
+		{4C025D69-3B12-4AB9-8095-73970017E834} = {7FB8FAE5-9EFC-42D3-AA14-F9E1A9B7AB26}
+		{40C64D52-CDFF-45DA-BC80-A5775C0EBBC0} = {D7A979ED-443A-47D3-B34C-5D243D4F39D4}
+		{46CD103A-5E5C-43D2-9ECF-7D012B720A08} = {D7A979ED-443A-47D3-B34C-5D243D4F39D4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1BA0A192-D7BE-40A1-96AE-B3C8C6BC9B69}
