@@ -51,6 +51,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Responsive", "Res
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Responsive.Test", "Responsive\test\Wangkanai.Responsive.Test.csproj", "{C296FB1B-7FC9-4936-AD17-65005D025126}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Designs", "Designs", "{99671684-EFF2-4680-AB99-98A5DCB5A85C}"
+	ProjectSection(SolutionItems) = preProject
+		asset\wangkanai-banner.svg = asset\wangkanai-banner.svg
+		asset\wangkanai-logo.svg = asset\wangkanai-logo.svg
+		asset\wangkanai-social.svg = asset\wangkanai-social.svg
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
