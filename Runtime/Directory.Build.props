@@ -1,0 +1,18 @@
+<Project>
+    <PropertyGroup>
+        <VersionPrefix>0.8.400</VersionPrefix>
+        <Title>Wangkanai Runtime</Title>
+        <RootNamespace>Wangkanai.Runtime</RootNamespace>
+        <Description>Wangkanai .NET Runtime library to serve as the foundation for future development.</Description>
+    </PropertyGroup>
+    
+    <PropertyGroup>
+        <PackageIcon>wangkanai-logo.png</PackageIcon>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="..\..\asset\wangkanai-logo.png" Pack="true" PackagePath="\"/>
+        <None Include="..\README.md" Pack="true" PackagePath="\"/>
+    </ItemGroup>
+</Project>
