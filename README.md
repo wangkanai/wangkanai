@@ -8,8 +8,8 @@
 [![Patreon](https://img.shields.io/badge/patreon-support%20me-d9643a.svg)](https://www.patreon.com/wangkanai)
 [![GitHub](https://img.shields.io/github/license/wangkanai/detection)](https://github.com/wangkanai/Detection/blob/dev/LICENSE)
 
-| Library                                                                                                                                           | Nuget                                                                                                                     |
-|---------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|
+| Library                                                                                                                                           | Nuget                                                                                                                     | Preview |
+|---------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|---|
 | Detection                                                                                                                                         | [![NuGet Badge](https://buildstats.info/nuget/wangkanai.detection)](https://www.nuget.org/packages/wangkanai.detection)   |
 | [![NuGet Badge](https://buildstats.info/nuget/wangkanai.detection?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.detection)   |                                                                                                                           |
 | Responsive                                                                                                                                        | [![NuGet Badge](https://buildstats.info/nuget/wangkanai.responsive)](https://www.nuget.org/packages/wangkanai.responsive) |
@@ -25,7 +25,7 @@ our [contributing guide](https://github.com/wangkanai/wangkanai/blob/main/CONTRI
 
 ## What development tools?
 
-Wangkanai is developed with C# .NET and target the latest  
+Wangkanai is developed with C# .NET and target the latest
 
 ## Privacy
 
