@@ -8,17 +8,25 @@
 [![Patreon](https://img.shields.io/badge/patreon-support%20me-d9643a.svg)](https://www.patreon.com/wangkanai)
 [![GitHub](https://img.shields.io/github/license/wangkanai/detection)](https://github.com/wangkanai/Detection/blob/dev/LICENSE)
 
-- Detection [![NuGet Badge](https://buildstats.info/nuget/wangkanai.detection)](https://www.nuget.org/packages/wangkanai.detection)
-  [![NuGet Badge](https://buildstats.info/nuget/wangkanai.detection?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.detection)
-- Responsive [![NuGet Badge](https://buildstats.info/nuget/wangkanai.responsive)](https://www.nuget.org/packages/wangkanai.responsive)
-  [![NuGet Badge](https://buildstats.info/nuget/wangkanai.responsive?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.responsive)
+| Library                                                                                                                                           | Nuget                                                                                                                     |
+|---------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|
+| Detection                                                                                                                                         | [![NuGet Badge](https://buildstats.info/nuget/wangkanai.detection)](https://www.nuget.org/packages/wangkanai.detection)   |
+| [![NuGet Badge](https://buildstats.info/nuget/wangkanai.detection?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.detection)   |                                                                                                                           |
+| Responsive                                                                                                                                        | [![NuGet Badge](https://buildstats.info/nuget/wangkanai.responsive)](https://www.nuget.org/packages/wangkanai.responsive) |
+| [![NuGet Badge](https://buildstats.info/nuget/wangkanai.responsive?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.responsive) |                                                                                                                           |
 
 ## What is Wangkanai?
 
-Wangkanai is a collection of library that was developed internally overtime and share common usage that would benefit everyone in the open source community as a whole.
+Wangkanai is a collection of library that was developed internally overtime and share common usage that would benefit
+everyone in the open source community as a whole.
 
-We welcome discussions and contributions to our repository, however to help maintain a healthy community, please read our [code of conduct](https://github.com/wangkanai/wangkanai/blob/main/CODE_OF_CONDUCT.md).
+We welcome discussions and contributions to our repository, however to help maintain a healthy community, please read
+our [contributing guide](https://github.com/wangkanai/wangkanai/blob/main/CONTRIBUTING.md).
+
+## What development tools?
 
 ## Privacy
-We use Azure DevOps to track which settings are being used, find bugs, and fix crashes. Information sent to App Center is anonymous and free of any user or contextual data.
+
+We use Azure DevOps to track which settings are being used, find bugs, and fix crashes. Information sent to App Center
+is anonymous and free of any user or contextual data.
 
