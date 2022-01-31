@@ -25,6 +25,8 @@ our [contributing guide](https://github.com/wangkanai/wangkanai/blob/main/CONTRI
 
 ## What development tools?
 
+Wangkanai is developed with C# .NET and target the latest  
+
 ## Privacy
 
 We use Azure DevOps to track which settings are being used, find bugs, and fix crashes. Information sent to App Center
