@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="Files Logo" src="asset/wangkanai-banner.svg?sanitize=true" width="100%" />
+  <img alt="Files Logo" src="Asset/wangkanai-banner.svg?sanitize=true" width="100%" />
 </p>
 
 [![Build Status](https://dev.azure.com/wangkanai/GitHub/_apis/build/status/wangkanai?branchName=main)](https://dev.azure.com/wangkanai/GitHub/_build/latest?definitionId=20&branchName=main)
