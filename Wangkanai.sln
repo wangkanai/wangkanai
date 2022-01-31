@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28516.95
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assets", "Assets", "{9AEBDADF-AE00-4A85-8CAC-EFE8B6FBCEAE}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_solutions", "_solutions", "{9AEBDADF-AE00-4A85-8CAC-EFE8B6FBCEAE}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		.gitignore = .gitignore
@@ -85,6 +85,20 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Webmaster", "Webm
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Webmaster.Tests", "Webmaster\test\Wangkanai.Webmaster.Tests.csproj", "{46CD103A-5E5C-43D2-9ECF-7D012B720A08}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Analytics", "Analytics", "{6CEA291F-82A1-49D0-B559-3E16E1A0E763}"
+	ProjectSection(SolutionItems) = preProject
+		Analytics\README.md = Analytics\README.md
+		Analytics\Directory.Build.props = Analytics\Directory.Build.props
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Analytics", "Analytics\src\Wangkanai.Analytics.csproj", "{3BF37E15-B706-409C-96F7-AF2D033F509E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Analytics.Tests", "Analytics\test\Wangkanai.Analytics.Tests.csproj", "{5502A4D7-EB68-4389-8696-10500E9347CB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{460C8513-95AA-4F3B-88F0-0D439B076578}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Analytics", "Analytics\sample\Analytics\Analytics.csproj", "{3CC9F420-EF2B-44A9-953F-4923CFFE83FF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -155,6 +169,18 @@ Global
 		{46CD103A-5E5C-43D2-9ECF-7D012B720A08}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46CD103A-5E5C-43D2-9ECF-7D012B720A08}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46CD103A-5E5C-43D2-9ECF-7D012B720A08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BF37E15-B706-409C-96F7-AF2D033F509E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BF37E15-B706-409C-96F7-AF2D033F509E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BF37E15-B706-409C-96F7-AF2D033F509E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BF37E15-B706-409C-96F7-AF2D033F509E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5502A4D7-EB68-4389-8696-10500E9347CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5502A4D7-EB68-4389-8696-10500E9347CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5502A4D7-EB68-4389-8696-10500E9347CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5502A4D7-EB68-4389-8696-10500E9347CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CC9F420-EF2B-44A9-953F-4923CFFE83FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CC9F420-EF2B-44A9-953F-4923CFFE83FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CC9F420-EF2B-44A9-953F-4923CFFE83FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CC9F420-EF2B-44A9-953F-4923CFFE83FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -178,6 +204,10 @@ Global
 		{4C025D69-3B12-4AB9-8095-73970017E834} = {7FB8FAE5-9EFC-42D3-AA14-F9E1A9B7AB26}
 		{40C64D52-CDFF-45DA-BC80-A5775C0EBBC0} = {D7A979ED-443A-47D3-B34C-5D243D4F39D4}
 		{46CD103A-5E5C-43D2-9ECF-7D012B720A08} = {D7A979ED-443A-47D3-B34C-5D243D4F39D4}
+		{3BF37E15-B706-409C-96F7-AF2D033F509E} = {6CEA291F-82A1-49D0-B559-3E16E1A0E763}
+		{5502A4D7-EB68-4389-8696-10500E9347CB} = {6CEA291F-82A1-49D0-B559-3E16E1A0E763}
+		{460C8513-95AA-4F3B-88F0-0D439B076578} = {6CEA291F-82A1-49D0-B559-3E16E1A0E763}
+		{3CC9F420-EF2B-44A9-953F-4923CFFE83FF} = {460C8513-95AA-4F3B-88F0-0D439B076578}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1BA0A192-D7BE-40A1-96AE-B3C8C6BC9B69}

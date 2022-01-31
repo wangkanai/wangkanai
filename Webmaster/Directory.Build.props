@@ -2,28 +2,9 @@
     <PropertyGroup>
         <VersionPrefix>0.2.400</VersionPrefix>
         <Description>ASP.NET Core Search Engine Optimization for Webmaster lets you improve the art, craft, and science of driving web traffic to enabling you with easy and efficiency native tool build in the asp.net core library.</Description>
-        <Authors>Sarin Na Wangkanai</Authors>
-        <Copyright>©2014-2021 Sarin Na Wangkanai, All rights reserved</Copyright>
         <PackageTags>aspnetcore;webmaster;seo;search;optimization;taghelper</PackageTags>
-        
-        <RepositoryType>git</RepositoryType>
-        <RepositoryUrl>git://github.com/wangkanai/webmaster</RepositoryUrl>
-        <PackageProjectUrl>https://github.com/wangkanai/webmaster</PackageProjectUrl>
-        <PackageLicense>https://github.com/wangkanai/webmaster/blob/main/LICENSE</PackageLicense>
-        <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-    </PropertyGroup>
 
-    <PropertyGroup>
-        <PublishRepositoryUrl>true</PublishRepositoryUrl>
-        <EmbedUntrackedSources>true</EmbedUntrackedSources>
-        <IncludeSymbols>true</IncludeSymbols>
-        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-        <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
     </PropertyGroup>
-    
-    <ItemGroup>
-        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All"/>
-    </ItemGroup>
 
     <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Webmaster'">
         <PackageIcon>wangkanai-logo.png</PackageIcon>
@@ -31,7 +12,7 @@
     </PropertyGroup>
 
     <ItemGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Webmaster'">
-        <None Include="..\asset\wangkanai-logo.png" Pack="true" PackagePath="\"/>
+        <None Include="..\..\asset\wangkanai-logo.png" Pack="true" PackagePath="\"/>
         <None Include="..\README.md" Pack="true" PackagePath="\"/>
     </ItemGroup>
 </Project>
