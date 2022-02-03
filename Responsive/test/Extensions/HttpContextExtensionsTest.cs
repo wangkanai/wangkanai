@@ -1,12 +1,16 @@
 // Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
 
+using System;
+
 using Microsoft.AspNetCore.Http;
 
-using Wangkanai.Detection.Extensions;
 using Wangkanai.Detection.Models;
+using Wangkanai.Responsive.Extensions;
+
+using Xunit;
 
 
-namespace Wangkanai.Detection.Hosting;
+namespace Wangkanai.Responsive.Hosting;
 
 public class HttpContextExtensionsTest
 {

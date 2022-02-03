@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Http.Features;
 
 using Wangkanai.Detection.Models;
 
-namespace Wangkanai.Detection.Extensions;
+namespace Wangkanai.Responsive.Extensions;
 
 internal static class HttpContextExtensions
 {

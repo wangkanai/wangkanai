@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Http;
 
 using Wangkanai.Detection.Mocks;
 
-namespace Wangkanai.Detection.Hosting;
+namespace Wangkanai.Responsive.Hosting;
 
 public class PreferenceSessionTest
 {

@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Wangkanai.Detection.Mocks;
 using Wangkanai.Detection.Models;
 
-namespace Wangkanai.Detection.Hosting;
+namespace Wangkanai.Responsive.Hosting;
 
 public class ResponsiveMiddlewareTest
 {

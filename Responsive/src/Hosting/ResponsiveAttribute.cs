@@ -2,7 +2,7 @@
 
 using Wangkanai.Detection.Models;
 
-namespace Wangkanai.Detection.Hosting;
+namespace Wangkanai.Responsive.Hosting;
 
 public sealed class ResponsiveAttribute : Attribute, IResponsiveMetadata
 {

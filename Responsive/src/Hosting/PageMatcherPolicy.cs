@@ -1,14 +1,12 @@
 // Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
 
-using System.Threading.Tasks;
-
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.AspNetCore.Routing.Matching;
 
-using Wangkanai.Detection.Extensions;
+using Wangkanai.Responsive.Extensions;
 
-namespace Wangkanai.Detection.Hosting;
+namespace Wangkanai.Responsive.Hosting;
 
 internal class ResponsivePageMatcherPolicy : MatcherPolicy, IEndpointComparerPolicy, IEndpointSelectorPolicy
 {

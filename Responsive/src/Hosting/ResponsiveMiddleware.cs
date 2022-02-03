@@ -1,13 +1,11 @@
 // Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
 
-using System.Threading.Tasks;
-
 using Microsoft.AspNetCore.Http;
 
-using Wangkanai.Detection.Extensions;
 using Wangkanai.Detection.Services;
+using Wangkanai.Responsive.Extensions;
 
-namespace Wangkanai.Detection.Hosting;
+namespace Wangkanai.Responsive.Hosting;
 
 public class ResponsiveMiddleware
 {

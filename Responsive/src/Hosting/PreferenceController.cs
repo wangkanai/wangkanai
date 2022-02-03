@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Wangkanai.Detection.Models;
 using Wangkanai.Detection.Services;
 
-namespace Wangkanai.Detection.Hosting;
+namespace Wangkanai.Responsive.Hosting;
 
 [Area(AreaName)]
 public class PreferenceController : Controller

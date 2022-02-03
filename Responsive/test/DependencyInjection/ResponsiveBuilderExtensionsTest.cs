@@ -1,12 +1,16 @@
 ﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
 
+using System;
+
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;
 
-using Wangkanai.Detection.Mocks;
 using Wangkanai.Detection.Models;
+using Wangkanai.Responsive.Mocks;
 
-namespace Wangkanai.Detection.DependencyInjection;
+using Xunit;
+
+namespace Wangkanai.Responsive.DependencyInjection;
 
 public class ResponsiveBuilderExtensionsTest
 {

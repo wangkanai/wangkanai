@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Wangkanai.Detection.Models;
 using Wangkanai.Extensions;
 
-namespace Wangkanai.Detection.Hosting;
+namespace Wangkanai.Responsive.Hosting;
 
 internal class ResponsivePageRouteModelConvention : IPageRouteModelConvention
 {

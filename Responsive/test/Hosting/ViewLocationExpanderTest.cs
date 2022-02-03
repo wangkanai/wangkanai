@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.Razor;
 using Wangkanai.Detection.Extensions;
 using Wangkanai.Detection.Models;
 
-namespace Wangkanai.Detection.Hosting;
+namespace Wangkanai.Responsive.Hosting;
 
 public class ResponsiveViewLocationExpanderTest
 {

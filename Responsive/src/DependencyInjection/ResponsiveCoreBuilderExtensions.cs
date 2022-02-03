@@ -7,8 +7,8 @@ using Microsoft.Extensions.Options;
 
 using Wangkanai;
 using Wangkanai.Detection;
-using Wangkanai.Detection.Hosting;
 using Wangkanai.Detection.Services;
+using Wangkanai.Responsive.Hosting;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
@@ -56,7 +56,7 @@ public static class ResponsiveCoreBuilderExtensions
         builder.Services.AddSession(
             options =>
             {
-                options.Cookie.Name        = "Detection";
+                options.Cookie.Name        = "Responsive";
                 options.IdleTimeout        = TimeSpan.FromSeconds(10);
                 options.Cookie.IsEssential = true;
             });

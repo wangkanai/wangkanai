@@ -5,8 +5,9 @@ using System.ComponentModel;
 using Microsoft.AspNetCore.Mvc.Razor;
 
 using Wangkanai.Detection.Extensions;
+using Wangkanai.Responsive.Extensions;
 
-namespace Wangkanai.Detection.Hosting;
+namespace Wangkanai.Responsive.Hosting;
 
 /// <summary>
 /// A <see cref="IViewLocationExpander" /> that adds the responsive as an extension prefix to view names.

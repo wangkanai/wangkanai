@@ -1,65 +1,31 @@
 // Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
 
+using System.Diagnostics;
+
 using Microsoft.AspNetCore.Http;
 
 using Moq;
 
+using Wangkanai.Detection;
 using Wangkanai.Detection.Models;
 using Wangkanai.Detection.Services;
 
-namespace Wangkanai.Detection.Mocks;
+namespace Wangkanai.Responsive.Mocks;
 
 [DebuggerStepThrough]
 public static class MockService
 {
-    #region Browser
+    #region Responsive
 
-    internal static BrowserService BrowserService(string agent)
-        => BrowserService(UserAgentService(agent));
-
-    internal static BrowserService BrowserService(IUserAgentService agent)
+    internal static ResponsiveService ResponsiveService(string agent, ResponsiveOptions options = null!)
     {
-        var platform = PlatformService(agent);
-        var engine   = EngineService(agent);
-        return new BrowserService(agent, engine);
+        var accessor = CreateHttpContextAccessor(agent);
+        var device   = DeviceService(agent);
+        return ResponsiveService(accessor, device, options);
     }
 
-    #endregion
-
-    #region Platform
-
-    internal static PlatformService PlatformService(string agent)
-        => new(UserAgentService(agent));
-
-    internal static PlatformService PlatformService(IUserAgentService service)
-        => new(service);
-
-    #endregion
-
-    #region Engine
-
-    internal static EngineService EngineService(string agent)
-        => EngineService(UserAgentService(agent));
-
-    internal static EngineService EngineService(IUserAgentService agent)
-        => new(agent, PlatformService(agent));
-
-    #endregion
-
-    #region Crawler
-
-    internal static CrawlerService CrawlerService(string agent)
-        => CrawlerService(agent, new DetectionOptions());
-
-    internal static CrawlerService CrawlerService(string agent, DetectionOptions options)
-        => new(UserAgentService(agent), options);
-
-    #endregion
-
-    #region Device
-
-    internal static DeviceService DeviceService(string agent)
-        => new(UserAgentService(agent));
+    internal static ResponsiveService ResponsiveService(IHttpContextAccessor accessor, IDeviceService device, ResponsiveOptions options = null!)
+        => new(accessor, device, options);
 
     #endregion
 

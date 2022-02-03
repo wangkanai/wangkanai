@@ -22,27 +22,8 @@ internal static class MockServer
     internal static TestServer Server(IWebHostBuilder builder)
         => new(builder);
 
-    internal static TestServer Server(Action<DetectionOptions> detection)
-        => Server();
-
-    internal static TestServer Server(Action<DetectionOptions> detection, Action<ResponsiveOptions> responsive)
-        => Server();
-
-    [Obsolete]
-    internal static TestServer ServerDetection()
-        => Server(WebHostBuilderDetection());
-
-    [Obsolete]
-    internal static TestServer ServerDetection(Action<DetectionOptions> options)
+    internal static TestServer Server(Action<DetectionOptions> options)
         => Server(WebHostBuilderDetection(options));
-
-    [Obsolete]
-    internal static TestServer ServerResponsive()
-        => Server(WebHostBuilderResponsive());
-
-    [Obsolete]
-    internal static TestServer ServerResponsive(Action<ResponsiveOptions> options)
-        => Server(WebHostBuilderResponsive(options));
 
     #endregion
 
@@ -88,45 +69,8 @@ internal static class MockServer
                app.Run(contextHandler);
            });
 
-    internal static IWebHostBuilder WebHostBuilderResponsive()
-        => WebHostBuilderResponsive(options => { });
-
-    internal static IWebHostBuilder WebHostBuilderResponsive(Action<ResponsiveOptions> options)
-        => WebHostBuilderResponsive(ContextHandler, options);
-
-    internal static IWebHostBuilder WebHostBuilderResponsive(RequestDelegate contextHandler)
-        => WebHostBuilderResponsive(contextHandler, options => { });
-
-    private static IWebHostBuilder WebHostBuilderResponsive(RequestDelegate contextHandler, Action<ResponsiveOptions> options)
-        => new WebHostBuilder()
-           .ConfigureServices(services =>
-           {
-               services.AddHttpContextAccessor();
-               //services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-               services.AddScoped(sp => sp.GetRequiredService<IHttpContextAccessor>().HttpContext.Session);
-               services.AddDetection();
-               services.AddResponsive(options);
-           })
-           .Configure(app =>
-           {
-               app.UseDetection();
-               app.UseSession();
-               app.UseResponsive();
-               app.Run(contextHandler);
-           });
-
     #endregion
 
     private static RequestDelegate ContextHandler
-        => context => context.GetDevice() switch
-                      {
-                          Device.Desktop => context.Response.WriteAsync("Response: Desktop"),
-                          Device.Tablet  => context.Response.WriteAsync("Response: Tablet"),
-                          Device.Mobile  => context.Response.WriteAsync("Response: Mobile"),
-                          Device.Watch   => context.Response.WriteAsync("Response: Watch"),
-                          Device.Tv      => context.Response.WriteAsync("Response: TV"),
-                          Device.Console => context.Response.WriteAsync("Response: Console"),
-                          Device.Car     => context.Response.WriteAsync("Response: Car"),
-                          _              => context.Response.WriteAsync("Response: Who?")
-                      };
+        => context => context.Response.WriteAsync("Detection:");
 }

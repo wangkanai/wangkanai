@@ -2,8 +2,11 @@
 
 using Wangkanai.Detection.Mocks;
 using Wangkanai.Detection.Models;
+using Wangkanai.Responsive.Mocks;
 
-namespace Wangkanai.Detection.Services;
+using Xunit;
+
+namespace Wangkanai.Responsive.Services;
 
 public class ResponsiveServiceTest
 {

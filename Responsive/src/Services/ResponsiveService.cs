@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 
 using Wangkanai.Detection.Extensions;
 using Wangkanai.Detection.Models;
+using Wangkanai.Responsive.Extensions;
 
 namespace Wangkanai.Detection.Services;
 
