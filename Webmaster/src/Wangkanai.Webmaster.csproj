@@ -10,8 +10,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Wangkanai.Runtime" Version="0.8.200" />
-      <PackageReference Include="Wangkanai.Validation" Version="0.5.400" />
+      <ProjectReference Include="..\..\Runtime\src\Wangkanai.Runtime.csproj" />
+      <ProjectReference Include="..\..\Validation\src\Wangkanai.Validation.csproj" />
     </ItemGroup>
 
 </Project>
