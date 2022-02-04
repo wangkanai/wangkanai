@@ -3,7 +3,6 @@
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-using Wangkanai.Detection.Extensions;
 using Wangkanai.Responsive.Extensions;
 
 namespace Wangkanai.Responsive.Hosting;

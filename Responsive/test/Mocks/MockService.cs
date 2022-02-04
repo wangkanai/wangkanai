@@ -29,6 +29,13 @@ public static class MockService
 
     #endregion
 
+    #region Device
+
+    internal static DeviceService DeviceService(string agent)
+        => new(UserAgentService(agent));
+
+    #endregion
+    
     #region UserAgent
 
     internal static IUserAgentService UserAgentService(string agent)
@@ -47,7 +54,7 @@ public static class MockService
     #endregion
 
     #region Mocking
-
+    
     private static Mock<IUserAgentService> MockUserAgentService(string agent)
         => MockUserAgentService(new UserAgent(agent));
 

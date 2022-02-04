@@ -50,7 +50,7 @@ public class ResponsiveBuilderExtensionsTest
     [Fact]
     public async void AddDetection_Options_Disable_True()
     {
-        using var server = MockServer.ServerResponsive(options => { options.Disable = true; });
+        using var server = MockServer.Server(options => { options.Disable = true; });
 
         var client   = server.CreateClient();
         var request  = MockClient.CreateRequest(Device.Mobile);
@@ -63,7 +63,7 @@ public class ResponsiveBuilderExtensionsTest
     [Fact]
     public async void AddDetection_Options_Disable_False()
     {
-        using var server = MockServer.ServerResponsive(options => { options.Disable = false; });
+        using var server = MockServer.Server(options => { options.Disable = false; });
 
         var client   = server.CreateClient();
         var request  = MockClient.CreateRequest(Device.Mobile);
@@ -75,7 +75,7 @@ public class ResponsiveBuilderExtensionsTest
     [Fact]
     public void AddDetection_ResponsiveOptions_Disable_IncludeWebApi()
     {
-        var builder = MockServer.WebHostBuilderResponsive(options =>
+        var builder = MockServer.WebHostBuilder(options =>
         {
             options.Disable       = true;
             options.IncludeWebApi = true;
@@ -93,7 +93,7 @@ public class ResponsiveBuilderExtensionsTest
     [InlineData(Device.Mobile, "mobile", "/api/dog")]
     public async void AddDetection_WebApi_Exclude_Api(Device device, string agent, string path)
     {
-        using var server = MockServer.ServerResponsive(options =>
+        using var server = MockServer.Server(options =>
         {
             options.DefaultMobile  = device;
             options.DefaultTablet  = device;
@@ -117,7 +117,7 @@ public class ResponsiveBuilderExtensionsTest
     [InlineData(Device.Mobile, "mobile", "")]
     public async void AddDetection_WebApi_Exclude_NonApi(Device device, string agent, string path)
     {
-        using var server = MockServer.ServerResponsive(options =>
+        using var server = MockServer.Server(options =>
         {
             options.DefaultMobile  = device;
             options.DefaultTablet  = device;
@@ -144,7 +144,7 @@ public class ResponsiveBuilderExtensionsTest
     [InlineData(Device.Mobile, "mobile", "/api/dog")]
     public async void AddDetection_WebApi_Include_Api(Device device, string agent, string path)
     {
-        using var server = MockServer.ServerResponsive(options =>
+        using var server = MockServer.Server(options =>
         {
             options.DefaultMobile  = device;
             options.DefaultTablet  = device;

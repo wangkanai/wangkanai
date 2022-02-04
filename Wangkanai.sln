@@ -12,6 +12,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_solutions", "_solutions", 
 		README.md = README.md
 		Directory.Build.props = Directory.Build.props
 		azure-pipelines.yml = azure-pipelines.yml
+		sign-blazor.ps1 = sign-blazor.ps1
+		sign-detection.ps1 = sign-detection.ps1
+		sign-runtime.ps1 = sign-runtime.ps1
+		sign-validation.ps1 = sign-validation.ps1
+		sign-webmaster.ps1 = sign-webmaster.ps1
+		sign-analytics.ps1 = sign-analytics.ps1
+		sign-responsive.ps1 = sign-responsive.ps1
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{C26D86D6-4B4E-407E-9F1D-9CA1765768CE}"

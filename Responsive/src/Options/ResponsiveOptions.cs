@@ -2,7 +2,7 @@
 
 using Wangkanai.Detection.Models;
 
-namespace Wangkanai.Detection;
+namespace Wangkanai.Responsive;
 
 /// <summary>
 /// The <see cref="ResponsiveOptions"/> class is the View container for all configuration settings of Responsive.

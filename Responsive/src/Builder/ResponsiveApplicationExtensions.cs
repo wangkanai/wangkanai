@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 
 using Wangkanai;
-using Wangkanai.Detection;
+using Wangkanai.Responsive;
 using Wangkanai.Responsive.Hosting;
 
 namespace Microsoft.Extensions.DependencyInjection;

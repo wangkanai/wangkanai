@@ -1,9 +1,14 @@
 // Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
 
+using System;
+using System.Threading.Tasks;
+
 using Microsoft.AspNetCore.Http;
 
-using Wangkanai.Detection.Mocks;
 using Wangkanai.Detection.Models;
+using Wangkanai.Responsive.Mocks;
+
+using Xunit;
 
 namespace Wangkanai.Responsive.Hosting;
 
@@ -44,7 +49,7 @@ public class ResponsiveMiddlewareTest
     [Fact]
     public async void Invoke_HttpContext_ResponsiveService_Success()
     {
-        using var server   = MockServer.ServerResponsive();
+        using var server   = MockServer.Server();
         var       request  = MockClient.CreateRequest(Device.Desktop);
         var       client   = server.CreateClient();
         var       response = await client.SendAsync(request);

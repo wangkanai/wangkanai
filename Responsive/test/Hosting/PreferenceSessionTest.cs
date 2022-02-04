@@ -1,8 +1,12 @@
 // Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
 
+using System.Threading.Tasks;
+
 using Microsoft.AspNetCore.Http;
 
-using Wangkanai.Detection.Mocks;
+using Wangkanai.Responsive.Mocks;
+
+using Xunit;
 
 namespace Wangkanai.Responsive.Hosting;
 
@@ -11,8 +15,9 @@ public class PreferenceSessionTest
     [Fact]
     public async Task ReadingEmptySessionDoesNotCreateCookie()
     {
-        var builder = MockServer.WebHostBuilderResponsive(context =>
+        var builder = MockServer.WebHostBuilder(context =>
         {
+            
             context.Session.SetString("Key", "Value");
             return Task.FromResult(0);
         });

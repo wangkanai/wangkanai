@@ -4,8 +4,8 @@ using System.Text;
 
 using Microsoft.AspNetCore.Http;
 
-using Wangkanai.Detection.Extensions;
 using Wangkanai.Detection.Models;
+using Wangkanai.Responsive;
 using Wangkanai.Responsive.Extensions;
 
 namespace Wangkanai.Detection.Services;

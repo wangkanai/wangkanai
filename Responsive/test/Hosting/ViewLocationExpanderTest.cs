@@ -1,11 +1,18 @@
 // Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
 
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Razor;
 
-using Wangkanai.Detection.Extensions;
 using Wangkanai.Detection.Models;
+using Wangkanai.Responsive.Extensions;
+
+using Xunit;
 
 namespace Wangkanai.Responsive.Hosting;
 

@@ -4,7 +4,6 @@ using System.ComponentModel;
 
 using Microsoft.AspNetCore.Mvc.Razor;
 
-using Wangkanai.Detection.Extensions;
 using Wangkanai.Responsive.Extensions;
 
 namespace Wangkanai.Responsive.Hosting;

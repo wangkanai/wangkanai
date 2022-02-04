@@ -10,7 +10,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
 using Wangkanai.Detection;
-using Wangkanai.Detection.Extensions;
 using Wangkanai.Detection.Models;
 using Wangkanai.Responsive.Extensions;
 
@@ -21,32 +20,13 @@ internal static class MockServer
     #region Server
 
     internal static TestServer Server()
-        => Server();
+        => Server(WebHostBuilder());
+
+    internal static TestServer Server(Action<ResponsiveOptions> options)
+        => Server(WebHostBuilder(options));
 
     internal static TestServer Server(IWebHostBuilder builder)
         => new(builder);
-
-    internal static TestServer Server(Action<DetectionOptions> detection)
-        => Server();
-
-    internal static TestServer Server(Action<DetectionOptions> detection, Action<ResponsiveOptions> responsive)
-        => Server();
-
-    [Obsolete]
-    internal static TestServer ServerDetection()
-        => Server(WebHostBuilderDetection());
-
-    [Obsolete]
-    internal static TestServer ServerDetection(Action<DetectionOptions> options)
-        => Server(WebHostBuilderDetection(options));
-
-    [Obsolete]
-    internal static TestServer ServerResponsive()
-        => Server(WebHostBuilderResponsive());
-
-    [Obsolete]
-    internal static TestServer ServerResponsive(Action<ResponsiveOptions> options)
-        => Server(WebHostBuilderResponsive(options));
 
     #endregion
 
@@ -67,46 +47,15 @@ internal static class MockServer
            .ConfigureServices(services => { })
            .Configure(app => { app.Run(contextHandler); });
 
-    internal static IWebHostBuilder WebHostBuilderDetection()
-        => WebHostBuilderDetection(options => { });
+    internal static IWebHostBuilder WebHostBuilder(Action<ResponsiveOptions> options)
+        => WebHostBuilder(ContextHandler, options);
 
-    internal static IWebHostBuilder WebHostBuilderDetection(Action<DetectionOptions> options)
-        => WebHostBuilderDetection(ContextHandler, options);
-
-    internal static IWebHostBuilder WebHostBuilderDetection(RequestDelegate contextHandler)
-        => WebHostBuilderDetection(contextHandler, options => { });
-
-    private static IWebHostBuilder WebHostBuilderDetection(RequestDelegate contextHandler, Action<DetectionOptions> options)
-        => new WebHostBuilder()
-           .ConfigureServices(services =>
-           {
-               // var accessor = MockService.MockHttpContextAccessor(agent);
-               // services.TryAddSingleton<IHttpContextAccessor, accessor>();
-               services.AddScoped(sp => sp.GetService<IHttpContextAccessor>().HttpContext.Session);
-               services.AddDetection(options);
-           })
-           .Configure(app =>
-           {
-               app.UseSession();
-               app.UseDetection();
-               app.Run(contextHandler);
-           });
-
-    internal static IWebHostBuilder WebHostBuilderResponsive()
-        => WebHostBuilderResponsive(options => { });
-
-    internal static IWebHostBuilder WebHostBuilderResponsive(Action<ResponsiveOptions> options)
-        => WebHostBuilderResponsive(ContextHandler, options);
-
-    internal static IWebHostBuilder WebHostBuilderResponsive(RequestDelegate contextHandler)
-        => WebHostBuilderResponsive(contextHandler, options => { });
-
-    private static IWebHostBuilder WebHostBuilderResponsive(RequestDelegate contextHandler, Action<ResponsiveOptions> options)
+    private static IWebHostBuilder WebHostBuilder(RequestDelegate contextHandler, Action<ResponsiveOptions> options)
         => new WebHostBuilder()
            .ConfigureServices(services =>
            {
                services.AddHttpContextAccessor();
-               //services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+               services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
                services.AddScoped(sp => sp.GetRequiredService<IHttpContextAccessor>().HttpContext.Session);
                services.AddDetection();
                services.AddResponsive(options);
