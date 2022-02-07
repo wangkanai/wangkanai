@@ -1,6 +1,6 @@
 <Project>
     <PropertyGroup>
-        <VersionPrefix>0.8.400</VersionPrefix>
+        <VersionPrefix>0.8.500</VersionPrefix>
         <Title>Wangkanai Runtime</Title>
         <RootNamespace>Wangkanai.Runtime</RootNamespace>
         <Description>Wangkanai .NET Runtime library to serve as the foundation for future development.</Description>

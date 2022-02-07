@@ -35,18 +35,15 @@ public class ResponsiveViewLocationExpander : IViewLocationExpander
 
     public void PopulateValues(ViewLocationExpanderContext context)
     {
-        if (context is null)
-            throw new ArgumentNullException(nameof(context));
+        Check.NotNull(context);
 
         context.Values[ValueKey] = context.ActionContext.HttpContext.GetDevice().ToString();
     }
 
     public IEnumerable<string> ExpandViewLocations(ViewLocationExpanderContext context, IEnumerable<string> viewLocations)
     {
-        if (context is null)
-            throw new ArgumentNullException(nameof(context));
-        if (viewLocations is null)
-            throw new ArgumentNullException(nameof(viewLocations));
+        Check.NotNull(context);
+        Check.NotNull(viewLocations);
 
         context.Values.TryGetValue(ValueKey, out var device);
 

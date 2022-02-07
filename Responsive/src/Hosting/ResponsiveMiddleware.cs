@@ -18,8 +18,7 @@ public class ResponsiveMiddleware
 
     public async Task InvokeAsync(HttpContext context, IResponsiveService responsive)
     {
-        if (context is null)
-            throw new ArgumentNullException(nameof(context));
+        Check.NotNull(context);
 
         context.SetDevice(responsive.View);
 

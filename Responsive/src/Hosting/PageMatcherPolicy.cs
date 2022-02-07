@@ -18,26 +18,27 @@ internal class ResponsivePageMatcherPolicy : MatcherPolicy, IEndpointComparerPol
 
     public bool AppliesToEndpoints(IReadOnlyList<Endpoint> endpoints)
     {
-        foreach (var endpoint in endpoints)
-            if (endpoint?.Metadata.GetMetadata<IResponsiveMetadata>() != null)
-                return true;
+        Check.NotNull(endpoints);
 
-        return false;
+        return endpoints.Any(endpoint => endpoint.Metadata.GetMetadata<IResponsiveMetadata>() != null);
     }
 
-    public Task ApplyAsync(HttpContext httpContext, CandidateSet candidates)
+    public Task ApplyAsync(HttpContext context, CandidateSet candidates)
     {
-        var device = httpContext.GetDevice();
+        Check.NotNull(context);
+        Check.NotNull(candidates);
+
+        var device = context.GetDevice();
 
         for (var i = 0; i < candidates.Count; i++)
         {
             var endpoint = candidates[i].Endpoint;
             var metadata = endpoint.Metadata.GetMetadata<IResponsiveMetadata>();
+            if (metadata is null)
+                continue;
+            // This endpoint is not a match for the selected device.
             if (metadata?.Device != null && device != metadata.Device)
-            {
-                // This endpoint is not a match for the selected device.
                 candidates.SetValidity(i, false);
-            }
         }
 
         return Task.CompletedTask;

@@ -1,7 +1,7 @@
 <Project>
     <PropertyGroup>
-        <Product>Wangkanai Detection</Product>
-        <Copyright>©2014-2021 Sarin Na Wangkanai, All rights reserved</Copyright>
+        <Company>Wangkanai</Company>
+        <Copyright>©2014-2022 Sarin Na Wangkanai, All rights reserved</Copyright>
         
         <RepositoryType>git</RepositoryType>
         <RepositoryUrl>git://github.com/wangkanai/wangkanai</RepositoryUrl>
