@@ -15,7 +15,6 @@ public static class Check
                ? throw new ArgumentNullException(parameterName)
                : value;
 
-
     [ContractAnnotation("value:null => halt")]
     public static string NotNullOrEmpty(string value)
         => NotNullOrEmpty(value, nameof(value));

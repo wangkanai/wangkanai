@@ -83,7 +83,7 @@ public class ResponsiveBuilderExtensionsTest
         //var request  = MockClient.CreateRequest(agent, path);
         var response = await request.GetAsync();
         response.EnsureSuccessStatusCode();
-        Assert.Contains("desktop", await response.Content.ReadAsStringAsync(), StringComparison.OrdinalIgnoreCase);
+        Assert.Contains("mobile", await response.Content.ReadAsStringAsync(), StringComparison.OrdinalIgnoreCase);
     }
 
     [Theory]
