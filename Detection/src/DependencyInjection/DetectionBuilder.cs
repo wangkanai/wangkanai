@@ -1,7 +1,5 @@
 // Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
 
-using Wangkanai;
-
 namespace Microsoft.Extensions.DependencyInjection;
 
 /// <summary>
@@ -14,7 +12,7 @@ public class DetectionBuilder : IDetectionBuilder
     /// </summary>
     /// <param name="services">The <see cref="IServiceCollection" /> to attach to.</param>
     public DetectionBuilder(IServiceCollection services)
-        => Services = services ?? Check.NotNull(services);
+        => Services = Check.NotNull(services);
 
     /// <summary>
     /// Gets the <see cref="IServiceCollection" /> services are attached to

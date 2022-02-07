@@ -3,7 +3,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Logging;
 
-using Wangkanai;
 using Wangkanai.Detection;
 using Wangkanai.Detection.Services;
 
