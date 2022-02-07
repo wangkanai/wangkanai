@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
-using Wangkanai.Detection;
 using Wangkanai.Detection.Models;
 using Wangkanai.Responsive.Extensions;
 
@@ -17,8 +16,6 @@ namespace Wangkanai.Responsive.Mocks;
 
 internal static class MockServer
 {
-    #region Server
-
     internal static TestServer Server()
         => Server(WebHostBuilder());
 
@@ -28,35 +25,23 @@ internal static class MockServer
     internal static TestServer Server(IWebHostBuilder builder)
         => new(builder);
 
-    #endregion
-
-    #region WebApplicationBuilder
-
-    internal static WebApplicationBuilder WebApplicationBuilder()
-        => WebApplication.CreateBuilder();
-
-    #endregion
-
-    #region WebHostBuilder
 
     internal static IWebHostBuilder WebHostBuilder()
         => WebHostBuilder(ContextHandler);
 
-    internal static IWebHostBuilder WebHostBuilder(RequestDelegate contextHandler)
-        => new WebHostBuilder()
-           .ConfigureServices(services => { })
-           .Configure(app => { app.Run(contextHandler); });
-
     internal static IWebHostBuilder WebHostBuilder(Action<ResponsiveOptions> options)
         => WebHostBuilder(ContextHandler, options);
+
+    internal static IWebHostBuilder WebHostBuilder(RequestDelegate contextHandler)
+        => WebHostBuilder(contextHandler, _ => { });
+
 
     private static IWebHostBuilder WebHostBuilder(RequestDelegate contextHandler, Action<ResponsiveOptions> options)
         => new WebHostBuilder()
            .ConfigureServices(services =>
            {
-               services.AddHttpContextAccessor();
-               services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-               services.AddScoped(sp => sp.GetRequiredService<IHttpContextAccessor>().HttpContext.Session);
+               services.TryAddSingleton<IHttpContextAccessor, MockHttpContextAccessor>();
+               services.AddSession();
                services.AddDetection();
                services.AddResponsive(options);
            })
@@ -68,18 +53,16 @@ internal static class MockServer
                app.Run(contextHandler);
            });
 
-    #endregion
-
     private static RequestDelegate ContextHandler
         => context => context.GetDevice() switch
                       {
-                          Device.Desktop => context.Response.WriteAsync("Response: Desktop"),
-                          Device.Tablet  => context.Response.WriteAsync("Response: Tablet"),
-                          Device.Mobile  => context.Response.WriteAsync("Response: Mobile"),
-                          Device.Watch   => context.Response.WriteAsync("Response: Watch"),
-                          Device.Tv      => context.Response.WriteAsync("Response: TV"),
-                          Device.Console => context.Response.WriteAsync("Response: Console"),
-                          Device.Car     => context.Response.WriteAsync("Response: Car"),
-                          _              => context.Response.WriteAsync("Response: Who?")
+                          Device.Desktop => context.Response.WriteAsync("desktop"),
+                          Device.Tablet  => context.Response.WriteAsync("tablet"),
+                          Device.Mobile  => context.Response.WriteAsync("mobile"),
+                          Device.Watch   => context.Response.WriteAsync("watch"),
+                          Device.Tv      => context.Response.WriteAsync("tv"),
+                          Device.Console => context.Response.WriteAsync("console"),
+                          Device.Car     => context.Response.WriteAsync("car"),
+                          _              => context.Response.WriteAsync("who?")
                       };
 }

@@ -15,30 +15,7 @@ namespace Wangkanai.Responsive.DependencyInjection;
 public class ResponsiveBuilderExtensionsTest
 {
     [Fact]
-    public void AddDetection_Services()
-    {
-        var service = new ServiceCollection();
-        var builder = service.AddDetection();
-
-        Assert.Same(service, builder.Services);
-    }
-
-    [Fact]
-    public void AddDetection_Null_ArgumentNullException()
-    {
-        Assert.Throws<ArgumentNullException>(
-            () => ((IServiceCollection)null!).AddDetection());
-    }
-
-    [Fact]
-    public void AddDetection_Options_Null_ArgumentNullException()
-    {
-        Assert.Throws<ArgumentNullException>(
-            () => ((IServiceCollection)null!).AddDetection(null!));
-    }
-
-    [Fact]
-    public void AddDetection_Options_Builder_Service()
+    public void AddResponsive_Options_Builder_Service()
     {
         var service = new ServiceCollection();
         var builder = service.AddResponsive(
@@ -48,7 +25,7 @@ public class ResponsiveBuilderExtensionsTest
     }
 
     [Fact]
-    public async void AddDetection_Options_Disable_True()
+    public async void AddResponsive_Options_Disable_True()
     {
         using var server = MockServer.Server(options => { options.Disable = true; });
 
@@ -61,7 +38,7 @@ public class ResponsiveBuilderExtensionsTest
 
 
     [Fact]
-    public async void AddDetection_Options_Disable_False()
+    public async void AddResponsive_Options_Disable_False()
     {
         using var server = MockServer.Server(options => { options.Disable = false; });
 
@@ -73,7 +50,7 @@ public class ResponsiveBuilderExtensionsTest
     }
 
     [Fact]
-    public void AddDetection_ResponsiveOptions_Disable_IncludeWebApi()
+    public void AddResponsive_Options_Disable_IncludeWebApi()
     {
         var builder = MockServer.WebHostBuilder(options =>
         {
@@ -91,19 +68,20 @@ public class ResponsiveBuilderExtensionsTest
     [Theory]
     [InlineData(Device.Mobile, "desktop", "/api/dog")]
     [InlineData(Device.Mobile, "mobile", "/api/dog")]
-    public async void AddDetection_WebApi_Exclude_Api(Device device, string agent, string path)
+    public async void AddResponsive_WebApi_Exclude_Api(Device device, string agent, string path)
     {
         using var server = MockServer.Server(options =>
         {
             options.DefaultMobile  = device;
             options.DefaultTablet  = device;
             options.DefaultDesktop = device;
-            options.IncludeWebApi  = false;
+            options.IncludeWebApi  = true;
         });
-
-        var client   = server.CreateClient();
-        var request  = MockClient.CreateRequest(agent, path);
-        var response = await client.SendAsync(request);
+        
+        var request = server.CreateRequest(path);
+        request.AddHeader("User-Agent", agent);
+        //var request  = MockClient.CreateRequest(agent, path);
+        var response = await request.GetAsync();
         response.EnsureSuccessStatusCode();
         Assert.Contains("desktop", await response.Content.ReadAsStringAsync(), StringComparison.OrdinalIgnoreCase);
     }
@@ -115,7 +93,7 @@ public class ResponsiveBuilderExtensionsTest
     [InlineData(Device.Desktop, "desktop", "/api/dog")]
     [InlineData(Device.Mobile, "desktop", "")]
     [InlineData(Device.Mobile, "mobile", "")]
-    public async void AddDetection_WebApi_Exclude_NonApi(Device device, string agent, string path)
+    public async void AddResponsive_WebApi_Exclude_NonApi(Device device, string agent, string path)
     {
         using var server = MockServer.Server(options =>
         {
@@ -142,7 +120,7 @@ public class ResponsiveBuilderExtensionsTest
     [InlineData(Device.Mobile, "desktop", "/api/dog")]
     [InlineData(Device.Mobile, "mobile", "")]
     [InlineData(Device.Mobile, "mobile", "/api/dog")]
-    public async void AddDetection_WebApi_Include_Api(Device device, string agent, string path)
+    public async void AddResponsive_WebApi_Include_Api(Device device, string agent, string path)
     {
         using var server = MockServer.Server(options =>
         {

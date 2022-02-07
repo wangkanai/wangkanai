@@ -10,5 +10,5 @@ public class DetectionOptions
     /// <summary>
     /// Gets the default <see cref="CrawlerOptions"/> used by this application.
     /// </summary>
-    public CrawlerOptions Crawler { get; } = new CrawlerOptions();
+    public CrawlerOptions Crawler { get; } = new();
 }

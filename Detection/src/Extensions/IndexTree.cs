@@ -36,10 +36,9 @@ public readonly struct IndexTree
         foreach (var (key, list) in KeywordsGroupBySeed(keywords, seed))
         {
             var newKeys = list.ToArray();
-            if (newKeys.Any(k => seed + 1 >= k.Length))
-                _lookup[key           - lower] = new IndexTree(null, seed + 1);
-            else
-                _lookup[key - lower] = new IndexTree(newKeys, seed + 1);
+            _lookup[key - lower] = newKeys.Any(k => seed + 1 >= k.Length) 
+                                       ? new IndexTree(null, seed + 1) 
+                                       : new IndexTree(newKeys, seed + 1);
         }
     }
 

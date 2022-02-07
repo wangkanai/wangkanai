@@ -3,7 +3,7 @@
 using Microsoft.AspNetCore.Mvc;
 
 using Wangkanai.Detection.Models;
-using Wangkanai.Detection.Services;
+using Wangkanai.Responsive.Services;
 
 namespace Wangkanai.Responsive.Hosting;
 
@@ -11,7 +11,7 @@ namespace Wangkanai.Responsive.Hosting;
 public class PreferenceController : Controller
 {
     private readonly IResponsiveService _responsive;
-    private const    string             AreaName = "Detection";
+    private const    string             AreaName = "Responsive";
 
     public PreferenceController(IResponsiveService responsive)
         => _responsive = responsive;

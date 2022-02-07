@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 
 using Wangkanai.Detection.Models;
 using Wangkanai.Detection.Services;
+using Wangkanai.Responsive.Services;
 
 namespace Microsoft.AspNetCore.Mvc.TagHelpers;
 

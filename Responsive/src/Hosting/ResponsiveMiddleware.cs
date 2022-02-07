@@ -2,8 +2,8 @@
 
 using Microsoft.AspNetCore.Http;
 
-using Wangkanai.Detection.Services;
 using Wangkanai.Responsive.Extensions;
+using Wangkanai.Responsive.Services;
 
 namespace Wangkanai.Responsive.Hosting;
 

@@ -28,4 +28,7 @@ internal static class HttpContextExtensions
                    ? (Device)(responsive ?? Device.Unknown)
                    : Device.Desktop;
     }
+    
+    public static bool IsWebApi(this HttpContext context, ResponsiveOptions options)
+        => context.Request.Path.StartsWithSegments(options.WebApiPath);
 }

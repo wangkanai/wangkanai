@@ -5,10 +5,10 @@ using System.Text;
 using Microsoft.AspNetCore.Http;
 
 using Wangkanai.Detection.Models;
-using Wangkanai.Responsive;
+using Wangkanai.Detection.Services;
 using Wangkanai.Responsive.Extensions;
 
-namespace Wangkanai.Detection.Services;
+namespace Wangkanai.Responsive.Services;
 
 public class ResponsiveService : IResponsiveService
 {

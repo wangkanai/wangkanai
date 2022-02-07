@@ -2,7 +2,7 @@
 
 using Wangkanai.Detection.Models;
 
-namespace Wangkanai.Detection.Services;
+namespace Wangkanai.Responsive.Services;
 
 public interface IResponsiveService
 {

@@ -6,9 +6,9 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
 
 using Wangkanai;
-using Wangkanai.Detection.Services;
 using Wangkanai.Responsive;
 using Wangkanai.Responsive.Hosting;
+using Wangkanai.Responsive.Services;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
