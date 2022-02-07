@@ -16,15 +16,16 @@ public static class ResponsiveApplicationExtensions
         Check.NotNull(app);
 
         var options = app.ApplicationServices.GetRequiredService<ResponsiveOptions>();
-        var context = app.ApplicationServices.GetRequiredService<HttpContext>();
+        var context = app.ApplicationServices.GetRequiredService<IHttpContextAccessor>()?.HttpContext;
+        
 
         ValidateOptions(options);
 
         if (options.Disable)
             return app;
 
-        if (context.IsWebApi(options))
-            return app;
+        // if (context.IsWebApi(options))
+        //     return app;
 
         app.UseSession();
         app.UseMiddleware<ResponsiveMiddleware>();

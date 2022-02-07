@@ -6,17 +6,15 @@ using Microsoft.AspNetCore.Http;
 
 using Moq;
 
-using Wangkanai.Detection;
 using Wangkanai.Detection.Models;
 using Wangkanai.Detection.Services;
+using Wangkanai.Responsive.Services;
 
 namespace Wangkanai.Responsive.Mocks;
 
 [DebuggerStepThrough]
 public static class MockService
 {
-    #region Responsive
-
     internal static ResponsiveService ResponsiveService(string agent, ResponsiveOptions options = null!)
     {
         var accessor = CreateHttpContextAccessor(agent);
@@ -27,16 +25,10 @@ public static class MockService
     internal static ResponsiveService ResponsiveService(IHttpContextAccessor accessor, IDeviceService device, ResponsiveOptions options = null!)
         => new(accessor, device, options);
 
-    #endregion
-
-    #region Device
 
     internal static DeviceService DeviceService(string agent)
         => new(UserAgentService(agent));
 
-    #endregion
-    
-    #region UserAgent
 
     internal static IUserAgentService UserAgentService(string agent)
         => UserAgentService(new UserAgent(agent));
@@ -44,17 +36,11 @@ public static class MockService
     internal static IUserAgentService UserAgentService(UserAgent agent)
         => MockUserAgentService(agent).Object;
 
-    #endregion
-
-    #region HttpContextService
 
     internal static IHttpContextService HttpContextService(string agent)
         => MockHttpContextService(agent).Object;
 
-    #endregion
 
-    #region Mocking
-    
     private static Mock<IUserAgentService> MockUserAgentService(string agent)
         => MockUserAgentService(new UserAgent(agent));
 
@@ -65,7 +51,7 @@ public static class MockService
         return service;
     }
 
-    private static Mock<IHttpContextService> MockHttpContextService(string agent)
+    internal static Mock<IHttpContextService> MockHttpContextService(string agent)
         => CreateHttpContext(agent).SetupHttpContextService();
 
     private static Mock<IHttpContextService> SetupHttpContextService(this HttpContext context)
@@ -76,14 +62,13 @@ public static class MockService
         return service;
     }
 
-    #endregion
-
-    #region Internal
+    internal static IHttpContextAccessor MockHttpContextAccessor()
+        => new MockHttpContextAccessor { HttpContext = CreateHttpContext() };
 
     internal static IHttpContextAccessor MockHttpContextAccessor(string agent)
-        => new MockHttpContextAccessor() { HttpContext = CreateHttpContext(agent) };
+        => new MockHttpContextAccessor { HttpContext = CreateHttpContext(agent) };
 
-    internal static IHttpContextAccessor CreateHttpContextAccessor(string agent)
+    private static IHttpContextAccessor CreateHttpContextAccessor(string agent)
         => new HttpContextAccessor { HttpContext = CreateHttpContext(agent) };
 
     private static HttpContext CreateHttpContext(string value)
@@ -93,5 +78,6 @@ public static class MockService
         return context;
     }
 
-    #endregion
+    private static HttpContext CreateHttpContext()
+        => new DefaultHttpContext();
 }
