@@ -28,7 +28,8 @@ our [contributing guide](https://github.com/wangkanai/wangkanai/blob/main/CONTRI
 ## What development tools?
 
 Wangkanai is developed with C# .NET and target the latest .NET 6.0 and using JetBrains Rider as the primary IDE.
-[![JetBrains Rider](https://github.com/wangkanai/Wangkanai/tree/main/Asset/jetbrains-rider.svg?sanitize=true)]
+
+[![JetBrains Rider](https://raw.githubusercontent.com/wangkanai/Wangkanai/main/Asset/jetbrains-rider.svg?sanitize=true)]
 
 ## Privacy
 
