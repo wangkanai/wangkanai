@@ -1,11 +1,25 @@
 <Project>
     <PropertyGroup>
         <VersionPrefix>0.8.500</VersionPrefix>
-        <Title>Wangkanai Runtime</Title>
-        <RootNamespace>Wangkanai.Runtime</RootNamespace>
+
+        <Product>Wangkanai Runtime</Product>
+        <Authors>Sarin Na Wangkanai</Authors>
+        <PackageTags>aspnetcore;runtime;</PackageTags>
+        <Copyright>©2014-2022 Sarin Na Wangkanai, All rights reserved</Copyright>
         <Description>Wangkanai .NET Runtime library to serve as the foundation for future development.</Description>
+
+        <RepositoryType>git</RepositoryType>
+        <RepositoryUrl>git://github.com/wangkanai/wangkanai</RepositoryUrl>
+
+        <PackageProjectUrl>https://github.com/wangkanai/wangkanai</PackageProjectUrl>
+        <PackageLicense>https://github.com/wangkanai/wangkanai/blob/main/LICENSE</PackageLicense>
+        <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     </PropertyGroup>
-    
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All"/>
+    </ItemGroup>
+
     <PropertyGroup>
         <PackageIcon>wangkanai-logo.png</PackageIcon>
         <PackageReadmeFile>README.md</PackageReadmeFile>
