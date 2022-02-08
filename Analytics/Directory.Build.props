@@ -1,10 +1,13 @@
 <Project>
     <PropertyGroup>
         <VersionPrefix>0.0.300</VersionPrefix>
+        
         <Product>Wangkanai Analytics</Product>
-        <Copyright>©2014-2022 Sarin Na Wangkanai, All rights reserved</Copyright>
         <Description>Wangkanai Analytics Component library.</Description>
         <PackageTags>aspnetcore;analytics;</PackageTags>
+
+        <Authors>Sarin Na Wangkanai</Authors>
+        <Copyright>©2014-2022 Sarin Na Wangkanai, All rights reserved</Copyright>
 
         <RepositoryType>git</RepositoryType>
         <RepositoryUrl>git://github.com/wangkanai/wangkanai</RepositoryUrl>

@@ -3,10 +3,11 @@
         <VersionPrefix>0.8.500</VersionPrefix>
 
         <Product>Wangkanai Runtime</Product>
-        <Authors>Sarin Na Wangkanai</Authors>
         <PackageTags>aspnetcore;runtime;</PackageTags>
-        <Copyright>©2014-2022 Sarin Na Wangkanai, All rights reserved</Copyright>
         <Description>Wangkanai .NET Runtime library to serve as the foundation for future development.</Description>
+        
+        <Authors>Sarin Na Wangkanai</Authors>
+        <Copyright>©2014-2022 Sarin Na Wangkanai, All rights reserved</Copyright>
 
         <RepositoryType>git</RepositoryType>
         <RepositoryUrl>git://github.com/wangkanai/wangkanai</RepositoryUrl>
