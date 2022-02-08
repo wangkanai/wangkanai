@@ -7,7 +7,7 @@ with view rendered and optimized directly from the server side.
 
 **Please show me some love and click the** :star:
 
-<img src="https://raw.githubusercontent.com/wangkanai/Detection/main/asset/aspnet-core-detection-3.svg?sanitize=true" width="650" alt="ASP.NET Core Detection" />
+<img src="https://raw.githubusercontent.com/wangkanai/Wangkanai/main/Asset/aspnet-core-detection-3.svg?sanitize=true" width="650" alt="ASP.NET Core Detection" />
 
 [![Build status](https://ci.appveyor.com/api/projects/status/033qv4nqv8g4altq?svg=true&retina=true)](https://ci.appveyor.com/project/wangkanai/detection)
 [![NuGet Badge](https://buildstats.info/nuget/wangkanai.detection)](https://www.nuget.org/packages/wangkanai.detection)

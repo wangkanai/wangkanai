@@ -5,9 +5,9 @@ crawler. Responsive middleware for routing base upon request client device detec
 feature of user preference made this library even more comprehensive must for developers whom to target multiple devices
 with view rendered and optimized directly from the server side.
 
-![ASP.NET Core Detection](https://raw.githubusercontent.com/wangkanai/Detection/main/asset/aspnet-core-detection-3.svg?sanitize=true)
+![ASP.NET Core Detection](https://raw.githubusercontent.com/wangkanai/Wangkanai/main/Asset/aspnet-core-detection-3.svg?sanitize=true)
 
-[![GitHub](https://img.shields.io/github/license/wangkanai/detection)](https://github.com/wangkanai/Detection/blob/dev/LICENSE)
+[![GitHub](https://img.shields.io/github/license/wangkanai/Wangkanai)](https://github.com/wangkanai/Wangkanai/blob/dev/LICENSE)
 [![Open Collective](https://img.shields.io/badge/open%20collective-support%20me-3385FF.svg)](https://opencollective.com/wangkanai)
 [![Patreon](https://img.shields.io/badge/patreon-support%20me-d9643a.svg)](https://www.patreon.com/wangkanai)
 
