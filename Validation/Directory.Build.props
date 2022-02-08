@@ -1,6 +1,6 @@
 <Project>
     <PropertyGroup>
-        <VersionPrefix>0.5.400</VersionPrefix>
+        <VersionPrefix>0.5.500</VersionPrefix>
 
         <Product>Wangkanai Validation</Product>
         <Description>Wangkanai .NET Validation library</Description>

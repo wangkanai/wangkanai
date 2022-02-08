@@ -5,6 +5,8 @@
         <Product>Wangkanai Blazor</Product>
         <Description>Wangkanai Blazor Component library.</Description>
         <PackageTags>aspnetcore;blazor;component;</PackageTags>
+
+        <Authors>Sarin Na Wangkanai</Authors>
         <Copyright>©2014-2022 Sarin Na Wangkanai, All rights reserved</Copyright>
 
         <RepositoryType>git</RepositoryType>
