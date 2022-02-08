@@ -1,15 +1,13 @@
-## ASP.NET Core Detection with Responsive View
+## ASP.NET Core Detection
 
 ASP.NET Core Detection service components for identifying details about client device, browser, engine, platform, &
-crawler. Responsive middleware for routing base upon request client device detection to specific view. Also in the added
-feature of user preference made this library even more comprehensive must for developers whom to target multiple devices
-with view rendered and optimized directly from the server side.
+crawler. 
 
 **Please show me some love and click the** :star:
 
 <img src="https://raw.githubusercontent.com/wangkanai/Wangkanai/main/Asset/aspnet-core-detection-3.svg?sanitize=true" width="650" alt="ASP.NET Core Detection" />
 
-[![Build status](https://ci.appveyor.com/api/projects/status/033qv4nqv8g4altq?svg=true&retina=true)](https://ci.appveyor.com/project/wangkanai/detection)
+[![Build Status](https://dev.azure.com/wangkanai/GitHub/_apis/build/status/wangkanai?branchName=main)](https://dev.azure.com/wangkanai/GitHub/_build/latest?definitionId=20&branchName=main)
 [![NuGet Badge](https://buildstats.info/nuget/wangkanai.detection)](https://www.nuget.org/packages/wangkanai.detection)
 [![NuGet Badge](https://buildstats.info/nuget/wangkanai.detection?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.detection)
 [![MyGet Badge](https://buildstats.info/myget/wangkanai/wangkanai.detection)](https://www.myget.org/feed/wangkanai/package/nuget/wangkanai.detection)
