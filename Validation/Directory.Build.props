@@ -2,7 +2,7 @@
     <PropertyGroup>
         <VersionPrefix>0.5.500</VersionPrefix>
 
-        <Product>Wangkanai Validation</Product>
+        <Title>Wangkanai Validation</Title>
         <Description>Wangkanai .NET Validation library</Description>
         <PackageTags>aspnetcore;validation;</PackageTags>
         

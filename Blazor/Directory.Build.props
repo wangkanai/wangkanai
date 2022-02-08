@@ -2,7 +2,7 @@
     <PropertyGroup>
         <VersionPrefix>0.1.300</VersionPrefix>
 
-        <Product>Wangkanai Blazor</Product>
+        <Title>Wangkanai Blazor</Title>
         <Description>Wangkanai Blazor Component library.</Description>
         <PackageTags>aspnetcore;blazor;component;</PackageTags>
 

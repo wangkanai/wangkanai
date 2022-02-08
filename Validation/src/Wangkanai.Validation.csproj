@@ -5,10 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Wangkanai.Runtime" Version="0.8.200" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\Runtime\src\Wangkanai.Runtime.csproj" />
   </ItemGroup>
 
