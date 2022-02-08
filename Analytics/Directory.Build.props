@@ -2,7 +2,7 @@
     <PropertyGroup>
         <VersionPrefix>0.0.300</VersionPrefix>
         
-        <Product>Wangkanai Analytics</Product>
+        <Title>Wangkanai Analytics</Title>
         <Description>Wangkanai Analytics Component library.</Description>
         <PackageTags>aspnetcore;analytics;</PackageTags>
 

@@ -1,7 +1,6 @@
 ## ASP.NET Core Detection
 
-ASP.NET Core Detection service components for identifying details about client device, browser, engine, platform, &
-crawler. 
+ASP.NET Core Detection service components for identifying details about client device, browser, engine, platform, & crawler. 
 
 **Please show me some love and click the** :star:
 
@@ -10,19 +9,16 @@ crawler.
 [![Build Status](https://dev.azure.com/wangkanai/GitHub/_apis/build/status/wangkanai?branchName=main)](https://dev.azure.com/wangkanai/GitHub/_build/latest?definitionId=20&branchName=main)
 [![NuGet Badge](https://buildstats.info/nuget/wangkanai.detection)](https://www.nuget.org/packages/wangkanai.detection)
 [![NuGet Badge](https://buildstats.info/nuget/wangkanai.detection?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.detection)
-[![MyGet Badge](https://buildstats.info/myget/wangkanai/wangkanai.detection)](https://www.myget.org/feed/wangkanai/package/nuget/wangkanai.detection)
 
-[![GitHub](https://img.shields.io/github/license/wangkanai/detection)](https://github.com/wangkanai/Detection/blob/dev/LICENSE)
+[![GitHub](https://img.shields.io/github/license/wangkanai/wangkanai)](https://github.com/wangkanai/wangkanai/blob/dev/LICENSE)
 [![Open Collective](https://img.shields.io/badge/open%20collective-support%20me-3385FF.svg)](https://opencollective.com/wangkanai)
 [![Patreon](https://img.shields.io/badge/patreon-support%20me-d9643a.svg)](https://www.patreon.com/wangkanai)
-
-[![Build history](https://buildstats.info/appveyor/chart/wangkanai/detection)](https://ci.appveyor.com/project/wangkanai/detection/history)
 
 This project development has been in the long making of my little spare time. Please show your appreciation and help me
 provide feedback on you think will improve this library. All developers are welcome to come and improve the code by
 submit a pull request. We will have constructive good discussion together to the greater good.
 
-- [ASP.NET Core Detection with Responsive View](#aspnet-core-detection-with-responsive-view)
+- [ASP.NET Core Detection](#aspnet-core-detection)
 - [Installation](#installation)
 - [Detection Service](#detection-service)
     - [Make your web app able to detect what client is accessing](#make-your-web-app-able-to-detect-what-client-is-accessing)
@@ -294,113 +290,6 @@ public void ConfigureServices(IServiceCollection services)
     services.AddControllersWithViews();
 }
 ```
-
-## Responsive Service
-
-This is where thing get more interesting that is built upon detection service, or matter a fact detection service was
-built because of responsive service. The concept is that we would like to have views that correspond to what kind of
-device to accessing to our web app.
-
-### Responsive MVC
-
-Responsive Views for MVC has 2 format for you to utilize. First is would be to most common is `Suffix` and the secord
-format is `SubFolder`. Lets make this follow example a `suffix` as of my opinionated would be the most common way to
-managed all the views. This `suffix` format is done by add device type before the file extension **_.cshtml_** like **_
-.mobile.cshtml_**. Below is how you would structure your Views folder.
-
-![Responsive view file structure](doc/responsive-views-file-structure.png)
-
-### Responsive Razor Pages
-
-Responsive for razor pages newly added in [wangkanai.detection 3.0](https://github.com/wangkanai/Detection/pull/297).
-This enable completed responsive in asp.net core ecosystem. Same like Views in MVC we have `suffix` format where we add
-the device type in before the file extension **_.cshtml_** like **_.mobile.cshtml_**.
-
-![Responsive razor pages file structure](doc/responsive-pages-file-structure.png)
-
-### Responsive Tag Helpers
-
-The next exciting feature add in [wangkanai.detection 3.0](https://github.com/wangkanai/Detection/pull/301) is Tag
-Helpers. This make you able to use the same view and just show/hide specific part of the views to the client base upon
-their type, this include Device, Browser, Platform, Engine, and Crawler that our detection resolver could determine from
-the resolver parsing services.
-
-```razor
-<device include="mobile">is mobile</device>
-<device exclude="mobile">not mobile</device>
-```
-
-```razor
-<browser include="chrome">is chrome</browser>
-<browser exclude="chrome">not chrome</browser>
-```
-
-```razor
-<platform include="windows">is windows</platform>
-<platform exclude="windows">not windows</platform>
-```
-
-```razor
-<engine include="blink">is blink</engine>
-<engine exclude="blink">not blink</engine>
-```
-
-```razor
-<crawler include="google">is google</crawler>
-<crawler exclude="google">not google</crawler>
-```
-
-### User Preference
-
-When a client visit your web application by using a mobile device and you have responsive view for mobile device. But
-the visitor would like to view the web app with a desktop view, their click this link to change their preference to
-desktop view.
-
-```razor
-<a href="/Detection/Preference/Prefer">
-    <div class="alert alert-light" role="alert">
-        Desktop version
-    </div>
-</a>
-```
-
-If the client selected to view in desktop view, he/she can switch back mobile view by the follow example;
-
-```razor
-<preference only="mobile">
-    <a href="/Detection/Preference/Clear">
-        <div class="alert alert-light" role="alert">
-            Switch to mobile version
-        </div>
-    </a>
-</preference>
-```
-
-### Responsive Options
-
-You can customize the default behaviour of how responsive service would react to client request. You can go in deep by
-examining `ResponsiveOptions`.
-
-```c#
-public void ConfigureServices(IServiceCollection services)
-{
-    // Add responsive services.
-    services.AddDetection(options =>
-    {
-        options.Responsive.DefaultTablet  = Device.Desktop;
-        options.Responsive.DefaultMobile  = Device.Mobile;
-        options.Responsive.DefaultDesktop = Device.Desktop;
-        options.Responsive.IncludeWebApi  = false;
-        options.Responsive.Disable        = false;
-        options.Responsive.WebApiPath     = "/Api";
-    });
-
-    // Add framework services.
-    services.AddControllersWithViews();
-}
-```
-
-* `AddDetection(Action<DetectionOptions> options)` Adds the detection services to the services container.
 
 ## Directory Structure
 
