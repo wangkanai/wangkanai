@@ -22,7 +22,4 @@ public class HttpContextService : IHttpContextService
     {
         Context = new DefaultHttpContext();
     }
-
-    public static HttpContextService CreateService()
-        => new HttpContextService();
 }

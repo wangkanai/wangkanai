@@ -13,7 +13,7 @@ public static class SearchExtensions
     public static bool SearchStartsWith(this string searchString, IndexTree searchTree)
         => searchString.AsSpan().SearchStartsWith(searchTree);
 
-    public static bool SearchStartsWith(this ReadOnlySpan<char> searchString, IndexTree searchTree)
+    private static bool SearchStartsWith(this ReadOnlySpan<char> searchString, IndexTree searchTree)
         => searchTree.StartsWithAnyIn(searchString);
 
     public static bool SearchContains(this string searchString, IndexTree searchTree)

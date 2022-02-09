@@ -79,15 +79,7 @@ public class BrowserService : IBrowserService
         if (first < 0 || first + name.Length > agent.Length)
             return new Version();
 
-        string cut;
-        if (agent.Length > first + name.Length + 1)
-        {
-            cut = agent.Substring(first + name.Length + 1);
-        }
-        else
-        {
-            cut = agent.Substring(first + name.Length);
-        }
+        var cut = agent.Length > first + name.Length + 1 ? agent.Substring(first + name.Length + 1) : agent.Substring(first + name.Length);
 
         var indexOfSpace = cut.IndexOf(' ', StringComparison.Ordinal);
         var version      = indexOfSpace != -1 ? cut.Substring(0, indexOfSpace) : cut;
@@ -96,14 +88,11 @@ public class BrowserService : IBrowserService
 
     private static Version GetVersionSafari(string agent)
     {
-        string version = "";
-        version = agent.Substring(agent.IndexOf("version/", StringComparison.Ordinal) +
-                                  "version/".Length);
+        var version      = agent.Substring(agent.IndexOf("version/", StringComparison.Ordinal) + "version/".Length);
         var indexOfSpace = version.IndexOf(" ", StringComparison.Ordinal);
+
         if (indexOfSpace != -1)
-        {
             version = version.Substring(0, indexOfSpace);
-        }
 
         return version.ToVersion();
     }

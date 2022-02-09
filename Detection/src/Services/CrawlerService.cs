@@ -17,11 +17,11 @@ public class CrawlerService : ICrawlerService
         _options   = options;
     }
 
-    public  bool     IsCrawler => Name != Crawler.Unknown;
     private Crawler? _name;
     private Version? _version;
-    public  Crawler  Name    => _name ??= GetCrawler();
-    public  Version  Version => _version ??= GetVersion();
+    public  bool     IsCrawler => Name != Crawler.Unknown;
+    public  Crawler  Name      => _name ??= GetCrawler();
+    public  Version  Version   => _version ??= GetVersion();
 
     private Crawler GetCrawler()
     {
@@ -52,9 +52,7 @@ public class CrawlerService : ICrawlerService
 
         var version = string.Empty;
         if (index > 0 && bot.Length > index + 1)
-        {
             version = bot.Substring(index + 1).TrimEnd(';');
-        }
 
         return version.ToVersion();
     }

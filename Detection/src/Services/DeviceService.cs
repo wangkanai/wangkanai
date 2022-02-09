@@ -14,10 +14,8 @@ public class DeviceService : IDeviceService
     private Device? _type;
     public  Device  Type => _type ??= DeviceFromUserAgent();
 
-    public DeviceService(IUserAgentService userAgentService)
-    {
-        _userAgentService = userAgentService;
-    }
+    public DeviceService(IUserAgentService userAgentService) 
+        => _userAgentService = userAgentService;
 
     private Device DeviceFromUserAgent()
     {

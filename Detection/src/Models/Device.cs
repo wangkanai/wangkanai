@@ -9,7 +9,7 @@ public enum Device
     Desktop = 1 << 0, // Windows, Mac, Linux
     Tablet  = 1 << 1, // iPad, Android
     Mobile  = 1 << 2, // iPhone, Android
-    Watch   = 1 << 3, // Smart Watchs
+    Watch   = 1 << 3, // Smart Watch
     Tv      = 1 << 4, // Samsung, LG
     Console = 1 << 5, // XBox, Play Station
     Car     = 1 << 6, // Ford, Toyota

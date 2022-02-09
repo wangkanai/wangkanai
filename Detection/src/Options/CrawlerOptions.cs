@@ -10,5 +10,5 @@ public class CrawlerOptions
     /// <summary>
     /// Gets a list of crawlers name you would like to add to this application. 
     /// </summary>
-    public List<string> Others { get; } = new List<string>();
+    public List<string> Others { get; } = new();
 }

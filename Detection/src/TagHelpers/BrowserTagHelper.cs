@@ -24,17 +24,13 @@ public class BrowserTagHelper : TagHelper
     [HtmlAttributeName(ExcludeAttributeName)]
     public string? Exclude { get; set; }
 
-    public BrowserTagHelper(IBrowserService resolver)
-    {
-        _resolver = resolver ?? throw new ArgumentNullException(nameof(resolver));
-    }
+    public BrowserTagHelper(IBrowserService resolver) 
+        => _resolver = resolver ?? throw new ArgumentNullException(nameof(resolver));
 
     public override void Process(TagHelperContext context, TagHelperOutput output)
     {
-        if (context is null)
-            throw new ArgumentNullException(nameof(context));
-        if (output is null)
-            throw new ArgumentNullException(nameof(output));
+        Check.NotNull(context);
+        Check.NotNull(output);
 
         output.TagName = null;
 
