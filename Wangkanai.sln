@@ -19,6 +19,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_solutions", "_solutions", 
 		sign-webmaster.ps1 = sign-webmaster.ps1
 		sign-analytics.ps1 = sign-analytics.ps1
 		sign-responsive.ps1 = sign-responsive.ps1
+		sign-universal.ps1 = sign-universal.ps1
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{C26D86D6-4B4E-407E-9F1D-9CA1765768CE}"
@@ -225,11 +226,9 @@ Global
 		{99BDB862-09BC-42A3-8643-4874F3EED50F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99BDB862-09BC-42A3-8643-4874F3EED50F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{92FC9D44-4477-4A29-8FF5-8CEA2EFAE6DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{92FC9D44-4477-4A29-8FF5-8CEA2EFAE6DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92FC9D44-4477-4A29-8FF5-8CEA2EFAE6DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{92FC9D44-4477-4A29-8FF5-8CEA2EFAE6DF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A7701AFD-CC23-4D27-9CF3-4D7480AB9A3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A7701AFD-CC23-4D27-9CF3-4D7480AB9A3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7701AFD-CC23-4D27-9CF3-4D7480AB9A3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7701AFD-CC23-4D27-9CF3-4D7480AB9A3D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection

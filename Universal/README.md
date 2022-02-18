@@ -36,7 +36,7 @@ public void ConfigureServices(IServiceCollection services)
 
 This project provide the full source code and complied dll library for you to add reference into your visual studio projects. The library include Intellisense to help guide you write server-side code in an effective manner.
 
-```csharp
+```c#
 public ActionResult Ecommerce()
 {
     var session = new Wangkanai.Universal.Session();
