@@ -3,9 +3,9 @@
 ASP.NET Core Detection service components for identifying details about client device, browser, engine, platform, &
 crawler. 
 
-![ASP.NET Core Detection](https://raw.githubusercontent.com/wangkanai/Wangkanai/main/Asset/aspnet-core-detection-3.svg?sanitize=true)
+![ASP.NET Core Detection](https://raw.githubusercontent.com/wangkanai/wangkanai/main/Asset/aspnet-core-detection-3.svg?sanitize=true)
 
-[![GitHub](https://img.shields.io/github/license/wangkanai/Wangkanai)](https://github.com/wangkanai/Wangkanai/blob/dev/LICENSE)
+[![GitHub](https://img.shields.io/github/license/wangkanai/wangkanai)](https://github.com/wangkanai/wangkanai/blob/dev/LICENSE)
 [![Open Collective](https://img.shields.io/badge/open%20collective-support%20me-3385FF.svg)](https://opencollective.com/wangkanai)
 [![Patreon](https://img.shields.io/badge/patreon-support%20me-d9643a.svg)](https://www.patreon.com/wangkanai)
 
@@ -24,7 +24,7 @@ This library host the component to resolve the access client device type.
 Implement of the library into your web application is done by configuring the `Startup.cs` by adding the detection
 service in the `ConfigureServices` method.
 
-```csharp
+```c#
 public void ConfigureServices(IServiceCollection services)
 {
     // Add detection services container and device resolver service.
@@ -40,7 +40,7 @@ public void ConfigureServices(IServiceCollection services)
 The current device on a request is set in the Responsive middleware. The Responsive middleware is enabled in
 the `Configure` method of *Startup.cs* file.
 
-```csharp
+```c#
 public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 {
     app.UseDetection();
@@ -53,7 +53,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 Adding the TagHelper features to your web application with following in your `_ViewImports.cshtml`
 
-```csharp
+```c#
 @using WebApplication1
 
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers

@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net45</TargetFramework>
+    <PackageId>universal-analytics</PackageId>
+    
+    <Version>1.2</Version>
+
+    <Authors>Sarin Na Wangkanai</Authors>
+    <Description>Wangkanai Analytics is a .NET Framework lightweight server-side code that generator library that JavaScript client-side on the fly for Google Analytics analytics.js. The goal of the framework is to stay out of the way as much as possible and provide a super interaction with Google all from C#.</Description>
+    <Copyright>Copyright © 2012 Sarin Na Wangkanai</Copyright>
+    <PackageTags>aspnetcore;google;analytics;universal</PackageTags>
+    <PackageProjectUrl>https://github.com/wangkanai/universal</PackageProjectUrl>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>git://github.com/wangkanai/universal</RepositoryUrl>
+    <PackageIconUrl>http://0.gravatar.com/avatar/f58457d38ab3bc43526c6e52af17494e</PackageIconUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  
+</Project>
