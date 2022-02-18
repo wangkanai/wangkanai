@@ -1,6 +1,6 @@
 <Project>
     <PropertyGroup>
-        <VersionPrefix>2.0</VersionPrefix>
+        <VersionPrefix>0.2.200</VersionPrefix>
 
         <Title>Wangkanai Universal</Title>
         <Description>ASP.NET Core Google Analytics service is lightweight server-side code that generator library that JavaScript client-side on the fly for Google Analytics analytics.js. The goal of the framework is to stay out of the way as much as possible and provide a super interaction with Google all from C#.</Description>
@@ -29,14 +29,13 @@
         <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All"/>
     </ItemGroup>
 
-    <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Detection'">
-        <PackageIcon>wangkanai-logo.png</PackageIcon>
-        <PackageReadmeFile>NUGET.md</PackageReadmeFile>
+    <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Universal'">
+        <PackageIcon>universal-logo.png</PackageIcon>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
 
-    <ItemGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Detection'">
-        <None Include="..\..\asset\wangkanai-logo.png" Pack="true" PackagePath="\"/>
+    <ItemGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Universal'">
+        <None Include="..\..\asset\universal-logo.png" Pack="true" PackagePath="\"/>
         <None Include="..\README.md" Pack="true" PackagePath="\"/>
-        <None Include="..\NUGET.md" Pack="true" PackagePath="\"/>
     </ItemGroup>
 </Project>

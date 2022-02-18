@@ -11,12 +11,11 @@ namespace Microsoft.Extensions.DependencyInjection;
 /// <summary>
 /// Contains extension method to <see cref="IServiceCollection"/> for configuring client services.
 /// </summary>
-public static class CoreBuilderExtensions
+internal static class CoreBuilderExtensions
 {
     public static IDetectionBuilder AddRequiredPlatformServices(this IDetectionBuilder builder)
     {
-        if (builder is null)
-            throw new ArgumentNullException(nameof(builder));
+        Check.NotNull(builder);
 
         // Hosting doesn't add IHttpContextAccessor by default
         builder.Services.AddHttpContextAccessor();

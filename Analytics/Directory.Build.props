@@ -29,12 +29,12 @@
         <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All"/>
     </ItemGroup>
     <PropertyGroup>
-        <PackageIcon>wangkanai-logo.png</PackageIcon>
+        <PackageIcon>analytics-logo.png</PackageIcon>
         <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
 
     <ItemGroup>
-        <None Include="..\..\asset\wangkanai-logo.png" Pack="true" PackagePath="\"/>
+        <None Include="..\..\asset\analytics-logo.png" Pack="true" PackagePath="\"/>
         <None Include="..\README.md" Pack="true" PackagePath="\"/>
     </ItemGroup>
 </Project>
