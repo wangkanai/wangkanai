@@ -1,13 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
-
-    <LangVersion>8.0</LangVersion>
+    <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
-    <Version>0.0.100</Version>
-
-    <Description>Wangkanai Analytics is a .NET Core library extension that tracks and generates details statistics about visitors to your website. The core feature is to track website activity such as session duration, pages per session, bounce rate and etc. of individuals using the site, along with the information on the source of the traffic.</Description>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,6 +10,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Wangkanai.Detection" Version="3.0.0-alpha08" />
+    <ProjectReference Include="..\..\Detection\src\Wangkanai.Detection.csproj" />
   </ItemGroup>
 </Project>

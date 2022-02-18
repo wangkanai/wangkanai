@@ -3,7 +3,7 @@
         <VersionPrefix>0.0.300</VersionPrefix>
         
         <Title>Wangkanai Analytics</Title>
-        <Description>Wangkanai Analytics Component library.</Description>
+        <Description>Wangkanai Analytics is a .NET Core library extension that tracks and generates details statistics about visitors to your website. The core feature is to track website activity such as session duration, pages per session, bounce rate and etc. of individuals using the site, along with the information on the source of the traffic..</Description>
         <PackageTags>aspnetcore;analytics;</PackageTags>
 
         <Authors>Sarin Na Wangkanai</Authors>
