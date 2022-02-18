@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Text;
 
-namespace Wangkanai.Universal
+namespace Wangkanai.Universal.Models
 {
     public class Session
     {

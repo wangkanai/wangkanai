@@ -1,8 +1,6 @@
 ﻿// compile with: /doc:documentation.xml 
 
-using System;
-
-namespace Wangkanai.Universal
+namespace Wangkanai.Universal.Models
 {
     /// <summary>Event tracking allows you to measure how users interact with the content of your website. For example, you might want to measure how many times a button was pressed, or how many times a particular item was used in a web game.</summary>
     public class Event

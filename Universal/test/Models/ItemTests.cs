@@ -5,7 +5,7 @@ using System.Linq;
 
 using Xunit;
 
-namespace Wangkanai.Universal
+namespace Wangkanai.Universal.Models
 {
     public class ItemTests
     {

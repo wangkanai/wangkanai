@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Wangkanai.Universal.Options;
 
-namespace Wangkanai.Universal
+namespace Wangkanai.Universal.Models
 {
     public class ScreenTracking : Send
     {
@@ -15,7 +12,7 @@ namespace Wangkanai.Universal
         }
         public override string ToString()
         {
-            return "ga('send','screenview'," + option.ToString() + "});";
+            return "ga('send','screenview'," + option + "});";
         }
     }
 }

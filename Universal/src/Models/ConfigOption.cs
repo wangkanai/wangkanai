@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-
-namespace Wangkanai.Universal
+﻿namespace Wangkanai.Universal.Models
 {
-    public class ConfigOption : FieldOption
+    public class ConfigOption 
     {
         /// <summary>
         /// Name of the tracker object
@@ -53,24 +47,24 @@ namespace Wangkanai.Universal
             
         }
 
-        public ConfigOption(Configuration config)
-            : this()
-        {
-            Name = config.Name;
-            SampleRate = config.SampleRate;
-            SiteSpeedSampleRate = config.SiteSpeedSampleRate;
-            AlwaysSendReferrer = config.AlwaysSendReferrer;
-            CookieDomain = config.CookieDomain;
-            CookieName = config.CookieName;
-            CookieExpires = config.CookieExpires;
-            LegacyCookieDomain = config.LegacyCookieDomain;            
-        }
-        public ConfigOption(Configuration config, Session session)
-            : this(config)
-        {
-            Name = session.Name;
-            ClientId = session.ClientId;
-            UserId = session.UserId;
-        }
+        // public ConfigOption(Configuration config)
+        //     : this()
+        // {
+        //     Name = config.Name;
+        //     SampleRate = config.SampleRate;
+        //     SiteSpeedSampleRate = config.SiteSpeedSampleRate;
+        //     AlwaysSendReferrer = config.AlwaysSendReferrer;
+        //     CookieDomain = config.CookieDomain;
+        //     CookieName = config.CookieName;
+        //     CookieExpires = config.CookieExpires;
+        //     LegacyCookieDomain = config.LegacyCookieDomain;            
+        // }
+        // public ConfigOption(Configuration config, Session session)
+        //     : this(config)
+        // {
+        //     Name = session.Name;
+        //     ClientId = session.ClientId;
+        //     UserId = session.UserId;
+        // }
     }
 }

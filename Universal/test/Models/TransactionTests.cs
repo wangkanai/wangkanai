@@ -6,7 +6,7 @@ using System;
 
 using Xunit;
 
-namespace Wangkanai.Universal
+namespace Wangkanai.Universal.Models
 {
     public class TransactionTests
     {
