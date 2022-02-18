@@ -10,11 +10,15 @@ namespace Microsoft.Extensions.DependencyInjection;
 public static class UniversalCollectionExtensions
 {
     public static IUniversalBuilder AddGoogleAnalytics(this IServiceCollection services)
-        => services.AddUniversalBuilder();
+        => services.AddUniversalBuilder()
+                   .AddRequiredPlatformServices()
+                   .AddCoreServices()
+                   .AddMarkerService();
+
     public static IUniversalBuilder AddGoogleAnalytics(this IServiceCollection services, Action<UniversalOption> setAction)
         => services.Configure(setAction)
                    .AddGoogleAnalytics();
-    
+
     internal static IUniversalBuilder AddUniversalBuilder(this IServiceCollection services)
         => new UniversalBuilder(services);
 }

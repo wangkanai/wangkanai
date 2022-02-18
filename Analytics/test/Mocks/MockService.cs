@@ -1,10 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
 
-namespace Wangkanai.Analytics.Tests.Mocks
+namespace Wangkanai.Analytics.Tests.Mocks;
+
+public class MockService
 {
-    public class MockService
-    {
-        private static IHttpContextAccessor HttpContextAccessor()
-            => new HttpContextAccessor {HttpContext = new DefaultHttpContext()};
-    }
+    private static IHttpContextAccessor HttpContextAccessor()
+        => new HttpContextAccessor {HttpContext = new DefaultHttpContext()};
 }
