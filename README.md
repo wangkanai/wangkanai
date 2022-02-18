@@ -9,13 +9,14 @@
 
 | Library                                                                   | Nuget                                                                                                                     | Preview                                                                                                                                           |
 |---------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|
-| [Detection](https://github.com/wangkanai/Wangkanai/tree/main/Detection)   | [![NuGet Badge](https://buildstats.info/nuget/wangkanai.detection)](https://www.nuget.org/packages/wangkanai.detection)   | [![NuGet Badge](https://buildstats.info/nuget/wangkanai.detection?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.detection)   |
-| [Responsive](https://github.com/wangkanai/Wangkanai/tree/main/Responsive) | [![NuGet Badge](https://buildstats.info/nuget/wangkanai.responsive)](https://www.nuget.org/packages/wangkanai.responsive) | [![NuGet Badge](https://buildstats.info/nuget/wangkanai.responsive?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.responsive) |
-| [Webmaster](https://github.com/wangkanai/Wangkanai/tree/main/Webmaster)   | [![NuGet Badge](https://buildstats.info/nuget/wangkanai.Webmaster)](https://www.nuget.org/packages/wangkanai.Webmaster)   | [![NuGet Badge](https://buildstats.info/nuget/wangkanai.Webmaster?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.Webmaster)   |
- | [Runtime](https://github.com/wangkanai/Wangkanai/tree/main/Runtime)       | [![NuGet Badge](https://buildstats.info/nuget/wangkanai.runtime)](https://www.nuget.org/packages/wangkanai.runtime)       | [![NuGet Badge](https://buildstats.info/nuget/wangkanai.runtime?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.runtime)       |
-| [Blazor](https://github.com/wangkanai/Wangkanai/tree/main/Blazor)         | [![NuGet Badge](https://buildstats.info/nuget/wangkanai.blazor)](https://www.nuget.org/packages/wangkanai.blazor)         | [![NuGet Badge](https://buildstats.info/nuget/wangkanai.blazor?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.blazor)         |
-| [Validation](https://github.com/wangkanai/Wangkanai/tree/main/Validation) | [![NuGet Badge](https://buildstats.info/nuget/wangkanai.validation)](https://www.nuget.org/packages/wangkanai.validation) | [![NuGet Badge](https://buildstats.info/nuget/wangkanai.validation?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.validation) |
-| [Analytics](https://github.com/wangkanai/Wangkanai/tree/main/Analytics)   | [![NuGet Badge](https://buildstats.info/nuget/wangkanai.analytics)](https://www.nuget.org/packages/wangkanai.analytics)   | [![NuGet Badge](https://buildstats.info/nuget/wangkanai.analytics?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.analytics)   |
+| [Detection](https://github.com/wangkanai/wangkanai/tree/main/Detection)   | [![NuGet Badge](https://buildstats.info/nuget/wangkanai.detection)](https://www.nuget.org/packages/wangkanai.detection)   | [![NuGet Badge](https://buildstats.info/nuget/wangkanai.detection?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.detection)   |
+| [Responsive](https://github.com/wangkanai/wangkanai/tree/main/Responsive) | [![NuGet Badge](https://buildstats.info/nuget/wangkanai.responsive)](https://www.nuget.org/packages/wangkanai.responsive) | [![NuGet Badge](https://buildstats.info/nuget/wangkanai.responsive?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.responsive) |
+| [Webmaster](https://github.com/wangkanai/wangkanai/tree/main/Webmaster)   | [![NuGet Badge](https://buildstats.info/nuget/wangkanai.Webmaster)](https://www.nuget.org/packages/wangkanai.Webmaster)   | [![NuGet Badge](https://buildstats.info/nuget/wangkanai.Webmaster?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.Webmaster)   |
+ | [Runtime](https://github.com/wangkanai/wangkanai/tree/main/Runtime)       | [![NuGet Badge](https://buildstats.info/nuget/wangkanai.runtime)](https://www.nuget.org/packages/wangkanai.runtime)       | [![NuGet Badge](https://buildstats.info/nuget/wangkanai.runtime?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.runtime)       |
+| [Blazor](https://github.com/wangkanai/wangkanai/tree/main/Blazor)         | [![NuGet Badge](https://buildstats.info/nuget/wangkanai.blazor)](https://www.nuget.org/packages/wangkanai.blazor)         | [![NuGet Badge](https://buildstats.info/nuget/wangkanai.blazor?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.blazor)         |
+| [Validation](https://github.com/wangkanai/wangkanai/tree/main/Validation) | [![NuGet Badge](https://buildstats.info/nuget/wangkanai.validation)](https://www.nuget.org/packages/wangkanai.validation) | [![NuGet Badge](https://buildstats.info/nuget/wangkanai.validation?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.validation) |
+| [Analytics](https://github.com/wangkanai/wangkanai/tree/main/Analytics)   | [![NuGet Badge](https://buildstats.info/nuget/wangkanai.analytics)](https://www.nuget.org/packages/wangkanai.analytics)   | [![NuGet Badge](https://buildstats.info/nuget/wangkanai.analytics?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.analytics)   |
+| [Universal](https://github.com/wangkanai/wangkanai/tree/main/Universal)   | [![NuGet Badge](https://buildstats.info/nuget/wangkanai.universal)](https://www.nuget.org/packages/wangkanai.detection)   | [![NuGet Badge](https://buildstats.info/nuget/wangkanai.universal?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.universal)   |
 
 ## What is Wangkanai?
 
@@ -29,10 +30,4 @@ our [contributing guide](https://github.com/wangkanai/wangkanai/blob/main/CONTRI
 
 Wangkanai is developed with C# .NET and target the latest .NET 6.0 and using JetBrains Rider as the primary IDE.
 
-![JetBrains Rider](https://raw.githubusercontent.com/wangkanai/Wangkanai/main/Asset/jetbrains-rider.svg?sanitize=true)
-
-## Privacy
-
-We use Azure DevOps to track which settings are being used, find bugs, and fix crashes. Information sent to App Center
-is anonymous and free of any user or contextual data.
-
+![JetBrains Rider](https://raw.githubusercontent.com/wangkanai/wangkanai/main/Asset/jetbrains-rider.svg?sanitize=true)
