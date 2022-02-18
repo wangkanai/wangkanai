@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+
+using System;
+
 using Xunit;
 
 namespace Wangkanai.Universal
@@ -11,18 +14,21 @@ namespace Wangkanai.Universal
             Pageview pageview = new Pageview("/testing", "testing title");
             Assert.Equal("ga('send','pageview',{'Page':'/testing','Title':'testing title'});", pageview.ToString());
         }
+
         [Fact]
         public void TestPageviewProperty()
         {
             var option = new PageviewOption() { Page = "/testing", Title = "test" };
             Assert.Equal(2, option.Properties.Length);
         }
+
         [Fact]
         public void TestBooleanParameter()
         {
             PageviewOption pageview = new PageviewOption() { AnonymizeIp = true };
             Assert.Equal("{'AnonymizeIp':True}", pageview.ToString());
         }
+
         [Fact]
         public void TestPageviewJsScript()
         {

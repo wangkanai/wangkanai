@@ -1,11 +1,11 @@
 <Project>
     <PropertyGroup>
         <VersionPrefix>2.0</VersionPrefix>
-        
+
         <Title>Wangkanai Universal</Title>
         <Description>ASP.NET Core Google Analytics service is lightweight server-side code that generator library that JavaScript client-side on the fly for Google Analytics analytics.js. The goal of the framework is to stay out of the way as much as possible and provide a super interaction with Google all from C#.</Description>
         <PackageTags>aspnetcore;google;analytics;universal;</PackageTags>
-        
+
         <Authors>Sarin Na Wangkanai</Authors>
         <Copyright>©2014-2022 Sarin Na Wangkanai, All rights reserved</Copyright>
 
@@ -28,7 +28,7 @@
     <ItemGroup>
         <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All"/>
     </ItemGroup>
-    
+
     <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Detection'">
         <PackageIcon>wangkanai-logo.png</PackageIcon>
         <PackageReadmeFile>NUGET.md</PackageReadmeFile>
