@@ -1,9 +1,19 @@
 ﻿using System.Configuration;
 
-namespace Wangkanai.Universal.ConfigSection
+using Microsoft.Extensions.Configuration;
+
+namespace Wangkanai.Universal
 {
-    class TrackerElement : ConfigurationElement
+    public class Configuration : ConfigurationSection
     {
+        private static readonly string path = "UniversalAnalyticSettings/Account";
+        public static Configuration GetConfiguration()
+        {
+            Configuration config = ConfigurationManager.GetSection(path) as Configuration;
+            if (config != null) return config;
+            return new Configuration();
+        }
+
         [ConfigurationProperty("account", DefaultValue = "UA-XXXX-Y", IsRequired = true)]
         public string Account
         {

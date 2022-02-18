@@ -3,7 +3,6 @@
 using System;
 using System.Text;
 
-using Wangkanai.Universal.Ecommerce;
 
 using Xunit;
 
@@ -32,18 +31,18 @@ namespace Wangkanai.Universal
             Assert.Equal("ga('create', 'UA-XXXX-Y', 'auto');", create.ToString());
         }
 
-        [Fact]
-        public void TestScriptBlockWrite()
-        {
-            var analytic    = Analytic.Instance;
-            var transaction = new Transaction("1234", "testing", 1.0, 1.0);
-            transaction.Items.Add(new Item("product a", "a001", "fertilizer", 1.0, 1));
-            transaction.Items.Add(new Item("product b", "b001", "fertilizer", 1.0, 1));
-            var session = new Session();
-            //session.Cookie = new Cookie("www.sathai.com", "testing", 30000);
-            session.Events.Add(new Event("button", "click", "submit", "1"));
-            session.Transaction = transaction;
-            Console.WriteLine(analytic.Render(session));
-        }
+        // [Fact]
+        // public void TestScriptBlockWrite()
+        // {
+        //     var analytic    = Analytic.Instance;
+        //     var transaction = new Transaction("1234", "testing", 1.0, 1.0);
+        //     transaction.Items.Add(new Item("product a", "a001", "fertilizer", 1.0, 1));
+        //     transaction.Items.Add(new Item("product b", "b001", "fertilizer", 1.0, 1));
+        //     var session = new Session();
+        //     //session.Cookie = new Cookie("www.sathai.com", "testing", 30000);
+        //     session.Events.Add(new Event("button", "click", "submit", "1"));
+        //     session.Transaction = transaction;
+        //     Console.WriteLine(analytic.Render(session));
+        // }
     }
 }

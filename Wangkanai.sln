@@ -19,6 +19,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_solutions", "_solutions", 
 		sign-webmaster.ps1 = sign-webmaster.ps1
 		sign-analytics.ps1 = sign-analytics.ps1
 		sign-responsive.ps1 = sign-responsive.ps1
+		sign-universal.ps1 = sign-universal.ps1
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{C26D86D6-4B4E-407E-9F1D-9CA1765768CE}"
