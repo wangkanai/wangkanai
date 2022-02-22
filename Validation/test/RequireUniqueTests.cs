@@ -6,7 +6,7 @@ using Wangkanai.Validation.Models;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace Wangkanai.Validation.Tests;
+namespace Wangkanai.Validation;
 
 public class RequireUniqueTests
 {

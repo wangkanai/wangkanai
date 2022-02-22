@@ -24,9 +24,9 @@ public static class DetectionApplicationExtensions
 
         app.Validate();
 
-        VerifyMarkerIsRegistered(app);
+        app.VerifyMarkerIsRegistered();
 
-        VerifyEndpointRoutingMiddlewareIsNotRegistered(app);
+        app.VerifyEndpointRoutingMiddlewareIsNotRegistered();
 
         var options = app.ApplicationServices.GetRequiredService<DetectionOptions>();
 
@@ -42,8 +42,7 @@ public static class DetectionApplicationExtensions
     private static void Validate(this IApplicationBuilder app)
     {
         var loggerFactory = app.ApplicationServices.GetService(typeof(ILoggerFactory)) as ILoggerFactory;
-        if (loggerFactory is null)
-            throw new ArgumentNullException(nameof(loggerFactory));
+        Check.NotNull(loggerFactory);
 
         var logger = loggerFactory.CreateLogger("Detection.Startup");
         logger.LogInformation("Starting Detection version {version}",
@@ -61,14 +60,14 @@ public static class DetectionApplicationExtensions
     }
 
 
-    private static void VerifyEndpointRoutingMiddlewareIsNotRegistered(IApplicationBuilder app)
+    private static void VerifyEndpointRoutingMiddlewareIsNotRegistered(this IApplicationBuilder app)
     {
         var EndpointRouteBuilder = "__EndpointRouteBuilder";
         if (app.Properties.TryGetValue(EndpointRouteBuilder, out var obj))
             throw new InvalidOperationException($"{nameof(UseDetection)} must be in execution pipeline before {nameof(EndpointRoutingApplicationBuilderExtensions.UseRouting)} to 'Configure(...)' in the application startup code.");
     }
 
-    private static void VerifyMarkerIsRegistered(IApplicationBuilder app)
+    private static void VerifyMarkerIsRegistered(this IApplicationBuilder app)
     {
         if (app.ApplicationServices.GetService(typeof(DetectionMarkerService)) == null)
             throw new InvalidOperationException($"{nameof(DetectionCollectionExtensions.AddDetection)} is not added to ConfigureServices(...)");

@@ -5,7 +5,7 @@ using Xunit;
 using Xunit.Abstractions;
 using Xunit.Sdk;
 
-namespace Wangkanai.Validation.Tests;
+namespace Wangkanai.Validation;
 
 public class RequireLowercaseTests
 {

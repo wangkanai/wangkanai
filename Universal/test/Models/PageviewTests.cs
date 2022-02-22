@@ -10,12 +10,12 @@ namespace Wangkanai.Universal.Models
 {
     public class PageviewTests
     {
-        [Fact]
-        public void TestPageviewToString()
-        {
-            Pageview pageview = new Pageview("/testing", "testing title");
-            Assert.Equal("ga('send','pageview',{'Page':'/testing','Title':'testing title'});", pageview.ToString());
-        }
+        // [Fact]
+        // public void TestPageviewToString()
+        // {
+        //     Pageview pageview = new Pageview("/testing", "testing title");
+        //     Assert.Equal("ga('send','pageview',{'Page':'/testing','Title':'testing title'});", pageview.ToString());
+        // }
 
         // [Fact]
         // public void TestPageviewProperty()
