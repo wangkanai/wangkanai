@@ -129,12 +129,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Universal", "Univ
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Universal.Tests", "Universal\test\Wangkanai.Universal.Tests.csproj", "{99BDB862-09BC-42A3-8643-4874F3EED50F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{C1B8445B-2606-4FFA-B942-FE805E3B557A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppFramework", "Universal\sample\WebAppFramework\WebAppFramework.csproj", "{92FC9D44-4477-4A29-8FF5-8CEA2EFAE6DF}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFormFramework", "Universal\sample\WebFormFramework\WebFormFramework.csproj", "{A7701AFD-CC23-4D27-9CF3-4D7480AB9A3D}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -225,12 +219,6 @@ Global
 		{99BDB862-09BC-42A3-8643-4874F3EED50F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99BDB862-09BC-42A3-8643-4874F3EED50F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99BDB862-09BC-42A3-8643-4874F3EED50F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{92FC9D44-4477-4A29-8FF5-8CEA2EFAE6DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{92FC9D44-4477-4A29-8FF5-8CEA2EFAE6DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{92FC9D44-4477-4A29-8FF5-8CEA2EFAE6DF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A7701AFD-CC23-4D27-9CF3-4D7480AB9A3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A7701AFD-CC23-4D27-9CF3-4D7480AB9A3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A7701AFD-CC23-4D27-9CF3-4D7480AB9A3D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -261,9 +249,6 @@ Global
 		{724CCDFB-B045-4B4C-BA80-AB5B5B3137F2} = {8B50F062-61B9-483B-9212-9A01F6F12EF8}
 		{C0530FF7-9157-4FDA-AC0A-A60AD74E8C71} = {ECAFEA96-62F0-4A72-8239-1E971ABAC309}
 		{99BDB862-09BC-42A3-8643-4874F3EED50F} = {ECAFEA96-62F0-4A72-8239-1E971ABAC309}
-		{C1B8445B-2606-4FFA-B942-FE805E3B557A} = {ECAFEA96-62F0-4A72-8239-1E971ABAC309}
-		{92FC9D44-4477-4A29-8FF5-8CEA2EFAE6DF} = {C1B8445B-2606-4FFA-B942-FE805E3B557A}
-		{A7701AFD-CC23-4D27-9CF3-4D7480AB9A3D} = {C1B8445B-2606-4FFA-B942-FE805E3B557A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1BA0A192-D7BE-40A1-96AE-B3C8C6BC9B69}
