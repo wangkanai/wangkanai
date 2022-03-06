@@ -13,7 +13,7 @@ public class WebmasterBuilder : IWebmasterBuilder
     /// </summary>
     /// <param name="services">The <see cref="IServiceCollection" /> to attach to.</param>
     public WebmasterBuilder(IServiceCollection services)
-        => Services = services ?? throw new ArgumentNullException(nameof(services));
+        => Services = Check.NotNull(services);
 
     /// <summary>
     /// Gets the <see cref="IServiceCollection" /> services are attached to.

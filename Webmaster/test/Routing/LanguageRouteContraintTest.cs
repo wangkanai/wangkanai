@@ -24,7 +24,7 @@ public class LanguageRouteContraintTests
     public void English(string routeValue, bool shouldMatch)
     {
         // arrage
-        var contraint = new EnglishLanguageRouteContraint();
+        var contraint = new EnglishLanguageRouteConstraint();
         var values    = new RouteValueDictionary(new { controller = routeValue });
 
         // act
@@ -47,7 +47,7 @@ public class LanguageRouteContraintTests
     public void Thai(string routeValue, bool shouldMatch)
     {
         // arrage
-        var contraint = new ThaiLanguageRouteContraint();
+        var contraint = new ThaiLanguageRouteConstraint();
         var values    = new RouteValueDictionary(new { controller = routeValue });
 
         // act
@@ -70,7 +70,7 @@ public class LanguageRouteContraintTests
     public void Lao(string routeValue, bool shouldMatch)
     {
         // arrage
-        var contraint = new LaoLanguageRouteContraint();
+        var contraint = new LaoLanguageRouteConstraint();
         var values    = new RouteValueDictionary(new { controller = routeValue });
 
         // act
@@ -93,7 +93,7 @@ public class LanguageRouteContraintTests
     public void Myanmar(string routeValue, bool shouldMatch)
     {
         // arrage
-        var contraint = new MyanmarLanguageRouteContraint();
+        var contraint = new MyanmarLanguageRouteConstraint();
         var values    = new RouteValueDictionary(new { controller = routeValue });
 
         // act

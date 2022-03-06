@@ -31,9 +31,7 @@ public enum GravatarMode
 public static class GravatarModeExtensions
 {
     public static string Value(this GravatarMode mode)
-    {
-        if (mode == GravatarMode.NotFound)
-            return "404";
-        return mode.ToString().ToLower();
-    }
+        => mode == GravatarMode.NotFound
+               ? "404"
+               : mode.ToString().ToLower();
 }

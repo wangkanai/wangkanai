@@ -7,30 +7,30 @@ using System.Text.RegularExpressions;
 
 namespace Wangkanai.Webmaster.Routing;
 
-public class EnglishLanguageRouteContraint : RegexRouteConstraint
+public class EnglishLanguageRouteConstraint : RegexRouteConstraint
 {
-    public EnglishLanguageRouteContraint() : base(new Regex("^[a-zA-Z]*$"))
+    public EnglishLanguageRouteConstraint() : base(new Regex("^[a-zA-Z]*$"))
     {
     }
 }
 
-public class ThaiLanguageRouteContraint : RegexRouteConstraint
+public class ThaiLanguageRouteConstraint : RegexRouteConstraint
 {
-    public ThaiLanguageRouteContraint() : base(new Regex(@"^\p{IsThai}*$"))
+    public ThaiLanguageRouteConstraint() : base(new Regex(@"^\p{IsThai}*$"))
     {
     }
 }
 
-public class LaoLanguageRouteContraint : RegexRouteConstraint
+public class LaoLanguageRouteConstraint : RegexRouteConstraint
 {
-    public LaoLanguageRouteContraint() : base(new Regex(@"^\p{IsLao}*$"))
+    public LaoLanguageRouteConstraint() : base(new Regex(@"^\p{IsLao}*$"))
     {
     }
 }
 
-public class MyanmarLanguageRouteContraint : RegexRouteConstraint
+public class MyanmarLanguageRouteConstraint : RegexRouteConstraint
 {
-    public MyanmarLanguageRouteContraint() : base(new Regex("^[U+1000–U+109F]*$"))
+    public MyanmarLanguageRouteConstraint() : base(new Regex("^[U+1000–U+109F]*$"))
     {
     }
 }

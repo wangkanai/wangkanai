@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 
+using Wangkanai;
 using Wangkanai.Webmaster;
 
 namespace Microsoft.Extensions.DependencyInjection;
@@ -11,8 +12,7 @@ public static class WebmasterApplicationBuilderExtensions
 {
     public static IApplicationBuilder UseWebmaster(this IApplicationBuilder app)
     {
-        if (app is null)
-            throw new ArgumentNullException(nameof(app));
+        Check.NotNull(app);
 
         app.Validate();
 

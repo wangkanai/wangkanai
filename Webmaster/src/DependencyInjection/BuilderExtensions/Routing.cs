@@ -3,22 +3,22 @@
 
 using Microsoft.AspNetCore.Routing;
 
+using Wangkanai;
 using Wangkanai.Webmaster.Routing;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
 public static class RoutingCollectionExtensions
 {
-    public static IWebmasterBuilder AddRoutingContraint(this IWebmasterBuilder builder)
+    public static IWebmasterBuilder AddRoutingConstraint(this IWebmasterBuilder builder)
     {
-        if (builder == null)
-            throw new ArgumentNullException(nameof(builder));
+        Check.NotNull(builder);
 
         builder.Services.Configure<RouteOptions>(options =>
         {
-            options.ConstraintMap.Add("thai", typeof(ThaiLanguageRouteContraint));
-            options.ConstraintMap.Add("lao", typeof(LaoLanguageRouteContraint));
-            options.ConstraintMap.Add("myanmar", typeof(MyanmarLanguageRouteContraint));
+            options.ConstraintMap.Add("thai", typeof(ThaiLanguageRouteConstraint));
+            options.ConstraintMap.Add("lao", typeof(LaoLanguageRouteConstraint));
+            options.ConstraintMap.Add("myanmar", typeof(MyanmarLanguageRouteConstraint));
         });
 
         return builder;
