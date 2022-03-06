@@ -77,7 +77,7 @@ public static class StringExtensions
     public static string Right(this string input, int length)
     {
         Check.NotNull(input);
-        Check.NotMoreThan(input.Length, length, nameof(length));
+        Check.NotMoreThan(input.Length, length);
 
         return input.Substring(input.Length - length, length);
     }
