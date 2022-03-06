@@ -15,7 +15,7 @@ public class ResponsivePageLocationExpander : IViewLocationExpander
     {
         context.Values.TryGetValue(ValueKey, out var device);
 
-        if (!(context.ActionContext.ActionDescriptor is PageActionDescriptor))
+        if (context.ActionContext.ActionDescriptor is not PageActionDescriptor)
             return viewLocations;
 
         if (string.IsNullOrEmpty(context.PageName) || string.IsNullOrEmpty(device))
@@ -44,8 +44,6 @@ public class ResponsivePageLocationExpander : IViewLocationExpander
         }
     }
 
-    public void PopulateValues(ViewLocationExpanderContext context)
-    {
-        context.Values[ValueKey] = context.ActionContext.HttpContext.GetDevice().ToString().ToLower();
-    }
+    public void PopulateValues(ViewLocationExpanderContext context) 
+        => context.Values[ValueKey] = context.ActionContext.HttpContext.GetDevice().ToString().ToLower();
 }

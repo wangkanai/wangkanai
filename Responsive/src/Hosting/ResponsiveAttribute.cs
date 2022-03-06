@@ -7,9 +7,7 @@ namespace Wangkanai.Responsive.Hosting;
 public sealed class ResponsiveAttribute : Attribute, IResponsiveMetadata
 {
     public ResponsiveAttribute(Device device)
-    {
-        Device = device;
-    }
+        => Device = device;
 
     public Device Device { get; }
 }

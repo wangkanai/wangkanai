@@ -6,8 +6,8 @@ namespace Wangkanai.Detection.Extensions;
 
 public static class VersionExtensions
 {
-    private static readonly Regex VersionCleanupRegex = new Regex(@"\+|\-|\s|beta",
-                                                                  RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
+    private static readonly Regex VersionCleanupRegex = new(@"\+|\-|\s|beta",
+                                                            RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
 
     public static Version ToVersion(this string version)
     {

@@ -91,7 +91,6 @@ public class PlatformService : IPlatformService
     private static bool IsX64(string agent)
         => agent.SearchContains(X64DeviceIndex);
 
-
     private static bool IsiOS(string agent)
         => agent.SearchContains(IosDeviceIndex) && agent.SearchContains(AppleWebKitIndex);
 

@@ -13,7 +13,7 @@ public class ResponsiveMiddleware
 
     public ResponsiveMiddleware(RequestDelegate next)
     {
-        _next = next ?? throw new ArgumentNullException(nameof(next));
+        _next = Check.NotNull(next);
     }
 
     public async Task InvokeAsync(HttpContext context, IResponsiveService responsive)

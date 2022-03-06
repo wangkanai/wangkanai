@@ -11,9 +11,11 @@ public static class Check
 
     [ContractAnnotation("value:null => halt")]
     internal static T NotNull<T>(T value, [InvokerParameterName] string parameterName)
-        => value is null
-               ? throw new ArgumentNullException(parameterName)
-               : value;
+    {
+        return value is null
+                   ? throw new ArgumentNullException(parameterName)
+                   : value;
+    }
 
     [ContractAnnotation("value:null => halt")]
     public static string NotNullOrEmpty(string value)
@@ -26,11 +28,11 @@ public static class Check
                : value;
 
     [ContractAnnotation("value:null => halt")]
-    public static bool NotNullOrEmpty<T>(ICollection<T> value)
+    public static bool NotNullOrEmpty<T>(IEnumerable<T> value)
         => NotNullOrEmpty(value, nameof(value));
 
     [ContractAnnotation("value:null => halt")]
-    internal static bool NotNullOrEmpty<T>(ICollection<T> value, [InvokerParameterName] string parameterName)
+    internal static bool NotNullOrEmpty<T>(IEnumerable<T> value, [InvokerParameterName] string parameterName)
         => value.IsNullOrEmpty()
                ? throw new ArgumentNullOrEmptyException($"{parameterName} can not be null or empty!", parameterName)
                : true;

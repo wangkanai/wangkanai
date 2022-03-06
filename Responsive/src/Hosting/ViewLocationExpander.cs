@@ -47,10 +47,9 @@ public class ResponsiveViewLocationExpander : IViewLocationExpander
 
         context.Values.TryGetValue(ValueKey, out var device);
 
-        if (string.IsNullOrEmpty(device))
-            return viewLocations;
-
-        return ExpandViewLocationsCore(viewLocations, device); //.Concat(viewLocations);
+        return string.IsNullOrEmpty(device) 
+                   ? viewLocations 
+                   : ExpandViewLocationsCore(viewLocations, device);
     }
 
     private IEnumerable<string> ExpandViewLocationsCore(IEnumerable<string> viewLocations, string device)
@@ -60,6 +59,7 @@ public class ResponsiveViewLocationExpander : IViewLocationExpander
             yield return _format == ResponsiveViewLocationFormat.Suffix
                              ? location.Replace("{0}", "{0}." + device)
                              : location.Replace("{0}", device + "/{0}");
+            
             yield return location;
         }
     }

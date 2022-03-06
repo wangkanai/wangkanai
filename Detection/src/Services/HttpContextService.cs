@@ -19,7 +19,5 @@ public class HttpContextService : IHttpContextService
     }
 
     private HttpContextService()
-    {
-        Context = new DefaultHttpContext();
-    }
+        => Context = new DefaultHttpContext();
 }

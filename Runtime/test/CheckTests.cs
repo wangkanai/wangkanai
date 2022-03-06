@@ -34,7 +34,7 @@ public class CheckTests
     }
 
     [Fact]
-    public void ListIsNull()
+    public void ListIsNullOrEmpty()
     {
         Assert.Throws<ArgumentNullOrEmptyException>(() => Check.NotNullOrEmpty(null));
     }
