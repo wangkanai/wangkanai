@@ -1,6 +1,7 @@
 ## ASP.NET Core Detection
 
-ASP.NET Core Detection service components for identifying details about client device, browser, engine, platform, & crawler. 
+ASP.NET Core Detection service components for identifying details about client device, browser, engine, platform, &
+crawler.
 
 **Please show me some love and click the** :star:
 

@@ -5,7 +5,7 @@
         <Title>Wangkanai Validation</Title>
         <Description>Wangkanai .NET Validation library</Description>
         <PackageTags>aspnetcore;validation;</PackageTags>
-        
+
         <Authors>Sarin Na Wangkanai</Authors>
         <Copyright>©2014-2022 Sarin Na Wangkanai, All rights reserved</Copyright>
 

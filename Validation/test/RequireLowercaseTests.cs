@@ -1,6 +1,10 @@
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+
 using System.Reflection;
+
 using Wangkanai.Validation.Extensions;
 using Wangkanai.Validation.Models;
+
 using Xunit;
 using Xunit.Abstractions;
 using Xunit.Sdk;
@@ -20,7 +24,7 @@ public class RequireLowercaseTests
     [Fact]
     public void Uppercase()
     {
-        var vm = new LowercaseModel {Password = "ABC"};
+        var vm = new LowercaseModel { Password = "ABC" };
 
         var validations = vm.Validate(vm.Password, _password);
         validations.Print(_output);
@@ -32,7 +36,7 @@ public class RequireLowercaseTests
     [Fact]
     public void Lowercase()
     {
-        var vm = new LowercaseModel {Password = "abc"};
+        var vm = new LowercaseModel { Password = "abc" };
 
         var validations = vm.Validate(vm.Password, _password);
         validations.Print(_output);
@@ -43,7 +47,7 @@ public class RequireLowercaseTests
     [Fact]
     public void Mix()
     {
-        var vm = new LowercaseModel {Password = "Abc"};
+        var vm = new LowercaseModel { Password = "Abc" };
 
         var validations = vm.Validate(vm.Password, _password);
         validations.Print(_output);

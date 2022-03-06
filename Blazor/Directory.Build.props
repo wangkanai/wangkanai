@@ -16,7 +16,7 @@
         <PackageLicense>https://github.com/wangkanai/wangkanai/blob/main/LICENSE</PackageLicense>
         <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     </PropertyGroup>
-    
+
     <PropertyGroup>
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
@@ -28,7 +28,7 @@
     <ItemGroup>
         <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All"/>
     </ItemGroup>
-    
+
     <PropertyGroup>
         <PackageIcon>wangkanai-logo.png</PackageIcon>
         <PackageReadmeFile>README.md</PackageReadmeFile>

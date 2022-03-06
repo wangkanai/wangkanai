@@ -1,7 +1,7 @@
-# ASP.NET Core Detection 
+# ASP.NET Core Detection
 
 ASP.NET Core Detection service components for identifying details about client device, browser, engine, platform, &
-crawler. 
+crawler.
 
 ![ASP.NET Core Detection](https://raw.githubusercontent.com/wangkanai/wangkanai/main/Asset/aspnet-core-detection-3.svg?sanitize=true)
 

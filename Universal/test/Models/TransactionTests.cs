@@ -2,8 +2,6 @@
 
 using System;
 
-
-
 using Xunit;
 
 namespace Wangkanai.Universal.Models

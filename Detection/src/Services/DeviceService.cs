@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using Wangkanai.Extensions;
 using Wangkanai.Detection.Collections;
@@ -14,7 +14,7 @@ public class DeviceService : IDeviceService
     private Device? _type;
     public  Device  Type => _type ??= DeviceFromUserAgent();
 
-    public DeviceService(IUserAgentService userAgentService) 
+    public DeviceService(IUserAgentService userAgentService)
         => _userAgentService = userAgentService;
 
     private Device DeviceFromUserAgent()

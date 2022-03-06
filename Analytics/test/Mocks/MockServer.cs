@@ -1,9 +1,13 @@
-﻿using System;
+﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+
+using System;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;
+
 using Wangkanai.Analytics.DependencyInjection.Options;
 
 namespace Wangkanai.Analytics.Tests.Mocks;

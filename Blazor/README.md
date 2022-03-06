@@ -1,6 +1,7 @@
 # Wangkanai Blazor and Razor components
 
-Wangkanai Blazor comprises a range of components which implement common interaction patterns according to the semantic specification.
+Wangkanai Blazor comprises a range of components which implement common interaction patterns according to the semantic
+specification.
 
 [![NuGet Badge](https://buildstats.info/nuget/wangkanai.blazor)](https://www.nuget.org/packages/wangkanai.blazor)
 [![NuGet Badge](https://buildstats.info/nuget/wangkanai.blazor?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.blazor)

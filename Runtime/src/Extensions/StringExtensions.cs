@@ -1,4 +1,6 @@
-﻿using System.Globalization;
+﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+
+using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
 

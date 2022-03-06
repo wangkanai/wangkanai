@@ -4,5 +4,4 @@ namespace Wangkanai.Analytics.Services;
 
 internal class AnalyticsMarkerService
 {
-    
 }

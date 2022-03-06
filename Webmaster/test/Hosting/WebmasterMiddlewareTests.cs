@@ -1,6 +1,10 @@
-﻿using System;
+﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+
+using System;
 using System.Threading.Tasks;
+
 using Microsoft.AspNetCore.Http;
+
 using Xunit;
 
 namespace Wangkanai.Webmaster.Tests.Hosting;

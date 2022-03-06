@@ -28,7 +28,7 @@ public class ApplicationBuilderExtensionsTest
         // Act
         var exception = Assert.Throws<InvalidOperationException>(
             () => app.Object.UseAnalytics());
-        
+
         // Assert
         Assert.Equal("AddAnalytics is not added to ConfigureServices(...)", exception.Message);
     }

@@ -1,8 +1,10 @@
-## Wangkanai Webmaster 
+## Wangkanai Webmaster
 
-ASP.NET Core Search Engine Optimization for Webmaster lets you improve the art, craft, and science of driving web traffic to enabling you with easy and efficiency native tool build in the asp.net core library.
+ASP.NET Core Search Engine Optimization for Webmaster lets you improve the art, craft, and science of driving web
+traffic to enabling you with easy and efficiency native tool build in the asp.net core library.
 
-**Please give some love by clicking on the star!** :star::star::star: This help movtivate me to continue on developing the project.
+**Please give some love by clicking on the star!** :star::star::star: This help movtivate me to continue on developing
+the project.
 
 [![GitHub](https://img.shields.io/github/license/wangkanai/webmaster)](https://github.com/wangkanai/webmaster/blob/master/LICENSE)
 [![Open Collective](https://img.shields.io/badge/open%20collective-support%20me-3385FF.svg)](https://opencollective.com/wangkanai)
@@ -19,7 +21,8 @@ Installation of Wangkanai Webmaster
 PM> install-package Wangkanai.Webmaster
 ```
 
-Implementation of the library into your web application is done by configuring the `startup.cs` by adding the Webmaster service in the `ConfigureServices` method.
+Implementation of the library into your web application is done by configuring the `startup.cs` by adding the Webmaster
+service in the `ConfigureServices` method.
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -30,7 +33,8 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-Adding the Webmaster middleware to the pipeline. The Webmaster middleware is enabled in the `Configure` method of `Startup.cs` file.
+Adding the Webmaster middleware to the pipeline. The Webmaster middleware is enabled in the `Configure` method
+of `Startup.cs` file.
 
 ```csharp
 public void Configure(IApplicationBuilder app)

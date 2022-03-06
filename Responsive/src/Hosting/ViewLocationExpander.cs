@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using System.ComponentModel;
 
@@ -47,8 +47,8 @@ public class ResponsiveViewLocationExpander : IViewLocationExpander
 
         context.Values.TryGetValue(ValueKey, out var device);
 
-        return string.IsNullOrEmpty(device) 
-                   ? viewLocations 
+        return string.IsNullOrEmpty(device)
+                   ? viewLocations
                    : ExpandViewLocationsCore(viewLocations, device);
     }
 
@@ -59,7 +59,7 @@ public class ResponsiveViewLocationExpander : IViewLocationExpander
             yield return _format == ResponsiveViewLocationFormat.Suffix
                              ? location.Replace("{0}", "{0}." + device)
                              : location.Replace("{0}", device + "/{0}");
-            
+
             yield return location;
         }
     }

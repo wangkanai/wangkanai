@@ -1,4 +1,6 @@
-﻿using System.ComponentModel;
+﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+
+using System.ComponentModel;
 
 namespace Wangkanai.Extensions;
 
@@ -20,9 +22,9 @@ public static class EnumExtensions
     {
         var type   = generic.GetType();
         var member = type.GetMember(generic.ToString());
-        if (member.Length <= 0) 
+        if (member.Length <= 0)
             return generic.ToString();
-            
+
         var attributes = member[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
         if (attributes.Any())
             return ((DescriptionAttribute)attributes.ElementAt(0)).Description;

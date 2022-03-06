@@ -17,7 +17,7 @@ public static class AnalyticsApplicationExtensions
         Check.NotNull(app);
 
         //app.Validate();
-        
+
         app.VerifyMarkerIsRegistered();
 
         return app;

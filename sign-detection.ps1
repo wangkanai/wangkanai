@@ -1,7 +1,7 @@
 $suffix = "alpha";
 
 push-location -path .\detection\
-dotnet --version 
+dotnet --version
 dotnet clean .\src\
 dotnet restore .\src\
 dotnet build .\src\ -c Release #--version-suffix $suffix
@@ -13,6 +13,6 @@ nuget sign .\artifacts\*.nupkg `
   -CertificateStoreName My `
   -CertificateSubjectName 'Sarin Na Wangkanai' `
   -Timestamper http://ts.ssl.com `
-  -OutputDirectory .\signed 
+  -OutputDirectory .\signed
 
 pop-location

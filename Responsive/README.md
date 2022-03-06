@@ -1,11 +1,11 @@
 ## Wangkanai Responsive View
 
-ASP.NET Core Responsive middleware for routing base upon request client device detection to specific view. Also in the added
+ASP.NET Core Responsive middleware for routing base upon request client device detection to specific view. Also in the
+added
 feature of user preference made this library even more comprehensive must for developers whom to target multiple devices
 with view rendered and optimized directly from the server side.
 
 **Please show me some love and click the** :star:
-
 
 [![NuGet Badge](https://buildstats.info/nuget/wangkanai.detection)](https://www.nuget.org/packages/wangkanai.detection)
 [![NuGet Badge](https://buildstats.info/nuget/wangkanai.detection?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.detection)
@@ -13,7 +13,6 @@ with view rendered and optimized directly from the server side.
 [![GitHub](https://img.shields.io/github/license/wangkanai/detection)](https://github.com/wangkanai/Detection/blob/dev/LICENSE)
 [![Open Collective](https://img.shields.io/badge/open%20collective-support%20me-3385FF.svg)](https://opencollective.com/wangkanai)
 [![Patreon](https://img.shields.io/badge/patreon-support%20me-d9643a.svg)](https://www.patreon.com/wangkanai)
-
 
 This project development has been in the long making of my little spare time. Please show your appreciation and help me
 provide feedback on you think will improve this library. All developers are welcome to come and improve the code by

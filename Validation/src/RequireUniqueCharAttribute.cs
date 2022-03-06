@@ -1,4 +1,6 @@
-﻿namespace System.ComponentModel.DataAnnotations;
+﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+
+namespace System.ComponentModel.DataAnnotations;
 
 [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter, AllowMultiple = false)]
 public class RequireUniqueCharAttribute : ValidationAttribute
@@ -30,7 +32,7 @@ public class RequireUniqueCharAttribute : ValidationAttribute
 
         for (var i = 0; i < array.Length; i++)
             if (array[i] > 0)
-                unique.Add((char) i, array[i]);
+                unique.Add((char)i, array[i]);
 
         return unique;
     }

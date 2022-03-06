@@ -14,10 +14,10 @@ internal static class CoreBuilderExtensions
     public static IUniversalBuilder AddRequiredPlatformServices(this IUniversalBuilder builder)
     {
         Check.NotNull(builder);
-        
+
         builder.Services.AddOptions();
         builder.Services.TryAddSingleton(provider => ServiceProviderServiceExtensions.GetRequiredService<IOptions<UniversalOption>>(provider).Value);
-        
+
         return builder;
     }
 
@@ -25,10 +25,10 @@ internal static class CoreBuilderExtensions
     {
         // Add Basic core to services
         builder.Services.TryAddScoped<ITrackerService, TrackerService>();
-        
+
         return builder;
     }
-    
+
     public static IUniversalBuilder AddMarkerService(this IUniversalBuilder builder)
     {
         builder.Services.TryAddSingleton<UniversalMarkerService, UniversalMarkerService>();

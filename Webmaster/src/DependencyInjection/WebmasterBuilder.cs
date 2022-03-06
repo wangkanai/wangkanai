@@ -1,5 +1,4 @@
-﻿// Copyright (c) 2014-2020 Sarin Na Wangkanai, All Rights Reserved.
-// The Apache v2. See License.txt in the project root for license information.
+﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 namespace Wangkanai.Webmaster.Builders;
 
@@ -21,5 +20,5 @@ public class WebmasterBuilder : IWebmasterBuilder
     /// <value>
     /// The <see cref="IServiceCollection" /> services are attached to.
     /// </value>
-    public IServiceCollection Services { get; private set; }
+    public IServiceCollection Services { get; }
 }

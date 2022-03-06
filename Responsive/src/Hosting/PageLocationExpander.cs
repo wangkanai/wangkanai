@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -44,6 +44,6 @@ public class ResponsivePageLocationExpander : IViewLocationExpander
         }
     }
 
-    public void PopulateValues(ViewLocationExpanderContext context) 
+    public void PopulateValues(ViewLocationExpanderContext context)
         => context.Values[ValueKey] = context.ActionContext.HttpContext.GetDevice().ToString().ToLower();
 }

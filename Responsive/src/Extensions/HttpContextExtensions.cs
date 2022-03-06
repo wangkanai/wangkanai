@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
@@ -28,7 +28,7 @@ internal static class HttpContextExtensions
                    ? (Device)(responsive ?? Device.Unknown)
                    : Device.Desktop;
     }
-    
+
     public static bool IsWebApi(this HttpContext context, ResponsiveOptions options)
         => context.Request.Path.StartsWithSegments(options.WebApiPath);
 }

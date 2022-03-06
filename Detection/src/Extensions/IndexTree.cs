@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
+﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using Wangkanai.Extensions;
 
@@ -36,8 +36,8 @@ public readonly struct IndexTree
         foreach (var (key, list) in KeywordsGroupBySeed(keywords, seed))
         {
             var newKeys = list.ToArray();
-            _lookup[key - lower] = newKeys.Any(k => seed + 1 >= k.Length) 
-                                       ? new IndexTree(null, seed + 1) 
+            _lookup[key - lower] = newKeys.Any(k => seed + 1 >= k.Length)
+                                       ? new IndexTree(null, seed    + 1)
                                        : new IndexTree(newKeys, seed + 1);
         }
     }

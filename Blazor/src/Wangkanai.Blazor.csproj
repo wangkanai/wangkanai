@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <SupportedPlatform Include="browser" />
+    <SupportedPlatform Include="browser"/>
   </ItemGroup>
 
   <ItemGroup>
@@ -15,12 +15,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.2"/>
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Runtime\src\Wangkanai.Runtime.csproj" />
-    <ProjectReference Include="..\..\Validation\src\Wangkanai.Validation.csproj" />
+    <ProjectReference Include="..\..\Runtime\src\Wangkanai.Runtime.csproj"/>
+    <ProjectReference Include="..\..\Validation\src\Wangkanai.Validation.csproj"/>
   </ItemGroup>
-    
+
 </Project>

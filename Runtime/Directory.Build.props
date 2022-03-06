@@ -1,11 +1,11 @@
 <Project>
     <PropertyGroup>
-        <VersionPrefix>0.8.700</VersionPrefix>
+        <VersionPrefix>0.8.800</VersionPrefix>
 
         <Title>Wangkanai Runtime</Title>
         <PackageTags>aspnetcore;runtime;</PackageTags>
         <Description>Wangkanai .NET Runtime library to serve as the foundation for future development.</Description>
-        
+
         <Authors>Sarin Na Wangkanai</Authors>
         <Copyright>©2014-2022 Sarin Na Wangkanai, All rights reserved</Copyright>
 

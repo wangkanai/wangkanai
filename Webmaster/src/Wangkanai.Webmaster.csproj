@@ -1,17 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-      <RootNamespace>Wangkanai</RootNamespace>
-      <TargetFramework>net6.0</TargetFramework>
-    </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>Wangkanai</RootNamespace>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
 
-    <ItemGroup>
-        <FrameworkReference Include="Microsoft.AspNetCore.App" />
-    </ItemGroup>
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App"/>
+  </ItemGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\..\Runtime\src\Wangkanai.Runtime.csproj" />
-      <ProjectReference Include="..\..\Validation\src\Wangkanai.Validation.csproj" />
-    </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Runtime\src\Wangkanai.Runtime.csproj"/>
+    <ProjectReference Include="..\..\Validation\src\Wangkanai.Validation.csproj"/>
+  </ItemGroup>
 
 </Project>

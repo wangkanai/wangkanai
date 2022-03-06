@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using System.Threading.Tasks;
 
@@ -17,7 +17,6 @@ public class PreferenceSessionTest
     {
         var builder = MockServer.WebHostBuilder(context =>
         {
-            
             context.Session.SetString("Key", "Value");
             return Task.FromResult(0);
         });

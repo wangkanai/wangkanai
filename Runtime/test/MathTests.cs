@@ -9,12 +9,12 @@ public class MathTests
     [Fact]
     public void DivideWithZero()
     {
-        Assert.Equal(0, Math.Divider(1,0));
+        Assert.Equal(0, Math.Divider(1, 0));
     }
 
     [Fact]
     public void DivideWithOne()
     {
-        Assert.Equal(1, Math.Divider(1,1));
+        Assert.Equal(1, Math.Divider(1, 1));
     }
 }

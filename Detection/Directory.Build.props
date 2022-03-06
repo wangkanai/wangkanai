@@ -1,11 +1,11 @@
 <Project>
     <PropertyGroup>
         <VersionPrefix>5.1.0</VersionPrefix>
-        
+
         <Title>Wangkanai Detection</Title>
         <Description>ASP.NET Core Detection service components for identifying details about client device, browser, engine, platform, and crawler.</Description>
         <PackageTags>aspnetcore;detection;</PackageTags>
-        
+
         <Authors>Sarin Na Wangkanai</Authors>
         <Copyright>©2014-2022 Sarin Na Wangkanai, All rights reserved</Copyright>
 
@@ -28,7 +28,7 @@
     <ItemGroup>
         <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All"/>
     </ItemGroup>
-    
+
     <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Detection'">
         <PackageIcon>wangkanai-logo.png</PackageIcon>
         <PackageReadmeFile>NUGET.md</PackageReadmeFile>

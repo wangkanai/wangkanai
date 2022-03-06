@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.Primitives;
@@ -25,7 +25,7 @@ public class DeviceTagHelper : TagHelper
 
     private readonly IDeviceService _resolver;
 
-    public DeviceTagHelper(IDeviceService resolver) 
+    public DeviceTagHelper(IDeviceService resolver)
         => _resolver = resolver ?? throw new ArgumentNullException(nameof(resolver));
 
     public override void Process(TagHelperContext context, TagHelperOutput output)

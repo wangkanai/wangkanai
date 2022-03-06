@@ -6,7 +6,8 @@ namespace Microsoft.Extensions.DependencyInjection;
 
 public class UniversalBuilder : IUniversalBuilder
 {
-    public UniversalBuilder(IServiceCollection services) 
+    public UniversalBuilder(IServiceCollection services)
         => Services = Check.NotNull(services);
+
     public IServiceCollection Services { get; }
 }

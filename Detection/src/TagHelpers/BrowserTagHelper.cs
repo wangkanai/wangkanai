@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.Primitives;
@@ -24,7 +24,7 @@ public class BrowserTagHelper : TagHelper
     [HtmlAttributeName(ExcludeAttributeName)]
     public string? Exclude { get; set; }
 
-    public BrowserTagHelper(IBrowserService resolver) 
+    public BrowserTagHelper(IBrowserService resolver)
         => _resolver = resolver ?? throw new ArgumentNullException(nameof(resolver));
 
     public override void Process(TagHelperContext context, TagHelperOutput output)

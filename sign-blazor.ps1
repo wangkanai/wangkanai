@@ -13,6 +13,6 @@ nuget sign .\artifacts\*.nupkg `
   -CertificateStoreName My `
   -CertificateSubjectName 'Sarin Na Wangkanai' `
   -Timestamper http://ts.ssl.com `
-  -OutputDirectory .\signed 
+  -OutputDirectory .\signed
 
 pop-location
