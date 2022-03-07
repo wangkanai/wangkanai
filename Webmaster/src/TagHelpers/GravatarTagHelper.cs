@@ -2,8 +2,6 @@
 
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
-using System.Threading.Tasks;
-
 using Wangkanai.Helpers;
 using Wangkanai.Webmaster.Models;
 

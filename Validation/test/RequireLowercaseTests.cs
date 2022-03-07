@@ -7,7 +7,6 @@ using Wangkanai.Validation.Models;
 
 using Xunit;
 using Xunit.Abstractions;
-using Xunit.Sdk;
 
 namespace Wangkanai.Validation;
 

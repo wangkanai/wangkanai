@@ -3,7 +3,6 @@
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
 
-using Wangkanai;
 using Wangkanai.Webserver.Services;
 
 namespace Microsoft.Extensions.DependencyInjection;
@@ -30,7 +29,7 @@ internal static class CoreBuilderExtensions
 
     public static IWebserverBuilder AddMarkerService(this IWebserverBuilder builder)
     {
-        builder.Services.TryAddSingleton<MarkerService, MarkerService>();
+        builder.Services.TryAddSingleton<WebserverMarkerService, WebserverMarkerService>();
 
         return builder;
     }

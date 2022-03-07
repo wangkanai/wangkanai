@@ -2,25 +2,24 @@
 
 using Microsoft.AspNetCore.Builder;
 
-using Wangkanai;
-using Wangkanai.Webmaster;
+using Wangkanai.Universal.Hosting;
+using Wangkanai.Universal.Services;
+using Wangkanai.Webserver;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
-/// <summary>
-/// Extension method for adding the <see cref="WebmasterMiddleware"/> to the application.
-/// </summary>
-public static class WebmasterApplicationBuilderExtensions
+public static class UniversalApplicationExtensions
 {
-    public static IApplicationBuilder UseWebmaster(this IApplicationBuilder app)
+    public static IApplicationBuilder UseUniversal(this IApplicationBuilder app)
     {
         Check.NotNull(app);
 
         app.Validate();
+        app.VerifyMarkerIsRegistered<UniversalMarkerService>();
 
-        return app.UseMiddleware<WebmasterMiddleware>();
+        return app.UseMiddleware<UniversalMiddleware>();
     }
-
+    
     private static void Validate(this IApplicationBuilder app)
     {
         // What should I validate?

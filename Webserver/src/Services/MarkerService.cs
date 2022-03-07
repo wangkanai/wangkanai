@@ -2,7 +2,7 @@
 
 namespace Wangkanai.Webserver.Services;
 
-internal class MarkerService
+internal class WebserverMarkerService
 {
     
 }

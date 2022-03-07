@@ -11,7 +11,7 @@ namespace Microsoft.Extensions.DependencyInjection;
 /// <summary>
 /// Contains extension method to <see cref="IServiceCollection"/> for configuring client services.
 /// </summary>
-internal static class CoreBuilderExtensions
+internal static class DetectionCoreBuilderExtensions
 {
     public static IDetectionBuilder AddRequiredPlatformServices(this IDetectionBuilder builder)
     {

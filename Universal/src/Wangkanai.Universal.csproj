@@ -4,11 +4,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <FrameworkReference Include="Microsoft.AspNetCore.App"/>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Runtime\src\Wangkanai.Runtime.csproj"/>
+    <ProjectReference Include="..\..\Runtime\src\Wangkanai.Runtime.csproj" />
+    <ProjectReference Include="..\..\Webserver\src\Wangkanai.Webserver.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,16 +1,8 @@
 ﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-using System;
-using System.Reflection;
-
-using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-
-using Moq;
 
 using Xunit;
-using Xunit.Sdk;
 
 namespace Wangkanai.Webserver.Extensions;
 

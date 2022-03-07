@@ -2,16 +2,13 @@
 
 using Microsoft.AspNetCore.Http;
 
-namespace Wangkanai.Webmaster;
+namespace Wangkanai.Webserver.Hosting;
 
-//[Experimental()]
-//[Deprecated()]
-//[Obsolete()]
-public class WebmasterMiddleware
+public class WebserverMiddleware
 {
     private readonly RequestDelegate _next;
 
-    public WebmasterMiddleware(RequestDelegate next) 
+    public WebserverMiddleware(RequestDelegate next) 
         => _next = Check.NotNull(next);
 
     public async Task InvokeAsync(HttpContext context)

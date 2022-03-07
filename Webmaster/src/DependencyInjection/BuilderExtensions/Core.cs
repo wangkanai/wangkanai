@@ -17,7 +17,7 @@ public static class CoreCollectionExtensions
 
     public static IWebmasterBuilder AddMarkerService(this IWebmasterBuilder builder)
     {
-        builder.Services.TryAddSingleton<MarkerService, MarkerService>();
+        builder.Services.TryAddSingleton<WebmasterMarkerService, WebmasterMarkerService>();
 
         return builder;
     }

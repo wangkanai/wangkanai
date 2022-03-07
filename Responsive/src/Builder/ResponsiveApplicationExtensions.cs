@@ -3,7 +3,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 
-using Wangkanai;
 using Wangkanai.Responsive;
 using Wangkanai.Responsive.Hosting;
 

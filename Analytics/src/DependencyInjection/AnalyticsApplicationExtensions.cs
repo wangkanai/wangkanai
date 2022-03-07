@@ -16,8 +16,7 @@ public static class AnalyticsApplicationExtensions
     {
         Check.NotNull(app);
 
-        //app.Validate();
-
+        app.Validate();
         app.VerifyMarkerIsRegistered();
 
         return app;
@@ -25,11 +24,11 @@ public static class AnalyticsApplicationExtensions
 
     private static void Validate(this IApplicationBuilder app)
     {
-        var factory = app.ApplicationServices.GetService(typeof(ILoggerFactory)) as ILoggerFactory;
+        //var factory = app.ApplicationServices.GetService(typeof(ILoggerFactory)) as ILoggerFactory;
         //Check.NotNull(factory);
 
-        var logger = factory.CreateLogger("Analytics.Startup");
-        logger.LogInformation("Starting Analytics version {version}", typeof(AnalyticsApplicationExtensions)?.Assembly?.GetName()?.Version?.ToString());
+        // var logger = factory.CreateLogger("Analytics.Startup");
+        // logger.LogInformation("Starting Analytics version {version}", typeof(AnalyticsApplicationExtensions)?.Assembly?.GetName()?.Version?.ToString());
     }
 
     private static void VerifyMarkerIsRegistered(this IApplicationBuilder app)

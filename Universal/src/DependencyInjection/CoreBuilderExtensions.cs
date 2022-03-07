@@ -3,7 +3,6 @@
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
 
-using Wangkanai;
 using Wangkanai.Universal.Options;
 using Wangkanai.Universal.Services;
 

@@ -2,7 +2,6 @@
 
 using Microsoft.AspNetCore.Routing;
 
-using Wangkanai;
 using Wangkanai.Webmaster.Routing;
 
 namespace Microsoft.Extensions.DependencyInjection;

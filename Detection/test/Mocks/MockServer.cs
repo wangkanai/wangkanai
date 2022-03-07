@@ -5,10 +5,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-
-using Wangkanai.Detection.Extensions;
-using Wangkanai.Detection.Models;
 
 namespace Wangkanai.Detection.Mocks;
 

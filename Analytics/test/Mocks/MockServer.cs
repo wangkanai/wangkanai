@@ -8,8 +8,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;
 
-using Wangkanai.Analytics.DependencyInjection.Options;
-
 namespace Wangkanai.Analytics.Tests.Mocks;
 
 public static class MockServer
