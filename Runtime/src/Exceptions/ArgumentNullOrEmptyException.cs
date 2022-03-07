@@ -6,11 +6,12 @@ namespace Wangkanai;
 public class ArgumentNullOrEmptyException : ArgumentNullException
 {
     public ArgumentNullOrEmptyException()
+        : base(SystemResources.ArgumentNullOrEmptyGeneric)
     {
     }
 
     public ArgumentNullOrEmptyException(string paramName)
-        : base(paramName)
+        : base(paramName, SystemResources.ArgumentNullOrEmptyGeneric)
     {
     }
 

@@ -6,12 +6,12 @@ namespace Wangkanai;
 public class ArgumentMoreThanException : ArgumentException
 {
     public ArgumentMoreThanException()
-        : base(SystemResources.ArgumentMoreThan_Generic)
+        : base(SystemResources.ArgumentMoreThanGeneric)
     {
     }
 
     public ArgumentMoreThanException(string paramName)
-        : base(SystemResources.ArgumentMoreThan_Generic, paramName)
+        : base(SystemResources.ArgumentMoreThanGeneric, paramName)
     {
     }
 

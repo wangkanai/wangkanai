@@ -6,12 +6,12 @@ namespace Wangkanai;
 public class ArgumentLessThanException : ArgumentException
 {
     public ArgumentLessThanException()
-        : base(SystemResources.ArgumentLessThan_Generic)
+        : base(SystemResources.ArgumentLessThanGeneric)
     {
     }
 
     public ArgumentLessThanException(string paramName)
-        : base(SystemResources.ArgumentLessThan_Generic, paramName)
+        : base(SystemResources.ArgumentLessThanGeneric, paramName)
     {
     }
 

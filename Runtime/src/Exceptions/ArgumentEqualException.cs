@@ -6,12 +6,12 @@ namespace Wangkanai;
 public class ArgumentEqualException : ArgumentException
 {
     public ArgumentEqualException()
-        : base(SystemResources.ArgumentEqual_Generic)
+        : base(SystemResources.ArgumentEqualGeneric)
     {
     }
 
     public ArgumentEqualException(string paramName)
-        : base(SystemResources.ArgumentEqual_Generic, paramName)
+        : base(SystemResources.ArgumentEqualGeneric, paramName)
     {
     }
 
