@@ -24,7 +24,7 @@ public static class Check
     [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
     private static string NotNullOrEmpty(string value, [InvokerParameterName] string parameterName)
         => value.IsNullOrEmpty()
-               ? throw new ArgumentNullOrEmptyException($"{parameterName} can not be null or empty", parameterName)
+               ? throw new ArgumentNullOrEmptyException(parameterName)
                : value;
 
     [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
@@ -34,7 +34,7 @@ public static class Check
     [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
     internal static bool NotNullOrEmpty<T>(IEnumerable<T> value, [InvokerParameterName] string parameterName)
         => value.IsNullOrEmpty()
-               ? throw new ArgumentNullOrEmptyException($"{parameterName} can not be null or empty!", parameterName)
+               ? throw new ArgumentNullOrEmptyException(parameterName)
                : true;
 
     [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
@@ -44,7 +44,7 @@ public static class Check
     [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
     internal static bool NotEqual(int value, int expected, [InvokerParameterName] string parameterName)
         => value != expected
-               ? throw new ArgumentEqualException($"{parameterName} argument cannot not equal to the given expected value")
+               ? throw new ArgumentEqualException(parameterName)
                : true;
 
     [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
@@ -54,7 +54,7 @@ public static class Check
     [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
     public static bool NotLessThan(int value, int expected, [InvokerParameterName] string parameterName)
         => value < expected
-               ? throw new ArgumentLessThanException($"{parameterName} argument can not be bigger than given string's length!")
+               ? throw new ArgumentLessThanException(parameterName)
                : true;
 
     [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
@@ -64,6 +64,6 @@ public static class Check
     [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
     internal static bool NotMoreThan(int value, int expected, [InvokerParameterName] [NotNull] string parameterName)
         => value > expected
-               ? throw new ArgumentMoreThanException($"{parameterName} argument can not be smaller than given string's length!")
+               ? throw new ArgumentMoreThanException(parameterName)
                : true;
 }
