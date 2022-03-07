@@ -9,8 +9,10 @@ public static class WebserverCollectionExtensions
                    .AddWebserver();
 
     public static IWebserverBuilder AddWebserver(this IServiceCollection services)
-        => services.AddWebserverBuilder();
+        => services.AddWebserverBuilder()
+                   .AddCoreServices()
+                   .AddMarkerService();
 
-    internal static IWebserverBuilder AddWebserverBuilder(this IServiceCollection services)
+    private static IWebserverBuilder AddWebserverBuilder(this IServiceCollection services)
         => new WebserverBuilder(services);
 }
