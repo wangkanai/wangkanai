@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <IsPackable>false</IsPackable>
-    <Nullable>enable</Nullable>
+    <RootNamespace>Wangkanai.Webmaster.Tests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\Wangkanai.Detection.csproj" />
+    <ProjectReference Include="..\src\Wangkanai.Webmaster.csproj" />
   </ItemGroup>
+
 </Project>

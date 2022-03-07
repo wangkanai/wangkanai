@@ -13,9 +13,9 @@ public class CoreBuilderExtensionsTest
     [Fact]
     public void AddRequiredPlatformServices_ReturnsExpected()
     {
-        var serviceCollection = new ServiceCollection();
-        var builder           = serviceCollection.AddDetectionBuilder().AddRequiredPlatformServices();
-        var serviceDescriptors = new List<ServiceDescriptor>
+        var services = new ServiceCollection();
+        var builder  = services.AddDetectionBuilder().AddRequiredPlatformServices();
+        var descriptors = new List<ServiceDescriptor>
         {
             new(typeof(IHttpContextAccessor), typeof(HttpContextAccessor), ServiceLifetime.Singleton),
             new(typeof(IOptions<>), typeof(DetectionOptions), ServiceLifetime.Singleton),
@@ -28,7 +28,7 @@ public class CoreBuilderExtensionsTest
 
         Assert.NotNull(builder);
         Assert.NotNull(builder.Services);
-        AssertServices(serviceDescriptors, builder.Services);
+        AssertServices(descriptors, builder.Services);
     }
 
     [Fact]
