@@ -14,7 +14,7 @@ public class CoreBuilderExtensionsTest
     public void AddRequiredPlatformServices_ReturnsExpected()
     {
         var services = new ServiceCollection();
-        var builder  = services.AddDetectionBuilder().AddRequiredPlatformServices();
+        var builder  = services.AddDetectionBuilder().AddRequiredServices();
         var descriptors = new List<ServiceDescriptor>
         {
             new(typeof(IHttpContextAccessor), typeof(HttpContextAccessor), ServiceLifetime.Singleton),

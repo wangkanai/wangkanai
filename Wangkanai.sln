@@ -21,6 +21,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_solutions", "_solutions", 
 		sign-responsive.ps1 = sign-responsive.ps1
 		sign-universal.ps1 = sign-universal.ps1
 		sign-webserver.ps1 = sign-webserver.ps1
+		sign-markdown.ps1 = sign-markdown.ps1
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{C26D86D6-4B4E-407E-9F1D-9CA1765768CE}"
@@ -136,6 +137,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Webserver", "Webs
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Webserver.Test", "Webserver\test\Wangkanai.Webserver.Test.csproj", "{89B7172F-DED2-4188-B8C3-55DC505906F0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Markdown", "Markdown", "{383E27FE-2B5F-48A9-BE6A-F9973E6D8B1A}"
+	ProjectSection(SolutionItems) = preProject
+		Markdown\Directory.Build.props = Markdown\Directory.Build.props
+		Markdown\README.md = Markdown\README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Markdown", "Markdown\src\Wangkanai.Markdown.csproj", "{33B2A6FA-15BB-4071-A3D1-2644F0A35AAA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Markdown.Test", "Markdown\test\Wangkanai.Markdown.Test.csproj", "{BA993356-DADC-412B-A24F-8AEACDC5FA53}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -227,6 +238,14 @@ Global
 		{89B7172F-DED2-4188-B8C3-55DC505906F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89B7172F-DED2-4188-B8C3-55DC505906F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89B7172F-DED2-4188-B8C3-55DC505906F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33B2A6FA-15BB-4071-A3D1-2644F0A35AAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33B2A6FA-15BB-4071-A3D1-2644F0A35AAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33B2A6FA-15BB-4071-A3D1-2644F0A35AAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33B2A6FA-15BB-4071-A3D1-2644F0A35AAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA993356-DADC-412B-A24F-8AEACDC5FA53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA993356-DADC-412B-A24F-8AEACDC5FA53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA993356-DADC-412B-A24F-8AEACDC5FA53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA993356-DADC-412B-A24F-8AEACDC5FA53}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -257,6 +276,8 @@ Global
 		{99BDB862-09BC-42A3-8643-4874F3EED50F} = {ECAFEA96-62F0-4A72-8239-1E971ABAC309}
 		{717BA7DD-96E6-4661-A385-BF2923112C6E} = {1CD41CBB-76E2-42CE-9C17-040527E90C6A}
 		{89B7172F-DED2-4188-B8C3-55DC505906F0} = {1CD41CBB-76E2-42CE-9C17-040527E90C6A}
+		{33B2A6FA-15BB-4071-A3D1-2644F0A35AAA} = {383E27FE-2B5F-48A9-BE6A-F9973E6D8B1A}
+		{BA993356-DADC-412B-A24F-8AEACDC5FA53} = {383E27FE-2B5F-48A9-BE6A-F9973E6D8B1A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1BA0A192-D7BE-40A1-96AE-B3C8C6BC9B69}

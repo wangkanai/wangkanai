@@ -16,7 +16,7 @@ public static class DetectionCollectionExtensions
     /// <returns>An <see cref="IDetectionBuilder" /> so that additional calls can be chained</returns>
     public static IDetectionBuilder AddDetection(this IServiceCollection services)
         => services.AddDetectionBuilder()
-                   .AddRequiredPlatformServices()
+                   .AddRequiredServices()
                    .AddCoreServices()
                    .AddMarkerService();
 

@@ -13,7 +13,7 @@ namespace Microsoft.Extensions.DependencyInjection;
 /// </summary>
 internal static class DetectionCoreBuilderExtensions
 {
-    public static IDetectionBuilder AddRequiredPlatformServices(this IDetectionBuilder builder)
+    public static IDetectionBuilder AddRequiredServices(this IDetectionBuilder builder)
     {
         Check.NotNull(builder);
 
@@ -44,7 +44,7 @@ internal static class DetectionCoreBuilderExtensions
 
     public static IDetectionBuilder AddMarkerService(this IDetectionBuilder builder)
     {
-        builder.Services.TryAddSingleton<DetectionMarkerService, DetectionMarkerService>();
+        builder.Services.TryAddSingleton<DetectionMarkerService>();
 
         return builder;
     }
