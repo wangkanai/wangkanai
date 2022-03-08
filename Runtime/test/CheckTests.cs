@@ -77,4 +77,16 @@ public class CheckTests
         Assert.True(Check.NotEqual(1, 1));
         Assert.Throws<ArgumentEqualException>(() => Check.NotEqual(1, 0));
     }
+
+    [Fact]
+    public void NotEqualExtension()
+    {
+        var test = "test";
+        Assert.True(test.Length.NotEqual(4, new ArgumentTestException()));
+        Assert.Throws<ArgumentTestException>(() => test.Length.NotEqual(8, new ArgumentTestException()));
+    }
+}
+
+public class ArgumentTestException : ArgumentException
+{
 }

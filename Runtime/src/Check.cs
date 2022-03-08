@@ -28,41 +28,47 @@ public static class Check
                : value;
 
     [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
-    public static bool NotNullOrEmpty<T>(IEnumerable<T> value)
+    public static bool NotNullOrEmpty<T>(this IEnumerable<T> value)
         => NotNullOrEmpty(value, nameof(value));
 
     [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
-    internal static bool NotNullOrEmpty<T>(IEnumerable<T> value, [InvokerParameterName] string parameterName)
+    internal static bool NotNullOrEmpty<T>(this IEnumerable<T> value, [InvokerParameterName] string parameterName)
         => value.IsNullOrEmpty()
                ? throw new ArgumentNullOrEmptyException(parameterName)
                : true;
 
     [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
-    public static bool NotEqual(int value, int expected)
-        => NotEqual(value, expected, nameof(value));
+    public static bool NotEqual(this int value, int expected)
+        => value.NotEqual(expected, nameof(value));
 
     [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
-    internal static bool NotEqual(int value, int expected, [InvokerParameterName] string parameterName)
+    public static bool NotEqual(this int value, int expected, ArgumentException exception)
+        => value != expected
+               ? throw exception
+               : true;
+
+    [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+    internal static bool NotEqual(this int value, int expected, [InvokerParameterName] string parameterName)
         => value != expected
                ? throw new ArgumentEqualException(parameterName)
                : true;
 
     [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
-    public static bool NotLessThan(int value, int expected)
+    public static bool NotLessThan(this int value, int expected)
         => NotLessThan(value, expected, nameof(value));
 
     [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
-    public static bool NotLessThan(int value, int expected, [InvokerParameterName] string parameterName)
+    public static bool NotLessThan(this int value, int expected, [InvokerParameterName] string parameterName)
         => value < expected
                ? throw new ArgumentLessThanException(parameterName)
                : true;
 
     [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
-    public static bool NotMoreThan(int value, int expected)
+    public static bool NotMoreThan(this int value, int expected)
         => NotMoreThan(value, expected, nameof(value));
 
     [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
-    internal static bool NotMoreThan(int value, int expected, [InvokerParameterName] [NotNull] string parameterName)
+    internal static bool NotMoreThan(this int value, int expected, [InvokerParameterName] [NotNull] string parameterName)
         => value > expected
                ? throw new ArgumentMoreThanException(parameterName)
                : true;
