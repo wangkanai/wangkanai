@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.Primitives;
 
 using Wangkanai.Detection.Services;
+using Wangkanai.Extensions;
 
 namespace Microsoft.AspNetCore.Mvc.TagHelpers;
 
@@ -34,7 +35,7 @@ public class EngineTagHelper : TagHelper
 
         output.TagName = null;
 
-        if (string.IsNullOrEmpty(Include) && string.IsNullOrEmpty(Exclude))
+        if (Include.IsNullOrEmpty() && Exclude.IsNullOrEmpty())
             return;
 
         var engine = _resolver.Name.ToString();

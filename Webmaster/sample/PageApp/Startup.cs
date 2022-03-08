@@ -21,7 +21,7 @@ public class Startup
         services.AddDetection();
             
         services.AddWebmaster()
-                .AddRoutingContraint();
+                .AddRoutingConstraint();
             
         services.AddRazorPages();
     }

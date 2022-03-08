@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.Primitives;
 
 using Wangkanai.Detection.Services;
+using Wangkanai.Extensions;
 
 namespace Microsoft.AspNetCore.Mvc.TagHelpers;
 
@@ -35,7 +36,7 @@ public class DeviceTagHelper : TagHelper
 
         output.TagName = null;
 
-        if (string.IsNullOrWhiteSpace(Include) && string.IsNullOrWhiteSpace(Exclude))
+        if (Include.IsNullOrEmpty() && Exclude.IsNullOrEmpty())
             return;
 
         var device = _resolver.Type.ToString();

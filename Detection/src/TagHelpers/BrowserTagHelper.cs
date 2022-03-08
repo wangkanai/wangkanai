@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.Primitives;
 
 using Wangkanai.Detection.Services;
+using Wangkanai.Extensions;
 
 namespace Microsoft.AspNetCore.Mvc.TagHelpers;
 
@@ -25,7 +26,7 @@ public class BrowserTagHelper : TagHelper
     public string? Exclude { get; set; }
 
     public BrowserTagHelper(IBrowserService resolver)
-        => _resolver = resolver ?? throw new ArgumentNullException(nameof(resolver));
+        => _resolver = Check.NotNull(resolver);
 
     public override void Process(TagHelperContext context, TagHelperOutput output)
     {
@@ -34,7 +35,7 @@ public class BrowserTagHelper : TagHelper
 
         output.TagName = null;
 
-        if (string.IsNullOrEmpty(Include) && string.IsNullOrEmpty(Exclude))
+        if (Include.IsNullOrEmpty() && Exclude.IsNullOrEmpty())
             return;
 
         var browser = _resolver.Name.ToString();

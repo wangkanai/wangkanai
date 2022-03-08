@@ -11,10 +11,8 @@ public class HttpContextService : IHttpContextService
 
     public HttpContextService(IHttpContextAccessor accessor)
     {
-        if (accessor == null) throw new ArgumentNullException(nameof(accessor));
-        if (accessor == null) throw new ArgumentNullException(nameof(accessor));
-        if (accessor == null) throw new ArgumentNullException(nameof(accessor));
-        if (accessor == null) throw new ArgumentNullException(nameof(accessor));
+        Check.NotNull(accessor);
+
         Context = accessor?.HttpContext ?? new DefaultHttpContext();
     }
 

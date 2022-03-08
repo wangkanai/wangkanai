@@ -30,6 +30,6 @@ public class ApplicationBuilderExtensionsTest
             () => app.Object.UseAnalytics());
 
         // Assert
-        Assert.Equal("AddAnalytics is not added to ConfigureServices(...)", exception.Message);
+        Assert.Equal("AnalyticsMarkerService is not added to ConfigureServices(...)", exception.Message);
     }
 }

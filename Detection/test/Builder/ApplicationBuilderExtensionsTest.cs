@@ -29,6 +29,6 @@ public class DetectionApplicationBuilderExtensionsTest
             () => applicationBuilderMock.Object.UseDetection());
 
         // Assert
-        Assert.Equal("AddDetection is not added to ConfigureServices(...)", exception.Message);
+        Assert.Equal("DetectionMarkerService is not added to ConfigureServices(...)", exception.Message);
     }
 }
