@@ -6,7 +6,7 @@ namespace Microsoft.Extensions.DependencyInjection
     {
         public static IAnalyticsBuilder AddAnalytics(this IServiceCollection services)
             => services.AddAnalyticsBuilder()
-                       .AddRequiredPlatformServices()
+                       .AddRequiredServices()
                        .AddCoreServices()
                        .AddMarkerService();
 

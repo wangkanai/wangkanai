@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 
 using Wangkanai.Detection;
 using Wangkanai.Detection.Services;
+using Wangkanai.Webserver;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
@@ -23,13 +24,10 @@ public static class DetectionApplicationExtensions
         Check.NotNull(app);
 
         app.Validate();
-
-        app.VerifyMarkerIsRegistered();
-
+        app.VerifyMarkerIsRegistered<DetectionMarkerService>();
         app.VerifyEndpointRoutingMiddlewareIsNotRegistered();
 
         var options = app.ApplicationServices.GetRequiredService<DetectionOptions>();
-
         ValidateOptions(options);
 
         return app;
@@ -65,11 +63,5 @@ public static class DetectionApplicationExtensions
         var EndpointRouteBuilder = "__EndpointRouteBuilder";
         if (app.Properties.TryGetValue(EndpointRouteBuilder, out var obj))
             throw new InvalidOperationException($"{nameof(UseDetection)} must be in execution pipeline before {nameof(EndpointRoutingApplicationBuilderExtensions.UseRouting)} to 'Configure(...)' in the application startup code.");
-    }
-
-    private static void VerifyMarkerIsRegistered(this IApplicationBuilder app)
-    {
-        if (app.ApplicationServices.GetService(typeof(DetectionMarkerService)) == null)
-            throw new InvalidOperationException($"{nameof(DetectionCollectionExtensions.AddDetection)} is not added to ConfigureServices(...)");
     }
 }

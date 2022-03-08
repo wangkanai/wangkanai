@@ -4,15 +4,15 @@ using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Http;
 
-namespace Wangkanai.Markdown.Hosting;
+namespace Wangkanai.Analytics.Hosting;
 
-public class MarkdownMiddleware
+public class AnalyticsMiddleware
 {
     private readonly RequestDelegate _next;
 
-    public MarkdownMiddleware(RequestDelegate next) 
+    public AnalyticsMiddleware(RequestDelegate next) 
         => _next = Check.NotNull(next);
-
+    
     public async Task InvokeAsync(HttpContext context)
     {
         Check.NotNull(context);

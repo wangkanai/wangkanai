@@ -9,7 +9,7 @@ namespace Microsoft.Extensions.DependencyInjection;
 
 internal static class CoreBuilderExtensions
 {
-    public static IAnalyticsBuilder AddRequiredPlatformServices(this IAnalyticsBuilder builder)
+    public static IAnalyticsBuilder AddRequiredServices(this IAnalyticsBuilder builder)
     {
         Check.NotNull(builder);
 

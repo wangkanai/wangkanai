@@ -1,9 +1,10 @@
 ﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Logging;
 
+using Wangkanai.Analytics.Hosting;
 using Wangkanai.Analytics.Services;
+using Wangkanai.Webserver;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
@@ -17,7 +18,9 @@ public static class AnalyticsApplicationExtensions
         Check.NotNull(app);
 
         app.Validate();
-        app.VerifyMarkerIsRegistered();
+        app.VerifyMarkerIsRegistered<AnalyticsMarkerService>();
+
+        app.UseMiddleware<AnalyticsMiddleware>();
 
         return app;
     }
@@ -29,11 +32,5 @@ public static class AnalyticsApplicationExtensions
 
         // var logger = factory.CreateLogger("Analytics.Startup");
         // logger.LogInformation("Starting Analytics version {version}", typeof(AnalyticsApplicationExtensions)?.Assembly?.GetName()?.Version?.ToString());
-    }
-
-    private static void VerifyMarkerIsRegistered(this IApplicationBuilder app)
-    {
-        if (app.ApplicationServices.GetService(typeof(AnalyticsMarkerService)) == null)
-            throw new InvalidOperationException($"{nameof(AnalyticsCollectionExtensions.AddAnalytics)} is not added to ConfigureServices(...)");
     }
 }
