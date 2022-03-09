@@ -17,7 +17,7 @@ render engine
 
 Installation of Markdown
 
-```powershell
+```shell
 PM> install-package Wangkanai.Markdown
 ```
 
@@ -30,6 +30,8 @@ public void ConfigureServices(IServiceCollection services)
     services.AddMarkdown();    
 }
 ```
+
+* `AddMarkdown()` Adds the markdown services to the services container.
 
 Adding the Markdown middleware to the pipeline. The Markdown middleware is enabled in the `Configure` method of *
 Startup.cs* file.
