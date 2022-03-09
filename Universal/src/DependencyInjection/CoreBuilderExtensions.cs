@@ -30,7 +30,7 @@ internal static class CoreBuilderExtensions
 
     public static IUniversalBuilder AddMarkerService(this IUniversalBuilder builder)
     {
-        builder.Services.TryAddSingleton<UniversalMarkerService, UniversalMarkerService>();
+        builder.Services.TryAddSingleton<UniversalMarkerService>();
 
         return builder;
     }

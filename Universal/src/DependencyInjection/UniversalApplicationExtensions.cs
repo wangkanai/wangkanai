@@ -10,7 +10,7 @@ namespace Microsoft.Extensions.DependencyInjection;
 
 public static class UniversalApplicationExtensions
 {
-    public static IApplicationBuilder UseUniversal(this IApplicationBuilder app)
+    public static IApplicationBuilder UseGoogleAnalytics(this IApplicationBuilder app)
     {
         Check.NotNull(app);
 
