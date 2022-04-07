@@ -157,6 +157,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{E71796C3-C
 	ProjectSection(SolutionItems) = preProject
 		docs\CNAME = docs\CNAME
 		docs\index.html = docs\index.html
+		docs\_config.yml = docs\_config.yml
 	EndProjectSection
 EndProject
 Global
