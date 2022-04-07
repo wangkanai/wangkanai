@@ -14,7 +14,7 @@ namespace Microsoft.Extensions.DependencyInjection
             => services.Configure(setAction)
                        .AddAnalytics();
 
-        internal static IAnalyticsBuilder AddAnalyticsBuilder(this IServiceCollection services)
+        private static IAnalyticsBuilder AddAnalyticsBuilder(this IServiceCollection services)
             => new AnalyticsBuilder(services);
     }
 }
