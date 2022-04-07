@@ -153,9 +153,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{A3C4F5
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "Webmaster\sample\WebApp\WebApp.csproj", "{81A3317A-EBA9-486C-9E8C-F6C27A8FDC95}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pages", "Pages", "{E71796C3-C94A-40B2-B998-E36F3AD35733}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{E71796C3-C94A-40B2-B998-E36F3AD35733}"
 	ProjectSection(SolutionItems) = preProject
-		Pages\index.html = Pages\index.html
+		docs\CNAME = docs\CNAME
+		docs\index.html = docs\index.html
 	EndProjectSection
 EndProject
 Global
