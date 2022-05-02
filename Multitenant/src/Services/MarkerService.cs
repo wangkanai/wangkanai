@@ -2,7 +2,7 @@
 
 namespace Wangkanai.Multitenant.Services;
 
-internal class MultitenantMarkerService
+internal class MultiTenantMarkerService
 {
     
 }

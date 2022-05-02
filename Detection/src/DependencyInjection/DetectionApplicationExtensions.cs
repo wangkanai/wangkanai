@@ -21,11 +21,11 @@ public static class DetectionApplicationExtensions
     /// <returns>Return the <see cref="IApplicationBuilder" /> for further pipeline</returns>
     public static IApplicationBuilder UseDetection(this IApplicationBuilder app)
     {
-        Check.NotNull(app);
+        app = Check.NotNull(app);
 
         app.Validate();
         app.VerifyMarkerIsRegistered<DetectionMarkerService>();
-        app.VerifyEndpointRoutingMiddlewareIsNotRegistered();
+        app.VerifyEndpointRoutingMiddlewareIsNotRegistered(UseDetection);
 
         var options = app.ApplicationServices.GetRequiredService<DetectionOptions>();
         ValidateOptions(options);
@@ -55,13 +55,5 @@ public static class DetectionApplicationExtensions
         //    var options = serviceProvider.GetRequiredService<DetectionOptions>();
         //    ValidateOptions(options);
         //}
-    }
-
-
-    private static void VerifyEndpointRoutingMiddlewareIsNotRegistered(this IApplicationBuilder app)
-    {
-        var EndpointRouteBuilder = "__EndpointRouteBuilder";
-        if (app.Properties.TryGetValue(EndpointRouteBuilder, out var obj))
-            throw new InvalidOperationException($"{nameof(UseDetection)} must be in execution pipeline before {nameof(EndpointRoutingApplicationBuilderExtensions.UseRouting)} to 'Configure(...)' in the application startup code.");
     }
 }

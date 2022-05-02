@@ -15,14 +15,15 @@ internal static class DetectionCoreBuilderExtensions
 {
     public static IDetectionBuilder AddRequiredServices(this IDetectionBuilder builder)
     {
-        Check.NotNull(builder);
+        builder = Check.NotNull(builder);
 
         // Hosting doesn't add IHttpContextAccessor by default
         builder.Services.AddHttpContextAccessor();
 
         // Add Detection Options
         builder.Services.AddOptions();
-        builder.Services.TryAddSingleton(provider => provider.GetRequiredService<IOptions<DetectionOptions>>().Value);
+        builder.Services.TryAddSingleton
+            (provider => provider.GetRequiredService<IOptions<DetectionOptions>>().Value);
 
         return builder;
     }

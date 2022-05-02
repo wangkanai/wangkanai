@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
-public interface IMultitenantBuilder
+public interface IMultiTenantBuilder
 {
     IServiceCollection Services { get; }
 }
