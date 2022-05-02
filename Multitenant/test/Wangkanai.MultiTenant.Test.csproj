@@ -5,6 +5,8 @@
     <Nullable>enable</Nullable>
 
     <IsPackable>false</IsPackable>
+
+    <RootNamespace>Wangkanai.Multitenant.Test</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\Wangkanai.Multitenant.csproj" />
+    <ProjectReference Include="..\src\Wangkanai.MultiTenant.csproj" />
   </ItemGroup>
 
 </Project>

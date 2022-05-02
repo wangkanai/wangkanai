@@ -160,15 +160,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{E71796C3-C
 		docs\_config.yml = docs\_config.yml
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Multitenant", "Multitenant", "{AFD334F6-0649-4141-AC08-38E3CA7B3617}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MultiTenant", "MultiTenant", "{AFD334F6-0649-4141-AC08-38E3CA7B3617}"
 	ProjectSection(SolutionItems) = preProject
 		Multitenant\Directory.Build.props = Multitenant\Directory.Build.props
 		Multitenant\README.md = Multitenant\README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Multitenant", "Multitenant\src\Wangkanai.Multitenant.csproj", "{B2590588-7893-4D3D-BC31-B3D10009077D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.MultiTenant", "Multitenant\src\Wangkanai.MultiTenant.csproj", "{B2590588-7893-4D3D-BC31-B3D10009077D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Multitenant.Test", "Multitenant\test\Wangkanai.Multitenant.Test.csproj", "{8FB112B0-7B1C-4193-AC47-A08280C57644}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Multienant.Test", "Multitenant\test\Wangkanai.Multienant.Test.csproj", "{8FB112B0-7B1C-4193-AC47-A08280C57644}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.MultiTenant.Test", "MultiTenant\test\Wangkanai.MultiTenant.Test.csproj", "{9AD7AF09-BF27-47CD-8B88-0A1556E13313}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -285,6 +287,10 @@ Global
 		{8FB112B0-7B1C-4193-AC47-A08280C57644}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8FB112B0-7B1C-4193-AC47-A08280C57644}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8FB112B0-7B1C-4193-AC47-A08280C57644}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AD7AF09-BF27-47CD-8B88-0A1556E13313}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AD7AF09-BF27-47CD-8B88-0A1556E13313}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AD7AF09-BF27-47CD-8B88-0A1556E13313}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AD7AF09-BF27-47CD-8B88-0A1556E13313}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -322,6 +328,7 @@ Global
 		{81A3317A-EBA9-486C-9E8C-F6C27A8FDC95} = {A3C4F552-BD1E-40C6-81C9-99F61B8916EA}
 		{B2590588-7893-4D3D-BC31-B3D10009077D} = {AFD334F6-0649-4141-AC08-38E3CA7B3617}
 		{8FB112B0-7B1C-4193-AC47-A08280C57644} = {AFD334F6-0649-4141-AC08-38E3CA7B3617}
+		{9AD7AF09-BF27-47CD-8B88-0A1556E13313} = {AFD334F6-0649-4141-AC08-38E3CA7B3617}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1BA0A192-D7BE-40A1-96AE-B3C8C6BC9B69}
