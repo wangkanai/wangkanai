@@ -1,8 +1,10 @@
 ﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-namespace Wangkanai.Multitenant.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
-public class IMultitenantBuilder
+namespace Microsoft.Extensions.DependencyInjection;
+
+public interface IMultitenantBuilder
 {
-    
+    IServiceCollection Services { get; }
 }
