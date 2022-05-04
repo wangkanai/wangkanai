@@ -39,12 +39,13 @@ public static class DetectionApplicationExtensions
 
     private static void Validate(this IApplicationBuilder app)
     {
+        var version = typeof(DetectionApplicationExtensions)?.Assembly?.GetName()?.Version?.ToString();
+        
         var loggerFactory = app.ApplicationServices.GetService(typeof(ILoggerFactory)) as ILoggerFactory;
         Check.NotNull(loggerFactory);
 
         var logger = loggerFactory.CreateLogger("Detection.Startup");
-        logger.LogInformation("Starting Detection version {version}",
-                              typeof(DetectionApplicationExtensions)?.Assembly?.GetName()?.Version?.ToString());
+        logger.LogInformation("Starting Detection version {Version}", version);
 
         //var scopeFactory = app.ApplicationServices.GetService<IServiceScopeFactory>();
 

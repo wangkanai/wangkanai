@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Builder;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
-public static class ApplicationMarkerExtensions
+public static class ApplicationBuilderExtensions
 {
     public static bool VerifyMarkerIsRegistered<T>(this IApplicationBuilder app)
         where T : class
@@ -14,6 +14,11 @@ public static class ApplicationMarkerExtensions
         if (app.ApplicationServices.GetService(type) is null)
             throw new InvalidOperationException($"{name} is not added to ConfigureServices(...)");
         return true;
+    }
+
+    public static void ValidateOption<T>(this IApplicationBuilder app, T option)
+        where T : class
+    {
     }
 
     public static void VerifyEndpointRoutingMiddlewareIsNotRegistered(this IApplicationBuilder app, Func<IApplicationBuilder, IApplicationBuilder> middleware)
