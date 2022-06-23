@@ -23,6 +23,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_solutions", "_solutions", 
 		sign-webserver.ps1 = sign-webserver.ps1
 		sign-markdown.ps1 = sign-markdown.ps1
 		sign-multitenant.ps1 = sign-multitenant.ps1
+		sign-hosting.ps1 = sign-hosting.ps1
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{C26D86D6-4B4E-407E-9F1D-9CA1765768CE}"
