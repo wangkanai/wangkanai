@@ -10,6 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Hosting\src\Wangkanai.Hosting.csproj" />
     <ProjectReference Include="..\..\Runtime\src\Wangkanai.Runtime.csproj" />
     <ProjectReference Include="..\..\Validation\src\Wangkanai.Validation.csproj" />
     <ProjectReference Include="..\..\Webserver\src\Wangkanai.Webserver.csproj" />

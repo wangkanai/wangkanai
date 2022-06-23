@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Builder;
 
 using Wangkanai.Analytics.Hosting;
 using Wangkanai.Analytics.Services;
-using Wangkanai.Webserver;
 
 namespace Microsoft.Extensions.DependencyInjection;
 

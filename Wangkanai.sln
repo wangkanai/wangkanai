@@ -171,6 +171,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.MultiTenant", "Mu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.MultiTenant.Test", "MultiTenant\test\Wangkanai.MultiTenant.Test.csproj", "{9AD7AF09-BF27-47CD-8B88-0A1556E13313}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hosting", "Hosting", "{10D7A0CF-E53B-4355-8942-B5D224EB7B98}"
+	ProjectSection(SolutionItems) = preProject
+		Hosting\Directory.Build.props = Hosting\Directory.Build.props
+		Hosting\README.md = Hosting\README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Hosting", "Hosting\src\Wangkanai.Hosting.csproj", "{994F5DCC-4701-4897-91A9-2F3634F3EAEB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -286,6 +294,10 @@ Global
 		{9AD7AF09-BF27-47CD-8B88-0A1556E13313}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9AD7AF09-BF27-47CD-8B88-0A1556E13313}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9AD7AF09-BF27-47CD-8B88-0A1556E13313}.Release|Any CPU.Build.0 = Release|Any CPU
+		{994F5DCC-4701-4897-91A9-2F3634F3EAEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{994F5DCC-4701-4897-91A9-2F3634F3EAEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{994F5DCC-4701-4897-91A9-2F3634F3EAEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{994F5DCC-4701-4897-91A9-2F3634F3EAEB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -323,6 +335,7 @@ Global
 		{81A3317A-EBA9-486C-9E8C-F6C27A8FDC95} = {A3C4F552-BD1E-40C6-81C9-99F61B8916EA}
 		{B2590588-7893-4D3D-BC31-B3D10009077D} = {AFD334F6-0649-4141-AC08-38E3CA7B3617}
 		{9AD7AF09-BF27-47CD-8B88-0A1556E13313} = {AFD334F6-0649-4141-AC08-38E3CA7B3617}
+		{994F5DCC-4701-4897-91A9-2F3634F3EAEB} = {10D7A0CF-E53B-4355-8942-B5D224EB7B98}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1BA0A192-D7BE-40A1-96AE-B3C8C6BC9B69}
