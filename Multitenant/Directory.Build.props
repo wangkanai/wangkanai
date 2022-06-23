@@ -1,10 +1,10 @@
 <Project>
     <PropertyGroup>
-        <VersionPrefix>0.0.600</VersionPrefix>
+        <VersionPrefix>0.0.1</VersionPrefix>
 
-        <Title>Wangkanai Webserver</Title>
-        <PackageTags>aspnetcore;webserver;</PackageTags>
-        <Description>ASP.NET Core Webserver extension library to help make life easier..</Description>
+        <Title>Wangkanai Multi-Tenant</Title>
+        <Description>ASP.NET Core Identity multi-tenant extend capabilities library.</Description>
+        <PackageTags>aspnetcore;identity;authentication;multi-tenant;</PackageTags>
 
         <Authors>Sarin Na Wangkanai</Authors>
         <Copyright>©2014-2022 Sarin Na Wangkanai, All rights reserved</Copyright>
@@ -17,16 +17,24 @@
         <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     </PropertyGroup>
 
+    <PropertyGroup>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+    </PropertyGroup>
+
     <ItemGroup>
         <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All"/>
     </ItemGroup>
 
-    <PropertyGroup>
+    <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.MultiTenant'">
         <PackageIcon>wangkanai-logo.png</PackageIcon>
         <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
 
-    <ItemGroup>
+    <ItemGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.MultiTenant'">
         <None Include="..\..\asset\wangkanai-logo.png" Pack="true" PackagePath="\"/>
         <None Include="..\README.md" Pack="true" PackagePath="\"/>
     </ItemGroup>

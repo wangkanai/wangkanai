@@ -50,7 +50,7 @@ submit a pull request. We will have constructive good discussion together to the
 ## Installation
 
 Installation of detection library is now done with a single package reference point. If you are using ASP.NET Core 2.X
-please use [detection version 2.0 installation](https://github.com/wangkanai/Detection/tree/release/2.0).
+please use [detection version 2.0 installation](https://github.com/wangkanai/wangkanai/tree/release/2.0).
 
 ```powershell
 PM> install-package Wangkanai.Detection
@@ -82,7 +82,7 @@ public void ConfigureServices(IServiceCollection services)
 
 The current device on a request is set in the Responsive middleware. The Responsive middleware is enabled in
 the `Configure` method of `Startup.cs`
-file. [Make sure that you have app.UseDetection() before app.UseRouting](https://github.com/wangkanai/Detection/issues/355)
+file. [Make sure that you have app.UseDetection() before app.UseRouting](https://github.com/wangkanai/wangkanai/issues/355)
 .
 
 ```c#
@@ -248,7 +248,7 @@ var isIE = detectionService.Browser.Name == Browser.InternetExplorer;
 #### Platform Resolver
 
 Now we can also identify what `Platform` is the client using to access your web app starting
-in [version 3.0](https://github.com/wangkanai/Detection/milestone/13). We got Windows, Mac, iOS, Linux, and Android.
+in [version 3.0](https://github.com/wangkanai/wangkanai/milestone/13). We got Windows, Mac, iOS, Linux, and Android.
 
 ```c#
 var isMac = detectionService.Platform.Name == Platform.Mac;
@@ -257,7 +257,7 @@ var isMac = detectionService.Platform.Name == Platform.Mac;
 #### Engine Resolver
 
 Now we can also identify what `Engine` is the client using to access your web app starting
-in [version 3.0](https://github.com/wangkanai/Detection/milestone/13). We got WebKit, Blink, Gecko, Trident, EdgeHTML,
+in [version 3.0](https://github.com/wangkanai/wangkanai/milestone/13). We got WebKit, Blink, Gecko, Trident, EdgeHTML,
 and Servo.
 
 ```c#
@@ -309,7 +309,7 @@ All contribution are welcome, please contact the author.
 ### Code Contributors
 
 This project exists thanks to all the people who contribute. [[Contribute](CONTRIBUTING.md)].
-<a href="https://github.com/wangkanai/Detection/graphs/contributors"><img src="https://opencollective.com/wangkanai/contributors.svg?width=890&button=false" /></a>
+<a href="https://github.com/wangkanai/wangkanai/graphs/contributors"><img src="https://opencollective.com/wangkanai/contributors.svg?width=890&button=false" /></a>
 
 ### Financial Contributors
 
