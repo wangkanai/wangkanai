@@ -4,5 +4,4 @@ namespace Wangkanai.Hosting.DependencyInjection;
 
 internal static class CoreBuilderExtensions
 {
-    
 }
