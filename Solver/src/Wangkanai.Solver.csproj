@@ -10,4 +10,8 @@
       <Folder Include="Abstractions" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\..\Runtime\src\Wangkanai.Runtime.csproj" />
+    </ItemGroup>
+
 </Project>
