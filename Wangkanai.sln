@@ -187,6 +187,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Markdown", "Markdown\sample\Markdown\Markdown.csproj", "{E906D301-9D06-46AB-AB96-C174658E9E57}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solver", "Solver", "{EE725B9B-942F-4F6E-8CA4-1CE65E29D17B}"
+	ProjectSection(SolutionItems) = preProject
+		Solver\Directory.Build.props = Solver\Directory.Build.props
+		Solver\README.md = Solver\README.md
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Solver", "Solver\src\Wangkanai.Solver.csproj", "{1A2FCFEE-A1F0-4C4F-A458-53E7B06B7ECD}"
 EndProject
