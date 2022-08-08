@@ -24,7 +24,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_solutions", "_solutions", 
 		sign-markdown.ps1 = sign-markdown.ps1
 		sign-multitenant.ps1 = sign-multitenant.ps1
 		sign-hosting.ps1 = sign-hosting.ps1
-		sign-solver.ps1 = sign-solver.ps1
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{C26D86D6-4B4E-407E-9F1D-9CA1765768CE}"
@@ -187,16 +186,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{6682B9
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Markdown", "Markdown\sample\Markdown\Markdown.csproj", "{E906D301-9D06-46AB-AB96-C174658E9E57}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solver", "Solver", "{EE725B9B-942F-4F6E-8CA4-1CE65E29D17B}"
-	ProjectSection(SolutionItems) = preProject
-		Solver\Directory.Build.props = Solver\Directory.Build.props
-		Solver\README.md = Solver\README.md
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Solver", "Solver\src\Wangkanai.Solver.csproj", "{1A2FCFEE-A1F0-4C4F-A458-53E7B06B7ECD}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Solver.Tests", "Solver\test\Wangkanai.Solver.Tests.csproj", "{F6CD187D-4B68-451B-B7FD-2FA8D25896E4}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -322,14 +311,6 @@ Global
 		{E906D301-9D06-46AB-AB96-C174658E9E57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E906D301-9D06-46AB-AB96-C174658E9E57}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E906D301-9D06-46AB-AB96-C174658E9E57}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1A2FCFEE-A1F0-4C4F-A458-53E7B06B7ECD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1A2FCFEE-A1F0-4C4F-A458-53E7B06B7ECD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1A2FCFEE-A1F0-4C4F-A458-53E7B06B7ECD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1A2FCFEE-A1F0-4C4F-A458-53E7B06B7ECD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F6CD187D-4B68-451B-B7FD-2FA8D25896E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F6CD187D-4B68-451B-B7FD-2FA8D25896E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F6CD187D-4B68-451B-B7FD-2FA8D25896E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F6CD187D-4B68-451B-B7FD-2FA8D25896E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -371,8 +352,6 @@ Global
 		{B393DA26-6011-4F3B-917D-13FEA381A77A} = {10D7A0CF-E53B-4355-8942-B5D224EB7B98}
 		{6682B960-338C-4E54-8E5A-61BE7ABFCED5} = {383E27FE-2B5F-48A9-BE6A-F9973E6D8B1A}
 		{E906D301-9D06-46AB-AB96-C174658E9E57} = {6682B960-338C-4E54-8E5A-61BE7ABFCED5}
-		{1A2FCFEE-A1F0-4C4F-A458-53E7B06B7ECD} = {EE725B9B-942F-4F6E-8CA4-1CE65E29D17B}
-		{F6CD187D-4B68-451B-B7FD-2FA8D25896E4} = {EE725B9B-942F-4F6E-8CA4-1CE65E29D17B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1BA0A192-D7BE-40A1-96AE-B3C8C6BC9B69}
