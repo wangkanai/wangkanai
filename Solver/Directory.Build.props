@@ -1,0 +1,33 @@
+<Project>
+    <PropertyGroup>
+        <VersionPrefix>0.0.1</VersionPrefix>
+
+        <Title>Wangkanai Solver</Title>
+        <PackageTags>aspnetcore;solver;optimization;simludation;scheduling;</PackageTags>
+        <Description>Mathematical optimization and simulation and modeling solver which seeks to find the best solution to a given problem out of very large dataset. This would enable us find the optimal maximal or minimal value of a given functions, and model complex systems by using decision variables and constraints.</Description>
+
+        <Authors>Sarin Na Wangkanai</Authors>
+        <Copyright>©2014-2022 Sarin Na Wangkanai, All rights reserved</Copyright>
+
+        <RepositoryType>git</RepositoryType>
+        <RepositoryUrl>git://github.com/wangkanai/wangkanai</RepositoryUrl>
+
+        <PackageProjectUrl>https://github.com/wangkanai/wangkanai</PackageProjectUrl>
+        <PackageLicense>https://github.com/wangkanai/wangkanai/blob/main/LICENSE</PackageLicense>
+        <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All"/>
+    </ItemGroup>
+
+    <PropertyGroup>
+        <PackageIcon>wangkanai-logo.png</PackageIcon>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="..\..\asset\wangkanai-logo.png" Pack="true" PackagePath="\"/>
+        <None Include="..\README.md" Pack="true" PackagePath="\"/>
+    </ItemGroup>
+</Project>
