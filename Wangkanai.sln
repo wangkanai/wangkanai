@@ -1,29 +1,29 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28516.95
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_solutions", "_solutions", "{9AEBDADF-AE00-4A85-8CAC-EFE8B6FBCEAE}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		.gitignore = .gitignore
+		azure-pipelines.yml = azure-pipelines.yml
+		Directory.Build.props = Directory.Build.props
 		.github\FUNDING.yml = .github\FUNDING.yml
 		md-styles.css = md-styles.css
 		README.md = README.md
-		Directory.Build.props = Directory.Build.props
-		azure-pipelines.yml = azure-pipelines.yml
+		sign-analytics.ps1 = sign-analytics.ps1
 		sign-blazor.ps1 = sign-blazor.ps1
 		sign-detection.ps1 = sign-detection.ps1
-		sign-runtime.ps1 = sign-runtime.ps1
-		sign-validation.ps1 = sign-validation.ps1
-		sign-webmaster.ps1 = sign-webmaster.ps1
-		sign-analytics.ps1 = sign-analytics.ps1
-		sign-responsive.ps1 = sign-responsive.ps1
-		sign-universal.ps1 = sign-universal.ps1
-		sign-webserver.ps1 = sign-webserver.ps1
+		sign-hosting.ps1 = sign-hosting.ps1
 		sign-markdown.ps1 = sign-markdown.ps1
 		sign-multitenant.ps1 = sign-multitenant.ps1
-		sign-hosting.ps1 = sign-hosting.ps1
+		sign-responsive.ps1 = sign-responsive.ps1
+		sign-runtime.ps1 = sign-runtime.ps1
+		sign-universal.ps1 = sign-universal.ps1
+		sign-validation.ps1 = sign-validation.ps1
+		sign-webmaster.ps1 = sign-webmaster.ps1
+		sign-webserver.ps1 = sign-webserver.ps1
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{C26D86D6-4B4E-407E-9F1D-9CA1765768CE}"
@@ -35,13 +35,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Detection", "Detection", "{
 		Detection\README.md = Detection\README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Detection", "Detection\src\Wangkanai.Detection.csproj", "{F03915B4-D898-4A10-A6C9-E35DC1E527F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection", "Detection\src\Wangkanai.Detection.csproj", "{F03915B4-D898-4A10-A6C9-E35DC1E527F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Detection.Test", "Detection\test\Wangkanai.Detection.Test.csproj", "{646C9D67-D0EC-477E-B772-247D956DB601}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection.Test", "Detection\test\Wangkanai.Detection.Test.csproj", "{646C9D67-D0EC-477E-B772-247D956DB601}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Detection.Benchmark", "Detection\benchmark\Wangkanai.Detection.Benchmark.csproj", "{F15A7B1F-DE42-4D74-9531-66D398D175D3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection.Benchmark", "Detection\benchmark\Wangkanai.Detection.Benchmark.csproj", "{F15A7B1F-DE42-4D74-9531-66D398D175D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Detection", "Detection\sample\Detection\Detection.csproj", "{1967E3C8-AEDD-4FD2-9E0C-CE82CB9415DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Detection", "Detection\sample\Detection\Detection.csproj", "{1967E3C8-AEDD-4FD2-9E0C-CE82CB9415DD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Responsive", "Responsive", "{7C2D39ED-FF02-492B-84E0-958A4291B51C}"
 	ProjectSection(SolutionItems) = preProject
@@ -62,13 +62,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Runtime", "Runtime", "{3220
 		Runtime\README.md = Runtime\README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Runtime", "Runtime\src\Wangkanai.Runtime.csproj", "{C31889F1-EC63-4F97-95CD-DB3F25DC3518}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Runtime", "Runtime\src\Wangkanai.Runtime.csproj", "{C31889F1-EC63-4F97-95CD-DB3F25DC3518}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Runtime.Test", "Runtime\test\Wangkanai.Runtime.Test.csproj", "{0984F97E-7902-4263-AB0A-AD515C8958C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Runtime.Test", "Runtime\test\Wangkanai.Runtime.Test.csproj", "{0984F97E-7902-4263-AB0A-AD515C8958C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Responsive", "Responsive\src\Wangkanai.Responsive.csproj", "{0C42571F-C996-4C9C-BF66-979681BF395A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Responsive", "Responsive\src\Wangkanai.Responsive.csproj", "{0C42571F-C996-4C9C-BF66-979681BF395A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Responsive.Test", "Responsive\test\Wangkanai.Responsive.Test.csproj", "{C296FB1B-7FC9-4936-AD17-65005D025126}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Responsive.Test", "Responsive\test\Wangkanai.Responsive.Test.csproj", "{C296FB1B-7FC9-4936-AD17-65005D025126}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Designs", "Designs", "{99671684-EFF2-4680-AB99-98A5DCB5A85C}"
 	ProjectSection(SolutionItems) = preProject
@@ -83,13 +83,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Blazor", "Blazor", "{9D20D5
 		Blazor\README.md = Blazor\README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Blazor", "Blazor\src\Wangkanai.Blazor.csproj", "{4863718B-F7C6-4D77-87D0-C736901DF7E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Blazor", "Blazor\src\Wangkanai.Blazor.csproj", "{4863718B-F7C6-4D77-87D0-C736901DF7E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Blazor.Test", "Blazor\test\Wangkanai.Blazor.Test.csproj", "{2BF98B43-B1F7-4236-A418-425E9AFFB327}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Blazor.Test", "Blazor\test\Wangkanai.Blazor.Test.csproj", "{2BF98B43-B1F7-4236-A418-425E9AFFB327}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Validation", "Validation\src\Wangkanai.Validation.csproj", "{973E7E37-27FD-404E-BBD2-D632470C67C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Validation", "Validation\src\Wangkanai.Validation.csproj", "{973E7E37-27FD-404E-BBD2-D632470C67C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Validation.Test", "Validation\test\Wangkanai.Validation.Test.csproj", "{4C025D69-3B12-4AB9-8095-73970017E834}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Validation.Test", "Validation\test\Wangkanai.Validation.Test.csproj", "{4C025D69-3B12-4AB9-8095-73970017E834}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Webmaster", "Webmaster", "{D7A979ED-443A-47D3-B34C-5D243D4F39D4}"
 	ProjectSection(SolutionItems) = preProject
@@ -97,27 +97,27 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Webmaster", "Webmaster", "{
 		Webmaster\README.md = Webmaster\README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Webmaster", "Webmaster\src\Wangkanai.Webmaster.csproj", "{40C64D52-CDFF-45DA-BC80-A5775C0EBBC0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Webmaster", "Webmaster\src\Wangkanai.Webmaster.csproj", "{40C64D52-CDFF-45DA-BC80-A5775C0EBBC0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Webmaster.Test", "Webmaster\test\Wangkanai.Webmaster.Test.csproj", "{46CD103A-5E5C-43D2-9ECF-7D012B720A08}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Webmaster.Test", "Webmaster\test\Wangkanai.Webmaster.Test.csproj", "{46CD103A-5E5C-43D2-9ECF-7D012B720A08}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Analytics", "Analytics", "{6CEA291F-82A1-49D0-B559-3E16E1A0E763}"
 	ProjectSection(SolutionItems) = preProject
-		Analytics\README.md = Analytics\README.md
 		Analytics\Directory.Build.props = Analytics\Directory.Build.props
+		Analytics\README.md = Analytics\README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Analytics", "Analytics\src\Wangkanai.Analytics.csproj", "{3BF37E15-B706-409C-96F7-AF2D033F509E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Analytics", "Analytics\src\Wangkanai.Analytics.csproj", "{3BF37E15-B706-409C-96F7-AF2D033F509E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Analytics.Test", "Analytics\test\Wangkanai.Analytics.Test.csproj", "{5502A4D7-EB68-4389-8696-10500E9347CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Analytics.Test", "Analytics\test\Wangkanai.Analytics.Test.csproj", "{5502A4D7-EB68-4389-8696-10500E9347CB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{460C8513-95AA-4F3B-88F0-0D439B076578}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{8B50F062-61B9-483B-9212-9A01F6F12EF8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Page", "Responsive\sample\page\Page.csproj", "{B817DF02-4094-4811-959E-C77783E7C7D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Page", "Responsive\sample\page\Page.csproj", "{B817DF02-4094-4811-959E-C77783E7C7D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "View", "Responsive\sample\view\View.csproj", "{724CCDFB-B045-4B4C-BA80-AB5B5B3137F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "View", "Responsive\sample\view\View.csproj", "{724CCDFB-B045-4B4C-BA80-AB5B5B3137F2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Universal", "Universal", "{ECAFEA96-62F0-4A72-8239-1E971ABAC309}"
 	ProjectSection(SolutionItems) = preProject
@@ -125,9 +125,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Universal", "Universal", "{
 		Universal\README.md = Universal\README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Universal", "Universal\src\Wangkanai.Universal.csproj", "{C0530FF7-9157-4FDA-AC0A-A60AD74E8C71}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Universal", "Universal\src\Wangkanai.Universal.csproj", "{C0530FF7-9157-4FDA-AC0A-A60AD74E8C71}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Universal.Test", "Universal\test\Wangkanai.Universal.Test.csproj", "{99BDB862-09BC-42A3-8643-4874F3EED50F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Universal.Test", "Universal\test\Wangkanai.Universal.Test.csproj", "{99BDB862-09BC-42A3-8643-4874F3EED50F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Webserver", "Webserver", "{1CD41CBB-76E2-42CE-9C17-040527E90C6A}"
 	ProjectSection(SolutionItems) = preProject
@@ -135,9 +135,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Webserver", "Webserver", "{
 		Webserver\README.md = Webserver\README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Webserver", "Webserver\src\Wangkanai.Webserver.csproj", "{717BA7DD-96E6-4661-A385-BF2923112C6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Webserver", "Webserver\src\Wangkanai.Webserver.csproj", "{717BA7DD-96E6-4661-A385-BF2923112C6E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Webserver.Test", "Webserver\test\Wangkanai.Webserver.Test.csproj", "{89B7172F-DED2-4188-B8C3-55DC505906F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Webserver.Test", "Webserver\test\Wangkanai.Webserver.Test.csproj", "{89B7172F-DED2-4188-B8C3-55DC505906F0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Markdown", "Markdown", "{383E27FE-2B5F-48A9-BE6A-F9973E6D8B1A}"
 	ProjectSection(SolutionItems) = preProject
@@ -145,22 +145,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Markdown", "Markdown", "{38
 		Markdown\README.md = Markdown\README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Markdown", "Markdown\src\Wangkanai.Markdown.csproj", "{33B2A6FA-15BB-4071-A3D1-2644F0A35AAA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Markdown", "Markdown\src\Wangkanai.Markdown.csproj", "{33B2A6FA-15BB-4071-A3D1-2644F0A35AAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Markdown.Test", "Markdown\test\Wangkanai.Markdown.Test.csproj", "{BA993356-DADC-412B-A24F-8AEACDC5FA53}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Markdown.Test", "Markdown\test\Wangkanai.Markdown.Test.csproj", "{BA993356-DADC-412B-A24F-8AEACDC5FA53}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PageApp", "Webmaster\sample\PageApp\PageApp.csproj", "{C14FE799-C405-42C8-AFE5-2ED0E789AC7A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PageApp", "Webmaster\sample\PageApp\PageApp.csproj", "{C14FE799-C405-42C8-AFE5-2ED0E789AC7A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{A3C4F552-BD1E-40C6-81C9-99F61B8916EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "Webmaster\sample\WebApp\WebApp.csproj", "{81A3317A-EBA9-486C-9E8C-F6C27A8FDC95}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{E71796C3-C94A-40B2-B998-E36F3AD35733}"
-	ProjectSection(SolutionItems) = preProject
-		docs\CNAME = docs\CNAME
-		docs\index.html = docs\index.html
-		docs\_config.yml = docs\_config.yml
-	EndProjectSection
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp", "Webmaster\sample\WebApp\WebApp.csproj", "{81A3317A-EBA9-486C-9E8C-F6C27A8FDC95}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MultiTenant", "MultiTenant", "{AFD334F6-0649-4141-AC08-38E3CA7B3617}"
 	ProjectSection(SolutionItems) = preProject
@@ -168,9 +161,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MultiTenant", "MultiTenant"
 		Multitenant\README.md = Multitenant\README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.MultiTenant", "Multitenant\src\Wangkanai.MultiTenant.csproj", "{B2590588-7893-4D3D-BC31-B3D10009077D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.MultiTenant", "Multitenant\src\Wangkanai.MultiTenant.csproj", "{B2590588-7893-4D3D-BC31-B3D10009077D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.MultiTenant.Test", "MultiTenant\test\Wangkanai.MultiTenant.Test.csproj", "{9AD7AF09-BF27-47CD-8B88-0A1556E13313}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.MultiTenant.Test", "MultiTenant\test\Wangkanai.MultiTenant.Test.csproj", "{9AD7AF09-BF27-47CD-8B88-0A1556E13313}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hosting", "Hosting", "{10D7A0CF-E53B-4355-8942-B5D224EB7B98}"
 	ProjectSection(SolutionItems) = preProject
@@ -178,13 +171,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hosting", "Hosting", "{10D7
 		Hosting\README.md = Hosting\README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Hosting", "Hosting\src\Wangkanai.Hosting.csproj", "{994F5DCC-4701-4897-91A9-2F3634F3EAEB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Hosting", "Hosting\src\Wangkanai.Hosting.csproj", "{994F5DCC-4701-4897-91A9-2F3634F3EAEB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Hosting.Test", "Hosting\test\Wangkanai.Hosting.Test.csproj", "{B393DA26-6011-4F3B-917D-13FEA381A77A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Hosting.Test", "Hosting\test\Wangkanai.Hosting.Test.csproj", "{B393DA26-6011-4F3B-917D-13FEA381A77A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{6682B960-338C-4E54-8E5A-61BE7ABFCED5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Markdown", "Markdown\sample\Markdown\Markdown.csproj", "{E906D301-9D06-46AB-AB96-C174658E9E57}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Markdown", "Markdown\sample\Markdown\Markdown.csproj", "{E906D301-9D06-46AB-AB96-C174658E9E57}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Docs", "docs\Docs.csproj", "{908D35DA-E496-4B29-888E-C29B580241C9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{56B49BCE-C6FF-453C-8A09-222EBB0EEE11}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -311,15 +308,19 @@ Global
 		{E906D301-9D06-46AB-AB96-C174658E9E57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E906D301-9D06-46AB-AB96-C174658E9E57}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E906D301-9D06-46AB-AB96-C174658E9E57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{908D35DA-E496-4B29-888E-C29B580241C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{908D35DA-E496-4B29-888E-C29B580241C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{908D35DA-E496-4B29-888E-C29B580241C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{908D35DA-E496-4B29-888E-C29B580241C9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{C26D86D6-4B4E-407E-9F1D-9CA1765768CE} = {7EED59CF-550E-4571-A1C0-4719F456AD8A}
 		{F03915B4-D898-4A10-A6C9-E35DC1E527F8} = {7EED59CF-550E-4571-A1C0-4719F456AD8A}
 		{646C9D67-D0EC-477E-B772-247D956DB601} = {7EED59CF-550E-4571-A1C0-4719F456AD8A}
 		{F15A7B1F-DE42-4D74-9531-66D398D175D3} = {7EED59CF-550E-4571-A1C0-4719F456AD8A}
-		{C26D86D6-4B4E-407E-9F1D-9CA1765768CE} = {7EED59CF-550E-4571-A1C0-4719F456AD8A}
 		{1967E3C8-AEDD-4FD2-9E0C-CE82CB9415DD} = {C26D86D6-4B4E-407E-9F1D-9CA1765768CE}
 		{C31889F1-EC63-4F97-95CD-DB3F25DC3518} = {3220F767-41DB-4C06-9952-619F50EB0567}
 		{0984F97E-7902-4263-AB0A-AD515C8958C7} = {3220F767-41DB-4C06-9952-619F50EB0567}
@@ -343,8 +344,8 @@ Global
 		{89B7172F-DED2-4188-B8C3-55DC505906F0} = {1CD41CBB-76E2-42CE-9C17-040527E90C6A}
 		{33B2A6FA-15BB-4071-A3D1-2644F0A35AAA} = {383E27FE-2B5F-48A9-BE6A-F9973E6D8B1A}
 		{BA993356-DADC-412B-A24F-8AEACDC5FA53} = {383E27FE-2B5F-48A9-BE6A-F9973E6D8B1A}
-		{A3C4F552-BD1E-40C6-81C9-99F61B8916EA} = {D7A979ED-443A-47D3-B34C-5D243D4F39D4}
 		{C14FE799-C405-42C8-AFE5-2ED0E789AC7A} = {A3C4F552-BD1E-40C6-81C9-99F61B8916EA}
+		{A3C4F552-BD1E-40C6-81C9-99F61B8916EA} = {D7A979ED-443A-47D3-B34C-5D243D4F39D4}
 		{81A3317A-EBA9-486C-9E8C-F6C27A8FDC95} = {A3C4F552-BD1E-40C6-81C9-99F61B8916EA}
 		{B2590588-7893-4D3D-BC31-B3D10009077D} = {AFD334F6-0649-4141-AC08-38E3CA7B3617}
 		{9AD7AF09-BF27-47CD-8B88-0A1556E13313} = {AFD334F6-0649-4141-AC08-38E3CA7B3617}
@@ -352,6 +353,7 @@ Global
 		{B393DA26-6011-4F3B-917D-13FEA381A77A} = {10D7A0CF-E53B-4355-8942-B5D224EB7B98}
 		{6682B960-338C-4E54-8E5A-61BE7ABFCED5} = {383E27FE-2B5F-48A9-BE6A-F9973E6D8B1A}
 		{E906D301-9D06-46AB-AB96-C174658E9E57} = {6682B960-338C-4E54-8E5A-61BE7ABFCED5}
+		{908D35DA-E496-4B29-888E-C29B580241C9} = {56B49BCE-C6FF-453C-8A09-222EBB0EEE11}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1BA0A192-D7BE-40A1-96AE-B3C8C6BC9B69}
