@@ -1,6 +1,6 @@
 <Project>
     <PropertyGroup>
-        <VersionPrefix>0.0.700</VersionPrefix>
+        <VersionPrefix>0.1.100</VersionPrefix>
 
         <Title>Wangkanai Webserver</Title>
         <PackageTags>aspnetcore;webserver;</PackageTags>
