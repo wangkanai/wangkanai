@@ -1,7 +1,12 @@
-﻿using System;
+﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+
+using System;
 using System.Threading.Tasks;
+
 using Microsoft.AspNetCore.Http;
+
 using Wangkanai.Markdown.Hosting;
+
 using Xunit;
 
 namespace Wangkanai.Markdown.Test.Hosting
@@ -10,7 +15,7 @@ namespace Wangkanai.Markdown.Test.Hosting
     {
         private static Task Next(HttpContext context)
             => Task.Factory.StartNew(() => context);
-        
+
         [Fact]
         public void If_Null_Throw_Exception()
         {

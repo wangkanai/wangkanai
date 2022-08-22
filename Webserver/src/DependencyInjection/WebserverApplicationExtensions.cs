@@ -16,7 +16,7 @@ public static class WebserverApplicationExtensions
 
         app.Validate();
         app.VerifyMarkerIsRegistered<WebserverMarkerService>();
-        
+
         return app.UseMiddleware<WebserverMiddleware>();
     }
 
@@ -25,4 +25,3 @@ public static class WebserverApplicationExtensions
         // what should I validate?
     }
 }
-

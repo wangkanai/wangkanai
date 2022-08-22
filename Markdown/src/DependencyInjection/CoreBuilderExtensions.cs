@@ -28,7 +28,7 @@ public static class MarkdownCoreBuilderExtensions
 
         return builder;
     }
-    
+
     public static IMarkdownBuilder AddMarkerService(this IMarkdownBuilder builder)
     {
         builder.Services.TryAddSingleton<MarkdownMarkerService>();

@@ -12,7 +12,7 @@ public class SolverInitialization
         // Act
 
         // Assert
-        Assert.Equal( SolverType.Linear,solver.Type);
+        Assert.Equal(SolverType.Linear, solver.Type);
         Assert.NotEqual(SolverType.Cubic, solver.Type);
     }
 }

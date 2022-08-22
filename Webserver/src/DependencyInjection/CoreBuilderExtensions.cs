@@ -16,14 +16,14 @@ internal static class CoreBuilderExtensions
         builder.Services.AddHttpContextAccessor();
         builder.Services.AddOptions();
         builder.Services.TryAddSingleton(provider => provider.GetRequiredService<IOptions<WebserverOptions>>().Value);
-        
+
         return builder;
     }
-    
+
     public static IWebserverBuilder AddCoreServices(this IWebserverBuilder builder)
     {
         builder.Services.TryAddScoped<IWebserverService, WebserverService>();
-        
+
         return builder;
     }
 

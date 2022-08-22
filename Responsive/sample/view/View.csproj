@@ -5,11 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="2.1.175" />
+    <PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="2.1.175"/>
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Wangkanai.Responsive.csproj" />
+    <ProjectReference Include="..\..\src\Wangkanai.Responsive.csproj"/>
   </ItemGroup>
 
 

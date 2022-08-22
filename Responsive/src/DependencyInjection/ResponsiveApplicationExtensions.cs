@@ -16,7 +16,7 @@ public static class ResponsiveApplicationExtensions
 
         var options = app.ApplicationServices.GetRequiredService<ResponsiveOptions>();
         var context = app.ApplicationServices.GetRequiredService<IHttpContextAccessor>()?.HttpContext;
-        
+
         ValidateOptions(options);
 
         if (options.Disable)

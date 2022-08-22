@@ -11,7 +11,7 @@ public class WebmasterMiddleware
 {
     private readonly RequestDelegate _next;
 
-    public WebmasterMiddleware(RequestDelegate next) 
+    public WebmasterMiddleware(RequestDelegate next)
         => _next = Check.NotNull(next);
 
     public async Task InvokeAsync(HttpContext context)

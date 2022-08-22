@@ -16,7 +16,7 @@ public static class MarkdownCollectionExtensions
                    .AddCoreServices()
                    .AddMarkdownPages()
                    .AddMarkerService();
-    
+
     public static IMarkdownBuilder AddMarkdown(this IServiceCollection services, Action<MarkdownOptions> setAction)
         => services.Configure(setAction)
                    .AddMarkdown();

@@ -2,7 +2,7 @@
 
 namespace Wangkanai.Solver.Abstractions;
 
-public interface ISolver: IDisposable
+public interface ISolver : IDisposable
 {
     SolverType Type { get; }
 }

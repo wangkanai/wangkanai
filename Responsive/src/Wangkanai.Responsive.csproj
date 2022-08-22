@@ -7,11 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0"/>
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Detection\src\Wangkanai.Detection.csproj" />
+    <ProjectReference Include="..\..\Detection\src\Wangkanai.Detection.csproj"/>
   </ItemGroup>
 
 </Project>

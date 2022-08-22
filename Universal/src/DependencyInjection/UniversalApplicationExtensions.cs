@@ -18,7 +18,7 @@ public static class UniversalApplicationExtensions
 
         return app.UseMiddleware<UniversalMiddleware>();
     }
-    
+
     private static void Validate(this IApplicationBuilder app)
     {
         // What should I validate?

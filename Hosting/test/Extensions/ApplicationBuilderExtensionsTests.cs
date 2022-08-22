@@ -7,6 +7,5 @@ public class ApplicationBuilderExtensionsTests
     [Fact]
     public void IsServiceRegistered()
     {
-        
     }
 }

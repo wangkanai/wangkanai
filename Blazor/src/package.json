@@ -1,10 +1,10 @@
 {
-  "name": "blazor",
-  "version": "1.0.0",
-  "description": "Wangkanai Blazor Components Library",
-  "author": "RiverSync",
-  "license": "MIT",
-  "scripts": {},
-  "dependencies": {},
-  "devDependencies": {}
+    "name": "blazor",
+    "version": "1.0.0",
+    "description": "Wangkanai Blazor Components Library",
+    "author": "RiverSync",
+    "license": "MIT",
+    "scripts": {},
+    "dependencies": {},
+    "devDependencies": {}
 }

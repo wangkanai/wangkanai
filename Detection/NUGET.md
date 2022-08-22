@@ -3,7 +3,6 @@
 [![NuGet Badge](https://buildstats.info/nuget/wangkanai.detection)](https://www.nuget.org/packages/wangkanai.detection)
 [![NuGet Badge](https://buildstats.info/nuget/wangkanai.detection?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.detection)
 
-
 ASP.NET Core Detection service components for identifying details about client device, browser, engine, platform, &
 crawler.
 

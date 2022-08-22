@@ -19,7 +19,7 @@ public class ArgumentEqualException : ArgumentException
         : base(message, innerException)
     {
     }
-    
+
     public ArgumentEqualException(string message, string paramName, Exception innerException)
         : base(message, paramName, innerException)
     {

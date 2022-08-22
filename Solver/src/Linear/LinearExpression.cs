@@ -35,19 +35,19 @@ public class LinearExpression
 
     public static LinearExpression operator -(double left, LinearExpression right)
         => new SumCoefficient(new ProductCoefficient(right, -1.0), left);
-    
+
     public static LinearExpression operator -(LinearExpression left)
         => new ProductCoefficient(left, -1.0);
 
     #endregion
-    
+
     #region multiply
-    
+
     public static LinearExpression operator *(LinearExpression left, double right)
         => new ProductCoefficient(left, right);
-    
+
     public static LinearExpression operator *(double left, LinearExpression right)
         => new ProductCoefficient(right, left);
-    
+
     #endregion
 }

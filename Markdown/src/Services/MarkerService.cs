@@ -4,5 +4,4 @@ namespace Wangkanai.Markdown.Services;
 
 public class MarkdownMarkerService
 {
-    
 }

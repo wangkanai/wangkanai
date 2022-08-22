@@ -15,7 +15,6 @@ individuals using the site, along with the information on the source of the traf
 [![Patreon](https://img.shields.io/badge/patreon-support%20me-d9643a.svg)](https://www.patreon.com/wangkanai)
 [![GitHub](https://img.shields.io/github/license/wangkanai/wangkanai)](https://github.com/wangkanai/wangkanai/blob/main/LICENSE)
 
-
 ### Installation
 
 Add the NuGet package to your project.

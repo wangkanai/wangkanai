@@ -40,6 +40,7 @@ public void ConfigureServices(IServiceCollection services)
     services.AddControllersWithViews();
 }
 ```
+
 * `AddGoogleAnalytics()` Adds the google universal services to the services container.
 
 The current device on a request is set in the Responsive middleware. The Universal middleware is enabled in

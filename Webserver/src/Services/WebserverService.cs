@@ -4,5 +4,4 @@ namespace Wangkanai.Webserver.Services;
 
 public class WebserverService : IWebserverService
 {
-    
 }

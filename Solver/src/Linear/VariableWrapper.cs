@@ -18,7 +18,7 @@ public class VariableWrapper : LinearExpression
     public override double DoVisit(Dictionary<Variable, double> coefficients, double multiplier)
     {
         if (multiplier == 0.0) return 0.0;
-        
+
         if (coefficients.ContainsKey(_var))
             coefficients[_var] += multiplier;
         else
