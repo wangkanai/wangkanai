@@ -1,10 +1,26 @@
-## Wangkanai SendGrid
+## Wangkanai Solver
 
-This project is a wrapper for the ZendGrid email service.
+Mathematical optimization and simulation and modeling solver which seeks to find the best solution to a given problem
+out of very large dataset. This would enable us find the optimal maximal or minimal value of a given functions, and
+model complex systems by using decision variables and constraints.
+
+The goals might be overwhelming and going to have a lot challenges ahead. While this is project has roots back 20 years
+ago during my bachelor degree do project thesis on management information system, seeking to find the optimum
+manufacturing production capacity planning. I understand that this project very much ambitious to solve alone and would
+like everyone to help me on my journey.
 
 ### Roadmap
 
-- [ ] Dependency Injection
+- [ ] Linear programming
+- [ ] Nonlinear programming
+- [ ] Quadratic programming
+- [ ] Integer programming
+- [ ] Stochastic programming
+- [ ] Second order conic programming
+- [ ] Compact quasi-newton programming
+- [ ] Constraint satisfaction programming
+- [ ] Scheduling
+- [ ] Bin packing
 
 **Please show me some love and click the** :star:
 

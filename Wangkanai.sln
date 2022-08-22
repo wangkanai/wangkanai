@@ -26,6 +26,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_solutions", "_solutions", 
 		sign-hosting.ps1 = sign-hosting.ps1
 		sign-solver.ps1 = sign-solver.ps1
 		sign-sendgrid.ps1 = sign-sendgrid.ps1
+		sign-sign.ps1 = sign-sign.ps1
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{C26D86D6-4B4E-407E-9F1D-9CA1765768CE}"
@@ -200,13 +201,23 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Solver.Tests", "S
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SendGrid", "SendGrid", "{A4B29686-4663-40D8-8521-3472956C9BDB}"
 	ProjectSection(SolutionItems) = preProject
-		Solver\Directory.Build.props = Solver\Directory.Build.props
-		Solver\README.md = Solver\README.md
+		SendGrid\README.md = SendGrid\README.md
+		SendGrid\Directory.Build.props = SendGrid\Directory.Build.props
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.SendGrid", "SendGrid\src\Wangkanai.SendGrid.csproj", "{8231E1DE-1906-4EFD-A022-B93E6066F833}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.SendGrid.Tests", "SendGrid\test\Wangkanai.SendGrid.Tests.csproj", "{9C0A9184-AB79-4958-8E6C-B6D8617F1013}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sign", "Sign", "{E21D6041-95C4-4CF8-AA7F-1CCB250A09F8}"
+	ProjectSection(SolutionItems) = preProject
+		Sign\README.md = Sign\README.md
+		Sign\Directory.Build.props = Sign\Directory.Build.props
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Sign", "Sign\src\Wangkanai.Sign.csproj", "{C0332A9E-6F9E-4E68-A3F9-AC118C8C9529}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Sign.Tests", "Sign\test\Wangkanai.Sign.Tests.csproj", "{EFB53700-7E50-4F83-AD2F-8A96BC37C127}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -349,6 +360,14 @@ Global
 		{9C0A9184-AB79-4958-8E6C-B6D8617F1013}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C0A9184-AB79-4958-8E6C-B6D8617F1013}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C0A9184-AB79-4958-8E6C-B6D8617F1013}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0332A9E-6F9E-4E68-A3F9-AC118C8C9529}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0332A9E-6F9E-4E68-A3F9-AC118C8C9529}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0332A9E-6F9E-4E68-A3F9-AC118C8C9529}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0332A9E-6F9E-4E68-A3F9-AC118C8C9529}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFB53700-7E50-4F83-AD2F-8A96BC37C127}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFB53700-7E50-4F83-AD2F-8A96BC37C127}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFB53700-7E50-4F83-AD2F-8A96BC37C127}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFB53700-7E50-4F83-AD2F-8A96BC37C127}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -394,6 +413,8 @@ Global
 		{FF587B44-9646-43F7-9C92-57D26400C91B} = {37D27DDC-1EB6-4003-AACE-80340B5BC63A}
 		{8231E1DE-1906-4EFD-A022-B93E6066F833} = {A4B29686-4663-40D8-8521-3472956C9BDB}
 		{9C0A9184-AB79-4958-8E6C-B6D8617F1013} = {A4B29686-4663-40D8-8521-3472956C9BDB}
+		{C0332A9E-6F9E-4E68-A3F9-AC118C8C9529} = {E21D6041-95C4-4CF8-AA7F-1CCB250A09F8}
+		{EFB53700-7E50-4F83-AD2F-8A96BC37C127} = {E21D6041-95C4-4CF8-AA7F-1CCB250A09F8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1BA0A192-D7BE-40A1-96AE-B3C8C6BC9B69}
