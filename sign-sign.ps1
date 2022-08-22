@@ -1,11 +1,11 @@
 $suffix = "alpha";
 
-push-location -path .\sendgrid\
+push-location -path .\sign\
 dotnet --version
 dotnet clean .\src\
 dotnet restore .\src\
 dotnet build .\src\ -c Release #--version-suffix $suffix
-signtool sign /n "Sarin Na Wangkanai" .\src\bin\release\net6.0\Wangkanai.SendGrid.dll
+signtool sign /n "Sarin Na Wangkanai" .\src\bin\release\net6.0\Wangkanai.Sign.dll
 Remove-Item .\artifacts\*.*
 dotnet pack .\src\ -c Release -o .\artifacts --include-symbols -p:SymbolPackageFormat=snupkg #--version-suffix $suffix
 nuget sign .\artifacts\*.nupkg `
