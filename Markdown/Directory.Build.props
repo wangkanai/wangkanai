@@ -1,6 +1,6 @@
 <Project>
     <PropertyGroup>
-        <VersionPrefix>0.1.100</VersionPrefix>
+        <VersionPrefix>0.1.200</VersionPrefix>
 
         <Title>Wangkanai Markdown</Title>
         <Description>ASP.NET Core Markdown pages make you able to use markdown pages as an alternative view source in ASP.NET Core view.</Description>

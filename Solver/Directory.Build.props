@@ -1,6 +1,6 @@
 <Project>
     <PropertyGroup>
-        <VersionPrefix>0.0.100</VersionPrefix>
+        <VersionPrefix>0.1.200</VersionPrefix>
 
         <Title>Wangkanai Solver</Title>
         <PackageTags>aspnetcore;solver;optimization;simludation;scheduling;</PackageTags>
