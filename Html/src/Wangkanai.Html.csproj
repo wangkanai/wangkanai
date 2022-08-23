@@ -9,12 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="SendGrid" Version="9.28.1" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.43" />
   </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\Html\src\Wangkanai.Html.csproj" />
-    <ProjectReference Include="..\..\Runtime\src\Wangkanai.Runtime.csproj" />
-  </ItemGroup>
-
+  
 </Project>

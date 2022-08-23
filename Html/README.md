@@ -1,15 +1,15 @@
-## Wangkanai Sign
+## Wangkanai Html
 
-This project is a global wrapper for code signing the nuget packages before publishing on nuget.
+Html wrapper utilities library
 
 ### Roadmap
 
-- [ ] Dependency Injection
+- [ ] Convert plane text to html
 
 **Please show me some love and click the** :star:
 
-[![NuGet Badge](https://buildstats.info/nuget/wangkanai.sign)](https://www.nuget.org/packages/wangkanai.sign)
-[![NuGet Badge](https://buildstats.info/nuget/wangkanai.sign?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.sign)
+[![NuGet Badge](https://buildstats.info/nuget/wangkanai.html)](https://www.nuget.org/packages/wangkanai.html)
+[![NuGet Badge](https://buildstats.info/nuget/wangkanai.html?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.html)
 
 [![Build Status](https://dev.azure.com/wangkanai/GitHub/_apis/build/status/wangkanai?branchName=main)](https://dev.azure.com/wangkanai/GitHub/_build/latest?definitionId=20&branchName=main)
 [![Open Collective](https://img.shields.io/badge/open%20collective-support%20me-3385FF.svg)](https://opencollective.com/wangkanai)

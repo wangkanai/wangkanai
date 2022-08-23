@@ -34,12 +34,11 @@
 
     <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Responsive'">
         <PackageIcon>wangkanai-logo.png</PackageIcon>
-        <PackageReadmeFile>NUGET.md</PackageReadmeFile>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
 
     <ItemGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Responsive'">
         <None Include="..\..\asset\wangkanai-logo.png" Pack="true" PackagePath="\"/>
         <None Include="..\README.md" Pack="true" PackagePath="\"/>
-        <None Include="..\NUGET.md" Pack="true" PackagePath="\"/>
     </ItemGroup>
 </Project>
