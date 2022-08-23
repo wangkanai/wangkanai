@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Runtime\src\Wangkanai.Runtime.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="6.0.8" />
+    <PackageReference Include="Microsoft.Authentication.WebAssembly.Msal" Version="6.0.8" />
+    <PackageReference Include="Microsoft.Graph" Version="4.36.0" />
+  </ItemGroup>
+
+</Project>

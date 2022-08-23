@@ -1,0 +1,20 @@
+
+<span class="badge badge-admin @BadgeStatus me-1" title="@Status">@Status</span>
+
+@code {
+
+    [Parameter]
+    public Connection Status { get; set; }
+
+    protected string BadgeStatus
+        => Status switch
+           {
+           Connection.On      => "bg-teal",
+           Connection.Off     => "bg-gray",
+           Connection.Offline => "bg-yellow",
+           Connection.Fail    => "bg-red",
+           Connection.Disable => "bg-gray-lt",
+           _                  => ""
+           };
+
+}

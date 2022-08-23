@@ -222,6 +222,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PowerShell", "PowerShell", 
 		sign-webmaster.ps1 = sign-webmaster.ps1
 		sign-webserver.ps1 = sign-webserver.ps1
 		sign-html.ps1 = sign-html.ps1
+		sign-graph.ps1 = sign-graph.ps1
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".config", ".config", "{53EE3363-603E-430E-8DA6-906C47D1FD96}"
@@ -240,6 +241,16 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Html", "Html\src\Wangkanai.Html.csproj", "{ACB595A2-ED23-4BC6-AC63-200008718B18}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Html.Tests", "Html\test\Wangkanai.Html.Tests.csproj", "{4D5A3568-7A57-4D93-9C31-502B164A7CE3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Graph", "Graph", "{49CEF064-6C6A-40E0-9EC6-05D62D127DFD}"
+	ProjectSection(SolutionItems) = preProject
+		Graph\Directory.Build.props = Graph\Directory.Build.props
+		Graph\README.md = Graph\README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Graph", "Graph\src\Wangkanai.Graph.csproj", "{4C8804C0-9406-443D-A5CD-10604DD265D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Graph.Tests", "Graph\test\Wangkanai.Graph.Tests.csproj", "{C294AB84-A15A-4AA9-AE67-90A75F55CF30}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -398,6 +409,14 @@ Global
 		{4D5A3568-7A57-4D93-9C31-502B164A7CE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D5A3568-7A57-4D93-9C31-502B164A7CE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D5A3568-7A57-4D93-9C31-502B164A7CE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C8804C0-9406-443D-A5CD-10604DD265D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C8804C0-9406-443D-A5CD-10604DD265D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C8804C0-9406-443D-A5CD-10604DD265D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C8804C0-9406-443D-A5CD-10604DD265D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C294AB84-A15A-4AA9-AE67-90A75F55CF30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C294AB84-A15A-4AA9-AE67-90A75F55CF30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C294AB84-A15A-4AA9-AE67-90A75F55CF30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C294AB84-A15A-4AA9-AE67-90A75F55CF30}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -448,6 +467,8 @@ Global
 		{1E913900-0D96-47F8-B513-58D8CAC3F85F} = {E21D6041-95C4-4CF8-AA7F-1CCB250A09F8}
 		{ACB595A2-ED23-4BC6-AC63-200008718B18} = {DFCE57F8-CA4D-4F85-A14D-F15173B8CC42}
 		{4D5A3568-7A57-4D93-9C31-502B164A7CE3} = {DFCE57F8-CA4D-4F85-A14D-F15173B8CC42}
+		{4C8804C0-9406-443D-A5CD-10604DD265D2} = {49CEF064-6C6A-40E0-9EC6-05D62D127DFD}
+		{C294AB84-A15A-4AA9-AE67-90A75F55CF30} = {49CEF064-6C6A-40E0-9EC6-05D62D127DFD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1BA0A192-D7BE-40A1-96AE-B3C8C6BC9B69}
