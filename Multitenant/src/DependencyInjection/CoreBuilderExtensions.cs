@@ -29,7 +29,7 @@ public static class MultiTenantCoreBuilderExtensions
     {
         // Add basic core to services
         //builder.Services.TryAddScoped<>();
-        
+
         return builder;
     }
 

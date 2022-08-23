@@ -17,8 +17,8 @@ public static class MultiTenantApplicationExtensions
         app.ValidateGeneric();
         app.VerifyMarkerIsRegistered<MultiTenantMarkerService>();
         app.VerifyEndpointRoutingMiddlewareIsNotRegistered(UseMultiTenant);
-        
-        
+
+
         return app;
     }
 

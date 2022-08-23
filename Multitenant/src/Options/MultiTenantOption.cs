@@ -4,5 +4,4 @@ namespace Wangkanai.Multitenant.Options;
 
 public class MultiTenantOption
 {
-    
 }

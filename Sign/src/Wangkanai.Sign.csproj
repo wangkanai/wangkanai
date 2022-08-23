@@ -9,4 +9,8 @@
     <PackageOutputPath>./nupkg</PackageOutputPath>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Runtime\src\Wangkanai.Runtime.csproj" />
+  </ItemGroup>
+
 </Project>

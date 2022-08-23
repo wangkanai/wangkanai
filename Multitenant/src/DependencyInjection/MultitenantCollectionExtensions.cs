@@ -16,7 +16,7 @@ public static class MultiTenantCollectionExtensions
     public static IMultiTenantBuilder AddMultiTenant(this IServiceCollection services, Action<MultiTenantOption> setAction)
         => services.Configure(setAction)
                    .AddMultitenant();
-    
+
     internal static IMultiTenantBuilder AddMultitenantBuilder(this IServiceCollection services)
         => new MultiTenantBuilder(services);
 }

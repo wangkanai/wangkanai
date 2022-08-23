@@ -1,5 +1,7 @@
 ﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
+using Wangkanai.Reflection;
+
 namespace Wangkanai.Sign;
 
 internal static class Program
@@ -8,13 +10,9 @@ internal static class Program
     {
         if (args.Length == 0)
         {
-            var versionString = Assembly.GetEntryAssembly()
-                                        ?
-                                        .GetCustomAttribute<AssemblyInformationalVersionAttribute>()
-                                        ?
-                                        .InformationalVersion;
+            var version = AssemblyVersion.Version;
 
-            Console.WriteLine($"botsay v{versionString}");
+            Console.WriteLine($"botsay v{version}");
             Console.WriteLine("-------------");
             Console.WriteLine("\nUsage:");
             Console.WriteLine("  botsay <message>");
