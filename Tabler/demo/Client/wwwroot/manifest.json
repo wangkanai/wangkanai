@@ -1,6 +1,6 @@
 {
-  "name": "Wangkanai.Tabler.Sample",
-  "short_name": "Wangkanai.Tabler.Sample",
+  "name": "Wangkanai Tabler",
+  "short_name": "Tabler",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#ffffff",

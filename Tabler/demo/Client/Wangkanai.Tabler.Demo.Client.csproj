@@ -8,26 +8,26 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.8"/>
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.8" PrivateAssets="all"/>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.8" PrivateAssets="all" />
   </ItemGroup>
 
   <ItemGroup>
-    <ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js"/>
+    <ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Remove="wwwroot\lib\**"/>
-    <Content Include="wwwroot\lib\**" Watch="false"/>
+    <Content Remove="wwwroot\lib\**" />
+    <Content Include="wwwroot\lib\**" Watch="false" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Wangkanai.Tabler.csproj"/>
-    <ProjectReference Include="..\Shared\Wangkanai.Tabler.Sample.Shared.csproj"/>
+    <ProjectReference Include="..\..\src\Wangkanai.Tabler.csproj" />
+    <ProjectReference Include="..\Shared\Wangkanai.Tabler.Demo.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Remove="package.json;package-lock.json"/>
+    <Content Remove="package.json;package-lock.json" />
     <None Include="package.json;package-lock.json">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>

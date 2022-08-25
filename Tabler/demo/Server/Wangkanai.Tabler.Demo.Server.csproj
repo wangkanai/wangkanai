@@ -11,8 +11,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Client\Wangkanai.Tabler.Sample.Client.csproj" />
-    <ProjectReference Include="..\Shared\Wangkanai.Tabler.Sample.Shared.csproj" />
+    <ProjectReference Include="..\Client\Wangkanai.Tabler.Demo.Client.csproj" />
+    <ProjectReference Include="..\Shared\Wangkanai.Tabler.Demo.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers" />
   </ItemGroup>
 
 
