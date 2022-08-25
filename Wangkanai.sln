@@ -223,6 +223,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PowerShell", "PowerShell", 
 		sign-webserver.ps1 = sign-webserver.ps1
 		sign-html.ps1 = sign-html.ps1
 		sign-graph.ps1 = sign-graph.ps1
+		sign-tabler.ps1 = sign-tabler.ps1
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".config", ".config", "{53EE3363-603E-430E-8DA6-906C47D1FD96}"
