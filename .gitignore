@@ -257,5 +257,8 @@ paket-files/
 *.ncrunchproject
 *.ncrunchprojectsolution
 
-**/wwwroot/lib/
+**/artifacts/
 **/signed/
+**/wwwroot/lib/
+**/wwwroot/dist/
+**/package-lock.json

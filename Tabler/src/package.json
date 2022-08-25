@@ -1,0 +1,28 @@
+{
+    "name": "@wangkanai/tabler",
+    "version": "1.0.0",
+    "description": "Wangkanai Blazor Components Library",
+    "author": "Sarin Na Wangkanai",
+    "license": "MIT",
+    "scripts": {
+        "build": "npm-run-all clean lib scss",
+        "clean": "rimraf wwwroot/lib/tabler/",
+        "lib": "cpy node_modules/@tabler/core/**/*.* wwwroot/lib/tabler/",
+        "scss": "npm-run-all scss-*",
+        "scss-compile": "sass --style expanded --source-map --embed-sources --no-error-css wwwroot/scss/wangkanai.scss wwwroot/dist/wangkanai.css",
+        "scss-minify": "cleancss wwwroot/dist/wangkanai.css -O1 --format breakWith=lf --with-rebase --input-source-map wwwroot/dist/wangkanai.css.map --source-map-inline-sources --output wwwroot/dist/wangkanai.min.css",
+        "watch": "nodemon --watch wwwroot/scss/ --ext scss --exec \"npm run scss\""
+    },
+    "dependencies": {
+        "@tabler/core": "^1.0.0-beta11",
+        "rfs": "^9.0.6"
+    },
+    "devDependencies": {
+        "cpy-cli": "^4.2.0",
+        "node-sass": "^7.0.1",
+        "node-sass-package-importer": "^5.3.2",
+        "nodemon": "^2.0.19",
+        "npm-run-all": "^4.1.5",
+        "sass": "^1.54.5"
+    }
+}
