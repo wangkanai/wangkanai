@@ -34,7 +34,7 @@
     <Touch Files="node_modules/.install-stamp" AlwaysCreate="true" />
   </Target>
   <Target Name="NpmRunBuild" DependsOnTargets="NpmInstall" BeforeTargets="BeforeBuild">
-    <Exec Command="npm run --silent scss" />
+    <Exec Command="npm run --silent build" />
   </Target>
 
 </Project>
