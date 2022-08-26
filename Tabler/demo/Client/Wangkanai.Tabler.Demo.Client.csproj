@@ -22,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Runtime\src\Wangkanai.Runtime.csproj" />
     <ProjectReference Include="..\..\src\Wangkanai.Tabler.csproj" />
     <ProjectReference Include="..\Shared\Wangkanai.Tabler.Demo.Shared.csproj" />
   </ItemGroup>
@@ -35,6 +36,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Pages\Form" />
     <Folder Include="wwwroot\static" />
   </ItemGroup>
 

@@ -7,8 +7,7 @@ namespace Wangkanai.Reflection;
 public static class AssemblyVersion
 {
     public static string Version
-        => AssemblyInformationVersion<AssemblyInformationalVersionAttribute>()
-            .InformationalVersion;
+        => AssemblyInformationVersion<AssemblyInformationalVersionAttribute>().InformationalVersion;
 
     private static Assembly EntryAssembly
         => Check.NotNull(Assembly.GetEntryAssembly());

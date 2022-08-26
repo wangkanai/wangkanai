@@ -1,4 +1,4 @@
-﻿<a class="nav-link dropdown-toggle" href="#navbar-layout" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
+﻿<a class="nav-link dropdown-toggle @ShowCssClass" href="#" @onclick="OnToggle" @onfocusout="OnToggle" role="button" aria-expanded="@NavDropdown">
     <span class="nav-link-icon d-md-none d-lg-inline-block">
         <!-- Download SVG icon from http://tabler-icons.io/i/layout-2 -->
         <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><rect x="4" y="4" width="6" height="5" rx="2"/><rect x="4" y="13" width="6" height="7" rx="2"/><rect x="14" y="4" width="6" height="7" rx="2"/><rect x="14" y="15" width="6" height="5" rx="2"/></svg>
@@ -7,7 +7,7 @@
         Layout
     </span>
 </a>
-<div class="dropdown-menu">
+<div class="dropdown-menu @ShowCssClass" @onpointerout="OnToggle" data-bs-popper="@DataBsPopper">
     <div class="dropdown-menu-columns">
         <div class="dropdown-menu-column">
             <a class="dropdown-item" href="./layout-horizontal.html">
@@ -57,5 +57,8 @@
 </div>
 
 @code {
-
+    private bool NavDropdown { get; set; } = false;
+    private string ShowCssClass => NavDropdown ? "show" : "";
+    private string DataBsPopper => NavDropdown ? "static" : "";
+    private void OnToggle() => NavDropdown = !NavDropdown;
 }
