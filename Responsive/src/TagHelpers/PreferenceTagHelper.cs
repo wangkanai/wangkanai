@@ -12,20 +12,20 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers;
 [HtmlTargetElement(ElementName, Attributes = OnlyAttributeName, TagStructure = TagStructure.NormalOrSelfClosing)]
 public class PreferenceTagHelper : TagHelper
 {
-    private const    string             ElementName       = "preference";
-    private const    string             OnlyAttributeName = "only";
-    protected        IHtmlGenerator     Generator { get; }
+    private const string ElementName = "preference";
+    private const string OnlyAttributeName = "only";
+    protected IHtmlGenerator Generator { get; }
     private readonly IResponsiveService _responsive;
-    private readonly IDeviceService     _device;
+    private readonly IDeviceService _device;
 
     [HtmlAttributeName(OnlyAttributeName)]
     public string? Only { get; set; }
 
     public PreferenceTagHelper(IHtmlGenerator generator, IResponsiveService responsive, IDeviceService device)
     {
-        Generator   = generator  ?? throw new ArgumentNullException(nameof(generator));
+        Generator = generator ?? throw new ArgumentNullException(nameof(generator));
         _responsive = responsive ?? throw new ArgumentNullException(nameof(responsive));
-        _device     = device     ?? throw new ArgumentNullException(nameof(device));
+        _device = device ?? throw new ArgumentNullException(nameof(device));
     }
 
     public override void Process(TagHelperContext context, TagHelperOutput output)

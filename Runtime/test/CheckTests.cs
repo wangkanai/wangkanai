@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using Xunit;
 
@@ -9,10 +9,10 @@ public class CheckTests
     [Fact]
     public void IntegralIsNull()
     {
-        byte?  byte1  = null;
+        byte? byte1 = null;
         short? short2 = null;
-        int?   int4   = null;
-        long?  long8  = null;
+        int? int4 = null;
+        long? long8 = null;
 
         Assert.Throws<ArgumentNullException>(() => Check.NotNull(byte1));
         Assert.Throws<ArgumentNullException>(() => Check.NotNull(short2));
@@ -23,8 +23,8 @@ public class CheckTests
     [Fact]
     public void FloatingIsNull()
     {
-        float?   float16   = null;
-        double?  double32  = null;
+        float? float16 = null;
+        double? double32 = null;
         decimal? decimal32 = null;
 
         Assert.Throws<ArgumentNullException>(() => Check.NotNull(float16));

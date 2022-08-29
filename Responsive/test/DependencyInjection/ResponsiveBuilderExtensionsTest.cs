@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using System;
 
@@ -29,8 +29,8 @@ public class ResponsiveBuilderExtensionsTest
     {
         using var server = MockServer.Server(options => { options.Disable = true; });
 
-        var client   = server.CreateClient();
-        var request  = MockClient.CreateRequest(Device.Mobile);
+        var client = server.CreateClient();
+        var request = MockClient.CreateRequest(Device.Mobile);
         var response = await client.SendAsync(request);
         response.EnsureSuccessStatusCode();
         Assert.Contains("desktop", await response.Content.ReadAsStringAsync(), StringComparison.OrdinalIgnoreCase);
@@ -42,8 +42,8 @@ public class ResponsiveBuilderExtensionsTest
     {
         using var server = MockServer.Server(options => { options.Disable = false; });
 
-        var client   = server.CreateClient();
-        var request  = MockClient.CreateRequest(Device.Mobile);
+        var client = server.CreateClient();
+        var request = MockClient.CreateRequest(Device.Mobile);
         var response = await client.SendAsync(request);
         response.EnsureSuccessStatusCode();
         Assert.Contains("mobile", await response.Content.ReadAsStringAsync(), StringComparison.OrdinalIgnoreCase);
@@ -54,7 +54,7 @@ public class ResponsiveBuilderExtensionsTest
     {
         var builder = MockServer.WebHostBuilder(options =>
         {
-            options.Disable       = true;
+            options.Disable = true;
             options.IncludeWebApi = true;
         });
 
@@ -72,10 +72,10 @@ public class ResponsiveBuilderExtensionsTest
     {
         using var server = MockServer.Server(options =>
         {
-            options.DefaultMobile  = device;
-            options.DefaultTablet  = device;
+            options.DefaultMobile = device;
+            options.DefaultTablet = device;
             options.DefaultDesktop = device;
-            options.IncludeWebApi  = true;
+            options.IncludeWebApi = true;
         });
 
         var request = server.CreateRequest(path);
@@ -97,15 +97,15 @@ public class ResponsiveBuilderExtensionsTest
     {
         using var server = MockServer.Server(options =>
         {
-            options.DefaultMobile  = device;
-            options.DefaultTablet  = device;
+            options.DefaultMobile = device;
+            options.DefaultTablet = device;
             options.DefaultDesktop = device;
-            options.IncludeWebApi  = false;
+            options.IncludeWebApi = false;
         });
         await server.Host.StartAsync();
 
-        var client   = server.CreateClient();
-        var request  = MockClient.CreateRequest(agent, path);
+        var client = server.CreateClient();
+        var request = MockClient.CreateRequest(agent, path);
         var response = await client.SendAsync(request);
         response.EnsureSuccessStatusCode();
         Assert.Contains(device.ToString(), await response.Content.ReadAsStringAsync(), StringComparison.OrdinalIgnoreCase);
@@ -124,14 +124,14 @@ public class ResponsiveBuilderExtensionsTest
     {
         using var server = MockServer.Server(options =>
         {
-            options.DefaultMobile  = device;
-            options.DefaultTablet  = device;
+            options.DefaultMobile = device;
+            options.DefaultTablet = device;
             options.DefaultDesktop = device;
-            options.IncludeWebApi  = true;
+            options.IncludeWebApi = true;
         });
 
-        var client   = server.CreateClient();
-        var request  = MockClient.CreateRequest(agent, path);
+        var client = server.CreateClient();
+        var request = MockClient.CreateRequest(agent, path);
         var response = await client.SendAsync(request);
         response.EnsureSuccessStatusCode();
         Assert.Contains(device.ToString(), await response.Content.ReadAsStringAsync(), StringComparison.OrdinalIgnoreCase);

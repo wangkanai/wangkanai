@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,7 +14,7 @@ public class CoreBuilderExtensionsTest
     public void AddRequiredPlatformServices_ReturnsExpected()
     {
         var services = new ServiceCollection();
-        var builder  = services.AddDetectionBuilder().AddRequiredServices();
+        var builder = services.AddDetectionBuilder().AddRequiredServices();
         var descriptors = new List<ServiceDescriptor>
         {
             new(typeof(IHttpContextAccessor), typeof(HttpContextAccessor), ServiceLifetime.Singleton),
@@ -35,7 +35,7 @@ public class CoreBuilderExtensionsTest
     public void AddCoreServices_ReturnsExpected()
     {
         var serviceCollection = new ServiceCollection();
-        var builder           = serviceCollection.AddDetectionBuilder().AddCoreServices();
+        var builder = serviceCollection.AddDetectionBuilder().AddCoreServices();
         var serviceDescriptors = new List<ServiceDescriptor>
         {
             new(typeof(IHttpContextService), typeof(HttpContextService), ServiceLifetime.Scoped),
@@ -57,7 +57,7 @@ public class CoreBuilderExtensionsTest
     public void AddMarkerServices_ReturnsExpected()
     {
         var serviceCollection = new ServiceCollection();
-        var builder           = serviceCollection.AddDetectionBuilder().AddMarkerService();
+        var builder = serviceCollection.AddDetectionBuilder().AddMarkerService();
         var serviceDescriptors = new List<ServiceDescriptor>
         {
             new(typeof(DetectionMarkerService), typeof(DetectionMarkerService), ServiceLifetime.Singleton),

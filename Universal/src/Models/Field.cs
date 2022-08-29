@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using System.Linq;
 using System.Reflection;
@@ -47,7 +47,7 @@ namespace Wangkanai.Universal.Models
             if (value is int)
                 if ((int)value == 0)
                     return false;
-            if (value as bool?  == false) return false;
+            if (value as bool? == false) return false;
             if (value as float? == 0.0) return false;
             return true;
         }

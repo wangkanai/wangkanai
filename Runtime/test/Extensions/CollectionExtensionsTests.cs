@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using Xunit;
 
@@ -11,13 +11,13 @@ public class CollectionExtensionsTests
     {
         // Null
         List<string> strings = null;
-        List<int>    ints    = null;
+        List<int> ints = null;
         Assert.True(strings.IsNullOrEmpty());
         Assert.True(ints.IsNullOrEmpty());
 
         // Empty
         strings = new List<string>();
-        ints    = new List<int>();
+        ints = new List<int>();
         Assert.True(strings.IsNullOrEmpty());
         Assert.True(ints.IsNullOrEmpty());
 

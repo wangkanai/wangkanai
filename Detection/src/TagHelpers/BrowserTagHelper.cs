@@ -13,9 +13,9 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers;
 public class BrowserTagHelper : TagHelper
 {
     private readonly IBrowserService _resolver;
-    private const    string          ElementName          = "browser";
-    private const    string          IncludeAttributeName = "include";
-    private const    string          ExcludeAttributeName = "exclude";
+    private const string ElementName = "browser";
+    private const string IncludeAttributeName = "include";
+    private const string ExcludeAttributeName = "exclude";
 
     private static readonly char[] NameSeparator = { ',' };
 

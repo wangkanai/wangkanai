@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.Authentication.WebAssembly.Msal.Models;
@@ -26,7 +26,7 @@ public static class GraphClientExtensions
         services.AddScoped(sp =>
         {
             var authenticationProvider = sp.GetRequiredService<IAuthenticationProvider>();
-            var httpProvider           = sp.GetRequiredService<IHttpProvider>();
+            var httpProvider = sp.GetRequiredService<IHttpProvider>();
             return new GraphServiceClient(authenticationProvider, httpProvider);
         });
         services.AddScoped<GraphApiAuthorizationMessageHandler>();

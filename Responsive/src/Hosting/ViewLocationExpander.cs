@@ -22,7 +22,7 @@ namespace Wangkanai.Responsive.Hosting;
 /// </example>
 public class ResponsiveViewLocationExpander : IViewLocationExpander
 {
-    private const    string                       ValueKey = "device";
+    private const string ValueKey = "device";
     private readonly ResponsiveViewLocationFormat _format;
 
     public ResponsiveViewLocationExpander(ResponsiveViewLocationFormat format)

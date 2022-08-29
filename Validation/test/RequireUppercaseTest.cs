@@ -13,7 +13,7 @@ namespace Wangkanai.Validation;
 public class RequireUppercaseTest
 {
     private readonly ITestOutputHelper _output;
-    private readonly PropertyInfo      _password = UppercaseModel.GetProperty(nameof(UppercaseModel.Password));
+    private readonly PropertyInfo _password = UppercaseModel.GetProperty(nameof(UppercaseModel.Password));
 
     public RequireUppercaseTest(ITestOutputHelper output)
     {

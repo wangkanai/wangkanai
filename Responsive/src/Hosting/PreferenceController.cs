@@ -11,7 +11,7 @@ namespace Wangkanai.Responsive.Hosting;
 public class PreferenceController : Controller
 {
     private readonly IResponsiveService _responsive;
-    private const    string             AreaName = "Responsive";
+    private const string AreaName = "Responsive";
 
     public PreferenceController(IResponsiveService responsive)
         => _responsive = responsive;

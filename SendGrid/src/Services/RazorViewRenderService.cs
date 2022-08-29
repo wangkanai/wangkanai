@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using System.IO;
 using System.Linq;
@@ -19,17 +19,17 @@ namespace Wangkanai.SendGrid.Services;
 
 public class RazorViewRenderService : IRazorViewRenderService
 {
-    private readonly IRazorViewEngine  _viewEngine;
+    private readonly IRazorViewEngine _viewEngine;
     private readonly ITempDataProvider _tempDataProvider;
-    private readonly IServiceProvider  _serviceProvider;
+    private readonly IServiceProvider _serviceProvider;
 
-    public RazorViewRenderService(IRazorViewEngine  viewEngine,
+    public RazorViewRenderService(IRazorViewEngine viewEngine,
                                   ITempDataProvider tempDataProvider,
-                                  IServiceProvider  serviceProvider)
+                                  IServiceProvider serviceProvider)
     {
-        _viewEngine       = viewEngine;
+        _viewEngine = viewEngine;
         _tempDataProvider = tempDataProvider;
-        _serviceProvider  = serviceProvider;
+        _serviceProvider = serviceProvider;
     }
 
     public async Task<string> ViewToPlainAsync<TModel>(string viewName, TModel model)
@@ -41,17 +41,17 @@ public class RazorViewRenderService : IRazorViewRenderService
     public async Task<string> ViewToHtmlAsync<TModel>(string viewName, TModel model)
     {
         var actionContext = GetActionContext();
-        var view          = FindView(actionContext, viewName);
+        var view = FindView(actionContext, viewName);
 
         await using var output = new StringWriter();
 
         var provider = new EmptyModelMetadataProvider();
-        var state    = new ModelStateDictionary();
+        var state = new ModelStateDictionary();
         var viewData = new ViewDataDictionary<TModel>(metadataProvider: provider, modelState: state);
         viewData.Model = model;
 
         var tempData = new TempDataDictionary(actionContext.HttpContext, _tempDataProvider);
-        var options  = new HtmlHelperOptions();
+        var options = new HtmlHelperOptions();
 
         var viewContext = new ViewContext(actionContext, view, viewData, tempData, output, options);
 

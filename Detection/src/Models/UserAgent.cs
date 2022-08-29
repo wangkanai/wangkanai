@@ -8,20 +8,20 @@ public class UserAgent
 {
     private readonly string _original;
     private readonly string _lower;
-    private readonly int    _length;
+    private readonly int _length;
 
     public UserAgent()
     {
         _original = string.Empty;
-        _lower    = string.Empty;
-        _length   = 0;
+        _lower = string.Empty;
+        _length = 0;
     }
 
     public UserAgent(string useragent) : this()
     {
         _original = useragent ?? string.Empty;
-        _lower    = _original.ToLower();
-        _length   = _original.Length;
+        _lower = _original.ToLower();
+        _length = _original.Length;
     }
 
     [DebuggerStepThrough]

@@ -9,19 +9,19 @@ namespace Wangkanai.Detection.Services;
 public class CrawlerService : ICrawlerService
 {
     private readonly IUserAgentService _useragent;
-    private readonly DetectionOptions  _options;
+    private readonly DetectionOptions _options;
 
     public CrawlerService(IUserAgentService useragent, DetectionOptions options)
     {
         _useragent = useragent;
-        _options   = options;
+        _options = options;
     }
 
     private Crawler? _name;
     private Version? _version;
-    public  bool     IsCrawler => Name != Crawler.Unknown;
-    public  Crawler  Name      => _name ??= GetCrawler();
-    public  Version  Version   => _version ??= GetVersion();
+    public bool IsCrawler => Name != Crawler.Unknown;
+    public Crawler Name => _name ??= GetCrawler();
+    public Version Version => _version ??= GetVersion();
 
     private Crawler GetCrawler()
     {
@@ -42,7 +42,7 @@ public class CrawlerService : ICrawlerService
     private Version GetVersion()
     {
         var agent = _useragent.UserAgent.ToLower();
-        var bot   = FindBot(agent);
+        var bot = FindBot(agent);
         if (string.IsNullOrEmpty(bot))
             return new Version();
 

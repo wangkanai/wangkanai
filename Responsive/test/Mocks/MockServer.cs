@@ -57,12 +57,12 @@ internal static class MockServer
         => context => context.GetDevice() switch
                       {
                           Device.Desktop => context.Response.WriteAsync("desktop"),
-                          Device.Tablet  => context.Response.WriteAsync("tablet"),
-                          Device.Mobile  => context.Response.WriteAsync("mobile"),
-                          Device.Watch   => context.Response.WriteAsync("watch"),
-                          Device.Tv      => context.Response.WriteAsync("tv"),
+                          Device.Tablet => context.Response.WriteAsync("tablet"),
+                          Device.Mobile => context.Response.WriteAsync("mobile"),
+                          Device.Watch => context.Response.WriteAsync("watch"),
+                          Device.Tv => context.Response.WriteAsync("tv"),
                           Device.Console => context.Response.WriteAsync("console"),
-                          Device.Car     => context.Response.WriteAsync("car"),
-                          _              => context.Response.WriteAsync("who?")
+                          Device.Car => context.Response.WriteAsync("car"),
+                          _ => context.Response.WriteAsync("who?")
                       };
 }

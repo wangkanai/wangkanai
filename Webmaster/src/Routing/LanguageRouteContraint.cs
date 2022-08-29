@@ -1,8 +1,8 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
-
-using Microsoft.AspNetCore.Routing.Constraints;
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using System.Text.RegularExpressions;
+
+using Microsoft.AspNetCore.Routing.Constraints;
 
 namespace Wangkanai.Webmaster.Routing;
 

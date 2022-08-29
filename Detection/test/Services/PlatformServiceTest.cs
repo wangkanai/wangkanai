@@ -51,7 +51,7 @@ public class PlatformServiceTest
     [InlineData(Processor.ARM, "Mozilla/5.0 (Windows NT 10.0; ARM; RM-1096) AppleWebKit/537.36 (KHTML like Gecko) Chrome/51.0.2704.79 Safari/537.36 Edge/14.14393")]
     public void Windows(Processor processor, string agent)
     {
-        var os       = Platform.Windows;
+        var os = Platform.Windows;
         var resolver = MockService.PlatformService(agent);
         Assert.Equal(os, resolver.Name);
         Assert.Equal(processor, resolver.Processor);
@@ -63,9 +63,9 @@ public class PlatformServiceTest
     [InlineData("Mozilla/5.0 (Linux; Android 4.4.2); Nexus 5 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Mobile Safari/537.36 OPR/20.0.1396.72047")]
     public void Android(string agent)
     {
-        var os        = Platform.Android;
+        var os = Platform.Android;
         var processor = Processor.ARM;
-        var resolver  = MockService.PlatformService(agent);
+        var resolver = MockService.PlatformService(agent);
         Assert.Equal(os, resolver.Name);
         Assert.Equal(processor, resolver.Processor);
     }
@@ -76,10 +76,10 @@ public class PlatformServiceTest
     [InlineData("14.7.1", "Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) WebKit/8611 (KHTML, like Gecko) Mobile/18G82 [FBAN/FBIOS;FBDV/iPhone12,3;FBMD/iPhone;FBSN/iOS;FBSV/14.7.1;FBSS/3;FBID/phone;FBLC/en_GB;FBOP/5]")]
     public void iOS(string target, string agent)
     {
-        var os        = Platform.iOS;
+        var os = Platform.iOS;
         var processor = Processor.ARM;
-        var version   = new Version(target);
-        var resolver  = MockService.PlatformService(agent);
+        var version = new Version(target);
+        var resolver = MockService.PlatformService(agent);
         Assert.Equal(os, resolver.Name);
         Assert.Equal(processor, resolver.Processor);
         Assert.Equal(version, resolver.Version);
@@ -91,10 +91,10 @@ public class PlatformServiceTest
     [InlineData("12.4.2", "Mozilla/5.0 (iPad; CPU OS 12_4_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.1.2 Mobile/15E148 Safari/604.1")]
     public void iPadOS(string target, string agent)
     {
-        var os        = Platform.iPadOS;
+        var os = Platform.iPadOS;
         var processor = Processor.ARM;
-        var version   = new Version(target);
-        var resolver  = MockService.PlatformService(agent);
+        var version = new Version(target);
+        var resolver = MockService.PlatformService(agent);
         Assert.Equal(os, resolver.Name);
         Assert.Equal(processor, resolver.Processor);
         Assert.Equal(version, resolver.Version);
@@ -107,7 +107,7 @@ public class PlatformServiceTest
     [InlineData(Processor.Others, "Mozilla/5.0 (Macintosh; PPC Mac OS X x.y; rv:10.0) Gecko/20100101 Firefox/10.0")]
     public void Mac(Processor processor, string agent)
     {
-        var os       = Platform.Mac;
+        var os = Platform.Mac;
         var resolver = MockService.PlatformService(agent);
         Assert.Equal(os, resolver.Name);
         Assert.Equal(processor, resolver.Processor);
@@ -119,7 +119,7 @@ public class PlatformServiceTest
     [InlineData(Processor.ARM, "Mozilla/5.0 (Linux arm) Gecko/20110318 Firefox/4.0b13pre Fennec/4.0")]
     public void Linux(Processor processor, string agent)
     {
-        var os       = Platform.Linux;
+        var os = Platform.Linux;
         var resolver = MockService.PlatformService(agent);
         Assert.Equal(os, resolver.Name);
         Assert.Equal(processor, resolver.Processor);
@@ -129,7 +129,7 @@ public class PlatformServiceTest
     [InlineData(Processor.x64, "Mozilla/5.0 (X11; CrOS x86_64 14092.77.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.107 Safari/537.36")]
     public void ChromeOS(Processor processor, string agent)
     {
-        var os       = Platform.ChromeOS;
+        var os = Platform.ChromeOS;
         var resolver = MockService.PlatformService(agent);
         Assert.Equal(os, resolver.Name);
         Assert.Equal(processor, resolver.Processor);
@@ -140,7 +140,7 @@ public class PlatformServiceTest
     [InlineData(Processor.Others, "Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.8.1.11) Gecko/20080118 Firefox/2.0.0.11")]
     public void Others(Processor processor, string agent)
     {
-        var os       = Platform.Others;
+        var os = Platform.Others;
         var resolver = MockService.PlatformService(agent);
         Assert.Equal(os, resolver.Name);
         Assert.Equal(processor, resolver.Processor);

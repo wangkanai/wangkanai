@@ -70,7 +70,7 @@ public class UserAgentExtensionsTest
     [Fact]
     public void ContainsGeneric()
     {
-        var abc    = new UserAgent("abc");
+        var abc = new UserAgent("abc");
         var google = new UserAgent("Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)");
         Assert.False(abc.Contains(Crawler.Google));
         Assert.True(google.Contains(Crawler.Google));
@@ -156,7 +156,7 @@ public class UserAgentExtensionsTest
     [Fact]
     public void Split()
     {
-        var two   = new UserAgent("abc def");
+        var two = new UserAgent("abc def");
         var three = new UserAgent("abc def abc");
         Assert.Equal(2, two.Split(' ').Length);
         Assert.Equal(3, three.Split(' ').Length);

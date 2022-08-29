@@ -24,8 +24,8 @@ namespace ResponsivePage
         {
             services.AddResponsive(options =>
             {
-                options.DefaultTablet  = Device.Tablet;
-                options.DefaultMobile  = Device.Tablet;
+                options.DefaultTablet = Device.Tablet;
+                options.DefaultMobile = Device.Tablet;
                 options.DefaultDesktop = Device.Desktop;
             });
 

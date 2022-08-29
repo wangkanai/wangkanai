@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using System.Reflection;
 
@@ -13,8 +13,8 @@ namespace Wangkanai.Validation;
 public class RequireBooleanTests
 {
     private readonly ITestOutputHelper _output;
-    private readonly PropertyInfo      _wannaTrue  = BooleanModel.GetProperty(nameof(BooleanModel.WannaTrue));
-    private readonly PropertyInfo      _wannaFalse = BooleanModel.GetProperty(nameof(BooleanModel.WannaFalse));
+    private readonly PropertyInfo _wannaTrue = BooleanModel.GetProperty(nameof(BooleanModel.WannaTrue));
+    private readonly PropertyInfo _wannaFalse = BooleanModel.GetProperty(nameof(BooleanModel.WannaFalse));
 
     public RequireBooleanTests(ITestOutputHelper output)
     {

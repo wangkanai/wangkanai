@@ -20,7 +20,7 @@ public static class MockService
     internal static BrowserService BrowserService(IUserAgentService agent)
     {
         var platform = PlatformService(agent);
-        var engine   = EngineService(agent);
+        var engine = EngineService(agent);
         return new BrowserService(agent, engine);
     }
 

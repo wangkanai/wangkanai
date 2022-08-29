@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using System.Security.Claims;
 
@@ -11,12 +11,12 @@ public static class GraphClaimsIdentityExtensions
     {
         Check.NotNull(identity);
 
-        var email     = new Claim(GraphClaimTypes.Email, user.Mail          ?? user.UserPrincipalName ?? "");
-        var jobTitle  = new Claim(GraphClaimTypes.JobTitle, user.JobTitle   ?? "");
-        var display   = new Claim(GraphClaimTypes.Display, user.DisplayName ?? "");
-        var mobile    = new Claim(GraphClaimTypes.Mobile, user.MobilePhone  ?? "");
+        var email = new Claim(GraphClaimTypes.Email, user.Mail ?? user.UserPrincipalName ?? "");
+        var jobTitle = new Claim(GraphClaimTypes.JobTitle, user.JobTitle ?? "");
+        var display = new Claim(GraphClaimTypes.Display, user.DisplayName ?? "");
+        var mobile = new Claim(GraphClaimTypes.Mobile, user.MobilePhone ?? "");
         var firstname = new Claim(GraphClaimTypes.Firstname, user.GivenName ?? "");
-        var surname   = new Claim(GraphClaimTypes.Surname, user.Surname     ?? "");
+        var surname = new Claim(GraphClaimTypes.Surname, user.Surname ?? "");
 
         identity.AddClaim(email);
         identity.AddClaim(jobTitle);

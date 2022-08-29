@@ -18,7 +18,7 @@ public static class MockService
     internal static ResponsiveService ResponsiveService(string agent, ResponsiveOptions options = null!)
     {
         var accessor = CreateHttpContextAccessor(agent);
-        var device   = DeviceService(agent);
+        var device = DeviceService(agent);
         return ResponsiveService(accessor, device, options);
     }
 

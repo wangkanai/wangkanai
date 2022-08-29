@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 namespace Wangkanai.Solver.Linear;
 
@@ -9,7 +9,7 @@ public class Sum : LinearExpression
 
     public Sum(LinearExpression left, LinearExpression right)
     {
-        _left  = left;
+        _left = left;
         _right = right;
     }
 

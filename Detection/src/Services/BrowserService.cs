@@ -1,31 +1,31 @@
 // Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-using Wangkanai.Extensions;
 using Wangkanai.Detection.Extensions;
 using Wangkanai.Detection.Models;
+using Wangkanai.Extensions;
 
 namespace Wangkanai.Detection.Services;
 
 public class BrowserService : IBrowserService
 {
     private readonly IUserAgentService _userAgentService;
-    private readonly IEngineService    _engineService;
+    private readonly IEngineService _engineService;
 
     public BrowserService(IUserAgentService userAgentService,
-                          IEngineService    engineService)
+                          IEngineService engineService)
     {
         _userAgentService = userAgentService;
-        _engineService    = engineService;
+        _engineService = engineService;
     }
 
     private Browser? _browser;
     private Version? _version;
-    public  Browser  Name    => _browser ??= GetBrowser();
-    public  Version  Version => _version ??= GetVersion();
+    public Browser Name => _browser ??= GetBrowser();
+    public Version Version => _version ??= GetVersion();
 
     private Browser GetBrowser()
     {
-        var agent  = _userAgentService.UserAgent.ToLower();
+        var agent = _userAgentService.UserAgent.ToLower();
         var engine = _engineService.Name;
 
         if (string.IsNullOrEmpty(agent))
@@ -48,7 +48,7 @@ public class BrowserService : IBrowserService
 
     private Version GetVersion()
     {
-        var agent   = _userAgentService.UserAgent.ToLower();
+        var agent = _userAgentService.UserAgent.ToLower();
         var browser = Name;
 
         if (string.IsNullOrEmpty(agent))
@@ -73,7 +73,7 @@ public class BrowserService : IBrowserService
 
     private static Version GetVersionCommon(string agent, Browser browser)
     {
-        var name  = browser.ToStringInvariant();
+        var name = browser.ToStringInvariant();
         var first = agent.IndexOf(name, StringComparison.Ordinal);
 
         if (first < 0 || first + name.Length > agent.Length)
@@ -82,13 +82,13 @@ public class BrowserService : IBrowserService
         var cut = agent.Length > first + name.Length + 1 ? agent.Substring(first + name.Length + 1) : agent.Substring(first + name.Length);
 
         var indexOfSpace = cut.IndexOf(' ', StringComparison.Ordinal);
-        var version      = indexOfSpace != -1 ? cut.Substring(0, indexOfSpace) : cut;
+        var version = indexOfSpace != -1 ? cut.Substring(0, indexOfSpace) : cut;
         return version.ToVersion();
     }
 
     private static Version GetVersionSafari(string agent)
     {
-        var version      = agent.Substring(agent.IndexOf("version/", StringComparison.Ordinal) + "version/".Length);
+        var version = agent.Substring(agent.IndexOf("version/", StringComparison.Ordinal) + "version/".Length);
         var indexOfSpace = version.IndexOf(" ", StringComparison.Ordinal);
 
         if (indexOfSpace != -1)

@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using System;
 using System.Linq;
@@ -29,7 +29,7 @@ public class PageRouteModelConventionTest
     [InlineData("/Areas/Admin/Pages/Report.cshtml", "/Admin/Report")]
     public void Apply_Normal_Page(string relativePath, string routeTemplate)
     {
-        var model      = CreatePageRouteModel(relativePath, routeTemplate);
+        var model = CreatePageRouteModel(relativePath, routeTemplate);
         var convention = new ResponsivePageRouteModelConvention();
         convention.Apply(model);
         Assert.Equal(1, model.Selectors.Count);
@@ -40,7 +40,7 @@ public class PageRouteModelConventionTest
     [InlineData("/Pages/Index.tablet.cshtml", "/Index.tablet", "")]
     public void Apply_Index(string relativePath, string routeTemplate, string template)
     {
-        var model      = CreatePageRouteModel(relativePath, routeTemplate);
+        var model = CreatePageRouteModel(relativePath, routeTemplate);
         var convention = new ResponsivePageRouteModelConvention();
         convention.Apply(model);
         var selector = model.Selectors.Last();
@@ -52,7 +52,7 @@ public class PageRouteModelConventionTest
     [InlineData("/Pages/Privacy.tablet.cshtml", "/Privacy.tablet", "Privacy")]
     public void Apply_Privacy(string relativePath, string routeTemplate, string template)
     {
-        var model      = CreatePageRouteModel(relativePath, routeTemplate);
+        var model = CreatePageRouteModel(relativePath, routeTemplate);
         var convention = new ResponsivePageRouteModelConvention();
         convention.Apply(model);
         var selector = model.Selectors.Last();
@@ -64,7 +64,7 @@ public class PageRouteModelConventionTest
     [InlineData("/Areas/Admin/Pages/Index.tablet.cshtml", "/Admin/Index.tablet", "Admin/")]
     public void Apply_Admin_Index(string relativePath, string routeTemplate, string template)
     {
-        var model      = CreateAreaPageRouteModel(relativePath, routeTemplate);
+        var model = CreateAreaPageRouteModel(relativePath, routeTemplate);
         var convention = new ResponsivePageRouteModelConvention();
         convention.Apply(model);
         var selector = model.Selectors.Last();
@@ -76,7 +76,7 @@ public class PageRouteModelConventionTest
     [InlineData("/Areas/Admin/Pages/Report.tablet.cshtml", "/Admin/Report.tablet", "Admin/Report")]
     public void Apply_Admin_Report(string relativePath, string routeTemplate, string template)
     {
-        var model      = CreateAreaPageRouteModel(relativePath, routeTemplate);
+        var model = CreateAreaPageRouteModel(relativePath, routeTemplate);
         var convention = new ResponsivePageRouteModelConvention();
         convention.Apply(model);
         var selector = model.Selectors.Last();

@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using System.Collections.Generic;
 using System.Text;
@@ -22,8 +22,8 @@ namespace Wangkanai.Universal.Models
         /// </summary>       
         public string UserId { get; set; }
 
-        public List<Event> Events   { get; set; }
-        public Pageview    Pageview { get; set; }
+        public List<Event> Events { get; set; }
+        public Pageview Pageview { get; set; }
 
         public Session()
         {

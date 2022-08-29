@@ -54,8 +54,8 @@ public static class ResponsiveCoreBuilderExtensions
         builder.Services.AddSession(
             options =>
             {
-                options.Cookie.Name        = "Responsive";
-                options.IdleTimeout        = TimeSpan.FromSeconds(10);
+                options.Cookie.Name = "Responsive";
+                options.IdleTimeout = TimeSpan.FromSeconds(10);
                 options.Cookie.IsEssential = true;
             });
 

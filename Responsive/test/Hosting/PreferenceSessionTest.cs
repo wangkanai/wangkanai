@@ -21,9 +21,9 @@ public class PreferenceSessionTest
             return Task.FromResult(0);
         });
 
-        using var server   = MockServer.Server(builder);
-        var       client   = server.CreateClient();
-        var       response = await client.GetAsync("/");
+        using var server = MockServer.Server(builder);
+        var client = server.CreateClient();
+        var response = await client.GetAsync("/");
         response.EnsureSuccessStatusCode();
         Assert.True(response.Headers.TryGetValues("Set-Cookie", out var values));
         Assert.Single(values);

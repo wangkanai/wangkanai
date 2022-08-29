@@ -1,28 +1,28 @@
 // Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-using Wangkanai.Extensions;
 using Wangkanai.Detection.Models;
+using Wangkanai.Extensions;
 
 namespace Wangkanai.Detection.Services;
 
 public class EngineService : IEngineService
 {
     private readonly IUserAgentService _userAgentService;
-    private readonly IPlatformService  _platformService;
+    private readonly IPlatformService _platformService;
 
     public EngineService(IUserAgentService userAgentService, IPlatformService platformService)
     {
         _userAgentService = userAgentService;
-        _platformService  = platformService;
+        _platformService = platformService;
     }
 
     private Engine? _name;
-    public  Engine  Name => _name ??= GetEngine();
+    public Engine Name => _name ??= GetEngine();
 
     private Engine GetEngine()
     {
         var agent = _userAgentService.UserAgent.ToLower();
-        var os    = _platformService.Name;
+        var os = _platformService.Name;
 
         if (string.IsNullOrEmpty(agent))
             return Engine.Unknown;

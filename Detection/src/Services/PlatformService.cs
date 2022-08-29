@@ -2,9 +2,9 @@
 
 using System.Text.RegularExpressions;
 
-using Wangkanai.Extensions;
 using Wangkanai.Detection.Extensions;
 using Wangkanai.Detection.Models;
+using Wangkanai.Extensions;
 
 namespace Wangkanai.Detection.Services;
 
@@ -18,11 +18,11 @@ public class PlatformService : IPlatformService
     }
 
     private Processor? _processor;
-    private Platform?  _name;
-    private Version?   _version;
-    public  Processor  Processor => _processor ??= GetProcessor();
-    public  Platform   Name      => _name ??= GetPlatform();
-    public  Version    Version   => _version ??= GetVersion();
+    private Platform? _name;
+    private Version? _version;
+    public Processor Processor => _processor ??= GetProcessor();
+    public Platform Name => _name ??= GetPlatform();
+    public Version Version => _version ??= GetVersion();
 
 
     private Platform GetPlatform()
@@ -52,26 +52,26 @@ public class PlatformService : IPlatformService
 
     private Version GetVersion()
     {
-        var agent    = _userAgentService.UserAgent.ToLower();
+        var agent = _userAgentService.UserAgent.ToLower();
         var platform = Name;
         return platform switch
-               {
-                   Platform.Unknown => new Version(),
-                   Platform.Others  => new Version(),
-                   Platform.Windows => ParseOsVersion(agent, "windowsnt"),
-                   Platform.Android => ParseOsVersion(agent, "android"),
-                   Platform.Mac     => ParseOsVersion(agent, "intelmacosx"),
-                   Platform.iOS     => ParseOsVersion(agent, "cpuiphoneos"),
-                   Platform.iPadOS  => ParseOsVersion(agent, "cpuos"),
-                   Platform.Linux   => ParseOsVersion(agent, "rv:"),
-                   _                => new Version()
-               };
+        {
+            Platform.Unknown => new Version(),
+            Platform.Others => new Version(),
+            Platform.Windows => ParseOsVersion(agent, "windowsnt"),
+            Platform.Android => ParseOsVersion(agent, "android"),
+            Platform.Mac => ParseOsVersion(agent, "intelmacosx"),
+            Platform.iOS => ParseOsVersion(agent, "cpuiphoneos"),
+            Platform.iPadOS => ParseOsVersion(agent, "cpuos"),
+            Platform.Linux => ParseOsVersion(agent, "rv:"),
+            _ => new Version()
+        };
     }
 
     private Processor GetProcessor()
     {
         var agent = _userAgentService.UserAgent.ToLower();
-        var os    = Name;
+        var os = Name;
 
         if (IsArm(agent, os))
             return Processor.ARM;
@@ -136,18 +136,18 @@ public class PlatformService : IPlatformService
                         .FirstOrDefault(x => x.StartsWith(prefix, StringComparison.Ordinal));
 
 
-    private static readonly string[]  X86DeviceList     = { "i86", "i686", Processor.x86.ToStringInvariant() };
-    private static readonly IndexTree X86DeviceIndex    = X86DeviceList.BuildIndexTree();
-    private static readonly string[]  X64DeviceList     = { "x86_64", "wow64", Processor.x64.ToStringInvariant() };
-    private static readonly IndexTree X64DeviceIndex    = X64DeviceList.BuildIndexTree();
-    private static readonly string[]  IosDeviceList     = { "iphone", "ipod", Platform.iOS.ToStringInvariant() };
-    private static readonly IndexTree IosDeviceIndex    = IosDeviceList.BuildIndexTree();
-    private static readonly string[]  IPadosDeviceList  = { "ipad", Platform.iPadOS.ToStringInvariant() };
+    private static readonly string[] X86DeviceList = { "i86", "i686", Processor.x86.ToStringInvariant() };
+    private static readonly IndexTree X86DeviceIndex = X86DeviceList.BuildIndexTree();
+    private static readonly string[] X64DeviceList = { "x86_64", "wow64", Processor.x64.ToStringInvariant() };
+    private static readonly IndexTree X64DeviceIndex = X64DeviceList.BuildIndexTree();
+    private static readonly string[] IosDeviceList = { "iphone", "ipod", Platform.iOS.ToStringInvariant() };
+    private static readonly IndexTree IosDeviceIndex = IosDeviceList.BuildIndexTree();
+    private static readonly string[] IPadosDeviceList = { "ipad", Platform.iPadOS.ToStringInvariant() };
     private static readonly IndexTree IPadosDeviceIndex = IPadosDeviceList.BuildIndexTree();
-    private static readonly string[]  ChromeOSList      = { "cros" };
-    private static readonly IndexTree ChromeOSIndex     = ChromeOSList.BuildIndexTree();
-    private static readonly string[]  AppleWebKitList   = { "applewebkit", "webkit" };
-    private static readonly IndexTree AppleWebKitIndex  = AppleWebKitList.BuildIndexTree();
+    private static readonly string[] ChromeOSList = { "cros" };
+    private static readonly IndexTree ChromeOSIndex = ChromeOSList.BuildIndexTree();
+    private static readonly string[] AppleWebKitList = { "applewebkit", "webkit" };
+    private static readonly IndexTree AppleWebKitIndex = AppleWebKitList.BuildIndexTree();
 
     #endregion
 }

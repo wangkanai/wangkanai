@@ -8,9 +8,9 @@ namespace Wangkanai.SendGrid.Services;
 public interface ISendGridService
 {
     SendGridClient Client { get; }
-    EmailAddress   From   { get; }
-    Task<Response> SendEmailAsync(EmailAddress              to,  string subject, string plain, bool   importance            = false);
-    Task<Response> SendEmailAsync(IEnumerable<EmailAddress> tos, string subject, string plain, bool   importance            = false);
-    Task<Response> SendEmailAsync(EmailAddress              to,  string subject, string plain, string html, bool importance = false);
+    EmailAddress From { get; }
+    Task<Response> SendEmailAsync(EmailAddress to, string subject, string plain, bool importance = false);
+    Task<Response> SendEmailAsync(IEnumerable<EmailAddress> tos, string subject, string plain, bool importance = false);
+    Task<Response> SendEmailAsync(EmailAddress to, string subject, string plain, string html, bool importance = false);
     Task<Response> SendEmailAsync(IEnumerable<EmailAddress> tos, string subject, string plain, string html, bool importance = false);
 }

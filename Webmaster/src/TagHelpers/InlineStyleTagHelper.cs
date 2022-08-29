@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using System.Text.Encodings.Web;
 
@@ -13,7 +13,7 @@ namespace Wangkanai.Webmaster.TagHelpers;
 public class InlineStyleTagHelper : InlineTagHelper
 {
     private const string InlineStyleAttributeName = "inline-style";
-    private const string HrefAttributeName        = "href";
+    private const string HrefAttributeName = "href";
 
     [HtmlAttributeName(HrefAttributeName)]
     public string Href { get; set; }

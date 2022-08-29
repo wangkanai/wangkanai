@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using BenchmarkDotNet.Attributes;
 
@@ -31,18 +31,18 @@ public class DeviceServiceBenchmark
 
     private static readonly HttpContextAccessor[] Accessors =
         RawUserAgents.Select(x => new HttpContextAccessor
-                     {
-                         HttpContext = new DefaultHttpContext
-                         {
-                             Request =
+        {
+            HttpContext = new DefaultHttpContext
+            {
+                Request =
                              {
                                  Headers =
                                  {
                                      ["User-Agent"] = x
                                  }
                              }
-                         }
-                     })
+            }
+        })
                      .ToArray();
 
     [Benchmark]
@@ -50,12 +50,12 @@ public class DeviceServiceBenchmark
     {
         foreach (var accessor in Accessors)
         {
-            var contextService   = new HttpContextService(accessor);
+            var contextService = new HttpContextService(accessor);
             var userAgentService = new UserAgentService(contextService);
-            var platformService  = new PlatformService(userAgentService);
-            var engineService    = new EngineService(userAgentService, platformService);
-            var browserService   = new BrowserService(userAgentService, engineService);
-            var deviceService    = new DeviceService(userAgentService);
+            var platformService = new PlatformService(userAgentService);
+            var engineService = new EngineService(userAgentService, platformService);
+            var browserService = new BrowserService(userAgentService, engineService);
+            var deviceService = new DeviceService(userAgentService);
             _ = browserService.Name;
             _ = browserService.Version;
             _ = deviceService.Type;
