@@ -35,11 +35,6 @@
     </None>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Pages\Layouts" />
-    <Folder Include="wwwroot\static" />
-  </ItemGroup>
-
   <Target Name="NpmInstall" Inputs="package.json" Outputs="node_modules/.install-stamp">
     <Exec Command="npm ci" Condition="$(RestorePackagesWithLockFile) == 'true'" />
     <Exec Command="npm install" Condition="$(RestorePackagesWithLockFile) != 'true'" />
