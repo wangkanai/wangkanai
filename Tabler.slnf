@@ -1,0 +1,13 @@
+{
+  "solution": {
+    "path": "Wangkanai.sln",
+    "projects": [
+      "Runtime\\src\\Wangkanai.Runtime.csproj",
+      "Tabler\\demo\\Client\\Wangkanai.Tabler.Demo.Client.csproj",
+      "Tabler\\demo\\Server\\Wangkanai.Tabler.Demo.Server.csproj",
+      "Tabler\\demo\\Shared\\Wangkanai.Tabler.Demo.Shared.csproj",
+      "Tabler\\src\\Wangkanai.Tabler.csproj",
+      "Tabler\\test\\Wangkanai.Tabler.Tests.csproj"
+    ]
+  }
+}
