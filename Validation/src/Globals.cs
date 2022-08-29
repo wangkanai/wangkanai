@@ -2,7 +2,7 @@
 
 using System.Collections.Generic;
 
-global 
+global
 global using System.Linq;
 global 
 
