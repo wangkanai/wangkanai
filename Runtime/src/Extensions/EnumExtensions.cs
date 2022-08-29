@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using System.ComponentModel;
 
@@ -20,7 +20,7 @@ public static class EnumExtensions
 
     public static string GetDescription(this Enum generic)
     {
-        var type   = generic.GetType();
+        var type = generic.GetType();
         var member = type.GetMember(generic.ToString());
         if (member.Length <= 0)
             return generic.ToString();

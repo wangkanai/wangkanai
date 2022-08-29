@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using Wangkanai.Extensions;
 
@@ -68,7 +68,7 @@ public static class Check
         => NotMoreThan(value, expected, nameof(value));
 
     [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
-    internal static bool NotMoreThan(this int value, int expected, [InvokerParameterName] [NotNull] string parameterName)
+    internal static bool NotMoreThan(this int value, int expected, [InvokerParameterName][NotNull] string parameterName)
         => value > expected
                ? throw new ArgumentMoreThanException(parameterName)
                : true;

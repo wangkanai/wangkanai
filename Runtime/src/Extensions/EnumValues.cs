@@ -1,11 +1,11 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 namespace Wangkanai.Extensions;
 
 public static class EnumValues<T> where T : Enum
 {
     private static readonly Dictionary<T, string> Names = new();
-    private static readonly T[]                   Values;
+    private static readonly T[] Values;
 
     static EnumValues()
     {
