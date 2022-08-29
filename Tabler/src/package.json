@@ -5,7 +5,7 @@
     "author": "Sarin Na Wangkanai",
     "license": "MIT",
     "scripts": {
-        "build": "npm-run-all clean lib scss",
+        "build": "npm-run-all clean lib clean scss",
         "clean":"npm-run-all --parallel clean-*",
         "clean-dist": "rimraf wwwroor/dist/",
         "clean-tabler": "rimraf wwwroot/lib/tabler/",
