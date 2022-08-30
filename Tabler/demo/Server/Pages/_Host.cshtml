@@ -1,3 +1,5 @@
+﻿@page
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +7,7 @@
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
     <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
-    <title>Dashboard - Tabler - Premium and Open Source dashboard template with responsive and high quality UI.</title>
+    <title>@ViewData["Title"] - Tabler - Premium and Open Source dashboard template with responsive and high quality UI.</title>
     <base href="/"/>
     <link href="./lib/tabler/dist/css/tabler.min.css" rel="stylesheet"/>
     <link href="./lib/tabler/dist/css/tabler-flags.min.css" rel="stylesheet"/>
@@ -18,10 +20,13 @@
     <link href="manifest.json" rel="manifest"/>
     <link href="icon-512.png" rel="apple-touch-icon" sizes="512x512"/>
     <link href="icon-192.png" rel="apple-touch-icon" sizes="192x192"/>
+    <component type="typeof(HeadOutlet)" render-mode="WebAssemblyPrerendered"/>
 </head>
 
 <body class="theme-dark">
-<div id="app">Loading...</div>
+<component type="typeof(App)" render-mode="WebAssemblyPrerendered"/>
+
+<persist-component-state/>
 
 <div id="blazor-error-ui">
     An unhandled error has occurred.
