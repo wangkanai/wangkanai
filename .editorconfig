@@ -100,5 +100,5 @@ indent_size = 4
 resharper_sort_members_by_kind = true
 
 [{**/lib/**, **/node_modules/**}]
-generated_code = true
+# generated_code = true
 ij_formatter_enabled = false

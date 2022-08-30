@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
@@ -26,7 +26,7 @@ public class LanguageRouteContraintTests
     {
         // arrage
         var contraint = new EnglishLanguageRouteConstraint();
-        var values    = new RouteValueDictionary(new { controller = routeValue });
+        var values = new RouteValueDictionary(new { controller = routeValue });
 
         // act
         bool match = Match(contraint, values);
@@ -49,7 +49,7 @@ public class LanguageRouteContraintTests
     {
         // arrage
         var contraint = new ThaiLanguageRouteConstraint();
-        var values    = new RouteValueDictionary(new { controller = routeValue });
+        var values = new RouteValueDictionary(new { controller = routeValue });
 
         // act
         bool match = Match(contraint, values);
@@ -72,7 +72,7 @@ public class LanguageRouteContraintTests
     {
         // arrage
         var contraint = new LaoLanguageRouteConstraint();
-        var values    = new RouteValueDictionary(new { controller = routeValue });
+        var values = new RouteValueDictionary(new { controller = routeValue });
 
         // act
         bool match = Match(contraint, values);
@@ -95,7 +95,7 @@ public class LanguageRouteContraintTests
     {
         // arrage
         var contraint = new MyanmarLanguageRouteConstraint();
-        var values    = new RouteValueDictionary(new { controller = routeValue });
+        var values = new RouteValueDictionary(new { controller = routeValue });
 
         // act
         bool match = Match(contraint, values);

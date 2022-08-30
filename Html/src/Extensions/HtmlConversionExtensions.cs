@@ -1,20 +1,20 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 namespace Wangkanai.Html.Extensions;
 
 public static class HtmlConversionExtensions
 {
     /// <summary>
-    /// Converts HTML to plain text / strips tags.
+    ///     Converts HTML to plain text / strips tags.
     /// </summary>
     /// <param name="html">The HTML.</param>
     /// <returns></returns>
     public static string ConvertToPlainText(string html)
     {
-        HtmlDocument doc = new HtmlDocument();
+        var doc = new HtmlDocument();
         doc.LoadHtml(html);
 
-        StringWriter sw = new StringWriter();
+        var sw = new StringWriter();
         ConvertTo(doc.DocumentNode, sw);
         sw.Flush();
         return sw.ToString();
@@ -22,23 +22,20 @@ public static class HtmlConversionExtensions
 
 
     /// <summary>
-    /// Count the words.
-    /// The content has to be converted to plain text before (using ConvertToPlainText).
+    ///     Count the words.
+    ///     The content has to be converted to plain text before (using ConvertToPlainText).
     /// </summary>
     /// <param name="plainText">The plain text.</param>
     /// <returns></returns>
     public static int CountWords(string plainText)
     {
-        return !String.IsNullOrEmpty(plainText) ? plainText.Split(' ', '\n').Length : 0;
+        return !string.IsNullOrEmpty(plainText) ? plainText.Split(' ', '\n').Length : 0;
     }
 
 
     public static string Cut(string text, int length)
     {
-        if (!String.IsNullOrEmpty(text) && text.Length > length)
-        {
-            text = text.Substring(0, length - 4) + " ...";
-        }
+        if (!string.IsNullOrEmpty(text) && text.Length > length) text = text.Substring(0, length - 4) + " ...";
 
         return text;
     }
@@ -46,10 +43,7 @@ public static class HtmlConversionExtensions
 
     private static void ConvertContentTo(HtmlNode node, TextWriter outText)
     {
-        foreach (HtmlNode subnode in node.ChildNodes)
-        {
-            ConvertTo(subnode, outText);
-        }
+        foreach (var subnode in node.ChildNodes) ConvertTo(subnode, outText);
     }
 
 
@@ -68,8 +62,8 @@ public static class HtmlConversionExtensions
 
             case HtmlNodeType.Text:
                 // script and style must not be output
-                string parentName = node.ParentNode.Name;
-                if ((parentName == "script") || (parentName == "style"))
+                var parentName = node.ParentNode.Name;
+                if (parentName == "script" || parentName == "style")
                     break;
 
                 // get text
@@ -80,10 +74,7 @@ public static class HtmlConversionExtensions
                     break;
 
                 // check the text is meaningful and not a bunch of whitespaces
-                if (html.Trim().Length > 0)
-                {
-                    outText.Write(HtmlEntity.DeEntitize(html));
-                }
+                if (html.Trim().Length > 0) outText.Write(HtmlEntity.DeEntitize(html));
 
                 break;
 
@@ -99,10 +90,7 @@ public static class HtmlConversionExtensions
                         break;
                 }
 
-                if (node.HasChildNodes)
-                {
-                    ConvertContentTo(node, outText);
-                }
+                if (node.HasChildNodes) ConvertContentTo(node, outText);
 
                 break;
         }

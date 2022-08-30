@@ -12,11 +12,10 @@ namespace Wangkanai.Responsive.Services;
 
 public class ResponsiveService : IResponsiveService
 {
-    public Device View => PreferView(_context, _defaultView);
+    private const string ResponsiveContextKey = "Responsive";
 
     private readonly HttpContext _context;
     private readonly Device      _defaultView;
-    private const    string      ResponsiveContextKey = "Responsive";
 
     public ResponsiveService(IHttpContextAccessor accessor, IDeviceService deviceService, ResponsiveOptions? options)
     {
@@ -33,15 +32,23 @@ public class ResponsiveService : IResponsiveService
         _defaultView = DefaultView(deviceService.Type, options);
     }
 
+    public Device View => PreferView(_context, _defaultView);
+
     public void PreferSet(Device desktop)
-        => _context.Session.SetString(ResponsiveContextKey, desktop.ToString());
+    {
+        _context.Session.SetString(ResponsiveContextKey, desktop.ToString());
+    }
 
     public void PreferClear()
-        => _context.Session.Remove(ResponsiveContextKey);
+    {
+        _context.Session.Remove(ResponsiveContextKey);
+    }
 
     public bool HasPreferred()
-        => _context.SafeSession() != null
-           && _context.Session.Keys.Any(k => k == ResponsiveContextKey);
+    {
+        return _context.SafeSession() != null
+               && _context.Session.Keys.Any(k => k == ResponsiveContextKey);
+    }
 
     private static Device PreferView(HttpContext context, Device defaultView)
     {
@@ -62,11 +69,13 @@ public class ResponsiveService : IResponsiveService
     }
 
     private static Device DefaultView(Device device, ResponsiveOptions options)
-        => device switch
-           {
-               Device.Mobile  => options.DefaultMobile,
-               Device.Tablet  => options.DefaultTablet,
-               Device.Desktop => options.DefaultDesktop,
-               _              => device
-           };
+    {
+        return device switch
+               {
+                   Device.Mobile  => options.DefaultMobile,
+                   Device.Tablet  => options.DefaultTablet,
+                   Device.Desktop => options.DefaultDesktop,
+                   _              => device
+               };
+    }
 }

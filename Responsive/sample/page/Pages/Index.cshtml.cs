@@ -1,21 +1,20 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 
-namespace ResponsivePage.Pages
+namespace ResponsivePage.Pages;
+
+public class IndexModel : PageModel
 {
-    public class IndexModel : PageModel
+    private readonly ILogger<IndexModel> _logger;
+
+    public IndexModel(ILogger<IndexModel> logger)
     {
-        private readonly ILogger<IndexModel> _logger;
+        _logger = logger;
+    }
 
-        public IndexModel(ILogger<IndexModel> logger)
-        {
-            _logger = logger;
-        }
-
-        public void OnGet()
-        {
-        }
+    public void OnGet()
+    {
     }
 }

@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
@@ -14,10 +14,10 @@ namespace Wangkanai.Webmaster.TagHelpers;
 public class GravatarTagHelper : TagHelper
 {
     private const string GravatarAttributeName = "gravatar";
-    private const string EmailAttributeName    = "email";
-    private const string SizeAttributeName     = "size";
-    private const string RatingAttributeName   = "rating";
-    private const string ModeAttributeName     = "mode";
+    private const string EmailAttributeName = "email";
+    private const string SizeAttributeName = "size";
+    private const string RatingAttributeName = "rating";
+    private const string ModeAttributeName = "mode";
 
     public override int Order => -1000;
 
@@ -41,7 +41,7 @@ public class GravatarTagHelper : TagHelper
 
         output.TagName = "img";
         var gravatar = new Gravatar(Email, Size, Rating);
-        var src      = new TagHelperAttribute("src", gravatar);
+        var src = new TagHelperAttribute("src", gravatar);
         output.Attributes.Add(src);
 
         return base.ProcessAsync(context, output);

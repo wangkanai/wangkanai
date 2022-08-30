@@ -1,11 +1,11 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 namespace Wangkanai.Solver.Linear;
 
 public class SumCoefficient : LinearExpression
 {
-    private readonly LinearExpression _expression;
     private readonly double           _coefficient;
+    private readonly LinearExpression _expression;
 
     public SumCoefficient(LinearExpression expression, double coefficient)
     {
@@ -14,10 +14,14 @@ public class SumCoefficient : LinearExpression
     }
 
     public override string ToString()
-        => $"({_expression}+{_coefficient})";
+    {
+        return $"({_expression}+{_coefficient})";
+    }
 
     public override double DoVisit(Dictionary<Variable, double> coefficients, double multiplier)
-        => multiplier != 0.0
-               ? _coefficient + multiplier + _expression.DoVisit(coefficients, multiplier)
-               : 0.0;
+    {
+        return multiplier != 0.0
+                   ? _coefficient + multiplier + _expression.DoVisit(coefficients, multiplier)
+                   : 0.0;
+    }
 }

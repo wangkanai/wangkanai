@@ -27,7 +27,7 @@ internal class ResponsivePageRouteModelConvention : IPageRouteModelConvention
         var pageName   = split[0];
         var deviceName = split[1];
 
-        if (!Enum.TryParse<Device>(deviceName, ignoreCase: true, out var device))
+        if (!Enum.TryParse<Device>(deviceName, true, out var device))
             throw new InvalidOperationException($"Device name could not be parsed for page '{model.RelativePath}'.");
 
         // Since the page name has something like `.mobile` in it, the special cased rules for Index.cshtml

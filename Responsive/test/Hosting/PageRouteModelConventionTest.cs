@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using System;
 using System.Linq;
@@ -84,13 +84,19 @@ public class PageRouteModelConventionTest
     }
 
     private static PageRouteModel CreatePageRouteModel(string relativePath, string routeTemplate)
-        => CreatePageRouteModelFactory()
+    {
+        return CreatePageRouteModelFactory()
             .CreateRouteModel(relativePath, routeTemplate);
+    }
 
     private static PageRouteModel CreateAreaPageRouteModel(string relativePath, string routeTemplate)
-        => CreatePageRouteModelFactory()
+    {
+        return CreatePageRouteModelFactory()
             .CreateAreaRouteModel(relativePath, routeTemplate);
+    }
 
     private static MockPageRouteModel CreatePageRouteModelFactory()
-        => new MockPageRouteModel(new RazorPagesOptions());
+    {
+        return new MockPageRouteModel(new RazorPagesOptions());
+    }
 }

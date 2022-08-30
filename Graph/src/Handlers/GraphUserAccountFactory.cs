@@ -1,6 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
-
-using System.Security.Claims;
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication.Internal;
@@ -13,8 +11,8 @@ namespace Wangkanai.Graph.Handlers;
 
 public class GraphUserAccountFactory : AccountClaimsPrincipalFactory<RemoteUserAccount>
 {
-    private readonly IServiceProvider                 serviceProvider;
     private readonly ILogger<GraphUserAccountFactory> logger;
+    private readonly IServiceProvider                 serviceProvider;
 
     public GraphUserAccountFactory(
         IAccessTokenProviderAccessor     accessor,

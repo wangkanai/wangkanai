@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using Microsoft.Extensions.FileProviders;
 
@@ -23,5 +23,7 @@ public static class FileInfoExtensions
     }
 
     private static bool IsExtension(this string name, string extension)
-        => name.EndsWith(extension, StringComparison.OrdinalIgnoreCase);
+    {
+        return name.EndsWith(extension, StringComparison.OrdinalIgnoreCase);
+    }
 }

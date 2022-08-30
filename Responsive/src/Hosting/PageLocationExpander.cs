@@ -45,5 +45,7 @@ public class ResponsivePageLocationExpander : IViewLocationExpander
     }
 
     public void PopulateValues(ViewLocationExpanderContext context)
-        => context.Values[ValueKey] = context.ActionContext.HttpContext.GetDevice().ToString().ToLower();
+    {
+        context.Values[ValueKey] = context.ActionContext.HttpContext.GetDevice().ToString().ToLower();
+    }
 }

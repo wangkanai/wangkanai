@@ -1,42 +1,54 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-using System.Text;
 using System.Security.Cryptography;
+using System.Text;
 
 namespace Wangkanai.Cryptography;
 
 public static class Hash
 {
     public static string HashMd5([NotNull] this string value)
-        => MD5.Create()
-              .ComputeHash(value.GetAsciiBytes())
-              .HashDataToString();
+    {
+        return MD5.Create()
+                  .ComputeHash(value.GetAsciiBytes())
+                  .HashDataToString();
+    }
 
     public static string HashSha512([NotNull] this string value)
-        => SHA512.Create()
-                 .ComputeHash(value.GetAsciiBytes())
-                 .HashDataToString();
+    {
+        return SHA512.Create()
+                     .ComputeHash(value.GetAsciiBytes())
+                     .HashDataToString();
+    }
 
     public static string HashSha384([NotNull] this string value)
-        => SHA384.Create()
-                 .ComputeHash(value.GetAsciiBytes())
-                 .HashDataToString();
+    {
+        return SHA384.Create()
+                     .ComputeHash(value.GetAsciiBytes())
+                     .HashDataToString();
+    }
 
     public static string HashSha256([NotNull] this string value)
-        => SHA256.Create()
-                 .ComputeHash(value.GetAsciiBytes())
-                 .HashDataToString();
+    {
+        return SHA256.Create()
+                     .ComputeHash(value.GetAsciiBytes())
+                     .HashDataToString();
+    }
 
     [Obsolete]
     public static string HashSha1([NotNull] this string value)
-        => SHA1.Create()
-               .ComputeHash(value.GetAsciiBytes())
-               .HashDataToString();
+    {
+        return SHA1.Create()
+                   .ComputeHash(value.GetAsciiBytes())
+                   .HashDataToString();
+    }
 
     #region Internal
 
     private static byte[] GetAsciiBytes([NotNull] this string value)
-        => Encoding.ASCII.GetBytes(value);
+    {
+        return Encoding.ASCII.GetBytes(value);
+    }
 
     private static string HashDataToString([NotNull] this byte[] data)
     {

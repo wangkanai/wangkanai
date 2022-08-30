@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
@@ -45,7 +45,7 @@ public class CoreBuilderExtensionsTest
             new(typeof(IPlatformService), typeof(PlatformService), ServiceLifetime.Scoped),
             new(typeof(IBrowserService), typeof(BrowserService), ServiceLifetime.Scoped),
             new(typeof(ICrawlerService), typeof(CrawlerService), ServiceLifetime.Scoped),
-            new(typeof(IDetectionService), typeof(DetectionService), ServiceLifetime.Scoped),
+            new(typeof(IDetectionService), typeof(DetectionService), ServiceLifetime.Scoped)
         };
 
         Assert.NotNull(builder);
@@ -60,7 +60,7 @@ public class CoreBuilderExtensionsTest
         var builder           = serviceCollection.AddDetectionBuilder().AddMarkerService();
         var serviceDescriptors = new List<ServiceDescriptor>
         {
-            new(typeof(DetectionMarkerService), typeof(DetectionMarkerService), ServiceLifetime.Singleton),
+            new(typeof(DetectionMarkerService), typeof(DetectionMarkerService), ServiceLifetime.Singleton)
         };
 
         Assert.NotNull(builder);

@@ -8,55 +8,54 @@ using Microsoft.Extensions.Hosting;
 
 using Wangkanai.Detection.Models;
 
-namespace ResponsivePage
+namespace ResponsivePage;
+
+public class Startup
 {
-    public class Startup
+    public Startup(IConfiguration configuration)
     {
-        public Startup(IConfiguration configuration)
+        Configuration = configuration;
+    }
+
+    public IConfiguration Configuration { get; }
+
+    // This method gets called by the runtime. Use this method to add services to the container.
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddResponsive(options =>
         {
-            Configuration = configuration;
+            options.DefaultTablet  = Device.Tablet;
+            options.DefaultMobile  = Device.Tablet;
+            options.DefaultDesktop = Device.Desktop;
+        });
+
+        services.AddRazorPages();
+    }
+
+    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    {
+        if (env.IsDevelopment())
+        {
+            app.UseDeveloperExceptionPage();
+        }
+        else
+        {
+            app.UseExceptionHandler("/Error");
+            // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+            app.UseHsts();
         }
 
-        public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddResponsive(options =>
-            {
-                options.DefaultTablet  = Device.Tablet;
-                options.DefaultMobile  = Device.Tablet;
-                options.DefaultDesktop = Device.Desktop;
-            });
+        app.UseHttpsRedirection();
+        app.UseStaticFiles();
 
-            services.AddRazorPages();
-        }
+        app.UseDetection();
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-        {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
-            }
+        app.UseRouting();
 
+        app.UseAuthorization();
 
-            app.UseHttpsRedirection();
-            app.UseStaticFiles();
-
-            app.UseDetection();
-
-            app.UseRouting();
-
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints => { endpoints.MapRazorPages(); });
-        }
+        app.UseEndpoints(endpoints => { endpoints.MapRazorPages(); });
     }
 }

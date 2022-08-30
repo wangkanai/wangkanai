@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using Microsoft.AspNetCore.Http;
 
@@ -6,9 +6,6 @@ namespace Wangkanai.Detection.Services;
 
 public class HttpContextService : IHttpContextService
 {
-    public HttpContext Context { get; }
-    public HttpRequest Request => Context.Request;
-
     public HttpContextService(IHttpContextAccessor accessor)
     {
         Check.NotNull(accessor);
@@ -17,5 +14,10 @@ public class HttpContextService : IHttpContextService
     }
 
     private HttpContextService()
-        => Context = new DefaultHttpContext();
+    {
+        Context = new DefaultHttpContext();
+    }
+
+    public HttpContext Context { get; }
+    public HttpRequest Request => Context.Request;
 }

@@ -19,8 +19,8 @@ public class VersionTests
     [Fact]
     public void Ctor_StringString_Success()
     {
-        int major   = 1;
-        int minor   = 0;
+        var major   = 1;
+        var minor   = 0;
         var version = new Version(major, minor);
 
         AssertVersion(major, minor, version);

@@ -6,9 +6,9 @@ namespace Wangkanai.Detection.Models;
 
 public class UserAgent
 {
-    private readonly string _original;
-    private readonly string _lower;
     private readonly int    _length;
+    private readonly string _lower;
+    private readonly string _original;
 
     public UserAgent()
     {
@@ -25,11 +25,20 @@ public class UserAgent
     }
 
     [DebuggerStepThrough]
-    public override string ToString() => _original;
+    public override string ToString()
+    {
+        return _original;
+    }
 
     [DebuggerStepThrough]
-    public string ToLower() => _lower;
+    public string ToLower()
+    {
+        return _lower;
+    }
 
     [DebuggerStepThrough]
-    public int Length() => _length;
+    public int Length()
+    {
+        return _length;
+    }
 }

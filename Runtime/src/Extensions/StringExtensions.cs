@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using System.Globalization;
 using System.Text;
@@ -10,17 +10,25 @@ public static class StringExtensions
 {
     [ContractAnnotation("null => true")]
     public static bool IsNullOrEmpty(this string input)
-        => string.IsNullOrEmpty(input);
+    {
+        return string.IsNullOrEmpty(input);
+    }
 
     [ContractAnnotation("null => true")]
     public static bool IsNullOrWhiteSpace(this string input)
-        => string.IsNullOrWhiteSpace(input);
+    {
+        return string.IsNullOrWhiteSpace(input);
+    }
 
     public static bool IsUnicode(this string input)
-        => Encoding.ASCII.GetByteCount(input) != Encoding.UTF8.GetByteCount(input);
+    {
+        return Encoding.ASCII.GetByteCount(input) != Encoding.UTF8.GetByteCount(input);
+    }
 
     public static string EnsureEndsWith(this string input, char c)
-        => input.EnsureEndsWith(c, StringComparison.Ordinal);
+    {
+        return input.EnsureEndsWith(c, StringComparison.Ordinal);
+    }
 
     public static string EnsureEndsWith(this string input, char c, StringComparison comparison)
     {
@@ -41,7 +49,9 @@ public static class StringExtensions
     }
 
     public static string EnsureStartsWith(this string input, char c)
-        => input.EnsureStartsWith(c, StringComparison.Ordinal);
+    {
+        return input.EnsureStartsWith(c, StringComparison.Ordinal);
+    }
 
     public static string EnsureStartsWith(this string input, char c, StringComparison comparison)
     {
@@ -71,7 +81,7 @@ public static class StringExtensions
     public static string Left(this string input, int length)
     {
         Check.NotNull(input);
-        Check.NotLessThan(input.Length, length, nameof(length));
+        input.Length.NotLessThan(length, nameof(length));
 
         return input.Substring(0, length);
     }
@@ -79,16 +89,20 @@ public static class StringExtensions
     public static string Right(this string input, int length)
     {
         Check.NotNull(input);
-        Check.NotMoreThan(input.Length, length);
+        input.Length.NotMoreThan(length);
 
         return input.Substring(input.Length - length, length);
     }
 
     public static string RemoveAll(this string source, params string[] strings)
-        => strings.Aggregate(source, ReplaceOrdinal);
+    {
+        return strings.Aggregate(source, ReplaceOrdinal);
+    }
 
     private static string ReplaceOrdinal(string current, string target)
-        => current.Replace(target, "", StringComparison.Ordinal);
+    {
+        return current.Replace(target, "", StringComparison.Ordinal);
+    }
 
     public static string RemovePostFix(this string value, params string[] postfixes)
     {
@@ -154,17 +168,23 @@ public static class StringExtensions
     }
 
     public static string SubstringSafe(this string input, int start, int length)
-        => input.Length <= start
-               ? ""
-               : input.Length - start <= length
-                   ? input[start..]
-                   : input.Substring(start, length);
+    {
+        return input.Length <= start
+                   ? ""
+                   : input.Length - start <= length
+                       ? input[start..]
+                       : input.Substring(start, length);
+    }
 
     public static string SubstringSafe(this string input, int start)
-        => input.Length <= start
-               ? ""
-               : input[start..];
+    {
+        return input.Length <= start
+                   ? ""
+                   : input[start..];
+    }
 
     public static string ToTitleCase(this string input)
-        => input.First().ToString().ToUpper() + input.Substring(1);
+    {
+        return input.First().ToString().ToUpper() + input.Substring(1);
+    }
 }

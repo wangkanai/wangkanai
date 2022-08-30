@@ -8,8 +8,15 @@ namespace Wangkanai.Detection.Services;
 
 public class CrawlerService : ICrawlerService
 {
-    private readonly IUserAgentService _useragent;
-    private readonly DetectionOptions  _options;
+    private static readonly (string, Crawler)[] Crawlers =
+        EnumValues<Crawler>.GetValues().Select(x => (x.ToStringInvariant(), x)).ToArray();
+
+    private static readonly IndexTree         CrawlerIndex = Crawlers.Select(x => x.Item1).BuildIndexTree();
+    private readonly        DetectionOptions  _options;
+    private readonly        IUserAgentService _useragent;
+
+    private Crawler? _name;
+    private Version? _version;
 
     public CrawlerService(IUserAgentService useragent, DetectionOptions options)
     {
@@ -17,11 +24,9 @@ public class CrawlerService : ICrawlerService
         _options   = options;
     }
 
-    private Crawler? _name;
-    private Version? _version;
-    public  bool     IsCrawler => Name != Crawler.Unknown;
-    public  Crawler  Name      => _name ??= GetCrawler();
-    public  Version  Version   => _version ??= GetVersion();
+    public bool    IsCrawler => Name != Crawler.Unknown;
+    public Crawler Name      => _name ??= GetCrawler();
+    public Version Version   => _version ??= GetVersion();
 
     private Crawler GetCrawler()
     {
@@ -58,15 +63,14 @@ public class CrawlerService : ICrawlerService
     }
 
     private static bool HasOthers(string agent, IEnumerable<string> others)
-        => agent.Contains("bot", StringComparison.Ordinal)
-           || others.Any(x => agent.Contains(x, StringComparison.Ordinal));
+    {
+        return agent.Contains("bot", StringComparison.Ordinal)
+               || others.Any(x => agent.Contains(x, StringComparison.Ordinal));
+    }
 
     private static string FindBot(string agent)
-        => agent.Split(' ')
-                .FirstOrDefault(x => x.SearchContains(CrawlerIndex)) ?? string.Empty;
-
-    private static readonly (string, Crawler)[] Crawlers =
-        EnumValues<Crawler>.GetValues().Select(x => (x.ToStringInvariant(), x)).ToArray();
-
-    private static readonly IndexTree CrawlerIndex = Crawlers.Select(x => x.Item1).BuildIndexTree();
+    {
+        return agent.Split(' ')
+                    .FirstOrDefault(x => x.SearchContains(CrawlerIndex)) ?? string.Empty;
+    }
 }

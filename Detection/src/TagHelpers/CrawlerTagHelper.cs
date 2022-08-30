@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.Primitives;
@@ -12,21 +12,23 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers;
 [HtmlTargetElement(ElementName, Attributes = ExcludeAttributeName)]
 public class CrawlerTagHelper : TagHelper
 {
-    private readonly ICrawlerService _resolver;
-    private const    string          ElementName          = "crawler";
-    private const    string          IncludeAttributeName = "include";
-    private const    string          ExcludeAttributeName = "exclude";
+    private const string ElementName          = "crawler";
+    private const string IncludeAttributeName = "include";
+    private const string ExcludeAttributeName = "exclude";
 
-    private static readonly char[] NameSeparator = { ',' };
+    private static readonly char[]          NameSeparator = { ',' };
+    private readonly        ICrawlerService _resolver;
+
+    public CrawlerTagHelper(ICrawlerService resolver)
+    {
+        _resolver = resolver ?? throw new ArgumentNullException(nameof(resolver));
+    }
 
     [HtmlAttributeName(IncludeAttributeName)]
     public string? Include { get; set; }
 
     [HtmlAttributeName(ExcludeAttributeName)]
     public string? Exclude { get; set; }
-
-    public CrawlerTagHelper(ICrawlerService resolver)
-        => _resolver = resolver ?? throw new ArgumentNullException(nameof(resolver));
 
     public override void Process(TagHelperContext context, TagHelperOutput output)
     {

@@ -9,16 +9,16 @@ using Wangkanai.Responsive.Extensions;
 namespace Wangkanai.Responsive.Hosting;
 
 /// <summary>
-/// A <see cref="IViewLocationExpander" /> that adds the responsive as an extension prefix to view names.
-/// device that is getting added as extensions prefix comes from <see cref="Microsoft.AspNetCore.Http.HttpContext" />.
+///     A <see cref="IViewLocationExpander" /> that adds the responsive as an extension prefix to view names.
+///     device that is getting added as extensions prefix comes from <see cref="Microsoft.AspNetCore.Http.HttpContext" />.
 /// </summary>
 /// <example>
-/// For the default case with no areas, views are generated with the following patterns
-/// (assuming controller is "Home", action is "Index" and device is "mobile")
-/// Views/Home/mobile/Action
-/// Views/Home/Action
-/// Views/Shared/mobile/Action
-/// Views/Shared/Action
+///     For the default case with no areas, views are generated with the following patterns
+///     (assuming controller is "Home", action is "Index" and device is "mobile")
+///     Views/Home/mobile/Action
+///     Views/Home/Action
+///     Views/Shared/mobile/Action
+///     Views/Shared/Action
 /// </example>
 public class ResponsiveViewLocationExpander : IViewLocationExpander
 {

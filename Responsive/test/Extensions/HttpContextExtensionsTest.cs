@@ -9,7 +9,6 @@ using Wangkanai.Responsive.Extensions;
 
 using Xunit;
 
-
 namespace Wangkanai.Responsive.Hosting;
 
 public class HttpContextExtensionsTest

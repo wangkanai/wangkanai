@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
+    <RunAOTCompilation>true</RunAOTCompilation>
   </PropertyGroup>
 
   <ItemGroup>
@@ -33,11 +34,6 @@
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Pages\Layouts" />
-    <Folder Include="wwwroot\static" />
   </ItemGroup>
 
   <Target Name="NpmInstall" Inputs="package.json" Outputs="node_modules/.install-stamp">

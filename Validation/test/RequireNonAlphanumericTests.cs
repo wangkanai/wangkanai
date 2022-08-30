@@ -13,7 +13,7 @@ namespace Wangkanai.Validation;
 public class RequireNonAlphanumericTests
 {
     private readonly ITestOutputHelper _output;
-    private readonly PropertyInfo      _password = NonAlphanumericModel.GetProperty(nameof(NonAlphanumericModel.Password));
+    private readonly PropertyInfo _password = NonAlphanumericModel.GetProperty(nameof(NonAlphanumericModel.Password));
 
     public RequireNonAlphanumericTests(ITestOutputHelper output)
     {

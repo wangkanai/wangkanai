@@ -10,63 +10,83 @@ namespace Wangkanai.Detection.Mocks;
 
 internal static class MockServer
 {
-    #region Server
-
-    internal static TestServer Server()
-        => Server();
-
-    internal static TestServer Server(IWebHostBuilder builder)
-        => new(builder);
-
-    internal static TestServer Server(Action<DetectionOptions> options)
-        => Server(WebHostBuilderDetection(options));
-
-    #endregion
+    private static RequestDelegate ContextHandler
+        => context => context.Response.WriteAsync("Detection:");
 
     #region WebApplicationBuilder
 
     internal static WebApplicationBuilder WebApplicationBuilder()
-        => WebApplication.CreateBuilder();
+    {
+        return WebApplication.CreateBuilder();
+    }
+
+    #endregion
+
+    #region Server
+
+    internal static TestServer Server()
+    {
+        return Server();
+    }
+
+    internal static TestServer Server(IWebHostBuilder builder)
+    {
+        return new TestServer(builder);
+    }
+
+    internal static TestServer Server(Action<DetectionOptions> options)
+    {
+        return Server(WebHostBuilderDetection(options));
+    }
 
     #endregion
 
     #region WebHostBuilder
 
     internal static IWebHostBuilder WebHostBuilder()
-        => WebHostBuilder(ContextHandler);
+    {
+        return WebHostBuilder(ContextHandler);
+    }
 
     internal static IWebHostBuilder WebHostBuilder(RequestDelegate contextHandler)
-        => new WebHostBuilder()
-           .ConfigureServices(services => { })
-           .Configure(app => { app.Run(contextHandler); });
+    {
+        return new WebHostBuilder()
+               .ConfigureServices(services => { })
+               .Configure(app => { app.Run(contextHandler); });
+    }
 
     internal static IWebHostBuilder WebHostBuilderDetection()
-        => WebHostBuilderDetection(options => { });
+    {
+        return WebHostBuilderDetection(options => { });
+    }
 
     internal static IWebHostBuilder WebHostBuilderDetection(Action<DetectionOptions> options)
-        => WebHostBuilderDetection(ContextHandler, options);
+    {
+        return WebHostBuilderDetection(ContextHandler, options);
+    }
 
     internal static IWebHostBuilder WebHostBuilderDetection(RequestDelegate contextHandler)
-        => WebHostBuilderDetection(contextHandler, options => { });
+    {
+        return WebHostBuilderDetection(contextHandler, options => { });
+    }
 
     private static IWebHostBuilder WebHostBuilderDetection(RequestDelegate contextHandler, Action<DetectionOptions> options)
-        => new WebHostBuilder()
-           .ConfigureServices(services =>
-           {
-               // var accessor = MockService.MockHttpContextAccessor(agent);
-               // services.TryAddSingleton<IHttpContextAccessor, accessor>();
-               services.AddScoped(sp => sp.GetService<IHttpContextAccessor>().HttpContext.Session);
-               services.AddDetection(options);
-           })
-           .Configure(app =>
-           {
-               app.UseSession();
-               app.UseDetection();
-               app.Run(contextHandler);
-           });
+    {
+        return new WebHostBuilder()
+               .ConfigureServices(services =>
+               {
+                   // var accessor = MockService.MockHttpContextAccessor(agent);
+                   // services.TryAddSingleton<IHttpContextAccessor, accessor>();
+                   services.AddScoped(sp => sp.GetService<IHttpContextAccessor>().HttpContext.Session);
+                   services.AddDetection(options);
+               })
+               .Configure(app =>
+               {
+                   app.UseSession();
+                   app.UseDetection();
+                   app.Run(contextHandler);
+               });
+    }
 
     #endregion
-
-    private static RequestDelegate ContextHandler
-        => context => context.Response.WriteAsync("Detection:");
 }

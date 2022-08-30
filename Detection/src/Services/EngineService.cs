@@ -1,14 +1,16 @@
 // Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-using Wangkanai.Extensions;
 using Wangkanai.Detection.Models;
+using Wangkanai.Extensions;
 
 namespace Wangkanai.Detection.Services;
 
 public class EngineService : IEngineService
 {
-    private readonly IUserAgentService _userAgentService;
     private readonly IPlatformService  _platformService;
+    private readonly IUserAgentService _userAgentService;
+
+    private Engine? _name;
 
     public EngineService(IUserAgentService userAgentService, IPlatformService platformService)
     {
@@ -16,8 +18,7 @@ public class EngineService : IEngineService
         _platformService  = platformService;
     }
 
-    private Engine? _name;
-    public  Engine  Name => _name ??= GetEngine();
+    public Engine Name => _name ??= GetEngine();
 
     private Engine GetEngine()
     {
@@ -42,10 +43,14 @@ public class EngineService : IEngineService
     }
 
     private static bool IsBlink(string agent)
-        => agent.Contains(Browser.Chrome)
-           && agent.Contains(Engine.WebKit);
+    {
+        return agent.Contains(Browser.Chrome)
+               && agent.Contains(Engine.WebKit);
+    }
 
     private static bool IsEdge(string agent, Platform os)
-        => agent.Contains(Engine.Edge) || agent.Contains("edg", StringComparison.Ordinal)
-           && (Platform.Windows).HasFlag(os);
+    {
+        return agent.Contains(Engine.Edge) || agent.Contains("edg", StringComparison.Ordinal)
+               && Platform.Windows.HasFlag(os);
+    }
 }

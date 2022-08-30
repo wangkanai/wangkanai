@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using System.IO;
 using System.Linq;
@@ -19,9 +19,9 @@ namespace Wangkanai.SendGrid.Services;
 
 public class RazorViewRenderService : IRazorViewRenderService
 {
-    private readonly IRazorViewEngine  _viewEngine;
-    private readonly ITempDataProvider _tempDataProvider;
     private readonly IServiceProvider  _serviceProvider;
+    private readonly ITempDataProvider _tempDataProvider;
+    private readonly IRazorViewEngine  _viewEngine;
 
     public RazorViewRenderService(IRazorViewEngine  viewEngine,
                                   ITempDataProvider tempDataProvider,
@@ -47,7 +47,7 @@ public class RazorViewRenderService : IRazorViewRenderService
 
         var provider = new EmptyModelMetadataProvider();
         var state    = new ModelStateDictionary();
-        var viewData = new ViewDataDictionary<TModel>(metadataProvider: provider, modelState: state);
+        var viewData = new ViewDataDictionary<TModel>(provider, state);
         viewData.Model = model;
 
         var tempData = new TempDataDictionary(actionContext.HttpContext, _tempDataProvider);
@@ -62,11 +62,11 @@ public class RazorViewRenderService : IRazorViewRenderService
 
     private IView FindView(ActionContext action, string viewName)
     {
-        var getViewResult = _viewEngine.GetView(executingFilePath: null, viewPath: viewName, isMainPage: true);
+        var getViewResult = _viewEngine.GetView(null, viewName, true);
         if (getViewResult.Success)
             return getViewResult.View;
 
-        var findViewResult = _viewEngine.FindView(action, viewName, isMainPage: true);
+        var findViewResult = _viewEngine.FindView(action, viewName, true);
         if (findViewResult.Success)
             return findViewResult.View;
 

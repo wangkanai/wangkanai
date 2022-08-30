@@ -1,6 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
-
-using System.Reflection;
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 namespace Wangkanai.Reflection;
 
@@ -14,5 +12,7 @@ public static class AssemblyVersion
 
     private static T AssemblyInformationVersion<T>()
         where T : Attribute
-        => Check.NotNull(EntryAssembly.GetCustomAttribute<T>());
+    {
+        return Check.NotNull(EntryAssembly.GetCustomAttribute<T>());
+    }
 }

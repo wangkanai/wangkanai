@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using Wangkanai.Extensions;
 
@@ -12,8 +12,10 @@ public readonly struct IndexTree
     private bool IsEnd => _lookup?.Length == 0;
 
     private static IEnumerable<(char Key, IGrouping<char, string> x)> KeywordsGroupBySeed(string[] keywords, int seed)
-        => keywords.GroupBy(k => k[seed])
-                   .Select(x => (x.Key, x));
+    {
+        return keywords.GroupBy(k => k[seed])
+                       .Select(x => (x.Key, x));
+    }
 
     public IndexTree(string[]? keywords, int seed = 0)
     {

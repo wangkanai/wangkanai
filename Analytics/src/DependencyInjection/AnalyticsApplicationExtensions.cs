@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using Microsoft.AspNetCore.Builder;
 
@@ -8,7 +8,7 @@ using Wangkanai.Analytics.Services;
 namespace Microsoft.Extensions.DependencyInjection;
 
 /// <summary>
-/// Pipeline extension methods for adding Analytics
+///     Pipeline extension methods for adding Analytics
 /// </summary>
 public static class AnalyticsApplicationExtensions
 {

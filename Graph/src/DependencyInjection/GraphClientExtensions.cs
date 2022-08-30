@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.Authentication.WebAssembly.Msal.Models;
@@ -15,10 +15,7 @@ public static class GraphClientExtensions
     {
         services.Configure<RemoteAuthenticationOptions<MsalProviderOptions>>(options =>
         {
-            foreach (var scope in scopes)
-            {
-                options.ProviderOptions.AdditionalScopesToConsent.Add(scope);
-            }
+            foreach (var scope in scopes) options.ProviderOptions.AdditionalScopesToConsent.Add(scope);
         });
 
         services.AddScoped<IAuthenticationProvider, NoOpGraphAuthenticationProvider>();

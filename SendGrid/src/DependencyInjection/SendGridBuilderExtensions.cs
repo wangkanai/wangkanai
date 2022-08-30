@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -17,8 +17,8 @@ public static class SendGridBuilderExtensions
 
         builder.Services.AddOptions();
         builder.Services.TryAddSingleton(
-            serviceProvider => ServiceProviderServiceExtensions.GetRequiredService<IOptions<SendGridOptions>>(serviceProvider)
-                                                               .Value
+            serviceProvider => serviceProvider.GetRequiredService<IOptions<SendGridOptions>>()
+                                              .Value
         );
 
         return builder;
@@ -30,7 +30,7 @@ public static class SendGridBuilderExtensions
 
         builder.Services.AddScoped<ISendGridService, SendGridService>();
         //builder.Services.AddScoped<>();
-        
+
         return builder;
     }
 }

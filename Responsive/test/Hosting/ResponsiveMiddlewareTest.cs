@@ -15,7 +15,9 @@ namespace Wangkanai.Responsive.Hosting;
 public class ResponsiveMiddlewareTest
 {
     private static Task Next(HttpContext d)
-        => Task.Factory.StartNew(() => d);
+    {
+        return Task.Factory.StartNew(() => d);
+    }
 
     [Fact]
     public void Ctor_RequestDelegate_Null_ThrowsArgumentNullException()

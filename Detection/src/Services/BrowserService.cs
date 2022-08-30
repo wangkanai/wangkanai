@@ -1,15 +1,18 @@
 // Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-using Wangkanai.Extensions;
 using Wangkanai.Detection.Extensions;
 using Wangkanai.Detection.Models;
+using Wangkanai.Extensions;
 
 namespace Wangkanai.Detection.Services;
 
 public class BrowserService : IBrowserService
 {
-    private readonly IUserAgentService _userAgentService;
     private readonly IEngineService    _engineService;
+    private readonly IUserAgentService _userAgentService;
+
+    private Browser? _browser;
+    private Version? _version;
 
     public BrowserService(IUserAgentService userAgentService,
                           IEngineService    engineService)
@@ -18,10 +21,8 @@ public class BrowserService : IBrowserService
         _engineService    = engineService;
     }
 
-    private Browser? _browser;
-    private Version? _version;
-    public  Browser  Name    => _browser ??= GetBrowser();
-    public  Version  Version => _version ??= GetVersion();
+    public Browser Name    => _browser ??= GetBrowser();
+    public Version Version => _version ??= GetVersion();
 
     private Browser GetBrowser()
     {
@@ -98,12 +99,16 @@ public class BrowserService : IBrowserService
     }
 
     private static bool IsEdge(string agent)
-        => agent.Contains(Browser.Edge)
-           || (agent.Contains("win64", StringComparison.Ordinal) &&
-               agent.Contains("edg", StringComparison.Ordinal));
+    {
+        return agent.Contains(Browser.Edge)
+               || agent.Contains("win64", StringComparison.Ordinal) &&
+               agent.Contains("edg", StringComparison.Ordinal);
+    }
 
     private static bool IsInternetExplorer(string agent, Engine engine)
-        => engine == Engine.Trident
-           || agent.Contains("msie", StringComparison.Ordinal)
-           && !agent.Contains(Browser.Opera);
+    {
+        return engine == Engine.Trident
+               || agent.Contains("msie", StringComparison.Ordinal)
+               && !agent.Contains(Browser.Opera);
+    }
 }

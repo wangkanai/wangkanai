@@ -10,11 +10,14 @@ namespace Wangkanai.Responsive.Hosting;
 
 internal class ResponsivePageMatcherPolicy : MatcherPolicy, IEndpointComparerPolicy, IEndpointSelectorPolicy
 {
-    public ResponsivePageMatcherPolicy() => Comparer = EndpointMetadataComparer<IResponsiveMetadata>.Default;
-
-    public IComparer<Endpoint> Comparer { get; }
+    public ResponsivePageMatcherPolicy()
+    {
+        Comparer = EndpointMetadataComparer<IResponsiveMetadata>.Default;
+    }
 
     public override int Order => 10000;
+
+    public IComparer<Endpoint> Comparer { get; }
 
     public bool AppliesToEndpoints(IReadOnlyList<Endpoint> endpoints)
     {

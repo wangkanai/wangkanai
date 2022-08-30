@@ -1,7 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
-
-using Wangkanai.Solver.Abstractions;
-using Wangkanai.Solver;
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 namespace Wangkanai.Solver.Linear;
 
@@ -10,10 +7,14 @@ public class VariableWrapper : LinearExpression
     private readonly Variable _var;
 
     public VariableWrapper(Variable var)
-        => _var = var;
+    {
+        _var = var;
+    }
 
     public override string ToString()
-        => _var.Name;
+    {
+        return _var.Name;
+    }
 
     public override double DoVisit(Dictionary<Variable, double> coefficients, double multiplier)
     {

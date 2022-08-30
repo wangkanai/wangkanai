@@ -20,7 +20,7 @@ public class ResponsiveServiceTest
     [Fact]
     public void Ctor_Null_Options_Null()
     {
-        var resolver = MockService.ResponsiveService(null!, null!);
+        var resolver = MockService.ResponsiveService(null!);
         Assert.NotNull(resolver);
         Assert.Equal(Device.Desktop, resolver.View);
     }

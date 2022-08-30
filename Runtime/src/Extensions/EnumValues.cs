@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 namespace Wangkanai.Extensions;
 
@@ -15,10 +15,14 @@ public static class EnumValues<T> where T : Enum
     }
 
     public static T[] GetValues()
-        => Values;
+    {
+        return Values;
+    }
 
     public static Dictionary<T, string> GetNames()
-        => Names;
+    {
+        return Names;
+    }
 
     public static string GetName(T value)
     {
@@ -29,5 +33,7 @@ public static class EnumValues<T> where T : Enum
     }
 
     public static bool TryGetSingleName(T value, out string result)
-        => Names.TryGetValue(value, out result);
+    {
+        return Names.TryGetValue(value, out result);
+    }
 }

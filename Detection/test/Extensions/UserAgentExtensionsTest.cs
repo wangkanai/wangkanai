@@ -61,7 +61,7 @@ public class UserAgentExtensionsTest
         var agent = new UserAgent("abc");
         Assert.False(agent.Contains(new[] { ((string)null!)! }));
         Assert.False(agent.Contains(new[] { "" }));
-        Assert.False(agent.Contains(new[] { ((string)null!)!, "" }));
+        Assert.False(agent.Contains(new[] { null!, "" }));
         Assert.True(agent.Contains(new[] { "ABC" }));
         Assert.True(agent.Contains(new[] { "ABC", "abc" }));
         Assert.False(agent.Contains(new[] { "ABCD" }));
@@ -109,7 +109,7 @@ public class UserAgentExtensionsTest
         var agent = new UserAgent("abc");
         Assert.False(agent.StartsWith(new[] { ((string)null!)! }));
         Assert.False(agent.StartsWith(new[] { "" }));
-        Assert.False(agent.StartsWith(new[] { ((string)null!)!, "" }));
+        Assert.False(agent.StartsWith(new[] { null!, "" }));
         Assert.True(agent.StartsWith(new[] { "AB" }));
         Assert.True(agent.StartsWith(new[] { "AB", "ab" }));
         Assert.False(agent.StartsWith(new[] { "ABCD" }));
@@ -121,7 +121,7 @@ public class UserAgentExtensionsTest
         var agent = new UserAgent("abcdefg");
         Assert.False(agent.StartsWith(new[] { ((string)null!)! }, 4));
         Assert.False(agent.StartsWith(new[] { "" }, 4));
-        Assert.False(agent.StartsWith(new[] { ((string)null!)!, "" }, 4));
+        Assert.False(agent.StartsWith(new[] { null!, "" }, 4));
         Assert.True(agent.StartsWith(new[] { "ABCD" }, 4));
         Assert.True(agent.StartsWith(new[] { "ABCD", "abcd" }, 4));
         Assert.True(agent.StartsWith(new[] { "ABCDEF" }, 4));

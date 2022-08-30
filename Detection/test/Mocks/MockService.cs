@@ -12,10 +12,30 @@ namespace Wangkanai.Detection.Mocks;
 [DebuggerStepThrough]
 public static class MockService
 {
+    #region Device
+
+    internal static DeviceService DeviceService(string agent)
+    {
+        return new DeviceService(UserAgentService(agent));
+    }
+
+    #endregion
+
+    #region HttpContextService
+
+    internal static IHttpContextService HttpContextService(string agent)
+    {
+        return MockHttpContextService(agent).Object;
+    }
+
+    #endregion
+
     #region Browser
 
     internal static BrowserService BrowserService(string agent)
-        => BrowserService(UserAgentService(agent));
+    {
+        return BrowserService(UserAgentService(agent));
+    }
 
     internal static BrowserService BrowserService(IUserAgentService agent)
     {
@@ -29,61 +49,65 @@ public static class MockService
     #region Platform
 
     internal static PlatformService PlatformService(string agent)
-        => new(UserAgentService(agent));
+    {
+        return new PlatformService(UserAgentService(agent));
+    }
 
     internal static PlatformService PlatformService(IUserAgentService service)
-        => new(service);
+    {
+        return new PlatformService(service);
+    }
 
     #endregion
 
     #region Engine
 
     internal static EngineService EngineService(string agent)
-        => EngineService(UserAgentService(agent));
+    {
+        return EngineService(UserAgentService(agent));
+    }
 
     internal static EngineService EngineService(IUserAgentService agent)
-        => new(agent, PlatformService(agent));
+    {
+        return new EngineService(agent, PlatformService(agent));
+    }
 
     #endregion
 
     #region Crawler
 
     internal static CrawlerService CrawlerService(string agent)
-        => CrawlerService(agent, new DetectionOptions());
+    {
+        return CrawlerService(agent, new DetectionOptions());
+    }
 
     internal static CrawlerService CrawlerService(string agent, DetectionOptions options)
-        => new(UserAgentService(agent), options);
-
-    #endregion
-
-    #region Device
-
-    internal static DeviceService DeviceService(string agent)
-        => new(UserAgentService(agent));
+    {
+        return new CrawlerService(UserAgentService(agent), options);
+    }
 
     #endregion
 
     #region UserAgent
 
     internal static IUserAgentService UserAgentService(string agent)
-        => UserAgentService(new UserAgent(agent));
+    {
+        return UserAgentService(new UserAgent(agent));
+    }
 
     internal static IUserAgentService UserAgentService(UserAgent agent)
-        => MockUserAgentService(agent).Object;
-
-    #endregion
-
-    #region HttpContextService
-
-    internal static IHttpContextService HttpContextService(string agent)
-        => MockHttpContextService(agent).Object;
+    {
+        return MockUserAgentService(agent).Object;
+    }
 
     #endregion
 
     #region Mocking
 
     private static Mock<IUserAgentService> MockUserAgentService(string agent)
-        => MockUserAgentService(new UserAgent(agent));
+    {
+        return MockUserAgentService(new UserAgent(agent));
+    }
 
     private static Mock<IUserAgentService> MockUserAgentService(UserAgent agent)
     {
@@ -93,7 +117,9 @@ public static class MockService
     }
 
     private static Mock<IHttpContextService> MockHttpContextService(string agent)
-        => CreateHttpContext(agent).SetupHttpContextService();
+    {
+        return CreateHttpContext(agent).SetupHttpContextService();
+    }
 
     private static Mock<IHttpContextService> SetupHttpContextService(this HttpContext context)
     {
@@ -108,10 +134,14 @@ public static class MockService
     #region Internal
 
     internal static IHttpContextAccessor MockHttpContextAccessor(string agent)
-        => new MockHttpContextAccessor() { HttpContext = CreateHttpContext(agent) };
+    {
+        return new MockHttpContextAccessor { HttpContext = CreateHttpContext(agent) };
+    }
 
     internal static IHttpContextAccessor CreateHttpContextAccessor(string agent)
-        => new HttpContextAccessor { HttpContext = CreateHttpContext(agent) };
+    {
+        return new HttpContextAccessor { HttpContext = CreateHttpContext(agent) };
+    }
 
     private static HttpContext CreateHttpContext(string value)
     {

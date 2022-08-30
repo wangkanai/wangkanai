@@ -1,3 +1,7 @@
 ﻿[*.{razor, cshtml}]
 indent_style = space
 indent_size = 2
+
+[Pages/Icons/**]
+# generated_code = true
+ij_formatter_enabled = false

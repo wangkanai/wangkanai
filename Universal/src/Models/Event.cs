@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 namespace Wangkanai.Universal.Models
 {
@@ -6,9 +6,9 @@ namespace Wangkanai.Universal.Models
     public class Event
     {
         public string Category { get; set; }
-        public string Action   { get; set; }
-        public string Label    { get; set; }
-        public string Value    { get; set; }
+        public string Action { get; set; }
+        public string Label { get; set; }
+        public string Value { get; set; }
         public Event() { }
 
         public Event(string category)
@@ -43,9 +43,9 @@ namespace Wangkanai.Universal.Models
         {
             var js = "'event'";
             js += "," + FormatJsValue(Category) ?? "";
-            js += "," + FormatJsValue(Action)   ?? "";
-            js += "," + FormatJsValue(Label)    ?? "";
-            js += "," + FormatJsValue(Value)    ?? "";
+            js += "," + FormatJsValue(Action) ?? "";
+            js += "," + FormatJsValue(Label) ?? "";
+            js += "," + FormatJsValue(Value) ?? "";
             return js;
         }
 

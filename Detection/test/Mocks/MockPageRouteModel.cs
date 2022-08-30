@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.AspNetCore.Mvc.Razor;
@@ -8,10 +8,10 @@ namespace Wangkanai.Detection.Mocks;
 
 internal class MockPageRouteModel
 {
-    private readonly        RazorPagesOptions _options;
     private static readonly string            IndexFileName = "Index" + RazorViewEngine.ViewExtension;
-    private readonly        string            _normalizedRootDirectory;
     private readonly        string            _normalizedAreaRootDirectory;
+    private readonly        string            _normalizedRootDirectory;
+    private readonly        RazorPagesOptions _options;
 
     public MockPageRouteModel(RazorPagesOptions options)
     {
@@ -121,7 +121,8 @@ internal class MockPageRouteModel
     }
 
     private static string CreateAreaRoute(string areaName, string viewEnginePath)
-        => string.Create(1 + areaName.Length + viewEnginePath.Length, (areaName, viewEnginePath), (span, tuple) =>
+    {
+        return string.Create(1 + areaName.Length + viewEnginePath.Length, (areaName, viewEnginePath), (span, tuple) =>
         {
             var (areaNameValue, viewEnginePathValue) = tuple;
 
@@ -133,10 +134,13 @@ internal class MockPageRouteModel
 
             viewEnginePathValue.AsSpan().CopyTo(span);
         });
+    }
 
     private static string NormalizeDirectory(string directory)
-        => directory.Length > 1
-           && !directory.EndsWith("/", StringComparison.Ordinal)
-               ? directory + "/"
-               : directory;
+    {
+        return directory.Length > 1
+               && !directory.EndsWith("/", StringComparison.Ordinal)
+                   ? directory + "/"
+                   : directory;
+    }
 }

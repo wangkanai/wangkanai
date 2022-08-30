@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 namespace System.ComponentModel.DataAnnotations;
 
@@ -13,8 +13,8 @@ public class RequireLowercaseAttribute : ValidationAttribute
     public override bool IsValid(object value) =>
         value switch
         {
-            null          => true, // Required duty
+            null => true, // Required duty
             string actual => actual.Any(char.IsLower),
-            _             => false
+            _ => false
         };
 }

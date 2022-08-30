@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
@@ -10,8 +10,8 @@ namespace Wangkanai.Webmaster.TagHelpers;
 public class CanonicalTagHelper : TagHelper
 {
     private const string CanonicalAttributeName = "seo-canonical";
-    private const string HrefAttributeName      = "href";
-    private const string RelAttributeName       = "rel";
+    private const string HrefAttributeName = "href";
+    private const string RelAttributeName = "rel";
 
     public override int Order => -1000;
 
