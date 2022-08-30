@@ -6,6 +6,4 @@ global using System.Diagnostics;
 global using System.Linq;
 global using System.Reflection;
 
-global 
-
-using JetBrains.Annotations;
+global using JetBrains.Annotations;

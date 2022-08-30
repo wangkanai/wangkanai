@@ -3,6 +3,4 @@
 global using System;
 global using System.IO;
 
-global 
-
-using HtmlAgilityPack;
+global using HtmlAgilityPack;
