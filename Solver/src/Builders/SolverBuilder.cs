@@ -6,6 +6,6 @@ public partial class Solver
 {
     public static Solver CreateSolver(SolverType type)
     {
-        return new(type);
+        return new Solver(type);
     }
 }

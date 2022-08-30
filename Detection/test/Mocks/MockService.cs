@@ -16,7 +16,7 @@ public static class MockService
 
     internal static DeviceService DeviceService(string agent)
     {
-        return new(UserAgentService(agent));
+        return new DeviceService(UserAgentService(agent));
     }
 
     #endregion
@@ -50,12 +50,12 @@ public static class MockService
 
     internal static PlatformService PlatformService(string agent)
     {
-        return new(UserAgentService(agent));
+        return new PlatformService(UserAgentService(agent));
     }
 
     internal static PlatformService PlatformService(IUserAgentService service)
     {
-        return new(service);
+        return new PlatformService(service);
     }
 
     #endregion
@@ -69,7 +69,7 @@ public static class MockService
 
     internal static EngineService EngineService(IUserAgentService agent)
     {
-        return new(agent, PlatformService(agent));
+        return new EngineService(agent, PlatformService(agent));
     }
 
     #endregion
@@ -83,7 +83,7 @@ public static class MockService
 
     internal static CrawlerService CrawlerService(string agent, DetectionOptions options)
     {
-        return new(UserAgentService(agent), options);
+        return new CrawlerService(UserAgentService(agent), options);
     }
 
     #endregion

@@ -8,7 +8,7 @@ using Wangkanai.Analytics.Services;
 namespace Microsoft.Extensions.DependencyInjection;
 
 /// <summary>
-/// Pipeline extension methods for adding Analytics
+///     Pipeline extension methods for adding Analytics
 /// </summary>
 public static class AnalyticsApplicationExtensions
 {

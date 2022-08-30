@@ -41,7 +41,7 @@ internal static class MockServer
 
     internal static TestServer Server(IWebHostBuilder builder)
     {
-        return new(builder);
+        return new TestServer(builder);
     }
 
 

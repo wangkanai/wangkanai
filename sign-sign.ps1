@@ -6,7 +6,7 @@ dotnet restore .\src\
 dotnet build .\src\ -c Release
 signtool sign /n "Sarin Na Wangkanai" .\src\bin\release\net6.0\*.*
 Remove-Item .\artifacts\*.*
-dotnet pack .\src\ -c Release -o .\artifacts --include-symbols -p:SymbolPackageFormat=snupkg
+dotnet pack .\src\ -c Release -o .\artifacts --include-symbols -p:SymbolPackageFormat = snupkg
 nuget sign .\artifacts\*.nupkg `
   -CertificateStoreLocation CurrentUser `
   -CertificateStoreName My `

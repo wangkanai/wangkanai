@@ -24,13 +24,13 @@ public static class MockService
 
     internal static ResponsiveService ResponsiveService(IHttpContextAccessor accessor, IDeviceService device, ResponsiveOptions options = null!)
     {
-        return new(accessor, device, options);
+        return new ResponsiveService(accessor, device, options);
     }
 
 
     internal static DeviceService DeviceService(string agent)
     {
-        return new(UserAgentService(agent));
+        return new DeviceService(UserAgentService(agent));
     }
 
 

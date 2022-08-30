@@ -97,6 +97,6 @@ public class PageRouteModelConventionTest
 
     private static MockPageRouteModel CreatePageRouteModelFactory()
     {
-        return new(new RazorPagesOptions());
+        return new MockPageRouteModel(new RazorPagesOptions());
     }
 }

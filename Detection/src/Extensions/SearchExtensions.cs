@@ -6,12 +6,12 @@ public static class SearchExtensions
 {
     public static IndexTree BuildIndexTree(this string[] keywords)
     {
-        return new(keywords);
+        return new IndexTree(keywords);
     }
 
     public static IndexTree BuildIndexTree(this IEnumerable<string> keywords)
     {
-        return new(keywords.Distinct().ToArray());
+        return new IndexTree(keywords.Distinct().ToArray());
     }
 
     public static bool SearchStartsWith(this string searchString, IndexTree searchTree)
