@@ -6,12 +6,12 @@ namespace Wangkanai.Solver;
 
 public partial class Solver : ISolver
 {
-    public SolverType Type { get; }
-
     public Solver(SolverType type)
     {
         Type = type;
     }
+
+    public SolverType Type { get; }
 
     public void Dispose()
     {

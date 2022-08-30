@@ -12,21 +12,26 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers;
 [HtmlTargetElement(ElementName, Attributes = OnlyAttributeName, TagStructure = TagStructure.NormalOrSelfClosing)]
 public class PreferenceTagHelper : TagHelper
 {
-    private const string ElementName = "preference";
-    private const string OnlyAttributeName = "only";
-    protected IHtmlGenerator Generator { get; }
+    private const    string             ElementName       = "preference";
+    private const    string             OnlyAttributeName = "only";
+    private readonly IDeviceService     _device;
     private readonly IResponsiveService _responsive;
-    private readonly IDeviceService _device;
+
+    public PreferenceTagHelper(IHtmlGenerator generator, IResponsiveService responsive, IDeviceService device)
+    {
+        Generator   = generator  ?? throw new ArgumentNullException(nameof(generator));
+        _responsive = responsive ?? throw new ArgumentNullException(nameof(responsive));
+        _device     = device     ?? throw new ArgumentNullException(nameof(device));
+    }
+
+    protected IHtmlGenerator Generator { get; }
 
     [HtmlAttributeName(OnlyAttributeName)]
     public string? Only { get; set; }
 
-    public PreferenceTagHelper(IHtmlGenerator generator, IResponsiveService responsive, IDeviceService device)
-    {
-        Generator = generator ?? throw new ArgumentNullException(nameof(generator));
-        _responsive = responsive ?? throw new ArgumentNullException(nameof(responsive));
-        _device = device ?? throw new ArgumentNullException(nameof(device));
-    }
+    private bool DisplayOnlyDevice => _device.Type == OnlyDevice;
+
+    private Device OnlyDevice => Enum.Parse<Device>(Only ?? "desktop", true);
 
     public override void Process(TagHelperContext context, TagHelperOutput output)
     {
@@ -48,8 +53,4 @@ public class PreferenceTagHelper : TagHelper
 
         output.SuppressOutput();
     }
-
-    private bool DisplayOnlyDevice => _device.Type == OnlyDevice;
-
-    private Device OnlyDevice => Enum.Parse<Device>(Only ?? "desktop", true);
 }

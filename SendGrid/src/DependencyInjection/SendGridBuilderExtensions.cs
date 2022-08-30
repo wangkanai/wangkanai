@@ -17,8 +17,8 @@ public static class SendGridBuilderExtensions
 
         builder.Services.AddOptions();
         builder.Services.TryAddSingleton(
-            serviceProvider => ServiceProviderServiceExtensions.GetRequiredService<IOptions<SendGridOptions>>(serviceProvider)
-                                                               .Value
+            serviceProvider => serviceProvider.GetRequiredService<IOptions<SendGridOptions>>()
+                                              .Value
         );
 
         return builder;

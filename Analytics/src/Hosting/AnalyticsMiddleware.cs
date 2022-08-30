@@ -11,7 +11,9 @@ public class AnalyticsMiddleware
     private readonly RequestDelegate _next;
 
     public AnalyticsMiddleware(RequestDelegate next)
-        => _next = Check.NotNull(next);
+    {
+        _next = Check.NotNull(next);
+    }
 
     public async Task InvokeAsync(HttpContext context)
     {

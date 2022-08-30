@@ -6,19 +6,25 @@ internal class HttpClientHttpProvider : IHttpProvider
 {
     private readonly HttpClient http;
 
-    public ISerializer Serializer { get; } = new Serializer();
-    public TimeSpan OverallTimeout { get; set; } = TimeSpan.FromSeconds(300);
-
     public HttpClientHttpProvider(HttpClient http)
-        => this.http = http;
+    {
+        this.http = http;
+    }
+
+    public ISerializer Serializer     { get; }      = new Serializer();
+    public TimeSpan    OverallTimeout { get; set; } = TimeSpan.FromSeconds(300);
 
     public Task<HttpResponseMessage> SendAsync(HttpRequestMessage request)
-        => http.SendAsync(request);
+    {
+        return http.SendAsync(request);
+    }
 
-    public Task<HttpResponseMessage> SendAsync(HttpRequestMessage request,
+    public Task<HttpResponseMessage> SendAsync(HttpRequestMessage   request,
                                                HttpCompletionOption completionOption,
-                                               CancellationToken cancellationToken)
-        => http.SendAsync(request, completionOption, cancellationToken);
+                                               CancellationToken    cancellationToken)
+    {
+        return http.SendAsync(request, completionOption, cancellationToken);
+    }
 
     public void Dispose()
     {

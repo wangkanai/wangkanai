@@ -9,12 +9,12 @@ using Wangkanai.Detection.Services;
 namespace Microsoft.Extensions.DependencyInjection;
 
 /// <summary>
-/// Pipeline extension methods for adding Detection
+///     Pipeline extension methods for adding Detection
 /// </summary>
 public static class DetectionApplicationExtensions
 {
     /// <summary>
-    /// Adds Detection to <see cref="IApplicationBuilder" /> request execution pipeline.
+    ///     Adds Detection to <see cref="IApplicationBuilder" /> request execution pipeline.
     /// </summary>
     /// <param name="app">The application.</param>
     /// <returns>Return the <see cref="IApplicationBuilder" /> for further pipeline</returns>

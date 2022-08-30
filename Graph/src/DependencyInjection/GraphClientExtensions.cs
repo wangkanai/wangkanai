@@ -15,10 +15,7 @@ public static class GraphClientExtensions
     {
         services.Configure<RemoteAuthenticationOptions<MsalProviderOptions>>(options =>
         {
-            foreach (var scope in scopes)
-            {
-                options.ProviderOptions.AdditionalScopesToConsent.Add(scope);
-            }
+            foreach (var scope in scopes) options.ProviderOptions.AdditionalScopesToConsent.Add(scope);
         });
 
         services.AddScoped<IAuthenticationProvider, NoOpGraphAuthenticationProvider>();
@@ -26,7 +23,7 @@ public static class GraphClientExtensions
         services.AddScoped(sp =>
         {
             var authenticationProvider = sp.GetRequiredService<IAuthenticationProvider>();
-            var httpProvider = sp.GetRequiredService<IHttpProvider>();
+            var httpProvider           = sp.GetRequiredService<IHttpProvider>();
             return new GraphServiceClient(authenticationProvider, httpProvider);
         });
         services.AddScoped<GraphApiAuthorizationMessageHandler>();

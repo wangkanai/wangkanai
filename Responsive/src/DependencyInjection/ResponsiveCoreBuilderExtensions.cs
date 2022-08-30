@@ -54,8 +54,8 @@ public static class ResponsiveCoreBuilderExtensions
         builder.Services.AddSession(
             options =>
             {
-                options.Cookie.Name = "Responsive";
-                options.IdleTimeout = TimeSpan.FromSeconds(10);
+                options.Cookie.Name        = "Responsive";
+                options.IdleTimeout        = TimeSpan.FromSeconds(10);
                 options.Cookie.IsEssential = true;
             });
 
@@ -63,12 +63,14 @@ public static class ResponsiveCoreBuilderExtensions
     }
 
     private static IServiceCollection AddRazorViewLocation(this IServiceCollection services)
-        => services.Configure<RazorViewEngineOptions>(options =>
+    {
+        return services.Configure<RazorViewEngineOptions>(options =>
         {
             options.ViewLocationExpanders.Add(new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Suffix));
             //options.ViewLocationExpanders.Add(new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Subfolder));
             options.ViewLocationExpanders.Add(new ResponsivePageLocationExpander());
         });
+    }
 
     private static IServiceCollection AddRazorPagesConventions(this IServiceCollection services)
     {

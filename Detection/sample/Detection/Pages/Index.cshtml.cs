@@ -2,12 +2,11 @@
 
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Detection.Pages
+namespace Detection.Pages;
+
+public class IndexModel : PageModel
 {
-    public class IndexModel : PageModel
+    public void OnGet()
     {
-        public void OnGet()
-        {
-        }
     }
 }

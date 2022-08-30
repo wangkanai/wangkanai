@@ -11,11 +11,8 @@ using Wangkanai.SendGrid.Options;
 
 namespace Wangkanai.SendGrid.Services;
 
-   public class SendGridService : ISendGridService
+public class SendGridService : ISendGridService
 {
-    public SendGridClient Client { get; }
-    public EmailAddress From { get; }
-
     public SendGridService(SendGridOptions options)
     {
         options ??= new SendGridOptions();
@@ -23,8 +20,11 @@ namespace Wangkanai.SendGrid.Services;
             throw new ArgumentNullException(nameof(From));
 
         Client = new SendGridClient(options.ApiKey);
-        From = options.From;
+        From   = options.From;
     }
+
+    public SendGridClient Client { get; }
+    public EmailAddress   From   { get; }
 
     public async Task<Response> SendEmailAsync(EmailAddress to, string subject, string plain, bool importance = false)
     {

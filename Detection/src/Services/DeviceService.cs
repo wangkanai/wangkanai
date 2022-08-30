@@ -12,10 +12,13 @@ public class DeviceService : IDeviceService
     private readonly IUserAgentService _userAgentService;
 
     private Device? _type;
-    public Device Type => _type ??= DeviceFromUserAgent();
 
     public DeviceService(IUserAgentService userAgentService)
-        => _userAgentService = userAgentService;
+    {
+        _userAgentService = userAgentService;
+    }
+
+    public Device Type => _type ??= DeviceFromUserAgent();
 
     private Device DeviceFromUserAgent()
     {
@@ -40,12 +43,18 @@ public class DeviceService : IDeviceService
     }
 
     private static bool IsTablet(string agent)
-        => agent.SearchContains(TabletCollection.KeywordsSearchTree);
+    {
+        return agent.SearchContains(TabletCollection.KeywordsSearchTree);
+    }
 
     private static bool IsMobile(string agent)
-        => agent.Length >= 4 && agent.SearchStartsWith(MobileCollection.PrefixesSearchTree) ||
-           agent.SearchContains(MobileCollection.KeywordsSearchTree);
+    {
+        return agent.Length >= 4 && agent.SearchStartsWith(MobileCollection.PrefixesSearchTree) ||
+               agent.SearchContains(MobileCollection.KeywordsSearchTree);
+    }
 
     private static bool IsTV(string agent)
-        => agent.Contains(Device.Tv) || agent.Contains("bravia", StringComparison.Ordinal);
+    {
+        return agent.Contains(Device.Tv) || agent.Contains("bravia", StringComparison.Ordinal);
+    }
 }

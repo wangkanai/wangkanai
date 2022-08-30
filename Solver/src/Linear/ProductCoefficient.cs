@@ -4,17 +4,19 @@ namespace Wangkanai.Solver.Linear;
 
 public class ProductCoefficient : LinearExpression
 {
+    private readonly double           _coefficient;
     private readonly LinearExpression _expression;
-    private readonly double _coefficient;
 
     public ProductCoefficient(LinearExpression expression, double coefficient)
     {
-        _expression = expression;
+        _expression  = expression;
         _coefficient = coefficient;
     }
 
     public override string ToString()
-        => $"({_expression}*{_coefficient})";
+    {
+        return $"({_expression}*{_coefficient})";
+    }
 
     public override double DoVisit(Dictionary<Variable, double> coefficients, double multiplier)
     {

@@ -1,7 +1,5 @@
 // Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-using System.Security.Claims;
-
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication.Internal;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,17 +11,17 @@ namespace Wangkanai.Graph.Handlers;
 
 public class GraphUserAccountFactory : AccountClaimsPrincipalFactory<RemoteUserAccount>
 {
-    private readonly IServiceProvider serviceProvider;
     private readonly ILogger<GraphUserAccountFactory> logger;
+    private readonly IServiceProvider                 serviceProvider;
 
     public GraphUserAccountFactory(
-        IAccessTokenProviderAccessor accessor,
-        IServiceProvider serviceProvider,
+        IAccessTokenProviderAccessor     accessor,
+        IServiceProvider                 serviceProvider,
         ILogger<GraphUserAccountFactory> logger)
         : base(accessor)
     {
         this.serviceProvider = serviceProvider;
-        this.logger = logger;
+        this.logger          = logger;
     }
 
     public override async ValueTask<ClaimsPrincipal> CreateUserAsync(RemoteUserAccount account, RemoteAuthenticationUserOptions options)
@@ -40,7 +38,7 @@ public class GraphUserAccountFactory : AccountClaimsPrincipalFactory<RemoteUserA
         try
         {
             var graphClient = ActivatorUtilities.CreateInstance<GraphServiceClient>(serviceProvider);
-            var user = await graphClient.Me.Request().GetAsync();
+            var user        = await graphClient.Me.Request().GetAsync();
 
             var photo = await graphClient.Me.Photos["48x48"].Content.Request().GetAsync();
 

@@ -1,8 +1,7 @@
 // Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-namespace Detection.Models
+namespace Detection.Models;
+
+public class DetectionViewModel
 {
-    public class DetectionViewModel
-    {
-    }
 }

@@ -14,7 +14,7 @@ public class CoreBuilderExtensionsTest
     public void AddRequiredPlatformServices_ReturnsExpected()
     {
         var services = new ServiceCollection();
-        var builder = services.AddDetectionBuilder().AddRequiredServices();
+        var builder  = services.AddDetectionBuilder().AddRequiredServices();
         var descriptors = new List<ServiceDescriptor>
         {
             new(typeof(IHttpContextAccessor), typeof(HttpContextAccessor), ServiceLifetime.Singleton),
@@ -35,7 +35,7 @@ public class CoreBuilderExtensionsTest
     public void AddCoreServices_ReturnsExpected()
     {
         var serviceCollection = new ServiceCollection();
-        var builder = serviceCollection.AddDetectionBuilder().AddCoreServices();
+        var builder           = serviceCollection.AddDetectionBuilder().AddCoreServices();
         var serviceDescriptors = new List<ServiceDescriptor>
         {
             new(typeof(IHttpContextService), typeof(HttpContextService), ServiceLifetime.Scoped),
@@ -45,7 +45,7 @@ public class CoreBuilderExtensionsTest
             new(typeof(IPlatformService), typeof(PlatformService), ServiceLifetime.Scoped),
             new(typeof(IBrowserService), typeof(BrowserService), ServiceLifetime.Scoped),
             new(typeof(ICrawlerService), typeof(CrawlerService), ServiceLifetime.Scoped),
-            new(typeof(IDetectionService), typeof(DetectionService), ServiceLifetime.Scoped),
+            new(typeof(IDetectionService), typeof(DetectionService), ServiceLifetime.Scoped)
         };
 
         Assert.NotNull(builder);
@@ -57,10 +57,10 @@ public class CoreBuilderExtensionsTest
     public void AddMarkerServices_ReturnsExpected()
     {
         var serviceCollection = new ServiceCollection();
-        var builder = serviceCollection.AddDetectionBuilder().AddMarkerService();
+        var builder           = serviceCollection.AddDetectionBuilder().AddMarkerService();
         var serviceDescriptors = new List<ServiceDescriptor>
         {
-            new(typeof(DetectionMarkerService), typeof(DetectionMarkerService), ServiceLifetime.Singleton),
+            new(typeof(DetectionMarkerService), typeof(DetectionMarkerService), ServiceLifetime.Singleton)
         };
 
         Assert.NotNull(builder);

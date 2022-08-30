@@ -88,7 +88,7 @@ public class ResponsiveViewLocationExpanderTest
     [MemberData(nameof(ViewLocationExpanderTestData))]
     public void ExpandViewLocations_ViewLocationExpanderContext_IEnumerable_ReturnsExpected(ResponsiveViewLocationFormat format, Device deviceType, IEnumerable<string> viewLocations, IEnumerable<string> expectedViewLocations)
     {
-        var context = SetupViewLocationExpanderContext(deviceType);
+        var context          = SetupViewLocationExpanderContext(deviceType);
         var locationExpander = new ResponsiveViewLocationExpander(format);
         locationExpander.PopulateValues(context);
         var resultLocations = locationExpander.ExpandViewLocations(context, viewLocations).ToList();
@@ -99,7 +99,7 @@ public class ResponsiveViewLocationExpanderTest
     [Fact]
     public void Ctor_InvalidFormat_InvalidEnumArgumentException()
     {
-        var max = int.MaxValue;
+        var max            = int.MaxValue;
         var locationFormat = (ResponsiveViewLocationFormat)max;
         Assert.Throws<InvalidEnumArgumentException>(() => new ResponsiveViewLocationExpander(locationFormat));
     }
@@ -114,10 +114,10 @@ public class ResponsiveViewLocationExpanderTest
     [Fact]
     public void ExpandViewLocations_NoDevice_ReturnsExpected()
     {
-        var context = SetupViewLocationExpanderContext(Device.Tablet);
-        var viewLocations = new List<string> { "/Views/{1}/{0}.cshtml", "/Views/Shared/{0}.cshtml" };
+        var context          = SetupViewLocationExpanderContext(Device.Tablet);
+        var viewLocations    = new List<string> { "/Views/{1}/{0}.cshtml", "/Views/Shared/{0}.cshtml" };
         var locationExpander = new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Suffix);
-        var resultLocations = locationExpander.ExpandViewLocations(context, viewLocations);
+        var resultLocations  = locationExpander.ExpandViewLocations(context, viewLocations);
 
         Assert.Equal(viewLocations, resultLocations);
     }
@@ -147,8 +147,8 @@ public class ResponsiveViewLocationExpanderTest
     [Fact]
     public void PopulateValues_ViewLocationExpanderContext_Success()
     {
-        var deviceKey = "device"; // May this one can be public in ResponsiveViewLocationExpander.cs.
-        var context = SetupViewLocationExpanderContext(Device.Tablet);
+        var deviceKey        = "device"; // May this one can be public in ResponsiveViewLocationExpander.cs.
+        var context          = SetupViewLocationExpanderContext(Device.Tablet);
         var locationExpander = new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Suffix);
         locationExpander.PopulateValues(context);
 

@@ -12,21 +12,23 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers;
 [HtmlTargetElement(ElementName, Attributes = ExcludeAttributeName)]
 public class BrowserTagHelper : TagHelper
 {
-    private readonly IBrowserService _resolver;
-    private const string ElementName = "browser";
+    private const string ElementName          = "browser";
     private const string IncludeAttributeName = "include";
     private const string ExcludeAttributeName = "exclude";
 
-    private static readonly char[] NameSeparator = { ',' };
+    private static readonly char[]          NameSeparator = { ',' };
+    private readonly        IBrowserService _resolver;
+
+    public BrowserTagHelper(IBrowserService resolver)
+    {
+        _resolver = Check.NotNull(resolver);
+    }
 
     [HtmlAttributeName(IncludeAttributeName)]
     public string? Include { get; set; }
 
     [HtmlAttributeName(ExcludeAttributeName)]
     public string? Exclude { get; set; }
-
-    public BrowserTagHelper(IBrowserService resolver)
-        => _resolver = Check.NotNull(resolver);
 
     public override void Process(TagHelperContext context, TagHelperOutput output)
     {

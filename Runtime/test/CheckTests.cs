@@ -9,10 +9,10 @@ public class CheckTests
     [Fact]
     public void IntegralIsNull()
     {
-        byte? byte1 = null;
+        byte?  byte1  = null;
         short? short2 = null;
-        int? int4 = null;
-        long? long8 = null;
+        int?   int4   = null;
+        long?  long8  = null;
 
         Assert.Throws<ArgumentNullException>(() => Check.NotNull(byte1));
         Assert.Throws<ArgumentNullException>(() => Check.NotNull(short2));
@@ -23,8 +23,8 @@ public class CheckTests
     [Fact]
     public void FloatingIsNull()
     {
-        float? float16 = null;
-        double? double32 = null;
+        float?   float16   = null;
+        double?  double32  = null;
         decimal? decimal32 = null;
 
         Assert.Throws<ArgumentNullException>(() => Check.NotNull(float16));
@@ -41,41 +41,41 @@ public class CheckTests
     [Fact]
     public void ListIsEmpty()
     {
-        Assert.Throws<ArgumentNullOrEmptyException>(() => Check.NotNullOrEmpty(new List<int>()));
+        Assert.Throws<ArgumentNullOrEmptyException>(() => new List<int>().NotNullOrEmpty());
     }
 
     [Fact]
     public void ListIsExist()
     {
         var list = new List<int>();
-        for (int i = 0; i <= 9; i++) list.Add(i);
+        for (var i = 0; i <= 9; i++) list.Add(i);
 
-        Assert.True(Check.NotNullOrEmpty(list));
+        Assert.True(list.NotNullOrEmpty());
     }
 
     [Fact]
     public void LessThanExpected()
     {
-        Assert.True(Check.NotLessThan(1, 0));
-        Assert.True(Check.NotLessThan(1, 1));
-        Assert.True(Check.NotLessThan(0, 0));
-        Assert.Throws<ArgumentLessThanException>(() => Check.NotLessThan(0, 1));
+        Assert.True(1.NotLessThan(0));
+        Assert.True(1.NotLessThan(1));
+        Assert.True(0.NotLessThan(0));
+        Assert.Throws<ArgumentLessThanException>(() => 0.NotLessThan(1));
     }
 
     [Fact]
     public void MoreThanExpected()
     {
-        Assert.True(Check.NotMoreThan(0, 1));
-        Assert.True(Check.NotMoreThan(1, 1));
-        Assert.True(Check.NotMoreThan(0, 0));
-        Assert.Throws<ArgumentMoreThanException>(() => Check.NotMoreThan(1, 0));
+        Assert.True(0.NotMoreThan(1));
+        Assert.True(1.NotMoreThan(1));
+        Assert.True(0.NotMoreThan(0));
+        Assert.Throws<ArgumentMoreThanException>(() => 1.NotMoreThan(0));
     }
 
     [Fact]
     public void NotEqual()
     {
-        Assert.True(Check.NotEqual(1, 1));
-        Assert.Throws<ArgumentEqualException>(() => Check.NotEqual(1, 0));
+        Assert.True(1.NotEqual(1));
+        Assert.Throws<ArgumentEqualException>(() => 1.NotEqual(0));
     }
 
     [Fact]

@@ -61,7 +61,7 @@ public class UserAgentExtensionsTest
         var agent = new UserAgent("abc");
         Assert.False(agent.Contains(new[] { ((string)null!)! }));
         Assert.False(agent.Contains(new[] { "" }));
-        Assert.False(agent.Contains(new[] { ((string)null!)!, "" }));
+        Assert.False(agent.Contains(new[] { null!!, "" }));
         Assert.True(agent.Contains(new[] { "ABC" }));
         Assert.True(agent.Contains(new[] { "ABC", "abc" }));
         Assert.False(agent.Contains(new[] { "ABCD" }));
@@ -70,7 +70,7 @@ public class UserAgentExtensionsTest
     [Fact]
     public void ContainsGeneric()
     {
-        var abc = new UserAgent("abc");
+        var abc    = new UserAgent("abc");
         var google = new UserAgent("Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)");
         Assert.False(abc.Contains(Crawler.Google));
         Assert.True(google.Contains(Crawler.Google));
@@ -109,7 +109,7 @@ public class UserAgentExtensionsTest
         var agent = new UserAgent("abc");
         Assert.False(agent.StartsWith(new[] { ((string)null!)! }));
         Assert.False(agent.StartsWith(new[] { "" }));
-        Assert.False(agent.StartsWith(new[] { ((string)null!)!, "" }));
+        Assert.False(agent.StartsWith(new[] { null!!, "" }));
         Assert.True(agent.StartsWith(new[] { "AB" }));
         Assert.True(agent.StartsWith(new[] { "AB", "ab" }));
         Assert.False(agent.StartsWith(new[] { "ABCD" }));
@@ -121,7 +121,7 @@ public class UserAgentExtensionsTest
         var agent = new UserAgent("abcdefg");
         Assert.False(agent.StartsWith(new[] { ((string)null!)! }, 4));
         Assert.False(agent.StartsWith(new[] { "" }, 4));
-        Assert.False(agent.StartsWith(new[] { ((string)null!)!, "" }, 4));
+        Assert.False(agent.StartsWith(new[] { null!!, "" }, 4));
         Assert.True(agent.StartsWith(new[] { "ABCD" }, 4));
         Assert.True(agent.StartsWith(new[] { "ABCD", "abcd" }, 4));
         Assert.True(agent.StartsWith(new[] { "ABCDEF" }, 4));
@@ -156,7 +156,7 @@ public class UserAgentExtensionsTest
     [Fact]
     public void Split()
     {
-        var two = new UserAgent("abc def");
+        var two   = new UserAgent("abc def");
         var three = new UserAgent("abc def abc");
         Assert.Equal(2, two.Split(' ').Length);
         Assert.Equal(3, three.Split(' ').Length);

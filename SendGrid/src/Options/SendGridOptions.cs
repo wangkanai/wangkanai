@@ -6,6 +6,6 @@ namespace Wangkanai.SendGrid.Options;
 
 public class SendGridOptions
 {
-    public string ApiKey { get; set; }
-    public EmailAddress From { get; set; }
+    public string       ApiKey { get; set; }
+    public EmailAddress From   { get; set; }
 }

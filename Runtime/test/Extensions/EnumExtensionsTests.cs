@@ -7,8 +7,8 @@ namespace Wangkanai.Extensions;
 [Flags]
 public enum EnumFlag
 {
-    Thailand = 0,
-    Japan = 1 << 0,
+    Thailand  = 0,
+    Japan     = 1 << 0,
     Singapore = 1 << 1,
     Australia = 1 << 2
 }
@@ -18,10 +18,10 @@ public class EnumExtensionsTests
     [Fact]
     public void GetFlag()
     {
-        var one = EnumFlag.Thailand;
-        var two = EnumFlag.Thailand | EnumFlag.Japan;
+        var one   = EnumFlag.Thailand;
+        var two   = EnumFlag.Thailand | EnumFlag.Japan;
         var three = EnumFlag.Thailand | EnumFlag.Japan | EnumFlag.Singapore;
-        var four = EnumFlag.Thailand | EnumFlag.Japan | EnumFlag.Singapore | EnumFlag.Australia;
+        var four  = EnumFlag.Thailand | EnumFlag.Japan | EnumFlag.Singapore | EnumFlag.Australia;
         Assert.Equal(1, one.GetFlags().Count());
         Assert.Equal(2, two.GetFlags().Count());
         Assert.Equal(3, three.GetFlags().Count());

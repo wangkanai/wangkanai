@@ -16,7 +16,7 @@ public class UserAgentTest
     [Fact]
     public void Ctor_String_Success()
     {
-        var name = "Agent";
+        var name      = "Agent";
         var userAgent = new UserAgent(name);
 
         Assert.Equal(name, userAgent.ToString());

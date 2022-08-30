@@ -6,7 +6,7 @@ namespace Wangkanai.Sign;
 
 internal static class Program
 {
-    static void Main(string[] args)
+    private static void Main(string[] args)
     {
         if (args.Length == 0)
         {
@@ -22,9 +22,9 @@ internal static class Program
         ShowBot(string.Join(' ', args));
     }
 
-    static void ShowBot(string message)
+    private static void ShowBot(string message)
     {
-        string bot = $"\n        {message}";
+        var bot = $"\n        {message}";
         bot += @"
     __________________
                       \

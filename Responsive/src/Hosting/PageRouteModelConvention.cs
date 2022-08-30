@@ -23,11 +23,11 @@ internal class ResponsivePageRouteModelConvention : IPageRouteModelConvention
         if (split.Length != 2)
             throw new InvalidOperationException($"Page '{model.RelativePath}' does not follow the required format.");
 
-        var areaName = model.AreaName;
-        var pageName = split[0];
+        var areaName   = model.AreaName;
+        var pageName   = split[0];
         var deviceName = split[1];
 
-        if (!Enum.TryParse<Device>(deviceName, ignoreCase: true, out var device))
+        if (!Enum.TryParse<Device>(deviceName, true, out var device))
             throw new InvalidOperationException($"Device name could not be parsed for page '{model.RelativePath}'.");
 
         // Since the page name has something like `.mobile` in it, the special cased rules for Index.cshtml
@@ -49,7 +49,7 @@ internal class ResponsivePageRouteModelConvention : IPageRouteModelConvention
         //
         // suffix = '/{id?}'
         var templateOld = selector.AttributeRouteModel.Template;
-        var suffix = templateOld.Substring(area.Length + prefix.Length + fileNameWithoutExtension.Length);
+        var suffix      = templateOld.Substring(area.Length + prefix.Length + fileNameWithoutExtension.Length);
 
         if (pageName.Equals("Index", StringComparison.OrdinalIgnoreCase))
         {

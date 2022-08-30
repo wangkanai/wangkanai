@@ -26,23 +26,23 @@ public class DeviceServiceBenchmark
         "Mozilla/5.0 (Linux; Android 10; SM-N960U) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.117 Mobile Safari/537.36",
         "Mozilla/5.0 (Linux; Android 10; LM-Q720) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.117 Mobile Safari/537.36",
         "Mozilla/5.0 (Linux; Android 10; LM-X420) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.117 Mobile Safari/537.36",
-        "Mozilla/5.0 (Linux; Android 10; LM-Q710(FGN)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.117 Mobile Safari/537.36",
+        "Mozilla/5.0 (Linux; Android 10; LM-Q710(FGN)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.117 Mobile Safari/537.36"
     };
 
     private static readonly HttpContextAccessor[] Accessors =
         RawUserAgents.Select(x => new HttpContextAccessor
-        {
-            HttpContext = new DefaultHttpContext
-            {
-                Request =
+                     {
+                         HttpContext = new DefaultHttpContext
+                         {
+                             Request =
                              {
                                  Headers =
                                  {
                                      ["User-Agent"] = x
                                  }
                              }
-            }
-        })
+                         }
+                     })
                      .ToArray();
 
     [Benchmark]
@@ -50,12 +50,12 @@ public class DeviceServiceBenchmark
     {
         foreach (var accessor in Accessors)
         {
-            var contextService = new HttpContextService(accessor);
+            var contextService   = new HttpContextService(accessor);
             var userAgentService = new UserAgentService(contextService);
-            var platformService = new PlatformService(userAgentService);
-            var engineService = new EngineService(userAgentService, platformService);
-            var browserService = new BrowserService(userAgentService, engineService);
-            var deviceService = new DeviceService(userAgentService);
+            var platformService  = new PlatformService(userAgentService);
+            var engineService    = new EngineService(userAgentService, platformService);
+            var browserService   = new BrowserService(userAgentService, engineService);
+            var deviceService    = new DeviceService(userAgentService);
             _ = browserService.Name;
             _ = browserService.Version;
             _ = deviceService.Type;

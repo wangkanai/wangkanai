@@ -11,7 +11,9 @@ public class MarkdownMiddleware
     private readonly RequestDelegate _next;
 
     public MarkdownMiddleware(RequestDelegate next)
-        => _next = Check.NotNull(next);
+    {
+        _next = Check.NotNull(next);
+    }
 
     public async Task InvokeAsync(HttpContext context)
     {

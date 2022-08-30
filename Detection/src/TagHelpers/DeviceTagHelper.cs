@@ -12,22 +12,24 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers;
 [HtmlTargetElement(ElementName, Attributes = ExcludeAttributeName)]
 public class DeviceTagHelper : TagHelper
 {
-    private const string ElementName = "device";
+    private const string ElementName          = "device";
     private const string IncludeAttributeName = "include";
     private const string ExcludeAttributeName = "exclude";
 
     private static readonly char[] NameSeparator = { ',' };
+
+    private readonly IDeviceService _resolver;
+
+    public DeviceTagHelper(IDeviceService resolver)
+    {
+        _resolver = resolver ?? throw new ArgumentNullException(nameof(resolver));
+    }
 
     [HtmlAttributeName(IncludeAttributeName)]
     public string? Include { get; set; }
 
     [HtmlAttributeName(ExcludeAttributeName)]
     public string? Exclude { get; set; }
-
-    private readonly IDeviceService _resolver;
-
-    public DeviceTagHelper(IDeviceService resolver)
-        => _resolver = resolver ?? throw new ArgumentNullException(nameof(resolver));
 
     public override void Process(TagHelperContext context, TagHelperOutput output)
     {

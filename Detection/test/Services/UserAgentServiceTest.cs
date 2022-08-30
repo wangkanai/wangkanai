@@ -9,11 +9,11 @@ public class UserAgentServiceTest
     [Fact]
     public void Ctor_IServiceProvider_Success()
     {
-        var agent = "Agent";
+        var agent   = "Agent";
         var context = new DefaultHttpContext();
         context.Request.Headers["User-Agent"] = agent;
 
-        var accessor = new HttpContextAccessor { HttpContext = context };
+        var accessor       = new HttpContextAccessor { HttpContext = context };
         var contextService = new HttpContextService(accessor);
 
         var useragentService = new UserAgentService(contextService);

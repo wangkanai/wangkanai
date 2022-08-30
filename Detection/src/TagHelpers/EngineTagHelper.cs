@@ -12,21 +12,23 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers;
 [HtmlTargetElement(ElementName, Attributes = ExcludeAttributeName)]
 public class EngineTagHelper : TagHelper
 {
-    private readonly IEngineService _resolver;
-    private const string ElementName = "engine";
+    private const string ElementName          = "engine";
     private const string IncludeAttributeName = "include";
     private const string ExcludeAttributeName = "exclude";
 
-    private static readonly char[] NameSeparator = { ',' };
+    private static readonly char[]         NameSeparator = { ',' };
+    private readonly        IEngineService _resolver;
+
+    public EngineTagHelper(IEngineService resolver)
+    {
+        _resolver = resolver ?? throw new ArgumentNullException(nameof(resolver));
+    }
 
     [HtmlAttributeName(IncludeAttributeName)]
     public string? Include { get; set; }
 
     [HtmlAttributeName(ExcludeAttributeName)]
     public string? Exclude { get; set; }
-
-    public EngineTagHelper(IEngineService resolver)
-        => _resolver = resolver ?? throw new ArgumentNullException(nameof(resolver));
 
     public override void Process(TagHelperContext context, TagHelperOutput output)
     {

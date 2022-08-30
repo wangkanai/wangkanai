@@ -5,5 +5,7 @@ namespace Wangkanai.Solver;
 public partial class Solver
 {
     public static Solver CreateSolver(SolverType type)
-        => new(type);
+    {
+        return new(type);
+    }
 }

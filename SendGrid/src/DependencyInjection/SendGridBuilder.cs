@@ -5,8 +5,10 @@ namespace Microsoft.Extensions.DependencyInjection;
 
 public class SendGridBuilder : ISendGridBuilder
 {
-    public IServiceCollection Services { get; }
-
     public SendGridBuilder(IServiceCollection services)
-        => Services = Check.NotNull(services);
+    {
+        Services = Check.NotNull(services);
+    }
+
+    public IServiceCollection Services { get; }
 }

@@ -6,8 +6,10 @@ namespace Wangkanai.Detection.Services;
 
 public class UserAgentService : IUserAgentService
 {
-    public UserAgent UserAgent { get; }
-
     public UserAgentService(IHttpContextService context)
-        => UserAgent = new UserAgent(context.Request.Headers["User-Agent"].FirstOrDefault() ?? "");
+    {
+        UserAgent = new UserAgent(context.Request.Headers["User-Agent"].FirstOrDefault() ?? "");
+    }
+
+    public UserAgent UserAgent { get; }
 }

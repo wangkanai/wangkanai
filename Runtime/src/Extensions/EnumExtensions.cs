@@ -7,20 +7,26 @@ namespace Wangkanai.Extensions;
 public static class EnumExtensions
 {
     public static string ToStringInvariant<T>(this T value) where T : Enum
-        => EnumValues<T>.GetName(value);
+    {
+        return EnumValues<T>.GetName(value);
+    }
 
     public static bool Contains<T>(this string agent, T flags) where T : Enum
-        => EnumValues<T>.TryGetSingleName(flags, out var value) && value != null
-               ? agent.Contains(value, StringComparison.Ordinal)
-               : flags.GetFlags()
-                      .Any(item => agent.Contains(ToStringInvariant(item), StringComparison.Ordinal));
+    {
+        return EnumValues<T>.TryGetSingleName(flags, out var value) && value != null
+                   ? agent.Contains(value, StringComparison.Ordinal)
+                   : flags.GetFlags()
+                          .Any(item => agent.Contains(ToStringInvariant(item), StringComparison.Ordinal));
+    }
 
     public static IEnumerable<T> GetFlags<T>(this T value) where T : Enum
-        => EnumValues<T>.GetValues().Where(item => value.HasFlag(item));
+    {
+        return EnumValues<T>.GetValues().Where(item => value.HasFlag(item));
+    }
 
     public static string GetDescription(this Enum generic)
     {
-        var type = generic.GetType();
+        var type   = generic.GetType();
         var member = type.GetMember(generic.ToString());
         if (member.Length <= 0)
             return generic.ToString();

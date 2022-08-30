@@ -5,7 +5,9 @@ namespace Microsoft.Extensions.DependencyInjection;
 public class MultiTenantBuilder : IMultiTenantBuilder
 {
     public MultiTenantBuilder(IServiceCollection services)
-        => Services = Check.NotNull(services);
+    {
+        Services = Check.NotNull(services);
+    }
 
     public IServiceCollection Services { get; }
 }

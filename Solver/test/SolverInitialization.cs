@@ -8,7 +8,7 @@ public class SolverInitialization
     public void ExpectedEquals()
     {
         // Arrange
-        Solver solver = Solver.CreateSolver(SolverType.Linear);
+        var solver = Solver.CreateSolver(SolverType.Linear);
         // Act
 
         // Assert

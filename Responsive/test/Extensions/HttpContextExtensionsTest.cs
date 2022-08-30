@@ -9,7 +9,6 @@ using Wangkanai.Responsive.Extensions;
 
 using Xunit;
 
-
 namespace Wangkanai.Responsive.Hosting;
 
 public class HttpContextExtensionsTest
@@ -17,7 +16,7 @@ public class HttpContextExtensionsTest
     [Fact]
     public void GetDevice_HttpContext_ReturnsExpected()
     {
-        var device = Device.Tablet;
+        var device  = Device.Tablet;
         var context = new DefaultHttpContext();
         context.SetDevice(device);
 

@@ -7,13 +7,15 @@ namespace Wangkanai.Detection.Extensions;
 public readonly struct IndexTree
 {
     private readonly IndexTree[]? _lookup;
-    private readonly int _offset;
+    private readonly int          _offset;
 
     private bool IsEnd => _lookup?.Length == 0;
 
     private static IEnumerable<(char Key, IGrouping<char, string> x)> KeywordsGroupBySeed(string[] keywords, int seed)
-        => keywords.GroupBy(k => k[seed])
-                   .Select(x => (x.Key, x));
+    {
+        return keywords.GroupBy(k => k[seed])
+                       .Select(x => (x.Key, x));
+    }
 
     public IndexTree(string[]? keywords, int seed = 0)
     {
@@ -37,7 +39,7 @@ public readonly struct IndexTree
         {
             var newKeys = list.ToArray();
             _lookup[key - lower] = newKeys.Any(k => seed + 1 >= k.Length)
-                                       ? new IndexTree(null, seed + 1)
+                                       ? new IndexTree(null, seed    + 1)
                                        : new IndexTree(newKeys, seed + 1);
         }
     }
@@ -49,7 +51,7 @@ public readonly struct IndexTree
             var source = searchSource;
 
             var current = this;
-            var found = true;
+            var found   = true;
 
             while (!current.IsEnd)
             {
@@ -61,7 +63,7 @@ public readonly struct IndexTree
                     break;
                 }
 
-                var c = source[0];
+                var c      = source[0];
                 var offset = current._offset;
 
                 if (c - offset < 0 || c - offset >= lookup.Length)
@@ -101,7 +103,7 @@ public readonly struct IndexTree
             if (source.Length == 0 || lookup == null)
                 return false;
 
-            var c = source[0];
+            var c      = source[0];
             var offset = current._offset;
 
             if (c - offset < 0 || c - offset >= lookup.Length)

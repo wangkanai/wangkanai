@@ -23,5 +23,7 @@ public static class FileInfoExtensions
     }
 
     private static bool IsExtension(this string name, string extension)
-        => name.EndsWith(extension, StringComparison.OrdinalIgnoreCase);
+    {
+        return name.EndsWith(extension, StringComparison.OrdinalIgnoreCase);
+    }
 }

@@ -7,7 +7,7 @@ namespace Wangkanai.Blazor;
 
 public class BaseMapper
 {
-    public List<Func<string>> Items = new List<Func<string>>();
+    public List<Func<string>> Items = new();
 }
 
 public static class BaseMapperExtensions

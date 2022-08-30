@@ -4,6 +4,6 @@ namespace Wangkanai.SendGrid.Services;
 
 public interface IRazorViewRenderService
 {
-    Task<string> ViewToHtmlAsync<T>(string viewName, T model);
+    Task<string> ViewToHtmlAsync<T>(string  viewName, T model);
     Task<string> ViewToPlainAsync<T>(string viewName, T model);
 }

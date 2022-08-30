@@ -9,7 +9,7 @@ using Wangkanai.Detection.Services;
 namespace Microsoft.Extensions.DependencyInjection;
 
 /// <summary>
-/// Contains extension method to <see cref="IServiceCollection"/> for configuring client services.
+///     Contains extension method to <see cref="IServiceCollection" /> for configuring client services.
 /// </summary>
 internal static class DetectionCoreBuilderExtensions
 {

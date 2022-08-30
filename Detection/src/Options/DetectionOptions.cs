@@ -3,12 +3,12 @@
 namespace Wangkanai.Detection;
 
 /// <summary>
-/// Provides programmatic configuration for the Detection library.
+///     Provides programmatic configuration for the Detection library.
 /// </summary>
 public class DetectionOptions
 {
     /// <summary>
-    /// Gets the default <see cref="CrawlerOptions"/> used by this application.
+    ///     Gets the default <see cref="CrawlerOptions" /> used by this application.
     /// </summary>
     public CrawlerOptions Crawler { get; } = new();
 }

@@ -8,14 +8,16 @@ namespace Microsoft.Extensions.DependencyInjection;
 public class AnalyticsBuilder : IAnalyticsBuilder
 {
     /// <summary>
-    /// Creates a new instance of <see cref="AnalyticsBuilder"/>
+    ///     Creates a new instance of <see cref="AnalyticsBuilder" />
     /// </summary>
-    /// <param name="services">The <see cref="IServiceCollection"/> to attach to.</param>
+    /// <param name="services">The <see cref="IServiceCollection" /> to attach to.</param>
     public AnalyticsBuilder(IServiceCollection services)
-        => Services = Check.NotNull(services);
+    {
+        Services = Check.NotNull(services);
+    }
 
     /// <summary>
-    /// Gets the <see cref="IServiceCollection"/> services are attached to.
+    ///     Gets the <see cref="IServiceCollection" /> services are attached to.
     /// </summary>
     public IServiceCollection Services { get; }
 }

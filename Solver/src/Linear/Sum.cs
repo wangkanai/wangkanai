@@ -9,15 +9,19 @@ public class Sum : LinearExpression
 
     public Sum(LinearExpression left, LinearExpression right)
     {
-        _left = left;
+        _left  = left;
         _right = right;
     }
 
     public override string ToString()
-        => $"({_left}) + ({_right})";
+    {
+        return $"({_left}) + ({_right})";
+    }
 
     public override double DoVisit(Dictionary<Variable, double> coefficients, double multiplier)
-        => multiplier != 0.0
-               ? _left.DoVisit(coefficients, multiplier) + _right.DoVisit(coefficients, multiplier)
-               : 0.0;
+    {
+        return multiplier != 0.0
+                   ? _left.DoVisit(coefficients, multiplier) + _right.DoVisit(coefficients, multiplier)
+                   : 0.0;
+    }
 }

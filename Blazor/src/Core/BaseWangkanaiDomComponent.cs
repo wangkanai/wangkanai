@@ -10,6 +10,12 @@ namespace Wangkanai.Blazor;
 
 public class BaseWangkanaiDomComponent : BaseWangkanaiComponent
 {
+    public BaseWangkanaiDomComponent()
+    {
+        ClassMapper.Get(() => Class);
+        StyleMapper.Get(() => Style);
+    }
+
     [Parameter]
     public string Id { get; set; } = IdGeneratorHelper.Generate("blazor_id_");
 
@@ -24,10 +30,4 @@ public class BaseWangkanaiDomComponent : BaseWangkanaiComponent
 
     protected ClassMapper ClassMapper { get; } = new();
     protected StyleMapper StyleMapper { get; } = new();
-
-    public BaseWangkanaiDomComponent()
-    {
-        ClassMapper.Get(() => Class);
-        StyleMapper.Get(() => Style);
-    }
 }

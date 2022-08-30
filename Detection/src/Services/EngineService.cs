@@ -7,22 +7,23 @@ namespace Wangkanai.Detection.Services;
 
 public class EngineService : IEngineService
 {
+    private readonly IPlatformService  _platformService;
     private readonly IUserAgentService _userAgentService;
-    private readonly IPlatformService _platformService;
+
+    private Engine? _name;
 
     public EngineService(IUserAgentService userAgentService, IPlatformService platformService)
     {
         _userAgentService = userAgentService;
-        _platformService = platformService;
+        _platformService  = platformService;
     }
 
-    private Engine? _name;
     public Engine Name => _name ??= GetEngine();
 
     private Engine GetEngine()
     {
         var agent = _userAgentService.UserAgent.ToLower();
-        var os = _platformService.Name;
+        var os    = _platformService.Name;
 
         if (string.IsNullOrEmpty(agent))
             return Engine.Unknown;
@@ -42,10 +43,14 @@ public class EngineService : IEngineService
     }
 
     private static bool IsBlink(string agent)
-        => agent.Contains(Browser.Chrome)
-           && agent.Contains(Engine.WebKit);
+    {
+        return agent.Contains(Browser.Chrome)
+               && agent.Contains(Engine.WebKit);
+    }
 
     private static bool IsEdge(string agent, Platform os)
-        => agent.Contains(Engine.Edge) || agent.Contains("edg", StringComparison.Ordinal)
-           && (Platform.Windows).HasFlag(os);
+    {
+        return agent.Contains(Engine.Edge) || agent.Contains("edg", StringComparison.Ordinal)
+               && Platform.Windows.HasFlag(os);
+    }
 }
