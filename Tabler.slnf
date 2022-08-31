@@ -2,6 +2,7 @@
   "solution": {
     "path": "Wangkanai.sln",
     "projects": [
+      "Blazor\\src\\Wangkanai.Blazor.csproj",
       "Runtime\\src\\Wangkanai.Runtime.csproj",
       "Tabler\\demo\\Client\\Wangkanai.Tabler.Demo.Client.csproj",
       "Tabler\\demo\\Server\\Wangkanai.Tabler.Demo.Server.csproj",
