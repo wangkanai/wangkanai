@@ -5,11 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <FrameworkReference Include="Microsoft.AspNetCore.App"/>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="HtmlAgilityPack" Version="1.11.43"/>
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.45" />
   </ItemGroup>
 
 </Project>
