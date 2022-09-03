@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\Wangkanai.Tabler.csproj" />
+    <ProjectReference Include="..\src\Wangkanai.Tabler.csproj"/>
   </ItemGroup>
 
 </Project>
