@@ -8,17 +8,13 @@
   <ItemGroup>
     <SupportedPlatform Include="browser" />
   </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.8" />
-  </ItemGroup>
-
+  
   <ItemGroup>
     <Content Remove="wwwroot\dist\**" />
     <Content Include="wwwroot\dist\**" Watch="false" />
 
     <Content Remove="wwwroot\lib\**" />
-    <None Include="wwwroot\lib\**" Watch="false" />
+    <Content Include="wwwroot\lib\**" Watch="false" />
   </ItemGroup>
 
   <ItemGroup>
@@ -39,7 +35,7 @@
     <Touch Files="node_modules/.install-stamp" AlwaysCreate="true" />
   </Target>
   <Target Name="NpmRunBuild" DependsOnTargets="NpmInstall" BeforeTargets="BeforeBuild">
-    <Exec Command="npm run build" Condition="$(Configuration) != 'DEBUG'" />
+    <Exec Command="npm run build"  />
   </Target>
 
 </Project>
