@@ -5,18 +5,18 @@ using System.Threading.Tasks;
 
 namespace Microsoft.AspNetCore.Components.Web;
 
-public class HtmlOutlet : IComponent, IDisposable
+public class SectionOutlet : IComponent, IDisposable
 {
     private static RenderFragment         EmptyRenderFragment = builder => { };
     private        string                 _subscribledName;
-    private        HtmlRegistry           _registry = default!;
+    private        SectionRegistry           _registry = default!;
     private        Action<RenderFragment> _onChangeCallback;
 
 
     public void Attach(RenderHandle renderHandle)
     {
         _onChangeCallback = content => renderHandle.Render(content ?? EmptyRenderFragment);
-        _registry         = HtmlRegistry.GetRegistry(renderHandle);
+        _registry         = SectionRegistry.GetRegistry(renderHandle);
     }
 
     public Task SetParametersAsync(ParameterView parameters)

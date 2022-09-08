@@ -13,9 +13,9 @@ public sealed class BodyContent : ComponentBase
 
     protected override void BuildRenderTree(RenderTreeBuilder builder)
     {
-        builder.OpenComponent<HtmlContent>(0);
-        builder.AddAttribute(1, nameof(HtmlContent.Name), BodyOutlet.CssClassOutletName);
-        builder.AddAttribute(2, nameof(HtmlContent.ChildContent), ChildContent);
+        builder.OpenComponent<SectionContent>(0);
+        builder.AddAttribute(1, nameof(SectionContent.Name), BodyOutlet.CssClassOutletName);
+        builder.AddAttribute(2, nameof(SectionContent.ChildContent), ChildContent);
         builder.CloseComponent();
     }
 }

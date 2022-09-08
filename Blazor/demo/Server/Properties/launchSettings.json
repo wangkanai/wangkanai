@@ -1,6 +1,6 @@
 {
     "profiles": {
-        "project tabler": {
+        "project blazor": {
             "commandName": "Project",
             "workingDirectory": "$(ProjectDir)",
             "hotReloadProfile": "blazorwasm",

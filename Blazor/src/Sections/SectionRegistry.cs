@@ -6,12 +6,12 @@ using System.Runtime.CompilerServices;
 
 namespace Microsoft.AspNetCore.Components.Web;
 
-internal sealed class HtmlRegistry
+internal sealed class SectionRegistry
 {
-    private static ConditionalWeakTable<Dispatcher, HtmlRegistry>   _registries    = new();
+    private static ConditionalWeakTable<Dispatcher, SectionRegistry>   _registries    = new();
     private        Dictionary<string, List<Action<RenderFragment>>> _subscriptions = new();
 
-    public static HtmlRegistry GetRegistry(RenderHandle renderHandle)
+    public static SectionRegistry GetRegistry(RenderHandle renderHandle)
         => _registries.GetOrCreateValue(renderHandle.Dispatcher);
     
     public void Subscribe(string name, Action<RenderFragment> callback)

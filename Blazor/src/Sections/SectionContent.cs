@@ -5,18 +5,18 @@ using System.Threading.Tasks;
 
 namespace Microsoft.AspNetCore.Components.Web;
 
-internal class HtmlContent : IHtmlContentProvider, IComponent, IDisposable
+internal class SectionContent : ISectionContentProvider, IComponent, IDisposable
 {
-    private HtmlRegistry _registry = default!;
+    private SectionRegistry _registry = default!;
 
     [Parameter] public string         Name         { get; set; } = default!;
     [Parameter] public RenderFragment ChildContent { get; set; } = default!;
 
-    RenderFragment IHtmlContentProvider.Content => ChildContent;
+    RenderFragment ISectionContentProvider.Content => ChildContent;
 
     public void Attach(RenderHandle renderHandle)
     {
-        _registry = HtmlRegistry.GetRegistry(renderHandle);
+        _registry = SectionRegistry.GetRegistry(renderHandle);
     }
 
     public Task SetParametersAsync(ParameterView parameters)

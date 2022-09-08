@@ -2,7 +2,7 @@
 
 namespace Microsoft.AspNetCore.Components.Web;
 
-internal interface IHtmlContentProvider
+internal interface ISectionContentSubscriber
 {
-    RenderFragment? Content { get; }
+    void ContentChanged(RenderFragment? content);
 }

@@ -18,8 +18,8 @@ public class BodyClass : ComponentBase
     protected override void BuildRenderTree(RenderTreeBuilder builder)
     {
         Logger.LogWarning("Start BodyClass build render tree");
-        builder.OpenComponent<HtmlContent>(0);
-        builder.AddAttribute(1, nameof(HtmlContent.Name), BodyOutlet.BodySectionOutletName);
+        builder.OpenComponent<SectionContent>(0);
+        builder.AddAttribute(1, nameof(SectionContent.Name), BodyOutlet.BodySectionOutletName);
         //builder.AddAttribute(2, BodyOutlet.CssClassOutletName, Add);
         //builder.AddAttribute(3, nameof(BodyContent.ChildContent), ChildContent);
         builder.CloseComponent();
