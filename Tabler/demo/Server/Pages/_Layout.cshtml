@@ -21,14 +21,16 @@
     <component type="typeof(HeadOutlet)" render-mode="WebAssemblyPrerendered"/>
 </head>
 <body class="theme-dark">
+<div id="app">
     @RenderBody()
-    <div id="blazor-error-ui">
-        An unhandled error has occurred.
-        <a class="reload" href="">Reload</a>
-        <a class="dismiss">🗙</a>
-    </div>
-    <script src="_content/Wangkanai.Tabler/body-class-changer.js"></script>
-    <script src="_framework/blazor.webassembly.js"></script>
-    <script>navigator.serviceWorker.register('service-worker.js');</script>
+</div>
+<div id="blazor-error-ui">
+    An unhandled error has occurred.
+    <a class="reload" href="">Reload</a>
+    <a class="dismiss">🗙</a>
+</div>
+<script src="_content/Wangkanai.Tabler/body-class-changer.js"></script>
+<script src="_framework/blazor.webassembly.js"></script>
+<script>navigator.serviceWorker.register('service-worker.js');</script>
 </body>
 </html>

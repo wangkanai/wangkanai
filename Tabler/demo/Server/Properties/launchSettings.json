@@ -1,6 +1,6 @@
 {
     "profiles": {
-        "Tabler Server": {
+        "project server": {
             "commandName": "Project",
             "workingDirectory": "$(ProjectDir)",
             "hotReloadProfile": "blazorwasm",
