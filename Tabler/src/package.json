@@ -5,6 +5,7 @@
     "author": "Sarin Na Wangkanai",
     "license": "MIT",
     "scripts": {
+        "dev": "npm-run-all clean-dist scss dist-tabler",
         "build": "npm-run-all clean lib dist",
         "clean": "npm-run-all --parallel clean-*",
         "clean-dist": "rimraf wwwroot/dist/",
