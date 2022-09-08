@@ -1,10 +1,10 @@
 ## Wangkanai Tabler
 
-This project is blazor wrapper for the Tabler CSS framework
+Wangkanai Tabler extend the Tabler CSS framework to Blazor.  The Tabler CSS framework is a free and open-source HTML, CSS, and JS framework for developing responsive, mobile-first, and desktop-first projects on the web
 
-### Roadmap
+### Preview
 
-- [ ] 
+Wangkanai Tabler might be difficult to explain, so just [look at the demo](https://tabler.wangkanai.com/) and [see the code](https://github.com/wangkanai/wangkanai/tree/main/Tabler/demo) for yourself.
 
 **Please show me some love and click the** :star:
 

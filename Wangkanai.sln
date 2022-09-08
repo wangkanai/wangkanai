@@ -64,7 +64,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Designs", "Designs", "{9967
 		asset\wangkanai-logo.svg = asset\wangkanai-logo.svg
 		asset\wangkanai-social.svg = asset\wangkanai-social.svg
 		Asset\jetbrains-rider.svg = Asset\jetbrains-rider.svg
-		Asset\nuget_button_icon.svg = Asset\nuget_button_icon.svg
+		Asset\wangkanai-badge-nuget.svg = Asset\wangkanai-badge-nuget.svg
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Blazor", "Blazor", "{9D20D5E6-879B-463C-964A-3DA13FFAE9E3}"
@@ -272,6 +272,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Tabler.Tests", "Tabler\test\Wangkanai.Tabler.Tests.csproj", "{3BC55F8B-971B-4611-B012-CDABA944BE96}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "demo", "demo", "{F9E4EBB0-2D50-459A-B2DF-48068FBF7DDF}"
+	ProjectSection(SolutionItems) = preProject
+		Tabler\demo\README.md = Tabler\demo\README.md
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Tabler.Demo.Shared", "Tabler\demo\Shared\Wangkanai.Tabler.Demo.Shared.csproj", "{EDDE8BF3-B18E-48D5-8B63-681386BC1AFA}"
 EndProject
