@@ -3,7 +3,7 @@
 </p>
 
 [![NuGet](https://raw.githubusercontent.com/wangkanai/wangkanai/main/Asset/wangkanai-badge-nuget.svg?sanitize=true)](https://www.nuget.org/profiles/wangkanai)
-[![Build Status](https://dev.azure.com/wangkanai/GitHub/_apis/build/status/wangkanai?branchName=main)](https://dev.azure.com/wangkanai/GitHub/_build/latest?definitionId=20&branchName=main)
+[![Build status](https://dev.azure.com/wangkanai/GitHub/_apis/build/status/wangkanai)](https://dev.azure.com/wangkanai/GitHub/_build/latest?definitionId=22)
 [![Open Collective](https://img.shields.io/badge/open%20collective-support%20me-3385FF.svg)](https://opencollective.com/wangkanai)
 [![Patreon](https://img.shields.io/badge/patreon-support%20me-d9643a.svg)](https://www.patreon.com/wangkanai)
 [![GitHub](https://img.shields.io/github/license/wangkanai/detection)](https://github.com/wangkanai/Detection/blob/dev/LICENSE)
