@@ -284,6 +284,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Tabler.Demo.Server", "Tabler\demo\Server\Wangkanai.Tabler.Demo.Server.csproj", "{10401268-943D-4A62-9FDB-E1F944EBB40D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "demo", "demo", "{39B164DD-4B67-4527-94FE-EB2E0C9B36B6}"
+	ProjectSection(SolutionItems) = preProject
+		Blazor\demo\README.md = Blazor\demo\README.md
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Blazor.Demo.Shared", "Blazor\demo\Shared\Wangkanai.Blazor.Demo.Shared.csproj", "{FCDD5A0B-1F94-43E7-8353-EFC77F6B3289}"
 EndProject
