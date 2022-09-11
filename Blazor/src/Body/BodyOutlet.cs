@@ -4,5 +4,6 @@ namespace Microsoft.AspNetCore.Components.Web;
 
 public sealed class BodyOutlet : ComponentBase
 {
-    internal const string CssClassOutletName = "class";
+    internal const string BodySectionOutletName = "body";
+    internal const string CssClassOutletName    = "class";
 }

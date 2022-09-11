@@ -1,6 +1,6 @@
 <Project>
     <PropertyGroup>
-        <VersionPrefix>0.0.200</VersionPrefix>
+        <VersionPrefix>0.0.300</VersionPrefix>
 
         <Title>Wangkanai SendGrid</Title>
         <PackageTags>aspnetcore;sendgrid;smtp;email;</PackageTags>

@@ -1,7 +1,5 @@
 ﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Sections;
 using Microsoft.AspNetCore.Components.Rendering;
 
 namespace Microsoft.AspNetCore.Components.Web;
@@ -15,9 +13,9 @@ public sealed class BodyContent : ComponentBase
 
     protected override void BuildRenderTree(RenderTreeBuilder builder)
     {
-        builder.OpenComponent<HtmlContent>(0);
-        builder.AddAttribute(1, nameof(HtmlContent.Name), BodyOutlet.CssClassOutletName);
-        builder.AddAttribute(2, nameof(HtmlContent.ChildContent), ChildContent);
+        builder.OpenComponent<SectionContent>(0);
+        builder.AddAttribute(1, nameof(SectionContent.Name), BodyOutlet.CssClassOutletName);
+        builder.AddAttribute(2, nameof(SectionContent.ChildContent), ChildContent);
         builder.CloseComponent();
     }
 }

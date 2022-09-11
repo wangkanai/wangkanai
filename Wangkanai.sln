@@ -65,6 +65,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Designs", "Designs", "{9967
 		asset\wangkanai-social.svg = asset\wangkanai-social.svg
 		Asset\jetbrains-rider.svg = Asset\jetbrains-rider.svg
 		Asset\wangkanai-badge-nuget.svg = Asset\wangkanai-badge-nuget.svg
+		Asset\blazor-logo.svg = Asset\blazor-logo.svg
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Blazor", "Blazor", "{9D20D5E6-879B-463C-964A-3DA13FFAE9E3}"
@@ -282,6 +283,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Tabler.Demo.Clien
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Tabler.Demo.Server", "Tabler\demo\Server\Wangkanai.Tabler.Demo.Server.csproj", "{10401268-943D-4A62-9FDB-E1F944EBB40D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "demo", "demo", "{39B164DD-4B67-4527-94FE-EB2E0C9B36B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Blazor.Demo.Shared", "Blazor\demo\Shared\Wangkanai.Blazor.Demo.Shared.csproj", "{FCDD5A0B-1F94-43E7-8353-EFC77F6B3289}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Blazor.Demo.Client", "Blazor\demo\Client\Wangkanai.Blazor.Demo.Client.csproj", "{E1D8712E-7A70-41DE-98B3-447A735E8BAE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Blazor.Demo.Server", "Blazor\demo\Server\Wangkanai.Blazor.Demo.Server.csproj", "{12FFC597-94AE-43E2-AF6E-CC0578E0F0D6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -467,6 +476,18 @@ Global
 		{10401268-943D-4A62-9FDB-E1F944EBB40D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10401268-943D-4A62-9FDB-E1F944EBB40D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10401268-943D-4A62-9FDB-E1F944EBB40D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCDD5A0B-1F94-43E7-8353-EFC77F6B3289}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCDD5A0B-1F94-43E7-8353-EFC77F6B3289}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCDD5A0B-1F94-43E7-8353-EFC77F6B3289}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCDD5A0B-1F94-43E7-8353-EFC77F6B3289}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1D8712E-7A70-41DE-98B3-447A735E8BAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1D8712E-7A70-41DE-98B3-447A735E8BAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1D8712E-7A70-41DE-98B3-447A735E8BAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1D8712E-7A70-41DE-98B3-447A735E8BAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12FFC597-94AE-43E2-AF6E-CC0578E0F0D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12FFC597-94AE-43E2-AF6E-CC0578E0F0D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12FFC597-94AE-43E2-AF6E-CC0578E0F0D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12FFC597-94AE-43E2-AF6E-CC0578E0F0D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -525,6 +546,10 @@ Global
 		{EDDE8BF3-B18E-48D5-8B63-681386BC1AFA} = {F9E4EBB0-2D50-459A-B2DF-48068FBF7DDF}
 		{6CFED18C-1869-4076-B0A0-91FDBC192746} = {F9E4EBB0-2D50-459A-B2DF-48068FBF7DDF}
 		{10401268-943D-4A62-9FDB-E1F944EBB40D} = {F9E4EBB0-2D50-459A-B2DF-48068FBF7DDF}
+		{39B164DD-4B67-4527-94FE-EB2E0C9B36B6} = {9D20D5E6-879B-463C-964A-3DA13FFAE9E3}
+		{FCDD5A0B-1F94-43E7-8353-EFC77F6B3289} = {39B164DD-4B67-4527-94FE-EB2E0C9B36B6}
+		{E1D8712E-7A70-41DE-98B3-447A735E8BAE} = {39B164DD-4B67-4527-94FE-EB2E0C9B36B6}
+		{12FFC597-94AE-43E2-AF6E-CC0578E0F0D6} = {39B164DD-4B67-4527-94FE-EB2E0C9B36B6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1BA0A192-D7BE-40A1-96AE-B3C8C6BC9B69}
