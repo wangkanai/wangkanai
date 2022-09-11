@@ -65,6 +65,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Designs", "Designs", "{9967
 		asset\wangkanai-social.svg = asset\wangkanai-social.svg
 		Asset\jetbrains-rider.svg = Asset\jetbrains-rider.svg
 		Asset\wangkanai-badge-nuget.svg = Asset\wangkanai-badge-nuget.svg
+		Asset\blazor-logo.svg = Asset\blazor-logo.svg
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Blazor", "Blazor", "{9D20D5E6-879B-463C-964A-3DA13FFAE9E3}"
