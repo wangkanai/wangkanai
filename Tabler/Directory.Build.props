@@ -1,6 +1,6 @@
 <Project>
     <PropertyGroup>
-        <VersionPrefix>0.1.0</VersionPrefix>
+        <VersionPrefix>0.1.1</VersionPrefix>
 
         <Title>Wangkanai Tabler</Title>
         <PackageTags>aspnetcore;blazor;tabler;</PackageTags>
@@ -21,9 +21,14 @@
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
         <IncludeSymbols>true</IncludeSymbols>
+        <DeterministicSourcePaths>true</DeterministicSourcePaths>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
     </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All"/>
+    </ItemGroup>
 
     <PropertyGroup Condition="$(MSBuildProjectName.Contains('Demo')) == 'False'">
         <PackageIcon>wangkanai-logo.png</PackageIcon>
