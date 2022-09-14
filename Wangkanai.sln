@@ -13,6 +13,24 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".solutions", ".solutions", 
 		Directory.Build.props = Directory.Build.props
 		azure-pipelines.yml = azure-pipelines.yml
 		.gitattributes = .gitattributes
+		sign-analytics.ps1 = sign-analytics.ps1
+		sign-blazor.ps1 = sign-blazor.ps1
+		sign-detection.ps1 = sign-detection.ps1
+		sign-graph.ps1 = sign-graph.ps1
+		sign-hosting.ps1 = sign-hosting.ps1
+		sign-html.ps1 = sign-html.ps1
+		sign-markdown.ps1 = sign-markdown.ps1
+		sign-multitenant.ps1 = sign-multitenant.ps1
+		sign-responsive.ps1 = sign-responsive.ps1
+		sign-runtime.ps1 = sign-runtime.ps1
+		sign-sendgrid.ps1 = sign-sendgrid.ps1
+		sign-sign.ps1 = sign-sign.ps1
+		sign-solver.ps1 = sign-solver.ps1
+		sign-tabler.ps1 = sign-tabler.ps1
+		sign-universal.ps1 = sign-universal.ps1
+		sign-validation.ps1 = sign-validation.ps1
+		sign-webmaster.ps1 = sign-webmaster.ps1
+		sign-webserver.ps1 = sign-webserver.ps1
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{C26D86D6-4B4E-407E-9F1D-9CA1765768CE}"
@@ -207,28 +225,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Sign", "Sign\src\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Sign.Tests", "Sign\test\Wangkanai.Sign.Tests.csproj", "{EFB53700-7E50-4F83-AD2F-8A96BC37C127}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PowerShell", "PowerShell", "{1E913900-0D96-47F8-B513-58D8CAC3F85F}"
-	ProjectSection(SolutionItems) = preProject
-		sign-analytics.ps1 = sign-analytics.ps1
-		sign-blazor.ps1 = sign-blazor.ps1
-		sign-detection.ps1 = sign-detection.ps1
-		sign-hosting.ps1 = sign-hosting.ps1
-		sign-markdown.ps1 = sign-markdown.ps1
-		sign-multitenant.ps1 = sign-multitenant.ps1
-		sign-responsive.ps1 = sign-responsive.ps1
-		sign-runtime.ps1 = sign-runtime.ps1
-		sign-sendgrid.ps1 = sign-sendgrid.ps1
-		sign-sign.ps1 = sign-sign.ps1
-		sign-solver.ps1 = sign-solver.ps1
-		sign-universal.ps1 = sign-universal.ps1
-		sign-validation.ps1 = sign-validation.ps1
-		sign-webmaster.ps1 = sign-webmaster.ps1
-		sign-webserver.ps1 = sign-webserver.ps1
-		sign-html.ps1 = sign-html.ps1
-		sign-graph.ps1 = sign-graph.ps1
-		sign-tabler.ps1 = sign-tabler.ps1
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".config", ".config", "{53EE3363-603E-430E-8DA6-906C47D1FD96}"
 	ProjectSection(SolutionItems) = preProject
 		.config\keypair.snk = .config\keypair.snk
@@ -284,6 +280,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Tabler.Demo.Server", "Tabler\demo\Server\Wangkanai.Tabler.Demo.Server.csproj", "{10401268-943D-4A62-9FDB-E1F944EBB40D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "demo", "demo", "{39B164DD-4B67-4527-94FE-EB2E0C9B36B6}"
+	ProjectSection(SolutionItems) = preProject
+		Blazor\demo\README.md = Blazor\demo\README.md
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Blazor.Demo.Shared", "Blazor\demo\Shared\Wangkanai.Blazor.Demo.Shared.csproj", "{FCDD5A0B-1F94-43E7-8353-EFC77F6B3289}"
 EndProject
@@ -535,7 +534,6 @@ Global
 		{9C0A9184-AB79-4958-8E6C-B6D8617F1013} = {A4B29686-4663-40D8-8521-3472956C9BDB}
 		{C0332A9E-6F9E-4E68-A3F9-AC118C8C9529} = {E21D6041-95C4-4CF8-AA7F-1CCB250A09F8}
 		{EFB53700-7E50-4F83-AD2F-8A96BC37C127} = {E21D6041-95C4-4CF8-AA7F-1CCB250A09F8}
-		{1E913900-0D96-47F8-B513-58D8CAC3F85F} = {E21D6041-95C4-4CF8-AA7F-1CCB250A09F8}
 		{ACB595A2-ED23-4BC6-AC63-200008718B18} = {DFCE57F8-CA4D-4F85-A14D-F15173B8CC42}
 		{4D5A3568-7A57-4D93-9C31-502B164A7CE3} = {DFCE57F8-CA4D-4F85-A14D-F15173B8CC42}
 		{4C8804C0-9406-443D-A5CD-10604DD265D2} = {49CEF064-6C6A-40E0-9EC6-05D62D127DFD}

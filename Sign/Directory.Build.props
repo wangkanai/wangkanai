@@ -1,6 +1,6 @@
 <Project>
     <PropertyGroup>
-        <VersionPrefix>0.0.200</VersionPrefix>
+        <VersionPrefix>0.1.0</VersionPrefix>
 
         <Title>Wangkanai Sign Tool</Title>
         <PackageTags>aspnetcore;nuget;sign;tool;</PackageTags>

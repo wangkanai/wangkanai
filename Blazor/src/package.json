@@ -4,7 +4,11 @@
     "description": "Wangkanai Blazor Components Library",
     "author": "RiverSync",
     "license": "MIT",
-    "scripts": {},
-    "dependencies": {},
-    "devDependencies": {}
+    "scripts": {
+        "dev": "echo \"Error: no dev specified\" && exit 0",
+        "build": "echo \"Error: no build specified\" && exit 0"
+    },
+    "devDependencies": {
+        "sass": "^1.54.9"
+    }
 }

@@ -1,12 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFrameworks>net5.0;net6.0;netcoreapp3.1</TargetFrameworks>
+    <LangVersion>10</LangVersion>
     <Nullable>enable</Nullable>
+    <GenerateErrorForMissingTargetingPacks>false</GenerateErrorForMissingTargetingPacks>
   </PropertyGroup>
 
   <ItemGroup>
-    <FrameworkReference Include="Microsoft.AspNetCore.App"/>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 
 </Project>

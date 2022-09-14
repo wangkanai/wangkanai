@@ -1,6 +1,6 @@
 <Project>
     <PropertyGroup>
-        <VersionPrefix>0.1.300</VersionPrefix>
+        <VersionPrefix>0.2.1</VersionPrefix>
 
         <Title>Wangkanai Solver</Title>
         <PackageTags>aspnetcore;solver;optimization;simludation;scheduling;</PackageTags>
@@ -21,6 +21,7 @@
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
         <IncludeSymbols>true</IncludeSymbols>
+        <DeterministicSourcePaths>true</DeterministicSourcePaths>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
     </PropertyGroup>
