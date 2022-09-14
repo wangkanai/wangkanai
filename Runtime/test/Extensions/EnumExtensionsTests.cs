@@ -22,7 +22,7 @@ public class EnumExtensionsTests
         var two   = EnumFlag.Thailand | EnumFlag.Japan;
         var three = EnumFlag.Thailand | EnumFlag.Japan | EnumFlag.Singapore;
         var four  = EnumFlag.Thailand | EnumFlag.Japan | EnumFlag.Singapore | EnumFlag.Australia;
-        Assert.Equal(1, one.GetFlags().Count());
+        Assert.Single(one.GetFlags());
         Assert.Equal(2, two.GetFlags().Count());
         Assert.Equal(3, three.GetFlags().Count());
         Assert.Equal(4, four.GetFlags().Count());
