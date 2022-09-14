@@ -263,3 +263,4 @@ paket-files/
 **/wwwroot/dist/
 **/package-lock.json
 *.DotSettings
+msbuild.binlog
