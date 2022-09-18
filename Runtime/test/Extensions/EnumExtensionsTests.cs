@@ -38,16 +38,17 @@ public class EnumExtensionsTests
     [Fact]
     public void EnumItemDescription()
     {
-        var thailand = Country.Thailand;
-        Assert.Equal("Thailand", thailand.GetDescription());
+        var thailand = Country.Thailand.GetDescription();
+        Assert.Equal("ประเทศไทย", thailand);
+        Assert.NotEqual("Thailand", thailand);
     }
-    
 }
 
 [Flags]
 public enum Country
 {
-    Thailand  = 0,
+    [Description("ประเทศไทย")]
+    Thailand = 0,
     Japan     = 1 << 0,
     Singapore = 1 << 1,
     Australia = 1 << 2

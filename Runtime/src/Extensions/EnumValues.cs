@@ -2,6 +2,13 @@
 
 namespace Wangkanai.Extensions;
 
+public static class EnumValues
+{
+    public static T[] GetValues<T>(this T value)
+        where T : Enum
+        => Enum.GetValues(typeof(T)).Cast<T>().ToArray();
+}
+
 public static class EnumValues<T> where T : Enum
 {
     private static readonly Dictionary<T, string> Names = new();

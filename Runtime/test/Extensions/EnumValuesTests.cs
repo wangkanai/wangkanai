@@ -19,6 +19,12 @@ public class EnumValuesTests
         var values = EnumValues<Fruit>.GetValues();
         Assert.Equal(4, values.Length);
     }
+
+    [Fact]
+    public void GetValesGeneric()
+    {
+        Fruit.Apple.GetValues();
+    }
 }
 
 [Flags]
