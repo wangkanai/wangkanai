@@ -8,47 +8,35 @@ namespace Wangkanai.Cryptography;
 public static class Hash
 {
     public static string HashMd5([NotNull] this string value)
-    {
-        return MD5.Create()
-                  .ComputeHash(value.GetAsciiBytes())
-                  .HashDataToString();
-    }
+        => MD5.Create()
+              .ComputeHash(value.GetAsciiBytes())
+              .HashDataToString();
 
     public static string HashSha512([NotNull] this string value)
-    {
-        return SHA512.Create()
-                     .ComputeHash(value.GetAsciiBytes())
-                     .HashDataToString();
-    }
+        => SHA512.Create()
+                 .ComputeHash(value.GetAsciiBytes())
+                 .HashDataToString();
 
     public static string HashSha384([NotNull] this string value)
-    {
-        return SHA384.Create()
-                     .ComputeHash(value.GetAsciiBytes())
-                     .HashDataToString();
-    }
+        => SHA384.Create()
+                 .ComputeHash(value.GetAsciiBytes())
+                 .HashDataToString();
 
     public static string HashSha256([NotNull] this string value)
-    {
-        return SHA256.Create()
-                     .ComputeHash(value.GetAsciiBytes())
-                     .HashDataToString();
-    }
+        => SHA256.Create()
+                 .ComputeHash(value.GetAsciiBytes())
+                 .HashDataToString();
 
     [Obsolete]
     public static string HashSha1([NotNull] this string value)
-    {
-        return SHA1.Create()
-                   .ComputeHash(value.GetAsciiBytes())
-                   .HashDataToString();
-    }
+        => SHA1.Create()
+               .ComputeHash(value.GetAsciiBytes())
+               .HashDataToString();
 
     #region Internal
 
-    private static byte[] GetAsciiBytes([NotNull] this string value)
-    {
-        return Encoding.ASCII.GetBytes(value);
-    }
+    private static byte[] GetAsciiBytes([NotNull] this string value) 
+        => Encoding.ASCII.GetBytes(value);
 
     private static string HashDataToString([NotNull] this byte[] data)
     {

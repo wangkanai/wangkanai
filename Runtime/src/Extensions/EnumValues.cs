@@ -15,25 +15,16 @@ public static class EnumValues<T> where T : Enum
     }
 
     public static T[] GetValues()
-    {
-        return Values;
-    }
+        => Values;
 
     public static Dictionary<T, string> GetNames()
-    {
-        return Names;
-    }
-
-    public static string GetName(T value)
-    {
-        var flags = value.GetFlags().Select(x => Names[x]);
-        return Names.TryGetValue(value, out var result)
-                   ? result
-                   : string.Join(',', flags);
-    }
+        => Names;
 
     public static bool TryGetSingleName(T value, out string result)
-    {
-        return Names.TryGetValue(value, out result);
-    }
+        => Names.TryGetValue(value, out result);
+
+    public static string GetName(T value)
+        => Names.TryGetValue(value, out var result)
+               ? result
+               : string.Join(',', value.GetFlags().Select(x => Names[x]));
 }
