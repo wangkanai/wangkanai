@@ -2,6 +2,13 @@
 
 namespace Wangkanai.Extensions;
 
+public static class EnumValues
+{
+    public static T[] GetValues<T>(this T value)
+        where T : Enum
+        => Enum.GetValues(typeof(T)).Cast<T>().ToArray();
+}
+
 public static class EnumValues<T> where T : Enum
 {
     private static readonly Dictionary<T, string> Names = new();
@@ -15,25 +22,16 @@ public static class EnumValues<T> where T : Enum
     }
 
     public static T[] GetValues()
-    {
-        return Values;
-    }
+        => Values;
 
     public static Dictionary<T, string> GetNames()
-    {
-        return Names;
-    }
-
-    public static string GetName(T value)
-    {
-        var flags = value.GetFlags().Select(x => Names[x]);
-        return Names.TryGetValue(value, out var result)
-                   ? result
-                   : string.Join(',', flags);
-    }
+        => Names;
 
     public static bool TryGetSingleName(T value, out string result)
-    {
-        return Names.TryGetValue(value, out result);
-    }
+        => Names.TryGetValue(value, out result);
+
+    public static string GetName(T value)
+        => Names.TryGetValue(value, out var result)
+               ? result
+               : string.Join(',', value.GetFlags().Select(x => Names[x]));
 }

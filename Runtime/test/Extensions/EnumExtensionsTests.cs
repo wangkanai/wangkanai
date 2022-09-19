@@ -1,27 +1,20 @@
 // Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
+using System.ComponentModel;
+
 using Xunit;
 
 namespace Wangkanai.Extensions;
-
-[Flags]
-public enum EnumFlag
-{
-    Thailand  = 0,
-    Japan     = 1 << 0,
-    Singapore = 1 << 1,
-    Australia = 1 << 2
-}
 
 public class EnumExtensionsTests
 {
     [Fact]
     public void GetFlag()
     {
-        var one   = EnumFlag.Thailand;
-        var two   = EnumFlag.Thailand | EnumFlag.Japan;
-        var three = EnumFlag.Thailand | EnumFlag.Japan | EnumFlag.Singapore;
-        var four  = EnumFlag.Thailand | EnumFlag.Japan | EnumFlag.Singapore | EnumFlag.Australia;
+        var one   = Country.Thailand;
+        var two   = Country.Thailand | Country.Japan;
+        var three = Country.Thailand | Country.Japan | Country.Singapore;
+        var four  = Country.Thailand | Country.Japan | Country.Singapore | Country.Australia;
         Assert.Single(one.GetFlags());
         Assert.Equal(2, two.GetFlags().Count());
         Assert.Equal(3, three.GetFlags().Count());
@@ -31,14 +24,32 @@ public class EnumExtensionsTests
     [Fact]
     public void ToStringInvariant()
     {
-        var one = EnumFlag.Thailand;
+        var one = Country.Thailand;
         Assert.Equal("thailand", one.ToStringInvariant());
     }
 
     [Fact]
     public void ToStringInvariantFlag()
     {
-        var flags = EnumFlag.Singapore;
+        var flags = Country.Singapore;
         Assert.Equal("singapore", flags.ToStringInvariant());
     }
+
+    [Fact]
+    public void EnumItemDescription()
+    {
+        var thailand = Country.Thailand.GetDescription();
+        Assert.Equal("ประเทศไทย", thailand);
+        Assert.NotEqual("Thailand", thailand);
+    }
+}
+
+[Flags]
+public enum Country
+{
+    [Description("ประเทศไทย")]
+    Thailand = 0,
+    Japan     = 1 << 0,
+    Singapore = 1 << 1,
+    Australia = 1 << 2
 }
