@@ -1,6 +1,6 @@
 <Project>
     <PropertyGroup>
-        <VersionPrefix>0.1.1</VersionPrefix>
+        <VersionPrefix>0.1.2</VersionPrefix>
 
         <Title>Wangkanai Tabler</Title>
         <PackageTags>aspnetcore;blazor;tabler;</PackageTags>

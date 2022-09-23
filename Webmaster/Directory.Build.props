@@ -1,6 +1,6 @@
 <Project>
     <PropertyGroup>
-        <VersionPrefix>0.6.0</VersionPrefix>
+        <VersionPrefix>0.6.1</VersionPrefix>
 
         <Title>Wngkanai Webmaster</Title>
         <Description>ASP.NET Core Search Engine Optimization for Webmaster lets you improve the art, craft, and science of driving web traffic to enabling you with easy and efficiency native tool build in the asp.net core library.</Description>
