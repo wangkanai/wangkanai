@@ -6,24 +6,26 @@ namespace Wangkanai.Extensions;
 
 public static class FileInfoExtensions
 {
-    public static string ContentType(this IFileInfo fileInfo)
-    {
-        var name = fileInfo.Name;
+    public static string ContentType(this IFileInfo file)
+        => file.GetImageExtension() switch
+           {
+               ImageExtension.Jpg => "image/jpeg",
+               ImageExtension.Gif => "image/gif",
+               ImageExtension.Png => "image/png",
+               ImageExtension.Svg => "image/svg",
+               _                  => "application/octet-stream",
+           };
 
-        if (name.IsExtension("jpg"))
-            return "image/jpeg";
-        if (name.IsExtension("gif"))
-            return "image/gif";
-        if (name.IsExtension("png"))
-            return "image/png";
-        if (name.IsExtension("svg"))
-            return "image/svg";
+    public static ImageExtension GetImageExtension(this IFileInfo file)
+        => file.Extension() switch
+           {
+               ".jpg" => ImageExtension.Jpg,
+               ".gif" => ImageExtension.Gif,
+               ".png" => ImageExtension.Png,
+               ".svg" => ImageExtension.Svg,
+               _      => ImageExtension.Unknown
+           };
 
-        return "application/octet-stream";
-    }
-
-    private static bool IsExtension(this string name, string extension)
-    {
-        return name.EndsWith(extension, StringComparison.OrdinalIgnoreCase);
-    }
+    public static string Extension(this IFileInfo file)
+        => file.Name.Substring(file.Name.LastIndexOf('.')).ToLower();
 }

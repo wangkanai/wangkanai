@@ -4,8 +4,6 @@ namespace Wangkanai;
 
 public static class Math
 {
-    public static double Divider(double value, double divider)
-    {
-        return divider != 0 ? value / divider : 0;
-    }
+    public static double Divider(double value, double divider) 
+        => divider != 0 ? value / divider : 0;
 }
