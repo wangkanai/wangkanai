@@ -20,3 +20,14 @@ our [contributing guide](https://github.com/wangkanai/wangkanai/blob/main/CONTRI
 
 Wangkanai is developed with C# .NET and target the latest .NET 6.0 and using JetBrains Rider as the primary IDE.
 
+## How to contribute
+
+* [How to contribute to Wangkanai repos](https://github.com/wangkanai/wangkanai/blob/main/CONTRIBUTING.md)
+* [Pull requests](https://github.com/wangkanai/wangkanai/pulls): [Open](https://github.com/wangkanai/wangkanai/pulls?q=is%3Aopen+is%3Apr)/[Closed](https://github.com/wangkanai/wangkanai/pulls?q=is%3Apr+is%3Aclosed)
+* [Issues](https://github.com/wangkanai/wangkanai/issues)
+
+## License
+
+Wangkanai is licensed under the [Apache-2 license](https://github.com/wangkanai/wangkanai/blob/main/LICENSE).
+
+
