@@ -1,6 +1,6 @@
 <Project>
     <PropertyGroup>
-        <VersionPrefix>3.5.1</VersionPrefix>
+        <VersionPrefix>3.5.2</VersionPrefix>
 
         <Title>Wangkanai Responsive</Title>
         <PackageTags>aspnetcore;responsive;</PackageTags>
