@@ -13,26 +13,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".solutions", ".solutions", 
 		Directory.Build.props = Directory.Build.props
 		azure-pipelines.yml = azure-pipelines.yml
 		.gitattributes = .gitattributes
-		sign-analytics.ps1 = sign-analytics.ps1
-		sign-blazor.ps1 = sign-blazor.ps1
-		sign-detection.ps1 = sign-detection.ps1
-		sign-graph.ps1 = sign-graph.ps1
-		sign-hosting.ps1 = sign-hosting.ps1
-		sign-html.ps1 = sign-html.ps1
-		sign-markdown.ps1 = sign-markdown.ps1
-		sign-multitenant.ps1 = sign-multitenant.ps1
-		sign-responsive.ps1 = sign-responsive.ps1
-		sign-runtime.ps1 = sign-runtime.ps1
-		sign-sendgrid.ps1 = sign-sendgrid.ps1
-		sign-sign.ps1 = sign-sign.ps1
-		sign-solver.ps1 = sign-solver.ps1
-		sign-tabler.ps1 = sign-tabler.ps1
-		sign-universal.ps1 = sign-universal.ps1
-		sign-validation.ps1 = sign-validation.ps1
-		sign-webmaster.ps1 = sign-webmaster.ps1
-		sign-webserver.ps1 = sign-webserver.ps1
-		sign-msbuild.ps1 = sign-msbuild.ps1
-		sign-watcher.ps1 = sign-watcher.ps1
 		global.json = global.json
 	EndProjectSection
 EndProject
@@ -257,8 +237,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Graph.Tests", "Gr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{C4E60FE9-2D5B-4510-854C-44C88209A236}"
 	ProjectSection(SolutionItems) = preProject
-		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
 		.github\FUNDING.yml = .github\FUNDING.yml
+		.github\ISSUE_TEMPLATE\bug_report.md = .github\ISSUE_TEMPLATE\bug_report.md
+		.github\ISSUE_TEMPLATE\feature_request.md = .github\ISSUE_TEMPLATE\feature_request.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tabler", "Tabler", "{89052ADF-DFC9-4281-A1A1-E83434F434BC}"
@@ -312,6 +293,30 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Watcher", "Watcher\src\Wangkanai.Watcher.csproj", "{271306A6-4903-4EB2-AE7B-86B0826BD81E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Watcher.Tests", "Watcher\test\Wangkanai.Watcher.Tests.csproj", "{37B59B4E-88FD-4FAE-BBFC-290E2E249216}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".sign", ".sign", "{330C88B3-53EC-4A44-8833-F7DD888A7379}"
+	ProjectSection(SolutionItems) = preProject
+		sign-analytics.ps1 = sign-analytics.ps1
+		sign-blazor.ps1 = sign-blazor.ps1
+		sign-detection.ps1 = sign-detection.ps1
+		sign-graph.ps1 = sign-graph.ps1
+		sign-hosting.ps1 = sign-hosting.ps1
+		sign-html.ps1 = sign-html.ps1
+		sign-markdown.ps1 = sign-markdown.ps1
+		sign-msbuild.ps1 = sign-msbuild.ps1
+		sign-multitenant.ps1 = sign-multitenant.ps1
+		sign-responsive.ps1 = sign-responsive.ps1
+		sign-runtime.ps1 = sign-runtime.ps1
+		sign-sendgrid.ps1 = sign-sendgrid.ps1
+		sign-sign.ps1 = sign-sign.ps1
+		sign-solver.ps1 = sign-solver.ps1
+		sign-tabler.ps1 = sign-tabler.ps1
+		sign-universal.ps1 = sign-universal.ps1
+		sign-validation.ps1 = sign-validation.ps1
+		sign-watcher.ps1 = sign-watcher.ps1
+		sign-webmaster.ps1 = sign-webmaster.ps1
+		sign-webserver.ps1 = sign-webserver.ps1
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
