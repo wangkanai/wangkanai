@@ -1,7 +1,12 @@
 ﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
+using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Wangkanai.Extensions.CommandLine;
 
@@ -79,24 +84,25 @@ public class CommandLineApplication
 
     public int Execute(params string[] args)
     {
-        CommandLineApplication       command           = this;
-        CommandOption                option            = null;
-        IEnumerator<CommandArgument> arguments         = null;
-        var                          argumentsAssigned = false;
+        CommandLineApplication    command           = this;
+        CommandOption             option            = null;
+        CommandArgumentEnumerator arguments         = null;
+        var                       argumentsAssigned = false;
 
         for (var index = 0; index < args.Length; index++)
         {
-            var arg       = args[index];
             var processed = false;
+            var arg       = args[index];
+
             if (!processed && option == null)
             {
                 string[] longOption  = null;
                 string[] shortOption = null;
 
                 if (arg.StartsWith("--", StringComparison.Ordinal))
-                    longOption = arg.Substring(2).Split(new[] { ':', '=' }, 2);
+                    longOption = ParseLongOption(arg);
                 else if (arg.StartsWith("-", StringComparison.Ordinal))
-                    shortOption = arg.Substring(1).Split(new[] { ':', '=' }, 2);
+                    shortOption = ParseShortOption(arg);
 
                 if (longOption != null)
                 {
@@ -136,7 +142,8 @@ public class CommandLineApplication
                             command.ShowHelp();
                             return 0;
                         }
-                        else if (command.OptionVersion == option)
+
+                        if (command.OptionVersion == option)
                         {
                             command.ShowVersion();
                             return 0;
@@ -259,6 +266,12 @@ public class CommandLineApplication
         }
 
         return command.Invoke();
+
+        string[] ParseLongOption(string arg)
+            => arg.Substring(2).Split(new[] { ':', '=' }, 2);
+
+        string[] ParseShortOption(string arg)
+            => arg.Substring(1).Split(new[] { ':', '=' }, 2);
     }
 
     public CommandOption Option(string templete, string description, CommandOptionType optionType)
@@ -328,9 +341,87 @@ public class CommandLineApplication
         Out.WriteLine(LongVersionGetter());
     }
 
+    public string GetFullNameAndVersion()
+        => ShortVersionGetter == null ? FullName : string.Format(CultureInfo.InvariantCulture, "{0} {1}", FullName, ShortVersionGetter());
+
     public virtual string GetHelpText(string commandName = null)
     {
-        return "";
+        var headerBuilder = new StringBuilder("Usage:");
+        for (var cmd = this; cmd != null; cmd = cmd.Parent)
+            headerBuilder.Insert(6, string.Format(CultureInfo.InvariantCulture, " {0}", cmd.Name));
+
+        CommandLineApplication target;
+        if (commandName == null || string.Equals(Name, commandName, StringComparison.Ordinal))
+            target = this;
+        else
+        {
+            target = Commands.SingleOrDefault(cmd => string.Equals(cmd.Name, commandName, StringComparison.OrdinalIgnoreCase));
+
+            if (target != null)
+                headerBuilder.AppendFormat(CultureInfo.InvariantCulture, " {0}", commandName);
+            else
+                target = this;
+        }
+
+        var optionsBuilder   = new StringBuilder();
+        var commandsBuilder  = new StringBuilder();
+        var argumentsBuilder = new StringBuilder();
+
+        var arguments = target.Arguments.Where(x => x.ShowInHelpText).ToList();
+
+        if (arguments.Any())
+        {
+            headerBuilder.Append(" [arguments]");
+
+            argumentsBuilder.AppendLine();
+            argumentsBuilder.AppendLine("Arguments:");
+            var maxArgLength = arguments.Max(x => x.Name.Length);
+            var outputFormat = string.Format(CultureInfo.InvariantCulture, " {{0, -{0}}}{{1}}", maxArgLength + 2);
+            foreach (var arg in arguments)
+            {
+                argumentsBuilder.AppendFormat(CultureInfo.InvariantCulture, outputFormat, arg.Name, arg.Description);
+                argumentsBuilder.AppendLine();
+            }
+        }
+
+        var options = target.GetOptions().Where(x => x.ShowInHelpText).ToList();
+        if (options.Any())
+        {
+            headerBuilder.Append(" [options]");
+
+            optionsBuilder.AppendLine();
+            optionsBuilder.AppendLine("Options:");
+            var maxOptLength = options.Max(x => x.Template.Length);
+            var outputFormat = string.Format(CultureInfo.InvariantCulture, " {{0, -{0}}}{{1}}", maxOptLength + 2);
+            foreach (var opt in options)
+            {
+                optionsBuilder.AppendFormat(CultureInfo.InvariantCulture, outputFormat, opt.Template, opt.Description);
+                optionsBuilder.AppendLine();
+            }
+
+            if (OptionHelp != null)
+            {
+                commandsBuilder.AppendLine();
+                commandsBuilder.Append($"Use \"{target.Name} [command] --{OptionHelp.LongName}\" for more information about a command.");
+                commandsBuilder.AppendLine();
+            }
+        }
+
+        if (target.AllowArgumentSeparator)
+            headerBuilder.Append(" [[--] <arg>...]");
+
+        headerBuilder.AppendLine();
+
+        var nameAndVersion = new StringBuilder();
+        nameAndVersion.AppendLine(GetFullNameAndVersion());
+        nameAndVersion.AppendLine();
+
+        return nameAndVersion.ToString()   +
+               headerBuilder.ToString()    +
+               argumentsBuilder.ToString() +
+               optionsBuilder.ToString()   +
+               commandsBuilder.ToString()  +
+               target.ExtendedHelpText;
     }
 
     private bool HandleUnexpectedArg(CommandLineApplication command, string[] args, int index, string argTypeName, bool ignoreContinueAfterUnexpecting = false)
