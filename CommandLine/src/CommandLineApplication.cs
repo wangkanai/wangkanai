@@ -21,6 +21,12 @@ public class CommandLineApplication
         _throwOnUnexpectedArg             = throwOnUnexpectedArg;
         _continueAfterUnexpectedArg       = continueAfterUnexpectedArg;
         _treadUnmatchedOptionsAsArguments = treadUnmatchedOptionsAsArguments;
+
+        Options            = new List<CommandOption>();
+        Arguments          = new List<CommandArgument>();
+        Commands           = new List<CommandLineApplication>();
+        RemainingArgements = new List<string>();
+        Invoke             = () => 0;
     }
 
     public CommandLineApplication Parent { get; set; }
@@ -31,12 +37,13 @@ public class CommandLineApplication
     public string Description            { get; set; }
     public bool   ShowInHelpText         { get; set; } = true;
     public string ExtendedHelpText       { get; set; }
-    public bool   IsShowingInformation   { get; set; }
+    public bool   IsShowingInformation   { get; protected set; }
     public bool   AllowArgumentSeparator { get; set; }
 
-    public readonly List<CommandArgument> Arguments;
-    public readonly List<CommandOption>   Options;
-    public readonly List<string>          RemainingArgements;
+    public readonly List<CommandLineApplication> Commands;
+    public readonly List<CommandArgument>        Arguments;
+    public readonly List<CommandOption>          Options;
+    public readonly List<string>                 RemainingArgements;
 
     public CommandOption OptionHelp    { get; private set; }
     public CommandOption OptionVersion { get; private set; }
@@ -45,10 +52,9 @@ public class CommandLineApplication
     public Func<string> LongVersionGetter  { get; set; }
     public Func<string> ShortVersionGetter { get; set; }
 
-    public readonly List<CommandLineApplication> Commands;
 
-    public TextWriter Out   { get; set; }
-    public TextWriter Error { get; set; }
+    public TextWriter Out   { get; set; } = Console.Out;
+    public TextWriter Error { get; set; } = Console.Error;
 
     public IEnumerable<CommandOption> GetOptions()
     {
