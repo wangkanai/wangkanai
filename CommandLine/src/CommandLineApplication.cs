@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -213,15 +214,10 @@ public class CommandLineApplication
                         }
 
                         if (command.OptionHelp == option)
-                        {
-                            command.ShowHelp();
-                            return 0;
-                        }
-                        else if (command.OptionVersion == option)
-                        {
-                            command.ShowVersion();
-                            return 0;
-                        }
+                            return command.OptionShowHelp();
+
+                        if (command.OptionVersion == option)
+                            return command.OptionShowVersion();
 
                         if (shortOption.Length == 2)
                         {
@@ -242,17 +238,8 @@ public class CommandLineApplication
                 }
             }
 
-            if (!processed && option != null)
-            {
-                processed = true;
-                if (!option.TryParse(arg))
-                {
-                    command.ShowHint();
-                    throw new CommandParsingException(command, $"Unexpected value '{arg}' for option '{option.LongName}'");
-                }
-
-                option = null;
-            }
+            if (!processed && option != null) 
+                command.ProcessOptionThrowException(arg, ref processed, ref option);
 
             if (!processed && !argumentsAssigned)
                 command.ProcessArgumentAssigned(arg, ref processed);
@@ -260,7 +247,7 @@ public class CommandLineApplication
             if (!processed)
                 command.ProcessArguments(arg, ref arguments, ref processed);
 
-            if (!processed)พำ
+            if (!processed)
             {
                 if (HandleUnexpectedArg(command, args, index, argTypeName: "command or argument"))
                     continue;
@@ -279,6 +266,8 @@ public class CommandLineApplication
         string[] ParseShortOption(string arg)
             => arg.Substring(1).Split(new[] { ':', '=' }, 2);
     }
+
+
 
 
     public CommandOption HelpOption(string template) =>

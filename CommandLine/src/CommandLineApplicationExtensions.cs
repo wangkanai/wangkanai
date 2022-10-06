@@ -4,6 +4,30 @@ namespace Wangkanai.Extensions.CommandLine;
 
 internal static class CommandLineApplicationExtensions
 {
+    internal static int OptionShowHelp(this CommandLineApplication command)
+    {
+        command.ShowHelp();
+        return 0;
+    }
+    
+    internal static int OptionShowVersion(this CommandLineApplication command)
+    {
+        command.ShowVersion();
+        return 0;
+    }
+    
+    internal static void ProcessOptionThrowException(this CommandLineApplication command, string arg, ref bool processed, ref CommandOption? option)
+    {
+        processed = true;
+        if (!option.TryParse(arg))
+        {
+            command.ShowHint();
+            throw new CommandParsingException(command, $"Unexpected value '{arg}' for option '{option.LongName}'");
+        }
+
+        option = null;
+    }
+    
     internal static CommandLineApplication ProcessArgumentAssigned(this CommandLineApplication command, string arg, ref bool processed)
     {
         var currentCommand = command;
