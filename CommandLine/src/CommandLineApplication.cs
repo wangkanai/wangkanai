@@ -157,16 +157,10 @@ public class CommandLineApplication
                         }
 
                         if (command.OptionHelp == option)
-                        {
-                            command.ShowHelp();
-                            return 0;
-                        }
+                            return command.OptionShowHelp();
 
                         if (command.OptionVersion == option)
-                        {
-                            command.ShowVersion();
-                            return 0;
-                        }
+                            return command.OptionShowVersion();
 
                         if (longOption.Length == 2)
                         {
@@ -260,14 +254,14 @@ public class CommandLineApplication
 
         return command.Invoke();
 
-        string[] ParseLongOption(string arg)
-            => arg.Substring(2).Split(new[] { ':', '=' }, 2);
 
-        string[] ParseShortOption(string arg)
-            => arg.Substring(1).Split(new[] { ':', '=' }, 2);
     }
 
+    string[] ParseLongOption(string arg)
+        => arg.Substring(2).Split(new[] { ':', '=' }, 2);
 
+    string[] ParseShortOption(string arg)
+        => arg.Substring(1).Split(new[] { ':', '=' }, 2);
 
 
     public CommandOption HelpOption(string template) =>
