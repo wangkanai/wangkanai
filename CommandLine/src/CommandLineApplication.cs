@@ -14,18 +14,18 @@ public class CommandLineApplication
 {
     private readonly bool _throwOnUnexpectedArg;
     private readonly bool _continueAfterUnexpectedArg;
-    private readonly bool _treadUnmatchedOptionsAsArguments;
+    private readonly bool _treatUnmatchedOptionsAsArguments;
 
-    public CommandLineApplication(bool throwOnUnexpectedArg = true, bool continueAfterUnexpectedArg = false, bool treadUnmatchedOptionsAsArguments = false)
+    public CommandLineApplication(bool throwOnUnexpectedArg = true, bool continueAfterUnexpectedArg = false, bool treatUnmatchedOptionsAsArguments = false)
     {
         _throwOnUnexpectedArg             = throwOnUnexpectedArg;
         _continueAfterUnexpectedArg       = continueAfterUnexpectedArg;
-        _treadUnmatchedOptionsAsArguments = treadUnmatchedOptionsAsArguments;
+        _treatUnmatchedOptionsAsArguments = treatUnmatchedOptionsAsArguments;
 
         Options            = new List<CommandOption>();
         Arguments          = new List<CommandArgument>();
         Commands           = new List<CommandLineApplication>();
-        RemainingArgements = new List<string>();
+        RemainingArguments = new List<string>();
         Invoke             = () => 0;
     }
 
@@ -43,7 +43,7 @@ public class CommandLineApplication
     public readonly List<CommandLineApplication> Commands;
     public readonly List<CommandArgument>        Arguments;
     public readonly List<CommandOption>          Options;
-    public readonly List<string>                 RemainingArgements;
+    public readonly List<string>                 RemainingArguments;
 
     public CommandOption OptionHelp    { get; private set; }
     public CommandOption OptionVersion { get; private set; }
@@ -116,7 +116,7 @@ public class CommandLineApplication
                     var longOptionName = longOption[0];
                     option = command.GetOptions().SingleOrDefault(o => string.Equals(o.LongName, longOptionName, StringComparison.Ordinal));
 
-                    if (option == null && _treadUnmatchedOptionsAsArguments)
+                    if (option == null && _treatUnmatchedOptionsAsArguments)
                     {
                         if (arguments == null)
                             arguments = new CommandArgumentEnumerator(command.Arguments.GetEnumerator());
@@ -178,7 +178,7 @@ public class CommandLineApplication
                     processed = true;
                     option    = command.GetOptions().SingleOrDefault(o => string.Equals(o.ShortName, shortOption[0], StringComparison.Ordinal));
 
-                    if (option == null && _treadUnmatchedOptionsAsArguments)
+                    if (option == null && _treatUnmatchedOptionsAsArguments)
                     {
                         if (arguments == null)
                             arguments = new CommandArgumentEnumerator(command.Arguments.GetEnumerator());
@@ -278,6 +278,23 @@ public class CommandLineApplication
 
         string[] ParseShortOption(string arg)
             => arg.Substring(1).Split(new[] { ':', '=' }, 2);
+    }
+
+    public CommandOption HelpOption(string templete) =>
+        OptionHelp = Option(templete, "Show help information", CommandOptionType.NoValue);
+
+    public CommandOption VersionOption(string templete, string shortFormVersion, string longFormVersion = null) => longFormVersion == null ? VersionOption(templete, () => shortFormVersion) : VersionOption(templete, () => shortFormVersion, () => longFormVersion);
+
+    public CommandOption VersionOption(
+        string       template,
+        Func<string> shortFormVersionGetter,
+        Func<string> longFormVersionGetter = null)
+    {
+        OptionVersion      = Option(template, "Show version information", CommandOptionType.NoValue);
+        ShortVersionGetter = shortFormVersionGetter;
+        LongVersionGetter  = longFormVersionGetter ?? shortFormVersionGetter;
+
+        return OptionVersion;
     }
 
     public CommandOption Option(string templete, string description, CommandOptionType optionType)
@@ -439,12 +456,12 @@ public class CommandLineApplication
         }
         else if (_continueAfterUnexpectedArg && !ignoreContinueAfterUnexpecting)
         {
-            command.RemainingArgements.Add(args[index]);
+            command.RemainingArguments.Add(args[index]);
             return true;
         }
         else
         {
-            command.RemainingArgements.AddRange(new ArraySegment<string>(args, index, args.Length - index));
+            command.RemainingArguments.AddRange(new ArraySegment<string>(args, index, args.Length - index));
             return false;
         }
     }
