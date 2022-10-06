@@ -2,7 +2,7 @@
 
 using Wangkanai.Extensions.CommandLine;
 
-namespace Wangkanai.CommandLine.Tests;
+namespace Wangkanai.CommandLine;
 
 public class CommandLineApplicationTests
 {
@@ -76,14 +76,15 @@ public class CommandLineApplicationTests
         var app = new CommandLineApplication();
 
         var testCommand = app.Command("test", c =>
-        {
-            first = c.Argument("first", "First argument");
-            second = c.Argument("second", "Second argument");
-            c.OnExecute(()=>0);
-        }, throwOnUnexpectedArg: false);
-        
-        app.Execute("test","one","two","three");
-        
+                                      {
+                                          first  = c.Argument("first", "First argument");
+                                          second = c.Argument("second", "Second argument");
+                                          c.OnExecute(() => 0);
+                                      },
+                                      throwOnUnexpectedArg: false);
+
+        app.Execute("test", "one", "two", "three");
+
         Assert.Equal("one", first.Value);
         Assert.Equal("two", second.Value);
         var remaining = Assert.Single(testCommand.RemainingArguments);

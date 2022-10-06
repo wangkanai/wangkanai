@@ -69,7 +69,10 @@ public class CommandLineApplication
         return expr;
     }
 
-    public CommandLineApplication Command(string name, Action<CommandLineApplication> configuration, bool throwOnUnexpectedArg = true)
+    public CommandLineApplication Command(
+        string                         name,
+        Action<CommandLineApplication> configuration,
+        bool                           throwOnUnexpectedArg = true)
     {
         var command = new CommandLineApplication(throwOnUnexpectedArg)
         {
@@ -90,15 +93,15 @@ public class CommandLineApplication
 
     public int Execute(params string[] args)
     {
-        CommandLineApplication    command           = this;
-        CommandOption             option            = null;
-        CommandArgumentEnumerator arguments         = null;
-        var                       argumentsAssigned = false;
+        CommandLineApplication       command           = this;
+        CommandOption                option            = null;
+        IEnumerator<CommandArgument> arguments         = null;
+        var                          argumentsAssigned = false;
 
         for (var index = 0; index < args.Length; index++)
         {
-            var processed = false;
             var arg       = args[index];
+            var processed = false;
 
             if (!processed && option == null)
             {
@@ -242,7 +245,7 @@ public class CommandLineApplication
                 option = null;
             }
 
-            if (!processed && argumentsAssigned)
+            if (!processed && !argumentsAssigned)
             {
                 var currentCommand = command;
                 foreach (var subcommand in command.Commands)
@@ -255,6 +258,18 @@ public class CommandLineApplication
 
                 if (command != currentCommand)
                     processed = true;
+            }
+
+            if (!processed)
+            {
+                if (arguments == null) 
+                    arguments = new CommandArgumentEnumerator(command.Arguments.GetEnumerator());
+
+                if (arguments.MoveNext())
+                {
+                    processed = true;
+                    arguments.Current.Values.Add(arg);
+                }
             }
 
             if (!processed)
@@ -365,9 +380,7 @@ public class CommandLineApplication
     }
 
     public string GetFullNameAndVersion()
-        => ShortVersionGetter == null ? 
-               FullName : 
-               string.Format(CultureInfo.InvariantCulture, "{0} {1}", FullName, ShortVersionGetter());
+        => ShortVersionGetter == null ? FullName : string.Format(CultureInfo.InvariantCulture, "{0} {1}", FullName, ShortVersionGetter());
 
     public virtual string GetHelpText(string commandName = null)
     {
@@ -449,14 +462,19 @@ public class CommandLineApplication
                target.ExtendedHelpText;
     }
 
-    private bool HandleUnexpectedArg(CommandLineApplication command, string[] args, int index, string argTypeName, bool ignoreContinueAfterUnexpecting = false)
+    private bool HandleUnexpectedArg(
+        CommandLineApplication command,
+        string[]               args,
+        int                    index,
+        string                 argTypeName,
+        bool                   ignoreContinueAfterUnexpectedArg = false)
     {
         if (command._throwOnUnexpectedArg)
         {
             command.ShowHint();
             throw new CommandParsingException(command, $"Unrecognized {argTypeName} '{args[index]}'");
         }
-        else if (_continueAfterUnexpectedArg && !ignoreContinueAfterUnexpecting)
+        else if (_continueAfterUnexpectedArg && !ignoreContinueAfterUnexpectedArg)
         {
             command.RemainingArguments.Add(args[index]);
             return true;
