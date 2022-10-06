@@ -280,10 +280,10 @@ public class CommandLineApplication
             => arg.Substring(1).Split(new[] { ':', '=' }, 2);
     }
 
-    public CommandOption HelpOption(string templete) =>
-        OptionHelp = Option(templete, "Show help information", CommandOptionType.NoValue);
+    public CommandOption HelpOption(string template) =>
+        OptionHelp = Option(template, "Show help information", CommandOptionType.NoValue);
 
-    public CommandOption VersionOption(string templete, string shortFormVersion, string longFormVersion = null) => longFormVersion == null ? VersionOption(templete, () => shortFormVersion) : VersionOption(templete, () => shortFormVersion, () => longFormVersion);
+    public CommandOption VersionOption(string template, string shortFormVersion, string longFormVersion = null) => longFormVersion == null ? VersionOption(template, () => shortFormVersion) : VersionOption(template, () => shortFormVersion, () => longFormVersion);
 
     public CommandOption VersionOption(
         string       template,
@@ -297,18 +297,18 @@ public class CommandLineApplication
         return OptionVersion;
     }
 
-    public CommandOption Option(string templete, string description, CommandOptionType optionType)
-        => Option(templete, description, optionType, _ => { }, inherited: false);
+    public CommandOption Option(string template, string description, CommandOptionType optionType)
+        => Option(template, description, optionType, _ => { }, inherited: false);
 
-    public CommandOption Option(string templete, string description, CommandOptionType optionType, bool inherited)
-        => Option(templete, description, optionType, _ => { }, inherited);
+    public CommandOption Option(string template, string description, CommandOptionType optionType, bool inherited)
+        => Option(template, description, optionType, _ => { }, inherited);
 
-    public CommandOption Option(string templete, string description, CommandOptionType optionType, Action<CommandOption> configuration)
-        => Option(templete, description, optionType, configuration, inherited: false);
+    public CommandOption Option(string template, string description, CommandOptionType optionType, Action<CommandOption> configuration)
+        => Option(template, description, optionType, configuration, inherited: false);
 
-    public CommandOption Option(string templete, string description, CommandOptionType optionType, Action<CommandOption> configuration, bool inherited)
+    public CommandOption Option(string template, string description, CommandOptionType optionType, Action<CommandOption> configuration, bool inherited)
     {
-        var option = new CommandOption(templete, optionType)
+        var option = new CommandOption(template, optionType)
         {
             Description = description,
             Inherited   = inherited
@@ -365,7 +365,9 @@ public class CommandLineApplication
     }
 
     public string GetFullNameAndVersion()
-        => ShortVersionGetter == null ? FullName : string.Format(CultureInfo.InvariantCulture, "{0} {1}", FullName, ShortVersionGetter());
+        => ShortVersionGetter == null ? 
+               FullName : 
+               string.Format(CultureInfo.InvariantCulture, "{0} {1}", FullName, ShortVersionGetter());
 
     public virtual string GetHelpText(string commandName = null)
     {
