@@ -134,14 +134,23 @@ public class CommandLineApplication
                         if (option == null)
                         {
                             var ignoreContinueAfterUnexpectedArg = false;
-                            if (string.IsNullOrEmpty(longOptionName) && !command._throwOnUnexpectedArg && AllowArgumentSeparator)
+                            if (string.IsNullOrEmpty(longOptionName) &&
+                                !command._throwOnUnexpectedArg       &&
+                                AllowArgumentSeparator)
                             {
                                 index++;
                                 ignoreContinueAfterUnexpectedArg = true;
                             }
 
-                            if (HandleUnexpectedArg(command, args, index, argTypeName: "option", ignoreContinueAfterUnexpectedArg))
+                            if (HandleUnexpectedArg(
+                                    command,
+                                    args,
+                                    index,
+                                    argTypeName: "option",
+                                    ignoreContinueAfterUnexpectedArg))
+                            {
                                 continue;
+                            }
 
                             break;
                         }
@@ -246,33 +255,12 @@ public class CommandLineApplication
             }
 
             if (!processed && !argumentsAssigned)
-            {
-                var currentCommand = command;
-                foreach (var subcommand in command.Commands)
-                    if (string.Equals(subcommand.Name, arg, StringComparison.Ordinal))
-                    {
-                        processed = true;
-                        command   = subcommand;
-                        break;
-                    }
-
-                if (command != currentCommand)
-                    processed = true;
-            }
+                command.ProcessArgumentAssigned(arg, ref processed);
 
             if (!processed)
-            {
-                if (arguments == null) 
-                    arguments = new CommandArgumentEnumerator(command.Arguments.GetEnumerator());
+                command.ProcessArguments(arg, ref arguments, ref processed);
 
-                if (arguments.MoveNext())
-                {
-                    processed = true;
-                    arguments.Current.Values.Add(arg);
-                }
-            }
-
-            if (!processed)
+            if (!processed)พำ
             {
                 if (HandleUnexpectedArg(command, args, index, argTypeName: "command or argument"))
                     continue;
@@ -281,10 +269,7 @@ public class CommandLineApplication
         }
 
         if (option != null)
-        {
-            command.ShowHint();
-            throw new CommandParsingException(command, $"Missing value for option '{option.LongName}'");
-        }
+            command.OptionMissingValue(option);
 
         return command.Invoke();
 
@@ -294,6 +279,7 @@ public class CommandLineApplication
         string[] ParseShortOption(string arg)
             => arg.Substring(1).Split(new[] { ':', '=' }, 2);
     }
+
 
     public CommandOption HelpOption(string template) =>
         OptionHelp = Option(template, "Show help information", CommandOptionType.NoValue);
@@ -343,7 +329,7 @@ public class CommandLineApplication
         {
             var message = string.Format(
                 CultureInfo.CurrentCulture,
-                "The last argument '{0}' after multiple values. No more argument can be added.",
+                "The last argument '{0}' accepts multiple values. No more argument can be added.",
                 lastArg.Name);
             throw new InvalidOperationException(message);
         }
