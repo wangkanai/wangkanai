@@ -64,7 +64,7 @@ public class CommandLineApplication
         while (rootNode.Parent != null)
         {
             rootNode = rootNode.Parent;
-            expr     = expr.Concat(rootNode.Options.Where(x => x.Inherited));
+            expr     = expr.Concat(rootNode.Options.Where(o => o.Inherited));
         }
 
         return expr;
@@ -109,16 +109,26 @@ public class CommandLineApplication
                 string[] longOption  = null;
                 string[] shortOption = null;
 
+                // if (arg.StartsWith("--", StringComparison.Ordinal))
+                //     longOption = ParseLongOption(arg);
+                // else if (arg.StartsWith("-", StringComparison.Ordinal))
+                //     shortOption = ParseShortOption(arg);
+                //
+                
                 if (arg.StartsWith("--", StringComparison.Ordinal))
-                    longOption = ParseLongOption(arg);
+                {
+                    longOption = arg.Substring(2).Split(new[] { ':', '=' }, 2);
+                }
                 else if (arg.StartsWith("-", StringComparison.Ordinal))
-                    shortOption = ParseShortOption(arg);
+                {
+                    shortOption = arg.Substring(1).Split(new[] { ':', '=' }, 2);
+                }
 
                 if (longOption != null)
                 {
                     processed = true;
                     var longOptionName = longOption[0];
-                    option = command.GetOptions().SingleOrDefault(o => string.Equals(o.LongName, longOptionName, StringComparison.Ordinal));
+                    option = command.GetOptions().SingleOrDefault(opt => string.Equals(opt.LongName, longOptionName, StringComparison.Ordinal));
 
                     if (option == null && _treatUnmatchedOptionsAsArguments)
                     {
@@ -253,8 +263,6 @@ public class CommandLineApplication
             command.OptionMissingValue(option);
 
         return command.Invoke();
-
-
     }
 
     string[] ParseLongOption(string arg)
@@ -267,7 +275,10 @@ public class CommandLineApplication
     public CommandOption HelpOption(string template) =>
         OptionHelp = Option(template, "Show help information", CommandOptionType.NoValue);
 
-    public CommandOption VersionOption(string template, string shortFormVersion, string longFormVersion = null) => longFormVersion == null ? VersionOption(template, () => shortFormVersion) : VersionOption(template, () => shortFormVersion, () => longFormVersion);
+    public CommandOption VersionOption(string template, string shortFormVersion, string longFormVersion = null) 
+        => longFormVersion == null ? 
+               VersionOption(template, () => shortFormVersion) : 
+               VersionOption(template, () => shortFormVersion, () => longFormVersion);
 
     public CommandOption VersionOption(
         string       template,
