@@ -1031,7 +1031,7 @@ public class CommandLineApplicationTests
             AllowArgumentSeparator = true
         };
         app.HelpOption("-h|--help");
-        Assert.Contains("Usage: proxy-command [options] [[--] <arg>...]", app.GetHelpText());
+        Assert.Contains("Usage: proxy-command [[--] <arg>...]", app.GetHelpText());
     }
 
     [Fact]
