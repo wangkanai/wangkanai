@@ -316,6 +316,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".sign", ".sign", "{330C88B3
 		sign-watcher.ps1 = sign-watcher.ps1
 		sign-webmaster.ps1 = sign-webmaster.ps1
 		sign-webserver.ps1 = sign-webserver.ps1
+		sign-commandline.ps1 = sign-commandline.ps1
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CommandLine", "CommandLine", "{C5C4D631-1DA0-40D1-9B62-D4D5D41E8859}"
