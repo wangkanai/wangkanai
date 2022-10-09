@@ -34,16 +34,18 @@ public sealed class CommandOption
         if (string.IsNullOrEmpty(LongName) && string.IsNullOrEmpty(ShortName) && string.IsNullOrEmpty(SymbolName))
             throw new ArgumentException($"Invalid template pattern '{template}'", nameof(template));
     }
-    public string            Template       { get; set; }
-    public string            ShortName      { get; set; }
-    public string            LongName       { get; set; }
-    public string            SymbolName     { get; set; }
-    public string            ValueName      { get; set; }
-    public string            Description    { get; set; }
-    public List<string>      Values         { get; private set; }
-    public CommandOptionType OptionType     { get; private set; }
-    public bool              ShowInHelpText { get; set; }
-    public bool              Inherited      { get; set; }
+
+    public string Template       { get; set; }
+    public string ShortName      { get; set; }
+    public string LongName       { get; set; }
+    public string SymbolName     { get; set; }
+    public string ValueName      { get; set; }
+    public string Description    { get; set; }
+    public bool   ShowInHelpText { get; set; } = true;
+    public bool   Inherited      { get; set; }
+
+    public List<string>      Values     { get; private set; }
+    public CommandOptionType OptionType { get; private set; }
 
     public bool TryParse(string value)
     {
