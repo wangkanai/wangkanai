@@ -243,9 +243,7 @@ public class CommandLineApplication
                     if (option == null)
                     {
                         if (HandleUnexpectedArg(command, args, index, argTypeName: "option"))
-                        {
                             continue;
-                        }
 
                         break;
                     }
@@ -282,61 +280,25 @@ public class CommandLineApplication
             }
 
             if (!processed && option != null)
-            {
-                processed = true;
-                if (!option.TryParse(arg))
-                {
-                    command.ShowHint();
-                    throw new CommandParsingException(command, $"Unexpected value '{arg}' for option '{option.LongName}'");
-                }
-
-                option = null;
-            }
+                command.ProcessOptionThrowException(arg, ref processed, ref option);
 
             if (!processed && !argumentsAssigned)
-            {
-                var currentCommand = command;
-                foreach (var subcommand in command.Commands)
-                    if (string.Equals(subcommand.Name, arg, StringComparison.OrdinalIgnoreCase))
-                    {
-                        processed = true;
-                        command   = subcommand;
-                        break;
-                    }
-
-                // If we detect a subcommand
-                if (command != currentCommand)
-                    processed = true;
-            }
+                command = command.ProcessArgumentAssigned(arg, ref processed);
 
             if (!processed)
-            {
-                if (arguments == null)
-                    arguments = new CommandArgumentEnumerator(command.Arguments.GetEnumerator());
-
-                if (arguments.MoveNext())
-                {
-                    processed = true;
-                    arguments.Current.Values.Add(arg);
-                }
-            }
+                command.ProcessArguments(arg, ref arguments, ref processed);
 
             if (!processed)
             {
                 if (HandleUnexpectedArg(command, args, index, argTypeName: "command or argument"))
-                {
                     continue;
-                }
 
                 break;
             }
         }
 
         if (option != null)
-        {
-            command.ShowHint();
-            throw new CommandParsingException(command, $"Missing value for option '{option.LongName}'");
-        }
+            command.OptionMissingValue(option);
 
         return command.Invoke();
     }

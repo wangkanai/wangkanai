@@ -4,18 +4,6 @@ namespace Wangkanai.Extensions.CommandLine;
 
 internal static class CommandLineApplicationExtensions
 {
-    internal static int OptionShowHelp(this CommandLineApplication command)
-    {
-        command.ShowHelp();
-        return 0;
-    }
-    
-    internal static int OptionShowVersion(this CommandLineApplication command)
-    {
-        command.ShowVersion();
-        return 0;
-    }
-    
     internal static void ProcessOptionThrowException(this CommandLineApplication command, string arg, ref bool processed, ref CommandOption? option)
     {
         processed = true;
@@ -38,18 +26,20 @@ internal static class CommandLineApplicationExtensions
                 command   = subcommand;
                 break;
             }
-
+    
+        // If we detect a subcommand
         if (command != currentCommand)
             processed = true;
         return command;
     }
+
 
     
     internal static void ProcessArguments(this CommandLineApplication command, string arg, ref IEnumerator<CommandArgument>? arguments, ref bool processed)
     {
         if (arguments == null)
             arguments = new CommandArgumentEnumerator(command.Arguments.GetEnumerator());
-
+            
         if (arguments.MoveNext())
         {
             processed = true;
