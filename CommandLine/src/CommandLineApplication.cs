@@ -392,20 +392,29 @@ public class CommandLineApplication
     {
         var headerBuilder = new StringBuilder("Usage:");
         for (var cmd = this; cmd != null; cmd = cmd.Parent)
+        {
             headerBuilder.Insert(6, string.Format(CultureInfo.InvariantCulture, " {0}", cmd.Name));
+        }
 
         CommandLineApplication target;
 
         if (commandName == null || string.Equals(Name, commandName, StringComparison.OrdinalIgnoreCase))
+        {
             target = this;
+        }
         else
         {
             target = Commands.SingleOrDefault(cmd => string.Equals(cmd.Name, commandName, StringComparison.OrdinalIgnoreCase));
 
             if (target != null)
+            {
                 headerBuilder.AppendFormat(CultureInfo.InvariantCulture, " {0}", commandName);
+            }
             else
+            {
+                // The command name is invalid so don't try to show help for something that doesn't exist
                 target = this;
+            }
         }
 
         var optionsBuilder   = new StringBuilder();
@@ -468,7 +477,9 @@ public class CommandLineApplication
         }
 
         if (target.AllowArgumentSeparator)
+        {
             headerBuilder.Append(" [[--] <arg>...]");
+        }
 
         headerBuilder.AppendLine();
 
