@@ -10,7 +10,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Runtime\src\Wangkanai.Runtime.csproj"/>
+    <ProjectReference Include="..\..\CommandLine\src\Wangkanai.CommandLine.csproj" />
+    <ProjectReference Include="..\..\Runtime\src\Wangkanai.Runtime.csproj" />
   </ItemGroup>
 
 </Project>

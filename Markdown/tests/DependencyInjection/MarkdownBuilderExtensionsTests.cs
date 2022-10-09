@@ -3,8 +3,9 @@
 using System;
 
 using Xunit;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace Microsoft.Extensions.DependencyInjection;
+namespace Wangkanai.Markdown;
 
 public class MarkdownBuilderExtensionsTests
 {
