@@ -4,6 +4,53 @@ namespace Wangkanai.Extensions.CommandLine;
 
 internal static class ExecuteExtensions
 {
+    internal static bool ProcessLengthOptionLong(
+        this CommandLineApplication command,
+        CommandOption               option,
+        string[]                    longOption)
+    {
+        if (!option.TryParse(longOption[1]))
+        {
+            command.ShowHint();
+            throw new CommandParsingException(command, $"Unexpected value '{longOption[1]}' for option '{option.LongName}'");
+        }
+
+        return true;
+    }
+
+    internal static bool ProcessLengthOptionShort(
+        this CommandLineApplication command,
+        CommandOption               option,
+        string[]                    shortOption)
+    {
+        if (!option.TryParse(shortOption[1]))
+        {
+            command.ShowHint();
+            throw new CommandParsingException(command, $"Unexpected value '{shortOption[1]}' for option '{option.ShortName}'");
+        }
+
+        return true;
+    }
+
+    internal static bool FindOptionHelpVersion(
+        this CommandLineApplication command,
+        CommandOption               option)
+    {
+        if (command.OptionHelp == option)
+        {
+            command.ShowHelp();
+            return true;
+        }
+
+        if (command.OptionVersion == option)
+        {
+            command.ShowVersion();
+            return true;
+        }
+
+        return false;
+    }
+
     internal static bool ProcessArguments(
         this CommandLineApplication       command,
         string                            arg,
@@ -11,12 +58,17 @@ internal static class ExecuteExtensions
         ref bool                          processed,
         ref bool                          argumentsAssigned)
     {
-        if (command.ProcessArguments(arg, ref arguments, ref processed))
-        {
-            argumentsAssigned = true;
-            return true;
-        }
-        return false;
+        if (arguments == null)
+            arguments = new CommandArgumentEnumerator(command.Arguments.GetEnumerator());
+
+        if (!arguments.MoveNext())
+            return false;
+
+        processed = true;
+        arguments.Current.Values.Add(arg);
+        argumentsAssigned = true;
+
+        return true;
     }
 
     internal static bool ProcessArguments(
