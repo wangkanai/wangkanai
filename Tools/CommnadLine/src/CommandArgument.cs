@@ -4,7 +4,10 @@ namespace Wangkanai.Extensions.CommandLine;
 
 public sealed class CommandArgument
 {
-    public CommandArgument() => Values = new List<string>();
+    public CommandArgument()
+    {
+        Values = new List<string>();
+    }
 
     public string       Value          => Values.FirstOrDefault();
     public List<string> Values         { get; private set; }

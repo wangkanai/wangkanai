@@ -1,14 +1,7 @@
 ﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
-using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Wangkanai.Extensions.CommandLine;
 
@@ -61,6 +54,7 @@ public class CommandLineApplication
     {
         var expr     = Options.AsEnumerable();
         var rootNode = this;
+
         while (rootNode.Parent != null)
         {
             rootNode = rootNode.Parent;
@@ -70,10 +64,16 @@ public class CommandLineApplication
         return expr;
     }
 
-    public CommandLineApplication Command(string name, Action<CommandLineApplication> configuration,
-                                          bool   throwOnUnexpectedArg = true)
+    public CommandLineApplication Command(
+        string                         name,
+        Action<CommandLineApplication> configuration,
+        bool                           throwOnUnexpectedArg = true)
     {
-        var command = new CommandLineApplication(throwOnUnexpectedArg) { Name = name, Parent = this };
+        var command = new CommandLineApplication(throwOnUnexpectedArg)
+        {
+            Name   = name,
+            Parent = this
+        };
         Commands.Add(command);
         configuration(command);
         return command;
@@ -115,7 +115,12 @@ public class CommandLineApplication
             throw new InvalidOperationException(message);
         }
 
-        var argument = new CommandArgument { Name = name, Description = description, MultipleValues = multipleValues };
+        var argument = new CommandArgument
+        {
+            Name           = name,
+            Description    = description,
+            MultipleValues = multipleValues
+        };
         Arguments.Add(argument);
         configuration(argument);
         return argument;
@@ -155,18 +160,8 @@ public class CommandLineApplication
                     option = command.GetOptions().SingleOrDefault(opt => string.Equals(opt.LongName, longOptionName, StringComparison.Ordinal));
 
                     if (option == null && _treatUnmatchedOptionsAsArguments)
-                    {
-                        if (arguments == null)
-                            arguments = new CommandArgumentEnumerator(command.Arguments.GetEnumerator());
-
-                        if (arguments.MoveNext())
-                        {
-                            processed = true;
-                            arguments.Current.Values.Add(arg);
-                            argumentsAssigned = true;
+                        if (command.ProcessArguments(arg, ref arguments, ref processed, ref argumentsAssigned))
                             continue;
-                        }
-                    }
 
                     if (option == null)
                     {
@@ -223,18 +218,8 @@ public class CommandLineApplication
                     option    = command.GetOptions().SingleOrDefault(opt => string.Equals(opt.ShortName, shortOption[0], StringComparison.Ordinal));
 
                     if (option == null && _treatUnmatchedOptionsAsArguments)
-                    {
-                        if (arguments == null)
-                            arguments = new CommandArgumentEnumerator(command.Arguments.GetEnumerator());
-
-                        if (arguments.MoveNext())
-                        {
-                            processed = true;
-                            arguments.Current.Values.Add(arg);
-                            argumentsAssigned = true;
+                        if (command.ProcessArguments(arg, ref arguments, ref processed, ref argumentsAssigned))
                             continue;
-                        }
-                    }
 
                     // If not a short option, try symbol option
                     if (option == null)
@@ -354,29 +339,21 @@ public class CommandLineApplication
     {
         var headerBuilder = new StringBuilder("Usage:");
         for (var cmd = this; cmd != null; cmd = cmd.Parent)
-        {
             headerBuilder.Insert(6, string.Format(CultureInfo.InvariantCulture, " {0}", cmd.Name));
-        }
 
         CommandLineApplication target;
 
         if (commandName == null || string.Equals(Name, commandName, StringComparison.OrdinalIgnoreCase))
-        {
             target = this;
-        }
         else
         {
             target = Commands.SingleOrDefault(cmd => string.Equals(cmd.Name, commandName, StringComparison.OrdinalIgnoreCase));
 
             if (target != null)
-            {
                 headerBuilder.AppendFormat(CultureInfo.InvariantCulture, " {0}", commandName);
-            }
             else
-            {
                 // The command name is invalid so don't try to show help for something that doesn't exist
                 target = this;
-            }
         }
 
         var optionsBuilder   = new StringBuilder();
@@ -439,9 +416,7 @@ public class CommandLineApplication
         }
 
         if (target.AllowArgumentSeparator)
-        {
             headerBuilder.Append(" [[--] <arg>...]");
-        }
 
         headerBuilder.AppendLine();
 

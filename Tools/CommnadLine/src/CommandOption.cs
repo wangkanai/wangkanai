@@ -32,11 +32,11 @@ public sealed class CommandOption
             else if (part.StartsWith("<", StringComparison.Ordinal) && part.EndsWith(">", StringComparison.Ordinal))
                 ValueName = part.Substring(1, part.Length - 2);
             else
-                throw new ArgumentException($"Invalid template pattern '{template}'", nameof(template));
+                throw new InvalidTemplateException(template);
         }
 
         if (string.IsNullOrEmpty(LongName) && string.IsNullOrEmpty(ShortName) && string.IsNullOrEmpty(SymbolName))
-            throw new ArgumentException($"Invalid template pattern '{template}'", nameof(template));
+            throw new InvalidTemplateException(template);
     }
     
     public bool TryParse(string value)
