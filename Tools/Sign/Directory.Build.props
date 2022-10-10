@@ -5,6 +5,7 @@
         <Title>Wangkanai Sign Tool</Title>
         <PackageTags>aspnetcore;nuget;sign;tool;</PackageTags>
         <Description>This project is a global wrapper for code signing the nuget packages before publishing on nuget.</Description>
+        
     </PropertyGroup>
 
     <PropertyGroup>

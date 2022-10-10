@@ -5,24 +5,7 @@
         <Title>Wangkanai Markdown</Title>
         <Description>ASP.NET Core Markdown pages make you able to use markdown pages as an alternative view source in ASP.NET Core view.</Description>
         <PackageTags>aspnetcore;markdown;pages</PackageTags>
-
-        <Authors>Sarin Na Wangkanai</Authors>
-        <Copyright>©2014-2022 Sarin Na Wangkanai, All rights reserved</Copyright>
-
-        <RepositoryType>git</RepositoryType>
-        <RepositoryUrl>git://github.com/wangkanai/wangkanai</RepositoryUrl>
-
-        <PackageProjectUrl>https://github.com/wangkanai/wangkanai</PackageProjectUrl>
-        <PackageLicense>https://github.com/wangkanai/wangkanai/blob/main/LICENSE</PackageLicense>
-        <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-    </PropertyGroup>
-
-    <PropertyGroup>
-        <PublishRepositoryUrl>true</PublishRepositoryUrl>
-        <EmbedUntrackedSources>true</EmbedUntrackedSources>
-        <IncludeSymbols>true</IncludeSymbols>
-        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-        <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+        
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Markdown'">

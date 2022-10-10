@@ -5,24 +5,7 @@
         <Title>Wangkanai Responsive</Title>
         <PackageTags>aspnetcore;responsive;</PackageTags>
         <Description>ASP.NET Core Responsive middleware for routing base upon request client device detection to specific view. Also in the added feature of user preference made this library even more comprehensive must for developers whom to target multiple devices with view rendered and optimized directly from the server side.</Description>
-
-        <Authors>Sarin Na Wangkanai</Authors>
-        <Copyright>©2014-2022 Sarin Na Wangkanai, All rights reserved</Copyright>
-
-        <RepositoryType>git</RepositoryType>
-        <RepositoryUrl>git://github.com/wangkanai/wangkanai</RepositoryUrl>
-
-        <PackageProjectUrl>https://github.com/wangkanai/wangkanai</PackageProjectUrl>
-        <PackageLicense>https://github.com/wangkanai/wangkanai/blob/main/LICENSE</PackageLicense>
-        <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-    </PropertyGroup>
-
-    <PropertyGroup>
-        <PublishRepositoryUrl>true</PublishRepositoryUrl>
-        <EmbedUntrackedSources>true</EmbedUntrackedSources>
-        <IncludeSymbols>true</IncludeSymbols>
-        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-        <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+        
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Responsive'">
