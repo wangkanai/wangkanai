@@ -1,0 +1,18 @@
+<Project>
+    <PropertyGroup>
+        <VersionPrefix>0.0.1</VersionPrefix>
+
+        <Title>Wangkanai Extensions CommandLine</Title>
+        <PackageTags>dotnet;extension;commandline;utilities</PackageTags>
+        <Description>This project is a shared commandline runtime utilities.</Description>
+        
+    </PropertyGroup>
+    
+    <PropertyGroup>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="..\README.md" Pack="true" PackagePath="\"/>
+    </ItemGroup>
+</Project>

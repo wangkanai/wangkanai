@@ -1,0 +1,9 @@
+<Project>
+    <PropertyGroup>
+        <PackageIcon>wangkanai-logo.png</PackageIcon>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="..\..\asset\wangkanai-logo.png" Pack="true" PackagePath="\"/>
+    </ItemGroup>
+</Project>

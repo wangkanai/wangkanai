@@ -4,6 +4,18 @@ namespace Wangkanai.Extensions.CommandLine;
 
 public sealed class CommandOption
 {
+    public bool   Inherited      { get; set; }
+    public string Template       { get; set; }
+    public string LongName       { get; set; }
+    public string ShortName      { get; set; }
+    public string SymbolName     { get; set; }
+    public string ValueName      { get; set; }
+    public string Description    { get; set; }
+    public bool   ShowInHelpText { get; set; } = true;
+
+    public List<string>      Values     { get; private set; }
+    public CommandOptionType OptionType { get; private set; }
+    
     public CommandOption(string template, CommandOptionType optionType)
     {
         Template   = template;
@@ -16,15 +28,7 @@ public sealed class CommandOption
             if (part.StartsWith("--", StringComparison.Ordinal))
                 LongName = part.Substring(2);
             else if (part.StartsWith("-", StringComparison.Ordinal))
-            {
-                var optName = part.Substring(1);
-
-                // If there is only one char and it is not an English letter, it is a symbol option (e.g. "-?")
-                if (optName.Length == 1 && !IsEnglishLetter(optName[0]))
-                    SymbolName = optName;
-                else
-                    ShortName = optName;
-            }
+                ValidateShortSymbolName(part);
             else if (part.StartsWith("<", StringComparison.Ordinal) && part.EndsWith(">", StringComparison.Ordinal))
                 ValueName = part.Substring(1, part.Length - 2);
             else
@@ -34,19 +38,7 @@ public sealed class CommandOption
         if (string.IsNullOrEmpty(LongName) && string.IsNullOrEmpty(ShortName) && string.IsNullOrEmpty(SymbolName))
             throw new ArgumentException($"Invalid template pattern '{template}'", nameof(template));
     }
-
-    public string Template       { get; set; }
-    public string ShortName      { get; set; }
-    public string LongName       { get; set; }
-    public string SymbolName     { get; set; }
-    public string ValueName      { get; set; }
-    public string Description    { get; set; }
-    public bool   ShowInHelpText { get; set; } = true;
-    public bool   Inherited      { get; set; }
-
-    public List<string>      Values     { get; private set; }
-    public CommandOptionType OptionType { get; private set; }
-
+    
     public bool TryParse(string value)
     {
         switch (OptionType)
@@ -74,6 +66,17 @@ public sealed class CommandOption
         return true;
     }
 
+    private void ValidateShortSymbolName(string part)
+    {
+        var optName = part.Substring(1);
+
+        // If there is only one char and it is not an English letter, it is a symbol option (e.g. "-?")
+        if (optName.Length == 1 && !IsEnglishLetter(optName[0]))
+            SymbolName = optName;
+        else
+            ShortName = optName;
+    }
+    
     public bool HasValue()
         => Values.Any();
 
