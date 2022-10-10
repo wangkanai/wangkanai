@@ -21,8 +21,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\src\Wangkanai.MSBuild.csproj" />
-  </ItemGroup>
-
 </Project>
