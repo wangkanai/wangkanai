@@ -5,30 +5,8 @@
         <Title>Wngkanai Webmaster</Title>
         <Description>ASP.NET Core Search Engine Optimization for Webmaster lets you improve the art, craft, and science of driving web traffic to enabling you with easy and efficiency native tool build in the asp.net core library.</Description>
         <PackageTags>aspnetcore;webmaster;seo;search;optimization;taghelper</PackageTags>
-
-        <Authors>Sarin Na Wangkanai</Authors>
-        <Copyright>©2014-2022 Sarin Na Wangkanai, All rights reserved</Copyright>
-
-        <RepositoryType>git</RepositoryType>
-        <RepositoryUrl>git://github.com/wangkanai/wangkanai</RepositoryUrl>
-
-        <PackageProjectUrl>https://github.com/wangkanai/wangkanai</PackageProjectUrl>
-        <PackageLicense>https://github.com/wangkanai/wangkanai/blob/main/LICENSE</PackageLicense>
-        <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+        
     </PropertyGroup>
-
-    <PropertyGroup>
-        <PublishRepositoryUrl>true</PublishRepositoryUrl>
-        <EmbedUntrackedSources>true</EmbedUntrackedSources>
-        <IncludeSymbols>true</IncludeSymbols>
-        <DeterministicSourcePaths>true</DeterministicSourcePaths>
-        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-        <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
-    </PropertyGroup>
-
-    <ItemGroup>
-        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All"/>
-    </ItemGroup>
 
     <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Webmaster'">
         <PackageIcon>wangkanai-logo.png</PackageIcon>

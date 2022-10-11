@@ -1,0 +1,18 @@
+<Project>
+    <PropertyGroup>
+        <VersionPrefix>0.1.1</VersionPrefix>
+
+        <Title>Wangkanai Sign Tool</Title>
+        <PackageTags>aspnetcore;nuget;sign;tool;</PackageTags>
+        <Description>This project is a global wrapper for code signing the nuget packages before publishing on nuget.</Description>
+        
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="..\README.md" Pack="true" PackagePath="\"/>
+    </ItemGroup>
+</Project>

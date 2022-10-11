@@ -1,11 +1,10 @@
 <Project>
     <PropertyGroup>
-        <VersionPrefix>0.1.0</VersionPrefix>
+        <VersionPrefix>0.0.2</VersionPrefix>
 
-        <Title>Wangkanai Html</Title>
-        <PackageTags>aspnetcore;html;html5</PackageTags>
-        <Description>Html wrapper utilities library</Description>
-
+        <Title>Wangkanai MSBuild</Title>
+        <Description>ASP.NET Core MSBuild Extension</Description>
+        <PackageTags>aspnetcore;msbuild;</PackageTags>
     </PropertyGroup>
 
     <PropertyGroup>
@@ -14,7 +13,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <None Include="..\..\asset\wangkanai-logo.png" Pack="true" PackagePath="\"/>
+        <None Include="..\..\..\asset\wangkanai-logo.png" Pack="true" PackagePath="\"/>
         <None Include="..\README.md" Pack="true" PackagePath="\"/>
     </ItemGroup>
 </Project>
