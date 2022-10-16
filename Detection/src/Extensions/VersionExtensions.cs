@@ -19,6 +19,9 @@ public static class VersionExtensions
         if (!version.Contains(".", StringComparison.Ordinal))
             version += ".0";
 
+        if (version.Contains(",", StringComparison.Ordinal))
+            version = version.Replace(",", ".");
+
         return Version.TryParse(version, out var parsedVersion)
                    ? parsedVersion
                    : new Version(0, 0);
