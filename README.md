@@ -8,6 +8,12 @@
 [![Patreon](https://img.shields.io/badge/patreon-support%20me-d9643a.svg)](https://www.patreon.com/wangkanai)
 [![GitHub](https://img.shields.io/github/license/wangkanai/detection)](https://github.com/wangkanai/Detection/blob/dev/LICENSE)
 
+## Main projects
+
+- [Detection](https://github.com/wangkanai/wangkanai/tree/main/Detection)
+- [Runtime](https://github.com/wangkanai/wangkanai/tree/main/Runtime)
+- [Tools](https://github.com/wangkanai/wangkanai/tree/main/Tools)
+
 ## What is Wangkanai?
 
 Wangkanai is a collection of library that was developed internally overtime and share common usage that would benefit
