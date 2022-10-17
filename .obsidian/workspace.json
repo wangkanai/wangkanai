@@ -143,13 +143,12 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 314.5
   },
   "ribbon": {
     "mostRecentAction": ""
   },
-  "active": "d66067b008492083",
+  "active": "40466c28decef7b1",
   "lastOpenFiles": [
     "README.md",
     "CODE_OF_CONDUCT.md",
