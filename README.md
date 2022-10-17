@@ -11,6 +11,8 @@
 ## Main projects
 
 - [Detection](https://github.com/wangkanai/wangkanai/tree/main/Detection)
+- [Runtime](https://github.com/wangkanai/wangkanai/tree/main/Runtime)
+- [Tools](https://github.com/wangkanai/wangkanai/tree/main/Tools)
 
 ## What is Wangkanai?
 
