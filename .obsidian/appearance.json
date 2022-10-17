@@ -2,5 +2,6 @@
   "translucency": true,
   "textFontFamily": "CS PraJad",
   "monospaceFontFamily": "JetBrains Mono NL",
-  "baseFontSize": 20
+  "baseFontSize": 20,
+  "accentColor": ""
 }
