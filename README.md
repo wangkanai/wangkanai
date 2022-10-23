@@ -20,5 +20,7 @@ I love a challenge and I'm skilled at progressing from a simple proposal into a 
 
 ### GitHub Stats
 
-[![GitHub Stats](https://github-readme-stats.vercel.app/api?username=wangkanai&show_icons=true&theme=github_dark | width=180em)](https://github.com/wangkanai)
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=wangkanai&theme=github_dark&layout=compact | width=180em)](https://github.com/wangkanai)
+<a href="https://github.com/wangkanai">
+    <img width="180em" src="https://github-readme-stats.vercel.app/api?username=wangkanai&show_icons=true&theme=github_dark" alt="Wangkanai's GitHub Stats"/>
+    <img width="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=wangkanai&theme=github_dark&layout=compact" alt="Wangkanai's Top Languages"/>
+</a>
