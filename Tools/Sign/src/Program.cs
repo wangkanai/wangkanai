@@ -1,10 +1,8 @@
 // Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using System.IO;
-using System.Windows.Input;
 
-using Wangkanai.Reflection;
-using Wangkanai.Sign.Internal;
+using Wangkanai.Extensions.CommandLine.Internal;
 
 namespace Wangkanai.Sign;
 
