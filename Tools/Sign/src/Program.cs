@@ -4,7 +4,7 @@ using System.IO;
 
 using Wangkanai.Extensions.CommandLine.Internal;
 
-namespace Wangkanai.Sign;
+namespace Wangkanai.Sign.Tools;
 
 public class Program
 {
