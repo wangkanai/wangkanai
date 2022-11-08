@@ -2,7 +2,7 @@
 
 using System.Windows.Input;
 
-namespace Wangkanai.Sign;
+namespace Wangkanai.Sign.Tools;
 
 public class CommandLineOptions
 {
