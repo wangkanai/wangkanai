@@ -38,7 +38,7 @@
   </Target>
   <Target Name="NpmRunBuild" DependsOnTargets="NpmInstall" BeforeTargets="BeforeBuild">
     <Exec Command="npm run dev" Condition="$(Configuration) == 'DEBUG'" />
-    <Exec Command="npm run build" Condition="$(Configuration) != 'DEBUG'" />
+    <Exec Command="npm run --silent build" Condition="$(Configuration) != 'DEBUG'" />
   </Target>
 
 </Project>
