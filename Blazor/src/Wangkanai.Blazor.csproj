@@ -11,10 +11,14 @@
     <SupportedPlatform Include="browser" />
   </ItemGroup>
 
-  <ItemGroup>
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' ">
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.0" />
   </ItemGroup>
 
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net7.0' ">
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.0" />
+  </ItemGroup>
+  
   <ItemGroup>
     <ProjectReference Include="..\..\Runtime\src\Wangkanai.Runtime.csproj" />
     <ProjectReference Include="..\..\Validation\src\Wangkanai.Validation.csproj" />
