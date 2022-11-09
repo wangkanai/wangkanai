@@ -25,7 +25,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\Runtime\src\Wangkanai.Runtime.csproj" />
     <ProjectReference Include="..\..\src\Wangkanai.Tabler.csproj" />
-    <ProjectReference Include="..\Shared\Wangkanai.Tabler.Demo.Shared.csproj" />
+    <ProjectReference Include="..\Domain\Wangkanai.Tabler.Demo.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
