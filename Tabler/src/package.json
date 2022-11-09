@@ -26,7 +26,7 @@
         "watch": "nodemon --watch wwwroot/scss/ --ext scss --exec \"npm run scss\""
     },
     "dependencies": {
-        "@tabler/core": "^1.0.0-beta12",
+        "@tabler/core": "^1.0.0-beta15",
         "rfs": "^9.0.6"
     },
     "devDependencies": {
