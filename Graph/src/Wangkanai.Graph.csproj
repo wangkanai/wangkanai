@@ -1,7 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
+    <LangVersion>11</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <NoWarn>8603</NoWarn>
@@ -12,9 +13,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="6.0.9" />
-    <PackageReference Include="Microsoft.Authentication.WebAssembly.Msal" Version="6.0.9" />
-    <PackageReference Include="Microsoft.Graph" Version="4.41.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Authentication.WebAssembly.Msal" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Graph" Version="4.46.0" />
   </ItemGroup>
 
 </Project>
