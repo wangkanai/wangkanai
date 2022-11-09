@@ -1,6 +1,6 @@
 <Project>
     <PropertyGroup>
-        <VersionPrefix>0.4.3</VersionPrefix>
+        <VersionPrefix>1.0.0</VersionPrefix>
 
         <Title>Wangkanai Blazor</Title>
         <Description>Wangkanai Blazor Component library.</Description>
