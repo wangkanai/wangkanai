@@ -4,7 +4,6 @@
     <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
     <LangVersion>11</LangVersion>
     <Nullable>enable</Nullable>
-    <RootNamespace>Wangkanai.Multitenant</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
