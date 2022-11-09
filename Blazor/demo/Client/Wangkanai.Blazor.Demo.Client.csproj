@@ -15,7 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Wangkanai.Blazor.csproj" />
-    <ProjectReference Include="..\Shared\Wangkanai.Blazor.Demo.Shared.csproj" />
+    <ProjectReference Include="..\Domain\Wangkanai.Blazor.Demo.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
