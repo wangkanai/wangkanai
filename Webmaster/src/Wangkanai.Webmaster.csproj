@@ -2,18 +2,19 @@
 
   <PropertyGroup>
     <RootNamespace>Wangkanai</RootNamespace>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
+    <LangVersion>11</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <FrameworkReference Include="Microsoft.AspNetCore.App"/>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Hosting\src\Wangkanai.Hosting.csproj"/>
-    <ProjectReference Include="..\..\Runtime\src\Wangkanai.Runtime.csproj"/>
-    <ProjectReference Include="..\..\Validation\src\Wangkanai.Validation.csproj"/>
-    <ProjectReference Include="..\..\Webserver\src\Wangkanai.Webserver.csproj"/>
+    <ProjectReference Include="..\..\Hosting\src\Wangkanai.Hosting.csproj" />
+    <ProjectReference Include="..\..\Runtime\src\Wangkanai.Runtime.csproj" />
+    <ProjectReference Include="..\..\Validation\src\Wangkanai.Validation.csproj" />
+    <ProjectReference Include="..\..\Webserver\src\Wangkanai.Webserver.csproj" />
   </ItemGroup>
 
 </Project>
