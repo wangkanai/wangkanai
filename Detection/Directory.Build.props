@@ -1,6 +1,6 @@
 <Project>
     <PropertyGroup>
-        <VersionPrefix>6.0.0</VersionPrefix>
+        <VersionPrefix>6.1.0</VersionPrefix>
 
         <Title>Wangkanai Detection</Title>
         <Description>ASP.NET Core Detection service components for identifying details about client device, browser, engine, platform, and crawler.</Description>

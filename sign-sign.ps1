@@ -1,4 +1,4 @@
-push-location -path .\sign\
+push-location -path .\tools\sign\
 
 dotnet --version
 dotnet clean .\src\

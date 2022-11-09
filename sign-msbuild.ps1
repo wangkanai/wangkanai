@@ -1,4 +1,4 @@
-push-location -path .\msbuild\
+push-location -path .\tools\msbuild\
 
 dotnet --version
 dotnet clean .\src\
