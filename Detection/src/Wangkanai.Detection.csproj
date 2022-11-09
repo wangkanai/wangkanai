@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net5.0;net6.0;netcoreapp3.1</TargetFrameworks>
-    <LangVersion>10</LangVersion>
+    <TargetFrameworks>net6.0;net7.0;netcoreapp3.1</TargetFrameworks>
+    <LangVersion>11</LangVersion>
     <Nullable>enable</Nullable>
     <NoWarn>8602,8603,8604</NoWarn>
   </PropertyGroup>
