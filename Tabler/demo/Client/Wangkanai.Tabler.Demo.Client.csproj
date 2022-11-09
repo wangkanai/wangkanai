@@ -42,6 +42,6 @@
     <Touch Files="node_modules/.install-stamp" AlwaysCreate="true" />
   </Target>
   <Target Name="NpmRunBuild" DependsOnTargets="NpmInstall" BeforeTargets="BeforeBuild">
-    <Exec Command="npm run --silent lib" />
+    <Exec Command="npm run --silent lib" Condition="$(Configuration) != 'DEBUG'" />
   </Target>
 </Project>

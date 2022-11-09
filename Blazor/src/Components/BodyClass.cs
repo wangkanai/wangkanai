@@ -1,5 +1,7 @@
 ﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
+using System;
+
 using Microsoft.AspNetCore.Components.Rendering;
 using Microsoft.Extensions.Logging;
 
@@ -17,11 +19,18 @@ public class BodyClass : ComponentBase
 
     protected override void BuildRenderTree(RenderTreeBuilder builder)
     {
-        Logger.LogWarning("Start BodyClass build render tree");
-        builder.OpenComponent<SectionContent>(0);
-        builder.AddAttribute(1, nameof(SectionContent.Name), BodyOutlet.BodySectionOutletName);
-        //builder.AddAttribute(2, BodyOutlet.CssClassOutletName, Add);
-        //builder.AddAttribute(3, nameof(BodyContent.ChildContent), ChildContent);
-        builder.CloseComponent();
+        try
+        {
+            Logger.LogWarning("Start BodyClass build render tree");
+            builder.OpenComponent<SectionContent>(0);
+            builder.AddAttribute(1, nameof(SectionContent.Name), BodyOutlet.BodySectionOutletName);
+            //builder.AddAttribute(2, BodyOutlet.CssClassOutletName, Add);
+            //builder.AddAttribute(3, nameof(BodyContent.ChildContent), ChildContent);
+            builder.CloseComponent();
+        }
+        catch (Exception ex)
+        {
+            Logger.LogError(ex, "Error BodyClass build render tree");
+        }
     }
 }
