@@ -23,4 +23,9 @@
     <ItemGroup>
         <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All"/>
     </ItemGroup>
+    
+    <!-- Source code settings -->
+    <PropertyGroup>
+        <SharedSourceRoot>$(MSBuildThisFileDirectory)Shared\src\</SharedSourceRoot>
+    </PropertyGroup>
 </Project>

@@ -2,7 +2,7 @@
 
 using Microsoft.AspNetCore.Components.Rendering;
 
-namespace Microsoft.AspNetCore.Components.Web;
+namespace Wangkanai.Blazor.Components.Sections;
 
 public sealed class BodyContent : ComponentBase
 {

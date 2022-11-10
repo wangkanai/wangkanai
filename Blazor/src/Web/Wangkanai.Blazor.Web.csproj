@@ -1,27 +1,25 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
-    <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
     <LangVersion>11</LangVersion>
     <Nullable>enable</Nullable>
     <NoWarn>8603,8604,8618,8625</NoWarn>
+    <TargetFramework>net7.0</TargetFramework>
+    <RootNamespace>Wangkanai.Blazor</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
     <SupportedPlatform Include="browser" />
   </ItemGroup>
-
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' ">
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.0" />
-  </ItemGroup>
-
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net7.0' ">
+  
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.0" />
   </ItemGroup>
   
   <ItemGroup>
     <ProjectReference Include="..\..\Runtime\src\Wangkanai.Runtime.csproj" />
     <ProjectReference Include="..\..\Validation\src\Wangkanai.Validation.csproj" />
+    <ProjectReference Include="..\Components\Wangkanai.Blazor.Components.csproj" />
   </ItemGroup>
   
   <ItemGroup>

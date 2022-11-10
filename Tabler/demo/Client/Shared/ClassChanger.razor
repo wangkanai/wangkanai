@@ -1,37 +1,37 @@
-﻿@inject NavigationManager navigationManager 
-@inject IJSRuntime jsRuntime
-@implements IDisposable
-
-@code {
-
-  [Parameter]
-  public string DefaultClass { get; set; } = "";
-
-  [Parameter]
-  public string AddClass { get; set; } = "";
-
-  protected override void OnInitialized()
-  {
-    navigationManager.LocationChanged += OnLocationChangedAsync;
-  }
-
-  protected override async Task OnAfterRenderAsync(bool firstRender)
-  {
-    if (firstRender)
-    {
-      await jsRuntime.InvokeVoidAsync("bodyClassMethods.setBodyClass", $"{DefaultClass} {AddClass}");
-    }
-  }
-
-  public void Dispose()
-  {
-    navigationManager.LocationChanged -= OnLocationChangedAsync;
-  }
-
-  private async void OnLocationChangedAsync(object sender, LocationChangedEventArgs args)
-  {
-    await jsRuntime.InvokeVoidAsync("bodyClassMethods.setBodyClass", DefaultClass);
-    StateHasChanged();
-  }
-
-}
+﻿@* @inject NavigationManager navigationManager  *@
+@* @inject IJSRuntime jsRuntime *@
+@* @implements IDisposable *@
+@* *@
+@* @code { *@
+@* *@
+@*   [Parameter] *@
+@*   public string DefaultClass { get; set; } = ""; *@
+@* *@
+@*   [Parameter] *@
+@*   public string AddClass { get; set; } = ""; *@
+@* *@
+@*   protected override void OnInitialized() *@
+@*   { *@
+@*     navigationManager.LocationChanged += OnLocationChangedAsync; *@
+@*   } *@
+@* *@
+@*   protected override async Task OnAfterRenderAsync(bool firstRender) *@
+@*   { *@
+@*     if (firstRender) *@
+@*     { *@
+@*       await jsRuntime.InvokeVoidAsync("bodyClassMethods.setBodyClass", $"{DefaultClass} {AddClass}"); *@
+@*     } *@
+@*   } *@
+@* *@
+@*   public void Dispose() *@
+@*   { *@
+@*     navigationManager.LocationChanged -= OnLocationChangedAsync; *@
+@*   } *@
+@* *@
+@*   private async void OnLocationChangedAsync(object sender, LocationChangedEventArgs args) *@
+@*   { *@
+@*     await jsRuntime.InvokeVoidAsync("bodyClassMethods.setBodyClass", DefaultClass); *@
+@*     StateHasChanged(); *@
+@*   } *@
+@* *@
+@* } *@

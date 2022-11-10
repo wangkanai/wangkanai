@@ -5,7 +5,7 @@ using System;
 using Microsoft.AspNetCore.Components.Rendering;
 using Microsoft.Extensions.Logging;
 
-namespace Microsoft.AspNetCore.Components.Web;
+namespace Wangkanai.Blazor.Components.Sections;
 
 public class BodyClass : ComponentBase
 {
@@ -21,11 +21,11 @@ public class BodyClass : ComponentBase
     {
         try
         {
-            Logger.LogWarning("Start BodyClass build render tree");
+            Logger.LogInformation("Start BodyClass build render tree");
             builder.OpenComponent<SectionContent>(0);
             builder.AddAttribute(1, nameof(SectionContent.Name), BodyOutlet.BodySectionOutletName);
-            //builder.AddAttribute(2, BodyOutlet.CssClassOutletName, Add);
-            //builder.AddAttribute(3, nameof(BodyContent.ChildContent), ChildContent);
+            builder.AddAttribute(2, BodyOutlet.CssClassOutletName, Add);
+            builder.AddAttribute(3, nameof(BodyContent.ChildContent), ChildContent);
             builder.CloseComponent();
         }
         catch (Exception ex)
