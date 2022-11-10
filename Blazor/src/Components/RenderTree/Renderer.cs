@@ -1,15 +1,16 @@
 ﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-using System.ComponentModel;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.RenderTree;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
 using Wangkanai.Blazor.Components.HotReload;
+using Wangkanai.Blazor.Components.Reflection;
 using Wangkanai.Blazor.Components.Rendering;
+using Wangkanai.Internal;
 
 namespace Wangkanai.Blazor.Components.RenderTree;
 
@@ -35,38 +36,18 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
 
     private bool _hotReloadInitialized;
 
-    /// <summary>
-    /// Allows the caller to handle exceptions from the SynchronizationContext when one is available.
-    /// </summary>
     public event UnhandledExceptionEventHandler UnhandledSynchronizationException
     {
-        add
-        {
-            Dispatcher.UnhandledException += value;
-        }
-        remove
-        {
-            Dispatcher.UnhandledException -= value;
-        }
+        add => Dispatcher.UnhandledException += value;
+        remove => Dispatcher.UnhandledException -= value;
     }
 
-    /// <summary>
-    /// Constructs an instance of <see cref="Renderer"/>.
-    /// </summary>
-    /// <param name="serviceProvider">The <see cref="IServiceProvider"/> to be used when initializing components.</param>
-    /// <param name="loggerFactory">The <see cref="ILoggerFactory"/>.</param>
     public Renderer(IServiceProvider serviceProvider, ILoggerFactory loggerFactory)
         : this(serviceProvider, loggerFactory, GetComponentActivatorOrDefault(serviceProvider))
     {
         // This overload is provided for back-compatibility
     }
-
-    /// <summary>
-    /// Constructs an instance of <see cref="Renderer"/>.
-    /// </summary>
-    /// <param name="serviceProvider">The <see cref="IServiceProvider"/> to be used when initializing components.</param>
-    /// <param name="loggerFactory">The <see cref="ILoggerFactory"/>.</param>
-    /// <param name="componentActivator">The <see cref="IComponentActivator"/>.</param>
+    
     public Renderer(IServiceProvider serviceProvider, ILoggerFactory loggerFactory, IComponentActivator componentActivator)
     {
         if (serviceProvider is null)
@@ -86,30 +67,15 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
     internal HotReloadManager HotReloadManager { get; set; } = HotReloadManager.Default;
 
     private static IComponentActivator GetComponentActivatorOrDefault(IServiceProvider serviceProvider)
-    {
-        return serviceProvider.GetService<IComponentActivator>()
-               ?? DefaultComponentActivator.Instance;
-    }
+        => serviceProvider.GetService<IComponentActivator>()
+           ?? DefaultComponentActivator.Instance;
 
-    /// <summary>
-    /// Gets the <see cref="Components.Dispatcher" /> associated with this <see cref="Renderer" />.
-    /// </summary>
     public abstract Dispatcher Dispatcher { get; }
 
-    /// <summary>
-    /// Gets or sets the <see cref="Microsoft.AspNetCore.Components.ElementReferenceContext"/> associated with this <see cref="Renderer"/>,
-    /// if it exists.
-    /// </summary>
     protected internal ElementReferenceContext? ElementReferenceContext { get; protected set; }
 
-    /// <summary>
-    /// Gets a value that determines if the <see cref="Renderer"/> is triggering a render in response to a (metadata update) hot-reload change.
-    /// </summary>
     internal bool IsRenderingOnMetadataUpdate { get; private set; }
 
-    /// <summary>
-    /// Gets whether the renderer has been disposed.
-    /// </summary>
     internal bool Disposed => _rendererIsDisposed;
 
     private async void RenderRootComponentsOnHotReload()
@@ -122,9 +88,7 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
         await Dispatcher.InvokeAsync(() =>
         {
             if (_rootComponentsLatestParameters is null)
-            {
                 return;
-            }
 
             IsRenderingOnMetadataUpdate = true;
             try
@@ -142,92 +106,35 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
         });
     }
 
-    /// <summary>
-    /// Constructs a new component of the specified type.
-    /// </summary>
-    /// <param name="componentType">The type of the component to instantiate.</param>
-    /// <returns>The component instance.</returns>
-    protected IComponent InstantiateComponent([DynamicallyAccessedMembers(Component)] Type componentType)
-    {
-        return _componentFactory.InstantiateComponent(_serviceProvider, componentType);
-    }
+    protected IComponent InstantiateComponent([DynamicallyAccessedMembers(LinkerFlags.Component)] Type componentType)
+        => _componentFactory.InstantiateComponent(_serviceProvider, componentType);
 
-    /// <summary>
-    /// Associates the <see cref="IComponent"/> with the <see cref="Renderer"/>, assigning
-    /// an identifier that is unique within the scope of the <see cref="Renderer"/>.
-    /// </summary>
-    /// <param name="component">The component.</param>
-    /// <returns>The component's assigned identifier.</returns>
-    // Internal for unit testing
     protected internal int AssignRootComponentId(IComponent component)
     {
         if (!_hotReloadInitialized)
         {
             _hotReloadInitialized = true;
             if (HotReloadManager.MetadataUpdateSupported)
-            {
                 HotReloadManager.OnDeltaApplied += RenderRootComponentsOnHotReload;
-            }
         }
 
         return AttachAndInitComponent(component, -1).ComponentId;
     }
 
-    /// <summary>
-    /// Gets the current render tree for a given component.
-    /// </summary>
-    /// <param name="componentId">The id for the component.</param>
-    /// <returns>The <see cref="RenderTreeBuilder"/> representing the current render tree.</returns>
     protected ArrayRange<RenderTreeFrame> GetCurrentRenderTreeFrames(int componentId) => GetRequiredComponentState(componentId).CurrentRenderTree.GetFrames();
 
-    /// <summary>
-    /// Performs the first render for a root component, waiting for this component and all
-    /// children components to finish rendering in case there is any asynchronous work being
-    /// done by any of the components. After this, the root component
-    /// makes its own decisions about when to re-render, so there is no need to call
-    /// this more than once.
-    /// </summary>
-    /// <param name="componentId">The ID returned by <see cref="AssignRootComponentId(IComponent)"/>.</param>
-    /// <remarks>
-    /// Rendering a root component is an asynchronous operation. Clients may choose to not await the returned task to
-    /// start, but not wait for the entire render to complete.
-    /// </remarks>
     protected Task RenderRootComponentAsync(int componentId)
-    {
-        return RenderRootComponentAsync(componentId, ParameterView.Empty);
-    }
-
-    /// <summary>
-    /// Supplies parameters for a root component, normally causing it to render. This can be
-    /// used to trigger the first render of a root component, or to update its parameters and
-    /// trigger a subsequent render. Note that components may also make their own decisions about
-    /// when to re-render, and may re-render at any time.
-    ///
-    /// The returned <see cref="Task"/> waits for this component and all descendant components to
-    /// finish rendering in case there is any asynchronous work being done by any of them.
-    /// </summary>
-    /// <param name="componentId">The ID returned by <see cref="AssignRootComponentId(IComponent)"/>.</param>
-    /// <param name="initialParameters">The <see cref="ParameterView"/> with the initial or updated parameters to use for rendering.</param>
-    /// <remarks>
-    /// Rendering a root component is an asynchronous operation. Clients may choose to not await the returned task to
-    /// start, but not wait for the entire render to complete.
-    /// </remarks>
+        => RenderRootComponentAsync(componentId, ParameterView.Empty);
+    
     protected internal async Task RenderRootComponentAsync(int componentId, ParameterView initialParameters)
     {
         Dispatcher.AssertAccess();
-
-        // Since this is a "render root" operation being invoked from outside the system, we start tracking
-        // any async tasks from this point until we reach quiescence. This allows external code such as prerendering
-        // to know when the renderer has some finished output. We don't track async tasks at other times
-        // because nobody would be waiting for quiescence at other times.
-        // Having a nonnull value for _pendingTasks is what signals that we should be capturing the async tasks.
+        
         _pendingTasks ??= new();
 
         var componentState = GetRequiredRootComponentState(componentId);
         if (HotReloadManager.MetadataUpdateSupported)
         {
-            // When we're doing hot-reload, stash away the parameters used while rendering root components.
-            // We'll use this to trigger re-renders on hot reload updates.
             _rootComponentsLatestParameters              ??= new();
             _rootComponentsLatestParameters[componentId] =   initialParameters.Clone();
         }
@@ -238,47 +145,26 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
         Debug.Assert(_pendingTasks == null);
     }
 
-    /// <summary>
-    /// Removes the specified component from the renderer, causing the component and its
-    /// descendants to be disposed.
-    /// </summary>
-    /// <param name="componentId">The ID of the root component.</param>
     protected internal void RemoveRootComponent(int componentId)
     {
         Dispatcher.AssertAccess();
 
-        // Asserts it's a root component
         _ = GetRequiredRootComponentState(componentId);
 
-        // This assumes there isn't currently a batch in progress, and will throw if there is.
-        // Currently there's no known scenario where we need to support calling RemoveRootComponentAsync
-        // during a batch, but if a scenario emerges we can add support.
         _batchBuilder.ComponentDisposalQueue.Enqueue(componentId);
-        if (HotReloadManager.MetadataUpdateSupported)
-        {
+        if (HotReloadManager.MetadataUpdateSupported) 
             _rootComponentsLatestParameters?.Remove(componentId);
-        }
 
         ProcessRenderQueue();
     }
-
-    /// <summary>
-    /// Gets the type of the specified root component.
-    /// </summary>
-    /// <param name="componentId">The root component ID.</param>
-    /// <returns>The type of the component.</returns>
+    
     internal Type GetRootComponentType(int componentId)
         => GetRequiredRootComponentState(componentId).Component.GetType();
-
-    /// <summary>
-    /// Allows derived types to handle exceptions during rendering. Defaults to rethrowing the original exception.
-    /// </summary>
-    /// <param name="exception">The <see cref="Exception"/>.</param>
+    
     protected abstract void HandleException(Exception exception);
 
     private async Task WaitForQuiescence()
     {
-        // If there's already a loop waiting for quiescence, just join it
         if (_ongoingQuiescenceTask is not null)
         {
             await _ongoingQuiescenceTask;
@@ -299,18 +185,12 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
 
         async Task ProcessAsynchronousWork()
         {
-            // Child components SetParametersAsync are stored in the queue of pending tasks,
-            // which might trigger further renders.
             while (_pendingTasks?.Count > 0)
             {
-                // Create a Task that represents the remaining ongoing work for the rendering process
                 var pendingWork = Task.WhenAll(_pendingTasks);
-
-                // Clear all pending work.
+                
                 _pendingTasks.Clear();
-
-                // new work might be added before we check again as a result of waiting for all
-                // the child components to finish executing SetParametersAsync
+                
                 await pendingWork;
             }
         }

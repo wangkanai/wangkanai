@@ -1,16 +1,13 @@
 ﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using System.Collections.Concurrent;
-using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq.Expressions;
 using System.Reflection;
 
 using Microsoft.AspNetCore.Components;
 
-using static Wangkanai.Internal.LinkerFlags;
-
 using Wangkanai.Blazor.Components.Reflection;
+using Wangkanai.Internal;
 
 namespace Wangkanai.Blazor.Components;
 
@@ -30,7 +27,7 @@ internal sealed class ComponentFactory
     public static void ClearCache()
         => _cachedInitializers.Clear();
 
-    public IComponent InstantiateComponent(IServiceProvider serviceProvider, [DynamicallyAccessedMembers(Component)] Type componentType)
+    public IComponent InstantiateComponent(IServiceProvider serviceProvider, [DynamicallyAccessedMembers(LinkerFlags.Component)] Type componentType)
     {
         var component = _componentActivator.CreateInstance(componentType);
         if (component is null)
@@ -42,9 +39,6 @@ internal sealed class ComponentFactory
 
     private static void PerformPropertyInjection(IServiceProvider serviceProvider, IComponent instance)
     {
-        // This is thread-safe because _cachedInitializers is a ConcurrentDictionary.
-        // We might generate the initializer more than once for a given type, but would
-        // still produce the correct result.
         var instanceType = instance.GetType();
         if (!_cachedInitializers.TryGetValue(instanceType, out var initializer))
         {
@@ -55,25 +49,20 @@ internal sealed class ComponentFactory
         initializer(serviceProvider, instance);
     }
 
-    private static Action<IServiceProvider, IComponent> CreateInitializer([DynamicallyAccessedMembers(Component)] Type type)
+    private static Action<IServiceProvider, IComponent> CreateInitializer([DynamicallyAccessedMembers(LinkerFlags.Component)] Type type)
     {
-        // Do all the reflection up front
         List<(string name, Type propertyType, PropertySetter setter)>? injectables = null;
         foreach (var property in MemberAssignment.GetPropertiesIncludingInherited(type, _injectablePropertyBindingFlags))
         {
             if (!property.IsDefined(typeof(InjectAttribute)))
-            {
                 continue;
-            }
 
             injectables ??= new();
             injectables.Add((property.Name, property.PropertyType, new PropertySetter(type, property)));
         }
 
         if (injectables is null)
-        {
             return static (_, _) => { };
-        }
 
         return Initialize;
 
@@ -85,11 +74,9 @@ internal sealed class ComponentFactory
             {
                 var serviceInstance = serviceProvider.GetService(propertyType);
                 if (serviceInstance == null)
-                {
                     throw new InvalidOperationException($"Cannot provide a value for property " +
                                                         $"'{propertyName}' on type '{type.FullName}'. There is no " +
                                                         $"registered service of type '{propertyType}'.");
-                }
 
                 setter.SetValue(component, serviceInstance);
             }

@@ -19,11 +19,9 @@ internal sealed class PropertySetter
     public PropertySetter(Type targetType, PropertyInfo property)
     {
         if (property.SetMethod == null)
-        {
             throw new InvalidOperationException("Cannot provide a value for property " +
                                                 $"'{property.Name}' on type '{targetType.FullName}' because the property " +
                                                 "has no setter.");
-        }
 
         var setMethod = property.SetMethod;
 
@@ -37,7 +35,8 @@ internal sealed class PropertySetter
 
     public bool Cascading { get; init; }
 
-    public void SetValue(object target, object value) => _setterDelegate(target, value);
+    public void SetValue(object target, object value) 
+        => _setterDelegate(target, value);
 
     private static void CallPropertySetter<TTarget, TValue>(
         Action<TTarget, TValue> setter,
@@ -46,12 +45,8 @@ internal sealed class PropertySetter
         where TTarget : notnull
     {
         if (value == null)
-        {
             setter((TTarget)target, default!);
-        }
         else
-        {
             setter((TTarget)target, (TValue)value);
-        }
     }
 }
