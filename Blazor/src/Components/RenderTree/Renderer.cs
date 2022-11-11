@@ -3,7 +3,7 @@
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 
-using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.RenderTree;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
@@ -80,7 +80,6 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
 
     private async void RenderRootComponentsOnHotReload()
     {
-        // Before re-rendering the root component, also clear any well-known caches in the framework
         ComponentFactory.ClearCache();
         ComponentProperties.ClearCache();
         Routing.QueryParameterValueSupplier.ClearCache();
@@ -806,16 +805,12 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
         // We only get here in specific situations. Currently, all of them are when we're
         // already on the sync context (and if not, we have a bug we want to know about).
         Dispatcher.AssertAccess();
-
-        // Find the closest error boundary, if any
+        
         var candidate = errorSourceOrNull;
         while (candidate is not null)
         {
             if (candidate.Component is IErrorBoundary errorBoundary)
             {
-                // Don't just trust the error boundary to dispose its subtree - force it to do so by
-                // making it render an empty fragment. Ensures that failed components don't continue to
-                // operate, which would be a whole new kind of edge case to support forever.
                 AddToRenderQueue(candidate.ComponentId, builder => { });
 
                 try
@@ -824,7 +819,6 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
                 }
                 catch (Exception errorBoundaryException)
                 {
-                    // If *notifying* about an exception fails, it's OK for that to be fatal
                     HandleException(errorBoundaryException);
                 }
 
@@ -833,23 +827,14 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
 
             candidate = candidate.ParentComponentState;
         }
-
-        // It's unhandled, so treat as fatal
+        
         HandleException(error);
     }
 
-    /// <summary>
-    /// Releases all resources currently used by this <see cref="Renderer"/> instance.
-    /// </summary>
-    /// <param name="disposing"><see langword="true"/> if this method is being invoked by <see cref="IDisposable.Dispose"/>, otherwise <see langword="false"/>.</param>
     protected virtual void Dispose(bool disposing)
     {
         if (!Dispatcher.CheckAccess())
         {
-            // It's important that we only call the components' Dispose/DisposeAsync lifecycle methods
-            // on the sync context, like other lifecycle methods. In almost all cases we'd already be
-            // on the sync context here since DisposeAsync dispatches, but just in case someone is using
-            // Dispose directly, we'll dispatch and block.
             Dispatcher.InvokeAsync(() => Dispose(disposing)).Wait();
             return;
         }
@@ -861,19 +846,12 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
             HotReloadManager.OnDeltaApplied -= RenderRootComponentsOnHotReload;
         }
 
-        // It's important that we handle all exceptions here before reporting any of them.
-        // This way we can dispose all components before an error handler kicks in.
         List<Exception> exceptions       = null;
         List<Task>      asyncDisposables = null;
         foreach (var componentState in _componentStateById.Values)
         {
             Log.DisposingComponent(_logger, componentState);
 
-            // Components shouldn't need to implement IAsyncDisposable and IDisposable simultaneously,
-            // but in case they do, we prefer the async overload since we understand the sync overload
-            // is implemented for more "constrained" scenarios.
-            // Component authors are responsible for their IAsyncDisposable implementations not taking
-            // forever.
             if (componentState.Component is IAsyncDisposable asyncDisposable)
             {
                 try
@@ -938,48 +916,33 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
         void NotifyExceptions(List<Exception> exceptions)
         {
             if (exceptions?.Count > 1)
-            {
                 HandleException(new AggregateException("Exceptions were encountered while disposing components.", exceptions));
-            }
-            else if (exceptions?.Count == 1)
-            {
+            else if (exceptions?.Count == 1) 
                 HandleException(exceptions[0]);
-            }
         }
     }
 
-    /// <summary>
-    /// Releases all resources currently used by this <see cref="Renderer"/> instance.
-    /// </summary>
+    
     public void Dispose()
     {
         Dispose(disposing: true);
     }
-
-    /// <inheritdoc />
+    
     public async ValueTask DisposeAsync()
     {
         if (_rendererIsDisposed)
-        {
             return;
-        }
 
         if (_disposeTask != null)
-        {
             await _disposeTask;
-        }
         else
         {
             await Dispatcher.InvokeAsync(Dispose);
 
             if (_disposeTask != null)
-            {
                 await _disposeTask;
-            }
             else
-            {
                 await default(ValueTask);
-            }
         }
     }
 }

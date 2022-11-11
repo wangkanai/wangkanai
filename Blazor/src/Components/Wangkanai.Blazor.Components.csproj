@@ -9,6 +9,7 @@
   </PropertyGroup>
   
   <ItemGroup>
+    <Compile Include="$(SharedSourceRoot)QueryStringEnumerable.cs" LinkBase="Shared" />
     <Compile Include="$(SharedSourceRoot)LinkerFlags.cs" LinkBase="Shared" />
   </ItemGroup>
   
