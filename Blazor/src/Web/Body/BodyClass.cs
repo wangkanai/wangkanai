@@ -1,13 +1,14 @@
 ﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-using System;
 
-using Microsoft.AspNetCore.Components.Rendering;
+using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Logging;
+
+using Wangkanai.Blazor.Components.Rendering;
 
 namespace Wangkanai.Blazor.Components.Sections;
 
-public class BodyClass : ComponentBase
+public class BodyClass : WangkanaiComponentBase
 {
     [Inject] protected ILogger<BodyClass> Logger { get; set; }
 

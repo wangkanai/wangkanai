@@ -47,7 +47,7 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
     {
         // This overload is provided for back-compatibility
     }
-    
+
     public Renderer(IServiceProvider serviceProvider, ILoggerFactory loggerFactory, IComponentActivator componentActivator)
     {
         if (serviceProvider is null)
@@ -124,11 +124,11 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
 
     protected Task RenderRootComponentAsync(int componentId)
         => RenderRootComponentAsync(componentId, ParameterView.Empty);
-    
+
     protected internal async Task RenderRootComponentAsync(int componentId, ParameterView initialParameters)
     {
         Dispatcher.AssertAccess();
-        
+
         _pendingTasks ??= new();
 
         var componentState = GetRequiredRootComponentState(componentId);
@@ -151,15 +151,15 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
         _ = GetRequiredRootComponentState(componentId);
 
         _batchBuilder.ComponentDisposalQueue.Enqueue(componentId);
-        if (HotReloadManager.MetadataUpdateSupported) 
+        if (HotReloadManager.MetadataUpdateSupported)
             _rootComponentsLatestParameters?.Remove(componentId);
 
         ProcessRenderQueue();
     }
-    
+
     internal Type GetRootComponentType(int componentId)
         => GetRequiredRootComponentState(componentId).Component.GetType();
-    
+
     protected abstract void HandleException(Exception exception);
 
     private async Task WaitForQuiescence()
@@ -187,9 +187,9 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
             while (_pendingTasks?.Count > 0)
             {
                 var pendingWork = Task.WhenAll(_pendingTasks);
-                
+
                 _pendingTasks.Clear();
-                
+
                 await pendingWork;
             }
         }
@@ -449,16 +449,10 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
         return componentState;
     }
 
-    /// <summary>
-    /// Processes pending renders requests from components if there are any.
-    /// </summary>
     protected virtual void ProcessPendingRender()
     {
         if (_rendererIsDisposed)
-        {
-            // Once we're disposed, we'll disregard further attempts to render anything
             return;
-        }
 
         ProcessRenderQueue();
     }
@@ -468,9 +462,7 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
         Dispatcher.AssertAccess();
 
         if (_isBatchInProgress)
-        {
             throw new InvalidOperationException("Cannot start a batch when one is already in progress.");
-        }
 
         _isBatchInProgress = true;
         var updateDisplayTask = Task.CompletedTask;
@@ -478,19 +470,10 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
         try
         {
             if (_batchBuilder.ComponentRenderQueue.Count == 0)
-            {
                 if (_batchBuilder.ComponentDisposalQueue.Count == 0)
-                {
-                    // Nothing to do
                     return;
-                }
                 else
-                {
-                    // Normally we process the disposal queue after each component rendering step,
-                    // but in this case disposal is the only pending action so far
                     ProcessDisposalQueueInExistingBatch();
-                }
-            }
 
             // Process render queue until empty
             while (_batchBuilder.ComponentRenderQueue.Count > 0)
@@ -519,28 +502,14 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
             _isBatchInProgress = false;
         }
 
-        // An OnAfterRenderAsync callback might have queued more work synchronously.
-        // Note: we do *not* re-render implicitly after the OnAfterRenderAsync-returned
-        // task (that would be an infinite loop). We only render after an explicit render
-        // request (e.g., StateHasChanged()).
         if (_batchBuilder.ComponentRenderQueue.Count > 0)
-        {
             ProcessRenderQueue();
-        }
     }
 
     private Task InvokeRenderCompletedCalls(ArrayRange<RenderTreeDiff> updatedComponents, Task updateDisplayTask)
     {
         if (updateDisplayTask.IsCanceled)
-        {
-            // The display update was canceled.
-            // This can be due to a timeout on the components server-side case, or the renderer being disposed.
-
-            // The latter case is normal during prerendering, as the render never fully completes (the display never
-            // gets updated, no references get populated and JavaScript interop is not available) and we simply discard
-            // the renderer after producing the prerendered content.
             return Task.CompletedTask;
-        }
 
         if (updateDisplayTask.IsFaulted)
         {
@@ -555,9 +524,7 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
             var updatedComponentsId    = new int[updatedComponents.Count];
             var updatedComponentsArray = updatedComponents.Array;
             for (int i = 0; i < updatedComponentsId.Length; i++)
-            {
                 updatedComponentsId[i] = updatedComponentsArray[i].ComponentId;
-            }
 
             return InvokeRenderCompletedCallsAfterUpdateDisplayTask(updateDisplayTask, updatedComponentsId);
         }
@@ -568,9 +535,7 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
         {
             var componentState = GetOptionalComponentState(array[i].ComponentId);
             if (componentState != null)
-            {
                 NotifyRenderCompleted(componentState, ref batch);
-            }
         }
 
         return batch != null ? Task.WhenAll(batch) : Task.CompletedTask;
@@ -587,9 +552,7 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
         catch // avoiding exception filters for AOT runtimes
         {
             if (updateDisplayTask.IsCanceled)
-            {
                 return;
-            }
 
             HandleException(updateDisplayTask.Exception);
             return;
@@ -601,9 +564,7 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
         {
             var componentState = GetOptionalComponentState(array[i]);
             if (componentState != null)
-            {
                 NotifyRenderCompleted(componentState, ref batch);
-            }
         }
 
         var result = batch != null ? Task.WhenAll(batch) : Task.CompletedTask;
@@ -613,24 +574,12 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
 
     private void NotifyRenderCompleted(ComponentState state, ref List<Task> batch)
     {
-        // The component might be rendered and disposed in the same batch (if its parent
-        // was rendered later in the batch, and removed the child from the tree).
-        // This can also happen between batches if the UI takes some time to update and within
-        // that time the component gets removed out of the tree because the parent chose not to
-        // render it in a later batch.
-        // In any of the two cases mentioned happens, OnAfterRenderAsync won't run but that is
-        // ok.
         var task = state.NotifyRenderCompletedAsync();
 
-        // We want to avoid allocations per rendering. Avoid allocating a state machine or an accumulator
-        // unless we absolutely have to.
         if (task.IsCompleted)
         {
             if (task.Status == TaskStatus.RanToCompletion || task.Status == TaskStatus.Canceled)
-            {
-                // Nothing to do here.
                 return;
-            }
             else if (task.Status == TaskStatus.Faulted)
             {
                 HandleExceptionViaErrorBoundary(task.Exception, state);
@@ -638,8 +587,6 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
             }
         }
 
-        // The Task is incomplete.
-        // Queue up the task and we can inspect it later.
         batch = batch ?? new List<Task>();
         batch.Add(GetErrorHandledTask(task, state));
     }
@@ -650,12 +597,8 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
         Log.RenderingComponent(_logger, componentState);
         componentState.RenderIntoBatch(_batchBuilder, renderQueueEntry.RenderFragment, out var renderFragmentException);
         if (renderFragmentException != null)
-        {
-            // If this returns, the error was handled by an error boundary. Otherwise it throws.
             HandleExceptionViaErrorBoundary(renderFragmentException, componentState);
-        }
 
-        // Process disposal queue now in case it causes further component renders to be enqueued
         ProcessDisposalQueueInExistingBatch();
     }
 
@@ -688,7 +631,6 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
                 }
                 else
                 {
-                    // We set owningComponentState to null because we don't want exceptions during disposal to be recoverable
                     AddToPendingTasks(GetHandledAsynchronousDisposalErrorsTask(result), owningComponentState: null);
 
                     async Task GetHandledAsynchronousDisposalErrorsTask(Task result)
@@ -711,21 +653,15 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
         }
 
         if (exceptions?.Count > 1)
-        {
             HandleException(new AggregateException("Exceptions were encountered while disposing components.", exceptions));
-        }
         else if (exceptions?.Count == 1)
-        {
             HandleException(exceptions[0]);
-        }
     }
 
     private void RemoveEventHandlerIds(ArrayRange<ulong> eventHandlerIds, Task afterTaskIgnoreErrors)
     {
         if (eventHandlerIds.Count == 0)
-        {
             return;
-        }
 
         if (afterTaskIgnoreErrors.IsCompleted)
         {
@@ -743,14 +679,8 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
             _ = ContinueAfterTask(eventHandlerIds, afterTaskIgnoreErrors);
         }
 
-        // Factor out the async part into a separate local method purely so, in the
-        // synchronous case, there's no state machine or task construction
         async Task ContinueAfterTask(ArrayRange<ulong> eventHandlerIds, Task afterTaskIgnoreErrors)
         {
-            // We need to delay the actual removal (e.g., until we've confirmed the client
-            // has processed the batch and hence can be sure not to reuse the handler IDs
-            // any further). We must clone the data because the underlying RenderBatchBuilder
-            // may be reused and hence modified by an unrelated subsequent batch.
             var eventHandlerIdsClone = eventHandlerIds.Clone();
 
             try
@@ -763,7 +693,6 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
                 // That remains the caller's business.
             }
 
-            // We know the next execution will complete synchronously, so no infinite loop
             RemoveEventHandlerIds(eventHandlerIdsClone, Task.CompletedTask);
         }
     }
@@ -776,11 +705,8 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
         }
         catch (Exception ex)
         {
-            // Ignore errors due to task cancellations.
             if (!taskToHandle.IsCanceled)
-            {
                 HandleExceptionViaErrorBoundary(ex, owningComponentState);
-            }
         }
     }
 
@@ -788,24 +714,16 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
     {
         var componentState = GetOptionalComponentState(fieldInfo.ComponentId);
         if (componentState != null)
-        {
             RenderTreeUpdater.UpdateToMatchClientState(
                 componentState.CurrentRenderTree,
                 eventHandlerId,
                 fieldInfo.FieldValue);
-        }
     }
 
-    /// <summary>
-    /// If the exception can be routed to an error boundary around <paramref name="errorSourceOrNull"/>, do so.
-    /// Otherwise handle it as fatal.
-    /// </summary>
     private void HandleExceptionViaErrorBoundary(Exception error, ComponentState? errorSourceOrNull)
     {
-        // We only get here in specific situations. Currently, all of them are when we're
-        // already on the sync context (and if not, we have a bug we want to know about).
         Dispatcher.AssertAccess();
-        
+
         var candidate = errorSourceOrNull;
         while (candidate is not null)
         {
@@ -827,7 +745,7 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
 
             candidate = candidate.ParentComponentState;
         }
-        
+
         HandleException(error);
     }
 
@@ -841,10 +759,8 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
 
         _rendererIsDisposed = true;
 
-        if (_hotReloadInitialized && HotReloadManager.MetadataUpdateSupported)
-        {
+        if (_hotReloadInitialized && HotReloadManager.MetadataUpdateSupported) 
             HotReloadManager.OnDeltaApplied -= RenderRootComponentsOnHotReload;
-        }
 
         List<Exception> exceptions       = null;
         List<Task>      asyncDisposables = null;
@@ -889,10 +805,8 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
 
         NotifyExceptions(exceptions);
 
-        if (asyncDisposables?.Count >= 1)
-        {
+        if (asyncDisposables?.Count >= 1) 
             _disposeTask = HandleAsyncExceptions(asyncDisposables);
-        }
 
         async Task HandleAsyncExceptions(List<Task> tasks)
         {
@@ -917,17 +831,15 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
         {
             if (exceptions?.Count > 1)
                 HandleException(new AggregateException("Exceptions were encountered while disposing components.", exceptions));
-            else if (exceptions?.Count == 1) 
+            else if (exceptions?.Count == 1)
                 HandleException(exceptions[0]);
         }
     }
 
-    
-    public void Dispose()
-    {
-        Dispose(disposing: true);
-    }
-    
+
+    public void Dispose() 
+        => Dispose(disposing: true);
+
     public async ValueTask DisposeAsync()
     {
         if (_rendererIsDisposed)

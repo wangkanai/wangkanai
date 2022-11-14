@@ -2,7 +2,7 @@
 
 namespace Wangkanai.Blazor.Components.Sections;
 
-public sealed class BodyOutlet : ComponentBase
+public sealed class BodyOutlet : WangkanaiComponentBase
 {
     internal const string BodySectionOutletName = "body";
     internal const string CssClassOutletName    = "class";

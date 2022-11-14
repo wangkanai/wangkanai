@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace Wangkanai.Blazor;
 
-public class BaseWangkanaiTable : BaseWangkanaiDomComponent
+public class WangkanaiComponentBaseWangkanaiTable : WangkanaiComponentBaseWangkanaiDomComponent
 {
     [Parameter]
     public RenderFragment ChildContent { get; set; }

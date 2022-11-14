@@ -2,6 +2,6 @@
 
 namespace Wangkanai.Blazor;
 
-public class BaseWangkanaiInputComponent<TValue> : BaseWangkanaiDomComponent
+public class WangkanaiComponentContainerComponentBase : WangkanaiComponentBaseWangkanaiDomComponent
 {
 }
