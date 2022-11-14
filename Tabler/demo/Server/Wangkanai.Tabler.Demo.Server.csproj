@@ -13,7 +13,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\Runtime\src\Wangkanai.Runtime.csproj" />
     <ProjectReference Include="..\Client\Wangkanai.Tabler.Demo.Client.csproj" />
-    <ProjectReference Include="..\Shared\Wangkanai.Tabler.Demo.Shared.csproj" />
   </ItemGroup>
 
 

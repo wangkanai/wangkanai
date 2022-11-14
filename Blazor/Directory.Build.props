@@ -1,4 +1,6 @@
 <Project>
+    <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
+    
     <PropertyGroup>
         <VersionPrefix>1.1.0</VersionPrefix>
 
@@ -14,7 +16,7 @@
     </PropertyGroup>
 
     <ItemGroup  Condition="$(MSBuildProjectName.Contains('Demo')) == 'False'">
-        <None Include="..\..\asset\wangkanai-logo.png" Pack="true" PackagePath="\"/>
-        <None Include="..\README.md" Pack="true" PackagePath="\"/>
+        <None Include="..\..\..\asset\wangkanai-logo.png" Pack="true" PackagePath="\"/>
+        <None Include="..\..\README.md" Pack="true" PackagePath="\"/>
     </ItemGroup>
 </Project>

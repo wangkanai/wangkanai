@@ -3,16 +3,20 @@
   <PropertyGroup>
     <Nullable>enable</Nullable>
     <NoWarn>8603</NoWarn>
-    <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
     <LangVersion>11</LangVersion>
+    <TargetFramework>net7.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Blazor\src\Wangkanai.Blazor.csproj" />
+    <SupportedPlatform Include="browser" />
   </ItemGroup>
 
-  <ItemGroup>
-    <SupportedPlatform Include="browser" />
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' ">
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net7.0' ">
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,7 +41,7 @@
     <Touch Files="node_modules/.install-stamp" AlwaysCreate="true" />
   </Target>
   <Target Name="NpmRunBuild" DependsOnTargets="NpmInstall" BeforeTargets="BeforeBuild">
-    <Exec Command="npm run dev" Condition="$(Configuration) == 'DEBUG'" />
+    <Exec Command="npm run --silent dev" Condition="$(Configuration) == 'DEBUG'" />
     <Exec Command="npm run --silent build" Condition="$(Configuration) != 'DEBUG'" />
   </Target>
 

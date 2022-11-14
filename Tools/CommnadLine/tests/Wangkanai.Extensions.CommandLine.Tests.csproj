@@ -6,7 +6,7 @@
 
     <IsPackable>false</IsPackable>
 
-    <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
+    <TargetFramework>net7.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
