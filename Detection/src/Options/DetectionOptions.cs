@@ -5,7 +5,7 @@ namespace Wangkanai.Detection;
 /// <summary>
 ///     Provides programmatic configuration for the Detection library.
 /// </summary>
-public class DetectionOptions
+public sealed class DetectionOptions
 {
     /// <summary>
     ///     Gets the default <see cref="CrawlerOptions" /> used by this application.

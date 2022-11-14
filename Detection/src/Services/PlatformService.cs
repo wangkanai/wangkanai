@@ -8,7 +8,7 @@ using Wangkanai.Extensions;
 
 namespace Wangkanai.Detection.Services;
 
-public class PlatformService : IPlatformService
+public sealed class PlatformService : IPlatformService
 {
     private readonly IUserAgentService _userAgentService;
     private          Platform?         _name;

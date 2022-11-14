@@ -8,23 +8,17 @@ namespace Wangkanai.Detection.Extensions;
 internal static class UserAgentExtensions
 {
     public static bool IsNullOrEmpty(this UserAgent agent)
-    {
-        return string.IsNullOrEmpty(agent.ToString());
-    }
+        => string.IsNullOrEmpty(agent.ToString());
 
     public static bool Contains(this UserAgent agent, string word)
-    {
-        return !agent.IsNullOrEmpty()
-               && !word.IsNullOrEmpty()
-               && agent.ToLower().Contains(word.ToLower());
-    }
+        => !agent.IsNullOrEmpty()
+           && !word.IsNullOrEmpty()
+           && agent.ToLower().Contains(word.ToLower());
 
     public static bool Contains(this UserAgent agent, string[] array)
-    {
-        return !agent.IsNullOrEmpty()
-               && array.Length > 0
-               && array.AnyContains(agent);
-    }
+        => !agent.IsNullOrEmpty()
+           && array.Length > 0
+           && array.AnyContains(agent);
 
     public static bool Contains<T>(this UserAgent agent, T flags) where T : Enum
     {
@@ -35,72 +29,48 @@ internal static class UserAgentExtensions
     }
 
     public static bool Contains(this UserAgent agent, IEnumerable<string> list)
-    {
-        return !agent.IsNullOrEmpty()
-               && list.Any(agent.Contains);
-    }
+        => !agent.IsNullOrEmpty()
+           && list.Any(agent.Contains);
 
     public static UserAgent Replace(this UserAgent agent, string oldValue, string newValue)
-    {
-        return agent.IsNullOrEmpty() && oldValue.IsNullOrEmpty()
-                   ? agent
-                   : new UserAgent(agent.ToLower().Replace(oldValue, newValue));
-    }
+        => agent.IsNullOrEmpty() && oldValue.IsNullOrEmpty()
+               ? agent
+               : new UserAgent(agent.ToLower().Replace(oldValue, newValue));
 
     public static int IndexOf(this UserAgent agent, string word)
-    {
-        return agent.ToLower()
-                    .IndexOf(word.ToLower(), StringComparison.Ordinal);
-    }
+        => agent.ToLower()
+                .IndexOf(word.ToLower(), StringComparison.Ordinal);
 
     public static int IndexOf(this UserAgent agent, Browser browser)
-    {
-        return agent.IndexOf(browser.ToString());
-    }
+        => agent.IndexOf(browser.ToString());
 
     public static string Substring(this UserAgent agent, int start)
-    {
-        return agent.ToLower()[start..];
-    }
+        => agent.ToLower()[start..];
 
     public static string Substring(this UserAgent agent, int start, int length)
-    {
-        return agent.ToLower()
-                    .Substring(start, length);
-    }
+        => agent.ToLower()
+                .Substring(start, length);
 
     public static string[] Split(this UserAgent agent, char separator)
-    {
-        return agent.ToLower()
-                    .Split(separator);
-    }
+        => agent.ToLower()
+                .Split(separator);
 
     public static bool StartsWith(this UserAgent agent, string word)
-    {
-        return !word.IsNullOrEmpty()
-               && !agent.IsNullOrEmpty()
-               && agent.ToLower()
-                       .StartsWith(word.ToLower());
-    }
+        => !word.IsNullOrEmpty()
+           && !agent.IsNullOrEmpty()
+           && agent.ToLower()
+                   .StartsWith(word.ToLower());
 
     public static bool StartsWith(this UserAgent agent, string[] array)
-    {
-        return array.AnyStartsWith(agent);
-    }
+        => array.AnyStartsWith(agent);
 
     public static bool StartsWith(this UserAgent agent, string[] array, int minimum)
-    {
-        return agent.Length() >= minimum
-               && agent.StartsWith(array);
-    }
+        => agent.Length() >= minimum
+           && agent.StartsWith(array);
 
     private static bool AnyStartsWith(this string[] array, UserAgent agent)
-    {
-        return array.Any(agent.StartsWith);
-    }
+        => array.Any(agent.StartsWith);
 
     private static bool AnyContains(this string[] array, UserAgent agent)
-    {
-        return array.Any(agent.Contains);
-    }
+        => array.Any(agent.Contains);
 }

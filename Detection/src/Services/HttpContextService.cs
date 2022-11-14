@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace Wangkanai.Detection.Services;
 
-public class HttpContextService : IHttpContextService
+public sealed class HttpContextService : IHttpContextService
 {
     public HttpContextService(IHttpContextAccessor accessor)
     {

@@ -2,6 +2,6 @@
 
 namespace Wangkanai.Hosting.Abstractions;
 
-public class IMarkerService
+public interface IMarkerService
 {
 }

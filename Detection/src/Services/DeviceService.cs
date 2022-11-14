@@ -7,7 +7,7 @@ using Wangkanai.Extensions;
 
 namespace Wangkanai.Detection.Services;
 
-public class DeviceService : IDeviceService
+public sealed class DeviceService : IDeviceService
 {
     private readonly IUserAgentService _userAgentService;
 

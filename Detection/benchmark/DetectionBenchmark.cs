@@ -1,13 +1,12 @@
 // Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-using BenchmarkDotNet.Attributes;
 
 using Microsoft.AspNetCore.Http;
 
-namespace Wangkanai.Detection.Services;
+using Wangkanai.Detection.Services;
 
 [MemoryDiagnoser]
-public sealed class DeviceServiceBenchmark
+public class DetectionBenchmark
 {
     private static readonly string[] RawUserAgents =
     {
@@ -29,24 +28,57 @@ public sealed class DeviceServiceBenchmark
         "Mozilla/5.0 (Linux; Android 10; LM-Q710(FGN)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.117 Mobile Safari/537.36"
     };
 
-    private static readonly HttpContextAccessor[] Accessors =
-        RawUserAgents.Select(x => new HttpContextAccessor
+    private readonly HttpContextAccessor[] Accessors =
+        RawUserAgents.Select(x =>
                      {
-                         HttpContext = new DefaultHttpContext
+                         var accessor = new HttpContextAccessor
                          {
-                             Request =
-                             {
-                                 Headers =
-                                 {
-                                     ["User-Agent"] = x
-                                 }
-                             }
-                         }
+                             HttpContext = new DefaultHttpContext()
+                         };
+                         accessor.HttpContext.Request.Headers["User-Agent"] = x;
+                         return accessor;
                      })
                      .ToArray();
 
     [Benchmark]
-    public void Detect()
+    public void Device()
+    {
+        foreach (var accessor in Accessors)
+        {
+            var contextService   = new HttpContextService(accessor);
+            var userAgentService = new UserAgentService(contextService);
+            var deviceService    = new DeviceService(userAgentService);
+            _ = deviceService.Type;
+        }
+    }
+    
+    [Benchmark]
+    public void Platform()
+    {
+        foreach (var accessor in Accessors)
+        {
+            var contextService   = new HttpContextService(accessor);
+            var userAgentService = new UserAgentService(contextService);
+            var platformService  = new PlatformService(userAgentService);
+            _ = platformService.Name;
+        }
+    }
+    
+    [Benchmark]
+    public void Engine()
+    {
+        foreach (var accessor in Accessors)
+        {
+            var contextService   = new HttpContextService(accessor);
+            var userAgentService = new UserAgentService(contextService);
+            var platformService  = new PlatformService(userAgentService);
+            var engineService    = new EngineService(userAgentService, platformService);
+            _ = engineService.Name;
+        }
+    }
+    
+    [Benchmark]
+    public void Browser()
     {
         foreach (var accessor in Accessors)
         {
@@ -55,10 +87,8 @@ public sealed class DeviceServiceBenchmark
             var platformService  = new PlatformService(userAgentService);
             var engineService    = new EngineService(userAgentService, platformService);
             var browserService   = new BrowserService(userAgentService, engineService);
-            var deviceService    = new DeviceService(userAgentService);
             _ = browserService.Name;
             _ = browserService.Version;
-            _ = deviceService.Type;
         }
     }
 }

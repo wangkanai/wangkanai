@@ -6,7 +6,7 @@ using Wangkanai.Extensions;
 
 namespace Wangkanai.Detection.Services;
 
-public class CrawlerService : ICrawlerService
+public sealed class CrawlerService : ICrawlerService
 {
     private static readonly (string, Crawler)[] Crawlers =
         EnumValues<Crawler>.GetValues().Select(x => (x.ToStringInvariant(), x)).ToArray();

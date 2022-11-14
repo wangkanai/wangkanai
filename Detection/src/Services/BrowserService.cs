@@ -6,7 +6,7 @@ using Wangkanai.Extensions;
 
 namespace Wangkanai.Detection.Services;
 
-public class BrowserService : IBrowserService
+public sealed class BrowserService : IBrowserService
 {
     private readonly IEngineService    _engineService;
     private readonly IUserAgentService _userAgentService;
