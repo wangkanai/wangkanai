@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <IsTrimmable>true</IsTrimmable>
     <NoWarn>8618,8795,0227</NoWarn>
-<!--    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>-->
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
   </PropertyGroup>
   
@@ -17,6 +17,7 @@
   
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0"/>
   </ItemGroup>
   
 </Project>
