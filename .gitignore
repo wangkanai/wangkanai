@@ -266,3 +266,6 @@ paket-files/
 **/package-lock.json
 *.DotSettings
 msbuild.binlog
+
+# BenchmarkDotNet Artifacts
+**/BenchmarkDotNet.Artifacts/results/

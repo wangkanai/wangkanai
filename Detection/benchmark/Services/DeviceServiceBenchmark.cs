@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Http;
 namespace Wangkanai.Detection.Services;
 
 [MemoryDiagnoser]
-public class DeviceServiceBenchmark
+public sealed class DeviceServiceBenchmark
 {
     private static readonly string[] RawUserAgents =
     {

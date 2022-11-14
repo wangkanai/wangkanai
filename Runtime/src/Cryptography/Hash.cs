@@ -41,7 +41,7 @@ public static class Hash
     private static string HashDataToString([NotNull] this byte[] data)
     {
         var builder = new StringBuilder();
-        foreach (var index in data)
+        foreach (var index in data) 
             builder.Append(index.ToString("x2"));
 
         return builder.ToString();
