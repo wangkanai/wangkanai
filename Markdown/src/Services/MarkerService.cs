@@ -2,6 +2,6 @@
 
 namespace Wangkanai.Markdown.Services;
 
-public class MarkdownMarkerService
+public sealed class MarkdownMarkerService
 {
 }

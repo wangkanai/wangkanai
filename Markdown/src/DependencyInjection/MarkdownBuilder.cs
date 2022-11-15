@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Wangkanai.Markdown.Builder;
 
-public class MarkdownBuilder : IMarkdownBuilder
+public sealed class MarkdownBuilder : IMarkdownBuilder
 {
     public MarkdownBuilder(IServiceCollection services)
     {
