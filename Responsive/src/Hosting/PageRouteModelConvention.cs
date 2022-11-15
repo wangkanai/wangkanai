@@ -7,7 +7,7 @@ using Wangkanai.Extensions;
 
 namespace Wangkanai.Responsive.Hosting;
 
-internal class ResponsivePageRouteModelConvention : IPageRouteModelConvention
+internal sealed class ResponsivePageRouteModelConvention : IPageRouteModelConvention
 {
     public void Apply(PageRouteModel model)
     {

@@ -20,7 +20,7 @@ namespace Wangkanai.Responsive.Hosting;
 ///     Views/Shared/mobile/Action
 ///     Views/Shared/Action
 /// </example>
-public class ResponsiveViewLocationExpander : IViewLocationExpander
+public sealed class ResponsiveViewLocationExpander : IViewLocationExpander
 {
     private const    string                       ValueKey = "device";
     private readonly ResponsiveViewLocationFormat _format;

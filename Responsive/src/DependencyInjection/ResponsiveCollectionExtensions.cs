@@ -15,13 +15,11 @@ public static class ResponsiveCollectionExtensions
     /// <param name="services"></param>
     /// <returns></returns>
     public static IResponsiveBuilder AddResponsive(this IServiceCollection services)
-    {
-        return services.AddResponsiveBuilder()
-                       .AddRequiredPlatformServices()
-                       .AddCoreServices()
-                       .AddSessionServices()
-                       .AddResponsiveService();
-    }
+        => services.AddResponsiveBuilder()
+                   .AddRequiredPlatformServices()
+                   .AddCoreServices()
+                   .AddSessionServices()
+                   .AddResponsiveService();
 
     /// <summary>
     ///     Add Responsive service to the service container
@@ -33,13 +31,9 @@ public static class ResponsiveCollectionExtensions
     /// </param>
     /// <returns>An <see cref="IResponsiveBuilder" /> so that additional calls can be chained</returns>
     public static IResponsiveBuilder AddResponsive(this IServiceCollection services, Action<ResponsiveOptions> setAction)
-    {
-        return services.Configure(setAction)
-                       .AddResponsive();
-    }
+        => services.Configure(setAction)
+                   .AddResponsive();
 
     private static IResponsiveBuilder AddResponsiveBuilder(this IServiceCollection services)
-    {
-        return new ResponsiveBuilder(services);
-    }
+        => new ResponsiveBuilder(services);
 }

@@ -7,7 +7,7 @@ using Wangkanai.Responsive.Extensions;
 
 namespace Wangkanai.Responsive.Hosting;
 
-public class ResponsivePageLocationExpander : IViewLocationExpander
+public sealed class ResponsivePageLocationExpander : IViewLocationExpander
 {
     private const string ValueKey = "device";
 

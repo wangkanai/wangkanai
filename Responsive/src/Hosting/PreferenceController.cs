@@ -8,7 +8,7 @@ using Wangkanai.Responsive.Services;
 namespace Wangkanai.Responsive.Hosting;
 
 [Area(AreaName)]
-public class PreferenceController : Controller
+public sealed class PreferenceController : Controller
 {
     private const    string             AreaName = "Responsive";
     private readonly IResponsiveService _responsive;

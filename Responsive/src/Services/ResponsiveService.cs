@@ -10,7 +10,7 @@ using Wangkanai.Responsive.Extensions;
 
 namespace Wangkanai.Responsive.Services;
 
-public class ResponsiveService : IResponsiveService
+public sealed class ResponsiveService : IResponsiveService
 {
     private const string ResponsiveContextKey = "Responsive";
 
@@ -19,12 +19,9 @@ public class ResponsiveService : IResponsiveService
 
     public ResponsiveService(IHttpContextAccessor accessor, IDeviceService deviceService, ResponsiveOptions? options)
     {
-        if (accessor is null)
-            throw new ArgumentNullException(nameof(accessor));
-        if (accessor.HttpContext is null)
-            throw new ArgumentNullException(nameof(accessor.HttpContext));
-        if (deviceService is null)
-            throw new ArgumentNullException(nameof(deviceService));
+        Check.NotNull(accessor);
+        Check.NotNull(accessor.HttpContext);
+        Check.NotNull(deviceService);
 
         options ??= new ResponsiveOptions();
 
@@ -32,23 +29,18 @@ public class ResponsiveService : IResponsiveService
         _defaultView = DefaultView(deviceService.Type, options);
     }
 
-    public Device View => PreferView(_context, _defaultView);
+    public Device View
+        => PreferView(_context, _defaultView);
 
     public void PreferSet(Device desktop)
-    {
-        _context.Session.SetString(ResponsiveContextKey, desktop.ToString());
-    }
+        => _context.Session.SetString(ResponsiveContextKey, desktop.ToString());
 
     public void PreferClear()
-    {
-        _context.Session.Remove(ResponsiveContextKey);
-    }
+        => _context.Session.Remove(ResponsiveContextKey);
 
     public bool HasPreferred()
-    {
-        return _context.SafeSession() != null
-               && _context.Session.Keys.Any(k => k == ResponsiveContextKey);
-    }
+        => _context.SafeSession() != null
+           && _context.Session.Keys.Any(k => k == ResponsiveContextKey);
 
     private static Device PreferView(HttpContext context, Device defaultView)
     {
@@ -71,11 +63,11 @@ public class ResponsiveService : IResponsiveService
     private static Device DefaultView(Device device, ResponsiveOptions options)
     {
         return device switch
-               {
-                   Device.Mobile  => options.DefaultMobile,
-                   Device.Tablet  => options.DefaultTablet,
-                   Device.Desktop => options.DefaultDesktop,
-                   _              => device
-               };
+        {
+            Device.Mobile  => options.DefaultMobile,
+            Device.Tablet  => options.DefaultTablet,
+            Device.Desktop => options.DefaultDesktop,
+            _              => device
+        };
     }
 }

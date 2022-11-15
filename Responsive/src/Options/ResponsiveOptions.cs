@@ -7,7 +7,7 @@ namespace Wangkanai.Responsive;
 /// <summary>
 ///     The <see cref="ResponsiveOptions" /> class is the ResponsiveWeb container for all configuration settings of Responsive.
 /// </summary>
-public class ResponsiveOptions
+public sealed class ResponsiveOptions
 {
     /// <summary>
     ///     Gets or sets a value that determine the default view for Mobile

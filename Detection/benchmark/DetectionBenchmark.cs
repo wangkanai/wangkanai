@@ -28,17 +28,17 @@ public class DetectionBenchmark
         "Mozilla/5.0 (Linux; Android 10; LM-Q710(FGN)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.117 Mobile Safari/537.36"
     };
 
-    private readonly HttpContextAccessor[] Accessors =
-        RawUserAgents.Select(x =>
-                     {
-                         var accessor = new HttpContextAccessor
-                         {
-                             HttpContext = new DefaultHttpContext()
-                         };
-                         accessor.HttpContext.Request.Headers["User-Agent"] = x;
-                         return accessor;
-                     })
-                     .ToArray();
+    private readonly HttpContextAccessor[] Accessors
+        = RawUserAgents.Select(x =>
+                       {
+                           var accessor = new HttpContextAccessor
+                           {
+                               HttpContext = new DefaultHttpContext()
+                           };
+                           accessor.HttpContext.Request.Headers["User-Agent"] = x;
+                           return accessor;
+                       })
+                       .ToArray();
 
     [Benchmark]
     public void Device()
@@ -51,7 +51,7 @@ public class DetectionBenchmark
             _ = deviceService.Type;
         }
     }
-    
+
     [Benchmark]
     public void Platform()
     {
@@ -63,7 +63,7 @@ public class DetectionBenchmark
             _ = platformService.Name;
         }
     }
-    
+
     [Benchmark]
     public void Engine()
     {
@@ -76,7 +76,7 @@ public class DetectionBenchmark
             _ = engineService.Name;
         }
     }
-    
+
     [Benchmark]
     public void Browser()
     {

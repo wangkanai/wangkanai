@@ -31,10 +31,8 @@ public static class ResponsiveApplicationExtensions
         return app;
     }
 
-    private static bool IsWebApi(this HttpContext context, ResponsiveOptions options)
-    {
-        return context.Request.Path.StartsWithSegments(options.WebApiPath);
-    }
+    private static bool IsWebApi(this HttpContext context, ResponsiveOptions options) 
+        => context.Request.Path.StartsWithSegments(options.WebApiPath);
 
     private static void ValidateOptions(ResponsiveOptions options)
     {

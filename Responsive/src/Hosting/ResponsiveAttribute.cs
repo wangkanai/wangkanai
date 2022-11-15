@@ -13,8 +13,3 @@ public sealed class ResponsiveAttribute : Attribute, IResponsiveMetadata
 
     public Device Device { get; }
 }
-
-public interface IResponsiveMetadata
-{
-    Device Device { get; }
-}
