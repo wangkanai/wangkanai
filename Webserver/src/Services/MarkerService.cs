@@ -2,6 +2,6 @@
 
 namespace Wangkanai.Webserver.Services;
 
-internal class WebserverMarkerService
+internal sealed class WebserverMarkerService
 {
 }

@@ -2,7 +2,7 @@
 
 namespace Microsoft.Extensions.DependencyInjection;
 
-public class WebserverBuilder : IWebserverBuilder
+public sealed class WebserverBuilder : IWebserverBuilder
 {
     public WebserverBuilder(IServiceCollection services)
         => Services = Check.NotNull(services);
