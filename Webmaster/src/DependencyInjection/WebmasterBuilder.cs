@@ -5,7 +5,7 @@ namespace Wangkanai.Webmaster.Builders;
 /// <summary>
 /// Helper functions for configuring Webmaster services.
 /// </summary>
-public class WebmasterBuilder : IWebmasterBuilder
+public sealed class WebmasterBuilder : IWebmasterBuilder
 {
     /// <summary>
     /// Creates a new instance of <see cref="WebmasterBuilder"/>.

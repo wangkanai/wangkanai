@@ -12,7 +12,7 @@ using Microsoft.Extensions.FileProviders;
 namespace Wangkanai.Webmaster.TagHelpers;
 
 [HtmlTargetElement(InlineImgAttributeName, Attributes = SrcWildcardAttributeName, TagStructure = TagStructure.WithoutEndTag)]
-public class InlineImgTagHelper : UrlResolutionTagHelper
+public sealed class InlineImgTagHelper : UrlResolutionTagHelper
 {
     private const string InlineImgAttributeName = "inline-img";
     private const string SrcAttributeName = "src";

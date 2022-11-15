@@ -1,7 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <RootNamespace>Wangkanai</RootNamespace>
     <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
     <LangVersion>11</LangVersion>
   </PropertyGroup>

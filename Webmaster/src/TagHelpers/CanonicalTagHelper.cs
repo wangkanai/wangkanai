@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 namespace Wangkanai.Webmaster.TagHelpers;
 
 [HtmlTargetElement(CanonicalAttributeName)]
-public class CanonicalTagHelper : TagHelper
+public sealed class CanonicalTagHelper : TagHelper
 {
     private const string CanonicalAttributeName = "seo-canonical";
     private const string HrefAttributeName = "href";

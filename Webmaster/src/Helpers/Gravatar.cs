@@ -10,7 +10,7 @@ using Wangkanai.Webmaster.Models;
 
 namespace Wangkanai.Helpers;
 
-public class Gravatar
+public sealed class Gravatar
 {
     private readonly string _email;
     private readonly IconSize _size;
