@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace Wangkanai.Analytics.Hosting;
 
-public class AnalyticsMiddleware
+public sealed class AnalyticsMiddleware
 {
     private readonly RequestDelegate _next;
 

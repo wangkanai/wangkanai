@@ -5,7 +5,7 @@ namespace Microsoft.Extensions.DependencyInjection;
 /// <summary>
 ///     Helper functions for configuring analytics services.
 /// </summary>
-public class AnalyticsBuilder : IAnalyticsBuilder
+public sealed class AnalyticsBuilder : IAnalyticsBuilder
 {
     /// <summary>
     ///     Creates a new instance of <see cref="AnalyticsBuilder" />
