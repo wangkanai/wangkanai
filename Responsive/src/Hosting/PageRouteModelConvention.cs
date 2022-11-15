@@ -21,7 +21,7 @@ internal class ResponsivePageRouteModelConvention : IPageRouteModelConvention
         // This just implements the 'suffix' strategy
         var split = fileNameWithoutExtension.Split('.');
         if (split.Length != 2)
-            throw new InvalidOperationException($"Page '{model.RelativePath}' does not follow the required format.");
+            throw new InvalidOperationException($"Wangkanai.Responsive.PageApp '{model.RelativePath}' does not follow the required format.");
 
         var areaName   = model.AreaName;
         var pageName   = split[0];

@@ -36,7 +36,7 @@ public class ResponsivePageLocationExpander : IViewLocationExpander
                     continue;
                 }
 
-                // Device View if exist on disk
+                // Device ResponsiveWeb if exist on disk
                 // yield return location.Replace("{0}", "{0}." + device);
                 // Fallback to the original default view
                 yield return location;

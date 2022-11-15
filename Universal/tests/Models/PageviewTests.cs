@@ -8,13 +8,13 @@ public class PageviewTests
     // public void TestPageviewToString()
     // {
     //     Pageview pageview = new Pageview("/testing", "testing title");
-    //     Assert.Equal("ga('send','pageview',{'Page':'/testing','Title':'testing title'});", pageview.ToString());
+    //     Assert.Equal("ga('send','pageview',{'Wangkanai.Responsive.PageApp':'/testing','Title':'testing title'});", pageview.ToString());
     // }
 
     // [Fact]
     // public void TestPageviewProperty()
     // {
-    //     var option = new PageviewOption() { Page = "/testing", Title = "test" };
+    //     var option = new PageviewOption() { Wangkanai.Responsive.PageApp = "/testing", Title = "test" };
     //     Assert.Equal(2, option.Properties.Length);
     // }
     //
