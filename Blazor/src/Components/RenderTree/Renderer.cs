@@ -200,46 +200,25 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
         var componentId          = _nextComponentId++;
         var parentComponentState = GetOptionalComponentState(parentComponentId);
         var componentState       = new ComponentState(this, componentId, component, parentComponentState);
-        Log.InitializingComponent(_logger, componentState, parentComponentState);
+        //Log.InitializingComponent(_logger, componentState, parentComponentState);
         _componentStateById.Add(componentId, componentState);
         _componentStateByComponent.Add(component, componentState);
         component.Attach(new RenderHandle(this, componentId));
         return componentState;
     }
-
-    /// <summary>
-    /// Updates the visible UI.
-    /// </summary>
-    /// <param name="renderBatch">The changes to the UI since the previous call.</param>
-    /// <returns>A <see cref="Task"/> to represent the UI update process.</returns>
+    
     protected abstract Task UpdateDisplayAsync(in RenderBatch renderBatch);
-
-    /// <summary>
-    /// Notifies the renderer that an event has occurred.
-    /// </summary>
-    /// <param name="eventHandlerId">The <see cref="RenderTreeFrame.AttributeEventHandlerId"/> value from the original event attribute.</param>
-    /// <param name="eventArgs">Arguments to be passed to the event handler.</param>
-    /// <param name="fieldInfo">Information that the renderer can use to update the state of the existing render tree to match the UI.</param>
-    /// <returns>
-    /// A <see cref="Task"/> which will complete once all asynchronous processing related to the event
-    /// has completed.
-    /// </returns>
+    
     public virtual Task DispatchEventAsync(ulong eventHandlerId, EventFieldInfo? fieldInfo, EventArgs eventArgs)
     {
         Dispatcher.AssertAccess();
 
         var callback = GetRequiredEventCallback(eventHandlerId);
-        Log.HandlingEvent(_logger, eventHandlerId, eventArgs);
-
-        // Try to match it up with a receiver so that, if the event handler later throws, we can route the error to the
-        // correct error boundary (even if the receiving component got disposed in the meantime).
+        //Log.HandlingEvent(_logger, eventHandlerId, eventArgs);
+        
         ComponentState? receiverComponentState = null;
         if (callback.Receiver is IComponent receiverComponent) // The receiver might be null or not an IComponent
-        {
-            // Even if the receiver is an IComponent, it might not be one of ours, or might be disposed already
-            // We can only route errors to error boundaries if the receiver is known and not yet disposed at this stage
             _componentStateByComponent.TryGetValue(receiverComponent, out receiverComponentState);
-        }
 
         if (fieldInfo != null)
         {
@@ -250,8 +229,6 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
         Task? task = null;
         try
         {
-            // The event handler might request multiple renders in sequence. Capture them
-            // all in a single batch.
             _isBatchInProgress = true;
 
             task = callback.InvokeAsync(eventArgs);
@@ -265,30 +242,17 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
         {
             _isBatchInProgress = false;
 
-            // Since the task has yielded - process any queued rendering work before we return control
-            // to the caller.
             ProcessPendingRender();
         }
-
-        // Task completed synchronously or is still running. We already processed all of the rendering
-        // work that was queued so let our error handler deal with it.
+        
         var result = GetErrorHandledTask(task, receiverComponentState);
         return result;
     }
-
-    /// <summary>
-    /// Gets the event arguments type for the specified event handler.
-    /// </summary>
-    /// <param name="eventHandlerId">The <see cref="RenderTreeFrame.AttributeEventHandlerId"/> value from the original event attribute.</param>
-    /// <returns>The parameter type expected by the event handler. Normally this is a subclass of <see cref="EventArgs"/>.</returns>
+    
     public Type GetEventArgsType(ulong eventHandlerId)
     {
         var methodInfo = GetRequiredEventCallback(eventHandlerId).Delegate?.Method;
-
-        // The DispatchEventAsync code paths allow for the case where Delegate or its method
-        // is null, and in this case the event receiver just receives null. This won't happen
-        // under normal circumstances, but to avoid creating a new failure scenario, allow for
-        // that edge case here too.
+        
         return methodInfo == null
                    ? typeof(EventArgs)
                    : EventArgsTypeCache.GetEventArgsType(methodInfo);
@@ -297,14 +261,10 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
     internal void InstantiateChildComponentOnFrame(ref RenderTreeFrame frame, int parentComponentId)
     {
         if (frame.FrameTypeField != RenderTreeFrameType.Component)
-        {
             throw new ArgumentException($"The frame's {nameof(RenderTreeFrame.FrameType)} property must equal {RenderTreeFrameType.Component}", nameof(frame));
-        }
 
         if (frame.ComponentStateField != null)
-        {
             throw new ArgumentException($"The frame already has a non-null component instance", nameof(frame));
-        }
 
         var newComponent      = InstantiateComponent(frame.ComponentTypeField);
         var newComponentState = AttachAndInitComponent(newComponent, parentComponentId);
@@ -316,28 +276,16 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
     {
         switch (task == null ? TaskStatus.RanToCompletion : task.Status)
         {
-            // If it's already completed synchronously, no need to add it to the list of
-            // pending Tasks as no further render (we already rerender synchronously) will.
-            // happen.
             case TaskStatus.RanToCompletion:
             case TaskStatus.Canceled:
                 break;
             case TaskStatus.Faulted:
-                // We want to immediately handle exceptions if the task failed synchronously instead of
-                // waiting for it to throw later. This can happen if the task is produced by
-                // an 'async' state machine (the ones generated using async/await) where even
-                // the synchronous exceptions will get captured and converted into a faulted
-                // task.
                 var baseException = task.Exception.GetBaseException();
                 HandleExceptionViaErrorBoundary(baseException, owningComponentState);
                 break;
             default:
-                // It's important to evaluate the following even if we're not going to use
-                // handledErrorTask below, because it has the side-effect of calling HandleException.
                 var handledErrorTask = GetErrorHandledTask(task, owningComponentState);
 
-                // The pendingTasks collection is only used during prerendering to track quiescence,
-                // so will be null at other times.
                 _pendingTasks?.Add(handledErrorTask);
 
                 break;
@@ -349,62 +297,30 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
         var id = ++_lastEventHandlerId;
 
         if (frame.AttributeValueField is EventCallback callback)
-        {
-            // We hit this case when a EventCallback object is produced that needs an explicit receiver.
-            // Common cases for this are "chained bind" or "chained event handler" when a component
-            // accepts a delegate as a parameter and then hooks it up to a DOM event.
-            //
-            // When that happens we intentionally box the EventCallback because we need to hold on to
-            // the receiver.
             _eventBindings.Add(id, callback);
-        }
-        else if (frame.AttributeValueField is MulticastDelegate @delegate)
-        {
-            // This is the common case for a delegate, where the receiver of the event
-            // is the same as delegate.Target. In this case since the receiver is implicit we can
-            // avoid boxing the EventCallback object and just re-hydrate it on the other side of the
-            // render tree.
+        else if (frame.AttributeValueField is MulticastDelegate @delegate) 
             _eventBindings.Add(id, new EventCallback(@delegate.Target as IHandleEvent, @delegate));
-        }
-
-        // NOTE: we do not to handle EventCallback<T> here. EventCallback<T> is only used when passing
-        // a callback to a component, and never when used to attaching a DOM event handler.
-
+        
         frame.AttributeEventHandlerIdField = id;
     }
-
-    /// <summary>
-    /// Schedules a render for the specified <paramref name="componentId"/>. Its display
-    /// will be populated using the specified <paramref name="renderFragment"/>.
-    /// </summary>
-    /// <param name="componentId">The ID of the component to render.</param>
-    /// <param name="renderFragment">A <see cref="RenderFragment"/> that will supply the updated UI contents.</param>
+    
     internal void AddToRenderQueue(int componentId, RenderFragment renderFragment)
     {
         Dispatcher.AssertAccess();
 
         var componentState = GetOptionalComponentState(componentId);
         if (componentState == null)
-        {
-            // If the component was already disposed, then its render handle trying to
-            // queue a render is a no-op.
             return;
-        }
 
         _batchBuilder.ComponentRenderQueue.Enqueue(
             new RenderQueueEntry(componentState, renderFragment));
 
-        if (!_isBatchInProgress)
-        {
+        if (!_isBatchInProgress) 
             ProcessPendingRender();
-        }
     }
 
     internal void TrackReplacedEventHandlerId(ulong oldEventHandlerId, ulong newEventHandlerId)
     {
-        // Tracking the chain of old->new replacements allows us to interpret incoming EventFieldInfo
-        // values even if they refer to an event handler ID that's since been superseded. This is essential
-        // for tree patching to work in an async environment.
         _eventHandlerIdReplacements.Add(oldEventHandlerId, newEventHandlerId);
     }
 
@@ -474,8 +390,7 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
                     return;
                 else
                     ProcessDisposalQueueInExistingBatch();
-
-            // Process render queue until empty
+            
             while (_batchBuilder.ComponentRenderQueue.Count > 0)
             {
                 var nextToRender = _batchBuilder.ComponentRenderQueue.Dequeue();
@@ -484,14 +399,11 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
 
             var batch = _batchBuilder.ToBatch();
             updateDisplayTask = UpdateDisplayAsync(batch);
-
-            // Fire off the execution of OnAfterRenderAsync, but don't wait for it
-            // if there is async work to be done.
+            
             _ = InvokeRenderCompletedCalls(batch.UpdatedComponents, updateDisplayTask);
         }
         catch (Exception e)
         {
-            // Ensure we catch errors while running the render functions of the components.
             HandleException(e);
             return;
         }
@@ -594,7 +506,7 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
     private void RenderInExistingBatch(RenderQueueEntry renderQueueEntry)
     {
         var componentState = renderQueueEntry.ComponentState;
-        Log.RenderingComponent(_logger, componentState);
+        //Log.RenderingComponent(_logger, componentState);
         componentState.RenderIntoBatch(_batchBuilder, renderQueueEntry.RenderFragment, out var renderFragmentException);
         if (renderFragmentException != null)
             HandleExceptionViaErrorBoundary(renderFragmentException, componentState);
@@ -609,7 +521,7 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
         {
             var disposeComponentId    = _batchBuilder.ComponentDisposalQueue.Dequeue();
             var disposeComponentState = GetRequiredComponentState(disposeComponentId);
-            Log.DisposingComponent(_logger, disposeComponentState);
+            //Log.DisposingComponent(_logger, disposeComponentState);
             if (!(disposeComponentState.Component is IAsyncDisposable))
             {
                 if (!disposeComponentState.TryDisposeInBatch(_batchBuilder, out var exception))
@@ -766,7 +678,7 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
         List<Task>      asyncDisposables = null;
         foreach (var componentState in _componentStateById.Values)
         {
-            Log.DisposingComponent(_logger, componentState);
+            //Log.DisposingComponent(_logger, componentState);
 
             if (componentState.Component is IAsyncDisposable asyncDisposable)
             {
