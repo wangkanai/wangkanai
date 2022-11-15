@@ -2,21 +2,20 @@
 
 using Wangkanai.Universal.Options;
 
-namespace Wangkanai.Universal.Models
+namespace Wangkanai.Universal.Models;
+
+public sealed class ScreenTracking : Send
 {
-    public class ScreenTracking : Send
+    public ScreenTracking(string name)
     {
-        private ScreenTrackingOption option { get; set; }
+        option            = new ScreenTrackingOption();
+        option.ScreenName = name;
+    }
 
-        public ScreenTracking(string name)
-        {
-            option = new ScreenTrackingOption();
-            option.screenName = name;
-        }
+    private ScreenTrackingOption option { get; }
 
-        public override string ToString()
-        {
-            return "ga('send','screenview'," + option + "});";
-        }
+    public override string ToString()
+    {
+        return "ga('send','screenview'," + option + "});";
     }
 }

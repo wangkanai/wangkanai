@@ -2,6 +2,6 @@
 
 namespace Wangkanai.Universal.Services;
 
-internal class UniversalMarkerService
+internal sealed class UniversalMarkerService
 {
 }

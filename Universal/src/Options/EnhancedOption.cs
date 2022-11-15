@@ -2,10 +2,10 @@
 
 namespace Wangkanai.Universal.Options;
 
-public class EnhancedOption
+public sealed class EnhancedOption
 {
-    public bool Link { get; set; }
+    public bool   Link       { get; set; }
     public string CookieName { get; set; }
-    public int Duration { get; set; }
-    public int Levels { get; set; }
+    public int    Duration   { get; set; }
+    public int    Levels     { get; set; }
 }
