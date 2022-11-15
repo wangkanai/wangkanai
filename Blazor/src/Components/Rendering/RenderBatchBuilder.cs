@@ -9,28 +9,35 @@ internal sealed class RenderBatchBuilder : IDisposable
     // A value that, if changed, causes expiry of all ParameterView instances issued
     // for this RenderBatchBuilder. This is to prevent invalid reads from arrays that
     // may have been returned to the shared pool.
-    private int _parameterViewValidityStamp;
 
     // Primary result data
-    public ArrayBuilder<RenderTreeDiff> UpdatedComponentDiffs   { get; } = new ArrayBuilder<RenderTreeDiff>();
-    public ArrayBuilder<int>            DisposedComponentIds    { get; } = new ArrayBuilder<int>();
-    public ArrayBuilder<ulong>          DisposedEventHandlerIds { get; } = new ArrayBuilder<ulong>();
+    public ArrayBuilder<RenderTreeDiff> UpdatedComponentDiffs   { get; } = new();
+    public ArrayBuilder<int>            DisposedComponentIds    { get; } = new();
+    public ArrayBuilder<ulong>          DisposedEventHandlerIds { get; } = new();
 
     // Buffers referenced by UpdatedComponentDiffs
-    public ArrayBuilder<RenderTreeEdit>  EditsBuffer           { get; } = new ArrayBuilder<RenderTreeEdit>(64);
-    public ArrayBuilder<RenderTreeFrame> ReferenceFramesBuffer { get; } = new ArrayBuilder<RenderTreeFrame>(64);
+    public ArrayBuilder<RenderTreeEdit>  EditsBuffer           { get; } = new(64);
+    public ArrayBuilder<RenderTreeFrame> ReferenceFramesBuffer { get; } = new(64);
 
     // State of render pipeline
-    public Queue<RenderQueueEntry> ComponentRenderQueue   { get; } = new Queue<RenderQueueEntry>();
-    public Queue<int>              ComponentDisposalQueue { get; } = new Queue<int>();
+    public Queue<RenderQueueEntry> ComponentRenderQueue   { get; } = new();
+    public Queue<int>              ComponentDisposalQueue { get; } = new();
 
     // Scratch data structure for understanding attribute diffs.
-    public Dictionary<string, int> AttributeDiffSet { get; } = new Dictionary<string, int>();
+    public Dictionary<string, int> AttributeDiffSet { get; } = new();
 
-    public int ParameterViewValidityStamp => _parameterViewValidityStamp;
+    public int ParameterViewValidityStamp { get; private set; }
 
-    internal StackObjectPool<Dictionary<object, KeyedItemInfo>> KeyedItemInfoDictionaryPool { get; }
-        = new StackObjectPool<Dictionary<object, KeyedItemInfo>>(maxPreservedItems: 10, () => new Dictionary<object, KeyedItemInfo>());
+    internal StackObjectPool<Dictionary<object, KeyedItemInfo>> KeyedItemInfoDictionaryPool { get; } = new(10, () => new Dictionary<object, KeyedItemInfo>());
+
+    public void Dispose()
+    {
+        EditsBuffer.Dispose();
+        ReferenceFramesBuffer.Dispose();
+        UpdatedComponentDiffs.Dispose();
+        DisposedComponentIds.Dispose();
+        DisposedEventHandlerIds.Dispose();
+    }
 
     public void ClearStateForCurrentBatch()
     {
@@ -50,11 +57,13 @@ internal sealed class RenderBatchBuilder : IDisposable
     }
 
     public RenderBatch ToBatch()
-        => new RenderBatch(
+    {
+        return new(
             UpdatedComponentDiffs.ToRange(),
             ReferenceFramesBuffer.ToRange(),
             DisposedComponentIds.ToRange(),
             DisposedEventHandlerIds.ToRange());
+    }
 
     public void InvalidateParameterViews()
     {
@@ -62,22 +71,9 @@ internal sealed class RenderBatchBuilder : IDisposable
         // the current one. There's no plausible case where it wraps around and happens to
         // increment all the way back to a previously-snapshotted value on the exact same
         // call that's checking the value.
-        if (_parameterViewValidityStamp == int.MaxValue)
-        {
-            _parameterViewValidityStamp = int.MinValue;
-        }
+        if (ParameterViewValidityStamp == int.MaxValue)
+            ParameterViewValidityStamp = int.MinValue;
         else
-        {
-            _parameterViewValidityStamp++;
-        }
-    }
-
-    public void Dispose()
-    {
-        EditsBuffer.Dispose();
-        ReferenceFramesBuffer.Dispose();
-        UpdatedComponentDiffs.Dispose();
-        DisposedComponentIds.Dispose();
-        DisposedEventHandlerIds.Dispose();
+            ParameterViewValidityStamp++;
     }
 }

@@ -12,16 +12,15 @@ internal sealed class ChangeDetection
         {
             return true; // One's null and the other isn't, so different
         }
-        else if (oldIsNotNull) // i.e., both are not null (considering previous check)
+
+        if (oldIsNotNull) // i.e., both are not null (considering previous check)
         {
             var oldValueType = oldValue!.GetType();
             var newValueType = newValue!.GetType();
             if (oldValueType != newValueType           // Definitely different
                 || !IsKnownImmutableType(oldValueType) // Maybe different
                 || !oldValue.Equals(newValue))         // Somebody says they are different
-            {
                 return true;
-            }
         }
 
         // By now we know either both are null, or they are the same immutable type
@@ -34,10 +33,12 @@ internal sealed class ChangeDetection
     // a hashtable lookup, which is differently expensive). It's better not to include
     // uncommon types here even if they are known to be immutable.
     private static bool IsKnownImmutableType(Type type)
-        => type.IsPrimitive
-           || type == typeof(string)
-           || type == typeof(DateTime)
-           || type == typeof(Type)
-           || type == typeof(decimal)
-           || type == typeof(Guid);
+    {
+        return type.IsPrimitive
+               || type == typeof(string)
+               || type == typeof(DateTime)
+               || type == typeof(Type)
+               || type == typeof(decimal)
+               || type == typeof(Guid);
+    }
 }

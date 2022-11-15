@@ -9,11 +9,14 @@ public abstract class Dispatcher
 {
     private SectionRegistry? _sectionRegistry;
 
-    public static Dispatcher CreateDefault() => new RendererSynchronizationContextDispatcher();
+    internal SectionRegistry Registry => _sectionRegistry ??= new SectionRegistry();
+
+    public static Dispatcher CreateDefault()
+    {
+        return new RendererSynchronizationContextDispatcher();
+    }
 
     internal event UnhandledExceptionEventHandler? UnhandledException;
-
-    internal SectionRegistry Registry => _sectionRegistry ??= new();
 
     public abstract bool          CheckAccess();
     public abstract Task          InvokeAsync(Action                       workItem);

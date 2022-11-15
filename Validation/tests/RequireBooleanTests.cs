@@ -13,8 +13,8 @@ namespace Wangkanai.Validation;
 public class RequireBooleanTests
 {
     private readonly ITestOutputHelper _output;
-    private readonly PropertyInfo _wannaTrue = BooleanModel.GetProperty(nameof(BooleanModel.WannaTrue));
-    private readonly PropertyInfo _wannaFalse = BooleanModel.GetProperty(nameof(BooleanModel.WannaFalse));
+    private readonly PropertyInfo      _wannaFalse = BooleanModel.GetProperty(nameof(BooleanModel.WannaFalse));
+    private readonly PropertyInfo      _wannaTrue  = BooleanModel.GetProperty(nameof(BooleanModel.WannaTrue));
 
     public RequireBooleanTests(ITestOutputHelper output)
     {
@@ -41,7 +41,7 @@ public class RequireBooleanTests
         validations.Print(_output);
 
         Assert.Collection(validations, v =>
-                              v.ErrorMessage = "Checked is required");
+            v.ErrorMessage = "Checked is required");
     }
 
     [Fact]
@@ -53,7 +53,7 @@ public class RequireBooleanTests
         validations.Print(_output);
 
         Assert.Collection(validations, v =>
-                              v.ErrorMessage = "Unchecked is required");
+            v.ErrorMessage = "Unchecked is required");
     }
 
     [Fact]

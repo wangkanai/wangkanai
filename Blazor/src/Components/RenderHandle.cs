@@ -40,7 +40,7 @@ public readonly struct RenderHandle
            ?? throw new InvalidOperationException("No renderer has been initialized.");
 
     /// <summary>
-    /// Notifies the renderer that the component should be rendered.
+    ///     Notifies the renderer that the component should be rendered.
     /// </summary>
     /// <param name="renderFragment">The content that should be rendered.</param>
     public void Render(RenderFragment renderFragment)
@@ -53,5 +53,7 @@ public readonly struct RenderHandle
 
     [DoesNotReturn]
     private static void ThrowNotInitialized()
-        => throw new InvalidOperationException("The render handle is not yet assigned.");
+    {
+        throw new InvalidOperationException("The render handle is not yet assigned.");
+    }
 }

@@ -169,6 +169,7 @@ textarea {
     min-height: $input-height-lg;
   }
 }
+
 // stylelint-enable selector-no-qualifying-type
 
 .form-control-color {
@@ -189,6 +190,11 @@ textarea {
     @include border-radius($input-border-radius);
   }
 
-  &.form-control-sm { height: $input-height-sm; }
-  &.form-control-lg { height: $input-height-lg; }
+  &.form-control-sm {
+    height: $input-height-sm;
+  }
+
+  &.form-control-lg {
+    height: $input-height-lg;
+  }
 }

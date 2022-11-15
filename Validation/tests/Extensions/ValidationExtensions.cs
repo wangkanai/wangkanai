@@ -13,7 +13,7 @@ public static class ValidationExtensions
 {
     public static IList<ValidationResult> Validate<T>(this T model) where T : class
     {
-        var result = new List<ValidationResult>();
+        var result  = new List<ValidationResult>();
         var context = new ValidationContext(model, null, null);
 
         Validator.TryValidateObject(model, context, result, true);
@@ -25,7 +25,7 @@ public static class ValidationExtensions
 
     public static ICollection<ValidationResult> Validate<T>(this T model, object value, PropertyInfo property) where T : class
     {
-        var result = new List<ValidationResult>();
+        var result  = new List<ValidationResult>();
         var context = new ValidationContext(model, null, null) { MemberName = property.Name };
 
         Validator.TryValidateProperty(value, context, result);

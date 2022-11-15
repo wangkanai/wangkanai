@@ -1,7 +1,6 @@
 ﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using System.Collections.Concurrent;
-using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 
@@ -9,20 +8,18 @@ using Microsoft.AspNetCore.Components;
 
 using Wangkanai.Internal;
 
-using static Wangkanai.Internal.LinkerFlags;
-
-using Component = System.ComponentModel.Component;
-
 namespace Wangkanai.Blazor.Components.Reflection;
 
 internal static class ComponentProperties
 {
-    internal const BindingFlags BindablePropertyFlags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.IgnoreCase; 
-    
-    private static readonly ConcurrentDictionary<Type, WritersForType> _cachedWritersByType
-        = new ConcurrentDictionary<Type, WritersForType>();
+    internal const BindingFlags BindablePropertyFlags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.IgnoreCase;
 
-    public static void ClearCache() => _cachedWritersByType.Clear();
+    private static readonly ConcurrentDictionary<Type, WritersForType> _cachedWritersByType = new();
+
+    public static void ClearCache()
+    {
+        _cachedWritersByType.Clear();
+    }
 
     public static void SetProperties(in ParameterView parameters, object target)
     {
@@ -46,12 +43,14 @@ internal static class ComponentProperties
                     ThrowForUnknownIncomingParameterName(targetType, parameterName);
                     throw null; // Unreachable
                 }
-                else if (writer.Cascading && !parameter.Cascading)
+
+                if (writer.Cascading && !parameter.Cascading)
                 {
                     ThrowForSettingCascadingParameterWithNonCascadingValue(targetType, parameterName);
                     throw null; // Unreachable
                 }
-                else if (!writer.Cascading && parameter.Cascading)
+
+                if (!writer.Cascading && parameter.Cascading)
                 {
                     ThrowForSettingParameterWithCascadingValue(targetType, parameterName);
                     throw null; // Unreachable
@@ -67,8 +66,8 @@ internal static class ComponentProperties
             Dictionary<string, object>? unmatched                                      = null;
             foreach (var parameter in parameters)
             {
-                var parameterName                                                                                                                                                = parameter.Name;
-                if (string.Equals(parameterName, writers.CaptureUnmatchedValuesPropertyName, StringComparison.OrdinalIgnoreCase)) 
+                var parameterName = parameter.Name;
+                if (string.Equals(parameterName, writers.CaptureUnmatchedValuesPropertyName, StringComparison.OrdinalIgnoreCase))
                     isCaptureUnmatchedValuesParameterSetExplicitly = true;
 
                 if (writers.TryGetValue(parameterName, out var writer))
@@ -78,7 +77,8 @@ internal static class ComponentProperties
                         ThrowForSettingParameterWithCascadingValue(targetType, parameterName);
                         throw null; // Unreachable
                     }
-                    else if (writer.Cascading && !parameter.Cascading)
+
+                    if (writer.Cascading && !parameter.Cascading)
                     {
                         unmatched                ??= new Dictionary<string, object>(StringComparer.OrdinalIgnoreCase);
                         unmatched[parameterName] =   parameter.Value;
@@ -99,11 +99,9 @@ internal static class ComponentProperties
                         ThrowForSettingParameterWithCascadingValue(targetType, parameterName);
                         throw null; // Unreachable
                     }
-                    else
-                    {
-                        unmatched                ??= new Dictionary<string, object>(StringComparer.OrdinalIgnoreCase);
-                        unmatched[parameterName] =   parameter.Value;
-                    }
+
+                    unmatched                ??= new Dictionary<string, object>(StringComparer.OrdinalIgnoreCase);
+                    unmatched[parameterName] =   parameter.Value;
                 }
             }
 
@@ -112,8 +110,11 @@ internal static class ComponentProperties
                 ThrowForCaptureUnmatchedValuesConflict(targetType, writers.CaptureUnmatchedValuesPropertyName!, unmatched);
                 throw null; // Unreachable
             }
-            else if (unmatched != null)
+
+            if (unmatched != null)
+            {
                 SetProperty(target, writers.CaptureUnmatchedValuesWriter, writers.CaptureUnmatchedValuesPropertyName!, unmatched);
+            }
         }
 
         static void SetProperty(object target, PropertySetter writer, string parameterName, object value)
@@ -132,7 +133,9 @@ internal static class ComponentProperties
     }
 
     internal static IEnumerable<PropertyInfo> GetCandidateBindableProperties([DynamicallyAccessedMembers(LinkerFlags.Component)] Type targetType)
-        => MemberAssignment.GetPropertiesIncludingInherited(targetType, BindablePropertyFlags);
+    {
+        return MemberAssignment.GetPropertiesIncludingInherited(targetType, BindablePropertyFlags);
+    }
 
     [DoesNotReturn]
     private static void ThrowForUnknownIncomingParameterName([DynamicallyAccessedMembers(LinkerFlags.Component)] Type targetType,
@@ -147,30 +150,35 @@ internal static class ComponentProperties
             else
                 throw new InvalidOperationException(
                     $"No writer was cached for the property '{propertyInfo.Name}' on type '{targetType.FullName}'.");
-        else
-            throw new InvalidOperationException(
-                $"Object of type '{targetType.FullName}' does not have a property " +
-                $"matching the name '{parameterName}'.");
+        throw new InvalidOperationException(
+            $"Object of type '{targetType.FullName}' does not have a property " +
+            $"matching the name '{parameterName}'.");
     }
 
     [DoesNotReturn]
     private static void ThrowForSettingCascadingParameterWithNonCascadingValue(Type targetType, string parameterName)
-        => throw new InvalidOperationException(
-               $"Object of type '{targetType.FullName}' has a property matching the name '{parameterName}', " +
-               $"but it does not have [{nameof(ParameterAttribute)}] applied.");
+    {
+        throw new InvalidOperationException(
+            $"Object of type '{targetType.FullName}' has a property matching the name '{parameterName}', " +
+            $"but it does not have [{nameof(ParameterAttribute)}] applied.");
+    }
 
     [DoesNotReturn]
     private static void ThrowForSettingParameterWithCascadingValue(Type targetType, string parameterName)
-        => throw new InvalidOperationException(
-               $"The property '{parameterName}' on component type '{targetType.FullName}' cannot be set " +
-               $"using a cascading value.");
+    {
+        throw new InvalidOperationException(
+            $"The property '{parameterName}' on component type '{targetType.FullName}' cannot be set " +
+            "using a cascading value.");
+    }
 
     [DoesNotReturn]
     private static void ThrowForCaptureUnmatchedValuesConflict(Type targetType, string parameterName, Dictionary<string, object> unmatched)
-        => throw new InvalidOperationException(
-               $"The property '{parameterName}' on component type '{targetType.FullName}' cannot be set explicitly " +
-               $"when also used to capture unmatched values. Unmatched values:" + Environment.NewLine +
-               string.Join(Environment.NewLine, unmatched.Keys));
+    {
+        throw new InvalidOperationException(
+            $"The property '{parameterName}' on component type '{targetType.FullName}' cannot be set explicitly " +
+            "when also used to capture unmatched values. Unmatched values:" + Environment.NewLine +
+            string.Join(Environment.NewLine, unmatched.Keys));
+    }
 
     [DoesNotReturn]
     private static void ThrowForMultipleCaptureUnmatchedValuesParameters([DynamicallyAccessedMembers(LinkerFlags.Component)] Type targetType)
@@ -195,14 +203,14 @@ internal static class ComponentProperties
         throw new InvalidOperationException(
             $"The property '{propertyInfo.Name}' on component type '{targetType.FullName}' cannot be used " +
             $"with '{nameof(ParameterAttribute)}.{nameof(ParameterAttribute.CaptureUnmatchedValues)}' because it has the wrong type. " +
-            $"The property must be assignable from 'Dictionary<string, object>'.");
+            "The property must be assignable from 'Dictionary<string, object>'.");
     }
 
     private sealed class WritersForType
     {
         private const    int                                           MaxCachedWriterLookups = 100;
-        private readonly Dictionary<string, PropertySetter>            _underlyingWriters;
         private readonly ConcurrentDictionary<string, PropertySetter?> _referenceEqualityWritersCache;
+        private readonly Dictionary<string, PropertySetter>            _underlyingWriters;
 
         public WritersForType([DynamicallyAccessedMembers(LinkerFlags.Component)] Type targetType)
         {
@@ -224,7 +232,7 @@ internal static class ComponentProperties
 
                 var propertySetter = new PropertySetter(targetType, propertyInfo)
                 {
-                    Cascading = cascadingParameterAttribute != null,
+                    Cascading = cascadingParameterAttribute != null
                 };
 
                 if (_underlyingWriters.ContainsKey(propertyName))

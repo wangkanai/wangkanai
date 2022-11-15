@@ -21,11 +21,15 @@ internal sealed class ComponentFactory
     private readonly IComponentActivator _componentActivator;
 
     public ComponentFactory(IComponentActivator componentActivator)
-        => _componentActivator = componentActivator
-                                 ?? throw new ArgumentNullException(nameof(componentActivator));
+    {
+        _componentActivator = componentActivator
+                              ?? throw new ArgumentNullException(nameof(componentActivator));
+    }
 
     public static void ClearCache()
-        => _cachedInitializers.Clear();
+    {
+        _cachedInitializers.Clear();
+    }
 
     public IComponent InstantiateComponent(IServiceProvider serviceProvider, [DynamicallyAccessedMembers(LinkerFlags.Component)] Type componentType)
     {
@@ -57,7 +61,7 @@ internal sealed class ComponentFactory
             if (!property.IsDefined(typeof(InjectAttribute)))
                 continue;
 
-            injectables ??= new();
+            injectables ??= new List<(string name, Type propertyType, PropertySetter setter)>();
             injectables.Add((property.Name, property.PropertyType, new PropertySetter(type, property)));
         }
 
@@ -74,7 +78,7 @@ internal sealed class ComponentFactory
             {
                 var serviceInstance = serviceProvider.GetService(propertyType);
                 if (serviceInstance == null)
-                    throw new InvalidOperationException($"Cannot provide a value for property " +
+                    throw new InvalidOperationException("Cannot provide a value for property " +
                                                         $"'{propertyName}' on type '{type.FullName}'. There is no " +
                                                         $"registered service of type '{propertyType}'.");
 

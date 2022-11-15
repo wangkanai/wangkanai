@@ -1,21 +1,18 @@
 ﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-using System;
-using System.Threading.Tasks;
-
 using Microsoft.AspNetCore.Components;
 
 namespace Wangkanai.Blazor.Components.Sections;
 
-internal sealed class SectionOutlet : ISectionContentSubscriber,IComponent, IDisposable
+internal sealed class SectionOutlet : ISectionContentSubscriber, IComponent, IDisposable
 {
-    private static readonly RenderFragment _emptyRenderFragment = _ => { };
+    private static readonly RenderFragment  _emptyRenderFragment = _ => { };
+    private                 RenderFragment? _content;
+    private                 SectionRegistry _registry = default!;
+    private                 RenderHandle    _renderHandle;
 
-    private string?         _subscribedName;
-    private RenderHandle    _renderHandle;
-    private SectionRegistry _registry = default!;
-    private RenderFragment? _content;
-    
+    private string? _subscribedName;
+
     [Parameter] public string Name { get; set; } = default!;
 
     void IComponent.Attach(RenderHandle renderHandle)
@@ -33,7 +30,7 @@ internal sealed class SectionOutlet : ISectionContentSubscriber,IComponent, IDis
 
         if (Name != _subscribedName)
         {
-            if (_subscribedName is not null) 
+            if (_subscribedName is not null)
                 _registry.Unsubscribe(_subscribedName);
 
             _registry.Subscribe(Name, this);
@@ -43,6 +40,12 @@ internal sealed class SectionOutlet : ISectionContentSubscriber,IComponent, IDis
         RenderContent();
 
         return Task.CompletedTask;
+    }
+
+    public void Dispose()
+    {
+        if (_subscribedName is not null)
+            _registry.Unsubscribe(_subscribedName);
     }
 
     void ISectionContentSubscriber.ContentChanged(RenderFragment? content)
@@ -57,11 +60,5 @@ internal sealed class SectionOutlet : ISectionContentSubscriber,IComponent, IDis
             return;
 
         _renderHandle.Render(_content ?? _emptyRenderFragment);
-    }
-    
-    public void Dispose()
-    {
-        if (_subscribedName is not null) 
-            _registry.Unsubscribe(_subscribedName);
     }
 }

@@ -3,18 +3,20 @@
 namespace System.ComponentModel.DataAnnotations;
 
 [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter)]
-public class RequireFalseAttribute : ValidationAttribute
+public sealed class RequireFalseAttribute : ValidationAttribute
 {
     public RequireFalseAttribute()
         : base(() => "Unchecked is required")
     {
     }
 
-    public override bool IsValid(object value) =>
-        value switch
+    public override bool IsValid(object value)
+    {
+        return value switch
         {
-            null => true,
+            null        => true,
             bool actual => actual == false,
-            _ => false
+            _           => false
         };
+    }
 }

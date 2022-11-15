@@ -2,11 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
-    <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsTrimmable>true</IsTrimmable>
+    <Optimize>true</Optimize>
+    <NoWarn>8765</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
-    <SupportedPlatform Include="browser"/>
+    <ProjectReference Include="..\Web\Wangkanai.Blazor.Web.csproj" />
   </ItemGroup>
+
 </Project>

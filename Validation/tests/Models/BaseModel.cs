@@ -8,11 +8,15 @@ public class BaseModel
 {
     public static PropertyInfo GetProperty<T>(string name)
         where T : BaseModel
-        => typeof(T).GetProperty(name);
+    {
+        return typeof(T).GetProperty(name);
+    }
 }
 
 public class BaseModel<T>
 {
     public static PropertyInfo GetProperty(string name)
-        => typeof(T).GetProperty(name);
+    {
+        return typeof(T).GetProperty(name);
+    }
 }

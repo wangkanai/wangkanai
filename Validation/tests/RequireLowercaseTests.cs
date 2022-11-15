@@ -13,7 +13,7 @@ namespace Wangkanai.Validation;
 public class RequireLowercaseTests
 {
     private readonly ITestOutputHelper _output;
-    private readonly PropertyInfo _password = LowercaseModel.GetProperty(nameof(LowercaseModel.Password));
+    private readonly PropertyInfo      _password = LowercaseModel.GetProperty(nameof(LowercaseModel.Password));
 
     public RequireLowercaseTests(ITestOutputHelper output)
     {
@@ -29,7 +29,7 @@ public class RequireLowercaseTests
         validations.Print(_output);
 
         Assert.Collection(validations, v =>
-                              v.ErrorMessage = "Lowercase is required");
+            v.ErrorMessage = "Lowercase is required");
     }
 
     [Fact]

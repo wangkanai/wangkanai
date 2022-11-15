@@ -8,13 +8,13 @@ namespace Wangkanai.Blazor.Components.Rendering;
 
 internal sealed class ComponentState : IDisposable
 {
-    private readonly Renderer                               _renderer;
     private readonly IReadOnlyList<CascadingParameterState> _cascadingParameters;
-    private readonly bool                                   _hasCascadingParameters;
     private readonly bool                                   _hasAnyCascadingParameterSubscriptions;
-    private          RenderTreeBuilder                      _nextRenderTree;
-    private          ArrayBuilder<RenderTreeFrame>?         _latestDirectParametersSnapshot; // Lazily instantiated
+    private readonly bool                                   _hasCascadingParameters;
+    private readonly Renderer                               _renderer;
     private          bool                                   _componentWasDisposed;
+    private          ArrayBuilder<RenderTreeFrame>?         _latestDirectParametersSnapshot; // Lazily instantiated
+    private          RenderTreeBuilder                      _nextRenderTree;
 
     public ComponentState(Renderer renderer, int componentId, IComponent component, ComponentState parentComponentState)
     {
@@ -37,6 +37,14 @@ internal sealed class ComponentState : IDisposable
     public IComponent        Component            { get; }
     public ComponentState    ParentComponentState { get; }
     public RenderTreeBuilder CurrentRenderTree    { get; private set; }
+
+    public void Dispose()
+    {
+        DisposeBuffers();
+
+        if (Component is IDisposable disposable)
+            disposable.Dispose();
+    }
 
     public void RenderIntoBatch(
         RenderBatchBuilder batchBuilder,
@@ -81,7 +89,7 @@ internal sealed class ComponentState : IDisposable
 
         try
         {
-            if (Component is IDisposable disposable) 
+            if (Component is IDisposable disposable)
                 disposable.Dispose();
         }
         catch (Exception ex)
@@ -98,7 +106,7 @@ internal sealed class ComponentState : IDisposable
     {
         RenderTreeDiffBuilder.DisposeFrames(batchBuilder, CurrentRenderTree.GetFrames());
 
-        if (_hasAnyCascadingParameterSubscriptions) 
+        if (_hasAnyCascadingParameterSubscriptions)
             RemoveCascadingParameterSubscriptions();
 
         DisposeBuffers();
@@ -107,7 +115,6 @@ internal sealed class ComponentState : IDisposable
     public Task NotifyRenderCompletedAsync()
     {
         if (Component is IHandleAfterRender handlerAfterRender)
-        {
             try
             {
                 return handlerAfterRender.OnAfterRenderAsync();
@@ -120,7 +127,6 @@ internal sealed class ComponentState : IDisposable
             {
                 return Task.FromException(ex);
             }
-        }
 
         return Task.CompletedTask;
     }
@@ -138,18 +144,12 @@ internal sealed class ComponentState : IDisposable
             // We may need to replay these direct parameters later (in NotifyCascadingValueChanged),
             // but we can't guarantee that the original underlying data won't have mutated in the
             // meantime, since it's just an index into the parent's RenderTreeFrames buffer.
-            if (_latestDirectParametersSnapshot == null)
-            {
-                _latestDirectParametersSnapshot = new ArrayBuilder<RenderTreeFrame>();
-            }
+            if (_latestDirectParametersSnapshot == null) _latestDirectParametersSnapshot = new ArrayBuilder<RenderTreeFrame>();
 
             parameters.CaptureSnapshot(_latestDirectParametersSnapshot);
         }
 
-        if (_hasCascadingParameters)
-        {
-            parameters = parameters.WithCascadingParameters(_cascadingParameters);
-        }
+        if (_hasCascadingParameters) parameters = parameters.WithCascadingParameters(_cascadingParameters);
 
         SupplyCombinedParameters(parameters);
     }
@@ -179,7 +179,7 @@ internal sealed class ComponentState : IDisposable
             setParametersAsyncTask = Task.FromException(ex);
         }
 
-        _renderer.AddToPendingTasks(setParametersAsyncTask, owningComponentState: this);
+        _renderer.AddToPendingTasks(setParametersAsyncTask, this);
     }
 
     private bool AddCascadingParameterSubscriptions()
@@ -211,18 +211,10 @@ internal sealed class ComponentState : IDisposable
         }
     }
 
-    public void Dispose()
-    {
-        DisposeBuffers();
-
-        if (Component is IDisposable disposable)
-            disposable.Dispose();
-    }
-
     private void DisposeBuffers()
     {
-        ((IDisposable)_nextRenderTree).Dispose();
-        ((IDisposable)CurrentRenderTree).Dispose();
+        _nextRenderTree.Dispose();
+        CurrentRenderTree.Dispose();
         _latestDirectParametersSnapshot?.Dispose();
     }
 
@@ -242,12 +234,10 @@ internal sealed class ComponentState : IDisposable
                 result.GetAwaiter().GetResult();
                 return Task.CompletedTask;
             }
-            else
-            {
-                // We know we are dealing with an exception that happened asynchronously, so return a task
-                // to the caller so that he can unwrap it.
-                return result.AsTask();
-            }
+
+            // We know we are dealing with an exception that happened asynchronously, so return a task
+            // to the caller so that he can unwrap it.
+            return result.AsTask();
         }
         catch (Exception e)
         {

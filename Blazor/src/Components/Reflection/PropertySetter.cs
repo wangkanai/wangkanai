@@ -35,8 +35,10 @@ internal sealed class PropertySetter
 
     public bool Cascading { get; init; }
 
-    public void SetValue(object target, object value) 
-        => _setterDelegate(target, value);
+    public void SetValue(object target, object value)
+    {
+        _setterDelegate(target, value);
+    }
 
     private static void CallPropertySetter<TTarget, TValue>(
         Action<TTarget, TValue> setter,

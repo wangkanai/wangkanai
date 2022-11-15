@@ -10,37 +10,31 @@ using Microsoft.Extensions.Logging;
 using Wangkanai.Blazor.Components.HotReload;
 using Wangkanai.Blazor.Components.Reflection;
 using Wangkanai.Blazor.Components.Rendering;
+using Wangkanai.Blazor.Components.Routing;
 using Wangkanai.Internal;
 
 namespace Wangkanai.Blazor.Components.RenderTree;
 
-public abstract partial class Renderer : IDisposable, IAsyncDisposable
+public abstract class Renderer : IDisposable, IAsyncDisposable
 {
-    private readonly IServiceProvider                       _serviceProvider;
-    private readonly Dictionary<int, ComponentState>        _componentStateById         = new Dictionary<int, ComponentState>();
-    private readonly Dictionary<IComponent, ComponentState> _componentStateByComponent  = new Dictionary<IComponent, ComponentState>();
-    private readonly RenderBatchBuilder                     _batchBuilder               = new RenderBatchBuilder();
-    private readonly Dictionary<ulong, EventCallback>       _eventBindings              = new Dictionary<ulong, EventCallback>();
-    private readonly Dictionary<ulong, ulong>               _eventHandlerIdReplacements = new Dictionary<ulong, ulong>();
-    private readonly ILogger<Renderer>                      _logger;
+    private readonly RenderBatchBuilder                     _batchBuilder = new();
     private readonly ComponentFactory                       _componentFactory;
-    private          Dictionary<int, ParameterView>?        _rootComponentsLatestParameters;
-    private          Task?                                  _ongoingQuiescenceTask;
+    private readonly Dictionary<IComponent, ComponentState> _componentStateByComponent  = new();
+    private readonly Dictionary<int, ComponentState>        _componentStateById         = new();
+    private readonly Dictionary<ulong, EventCallback>       _eventBindings              = new();
+    private readonly Dictionary<ulong, ulong>               _eventHandlerIdReplacements = new();
+    private readonly ILogger<Renderer>                      _logger;
+    private readonly IServiceProvider                       _serviceProvider;
+    private          Task?                                  _disposeTask;
 
-    private int         _nextComponentId;
-    private bool        _isBatchInProgress;
-    private ulong       _lastEventHandlerId;
-    private List<Task>? _pendingTasks;
-    private Task?       _disposeTask;
-    private bool        _rendererIsDisposed;
+    private bool  _hotReloadInitialized;
+    private bool  _isBatchInProgress;
+    private ulong _lastEventHandlerId;
 
-    private bool _hotReloadInitialized;
-
-    public event UnhandledExceptionEventHandler UnhandledSynchronizationException
-    {
-        add => Dispatcher.UnhandledException += value;
-        remove => Dispatcher.UnhandledException -= value;
-    }
+    private int                             _nextComponentId;
+    private Task?                           _ongoingQuiescenceTask;
+    private List<Task>?                     _pendingTasks;
+    private Dictionary<int, ParameterView>? _rootComponentsLatestParameters;
 
     public Renderer(IServiceProvider serviceProvider, ILoggerFactory loggerFactory)
         : this(serviceProvider, loggerFactory, GetComponentActivatorOrDefault(serviceProvider))
@@ -66,23 +60,57 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
 
     internal HotReloadManager HotReloadManager { get; set; } = HotReloadManager.Default;
 
-    private static IComponentActivator GetComponentActivatorOrDefault(IServiceProvider serviceProvider)
-        => serviceProvider.GetService<IComponentActivator>()
-           ?? DefaultComponentActivator.Instance;
-
     public abstract Dispatcher Dispatcher { get; }
 
     protected internal ElementReferenceContext? ElementReferenceContext { get; protected set; }
 
     internal bool IsRenderingOnMetadataUpdate { get; private set; }
 
-    internal bool Disposed => _rendererIsDisposed;
+    internal bool Disposed { get; private set; }
+
+    public async ValueTask DisposeAsync()
+    {
+        if (Disposed)
+            return;
+
+        if (_disposeTask != null)
+        {
+            await _disposeTask;
+        }
+        else
+        {
+            await Dispatcher.InvokeAsync(Dispose);
+
+            if (_disposeTask != null)
+                await _disposeTask;
+            else
+                await default(ValueTask);
+        }
+    }
+
+
+    public void Dispose()
+    {
+        Dispose(true);
+    }
+
+    public event UnhandledExceptionEventHandler UnhandledSynchronizationException
+    {
+        add => Dispatcher.UnhandledException += value;
+        remove => Dispatcher.UnhandledException -= value;
+    }
+
+    private static IComponentActivator GetComponentActivatorOrDefault(IServiceProvider serviceProvider)
+    {
+        return serviceProvider.GetService<IComponentActivator>()
+               ?? DefaultComponentActivator.Instance;
+    }
 
     private async void RenderRootComponentsOnHotReload()
     {
         ComponentFactory.ClearCache();
         ComponentProperties.ClearCache();
-        Routing.QueryParameterValueSupplier.ClearCache();
+        QueryParameterValueSupplier.ClearCache();
 
         await Dispatcher.InvokeAsync(() =>
         {
@@ -106,7 +134,9 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
     }
 
     protected IComponent InstantiateComponent([DynamicallyAccessedMembers(LinkerFlags.Component)] Type componentType)
-        => _componentFactory.InstantiateComponent(_serviceProvider, componentType);
+    {
+        return _componentFactory.InstantiateComponent(_serviceProvider, componentType);
+    }
 
     protected internal int AssignRootComponentId(IComponent component)
     {
@@ -120,21 +150,26 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
         return AttachAndInitComponent(component, -1).ComponentId;
     }
 
-    protected ArrayRange<RenderTreeFrame> GetCurrentRenderTreeFrames(int componentId) => GetRequiredComponentState(componentId).CurrentRenderTree.GetFrames();
+    protected ArrayRange<RenderTreeFrame> GetCurrentRenderTreeFrames(int componentId)
+    {
+        return GetRequiredComponentState(componentId).CurrentRenderTree.GetFrames();
+    }
 
     protected Task RenderRootComponentAsync(int componentId)
-        => RenderRootComponentAsync(componentId, ParameterView.Empty);
+    {
+        return RenderRootComponentAsync(componentId, ParameterView.Empty);
+    }
 
     protected internal async Task RenderRootComponentAsync(int componentId, ParameterView initialParameters)
     {
         Dispatcher.AssertAccess();
 
-        _pendingTasks ??= new();
+        _pendingTasks ??= new List<Task>();
 
         var componentState = GetRequiredRootComponentState(componentId);
         if (HotReloadManager.MetadataUpdateSupported)
         {
-            _rootComponentsLatestParameters              ??= new();
+            _rootComponentsLatestParameters              ??= new Dictionary<int, ParameterView>();
             _rootComponentsLatestParameters[componentId] =   initialParameters.Clone();
         }
 
@@ -158,7 +193,9 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
     }
 
     internal Type GetRootComponentType(int componentId)
-        => GetRequiredRootComponentState(componentId).Component.GetType();
+    {
+        return GetRequiredRootComponentState(componentId).Component.GetType();
+    }
 
     protected abstract void HandleException(Exception exception);
 
@@ -206,16 +243,16 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
         component.Attach(new RenderHandle(this, componentId));
         return componentState;
     }
-    
+
     protected abstract Task UpdateDisplayAsync(in RenderBatch renderBatch);
-    
+
     public virtual Task DispatchEventAsync(ulong eventHandlerId, EventFieldInfo? fieldInfo, EventArgs eventArgs)
     {
         Dispatcher.AssertAccess();
 
         var callback = GetRequiredEventCallback(eventHandlerId);
         //Log.HandlingEvent(_logger, eventHandlerId, eventArgs);
-        
+
         ComponentState? receiverComponentState = null;
         if (callback.Receiver is IComponent receiverComponent) // The receiver might be null or not an IComponent
             _componentStateByComponent.TryGetValue(receiverComponent, out receiverComponentState);
@@ -244,15 +281,15 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
 
             ProcessPendingRender();
         }
-        
+
         var result = GetErrorHandledTask(task, receiverComponentState);
         return result;
     }
-    
+
     public Type GetEventArgsType(ulong eventHandlerId)
     {
         var methodInfo = GetRequiredEventCallback(eventHandlerId).Delegate?.Method;
-        
+
         return methodInfo == null
                    ? typeof(EventArgs)
                    : EventArgsTypeCache.GetEventArgsType(methodInfo);
@@ -264,7 +301,7 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
             throw new ArgumentException($"The frame's {nameof(RenderTreeFrame.FrameType)} property must equal {RenderTreeFrameType.Component}", nameof(frame));
 
         if (frame.ComponentStateField != null)
-            throw new ArgumentException($"The frame already has a non-null component instance", nameof(frame));
+            throw new ArgumentException("The frame already has a non-null component instance", nameof(frame));
 
         var newComponent      = InstantiateComponent(frame.ComponentTypeField);
         var newComponentState = AttachAndInitComponent(newComponent, parentComponentId);
@@ -298,12 +335,12 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
 
         if (frame.AttributeValueField is EventCallback callback)
             _eventBindings.Add(id, callback);
-        else if (frame.AttributeValueField is MulticastDelegate @delegate) 
+        else if (frame.AttributeValueField is MulticastDelegate @delegate)
             _eventBindings.Add(id, new EventCallback(@delegate.Target as IHandleEvent, @delegate));
-        
+
         frame.AttributeEventHandlerIdField = id;
     }
-    
+
     internal void AddToRenderQueue(int componentId, RenderFragment renderFragment)
     {
         Dispatcher.AssertAccess();
@@ -315,7 +352,7 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
         _batchBuilder.ComponentRenderQueue.Enqueue(
             new RenderQueueEntry(componentState, renderFragment));
 
-        if (!_isBatchInProgress) 
+        if (!_isBatchInProgress)
             ProcessPendingRender();
     }
 
@@ -326,48 +363,43 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
 
     private EventCallback GetRequiredEventCallback(ulong eventHandlerId)
     {
-        if (!_eventBindings.TryGetValue(eventHandlerId, out var callback))
-        {
-            throw new ArgumentException($"There is no event handler associated with this event. EventId: '{eventHandlerId}'.", nameof(eventHandlerId));
-        }
+        if (!_eventBindings.TryGetValue(eventHandlerId, out var callback)) throw new ArgumentException($"There is no event handler associated with this event. EventId: '{eventHandlerId}'.", nameof(eventHandlerId));
 
         return callback;
     }
 
     private ulong FindLatestEventHandlerIdInChain(ulong eventHandlerId)
     {
-        while (_eventHandlerIdReplacements.TryGetValue(eventHandlerId, out var replacementEventHandlerId))
-        {
-            eventHandlerId = replacementEventHandlerId;
-        }
+        while (_eventHandlerIdReplacements.TryGetValue(eventHandlerId, out var replacementEventHandlerId)) eventHandlerId = replacementEventHandlerId;
 
         return eventHandlerId;
     }
 
     private ComponentState GetRequiredComponentState(int componentId)
-        => _componentStateById.TryGetValue(componentId, out var componentState)
-               ? componentState
-               : throw new ArgumentException($"The renderer does not have a component with ID {componentId}.");
+    {
+        return _componentStateById.TryGetValue(componentId, out var componentState)
+                   ? componentState
+                   : throw new ArgumentException($"The renderer does not have a component with ID {componentId}.");
+    }
 
     private ComponentState GetOptionalComponentState(int componentId)
-        => _componentStateById.TryGetValue(componentId, out var componentState)
-               ? componentState
-               : null;
+    {
+        return _componentStateById.TryGetValue(componentId, out var componentState)
+                   ? componentState
+                   : null;
+    }
 
     private ComponentState GetRequiredRootComponentState(int componentId)
     {
         var componentState = GetRequiredComponentState(componentId);
-        if (componentState.ParentComponentState is not null)
-        {
-            throw new InvalidOperationException("The specified component is not a root component");
-        }
+        if (componentState.ParentComponentState is not null) throw new InvalidOperationException("The specified component is not a root component");
 
         return componentState;
     }
 
     protected virtual void ProcessPendingRender()
     {
-        if (_rendererIsDisposed)
+        if (Disposed)
             return;
 
         ProcessRenderQueue();
@@ -390,7 +422,7 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
                     return;
                 else
                     ProcessDisposalQueueInExistingBatch();
-            
+
             while (_batchBuilder.ComponentRenderQueue.Count > 0)
             {
                 var nextToRender = _batchBuilder.ComponentRenderQueue.Dequeue();
@@ -399,7 +431,7 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
 
             var batch = _batchBuilder.ToBatch();
             updateDisplayTask = UpdateDisplayAsync(batch);
-            
+
             _ = InvokeRenderCompletedCalls(batch.UpdatedComponents, updateDisplayTask);
         }
         catch (Exception e)
@@ -435,7 +467,7 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
         {
             var updatedComponentsId    = new int[updatedComponents.Count];
             var updatedComponentsArray = updatedComponents.Array;
-            for (int i = 0; i < updatedComponentsId.Length; i++)
+            for (var i = 0; i < updatedComponentsId.Length; i++)
                 updatedComponentsId[i] = updatedComponentsArray[i].ComponentId;
 
             return InvokeRenderCompletedCallsAfterUpdateDisplayTask(updateDisplayTask, updatedComponentsId);
@@ -490,9 +522,9 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
 
         if (task.IsCompleted)
         {
-            if (task.Status == TaskStatus.RanToCompletion || task.Status == TaskStatus.Canceled)
-                return;
-            else if (task.Status == TaskStatus.Faulted)
+            if (task.Status == TaskStatus.RanToCompletion || task.Status == TaskStatus.Canceled) return;
+
+            if (task.Status == TaskStatus.Faulted)
             {
                 HandleExceptionViaErrorBoundary(task.Exception, state);
                 return;
@@ -543,7 +575,7 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
                 }
                 else
                 {
-                    AddToPendingTasks(GetHandledAsynchronousDisposalErrorsTask(result), owningComponentState: null);
+                    AddToPendingTasks(GetHandledAsynchronousDisposalErrorsTask(result), null);
 
                     async Task GetHandledAsynchronousDisposalErrorsTask(Task result)
                     {
@@ -669,25 +701,22 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
             return;
         }
 
-        _rendererIsDisposed = true;
+        Disposed = true;
 
-        if (_hotReloadInitialized && HotReloadManager.MetadataUpdateSupported) 
+        if (_hotReloadInitialized && HotReloadManager.MetadataUpdateSupported)
             HotReloadManager.OnDeltaApplied -= RenderRootComponentsOnHotReload;
 
         List<Exception> exceptions       = null;
         List<Task>      asyncDisposables = null;
         foreach (var componentState in _componentStateById.Values)
-        {
             //Log.DisposingComponent(_logger, componentState);
-
             if (componentState.Component is IAsyncDisposable asyncDisposable)
-            {
                 try
                 {
                     var task = asyncDisposable.DisposeAsync();
                     if (!task.IsCompletedSuccessfully)
                     {
-                        asyncDisposables ??= new();
+                        asyncDisposables ??= new List<Task>();
                         asyncDisposables.Add(task.AsTask());
                     }
                 }
@@ -696,9 +725,7 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
                     exceptions ??= new List<Exception>();
                     exceptions.Add(exception);
                 }
-            }
             else if (componentState.Component is IDisposable disposable)
-            {
                 try
                 {
                     componentState.Dispose();
@@ -708,8 +735,6 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
                     exceptions ??= new List<Exception>();
                     exceptions.Add(exception);
                 }
-            }
-        }
 
         _componentStateById.Clear(); // So we know they were all disposed
         _componentStateByComponent.Clear();
@@ -717,14 +742,13 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
 
         NotifyExceptions(exceptions);
 
-        if (asyncDisposables?.Count >= 1) 
+        if (asyncDisposables?.Count >= 1)
             _disposeTask = HandleAsyncExceptions(asyncDisposables);
 
         async Task HandleAsyncExceptions(List<Task> tasks)
         {
             List<Exception> asyncExceptions = null;
             foreach (var task in tasks)
-            {
                 try
                 {
                     await task;
@@ -734,7 +758,6 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
                     asyncExceptions ??= new List<Exception>();
                     asyncExceptions.Add(exception);
                 }
-            }
 
             NotifyExceptions(asyncExceptions);
         }
@@ -745,28 +768,6 @@ public abstract partial class Renderer : IDisposable, IAsyncDisposable
                 HandleException(new AggregateException("Exceptions were encountered while disposing components.", exceptions));
             else if (exceptions?.Count == 1)
                 HandleException(exceptions[0]);
-        }
-    }
-
-
-    public void Dispose() 
-        => Dispose(disposing: true);
-
-    public async ValueTask DisposeAsync()
-    {
-        if (_rendererIsDisposed)
-            return;
-
-        if (_disposeTask != null)
-            await _disposeTask;
-        else
-        {
-            await Dispatcher.InvokeAsync(Dispose);
-
-            if (_disposeTask != null)
-                await _disposeTask;
-            else
-                await default(ValueTask);
         }
     }
 }

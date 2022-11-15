@@ -10,7 +10,7 @@ internal sealed class RenderTreeUpdater
     {
         if (!(newFieldValue is string || newFieldValue is bool))
             return;
-        
+
         var frames                   = renderTreeBuilder.GetFrames();
         var framesArray              = frames.Array;
         var framesLength             = frames.Count;
@@ -27,14 +27,12 @@ internal sealed class RenderTreeUpdater
                     if (frame.AttributeEventHandlerIdField == eventHandlerId)
                     {
                         if (!string.IsNullOrEmpty(frame.AttributeEventUpdatesAttributeNameField))
-                        {
                             UpdateFrameToMatchClientState(
                                 renderTreeBuilder,
                                 framesArray,
                                 closestElementFrameIndex,
                                 frame.AttributeEventUpdatesAttributeNameField,
                                 newFieldValue);
-                        }
 
                         return;
                     }

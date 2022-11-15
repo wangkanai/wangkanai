@@ -41,7 +41,8 @@
 @function rgba-css-var($identifier, $target) {
   @if $identifier == "body" and $target == "bg" {
     @return rgba(var(--#{$prefix}#{$identifier}-bg-rgb), var(--#{$prefix}#{$target}-opacity));
-  } @if $identifier == "body" and $target == "text" {
+  }
+  @if $identifier == "body" and $target == "text" {
     @return rgba(var(--#{$prefix}#{$identifier}-color-rgb), var(--#{$prefix}#{$target}-opacity));
   } @else {
     @return rgba(var(--#{$prefix}#{$identifier}-rgb), var(--#{$prefix}#{$target}-opacity));
@@ -63,6 +64,7 @@
 
   @return $_map;
 }
+
 // stylelint-enable scss/dollar-variable-pattern
 
 @function varify($list) {
@@ -216,6 +218,7 @@ $_luminance-list: .0008 .001 .0011 .0013 .0015 .0017 .002 .0022 .0025 .0027 .003
 @function shift-color($color, $weight) {
   @return if($weight > 0, shade-color($color, $weight), tint-color($color, -$weight));
 }
+
 // scss-docs-end color-functions
 
 // Return valid calc

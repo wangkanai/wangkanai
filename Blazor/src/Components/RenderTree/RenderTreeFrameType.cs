@@ -12,5 +12,5 @@ public enum RenderTreeFrameType : short
     Region                    = 5,
     ElementReferenceCapture   = 6,
     ComponentReferenceCapture = 7,
-    Markup                    = 8,
+    Markup                    = 8
 }

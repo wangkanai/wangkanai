@@ -25,5 +25,7 @@ internal readonly struct ParameterViewBuilder
     }
 
     public ParameterView ToParameterView()
-        => new ParameterView(ParameterViewLifetime.Unbound, _frames, 0);
+    {
+        return new(ParameterViewLifetime.Unbound, _frames, 0);
+    }
 }

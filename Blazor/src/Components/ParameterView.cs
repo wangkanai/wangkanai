@@ -2,29 +2,22 @@
 
 using System.Diagnostics.CodeAnalysis;
 
-using Microsoft.AspNetCore.Components.RenderTree;
-
 using Wangkanai.Blazor.Components.Reflection;
 using Wangkanai.Blazor.Components.Rendering;
 using Wangkanai.Blazor.Components.RenderTree;
-
-using RenderTreeFrame = Wangkanai.Blazor.Components.RenderTree.RenderTreeFrame;
-using RenderTreeFrameType = Wangkanai.Blazor.Components.RenderTree.RenderTreeFrameType;
 
 namespace Wangkanai.Blazor.Components;
 
 public readonly struct ParameterView
 {
-    private static readonly RenderTreeFrame[] _emptyFrames = new RenderTreeFrame[]
+    private static readonly RenderTreeFrame[] _emptyFrames =
     {
-            RenderTreeFrame.Element(0, string.Empty).WithComponentSubtreeLength(1)
+        RenderTreeFrame.Element(0, string.Empty).WithComponentSubtreeLength(1)
     };
 
-    private static readonly ParameterView _empty = new ParameterView(ParameterViewLifetime.Unbound, _emptyFrames, 0, Array.Empty<CascadingParameterState>());
-
-    private readonly ParameterViewLifetime _lifetime;
-    private readonly RenderTreeFrame[] _frames;
-    private readonly int _ownerIndex;
+    private readonly ParameterViewLifetime                  _lifetime;
+    private readonly RenderTreeFrame[]                      _frames;
+    private readonly int                                    _ownerIndex;
     private readonly IReadOnlyList<CascadingParameterState> _cascadingParameters;
 
     internal ParameterView(in ParameterViewLifetime lifetime, RenderTreeFrame[] frames, int ownerIndex)
@@ -34,16 +27,15 @@ public readonly struct ParameterView
 
     private ParameterView(in ParameterViewLifetime lifetime, RenderTreeFrame[] frames, int ownerIndex, IReadOnlyList<CascadingParameterState> cascadingParameters)
     {
-        _lifetime = lifetime;
-        _frames = frames;
-        _ownerIndex = ownerIndex;
+        _lifetime            = lifetime;
+        _frames              = frames;
+        _ownerIndex          = ownerIndex;
         _cascadingParameters = cascadingParameters;
     }
-    
-    public static ParameterView Empty 
-        => _empty;
 
-    internal ParameterViewLifetime Lifetime 
+    public static ParameterView Empty { get; } = new(ParameterViewLifetime.Unbound, _emptyFrames, 0, Array.Empty<CascadingParameterState>());
+
+    internal ParameterViewLifetime Lifetime
         => _lifetime;
 
     public Enumerator GetEnumerator()
@@ -55,28 +47,30 @@ public readonly struct ParameterView
     public bool TryGetValue<TValue>(string parameterName, [MaybeNullWhen(false)] out TValue result)
     {
         foreach (var entry in this)
-        {
             if (string.Equals(entry.Name, parameterName))
             {
                 result = (TValue)entry.Value;
                 return true;
             }
-        }
 
         result = default;
         return false;
     }
 
     public TValue? GetValueOrDefault<TValue>(string parameterName)
-        => GetValueOrDefault<TValue?>(parameterName, default);
-    
+    {
+        return GetValueOrDefault<TValue?>(parameterName, default);
+    }
+
     public TValue GetValueOrDefault<TValue>(string parameterName, TValue defaultValue)
-        => TryGetValue<TValue>(parameterName, out TValue? result) ? result : defaultValue;
-    
+    {
+        return TryGetValue<TValue>(parameterName, out var result) ? result : defaultValue;
+    }
+
     public IReadOnlyDictionary<string, object> ToDictionary()
     {
-        var result                                     = new Dictionary<string, object>();
-        foreach (var entry in this) 
+        var result = new Dictionary<string, object>();
+        foreach (var entry in this)
             result[entry.Name] = entry.Value;
         return result;
     }
@@ -86,7 +80,7 @@ public readonly struct ParameterView
         if (ReferenceEquals(_frames, _emptyFrames))
             return Empty;
 
-        var numEntries = GetEntryCount();
+        var numEntries  = GetEntryCount();
         var cloneBuffer = new RenderTreeFrame[1 + numEntries];
         cloneBuffer[0] = RenderTreeFrame.PlaceholderChildComponentWithSubtreeLength(1 + numEntries);
         _frames.AsSpan(1, numEntries).CopyTo(cloneBuffer.AsSpan(1));
@@ -95,12 +89,14 @@ public readonly struct ParameterView
     }
 
     internal ParameterView WithCascadingParameters(IReadOnlyList<CascadingParameterState> cascadingParameters)
-        => new ParameterView(_lifetime, _frames, _ownerIndex, cascadingParameters);
+    {
+        return new ParameterView(_lifetime, _frames, _ownerIndex, cascadingParameters);
+    }
 
     internal bool DefinitelyEquals(ParameterView oldParameters)
     {
-        var oldIndex = oldParameters._ownerIndex;
-        var newIndex = _ownerIndex;
+        var oldIndex        = oldParameters._ownerIndex;
+        var newIndex        = _ownerIndex;
         var oldEndIndexExcl = oldIndex + oldParameters._frames[oldIndex].ComponentSubtreeLengthField;
         var newEndIndexExcl = newIndex + _frames[newIndex].ComponentSubtreeLengthField;
         while (true)
@@ -110,30 +106,27 @@ public readonly struct ParameterView
             newIndex++;
             var oldFinished = oldIndex == oldEndIndexExcl;
             var newFinished = newIndex == newEndIndexExcl;
+            if (oldFinished || newFinished) return oldFinished == newFinished; // Same only if we have same number of parameters
+
+            // Since neither subtree has finished, it's safe to read the next frame from both
+            ref var oldFrame = ref oldParameters._frames[oldIndex];
+            ref var newFrame = ref _frames[newIndex];
+
+            // Stop if we've reached the end of either subtree's sequence of attributes
+            oldFinished = oldFrame.FrameTypeField != RenderTreeFrameType.Attribute;
+            newFinished = newFrame.FrameTypeField != RenderTreeFrameType.Attribute;
             if (oldFinished || newFinished)
-                return oldFinished == newFinished; // Same only if we have same number of parameters
-            else
             {
-                // Since neither subtree has finished, it's safe to read the next frame from both
-                ref var oldFrame = ref oldParameters._frames[oldIndex];
-                ref var newFrame = ref _frames[newIndex];
-
-                // Stop if we've reached the end of either subtree's sequence of attributes
-                oldFinished = oldFrame.FrameTypeField != RenderTreeFrameType.Attribute;
-                newFinished = newFrame.FrameTypeField != RenderTreeFrameType.Attribute;
-                if (oldFinished || newFinished)
-                    return oldFinished == newFinished; // Same only if we have same number of parameters
-                else
-                {
-                    if (!string.Equals(oldFrame.AttributeNameField, newFrame.AttributeNameField, StringComparison.Ordinal))
-                        return false; // Different names
-
-                    var oldValue = oldFrame.AttributeValueField;
-                    var newValue = newFrame.AttributeValueField;
-                    if (ChangeDetection.MayHaveChanged(oldValue, newValue))
-                        return false;
-                }
+                return oldFinished == newFinished; // Same only if we have same number of parameters
             }
+
+            if (!string.Equals(oldFrame.AttributeNameField, newFrame.AttributeNameField, StringComparison.Ordinal))
+                return false; // Different names
+
+            var oldValue = oldFrame.AttributeValueField;
+            var newValue = newFrame.AttributeValueField;
+            if (ChangeDetection.MayHaveChanged(oldValue, newValue))
+                return false;
         }
     }
 
@@ -166,13 +159,13 @@ public readonly struct ParameterView
 
         static Span<RenderTreeFrame> GetDirectParameterFrames(in ParameterView parameterView)
         {
-            var frames = parameterView._frames;
-            var ownerIndex = parameterView._ownerIndex;
+            var frames                       = parameterView._frames;
+            var ownerIndex                   = parameterView._ownerIndex;
             var ownerDescendantsEndIndexExcl = ownerIndex + frames[ownerIndex].ElementSubtreeLength;
-            var attributeFramesStartIndex = ownerIndex + 1;
-            var attributeFramesEndIndexExcl = attributeFramesStartIndex;
+            var attributeFramesStartIndex    = ownerIndex + 1;
+            var attributeFramesEndIndexExcl  = attributeFramesStartIndex;
 
-            while (attributeFramesEndIndexExcl < ownerDescendantsEndIndexExcl && frames[attributeFramesEndIndexExcl].FrameType == RenderTreeFrameType.Attribute) 
+            while (attributeFramesEndIndexExcl < ownerDescendantsEndIndexExcl && frames[attributeFramesEndIndexExcl].FrameType == RenderTreeFrameType.Attribute)
                 attributeFramesEndIndexExcl++;
 
             return frames.AsSpan(attributeFramesStartIndex..attributeFramesEndIndexExcl);
@@ -184,18 +177,18 @@ public readonly struct ParameterView
         builder.Clear();
 
         var numEntries = GetEntryCount();
-        
+
         var owner = RenderTreeFrame.PlaceholderChildComponentWithSubtreeLength(1 + numEntries);
         builder.Append(owner);
 
-        if (numEntries > 0) 
+        if (numEntries > 0)
             builder.Append(_frames, _ownerIndex + 1, numEntries);
     }
 
     private int GetEntryCount()
     {
         var numEntries = 0;
-        foreach (var _ in this) 
+        foreach (var _ in this)
             numEntries++;
 
         return numEntries;
@@ -204,10 +197,7 @@ public readonly struct ParameterView
     public static ParameterView FromDictionary(IDictionary<string, object?> parameters)
     {
         var builder = new ParameterViewBuilder(parameters.Count);
-        foreach (var kvp in parameters)
-        {
-            builder.Add(kvp.Key, kvp.Value);
-        }
+        foreach (var kvp in parameters) builder.Add(kvp.Key, kvp.Value);
 
         return builder.ToParameterView();
     }
@@ -223,19 +213,19 @@ public readonly struct ParameterView
     public struct Enumerator
     {
         private RenderTreeFrameParameterEnumerator _directParamsEnumerator;
-        private CascadingParameterEnumerator _cascadingParameterEnumerator;
-        private bool _isEnumeratingDirectParams;
+        private CascadingParameterEnumerator       _cascadingParameterEnumerator;
+        private bool                               _isEnumeratingDirectParams;
 
         internal Enumerator(RenderTreeFrame[] frames, int ownerIndex, IReadOnlyList<CascadingParameterState> cascadingParameters)
         {
-            _directParamsEnumerator = new RenderTreeFrameParameterEnumerator(frames, ownerIndex);
+            _directParamsEnumerator       = new RenderTreeFrameParameterEnumerator(frames, ownerIndex);
             _cascadingParameterEnumerator = new CascadingParameterEnumerator(cascadingParameters);
-            _isEnumeratingDirectParams = true;
+            _isEnumeratingDirectParams    = true;
         }
 
         public ParameterValue Current => _isEnumeratingDirectParams
-            ? _directParamsEnumerator.Current
-            : _cascadingParameterEnumerator.Current;
+                                             ? _directParamsEnumerator.Current
+                                             : _cascadingParameterEnumerator.Current;
 
         public bool MoveNext()
         {
@@ -252,18 +242,18 @@ public readonly struct ParameterView
     private struct RenderTreeFrameParameterEnumerator
     {
         private readonly RenderTreeFrame[] _frames;
-        private readonly int _ownerIndex;
-        private readonly int _ownerDescendantsEndIndexExcl;
-        private int _currentIndex;
-        private ParameterValue _current;
+        private readonly int               _ownerIndex;
+        private readonly int               _ownerDescendantsEndIndexExcl;
+        private          int               _currentIndex;
+        private          ParameterValue    _current;
 
         internal RenderTreeFrameParameterEnumerator(RenderTreeFrame[] frames, int ownerIndex)
         {
-            _frames = frames;
-            _ownerIndex = ownerIndex;
+            _frames                       = frames;
+            _ownerIndex                   = ownerIndex;
             _ownerDescendantsEndIndexExcl = ownerIndex + _frames[ownerIndex].ElementSubtreeLengthField;
-            _currentIndex = ownerIndex;
-            _current = default;
+            _currentIndex                 = ownerIndex;
+            _current                      = default;
         }
 
         public ParameterValue Current => _current;
@@ -289,14 +279,14 @@ public readonly struct ParameterView
     private struct CascadingParameterEnumerator
     {
         private readonly IReadOnlyList<CascadingParameterState> _cascadingParameters;
-        private int _currentIndex;
-        private ParameterValue _current;
+        private          int                                    _currentIndex;
+        private          ParameterValue                         _current;
 
         public CascadingParameterEnumerator(IReadOnlyList<CascadingParameterState> cascadingParameters)
         {
             _cascadingParameters = cascadingParameters;
-            _currentIndex = -1;
-            _current = default;
+            _currentIndex        = -1;
+            _current             = default;
         }
 
         public ParameterValue Current => _current;
@@ -312,8 +302,8 @@ public readonly struct ParameterView
                 _current = new ParameterValue(state.LocalValueName, state.ValueSupplier.CurrentValue!, true);
                 return true;
             }
-            else
-                return false;
+
+            return false;
         }
     }
 }

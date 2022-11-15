@@ -64,8 +64,13 @@
 //
 // Remix the default button sizing classes into new ones for easier manipulation.
 
-.btn-group-sm > .btn { @extend .btn-sm; }
-.btn-group-lg > .btn { @extend .btn-lg; }
+.btn-group-sm > .btn {
+  @extend .btn-sm;
+}
+
+.btn-group-lg > .btn {
+  @extend .btn-lg;
+}
 
 
 //

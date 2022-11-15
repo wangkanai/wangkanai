@@ -1,11 +1,11 @@
 <Project>
     <PropertyGroup>
-        <VersionPrefix>1.1.0</VersionPrefix>
+        <VersionPrefix>1.2.0</VersionPrefix>
 
         <Title>Wangkanai Validation</Title>
         <Description>Wangkanai .NET Validation library</Description>
         <PackageTags>aspnetcore;validation;</PackageTags>
-        
+        <RootNamespace>Wangkanai.Validation</RootNamespace>
     </PropertyGroup>
 
     <PropertyGroup>

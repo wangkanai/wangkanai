@@ -1,6 +1,5 @@
 ﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-using System.ComponentModel;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 
@@ -11,24 +10,28 @@ namespace Wangkanai.Blazor.Components.Rendering;
 
 public sealed class RenderTreeBuilder : IDisposable
 {
+    private const           string ChildContent                                  = nameof(ChildContent);
     private static readonly object BoxedTrue                                     = true;
     private static readonly object BoxedFalse                                    = false;
     private static readonly string ComponentReferenceCaptureInvalidParentMessage = $"Component reference captures may only be added as children of frames of type {RenderTreeFrameType.Component}";
 
-    private readonly RenderTreeFrameArrayBuilder _entries            = new RenderTreeFrameArrayBuilder();
-    private readonly Stack<int>                  _openElementIndices = new Stack<int>();
-    private          RenderTreeFrameType?        _lastNonAttributeFrameType;
+    private readonly RenderTreeFrameArrayBuilder _entries            = new();
+    private readonly Stack<int>                  _openElementIndices = new();
     private          bool                        _hasSeenAddMultipleAttributes;
+    private          RenderTreeFrameType?        _lastNonAttributeFrameType;
     private          Dictionary<string, int>?    _seenAttributeNames;
 
-    private const string ChildContent = nameof(ChildContent);
+    public void Dispose()
+    {
+        _entries.Dispose();
+    }
 
     public void OpenElement(int sequence, string elementName)
     {
         if (_hasSeenAddMultipleAttributes)
         {
             var indexOfLastElementOrComponent = _openElementIndices.Peek();
-            ProcessDuplicateAttributes(first: indexOfLastElementOrComponent + 1);
+            ProcessDuplicateAttributes(indexOfLastElementOrComponent + 1);
         }
 
         _openElementIndices.Push(_entries.Count);
@@ -41,7 +44,7 @@ public sealed class RenderTreeBuilder : IDisposable
         var indexOfEntryBeingClosed = _openElementIndices.Pop();
 
         if (_hasSeenAddMultipleAttributes)
-            ProcessDuplicateAttributes(first: indexOfEntryBeingClosed + 1);
+            ProcessDuplicateAttributes(indexOfEntryBeingClosed + 1);
 
         _entries.Buffer[indexOfEntryBeingClosed].ElementSubtreeLengthField = _entries.Count - indexOfEntryBeingClosed;
     }
@@ -75,20 +78,23 @@ public sealed class RenderTreeBuilder : IDisposable
     }
 
     public void AddContent(int sequence, MarkupString? markupContent)
-        => AddMarkupContent(sequence, markupContent?.Value);
+    {
+        AddMarkupContent(sequence, markupContent?.Value);
+    }
 
     public void AddContent(int sequence, MarkupString markupContent)
-        => AddMarkupContent(sequence, markupContent.Value);
+    {
+        AddMarkupContent(sequence, markupContent.Value);
+    }
 
     public void AddContent(int sequence, object? textContent)
-        => AddContent(sequence, textContent?.ToString());
+    {
+        AddContent(sequence, textContent?.ToString());
+    }
 
     public void AddAttribute(int sequence, string name)
     {
-        if (_lastNonAttributeFrameType != RenderTreeFrameType.Element)
-        {
-            throw new InvalidOperationException($"Valueless attributes may only be added immediately after frames of type {RenderTreeFrameType.Element}");
-        }
+        if (_lastNonAttributeFrameType != RenderTreeFrameType.Element) throw new InvalidOperationException($"Valueless attributes may only be added immediately after frames of type {RenderTreeFrameType.Element}");
 
         _entries.AppendAttribute(sequence, name, BoxedTrue);
     }
@@ -170,9 +176,13 @@ public sealed class RenderTreeBuilder : IDisposable
                 _entries.AppendAttribute(sequence, name, value.ToString());
         }
         else if (_lastNonAttributeFrameType == RenderTreeFrameType.Component)
+        {
             _entries.AppendAttribute(sequence, name, value);
+        }
         else
+        {
             AssertCanAddAttribute();
+        }
     }
 
     public void AddAttribute(int sequence, RenderTreeFrame frame)
@@ -211,7 +221,9 @@ public sealed class RenderTreeBuilder : IDisposable
     }
 
     public void OpenComponent<[DynamicallyAccessedMembers(LinkerFlags.Component)] TComponent>(int sequence) where TComponent : notnull, IComponent
-        => OpenComponentUnchecked(sequence, typeof(TComponent));
+    {
+        OpenComponentUnchecked(sequence, typeof(TComponent));
+    }
 
     public void OpenComponent(int sequence, [DynamicallyAccessedMembers(LinkerFlags.Component)] Type componentType)
     {
@@ -250,7 +262,7 @@ public sealed class RenderTreeBuilder : IDisposable
         if (_hasSeenAddMultipleAttributes)
         {
             var indexOfLastElementOrComponent = _openElementIndices.Peek();
-            ProcessDuplicateAttributes(first: indexOfLastElementOrComponent + 1);
+            ProcessDuplicateAttributes(indexOfLastElementOrComponent + 1);
         }
 
         _openElementIndices.Push(_entries.Count);
@@ -263,7 +275,7 @@ public sealed class RenderTreeBuilder : IDisposable
         var indexOfEntryBeingClosed = _openElementIndices.Pop();
 
         if (_hasSeenAddMultipleAttributes)
-            ProcessDuplicateAttributes(first: indexOfEntryBeingClosed + 1);
+            ProcessDuplicateAttributes(indexOfEntryBeingClosed + 1);
 
         _entries.Buffer[indexOfEntryBeingClosed].ComponentSubtreeLengthField = _entries.Count - indexOfEntryBeingClosed;
     }
@@ -296,7 +308,7 @@ public sealed class RenderTreeBuilder : IDisposable
         if (_hasSeenAddMultipleAttributes)
         {
             var indexOfLastElementOrComponent = _openElementIndices.Peek();
-            ProcessDuplicateAttributes(first: indexOfLastElementOrComponent + 1);
+            ProcessDuplicateAttributes(indexOfLastElementOrComponent + 1);
         }
 
         _openElementIndices.Push(_entries.Count);
@@ -314,20 +326,20 @@ public sealed class RenderTreeBuilder : IDisposable
     {
         if (_lastNonAttributeFrameType != RenderTreeFrameType.Element
             && _lastNonAttributeFrameType != RenderTreeFrameType.Component)
-        {
             throw new InvalidOperationException($"Attributes may only be added immediately after frames of type {RenderTreeFrameType.Element} or {RenderTreeFrameType.Component}");
-        }
     }
 
     private int? GetCurrentParentFrameIndex()
-        => _openElementIndices.Count == 0 ? (int?)null : _openElementIndices.Peek();
+    {
+        return _openElementIndices.Count == 0 ? null : _openElementIndices.Peek();
+    }
 
     private RenderTreeFrameType? GetCurrentParentFrameType()
     {
         var parentIndex = GetCurrentParentFrameIndex();
         return parentIndex.HasValue
                    ? _entries.Buffer[parentIndex.Value].FrameTypeField
-                   : (RenderTreeFrameType?)null;
+                   : null;
     }
 
     public void Clear()
@@ -342,15 +354,17 @@ public sealed class RenderTreeBuilder : IDisposable
     internal bool InsertAttributeExpensive(int insertAtIndex, int sequence, string attributeName, object? attributeValue)
     {
         // Replicate the same attribute omission logic as used elsewhere
-        if ((attributeValue == null) || (attributeValue is bool boolValue && !boolValue))
+        if (attributeValue == null || attributeValue is bool boolValue && !boolValue)
             return false;
 
         _entries.InsertExpensive(insertAtIndex, RenderTreeFrame.Attribute(sequence, attributeName, attributeValue));
         return true;
     }
 
-    public ArrayRange<RenderTreeFrame> GetFrames() =>
-        _entries.ToRange();
+    public ArrayRange<RenderTreeFrame> GetFrames()
+    {
+        return _entries.ToRange();
+    }
 
     internal void AssertTreeIsValid(IComponent component)
     {
@@ -371,16 +385,14 @@ public sealed class RenderTreeBuilder : IDisposable
         var last   = _entries.Count - 1;
 
         for (var i = first; i <= last; i++)
-        {
             if (buffer[i].FrameTypeField != RenderTreeFrameType.Attribute)
             {
                 last = i - 1;
                 break;
             }
-        }
 
         // Now that we've found the last attribute, we can iterate backwards and process duplicates.
-        var seenAttributeNames = (_seenAttributeNames ??= new Dictionary<string, int>(SimplifiedStringHashComparer.Instance));
+        var seenAttributeNames = _seenAttributeNames ??= new Dictionary<string, int>(SimplifiedStringHashComparer.Instance);
         for (var i = last; i >= first; i--)
         {
             ref var frame = ref buffer[i];
@@ -391,8 +403,8 @@ public sealed class RenderTreeBuilder : IDisposable
                 var index = seenAttributeNames[frame.AttributeNameField];
                 if (index < i)
                     seenAttributeNames[frame.AttributeNameField] = i;
-                else if (index > i) 
-                    frame                        = default;
+                else if (index > i)
+                    frame = default;
             }
         }
 
@@ -417,10 +429,7 @@ public sealed class RenderTreeBuilder : IDisposable
         if (!_hasSeenAddMultipleAttributes)
             return;
 
-        var seenAttributeNames = (_seenAttributeNames ??= new Dictionary<string, int>(SimplifiedStringHashComparer.Instance));
+        var seenAttributeNames = _seenAttributeNames ??= new Dictionary<string, int>(SimplifiedStringHashComparer.Instance);
         seenAttributeNames[name] = _entries.Count; // See comment in ProcessAttributes for why this is OK.
     }
-    
-    public void Dispose()
-        => _entries.Dispose();
 }

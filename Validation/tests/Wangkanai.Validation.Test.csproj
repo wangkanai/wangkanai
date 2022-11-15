@@ -3,7 +3,6 @@
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
     <IsPackable>false</IsPackable>
-    <RootNamespace>Wangkanai.Validation.Tests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
