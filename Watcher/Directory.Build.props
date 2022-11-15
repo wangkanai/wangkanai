@@ -5,7 +5,6 @@
         <Title>Wangkanai Watcher</Title>
         <Description>ASP.NET Core Development dotnet-watch file watcher task execution.</Description>
         <PackageTags>aspnetcore;watcher;task;job;</PackageTags>
-        
     </PropertyGroup>
 
     <PropertyGroup>
