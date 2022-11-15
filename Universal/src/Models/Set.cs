@@ -133,7 +133,7 @@ public class Set : Field
     public string Title { get; set; }
 
     /// <summary>
-    ///     The ID of a clicked DOM element, used to disambiguate multiple links to the same URL in In-Wangkanai.Responsive.PageApp Wangkanai.Universal
+    ///     The ID of a clicked DOM element, used to disambiguate multiple links to the same URL in In-Page Universal
     ///     reports when Enhanced Link Attribution is enabled for the property
     /// </summary>
     public string LinkId { get; set; }

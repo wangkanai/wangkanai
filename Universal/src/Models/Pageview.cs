@@ -5,7 +5,7 @@ using Wangkanai.Universal.Options;
 namespace Wangkanai.Universal.Models;
 
 /// <summary>
-///     Wangkanai.Responsive.PageApp tracking allows you to measure the number of views you had of a particular page on your web site
+///     Pageview tracking allows you to measure the number of views you had of a particular page on your web site
 /// </summary>
 public sealed class Pageview : Send
 {

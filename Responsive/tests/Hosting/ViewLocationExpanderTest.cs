@@ -160,7 +160,7 @@ public class ResponsiveViewLocationExpanderTest
     private ViewLocationExpanderContext SetupViewLocationExpanderContext(Device deviceType)
     {
         var action = new ActionContext();
-        var context = new ViewLocationExpanderContext(action, "ResponsiveWeb", "Controller", "Area", "Wangkanai.Responsive.PageApp", true)
+        var context = new ViewLocationExpanderContext(action, "ResponsiveWeb", "Controller", "Area", "Wangkanai.Responsive.WebmasterPage", true)
         {
             Values = new Dictionary<string, string>()
         };

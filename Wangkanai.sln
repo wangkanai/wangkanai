@@ -342,15 +342,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Webmaster.Benchma
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Universal.Benchmark", "Universal\benchmark\Wangkanai.Universal.Benchmark.csproj", "{ECE1DF09-B6AA-4F3B-8BDD-0BA773D9FC41}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PageApp", "Webmaster\samples\PageApp\PageApp.csproj", "{6F4DE3E4-2B27-46DA-92CA-65D6198E2563}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebmasterPage", "Webmaster\samples\WebmasterPage\WebmasterPage.csproj", "{6F4DE3E4-2B27-46DA-92CA-65D6198E2563}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "Webmaster\samples\WebApp\WebApp.csproj", "{7192799B-615B-4DF5-8C1F-C7D6E7CD5132}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebmasterMvc", "Webmaster\samples\WebmasterMvc\WebmasterMvc.csproj", "{7192799B-615B-4DF5-8C1F-C7D6E7CD5132}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResponsivePage", "Responsive\samples\page\ResponsivePage.csproj", "{AFA5E42E-96E0-4997-97C0-DBC3DCE4D734}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResponsiveWeb", "Responsive\samples\mvc\ResponsiveWeb.csproj", "{235AB3F5-3496-4CCC-A8BD-14022346ABCC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Detection", "Detection\samples\mvc\Detection.csproj", "{7DCB316F-9E32-495F-BC5C-956886739234}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DetectionMvc", "Detection\samples\mvc\DetectionMvc.csproj", "{7DCB316F-9E32-495F-BC5C-956886739234}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -592,11 +592,9 @@ Global
 		{7192799B-615B-4DF5-8C1F-C7D6E7CD5132}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7192799B-615B-4DF5-8C1F-C7D6E7CD5132}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AFA5E42E-96E0-4997-97C0-DBC3DCE4D734}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AFA5E42E-96E0-4997-97C0-DBC3DCE4D734}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AFA5E42E-96E0-4997-97C0-DBC3DCE4D734}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AFA5E42E-96E0-4997-97C0-DBC3DCE4D734}.Release|Any CPU.Build.0 = Release|Any CPU
 		{235AB3F5-3496-4CCC-A8BD-14022346ABCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{235AB3F5-3496-4CCC-A8BD-14022346ABCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{235AB3F5-3496-4CCC-A8BD-14022346ABCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{235AB3F5-3496-4CCC-A8BD-14022346ABCC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7DCB316F-9E32-495F-BC5C-956886739234}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
