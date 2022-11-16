@@ -6,7 +6,7 @@ using Wangkanai.Blazor.Components.Rendering;
 
 namespace Wangkanai.Blazor;
 
-public abstract class WangkanaiComponentBase : ComponentBase, IWangkanaiComponentBase, IDisposable
+public abstract class BlazorComponentBase : ComponentBase, IBlazorComponentBase, IDisposable
 {
     protected bool Disposed { get; private set; }
 

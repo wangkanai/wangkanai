@@ -2,6 +2,6 @@
 
 namespace Wangkanai.Blazor;
 
-public class WangkanaiComponentContainerComponentBase : WangkanaiComponentBaseWangkanaiDomComponent
+public class ContainerBlazorComponentBase : DomBlazorComponentBase
 {
 }

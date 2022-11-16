@@ -2,7 +2,7 @@
 
 namespace Wangkanai.Tabler;
 
-public interface IBaseTablerComponent
+public interface ITablerComponentBase
 {
     
 }

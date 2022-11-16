@@ -1,0 +1,15 @@
+﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+//
+
+
+namespace Wangkanai.Tabler;
+
+public class TablerComponentBase : BlazorComponentBase, ITablerComponentBase, IDisposable
+{
+    protected bool Disposed { get; private set; }
+
+    public virtual void Dispose()
+    {
+        Disposed = true;
+    }
+}
