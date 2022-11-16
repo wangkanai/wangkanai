@@ -6,7 +6,7 @@ namespace Wangkanai.Blazor.Components;
 
 public readonly struct EventCallbackWorkItem
 {
-    public static readonly EventCallbackWorkItem Empty = new EventCallbackWorkItem(null);
+    public static readonly EventCallbackWorkItem Empty = new(null);
 
     private readonly MulticastDelegate? _delegate;
 
@@ -17,7 +17,7 @@ public readonly struct EventCallbackWorkItem
 
     public Task InvokeAsync(object? arg)
     {
-        return InvokeAsync<object?>(_delegate, arg);
+        return InvokeAsync(_delegate, arg);
     }
 
     internal static Task InvokeAsync<T>(MulticastDelegate? @delegate, T arg)

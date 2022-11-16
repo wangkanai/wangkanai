@@ -164,12 +164,15 @@
   &[data-popper-placement^="top"] {
     @extend .bs-popover-top;
   }
+
   &[data-popper-placement^="right"] {
     @extend .bs-popover-end;
   }
+
   &[data-popper-placement^="bottom"] {
     @extend .bs-popover-bottom;
   }
+
   &[data-popper-placement^="left"] {
     @extend .bs-popover-start;
   }

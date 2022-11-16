@@ -1,6 +1,5 @@
 ﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -18,15 +17,16 @@ internal sealed class MemberAssignment
     {
         var dictionary = new Dictionary<string, object>(StringComparer.Ordinal);
 
-        Type? currentType = type;
+        var currentType = type;
 
         while (currentType != null)
         {
             var properties = currentType.GetProperties(bindingFlags | BindingFlags.DeclaredOnly);
             foreach (var property in properties)
-            {
                 if (!dictionary.TryGetValue(property.Name, out var others))
+                {
                     dictionary.Add(property.Name, property);
+                }
                 else if (!IsInheritedProperty(property, others))
                 {
                     List<PropertyInfo> many;
@@ -36,11 +36,12 @@ internal sealed class MemberAssignment
                         dictionary[property.Name] = many;
                     }
                     else
+                    {
                         many = (List<PropertyInfo>)others;
+                    }
 
                     many.Add(property);
                 }
-            }
 
             currentType = currentType.BaseType;
         }

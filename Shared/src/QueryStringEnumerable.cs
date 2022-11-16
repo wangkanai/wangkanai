@@ -22,7 +22,9 @@ public readonly struct QueryStringEnumerable
     }
 
     public Enumerator GetEnumerator()
-        => new Enumerator(_queryString);
+    {
+        return new Enumerator(_queryString);
+    }
 
     public readonly struct EncodedNameValuePair
     {
@@ -36,15 +38,21 @@ public readonly struct QueryStringEnumerable
         }
 
         public ReadOnlyMemory<char> DecodeName()
-            => Decode(EncodedName);
+        {
+            return Decode(EncodedName);
+        }
 
         public ReadOnlyMemory<char> DecodeValue()
-            => Decode(EncodedValue);
+        {
+            return Decode(EncodedValue);
+        }
 
         private static ReadOnlyMemory<char> Decode(ReadOnlyMemory<char> chars)
-            => chars.Length < 16 && chars.Span.IndexOfAny('%', '+') < 0
-                   ? chars
-                   : Uri.UnescapeDataString(SpanHelper.ReplacePlusWithSpace(chars.Span)).AsMemory();
+        {
+            return chars.Length < 16 && chars.Span.IndexOfAny('%', '+') < 0
+                       ? chars
+                       : Uri.UnescapeDataString(SpanHelper.ReplacePlusWithSpace(chars.Span)).AsMemory();
+        }
     }
 
     public struct Enumerator
@@ -88,7 +96,8 @@ public readonly struct QueryStringEnumerable
                         segment.Slice(equalIndex + 1));
                     return true;
                 }
-                else if (!segment.IsEmpty)
+
+                if (!segment.IsEmpty)
                 {
                     Current = new EncodedNameValuePair(segment, default);
                     return true;
@@ -154,12 +163,10 @@ public readonly struct QueryStringEnumerable
                 }
 
                 for (; i < n; ++i)
-                {
                     if (input[i] != '+')
                         output[i] = input[i];
                     else
                         output[i] = ' ';
-                }
             }
         }
     }

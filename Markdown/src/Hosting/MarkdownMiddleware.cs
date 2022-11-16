@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace Wangkanai.Markdown.Hosting;
 
-public class MarkdownMiddleware
+public sealed class MarkdownMiddleware
 {
     private readonly RequestDelegate _next;
 

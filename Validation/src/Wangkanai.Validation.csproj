@@ -4,15 +4,17 @@
     <TargetFrameworks>net6.0;net7.0;netstandard2.1</TargetFrameworks>
     <LangVersion>11</LangVersion>
     <Nullable>enable</Nullable>
+    <IsTrimmable>true</IsTrimmable>
+    <Optimize>true</Optimize>
     <NoWarn>8765</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Runtime\src\Wangkanai.Runtime.csproj" />
+    <ProjectReference Include="..\..\Runtime\src\Wangkanai.Runtime.csproj"/>
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0"/>
   </ItemGroup>
 
 </Project>

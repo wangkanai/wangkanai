@@ -13,7 +13,7 @@ namespace Wangkanai.Validation;
 public class RequireDigitTests
 {
     private readonly ITestOutputHelper _output;
-    private readonly PropertyInfo _password = DigitModel.GetProperty(nameof(DigitModel.Password));
+    private readonly PropertyInfo      _password = DigitModel.GetProperty(nameof(DigitModel.Password));
 
     public RequireDigitTests(ITestOutputHelper output)
     {

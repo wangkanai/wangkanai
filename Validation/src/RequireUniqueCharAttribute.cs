@@ -2,24 +2,26 @@
 
 namespace System.ComponentModel.DataAnnotations;
 
-[AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter, AllowMultiple = false)]
-public class RequireUniqueCharAttribute : ValidationAttribute
+[AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter)]
+public sealed class RequireUniqueCharAttribute : ValidationAttribute
 {
-    public int Minimum { get; }
-
     public RequireUniqueCharAttribute(int minimum = 1)
         : base(() => $"{minimum} unique characters are required")
     {
         Minimum = minimum;
     }
 
-    public override bool IsValid(object value) =>
-        value switch
+    public int Minimum { get; }
+
+    public override bool IsValid(object value)
+    {
+        return value switch
         {
-            null => true,
+            null          => true,
             string actual => Unique(actual).Count >= Minimum,
-            _ => false
+            _             => false
         };
+    }
 
     private static Dictionary<char, int> Unique(string value)
     {

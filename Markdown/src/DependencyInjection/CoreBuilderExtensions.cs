@@ -15,7 +15,7 @@ public static class MarkdownCoreBuilderExtensions
         // Hosting doesn't add IHttpContextAccessor by default
         builder.Services.AddHttpContextAccessor();
 
-        // Add Detection Options
+        // Add DetectionMvc Options
         builder.Services.AddOptions();
         builder.Services.TryAddSingleton(provider => provider.GetRequiredService<IOptions<DetectionOptions>>().Value);
 

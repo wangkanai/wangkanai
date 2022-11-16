@@ -1,25 +1,12 @@
 // Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-using System;
 using System.Diagnostics;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Wangkanai.Blazor.Components.Rendering;
 
 [DebuggerDisplay("{_state,nq}")]
 internal sealed class RendererSynchronizationContext : SynchronizationContext
 {
-    private readonly State _state;
-
-    public RendererSynchronizationContext()
-        : this(new State())
-    {
-    }
-
-    private RendererSynchronizationContext(State state)
-        => _state = state;
-
     private static readonly ContextCallback ExecutionContextThunk = (object state) =>
     {
         var item = (WorkItem)state;
@@ -31,6 +18,16 @@ internal sealed class RendererSynchronizationContext : SynchronizationContext
         var item = (WorkItem)state;
         item.SynchronizationContext.ExecuteBackground(item);
     };
+
+    private readonly State _state;
+
+    public RendererSynchronizationContext()
+        : this(new State())
+    {
+    }
+
+    private RendererSynchronizationContext(State state)
+        => _state = state;
 
     public event UnhandledExceptionEventHandler UnhandledException;
 
@@ -129,10 +126,10 @@ internal sealed class RendererSynchronizationContext : SynchronizationContext
 
         return completion.Task;
     }
-    
+
     public override void Post(SendOrPostCallback d, object state)
     {
-        lock (_state.Lock) 
+        lock (_state.Lock)
             _state.Task = Enqueue(_state.Task, d, state, forceAsync: true);
     }
 
@@ -147,14 +144,14 @@ internal sealed class RendererSynchronizationContext : SynchronizationContext
             antecedent  = _state.Task;
             _state.Task = completion.Task;
         }
-        
+
         antecedent.Wait();
 
         ExecuteSynchronously(completion, d, state);
     }
 
     // shallow copy
-    public override SynchronizationContext CreateCopy() 
+    public override SynchronizationContext CreateCopy()
         => new RendererSynchronizationContext(_state);
 
     private void ExecuteSynchronouslyIfPossible(SendOrPostCallback d, object state)
@@ -167,7 +164,7 @@ internal sealed class RendererSynchronizationContext : SynchronizationContext
                 _state.Task = Enqueue(_state.Task, d, state);
                 return;
             }
-            
+
             completion  = new TaskCompletionSource();
             _state.Task = completion.Task;
         }
@@ -187,7 +184,7 @@ internal sealed class RendererSynchronizationContext : SynchronizationContext
             SynchronizationContext = this,
             ExecutionContext       = executionContext,
             Callback               = d,
-            State                  = state,
+            State                  = state
         }, CancellationToken.None, flags, TaskScheduler.Current);
     }
 
@@ -261,12 +258,12 @@ internal sealed class RendererSynchronizationContext : SynchronizationContext
 
     private sealed class WorkItem
     {
-        public RendererSynchronizationContext SynchronizationContext;
-        public ExecutionContext               ExecutionContext;
         public SendOrPostCallback             Callback;
+        public ExecutionContext               ExecutionContext;
         public object                         State;
+        public RendererSynchronizationContext SynchronizationContext;
     }
-    
+
     private sealed class RendererSynchronizationTaskCompletionSource<TCallback, TResult> : TaskCompletionSource<TResult>
     {
         public RendererSynchronizationTaskCompletionSource(TCallback callback)

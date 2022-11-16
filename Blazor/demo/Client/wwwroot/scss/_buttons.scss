@@ -105,8 +105,8 @@
   .btn-#{$color} {
     @if $color == "light" {
       @include button-variant(
-        $value,
-        $value,
+          $value,
+          $value,
         $hover-background: shade-color($value, $btn-hover-bg-shade-amount),
         $hover-border: shade-color($value, $btn-hover-border-shade-amount),
         $active-background: shade-color($value, $btn-active-bg-shade-amount),
@@ -114,8 +114,8 @@
       );
     } @else if $color == "dark" {
       @include button-variant(
-        $value,
-        $value,
+          $value,
+          $value,
         $hover-background: tint-color($value, $btn-hover-bg-tint-amount),
         $hover-border: tint-color($value, $btn-hover-border-tint-amount),
         $active-background: tint-color($value, $btn-active-bg-tint-amount),
@@ -132,6 +132,7 @@
     @include button-outline-variant($value);
   }
 }
+
 // scss-docs-end btn-variant-loops
 
 

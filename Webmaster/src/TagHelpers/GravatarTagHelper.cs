@@ -11,7 +11,7 @@ namespace Wangkanai.Webmaster.TagHelpers;
 [HtmlTargetElement(GravatarAttributeName, Attributes = SizeAttributeName, TagStructure = TagStructure.WithoutEndTag)]
 [HtmlTargetElement(GravatarAttributeName, Attributes = RatingAttributeName, TagStructure = TagStructure.WithoutEndTag)]
 [HtmlTargetElement(GravatarAttributeName, Attributes = ModeAttributeName, TagStructure = TagStructure.WithoutEndTag)]
-public class GravatarTagHelper : TagHelper
+public sealed class GravatarTagHelper : TagHelper
 {
     private const string GravatarAttributeName = "gravatar";
     private const string EmailAttributeName = "email";

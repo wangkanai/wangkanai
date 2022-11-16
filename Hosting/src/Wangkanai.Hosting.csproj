@@ -3,8 +3,9 @@
   <PropertyGroup>
     <TargetFrameworks>net6.0;net7.0;netcoreapp3.1</TargetFrameworks>
     <LangVersion>11.0</LangVersion>
-    <Nullable>enable</Nullable>
     <GenerateErrorForMissingTargetingPacks>false</GenerateErrorForMissingTargetingPacks>
+    <Nullable>enable</Nullable>
+    <Optimize>true</Optimize>
   </PropertyGroup>
 
   <ItemGroup>

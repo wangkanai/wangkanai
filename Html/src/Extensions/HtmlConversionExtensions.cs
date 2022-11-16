@@ -27,15 +27,14 @@ public static class HtmlConversionExtensions
     /// </summary>
     /// <param name="plainText">The plain text.</param>
     /// <returns></returns>
-    public static int CountWords(string plainText)
-    {
-        return !string.IsNullOrEmpty(plainText) ? plainText.Split(' ', '\n').Length : 0;
-    }
+    public static int CountWords(string plainText) 
+        => !string.IsNullOrEmpty(plainText) ? plainText.Split(' ', '\n').Length : 0;
 
 
     public static string Cut(string text, int length)
     {
-        if (!string.IsNullOrEmpty(text) && text.Length > length) text = text.Substring(0, length - 4) + " ...";
+        if (!string.IsNullOrEmpty(text) && text.Length > length) 
+            text = text.Substring(0, length - 4) + " ...";
 
         return text;
     }
@@ -43,7 +42,8 @@ public static class HtmlConversionExtensions
 
     private static void ConvertContentTo(HtmlNode node, TextWriter outText)
     {
-        foreach (var subnode in node.ChildNodes) ConvertTo(subnode, outText);
+        foreach (var subnode in node.ChildNodes) 
+            ConvertTo(subnode, outText);
     }
 
 

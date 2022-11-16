@@ -1,21 +1,17 @@
 ﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-using System;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-
 namespace Wangkanai.Blazor.Components.Sections;
 
 internal sealed class SectionRegistry
 {
-    private readonly Dictionary<string, ISectionContentSubscriber>     _subscribersByName = new();
     private readonly Dictionary<string, List<ISectionContentProvider>> _providersByName   = new();
+    private readonly Dictionary<string, ISectionContentSubscriber>     _subscribersByName = new();
 
     public void AddProvider(string name, ISectionContentProvider provider, bool isDefaultProvider)
     {
         if (!_providersByName.TryGetValue(name, out var providers))
         {
-            providers = new();
+            providers = new List<ISectionContentProvider>();
             _providersByName.Add(name, providers);
         }
 
@@ -71,14 +67,18 @@ internal sealed class SectionRegistry
     }
 
     private static RenderFragment? GetCurrentProviderContentOrDefault(List<ISectionContentProvider> providers)
-        => providers.Count != 0
-               ? providers[^1].Content
-               : null;
+    {
+        return providers.Count != 0
+                   ? providers[^1].Content
+                   : null;
+    }
 
     private RenderFragment? GetCurrentProviderContentOrDefault(string name)
-        => _providersByName.TryGetValue(name, out var existingList)
-               ? GetCurrentProviderContentOrDefault(existingList)
-               : null;
+    {
+        return _providersByName.TryGetValue(name, out var existingList)
+                   ? GetCurrentProviderContentOrDefault(existingList)
+                   : null;
+    }
 
     private void NotifyContentChangedForSubscriber(string name, RenderFragment? content)
     {

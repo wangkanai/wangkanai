@@ -7,11 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="7.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="7.0.0"/>
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Client\Wangkanai.Blazor.Demo.Client.csproj" />
+    <ProjectReference Include="..\Client\Wangkanai.Blazor.Demo.Client.csproj"/>
   </ItemGroup>
 
 

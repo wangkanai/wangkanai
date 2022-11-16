@@ -13,11 +13,10 @@ internal sealed class SectionContent : ISectionContentProvider, IComponent, IDis
     [Parameter] public bool            IsDefaultContent { get; set; }
     [Parameter] public RenderFragment? ChildContent     { get; set; }
 
-    RenderFragment? ISectionContentProvider.Content
-        => ChildContent;
-
     void IComponent.Attach(RenderHandle renderHandle)
-        => _registry = renderHandle.Dispatcher.Registry;
+    {
+        _registry = renderHandle.Dispatcher.Registry;
+    }
 
     Task IComponent.SetParametersAsync(ParameterView parameters)
     {
@@ -28,7 +27,7 @@ internal sealed class SectionContent : ISectionContentProvider, IComponent, IDis
 
         if (Name != _registeredName)
         {
-            if (_registeredName is not null) 
+            if (_registeredName is not null)
                 _registry.RemoveProvider(_registeredName, this);
 
             _registry.AddProvider(Name, this, IsDefaultContent);
@@ -39,10 +38,13 @@ internal sealed class SectionContent : ISectionContentProvider, IComponent, IDis
 
         return Task.CompletedTask;
     }
-    
+
     public void Dispose()
     {
-        if (_registeredName is not null) 
+        if (_registeredName is not null)
             _registry.RemoveProvider(_registeredName, this);
     }
+
+    RenderFragment? ISectionContentProvider.Content
+        => ChildContent;
 }

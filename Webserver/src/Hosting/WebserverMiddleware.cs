@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace Wangkanai.Webserver.Hosting;
 
-public class WebserverMiddleware
+public sealed class WebserverMiddleware
 {
     private readonly RequestDelegate _next;
 

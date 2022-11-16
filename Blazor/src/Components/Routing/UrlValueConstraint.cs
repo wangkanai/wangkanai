@@ -33,54 +33,73 @@ internal abstract class UrlValueConstraint
     }
 
     private static bool TryParse(ReadOnlySpan<char> str, out DateTime result)
-        => DateTime.TryParse(str, CultureInfo.InvariantCulture, DateTimeStyles.None, out result);
+    {
+        return DateTime.TryParse(str, CultureInfo.InvariantCulture, DateTimeStyles.None, out result);
+    }
 
     private static bool TryParse(ReadOnlySpan<char> str, out DateOnly result)
-        => DateOnly.TryParse(str, CultureInfo.InvariantCulture, DateTimeStyles.None, out result);
+    {
+        return DateOnly.TryParse(str, CultureInfo.InvariantCulture, DateTimeStyles.None, out result);
+    }
 
     private static bool TryParse(ReadOnlySpan<char> str, out TimeOnly result)
-        => TimeOnly.TryParse(str, CultureInfo.InvariantCulture, DateTimeStyles.None, out result);
+    {
+        return TimeOnly.TryParse(str, CultureInfo.InvariantCulture, DateTimeStyles.None, out result);
+    }
 
     private static bool TryParse(ReadOnlySpan<char> str, out decimal result)
-        => decimal.TryParse(str, NumberStyles.Number, CultureInfo.InvariantCulture, out result);
+    {
+        return decimal.TryParse(str, NumberStyles.Number, CultureInfo.InvariantCulture, out result);
+    }
 
     private static bool TryParse(ReadOnlySpan<char> str, out double result)
-        => double.TryParse(str, NumberStyles.Number, CultureInfo.InvariantCulture, out result);
+    {
+        return double.TryParse(str, NumberStyles.Number, CultureInfo.InvariantCulture, out result);
+    }
 
     private static bool TryParse(ReadOnlySpan<char> str, out float result)
-        => float.TryParse(str, NumberStyles.Number, CultureInfo.InvariantCulture, out result);
+    {
+        return float.TryParse(str, NumberStyles.Number, CultureInfo.InvariantCulture, out result);
+    }
 
     private static bool TryParse(ReadOnlySpan<char> str, out int result)
-        => int.TryParse(str, NumberStyles.Integer, CultureInfo.InvariantCulture, out result);
+    {
+        return int.TryParse(str, NumberStyles.Integer, CultureInfo.InvariantCulture, out result);
+    }
 
     private static bool TryParse(ReadOnlySpan<char> str, out long result)
-        => long.TryParse(str, NumberStyles.Integer, CultureInfo.InvariantCulture, out result);
-
-    private static UrlValueConstraint? Create(Type targetType) => targetType switch
     {
-        var x when x == typeof(string)    => new TypedUrlValueConstraint<string>(TryParse),
-        var x when x == typeof(bool)      => new TypedUrlValueConstraint<bool>(bool.TryParse),
-        var x when x == typeof(bool?)     => new NullableTypedUrlValueConstraint<bool>(bool.TryParse),
-        var x when x == typeof(DateTime)  => new TypedUrlValueConstraint<DateTime>(TryParse),
-        var x when x == typeof(DateTime?) => new NullableTypedUrlValueConstraint<DateTime>(TryParse),
-        var x when x == typeof(DateOnly)  => new TypedUrlValueConstraint<DateOnly>(TryParse),
-        var x when x == typeof(DateOnly?) => new NullableTypedUrlValueConstraint<DateOnly>(TryParse),
-        var x when x == typeof(TimeOnly)  => new TypedUrlValueConstraint<TimeOnly>(TryParse),
-        var x when x == typeof(TimeOnly?) => new NullableTypedUrlValueConstraint<TimeOnly>(TryParse),
-        var x when x == typeof(decimal)   => new TypedUrlValueConstraint<decimal>(TryParse),
-        var x when x == typeof(decimal?)  => new NullableTypedUrlValueConstraint<decimal>(TryParse),
-        var x when x == typeof(double)    => new TypedUrlValueConstraint<double>(TryParse),
-        var x when x == typeof(double?)   => new NullableTypedUrlValueConstraint<double>(TryParse),
-        var x when x == typeof(float)     => new TypedUrlValueConstraint<float>(TryParse),
-        var x when x == typeof(float?)    => new NullableTypedUrlValueConstraint<float>(TryParse),
-        var x when x == typeof(Guid)      => new TypedUrlValueConstraint<Guid>(Guid.TryParse),
-        var x when x == typeof(Guid?)     => new NullableTypedUrlValueConstraint<Guid>(Guid.TryParse),
-        var x when x == typeof(int)       => new TypedUrlValueConstraint<int>(TryParse),
-        var x when x == typeof(int?)      => new NullableTypedUrlValueConstraint<int>(TryParse),
-        var x when x == typeof(long)      => new TypedUrlValueConstraint<long>(TryParse),
-        var x when x == typeof(long?)     => new NullableTypedUrlValueConstraint<long>(TryParse),
-        var x                             => null
-    };
+        return long.TryParse(str, NumberStyles.Integer, CultureInfo.InvariantCulture, out result);
+    }
+
+    private static UrlValueConstraint? Create(Type targetType)
+    {
+        return targetType switch
+        {
+            var x when x == typeof(string)    => new TypedUrlValueConstraint<string>(TryParse),
+            var x when x == typeof(bool)      => new TypedUrlValueConstraint<bool>(bool.TryParse),
+            var x when x == typeof(bool?)     => new NullableTypedUrlValueConstraint<bool>(bool.TryParse),
+            var x when x == typeof(DateTime)  => new TypedUrlValueConstraint<DateTime>(TryParse),
+            var x when x == typeof(DateTime?) => new NullableTypedUrlValueConstraint<DateTime>(TryParse),
+            var x when x == typeof(DateOnly)  => new TypedUrlValueConstraint<DateOnly>(TryParse),
+            var x when x == typeof(DateOnly?) => new NullableTypedUrlValueConstraint<DateOnly>(TryParse),
+            var x when x == typeof(TimeOnly)  => new TypedUrlValueConstraint<TimeOnly>(TryParse),
+            var x when x == typeof(TimeOnly?) => new NullableTypedUrlValueConstraint<TimeOnly>(TryParse),
+            var x when x == typeof(decimal)   => new TypedUrlValueConstraint<decimal>(TryParse),
+            var x when x == typeof(decimal?)  => new NullableTypedUrlValueConstraint<decimal>(TryParse),
+            var x when x == typeof(double)    => new TypedUrlValueConstraint<double>(TryParse),
+            var x when x == typeof(double?)   => new NullableTypedUrlValueConstraint<double>(TryParse),
+            var x when x == typeof(float)     => new TypedUrlValueConstraint<float>(TryParse),
+            var x when x == typeof(float?)    => new NullableTypedUrlValueConstraint<float>(TryParse),
+            var x when x == typeof(Guid)      => new TypedUrlValueConstraint<Guid>(Guid.TryParse),
+            var x when x == typeof(Guid?)     => new NullableTypedUrlValueConstraint<Guid>(Guid.TryParse),
+            var x when x == typeof(int)       => new TypedUrlValueConstraint<int>(TryParse),
+            var x when x == typeof(int?)      => new NullableTypedUrlValueConstraint<int>(TryParse),
+            var x when x == typeof(long)      => new TypedUrlValueConstraint<long>(TryParse),
+            var x when x == typeof(long?)     => new NullableTypedUrlValueConstraint<long>(TryParse),
+            var x                             => null
+        };
+    }
 
     public abstract bool TryParse(ReadOnlySpan<char> value, [MaybeNullWhen(false)] out object result);
 
@@ -104,11 +123,9 @@ internal abstract class UrlValueConstraint
                 result = typedResult!;
                 return true;
             }
-            else
-            {
-                result = null;
-                return false;
-            }
+
+            result = null;
+            return false;
         }
 
         public override object? Parse(ReadOnlySpan<char> value, string destinationNameForMessage)
@@ -153,16 +170,15 @@ internal abstract class UrlValueConstraint
                     result = default;
                     return true;
                 }
-                else if (parser(value, out var parsedValue))
+
+                if (parser(value, out var parsedValue))
                 {
                     result = parsedValue;
                     return true;
                 }
-                else
-                {
-                    result = default;
-                    return false;
-                }
+
+                result = default;
+                return false;
             }
         }
     }

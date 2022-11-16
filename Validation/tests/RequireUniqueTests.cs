@@ -25,6 +25,23 @@ public class RequireUniqueTests
         _output = output;
     }
 
+    public static IEnumerable<object[]> Data =>
+        new List<object[]>
+        {
+            new object[] { "000000", 1 },
+            new object[] { "100000", 2 },
+            new object[] { "110000", 2 },
+            new object[] { "111000", 2 },
+            new object[] { "111100", 2 },
+            new object[] { "111110", 2 },
+            new object[] { "111111", 1 },
+            new object[] { "120000", 3 },
+            new object[] { "123000", 4 },
+            new object[] { "123400", 5 },
+            new object[] { "123450", 6 },
+            new object[] { "123456", 6 }
+        };
+
     [Theory]
     [MemberData(nameof(Data))]
     public void OneFromSix(string value, int unique)
@@ -51,7 +68,7 @@ public class RequireUniqueTests
             Assert.Empty(validations);
         else
             Assert.Collection(validations, v =>
-                                  v.ErrorMessage = "2 unique characters are required");
+                v.ErrorMessage = "2 unique characters are required");
     }
 
     [Theory]
@@ -67,7 +84,7 @@ public class RequireUniqueTests
             Assert.Empty(validations);
         else
             Assert.Collection(validations, v =>
-                                  v.ErrorMessage = "3 unique characters are required");
+                v.ErrorMessage = "3 unique characters are required");
     }
 
     [Theory]
@@ -83,23 +100,6 @@ public class RequireUniqueTests
             Assert.Empty(validations);
         else
             Assert.Collection(validations, v =>
-                                  v.ErrorMessage = "4 unique characters are required");
+                v.ErrorMessage = "4 unique characters are required");
     }
-
-    public static IEnumerable<object[]> Data =>
-        new List<object[]>
-        {
-            new object[] { "000000", 1 },
-            new object[] { "100000", 2 },
-            new object[] { "110000", 2 },
-            new object[] { "111000", 2 },
-            new object[] { "111100", 2 },
-            new object[] { "111110", 2 },
-            new object[] { "111111", 1 },
-            new object[] { "120000", 3 },
-            new object[] { "123000", 4 },
-            new object[] { "123400", 5 },
-            new object[] { "123450", 6 },
-            new object[] { "123456", 6 }
-        };
 }

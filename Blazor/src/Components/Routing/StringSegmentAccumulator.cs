@@ -4,7 +4,6 @@ namespace Wangkanai.Blazor.Components.Routing;
 
 internal struct StringSegmentAccumulator
 {
-    private int                         count;
     private ReadOnlyMemory<char>        _single;
     private List<ReadOnlyMemory<char>>? _multiple;
 
@@ -12,41 +11,35 @@ internal struct StringSegmentAccumulator
     {
         get
         {
-            if (index >= count)
-            {
-                throw new IndexOutOfRangeException();
-            }
+            if (index >= Count) throw new IndexOutOfRangeException();
 
-            return count == 1 ? _single : _multiple![index];
+            return Count == 1 ? _single : _multiple![index];
         }
     }
 
-    public int Count => count;
+    public int Count { get; private set; }
 
     public void SetSingle(ReadOnlyMemory<char> value)
     {
         _single = value;
 
-        if (count != 1)
+        if (Count != 1)
         {
-            if (count > 1)
-            {
-                _multiple = null;
-            }
+            if (Count > 1) _multiple = null;
 
-            count = 1;
+            Count = 1;
         }
     }
 
     public void Add(ReadOnlyMemory<char> value)
     {
-        switch (count++)
+        switch (Count++)
         {
             case 0:
                 _single = value;
                 break;
             case 1:
-                _multiple = new();
+                _multiple = new List<ReadOnlyMemory<char>>();
                 _multiple.Add(_single);
                 _multiple.Add(value);
                 _single = default;

@@ -13,7 +13,7 @@ namespace Wangkanai.Validation;
 public class RequireUppercaseTest
 {
     private readonly ITestOutputHelper _output;
-    private readonly PropertyInfo _password = UppercaseModel.GetProperty(nameof(UppercaseModel.Password));
+    private readonly PropertyInfo      _password = UppercaseModel.GetProperty(nameof(UppercaseModel.Password));
 
     public RequireUppercaseTest(ITestOutputHelper output)
     {
@@ -23,7 +23,7 @@ public class RequireUppercaseTest
     [Fact]
     public void Uppercase()
     {
-        var vm = new UppercaseModel() { Password = "ABC" };
+        var vm = new UppercaseModel { Password = "ABC" };
 
         var validations = vm.Validate(vm.Password, _password);
         validations.Print(_output);
@@ -40,7 +40,7 @@ public class RequireUppercaseTest
         validations.Print(_output);
 
         Assert.Collection(validations, v =>
-                              v.ErrorMessage = "Uppercase is required");
+            v.ErrorMessage = "Uppercase is required");
     }
 
     [Fact]

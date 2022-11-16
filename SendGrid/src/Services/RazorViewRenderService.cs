@@ -17,7 +17,7 @@ using Wangkanai.Html.Extensions;
 
 namespace Wangkanai.SendGrid.Services;
 
-public class RazorViewRenderService : IRazorViewRenderService
+public sealed class RazorViewRenderService : IRazorViewRenderService
 {
     private readonly IServiceProvider  _serviceProvider;
     private readonly ITempDataProvider _tempDataProvider;

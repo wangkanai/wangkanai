@@ -11,7 +11,7 @@ using Wangkanai.SendGrid.Options;
 
 namespace Wangkanai.SendGrid.Services;
 
-public class SendGridService : ISendGridService
+public sealed class SendGridService : ISendGridService
 {
     public SendGridService(SendGridOptions options)
     {

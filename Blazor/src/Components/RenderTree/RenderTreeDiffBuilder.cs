@@ -9,8 +9,6 @@ namespace Wangkanai.Blazor.Components.RenderTree;
 
 internal static class RenderTreeDiffBuilder
 {
-    enum DiffAction { Match, Insert, Delete }
-
     public const int SystemAddedAttributeSequenceNumber = int.MinValue;
 
     public static RenderTreeDiff ComputeDiff(
@@ -32,7 +30,9 @@ internal static class RenderTreeDiffBuilder
     }
 
     public static void DisposeFrames(RenderBatchBuilder batchBuilder, ArrayRange<RenderTreeFrame> frames)
-        => DisposeFramesInRange(batchBuilder, frames.Array, 0, frames.Count);
+    {
+        DisposeFramesInRange(batchBuilder, frames.Array, 0, frames.Count);
+    }
 
     private static void AppendDiffEntriesForRange(
         ref DiffContext diffContext,
@@ -114,15 +114,19 @@ internal static class RenderTreeDiffBuilder
                             keyedItemInfos[newKey] = newKeyItemInfo.WithNewSiblingIndex(diffContext.SiblingIndex);
                         }
                         else if (newKey == null)
+                        {
                             action = oldKeyIsInNewTree ? DiffAction.Insert : DiffAction.Delete;
+                        }
                         else
+                        {
                             action = newKeyIsInOldTree ? DiffAction.Delete : DiffAction.Insert;
+                        }
 
                         Debug.Assert(action switch
                         {
                             DiffAction.Insert => hasMoreNew,
                             DiffAction.Delete => hasMoreOld,
-                            _                 => true,
+                            _                 => true
                         }, "The chosen diff action is illegal because we've run out of items on the side being inserted/deleted");
                     }
 
@@ -164,13 +168,11 @@ internal static class RenderTreeDiffBuilder
                             // TODO: Find a way of not recomputing this next flag on every iteration
                             var newLoopsBackLater = false;
                             for (var testIndex = newStartIndex + 1; testIndex < newEndIndexExcl; testIndex++)
-                            {
                                 if (newTree[testIndex].SequenceField < newSeq)
                                 {
                                     newLoopsBackLater = true;
                                     break;
                                 }
-                            }
 
                             // If the new sequence loops back later to an earlier point than this,
                             // then we know it's part of the existing loop block (so should be inserted).
@@ -187,13 +189,11 @@ internal static class RenderTreeDiffBuilder
                             // TODO: Find a way of not recomputing this next flag on every iteration
                             var oldLoopsBackLater = false;
                             for (var testIndex = oldStartIndex + 1; testIndex < oldEndIndexExcl; testIndex++)
-                            {
                                 if (oldTree[testIndex].SequenceField < oldSeq)
                                 {
                                     oldLoopsBackLater = true;
                                     break;
                                 }
-                            }
 
                             // If the old sequence loops back later to an earlier point than this,
                             // then we know it's part of the existing loop block (so should be removed).
@@ -295,7 +295,9 @@ internal static class RenderTreeDiffBuilder
             var     key   = KeyValue(ref frame);
             if (key != null)
                 if (!result.TryGetValue(key, out var existingEntry))
+                {
                     result[key] = new KeyedItemInfo(-1, newStartIndex);
+                }
                 else
                 {
                     if (existingEntry.NewIndex >= 0)
@@ -419,7 +421,9 @@ internal static class RenderTreeDiffBuilder
                 diffContext.AttributeDiffSet.Remove(oldName);
             }
             else
+            {
                 RemoveOldFrame(ref diffContext, i);
+            }
         }
 
         foreach (var kvp in diffContext.AttributeDiffSet)
@@ -523,7 +527,9 @@ internal static class RenderTreeDiffBuilder
                         diffContext.SiblingIndex = prevSiblingIndex + 1;
                     }
                     else
+                    {
                         diffContext.SiblingIndex++;
+                    }
                 }
                 else
                 {
@@ -613,7 +619,9 @@ internal static class RenderTreeDiffBuilder
             }
         }
         else if (oldFrame.AttributeEventHandlerIdField > 0)
+        {
             newFrame = oldFrame;
+        }
     }
 
     private static void InsertNewFrame(ref DiffContext diffContext, int newFrameIndex)
@@ -682,10 +690,7 @@ internal static class RenderTreeDiffBuilder
             case RenderTreeFrameType.Attribute:
             {
                 diffContext.Edits.Append(RenderTreeEdit.RemoveAttribute(diffContext.SiblingIndex, oldFrame.AttributeNameField));
-                if (oldFrame.AttributeEventHandlerIdField > 0)
-                {
-                    diffContext.BatchBuilder.DisposedEventHandlerIds.Append(oldFrame.AttributeEventHandlerIdField);
-                }
+                if (oldFrame.AttributeEventHandlerIdField > 0) diffContext.BatchBuilder.DisposedEventHandlerIds.Append(oldFrame.AttributeEventHandlerIdField);
 
                 break;
             }
@@ -788,9 +793,7 @@ internal static class RenderTreeDiffBuilder
         if ((newFrame.AttributeValueField is MulticastDelegate || newFrame.AttributeValueField is EventCallback) &&
             newFrame.AttributeNameField.Length >= 3 &&
             newFrame.AttributeNameField.StartsWith("on", StringComparison.Ordinal))
-        {
             diffContext.Renderer.AssignEventHandlerId(ref newFrame);
-        }
     }
 
     private static void InitializeNewElementReferenceCaptureFrame(ref DiffContext diffContext, ref RenderTreeFrame newFrame)
@@ -824,6 +827,8 @@ internal static class RenderTreeDiffBuilder
                 batchBuilder.DisposedEventHandlerIds.Append(frame.AttributeEventHandlerIdField);
         }
     }
+
+    private enum DiffAction { Match, Insert, Delete }
 
     private struct DiffContext
     {

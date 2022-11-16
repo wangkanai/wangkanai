@@ -3,18 +3,20 @@
 namespace System.ComponentModel.DataAnnotations;
 
 [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter)]
-public class RequireNonAlphanumeric : ValidationAttribute
+public sealed class RequireNonAlphanumeric : ValidationAttribute
 {
     public RequireNonAlphanumeric()
         : base(() => "Non Alphanumeric is required")
     {
     }
 
-    public override bool IsValid(object value) =>
-        value switch
+    public override bool IsValid(object value)
+    {
+        return value switch
         {
-            null => true,
+            null          => true,
             string actual => !actual.All(char.IsLetterOrDigit),
-            _ => false
+            _             => false
         };
+    }
 }

@@ -4,7 +4,7 @@ using Wangkanai.Detection.Models;
 
 namespace Wangkanai.Detection.Services;
 
-public class DetectionService : IDetectionService
+public sealed class DetectionService : IDetectionService
 {
     public DetectionService(
         IUserAgentService userAgentService,

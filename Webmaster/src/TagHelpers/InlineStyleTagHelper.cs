@@ -10,7 +10,7 @@ using Microsoft.Extensions.Caching.Memory;
 namespace Wangkanai.Webmaster.TagHelpers;
 
 [HtmlTargetElement(InlineStyleAttributeName, Attributes = HrefAttributeName, TagStructure = TagStructure.WithoutEndTag)]
-public class InlineStyleTagHelper : InlineTagHelper
+public sealed class InlineStyleTagHelper : InlineTagHelper
 {
     private const string InlineStyleAttributeName = "inline-style";
     private const string HrefAttributeName = "href";

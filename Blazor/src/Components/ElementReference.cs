@@ -23,7 +23,9 @@ public readonly struct ElementReference
     }
 
     internal static ElementReference CreateWithUniqueId(ElementReferenceContext? context)
-        => new ElementReference(CreateUniqueId(), context);
+    {
+        return new(CreateUniqueId(), context);
+    }
 
     private static string CreateUniqueId()
     {
@@ -32,9 +34,7 @@ public readonly struct ElementReference
             var id = Interlocked.Increment(ref _nextIdForWebAssemblyOnly);
             return id.ToString(CultureInfo.InvariantCulture);
         }
-        else
-        {
-            return Guid.NewGuid().ToString("D", CultureInfo.InvariantCulture);
-        }
+
+        return Guid.NewGuid().ToString("D", CultureInfo.InvariantCulture);
     }
 }

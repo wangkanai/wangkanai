@@ -5,7 +5,7 @@ using Wangkanai.Extensions;
 
 namespace Wangkanai.Detection.Services;
 
-public class EngineService : IEngineService
+public sealed class EngineService : IEngineService
 {
     private readonly IPlatformService  _platformService;
     private readonly IUserAgentService _userAgentService;

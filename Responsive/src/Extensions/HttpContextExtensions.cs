@@ -10,19 +10,6 @@ namespace Wangkanai.Responsive.Extensions;
 internal static class HttpContextExtensions
 {
     private const string ResponsiveContextKey = "Responsive";
-
-    public static ISession? SafeSession(this HttpContext httpContext)
-    {
-        return httpContext.Features.Get<ISessionFeature?>() == null
-                   ? null
-                   : httpContext.Session;
-    }
-
-    public static void SetDevice(this HttpContext context, Device device)
-    {
-        context.Items[ResponsiveContextKey] = device;
-    }
-
     public static Device GetDevice(this HttpContext context)
     {
         Check.NotNull(context);
@@ -33,8 +20,14 @@ internal static class HttpContextExtensions
                    : Device.Desktop;
     }
 
+    public static void SetDevice(this HttpContext context, Device device)
+        => context.Items[ResponsiveContextKey] = device;
+
+    public static ISession? SafeSession(this HttpContext httpContext)
+        => httpContext.Features.Get<ISessionFeature?>() == null
+               ? null
+               : httpContext.Session;
+
     public static bool IsWebApi(this HttpContext context, ResponsiveOptions options)
-    {
-        return context.Request.Path.StartsWithSegments(options.WebApiPath);
-    }
+        => context.Request.Path.StartsWithSegments(options.WebApiPath);
 }

@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 namespace Wangkanai.Webmaster.Core;
 
 [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
-public class MetaKeywordsAttribute : Attribute
+public sealed class MetaKeywordsAttribute : Attribute
 {
     private readonly List<string> _keywords;
 

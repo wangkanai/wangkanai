@@ -3,18 +3,20 @@
 namespace System.ComponentModel.DataAnnotations;
 
 [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter)]
-public class RequireLowercaseAttribute : ValidationAttribute
+public sealed class RequireLowercaseAttribute : ValidationAttribute
 {
     public RequireLowercaseAttribute()
         : base(() => "Lowercase is required")
     {
     }
 
-    public override bool IsValid(object value) =>
-        value switch
+    public override bool IsValid(object value)
+    {
+        return value switch
         {
-            null => true, // Required duty
+            null          => true, // Required duty
             string actual => actual.Any(char.IsLower),
-            _ => false
+            _             => false
         };
+    }
 }

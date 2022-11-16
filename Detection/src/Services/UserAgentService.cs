@@ -4,7 +4,7 @@ using Wangkanai.Detection.Models;
 
 namespace Wangkanai.Detection.Services;
 
-public class UserAgentService : IUserAgentService
+public sealed class UserAgentService : IUserAgentService
 {
     public UserAgentService(IHttpContextService context)
     {

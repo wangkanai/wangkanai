@@ -25,8 +25,12 @@ internal readonly struct KeyedItemInfo
     }
 
     public KeyedItemInfo WithOldSiblingIndex(int oldSiblingIndex)
-        => new KeyedItemInfo(this, oldSiblingIndex, NewSiblingIndex);
+    {
+        return new(this, oldSiblingIndex, NewSiblingIndex);
+    }
 
     public KeyedItemInfo WithNewSiblingIndex(int newSiblingIndex)
-        => new KeyedItemInfo(this, OldSiblingIndex, newSiblingIndex);
+    {
+        return new(this, OldSiblingIndex, newSiblingIndex);
+    }
 }

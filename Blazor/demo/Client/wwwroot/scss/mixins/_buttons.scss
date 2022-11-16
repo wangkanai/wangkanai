@@ -33,6 +33,7 @@
   --#{$prefix}btn-disabled-bg: #{$disabled-background};
   --#{$prefix}btn-disabled-border-color: #{$disabled-border};
 }
+
 // scss-docs-end btn-variant-mixin
 
 // scss-docs-start btn-outline-variant-mixin
@@ -58,6 +59,7 @@
   --#{$prefix}btn-disabled-border-color: #{$color};
   --#{$prefix}gradient: none;
 }
+
 // scss-docs-end btn-outline-variant-mixin
 
 // scss-docs-start btn-size-mixin
@@ -67,4 +69,5 @@
   @include rfs($font-size, --#{$prefix}btn-font-size);
   --#{$prefix}btn-border-radius: #{$border-radius};
 }
+
 // scss-docs-end btn-size-mixin

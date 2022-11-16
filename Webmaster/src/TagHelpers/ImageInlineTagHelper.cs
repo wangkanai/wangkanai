@@ -18,7 +18,7 @@ namespace Wangkanai.Webmaster.TagHelpers;
     "img",
     Attributes = InlineAttributeName + "," + SrcAttributeName,
     TagStructure = TagStructure.WithoutEndTag)]
-public class ImageInlineTagHelper : ImageTagHelper
+public sealed class ImageInlineTagHelper : ImageTagHelper
 {
     private const string InlineAttributeName = "inline";
     private const string SrcAttributeName = "src";

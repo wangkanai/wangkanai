@@ -5,8 +5,8 @@ namespace Wangkanai.Blazor.Components;
 
 public readonly struct EventCallback : IEventCallback
 {
-    public static readonly EventCallbackFactory Factory = new EventCallbackFactory();
-    public static readonly EventCallback        Empty   = new EventCallback(null, (Action)(() => { }));
+    public static readonly EventCallbackFactory Factory = new();
+    public static readonly EventCallback        Empty   = new(null, (Action)(() => { }));
 
     internal readonly MulticastDelegate? Delegate;
     internal readonly IHandleEvent?      Receiver;
@@ -18,7 +18,7 @@ public readonly struct EventCallback : IEventCallback
     }
 
     public   bool HasDelegate              => Delegate != null;
-    internal bool RequiresExplicitReceiver => Receiver != null && !object.ReferenceEquals(Receiver, Delegate?.Target);
+    internal bool RequiresExplicitReceiver => Receiver != null && !ReferenceEquals(Receiver, Delegate?.Target);
 
     public Task InvokeAsync(object? arg)
     {
@@ -29,15 +29,19 @@ public readonly struct EventCallback : IEventCallback
     }
 
     public Task InvokeAsync()
-        => InvokeAsync(null!);
+    {
+        return InvokeAsync(null!);
+    }
 
     object? IEventCallback.UnpackForRenderTree()
-        => RequiresExplicitReceiver ? (object)this : Delegate;
+    {
+        return RequiresExplicitReceiver ? this : Delegate;
+    }
 }
 
 public readonly struct EventCallback<TValue> : IEventCallback
 {
-    public static readonly EventCallback<TValue> Empty = new EventCallback<TValue>(null, (Action)(() => { }));
+    public static readonly EventCallback<TValue> Empty = new(null, (Action)(() => { }));
 
     internal readonly MulticastDelegate? Delegate;
     internal readonly IHandleEvent?      Receiver;
@@ -49,17 +53,20 @@ public readonly struct EventCallback<TValue> : IEventCallback
     }
 
     public   bool HasDelegate              => Delegate != null;
-    internal bool RequiresExplicitReceiver => Receiver != null && !object.ReferenceEquals(Receiver, Delegate?.Target);
+    internal bool RequiresExplicitReceiver => Receiver != null && !ReferenceEquals(Receiver, Delegate?.Target);
 
     public Task InvokeAsync(TValue? arg)
     {
         if (Receiver == null)
-            return EventCallbackWorkItem.InvokeAsync<TValue?>(Delegate, arg);
+            return EventCallbackWorkItem.InvokeAsync(Delegate, arg);
 
         return Receiver.HandleEventAsync(new EventCallbackWorkItem(Delegate), arg);
     }
 
-    public Task InvokeAsync() => InvokeAsync(default!);
+    public Task InvokeAsync()
+    {
+        return InvokeAsync(default!);
+    }
 
     internal EventCallback AsUntyped()
     {
@@ -68,6 +75,6 @@ public readonly struct EventCallback<TValue> : IEventCallback
 
     object? IEventCallback.UnpackForRenderTree()
     {
-        return RequiresExplicitReceiver ? (object)AsUntyped() : Delegate;
+        return RequiresExplicitReceiver ? AsUntyped() : Delegate;
     }
 }

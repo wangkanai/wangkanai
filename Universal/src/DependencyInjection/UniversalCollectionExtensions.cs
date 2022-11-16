@@ -5,20 +5,26 @@ using Wangkanai.Universal.Options;
 namespace Microsoft.Extensions.DependencyInjection;
 
 /// <summary>
-/// Contain extension methods to <see cref="IServiceCollection"/> for configuring client services. 
+///     Contain extension methods to <see cref="IServiceCollection" /> for configuring client services.
 /// </summary>
 public static class UniversalCollectionExtensions
 {
     public static IUniversalBuilder AddGoogleAnalytics(this IServiceCollection services)
-        => services.AddUniversalBuilder()
-                   .AddRequiredPlatformServices()
-                   .AddCoreServices()
-                   .AddMarkerService();
+    {
+        return services.AddUniversalBuilder()
+                       .AddRequiredPlatformServices()
+                       .AddCoreServices()
+                       .AddMarkerService();
+    }
 
     public static IUniversalBuilder AddGoogleAnalytics(this IServiceCollection services, Action<UniversalOption> setAction)
-        => services.Configure(setAction)
-                   .AddGoogleAnalytics();
+    {
+        return services.Configure(setAction)
+                       .AddGoogleAnalytics();
+    }
 
     internal static IUniversalBuilder AddUniversalBuilder(this IServiceCollection services)
-        => new UniversalBuilder(services);
+    {
+        return new UniversalBuilder(services);
+    }
 }

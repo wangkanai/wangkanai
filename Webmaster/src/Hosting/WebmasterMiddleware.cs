@@ -4,10 +4,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace Wangkanai.Webmaster;
 
-//[Experimental()]
-//[Deprecated()]
-//[Obsolete()]
-public class WebmasterMiddleware
+public sealed class WebmasterMiddleware
 {
     private readonly RequestDelegate _next;
 

@@ -15,7 +15,7 @@ internal static class CoreBuilderExtensions
         Check.NotNull(builder);
 
         builder.Services.AddOptions();
-        builder.Services.TryAddSingleton(provider => ServiceProviderServiceExtensions.GetRequiredService<IOptions<UniversalOption>>(provider).Value);
+        builder.Services.TryAddSingleton(provider => provider.GetRequiredService<IOptions<UniversalOption>>().Value);
 
         return builder;
     }

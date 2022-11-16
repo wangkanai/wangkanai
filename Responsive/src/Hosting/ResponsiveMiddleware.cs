@@ -7,7 +7,7 @@ using Wangkanai.Responsive.Services;
 
 namespace Wangkanai.Responsive.Hosting;
 
-public class ResponsiveMiddleware
+public sealed class ResponsiveMiddleware
 {
     private readonly RequestDelegate _next;
 

@@ -2,7 +2,7 @@
 
 namespace Microsoft.Extensions.DependencyInjection;
 
-public class AnalyticsOptions
+public sealed class AnalyticsOptions
 {
     public bool Demo { get; set; }
 }

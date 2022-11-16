@@ -7,7 +7,7 @@ namespace Wangkanai.Blazor.Components;
 internal sealed class DefaultComponentActivator : IComponentActivator
 {
     public static IComponentActivator Instance { get; } = new DefaultComponentActivator();
-    
+
     public IComponent CreateInstance([DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] Type componentType)
     {
         if (!typeof(IComponent).IsAssignableFrom(componentType))

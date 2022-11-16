@@ -2,7 +2,7 @@
 
 namespace Wangkanai.Blazor.Components.RenderTree;
 
-public enum RenderTreeEditType : int
+public enum RenderTreeEditType
 {
     PrependFrame         = 1,
     RemoveFrame          = 2,
@@ -13,5 +13,5 @@ public enum RenderTreeEditType : int
     StepOut              = 7,
     UpdateMarkup         = 8,
     PermutationListEntry = 9,
-    PermutationListEnd   = 10,
+    PermutationListEnd   = 10
 }

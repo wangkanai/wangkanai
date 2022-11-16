@@ -8,7 +8,7 @@ using Wangkanai.Responsive.Extensions;
 
 namespace Wangkanai.Responsive.Hosting;
 
-internal class ResponsivePageMatcherPolicy : MatcherPolicy, IEndpointComparerPolicy, IEndpointSelectorPolicy
+internal sealed class ResponsivePageMatcherPolicy : MatcherPolicy, IEndpointComparerPolicy, IEndpointSelectorPolicy
 {
     public ResponsivePageMatcherPolicy()
     {

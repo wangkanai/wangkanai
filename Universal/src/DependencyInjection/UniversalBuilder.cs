@@ -2,10 +2,12 @@
 
 namespace Microsoft.Extensions.DependencyInjection;
 
-public class UniversalBuilder : IUniversalBuilder
+public sealed class UniversalBuilder : IUniversalBuilder
 {
     public UniversalBuilder(IServiceCollection services)
-        => Services = Check.NotNull(services);
+    {
+        Services = Check.NotNull(services);
+    }
 
     public IServiceCollection Services { get; }
 }

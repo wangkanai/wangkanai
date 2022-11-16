@@ -3,7 +3,7 @@
 
 namespace Microsoft.Extensions.DependencyInjection;
 
-public class SendGridBuilder : ISendGridBuilder
+public sealed class SendGridBuilder : ISendGridBuilder
 {
     public SendGridBuilder(IServiceCollection services)
     {

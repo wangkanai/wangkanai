@@ -4,7 +4,7 @@ using SendGrid.Helpers.Mail;
 
 namespace Wangkanai.SendGrid.Options;
 
-public class SendGridOptions
+public sealed class SendGridOptions
 {
     public string       ApiKey { get; set; }
     public EmailAddress From   { get; set; }

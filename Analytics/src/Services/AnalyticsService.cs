@@ -2,6 +2,6 @@
 
 namespace Wangkanai.Analytics.Services;
 
-public class AnalyticsService : IAnalyticsService
+public sealed class AnalyticsService : IAnalyticsService
 {
 }
