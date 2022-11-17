@@ -18,7 +18,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\Blazor\src\Core\Wangkanai.Blazor.csproj" />
     <ProjectReference Include="..\..\..\Blazor\src\Web\Wangkanai.Blazor.Components.Web.csproj" />
-    <ProjectReference Include="..\Components\Wangkanai.Tabler.Components.csproj" />
+    <ProjectReference Include="..\Components\Wangkanai.Tabler.Components.csproj" PrivateAssets="all" />
   </ItemGroup>
 
   <ItemGroup>
