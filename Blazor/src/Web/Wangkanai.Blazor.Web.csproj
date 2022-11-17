@@ -6,6 +6,7 @@
     <NoWarn>8603,8604,8618,8625</NoWarn>
     <TargetFramework>net7.0</TargetFramework>
     <RootNamespace>Wangkanai.Blazor</RootNamespace>
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,7 +20,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\Runtime\src\Wangkanai.Runtime.csproj" />
     <ProjectReference Include="..\..\..\Validation\src\Wangkanai.Validation.csproj" />
-    <ProjectReference Include="..\Components\Wangkanai.Blazor.Components.csproj" />
+    <ProjectReference Include="..\Components\Wangkanai.Blazor.Components.csproj" PrivateAssets="all" />
   </ItemGroup>
 
   <ItemGroup>

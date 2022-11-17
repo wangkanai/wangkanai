@@ -1,11 +1,14 @@
 push-location -path .\blazor\
 dotnet --version
-dotnet clean .\src\core
-dotnet restore .\src\core
-dotnet build .\src\core -c Release
-signtool sign /fd SHA256 /n "Sarin Na Wangkanai" .\src\core\bin\release\net6.0\*.dll
+dotnet clean 
+dotnet restore   
+dotnet build -c Release
+Get-ChildItem .\src\ -Recurse Wangkanai.*.dll  | foreach {
+    signtool sign /fd SHA256 /n "Sarin Na Wangkanai" $_.FullName
+}
+
 Remove-Item .\artifacts\*.*
-dotnet pack .\src\core -c Release -o .\artifacts --include-symbols -p:SymbolPackageFormat=snupkg
+dotnet pack -c Release -o .\artifacts --include-symbols -p:SymbolPackageFormat=snupkg
 nuget sign .\artifacts\*.nupkg `
   -CertificateStoreLocation CurrentUser `
   -CertificateStoreName My `
