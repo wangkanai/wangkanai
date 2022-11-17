@@ -1,22 +1,24 @@
-<Project Sdk="Microsoft.NET.Sdk.Razor">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Nullable>enable</Nullable>
-    <NoWarn>8603</NoWarn>
-    <LangVersion>11</LangVersion>
     <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
     <SupportedPlatform Include="browser" />
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' ">
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.0" />
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.0" />
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net7.0' ">
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.0" />
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Blazor\src\Core\Wangkanai.Blazor.csproj" />
+    <ProjectReference Include="..\..\..\Blazor\src\Web\Wangkanai.Blazor.Components.Web.csproj" />
+    <ProjectReference Include="..\Components\Wangkanai.Tabler.Components.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -34,11 +36,7 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\Blazor\src\Web\Wangkanai.Blazor.Web.csproj" />
-  </ItemGroup>
-
+  
   <Target Name="NpmInstall" Inputs="package.json" Outputs="node_modules/.install-stamp">
     <Exec Command="npm ci" Condition="$(RestorePackagesWithLockFile) == 'true'" />
     <Exec Command="npm install" Condition="$(RestorePackagesWithLockFile) != 'true'" />
@@ -48,5 +46,5 @@
     <Exec Command="npm run --silent dev" Condition="$(Configuration) == 'DEBUG'" />
     <Exec Command="npm run --silent build" Condition="$(Configuration) != 'DEBUG'" />
   </Target>
-
+  
 </Project>

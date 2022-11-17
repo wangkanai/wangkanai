@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Tabler.Components", "src\Components\Wangkanai.Tabler.Components.csproj", "{DFF95250-93DB-4EDA-B7E2-8938B37B7052}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Tabler.Components.Web", "src\Web\Wangkanai.Tabler.Components.Web.csproj", "{88FD13EB-A88E-436F-93AF-80DF7F9C1E68}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Tabler", "src\Core\Wangkanai.Tabler.csproj", "{F9F0CF1E-02F3-4A4F-B3BC-2332367417B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Tabler.Tests", "tests\Wangkanai.Tabler.Tests.csproj", "{F11B9D24-93C9-427C-A1D7-81DC1F35E64D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Tabler.Benchmark", "benchmark\Wangkanai.Tabler.Benchmark.csproj", "{42D79119-7900-401D-91A0-21D31020CFE0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DFF95250-93DB-4EDA-B7E2-8938B37B7052}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFF95250-93DB-4EDA-B7E2-8938B37B7052}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFF95250-93DB-4EDA-B7E2-8938B37B7052}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFF95250-93DB-4EDA-B7E2-8938B37B7052}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88FD13EB-A88E-436F-93AF-80DF7F9C1E68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88FD13EB-A88E-436F-93AF-80DF7F9C1E68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88FD13EB-A88E-436F-93AF-80DF7F9C1E68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88FD13EB-A88E-436F-93AF-80DF7F9C1E68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9F0CF1E-02F3-4A4F-B3BC-2332367417B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9F0CF1E-02F3-4A4F-B3BC-2332367417B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9F0CF1E-02F3-4A4F-B3BC-2332367417B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9F0CF1E-02F3-4A4F-B3BC-2332367417B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F11B9D24-93C9-427C-A1D7-81DC1F35E64D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F11B9D24-93C9-427C-A1D7-81DC1F35E64D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F11B9D24-93C9-427C-A1D7-81DC1F35E64D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F11B9D24-93C9-427C-A1D7-81DC1F35E64D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42D79119-7900-401D-91A0-21D31020CFE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42D79119-7900-401D-91A0-21D31020CFE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42D79119-7900-401D-91A0-21D31020CFE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42D79119-7900-401D-91A0-21D31020CFE0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

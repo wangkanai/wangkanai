@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Blazor", "src\Cor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Blazor.Components", "src\Components\Wangkanai.Blazor.Components.csproj", "{1C7CB07F-39F4-4A94-8ED4-AB2FB60B9C70}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Blazor.Web", "src\Web\Wangkanai.Blazor.Web.csproj", "{1186B704-49F2-4D8A-B792-51811B838693}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Blazor.Test", "tests\Wangkanai.Blazor.Test.csproj", "{CACAE3F8-1108-4FCB-B8CB-6D8CF48D5FE0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".solution", ".solution", "{67612788-49FA-443E-945F-6DABF95277E5}"
@@ -17,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".solution", ".solution", "{
 		README.md = README.md
 		..\sign-blazor.ps1 = ..\sign-blazor.ps1
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Blazor.Components.Web", "src\Web\Wangkanai.Blazor.Components.Web.csproj", "{DF3DEBAD-6468-4C72-927A-78C20A20385E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,13 +35,13 @@ Global
 		{1C7CB07F-39F4-4A94-8ED4-AB2FB60B9C70}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C7CB07F-39F4-4A94-8ED4-AB2FB60B9C70}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C7CB07F-39F4-4A94-8ED4-AB2FB60B9C70}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1186B704-49F2-4D8A-B792-51811B838693}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1186B704-49F2-4D8A-B792-51811B838693}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1186B704-49F2-4D8A-B792-51811B838693}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1186B704-49F2-4D8A-B792-51811B838693}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CACAE3F8-1108-4FCB-B8CB-6D8CF48D5FE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CACAE3F8-1108-4FCB-B8CB-6D8CF48D5FE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CACAE3F8-1108-4FCB-B8CB-6D8CF48D5FE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CACAE3F8-1108-4FCB-B8CB-6D8CF48D5FE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF3DEBAD-6468-4C72-927A-78C20A20385E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF3DEBAD-6468-4C72-927A-78C20A20385E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF3DEBAD-6468-4C72-927A-78C20A20385E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF3DEBAD-6468-4C72-927A-78C20A20385E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

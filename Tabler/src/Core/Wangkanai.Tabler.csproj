@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <NoWarn>8603</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Components\Wangkanai.Tabler.Components.csproj" PrivateAssets="all" />
+    <ProjectReference Include="..\Web\Wangkanai.Tabler.Components.Web.csproj" PrivateAssets="all"  />
+  </ItemGroup>
+  
+</Project>
