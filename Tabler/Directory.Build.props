@@ -6,7 +6,6 @@
         <PackageTags>aspnetcore;blazor;tabler;</PackageTags>
         <Description>This project is blazor wrapper for the Tabler CSS framework</Description>
         
-        <RootNamespace>Wangkanai.Blazor</RootNamespace>
     </PropertyGroup>
 
     <PropertyGroup Condition="$(MSBuildProjectName.Contains('Demo')) == 'False'">
