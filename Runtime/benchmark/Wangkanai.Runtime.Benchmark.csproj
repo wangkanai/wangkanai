@@ -7,6 +7,7 @@
     <Nullable>enable</Nullable>
     <Optimize>true</Optimize>
     <NoWarn>8600</NoWarn>
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>

@@ -2,9 +2,6 @@
   "solution": {
     "path": "..\\Wangkanai.sln",
     "projects": [
-      "Runtime\\benchmark\\Wangkanai.Runtime.Benchmark.csproj",
-      "Runtime\\src\\Wangkanai.Runtime.csproj",
-      "Runtime\\tests\\Wangkanai.Runtime.Test.csproj",
       "Tabler\\benchmark\\Wangkanai.Tabler.Benchmark.csproj",
       "Tabler\\src\\Components\\Wangkanai.Tabler.Components.csproj",
       "Tabler\\src\\Core\\Wangkanai.Tabler.csproj",
