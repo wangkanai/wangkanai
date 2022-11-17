@@ -2,18 +2,10 @@
   "solution": {
     "path": "..\\Wangkanai.sln",
     "projects": [
-      "Blazor\\benchmark\\Wangkanai.Blazor.Benchmark.csproj",
-      "Blazor\\src\\Components\\Wangkanai.Blazor.Components.csproj",
-      "Blazor\\src\\Core\\Wangkanai.Blazor.csproj",
-      "Blazor\\src\\Web\\Wangkanai.Blazor.Components.Web.csproj",
-      "Blazor\\tests\\Wangkanai.Blazor.Test.csproj",
       "Runtime\\benchmark\\Wangkanai.Runtime.Benchmark.csproj",
       "Runtime\\src\\Wangkanai.Runtime.csproj",
       "Runtime\\tests\\Wangkanai.Runtime.Test.csproj",
       "Tabler\\benchmark\\Wangkanai.Tabler.Benchmark.csproj",
-      "Tabler\\demo\\Client\\Wangkanai.Tabler.Demo.Client.csproj",
-      "Tabler\\demo\\Domain\\Wangkanai.Tabler.Demo.Domain.csproj",
-      "Tabler\\demo\\Server\\Wangkanai.Tabler.Demo.Server.csproj",
       "Tabler\\src\\Components\\Wangkanai.Tabler.Components.csproj",
       "Tabler\\src\\Core\\Wangkanai.Tabler.csproj",
       "Tabler\\src\\Web\\Wangkanai.Tabler.Components.Web.csproj",
