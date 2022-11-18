@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://github.com/wangkanai/wangkanai" alt="repository"><img alt="Files Logo" src="Asset/wangkanai-banner.svg?sanitize=true" width="100%" /></a>
+  <a href="https://github.com/wangkanai/wangkanai" alt="repository"><img alt="Files Logo" src="Assets/wangkanai-banner.svg?sanitize=true" width="100%" /></a>
 </p>
 
 [![Twitter](https://img.shields.io/badge/-LinkedIn-006BAD?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/sarinnawangkanai/)
@@ -13,7 +13,7 @@ Currently, I specialise in teaching and building enterprise applications using .
 I love a challenge and I'm skilled at progressing from a simple proposal into a well-defined, coded, and tested
 solution.
 
-[![NuGet](https://raw.githubusercontent.com/wangkanai/wangkanai/main/Asset/wangkanai-badge-nuget.svg?sanitize=true)](https://www.nuget.org/profiles/wangkanai)
+[![NuGet](https://raw.githubusercontent.com/wangkanai/wangkanai/main/Assets/wangkanai-badge-nuget.svg?sanitize=true)](https://www.nuget.org/profiles/wangkanai)
 [![Build status](https://dev.azure.com/wangkanai/GitHub/_apis/build/status/wangkanai)](https://dev.azure.com/wangkanai/GitHub/_build/latest?definitionId=22)
 [![Open Collective](https://img.shields.io/badge/open%20collective-support%20me-3385FF.svg)](https://opencollective.com/wangkanai)
 [![Patreon](https://img.shields.io/badge/patreon-support%20me-d9643a.svg)](https://www.patreon.com/wangkanai)
