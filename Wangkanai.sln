@@ -57,16 +57,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Responsive", "Res
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Responsive.Test", "Responsive\tests\Wangkanai.Responsive.Test.csproj", "{C296FB1B-7FC9-4936-AD17-65005D025126}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Designs", "Designs", "{99671684-EFF2-4680-AB99-98A5DCB5A85C}"
-	ProjectSection(SolutionItems) = preProject
-		Asset\blazor-logo.svg = Asset\blazor-logo.svg
-		Asset\jetbrains-rider.svg = Asset\jetbrains-rider.svg
-		Asset\wangkanai-badge-nuget.svg = Asset\wangkanai-badge-nuget.svg
-		asset\wangkanai-banner.svg = asset\wangkanai-banner.svg
-		asset\wangkanai-logo.svg = asset\wangkanai-logo.svg
-		asset\wangkanai-social.svg = asset\wangkanai-social.svg
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Blazor", "Blazor", "{9D20D5E6-879B-463C-964A-3DA13FFAE9E3}"
 	ProjectSection(SolutionItems) = preProject
 		Blazor\Directory.Build.props = Blazor\Directory.Build.props
@@ -368,6 +358,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Tabler.Components
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Tabler.Components.Web", "Tabler\src\Web\Wangkanai.Tabler.Components.Web.csproj", "{677CDEB8-D55A-47AA-9622-C151B71B3298}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assets", "Assets\Assets.proj", "{12447939-7031-4247-8CD0-92A17B77B4E8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -649,6 +641,10 @@ Global
 		{677CDEB8-D55A-47AA-9622-C151B71B3298}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{677CDEB8-D55A-47AA-9622-C151B71B3298}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{677CDEB8-D55A-47AA-9622-C151B71B3298}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12447939-7031-4247-8CD0-92A17B77B4E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12447939-7031-4247-8CD0-92A17B77B4E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12447939-7031-4247-8CD0-92A17B77B4E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12447939-7031-4247-8CD0-92A17B77B4E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
