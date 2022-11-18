@@ -4,7 +4,7 @@
 
 namespace Wangkanai.Tabler;
 
-public class TablerComponentBase : BlazorComponentBase, ITablerComponentBase, IDisposable
+public abstract class TablerComponentBase : BlazorComponentBase, ITablerComponentBase, IDisposable
 {
     protected bool Disposed { get; private set; }
 
