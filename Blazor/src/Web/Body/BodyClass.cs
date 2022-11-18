@@ -8,7 +8,7 @@ using Wangkanai.Blazor.Components.Rendering;
 
 namespace Wangkanai.Blazor.Components.Sections;
 
-public class BodyClass : WangkanaiComponentBase
+public class BodyClass : BlazorComponentBase
 {
     [Inject] protected ILogger<BodyClass> Logger { get; set; }
 

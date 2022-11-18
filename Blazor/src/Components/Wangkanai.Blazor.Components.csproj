@@ -8,6 +8,7 @@
     <NoWarn>8618,8795,0227</NoWarn>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>

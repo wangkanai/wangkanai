@@ -8,9 +8,9 @@ using Wangkanai.Blazor.Helpers;
 
 namespace Wangkanai.Blazor;
 
-public class WangkanaiComponentBaseWangkanaiDomComponent : WangkanaiComponentBase
+public class DomBlazorComponentBase : BlazorComponentBase
 {
-    public WangkanaiComponentBaseWangkanaiDomComponent()
+    public DomBlazorComponentBase()
     {
         ClassMapper.Get(() => Class);
         StyleMapper.Get(() => Style);

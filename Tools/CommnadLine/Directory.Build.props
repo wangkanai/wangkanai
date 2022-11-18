@@ -7,12 +7,14 @@
         <Description>This project is a shared commandline runtime utilities.</Description>
         
     </PropertyGroup>
-    
+
     <PropertyGroup>
+        <PackageIcon>wangkanai-logo.png</PackageIcon>
         <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
 
     <ItemGroup>
+        <None Include="..\..\..\assets\wangkanai-logo.png" Pack="true" PackagePath="\"/>
         <None Include="..\README.md" Pack="true" PackagePath="\"/>
     </ItemGroup>
 </Project>

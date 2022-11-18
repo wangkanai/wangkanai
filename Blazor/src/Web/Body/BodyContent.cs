@@ -3,17 +3,19 @@
 using Microsoft.AspNetCore.Components;
 
 using Wangkanai.Blazor.Components.Rendering;
-//using Microsoft.AspNetCore.Components.Rendering;
+
 
 namespace Wangkanai.Blazor.Components.Sections;
 
-public sealed class BodyContent : WangkanaiComponentBase
+public sealed class BodyContent : BlazorComponentBase
 {
     /// <summary>
     ///     Gets or sets the content to be rendered as the document title.
     /// </summary>
-    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
 
+    /// <inheritdoc/>
     protected override void BuildRenderTree(RenderTreeBuilder builder)
     {
         builder.OpenComponent<SectionContent>(0);

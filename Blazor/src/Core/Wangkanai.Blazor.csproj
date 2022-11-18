@@ -10,7 +10,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Web\Wangkanai.Blazor.Web.csproj" />
+    <ProjectReference Include="..\..\..\Runtime\src\Wangkanai.Runtime.csproj" />
+    <ProjectReference Include="..\..\..\Validation\src\Wangkanai.Validation.csproj" />
+    
+    <ProjectReference Include="..\Web\Wangkanai.Blazor.Components.Web.csproj" PrivateAssets="all" />
   </ItemGroup>
-
+  
 </Project>

@@ -1,0 +1,12 @@
+{
+  "solution": {
+    "path": "..\\Wangkanai.sln",
+    "projects": [
+      "Blazor\\benchmark\\Wangkanai.Blazor.Benchmark.csproj",
+      "Blazor\\src\\Components\\Wangkanai.Blazor.Components.csproj",
+      "Blazor\\src\\Core\\Wangkanai.Blazor.csproj",
+      "Blazor\\src\\Web\\Wangkanai.Blazor.Components.Web.csproj",
+      "Blazor\\tests\\Wangkanai.Blazor.Test.csproj"
+    ]
+  }
+}
