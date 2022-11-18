@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Components;
 
 using Wangkanai.Blazor.Components.Rendering;
 
+
 namespace Wangkanai.Blazor.Components.Sections;
 
 public sealed class BodyContent : BlazorComponentBase

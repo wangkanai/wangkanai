@@ -8,7 +8,7 @@ public abstract class TablerComponentBase : BlazorComponentBase, ITablerComponen
 {
     protected bool Disposed { get; private set; }
 
-    public virtual void Dispose()
+    public new virtual void Dispose()
     {
         Disposed = true;
     }
