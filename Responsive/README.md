@@ -106,7 +106,7 @@ format is `SubFolder`. Lets make this follow example a `suffix` as of my opinion
 managed all the views. This `suffix` format is done by add device type before the file extension **_.cshtml_** like **_
 .mobile.cshtml_**. Below is how you would structure your Views folder.
 
-![Responsive view file structure](doc/responsive-views-file-structure.png)
+![Responsive view file structure](docs/responsive-views-file-structure.png)
 
 ### Responsive Razor Pages
 
@@ -114,7 +114,7 @@ Responsive for razor pages newly added in [wangkanai.detection 3.0](https://gith
 This enable completed responsive in asp.net core ecosystem. Same like Views in MVC we have `suffix` format where we add
 the device type in before the file extension **_.cshtml_** like **_.mobile.cshtml_**.
 
-![Responsive razor pages file structure](doc/responsive-pages-file-structure.png)
+![Responsive razor pages file structure](docs/responsive-pages-file-structure.png)
 
 ### Responsive Tag Helpers
 
