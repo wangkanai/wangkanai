@@ -69,7 +69,7 @@ public void ConfigureServices(IServiceCollection services)
 
 The current device on a request is set in the Responsive middleware. The Responsive middleware is enabled in
 the `Configure` method of `Startup.cs`
-file. [Make sure that you have app.UseDetection() before app.UseRouting](https://github.com/wangkanai/Detection/issues/355)
+file. [Make sure that you have app.UseResponsive() before app.UseRouting](https://github.com/wangkanai/wangkanai/issues/355)
 .
 
 ```c#
@@ -118,9 +118,9 @@ the device type in before the file extension **_.cshtml_** like **_.mobile.cshtm
 
 ### Responsive Tag Helpers
 
-The next exciting feature add in [wangkanai.detection 3.0](https://github.com/wangkanai/Detection/pull/301) is Tag
-Helpers. This make you able to use the same view and just show/hide specific part of the views to the client base upon
-their type, this include Device, Browser, Platform, Engine, and Crawler that our detection resolver could determine from
+The next exciting feature is Tag Helpers. This make you able to use the same view and just show/hide specific part of the 
+views to the client base upon their type, this include Device, Browser, Platform, Engine, and Crawler that our 
+detection resolver could determine from
 the resolver parsing services.
 
 ```razor
@@ -198,15 +198,14 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-* `AddDetection(Action<DetectionOptions> options)` Adds the detection services to the services container.
+* `AddResponsive(Action<ResponsiveOptions> options)` Adds the responsive services to the services container.
 
 ## Directory Structure
 
 * `src` - The source code of this project lives here
-* `test` - The test code of this project lives here
-* `collection` - Collection of sample user agents for lab testing
-* `sample` - Contains sample web application of usage
-* `doc` - Contains the documentation on how utilized this library
+* `tests` - The test code of this project lives here
+* `samples` - Contains sample web application of usage
+* `docs` - Contains the documentation on how utilized this library
 
 ### Contributing
 
