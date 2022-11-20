@@ -5,7 +5,7 @@ crawler.
 
 **Please show me some love and click the** :star:
 
-<img src="https://raw.githubusercontent.com/wangkanai/wangkanai/main/Asset/aspnet-core-detection-3.svg?sanitize=true" width="650" alt="ASP.NET Core Detection" />
+<img src="https://raw.githubusercontent.com/wangkanai/wangkanai/main/Assets/aspnet-core-detection-3.svg?sanitize=true" width="650" alt="ASP.NET Core Detection" />
 
 [![NuGet Badge](https://buildstats.info/nuget/wangkanai.detection)](https://www.nuget.org/packages/wangkanai.detection)
 [![NuGet Badge](https://buildstats.info/nuget/wangkanai.detection?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.detection)
