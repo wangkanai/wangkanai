@@ -23,6 +23,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Detection", "Detection", "{
 		Detection\Directory.Build.props = Detection\Directory.Build.props
 		Detection\NUGET.md = Detection\NUGET.md
 		Detection\README.md = Detection\README.md
+		Detection\install.md = Detection\install.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection", "Detection\src\Wangkanai.Detection.csproj", "{F03915B4-D898-4A10-A6C9-E35DC1E527F8}"
@@ -35,6 +36,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Responsive", "Responsive", 
 	ProjectSection(SolutionItems) = preProject
 		Responsive\Directory.Build.props = Responsive\Directory.Build.props
 		Responsive\README.md = Responsive\README.md
+		Responsive\docs\responsive-pages-file-structure.png = Responsive\docs\responsive-pages-file-structure.png
+		Responsive\docs\responsive-views-file-structure.png = Responsive\docs\responsive-views-file-structure.png
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Validation", "Validation", "{7FB8FAE5-9EFC-42D3-AA14-F9E1A9B7AB26}"
