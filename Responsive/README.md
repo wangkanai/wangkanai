@@ -217,7 +217,9 @@ All contribution are welcome, please contact the author.
 ### Code Contributors
 
 This project exists thanks to all the people who contribute. [[Contribute](CONTRIBUTING.md)].
-<a href="https://github.com/wangkanai/Detection/graphs/contributors"><img src="https://opencollective.com/wangkanai/contributors.svg?width=890&button=false" /></a>
+<a href="https://github.com/wangkanai/Detection/graphs/contributors">
+    <img src="https://opencollective.com/wangkanai/contributors.svg?width=890&button=false" />
+</a>
 
 ### Financial Contributors
 
