@@ -361,7 +361,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Tabler.Components
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Tabler.Components.Web", "Tabler\src\Web\Wangkanai.Tabler.Components.Web.csproj", "{677CDEB8-D55A-47AA-9622-C151B71B3298}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assets", "Assets\Assets.proj", "{12447939-7031-4247-8CD0-92A17B77B4E8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assets", "Assets\Assets.csproj", "{2B818DEC-9D03-4C61-B4D1-A180A263868F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -644,10 +644,10 @@ Global
 		{677CDEB8-D55A-47AA-9622-C151B71B3298}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{677CDEB8-D55A-47AA-9622-C151B71B3298}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{677CDEB8-D55A-47AA-9622-C151B71B3298}.Release|Any CPU.Build.0 = Release|Any CPU
-		{12447939-7031-4247-8CD0-92A17B77B4E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{12447939-7031-4247-8CD0-92A17B77B4E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{12447939-7031-4247-8CD0-92A17B77B4E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{12447939-7031-4247-8CD0-92A17B77B4E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B818DEC-9D03-4C61-B4D1-A180A263868F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B818DEC-9D03-4C61-B4D1-A180A263868F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B818DEC-9D03-4C61-B4D1-A180A263868F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B818DEC-9D03-4C61-B4D1-A180A263868F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
