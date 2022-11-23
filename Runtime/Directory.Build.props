@@ -1,11 +1,12 @@
 <Project>
     <PropertyGroup>
-        <VersionPrefix>2.2.0</VersionPrefix>
+        <VersionPrefix>2.3.0</VersionPrefix>
 
         <Title>Wangkanai Runtime</Title>
         <PackageTags>aspnetcore;runtime;</PackageTags>
         <Description>Wangkanai .NET Runtime library to serve as the foundation for future development.</Description>
         
+        <RootNamespace>Wangkanai</RootNamespace>
     </PropertyGroup>
 
     <PropertyGroup>
