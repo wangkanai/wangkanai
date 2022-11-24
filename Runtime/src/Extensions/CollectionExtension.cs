@@ -13,6 +13,14 @@ public static class CollectionExtension
     public static bool IsNullOrEmpty<T>(this ICollection<T> source)
         => source is null || source.Count <= 0;
 
+    /// <summary>
+    /// Add a range of items to a collection.
+    /// </summary>
+    /// <param name="collection">Type of objects within the collection.</param>
+    /// <param name="items">The collection to add items to.</param>
+    /// <typeparam name="T">the collection.</typeparam>
+    /// <returns>The collection.</returns>
+    /// <exception cref="System.ArgumentNullException">An <see cref="System.ArgumentNullException"/> is thrown if <paramref name="collection"/> or <paramref name="items"/> is <see langword="null"/>.</exception>
     public static ICollection<T> AddRange<T>(this ICollection<T> collection, IEnumerable<T> items)
     {
         Check.NotNull(collection);
