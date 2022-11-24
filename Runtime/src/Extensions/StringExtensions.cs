@@ -10,25 +10,17 @@ public static class StringExtensions
 {
     [ContractAnnotation("null => true")]
     public static bool IsNullOrEmpty(this string input)
-    {
-        return string.IsNullOrEmpty(input);
-    }
+        => string.IsNullOrEmpty(input);
 
     [ContractAnnotation("null => true")]
     public static bool IsNullOrWhiteSpace(this string input)
-    {
-        return string.IsNullOrWhiteSpace(input);
-    }
+        => string.IsNullOrWhiteSpace(input);
 
     public static bool IsUnicode(this string input)
-    {
-        return Encoding.ASCII.GetByteCount(input) != Encoding.UTF8.GetByteCount(input);
-    }
+        => Encoding.ASCII.GetByteCount(input) != Encoding.UTF8.GetByteCount(input);
 
     public static string EnsureEndsWith(this string input, char c)
-    {
-        return input.EnsureEndsWith(c, StringComparison.Ordinal);
-    }
+        => input.EnsureEndsWith(c, StringComparison.Ordinal);
 
     public static string EnsureEndsWith(this string input, char c, StringComparison comparison)
     {
@@ -49,9 +41,7 @@ public static class StringExtensions
     }
 
     public static string EnsureStartsWith(this string input, char c)
-    {
-        return input.EnsureStartsWith(c, StringComparison.Ordinal);
-    }
+        => input.EnsureStartsWith(c, StringComparison.Ordinal);
 
     public static string EnsureStartsWith(this string input, char c, StringComparison comparison)
     {
@@ -95,14 +85,10 @@ public static class StringExtensions
     }
 
     public static string RemoveAll(this string source, params string[] strings)
-    {
-        return strings.Aggregate(source, ReplaceOrdinal);
-    }
+        => strings.Aggregate(source, ReplaceOrdinal);
 
     private static string ReplaceOrdinal(string current, string target)
-    {
-        return current.Replace(target, "", StringComparison.Ordinal);
-    }
+        => current.Replace(target, "", StringComparison.Ordinal);
 
     public static string RemovePostFix(this string value, params string[] postfixes)
     {
@@ -168,23 +154,26 @@ public static class StringExtensions
     }
 
     public static string SubstringSafe(this string input, int start, int length)
-    {
-        return input.Length <= start
-                   ? ""
-                   : input.Length - start <= length
-                       ? input[start..]
-                       : input.Substring(start, length);
-    }
+        => input.Length <= start
+               ? ""
+               : input.Length - start <= length
+                   ? input[start..]
+                   : input.Substring(start, length);
 
     public static string SubstringSafe(this string input, int start)
-    {
-        return input.Length <= start
-                   ? ""
-                   : input[start..];
-    }
+        => input.Length <= start
+               ? ""
+               : input[start..];
 
     public static string ToTitleCase(this string input)
-    {
-        return input.First().ToString().ToUpper() + input.Substring(1);
-    }
+        => input.First().ToString().ToUpper() + input.Substring(1);
+
+    /// <summary>
+    /// Equals invariant
+    /// </summary>
+    /// <param name="str1">The STR1.</param>
+    /// <param name="str2">The STR2.</param>
+    /// <returns></returns>
+    public static bool EqualsInvariant(this string str1, string str2)
+        => string.Equals(str1, str2, StringComparison.OrdinalIgnoreCase);
 }
