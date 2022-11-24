@@ -22,6 +22,6 @@ solution.
 ### GitHub Stats
 
 <a href="https://github.com/wangkanai">
-    <img height="180em" src="https://github-readme-stats.vercel.app/api?username=wangkanai&show_icons=true&theme=github_dark" alt="Wangkanai's GitHub Stats"/>
-    <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=wangkanai&theme=github_dark&layout=compact" alt="Wangkanai's Top Languages"/>
+    <img height="160em" src="https://github-readme-stats.vercel.app/api?username=wangkanai&show_icons=true&theme=github_dark" alt="Wangkanai's GitHub Stats"/>
+    <img height="160em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=wangkanai&theme=github_dark&layout=compact" alt="Wangkanai's Top Languages"/>
 </a>
