@@ -363,6 +363,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Tabler.Components
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assets", "Assets\Assets.csproj", "{2B818DEC-9D03-4C61-B4D1-A180A263868F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{700EC70E-E161-4461-B84F-1FCF166D0486}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Web.Server", "Web\Server\Wangkanai.Web.Server.csproj", "{02830AF5-0DC5-4F99-AD31-8E5C375C3783}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -648,6 +652,10 @@ Global
 		{2B818DEC-9D03-4C61-B4D1-A180A263868F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B818DEC-9D03-4C61-B4D1-A180A263868F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B818DEC-9D03-4C61-B4D1-A180A263868F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02830AF5-0DC5-4F99-AD31-8E5C375C3783}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02830AF5-0DC5-4F99-AD31-8E5C375C3783}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02830AF5-0DC5-4F99-AD31-8E5C375C3783}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02830AF5-0DC5-4F99-AD31-8E5C375C3783}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -732,6 +740,7 @@ Global
 		{5CDA521B-A2B6-4E96-B8D6-CFD1FAF2FC11} = {89052ADF-DFC9-4281-A1A1-E83434F434BC}
 		{2CEADA4F-C9A2-4C1D-8CF4-816291BABCAA} = {89052ADF-DFC9-4281-A1A1-E83434F434BC}
 		{677CDEB8-D55A-47AA-9622-C151B71B3298} = {89052ADF-DFC9-4281-A1A1-E83434F434BC}
+		{02830AF5-0DC5-4F99-AD31-8E5C375C3783} = {700EC70E-E161-4461-B84F-1FCF166D0486}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1BA0A192-D7BE-40A1-96AE-B3C8C6BC9B69}
