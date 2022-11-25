@@ -1,6 +1,6 @@
 <Project>
     <PropertyGroup>
-        <VersionPrefix>2.5.0</VersionPrefix>
+        <VersionPrefix>2.6.0</VersionPrefix>
 
         <Title>Wangkanai Runtime</Title>
         <PackageTags>aspnetcore;runtime;</PackageTags>
