@@ -9,16 +9,6 @@
         <PackageReference Include="JetBrains.Annotations" Version="2022.3.1" />
     </ItemGroup>
 
-    <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.1' ">
-        <PackageReference Include="Microsoft.Extensions.FileProviders.Abstractions" Version="3.1.0" />
-    </ItemGroup>
 
-    <ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' ">
-        <PackageReference Include="Microsoft.Extensions.FileProviders.Abstractions" Version="6.0.0" />
-    </ItemGroup>
-
-    <ItemGroup Condition=" '$(TargetFramework)' == 'net7.0' ">
-        <PackageReference Include="Microsoft.Extensions.FileProviders.Abstractions" Version="7.0.0" />
-    </ItemGroup>
 
 </Project>

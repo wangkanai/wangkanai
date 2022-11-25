@@ -1,4 +1,4 @@
-push-location -path .\webserver\
+push-location -path .\extensions\
 
 dotnet --version
 dotnet clean .\src\

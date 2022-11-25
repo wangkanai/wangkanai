@@ -280,6 +280,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".sign", ".sign", "{330C88B3
 		sign-watcher.ps1 = sign-watcher.ps1
 		sign-webmaster.ps1 = sign-webmaster.ps1
 		sign-webserver.ps1 = sign-webserver.ps1
+		sign-extensions.ps1 = sign-extensions.ps1
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CommandLine", "CommandLine", "{C5C4D631-1DA0-40D1-9B62-D4D5D41E8859}"
@@ -366,6 +367,22 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{700EC70E-E161-4461-B84F-1FCF166D0486}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Web.Server", "Web\Server\Wangkanai.Web.Server.csproj", "{02830AF5-0DC5-4F99-AD31-8E5C375C3783}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extensions", "Extensions", "{ABDB88B8-683A-466C-A2DB-AFD516359619}"
+	ProjectSection(SolutionItems) = preProject
+		Extensions\Directory.Build.props = Extensions\Directory.Build.props
+		Extensions\README.md = Extensions\README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FileProviders", "FileProviders", "{EE1EF4E3-ADB8-460F-9793-2E87E6DAA2E6}"
+	ProjectSection(SolutionItems) = preProject
+		Extensions\FileProviders\Directory.Build.props = Extensions\FileProviders\Directory.Build.props
+		Extensions\FileProviders\README.md = Extensions\FileProviders\README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Extensions.FileProviders", "Extensions\FileProviders\src\Wangkanai.Extensions.FileProviders.csproj", "{19A26CED-9F29-4897-990C-79C23011BDD5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Extensions.FileProviders.Tests", "Extensions\FileProviders\tests\Wangkanai.Extensions.FileProviders.Tests.csproj", "{80FFA07F-975B-4F2E-BE7C-79676344055E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -656,6 +673,14 @@ Global
 		{02830AF5-0DC5-4F99-AD31-8E5C375C3783}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02830AF5-0DC5-4F99-AD31-8E5C375C3783}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02830AF5-0DC5-4F99-AD31-8E5C375C3783}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19A26CED-9F29-4897-990C-79C23011BDD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19A26CED-9F29-4897-990C-79C23011BDD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19A26CED-9F29-4897-990C-79C23011BDD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19A26CED-9F29-4897-990C-79C23011BDD5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80FFA07F-975B-4F2E-BE7C-79676344055E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80FFA07F-975B-4F2E-BE7C-79676344055E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80FFA07F-975B-4F2E-BE7C-79676344055E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80FFA07F-975B-4F2E-BE7C-79676344055E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -741,6 +766,9 @@ Global
 		{2CEADA4F-C9A2-4C1D-8CF4-816291BABCAA} = {89052ADF-DFC9-4281-A1A1-E83434F434BC}
 		{677CDEB8-D55A-47AA-9622-C151B71B3298} = {89052ADF-DFC9-4281-A1A1-E83434F434BC}
 		{02830AF5-0DC5-4F99-AD31-8E5C375C3783} = {700EC70E-E161-4461-B84F-1FCF166D0486}
+		{EE1EF4E3-ADB8-460F-9793-2E87E6DAA2E6} = {ABDB88B8-683A-466C-A2DB-AFD516359619}
+		{19A26CED-9F29-4897-990C-79C23011BDD5} = {EE1EF4E3-ADB8-460F-9793-2E87E6DAA2E6}
+		{80FFA07F-975B-4F2E-BE7C-79676344055E} = {EE1EF4E3-ADB8-460F-9793-2E87E6DAA2E6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1BA0A192-D7BE-40A1-96AE-B3C8C6BC9B69}
