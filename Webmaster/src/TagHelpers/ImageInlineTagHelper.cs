@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.FileProviders;
 
 using Wangkanai.Extensions;
+using Wangkanai.Extensions.FileProviders;
 
 namespace Wangkanai.Webmaster.TagHelpers;
 

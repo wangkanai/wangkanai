@@ -1,4 +1,4 @@
-push-location -path .\universal\
+remove-item -path .\signed\*.*
 
 dotnet --version
 dotnet clean .\src\
@@ -20,4 +20,4 @@ nuget sign .\artifacts\*.snupkg `
   -Timestamper http://ts.ssl.com `
   -OutputDirectory .\signed
 
-pop-location
+dotnet nuget push .\signed\*.nupkg -k $env:NUGET_API_KEY -s https://api.nuget.org/v3/index.json --skip-duplicate

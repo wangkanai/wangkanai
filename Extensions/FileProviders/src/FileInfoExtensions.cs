@@ -2,7 +2,7 @@
 
 using Microsoft.Extensions.FileProviders;
 
-namespace Wangkanai.Extensions;
+namespace Wangkanai.Extensions.FileProviders;
 
 public static class FileInfoExtensions
 {

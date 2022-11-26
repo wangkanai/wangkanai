@@ -1,10 +1,10 @@
 <Project>
     <PropertyGroup>
-        <VersionPrefix>2.8.0</VersionPrefix>
-
-        <Title>Wangkanai Runtime</Title>
-        <PackageTags>aspnetcore;runtime;</PackageTags>
-        <Description>Wangkanai .NET Runtime library to serve as the foundation for future development.</Description>
+        <VersionPrefix>0.1.0</VersionPrefix>
+        
+        <Title>Wangkanai Extensions FileProviders</Title>
+        <PackageTags>aspnetcore;filelio;</PackageTags>
+        <Description>Wangkanai .NET Extensions library</Description>
         
         <RootNamespace>Wangkanai</RootNamespace>
     </PropertyGroup>
@@ -15,7 +15,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <None Include="..\..\assets\wangkanai-logo.png" Pack="true" PackagePath="\"/>
+        <None Include="..\..\..\assets\wangkanai-logo.png" Pack="true" PackagePath="\"/>
         <None Include="..\README.md" Pack="true" PackagePath="\"/>
     </ItemGroup>
 </Project>
