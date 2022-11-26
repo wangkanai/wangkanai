@@ -9,12 +9,12 @@
         <RootNamespace>Wangkanai</RootNamespace>
     </PropertyGroup>
 
-    <PropertyGroup>
+    <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Extensions.FileProviders'">
         <PackageIcon>wangkanai-logo.png</PackageIcon>
         <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
 
-    <ItemGroup>
+    <ItemGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Extensions.FireProviders'">
         <None Include="..\..\..\assets\wangkanai-logo.png" Pack="true" PackagePath="\"/>
         <None Include="..\README.md" Pack="true" PackagePath="\"/>
     </ItemGroup>

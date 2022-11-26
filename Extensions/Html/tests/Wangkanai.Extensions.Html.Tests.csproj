@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\Wangkanai.Html.csproj" />
+    <ProjectReference Include="..\src\Wangkanai.Extensions.Html.csproj" />
   </ItemGroup>
 
 </Project>

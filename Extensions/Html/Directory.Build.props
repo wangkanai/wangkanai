@@ -1,6 +1,6 @@
 <Project>
     <PropertyGroup>
-        <VersionPrefix>0.3.0</VersionPrefix>
+        <VersionPrefix>0.1.0</VersionPrefix>
 
         <Title>Wangkanai Html</Title>
         <PackageTags>aspnetcore;html;html5</PackageTags>
@@ -8,13 +8,13 @@
 
     </PropertyGroup>
 
-    <PropertyGroup>
+    <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Extensions.Html'">
         <PackageIcon>wangkanai-logo.png</PackageIcon>
         <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
 
-    <ItemGroup>
-        <None Include="..\..\assets\wangkanai-logo.png" Pack="true" PackagePath="\"/>
+    <ItemGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Extensions.Html'">
+        <None Include="..\..\..\assets\wangkanai-logo.png" Pack="true" PackagePath="\"/>
         <None Include="..\README.md" Pack="true" PackagePath="\"/>
     </ItemGroup>
 </Project>
