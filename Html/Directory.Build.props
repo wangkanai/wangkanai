@@ -1,6 +1,6 @@
 <Project>
     <PropertyGroup>
-        <VersionPrefix>0.2.0</VersionPrefix>
+        <VersionPrefix>0.3.0</VersionPrefix>
 
         <Title>Wangkanai Html</Title>
         <PackageTags>aspnetcore;html;html5</PackageTags>

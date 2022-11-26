@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Mvc.ViewEngines;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Routing;
 
-using Wangkanai.Html.Extensions;
+using Wangkanai.Extensions.Html;
 
 namespace Wangkanai.SendGrid.Services;
 
