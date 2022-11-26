@@ -1,5 +1,3 @@
-push-location -path .\analytics\
-
 remove-item -path .\signed\*.*
 
 dotnet --version
@@ -25,5 +23,3 @@ nuget sign .\artifacts\*.snupkg `
   -OutputDirectory .\signed
 
 dotnet nuget push .\signed\*.nupkg -k $env:NUGET_API_KEY -s https://api.nuget.org/v3/index.json --skip-duplicate
-
-pop-location
