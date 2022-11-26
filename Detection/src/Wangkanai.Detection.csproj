@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>net6.0;net7.0;netcoreapp3.1</TargetFrameworks>
-    <LangVersion>11</LangVersion>
+    <LangVersion>preview</LangVersion>
     <Nullable>enable</Nullable>
     <NoWarn>8602,8603,8604</NoWarn>
   </PropertyGroup>
