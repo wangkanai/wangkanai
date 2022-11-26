@@ -193,6 +193,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sign", "Sign", "{E21D6041-9
 	ProjectSection(SolutionItems) = preProject
 		Tools\Sign\Directory.Build.props = Tools\Sign\Directory.Build.props
 		Tools\Sign\README.md = Tools\Sign\README.md
+		Tools\Sign\sign.ps1 = Tools\Sign\sign.ps1
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".config", ".config", "{53EE3363-603E-430E-8DA6-906C47D1FD96}"
@@ -262,6 +263,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSBuild", "MSBuild", "{F32D
 	ProjectSection(SolutionItems) = preProject
 		Tools\MSBuild\Directory.Build.props = Tools\MSBuild\Directory.Build.props
 		Tools\MSBuild\README.md = Tools\MSBuild\README.md
+		Tools\MSBuild\sign.ps1 = Tools\MSBuild\sign.ps1
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Watcher", "Watcher", "{6B7D8653-4ADC-45AD-8289-C933FCDA34B2}"
@@ -279,6 +281,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CommandLine", "CommandLine"
 	ProjectSection(SolutionItems) = preProject
 		Tools\CommnadLine\Directory.Build.props = Tools\CommnadLine\Directory.Build.props
 		Tools\CommnadLine\README.md = Tools\CommnadLine\README.md
+		Tools\CommnadLine\sign.ps1 = Tools\CommnadLine\sign.ps1
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{084E5C3F-9E52-40A3-9094-C406A2306BAB}"

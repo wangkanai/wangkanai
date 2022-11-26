@@ -1,5 +1,3 @@
-push-location -path .\commandline\
-
 remove-item -path .\signed\*.*
 
 dotnet --version
@@ -13,7 +11,7 @@ Get-ChildItem .\src\ -Recurse Wangkanai.*.exe  | foreach {
     signtool sign /fd SHA256 /n "Sarin Na Wangkanai" $_.FullName
 }
 Remove-Item .\artifacts\*.*
-dotnet pack .\src\ -c Release -o .\artifacts --include-symbols -p:SymbolPackageFormat=snupkg
+dotnet pack .\src\ -c Release -o .\artifacts # --include-symbols -p:SymbolPackageFormat=snupkg
 nuget sign .\artifacts\*.nupkg `
   -CertificateStoreLocation CurrentUser `
   -CertificateStoreName My `
@@ -27,6 +25,4 @@ nuget sign .\artifacts\*.snupkg `
   -Timestamper http://ts.ssl.com `
   -OutputDirectory .\signed
 
-dotnet nuget push .\signed\*.nupkg -k $env:NUGET_API_KEY -s https://api.nuget.org/v3/index.json --skip-duplicate
-
-pop-location
+# dotnet nuget push .\signed\*.nupkg -k $env:NUGET_API_KEY -s https://api.nuget.org/v3/index.json --skip-duplicate
