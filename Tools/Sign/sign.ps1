@@ -18,11 +18,11 @@ nuget sign .\artifacts\*.nupkg `
   -CertificateSubjectName 'Sarin Na Wangkanai' `
   -Timestamper http://ts.ssl.com `
   -OutputDirectory .\signed
-nuget sign .\artifacts\*.snupkg `
-  -CertificateStoreLocation CurrentUser `
-  -CertificateStoreName My `
-  -CertificateSubjectName 'Sarin Na Wangkanai' `
-  -Timestamper http://ts.ssl.com `
-  -OutputDirectory .\signed
+#nuget sign .\artifacts\*.snupkg `
+#  -CertificateStoreLocation CurrentUser `
+#  -CertificateStoreName My `
+#  -CertificateSubjectName 'Sarin Na Wangkanai' `
+#  -Timestamper http://ts.ssl.com `
+#  -OutputDirectory .\signed
 
 # dotnet nuget push .\signed\*.nupkg -k $env:NUGET_API_KEY -s https://api.nuget.org/v3/index.json --skip-duplicate
