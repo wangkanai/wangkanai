@@ -1,5 +1,7 @@
 push-location -path .\runtime\
 
+remove-item -path .\signed\*.*
+
 dotnet --version
 dotnet clean .\src\
 dotnet restore .\src\
@@ -21,5 +23,8 @@ nuget sign .\artifacts\*.snupkg `
   -CertificateSubjectName 'Sarin Na Wangkanai' `
   -Timestamper http://ts.ssl.com `
   -OutputDirectory .\signed
+
+dotnet nuget push .\signed\*.nupkg -k $env:NUGET_API_KEY -s https://api.nuget.org/v3/index.json --skip-duplicate
+dotnet nuget push .\signed\*.snupkg -k $env:NUGET_API_KEY -s https://api.nuget.org/v3/index.json --skip-duplicate
 
 pop-location

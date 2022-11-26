@@ -36,4 +36,8 @@ get-childitem .\ -directory | where {$_.Name -ne 'signed'} | foreach{
     
     pop-location
 }
+
+dotnet nuget push .\signed\*.nupkg -k $env:NUGET_API_KEY -s https://api.nuget.org/v3/index.json --skip-duplicate
+dotnet nuget push .\signed\*.snupkg -k $env:NUGET_API_KEY -s https://api.nuget.org/v3/index.json --skip-duplicate
+
 pop-location
