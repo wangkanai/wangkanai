@@ -5,12 +5,12 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace Wangkanai;
 
-public abstract class Entity : IEntity<int>
+public abstract class Entity : IEntity
 {
     public int Id { get; set; }
 }
 
-public abstract class Entity<T> : IEntity<T> where T : IComparable<T>//, Nullable<T>
+public abstract class Entity<T> : IEntity<T> where T : IComparable<T> //, Nullable<T>
 {
     public T Id { get; set; }
 
@@ -57,7 +57,7 @@ public abstract class Entity<T> : IEntity<T> where T : IComparable<T>//, Nullabl
             return false;
 
         var other = obj as Entity<T>;
-        return other != null && Id == other.Id;
+        return other != null && Operator.Equal(Id, other.Id);
     }
 
     #endregion

@@ -364,7 +364,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{261C09
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.System", "System\src\Wangkanai.System.csproj", "{77FDD6D6-9FF8-4B04-B936-C8CC81174649}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.System.Test", "System\tests\Wangkanai.System.Test.csproj", "{5925CD69-175B-479F-93E8-FEB244928F95}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.System.Tests", "System\tests\Wangkanai.System.Tests.csproj", "{5925CD69-175B-479F-93E8-FEB244928F95}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.System.Benchmark", "System\benchmark\Wangkanai.System.Benchmark.csproj", "{460147BC-7960-4E70-8B1E-D602675D16F3}"
 EndProject
@@ -719,15 +719,12 @@ Global
 		{B550C798-01DE-4BD9-ACD4-B6698DE68E71}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B550C798-01DE-4BD9-ACD4-B6698DE68E71}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4FC1D5F4-661F-48DC-B397-4CDCB7D61ABE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4FC1D5F4-661F-48DC-B397-4CDCB7D61ABE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4FC1D5F4-661F-48DC-B397-4CDCB7D61ABE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4FC1D5F4-661F-48DC-B397-4CDCB7D61ABE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EDC7049C-A128-4E37-8B3B-B2A377F59348}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EDC7049C-A128-4E37-8B3B-B2A377F59348}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDC7049C-A128-4E37-8B3B-B2A377F59348}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDC7049C-A128-4E37-8B3B-B2A377F59348}.Release|Any CPU.Build.0 = Release|Any CPU
 		{57C0CD94-8066-4738-8B81-58FF9E18BFDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{57C0CD94-8066-4738-8B81-58FF9E18BFDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{57C0CD94-8066-4738-8B81-58FF9E18BFDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{57C0CD94-8066-4738-8B81-58FF9E18BFDE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection

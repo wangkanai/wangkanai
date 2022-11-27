@@ -4,7 +4,6 @@ namespace Wangkanai;
 
 public interface IEntity : IEntity<int>
 {
-    int Id { get; set; }
 }
 
 public interface IEntity<T>
