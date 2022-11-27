@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\Wangkanai.Runtime.csproj" />
+    <ProjectReference Include="..\src\Wangkanai.System.csproj" />
   </ItemGroup>
 
 </Project>

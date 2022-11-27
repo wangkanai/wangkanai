@@ -12,7 +12,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Extensions\FileProviders\src\Wangkanai.Extensions.FileProviders.csproj" />
     <ProjectReference Include="..\..\Hosting\src\Wangkanai.Hosting.csproj" />
-    <ProjectReference Include="..\..\Runtime\src\Wangkanai.Runtime.csproj" />
     <ProjectReference Include="..\..\Validation\src\Wangkanai.Validation.csproj" />
     <ProjectReference Include="..\..\Webserver\src\Wangkanai.Webserver.csproj" />
   </ItemGroup>
