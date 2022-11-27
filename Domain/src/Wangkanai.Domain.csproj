@@ -3,6 +3,7 @@
     <PropertyGroup>
         <LangVersion>11</LangVersion>
         <TargetFramework>net7.0</TargetFramework>
+        <RootNamespace>Wangkanai.Domain</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
