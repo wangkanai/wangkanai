@@ -1,6 +1,6 @@
 <Project>
     <PropertyGroup>
-        <VersionPrefix>0.1.0</VersionPrefix>
+        <VersionPrefix>0.3.0</VersionPrefix>
 
         <Title>Wangkanai Domain</Title>
         <PackageTags>aspnetcore;entity;domain;ddd;</PackageTags>
