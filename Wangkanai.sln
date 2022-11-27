@@ -130,13 +130,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Markdown.Test", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{A3C4F552-BD1E-40C6-81C9-99F61B8916EA}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{E71796C3-C94A-40B2-B998-E36F3AD35733}"
-	ProjectSection(SolutionItems) = preProject
-		docs\CNAME = docs\CNAME
-		docs\index.html = docs\index.html
-		docs\_config.yml = docs\_config.yml
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MultiTenant", "MultiTenant", "{AFD334F6-0649-4141-AC08-38E3CA7B3617}"
 	ProjectSection(SolutionItems) = preProject
 		Multitenant\Directory.Build.props = Multitenant\Directory.Build.props
