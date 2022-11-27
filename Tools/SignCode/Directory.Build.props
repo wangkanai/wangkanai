@@ -1,8 +1,8 @@
 <Project>
     <PropertyGroup>
-        <VersionPrefix>0.3.0</VersionPrefix>
+        <VersionPrefix>0.1.0</VersionPrefix>
 
-        <Title>Wangkanai Sign Tool</Title>
+        <Title>Wangkanai Sign Code Tool</Title>
         <PackageTags>aspnetcore;nuget;sign;tool;</PackageTags>
         <Description>This project is a global wrapper for code signing the nuget packages before publishing on nuget.</Description>
         

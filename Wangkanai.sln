@@ -176,11 +176,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.SendGrid", "SendG
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.SendGrid.Tests", "SendGrid\tests\Wangkanai.SendGrid.Tests.csproj", "{9C0A9184-AB79-4958-8E6C-B6D8617F1013}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sign", "Sign", "{E21D6041-95C4-4CF8-AA7F-1CCB250A09F8}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SignCode", "SignCode", "{E21D6041-95C4-4CF8-AA7F-1CCB250A09F8}"
 	ProjectSection(SolutionItems) = preProject
-		Tools\Sign\Directory.Build.props = Tools\Sign\Directory.Build.props
-		Tools\Sign\README.md = Tools\Sign\README.md
-		Tools\Sign\sign.ps1 = Tools\Sign\sign.ps1
+		Tools\SignCode\Directory.Build.props = Tools\SignCode\Directory.Build.props
+		Tools\SignCode\README.md = Tools\SignCode\README.md
+		Tools\SignCode\sign.ps1 = Tools\SignCode\sign.ps1
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".config", ".config", "{53EE3363-603E-430E-8DA6-906C47D1FD96}"
@@ -261,9 +261,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Watcher.Tests", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CommandLine", "CommandLine", "{C5C4D631-1DA0-40D1-9B62-D4D5D41E8859}"
 	ProjectSection(SolutionItems) = preProject
-		Tools\CommnadLine\Directory.Build.props = Tools\CommnadLine\Directory.Build.props
-		Tools\CommnadLine\README.md = Tools\CommnadLine\README.md
-		Tools\CommnadLine\sign.ps1 = Tools\CommnadLine\sign.ps1
+		Extensions\CommandLine\Directory.Build.props = Extensions\CommandLine\Directory.Build.props
+		Extensions\CommandLine\README.md = Extensions\CommandLine\README.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{084E5C3F-9E52-40A3-9094-C406A2306BAB}"
@@ -272,14 +271,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{084E5C3F
 		Tools\README.md = Tools\README.md
 		Tools\sign.ps1 = Tools\sign.ps1
 	EndProjectSection
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Extensions.CommandLine", "Tools\CommnadLine\src\Wangkanai.Extensions.CommandLine.csproj", "{531DAE0A-14DE-454F-BE3E-4E17756DA7E3}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Extensions.CommandLine.Tests", "Tools\CommnadLine\tests\Wangkanai.Extensions.CommandLine.Tests.csproj", "{9285593D-1C71-44E5-9BC1-25F7C6A51BFE}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Sign", "Tools\Sign\src\Wangkanai.Sign.csproj", "{633702FF-6F23-4313-B484-4AB14522F099}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Sign.Tests", "Tools\Sign\tests\Wangkanai.Sign.Tests.csproj", "{2988C0E4-A7D8-44F4-9EDB-6BDC38567730}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.MSBuild", "Tools\MSBuild\src\Wangkanai.MSBuild.csproj", "{A80B6DAF-AA55-465E-9D99-6BFF7270DF36}"
 EndProject
@@ -389,6 +380,16 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Domain.Tests", "Domain\tests\Wangkanai.Domain.Tests.csproj", "{28A0F142-5E23-49FD-8544-94556F9CDC95}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Domain.Benchmark", "Domain\benchmark\Wangkanai.Domain.Benchmark.csproj", "{9A65939A-42CF-4B60-8046-77F7DCC74AEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.SignCode", "Tools\SignCode\src\Wangkanai.SignCode.csproj", "{0A955A2D-4CF8-4C89-96FE-BBD4DE0CAD04}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.SignCode.Tests", "Tools\SignCode\tests\Wangkanai.SignCode.Tests.csproj", "{D16DCB05-B5E7-4B24-BDE8-5CCDBE9A61C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Extensions.CommandLine", "Extensions\CommandLine\src\Wangkanai.Extensions.CommandLine.csproj", "{8C718B7D-A4B6-4D49-8EB1-9B8AFBCAD11A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Extensions.CommandLine.Tests", "Extensions\CommandLine\tests\Wangkanai.Extensions.CommandLine.Tests.csproj", "{75AD9673-5AE2-45B1-B384-73C1BFD005DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Extensions.CommandLine.Benchmark", "Extensions\CommandLine\benchmark\Wangkanai.Extensions.CommandLine.Benchmark.csproj", "{B0CE07ED-E379-4C77-800C-BA278201B635}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -536,22 +537,6 @@ Global
 		{37B59B4E-88FD-4FAE-BBFC-290E2E249216}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37B59B4E-88FD-4FAE-BBFC-290E2E249216}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37B59B4E-88FD-4FAE-BBFC-290E2E249216}.Release|Any CPU.Build.0 = Release|Any CPU
-		{531DAE0A-14DE-454F-BE3E-4E17756DA7E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{531DAE0A-14DE-454F-BE3E-4E17756DA7E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{531DAE0A-14DE-454F-BE3E-4E17756DA7E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{531DAE0A-14DE-454F-BE3E-4E17756DA7E3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9285593D-1C71-44E5-9BC1-25F7C6A51BFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9285593D-1C71-44E5-9BC1-25F7C6A51BFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9285593D-1C71-44E5-9BC1-25F7C6A51BFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9285593D-1C71-44E5-9BC1-25F7C6A51BFE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{633702FF-6F23-4313-B484-4AB14522F099}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{633702FF-6F23-4313-B484-4AB14522F099}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{633702FF-6F23-4313-B484-4AB14522F099}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{633702FF-6F23-4313-B484-4AB14522F099}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2988C0E4-A7D8-44F4-9EDB-6BDC38567730}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2988C0E4-A7D8-44F4-9EDB-6BDC38567730}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2988C0E4-A7D8-44F4-9EDB-6BDC38567730}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2988C0E4-A7D8-44F4-9EDB-6BDC38567730}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A80B6DAF-AA55-465E-9D99-6BFF7270DF36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A80B6DAF-AA55-465E-9D99-6BFF7270DF36}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A80B6DAF-AA55-465E-9D99-6BFF7270DF36}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -699,6 +684,26 @@ Global
 		{9A65939A-42CF-4B60-8046-77F7DCC74AEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A65939A-42CF-4B60-8046-77F7DCC74AEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A65939A-42CF-4B60-8046-77F7DCC74AEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A955A2D-4CF8-4C89-96FE-BBD4DE0CAD04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A955A2D-4CF8-4C89-96FE-BBD4DE0CAD04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A955A2D-4CF8-4C89-96FE-BBD4DE0CAD04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A955A2D-4CF8-4C89-96FE-BBD4DE0CAD04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D16DCB05-B5E7-4B24-BDE8-5CCDBE9A61C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D16DCB05-B5E7-4B24-BDE8-5CCDBE9A61C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D16DCB05-B5E7-4B24-BDE8-5CCDBE9A61C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D16DCB05-B5E7-4B24-BDE8-5CCDBE9A61C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C718B7D-A4B6-4D49-8EB1-9B8AFBCAD11A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C718B7D-A4B6-4D49-8EB1-9B8AFBCAD11A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C718B7D-A4B6-4D49-8EB1-9B8AFBCAD11A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C718B7D-A4B6-4D49-8EB1-9B8AFBCAD11A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75AD9673-5AE2-45B1-B384-73C1BFD005DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75AD9673-5AE2-45B1-B384-73C1BFD005DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75AD9673-5AE2-45B1-B384-73C1BFD005DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75AD9673-5AE2-45B1-B384-73C1BFD005DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0CE07ED-E379-4C77-800C-BA278201B635}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0CE07ED-E379-4C77-800C-BA278201B635}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0CE07ED-E379-4C77-800C-BA278201B635}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0CE07ED-E379-4C77-800C-BA278201B635}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -747,11 +752,6 @@ Global
 		{F32D16F1-3419-4401-9036-94B60C2C14BE} = {084E5C3F-9E52-40A3-9094-C406A2306BAB}
 		{271306A6-4903-4EB2-AE7B-86B0826BD81E} = {6B7D8653-4ADC-45AD-8289-C933FCDA34B2}
 		{37B59B4E-88FD-4FAE-BBFC-290E2E249216} = {6B7D8653-4ADC-45AD-8289-C933FCDA34B2}
-		{C5C4D631-1DA0-40D1-9B62-D4D5D41E8859} = {084E5C3F-9E52-40A3-9094-C406A2306BAB}
-		{531DAE0A-14DE-454F-BE3E-4E17756DA7E3} = {C5C4D631-1DA0-40D1-9B62-D4D5D41E8859}
-		{9285593D-1C71-44E5-9BC1-25F7C6A51BFE} = {C5C4D631-1DA0-40D1-9B62-D4D5D41E8859}
-		{633702FF-6F23-4313-B484-4AB14522F099} = {E21D6041-95C4-4CF8-AA7F-1CCB250A09F8}
-		{2988C0E4-A7D8-44F4-9EDB-6BDC38567730} = {E21D6041-95C4-4CF8-AA7F-1CCB250A09F8}
 		{A80B6DAF-AA55-465E-9D99-6BFF7270DF36} = {F32D16F1-3419-4401-9036-94B60C2C14BE}
 		{02E6D09F-C053-4A66-8229-518DA83F05D4} = {F32D16F1-3419-4401-9036-94B60C2C14BE}
 		{95F3FF01-5D91-4375-ABB4-0C3B24611EC1} = {F9E4EBB0-2D50-459A-B2DF-48068FBF7DDF}
@@ -792,6 +792,12 @@ Global
 		{D8DD2FA3-55C6-4699-933B-77DE41C0EB82} = {ACC97055-6427-45CF-90F5-4804E7CBB7BE}
 		{28A0F142-5E23-49FD-8544-94556F9CDC95} = {ACC97055-6427-45CF-90F5-4804E7CBB7BE}
 		{9A65939A-42CF-4B60-8046-77F7DCC74AEF} = {ACC97055-6427-45CF-90F5-4804E7CBB7BE}
+		{0A955A2D-4CF8-4C89-96FE-BBD4DE0CAD04} = {E21D6041-95C4-4CF8-AA7F-1CCB250A09F8}
+		{D16DCB05-B5E7-4B24-BDE8-5CCDBE9A61C0} = {E21D6041-95C4-4CF8-AA7F-1CCB250A09F8}
+		{C5C4D631-1DA0-40D1-9B62-D4D5D41E8859} = {ABDB88B8-683A-466C-A2DB-AFD516359619}
+		{8C718B7D-A4B6-4D49-8EB1-9B8AFBCAD11A} = {C5C4D631-1DA0-40D1-9B62-D4D5D41E8859}
+		{75AD9673-5AE2-45B1-B384-73C1BFD005DC} = {C5C4D631-1DA0-40D1-9B62-D4D5D41E8859}
+		{B0CE07ED-E379-4C77-800C-BA278201B635} = {C5C4D631-1DA0-40D1-9B62-D4D5D41E8859}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1BA0A192-D7BE-40A1-96AE-B3C8C6BC9B69}

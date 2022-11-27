@@ -10,7 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\CommnadLine\src\Wangkanai.Extensions.CommandLine.csproj" />
+    <ProjectReference Include="..\..\..\Extensions\CommnadLine\src\Wangkanai.Extensions.CommandLine.csproj" />
   </ItemGroup>
 
 </Project>
