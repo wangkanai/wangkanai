@@ -391,6 +391,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Extensions.Comman
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Extensions.CommandLine.Benchmark", "Extensions\CommandLine\benchmark\Wangkanai.Extensions.CommandLine.Benchmark.csproj", "{B0CE07ED-E379-4C77-800C-BA278201B635}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Solver.Benchmark", "Solver\benchmark\Wangkanai.Solver.Benchmark.csproj", "{B550C798-01DE-4BD9-ACD4-B6698DE68E71}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -704,6 +706,10 @@ Global
 		{B0CE07ED-E379-4C77-800C-BA278201B635}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B0CE07ED-E379-4C77-800C-BA278201B635}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B0CE07ED-E379-4C77-800C-BA278201B635}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B550C798-01DE-4BD9-ACD4-B6698DE68E71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B550C798-01DE-4BD9-ACD4-B6698DE68E71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B550C798-01DE-4BD9-ACD4-B6698DE68E71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B550C798-01DE-4BD9-ACD4-B6698DE68E71}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -798,6 +804,7 @@ Global
 		{8C718B7D-A4B6-4D49-8EB1-9B8AFBCAD11A} = {C5C4D631-1DA0-40D1-9B62-D4D5D41E8859}
 		{75AD9673-5AE2-45B1-B384-73C1BFD005DC} = {C5C4D631-1DA0-40D1-9B62-D4D5D41E8859}
 		{B0CE07ED-E379-4C77-800C-BA278201B635} = {C5C4D631-1DA0-40D1-9B62-D4D5D41E8859}
+		{B550C798-01DE-4BD9-ACD4-B6698DE68E71} = {37D27DDC-1EB6-4003-AACE-80340B5BC63A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1BA0A192-D7BE-40A1-96AE-B3C8C6BC9B69}
