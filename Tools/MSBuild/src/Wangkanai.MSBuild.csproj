@@ -6,8 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\Runtime\src\Wangkanai.Runtime.csproj" />
-  </ItemGroup>
-
 </Project>

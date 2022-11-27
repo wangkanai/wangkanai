@@ -4,7 +4,7 @@ dotnet --version
 dotnet clean Tabler.slnf
 dotnet restore Tabler.slnf
 dotnet build -c Release Tabler.slnf
-Get-ChildItem .\src\ -Recurse Wangkanai.*.dll  | foreach {
+Get-ChildItem .\src\ -Recurse Wangkanai.*.dll | where { $_.Name -like "*release*" } | foreach {
     signtool sign /fd SHA256 /n "Sarin Na Wangkanai" $_.FullName
 }
 Remove-Item .\artifacts\*.*

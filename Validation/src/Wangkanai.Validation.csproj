@@ -10,11 +10,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Runtime\src\Wangkanai.Runtime.csproj"/>
+    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0"/>
+    <ProjectReference Include="..\..\System\src\Wangkanai.System.csproj" />
   </ItemGroup>
 
 </Project>

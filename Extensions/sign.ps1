@@ -12,7 +12,7 @@ get-childitem .\ -directory | where {$_.Name -ne 'signed'} | foreach{
     dotnet clean .\src\
     dotnet restore .\src\
     dotnet build .\src\ -c Release
-    Get-ChildItem .\src\ -Recurse Wangkanai.*.dll  | foreach {
+    Get-ChildItem .\src\ -Recurse Wangkanai.*.dll | where { $_.Name -like "*release*" } | foreach {
         signtool sign /fd SHA256 /n "Sarin Na Wangkanai" $_.FullName
     }
 
