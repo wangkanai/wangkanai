@@ -1,8 +1,6 @@
 <Project>
     <PropertyGroup>
-        <VersionPrefix>0.1.0</VersionPrefix>
-
-        <Title>Wangkanai Html</Title>
+        <Title>Wangkanai Extensions Html</Title>
         <PackageTags>aspnetcore;html;html5</PackageTags>
         <Description>Html wrapper utilities library</Description>
 
