@@ -37,8 +37,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Responsive", "Responsive", 
 	ProjectSection(SolutionItems) = preProject
 		Responsive\Directory.Build.props = Responsive\Directory.Build.props
 		Responsive\README.md = Responsive\README.md
-		Responsive\docs\responsive-pages-file-structure.png = Responsive\docs\responsive-pages-file-structure.png
-		Responsive\docs\responsive-views-file-structure.png = Responsive\docs\responsive-views-file-structure.png
 		Responsive\sign.ps1 = Responsive\sign.ps1
 	EndProjectSection
 EndProject
@@ -207,7 +205,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Html", "Html", "{DFCE57F8-C
 	ProjectSection(SolutionItems) = preProject
 		Extensions\Html\Directory.Build.props = Extensions\Html\Directory.Build.props
 		Extensions\Html\README.md = Extensions\Html\README.md
-		Extensions\Html\sign.ps1 = Extensions\Html\sign.ps1
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Graph", "Graph", "{49CEF064-6C6A-40E0-9EC6-05D62D127DFD}"
@@ -380,6 +377,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Extensions.Html", "Extensions\Html\src\Wangkanai.Extensions.Html.csproj", "{4017F4ED-E775-4AA7-831A-8467EFBC542E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Extensions.Html.Tests", "Extensions\Html\tests\Wangkanai.Extensions.Html.Tests.csproj", "{6701A779-DA42-4B26-A920-631E8855855D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{261C090A-5DAB-4A84-A35F-59D04ECE7357}"
+	ProjectSection(SolutionItems) = preProject
+		Responsive\docs\responsive-pages-file-structure.png = Responsive\docs\responsive-pages-file-structure.png
+		Responsive\docs\responsive-views-file-structure.png = Responsive\docs\responsive-views-file-structure.png
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -767,6 +770,7 @@ Global
 		{DFCE57F8-CA4D-4F85-A14D-F15173B8CC42} = {ABDB88B8-683A-466C-A2DB-AFD516359619}
 		{4017F4ED-E775-4AA7-831A-8467EFBC542E} = {DFCE57F8-CA4D-4F85-A14D-F15173B8CC42}
 		{6701A779-DA42-4B26-A920-631E8855855D} = {DFCE57F8-CA4D-4F85-A14D-F15173B8CC42}
+		{261C090A-5DAB-4A84-A35F-59D04ECE7357} = {7C2D39ED-FF02-492B-84E0-958A4291B51C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1BA0A192-D7BE-40A1-96AE-B3C8C6BC9B69}

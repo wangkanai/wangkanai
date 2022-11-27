@@ -1,6 +1,6 @@
 <Project>
     <PropertyGroup>
-        <VersionPrefix>0.6.0</VersionPrefix>
+        <VersionPrefix>0.7.0</VersionPrefix>
 
         <Title>Wangkanai SendGrid</Title>
         <PackageTags>aspnetcore;sendgrid;smtp;email;</PackageTags>
@@ -8,12 +8,12 @@
         
     </PropertyGroup>
 
-    <PropertyGroup>
+    <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.SendGrid'">
         <PackageIcon>wangkanai-logo.png</PackageIcon>
         <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
 
-    <ItemGroup>
+    <ItemGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.SendGrid'">
         <None Include="..\..\assets\wangkanai-logo.png" Pack="true" PackagePath="\"/>
         <None Include="..\README.md" Pack="true" PackagePath="\"/>
     </ItemGroup>
