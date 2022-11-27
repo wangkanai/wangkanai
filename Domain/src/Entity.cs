@@ -5,12 +5,11 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace Wangkanai.Domain;
 
-public abstract class Entity : IEntity
+public abstract class Entity : Entity<int>
 {
-    public int Id { get; set; }
 }
 
-public abstract class Entity<T> : IEntity<T> where T : IComparable<T> //, Nullable<T>
+public abstract class Entity<T> : IEntity<T>// where T : IComparable<T> //, Nullable<T>
 {
     public T Id { get; set; }
 
