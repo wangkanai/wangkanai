@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
-    <LangVersion>11</LangVersion>
+    <LangVersion>preview</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,6 +12,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Extensions\FileProviders\src\Wangkanai.Extensions.FileProviders.csproj" />
     <ProjectReference Include="..\..\Hosting\src\Wangkanai.Hosting.csproj" />
+    <ProjectReference Include="..\..\System\src\Wangkanai.System.csproj" />
     <ProjectReference Include="..\..\Validation\src\Wangkanai.Validation.csproj" />
     <ProjectReference Include="..\..\Webserver\src\Wangkanai.Webserver.csproj" />
   </ItemGroup>

@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Extensions\Html\src\Wangkanai.Extensions.Html.csproj" />
+    <ProjectReference Include="..\..\System\src\Wangkanai.System.csproj" />
   </ItemGroup>
 
 </Project>

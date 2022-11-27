@@ -21,4 +21,8 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="7.0.0" />
     <PackageReference Include="Microsoft.Authentication.WebAssembly.Msal" Version="7.0.0" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\System\src\Wangkanai.System.csproj" />
+  </ItemGroup>
 </Project>

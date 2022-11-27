@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Hosting\src\Wangkanai.Hosting.csproj" />
+    <ProjectReference Include="..\..\System\src\Wangkanai.System.csproj" />
   </ItemGroup>
 
 </Project>
