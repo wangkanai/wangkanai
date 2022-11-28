@@ -269,3 +269,4 @@ msbuild.binlog
 
 # BenchmarkDotNet Artifacts
 **/BenchmarkDotNet.Artifacts/results/
+MiscUtil/
