@@ -1,6 +1,6 @@
 <Project>
     <PropertyGroup>
-        <VersionPrefix>0.5.0</VersionPrefix>
+        <VersionPrefix>0.6.0</VersionPrefix>
 
         <Title>Wangkanai Graph</Title>
         <PackageTags>aspnetcore;microsft;graph;</PackageTags>
