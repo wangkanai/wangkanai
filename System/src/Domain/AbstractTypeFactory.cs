@@ -59,13 +59,14 @@ public static class AbstractTypeFactory<BaseType>
     /// </summary>
     public static T TryCreateInstance<T>() where T : BaseType
         => (T)TryCreateInstance(typeof(T).Name);
+
     public static BaseType TryCreateInstance(string typeName, BaseType defaultObj)
     {
         var result   = defaultObj;
         var typeInfo = FindTypeInfoByName(typeName);
         if (typeInfo != null)
             result = TryCreateInstance(typeName);
-        
+
         return result;
     }
 

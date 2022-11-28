@@ -1,6 +1,8 @@
 // Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-namespace Wangkanai;
+using Wangkanai.Resources;
+
+namespace Wangkanai.Exceptions;
 
 [Serializable]
 public class ArgumentMoreThanException : ArgumentException

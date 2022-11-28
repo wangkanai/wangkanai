@@ -6,6 +6,8 @@ using Perfolizer.Mathematics.OutlierDetection;
 
 using Wangkanai.Cryptography;
 
+namespace Wangkanai;
+
 [MemoryDiagnoser]
 [Outliers(OutlierMode.DontRemove)]
 [SimpleJob(RunStrategy.Monitoring)]

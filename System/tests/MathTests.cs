@@ -2,7 +2,7 @@
 
 using Xunit;
 
-namespace Wangkanai.Runtime;
+namespace Wangkanai;
 
 public class MathTests
 {

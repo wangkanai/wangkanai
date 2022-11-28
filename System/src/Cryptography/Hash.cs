@@ -35,13 +35,13 @@ public static class Hash
 
     #region Internal
 
-    private static byte[] GetAsciiBytes([NotNull] this string value) 
+    private static byte[] GetAsciiBytes([NotNull] this string value)
         => Encoding.ASCII.GetBytes(value);
 
     private static string HashDataToString([NotNull] this byte[] data)
     {
         var builder = new StringBuilder();
-        foreach (var index in data) 
+        foreach (var index in data)
             builder.Append(index.ToString("x2"));
 
         return builder.ToString();

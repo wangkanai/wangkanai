@@ -175,29 +175,29 @@ public static class StringExtensions
         //'&&', '||',
         foreach (var ch in term)
         {
-            if (specialCharacters.Any(x => x == ch)) 
+            if (specialCharacters.Any(x => x == ch))
                 result.Append("\\");
-            
+
             result.Append(ch);
         }
-        
+
         result = result.Replace("&&", @"\&&");
         result = result.Replace("||", @"\||");
 
         return result.ToString().Trim();
     }
-    
+
     /// <summary>
     /// Escapes the selector. Query requires special characters to be escaped in query
     /// http://api.jquery.com/category/selectors/
     /// </summary>
-    public static string EscapeSelector(this string attribute) 
+    public static string EscapeSelector(this string attribute)
         => Regex.Replace(attribute, string.Format("([{0}])", "/[!\"#$%&'()*+,./:;<=>?@^`{|}~\\]"), @"\\$1");
 
     public static string GenerateSlug(this string phrase)
     {
         string str = phrase.RemoveAccent().ToLower();
-        
+
         // invalid chars
         str = Regex.Replace(str, @"[^a-z0-9\s-]", "");
         // convert multiple spaces into one space
@@ -206,7 +206,7 @@ public static class StringExtensions
         str = str.Substring(0, str.Length <= 240 ? str.Length : 240).Trim();
         // hyphens
         str = Regex.Replace(str, @"\s", "-");
-        
+
         return str;
     }
 

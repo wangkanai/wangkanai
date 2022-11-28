@@ -49,35 +49,33 @@ public static class Operator
 
     public static TArg1 MultiplyAlternative<TArg1, TArg2>(TArg1 left, TArg2 right)
         => Operator<TArg2, TArg1>.Multiply(left, right);
-    
+
     public static T Divide<T>(T left, T right)
         => Operator<T>.Divide(left, right);
-    
+
     public static TArg1 DivideAlternative<TArg1, TArg2>(TArg1 left, TArg2 right)
         => Operator<TArg2, TArg1>.Divide(left, right);
-    
+
     public static T DivideInt32<T>(T value, int divisor)
         => Operator<int, T>.Divide(value, divisor);
-    
+
     public static bool Equal<T>(T left, T right)
         => Operator<T>.Equal(left, right);
-    
+
     public static bool NotEqual<T>(T left, T right)
         => Operator<T>.NotEqual(left, right);
-    
+
     public static bool GreaterThan<T>(T left, T right)
         => Operator<T>.GreaterThan(left, right);
-    
+
     public static bool GreaterThanOrEqual<T>(T left, T right)
         => Operator<T>.GreaterThanOrEqual(left, right);
-    
+
     public static bool LessThan<T>(T left, T right)
         => Operator<T>.LessThan(left, right);
-    
+
     public static bool LessThanOrEqual<T>(T left, T right)
         => Operator<T>.LessThanOrEqual(left, right);
-    
-    
 }
 
 public static class Operator<T>
@@ -94,7 +92,7 @@ public static class Operator<T>
     public static Func<T, T, T> Add      => add;
     public static Func<T, T, T> Subtract => subtract;
     public static Func<T, T, T> Multiply => multiply;
-    public static Func<T, T, T> Divide    => divide;
+    public static Func<T, T, T> Divide   => divide;
 
     private static readonly Func<T, T, bool> equal, notEqual, greaterThan, greaterThanOrEqual, lessThan, lessThanOrEqual;
 
