@@ -28,12 +28,29 @@ public abstract class ValueObject : IValueObject, ICacheKey, ICloneable
         return other != null && GetEqualityComponents().SequenceEqual(other.GetEqualityComponents());
     }
 
+    public override int GetHashCode()
+    {
+        unchecked
+        {
+            return GetEqualityComponents()
+                .Aggregate(17, (current, obj) => current * 23 + (obj?.GetHashCode() ?? 0));
+        }
+    }
+
+    public static bool operator ==(ValueObject left, ValueObject right) 
+        => Equals(left, right);
+    public static bool operator !=(ValueObject left, ValueObject right) 
+        => !Equals(left, right);
+
+    public override string ToString()
+        => $"{{{string.Join(", ", GetProperties().Select(f => $"{f.Name}: {f.GetValue(this)}"))}}}";
+
     public virtual string GetCacheKey()
     {
         var keyValues = GetEqualityComponents()
                         .Select(x => x is string ? $"'{x}'" : x)
                         .Select(x => x is ICacheKey cacheKey ? cacheKey.GetCacheKey() : x?.ToString());
-        
+
         return string.Join("|", keyValues);
     }
 
