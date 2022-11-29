@@ -5,7 +5,7 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace Wangkanai.Domain;
 
-public abstract class Entity : Entity<int>
+public abstract class Entity : Entity<Guid>
 {
 }
 

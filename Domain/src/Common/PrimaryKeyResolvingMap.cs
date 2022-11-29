@@ -1,5 +1,6 @@
 ﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
+using System;
 using System.Collections.Generic;
 
 namespace Wangkanai.Domain.Common;
@@ -17,7 +18,7 @@ public class PrimaryKeyResolvingMap
     {
         foreach (var pair in _resolvingMap)
         {
-            if (pair.Key.Id == 0 && pair.Value.Id != 0)
+            if (pair.Key.Id == Guid.Empty && pair.Value.Id != Guid.Empty)
             {
                 pair.Key.Id = pair.Value.Id;
 
