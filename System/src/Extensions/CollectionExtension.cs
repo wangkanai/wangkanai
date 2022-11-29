@@ -48,7 +48,7 @@ public static class CollectionExtension
                 obj.Add(item);
         }
     }
-    
+
     public static void Replace<T>(this ICollection<T> obj, IEnumerable<T> newItems)
     {
         Check.NotNull(obj);
@@ -64,8 +64,8 @@ public static class CollectionExtension
             if (args.Action == NotifyCollectionChangedAction.Add && addAction != null)
                 foreach (var newItem in args.NewItems)
                     addAction((T)newItem);
-            
-            if(args.Action == NotifyCollectionChangedAction.Remove && removeAction != null)
+
+            if (args.Action == NotifyCollectionChangedAction.Remove && removeAction != null)
                 foreach (var removeItem in args.OldItems)
                     removeAction((T)removeItem);
         };

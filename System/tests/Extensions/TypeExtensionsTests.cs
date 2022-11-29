@@ -4,5 +4,4 @@ namespace Wangkanai.Extensions;
 
 public class TypeExtensionsTests
 {
-    
 }

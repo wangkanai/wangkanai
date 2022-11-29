@@ -16,13 +16,13 @@ public static class DictionaryExtension
     /// </summary>
     public static TValue GetValueSafe<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key)
         => dictionary.GetValueSafe(key, default);
-    
+
     /// <summary>
     /// Doesn't throw an exception when the key is null or does not exist
     /// </summary>
-    public static TValue GetValueSafe<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key, TValue defaultValue) 
-        => key != null && dictionary.TryGetValue(key, out var value) 
-               ? value 
+    public static TValue GetValueSafe<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key, TValue defaultValue)
+        => key != null && dictionary.TryGetValue(key, out var value)
+               ? value
                : defaultValue;
 
     /// <summary>

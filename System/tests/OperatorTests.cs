@@ -4,7 +4,7 @@ using System.Numerics;
 
 using Xunit;
 
-namespace Wangkanai.Runtime;
+namespace Wangkanai;
 
 public class OperatorTests
 {
