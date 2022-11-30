@@ -21,8 +21,8 @@ solution.
 
 
 <a href="https://github.com/wangkanai">
-    <img height="174em" src="https://github-readme-stats.vercel.app/api?username=wangkanai&show_icons=true&theme=github_dark" alt="Wangkanai's GitHub Stats"/>
-    <img height="174em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=wangkanai&theme=github_dark&layout=compact" alt="Wangkanai's Top Languages"/>
+    <img height="173em" src="https://github-readme-stats.vercel.app/api?username=wangkanai&show_icons=true&theme=github_dark" alt="Wangkanai's GitHub Stats"/>
+    <img height="173em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=wangkanai&theme=github_dark&layout=compact" alt="Wangkanai's Top Languages"/>
 </a>
 
 ![Alt](https://repobeats.axiom.co/api/embed/b44b68c1dfa4a600b48939bdde84d8784dc3c06c.svg "Repobeats analytics image")
