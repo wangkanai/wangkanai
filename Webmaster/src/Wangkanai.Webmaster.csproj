@@ -17,8 +17,4 @@
     <ProjectReference Include="..\..\Webserver\src\Wangkanai.Webserver.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Extensions" />
-  </ItemGroup>
-
 </Project>
