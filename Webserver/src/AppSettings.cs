@@ -1,10 +1,10 @@
 // Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-namespace Wangkanai.Webmaster;
+namespace Wangkanai.Webserver;
 
-public static class AppSetting
+public static class AppSettings
 {
-    public static class Connection
+    public static class ConnectionStrings
     {
         public const string Sql = "DefaultConnection";
     }
