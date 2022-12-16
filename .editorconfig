@@ -31,6 +31,7 @@ dotnet_style_require_accessibility_modifiers = for_non_interface_members:suggest
 
 # ReSharper properties
 # resharper_align_multiline_array_and_object_initializer = true
+resharper_no_indent_inside_elements = html,thead,tbody,tfoot
 resharper_autodetect_indent_settings = true
 resharper_enforce_line_ending_style = true
 resharper_int_align_assignments = true
