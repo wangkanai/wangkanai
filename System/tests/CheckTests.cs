@@ -20,6 +20,11 @@ public class CheckTests
         Assert.Throws<ArgumentNullException>(() => _short.IfNullThrow());
         Assert.Throws<ArgumentNullException>(() => _int.IfNullThrow());
         Assert.Throws<ArgumentNullException>(() => _long.IfNullThrow());
+
+        Assert.Throws<ArgumentNullException>(() => Check.IfNullThrow(_byte));
+        Assert.Throws<ArgumentNullException>(() => Check.IfNullThrow(_short));
+        Assert.Throws<ArgumentNullException>(() => Check.IfNullThrow(_int));
+        Assert.Throws<ArgumentNullException>(() => Check.IfNullThrow(_long));
     }
 
     [Fact]
@@ -30,7 +35,10 @@ public class CheckTests
         int?   _int   = null;
         long?  _long  = null;
 
-        //Assert.Throws<CustomNullException>(() => Check.IfNullThrow<CustomNullException>(_byte,nameof(_byte)));
+        Assert.Throws<CustomNullException>(() => Check.IfNullThrow<CustomNullException, byte>(_byte));
+        Assert.Throws<CustomNullException>(() => Check.IfNullThrow<CustomNullException, short>(_short));
+        Assert.Throws<CustomNullException>(() => Check.IfNullThrow<CustomNullException, int>(_int));
+        Assert.Throws<CustomNullException>(() => Check.IfNullThrow<CustomNullException, long>(_long));
     }
 
     [Fact]
