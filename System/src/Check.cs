@@ -10,6 +10,29 @@ namespace Wangkanai;
 public static class Check
 {
     [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+    public static T IfNullThrow<T>(this T value)
+        => value.IfNullThrow(nameof(value));
+
+    [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+    internal static T IfNullThrow<T>(this T value, [InvokerParameterName] string name)
+        => value is null
+               ? throw new ArgumentNullException(name)
+               : value;
+
+    // [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+    // public static void IfNullThrow<TException, TValue>(this TValue value)
+    //     where TException : Exception
+    //     => value.IfNullThrow<TValue, TException>(nameof(value));
+    //
+    // [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+    // public static void IfNullThrow<TValue, TException>(this TValue value, string name)
+    //     where TException : Exception
+    // {
+    //     if (value is null)
+    //         throw (TException)Activator.CreateInstance(typeof(TException), name);
+    // }
+
+    [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
     public static T NotNull<T>(T value)
         => NotNull(value, nameof(value));
 

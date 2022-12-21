@@ -9,6 +9,31 @@ namespace Wangkanai;
 public class CheckTests
 {
     [Fact]
+    public void IntegralIfNullThrowStandardException()
+    {
+        byte?  _byte  = null;
+        short? _short = null;
+        int?   _int   = null;
+        long?  _long  = null;
+
+        Assert.Throws<ArgumentNullException>(() => _byte.IfNullThrow());
+        Assert.Throws<ArgumentNullException>(() => _short.IfNullThrow());
+        Assert.Throws<ArgumentNullException>(() => _int.IfNullThrow());
+        Assert.Throws<ArgumentNullException>(() => _long.IfNullThrow());
+    }
+
+    [Fact]
+    public void IntegralIfNullThrowCustomException()
+    {
+        byte?  _byte  = null;
+        short? _short = null;
+        int?   _int   = null;
+        long?  _long  = null;
+
+        //Assert.Throws<CustomNullException>(() => Check.IfNullThrow<CustomNullException>(_byte,nameof(_byte)));
+    }
+
+    [Fact]
     public void IntegralIsNull()
     {
         byte?  byte1  = null;
