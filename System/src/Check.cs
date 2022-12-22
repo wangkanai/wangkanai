@@ -157,6 +157,7 @@ public static class Check
         where T : Exception
         => value ?? throw CreateExceptionInstance<T>(nameof(value));
 
+
     [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
     public static object IfNullThrow<T>(this object value)
         where T : Exception
@@ -166,7 +167,6 @@ public static class Check
     public static T IfNullThrow<T>(this T value)
         where T : class
         => value ?? throw CreateExceptionInstance<ArgumentNullException>(nameof(value));
-
 
     private static T CreateExceptionInstance<T>(string name)
         where T : Exception
