@@ -5,7 +5,7 @@ dotnet clean .\src\
 dotnet restore .\src\
 dotnet build .\src\ -c Release
 Get-ChildItem .\src\ -Recurse Wangkanai.*.dll | where { $_.Name -like "*release*" } | foreach {
-    signtool sign /fd SHA256 /n "Sarin Na Wangkanai" $_.FullName
+    signtool sign /fd SHA256 /tr http://ts.ssl.com /td sha256 /n "Sarin Na Wangkanai" $_.FullName 
 }
 Remove-Item .\artifacts\*.*
 dotnet pack .\src\ -c Release -o .\artifacts --include-symbols -p:SymbolPackageFormat=snupkg
