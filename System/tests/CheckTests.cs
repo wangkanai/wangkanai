@@ -16,6 +16,10 @@ public class CheckTests
         int?   _int   = null;
         long?  _long  = null;
 
+        ushort? _ushort = null;
+        uint?   _uint   = null;
+        ulong?  _ulong  = null;
+
         Assert.Throws<ArgumentNullException>(() => _byte.IfNullThrow());
         Assert.Throws<ArgumentNullException>(() => _short.IfNullThrow());
         Assert.Throws<ArgumentNullException>(() => _int.IfNullThrow());
@@ -25,6 +29,38 @@ public class CheckTests
         Assert.Throws<ArgumentNullException>(() => Check.IfNullThrow(_short));
         Assert.Throws<ArgumentNullException>(() => Check.IfNullThrow(_int));
         Assert.Throws<ArgumentNullException>(() => Check.IfNullThrow(_long));
+    }
+
+    [Fact]
+    public void PositiveIntegralIfNullThrowNullException()
+    {
+        ushort? _ushort = null;
+        uint?   _uint   = null;
+        ulong?  _ulong  = null;
+
+        Assert.Throws<ArgumentNullException>(() => _ushort.IfNullThrow());
+        Assert.Throws<ArgumentNullException>(() => _uint.IfNullThrow());
+        Assert.Throws<ArgumentNullException>(() => _ulong.IfNullThrow());
+
+        Assert.Throws<ArgumentNullException>(() => Check.IfNullThrow(_ushort));
+        Assert.Throws<ArgumentNullException>(() => Check.IfNullThrow(_uint));
+        Assert.Throws<ArgumentNullException>(() => Check.IfNullThrow(_ulong));
+    }
+
+    [Fact]
+    public void PositiveIntegralIfNullThrowCustomException()
+    {
+        ushort? _ushort = null;
+        uint?   _uint   = null;
+        ulong?  _ulong  = null;
+
+        Assert.Throws<CustomNullException>(() => _ushort.IfNullThrow<CustomNullException>());
+        Assert.Throws<CustomNullException>(() => _uint.IfNullThrow<CustomNullException>());
+        Assert.Throws<CustomNullException>(() => _ulong.IfNullThrow<CustomNullException>());
+
+        Assert.Throws<CustomNullException>(() => Check.IfNullThrow<CustomNullException>(_ushort));
+        Assert.Throws<CustomNullException>(() => Check.IfNullThrow<CustomNullException>(_uint));
+        Assert.Throws<CustomNullException>(() => Check.IfNullThrow<CustomNullException>(_ulong));
     }
 
     [Fact]

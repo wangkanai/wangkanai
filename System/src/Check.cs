@@ -30,11 +30,29 @@ public static class Check
         => value ?? throw CreateExceptionInstance<T>(nameof(value));
 
     [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+    public static ushort? IfNullThrow(this ushort? value)
+        => IfNullThrow<ArgumentNullException>(value);
+
+    [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+    public static ushort? IfNullThrow<T>(this ushort? value)
+        where T : Exception
+        => value ?? throw CreateExceptionInstance<T>(nameof(value));
+
+    [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
     public static int? IfNullThrow(this int? value)
         => IfNullThrow<ArgumentNullException>(value);
 
     [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
     public static int? IfNullThrow<T>(this int? value)
+        where T : Exception
+        => value ?? throw CreateExceptionInstance<T>(nameof(value));
+
+    [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+    public static uint? IfNullThrow(this uint? value)
+        => IfNullThrow<ArgumentNullException>(value);
+
+    [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+    public static uint? IfNullThrow<T>(this uint? value)
         where T : Exception
         => value ?? throw CreateExceptionInstance<T>(nameof(value));
 
@@ -46,7 +64,16 @@ public static class Check
     public static long? IfNullThrow<T>(this long? value)
         where T : Exception
         => value ?? throw CreateExceptionInstance<T>(nameof(value));
-    
+
+    [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+    public static ulong? IfNullThrow(this ulong? value)
+        => IfNullThrow<ArgumentNullException>(value);
+
+    [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+    public static ulong? IfNullThrow<T>(this ulong? value)
+        where T : Exception
+        => value ?? throw CreateExceptionInstance<T>(nameof(value));
+
     [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
     public static float? IfNullThrow(this float? value)
         => IfNullThrow<ArgumentNullException>(value);
@@ -74,16 +101,30 @@ public static class Check
         where T : Exception
         => value ?? throw CreateExceptionInstance<T>(nameof(value));
 
+
+    [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+    public static object IfNullThrow<T>(this object value)
+        where T : Exception
+        => value ?? throw CreateExceptionInstance<T>(nameof(value));
+
+    [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+    public static T IfNullThrow<T>(this T value)
+        where T : class
+        => value ?? throw CreateExceptionInstance<ArgumentNullException>(nameof(value));
+
+
     private static T CreateExceptionInstance<T>(string name)
         where T : Exception
         => Activator.CreateInstance(typeof(T), name) as T;
 
-    #region preparedepreciate
+    #region prepare depreciate
 
+    [Obsolete]
     [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
     public static T NotNull<T>([CanBeNull] T value)
         => NotNull(value, nameof(value));
 
+    [Obsolete]
     [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
     internal static T NotNull<T>([CanBeNull] T value, [InvokerParameterName] string parameterName)
         => value is null
