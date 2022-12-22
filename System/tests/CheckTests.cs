@@ -9,8 +9,18 @@ namespace Wangkanai;
 public class CheckTests
 {
     [Fact]
+    public void BooleanIfNullThrow()
+    {
+        bool? _bool = null;
+
+        Assert.Throws<ArgumentNullException>(() => _bool.IfNullThrow());
+        Assert.Throws<CustomNullException>(() => _bool.IfNullThrow<CustomNullException>());
+    }
+
+    [Fact]
     public void IntegralIfNullThrowNullException()
     {
+        sbyte? _sbyte = null;
         byte?  _byte  = null;
         short? _short = null;
         int?   _int   = null;
@@ -20,15 +30,39 @@ public class CheckTests
         uint?   _uint   = null;
         ulong?  _ulong  = null;
 
+        Assert.Throws<ArgumentNullException>(() => _sbyte.IfNullThrow());
         Assert.Throws<ArgumentNullException>(() => _byte.IfNullThrow());
         Assert.Throws<ArgumentNullException>(() => _short.IfNullThrow());
         Assert.Throws<ArgumentNullException>(() => _int.IfNullThrow());
         Assert.Throws<ArgumentNullException>(() => _long.IfNullThrow());
 
+        Assert.Throws<ArgumentNullException>(() => Check.IfNullThrow(_sbyte));
         Assert.Throws<ArgumentNullException>(() => Check.IfNullThrow(_byte));
         Assert.Throws<ArgumentNullException>(() => Check.IfNullThrow(_short));
         Assert.Throws<ArgumentNullException>(() => Check.IfNullThrow(_int));
         Assert.Throws<ArgumentNullException>(() => Check.IfNullThrow(_long));
+    }
+
+    [Fact]
+    public void IntegralIfNullThrowCustomException()
+    {
+        sbyte? _sbyte = null;
+        byte?  _byte  = null;
+        short? _short = null;
+        int?   _int   = null;
+        long?  _long  = null;
+
+        Assert.Throws<CustomNullException>(() => _sbyte.IfNullThrow<CustomNullException>());
+        Assert.Throws<CustomNullException>(() => _byte.IfNullThrow<CustomNullException>());
+        Assert.Throws<CustomNullException>(() => _short.IfNullThrow<CustomNullException>());
+        Assert.Throws<CustomNullException>(() => _int.IfNullThrow<CustomNullException>());
+        Assert.Throws<CustomNullException>(() => _long.IfNullThrow<CustomNullException>());
+
+        Assert.Throws<CustomNullException>(() => Check.IfNullThrow<CustomNullException>(_sbyte));
+        Assert.Throws<CustomNullException>(() => Check.IfNullThrow<CustomNullException>(_byte));
+        Assert.Throws<CustomNullException>(() => Check.IfNullThrow<CustomNullException>(_short));
+        Assert.Throws<CustomNullException>(() => Check.IfNullThrow<CustomNullException>(_int));
+        Assert.Throws<CustomNullException>(() => Check.IfNullThrow<CustomNullException>(_long));
     }
 
     [Fact]
@@ -48,6 +82,18 @@ public class CheckTests
     }
 
     [Fact]
+    public void NativeIntegralIfNull()
+    {
+        nint?  _nint  = null;
+        nuint? _nuint = null;
+
+        Assert.Throws<ArgumentNullException>(() => _nint.IfNullThrow());
+        Assert.Throws<ArgumentNullException>(() => _nuint.IfNullThrow());
+        Assert.Throws<CustomNullException>(() => _nint.IfNullThrow<CustomNullException>());
+        Assert.Throws<CustomNullException>(() => _nuint.IfNullThrow<CustomNullException>());
+    }
+
+    [Fact]
     public void PositiveIntegralIfNullThrowCustomException()
     {
         ushort? _ushort = null;
@@ -63,24 +109,6 @@ public class CheckTests
         Assert.Throws<CustomNullException>(() => Check.IfNullThrow<CustomNullException>(_ulong));
     }
 
-    [Fact]
-    public void IntegralIfNullThrowCustomException()
-    {
-        byte?  _byte  = null;
-        short? _short = null;
-        int?   _int   = null;
-        long?  _long  = null;
-
-        Assert.Throws<CustomNullException>(() => _byte.IfNullThrow<CustomNullException>());
-        Assert.Throws<CustomNullException>(() => _short.IfNullThrow<CustomNullException>());
-        Assert.Throws<CustomNullException>(() => _int.IfNullThrow<CustomNullException>());
-        Assert.Throws<CustomNullException>(() => _long.IfNullThrow<CustomNullException>());
-
-        Assert.Throws<CustomNullException>(() => Check.IfNullThrow<CustomNullException>(_byte));
-        Assert.Throws<CustomNullException>(() => Check.IfNullThrow<CustomNullException>(_short));
-        Assert.Throws<CustomNullException>(() => Check.IfNullThrow<CustomNullException>(_int));
-        Assert.Throws<CustomNullException>(() => Check.IfNullThrow<CustomNullException>(_long));
-    }
 
     [Fact]
     public void FloatingIsNullThrowNullException()

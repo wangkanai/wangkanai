@@ -12,6 +12,24 @@ namespace Wangkanai;
 public static class Check
 {
     [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+    public static bool? IfNullThrow(this bool? value)
+        => IfNullThrow<ArgumentNullException>(value);
+
+    [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+    public static bool? IfNullThrow<T>(this bool? value)
+        where T : Exception
+        => value ?? throw CreateExceptionInstance<T>(nameof(value));
+    
+    [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+    public static sbyte? IfNullThrow(this sbyte? value)
+        => IfNullThrow<ArgumentNullException>(value);
+
+    [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+    public static sbyte? IfNullThrow<T>(this sbyte? value)
+        where T : Exception
+        => value ?? throw CreateExceptionInstance<T>(nameof(value));
+    
+    [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
     public static byte? IfNullThrow(this byte? value)
         => IfNullThrow<ArgumentNullException>(value);
 
@@ -56,6 +74,24 @@ public static class Check
         where T : Exception
         => value ?? throw CreateExceptionInstance<T>(nameof(value));
 
+    [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+    public static nint? IfNullThrow(this nint? value)
+        => IfNullThrow<ArgumentNullException>(value);
+
+    [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+    public static nint? IfNullThrow<T>(this nint? value)
+        where T : Exception
+        => value ?? throw CreateExceptionInstance<T>(nameof(value));
+    
+    [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+    public static nuint? IfNullThrow(this nuint? value)
+        => IfNullThrow<ArgumentNullException>(value);
+
+    [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+    public static nuint? IfNullThrow<T>(this nuint? value)
+        where T : Exception
+        => value ?? throw CreateExceptionInstance<T>(nameof(value));
+    
     [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
     public static long? IfNullThrow(this long? value)
         => IfNullThrow<ArgumentNullException>(value);
