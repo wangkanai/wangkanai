@@ -11,6 +11,7 @@ namespace Wangkanai;
 [DebuggerStepThrough]
 public static class Check
 {
+    #region IfNullThrow
     [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
     public static bool? IfNullThrow(this bool? value)
         => IfNullThrow<ArgumentNullException>(value);
@@ -172,6 +173,15 @@ public static class Check
         where T : Exception
         => Activator.CreateInstance(typeof(T), name) as T;
 
+    #endregion
+
+    #region IfNullThen
+
+    public static bool IfNullThen<T>(this T value)
+        => value is null;
+
+    #endregion
+    
     #region prepare depreciate
 
     [Obsolete]

@@ -8,6 +8,8 @@ namespace Wangkanai;
 
 public class CheckTests
 {
+    #region IfNullThrow
+
     [Fact]
     public void BooleanIfNullThrow()
     {
@@ -141,6 +143,60 @@ public class CheckTests
         Assert.Throws<CustomNullException>(() => Check.IfNullThrow<CustomNullException>(_double));
         Assert.Throws<CustomNullException>(() => Check.IfNullThrow<CustomNullException>(_decimal));
     }
+
+    #endregion
+
+    #region IfNullThen
+
+    [Fact]
+    public void IfNullThenReturnTrue()
+    {
+        byte?    _byte    = null;
+        short?   _short   = null;
+        int?     _int     = null;
+        long?    _long    = null;
+        float?   _float   = null;
+        double?  _double  = null;
+        decimal? _decimal = null;
+        char?    _char    = null;
+        string?  _string  = null;
+
+        Assert.True(_byte.IfNullThen());
+        Assert.True(_short.IfNullThen());
+        Assert.True(_int.IfNullThen());
+        Assert.True(_long.IfNullThen());
+        Assert.True(_float.IfNullThen());
+        Assert.True(_double.IfNullThen());
+        Assert.True(_decimal.IfNullThen());
+        Assert.True(_char.IfNullThen());
+        Assert.True(_string.IfNullThen());
+    }
+
+    [Fact]
+    public void IfNotNullThenReturnFalse()
+    {
+        byte?    _byte    = 0;
+        short?   _short   = 0;
+        int?     _int     = 0;
+        long?    _long    = 0;
+        float?   _float   = 0;
+        double?  _double  = 0.0;
+        decimal? _decimal = 0;
+        char?    _char    = 'a';
+        string?  _string  = "xyz";
+
+        Assert.False(_byte.IfNullThen());
+        Assert.False(_short.IfNullThen());
+        Assert.False(_int.IfNullThen());
+        Assert.False(_long.IfNullThen());
+        Assert.False(_float.IfNullThen());
+        Assert.False(_double.IfNullThen());
+        Assert.False(_decimal.IfNullThen());
+        Assert.False(_char.IfNullThen());
+        Assert.False(_string.IfNullThen());
+    }
+
+    #endregion
 
     [Fact]
     public void StringIfNullThrow()
