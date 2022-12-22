@@ -1,5 +1,7 @@
 // Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
+using System.Runtime.CompilerServices;
+
 using Wangkanai.Exceptions;
 using Wangkanai.Extensions;
 using Wangkanai.Resources;
@@ -10,34 +12,80 @@ namespace Wangkanai;
 public static class Check
 {
     [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
-    public static T IfNullThrow<T>(this T value)
-        => IfNullThrow(value, nameof(value));
+    public static byte? IfNullThrow(this byte? value)
+        => IfNullThrow<ArgumentNullException>(value);
 
     [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
-    internal static T IfNullThrow<T>(T value, [InvokerParameterName] string name)
-        => value is null
-               ? throw new ArgumentNullException(name)
-               : value;
+    public static byte? IfNullThrow<T>(this byte? value)
+        where T : Exception
+        => value ?? throw CreateExceptionInstance<T>(nameof(value));
 
     [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
-    public static void IfNullThrow<TException, TValue>([CanBeNull] TValue value)
-        where TException : Exception
-        => Check.IfNullThrow<TException, TValue>(value, nameof(value));
+    public static short? IfNullThrow(this short? value)
+        => IfNullThrow<ArgumentNullException>(value);
 
     [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
-    public static void IfNullThrow<TException, TValue>([CanBeNull] TValue value, string name)
-        where TException : Exception
-    {
-        if (value is null)
-            throw (TException)Activator.CreateInstance(typeof(TException), name);
-    }
+    public static short? IfNullThrow<T>(this short? value)
+        where T : Exception
+        => value ?? throw CreateExceptionInstance<T>(nameof(value));
 
     [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
-    public static T NotNull<T>(T value)
+    public static int? IfNullThrow(this int? value)
+        => IfNullThrow<ArgumentNullException>(value);
+
+    [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+    public static int? IfNullThrow<T>(this int? value)
+        where T : Exception
+        => value ?? throw CreateExceptionInstance<T>(nameof(value));
+
+    [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+    public static long? IfNullThrow(this long? value)
+        => IfNullThrow<ArgumentNullException>(value);
+
+    [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+    public static long? IfNullThrow<T>(this long? value)
+        where T : Exception
+        => value ?? throw CreateExceptionInstance<T>(nameof(value));
+    
+    [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+    public static float? IfNullThrow(this float? value)
+        => IfNullThrow<ArgumentNullException>(value);
+
+    [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+    public static float? IfNullThrow<T>(this float? value)
+        where T : Exception
+        => value ?? throw CreateExceptionInstance<T>(nameof(value));
+
+    [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+    public static double? IfNullThrow(this double? value)
+        => IfNullThrow<ArgumentNullException>(value);
+
+    [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+    public static double? IfNullThrow<T>(this double? value)
+        where T : Exception
+        => value ?? throw CreateExceptionInstance<T>(nameof(value));
+
+    [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+    public static decimal? IfNullThrow(this decimal? value)
+        => IfNullThrow<ArgumentNullException>(value);
+
+    [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+    public static decimal? IfNullThrow<T>(this decimal? value)
+        where T : Exception
+        => value ?? throw CreateExceptionInstance<T>(nameof(value));
+
+    private static T CreateExceptionInstance<T>(string name)
+        where T : Exception
+        => Activator.CreateInstance(typeof(T), name) as T;
+
+    #region preparedepreciate
+
+    [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+    public static T NotNull<T>([CanBeNull] T value)
         => NotNull(value, nameof(value));
 
     [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
-    internal static T NotNull<T>(T value, [InvokerParameterName] string parameterName)
+    internal static T NotNull<T>([CanBeNull] T value, [InvokerParameterName] string parameterName)
         => value is null
                ? throw new ArgumentNullException(parameterName)
                : value;
@@ -61,6 +109,8 @@ public static class Check
         => value.IsNullOrEmpty()
                ? throw new ArgumentNullOrEmptyException(parameterName)
                : true;
+
+    #endregion
 
     [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
     public static bool NotEqual(this int value, int expected)

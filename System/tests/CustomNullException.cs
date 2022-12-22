@@ -4,6 +4,14 @@ namespace Wangkanai;
 
 public class CustomNullException : ArgumentNullException
 {
-    public static CustomNullException CreateInstance() 
+    public CustomNullException() 
+        : base() { }
+    public CustomNullException(string message) 
+        : base(message) { }
+    public CustomNullException(string message, Exception innerException) 
+        : base(message, innerException) { }
+    
+
+    public static CustomNullException CreateInstance()
         => new CustomNullException();
 }
