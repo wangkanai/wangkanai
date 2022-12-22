@@ -143,6 +143,19 @@ public class CheckTests
     }
 
     [Fact]
+    public void StringIfNullThrow()
+    {
+        char?   _char   = null;
+        string? _string = null;
+
+        Assert.Throws<ArgumentNullException>(() => _char.IfNullThrow());
+        Assert.Throws<ArgumentNullException>(() => _string.IfNullThrow());
+
+        Assert.Throws<CustomNullException>(() => _char.IfNullThrow<CustomNullException>());
+        Assert.Throws<CustomNullException>(() => _string.IfNullThrow<CustomNullException>());
+    }
+
+    [Fact]
     public void IntegralIsNull()
     {
         byte?  byte1  = null;
