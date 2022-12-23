@@ -72,10 +72,10 @@ internal static class ExecuteExtensions
     }
 
     internal static bool ProcessArguments(
-        this CommandLineApplication      command,
-        string                           arg,
-        ref IEnumerator<CommandArgument> arguments,
-        ref bool                         processed)
+        this CommandLineApplication       command,
+        string                            arg,
+        ref IEnumerator<CommandArgument>? arguments,
+        ref bool                          processed)
     {
         if (arguments == null)
             arguments = new CommandArgumentEnumerator(command.Arguments.GetEnumerator());
@@ -96,7 +96,7 @@ internal static class ExecuteExtensions
         ref CommandOption?          option)
     {
         processed = true;
-        if (!option.TryParse(arg))
+        if (option != null && !option.TryParse(arg))
         {
             command.ShowHint();
             throw new CommandParsingException(command, $"Unexpected value '{arg}' for option '{option.LongName}'");

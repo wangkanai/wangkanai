@@ -9,7 +9,7 @@ public sealed class CommandArgument
         Values = new List<string>();
     }
 
-    public string       Value          => Values.FirstOrDefault();
+    public string?       Value          => Values.FirstOrDefault();
     public List<string> Values         { get; }
     public string?      Name           { get; set; }
     public string?      Description    { get; set; }
