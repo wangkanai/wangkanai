@@ -14,7 +14,7 @@ public static class WebmasterApplicationExtensions
 {
     public static IApplicationBuilder UseWebmaster(this IApplicationBuilder app)
     {
-        Check.NotNull(app);
+        app.IfNullThrow();
 
         app.Validate();
         app.VerifyMarkerIsRegistered<WebmasterMarkerService>();
