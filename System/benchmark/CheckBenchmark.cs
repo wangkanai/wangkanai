@@ -9,8 +9,8 @@ public class CheckBenchmark
     public void CheckNull()
     {
         string i = null;
-        Check.NotNull(i);
-        Check.NotNull("");
+        i.IfNullThrow();
+        "".IfNullThrow();
         Check.NotNullOrEmpty(i);
         Check.NotNullOrEmpty("");
     }

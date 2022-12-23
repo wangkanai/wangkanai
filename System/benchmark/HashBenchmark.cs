@@ -21,13 +21,7 @@ public class HashBenchmark
         for (int i = 0; i < 100_000; i++)
             text.HashMd5();
     }
-
-    [Benchmark]
-    public void Sha1()
-    {
-        for (int i = 0; i < 100_000; i++)
-            text.HashSha1();
-    }
+    
 
     [Benchmark]
     public void Sha256()
