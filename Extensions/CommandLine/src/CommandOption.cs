@@ -13,8 +13,8 @@ public sealed class CommandOption
     public string Description    { get; set; }
     public bool   ShowInHelpText { get; set; } = true;
 
-    public List<string>      Values     { get; private set; }
-    public CommandOptionType OptionType { get; private set; }
+    public List<string>      Values     { get; }
+    public CommandOptionType OptionType { get; }
     
     public CommandOption(string template, CommandOptionType optionType)
     {

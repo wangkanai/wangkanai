@@ -10,9 +10,9 @@ public sealed class CommandArgument
     }
 
     public string       Value          => Values.FirstOrDefault();
-    public List<string> Values         { get; private set; }
-    public string       Name           { get; set; }
+    public List<string> Values         { get; }
+    public string?      Name           { get; set; }
+    public string?      Description    { get; set; }
     public bool         ShowInHelpText { get; set; }
-    public string       Description    { get; set; }
     public bool         MultipleValues { get; set; }
 }

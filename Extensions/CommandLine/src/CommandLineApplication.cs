@@ -188,7 +188,8 @@ public class CommandLineApplication
                         command.ShowHelp();
                         return 0;
                     }
-                    else if (command.OptionVersion == option)
+
+                    if (command.OptionVersion == option)
                     {
                         command.ShowVersion();
                         return 0;
@@ -239,7 +240,8 @@ public class CommandLineApplication
                         command.ShowHelp();
                         return 0;
                     }
-                    else if (command.OptionVersion == option)
+
+                    if (command.OptionVersion == option)
                     {
                         command.ShowVersion();
                         return 0;
@@ -299,16 +301,18 @@ public class CommandLineApplication
     }
 
     public CommandOption VersionOption(
-        string template,
-        string shortFormVersion,
-        string longFormVersion = null)
-        => longFormVersion == null ? VersionOption(template, () => shortFormVersion) : VersionOption(template, () => shortFormVersion, () => longFormVersion);
+        string  template,
+        string  shortFormVersion,
+        string? longFormVersion = null)
+        => longFormVersion == null 
+               ? VersionOption(template, () => shortFormVersion) 
+               : VersionOption(template, () => shortFormVersion, () => longFormVersion);
 
     // Helper method that adds a version option
     public CommandOption VersionOption(
-        string       template,
-        Func<string> shortFormVersionGetter,
-        Func<string> longFormVersionGetter = null)
+        string        template,
+        Func<string>  shortFormVersionGetter,
+        Func<string>? longFormVersionGetter = null)
     {
         // Version option is special because we stop parsing once we see it
         // So we store it separately for further use
@@ -327,7 +331,7 @@ public class CommandLineApplication
     }
 
     // Show full help
-    public void ShowHelp(string commandName = null)
+    public void ShowHelp(string? commandName = null)
     {
         for (var cmd = this; cmd != null; cmd = cmd.Parent)
             cmd.IsShowingInformation = true;
@@ -335,7 +339,7 @@ public class CommandLineApplication
         Out.WriteLine(GetHelpText(commandName));
     }
 
-    public virtual string GetHelpText(string commandName = null)
+    public virtual string GetHelpText(string? commandName = null)
     {
         var headerBuilder = new StringBuilder("Usage:");
         for (var cmd = this; cmd != null; cmd = cmd.Parent)
@@ -424,12 +428,7 @@ public class CommandLineApplication
         nameAndVersion.AppendLine(GetFullNameAndVersion());
         nameAndVersion.AppendLine();
 
-        return nameAndVersion.ToString()
-               + headerBuilder.ToString()
-               + argumentsBuilder.ToString()
-               + optionsBuilder.ToString()
-               + commandsBuilder.ToString()
-               + target.ExtendedHelpText;
+        return nameAndVersion.ToString() + headerBuilder + argumentsBuilder + optionsBuilder + commandsBuilder + target.ExtendedHelpText;
     }
 
     public void ShowVersion()
@@ -442,7 +441,9 @@ public class CommandLineApplication
     }
 
     public string GetFullNameAndVersion()
-        => ShortVersionGetter == null ? FullName : string.Format(CultureInfo.InvariantCulture, "{0} {1}", FullName, ShortVersionGetter());
+        => ShortVersionGetter == null 
+               ? FullName 
+               : string.Format(CultureInfo.InvariantCulture, "{0} {1}", FullName, ShortVersionGetter());
 
     public void ShowRootCommandFullNameAndVersion()
     {
@@ -466,17 +467,16 @@ public class CommandLineApplication
             command.ShowHint();
             throw new CommandParsingException(command, $"Unrecognized {argTypeName} '{args[index]}'");
         }
-        else if (_continueAfterUnexpectedArg && !ignoreContinueAfterUnexpectedArg)
+
+        if (_continueAfterUnexpectedArg && !ignoreContinueAfterUnexpectedArg)
         {
             // Store argument for further use.
             command.RemainingArguments.Add(args[index]);
             return true;
         }
-        else
-        {
-            // Store all remaining arguments for later use.
-            command.RemainingArguments.AddRange(new ArraySegment<string>(args, index, args.Length - index));
-            return false;
-        }
+
+        // Store all remaining arguments for later use.
+        command.RemainingArguments.AddRange(new ArraySegment<string>(args, index, args.Length - index));
+        return false;
     }
 }

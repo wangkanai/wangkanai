@@ -194,6 +194,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Html", "Html", "{DFCE57F8-C
 	ProjectSection(SolutionItems) = preProject
 		Extensions\Html\Directory.Build.props = Extensions\Html\Directory.Build.props
 		Extensions\Html\README.md = Extensions\Html\README.md
+		Extensions\Html\sign.ps1 = Extensions\Html\sign.ps1
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Graph", "Graph", "{49CEF064-6C6A-40E0-9EC6-05D62D127DFD}"
