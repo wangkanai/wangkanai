@@ -7,23 +7,8 @@ namespace Wangkanai.Exceptions;
 [Serializable]
 public class ArgumentMoreThanException : ArgumentException
 {
-    public ArgumentMoreThanException()
-        : base(SystemResources.ArgumentMoreThanGeneric)
-    {
-    }
-
-    public ArgumentMoreThanException(string paramName)
-        : base(SystemResources.ArgumentMoreThanGeneric, paramName)
-    {
-    }
-
-    public ArgumentMoreThanException(string message, Exception innerException)
-        : base(message, innerException)
-    {
-    }
-
-    public ArgumentMoreThanException(string paramName, string message)
-        : base(message, paramName)
-    {
-    }
+    public ArgumentMoreThanException() : base(SystemResources.ArgumentMoreThanGeneric) { }
+    public ArgumentMoreThanException(string paramName) : base(SystemResources.ArgumentMoreThanGeneric, paramName) { }
+    public ArgumentMoreThanException(string message,   Exception innerException) : base(message, innerException) { }
+    public ArgumentMoreThanException(string paramName, string    message) : base(message, paramName) { }
 }

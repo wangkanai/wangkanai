@@ -23,8 +23,8 @@ public static class CollectionExtension
     /// <exception cref="System.ArgumentNullException">An <see cref="System.ArgumentNullException"/> is thrown if <paramref name="collection"/> or <paramref name="items"/> is <see langword="null"/>.</exception>
     public static ICollection<T> AddRange<T>(this ICollection<T> collection, IEnumerable<T> items)
     {
-        Check.NotNull(collection);
-        Check.NotNull(items);
+        collection.IfNullThrow();
+        items.IfNullThrow();
 
         foreach (var each in items)
             collection.Add(each);
@@ -37,8 +37,8 @@ public static class CollectionExtension
 
     public static void AddDistinct<T>(this ICollection<T> obj, IEqualityComparer<T> comparer, params T[] items)
     {
-        Check.NotNull(obj);
-        Check.NotNull(items);
+        obj.IfNullThrow();
+        items.IfNullThrow();
 
         foreach (var item in items)
         {
@@ -51,7 +51,7 @@ public static class CollectionExtension
 
     public static void Replace<T>(this ICollection<T> obj, IEnumerable<T> newItems)
     {
-        Check.NotNull(obj);
+        obj.IfNullThrow();
 
         obj.Clear();
         obj.AddRange(newItems);

@@ -14,7 +14,7 @@ public static class IQueryableExtensions
 
     public static IOrderedQueryable<T> ApplyOrder<T>(IQueryable<T> source, string property, string method)
     {
-        Check.NotNull(property);
+        property.IfNullThrow();
 
         IOrderedQueryable<T> result = null;
 

@@ -8,11 +8,9 @@ public static class AssemblyVersion
         => AssemblyInformationVersion<AssemblyInformationalVersionAttribute>().InformationalVersion;
 
     private static Assembly EntryAssembly
-        => Check.NotNull(Assembly.GetEntryAssembly());
+        => Assembly.GetEntryAssembly().IfNullThrow();
 
     private static T AssemblyInformationVersion<T>()
         where T : Attribute
-    {
-        return Check.NotNull(EntryAssembly.GetCustomAttribute<T>());
-    }
+        => EntryAssembly.GetCustomAttribute<T>().IfNullThrow();
 }
