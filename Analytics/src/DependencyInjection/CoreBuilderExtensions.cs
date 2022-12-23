@@ -11,7 +11,7 @@ internal static class CoreBuilderExtensions
 {
     public static IAnalyticsBuilder AddRequiredServices(this IAnalyticsBuilder builder)
     {
-        Check.NotNull(builder);
+        builder.IfNullThrow();
 
         // Add Analytics options
         builder.Services.AddOptions();
