@@ -7,7 +7,7 @@ public sealed class SendGridBuilder : ISendGridBuilder
 {
     public SendGridBuilder(IServiceCollection services)
     {
-        Services = Check.NotNull(services);
+        Services = services.IfNullThrow();
     }
 
     public IServiceCollection Services { get; }
