@@ -329,15 +329,12 @@ internal static class RenderTreeDiffBuilder
 
     private static object KeyValue(ref RenderTreeFrame frame)
     {
-        switch (frame.FrameTypeField)
+        return frame.FrameTypeField switch
         {
-            case RenderTreeFrameType.Element:
-                return frame.ElementKeyField;
-            case RenderTreeFrameType.Component:
-                return frame.ComponentKeyField;
-            default:
-                return null;
-        }
+            RenderTreeFrameType.Element   => frame.ElementKeyField,
+            RenderTreeFrameType.Component => frame.ComponentKeyField,
+            _                             => null
+        };
     }
 
     private static void AppendAttributeDiffEntriesForRange(
