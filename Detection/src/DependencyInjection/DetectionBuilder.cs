@@ -13,7 +13,7 @@ public class DetectionBuilder : IDetectionBuilder
     /// <param name="services">The <see cref="IServiceCollection" /> to attach to.</param>
     public DetectionBuilder(IServiceCollection services)
     {
-        Services = Check.NotNull(services);
+        Services = services.IfNullThrow();
     }
 
     /// <summary>
