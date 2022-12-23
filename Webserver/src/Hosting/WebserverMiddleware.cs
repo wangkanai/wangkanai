@@ -9,11 +9,11 @@ public sealed class WebserverMiddleware
     private readonly RequestDelegate _next;
 
     public WebserverMiddleware(RequestDelegate next)
-        => _next = Check.NotNull(next);
+        => _next = next.IfNullThrow();
 
     public async Task InvokeAsync(HttpContext context)
     {
-        Check.NotNull(context);
+        context.IfNullThrow();
 
         await _next(context).ConfigureAwait(false);
     }

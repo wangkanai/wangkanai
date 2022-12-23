@@ -25,11 +25,11 @@ public class LanguageRouteContraintTests
     public void English(string routeValue, bool shouldMatch)
     {
         // arrage
-        var contraint = new EnglishLanguageRouteConstraint();
+        var constraint = new EnglishLanguageRouteConstraint();
         var values = new RouteValueDictionary(new { controller = routeValue });
 
         // act
-        bool match = Match(contraint, values);
+        bool match = Match(constraint, values);
 
         // assert
         Assert.Equal(shouldMatch, match);
@@ -48,11 +48,11 @@ public class LanguageRouteContraintTests
     public void Thai(string routeValue, bool shouldMatch)
     {
         // arrage
-        var contraint = new ThaiLanguageRouteConstraint();
+        var constraint = new ThaiLanguageRouteConstraint();
         var values = new RouteValueDictionary(new { controller = routeValue });
 
         // act
-        bool match = Match(contraint, values);
+        bool match = Match(constraint, values);
 
         // assert
         Assert.Equal(shouldMatch, match);
@@ -71,11 +71,11 @@ public class LanguageRouteContraintTests
     public void Lao(string routeValue, bool shouldMatch)
     {
         // arrage
-        var contraint = new LaoLanguageRouteConstraint();
+        var constraint = new LaoLanguageRouteConstraint();
         var values = new RouteValueDictionary(new { controller = routeValue });
 
         // act
-        bool match = Match(contraint, values);
+        bool match = Match(constraint, values);
 
         // assert
         Assert.Equal(shouldMatch, match);
@@ -94,11 +94,11 @@ public class LanguageRouteContraintTests
     public void Myanmar(string routeValue, bool shouldMatch)
     {
         // arrage
-        var contraint = new MyanmarLanguageRouteConstraint();
+        var constraint = new MyanmarLanguageRouteConstraint();
         var values = new RouteValueDictionary(new { controller = routeValue });
 
         // act
-        bool match = Match(contraint, values);
+        bool match = Match(constraint, values);
 
         // assert
         Assert.Equal(shouldMatch, match);

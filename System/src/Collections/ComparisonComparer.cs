@@ -8,7 +8,7 @@ public sealed class ComparisonComparer<T> : IComparer<T>
 
     public ComparisonComparer(Comparison<T> comparison)
     {
-        Check.NotNull(comparison);
+        comparison.IfNullThrow();
         this.comparison = comparison;
     }
 
@@ -17,7 +17,7 @@ public sealed class ComparisonComparer<T> : IComparer<T>
 
     public static Comparison<T> CreateComparison(IComparer<T> comparer)
     {
-        Check.NotNull(comparer);
+        comparer.IfNullThrow();
         return delegate(T x, T y) { return comparer.Compare(x, y); };
     }
 }

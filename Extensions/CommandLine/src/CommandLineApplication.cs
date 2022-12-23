@@ -24,28 +24,28 @@ public class CommandLineApplication
         Invoke             = () => 0;
     }
 
-    public CommandLineApplication Parent { get; set; }
+    public CommandLineApplication? Parent { get; set; }
 
-    public string Name                   { get; set; }
-    public string FullName               { get; set; }
-    public string Syntax                 { get; set; }
-    public string Description            { get; set; }
-    public string ExtendedHelpText       { get; set; }
-    public bool   ShowInHelpText         { get; set; } = true;
-    public bool   IsShowingInformation   { get; set; } // Is showing help or version?
-    public bool   AllowArgumentSeparator { get; set; }
+    public string? Name                   { get; set; }
+    public string? FullName               { get; set; }
+    public string? Syntax                 { get; set; }
+    public string? Description            { get; set; }
+    public string? ExtendedHelpText       { get; set; }
+    public bool    ShowInHelpText         { get; set; } = true;
+    public bool    IsShowingInformation   { get; set; } // Is showing help or version?
+    public bool    AllowArgumentSeparator { get; set; }
 
-    public CommandOption OptionHelp    { get; private set; }
-    public CommandOption OptionVersion { get; private set; }
+    public CommandOption? OptionHelp    { get; private set; }
+    public CommandOption? OptionVersion { get; private set; }
 
     public readonly List<CommandOption>          Options;
     public readonly List<CommandArgument>        Arguments;
     public readonly List<CommandLineApplication> Commands;
     public readonly List<string>                 RemainingArguments;
 
-    public Func<int>    Invoke             { get; set; }
-    public Func<string> LongVersionGetter  { get; set; }
-    public Func<string> ShortVersionGetter { get; set; }
+    public Func<int>     Invoke             { get; set; }
+    public Func<string>? LongVersionGetter  { get; set; }
+    public Func<string>? ShortVersionGetter { get; set; }
 
     public TextWriter Out   { get; set; } = Console.Out;
     public TextWriter Error { get; set; } = Console.Error;
@@ -134,19 +134,21 @@ public class CommandLineApplication
 
     public int Execute(params string[] args)
     {
-        CommandLineApplication       command           = this;
-        CommandOption                option            = null;
-        IEnumerator<CommandArgument> arguments         = null;
-        var                          argumentsAssigned = false;
+        CommandLineApplication        command           = this;
+        CommandOption?                option            = null;
+        IEnumerator<CommandArgument>? arguments         = null;
+        var                           argumentsAssigned = false;
 
+        command.IfNullThrow();
+        
         for (var index = 0; index < args.Length; index++)
         {
             var arg       = args[index];
             var processed = false;
             if (!processed && option == null)
             {
-                string[] longOption  = null;
-                string[] shortOption = null;
+                string[]? longOption  = null;
+                string[]? shortOption = null;
 
                 if (arg.StartsWith("--", StringComparison.Ordinal))
                     longOption = arg.Substring(2).Split(new[] { ':', '=' }, 2);
@@ -167,7 +169,7 @@ public class CommandLineApplication
                     {
                         var ignoreContinueAfterUnexpectedArg = false;
                         if (string.IsNullOrEmpty(longOptionName) &&
-                            !command._throwOnUnexpectedArg       &&
+                            !command._throwOnUnexpectedArg &&
                             AllowArgumentSeparator)
                         {
                             // Skip over the '--' argument separator then consume all remaining arguments. All
@@ -188,7 +190,8 @@ public class CommandLineApplication
                         command.ShowHelp();
                         return 0;
                     }
-                    else if (command.OptionVersion == option)
+
+                    if (command.OptionVersion == option)
                     {
                         command.ShowVersion();
                         return 0;
@@ -207,7 +210,7 @@ public class CommandLineApplication
                     else if (option.OptionType == CommandOptionType.NoValue)
                     {
                         // No value is needed for this option
-                        option.TryParse(null);
+                        option.TryParse(null!);
                         option = null;
                     }
                 }
@@ -239,7 +242,8 @@ public class CommandLineApplication
                         command.ShowHelp();
                         return 0;
                     }
-                    else if (command.OptionVersion == option)
+
+                    if (command.OptionVersion == option)
                     {
                         command.ShowVersion();
                         return 0;
@@ -258,7 +262,7 @@ public class CommandLineApplication
                     else if (option.OptionType == CommandOptionType.NoValue)
                     {
                         // No value is needed for this option
-                        option.TryParse(null);
+                        option.TryParse(null!);
                         option = null;
                     }
                 }
@@ -299,16 +303,18 @@ public class CommandLineApplication
     }
 
     public CommandOption VersionOption(
-        string template,
-        string shortFormVersion,
-        string longFormVersion = null)
-        => longFormVersion == null ? VersionOption(template, () => shortFormVersion) : VersionOption(template, () => shortFormVersion, () => longFormVersion);
+        string  template,
+        string  shortFormVersion,
+        string? longFormVersion = null)
+        => longFormVersion == null
+               ? VersionOption(template, () => shortFormVersion)
+               : VersionOption(template, () => shortFormVersion, () => longFormVersion);
 
     // Helper method that adds a version option
     public CommandOption VersionOption(
-        string       template,
-        Func<string> shortFormVersionGetter,
-        Func<string> longFormVersionGetter = null)
+        string        template,
+        Func<string>  shortFormVersionGetter,
+        Func<string>? longFormVersionGetter = null)
     {
         // Version option is special because we stop parsing once we see it
         // So we store it separately for further use
@@ -327,7 +333,7 @@ public class CommandLineApplication
     }
 
     // Show full help
-    public void ShowHelp(string commandName = null)
+    public void ShowHelp(string? commandName = null)
     {
         for (var cmd = this; cmd != null; cmd = cmd.Parent)
             cmd.IsShowingInformation = true;
@@ -335,7 +341,7 @@ public class CommandLineApplication
         Out.WriteLine(GetHelpText(commandName));
     }
 
-    public virtual string GetHelpText(string commandName = null)
+    public virtual string GetHelpText(string? commandName = null)
     {
         var headerBuilder = new StringBuilder("Usage:");
         for (var cmd = this; cmd != null; cmd = cmd.Parent)
@@ -347,7 +353,7 @@ public class CommandLineApplication
             target = this;
         else
         {
-            target = Commands.SingleOrDefault(cmd => string.Equals(cmd.Name, commandName, StringComparison.OrdinalIgnoreCase));
+            target = Commands.SingleOrDefault(cmd => string.Equals(cmd.Name, commandName, StringComparison.OrdinalIgnoreCase))!;
 
             if (target != null)
                 headerBuilder.AppendFormat(CultureInfo.InvariantCulture, " {0}", commandName);
@@ -424,12 +430,7 @@ public class CommandLineApplication
         nameAndVersion.AppendLine(GetFullNameAndVersion());
         nameAndVersion.AppendLine();
 
-        return nameAndVersion.ToString()
-               + headerBuilder.ToString()
-               + argumentsBuilder.ToString()
-               + optionsBuilder.ToString()
-               + commandsBuilder.ToString()
-               + target.ExtendedHelpText;
+        return nameAndVersion.ToString() + headerBuilder + argumentsBuilder + optionsBuilder + commandsBuilder + target.ExtendedHelpText;
     }
 
     public void ShowVersion()
@@ -438,11 +439,13 @@ public class CommandLineApplication
             cmd.IsShowingInformation = true;
 
         Out.WriteLine(FullName);
-        Out.WriteLine(LongVersionGetter());
+        Out.WriteLine(LongVersionGetter!());
     }
 
-    public string GetFullNameAndVersion()
-        => ShortVersionGetter == null ? FullName : string.Format(CultureInfo.InvariantCulture, "{0} {1}", FullName, ShortVersionGetter());
+    public string? GetFullNameAndVersion()
+        => ShortVersionGetter == null
+                ? FullName
+                : string.Format(CultureInfo.InvariantCulture, "{0} {1}", FullName, ShortVersionGetter());
 
     public void ShowRootCommandFullNameAndVersion()
     {
@@ -466,17 +469,16 @@ public class CommandLineApplication
             command.ShowHint();
             throw new CommandParsingException(command, $"Unrecognized {argTypeName} '{args[index]}'");
         }
-        else if (_continueAfterUnexpectedArg && !ignoreContinueAfterUnexpectedArg)
+
+        if (_continueAfterUnexpectedArg && !ignoreContinueAfterUnexpectedArg)
         {
             // Store argument for further use.
             command.RemainingArguments.Add(args[index]);
             return true;
         }
-        else
-        {
-            // Store all remaining arguments for later use.
-            command.RemainingArguments.AddRange(new ArraySegment<string>(args, index, args.Length - index));
-            return false;
-        }
+
+        // Store all remaining arguments for later use.
+        command.RemainingArguments.AddRange(new ArraySegment<string>(args, index, args.Length - index));
+        return false;
     }
 }

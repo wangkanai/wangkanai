@@ -40,9 +40,9 @@ internal static class ApplicationExtensions
         var attribute = assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>();
 
         var versionAttribute = attribute == null
-                                   ? assembly.GetName().Version.ToString()
+                                   ? assembly.GetName().Version?.ToString()
                                    : attribute.InformationalVersion;
 
-        return versionAttribute;
+        return versionAttribute.IfNullThrow() ?? throw new InvalidOperationException();
     }
 }

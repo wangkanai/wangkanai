@@ -6,7 +6,7 @@ namespace Wangkanai.Tabler;
 
 public abstract class TablerComponentBase : BlazorComponentBase, ITablerComponentBase, IDisposable
 {
-    protected bool Disposed { get; private set; }
+    protected new bool Disposed { get; private set; }
 
     public new virtual void Dispose()
     {

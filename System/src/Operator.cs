@@ -3,6 +3,7 @@
 using System.Linq.Expressions;
 
 using Wangkanai.Linq;
+using Wangkanai.Operators;
 
 namespace Wangkanai;
 
@@ -165,8 +166,7 @@ public static class Operator<TValue, TResult>
 
     static Operator()
     {
-        convert = ExpressionFactory.Create<TValue, TResult>(body => Expression.Convert(body, typeof(TResult)));
-
+        convert  = ExpressionFactory.Create<TValue, TResult>(body => Expression.Convert(body, typeof(TResult)));
         add      = ExpressionFactory.Create<TResult, TValue, TResult>(Expression.Add, true);
         subtract = ExpressionFactory.Create<TResult, TValue, TResult>(Expression.Subtract, true);
         multiply = ExpressionFactory.Create<TResult, TValue, TResult>(Expression.Multiply, true);

@@ -15,7 +15,7 @@ public static class ResponsiveCoreBuilderExtensions
 {
     public static IResponsiveBuilder AddRequiredPlatformServices(this IResponsiveBuilder builder)
     {
-        Check.NotNull(builder);
+        builder.IfNullThrow();
 
         // Hosting doesn't add IHttpContextAccessor by default
         builder.Services.AddHttpContextAccessor();

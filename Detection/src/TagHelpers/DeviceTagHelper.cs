@@ -33,8 +33,8 @@ public class DeviceTagHelper : TagHelper
 
     public override void Process(TagHelperContext context, TagHelperOutput output)
     {
-        Check.NotNull(context);
-        Check.NotNull(output);
+        context.IfNullThrow();
+        output.IfNullThrow();
 
         output.TagName = null;
 

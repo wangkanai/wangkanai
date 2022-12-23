@@ -12,7 +12,7 @@ public static class ResponsiveApplicationExtensions
 {
     public static IApplicationBuilder UseResponsive(this IApplicationBuilder app)
     {
-        Check.NotNull(app);
+        app.IfNullThrow();
 
         var options = app.ApplicationServices.GetRequiredService<ResponsiveOptions>();
         var context = app.ApplicationServices.GetRequiredService<IHttpContextAccessor>()?.HttpContext;

@@ -37,9 +37,10 @@ public abstract class ValueObject : IValueObject, ICacheKey, ICloneable
         }
     }
 
-    public static bool operator ==(ValueObject left, ValueObject right) 
+    public static bool operator ==(ValueObject left, ValueObject right)
         => Equals(left, right);
-    public static bool operator !=(ValueObject left, ValueObject right) 
+
+    public static bool operator !=(ValueObject left, ValueObject right)
         => !Equals(left, right);
 
     public override string ToString()
@@ -79,10 +80,8 @@ public abstract class ValueObject : IValueObject, ICacheKey, ICloneable
     }
 
     public virtual IEnumerable<PropertyInfo> GetProperties()
-        => TypeProperties.GetOrAdd(
-                             GetType(),
-                             t => t.GetTypeInfo()
-                                   .GetProperties(BindingFlags.Instance | BindingFlags.Public))
+        => TypeProperties.GetOrAdd(GetType(), t => t.GetTypeInfo()
+                                                    .GetProperties(BindingFlags.Instance | BindingFlags.Public))
                          .OrderBy(p => p.Name)
                          .ToList();
 

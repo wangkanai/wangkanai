@@ -6,7 +6,7 @@ public sealed class UniversalBuilder : IUniversalBuilder
 {
     public UniversalBuilder(IServiceCollection services)
     {
-        Services = Check.NotNull(services);
+        Services = services.IfNullThrow();
     }
 
     public IServiceCollection Services { get; }

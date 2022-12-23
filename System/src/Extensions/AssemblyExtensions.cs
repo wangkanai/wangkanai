@@ -12,6 +12,8 @@ public static class AssemblyExtensions
 
     public static string GetFileVersion(this Assembly assembly)
     {
+        assembly.IfNullThrow();
+        
         var info    = FileVersionInfo.GetVersionInfo(assembly.Location);
         var version = info.FileBuildPart.ToString();
         return version;

@@ -12,7 +12,7 @@ public sealed class WebmasterBuilder : IWebmasterBuilder
     /// </summary>
     /// <param name="services">The <see cref="IServiceCollection" /> to attach to.</param>
     public WebmasterBuilder(IServiceCollection services)
-        => Services = Check.NotNull(services);
+        => Services = services.IfNullThrow();
 
     /// <summary>
     /// Gets the <see cref="IServiceCollection" /> services are attached to.

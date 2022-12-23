@@ -32,8 +32,8 @@ public class CrawlerTagHelper : TagHelper
 
     public override void Process(TagHelperContext context, TagHelperOutput output)
     {
-        Check.NotNull(context);
-        Check.NotNull(output);
+        context.IfNullThrow();
+        output.IfNullThrow();
 
         output.TagName = null;
 

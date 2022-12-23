@@ -4,18 +4,18 @@ namespace Wangkanai.Extensions.CommandLine;
 
 public sealed class CommandOption
 {
-    public bool   Inherited      { get; set; }
-    public string Template       { get; set; }
-    public string LongName       { get; set; }
-    public string ShortName      { get; set; }
-    public string SymbolName     { get; set; }
-    public string ValueName      { get; set; }
-    public string Description    { get; set; }
-    public bool   ShowInHelpText { get; set; } = true;
+    public bool    Inherited      { get; set; }
+    public string  Template       { get; set; }
+    public string? LongName       { get; set; }
+    public string? ShortName      { get; set; }
+    public string? SymbolName     { get; set; }
+    public string? ValueName      { get; set; }
+    public string? Description    { get; set; }
+    public bool    ShowInHelpText { get; set; } = true;
 
-    public List<string>      Values     { get; private set; }
-    public CommandOptionType OptionType { get; private set; }
-    
+    public List<string>      Values     { get; }
+    public CommandOptionType OptionType { get; }
+
     public CommandOption(string template, CommandOptionType optionType)
     {
         Template   = template;
@@ -38,7 +38,7 @@ public sealed class CommandOption
         if (string.IsNullOrEmpty(LongName) && string.IsNullOrEmpty(ShortName) && string.IsNullOrEmpty(SymbolName))
             throw new InvalidTemplateException(template);
     }
-    
+
     public bool TryParse(string value)
     {
         switch (OptionType)
@@ -76,11 +76,11 @@ public sealed class CommandOption
         else
             ShortName = optName;
     }
-    
+
     public bool HasValue()
         => Values.Any();
 
-    public string Value()
+    public string? Value()
         => HasValue() ? Values[0] : null;
 
     private static bool IsEnglishLetter(char c)

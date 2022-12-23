@@ -20,7 +20,7 @@ public static class DetectionApplicationExtensions
     /// <returns>Return the <see cref="IApplicationBuilder" /> for further pipeline</returns>
     public static IApplicationBuilder UseDetection(this IApplicationBuilder app)
     {
-        app = Check.NotNull(app);
+        app.IfNullThrow();
 
         app.Validate();
         app.VerifyMarkerIsRegistered<DetectionMarkerService>();
@@ -41,7 +41,7 @@ public static class DetectionApplicationExtensions
         var version = typeof(DetectionApplicationExtensions)?.Assembly?.GetName()?.Version?.ToString();
 
         var loggerFactory = app.ApplicationServices.GetService(typeof(ILoggerFactory)) as ILoggerFactory;
-        Check.NotNull(loggerFactory);
+        loggerFactory.IfNullThrow();
 
         var logger = loggerFactory.CreateLogger("Detection.Startup");
         logger.LogInformation("Starting Detection version {Version}", version);

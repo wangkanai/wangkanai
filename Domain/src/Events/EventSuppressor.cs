@@ -10,7 +10,9 @@ public static class EventSuppressor
 {
     private class DisposableActionGuard : IDisposable
     {
-        private readonly Action _action;
+        private readonly        Action           _action;
+        private static readonly AsyncLocal<bool> EventsSuppressedStorage = new();
+        public static           bool             EventsSuppressed => EventsSuppressedStorage.Value;
 
         public DisposableActionGuard(Action action)
         {
@@ -21,15 +23,12 @@ public static class EventSuppressor
         {
             Dispose(true);
         }
-        
+
         private void Dispose(bool disposing)
         {
             if (disposing)
                 _action();
         }
-        
-        private static readonly AsyncLocal<bool> EventsSuppressedStorage = new();
-        public static           bool             EventsSuppressed => EventsSuppressedStorage.Value;
         
         public static IDisposable SuppressEvents()
         {

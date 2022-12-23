@@ -38,7 +38,7 @@ public static class Hash
     private static byte[] GetAsciiBytes([NotNull] this string value)
         => Encoding.ASCII.GetBytes(value);
 
-    private static string HashDataToString([NotNull] this byte[] data)
+    private static string HashDataToString([NotNull] this IEnumerable<byte> data)
     {
         var builder = new StringBuilder();
         foreach (var index in data)

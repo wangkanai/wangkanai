@@ -6,16 +6,12 @@ public class PhysicalConsole : IConsole
 {
     private PhysicalConsole()
     {
-        Console.CancelKeyPress += (o, e)
-            =>
-        {
-            CancelKeyPress?.Invoke(o, e);
-        };
+        Console.CancelKeyPress += (o, e) => { CancelKeyPress?.Invoke(o, e); };
     }
 
     public static IConsole Singleton { get; } = new PhysicalConsole();
 
-    public event ConsoleCancelEventHandler CancelKeyPress;
+    public event ConsoleCancelEventHandler? CancelKeyPress;
 
     public TextWriter Error              => Console.Error;
     public TextReader In                 => Console.In;

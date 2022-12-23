@@ -29,8 +29,8 @@ public class CommandLineApplicationTests
     [Fact]
     public void RemainingArgsArePassed()
     {
-        CommandArgument first  = null;
-        CommandArgument second = null;
+        CommandArgument? first  = null;
+        CommandArgument? second = null;
 
         var app = new CommandLineApplication();
 
@@ -43,15 +43,15 @@ public class CommandLineApplicationTests
 
         app.Execute("test", "one", "two");
 
-        Assert.Equal("one", first.Value);
-        Assert.Equal("two", second.Value);
+        Assert.Equal("one", first!.Value);
+        Assert.Equal("two", second!.Value);
     }
 
     [Fact]
     public void ExtraArgumentCausesException()
     {
-        CommandArgument first  = null;
-        CommandArgument second = null;
+        CommandArgument? first  = null;
+        CommandArgument? second = null;
 
         var app = new CommandLineApplication();
 
@@ -70,8 +70,8 @@ public class CommandLineApplicationTests
     [Fact]
     public void ExtraArgumentAddedToRemaining()
     {
-        CommandArgument first  = null;
-        CommandArgument second = null;
+        CommandArgument? first  = null;
+        CommandArgument? second = null;
 
         var app = new CommandLineApplication();
 
@@ -85,8 +85,8 @@ public class CommandLineApplicationTests
 
         app.Execute("test", "one", "two", "three");
 
-        Assert.Equal("one", first.Value);
-        Assert.Equal("two", second.Value);
+        Assert.Equal("one", first!.Value);
+        Assert.Equal("two", second!.Value);
         var remaining = Assert.Single(testCommand.RemainingArguments);
         Assert.Equal("three", remaining);
     }
@@ -111,7 +111,7 @@ public class CommandLineApplicationTests
     [Fact]
     public void MultipleValuesArgumentConsumesAllArgumentValues()
     {
-        CommandArgument argument = null;
+        CommandArgument? argument = null;
 
         var app = new CommandLineApplication();
 
@@ -123,15 +123,15 @@ public class CommandLineApplicationTests
 
         app.Execute("test", "one", "two", "three", "four", "five");
 
-        Assert.Equal(new[] { "one", "two", "three", "four", "five" }, argument.Values);
+        Assert.Equal(new[] { "one", "two", "three", "four", "five" }, argument!.Values);
     }
 
     [Fact]
     public void MultipleValuesArgumentConsumesAllRemainingArgumentValues()
     {
-        CommandArgument first  = null;
-        CommandArgument second = null;
-        CommandArgument third  = null;
+        CommandArgument? first  = null;
+        CommandArgument? second = null;
+        CommandArgument? third  = null;
 
         var app = new CommandLineApplication();
 
@@ -145,9 +145,9 @@ public class CommandLineApplicationTests
 
         app.Execute("test", "one", "two", "three", "four", "five");
 
-        Assert.Equal("one", first.Value);
-        Assert.Equal("two", second.Value);
-        Assert.Equal(new[] { "three", "four", "five" }, third.Values);
+        Assert.Equal("one", first!.Value);
+        Assert.Equal("two", second!.Value);
+        Assert.Equal(new[] { "three", "four", "five" }, third!.Values);
     }
 
     [Fact]

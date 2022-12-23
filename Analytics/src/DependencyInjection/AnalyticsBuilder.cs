@@ -13,7 +13,7 @@ public sealed class AnalyticsBuilder : IAnalyticsBuilder
     /// <param name="services">The <see cref="IServiceCollection" /> to attach to.</param>
     public AnalyticsBuilder(IServiceCollection services)
     {
-        Services = Check.NotNull(services);
+        Services = services.IfNullThrow();
     }
 
     /// <summary>

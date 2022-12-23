@@ -8,8 +8,8 @@ public static class StreamExtensions
 {
     public static void CopyTo(this Stream fromStream, Stream toStream)
     {
-        Check.NotNull(fromStream);
-        Check.NotNull(toStream);
+        fromStream.IfNullThrow();
+        toStream.IfNullThrow();
 
         var bytes = new byte[8092];
         int dataRead;
@@ -19,6 +19,8 @@ public static class StreamExtensions
 
     public static byte[] ReadFully(this Stream stream)
     {
+        stream.IfNullThrow();
+
         byte[]    buffer = new byte[16 * 1024];
         using var ms     = new MemoryStream();
         int       read;
@@ -30,6 +32,7 @@ public static class StreamExtensions
 
     public static string ReadToString(this Stream stream)
     {
+        stream.IfNullThrow();
         // convert stream to string
         using var reader = new StreamReader(stream);
         return reader.ReadToEnd();

@@ -24,7 +24,7 @@ public static class StringExtensions
 
     public static string EnsureEndsWith(this string input, char c, StringComparison comparison)
     {
-        Check.NotNull(input);
+        input.IfNullThrow();
 
         return input.EndsWith(c.ToString(), comparison)
                    ? input
@@ -33,7 +33,7 @@ public static class StringExtensions
 
     public static string EnsureEndsWith(this string input, char c, bool ignoreCase, CultureInfo culture)
     {
-        Check.NotNull(input);
+        input.IfNullThrow();
 
         return input.EndsWith(c.ToString(culture), ignoreCase, culture)
                    ? input
@@ -45,7 +45,7 @@ public static class StringExtensions
 
     public static string EnsureStartsWith(this string input, char c, StringComparison comparison)
     {
-        Check.NotNull(input);
+        input.IfNullThrow();
 
         return input.StartsWith(c.ToString(), comparison)
                    ? input
@@ -54,7 +54,7 @@ public static class StringExtensions
 
     public static string EnsureStartsWith(this string input, char c, bool ignoreCase, CultureInfo culture)
     {
-        Check.NotNull(input);
+        input.IfNullThrow();
 
         return input.StartsWith(c.ToString(culture), ignoreCase, culture)
                    ? input
@@ -70,7 +70,7 @@ public static class StringExtensions
 
     public static string Left(this string input, int length)
     {
-        Check.NotNull(input);
+        input.IfNullThrow();
         input.Length.NotLessThan(length, nameof(length));
 
         return input.Substring(0, length);
@@ -78,7 +78,7 @@ public static class StringExtensions
 
     public static string Right(this string input, int length)
     {
-        Check.NotNull(input);
+        input.IfNullThrow();
         input.Length.NotMoreThan(length);
 
         return input.Substring(input.Length - length, length);
@@ -108,7 +108,7 @@ public static class StringExtensions
 
     public static string RemovePreFix(this string value, params string[] prefixes)
     {
-        if (value is null)
+        if (value.IfNullThen())
             return null;
         if (value.IsNullOrEmpty())
             return string.Empty;
@@ -124,14 +124,14 @@ public static class StringExtensions
 
     public static T ToEnum<T>(this string value, bool ignoreCase = true) where T : struct
     {
-        Check.NotNull(value);
+        value.IfNullThrow();
 
         return (T)Enum.Parse(typeof(T), value, ignoreCase);
     }
 
     public static string Truncate(this string value, int maxLength)
     {
-        if (value is null)
+        if (value.IfNullThen())
             return null;
 
         return value.Length <= maxLength
@@ -141,7 +141,7 @@ public static class StringExtensions
 
     public static string TruncateWithPostfix(this string value, int maxLength, string postfix = "...")
     {
-        if (value is null)
+        if (value.IfNullThen())
             return null;
         if (value.IsNullOrEmpty() || maxLength == 0)
             return string.Empty;

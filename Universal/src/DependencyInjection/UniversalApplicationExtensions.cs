@@ -11,7 +11,7 @@ public static class UniversalApplicationExtensions
 {
     public static IApplicationBuilder UseGoogleAnalytics(this IApplicationBuilder app)
     {
-        Check.NotNull(app);
+        app.IfNullThrow();
 
         app.Validate();
         app.VerifyMarkerIsRegistered<UniversalMarkerService>();

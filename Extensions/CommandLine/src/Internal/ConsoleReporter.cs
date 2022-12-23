@@ -12,7 +12,7 @@ public class ConsoleReporter : IReporter
 
     public ConsoleReporter(IConsole console, bool verbose = false, bool quiet = false)
     {
-        Check.NotNull(console);
+        Check.IfNullThrow(console);
 
         Console   = console;
         IsVerbose = verbose;

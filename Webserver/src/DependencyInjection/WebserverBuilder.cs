@@ -5,7 +5,7 @@ namespace Microsoft.Extensions.DependencyInjection;
 public sealed class WebserverBuilder : IWebserverBuilder
 {
     public WebserverBuilder(IServiceCollection services)
-        => Services = Check.NotNull(services);
+        => Services = services.IfNullThrow();
 
     public IServiceCollection Services { get; }
 }

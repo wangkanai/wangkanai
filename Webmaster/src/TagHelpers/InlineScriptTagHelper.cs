@@ -13,7 +13,7 @@ namespace Wangkanai.Webmaster.TagHelpers;
 public sealed class InlineScriptTagHelper : InlineTagHelper
 {
     private const string InlineScriptAttributeName = "inline-script";
-    private const string HrefAttributeName = "href";
+    private const string HrefAttributeName         = "href";
 
     [HtmlAttributeName(HrefAttributeName)]
     public string Href { get; set; }
@@ -25,8 +25,8 @@ public sealed class InlineScriptTagHelper : InlineTagHelper
 
     public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
     {
-        Check.NotNull(context);
-        Check.NotNull(output);
+        context.IfNullThrow();
+        output.IfNullThrow();
 
         var fileContent = await GetFileContentStringAsync(Href);
         if (fileContent is null)
