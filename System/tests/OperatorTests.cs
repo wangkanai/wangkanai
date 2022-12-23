@@ -23,10 +23,10 @@ public class OperatorTests
     [Fact]
     public void Zero()
     {
-        Assert.Equal(Operator<int>.Zero, (int)0);
-        Assert.Equal(Operator<float>.Zero, (float)0);
-        Assert.Equal(Operator<decimal>.Zero, (decimal)0);
-        Assert.Equal(Operator<string>.Zero, null);
+        Assert.Equal((int)0, Operator<int>.Zero);
+        Assert.Equal((float)0, Operator<float>.Zero);
+        Assert.Equal(0, Operator<decimal>.Zero);
+        Assert.Equal(null, Operator<string>.Zero);
     }
 
     #endregion
