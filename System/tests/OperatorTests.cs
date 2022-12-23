@@ -26,7 +26,7 @@ public class OperatorTests
         Assert.Equal((int)0, Operator<int>.Zero);
         Assert.Equal((float)0, Operator<float>.Zero);
         Assert.Equal(0, Operator<decimal>.Zero);
-        Assert.Equal(null, Operator<string>.Zero);
+        Assert.Null(Operator<string>.Zero);
     }
 
     #endregion

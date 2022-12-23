@@ -4,6 +4,8 @@ using Wangkanai.Exceptions;
 
 using Xunit;
 
+#nullable enable
+
 namespace Wangkanai;
 
 public class CheckTests
@@ -27,10 +29,6 @@ public class CheckTests
         short? _short = null;
         int?   _int   = null;
         long?  _long  = null;
-
-        ushort? _ushort = null;
-        uint?   _uint   = null;
-        ulong?  _ulong  = null;
 
         Assert.Throws<ArgumentNullException>(() => _sbyte.IfNullThrow());
         Assert.Throws<ArgumentNullException>(() => _byte.IfNullThrow());
@@ -91,6 +89,7 @@ public class CheckTests
 
         Assert.Throws<ArgumentNullException>(() => _nint.IfNullThrow());
         Assert.Throws<ArgumentNullException>(() => _nuint.IfNullThrow());
+        
         Assert.Throws<CustomNullException>(() => _nint.IfNullThrow<CustomNullException>());
         Assert.Throws<CustomNullException>(() => _nuint.IfNullThrow<CustomNullException>());
     }
@@ -211,31 +210,31 @@ public class CheckTests
         Assert.Throws<CustomNullException>(() => _string.IfNullThrow<CustomNullException>());
     }
 
-    [Fact]
-    public void IntegralIsNull()
-    {
-        byte?  byte1  = null;
-        short? short2 = null;
-        int?   int4   = null;
-        long?  long8  = null;
-
-        Assert.Throws<ArgumentNullException>(() => Check.NotNull(byte1));
-        Assert.Throws<ArgumentNullException>(() => Check.NotNull(short2));
-        Assert.Throws<ArgumentNullException>(() => Check.NotNull(int4));
-        Assert.Throws<ArgumentNullException>(() => Check.NotNull(long8));
-    }
-
-    [Fact]
-    public void FloatingIsNull()
-    {
-        float?   float16   = null;
-        double?  double32  = null;
-        decimal? decimal32 = null;
-
-        Assert.Throws<ArgumentNullException>(() => Check.NotNull(float16));
-        Assert.Throws<ArgumentNullException>(() => Check.NotNull(double32));
-        Assert.Throws<ArgumentNullException>(() => Check.NotNull(decimal32));
-    }
+    // [Fact]
+    // public void IntegralIsNull()
+    // {
+    //     byte?  byte1  = null;
+    //     short? short2 = null;
+    //     int?   int4   = null;
+    //     long?  long8  = null;
+    //
+    //     Assert.Throws<ArgumentNullException>(() => Check.NotNull(byte1));
+    //     Assert.Throws<ArgumentNullException>(() => Check.NotNull(short2));
+    //     Assert.Throws<ArgumentNullException>(() => Check.NotNull(int4));
+    //     Assert.Throws<ArgumentNullException>(() => Check.NotNull(long8));
+    // }
+    //
+    // [Fact]
+    // public void FloatingIsNull()
+    // {
+    //     float?   float16   = null;
+    //     double?  double32  = null;
+    //     decimal? decimal32 = null;
+    //
+    //     Assert.Throws<ArgumentNullException>(() => Check.NotNull(float16));
+    //     Assert.Throws<ArgumentNullException>(() => Check.NotNull(double32));
+    //     Assert.Throws<ArgumentNullException>(() => Check.NotNull(decimal32));
+    // }
 
     [Fact]
     public void ListIsNullOrEmpty()
