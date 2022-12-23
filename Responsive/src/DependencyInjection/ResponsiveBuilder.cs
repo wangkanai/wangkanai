@@ -13,7 +13,7 @@ public class ResponsiveBuilder : IResponsiveBuilder
     /// <param name="services">The <see cref="IServiceCollection" /> to attach to</param>
     public ResponsiveBuilder(IServiceCollection services)
     {
-        Services = Check.NotNull(services);
+        Services = services.IfNullThrow();
     }
 
     /// <summary>

@@ -330,139 +330,83 @@ public struct RenderTreeFrame
         ComponentReferenceCaptureParentFrameIndexField = parentFrameIndex;
     }
 
-    internal static RenderTreeFrame Element(int sequence, string elementName)
-    {
-        return new(sequence, 0, elementName, null);
-    }
+    internal static RenderTreeFrame Element(int sequence, string elementName) 
+        => new(sequence, 0, elementName, null);
 
-    internal static RenderTreeFrame Text(int sequence, string textContent)
-    {
-        return new(sequence, false, textContent);
-    }
+    internal static RenderTreeFrame Text(int sequence, string textContent) 
+        => new(sequence, false, textContent);
 
-    internal static RenderTreeFrame Markup(int sequence, string markupContent)
-    {
-        return new(sequence, true, markupContent);
-    }
+    internal static RenderTreeFrame Markup(int sequence, string markupContent) 
+        => new(sequence, true, markupContent);
 
-    internal static RenderTreeFrame Attribute(int sequence, string name, object value)
-    {
-        return new(sequence, name, value, 0, null);
-    }
+    internal static RenderTreeFrame Attribute(int sequence, string name, object value) 
+        => new(sequence, name, value, 0, null);
 
-    internal static RenderTreeFrame ChildComponent(int sequence, [DynamicallyAccessedMembers(LinkerFlags.Component)] Type componentType)
-    {
-        return new(sequence, 0, componentType, null, null);
-    }
+    internal static RenderTreeFrame ChildComponent(int sequence, [DynamicallyAccessedMembers(LinkerFlags.Component)] Type componentType) 
+        => new(sequence, 0, componentType, null, null);
 
-    internal static RenderTreeFrame PlaceholderChildComponentWithSubtreeLength(int subtreeLength)
-    {
-        return new(0, subtreeLength, typeof(IComponent), null, null);
-    }
+    internal static RenderTreeFrame PlaceholderChildComponentWithSubtreeLength(int subtreeLength) 
+        => new(0, subtreeLength, typeof(IComponent), null, null);
 
-    internal static RenderTreeFrame Region(int sequence)
-    {
-        return new(sequence, 0);
-    }
+    internal static RenderTreeFrame Region(int sequence) 
+        => new(sequence, 0);
 
-    internal static RenderTreeFrame ElementReferenceCapture(int sequence, Action<ElementReference> elementReferenceCaptureAction)
-    {
-        return new(sequence, elementReferenceCaptureAction, null);
-    }
+    internal static RenderTreeFrame ElementReferenceCapture(int sequence, Action<ElementReference> elementReferenceCaptureAction) 
+        => new(sequence, elementReferenceCaptureAction, null);
 
-    internal static RenderTreeFrame ComponentReferenceCapture(int sequence, Action<object> componentReferenceCaptureAction, int parentFrameIndex)
-    {
-        return new(sequence, componentReferenceCaptureAction, parentFrameIndex);
-    }
+    internal static RenderTreeFrame ComponentReferenceCapture(int sequence, Action<object> componentReferenceCaptureAction, int parentFrameIndex) 
+        => new(sequence, componentReferenceCaptureAction, parentFrameIndex);
 
-    internal RenderTreeFrame WithElementSubtreeLength(int elementSubtreeLength)
-    {
-        return new(SequenceField, elementSubtreeLength, ElementNameField, ElementKeyField);
-    }
+    internal RenderTreeFrame WithElementSubtreeLength(int elementSubtreeLength) 
+        => new(SequenceField, elementSubtreeLength, ElementNameField, ElementKeyField);
 
-    internal RenderTreeFrame WithComponentSubtreeLength(int componentSubtreeLength)
-    {
-        return new(SequenceField, componentSubtreeLength, ComponentTypeField, ComponentStateField, ComponentKeyField);
-    }
+    internal RenderTreeFrame WithComponentSubtreeLength(int componentSubtreeLength) 
+        => new(SequenceField, componentSubtreeLength, ComponentTypeField, ComponentStateField, ComponentKeyField);
 
-    internal RenderTreeFrame WithAttributeSequence(int sequence)
-    {
-        return new(sequence, AttributeNameField, AttributeValueField, AttributeEventHandlerIdField, AttributeEventUpdatesAttributeNameField);
-    }
+    internal RenderTreeFrame WithAttributeSequence(int sequence) 
+        => new(sequence, AttributeNameField, AttributeValueField, AttributeEventHandlerIdField, AttributeEventUpdatesAttributeNameField);
 
-    internal RenderTreeFrame WithComponent(ComponentState componentState)
-    {
-        return new(SequenceField, ComponentSubtreeLengthField, ComponentTypeField, componentState, ComponentKeyField);
-    }
+    internal RenderTreeFrame WithComponent(ComponentState componentState) 
+        => new(SequenceField, ComponentSubtreeLengthField, ComponentTypeField, componentState, ComponentKeyField);
 
-    internal RenderTreeFrame WithAttributeEventHandlerId(ulong eventHandlerId)
-    {
-        return new(SequenceField, AttributeNameField, AttributeValueField, eventHandlerId, AttributeEventUpdatesAttributeNameField);
-    }
+    internal RenderTreeFrame WithAttributeEventHandlerId(ulong eventHandlerId) 
+        => new(SequenceField, AttributeNameField, AttributeValueField, eventHandlerId, AttributeEventUpdatesAttributeNameField);
 
-    internal RenderTreeFrame WithAttributeValue(object attributeValue)
-    {
-        return new(SequenceField, AttributeNameField, attributeValue, AttributeEventHandlerIdField, AttributeEventUpdatesAttributeNameField);
-    }
+    internal RenderTreeFrame WithAttributeValue(object attributeValue) 
+        => new(SequenceField, AttributeNameField, attributeValue, AttributeEventHandlerIdField, AttributeEventUpdatesAttributeNameField);
 
-    internal RenderTreeFrame WithAttributeEventUpdatesAttributeName(string attributeUpdatesAttributeName)
-    {
-        return new(SequenceField, AttributeNameField, AttributeValueField, AttributeEventHandlerIdField, attributeUpdatesAttributeName);
-    }
+    internal RenderTreeFrame WithAttributeEventUpdatesAttributeName(string attributeUpdatesAttributeName) 
+        => new(SequenceField, AttributeNameField, AttributeValueField, AttributeEventHandlerIdField, attributeUpdatesAttributeName);
 
-    internal RenderTreeFrame WithRegionSubtreeLength(int regionSubtreeLength)
-    {
-        return new(SequenceField, regionSubtreeLength);
-    }
+    internal RenderTreeFrame WithRegionSubtreeLength(int regionSubtreeLength) 
+        => new(SequenceField, regionSubtreeLength);
 
-    internal RenderTreeFrame WithElementReferenceCaptureId(string elementReferenceCaptureId)
-    {
-        return new(SequenceField, ElementReferenceCaptureActionField, elementReferenceCaptureId);
-    }
+    internal RenderTreeFrame WithElementReferenceCaptureId(string elementReferenceCaptureId) 
+        => new(SequenceField, ElementReferenceCaptureActionField, elementReferenceCaptureId);
 
-    internal RenderTreeFrame WithElementKey(object elementKey)
-    {
-        return new(SequenceField, ElementSubtreeLengthField, ElementNameField, elementKey);
-    }
+    internal RenderTreeFrame WithElementKey(object elementKey) 
+        => new(SequenceField, ElementSubtreeLengthField, ElementNameField, elementKey);
 
-    internal RenderTreeFrame WithComponentKey(object componentKey)
-    {
-        return new(SequenceField, ComponentSubtreeLengthField, ComponentTypeField, ComponentStateField, componentKey);
-    }
+    internal RenderTreeFrame WithComponentKey(object componentKey) 
+        => new(SequenceField, ComponentSubtreeLengthField, ComponentTypeField, ComponentStateField, componentKey);
 
     /// <inheritdoc />
     // Just to be nice for debugging and unit tests.
     public override string ToString()
     {
-        switch (FrameTypeField)
+        return FrameTypeField switch
         {
-            case RenderTreeFrameType.Attribute:
-                return $"Attribute: (seq={Sequence}, id={AttributeEventHandlerId}) '{AttributeName}'='{AttributeValue}'";
-
-            case RenderTreeFrameType.Component:
-                return $"Component: (seq={Sequence}, key={ComponentKeyField ?? "(none)"}, len={ComponentSubtreeLength}) {ComponentType}";
-
-            case RenderTreeFrameType.Element:
-                return $"Element: (seq={Sequence}, key={ElementKeyField ?? "(none)"}, len={ElementSubtreeLength}) {ElementName}";
-
-            case RenderTreeFrameType.Region:
-                return $"Region: (seq={Sequence}, len={RegionSubtreeLength})";
-
-            case RenderTreeFrameType.Text:
-                return $"Text: (seq={Sequence}, len=n/a) {EscapeNewlines(TextContentField)}";
-
-            case RenderTreeFrameType.Markup:
-                return $"Markup: (seq={Sequence}, len=n/a) {EscapeNewlines(TextContentField)}";
-
-            case RenderTreeFrameType.ElementReferenceCapture:
-                return $"ElementReferenceCapture: (seq={Sequence}, len=n/a) {ElementReferenceCaptureAction}";
-        }
-
-        return base.ToString();
+            RenderTreeFrameType.Attribute               => $"Attribute: (seq={Sequence}, id={AttributeEventHandlerId}) '{AttributeName}'='{AttributeValue}'",
+            RenderTreeFrameType.Component               => $"Component: (seq={Sequence}, key={ComponentKeyField ?? "(none)"}, len={ComponentSubtreeLength}) {ComponentType}",
+            RenderTreeFrameType.Element                 => $"Element: (seq={Sequence}, key={ElementKeyField ?? "(none)"}, len={ElementSubtreeLength}) {ElementName}",
+            RenderTreeFrameType.Region                  => $"Region: (seq={Sequence}, len={RegionSubtreeLength})",
+            RenderTreeFrameType.Text                    => $"Text: (seq={Sequence}, len=n/a) {EscapeNewlines(TextContentField)}",
+            RenderTreeFrameType.Markup                  => $"Markup: (seq={Sequence}, len=n/a) {EscapeNewlines(TextContentField)}",
+            RenderTreeFrameType.ElementReferenceCapture => $"ElementReferenceCapture: (seq={Sequence}, len=n/a) {ElementReferenceCaptureAction}",
+            _                                           => base.ToString()
+        };
     }
 
-    private static string EscapeNewlines(string text)
-    {
-        return text.Replace("\n", "\\n").Replace("\r\n", "\\r\\n");
-    }
+    private static string EscapeNewlines(string text) 
+        => text.Replace("\n", "\\n").Replace("\r\n", "\\r\\n");
 }
