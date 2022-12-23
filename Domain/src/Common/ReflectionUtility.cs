@@ -50,7 +50,7 @@ public static class ReflectionUtility
 
     private class ObjectReferenceComparer : IEqualityComparer<object>
     {
-        public bool Equals(object x, object y) 
+        public new bool Equals(object x, object y) 
             => ReferenceEquals(x, y);
 
         public int GetHashCode(object obj) 
