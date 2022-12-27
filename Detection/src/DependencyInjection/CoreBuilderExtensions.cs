@@ -43,7 +43,7 @@ internal static class DetectionCoreBuilderExtensions
         return builder;
     }
 
-    public static IDetectionBuilder AddMarkerService(this IDetectionBuilder builder)
+    internal static IDetectionBuilder AddMarkerService(this IDetectionBuilder builder)
     {
         builder.Services.TryAddSingleton<DetectionMarkerService>();
 
