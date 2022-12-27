@@ -12,7 +12,7 @@ public static class MultiTenantApplicationExtensions
 {
     public static IApplicationBuilder UseMultiTenant(this IApplicationBuilder app)
     {
-        app.IfNullThrow();
+        app.ThrowIfNull();
 
         app.ValidateGeneric();
         app.VerifyMarkerIsRegistered<MultiTenantMarkerService>();

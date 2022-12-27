@@ -6,7 +6,7 @@ public class MultiTenantBuilder : IMultiTenantBuilder
 {
     public MultiTenantBuilder(IServiceCollection services)
     {
-        Services = services.IfNullThrow();
+        Services = services.ThrowIfNull();
     }
 
     public IServiceCollection Services { get; }
