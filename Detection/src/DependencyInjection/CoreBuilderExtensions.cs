@@ -13,7 +13,7 @@ namespace Microsoft.Extensions.DependencyInjection;
 /// </summary>
 internal static class DetectionCoreBuilderExtensions
 {
-    public static IDetectionBuilder AddRequiredServices(this IDetectionBuilder builder)
+    internal static IDetectionBuilder AddRequiredServices(this IDetectionBuilder builder)
     {
         builder.ThrowIfNull();
 
@@ -22,13 +22,12 @@ internal static class DetectionCoreBuilderExtensions
 
         // Add Detection Options
         builder.Services.AddOptions();
-        builder.Services.TryAddSingleton
-            (provider => provider.GetRequiredService<IOptions<DetectionOptions>>().Value);
+        builder.Services.TryAddSingleton(p => p.GetRequiredService<IOptions<DetectionOptions>>().Value);
 
         return builder;
     }
 
-    public static IDetectionBuilder AddCoreServices(this IDetectionBuilder builder)
+    internal static IDetectionBuilder AddCoreServices(this IDetectionBuilder builder)
     {
         // Add Basic core to services
         builder.Services.TryAddScoped<IHttpContextService, HttpContextService>();
