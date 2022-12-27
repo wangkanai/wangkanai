@@ -12,7 +12,5 @@ public static class AssemblyVersion
 
     private static T AssemblyInformationVersion<T>()
         where T : Attribute
-    {
-        return EntryAssembly.GetCustomAttribute<T>().ThrowIfNull();
-    }
+        => EntryAssembly.GetCustomAttribute<T>().ThrowIfNull();
 }
