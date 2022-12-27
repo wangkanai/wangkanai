@@ -10,15 +10,15 @@ namespace Wangkanai;
 
 public class CheckTests
 {
-    #region IfNullThrow
+    #region ThrowIfNull
 
     [Fact]
     public void BooleanIfNullThrow()
     {
         bool? _bool = null;
 
-        Assert.Throws<ArgumentNullException>(() => _bool.IfNullThrow());
-        Assert.Throws<CustomNullException>(() => _bool.IfNullThrow<CustomNullException>());
+        Assert.Throws<ArgumentNullException>(() => _bool.ThrowIfNull());
+        Assert.Throws<CustomNullException>(() => _bool.ThrowIfNull<CustomNullException>());
     }
 
     [Fact]
@@ -30,17 +30,21 @@ public class CheckTests
         int?   _int   = null;
         long?  _long  = null;
 
-        Assert.Throws<ArgumentNullException>(() => _sbyte.IfNullThrow());
-        Assert.Throws<ArgumentNullException>(() => _byte.IfNullThrow());
-        Assert.Throws<ArgumentNullException>(() => _short.IfNullThrow());
-        Assert.Throws<ArgumentNullException>(() => _int.IfNullThrow());
-        Assert.Throws<ArgumentNullException>(() => _long.IfNullThrow());
+        ushort? _ushort = null;
+        uint?   _uint   = null;
+        ulong?  _ulong  = null;
 
-        Assert.Throws<ArgumentNullException>(() => Check.IfNullThrow(_sbyte));
-        Assert.Throws<ArgumentNullException>(() => Check.IfNullThrow(_byte));
-        Assert.Throws<ArgumentNullException>(() => Check.IfNullThrow(_short));
-        Assert.Throws<ArgumentNullException>(() => Check.IfNullThrow(_int));
-        Assert.Throws<ArgumentNullException>(() => Check.IfNullThrow(_long));
+        Assert.Throws<ArgumentNullException>(() => _sbyte.ThrowIfNull());
+        Assert.Throws<ArgumentNullException>(() => _byte.ThrowIfNull());
+        Assert.Throws<ArgumentNullException>(() => _short.ThrowIfNull());
+        Assert.Throws<ArgumentNullException>(() => _int.ThrowIfNull());
+        Assert.Throws<ArgumentNullException>(() => _long.ThrowIfNull());
+
+        Assert.Throws<ArgumentNullException>(() => Check.ThrowIfNull(_sbyte));
+        Assert.Throws<ArgumentNullException>(() => Check.ThrowIfNull(_byte));
+        Assert.Throws<ArgumentNullException>(() => Check.ThrowIfNull(_short));
+        Assert.Throws<ArgumentNullException>(() => Check.ThrowIfNull(_int));
+        Assert.Throws<ArgumentNullException>(() => Check.ThrowIfNull(_long));
     }
 
     [Fact]
@@ -52,17 +56,17 @@ public class CheckTests
         int?   _int   = null;
         long?  _long  = null;
 
-        Assert.Throws<CustomNullException>(() => _sbyte.IfNullThrow<CustomNullException>());
-        Assert.Throws<CustomNullException>(() => _byte.IfNullThrow<CustomNullException>());
-        Assert.Throws<CustomNullException>(() => _short.IfNullThrow<CustomNullException>());
-        Assert.Throws<CustomNullException>(() => _int.IfNullThrow<CustomNullException>());
-        Assert.Throws<CustomNullException>(() => _long.IfNullThrow<CustomNullException>());
+        Assert.Throws<CustomNullException>(() => _sbyte.ThrowIfNull<CustomNullException>());
+        Assert.Throws<CustomNullException>(() => _byte.ThrowIfNull<CustomNullException>());
+        Assert.Throws<CustomNullException>(() => _short.ThrowIfNull<CustomNullException>());
+        Assert.Throws<CustomNullException>(() => _int.ThrowIfNull<CustomNullException>());
+        Assert.Throws<CustomNullException>(() => _long.ThrowIfNull<CustomNullException>());
 
-        Assert.Throws<CustomNullException>(() => Check.IfNullThrow<CustomNullException>(_sbyte));
-        Assert.Throws<CustomNullException>(() => Check.IfNullThrow<CustomNullException>(_byte));
-        Assert.Throws<CustomNullException>(() => Check.IfNullThrow<CustomNullException>(_short));
-        Assert.Throws<CustomNullException>(() => Check.IfNullThrow<CustomNullException>(_int));
-        Assert.Throws<CustomNullException>(() => Check.IfNullThrow<CustomNullException>(_long));
+        Assert.Throws<CustomNullException>(() => Check.ThrowIfNull<CustomNullException>(_sbyte));
+        Assert.Throws<CustomNullException>(() => Check.ThrowIfNull<CustomNullException>(_byte));
+        Assert.Throws<CustomNullException>(() => Check.ThrowIfNull<CustomNullException>(_short));
+        Assert.Throws<CustomNullException>(() => Check.ThrowIfNull<CustomNullException>(_int));
+        Assert.Throws<CustomNullException>(() => Check.ThrowIfNull<CustomNullException>(_long));
     }
 
     [Fact]
@@ -72,13 +76,13 @@ public class CheckTests
         uint?   _uint   = null;
         ulong?  _ulong  = null;
 
-        Assert.Throws<ArgumentNullException>(() => _ushort.IfNullThrow());
-        Assert.Throws<ArgumentNullException>(() => _uint.IfNullThrow());
-        Assert.Throws<ArgumentNullException>(() => _ulong.IfNullThrow());
+        Assert.Throws<ArgumentNullException>(() => _ushort.ThrowIfNull());
+        Assert.Throws<ArgumentNullException>(() => _uint.ThrowIfNull());
+        Assert.Throws<ArgumentNullException>(() => _ulong.ThrowIfNull());
 
-        Assert.Throws<ArgumentNullException>(() => Check.IfNullThrow(_ushort));
-        Assert.Throws<ArgumentNullException>(() => Check.IfNullThrow(_uint));
-        Assert.Throws<ArgumentNullException>(() => Check.IfNullThrow(_ulong));
+        Assert.Throws<ArgumentNullException>(() => Check.ThrowIfNull(_ushort));
+        Assert.Throws<ArgumentNullException>(() => Check.ThrowIfNull(_uint));
+        Assert.Throws<ArgumentNullException>(() => Check.ThrowIfNull(_ulong));
     }
 
     [Fact]
@@ -87,11 +91,10 @@ public class CheckTests
         nint?  _nint  = null;
         nuint? _nuint = null;
 
-        Assert.Throws<ArgumentNullException>(() => _nint.IfNullThrow());
-        Assert.Throws<ArgumentNullException>(() => _nuint.IfNullThrow());
-        
-        Assert.Throws<CustomNullException>(() => _nint.IfNullThrow<CustomNullException>());
-        Assert.Throws<CustomNullException>(() => _nuint.IfNullThrow<CustomNullException>());
+        Assert.Throws<ArgumentNullException>(() => _nint.ThrowIfNull());
+        Assert.Throws<ArgumentNullException>(() => _nuint.ThrowIfNull());
+        Assert.Throws<CustomNullException>(() => _nint.ThrowIfNull<CustomNullException>());
+        Assert.Throws<CustomNullException>(() => _nuint.ThrowIfNull<CustomNullException>());
     }
 
     [Fact]
@@ -101,13 +104,13 @@ public class CheckTests
         uint?   _uint   = null;
         ulong?  _ulong  = null;
 
-        Assert.Throws<CustomNullException>(() => _ushort.IfNullThrow<CustomNullException>());
-        Assert.Throws<CustomNullException>(() => _uint.IfNullThrow<CustomNullException>());
-        Assert.Throws<CustomNullException>(() => _ulong.IfNullThrow<CustomNullException>());
+        Assert.Throws<CustomNullException>(() => _ushort.ThrowIfNull<CustomNullException>());
+        Assert.Throws<CustomNullException>(() => _uint.ThrowIfNull<CustomNullException>());
+        Assert.Throws<CustomNullException>(() => _ulong.ThrowIfNull<CustomNullException>());
 
-        Assert.Throws<CustomNullException>(() => Check.IfNullThrow<CustomNullException>(_ushort));
-        Assert.Throws<CustomNullException>(() => Check.IfNullThrow<CustomNullException>(_uint));
-        Assert.Throws<CustomNullException>(() => Check.IfNullThrow<CustomNullException>(_ulong));
+        Assert.Throws<CustomNullException>(() => Check.ThrowIfNull<CustomNullException>(_ushort));
+        Assert.Throws<CustomNullException>(() => Check.ThrowIfNull<CustomNullException>(_uint));
+        Assert.Throws<CustomNullException>(() => Check.ThrowIfNull<CustomNullException>(_ulong));
     }
 
 
@@ -118,13 +121,13 @@ public class CheckTests
         double?  _double  = null;
         decimal? _decimal = null;
 
-        Assert.Throws<ArgumentNullException>(() => _float.IfNullThrow());
-        Assert.Throws<ArgumentNullException>(() => _double.IfNullThrow());
-        Assert.Throws<ArgumentNullException>(() => _decimal.IfNullThrow());
+        Assert.Throws<ArgumentNullException>(() => _float.ThrowIfNull());
+        Assert.Throws<ArgumentNullException>(() => _double.ThrowIfNull());
+        Assert.Throws<ArgumentNullException>(() => _decimal.ThrowIfNull());
 
-        Assert.Throws<ArgumentNullException>(() => Check.IfNullThrow(_float));
-        Assert.Throws<ArgumentNullException>(() => Check.IfNullThrow(_double));
-        Assert.Throws<ArgumentNullException>(() => Check.IfNullThrow(_decimal));
+        Assert.Throws<ArgumentNullException>(() => Check.ThrowIfNull(_float));
+        Assert.Throws<ArgumentNullException>(() => Check.ThrowIfNull(_double));
+        Assert.Throws<ArgumentNullException>(() => Check.ThrowIfNull(_decimal));
     }
 
     [Fact]
@@ -134,13 +137,13 @@ public class CheckTests
         double?  _double  = null;
         decimal? _decimal = null;
 
-        Assert.Throws<CustomNullException>(() => _float.IfNullThrow<CustomNullException>());
-        Assert.Throws<CustomNullException>(() => _double.IfNullThrow<CustomNullException>());
-        Assert.Throws<CustomNullException>(() => _decimal.IfNullThrow<CustomNullException>());
+        Assert.Throws<CustomNullException>(() => _float.ThrowIfNull<CustomNullException>());
+        Assert.Throws<CustomNullException>(() => _double.ThrowIfNull<CustomNullException>());
+        Assert.Throws<CustomNullException>(() => _decimal.ThrowIfNull<CustomNullException>());
 
-        Assert.Throws<CustomNullException>(() => Check.IfNullThrow<CustomNullException>(_float));
-        Assert.Throws<CustomNullException>(() => Check.IfNullThrow<CustomNullException>(_double));
-        Assert.Throws<CustomNullException>(() => Check.IfNullThrow<CustomNullException>(_decimal));
+        Assert.Throws<CustomNullException>(() => Check.ThrowIfNull<CustomNullException>(_float));
+        Assert.Throws<CustomNullException>(() => Check.ThrowIfNull<CustomNullException>(_double));
+        Assert.Throws<CustomNullException>(() => Check.ThrowIfNull<CustomNullException>(_decimal));
     }
 
     #endregion
@@ -160,19 +163,19 @@ public class CheckTests
         char?    _char    = null;
         string?  _string  = null;
 
-        Assert.True(_byte.IfNullThen());
-        Assert.True(_short.IfNullThen());
-        Assert.True(_int.IfNullThen());
-        Assert.True(_long.IfNullThen());
-        Assert.True(_float.IfNullThen());
-        Assert.True(_double.IfNullThen());
-        Assert.True(_decimal.IfNullThen());
-        Assert.True(_char.IfNullThen());
-        Assert.True(_string.IfNullThen());
+        Assert.True(_byte.TrueIfNull());
+        Assert.True(_short.TrueIfNull());
+        Assert.True(_int.TrueIfNull());
+        Assert.True(_long.TrueIfNull());
+        Assert.True(_float.TrueIfNull());
+        Assert.True(_double.TrueIfNull());
+        Assert.True(_decimal.TrueIfNull());
+        Assert.True(_char.TrueIfNull());
+        Assert.True(_string.TrueIfNull());
     }
 
     [Fact]
-    public void IfNotNullThenReturnFalse()
+    public void TrueIfNullReturnFalse()
     {
         byte?    _byte    = 0;
         short?   _short   = 0;
@@ -184,57 +187,57 @@ public class CheckTests
         char?    _char    = 'a';
         string?  _string  = "xyz";
 
-        Assert.False(_byte.IfNullThen());
-        Assert.False(_short.IfNullThen());
-        Assert.False(_int.IfNullThen());
-        Assert.False(_long.IfNullThen());
-        Assert.False(_float.IfNullThen());
-        Assert.False(_double.IfNullThen());
-        Assert.False(_decimal.IfNullThen());
-        Assert.False(_char.IfNullThen());
-        Assert.False(_string.IfNullThen());
+        Assert.False(_byte.TrueIfNull());
+        Assert.False(_short.TrueIfNull());
+        Assert.False(_int.TrueIfNull());
+        Assert.False(_long.TrueIfNull());
+        Assert.False(_float.TrueIfNull());
+        Assert.False(_double.TrueIfNull());
+        Assert.False(_decimal.TrueIfNull());
+        Assert.False(_char.TrueIfNull());
+        Assert.False(_string.TrueIfNull());
     }
 
     #endregion
 
     [Fact]
-    public void StringIfNullThrow()
+    public void StringThrowIfNull()
     {
         char?   _char   = null;
         string? _string = null;
 
-        Assert.Throws<ArgumentNullException>(() => _char.IfNullThrow());
-        Assert.Throws<ArgumentNullException>(() => _string.IfNullThrow());
+        Assert.Throws<ArgumentNullException>(() => _char.ThrowIfNull());
+        Assert.Throws<ArgumentNullException>(() => _string.ThrowIfNull());
 
-        Assert.Throws<CustomNullException>(() => _char.IfNullThrow<CustomNullException>());
-        Assert.Throws<CustomNullException>(() => _string.IfNullThrow<CustomNullException>());
+        Assert.Throws<CustomNullException>(() => _char.ThrowIfNull<CustomNullException>());
+        Assert.Throws<CustomNullException>(() => _string.ThrowIfNull<CustomNullException>());
     }
 
-    // [Fact]
-    // public void IntegralIsNull()
-    // {
-    //     byte?  byte1  = null;
-    //     short? short2 = null;
-    //     int?   int4   = null;
-    //     long?  long8  = null;
-    //
-    //     Assert.Throws<ArgumentNullException>(() => Check.NotNull(byte1));
-    //     Assert.Throws<ArgumentNullException>(() => Check.NotNull(short2));
-    //     Assert.Throws<ArgumentNullException>(() => Check.NotNull(int4));
-    //     Assert.Throws<ArgumentNullException>(() => Check.NotNull(long8));
-    // }
-    //
-    // [Fact]
-    // public void FloatingIsNull()
-    // {
-    //     float?   float16   = null;
-    //     double?  double32  = null;
-    //     decimal? decimal32 = null;
-    //
-    //     Assert.Throws<ArgumentNullException>(() => Check.NotNull(float16));
-    //     Assert.Throws<ArgumentNullException>(() => Check.NotNull(double32));
-    //     Assert.Throws<ArgumentNullException>(() => Check.NotNull(decimal32));
-    // }
+    [Fact]
+    public void IntegralIsNull()
+    {
+        byte?  byte1  = null;
+        short? short2 = null;
+        int?   int4   = null;
+        long?  long8  = null;
+
+        Assert.Throws<ArgumentNullException>(() => Check.NotNull(byte1));
+        Assert.Throws<ArgumentNullException>(() => Check.NotNull(short2));
+        Assert.Throws<ArgumentNullException>(() => Check.NotNull(int4));
+        Assert.Throws<ArgumentNullException>(() => Check.NotNull(long8));
+    }
+
+    [Fact]
+    public void FloatingIsNull()
+    {
+        float?   float16   = null;
+        double?  double32  = null;
+        decimal? decimal32 = null;
+
+        Assert.Throws<ArgumentNullException>(() => Check.NotNull(float16));
+        Assert.Throws<ArgumentNullException>(() => Check.NotNull(double32));
+        Assert.Throws<ArgumentNullException>(() => Check.NotNull(decimal32));
+    }
 
     [Fact]
     public void ListIsNullOrEmpty()
