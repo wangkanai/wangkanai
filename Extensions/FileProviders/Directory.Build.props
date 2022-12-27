@@ -1,6 +1,6 @@
 <Project>
     <PropertyGroup>
-        <VersionPrefix>1.1.0</VersionPrefix>
+        <VersionPrefix>1.2.0</VersionPrefix>
         
         <Title>Wangkanai Extensions FileProviders</Title>
         <PackageTags>aspnetcore;filelio;</PackageTags>
