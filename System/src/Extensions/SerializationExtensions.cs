@@ -15,7 +15,7 @@ public static class SerializationExtensions
     /// <returns>A string that represents the serialized XML.</returns>
     public static string SerializeXml<T>(this T source) where T : class, new()
     {
-        source.IfNullThrow();
+        source.ThrowIfNull();
 
         var       serializer = new XmlSerializer(typeof(T));
         using var writer     = new StringWriter();
@@ -31,7 +31,7 @@ public static class SerializationExtensions
     /// <returns>The deserialized object, or null if unsuccessful.</returns>
     public static T DeserializeXml<T>(this string xml) where T : class, new()
     {
-        xml.IfNullThrow();
+        xml.ThrowIfNull();
 
         var       serializer = new XmlSerializer(typeof(T));
         using var reader     = new StringReader(xml);
