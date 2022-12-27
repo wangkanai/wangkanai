@@ -417,6 +417,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{93BD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Federation.RazorApp", "Federation\samples\razor\Wangkanai.Federation.RazorApp.csproj", "{3DB94A73-4DCE-435A-8499-EF47E8DE30F6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Federation.Domain", "Federation\src\Domain\Wangkanai.Federation.Domain.csproj", "{D9B8E83E-84F4-47D3-95AD-A7D369095BB7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Federation.AspNetIdentity", "Federation\src\AspNetIdentity\Wangkanai.Federation.AspNetIdentity.csproj", "{3E52A670-7D9C-402F-97E2-C76A4284078D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -755,6 +759,14 @@ Global
 		{3DB94A73-4DCE-435A-8499-EF47E8DE30F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3DB94A73-4DCE-435A-8499-EF47E8DE30F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3DB94A73-4DCE-435A-8499-EF47E8DE30F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9B8E83E-84F4-47D3-95AD-A7D369095BB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9B8E83E-84F4-47D3-95AD-A7D369095BB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9B8E83E-84F4-47D3-95AD-A7D369095BB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9B8E83E-84F4-47D3-95AD-A7D369095BB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E52A670-7D9C-402F-97E2-C76A4284078D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E52A670-7D9C-402F-97E2-C76A4284078D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E52A670-7D9C-402F-97E2-C76A4284078D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E52A670-7D9C-402F-97E2-C76A4284078D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -857,6 +869,8 @@ Global
 		{C49B819D-2F40-4427-A152-5E1C1323AEBC} = {B67C6017-6D9F-457A-807A-69381475D2EF}
 		{93BD0D45-3A9F-4171-A265-C47F03E27FE2} = {B67C6017-6D9F-457A-807A-69381475D2EF}
 		{3DB94A73-4DCE-435A-8499-EF47E8DE30F6} = {93BD0D45-3A9F-4171-A265-C47F03E27FE2}
+		{D9B8E83E-84F4-47D3-95AD-A7D369095BB7} = {B67C6017-6D9F-457A-807A-69381475D2EF}
+		{3E52A670-7D9C-402F-97E2-C76A4284078D} = {B67C6017-6D9F-457A-807A-69381475D2EF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1BA0A192-D7BE-40A1-96AE-B3C8C6BC9B69}

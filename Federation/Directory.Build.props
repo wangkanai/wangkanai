@@ -7,7 +7,7 @@
         <Title>Wangkanai Federation</Title>
         <PackageTags>aspnetcore;identity;federation;</PackageTags>
         <Description>OAuth 2.0 and OpenID Connect Framework for ASP.NET Core for Authentication and Authorization with flexible permission policy.</Description>
-
+        
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Federation'">

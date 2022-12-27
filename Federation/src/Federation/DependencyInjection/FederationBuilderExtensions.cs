@@ -8,7 +8,7 @@ using Wangkanai.Federation.Services;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
-public static class FederationApplicationBuilderExtensions
+public static class FederationBuilderExtensions
 {
     public static IApplicationBuilder UseFederation(this IApplicationBuilder app)
     {
@@ -28,7 +28,7 @@ public static class FederationApplicationBuilderExtensions
         loggerFactory.ThrowIfNull();
 
         var logger = loggerFactory.CreateLogger("Federation.Startup");
-        logger.LogInformation("Starting Federation version {version}", typeof(FederationApplicationBuilderExtensions).GetVersion());
+        logger.LogInformation("Starting Federation version {version}", typeof(FederationBuilderExtensions).GetVersion());
     }
 
     private static void VerifyMarkerIsRegistered(this IApplicationBuilder app)
