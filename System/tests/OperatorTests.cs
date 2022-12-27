@@ -100,9 +100,9 @@ public class OperatorTests
     [Fact]
     public void AddTestComplex()
     {
-        var a = new Complex(12, 3);
-        var b = new Complex(2, 5);
-
+        dynamic a = new Complex(12, 3);
+        dynamic b = new Complex(2, 5);
+        
         Assert.Equal(a + b, Operator.Add(a, b));
     }
 
@@ -123,8 +123,8 @@ public class OperatorTests
     [Fact]
     public void SubtractTestComplex()
     {
-        var a = new Complex(12, 3);
-        var b = new Complex(2, 5);
+        dynamic a = new Complex(12, 3);
+        dynamic b = new Complex(2, 5);
 
         Assert.Equal(a - b, Operator.Subtract(a, b));
     }

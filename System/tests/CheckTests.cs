@@ -4,6 +4,7 @@ using Wangkanai.Exceptions;
 
 using Xunit;
 
+
 #nullable enable
 
 namespace Wangkanai;
@@ -29,10 +30,6 @@ public class CheckTests
         short? _short = null;
         int?   _int   = null;
         long?  _long  = null;
-
-        ushort? _ushort = null;
-        uint?   _uint   = null;
-        ulong?  _ulong  = null;
 
         Assert.Throws<ArgumentNullException>(() => _sbyte.ThrowIfNull());
         Assert.Throws<ArgumentNullException>(() => _byte.ThrowIfNull());
@@ -148,7 +145,7 @@ public class CheckTests
 
     #endregion
 
-    #region IfNullThen
+    #region TrueIfNull
 
     [Fact]
     public void IfNullThenReturnTrue()
@@ -212,7 +209,7 @@ public class CheckTests
         Assert.Throws<CustomNullException>(() => _char.ThrowIfNull<CustomNullException>());
         Assert.Throws<CustomNullException>(() => _string.ThrowIfNull<CustomNullException>());
     }
-
+#pragma warning disable CS0612
     [Fact]
     public void IntegralIsNull()
     {
@@ -238,7 +235,7 @@ public class CheckTests
         Assert.Throws<ArgumentNullException>(() => Check.NotNull(double32));
         Assert.Throws<ArgumentNullException>(() => Check.NotNull(decimal32));
     }
-
+#pragma warning restore CS0612
     [Fact]
     public void ListIsNullOrEmpty()
     {

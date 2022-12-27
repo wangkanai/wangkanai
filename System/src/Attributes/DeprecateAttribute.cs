@@ -29,13 +29,14 @@ public sealed class DeprecateAttribute : Attribute
                 AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Event |
                 AttributeTargets.Delegate,
     Inherited = false)]
-public class DeprecateAttribute<T> : Attribute
+public class DeprecateAttribute<TNew> : Attribute
 {
-    public T?      Replacement { get; }
+    public string? Replacement { get; }
     public string? Message     { get; }
     public bool    IsError     { get; }
 
-    public DeprecateAttribute() { }
+    public DeprecateAttribute()
+        => Replacement = typeof(TNew).Name;
 
     public DeprecateAttribute(string? message)
         => Message = message;
@@ -43,7 +44,4 @@ public class DeprecateAttribute<T> : Attribute
     public DeprecateAttribute(string? message, bool error)
         : this(message)
         => IsError = error;
-
-    public DeprecateAttribute(T? replacement)
-        => Replacement = replacement;
 }
