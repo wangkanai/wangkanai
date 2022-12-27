@@ -21,9 +21,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Detection", "Detection", "{7EED59CF-550E-4571-A1C0-4719F456AD8A}"
 	ProjectSection(SolutionItems) = preProject
 		Detection\Directory.Build.props = Detection\Directory.Build.props
+		Detection\install.md = Detection\install.md
 		Detection\NUGET.md = Detection\NUGET.md
 		Detection\README.md = Detection\README.md
-		Detection\install.md = Detection\install.md
 		Detection\sign.ps1 = Detection\sign.ps1
 	EndProjectSection
 EndProject
@@ -277,64 +277,64 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.MSBuild", "Tools\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.MSBuild.Tests", "Tools\MSBuild\tests\Wangkanai.MSBuild.Tests.csproj", "{02E6D09F-C053-4A66-8229-518DA83F05D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Tabler.Demo.Domain", "Tabler\demo\Domain\Wangkanai.Tabler.Demo.Domain.csproj", "{95F3FF01-5D91-4375-ABB4-0C3B24611EC1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Tabler.Demo.Domain", "Tabler\demo\Domain\Wangkanai.Tabler.Demo.Domain.csproj", "{95F3FF01-5D91-4375-ABB4-0C3B24611EC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Blazor.Demo.Domain", "Blazor\demo\Domain\Wangkanai.Blazor.Demo.Domain.csproj", "{6A0C2755-36BB-45F8-B920-6E2EC8C0B112}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Blazor.Demo.Domain", "Blazor\demo\Domain\Wangkanai.Blazor.Demo.Domain.csproj", "{6A0C2755-36BB-45F8-B920-6E2EC8C0B112}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Blazor.Components", "Blazor\src\Components\Wangkanai.Blazor.Components.csproj", "{4D626185-D5F9-43C0-B0D3-8AADAFAC3B9F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Blazor.Components", "Blazor\src\Components\Wangkanai.Blazor.Components.csproj", "{4D626185-D5F9-43C0-B0D3-8AADAFAC3B9F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Blazor.Components.Web", "Blazor\src\Web\Wangkanai.Blazor.Components.Web.csproj", "{66C6499D-1F34-46B9-9419-31D9FE3C392A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Blazor.Components.Web", "Blazor\src\Web\Wangkanai.Blazor.Components.Web.csproj", "{66C6499D-1F34-46B9-9419-31D9FE3C392A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{FB2F585C-6B7A-4D40-9FE0-08E0F9A30386}"
 	ProjectSection(SolutionItems) = preProject
 		Shared\README.md = Shared\README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Shared", "Shared\src\Wangkanai.Shared.csproj", "{A260283F-253B-4C44-9D90-455BF8087C40}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Shared", "Shared\src\Wangkanai.Shared.csproj", "{A260283F-253B-4C44-9D90-455BF8087C40}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Shared.Tests", "Shared\tests\Wangkanai.Shared.Tests.csproj", "{96E771C5-8E6B-4B0A-9AD1-C52EA4C062DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Shared.Tests", "Shared\tests\Wangkanai.Shared.Tests.csproj", "{96E771C5-8E6B-4B0A-9AD1-C52EA4C062DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Blazor", "Blazor\src\Core\Wangkanai.Blazor.csproj", "{83F84C5F-228C-461B-9177-F48AC1A15DE4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Blazor", "Blazor\src\Core\Wangkanai.Blazor.csproj", "{83F84C5F-228C-461B-9177-F48AC1A15DE4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Webmaster.Benchmark", "Webmaster\benchmark\Wangkanai.Webmaster.Benchmark.csproj", "{92B8B97D-9FC0-486D-9206-648776CDDC84}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Webmaster.Benchmark", "Webmaster\benchmark\Wangkanai.Webmaster.Benchmark.csproj", "{92B8B97D-9FC0-486D-9206-648776CDDC84}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Universal.Benchmark", "Universal\benchmark\Wangkanai.Universal.Benchmark.csproj", "{ECE1DF09-B6AA-4F3B-8BDD-0BA773D9FC41}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Universal.Benchmark", "Universal\benchmark\Wangkanai.Universal.Benchmark.csproj", "{ECE1DF09-B6AA-4F3B-8BDD-0BA773D9FC41}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebmasterPage", "Webmaster\samples\WebmasterPage\WebmasterPage.csproj", "{6F4DE3E4-2B27-46DA-92CA-65D6198E2563}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebmasterPage", "Webmaster\samples\WebmasterPage\WebmasterPage.csproj", "{6F4DE3E4-2B27-46DA-92CA-65D6198E2563}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebmasterMvc", "Webmaster\samples\WebmasterMvc\WebmasterMvc.csproj", "{7192799B-615B-4DF5-8C1F-C7D6E7CD5132}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebmasterMvc", "Webmaster\samples\WebmasterMvc\WebmasterMvc.csproj", "{7192799B-615B-4DF5-8C1F-C7D6E7CD5132}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResponsivePage", "Responsive\samples\page\ResponsivePage.csproj", "{AFA5E42E-96E0-4997-97C0-DBC3DCE4D734}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResponsivePage", "Responsive\samples\page\ResponsivePage.csproj", "{AFA5E42E-96E0-4997-97C0-DBC3DCE4D734}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResponsiveWeb", "Responsive\samples\mvc\ResponsiveWeb.csproj", "{235AB3F5-3496-4CCC-A8BD-14022346ABCC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResponsiveWeb", "Responsive\samples\mvc\ResponsiveWeb.csproj", "{235AB3F5-3496-4CCC-A8BD-14022346ABCC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DetectionMvc", "Detection\samples\mvc\DetectionMvc.csproj", "{7DCB316F-9E32-495F-BC5C-956886739234}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DetectionMvc", "Detection\samples\mvc\DetectionMvc.csproj", "{7DCB316F-9E32-495F-BC5C-956886739234}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Markdown", "Markdown\samples\Markdown\Markdown.csproj", "{75246C6F-704B-4234-8F58-00D8CBE4455D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Markdown", "Markdown\samples\Markdown\Markdown.csproj", "{75246C6F-704B-4234-8F58-00D8CBE4455D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Markdown.Benchmark", "Markdown\benchmark\Wangkanai.Markdown.Benchmark.csproj", "{04C1AF6E-C899-403F-8F69-B507883824EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Markdown.Benchmark", "Markdown\benchmark\Wangkanai.Markdown.Benchmark.csproj", "{04C1AF6E-C899-403F-8F69-B507883824EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Responsive.Benchmark", "Responsive\benchmark\Wangkanai.Responsive.Benchmark.csproj", "{47A46DE7-D743-4C22-9977-144FAB77DC24}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Responsive.Benchmark", "Responsive\benchmark\Wangkanai.Responsive.Benchmark.csproj", "{47A46DE7-D743-4C22-9977-144FAB77DC24}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Analytics.Benchmark", "Analytics\benchmark\Wangkanai.Analytics.Benchmark.csproj", "{C5C0B9F1-C2FC-4428-AE27-0188EC5EE131}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Analytics.Benchmark", "Analytics\benchmark\Wangkanai.Analytics.Benchmark.csproj", "{C5C0B9F1-C2FC-4428-AE27-0188EC5EE131}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.SendGrid.Benchmark", "SendGrid\benchmark\Wangkanai.SendGrid.Benchmark.csproj", "{97419D9B-D4E5-48B3-9E18-258E8F8F2F3B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.SendGrid.Benchmark", "SendGrid\benchmark\Wangkanai.SendGrid.Benchmark.csproj", "{97419D9B-D4E5-48B3-9E18-258E8F8F2F3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Blazor.Benchmark", "Blazor\benchmark\Wangkanai.Blazor.Benchmark.csproj", "{52ACE4EB-C551-4189-B92F-F7B92C333B34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Blazor.Benchmark", "Blazor\benchmark\Wangkanai.Blazor.Benchmark.csproj", "{52ACE4EB-C551-4189-B92F-F7B92C333B34}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Tabler.Benchmark", "Tabler\benchmark\Wangkanai.Tabler.Benchmark.csproj", "{9FD10445-6D7E-4D09-B123-F8E39A35709D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Tabler.Benchmark", "Tabler\benchmark\Wangkanai.Tabler.Benchmark.csproj", "{9FD10445-6D7E-4D09-B123-F8E39A35709D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Tabler", "Tabler\src\Core\Wangkanai.Tabler.csproj", "{5CDA521B-A2B6-4E96-B8D6-CFD1FAF2FC11}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Tabler", "Tabler\src\Core\Wangkanai.Tabler.csproj", "{5CDA521B-A2B6-4E96-B8D6-CFD1FAF2FC11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Tabler.Components", "Tabler\src\Components\Wangkanai.Tabler.Components.csproj", "{2CEADA4F-C9A2-4C1D-8CF4-816291BABCAA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Tabler.Components", "Tabler\src\Components\Wangkanai.Tabler.Components.csproj", "{2CEADA4F-C9A2-4C1D-8CF4-816291BABCAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Tabler.Components.Web", "Tabler\src\Web\Wangkanai.Tabler.Components.Web.csproj", "{677CDEB8-D55A-47AA-9622-C151B71B3298}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Tabler.Components.Web", "Tabler\src\Web\Wangkanai.Tabler.Components.Web.csproj", "{677CDEB8-D55A-47AA-9622-C151B71B3298}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assets", "Assets\Assets.csproj", "{2B818DEC-9D03-4C61-B4D1-A180A263868F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Assets", "Assets\Assets.csproj", "{2B818DEC-9D03-4C61-B4D1-A180A263868F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{700EC70E-E161-4461-B84F-1FCF166D0486}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Web.Server", "Web\Server\Wangkanai.Web.Server.csproj", "{02830AF5-0DC5-4F99-AD31-8E5C375C3783}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Web.Server", "Web\Server\Wangkanai.Web.Server.csproj", "{02830AF5-0DC5-4F99-AD31-8E5C375C3783}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extensions", "Extensions", "{ABDB88B8-683A-466C-A2DB-AFD516359619}"
 	ProjectSection(SolutionItems) = preProject
@@ -349,13 +349,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FileProviders", "FileProvid
 		Extensions\FileProviders\README.md = Extensions\FileProviders\README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Extensions.FileProviders", "Extensions\FileProviders\src\Wangkanai.Extensions.FileProviders.csproj", "{19A26CED-9F29-4897-990C-79C23011BDD5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Extensions.FileProviders", "Extensions\FileProviders\src\Wangkanai.Extensions.FileProviders.csproj", "{19A26CED-9F29-4897-990C-79C23011BDD5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Extensions.FileProviders.Tests", "Extensions\FileProviders\tests\Wangkanai.Extensions.FileProviders.Tests.csproj", "{80FFA07F-975B-4F2E-BE7C-79676344055E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Extensions.FileProviders.Tests", "Extensions\FileProviders\tests\Wangkanai.Extensions.FileProviders.Tests.csproj", "{80FFA07F-975B-4F2E-BE7C-79676344055E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Extensions.Html", "Extensions\Html\src\Wangkanai.Extensions.Html.csproj", "{4017F4ED-E775-4AA7-831A-8467EFBC542E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Extensions.Html", "Extensions\Html\src\Wangkanai.Extensions.Html.csproj", "{4017F4ED-E775-4AA7-831A-8467EFBC542E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Extensions.Html.Tests", "Extensions\Html\tests\Wangkanai.Extensions.Html.Tests.csproj", "{6701A779-DA42-4B26-A920-631E8855855D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Extensions.Html.Tests", "Extensions\Html\tests\Wangkanai.Extensions.Html.Tests.csproj", "{6701A779-DA42-4B26-A920-631E8855855D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{261C090A-5DAB-4A84-A35F-59D04ECE7357}"
 	ProjectSection(SolutionItems) = preProject
@@ -363,36 +363,36 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{261C09
 		Responsive\docs\responsive-views-file-structure.png = Responsive\docs\responsive-views-file-structure.png
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.System", "System\src\Wangkanai.System.csproj", "{77FDD6D6-9FF8-4B04-B936-C8CC81174649}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.System", "System\src\Wangkanai.System.csproj", "{77FDD6D6-9FF8-4B04-B936-C8CC81174649}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.System.Tests", "System\tests\Wangkanai.System.Tests.csproj", "{5925CD69-175B-479F-93E8-FEB244928F95}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.System.Tests", "System\tests\Wangkanai.System.Tests.csproj", "{5925CD69-175B-479F-93E8-FEB244928F95}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.System.Benchmark", "System\benchmark\Wangkanai.System.Benchmark.csproj", "{460147BC-7960-4E70-8B1E-D602675D16F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.System.Benchmark", "System\benchmark\Wangkanai.System.Benchmark.csproj", "{460147BC-7960-4E70-8B1E-D602675D16F3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{ACC97055-6427-45CF-90F5-4804E7CBB7BE}"
 	ProjectSection(SolutionItems) = preProject
+		Domain\Directory.Build.props = Domain\Directory.Build.props
 		Domain\README.md = Domain\README.md
 		Domain\sign.ps1 = Domain\sign.ps1
-		Domain\Directory.Build.props = Domain\Directory.Build.props
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Domain", "Domain\src\Wangkanai.Domain.csproj", "{D8DD2FA3-55C6-4699-933B-77DE41C0EB82}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Domain", "Domain\src\Wangkanai.Domain.csproj", "{D8DD2FA3-55C6-4699-933B-77DE41C0EB82}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Domain.Tests", "Domain\tests\Wangkanai.Domain.Tests.csproj", "{28A0F142-5E23-49FD-8544-94556F9CDC95}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Domain.Tests", "Domain\tests\Wangkanai.Domain.Tests.csproj", "{28A0F142-5E23-49FD-8544-94556F9CDC95}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Domain.Benchmark", "Domain\benchmark\Wangkanai.Domain.Benchmark.csproj", "{9A65939A-42CF-4B60-8046-77F7DCC74AEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Domain.Benchmark", "Domain\benchmark\Wangkanai.Domain.Benchmark.csproj", "{9A65939A-42CF-4B60-8046-77F7DCC74AEF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.SignCode", "Tools\SignCode\src\Wangkanai.SignCode.csproj", "{0A955A2D-4CF8-4C89-96FE-BBD4DE0CAD04}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.SignCode", "Tools\SignCode\src\Wangkanai.SignCode.csproj", "{0A955A2D-4CF8-4C89-96FE-BBD4DE0CAD04}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.SignCode.Tests", "Tools\SignCode\tests\Wangkanai.SignCode.Tests.csproj", "{D16DCB05-B5E7-4B24-BDE8-5CCDBE9A61C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.SignCode.Tests", "Tools\SignCode\tests\Wangkanai.SignCode.Tests.csproj", "{D16DCB05-B5E7-4B24-BDE8-5CCDBE9A61C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Extensions.CommandLine", "Extensions\CommandLine\src\Wangkanai.Extensions.CommandLine.csproj", "{8C718B7D-A4B6-4D49-8EB1-9B8AFBCAD11A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Extensions.CommandLine", "Extensions\CommandLine\src\Wangkanai.Extensions.CommandLine.csproj", "{8C718B7D-A4B6-4D49-8EB1-9B8AFBCAD11A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Extensions.CommandLine.Tests", "Extensions\CommandLine\tests\Wangkanai.Extensions.CommandLine.Tests.csproj", "{75AD9673-5AE2-45B1-B384-73C1BFD005DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Extensions.CommandLine.Tests", "Extensions\CommandLine\tests\Wangkanai.Extensions.CommandLine.Tests.csproj", "{75AD9673-5AE2-45B1-B384-73C1BFD005DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Extensions.CommandLine.Benchmark", "Extensions\CommandLine\benchmark\Wangkanai.Extensions.CommandLine.Benchmark.csproj", "{B0CE07ED-E379-4C77-800C-BA278201B635}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Extensions.CommandLine.Benchmark", "Extensions\CommandLine\benchmark\Wangkanai.Extensions.CommandLine.Benchmark.csproj", "{B0CE07ED-E379-4C77-800C-BA278201B635}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Solver.Benchmark", "Solver\benchmark\Wangkanai.Solver.Benchmark.csproj", "{B550C798-01DE-4BD9-ACD4-B6698DE68E71}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Solver.Benchmark", "Solver\benchmark\Wangkanai.Solver.Benchmark.csproj", "{B550C798-01DE-4BD9-ACD4-B6698DE68E71}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MiscUtil", "MiscUtil", "{02B4D781-846E-4695-B982-62C18B582FE3}"
 EndProject
@@ -764,6 +764,7 @@ Global
 		{8231E1DE-1906-4EFD-A022-B93E6066F833} = {A4B29686-4663-40D8-8521-3472956C9BDB}
 		{9C0A9184-AB79-4958-8E6C-B6D8617F1013} = {A4B29686-4663-40D8-8521-3472956C9BDB}
 		{E21D6041-95C4-4CF8-AA7F-1CCB250A09F8} = {084E5C3F-9E52-40A3-9094-C406A2306BAB}
+		{DFCE57F8-CA4D-4F85-A14D-F15173B8CC42} = {ABDB88B8-683A-466C-A2DB-AFD516359619}
 		{4C8804C0-9406-443D-A5CD-10604DD265D2} = {49CEF064-6C6A-40E0-9EC6-05D62D127DFD}
 		{C294AB84-A15A-4AA9-AE67-90A75F55CF30} = {49CEF064-6C6A-40E0-9EC6-05D62D127DFD}
 		{3BC55F8B-971B-4611-B012-CDABA944BE96} = {89052ADF-DFC9-4281-A1A1-E83434F434BC}
@@ -776,6 +777,7 @@ Global
 		{F32D16F1-3419-4401-9036-94B60C2C14BE} = {084E5C3F-9E52-40A3-9094-C406A2306BAB}
 		{271306A6-4903-4EB2-AE7B-86B0826BD81E} = {6B7D8653-4ADC-45AD-8289-C933FCDA34B2}
 		{37B59B4E-88FD-4FAE-BBFC-290E2E249216} = {6B7D8653-4ADC-45AD-8289-C933FCDA34B2}
+		{C5C4D631-1DA0-40D1-9B62-D4D5D41E8859} = {ABDB88B8-683A-466C-A2DB-AFD516359619}
 		{A80B6DAF-AA55-465E-9D99-6BFF7270DF36} = {F32D16F1-3419-4401-9036-94B60C2C14BE}
 		{02E6D09F-C053-4A66-8229-518DA83F05D4} = {F32D16F1-3419-4401-9036-94B60C2C14BE}
 		{95F3FF01-5D91-4375-ABB4-0C3B24611EC1} = {F9E4EBB0-2D50-459A-B2DF-48068FBF7DDF}
@@ -806,7 +808,6 @@ Global
 		{EE1EF4E3-ADB8-460F-9793-2E87E6DAA2E6} = {ABDB88B8-683A-466C-A2DB-AFD516359619}
 		{19A26CED-9F29-4897-990C-79C23011BDD5} = {EE1EF4E3-ADB8-460F-9793-2E87E6DAA2E6}
 		{80FFA07F-975B-4F2E-BE7C-79676344055E} = {EE1EF4E3-ADB8-460F-9793-2E87E6DAA2E6}
-		{DFCE57F8-CA4D-4F85-A14D-F15173B8CC42} = {ABDB88B8-683A-466C-A2DB-AFD516359619}
 		{4017F4ED-E775-4AA7-831A-8467EFBC542E} = {DFCE57F8-CA4D-4F85-A14D-F15173B8CC42}
 		{6701A779-DA42-4B26-A920-631E8855855D} = {DFCE57F8-CA4D-4F85-A14D-F15173B8CC42}
 		{261C090A-5DAB-4A84-A35F-59D04ECE7357} = {7C2D39ED-FF02-492B-84E0-958A4291B51C}
@@ -818,7 +819,6 @@ Global
 		{9A65939A-42CF-4B60-8046-77F7DCC74AEF} = {ACC97055-6427-45CF-90F5-4804E7CBB7BE}
 		{0A955A2D-4CF8-4C89-96FE-BBD4DE0CAD04} = {E21D6041-95C4-4CF8-AA7F-1CCB250A09F8}
 		{D16DCB05-B5E7-4B24-BDE8-5CCDBE9A61C0} = {E21D6041-95C4-4CF8-AA7F-1CCB250A09F8}
-		{C5C4D631-1DA0-40D1-9B62-D4D5D41E8859} = {ABDB88B8-683A-466C-A2DB-AFD516359619}
 		{8C718B7D-A4B6-4D49-8EB1-9B8AFBCAD11A} = {C5C4D631-1DA0-40D1-9B62-D4D5D41E8859}
 		{75AD9673-5AE2-45B1-B384-73C1BFD005DC} = {C5C4D631-1DA0-40D1-9B62-D4D5D41E8859}
 		{B0CE07ED-E379-4C77-800C-BA278201B635} = {C5C4D631-1DA0-40D1-9B62-D4D5D41E8859}

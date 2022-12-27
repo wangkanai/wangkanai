@@ -35,7 +35,7 @@ public class DeprecateAttribute<TNew> : Attribute
     public string? Message     { get; }
     public bool    IsError     { get; }
 
-    public DeprecateAttribute()
+    public DeprecateAttribute() 
         => Replacement = typeof(TNew).Name;
 
     public DeprecateAttribute(string? message)
