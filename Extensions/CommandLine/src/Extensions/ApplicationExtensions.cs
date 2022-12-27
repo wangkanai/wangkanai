@@ -43,6 +43,6 @@ internal static class ApplicationExtensions
                                    ? assembly.GetName().Version?.ToString()
                                    : attribute.InformationalVersion;
 
-        return versionAttribute.IfNullThrow() ?? throw new InvalidOperationException();
+        return versionAttribute.ThrowIfNull() ?? throw new InvalidOperationException();
     }
 }

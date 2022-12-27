@@ -11,7 +11,7 @@ internal static class CoreBuilderExtensions
 {
     public static IWebserverBuilder AddRequiredServices(this IWebserverBuilder builder)
     {
-        builder.IfNullThrow();
+        builder.ThrowIfNull();
 
         builder.Services.AddHttpContextAccessor();
         builder.Services.AddOptions();

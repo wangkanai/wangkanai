@@ -24,8 +24,8 @@ public sealed class CanonicalTagHelper : TagHelper
 
     public override void Process(TagHelperContext context, TagHelperOutput output)
     {
-        context.IfNullThrow();
-        output.IfNullThrow();
+        context.ThrowIfNull();
+        output.ThrowIfNull();
 
         output.TagName = "link";
         // output.Attributes.Clear();

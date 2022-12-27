@@ -19,6 +19,6 @@ public abstract class MetaAttribute : ActionFilterAttribute
 {
     public override void OnActionExecuting(ActionExecutingContext context)
     {
-        context.IfNullThrow();
+        context.ThrowIfNull();
     }
 }

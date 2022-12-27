@@ -12,7 +12,7 @@ internal static class CoreBuilderExtensions
 {
     public static IUniversalBuilder AddRequiredPlatformServices(this IUniversalBuilder builder)
     {
-        builder.IfNullThrow();
+        builder.ThrowIfNull();
 
         builder.Services.AddOptions();
         builder.Services.TryAddSingleton(provider => provider.GetRequiredService<IOptions<UniversalOption>>().Value);

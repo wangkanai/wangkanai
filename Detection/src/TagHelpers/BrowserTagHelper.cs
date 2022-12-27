@@ -21,7 +21,7 @@ public class BrowserTagHelper : TagHelper
 
     public BrowserTagHelper(IBrowserService resolver)
     {
-        _resolver = resolver.IfNullThrow();
+        _resolver = resolver.ThrowIfNull();
     }
 
     [HtmlAttributeName(IncludeAttributeName)]
@@ -32,8 +32,8 @@ public class BrowserTagHelper : TagHelper
 
     public override void Process(TagHelperContext context, TagHelperOutput output)
     {
-        context.IfNullThrow();
-        output.IfNullThrow();
+        context.ThrowIfNull();
+        output.ThrowIfNull();
 
         output.TagName = null;
 

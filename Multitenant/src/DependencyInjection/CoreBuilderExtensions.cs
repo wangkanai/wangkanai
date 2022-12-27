@@ -12,7 +12,7 @@ public static class MultiTenantCoreBuilderExtensions
 {
     public static IMultiTenantBuilder AddRequiredServices(this IMultiTenantBuilder builder)
     {
-        builder = builder.IfNullThrow();
+        builder = builder.ThrowIfNull();
 
         // Hosting doesn't add IHttpContextAccessor by derfault
         builder.Services.AddHttpContextAccessor();

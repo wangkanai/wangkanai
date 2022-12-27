@@ -32,8 +32,8 @@ public class EngineTagHelper : TagHelper
 
     public override void Process(TagHelperContext context, TagHelperOutput output)
     {
-        context.IfNullThrow();
-        output.IfNullThrow();
+        context.ThrowIfNull();
+        output.ThrowIfNull();
 
         output.TagName = null;
 

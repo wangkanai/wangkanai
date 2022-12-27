@@ -28,7 +28,7 @@ public class GraphUserAccountFactory : AccountClaimsPrincipalFactory<RemoteUserA
     {
         var initialUser = await base.CreateUserAsync(account, options);
 
-        if (initialUser.Identity.IfNullThen())
+        if (initialUser.Identity.TrueIfNull())
             return initialUser;
         if (!initialUser.Identity.IsAuthenticated)
             return initialUser;

@@ -14,7 +14,7 @@ public static class DatabaseMigrationExtensions
         using var scope = app.ApplicationServices.CreateScope();
         using var context = scope.ServiceProvider.GetRequiredService<T>();
 
-        context.IfNullThrow();
+        context.ThrowIfNull();
 
         context.Database.Migrate();
 
@@ -27,7 +27,7 @@ public static class DatabaseMigrationExtensions
         await using var scope = app.ApplicationServices.CreateAsyncScope();
         await using var context = scope.ServiceProvider.GetRequiredService<T>();
 
-        context.IfNullThrow();
+        context.ThrowIfNull();
 
         await context.Database.MigrateAsync();
 

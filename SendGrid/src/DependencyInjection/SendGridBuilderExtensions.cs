@@ -13,7 +13,7 @@ public static class SendGridBuilderExtensions
 {
     public static ISendGridBuilder AddRequiredPlatformServices(this ISendGridBuilder builder)
     {
-        builder.IfNullThrow();
+        builder.ThrowIfNull();
 
         builder.Services.AddOptions();
         builder.Services.TryAddSingleton(
@@ -26,7 +26,7 @@ public static class SendGridBuilderExtensions
 
     public static ISendGridBuilder AddCoreServices(this ISendGridBuilder builder)
     {
-        builder.IfNullThrow();
+        builder.ThrowIfNull();
 
         builder.Services.AddScoped<ISendGridService, SendGridService>();
         //builder.Services.AddScoped<>();

@@ -21,15 +21,15 @@ internal sealed class ResponsivePageMatcherPolicy : MatcherPolicy, IEndpointComp
 
     public bool AppliesToEndpoints(IReadOnlyList<Endpoint> endpoints)
     {
-        endpoints.IfNullThrow();
+        endpoints.ThrowIfNull();
 
         return endpoints.Any(endpoint => endpoint.Metadata.GetMetadata<IResponsiveMetadata>() != null);
     }
 
     public Task ApplyAsync(HttpContext context, CandidateSet candidates)
     {
-        context.IfNullThrow();
-        candidates.IfNullThrow();
+        context.ThrowIfNull();
+        candidates.ThrowIfNull();
 
         var device = context.GetDevice();
 

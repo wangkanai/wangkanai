@@ -36,8 +36,8 @@ public sealed class GravatarTagHelper : TagHelper
 
     public override Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
     {
-        context.IfNullThrow();
-        output.IfNullThrow();
+        context.ThrowIfNull();
+        output.ThrowIfNull();
 
         output.TagName = "img";
         var gravatar = new Gravatar(Email, Size, Rating);

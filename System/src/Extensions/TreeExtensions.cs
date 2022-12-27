@@ -17,7 +17,7 @@ public static class TreeExtensions
 
     public static IEnumerable<TItem> GetAncestors<TItem>(TItem item, Func<TItem, TItem> getParentFunc)
     {
-        getParentFunc.IfNullThrow();
+        getParentFunc.ThrowIfNull();
 
         if (ReferenceEquals(item, null))
             yield break;

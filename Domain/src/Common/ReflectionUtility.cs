@@ -54,7 +54,7 @@ public static class ReflectionUtility
             => ReferenceEquals(x, y);
 
         public int GetHashCode(object obj) 
-            => obj.IfNullThrow()
+            => obj.ThrowIfNull()
                   .GetHashCode();
     }
 }

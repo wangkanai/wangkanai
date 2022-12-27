@@ -12,8 +12,8 @@ internal static class HttpContextExtensions
     private const string ResponsiveContextKey = "Responsive";
     public static Device GetDevice(this HttpContext context)
     {
-        context.IfNullThrow();
-        context.Items.IfNullThrow();
+        context.ThrowIfNull();
+        context.Items.ThrowIfNull();
 
         return context.Items.TryGetValue(ResponsiveContextKey, out var responsive)
                    ? (Device)(responsive ?? Device.Unknown)
