@@ -11,7 +11,7 @@ public class Adler32
 
     public static int ComputeChecksum(int initial, byte[] data, int start, int length)
     {
-        Check.NotNull(data);
+        data.ThrowIfNull();
 
         var a = initial & 0xFFFF;
         var b = (initial >> 16) & 0xFFFF;
@@ -42,7 +42,7 @@ public class Adler32
 
     public static int ComputeChecksum(Stream stream)
     {
-        Check.NotNull(stream);
+        stream.ThrowIfNull();
 
         byte[] buffer = new byte[8172];
         int    size;

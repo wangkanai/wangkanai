@@ -19,7 +19,7 @@ public static class AbstractTypeFactory<BaseType>
 
     public static TypeInfo<BaseType> RegisterType(Type type)
     {
-        Check.NotNull(type);
+        type.ThrowIfNull();
 
         var result = _typeInfos.FirstOrDefault(x => x.AllSubclasses.Contains(type));
         if (result != null)
