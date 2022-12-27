@@ -27,11 +27,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Wangkanai.System.Analyzer\Wangkanai.System.Analyzer.csproj" />
+    <None Update="tools\*.ps1" CopyToOutputDirectory="PreserveNewest" Pack="true" PackagePath="" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="tools\*.ps1" CopyToOutputDirectory="PreserveNewest" Pack="true" PackagePath="" />
+    <ProjectReference Include="..\src\Wangkanai.System.Analyzer.csproj" />
   </ItemGroup>
 
   <Target Name="_AddAnalyzersToOutput">
