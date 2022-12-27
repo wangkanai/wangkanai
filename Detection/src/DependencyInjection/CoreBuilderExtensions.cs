@@ -15,7 +15,7 @@ internal static class DetectionCoreBuilderExtensions
 {
     public static IDetectionBuilder AddRequiredServices(this IDetectionBuilder builder)
     {
-        builder.IfNullThrow();
+        builder.ThrowIfNull();
 
         // Hosting doesn't add IHttpContextAccessor by default
         builder.Services.AddHttpContextAccessor();

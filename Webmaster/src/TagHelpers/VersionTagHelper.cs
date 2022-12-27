@@ -17,8 +17,8 @@ public sealed class VersionTagHelper : TagHelper
 
     public override void Process(TagHelperContext context, TagHelperOutput output)
     {
-        context.IfNullThrow();
-        output.IfNullThrow();
+        context.ThrowIfNull();
+        output.ThrowIfNull();
 
         var version = Assembly.GetEntryAssembly()?.GetName().Version;
         if (version is null)

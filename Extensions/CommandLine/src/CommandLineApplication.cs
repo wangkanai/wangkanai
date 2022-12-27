@@ -139,7 +139,7 @@ public class CommandLineApplication
         IEnumerator<CommandArgument>? arguments         = null;
         var                           argumentsAssigned = false;
 
-        command.IfNullThrow();
+        command.ThrowIfNull();
         
         for (var index = 0; index < args.Length; index++)
         {

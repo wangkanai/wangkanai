@@ -10,12 +10,12 @@ public sealed class UniversalMiddleware
 
     public UniversalMiddleware(RequestDelegate next)
     {
-        _next = next.IfNullThrow();
+        _next = next.ThrowIfNull();
     }
 
     public async Task InvokeAsync(HttpContext context)
     {
-        context.IfNullThrow();
+        context.ThrowIfNull();
 
         await _next(context).ConfigureAwait(false);
     }

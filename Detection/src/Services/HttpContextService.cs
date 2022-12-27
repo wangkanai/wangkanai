@@ -8,7 +8,7 @@ public sealed class HttpContextService : IHttpContextService
 {
     public HttpContextService(IHttpContextAccessor accessor)
     {
-        accessor.IfNullThrow();
+        accessor.ThrowIfNull();
 
         Context = accessor?.HttpContext ?? new DefaultHttpContext();
     }

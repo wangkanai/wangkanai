@@ -12,12 +12,12 @@ public sealed class MarkdownMiddleware
 
     public MarkdownMiddleware(RequestDelegate next)
     {
-        _next = next.IfNullThrow();
+        _next = next.ThrowIfNull();
     }
 
     public async Task InvokeAsync(HttpContext context)
     {
-        context.IfNullThrow();
+        context.ThrowIfNull();
 
         await _next(context);
     }

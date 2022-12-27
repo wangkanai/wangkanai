@@ -14,7 +14,7 @@ public static class AnalyticsApplicationExtensions
 {
     public static IApplicationBuilder UseAnalytics(this IApplicationBuilder app)
     {
-        app.IfNullThrow();
+        app.ThrowIfNull();
 
         app.Validate();
         app.VerifyMarkerIsRegistered<AnalyticsMarkerService>();

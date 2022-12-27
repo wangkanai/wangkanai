@@ -10,7 +10,7 @@ public static class RoutingCollectionExtensions
 {
     public static IWebmasterBuilder AddRoutingConstraint(this IWebmasterBuilder builder)
     {
-        builder.IfNullThrow();
+        builder.ThrowIfNull();
 
         builder.Services.Configure<RouteOptions>(options =>
         {

@@ -13,12 +13,12 @@ public sealed class ResponsiveMiddleware
 
     public ResponsiveMiddleware(RequestDelegate next)
     {
-        _next = next.IfNullThrow();
+        _next = next.ThrowIfNull();
     }
 
     public async Task InvokeAsync(HttpContext context, IResponsiveService responsive)
     {
-        context.IfNullThrow();
+        context.ThrowIfNull();
 
         context.SetDevice(responsive.View);
 

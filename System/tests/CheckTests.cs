@@ -13,7 +13,7 @@ public class CheckTests
     #region ThrowIfNull
 
     [Fact]
-    public void BooleanIfNullThrow()
+    public void BooleanThrowIfNull()
     {
         bool? _bool = null;
 
@@ -22,7 +22,7 @@ public class CheckTests
     }
 
     [Fact]
-    public void IntegralIfNullThrowNullException()
+    public void IntegralThrowIfNullNullException()
     {
         sbyte? _sbyte = null;
         byte?  _byte  = null;
@@ -48,7 +48,7 @@ public class CheckTests
     }
 
     [Fact]
-    public void IntegralIfNullThrowCustomException()
+    public void IntegralThrowIfNullCustomException()
     {
         sbyte? _sbyte = null;
         byte?  _byte  = null;
@@ -70,7 +70,7 @@ public class CheckTests
     }
 
     [Fact]
-    public void PositiveIntegralIfNullThrowNullException()
+    public void PositiveIntegralThrowIfNullNullException()
     {
         ushort? _ushort = null;
         uint?   _uint   = null;
@@ -98,7 +98,7 @@ public class CheckTests
     }
 
     [Fact]
-    public void PositiveIntegralIfNullThrowCustomException()
+    public void PositiveIntegralThrowIfNullCustomException()
     {
         ushort? _ushort = null;
         uint?   _uint   = null;

@@ -12,7 +12,7 @@ public static class WebserverApplicationExtensions
 {
     public static IApplicationBuilder UseWebserver(this IApplicationBuilder app)
     {
-        app.IfNullThrow();
+        app.ThrowIfNull();
         app.Validate();
         app.VerifyMarkerIsRegistered<WebserverMarkerService>();
 

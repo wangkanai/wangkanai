@@ -43,8 +43,8 @@ public sealed class ImageInlineTagHelper : ImageTagHelper
 
     public override async void Process(TagHelperContext context, TagHelperOutput output)
     {
-        context.IfNullThrow();
-        output.IfNullThrow();
+        context.ThrowIfNull();
+        output.ThrowIfNull();
 
         output.CopyHtmlAttribute(SrcAttributeName, context);
         ProcessUrlAttribute(SrcAttributeName, output);

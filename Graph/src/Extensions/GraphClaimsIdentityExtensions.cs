@@ -7,7 +7,7 @@ public static class GraphClaimsIdentityExtensions
     // Adds claims from the provided User object
     public static void AddUserGraphInfo(this ClaimsIdentity identity, User user)
     {
-        identity.IfNullThrow();
+        identity.ThrowIfNull();
 
         var email     = new Claim(GraphClaimTypes.Email, user.Mail          ?? user.UserPrincipalName ?? "");
         var jobTitle  = new Claim(GraphClaimTypes.JobTitle, user.JobTitle   ?? "");
@@ -27,8 +27,8 @@ public static class GraphClaimsIdentityExtensions
     // Converts a photo Stream to a Data URI and stores it in a claim
     public static void AddUserGraphPhoto(this ClaimsIdentity identity, Stream photoStream)
     {
-        identity.IfNullThrow();
-        photoStream.IfNullThrow();
+        identity.ThrowIfNull();
+        photoStream.ThrowIfNull();
 
         // Copy the photo stream to a memory stream
         // to get the bytes out of it
