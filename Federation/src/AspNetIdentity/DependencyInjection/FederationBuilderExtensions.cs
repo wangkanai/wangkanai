@@ -15,13 +15,4 @@ public static class FederationBuilderExtensions
 
         return builder;
     }
-
-    internal static void AddTransientDecorator<TService, TImplementation>(this IServiceCollection services)
-        where TService : class
-        where TImplementation : class, TService
-
-    {
-        //services.AddDecorator<TService>();
-        services.AddTransient<TService, TImplementation>();
-    }
 }

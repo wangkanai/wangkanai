@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Wangkanai.Federation.Sample.Pages;
+namespace Host.Main.Pages;
 
 public class PrivacyModel : PageModel
 {
