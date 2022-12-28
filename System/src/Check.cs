@@ -1,10 +1,10 @@
 // Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-using System.Runtime.CompilerServices;
-
 using Wangkanai.Exceptions;
 using Wangkanai.Extensions;
 using Wangkanai.Resources;
+
+#nullable enable
 
 namespace Wangkanai;
 
@@ -12,6 +12,7 @@ namespace Wangkanai;
 public static class Check
 {
     #region ThrowIfNull
+
     [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
     public static bool? ThrowIfNull(this bool? value)
         => ThrowIfNull<ArgumentNullException>(value);
@@ -147,45 +148,53 @@ public static class Check
         where T : Exception
         => value ?? throw CreateExceptionInstance<T>(nameof(value));
 
-    [CanBeNull]
     [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
-    public static string ThrowIfNull([CanBeNull] this string value)
+    public static string ThrowIfNull(this string? value)
         => ThrowIfNull<ArgumentNullException>(value);
 
-    [CanBeNull]
+    public static string ThrowIfNull(this string? value, string message)
+        => ThrowIfNull<ArgumentNullException>(value, message);
+
     [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
-    public static string ThrowIfNull<T>([CanBeNull] this string value)
+    public static string ThrowIfNull<T>(this string? value)
         where T : Exception
         => value ?? throw CreateExceptionInstance<T>(nameof(value));
 
+    [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+    public static string ThrowIfNull<T>(this string? value, string message)
+        where T : Exception
+        => value ?? throw CreateExceptionInstance<T>(message);
 
     [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
-    public static object ThrowIfNull<T>(this object value)
+    public static object ThrowIfNull<T>(this object? value)
         where T : Exception
         => value ?? throw CreateExceptionInstance<T>(nameof(value));
+    
+    [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+    public static object ThrowIfNull<T>(this object? value, string message)
+        where T : Exception
+        => value ?? throw CreateExceptionInstance<T>(message);
 
     [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
     public static T ThrowIfNull<T>(this T value)
-        where T : class
         => value ?? throw CreateExceptionInstance<ArgumentNullException>(nameof(value));
 
     private static T CreateExceptionInstance<T>(string name)
         where T : Exception
-        => Activator.CreateInstance(typeof(T), name) as T;
+        => (Activator.CreateInstance(typeof(T), name) as T)!;
 
     #endregion
 
     #region IfNull
 
-    public static bool TrueIfNull<T>(this T value)
+    public static bool TrueIfNull<T>(this T? value)
         => value is null;
 
-    public static T ReturnIfNotNull<T>(this T value) 
-        where T : class 
-        => value ?? value.ThrowIfNull();
+    public static T ReturnIfNotNull<T>(this T? value)
+        => value ?? value!.ThrowIfNull<T>();
 
     #endregion
-    
+
     #region prepare depreciate
 
     [Deprecate(nameof(ThrowIfNull))]

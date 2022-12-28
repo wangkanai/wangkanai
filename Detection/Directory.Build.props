@@ -1,4 +1,6 @@
 <Project>
+    <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props"/>
+    
     <PropertyGroup>
         <VersionPrefix>6.11.0</VersionPrefix>
 
@@ -6,6 +8,7 @@
         <Description>ASP.NET Core Detection service components for identifying details about client device, browser, engine, platform, and crawler.</Description>
         <PackageTags>aspnetcore;detection;</PackageTags>
         
+        <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Detection</PackageProjectUrl>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Detection'">

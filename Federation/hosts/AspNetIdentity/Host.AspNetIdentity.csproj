@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <RootNamespace>Hosts.AspNetIdentity</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\..\Webserver\src\Wangkanai.Webserver.csproj" />
+        <ProjectReference Include="..\..\src\AspNetIdentity\Wangkanai.Federation.AspNetIdentity.csproj" />
+        <ProjectReference Include="..\..\src\Federation\Wangkanai.Federation.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.1" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.1" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.1" PrivateAssets="All" />
+    </ItemGroup>
+
+</Project>

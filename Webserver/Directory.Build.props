@@ -1,6 +1,6 @@
 <Project>
     <PropertyGroup>
-        <VersionPrefix>0.14.0</VersionPrefix>
+        <VersionPrefix>1.1.0</VersionPrefix>
 
         <Title>Wangkanai Webserver</Title>
         <Description>ASP.NET Core Webserver extension library to help make life easier..</Description>

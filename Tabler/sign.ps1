@@ -1,4 +1,5 @@
 remove-item -path .\signed\*.*
+new-item -Path signed -ItemType Directory -Force
 
 dotnet --version
 dotnet clean Tabler.slnf
@@ -15,4 +16,4 @@ dotnet nuget sign .\artifacts\*.nupkg -v diag --timestamper http://timestamp.dig
 dotnet nuget sign .\artifacts\*.snupkg -v diag --timestamper http://timestamp.digicert.com --certificate-subject-name "Sarin Na Wangkanai" -o .\signed
 
 dotnet nuget push .\signed\*.nupkg -k $env:NUGET_API_KEY -s https://api.nuget.org/v3/index.json --skip-duplicate
-dotnet nuget push .\signed\*.snupkg -k $env:NUGET_API_KEY -s https://api.nuget.org/v3/index.json --skip-duplicate
+
