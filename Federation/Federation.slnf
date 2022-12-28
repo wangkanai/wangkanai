@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "path": "..\\Wangkanai.sln",
+    "projects": [
+      "Federation\\src\\AspNetIdentity\\Wangkanai.Federation.AspNetIdentity.csproj",
+      "Federation\\src\\Domain\\Wangkanai.Federation.Domain.csproj",
+      "Federation\\src\\Federation\\Wangkanai.Federation.csproj"
+    ]
+  }
+}

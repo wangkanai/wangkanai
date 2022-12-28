@@ -220,6 +220,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tabler", "Tabler", "{89052A
 		Tabler\Directory.Build.props = Tabler\Directory.Build.props
 		Tabler\README.md = Tabler\README.md
 		Tabler\sign.ps1 = Tabler\sign.ps1
+		Tabler\Tabler.slnf = Tabler\Tabler.slnf
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Tabler.Tests", "Tabler\tests\Wangkanai.Tabler.Tests.csproj", "{3BC55F8B-971B-4611-B012-CDABA944BE96}"
@@ -407,6 +408,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Federation", "Federation", 
 		Federation\Directory.Build.props = Federation\Directory.Build.props
 		Federation\README.md = Federation\README.md
 		Federation\sign.ps1 = Federation\sign.ps1
+		Federation\Federation.slnf = Federation\Federation.slnf
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Federation.Tests", "Federation\tests\Wangkanai.Federation.Tests.csproj", "{8F2403B2-84C2-4E68-A316-7BE056B55EBC}"
