@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 using Xunit;
 
-namespace Wangkanai.Webserver.Extensions;
+namespace Wangkanai.EntityFramework;
 
 public class DatabaseMigrationExtensions
 {
