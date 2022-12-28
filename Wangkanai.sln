@@ -421,6 +421,21 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Federation.Domain
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Federation.AspNetIdentity", "Federation\src\AspNetIdentity\Wangkanai.Federation.AspNetIdentity.csproj", "{3E52A670-7D9C-402F-97E2-C76A4284078D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EntityFramework", "EntityFramework", "{A0AD7904-0E47-4652-8BF9-C0EE13C8B7E1}"
+	ProjectSection(SolutionItems) = preProject
+		EntityFramework\sign.ps1 = EntityFramework\sign.ps1
+		EntityFramework\README.md = EntityFramework\README.md
+		EntityFramework\Directory.Build.props = EntityFramework\Directory.Build.props
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Federation.Benchmark", "Federation\benchmark\Wangkanai.Federation.Benchmark.csproj", "{ECD6586E-059A-4318-9A8A-A440D2972FA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.EntityFramework", "EntityFramework\src\Wangkanai.EntityFramework.csproj", "{4F88F51A-EDD7-4ABE-B033-1768AC7A7670}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.EntityFramework.Tests", "EntityFramework\tests\Wangkanai.EntityFramework.Tests.csproj", "{B06BB37F-9F89-4B36-9829-0D22BD5E8205}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.EntityFramework.Benchmark", "EntityFramework\benchmark\Wangkanai.EntityFramework.Benchmark.csproj", "{96A100AF-C5B2-472C-8CE3-69343D8990D6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -767,6 +782,22 @@ Global
 		{3E52A670-7D9C-402F-97E2-C76A4284078D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E52A670-7D9C-402F-97E2-C76A4284078D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E52A670-7D9C-402F-97E2-C76A4284078D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECD6586E-059A-4318-9A8A-A440D2972FA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECD6586E-059A-4318-9A8A-A440D2972FA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECD6586E-059A-4318-9A8A-A440D2972FA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECD6586E-059A-4318-9A8A-A440D2972FA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F88F51A-EDD7-4ABE-B033-1768AC7A7670}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F88F51A-EDD7-4ABE-B033-1768AC7A7670}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F88F51A-EDD7-4ABE-B033-1768AC7A7670}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F88F51A-EDD7-4ABE-B033-1768AC7A7670}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B06BB37F-9F89-4B36-9829-0D22BD5E8205}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B06BB37F-9F89-4B36-9829-0D22BD5E8205}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B06BB37F-9F89-4B36-9829-0D22BD5E8205}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B06BB37F-9F89-4B36-9829-0D22BD5E8205}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96A100AF-C5B2-472C-8CE3-69343D8990D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96A100AF-C5B2-472C-8CE3-69343D8990D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96A100AF-C5B2-472C-8CE3-69343D8990D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96A100AF-C5B2-472C-8CE3-69343D8990D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -871,6 +902,10 @@ Global
 		{3DB94A73-4DCE-435A-8499-EF47E8DE30F6} = {93BD0D45-3A9F-4171-A265-C47F03E27FE2}
 		{D9B8E83E-84F4-47D3-95AD-A7D369095BB7} = {B67C6017-6D9F-457A-807A-69381475D2EF}
 		{3E52A670-7D9C-402F-97E2-C76A4284078D} = {B67C6017-6D9F-457A-807A-69381475D2EF}
+		{ECD6586E-059A-4318-9A8A-A440D2972FA4} = {B67C6017-6D9F-457A-807A-69381475D2EF}
+		{4F88F51A-EDD7-4ABE-B033-1768AC7A7670} = {A0AD7904-0E47-4652-8BF9-C0EE13C8B7E1}
+		{B06BB37F-9F89-4B36-9829-0D22BD5E8205} = {A0AD7904-0E47-4652-8BF9-C0EE13C8B7E1}
+		{96A100AF-C5B2-472C-8CE3-69343D8990D6} = {A0AD7904-0E47-4652-8BF9-C0EE13C8B7E1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1BA0A192-D7BE-40A1-96AE-B3C8C6BC9B69}
