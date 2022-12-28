@@ -1,7 +1,5 @@
 // Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-using System.Runtime.CompilerServices;
-
 using Wangkanai.Exceptions;
 using Wangkanai.Extensions;
 using Wangkanai.Resources;
@@ -179,23 +177,21 @@ public static class Check
 
     [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
     public static T ThrowIfNull<T>(this T value)
-        where T : class
         => value ?? throw CreateExceptionInstance<ArgumentNullException>(nameof(value));
 
     private static T CreateExceptionInstance<T>(string name)
         where T : Exception
-        => Activator.CreateInstance(typeof(T), name) as T;
+        => (Activator.CreateInstance(typeof(T), name) as T)!;
 
     #endregion
 
     #region IfNull
 
-    public static bool TrueIfNull<T>(this T value)
+    public static bool TrueIfNull<T>(this T? value)
         => value is null;
 
-    public static T ReturnIfNotNull<T>(this T value)
-        where T : class
-        => value ?? value.ThrowIfNull();
+    public static T ReturnIfNotNull<T>(this T? value)
+        => value ?? value!.ThrowIfNull<T>();
 
     #endregion
 
