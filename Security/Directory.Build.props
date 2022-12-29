@@ -1,0 +1,23 @@
+<Project>
+    <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props"/>
+
+    <PropertyGroup>
+        <VersionPrefix>0.0.0</VersionPrefix>
+
+        <Title>Wangkanai Security</Title>
+        <PackageTags>aspnetcore;security;</PackageTags>
+        <Description>Extending the Security ASP.NET with add features</Description>
+
+        <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Security</PackageProjectUrl>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="$(MSBuildProjectDirectory.Contains('src'))">
+        <PackageIcon>wangkanai-logo.png</PackageIcon>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+    </PropertyGroup>
+
+    <ItemGroup Condition="$(MSBuildProjectDirectory.Contains('src'))">
+        <None Include="..\..\..\assets\wangkanai-logo.png" Pack="true" PackagePath="\"/>
+        <None Include="..\..\README.md" Pack="true" PackagePath="\"/>
+    </ItemGroup>
+</Project>

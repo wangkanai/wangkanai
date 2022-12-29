@@ -21,6 +21,9 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
 builder.Services.AddFederation()
        .AddAspNetIdentity<IdentityUser>();
 
+builder.Services.AddAuthentication();
+builder.Services.AddAuthorization();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -41,6 +44,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 app.UseFederation();
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers().RequireAuthorization(FederationConstants.LocalApi.PolicyName);
