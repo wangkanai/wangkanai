@@ -3,10 +3,7 @@
 namespace Microsoft.AspNetCore.Authorization;
 
 /// <summary>
-/// Specifies that the class or method that this attribute is applied to does not require authorization for private secured network.
+///     Specifies that the class or method that this attribute is applied to does not require authorization for private secured network.
 /// </summary>
-[AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = false, Inherited = true)]
-public class AllowPrivateNetworkAttribute : Attribute, IAllowPrivateNetwork
-{
-    
-}
+[AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
+public class AllowPrivateNetworkAttribute : Attribute, IAllowPrivateNetwork { }

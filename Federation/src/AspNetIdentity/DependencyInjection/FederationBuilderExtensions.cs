@@ -10,11 +10,13 @@ using Wangkanai.Federation.AspNetIdentity;
 namespace Microsoft.Extensions.DependencyInjection;
 
 /// <summary>
-/// Extension methods for setting up ASP.NET Identity in federation services.
+///     Extension methods for setting up ASP.NET Identity in federation services.
 /// </summary>
-public static class FederationBuilderExtensions {
+public static class FederationBuilderExtensions
+{
     public static IFederationBuilder AddAspNetIdentity<TUser>(this IFederationBuilder builder)
-        where TUser : class {
+        where TUser : class
+    {
         builder.Services.AddTransientDecorator<IUserClaimsPrincipalFactory<TUser>, UserClaimsFactory<TUser>>();
 
         builder.Services.Configure<IdentityOptions>(options => {
@@ -46,8 +48,7 @@ public static class FederationBuilderExtensions {
             if (options.DefaultAuthenticateScheme == null && options.DefaultScheme == FederationConstants.DefaultCookieAuthenticationScheme)
                 options.DefaultScheme = IdentityConstants.ApplicationScheme;
         });
-        
-        
+
 
         return builder;
     }

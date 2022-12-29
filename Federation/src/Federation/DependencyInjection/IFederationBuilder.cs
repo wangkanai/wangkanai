@@ -3,15 +3,15 @@
 namespace Microsoft.Extensions.DependencyInjection;
 
 /// <summary>
-/// Helper functions for configuring federation services.
+///     Helper functions for configuring federation services.
 /// </summary>
 public interface IFederationBuilder
 {
     /// <summary>
-    /// Get the <see cref="IServiceCollection"/> services are attached to.
+    ///     Get the <see cref="IServiceCollection" /> services are attached to.
     /// </summary>
     /// <value>
-    /// The <see cref="IServiceCollection"/> services are attached to.
+    ///     The <see cref="IServiceCollection" /> services are attached to.
     /// </value>
     IServiceCollection Services { get; }
 }

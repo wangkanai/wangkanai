@@ -4,5 +4,8 @@ namespace Microsoft.Extensions.DependencyInjection;
 
 public static class AuthorizationCollectionExtensions
 {
-
+    public static IServiceCollection AddPrivateNetworkAuthorization(this IServiceCollection services)
+    {
+        return services;
+    }
 }

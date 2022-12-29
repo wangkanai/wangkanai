@@ -2,7 +2,7 @@
 
 namespace Microsoft.AspNetCore.Mvc.Authorization;
 
-public class AllowPrivateNetworkFilter : IAllowPrivateNetworkFilter
-{
-    
-}
+/// <summary>
+///     An implementation of <see cref="IAllowPrivateNetworkFilter" />
+/// </summary>
+public class AllowPrivateNetworkFilter : IAllowPrivateNetworkFilter { }

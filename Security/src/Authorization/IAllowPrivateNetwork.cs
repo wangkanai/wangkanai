@@ -2,4 +2,7 @@
 
 namespace Microsoft.AspNetCore.Authorization;
 
+/// <summary>
+///     Marker interface to allow access to private network users.
+/// </summary>
 public interface IAllowPrivateNetwork { }

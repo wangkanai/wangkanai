@@ -2,7 +2,4 @@
 
 namespace Wangkanai.Federation.Services;
 
-public sealed class FederationMarkerService
-{
-    
-}
+public sealed class FederationMarkerService { }
