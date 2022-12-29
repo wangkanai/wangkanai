@@ -2,7 +2,7 @@
 
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace Wangkanai.Security.Authorization;
+namespace Microsoft.AspNetCore.Mvc.Authorization;
 
 public interface IAllowPrivateNetworkFilter : IFilterMetadata
 {

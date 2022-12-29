@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\System\src\Wangkanai.System.csproj" />
     <ProjectReference Include="..\..\src\Authentication\Wangkanai.Security.Authentication.csproj" />
     <ProjectReference Include="..\..\src\Authorization\Wangkanai.Security.Authorization.csproj" />
   </ItemGroup>
