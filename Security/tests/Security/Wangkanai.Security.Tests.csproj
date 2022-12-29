@@ -9,15 +9,14 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.4.1"/>
-        <PackageReference Include="xunit" Version="2.4.2"/>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.4.1" />
+        <PackageReference Include="xunit" Version="2.4.2" />
         <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5" PrivateAssets="all" />
         <PackageReference Include="coverlet.collector" Version="3.2.0" PrivateAssets="all" />
-
-        <ItemGroup>
-            <ProjectReference Include="..\src\Authentication\Wangkanai.Security.Authentication.csproj"/>
-            <ProjectReference Include="..\src\Authorization\Wangkanai.Security.Authorization.csproj"/>
-        </ItemGroup>
     </ItemGroup>
-
+    
+    <ItemGroup>
+        <ProjectReference Include="..\..\src\Authentication\Wangkanai.Security.Authentication.csproj" />
+        <ProjectReference Include="..\..\src\Authorization\Wangkanai.Security.Authorization.csproj" />
+    </ItemGroup>
 </Project>
