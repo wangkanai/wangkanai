@@ -12,13 +12,13 @@ public sealed class FederationMiddleware
     {
         _next = next.ThrowIfNull();
     }
-    
+
     public async Task InvokeAsync(HttpContext context)
     {
         context.ThrowIfNull();
-        
+
         // Perform federation logic here
-        
+
         await _next(context);
     }
 }

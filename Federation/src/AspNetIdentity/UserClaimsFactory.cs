@@ -9,15 +9,10 @@ namespace Wangkanai.Federation.AspNetIdentity;
 internal class UserClaimsFactory<TUser> : IUserClaimsPrincipalFactory<TUser>
     where TUser : class
 {
-    public UserClaimsFactory()
-    {
-        
-    }
-    
     public async Task<ClaimsPrincipal> CreateAsync(TUser user)
     {
         var principal = new ClaimsPrincipal();
-        
+
         return principal;
     }
 }

@@ -3,9 +3,6 @@
 namespace Wangkanai.Federation;
 
 /// <summary>
-/// Provides programmatic configuration for the <see cref="FederationMiddleware" />.
+///     Provides programmatic configuration for the <see cref="FederationMiddleware" />.
 /// </summary>
-public sealed class FederationOptions
-{
-    
-}
+public sealed class FederationOptions { }

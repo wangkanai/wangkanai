@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\..\System\src\Wangkanai.System.csproj" />
+        <ProjectReference Include="..\..\src\Authentication\Wangkanai.Security.Authentication.csproj" />
+        <ProjectReference Include="..\..\src\Authorization\Wangkanai.Security.Authorization.csproj" />
+        <ProjectReference Include="..\..\src\Core\Wangkanai.Security.Core.csproj" />
+    </ItemGroup>
+
+</Project>

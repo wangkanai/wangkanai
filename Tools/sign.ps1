@@ -1,7 +1,7 @@
-get-childitem .\ -directory | foreach {
-    push-location -path $_.Name
+Get-ChildItem .\ -Directory | foreach {
+    Push-Location -Path $_.Name
     if (Test-Path .\sign.ps1) {
         .\sign.ps1
     }
-    pop-location
+    Pop-Location
 }

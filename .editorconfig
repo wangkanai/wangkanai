@@ -36,7 +36,7 @@ resharper_csharp_wrap_before_first_type_parameter_constraint = true
 resharper_csharp_anonymous_method_declaration_braces = end_of_line
 resharper_csharp_brace_style = next_line
 resharper_csharp_braces_for_ifelse = required_for_multiline
-resharper_no_indent_inside_elements = html,thead,tbody,tfoot
+resharper_no_indent_inside_elements = html, thead, tbody, tfoot
 resharper_autodetect_indent_settings = true
 resharper_enforce_line_ending_style = true
 resharper_int_align_assignments = true
@@ -95,6 +95,13 @@ ij_html_do_not_indent_children_of_tags = none
 
 [*.csproj]
 indent_size = 4
+
+[*.{ps1, psd1}]
+indent_size = 4
+case_style = pascal_case
+
+[*.{cs, cpp, h, ps1, psd1}]
+indent_style = tab
 
 [*.{css, scss, less, sass}]
 indent_size = 2

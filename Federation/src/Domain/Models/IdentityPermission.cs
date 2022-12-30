@@ -2,7 +2,4 @@
 
 namespace Wangkanai.Federation.Domain.Models;
 
-public class IdentityPermission
-{
-    
-}
+public class IdentityPermission { }
