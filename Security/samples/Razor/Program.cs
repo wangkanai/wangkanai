@@ -1,10 +1,12 @@
+using Wangkanai.Security;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 
 builder.Services.AddAuthentication();
-builder.Services.AddAuthorization();
+builder.Services.AddAuthorization(options => { }, options => { });
 
 var app = builder.Build();
 
