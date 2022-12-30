@@ -96,6 +96,13 @@ ij_html_do_not_indent_children_of_tags = none
 [*.csproj]
 indent_size = 4
 
+[*.{ps1, psd1}]
+indent_size = 4
+case_style = pascal_case
+
+[*.{cs, cpp, h, ps1, psd1}]
+indent_style = tab
+
 [*.{css, scss, less, sass}]
 indent_size = 2
 

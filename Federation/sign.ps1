@@ -6,7 +6,7 @@ dotnet clean Federation.slnf
 dotnet restore Federation.slnf
 dotnet build -c Release Federation.slnf
 Get-ChildItem .\src\ -Recurse Wangkanai.*.dll | where { $_.Name -like "*release*" } | foreach {
-    signtool sign /fd SHA256 /n "Sarin Na Wangkanai" $_.FullName
+	signtool sign /fd SHA256 /n "Sarin Na Wangkanai" $_.FullName
 }
 Remove-Item .\artifacts\*.*
 
