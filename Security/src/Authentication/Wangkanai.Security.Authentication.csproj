@@ -10,4 +10,8 @@
         <PackageReference Include="Microsoft.AspNetCore.Authorization" Version="7.0.0"/>
     </ItemGroup>
 
+    <ItemGroup>
+        <ProjectReference Include="..\Core\Wangkanai.Security.Core.csproj" PrivateAssets="all" />
+    </ItemGroup>
+    
 </Project>

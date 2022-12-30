@@ -2,6 +2,7 @@
     "solution": {
         "path": "..\\Wangkanai.sln",
         "projects": [
+            "Security\\src\\Core\\Wangkanai.Security.Core.csproj",
             "Security\\src\\Authentication\\Wangkanai.Security.Authentication.csproj",
             "Security\\src\\Authorization\\Wangkanai.Security.Authorization.csproj"
         ]

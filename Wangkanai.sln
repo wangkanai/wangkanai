@@ -480,6 +480,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{FBF6
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Security.RazorApp", "Security\samples\Razor\Wangkanai.Security.RazorApp.csproj", "{B77299F2-CBC6-43DC-BD7F-EB908B2896DE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Security.Core", "Security\src\Core\Wangkanai.Security.Core.csproj", "{CB4F3B8B-1D7B-4C6B-9051-F38C64DD53EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -886,6 +888,10 @@ Global
 		{B77299F2-CBC6-43DC-BD7F-EB908B2896DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B77299F2-CBC6-43DC-BD7F-EB908B2896DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B77299F2-CBC6-43DC-BD7F-EB908B2896DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB4F3B8B-1D7B-4C6B-9051-F38C64DD53EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB4F3B8B-1D7B-4C6B-9051-F38C64DD53EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB4F3B8B-1D7B-4C6B-9051-F38C64DD53EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB4F3B8B-1D7B-4C6B-9051-F38C64DD53EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1007,6 +1013,7 @@ Global
 		{BF2DA6CE-5671-4121-A5B4-170FCB0F5F5A} = {CEB6F6F6-7AE2-43A0-B9DE-B8A8D9154405}
 		{FBF6F35E-B9C3-4AA8-AE85-377F9254FB11} = {CEB6F6F6-7AE2-43A0-B9DE-B8A8D9154405}
 		{B77299F2-CBC6-43DC-BD7F-EB908B2896DE} = {FBF6F35E-B9C3-4AA8-AE85-377F9254FB11}
+		{CB4F3B8B-1D7B-4C6B-9051-F38C64DD53EB} = {CEB6F6F6-7AE2-43A0-B9DE-B8A8D9154405}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1BA0A192-D7BE-40A1-96AE-B3C8C6BC9B69}
