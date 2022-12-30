@@ -2,6 +2,6 @@
 
 namespace Wangkanai.Identity;
 
-public class IdentityClient : IdentityClient<string> { }
+public class IdentityScope : IdentityScope<string> { }
 
-public class IdentityClient<TKey> where TKey : IEquatable<TKey> { }
+public class IdentityScope<TKey> where TKey : IEquatable<TKey> { }
