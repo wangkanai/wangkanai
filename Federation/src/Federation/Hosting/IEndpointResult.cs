@@ -5,9 +5,9 @@ using Microsoft.AspNetCore.Http;
 namespace Wangkanai.Federation.Hosting;
 
 /// <summary>
-/// Federation endpoint handler contract
+/// Federation endpoint result contract
 /// </summary>
-public interface IEndpointHandler
+public interface IEndpointResult
 {
-	Task<IEndpointResult> ProcessAsync(HttpContext context);
+	Task ExecuteAsync(HttpContext context);
 }
