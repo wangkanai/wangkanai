@@ -5,13 +5,13 @@ using Microsoft.Extensions.DependencyInjection;
 
 using Wangkanai.Federation.Hosting;
 
-namespace Wangkanai.Federation.Endpoints;
+namespace Wangkanai.Federation.Results;
 
 
 /// <summary>
 /// Discovery document return result
 /// </summary>
-public class DiscoveryResult : IEndpointResult
+public sealed class DiscoveryResult : IEndpointResult
 {
 	public Dictionary<string, object> Records { get; }
 	public int                        MaxAge  { get; }

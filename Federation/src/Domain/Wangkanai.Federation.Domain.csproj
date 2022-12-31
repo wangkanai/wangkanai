@@ -6,4 +6,8 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Identity\src\Wangkanai.Identity.csproj" />
+    </ItemGroup>
+
 </Project>

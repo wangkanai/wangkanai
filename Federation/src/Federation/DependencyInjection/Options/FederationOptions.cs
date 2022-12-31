@@ -8,4 +8,5 @@ namespace Wangkanai.Federation;
 public sealed class FederationOptions
 {
 	public DiscoveryOptions Discovery { get; set; } = new();
+	public EndpointsOptions  Endpoints { get; set; } = new();
 }
