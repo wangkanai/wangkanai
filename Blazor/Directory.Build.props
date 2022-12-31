@@ -2,12 +2,13 @@
     <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props"/>
 
     <PropertyGroup>
-        <VersionPrefix>1.12.0</VersionPrefix>
+        <VersionPrefix>1.12.1</VersionPrefix>
 
         <Title>Wangkanai Blazor</Title>
         <Description>Wangkanai Blazor Component library.</Description>
         <PackageTags>aspnetcore;blazor;component;</PackageTags>
 
+        <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Blazor</PackageProjectUrl>
     </PropertyGroup>
 
     <PropertyGroup>

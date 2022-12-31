@@ -1,12 +1,14 @@
 <Project>
     <PropertyGroup>
-        <VersionPrefix>1.9.0</VersionPrefix>
+        <VersionPrefix>1.9.1</VersionPrefix>
 
         <Title>Wangkanai System</Title>
         <PackageTags>aspnetcore;sytem;runtime;</PackageTags>
         <Description>Wangkanai .NET Core System library to serve as the foundation for future development.</Description>
 
         <RootNamespace>Wangkanai</RootNamespace>
+
+        <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/System</PackageProjectUrl>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.System'">

@@ -1,12 +1,14 @@
 <Project>
     <PropertyGroup>
-        <VersionPrefix>1.8.0</VersionPrefix>
+        <VersionPrefix>1.9.0</VersionPrefix>
 
         <Title>Wngkanai Webmaster</Title>
         <Description>ASP.NET Core Search Engine Optimization for Webmaster lets you improve the art, craft, and science of driving web traffic to enabling you with easy and efficiency native tool build in the asp.net core library.</Description>
         <PackageTags>aspnetcore;webmaster;seo;search;optimization;taghelper</PackageTags>
 
         <RootNamespace>Wangkanai</RootNamespace>
+
+        <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Webmaster</PackageProjectUrl>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Webmaster'">

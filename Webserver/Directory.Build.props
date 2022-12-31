@@ -1,11 +1,13 @@
 <Project>
     <PropertyGroup>
-        <VersionPrefix>1.1.0</VersionPrefix>
+        <VersionPrefix>1.2.0</VersionPrefix>
 
         <Title>Wangkanai Webserver</Title>
         <Description>ASP.NET Core Webserver extension library to help make life easier..</Description>
         <PackageTags>aspnetcore;webserver;</PackageTags>
-        
+
+
+        <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Webserver</PackageProjectUrl>
     </PropertyGroup>
 
     <PropertyGroup>

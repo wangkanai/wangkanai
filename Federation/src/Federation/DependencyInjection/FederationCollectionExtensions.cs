@@ -19,6 +19,7 @@ public static class FederationCollectionExtensions
         return services.AddFederationBuilder()
                        .AddRequiredServices()
                        .AddCoreServices()
+                       .AddDefaultEndpoints()
                        .AddMarkerService();
     }
 

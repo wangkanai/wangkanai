@@ -1,11 +1,12 @@
 <Project>
     <PropertyGroup>
-        <VersionPrefix>0.9.0</VersionPrefix>
+        <VersionPrefix>0.10.0</VersionPrefix>
 
         <Title>Wangkanai Multi-Tenant</Title>
         <Description>ASP.NET Core Identity multi-tenant extend capabilities library.</Description>
         <PackageTags>aspnetcore;identity;authentication;multi-tenant;</PackageTags>
-        
+
+        <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/MultiTenant</PackageProjectUrl>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.MultiTenant'">

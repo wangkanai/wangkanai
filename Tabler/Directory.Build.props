@@ -2,12 +2,13 @@
     <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props"/>
 
     <PropertyGroup>
-        <VersionPrefix>0.15.0</VersionPrefix>
+        <VersionPrefix>0.15.1</VersionPrefix>
 
         <Title>Wangkanai Tabler</Title>
         <PackageTags>aspnetcore;blazor;tabler;</PackageTags>
         <Description>This project is blazor wrapper for the Tabler CSS framework</Description>
         
+        <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Tabler</PackageProjectUrl>
     </PropertyGroup>
 
     <PropertyGroup>

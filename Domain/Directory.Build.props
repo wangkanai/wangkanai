@@ -1,12 +1,14 @@
 <Project>
     <PropertyGroup>
-        <VersionPrefix>0.7.0</VersionPrefix>
+        <VersionPrefix>0.7.1</VersionPrefix>
 
         <Title>Wangkanai Domain</Title>
         <PackageTags>aspnetcore;entity;domain;ddd;</PackageTags>
         <Description>Wangkanai .NET Domain Driven Design core library.</Description>
         
         <RootNamespace>Wangkanai</RootNamespace>
+
+        <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Domain</PackageProjectUrl>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Domain'">

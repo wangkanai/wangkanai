@@ -1,9 +1,5 @@
 <Project>
-<!--    <PropertyGroup>-->
-<!--        <PackageIcon>wangkanai-logo.png</PackageIcon>-->
-<!--    </PropertyGroup>-->
-
-<!--    <ItemGroup>-->
-<!--        <None Include="..\..\assets\wangkanai-logo.png" Pack="true" PackagePath="\"/>-->
-<!--    </ItemGroup>-->
+    <PropertyGroup>
+        <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Tools</PackageProjectUrl>
+    </PropertyGroup>
 </Project>

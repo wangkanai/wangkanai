@@ -4,11 +4,16 @@ namespace Wangkanai.Federation;
 
 public static class FederationConstants
 {
-    public const string DefaultCookieAuthenticationScheme = "federation";
+	public const string DefaultCookieAuthenticationScheme = "federation";
 
-    public static class LocalApi
-    {
-        public const string AuthenticationScheme = "FederationAccessToken";
-        public const string PolicyName           = AuthenticationScheme;
-    }
+	public static class Discovery
+	{
+		public const string Origin = "Origin";
+	}
+
+	public static class LocalApi
+	{
+		public const string AuthenticationScheme = "FederationAccessToken";
+		public const string PolicyName           = AuthenticationScheme;
+	}
 }
