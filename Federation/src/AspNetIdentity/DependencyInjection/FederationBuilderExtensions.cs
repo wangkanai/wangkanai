@@ -45,7 +45,7 @@ public static class FederationBuilderExtensions
         });
 
         builder.Services.AddAuthentication(options => {
-            if (options.DefaultAuthenticateScheme == null && options.DefaultScheme == FederationConstants.DefaultCookieAuthenticationScheme)
+            if (options.DefaultAuthenticateScheme == null && options.DefaultScheme == DomainConstants.DefaultCookieAuthenticationScheme)
                 options.DefaultScheme = IdentityConstants.ApplicationScheme;
         });
 
