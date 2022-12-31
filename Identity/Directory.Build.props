@@ -2,11 +2,11 @@
     <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props"/>
 
     <PropertyGroup>
-        <VersionPrefix>0.2.0</VersionPrefix>
+        <VersionPrefix>0.2.1</VersionPrefix>
 
         <Title>Wangkanai Identity</Title>
         <PackageTags>aspnetcore;identity;model;</PackageTags>
-        <Description>Collection of OpenID Connect and OAuth 2 helper models.</Description>
+        <Description>OpenID Connect and OAuth 2.1 collection helper models.</Description>
 
         <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Identity</PackageProjectUrl>
     </PropertyGroup>
