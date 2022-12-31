@@ -7,6 +7,8 @@
         <Description>Wangkanai .NET Core System library to serve as the foundation for future development.</Description>
 
         <RootNamespace>Wangkanai</RootNamespace>
+
+        <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/System</PackageProjectUrl>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.System'">

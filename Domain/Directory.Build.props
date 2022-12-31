@@ -7,6 +7,8 @@
         <Description>Wangkanai .NET Domain Driven Design core library.</Description>
         
         <RootNamespace>Wangkanai</RootNamespace>
+
+        <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Domain</PackageProjectUrl>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Domain'">

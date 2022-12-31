@@ -5,7 +5,8 @@
         <Title>Wangkanai Graph</Title>
         <PackageTags>aspnetcore;microsft;graph;</PackageTags>
         <Description>This is a wrapper for Microsoft Graph Authentication.</Description>
-        
+
+        <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Graph</PackageProjectUrl>
     </PropertyGroup>
     
     <PropertyGroup>

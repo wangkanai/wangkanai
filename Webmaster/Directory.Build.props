@@ -7,6 +7,8 @@
         <PackageTags>aspnetcore;webmaster;seo;search;optimization;taghelper</PackageTags>
 
         <RootNamespace>Wangkanai</RootNamespace>
+
+        <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Webmaster</PackageProjectUrl>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Webmaster'">

@@ -7,6 +7,8 @@
         <PackageTags>aspnetcore;google;analytics;universal;</PackageTags>
 
         <RootNamespace>Wangkanai.Universal</RootNamespace>
+
+        <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Universal</PackageProjectUrl>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Universal'">

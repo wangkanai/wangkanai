@@ -5,7 +5,8 @@
         <Title>Wangkanai Hosting</Title>
         <PackageTags>aspnetcore;hosting;</PackageTags>
         <Description>Wangkanai Hosting provides the entry point for configuring and running your application.</Description>
-        
+
+        <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Hosting</PackageProjectUrl>
     </PropertyGroup>
     
     <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Hosting'">

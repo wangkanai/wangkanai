@@ -5,7 +5,9 @@
         <Title>Wangkanai Webserver</Title>
         <Description>ASP.NET Core Webserver extension library to help make life easier..</Description>
         <PackageTags>aspnetcore;webserver;</PackageTags>
-        
+
+
+        <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Webserver</PackageProjectUrl>
     </PropertyGroup>
 
     <PropertyGroup>

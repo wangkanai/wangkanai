@@ -7,6 +7,8 @@
         <PackageTags>aspnetcore;analytics;</PackageTags>
         
         <RootNamespace>Wangkanai.Analytics</RootNamespace>
+
+        <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Analytics</PackageProjectUrl>
     </PropertyGroup>
     
     <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Analytics'">

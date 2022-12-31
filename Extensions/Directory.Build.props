@@ -1,5 +1,5 @@
 <Project>
     <PropertyGroup>
-        
+        <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Extensions</PackageProjectUrl>
     </PropertyGroup>
 </Project>

@@ -8,6 +8,7 @@
         <Description>Wangkanai Blazor Component library.</Description>
         <PackageTags>aspnetcore;blazor;component;</PackageTags>
 
+        <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Blazor</PackageProjectUrl>
     </PropertyGroup>
 
     <PropertyGroup>

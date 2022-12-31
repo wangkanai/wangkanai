@@ -8,6 +8,7 @@
         <PackageTags>aspnetcore;blazor;tabler;</PackageTags>
         <Description>This project is blazor wrapper for the Tabler CSS framework</Description>
         
+        <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Tabler</PackageProjectUrl>
     </PropertyGroup>
 
     <PropertyGroup>
