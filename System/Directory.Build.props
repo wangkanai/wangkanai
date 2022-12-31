@@ -1,6 +1,6 @@
 <Project>
     <PropertyGroup>
-        <VersionPrefix>1.9.0</VersionPrefix>
+        <VersionPrefix>1.9.1</VersionPrefix>
 
         <Title>Wangkanai System</Title>
         <PackageTags>aspnetcore;sytem;runtime;</PackageTags>
