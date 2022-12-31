@@ -2,7 +2,7 @@
 
 namespace Wangkanai.Federation;
 
-internal static class DomainConstants
+public static class FederationConstants
 {
 	public const string DefaultCookieAuthenticationScheme = "federation";
 

@@ -45,7 +45,7 @@ app.UseFederation();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllers().RequireAuthorization(DomainConstants.LocalApi.PolicyName);
+app.MapControllers().RequireAuthorization(FederationConstants.LocalApi.PolicyName);
 app.MapRazorPages().RequireAuthorization();
 
 app.Run();

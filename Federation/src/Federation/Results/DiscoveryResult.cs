@@ -25,7 +25,7 @@ public sealed class DiscoveryResult : IEndpointResult
 	public Task ExecuteAsync(HttpContext context)
 	{
 		if (MaxAge >= 0)
-			context.Response.SetCache(MaxAge, DomainConstants.Discovery.Origin);
+			context.Response.SetCache(MaxAge, FederationConstants.Discovery.Origin);
 		
 		return context.Response.WriteAsJsonAsync(Records);
 	}

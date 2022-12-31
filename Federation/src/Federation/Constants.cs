@@ -2,7 +2,7 @@
 
 namespace Wangkanai.Federation;
 
-internal static class FederationConstants
+internal static class Constants
 {
 	public static class EndpointNames
 	{

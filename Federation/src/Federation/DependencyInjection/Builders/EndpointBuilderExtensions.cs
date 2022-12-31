@@ -6,7 +6,7 @@ using Wangkanai.Federation;
 using Wangkanai.Federation.Endpoints;
 using Wangkanai.Federation.Hosting;
 
-using static Wangkanai.Federation.FederationConstants;
+using static Wangkanai.Federation.Constants;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
