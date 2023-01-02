@@ -3,7 +3,7 @@
 namespace Wangkanai.Collections;
 
 /// <summary>
-/// Default ProjectionComparer class to produce instances of the generic <see cref="ProjectionComparer{TSource,TKey}"/> class.
+/// Default ProjectionComparer helper to produce instances of the generic <see cref="ProjectionComparer{TSource,TKey}"/> class.
 /// </summary>
 public static class ProjectionComparer
 {
@@ -30,7 +30,7 @@ public static class ProjectionComparer
 }
 
 /// <summary>
-/// Default generic <see cref="ProjectionComparer{TSource}"/> class in the source only to produce instances of the double generic <see cref="ProjectionComparer{TSource,TKey}"/> class.
+/// Default generic <see cref="ProjectionComparer{TSource}"/> helper in the source only to produce instances of the double generic <see cref="ProjectionComparer{TSource,TKey}"/> class.
 /// Optionally using the type inference.
 /// </summary>
 public static class ProjectionComparer<TSource>
