@@ -6,28 +6,93 @@ namespace Wangkanai.Collections;
 
 public class ProjectionComparerTest
 {
-	static readonly NameAndNumber a10 = new("Aaaa", 5);
-	static readonly NameAndNumber b15 = new("Bbbb", 15);
+	private static NameAndNumber A10 => ProjectionComparerTestExtensions.A10;
+	private static NameAndNumber B15 => ProjectionComparerTestExtensions.B15;
 
 	[Fact]
 	public void ProjectToStringWithIgnoredParameter()
 	{
-		IComparer<NameAndNumber> comparer = ProjectionComparer.Create(a10, x=> x.Name);
-		TestComparisons(comparer);
+		ProjectionComparer.Create(A10, x => x.Name)
+		                  .Assert();
 	}
 
-	private static void TestComparisons(IComparer<NameAndNumber> comparer)
+	[Fact]
+	public void ProjectToStringWithExplicitType()
 	{
-		Assert.Equal(0, comparer.Compare(a10, a10));
-		Assert.Equal(0, comparer.Compare(b15, b15));
-		Assert.Equal(0, comparer.Compare(null, null));
-		
-		Assert.True(comparer.Compare(null, a10) < 0);
-		Assert.True(comparer.Compare(a10, null) > 0);
-		
-		Assert.True(comparer.Compare(a10, b15) < 0);
-		Assert.True(comparer.Compare(b15, a10) > 0);
+		ProjectionComparer.Create((NameAndNumber x) => x.Name)
+		                  .Assert();
+	}
+
+	[Fact]
+	public void ProjectToStringWithGenericType()
+	{
+		ProjectionComparer<NameAndNumber>.Create(x => x.Name)
+		                                 .Assert();
+	}
+
+	[Fact]
+	public void ProjectToNumberWithIgnoredParameter()
+	{
+		ProjectionComparer.Create(A10, x => x.Number)
+		                  .Assert();
+	}
+
+	[Fact]
+	public void ProjectToNumberWithExplicitType()
+	{
+		ProjectionComparer.Create((NameAndNumber x) => x.Number)
+		                  .Assert();
+	}
+
+	[Fact]
+	public void ProjectToNumberWithGenericType()
+	{
+		ProjectionComparer<NameAndNumber>.Create(x => x.Number)
+		                                 .Assert();
+	}
+
+	[Fact]
+	public void NullProjection()
+	{
+		Assert.Throws<ArgumentNullException>(
+			() => new ProjectionComparer<NameAndNumber, string>(null)
+		);
+	}
+
+	[Fact]
+	public void ExplicitComparer()
+	{
+		var lowerA = new NameAndNumber("a", 10);
+		var upperZ = new NameAndNumber("Z", 10);
+
+		var ordinal     = new ProjectionComparer<NameAndNumber, string>(x => x.Name, StringComparer.Ordinal);
+		var insensitive = new ProjectionComparer<NameAndNumber, string>(x => x.Name, StringComparer.OrdinalIgnoreCase);
+
+		Assert.True(ordinal.Compare(lowerA, upperZ) > 0);
+		Assert.True(insensitive.Compare(lowerA, upperZ) < 0);
 	}
 }
 
-record NameAndNumber(string Name, int Number);
+internal record NameAndNumber(string Name, int Number);
+
+/// <summary>
+/// Utility method extension to help perform appropriate assertions with the given comparer.
+/// </summary>
+internal static class ProjectionComparerTestExtensions
+{
+	public static readonly NameAndNumber A10 = new("Aaaa", 5);
+	public static readonly NameAndNumber B15 = new("Bbbb", 15);
+
+	public static void Assert(this IComparer<NameAndNumber> comparer)
+	{
+		Xunit.Assert.Equal(0, comparer.Compare(A10, A10));
+		Xunit.Assert.Equal(0, comparer.Compare(B15, B15));
+		Xunit.Assert.Equal(0, comparer.Compare(null, null));
+
+		Xunit.Assert.True(comparer.Compare(null, A10) < 0);
+		Xunit.Assert.True(comparer.Compare(A10, null) > 0);
+
+		Xunit.Assert.True(comparer.Compare(A10, B15) < 0);
+		Xunit.Assert.True(comparer.Compare(B15, A10) > 0);
+	}
+}
