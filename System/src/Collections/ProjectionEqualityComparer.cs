@@ -33,12 +33,12 @@ public class ProjectionEqualityComparer<TSource, TKey> : IEqualityComparer<TSour
 {
 	private readonly Func<TSource, TKey>     _projection;
 	private readonly IEqualityComparer<TKey> _comparer;
+
 	/// <summary>
 	/// Creates an instance of the <see cref="ProjectionEqualityComparer{TSource,TKey}"/> using the given specified projection, which must not be null.
 	/// </summary>
 	/// <param name="projection">Projection to use during comparisons</param>
 	/// <param name="comparer">The comparer to use on the keys. If null, then that case the default comparer will be used.</param>
-
 	public ProjectionEqualityComparer(Func<TSource, TKey> projection, IEqualityComparer<TKey> comparer = null)
 	{
 		_projection = projection.ThrowIfNull();
