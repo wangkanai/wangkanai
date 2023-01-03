@@ -1,6 +1,8 @@
 <Project>
+    <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props"/>
+
     <PropertyGroup>
-        <VersionPrefix>0.11.1</VersionPrefix>
+        <VersionPrefix>0.11.2</VersionPrefix>
 
         <Title>Wangkanai SendGrid</Title>
         <PackageTags>aspnetcore;sendgrid;smtp;email;</PackageTags>
