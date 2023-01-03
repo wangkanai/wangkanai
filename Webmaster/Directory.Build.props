@@ -1,4 +1,6 @@
 <Project>
+    <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props"/>
+
     <PropertyGroup>
         <VersionPrefix>1.9.0</VersionPrefix>
 
