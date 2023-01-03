@@ -6,4 +6,8 @@
     <LangVersion>preview</LangVersion>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\System\src\Wangkanai.System.csproj" />
+  </ItemGroup>
+
 </Project>
