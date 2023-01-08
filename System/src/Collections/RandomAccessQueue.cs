@@ -74,15 +74,15 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 	/// <returns>A clone of the current queue</returns>
 	public RandomAccessQueue<T> Clone()
 		=> new RandomAccessQueue<T>(_buffer, _count, _start);
-	
-	
+
+
 	/// <summary>
 	/// Adds an item to the queue.
 	/// </summary>
 	/// <param name="item">The item to add</param>
 	public void Add(T item) => Enqueue(item);
 
-	
+
 	public bool Remove(T item)
 	{
 		if (item.TrueIfNull())
@@ -141,7 +141,7 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 	{
 		array.ThrowIfNull();
 		index.ThrowIfOutOfRange(0, array.Length);
-		
+
 		if (array.Length < index + Count)
 			throw new ArgumentException("Not enough space in the array", nameof(array));
 
@@ -170,7 +170,7 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 		var newCapacity = System.Math.Max(Count, DefaultCapacity);
 		if (Capacity == newCapacity)
 			return;
-		
+
 		Resize(newCapacity, -1);
 	}
 
@@ -330,4 +330,69 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 				throw new InvalidOperationException("Collection was modified after the enumerator was created");
 		}
 	}
+
+	public int BinarySearch(T value)
+	{
+		if (value is null)
+			if (_count == 0 || _buffer[_start] != null)
+				return ~0;
+			else
+				return 0;
+
+		var comparable = value as IComparable;
+		comparable.ThrowIfNull<ArgumentException>($"{nameof(value)} does not implement {nameof(IComparable)}");
+
+		if (_count == 0)
+			return ~0;
+
+		var min = 0;
+		var max = _count - 1;
+
+		while (min <= max)
+		{
+			var test    = (min + max) / 2;
+			var element = this[test];
+			var result  = element is null ? 1 : comparable.CompareTo(element);
+
+			if (result == 0)
+				return test;
+			if (result < 0)
+				max = test - 1;
+			if (result > 0)
+				min = test + 1;
+		}
+
+		return ~min;
+	}
+
+	public int BinarySearch(T value, Comparison<T> comparison)
+		=> BinarySearch(value, new ComparisonComparer<T>(comparison));
+	
+	public int BinarySearch(T value, IComparer<T> comparer)
+	{
+		comparer.ThrowIfNull();
+
+		if (_count == 0)
+			return ~0;
+
+		var min = 0;
+		var max = _count - 1;
+
+		while (min <= max)
+		{
+			var test   = (min + max) / 2;
+			var result = comparer.Compare(value, this[test]);
+
+			if (result == 0)
+				return test;
+			if (result < 0)
+				max = test - 1;
+			if (result > 0)
+				min = test + 1;
+		}
+
+		return ~min;
+	}
+
+
 }
