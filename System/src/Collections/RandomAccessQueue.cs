@@ -117,14 +117,26 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 		return false;
 	}
 
-	public void CopyTo(T[] array, int arrayIndex)
+	public void CopyTo(T[] array, int index)
 	{
-		throw new NotImplementedException();
+		array.ThrowIfNull();
+		index.ThrowIfOutOfRange(0, array.Length);
+		if (array.Length < index + Count)
+			throw new ArgumentException("Not enough space in the array", nameof(array));
+
+		for (var i = 0; i < Count; i++)
+			array[i + index] = this[i];
 	}
 
 	public void CopyTo(Array array, int index)
 	{
-		throw new NotImplementedException();
+		array.ThrowIfNull();
+
+		var strong = array as T[];
+
+		strong.ThrowIfNull<ArgumentException>($"Cannot copy elements of type {typeof(T).Name} to an array of type {array.GetType().GetElementType().Name}");
+		
+		CopyTo(strong, index);
 	}
 
 	public void Enquene(T value)
@@ -243,14 +255,20 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 		_version++;
 		return result;
 	}
+	
+	IEnumerator IEnumerable.GetEnumerator() 
+		=> GetEnumerator();
 
 	public IEnumerator<T> GetEnumerator()
 	{
-		throw new NotImplementedException();
-	}
+		var original = _version;
 
-	IEnumerator IEnumerable.GetEnumerator()
-	{
-		return GetEnumerator();
+		for (var i = 0; i < Count; i++)
+		{
+			yield return this[i];
+
+			if (_version != original)
+				throw new InvalidOperationException("Collection was modified after the enumerator was created");
+		}
 	}
 }
