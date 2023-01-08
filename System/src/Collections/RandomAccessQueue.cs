@@ -6,10 +6,11 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 {
 	public const int DefaultCapacity = 16;
 
+	private int _version = 0;
+
 	private T[] _buffer;
 	private int _count;
 	private int _start;
-	private int _version = 0;
 
 	public int Count    => _count;
 	public int Capacity => _buffer.Length;
@@ -25,16 +26,22 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 		set
 		{
 			index.ThrowIfOutOfRange(0, _count);
-			
+
 			_version++;
 			_buffer[(_start + index) % Capacity] = value;
 		}
 	}
 
+	public RandomAccessQueue() : this(DefaultCapacity) { }
 
-	public RandomAccessQueue(int capacity = DefaultCapacity)
+	public RandomAccessQueue(int capacity)
+		=> _buffer = new T[System.Math.Max(capacity, DefaultCapacity)];
+
+	private RandomAccessQueue(T[] buffer, int count, int start)
 	{
-		_buffer = new T[System.Math.Max(capacity, DefaultCapacity)];
+		_buffer = (T[])buffer.Clone();
+		_count  = count;
+		_start  = start;
 	}
 
 	public bool IsReadOnly
@@ -52,25 +59,29 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 		get;
 	}
 
-	public IEnumerator<T> GetEnumerator()
+	/// <summary>
+	/// Clear the queue without resizing the buffer
+	/// </summary>
+	public void Clear()
 	{
-		throw new NotImplementedException();
+		_start = 0;
+		_count = 0;
+		((IList)_buffer).Clear();
 	}
 
-	IEnumerator IEnumerable.GetEnumerator()
-	{
-		return GetEnumerator();
-	}
+	/// <summary>
+	/// Strongly type version if <see cref="ICloneable.Clone"/>
+	/// Create a new queue with the same contents as the queue.
+	/// </summary>
+	/// <returns>A clone of the current queue</returns>
+	public object Clone()
+		=> new RandomAccessQueue<T>(_buffer, _count, _start);
 
 	public void Add(T item)
 	{
-		throw new NotImplementedException();
+		Enquene(item);
 	}
 
-	public void Clear()
-	{
-		throw new NotImplementedException();
-	}
 
 	public bool Contains(T item)
 	{
@@ -92,9 +103,51 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 		throw new NotImplementedException();
 	}
 
+	public void Enquene(T value)
+		=> Enqueue(value, _count);
 
-	public object Clone()
+	public void Enqueue(T value, int index)
+	{
+		if (_count == Capacity)
+		{
+			Resize(_count * 2, index);
+			_count++;
+		}
+		else
+		{
+			_count++;
+			// How to make this more efficient? foreach?
+			for (int i = _count - 2; i >= index; i--)
+				this[i + 1] = this[i];
+		}
+
+		this[index] = value;
+	}
+
+	public T Dequeue()
+	{
+		if (_count == 0)
+			throw new InvalidOperationException("Dequeue called from an empty queue");
+
+		var result = this[0];
+		this[0] = default;
+		_start++;
+		if (_start == Capacity)
+			_start = 0;
+
+		_count--;
+		return result;
+	}
+
+	private void Resize(int newCapacity, int gap) { }
+
+	public IEnumerator<T> GetEnumerator()
 	{
 		throw new NotImplementedException();
+	}
+
+	IEnumerator IEnumerable.GetEnumerator()
+	{
+		return GetEnumerator();
 	}
 }
