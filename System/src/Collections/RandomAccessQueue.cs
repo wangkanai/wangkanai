@@ -69,9 +69,7 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 		=> new RandomAccessQueue<T>(_buffer, _count, _start);
 
 	public void Add(T item)
-	{
-		Enquene(item);
-	}
+		=> Enqueue(item);
 
 	public bool Remove(T item)
 	{
@@ -135,11 +133,20 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 		var strong = array as T[];
 
 		strong.ThrowIfNull<ArgumentException>($"Cannot copy elements of type {typeof(T).Name} to an array of type {array.GetType().GetElementType().Name}");
-		
+
 		CopyTo(strong, index);
 	}
 
-	public void Enquene(T value)
+	public void TrimToSize()
+	{
+		var newCapacity = System.Math.Max(Count, DefaultCapacity);
+		if (Capacity == newCapacity)
+			return;
+		
+		Resize(newCapacity, -1);
+	}
+
+	public void Enqueue(T value)
 		=> Enqueue(value, _count);
 
 	public void Enqueue(T value, int index)
@@ -265,8 +272,8 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 		_version++;
 		return result;
 	}
-	
-	IEnumerator IEnumerable.GetEnumerator() 
+
+	IEnumerator IEnumerable.GetEnumerator()
 		=> GetEnumerator();
 
 	public IEnumerator<T> GetEnumerator()
