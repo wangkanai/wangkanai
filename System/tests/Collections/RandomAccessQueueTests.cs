@@ -213,7 +213,7 @@ public class RandomAccessQueueTests
 		queue.Enqueue("1");
 		queue.Enqueue("3");
 
-		Assert.Throws<ArgumentException>(() => queue.Enqueue("2", -1));
+		Assert.Throws<ArgumentOutOfRangeException>(() => queue.Enqueue("2", -1));
 	}
 
 	[Fact]
@@ -223,7 +223,7 @@ public class RandomAccessQueueTests
 		queue.Enqueue("1");
 		queue.Enqueue("3");
 
-		Assert.Throws<ArgumentException>(() => queue.Enqueue("2", 3));
+		Assert.Throws<ArgumentOutOfRangeException>(() => queue.Enqueue("2", 3));
 	}
 
 	[Fact]

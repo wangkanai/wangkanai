@@ -116,12 +116,14 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 	/// </summary>
 	public bool Contains(T item)
 	{
-		if (item.FalseIfNull())
-			return false;
+		if (item is null)
+		{
+			for (var i = 0; i < Count; i++)
+				if (this[i] is null)
+					return true;
 
-		for (var i = 0; i < Count; i++)
-			if (this[i].TrueIfNull())
-				return true;
+			return false;
+		}
 
 		var comparer = EqualityComparer<T>.Default;
 		for (var i = 0; i < Count; i++)
@@ -367,7 +369,7 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 
 	public int BinarySearch(T value, Comparison<T> comparison)
 		=> BinarySearch(value, new ComparisonComparer<T>(comparison));
-	
+
 	public int BinarySearch(T value, IComparer<T> comparer)
 	{
 		comparer.ThrowIfNull();
@@ -393,6 +395,4 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 
 		return ~min;
 	}
-
-
 }
