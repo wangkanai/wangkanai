@@ -61,13 +61,21 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 	}
 
 	/// <summary>
+	/// Creates a new queue with the same contents as this queue.
+	/// The queues are separate, however - adding an item to the returned queue doesn't affect this queue or vice versa.
+	/// </summary>
+	/// <returns></returns>
+	object ICloneable.Clone() => Clone();
+
+	/// <summary>
 	/// Strongly type version if <see cref="ICloneable.Clone"/>
 	/// Create a new queue with the same contents as the queue.
 	/// </summary>
 	/// <returns>A clone of the current queue</returns>
-	public object Clone()
+	public RandomAccessQueue<T> Clone()
 		=> new RandomAccessQueue<T>(_buffer, _count, _start);
-
+	
+	
 	public void Add(T item)
 		=> Enqueue(item);
 
