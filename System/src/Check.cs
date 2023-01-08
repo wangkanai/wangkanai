@@ -1,5 +1,7 @@
 // Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
+using System.Numerics;
+
 using Wangkanai.Exceptions;
 using Wangkanai.Extensions;
 using Wangkanai.Resources;
@@ -195,23 +197,40 @@ public static class Check
 
 	#endregion
 
-	// #region prepare depreciate
-	//
-	// [Deprecate(nameof(ThrowIfNull))]
-	// [Obsolete]
-	// [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
-	// public static T NotNull<T>([CanBeNull] T value)
-	// 	=> NotNull(value, nameof(value));
-	//
-	// [Obsolete]
-	// [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
-	// internal static T NotNull<T>([CanBeNull] T value, [InvokerParameterName] string parameterName)
-	// 	=> value is null
-	// 		   ? throw new ArgumentNullException(parameterName)
-	// 		   : value;
-	//
-	// #endregion
+#if NET7_0_OR_GREATER
+	public static T ThrowIfOutOfRange<T>(this T index, [NonNegativeValue] T lower, [NonNegativeValue] T upper)
+		where T : IBinaryInteger<T>
+	{
+		if (index < lower || index >= upper)
+			throw new ArgumentOutOfRangeException(nameof(index));
 
+		return index;
+	}
+#else
+	public static int ThrowIfOutOfRange(this int index, [NonNegativeValue] int lower, [NonNegativeValue] int upper)
+	{
+		if (index < lower || index >= upper)
+			throw new ArgumentOutOfRangeException(nameof(index));
+
+		return index;
+	}
+#endif
+// #region prepare depreciate
+//
+// [Deprecate(nameof(ThrowIfNull))]
+// [Obsolete]
+// [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+// public static T NotNull<T>([CanBeNull] T value)
+// 	=> NotNull(value, nameof(value));
+//
+// [Obsolete]
+// [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+// internal static T NotNull<T>([CanBeNull] T value, [InvokerParameterName] string parameterName)
+// 	=> value is null
+// 		   ? throw new ArgumentNullException(parameterName)
+// 		   : value;
+//
+// #endregion
 	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
 	public static string NotNullOrEmpty(string value)
 		=> NotNullOrEmpty(value, nameof(value));
@@ -262,6 +281,7 @@ public static class Check
 	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
 	public static bool NotMoreThan(this int value, int expected)
 		=> NotMoreThan(value, expected, nameof(value));
+
 
 	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
 	internal static bool NotMoreThan(this int value, int expected, [InvokerParameterName] [NotNull] string parameterName)
