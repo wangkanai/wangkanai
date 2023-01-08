@@ -160,6 +160,11 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 		this[index] = value;
 	}
 
+	/// <summary>
+	/// Removes on T from the start of the queue, returning it.
+	/// </summary>
+	/// <returns>The item at the head of the queue</returns>
+	/// <exception cref="InvalidOperationException"></exception>
 	public T Dequeue()
 	{
 		if (_count == 0)
@@ -218,6 +223,11 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 		_start  = 0;
 	}
 
+	/// <summary>
+	/// Removes an item from the queue at the specified index.
+	/// </summary>
+	/// <param name="index">The index of the item to remove</param>
+	/// <returns>The item which has been removed from the</returns>
 	public T RemoveAt(int index)
 	{
 		index.ThrowIfOutOfRange(0, _count);
