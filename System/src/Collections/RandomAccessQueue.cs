@@ -76,9 +76,13 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 		=> new RandomAccessQueue<T>(_buffer, _count, _start);
 	
 	
-	public void Add(T item)
-		=> Enqueue(item);
+	/// <summary>
+	/// Adds an item to the queue.
+	/// </summary>
+	/// <param name="item">The item to add</param>
+	public void Add(T item) => Enqueue(item);
 
+	
 	public bool Remove(T item)
 	{
 		if (item.TrueIfNull())
@@ -106,6 +110,10 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 		return false;
 	}
 
+	/// <summary>
+	/// Returns whether or not the queue contains the given item,
+	/// using the default equality comparer for the item to find is non-null.
+	/// </summary>
 	public bool Contains(T item)
 	{
 		if (item.FalseIfNull())
@@ -123,10 +131,17 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 		return false;
 	}
 
+	/// <summary>
+	/// Copies the elements of the queue to the given array, starting at the given index in the array.
+	/// </summary>
+	/// <param name="array">The array to copy the contents of the queue into</param>
+	/// <param name="index">The zero-based index in array at which coping begins</param>
+	/// <exception cref="ArgumentException">When not enough space in the array</exception>
 	public void CopyTo(T[] array, int index)
 	{
 		array.ThrowIfNull();
 		index.ThrowIfOutOfRange(0, array.Length);
+		
 		if (array.Length < index + Count)
 			throw new ArgumentException("Not enough space in the array", nameof(array));
 
@@ -134,6 +149,11 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 			array[i + index] = this[i];
 	}
 
+	/// <summary>
+	/// Copies the elements of the queue to the given array, beginning at the given index.
+	/// </summary>
+	/// <param name="array">The array to copy to the contents of the queue into</param>
+	/// <param name="index">The zero-based index in array at which coping begins</param>
 	public void CopyTo(Array array, int index)
 	{
 		array.ThrowIfNull();
@@ -154,9 +174,18 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 		Resize(newCapacity, -1);
 	}
 
+	/// <summary>
+	/// Adds an item to the end of the queue
+	/// </summary>
+	/// <param name="value">The item to add to the queue.</param>
 	public void Enqueue(T value)
 		=> Enqueue(value, _count);
 
+	/// <summary>
+	/// Adds an object at the specified index
+	/// </summary>
+	/// <param name="value">The item to add to the queue</param>
+	/// <param name="index">The index of the newly added item</param>
 	public void Enqueue(T value, int index)
 	{
 		if (_count == Capacity)
@@ -195,6 +224,11 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 		return result;
 	}
 
+	/// <summary>
+	/// Resizes the queue to a new capacity, optionally leaving a at the given logical index so that a new item can be added in with further copying.
+	/// </summary>
+	/// <param name="newCapacity">The new capacity</param>
+	/// <param name="gap">The logical index at which in insert a gap, or -1 for no gap</param>
 	private void Resize(int newCapacity, int gap)
 	{
 		var newBuffer = new T[newCapacity];
