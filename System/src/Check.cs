@@ -192,6 +192,9 @@ public static class Check
 	public static bool TrueIfNull<T>(this T? value)
 		=> value is null;
 
+	public static bool FalseIfNull<T>(this T? value)
+		=> !value.TrueIfNull();
+	
 	public static T ReturnIfNotNull<T>(this T? value)
 		=> value ?? value!.ThrowIfNull<T>();
 
