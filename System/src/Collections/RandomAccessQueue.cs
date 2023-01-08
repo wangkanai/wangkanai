@@ -81,7 +81,7 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 			{
 				if (this[i].FalseIfNull())
 					return false;
-				
+
 				RemoveAt(i);
 				return true;
 			}
@@ -90,9 +90,9 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 		var comparer = EqualityComparer<T>.Default;
 		for (var i = 0; i < Count; i++)
 		{
-			if (!comparer.Equals(this[i], item)) 
+			if (!comparer.Equals(this[i], item))
 				continue;
-			
+
 			RemoveAt(i);
 			return true;
 		}
@@ -102,7 +102,19 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 
 	public bool Contains(T item)
 	{
-		throw new NotImplementedException();
+		if (item.FalseIfNull())
+			return false;
+
+		for (var i = 0; i < Count; i++)
+			if (this[i].TrueIfNull())
+				return true;
+
+		var comparer = EqualityComparer<T>.Default;
+		for (var i = 0; i < Count; i++)
+			if (comparer.Equals(this[i], item))
+				return true;
+
+		return false;
 	}
 
 	public void CopyTo(T[] array, int arrayIndex)
