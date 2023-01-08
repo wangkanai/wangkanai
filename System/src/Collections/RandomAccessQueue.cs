@@ -370,6 +370,9 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 	public int BinarySearch(T value, Comparison<T> comparison)
 		=> BinarySearch(value, new ComparisonComparer<T>(comparison));
 
+	public int BinarySearch(T value, Func<T, T, int> comparison)
+		=> BinarySearch(value, new ComparisonComparer<T>((x, y) => comparison(x, y)));
+
 	public int BinarySearch(T value, IComparer<T> comparer)
 	{
 		comparer.ThrowIfNull();
@@ -395,4 +398,7 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 
 		return ~min;
 	}
+
+
+
 }

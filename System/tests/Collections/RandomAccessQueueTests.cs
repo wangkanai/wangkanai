@@ -605,4 +605,118 @@ public class RandomAccessQueueTests
 		Assert.Equal(5, queue.Count);
 		Assert.Equal(5, count);
 	}
+
+	[Fact]
+	public void BinartySEarchComparableNull()
+	{
+		var queue = new StringQueue();
+
+		Assert.Equal(~0, queue.BinarySearch(null));
+		queue.Add("hi");
+		Assert.Equal(~0, queue.BinarySearch(null));
+
+		queue.Dequeue();
+		queue.Add(null);
+		Assert.Equal(0, queue.BinarySearch(null));
+	}
+
+	[Fact]
+	public void BinarySearchIncomparable()
+	{
+		var queue = new RandomAccessQueue<object>();
+
+		Assert.Throws<ArgumentException>(() => queue.BinarySearch(new object()));
+	}
+
+	[Fact]
+	public void BinarySearchComparableEmpty()
+	{
+		var queue = new StringQueue();
+
+		Assert.Equal(~0, queue.BinarySearch("1"));
+	}
+
+	[Fact]
+	public void BinarySearchNullComparison()
+	{
+		var queue = new StringQueue();
+
+		Assert.Throws<ArgumentNullException>(() => queue.BinarySearch("1", (Comparison<string>)null));
+	}
+
+	[Fact]
+	public void BinarySearchComparisonEmpty()
+	{
+		var queue = new StringQueue();
+
+		Assert.Equal(~0, queue.BinarySearch("1", (Comparison<string>)((x, y) => { throw new Exception("Don't expect to be called"); })));
+	}
+
+	[Fact]
+	public void BinarySearchComparerNull()
+	{
+		var queue    = new StringQueue();
+		var comparer = Comparer<string>.Default;
+
+		Assert.Equal(~0, queue.BinarySearch(null, comparer));
+
+		queue.Add("hi");
+		Assert.Equal(~0, queue.BinarySearch(null, comparer));
+		queue.Dequeue();
+		queue.Add(null);
+
+		Assert.Equal(0, queue.BinarySearch(null, comparer));
+	}
+
+	[Fact]
+	public void BinarySearchNullComparer()
+	{
+		var queue = new StringQueue();
+
+		Assert.Throws<ArgumentNullException>(() => queue.BinarySearch("1", (IComparer<string>)null));
+	}
+
+	[Fact]
+	public void BinarySearchComparable()
+	{
+		var queue = new StringQueue();
+		
+		queue.Enqueue("1");
+		queue.Enqueue("3");
+		queue.Enqueue("5");
+
+		Assert.Equal(0, queue.BinarySearch("1"));
+		Assert.Equal(~1, queue.BinarySearch("2"));
+		Assert.Equal(1, queue.BinarySearch("3"));
+		Assert.Equal(~2, queue.BinarySearch("4"));
+		Assert.Equal(2, queue.BinarySearch("5"));
+		Assert.Equal(~3, queue.BinarySearch("6"));
+	}
+
+	[Fact]
+	public void BinarySearchComparison()
+	{
+		var queue = new StringQueue();
+
+		queue.Enqueue("1");
+		queue.Enqueue("14");
+		queue.Enqueue("50");
+		queue.Enqueue("200");
+
+		Comparison<string> comparison = delegate(string x, string y) {
+			var first  = int.Parse(x);
+			var second = int.Parse(y);
+
+			return first.CompareTo(second);
+		};
+
+		Assert.Equal(0, queue.BinarySearch("1", comparison));
+		Assert.Equal(~1, queue.BinarySearch("12", comparison));
+		Assert.Equal(1, queue.BinarySearch("14", comparison));
+		Assert.Equal(~2, queue.BinarySearch("45", comparison));
+		Assert.Equal(2, queue.BinarySearch("50", comparison));
+		Assert.Equal(~3, queue.BinarySearch("100", comparison));
+		Assert.Equal(3, queue.BinarySearch("200", comparison));
+		Assert.Equal(~4, queue.BinarySearch("500", comparison));
+	}
 }
