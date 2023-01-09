@@ -72,8 +72,7 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 	/// Create a new queue with the same contents as the queue.
 	/// </summary>
 	/// <returns>A clone of the current queue</returns>
-	public RandomAccessQueue<T> Clone()
-		=> new RandomAccessQueue<T>(_buffer, _count, _start);
+	public RandomAccessQueue<T> Clone() => new(_buffer, _count, _start);
 
 
 	/// <summary>
@@ -89,7 +88,7 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 		{
 			for (var i = 0; i < Count; i++)
 			{
-				if (this[i].FalseIfNull())
+				if (this[i] is not null)
 					return false;
 
 				RemoveAt(i);
@@ -180,8 +179,7 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 	/// Adds an item to the end of the queue
 	/// </summary>
 	/// <param name="value">The item to add to the queue.</param>
-	public void Enqueue(T value)
-		=> Enqueue(value, _count);
+	public void Enqueue(T value) => Enqueue(value, _count);
 
 	/// <summary>
 	/// Adds an object at the specified index
@@ -218,6 +216,7 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 
 		var result = this[0];
 		this[0] = default;
+		
 		_start++;
 		if (_start == Capacity)
 			_start = 0;
@@ -333,6 +332,8 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 		}
 	}
 
+	#region Binary Search
+
 	public int BinarySearch(T value)
 	{
 		if (value is null)
@@ -347,24 +348,10 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 		if (_count == 0)
 			return ~0;
 
-		var min = 0;
-		var max = _count - 1;
-
-		while (min <= max)
-		{
-			var test    = (min + max) / 2;
+		return BinarySearch(test => {
 			var element = this[test];
-			var result  = element is null ? 1 : comparable.CompareTo(element);
-
-			if (result == 0)
-				return test;
-			if (result < 0)
-				max = test - 1;
-			if (result > 0)
-				min = test + 1;
-		}
-
-		return ~min;
+			return element is null ? 1 : comparable.CompareTo(element);
+		});
 	}
 
 	public int BinarySearch(T value, Comparison<T> comparison)
@@ -380,13 +367,18 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 		if (_count == 0)
 			return ~0;
 
+		return BinarySearch(test => comparer.Compare(value, this[test]));
+	}
+
+	private int BinarySearch(Func<int, int> comparer)
+	{
 		var min = 0;
 		var max = _count - 1;
 
 		while (min <= max)
 		{
 			var test   = (min + max) / 2;
-			var result = comparer.Compare(value, this[test]);
+			var result = comparer(test);
 
 			if (result == 0)
 				return test;
@@ -399,6 +391,5 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 		return ~min;
 	}
 
-
-
+	#endregion
 }
