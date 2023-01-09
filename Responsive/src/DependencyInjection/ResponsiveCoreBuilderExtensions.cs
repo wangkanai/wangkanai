@@ -37,7 +37,7 @@ public static class ResponsiveCoreBuilderExtensions
 
     public static IResponsiveBuilder AddResponsiveService(this IResponsiveBuilder builder)
     {
-        Check.NotNull(builder);
+        builder.ThrowIfNull();
 
         builder.AddSessionServices();
         builder.Services.TryAddTransient<IResponsiveService, ResponsiveService>();
