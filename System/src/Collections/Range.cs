@@ -2,6 +2,10 @@
 
 namespace Wangkanai.Collections;
 
+/// <summary>
+/// Represents a range of values, an <see cref="IComparer{T}"/> is used to compare specific values with a start and end point.
+/// A range may be include or exclude each end individually.
+/// </summary>
 public sealed class Range<T>
 {
 	/// <summary>
@@ -69,6 +73,10 @@ public sealed class Range<T>
 		return new Range<T>(Start, End, Comparer, IncludesStart, true);
 	}
 	
+	/// <summary>
+	/// Returns a range with the same boundaries as this, but including the end point.
+	/// When called on a range already including the end point, returns the original range is returned.
+	/// </summary>
 	public Range<T> IncludeEnd()
 	{
 		if (IncludesEnd)
@@ -77,6 +85,10 @@ public sealed class Range<T>
 		return new Range<T>(Start, End, Comparer, IncludesStart, true);
 	}
 	
+	/// <summary>
+	/// Returns a range with the same boundaries as this, but including the start point.
+	/// When called on a range already excluding the start point, returns the original range.
+	/// </summary>
 	public Range<T> IncludeStart()
 	{
 		if (IncludesStart)
@@ -119,7 +131,7 @@ public sealed class Range<T>
 	/// Tge step delegate is applied iterator begins at the start point;
 	/// otherwise it begins at the end point.
 	/// </summary>
-	/// <param name="step">Delefate to apply to the "current value" on each iteration</param>
+	/// <param name="step">Delegate to apply to the "current value" on each iteration</param>
 	public RangeIterator<T> Step(Func<T, T> step)
 	{
 		step.ThrowIfNull();
