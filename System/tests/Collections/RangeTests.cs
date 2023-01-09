@@ -53,7 +53,7 @@ public class RangeTests
 		Assert.False(subject.Contains(-1));
 		Assert.False(subject.Contains(6));
 	}
-	
+
 	[Fact]
 	public void DefaultComparerExcludingEnd()
 	{
@@ -65,7 +65,7 @@ public class RangeTests
 		Assert.True(subject.Contains(1));
 		Assert.False(subject.Contains(5));
 	}
-	
+
 	[Fact]
 	public void DefaultComparerExcludingStart()
 	{
@@ -82,7 +82,7 @@ public class RangeTests
 	public void DefaultBothEnds()
 	{
 		var subject = new Range<int>(0, 5).ExcludeStart().ExcludeEnd();
-		
+
 		Assert.False(subject.IncludesStart);
 		Assert.False(subject.IncludesEnd);
 		Assert.False(subject.Contains(0));
@@ -99,7 +99,7 @@ public class RangeTests
 		subject = subject.IncludeStart();
 		Assert.True(subject.IncludesStart);
 	}
-	
+
 	[Fact]
 	public void ExcludeThenIncludeEnd()
 	{
@@ -109,25 +109,77 @@ public class RangeTests
 		subject = subject.IncludeEnd();
 		Assert.True(subject.IncludesEnd);
 	}
+
+	[Fact]
+	public void IncludeStartOnInclusiveStart()
+	{
+		var subject = new Range<int>(0, 5);
+		Assert.Same(subject, subject.IncludeStart());
+	}
+
+	[Fact]
+	public void IncludeEndOnInclusiveEnd()
+	{
+		var subject = new Range<int>(0, 5);
+		Assert.Same(subject, subject.IncludeEnd());
+	}
+
+	[Fact]
+	public void ExcludeStartOnExclusiveStart()
+	{
+		var subject = new Range<int>(0, 5).ExcludeStart();
+		Assert.Same(subject, subject.ExcludeStart());
+	}
+
+	[Fact]
+	public void ExcludeEndOnExclusiveEnd()
+	{
+		var subject = new Range<int>(0, 5).ExcludeEnd();
+		Assert.Same(subject, subject.ExcludeEnd());
+	}
+
+	[Fact]
+	public void HalfOpenSamePointIsEmpty()
+	{
+		var subject = new Range<int>(3, 3).ExcludeEnd();
+		Assert.False(subject.Contains(3));
+
+		subject = new Range<int>(3, 3).ExcludeStart();
+		Assert.False(subject.Contains(3));
+	}
+
+	[Fact]
+	public void StartGreaterThanEndThrows()
+	{
+		Assert.Throws<ArgumentOutOfRangeException>(() => new Range<int>(5, 0));
+	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+	[Fact]
+	public void Ascending()
+	{
+		var subject = new Range<int>(0, 5).FromStart(x => x + 2);
+		Assert.True(subject.SequenceEqual(new[] { 0, 2, 4 }));
+	}
+
+	[Fact]
+	public void Descending()
+	{
+		var subject = new Range<int>(0,5).FromEnd(x => x - 2);
+		Assert.True(subject.SequenceEqual(new[] { 5, 3, 1 }));
+	}
+
+	[Fact]
+	public void StepAscending()
+	{
+		var subject = new Range<int>(0, 5).Step(x => x + 1);
+		Assert.True(subject.SequenceEqual(new[] { 0, 1, 2, 3, 4, 5 }));
+	}
+
+	[Fact]
+	public void StepDescending()
+	{
+		var subject = new Range<int>(0, 5).Step(x => x - 1);
+		Assert.True(subject.SequenceEqual(new[] { 5, 4, 3, 2, 1, 0 }));
+	}
 }

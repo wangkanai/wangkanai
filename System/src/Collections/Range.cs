@@ -78,10 +78,10 @@ public sealed class Range<T>
 	/// </summary>
 	public Range<T> ExcludeStart()
 	{
-		if (!IncludesEnd)
+		if (!IncludesStart)
 			return this;
 
-		return new Range<T>(Start, End, Comparer, false, IncludesStart);
+		return new Range<T>(Start, End, Comparer, false, IncludesEnd);
 	}
 
 	/// <summary>
