@@ -4,12 +4,27 @@ using Wangkanai.Extensions;
 
 namespace Wangkanai.Collections;
 
+/// <summary>
+/// Iterates over a range of values that <see cref="IEnumerable{T}"/>
+///  </summary>
 public sealed class RangeIterator<T> : IEnumerable<T>
 {
+	/// <summary>
+	/// Returns the range this object iterates over.
+	/// </summary>
 	public Range<T>   Range     { get; }
+	/// <summary>
+	/// Returns the step function used for this range
+	/// </summary>
 	public Func<T, T> Step      { get; }
+	/// <summary>
+	/// Returns whether or not this iterator works up from the start point (ascending) or down from the end point (descending)
+	/// </summary>
 	public bool       Ascending { get; }
 
+	/// <summary>
+	/// Create a ascending iterator iver the given range with the given step function, with the specified direction (optional)
+	/// </summary>
 	public RangeIterator(Range<T> range, Func<T, T> step, bool ascending = true)
 	{
 		step.ThrowIfNull();
@@ -23,6 +38,9 @@ public sealed class RangeIterator<T> : IEnumerable<T>
 		Ascending = ascending;
 	}
 
+	/// <summary>
+	/// Returns an <see cref="IEnumerator{T}"/> running over the range.
+	/// </summary>
 	public IEnumerator<T> GetEnumerator()
 	{
 		var includeStart = Ascending ? Range.IncludesStart : Range.IncludesEnd;
@@ -34,6 +52,7 @@ public sealed class RangeIterator<T> : IEnumerable<T>
 
 		var value = start;
 		if (includeStart)
+			// In case that start point == end point
 			if (includeEnd || comparer.Compare(value, end) < 0)
 				yield return value;
 

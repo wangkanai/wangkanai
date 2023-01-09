@@ -9,6 +9,10 @@ public sealed class ReverseComparer<T> : IComparer<T>
 	/// </summary>
 	public IComparer<T> Original { get; }
 
+	/// <summary>
+	/// Create a new reverse comparer
+	/// </summary>
+	/// <param name="original">The original comparer to use for comparisons</param>
 	public ReverseComparer(IComparer<T> original)
 	{
 		original.ThrowIfNull();
