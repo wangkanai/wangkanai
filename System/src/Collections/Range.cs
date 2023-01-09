@@ -11,40 +11,51 @@ public sealed class Range<T>
 	/// <summary>
 	/// The start of the range
 	/// </summary>
-	public T            Start        { get; }
+	public T Start { get; }
+
 	/// <summary>
 	/// The end of the range
 	/// </summary>
-	public T            End          { get; }
+	public T End { get; }
+
 	/// <summary>
 	/// Comparer to use for comparisons
 	/// </summary>
-	public IComparer<T> Comparer     { get; }
+	public IComparer<T> Comparer { get; }
+
 	/// <summary>
 	/// Whether or no this range includes the start point
 	/// </summary>
-	public bool         IncludesStart { get; }
+	public bool IncludesStart { get; }
+
 	/// <summary>
 	/// Whether or no this range includes the end point
 	/// </summary>
-	public bool         IncludesEnd   { get; }
-	
+	public bool IncludesEnd { get; }
+
 	/// <summary>
 	/// Constructor a new inclusive range using the default comparer
 	/// </summary>
-	public Range(T start, T end) : this(start, end, Comparer<T>.Default) { }
-	
+	public Range(T start, T end) 
+		: this(start, end, Comparer<T>.Default, true, true) { }
+
 	/// <summary>
 	/// Constructor a new including or excluding each end as specified with the given comparer
 	/// </summary>
-	public Range(T start, T end, IComparer<T> comparer, bool includesStart = true, bool includesEnd = true)
+	public Range(T start, T end, IComparer<T> comparer) 
+		: this(start, end, comparer, true, true) { }
+
+	/// <summary>
+	/// Constructor a new including or excluding each end as specified with the given comparer
+	/// </summary>
+	public Range(T start, T end, IComparer<T> comparer, bool includesStart, bool includesEnd)
 	{
 		if (comparer.Compare(start, end) > 0)
 			throw new ArgumentOutOfRangeException(nameof(end), "start must be lower than end according to comparer");
 
-		Start        = start;
-		End          = end;
-		Comparer     = comparer;
+		Start         = start;
+		End           = end;
+		Comparer      = comparer;
 		IncludesStart = includesStart;
 		IncludesEnd   = includesEnd;
 	}
@@ -58,7 +69,7 @@ public sealed class Range<T>
 		if (!IncludesEnd)
 			return this;
 
-		return new Range<T>(Start, End, Comparer, false, IncludesEnd);
+		return new Range<T>(Start, End, Comparer, IncludesStart, false);
 	}
 
 	/// <summary>
@@ -70,9 +81,9 @@ public sealed class Range<T>
 		if (!IncludesEnd)
 			return this;
 
-		return new Range<T>(Start, End, Comparer, IncludesStart, true);
+		return new Range<T>(Start, End, Comparer, false, IncludesStart);
 	}
-	
+
 	/// <summary>
 	/// Returns a range with the same boundaries as this, but including the end point.
 	/// When called on a range already including the end point, returns the original range is returned.
@@ -84,7 +95,7 @@ public sealed class Range<T>
 
 		return new Range<T>(Start, End, Comparer, IncludesStart, true);
 	}
-	
+
 	/// <summary>
 	/// Returns a range with the same boundaries as this, but including the start point.
 	/// When called on a range already excluding the start point, returns the original range.
@@ -103,12 +114,15 @@ public sealed class Range<T>
 	public bool Contains(T value)
 	{
 		var lower = Comparer.Compare(value, Start);
-		if (lower < 0 || lower == 0 && !IncludesStart)
+		if (lower < 0 || (lower == 0 && !IncludesStart))
 			return false;
 
 		var upper = Comparer.Compare(value, End);
 
-		return upper < 0 || upper == 0 && IncludesEnd;
+		if (upper < 0 || (upper == 0 && IncludesEnd))
+			return true;
+
+		return false;
 	}
 
 	/// <summary>
@@ -117,13 +131,13 @@ public sealed class Range<T>
 	/// </summary>
 	/// <param name="step">Delegate to apply to the "current value" on each iteration</param>
 	public RangeIterator<T> FromStart(Func<T, T> step) => new(this, step);
-	
+
 	/// <summary>
 	/// Return an iterator which begins at the end of this range, applying the given step delegate on each iteration until the start is reached or passed.
 	/// The start and end points are included or excluded according to this range.
 	/// </summary>
 	/// <param name="step">Delegate to apply to the "current value" on each iteration</param>
-	public RangeIterator<T> FromEnd(Func<T,T> step) => new(this, step, false);
+	public RangeIterator<T> FromEnd(Func<T, T> step) => new(this, step, false);
 
 	/// <summary>
 	/// Returns an iterator which steps through the range, applying the specified step delegate on each iteration.
@@ -137,7 +151,7 @@ public sealed class Range<T>
 		step.ThrowIfNull();
 
 		var ascending = Comparer.Compare(Start, step(Start)) < 0;
-		
-		return ascending? FromStart(step) : FromEnd(step);
+
+		return ascending ? FromStart(step) : FromEnd(step);
 	}
 }
