@@ -6,7 +6,6 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 {
 	public const int DefaultCapacity = 16;
 
-	private readonly object _syncRoot = new();
 
 	private int _version = 0;
 
@@ -14,18 +13,53 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 	private int _count;
 	private int _start;
 
-	public int    Count          => _count;
-	public int    Capacity       => _buffer.Length;
-	public bool   IsSynchronized => false;
-	public bool   IsReadOnly     => false;
-	public object SyncRoot       => _syncRoot;
+	/// <summary>
+	/// The number of items in the queue
+	/// </summary>
+	public int Count => _count;
 
+	/// <summary>
+	/// Current capacity of the queue - the size of the buffer
+	/// </summary>
+	public int Capacity => _buffer.Length;
 
+	/// <summary>
+	/// Returns false, to indicate that the queue is not read-only
+	/// </summary>
+	public bool IsReadOnly => false;
+
+	/// <summary>
+	/// Returns false, to in indicate that the queue is not synchronized
+	/// </summary>
+	public bool IsSynchronized => false;
+
+	/// <summary>
+	/// An object reference to synchronize on when using the queue from multiple threads.
+	/// This reference is not used for anywhere in the class itself.
+	/// The same reference will always be returned for the same queue, and this will never be the same as the reference returned for a different queue, even a clone.
+	/// </summary>
+	public object SyncRoot => _syncRoot;
+
+	private readonly object _syncRoot = new();
+
+	/// <summary>
+	/// Initializes a new instance of the <see cref="RandomAccessQueue{T}"/> class that is empty and has the default initial capacity.
+	/// </summary>
 	public RandomAccessQueue() : this(DefaultCapacity) { }
 
+	/// <summary>
+	/// Initializes a new instance of the <see cref="RandomAccessQueue{T}"/> class that is empty and has the specified initial capacity (or the default capacity if that is higher.
+	/// </summary>
+	/// <param name="capacity">The initial capacity of the queue</param>
 	public RandomAccessQueue(int capacity)
 		=> _buffer = new T[System.Math.Max(capacity, DefaultCapacity)];
 
+	/// <summary>
+	/// Private constructor for cloning
+	/// </summary>
+	/// <param name="buffer">The buffer to clone for use in this queue</param>
+	/// <param name="count">The number of "valid" elements in the buffer</param>
+	/// <param name="start">The first valid element in the queue</param>
 	private RandomAccessQueue(T[] buffer, int count, int start)
 	{
 		_buffer = (T[])buffer.Clone();
@@ -33,6 +67,10 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 		_start  = start;
 	}
 
+	/// <summary>
+	/// Indexer for the queue, allowing items to be accessed by index and replaced.
+	/// </summary>
+	/// <param name="index">The index in the queue</param>
 	public T this[int index]
 	{
 		get
@@ -81,7 +119,10 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 	/// <param name="item">The item to add</param>
 	public void Add(T item) => Enqueue(item);
 
-
+	/// <summary>
+	/// Removes the given item from the queue, if it exists. The first equal value is removed.
+	/// </summary>
+	/// <param name="item">The item to remove</param>
 	public bool Remove(T item)
 	{
 		if (item.TrueIfNull())
@@ -166,6 +207,10 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 		CopyTo(strong, index);
 	}
 
+	/// <summary>
+	/// Resizes the buffer to just fit the current number of items in the queue.
+	/// The buffer size is never set to less than the default capacity.
+	/// </summary>
 	public void TrimToSize()
 	{
 		var newCapacity = System.Math.Max(Count, DefaultCapacity);
@@ -216,7 +261,7 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 
 		var result = this[0];
 		this[0] = default;
-		
+
 		_start++;
 		if (_start == Capacity)
 			_start = 0;
