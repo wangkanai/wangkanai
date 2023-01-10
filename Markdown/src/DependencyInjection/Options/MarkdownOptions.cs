@@ -4,5 +4,5 @@ namespace Wangkanai.Markdown.DependencyInjection.Options;
 
 public class MarkdownOptions
 {
-    public bool Demo { get; set; }
+	public bool Demo { get; set; }
 }

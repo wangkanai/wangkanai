@@ -10,33 +10,33 @@ namespace Wangkanai.Responsive.Hosting;
 [Area(AreaName)]
 public sealed class PreferenceController : Controller
 {
-    private const    string             AreaName = "Responsive";
-    private readonly IResponsiveService _responsive;
+	private const    string             AreaName = "Responsive";
+	private readonly IResponsiveService _responsive;
 
-    public PreferenceController(IResponsiveService responsive)
-    {
-        _responsive = responsive;
-    }
+	public PreferenceController(IResponsiveService responsive)
+	{
+		_responsive = responsive;
+	}
 
-    // GET
-    public IActionResult Index()
-    {
-        return Content("Preference");
-    }
+	// GET
+	public IActionResult Index()
+	{
+		return Content("Preference");
+	}
 
-    // GET
-    public IActionResult Prefer(string? returnUrl = null)
-    {
-        _responsive.PreferSet(Device.Desktop);
+	// GET
+	public IActionResult Prefer(string? returnUrl = null)
+	{
+		_responsive.PreferSet(Device.Desktop);
 
-        return LocalRedirect(returnUrl ?? "/");
-    }
+		return LocalRedirect(returnUrl ?? "/");
+	}
 
-    // GET
-    public IActionResult Clear(string? returnUrl = null)
-    {
-        _responsive.PreferClear();
+	// GET
+	public IActionResult Clear(string? returnUrl = null)
+	{
+		_responsive.PreferClear();
 
-        return LocalRedirect(returnUrl ?? "/");
-    }
+		return LocalRedirect(returnUrl ?? "/");
+	}
 }

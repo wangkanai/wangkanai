@@ -6,10 +6,10 @@ namespace Wangkanai.Universal.Models;
 
 public class EventTests
 {
-    [Fact]
-    public void TestEventCategoryOnly()
-    {
-        var categoryevent = new Event("button", "click", "submit", "1");
-        Assert.Equal("'event','button','click','submit','1'", categoryevent.ToString());
-    }
+	[Fact]
+	public void TestEventCategoryOnly()
+	{
+		var categoryevent = new Event("button", "click", "submit", "1");
+		Assert.Equal("'event','button','click','submit','1'", categoryevent.ToString());
+	}
 }

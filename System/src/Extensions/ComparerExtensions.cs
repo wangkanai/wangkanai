@@ -21,11 +21,15 @@ public static class ComparerExtensions
 	/// Combine a comparer with another comparer to implement a compound comparer.
 	/// </summary>
 	public static IComparer<T> ThenBy<T>(this IComparer<T> first, IComparer<T> second)
-		=> new LinkedComparer<T>(first, second);
+	{
+		return new LinkedComparer<T>(first, second);
+	}
 
 	/// <summary>
 	/// Combine a comparer with a projection to implement a compound comparer.
 	/// </summary>
 	public static IComparer<T> ThenBy<T, TKey>(this IComparer<T> first, Func<T, TKey> projection)
-		=> new LinkedComparer<T>(first, new ProjectionComparer<T, TKey>(projection));
+	{
+		return new LinkedComparer<T>(first, new ProjectionComparer<T, TKey>(projection));
+	}
 }

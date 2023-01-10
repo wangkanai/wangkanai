@@ -8,21 +8,21 @@ namespace Wangkanai.Graph.Providers;
 
 internal class NoOpGraphAuthenticationProvider : IAuthenticationProvider
 {
-    public NoOpGraphAuthenticationProvider(IAccessTokenProvider tokenProvider)
-    {
-        TokenProvider = tokenProvider;
-    }
+	public NoOpGraphAuthenticationProvider(IAccessTokenProvider tokenProvider)
+	{
+		TokenProvider = tokenProvider;
+	}
 
-    public IAccessTokenProvider TokenProvider { get; }
+	public IAccessTokenProvider TokenProvider { get; }
 
-    public async Task AuthenticateRequestAsync(HttpRequestMessage request)
-    {
-        var result = await TokenProvider.RequestAccessToken(new AccessTokenRequestOptions
-        {
-            Scopes = new[] { "https://graph.microsoft.com/User.Read" }
-        });
+	public async Task AuthenticateRequestAsync(HttpRequestMessage request)
+	{
+		var result = await TokenProvider.RequestAccessToken(new AccessTokenRequestOptions
+		{
+			Scopes = new[] { "https://graph.microsoft.com/User.Read" }
+		});
 
-        if (result.TryGetToken(out var token))
-            request.Headers.Authorization ??= new AuthenticationHeaderValue("Bearer", token.Value);
-    }
+		if (result.TryGetToken(out var token))
+			request.Headers.Authorization ??= new AuthenticationHeaderValue("Bearer", token.Value);
+	}
 }

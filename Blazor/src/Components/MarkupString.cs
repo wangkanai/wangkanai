@@ -4,20 +4,20 @@ namespace Wangkanai.Blazor.Components;
 
 public readonly struct MarkupString
 {
-    public string Value { get; }
+	public string Value { get; }
 
-    public MarkupString(string value)
-    {
-        Value = value;
-    }
+	public MarkupString(string value)
+	{
+		Value = value;
+	}
 
-    public static explicit operator MarkupString(string value)
-    {
-        return new(value);
-    }
+	public static explicit operator MarkupString(string value)
+	{
+		return new MarkupString(value);
+	}
 
-    public override string ToString()
-    {
-        return Value ?? string.Empty;
-    }
+	public override string ToString()
+	{
+		return Value ?? string.Empty;
+	}
 }

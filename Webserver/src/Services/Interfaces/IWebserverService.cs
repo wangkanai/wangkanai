@@ -2,6 +2,4 @@
 
 namespace Wangkanai.Webserver.Services;
 
-public interface IWebserverService
-{
-}
+public interface IWebserverService { }

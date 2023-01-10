@@ -8,8 +8,8 @@ namespace Wangkanai.Detection;
 /// </summary>
 public sealed class CrawlerOptions
 {
-    /// <summary>
-    ///     Gets a list of crawlers name you would like to add to this application.
-    /// </summary>
-    public List<string> Others { get; } = new();
+	/// <summary>
+	///     Gets a list of crawlers name you would like to add to this application.
+	/// </summary>
+	public List<string> Others { get; } = new();
 }

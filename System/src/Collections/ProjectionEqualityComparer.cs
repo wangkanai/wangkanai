@@ -8,10 +8,14 @@ namespace Wangkanai.Collections;
 public static class ProjectionEqualityComparer
 {
 	public static ProjectionEqualityComparer<TSource, TKey> Create<TSource, TKey>(Func<TSource, TKey> projection)
-		=> new(projection);
+	{
+		return new(projection);
+	}
 
 	public static ProjectionEqualityComparer<TSource, TKey> Create<TSource, TKey>(TSource ignored, Func<TSource, TKey> projection)
-		=> new(projection);
+	{
+		return new(projection);
+	}
 }
 
 /// <summary>
@@ -21,7 +25,9 @@ public static class ProjectionEqualityComparer
 public static class ProjectionEqualityComparer<TSource>
 {
 	public static ProjectionEqualityComparer<TSource, TKey> Create<TKey>(Func<TSource, TKey> projection)
-		=> new(projection);
+	{
+		return new(projection);
+	}
 }
 
 /// <summary>
@@ -54,17 +60,21 @@ public class ProjectionEqualityComparer<TSource, TKey> : IEqualityComparer<TSour
 	/// Otherwise return the standard Compare value.
 	/// </returns>
 	public bool Equals(TSource x, TSource y)
-		=> (x, y) switch
+	{
+		return (x, y) switch
 		{
 			(null, null) => true,
 			(null, _)    => false,
 			(_, null)    => false,
 			_            => _comparer.Equals(_projection(x), _projection(y))
 		};
+	}
 
 	/// <summary>
 	/// Produces a hash code for the given value by projecting it and then asking the equality comparer for the hash code of the resulting key.
 	/// </summary>
 	public int GetHashCode(TSource obj)
-		=> _comparer.GetHashCode(_projection(obj.ThrowIfNull()));
+	{
+		return _comparer.GetHashCode(_projection(obj.ThrowIfNull()));
+	}
 }

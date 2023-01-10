@@ -7,7 +7,7 @@
         <Title>Wangkanai SendGrid</Title>
         <PackageTags>aspnetcore;sendgrid;smtp;email;</PackageTags>
         <Description>This project is a wrapper for the SendGrid email service</Description>
-        
+
         <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/SendGrid</PackageProjectUrl>
     </PropertyGroup>
 

@@ -4,6 +4,6 @@ namespace Wangkanai.Solver.Abstractions;
 
 public interface IVariable
 {
-    string Name  { get; }
-    double Value { get; }
+	string Name  { get; }
+	double Value { get; }
 }

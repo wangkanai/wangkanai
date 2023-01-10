@@ -2,6 +2,4 @@
 
 namespace Wangkanai.Analytics.Services;
 
-public interface IAnalyticsService
-{
-}
+public interface IAnalyticsService { }

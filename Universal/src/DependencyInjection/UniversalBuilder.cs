@@ -4,10 +4,10 @@ namespace Microsoft.Extensions.DependencyInjection;
 
 public sealed class UniversalBuilder : IUniversalBuilder
 {
-    public UniversalBuilder(IServiceCollection services)
-    {
-        Services = services.ThrowIfNull();
-    }
+	public UniversalBuilder(IServiceCollection services)
+	{
+		Services = services.ThrowIfNull();
+	}
 
-    public IServiceCollection Services { get; }
+	public IServiceCollection Services { get; }
 }

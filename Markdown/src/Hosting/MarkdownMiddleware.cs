@@ -8,17 +8,17 @@ namespace Wangkanai.Markdown.Hosting;
 
 public sealed class MarkdownMiddleware
 {
-    private readonly RequestDelegate _next;
+	private readonly RequestDelegate _next;
 
-    public MarkdownMiddleware(RequestDelegate next)
-    {
-        _next = next.ThrowIfNull();
-    }
+	public MarkdownMiddleware(RequestDelegate next)
+	{
+		_next = next.ThrowIfNull();
+	}
 
-    public async Task InvokeAsync(HttpContext context)
-    {
-        context.ThrowIfNull();
+	public async Task InvokeAsync(HttpContext context)
+	{
+		context.ThrowIfNull();
 
-        await _next(context);
-    }
+		await _next(context);
+	}
 }

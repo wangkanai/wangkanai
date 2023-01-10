@@ -6,24 +6,24 @@ namespace Wangkanai.Detection.Extensions;
 
 public static class VersionExtensions
 {
-    private static readonly Regex VersionCleanupRegex = new(@"\+|\-|\s|beta",
-                                                            RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
+	private static readonly Regex VersionCleanupRegex = new(@"\+|\-|\s|beta",
+		RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
 
-    public static Version ToVersion(this string version)
-    {
-        if (string.IsNullOrEmpty(version))
-            return new Version();
+	public static Version ToVersion(this string version)
+	{
+		if (string.IsNullOrEmpty(version))
+			return new Version();
 
-        version = VersionCleanupRegex.Replace(version, string.Empty);
+		version = VersionCleanupRegex.Replace(version, string.Empty);
 
-        if (!version.Contains(".", StringComparison.Ordinal))
-            version += ".0";
+		if (!version.Contains(".", StringComparison.Ordinal))
+			version += ".0";
 
-        if (version.Contains(",", StringComparison.Ordinal))
-            version = version.Replace(",", ".");
+		if (version.Contains(",", StringComparison.Ordinal))
+			version = version.Replace(",", ".");
 
-        return Version.TryParse(version, out var parsedVersion)
-                   ? parsedVersion
-                   : new Version(0, 0);
-    }
+		return Version.TryParse(version, out var parsedVersion)
+			       ? parsedVersion
+			       : new Version(0, 0);
+	}
 }

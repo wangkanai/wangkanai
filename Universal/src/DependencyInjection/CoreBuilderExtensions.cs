@@ -10,28 +10,28 @@ namespace Microsoft.Extensions.DependencyInjection;
 
 internal static class CoreBuilderExtensions
 {
-    public static IUniversalBuilder AddRequiredPlatformServices(this IUniversalBuilder builder)
-    {
-        builder.ThrowIfNull();
+	public static IUniversalBuilder AddRequiredPlatformServices(this IUniversalBuilder builder)
+	{
+		builder.ThrowIfNull();
 
-        builder.Services.AddOptions();
-        builder.Services.TryAddSingleton(provider => provider.GetRequiredService<IOptions<UniversalOption>>().Value);
+		builder.Services.AddOptions();
+		builder.Services.TryAddSingleton(provider => provider.GetRequiredService<IOptions<UniversalOption>>().Value);
 
-        return builder;
-    }
+		return builder;
+	}
 
-    public static IUniversalBuilder AddCoreServices(this IUniversalBuilder builder)
-    {
-        // Add Basic core to services
-        builder.Services.TryAddScoped<ITrackerService, TrackerService>();
+	public static IUniversalBuilder AddCoreServices(this IUniversalBuilder builder)
+	{
+		// Add Basic core to services
+		builder.Services.TryAddScoped<ITrackerService, TrackerService>();
 
-        return builder;
-    }
+		return builder;
+	}
 
-    public static IUniversalBuilder AddMarkerService(this IUniversalBuilder builder)
-    {
-        builder.Services.TryAddSingleton<UniversalMarkerService>();
+	public static IUniversalBuilder AddMarkerService(this IUniversalBuilder builder)
+	{
+		builder.Services.TryAddSingleton<UniversalMarkerService>();
 
-        return builder;
-    }
+		return builder;
+	}
 }

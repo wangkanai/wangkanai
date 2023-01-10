@@ -310,7 +310,7 @@ All contribution are welcome, please contact the author.
 
 This project exists thanks to all the people who contribute. [[Contribute](CONTRIBUTING.md)].
 <a href="https://github.com/wangkanai/wangkanai/graphs/contributors">
-    <img src="https://opencollective.com/wangkanai/contributors.svg?width=890&button=false" />
+<img src="https://opencollective.com/wangkanai/contributors.svg?width=890&button=false" />
 </a>
 
 ### Financial Contributors

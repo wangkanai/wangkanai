@@ -4,10 +4,10 @@ namespace Microsoft.Extensions.DependencyInjection;
 
 public class MultiTenantBuilder : IMultiTenantBuilder
 {
-    public MultiTenantBuilder(IServiceCollection services)
-    {
-        Services = services.ThrowIfNull();
-    }
+	public MultiTenantBuilder(IServiceCollection services)
+	{
+		Services = services.ThrowIfNull();
+	}
 
-    public IServiceCollection Services { get; }
+	public IServiceCollection Services { get; }
 }

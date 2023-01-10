@@ -24,5 +24,8 @@ public sealed class ReverseComparer<T> : IComparer<T>
 	/// Returns the result of comparing the specified values using the original comparer, but reversing the order of comparison
 	/// </summary>
 	/// <returns></returns>
-	public int Compare(T x, T y) => Original.Compare(y, x);
+	public int Compare(T x, T y)
+	{
+		return Original.Compare(y, x);
+	}
 }

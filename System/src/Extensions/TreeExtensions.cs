@@ -5,24 +5,26 @@ namespace Wangkanai.Extensions;
 
 public static class TreeExtensions
 {
-    public static IEnumerable<T> Traverse<T>(this T node, Func<T, IEnumerable<T>> children)
-    {
-        yield return node;
+	public static IEnumerable<T> Traverse<T>(this T node, Func<T, IEnumerable<T>> children)
+	{
+		yield return node;
 
-        var childNodes = children(node);
-        if (children != null)
-            foreach (var child in childNodes.SelectMany(n => n.Traverse(children)))
-                yield return child;
-    }
+		var childNodes = children(node);
+		if (children != null)
+		{
+			foreach (var child in childNodes.SelectMany(n => n.Traverse(children)))
+				yield return child;
+		}
+	}
 
-    public static IEnumerable<TItem> GetAncestors<TItem>(TItem item, Func<TItem, TItem> getParentFunc)
-    {
-        getParentFunc.ThrowIfNull();
+	public static IEnumerable<TItem> GetAncestors<TItem>(TItem item, Func<TItem, TItem> getParentFunc)
+	{
+		getParentFunc.ThrowIfNull();
 
-        if (ReferenceEquals(item, null))
-            yield break;
+		if (ReferenceEquals(item, null))
+			yield break;
 
-        for (TItem curItem = getParentFunc(item); !ReferenceEquals(curItem, null); curItem = getParentFunc(curItem))
-            yield return curItem;
-    }
+		for (var curItem = getParentFunc(item); !ReferenceEquals(curItem, null); curItem = getParentFunc(curItem))
+			yield return curItem;
+	}
 }

@@ -4,28 +4,28 @@ namespace Wangkanai.Graph.Providers;
 
 internal class HttpClientHttpProvider : IHttpProvider
 {
-    private readonly HttpClient _http;
+	private readonly HttpClient _http;
 
-    public HttpClientHttpProvider(HttpClient http)
-    {
-        _http = http;
-    }
+	public HttpClientHttpProvider(HttpClient http)
+	{
+		_http = http;
+	}
 
-    public ISerializer Serializer     { get; }      = new Serializer();
-    public TimeSpan    OverallTimeout { get; set; } = TimeSpan.FromSeconds(300);
+	public ISerializer Serializer     { get; }      = new Serializer();
+	public TimeSpan    OverallTimeout { get; set; } = TimeSpan.FromSeconds(300);
 
-    public Task<HttpResponseMessage> SendAsync(HttpRequestMessage request) 
-        => _http.SendAsync(request);
+	public Task<HttpResponseMessage> SendAsync(HttpRequestMessage request)
+	{
+		return _http.SendAsync(request);
+	}
 
-    public Task<HttpResponseMessage> SendAsync(
-        HttpRequestMessage   request,
-        HttpCompletionOption completionOption,
-        CancellationToken    cancellationToken)
-    {
-        return _http.SendAsync(request, completionOption, cancellationToken);
-    }
+	public Task<HttpResponseMessage> SendAsync(
+		HttpRequestMessage   request,
+		HttpCompletionOption completionOption,
+		CancellationToken    cancellationToken)
+	{
+		return _http.SendAsync(request, completionOption, cancellationToken);
+	}
 
-    public void Dispose()
-    {
-    }
+	public void Dispose() { }
 }

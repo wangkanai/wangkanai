@@ -10,37 +10,51 @@ public static class StringExtensions
 {
 	[DebuggerStepThrough]
 	public static bool IsNotNullOrEmpty(this string value)
-		=> !string.IsNullOrEmpty(value);
+	{
+		return !string.IsNullOrEmpty(value);
+	}
 
 	[ContractAnnotation("null => true")]
 	[DebuggerStepThrough]
 	public static bool IsNullOrEmpty(this string input)
-		=> string.IsNullOrEmpty(input);
+	{
+		return string.IsNullOrEmpty(input);
+	}
 
 	[ContractAnnotation("null => true")]
 	[DebuggerStepThrough]
 	public static bool IsNullOrWhiteSpace(this string input)
-		=> string.IsNullOrWhiteSpace(input);
+	{
+		return string.IsNullOrWhiteSpace(input);
+	}
 
 	[DebuggerStepThrough]
 	public static bool IsUnicode(this string input)
-		=> Encoding.ASCII.GetByteCount(input) != Encoding.UTF8.GetByteCount(input);
+	{
+		return Encoding.ASCII.GetByteCount(input) != Encoding.UTF8.GetByteCount(input);
+	}
 
 	[DebuggerStepThrough]
 	public static string EnsureLeadingSlash(this string input)
-		=> input.IsNotNullOrEmpty() && !input.StartsWith("/")
-			   ? "/" + input
-			   : input;
+	{
+		return input.IsNotNullOrEmpty() && !input.StartsWith("/")
+			       ? "/" + input
+			       : input;
+	}
 
 	[DebuggerStepThrough]
 	public static string EnsureTrailingSlash(this string input)
-		=> input.IsNotNullOrEmpty() && !input.EndsWith("/")
-			   ? input + "/"
-			   : input;
+	{
+		return input.IsNotNullOrEmpty() && !input.EndsWith("/")
+			       ? input + "/"
+			       : input;
+	}
 
 	[DebuggerStepThrough]
 	public static string EnsureEndsWith(this string input, char c)
-		=> input.EnsureEndsWith(c, StringComparison.Ordinal);
+	{
+		return input.EnsureEndsWith(c, StringComparison.Ordinal);
+	}
 
 	[DebuggerStepThrough]
 	public static string EnsureEndsWith(this string input, char c, StringComparison comparison)
@@ -64,7 +78,9 @@ public static class StringExtensions
 
 	[DebuggerStepThrough]
 	public static string EnsureStartsWith(this string input, char c)
-		=> input.EnsureStartsWith(c, StringComparison.Ordinal);
+	{
+		return input.EnsureStartsWith(c, StringComparison.Ordinal);
+	}
 
 	[DebuggerStepThrough]
 	public static string EnsureStartsWith(this string input, char c, StringComparison comparison)
@@ -114,11 +130,15 @@ public static class StringExtensions
 
 	[DebuggerStepThrough]
 	public static string RemoveAll(this string source, params string[] strings)
-		=> strings.Aggregate(source, ReplaceOrdinal);
+	{
+		return strings.Aggregate(source, ReplaceOrdinal);
+	}
 
 	[DebuggerStepThrough]
 	private static string ReplaceOrdinal(string current, string target)
-		=> current.Replace(target, "", StringComparison.Ordinal);
+	{
+		return current.Replace(target, "", StringComparison.Ordinal);
+	}
 
 	[DebuggerStepThrough]
 	public static string RemovePostFix(this string value, params string[] postfixes)
@@ -190,21 +210,27 @@ public static class StringExtensions
 
 	[DebuggerStepThrough]
 	public static string SubstringSafe(this string input, int start, int length)
-		=> input.Length <= start
-			   ? ""
-			   : input.Length - start <= length
-				   ? input[start..]
-				   : input.Substring(start, length);
+	{
+		return input.Length <= start
+			       ? ""
+			       : input.Length - start <= length
+				       ? input[start..]
+				       : input.Substring(start, length);
+	}
 
 	[DebuggerStepThrough]
 	public static string SubstringSafe(this string input, int start)
-		=> input.Length <= start
-			   ? ""
-			   : input[start..];
+	{
+		return input.Length <= start
+			       ? ""
+			       : input[start..];
+	}
 
 	[DebuggerStepThrough]
 	public static string ToTitleCase(this string input)
-		=> input.First().ToString().ToUpper() + input.Substring(1);
+	{
+		return input.First().ToString().ToUpper() + input.Substring(1);
+	}
 
 	[DebuggerStepThrough]
 	public static string EscapeSearchTerm(this string term)
@@ -231,11 +257,13 @@ public static class StringExtensions
 	/// http://api.jquery.com/category/selectors/
 	/// </summary>
 	public static string EscapeSelector(this string attribute)
-		=> Regex.Replace(attribute, string.Format("([{0}])", "/[!\"#$%&'()*+,./:;<=>?@^`{|}~\\]"), @"\\$1");
+	{
+		return Regex.Replace(attribute, string.Format("([{0}])", "/[!\"#$%&'()*+,./:;<=>?@^`{|}~\\]"), @"\\$1");
+	}
 
 	public static string GenerateSlug(this string phrase)
 	{
-		string str = phrase.RemoveAccent().ToLower();
+		var str = phrase.RemoveAccent().ToLower();
 
 		// invalid chars
 		str = Regex.Replace(str, @"[^a-z0-9\s-]", "");
@@ -252,7 +280,7 @@ public static class StringExtensions
 	[DebuggerStepThrough]
 	public static string RemoveAccent(this string input)
 	{
-		byte[] bytes = Encoding.GetEncoding("Cyrillic").GetBytes(input);
+		var bytes = Encoding.GetEncoding("Cyrillic").GetBytes(input);
 		return Encoding.ASCII.GetString(bytes);
 	}
 
@@ -263,5 +291,7 @@ public static class StringExtensions
 	/// <param name="str2">The STR2.</param>
 	/// <returns></returns>
 	public static bool EqualsInvariant(this string str1, string str2)
-		=> string.Equals(str1, str2, StringComparison.OrdinalIgnoreCase);
+	{
+		return string.Equals(str1, str2, StringComparison.OrdinalIgnoreCase);
+	}
 }

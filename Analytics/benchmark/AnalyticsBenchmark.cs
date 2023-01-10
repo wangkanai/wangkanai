@@ -8,10 +8,10 @@ using Wangkanai.Analytics.Services;
 [MemoryDiagnoser]
 public class AnalyticsBenchmark
 {
-    [Benchmark]
-    public void Service()
-    {
-        var service = new AnalyticsService();
-        service.ToString();
-    }
+	[Benchmark]
+	public void Service()
+	{
+		var service = new AnalyticsService();
+		service.ToString();
+	}
 }

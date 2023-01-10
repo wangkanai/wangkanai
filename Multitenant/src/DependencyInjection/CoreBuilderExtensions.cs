@@ -10,33 +10,33 @@ namespace Microsoft.Extensions.DependencyInjection;
 
 public static class MultiTenantCoreBuilderExtensions
 {
-    public static IMultiTenantBuilder AddRequiredServices(this IMultiTenantBuilder builder)
-    {
-        builder = builder.ThrowIfNull();
+	public static IMultiTenantBuilder AddRequiredServices(this IMultiTenantBuilder builder)
+	{
+		builder = builder.ThrowIfNull();
 
-        // Hosting doesn't add IHttpContextAccessor by derfault
-        builder.Services.AddHttpContextAccessor();
+		// Hosting doesn't add IHttpContextAccessor by derfault
+		builder.Services.AddHttpContextAccessor();
 
-        // Add Multi Tenant options
-        builder.Services.AddOptions();
-        builder.Services.TryAddSingleton
-            (provider => provider.GetRequiredService<IOptions<MultiTenantOption>>().Value);
+		// Add Multi Tenant options
+		builder.Services.AddOptions();
+		builder.Services.TryAddSingleton
+			(provider => provider.GetRequiredService<IOptions<MultiTenantOption>>().Value);
 
-        return builder;
-    }
+		return builder;
+	}
 
-    public static IMultiTenantBuilder AddCoreServices(this IMultiTenantBuilder builder)
-    {
-        // Add basic core to services
-        //builder.Services.TryAddScoped<>();
+	public static IMultiTenantBuilder AddCoreServices(this IMultiTenantBuilder builder)
+	{
+		// Add basic core to services
+		//builder.Services.TryAddScoped<>();
 
-        return builder;
-    }
+		return builder;
+	}
 
-    public static IMultiTenantBuilder AddMarkerService(this IMultiTenantBuilder builder)
-    {
-        builder.Services.TryAddSingleton<MultiTenantMarkerService>();
+	public static IMultiTenantBuilder AddMarkerService(this IMultiTenantBuilder builder)
+	{
+		builder.Services.TryAddSingleton<MultiTenantMarkerService>();
 
-        return builder;
-    }
+		return builder;
+	}
 }

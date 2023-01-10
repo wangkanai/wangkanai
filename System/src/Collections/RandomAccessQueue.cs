@@ -52,7 +52,9 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 	/// </summary>
 	/// <param name="capacity">The initial capacity of the queue</param>
 	public RandomAccessQueue(int capacity)
-		=> _buffer = new T[System.Math.Max(capacity, DefaultCapacity)];
+	{
+		_buffer = new T[System.Math.Max(capacity, DefaultCapacity)];
+	}
 
 	/// <summary>
 	/// Private constructor for cloning
@@ -103,21 +105,30 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 	/// The queues are separate, however - adding an item to the returned queue doesn't affect this queue or vice versa.
 	/// </summary>
 	/// <returns></returns>
-	object ICloneable.Clone() => Clone();
+	object ICloneable.Clone()
+	{
+		return Clone();
+	}
 
 	/// <summary>
 	/// Strongly type version if <see cref="ICloneable.Clone"/>
 	/// Create a new queue with the same contents as the queue.
 	/// </summary>
 	/// <returns>A clone of the current queue</returns>
-	public RandomAccessQueue<T> Clone() => new(_buffer, _count, _start);
+	public RandomAccessQueue<T> Clone()
+	{
+		return new(_buffer, _count, _start);
+	}
 
 
 	/// <summary>
 	/// Adds an item to the queue.
 	/// </summary>
 	/// <param name="item">The item to add</param>
-	public void Add(T item) => Enqueue(item);
+	public void Add(T item)
+	{
+		Enqueue(item);
+	}
 
 	/// <summary>
 	/// Removes the given item from the queue, if it exists. The first equal value is removed.
@@ -224,7 +235,10 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 	/// Adds an item to the end of the queue
 	/// </summary>
 	/// <param name="value">The item to add to the queue.</param>
-	public void Enqueue(T value) => Enqueue(value, _count);
+	public void Enqueue(T value)
+	{
+		Enqueue(value, _count);
+	}
 
 	/// <summary>
 	/// Adds an object at the specified index
@@ -242,7 +256,7 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 		{
 			_count++;
 			// How to make this more efficient? foreach?
-			for (int i = _count - 2; i >= index; i--)
+			for (var i = _count - 2; i >= index; i--)
 				this[i + 1] = this[i];
 		}
 
@@ -362,7 +376,9 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 	}
 
 	IEnumerator IEnumerable.GetEnumerator()
-		=> GetEnumerator();
+	{
+		return GetEnumerator();
+	}
 
 	public IEnumerator<T> GetEnumerator()
 	{
@@ -382,10 +398,12 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 	public int BinarySearch(T value)
 	{
 		if (value is null)
+		{
 			if (_count == 0 || _buffer[_start] != null)
 				return ~0;
 			else
 				return 0;
+		}
 
 		var comparable = value as IComparable;
 		comparable.ThrowIfNull<ArgumentException>($"{nameof(value)} does not implement {nameof(IComparable)}");
@@ -400,10 +418,14 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 	}
 
 	public int BinarySearch(T value, Comparison<T> comparison)
-		=> BinarySearch(value, new ComparisonComparer<T>(comparison));
+	{
+		return BinarySearch(value, new ComparisonComparer<T>(comparison));
+	}
 
 	public int BinarySearch(T value, Func<T, T, int> projection)
-		=> BinarySearch(value, new ComparisonComparer<T>((x, y) => projection(x, y)));
+	{
+		return BinarySearch(value, new ComparisonComparer<T>((x, y) => projection(x, y)));
+	}
 
 	public int BinarySearch(T value, IComparer<T> comparer)
 	{

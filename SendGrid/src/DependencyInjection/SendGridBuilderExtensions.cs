@@ -11,26 +11,26 @@ namespace Wangkanai.SendGrid.DependencyInjection;
 
 public static class SendGridBuilderExtensions
 {
-    public static ISendGridBuilder AddRequiredPlatformServices(this ISendGridBuilder builder)
-    {
-        builder.ThrowIfNull();
+	public static ISendGridBuilder AddRequiredPlatformServices(this ISendGridBuilder builder)
+	{
+		builder.ThrowIfNull();
 
-        builder.Services.AddOptions();
-        builder.Services.TryAddSingleton(
-            serviceProvider => serviceProvider.GetRequiredService<IOptions<SendGridOptions>>()
-                                              .Value
-        );
+		builder.Services.AddOptions();
+		builder.Services.TryAddSingleton(
+			serviceProvider => serviceProvider.GetRequiredService<IOptions<SendGridOptions>>()
+			                                  .Value
+		);
 
-        return builder;
-    }
+		return builder;
+	}
 
-    public static ISendGridBuilder AddCoreServices(this ISendGridBuilder builder)
-    {
-        builder.ThrowIfNull();
+	public static ISendGridBuilder AddCoreServices(this ISendGridBuilder builder)
+	{
+		builder.ThrowIfNull();
 
-        builder.Services.AddScoped<ISendGridService, SendGridService>();
-        //builder.Services.AddScoped<>();
+		builder.Services.AddScoped<ISendGridService, SendGridService>();
+		//builder.Services.AddScoped<>();
 
-        return builder;
-    }
+		return builder;
+	}
 }

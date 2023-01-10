@@ -8,14 +8,12 @@ namespace Wangkanai.Blazor;
 
 public abstract class BlazorComponentBase : ComponentBase, IBlazorComponentBase, IDisposable
 {
-    protected bool Disposed { get; private set; }
+	protected bool Disposed { get; private set; }
 
-    public virtual void Dispose()
-    {
-        Disposed = true;
-    }
+	public virtual void Dispose()
+	{
+		Disposed = true;
+	}
 
-    protected virtual void BuildRenderTree(RenderTreeBuilder builder)
-    {
-    }
+	protected virtual void BuildRenderTree(RenderTreeBuilder builder) { }
 }

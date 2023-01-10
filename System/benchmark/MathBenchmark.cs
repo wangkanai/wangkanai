@@ -6,13 +6,11 @@ namespace Wangkanai;
 [MemoryDiagnoser]
 public class MathBenchmark
 {
-    [Benchmark]
-    public void Divider()
-    {
-        for (int i = 100; i < 10000; i++)
-        {
-            for (int j = 0; j < 10000; j++)
-                Math.Divider(i, j);
-        }
-    }
+	[Benchmark]
+	public void Divider()
+	{
+		for (var i = 100; i < 10000; i++)
+		for (var j = 0; j < 10000; j++)
+			Math.Divider(i, j);
+	}
 }

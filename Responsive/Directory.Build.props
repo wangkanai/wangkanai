@@ -1,13 +1,13 @@
 <Project>
     <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props"/>
-    
+
     <PropertyGroup>
         <VersionPrefix>4.10.2</VersionPrefix>
 
         <Title>Wangkanai Responsive</Title>
         <PackageTags>aspnetcore;responsive;</PackageTags>
         <Description>ASP.NET Core Responsive middleware for routing base upon request client device detection to specific view. Also in the added feature of user preference made this library even more comprehensive must for developers whom to target multiple devices with view rendered and optimized directly from the server side.</Description>
-        
+
         <RootNamespace>Wangkanai.Responsive</RootNamespace>
 
         <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Responsive</PackageProjectUrl>

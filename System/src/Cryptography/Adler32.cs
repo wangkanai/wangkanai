@@ -6,8 +6,8 @@ namespace Wangkanai.Cryptography;
 
 public class Adler32
 {
-	const int Base = 65521;
-	const int Max  = 5552;
+	private const int Base = 65521;
+	private const int Max  = 5552;
 
 	public static int ComputeChecksum(int initial, byte[] data, int start, int length)
 	{
@@ -23,7 +23,7 @@ public class Adler32
 		{
 			var k = end < Max ? end : Max;
 			end -= k;
-			for (int i = 0; i < k; i++)
+			for (var i = 0; i < k; i++)
 			{
 				a += data[index++];
 				b += a;
@@ -33,11 +33,13 @@ public class Adler32
 			b %= Base;
 		}
 
-		return b << 16 | a;
+		return (b << 16) | a;
 	}
 
 	public static int ComputeChecksum(int initial, byte[] data)
-		=> ComputeChecksum(initial, data, 0, data.Length);
+	{
+		return ComputeChecksum(initial, data, 0, data.Length);
+	}
 
 	public static int ComputeChecksum(string path)
 	{

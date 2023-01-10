@@ -2,6 +2,4 @@
 
 namespace Wangkanai.Universal.Models;
 
-public class AppTracking : Send
-{
-}
+public class AppTracking : Send { }

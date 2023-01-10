@@ -16,7 +16,7 @@ public class DictionaryByTypeTests
 	[Fact]
 	public void AddThenGet()
 	{
-		object o = new object();
+		var o = new object();
 		subject.Add("hi");
 		subject.Add(10);
 		subject.Add(o);
@@ -29,7 +29,7 @@ public class DictionaryByTypeTests
 	[Fact]
 	public void PutThenGet()
 	{
-		object o = new object();
+		var o = new object();
 		subject.Put("hi");
 		subject.Put(10);
 		subject.Put(o);

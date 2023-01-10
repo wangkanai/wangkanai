@@ -5,13 +5,13 @@ namespace Wangkanai;
 [MemoryDiagnoser]
 public class CheckBenchmark
 {
-    [Benchmark]
-    public void CheckNull()
-    {
-        string i = null;
-        i.ThrowIfNull();
-        "".ThrowIfNull();
-        Check.NotNullOrEmpty(i);
-        Check.NotNullOrEmpty("");
-    }
+	[Benchmark]
+	public void CheckNull()
+	{
+		string i = null;
+		i.ThrowIfNull();
+		"".ThrowIfNull();
+		Check.NotNullOrEmpty(i);
+		Check.NotNullOrEmpty("");
+	}
 }

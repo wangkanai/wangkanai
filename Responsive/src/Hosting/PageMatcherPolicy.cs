@@ -10,40 +10,40 @@ namespace Wangkanai.Responsive.Hosting;
 
 internal sealed class ResponsivePageMatcherPolicy : MatcherPolicy, IEndpointComparerPolicy, IEndpointSelectorPolicy
 {
-    public ResponsivePageMatcherPolicy()
-    {
-        Comparer = EndpointMetadataComparer<IResponsiveMetadata>.Default;
-    }
+	public ResponsivePageMatcherPolicy()
+	{
+		Comparer = EndpointMetadataComparer<IResponsiveMetadata>.Default;
+	}
 
-    public override int Order => 10000;
+	public override int Order => 10000;
 
-    public IComparer<Endpoint> Comparer { get; }
+	public IComparer<Endpoint> Comparer { get; }
 
-    public bool AppliesToEndpoints(IReadOnlyList<Endpoint> endpoints)
-    {
-        endpoints.ThrowIfNull();
+	public bool AppliesToEndpoints(IReadOnlyList<Endpoint> endpoints)
+	{
+		endpoints.ThrowIfNull();
 
-        return endpoints.Any(endpoint => endpoint.Metadata.GetMetadata<IResponsiveMetadata>() != null);
-    }
+		return endpoints.Any(endpoint => endpoint.Metadata.GetMetadata<IResponsiveMetadata>() != null);
+	}
 
-    public Task ApplyAsync(HttpContext context, CandidateSet candidates)
-    {
-        context.ThrowIfNull();
-        candidates.ThrowIfNull();
+	public Task ApplyAsync(HttpContext context, CandidateSet candidates)
+	{
+		context.ThrowIfNull();
+		candidates.ThrowIfNull();
 
-        var device = context.GetDevice();
+		var device = context.GetDevice();
 
-        for (var i = 0; i < candidates.Count; i++)
-        {
-            var endpoint = candidates[i].Endpoint;
-            var metadata = endpoint.Metadata.GetMetadata<IResponsiveMetadata>();
-            if (metadata is null)
-                continue;
-            // This endpoint is not a match for the selected device.
-            if (metadata?.Device != null && device != metadata.Device)
-                candidates.SetValidity(i, false);
-        }
+		for (var i = 0; i < candidates.Count; i++)
+		{
+			var endpoint = candidates[i].Endpoint;
+			var metadata = endpoint.Metadata.GetMetadata<IResponsiveMetadata>();
+			if (metadata is null)
+				continue;
+			// This endpoint is not a match for the selected device.
+			if (metadata?.Device != null && device != metadata.Device)
+				candidates.SetValidity(i, false);
+		}
 
-        return Task.CompletedTask;
-    }
+		return Task.CompletedTask;
+	}
 }

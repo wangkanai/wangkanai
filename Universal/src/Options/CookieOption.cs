@@ -4,8 +4,8 @@ namespace Wangkanai.Universal.Options;
 
 public sealed class CookieOption
 {
-    public string Domain       { get; set; }
-    public string Name         { get; set; }
-    public int    Expires      { get; set; }
-    public string LegacyDomain { get; set; }
+	public string Domain       { get; set; }
+	public string Name         { get; set; }
+	public int    Expires      { get; set; }
+	public string LegacyDomain { get; set; }
 }

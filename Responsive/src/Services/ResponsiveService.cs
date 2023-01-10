@@ -33,14 +33,20 @@ public sealed class ResponsiveService : IResponsiveService
 		=> PreferView(_context, _defaultView);
 
 	public void PreferSet(Device desktop)
-		=> _context.Session.SetString(ResponsiveContextKey, desktop.ToString());
+	{
+		_context.Session.SetString(ResponsiveContextKey, desktop.ToString());
+	}
 
 	public void PreferClear()
-		=> _context.Session.Remove(ResponsiveContextKey);
+	{
+		_context.Session.Remove(ResponsiveContextKey);
+	}
 
 	public bool HasPreferred()
-		=> _context.SafeSession() != null
-		   && _context.Session.Keys.Any(k => k == ResponsiveContextKey);
+	{
+		return _context.SafeSession() != null
+		       && _context.Session.Keys.Any(k => k == ResponsiveContextKey);
+	}
 
 	private static Device PreferView(HttpContext context, Device defaultView)
 	{

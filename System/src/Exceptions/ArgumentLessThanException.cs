@@ -7,8 +7,8 @@ namespace Wangkanai.Exceptions;
 [Serializable]
 public class ArgumentLessThanException : ArgumentException
 {
-    public ArgumentLessThanException() : base(SystemResources.ArgumentLessThanGeneric) { }
-    public ArgumentLessThanException(string paramName) : base(SystemResources.ArgumentLessThanGeneric, paramName) { }
-    public ArgumentLessThanException(string message,   Exception innerException) : base(message, innerException) { }
-    public ArgumentLessThanException(string paramName, string    message) : base(message, paramName) { }
+	public ArgumentLessThanException() : base(SystemResources.ArgumentLessThanGeneric) { }
+	public ArgumentLessThanException(string paramName) : base(SystemResources.ArgumentLessThanGeneric, paramName) { }
+	public ArgumentLessThanException(string message,   Exception innerException) : base(message, innerException) { }
+	public ArgumentLessThanException(string paramName, string    message) : base(message, paramName) { }
 }

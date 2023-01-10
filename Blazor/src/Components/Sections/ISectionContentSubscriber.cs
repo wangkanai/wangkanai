@@ -5,5 +5,5 @@ namespace Wangkanai.Blazor.Components.Sections;
 
 internal interface ISectionContentSubscriber
 {
-    void ContentChanged(RenderFragment? content);
+	void ContentChanged(RenderFragment? content);
 }

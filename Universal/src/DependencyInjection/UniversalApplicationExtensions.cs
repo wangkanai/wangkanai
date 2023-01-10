@@ -9,18 +9,18 @@ namespace Microsoft.Extensions.DependencyInjection;
 
 public static class UniversalApplicationExtensions
 {
-    public static IApplicationBuilder UseGoogleAnalytics(this IApplicationBuilder app)
-    {
-        app.ThrowIfNull();
+	public static IApplicationBuilder UseGoogleAnalytics(this IApplicationBuilder app)
+	{
+		app.ThrowIfNull();
 
-        app.Validate();
-        app.VerifyMarkerIsRegistered<UniversalMarkerService>();
+		app.Validate();
+		app.VerifyMarkerIsRegistered<UniversalMarkerService>();
 
-        return app.UseMiddleware<UniversalMiddleware>();
-    }
+		return app.UseMiddleware<UniversalMiddleware>();
+	}
 
-    private static void Validate(this IApplicationBuilder app)
-    {
-        // What should I validate?
-    }
+	private static void Validate(this IApplicationBuilder app)
+	{
+		// What should I validate?
+	}
 }

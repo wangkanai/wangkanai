@@ -10,7 +10,7 @@
 
         <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Graph</PackageProjectUrl>
     </PropertyGroup>
-    
+
     <PropertyGroup>
         <PackageIcon>wangkanai-logo.png</PackageIcon>
         <PackageReadmeFile>README.md</PackageReadmeFile>

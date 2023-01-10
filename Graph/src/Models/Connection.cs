@@ -4,9 +4,9 @@ namespace Wangkanai.Graph.Models;
 
 public enum Connection
 {
-    Off,
-    On,
-    Fail,
-    Offline,
-    Disable
+	Off,
+	On,
+	Fail,
+	Offline,
+	Disable
 }

@@ -2,8 +2,6 @@
 
 namespace Wangkanai.Attributes;
 
+[Deprecate<NewStruct>] internal struct OldStruct { }
 
-[Deprecate<NewStruct>]
-struct OldStruct { }
-
-struct NewStruct { }
+internal struct NewStruct { }

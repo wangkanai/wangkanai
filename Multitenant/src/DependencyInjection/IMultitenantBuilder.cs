@@ -4,5 +4,5 @@ namespace Microsoft.Extensions.DependencyInjection;
 
 public interface IMultiTenantBuilder
 {
-    IServiceCollection Services { get; }
+	IServiceCollection Services { get; }
 }

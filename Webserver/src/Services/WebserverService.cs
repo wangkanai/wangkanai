@@ -2,6 +2,4 @@
 
 namespace Wangkanai.Webserver.Services;
 
-public sealed class WebserverService : IWebserverService
-{
-}
+public sealed class WebserverService : IWebserverService { }

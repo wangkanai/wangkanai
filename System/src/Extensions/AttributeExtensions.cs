@@ -4,11 +4,13 @@ namespace Wangkanai.Extensions;
 
 public static class AttributeExtensions
 {
-    public static string[] SplitString(this Attribute attribute, string original, char separator)
-        => string.IsNullOrEmpty(original)
-               ? Array.Empty<string>()
-               : original.Split(separator)
-                         .Select(x => x.Trim())
-                         .Where(x => !string.IsNullOrEmpty(x))
-                         .ToArray();
+	public static string[] SplitString(this Attribute attribute, string original, char separator)
+	{
+		return string.IsNullOrEmpty(original)
+			       ? Array.Empty<string>()
+			       : original.Split(separator)
+			                 .Select(x => x.Trim())
+			                 .Where(x => !string.IsNullOrEmpty(x))
+			                 .ToArray();
+	}
 }

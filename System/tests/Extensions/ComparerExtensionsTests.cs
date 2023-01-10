@@ -51,13 +51,13 @@ public class ComparerExtensionsTests
 		Assert.True(new[] { 2, 10, 5 }.SequenceEqual(data.Select(x => x.Second)));
 	}
 
-	class TestSample
+	private class TestSample
 	{
 		public int First  { get; set; }
 		public int Second { get; set; }
 
 		public static List<TestSample> Data =>
-			new List<TestSample>
+			new()
 			{
 				new() { First = 1, Second = 10 },
 				new() { First = 5, Second = 5 },

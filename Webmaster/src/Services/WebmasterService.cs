@@ -2,6 +2,4 @@
 
 namespace Wangkanai.Webmaster.Services;
 
-public sealed class WebmasterService : IWebmasterService
-{
-}
+public sealed class WebmasterService : IWebmasterService { }

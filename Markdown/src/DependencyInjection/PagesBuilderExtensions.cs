@@ -4,8 +4,8 @@ namespace Microsoft.Extensions.DependencyInjection;
 
 public static class MarkdownPagesBuilderExtensions
 {
-    public static IMarkdownBuilder AddMarkdownPages(this IMarkdownBuilder builder)
-    {
-        return builder;
-    }
+	public static IMarkdownBuilder AddMarkdownPages(this IMarkdownBuilder builder)
+	{
+		return builder;
+	}
 }

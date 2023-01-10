@@ -680,7 +680,7 @@ public class RandomAccessQueueTests
 	public void BinarySearchComparable()
 	{
 		var queue = new StringQueue();
-		
+
 		queue.Enqueue("1");
 		queue.Enqueue("3");
 		queue.Enqueue("5");

@@ -6,17 +6,17 @@ namespace Wangkanai.Universal.Hosting;
 
 public sealed class UniversalMiddleware
 {
-    private readonly RequestDelegate _next;
+	private readonly RequestDelegate _next;
 
-    public UniversalMiddleware(RequestDelegate next)
-    {
-        _next = next.ThrowIfNull();
-    }
+	public UniversalMiddleware(RequestDelegate next)
+	{
+		_next = next.ThrowIfNull();
+	}
 
-    public async Task InvokeAsync(HttpContext context)
-    {
-        context.ThrowIfNull();
+	public async Task InvokeAsync(HttpContext context)
+	{
+		context.ThrowIfNull();
 
-        await _next(context).ConfigureAwait(false);
-    }
+		await _next(context).ConfigureAwait(false);
+	}
 }

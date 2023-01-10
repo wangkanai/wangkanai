@@ -2,7 +2,6 @@
 
 namespace Wangkanai.Attributes;
 
-[Deprecate<NewEnum>]
-enum OldEnum { }
+[Deprecate<NewEnum>] internal enum OldEnum { }
 
-enum NewEnum { }
+internal enum NewEnum { }

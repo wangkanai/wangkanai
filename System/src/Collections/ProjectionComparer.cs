@@ -15,7 +15,9 @@ public static class ProjectionComparer
 	/// <typeparam name="TKey">Type parameter for the keys to be compared, after being projected from the elements</typeparam>
 	/// <returns>A comparer which will compare elements by projecting each element to its key, and comparing keys</returns>
 	public static ProjectionComparer<TSource, TKey> Create<TSource, TKey>(Func<TSource, TKey> projection)
-		=> new(projection);
+	{
+		return new(projection);
+	}
 
 	/// <summary>
 	/// Creates an instance of the <see cref="ProjectionComparer"/> using the given specified projection.
@@ -26,7 +28,9 @@ public static class ProjectionComparer
 	/// <typeparam name="TKey">Type parameter for the keys to be compared, after being projected from the elements</typeparam>
 	/// <returns>A comparer which will compare elements by projecting each element to its key, and comparing keys</returns>
 	public static ProjectionComparer<TSource, TKey> Create<TSource, TKey>(TSource ignored, Func<TSource, TKey> projection)
-		=> new(projection);
+	{
+		return new(projection);
+	}
 }
 
 /// <summary>
@@ -42,7 +46,9 @@ public static class ProjectionComparer<TSource>
 	/// <typeparam name="TKey">Type parameter for the keys to be compared, after being projected from the elements</typeparam>
 	/// <returns>A comparer which will compare elements by projecting each element to its key, and comparing keys</returns>
 	public static ProjectionComparer<TSource, TKey> Create<TKey>(Func<TSource, TKey> projection)
-		=> new(projection);
+	{
+		return new(projection);
+	}
 }
 
 /// <summary>
@@ -77,11 +83,13 @@ public class ProjectionComparer<TSource, TKey> : IComparer<TSource>
 	/// Otherwise return the standard Compare value.
 	/// </returns>
 	public int Compare(TSource x, TSource y)
-		=> (x, y) switch
+	{
+		return (x, y) switch
 		{
 			(null, null) => 0,
 			(null, _)    => -1,
 			(_, null)    => 1,
 			_            => _comparer.Compare(_projection(x), _projection(y))
 		};
+	}
 }

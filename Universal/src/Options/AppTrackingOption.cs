@@ -4,8 +4,8 @@ namespace Wangkanai.Universal.Options;
 
 internal sealed class AppTrackingOption : ScreenTrackingOption
 {
-    public string AppName        { get; set; }
-    public string AppId          { get; set; }
-    public string AppVersion     { get; set; }
-    public string AppInstallerId { get; set; }
+	public string AppName        { get; set; }
+	public string AppId          { get; set; }
+	public string AppVersion     { get; set; }
+	public string AppInstallerId { get; set; }
 }

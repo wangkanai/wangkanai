@@ -4,5 +4,5 @@ namespace Wangkanai.Blazor.Components;
 
 public interface IHandleEvent
 {
-    Task HandleEventAsync(EventCallbackWorkItem item, object? arg);
+	Task HandleEventAsync(EventCallbackWorkItem item, object? arg);
 }

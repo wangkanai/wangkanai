@@ -31,6 +31,7 @@ dotnet_style_require_accessibility_modifiers = for_non_interface_members:suggest
 
 # ReSharper properties
 # resharper_align_multiline_array_and_object_initializer = true
+resharper_csharp_indent_preprocessor_if = outdent
 resharper_csharp_empty_block_style = together_same_line
 resharper_csharp_wrap_before_first_type_parameter_constraint = true
 resharper_csharp_anonymous_method_declaration_braces = end_of_line

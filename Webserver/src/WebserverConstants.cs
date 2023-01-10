@@ -12,7 +12,10 @@ internal static class WebserverConstants
 		public const string PragmaKey   = "Pragma";
 		public const string PragmaValue = "no-cache";
 
-		public static string ControlMaxAge(int maxAge) => $"max-age={maxAge}";
+		public static string ControlMaxAge(int maxAge)
+		{
+			return $"max-age={maxAge}";
+		}
 	}
 
 	public static class Vary

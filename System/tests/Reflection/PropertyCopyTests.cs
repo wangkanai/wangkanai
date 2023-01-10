@@ -92,7 +92,7 @@ public class PropertyCopyTests
 	{
 		var source = new Generic<Derived>() { Value = new Derived() };
 		var target = PropertyCopy<Generic<Base>>.CopyFrom(source);
-		
+
 		Assert.Same(source.Value, target.Value);
 	}
 
@@ -103,38 +103,38 @@ public class PropertyCopyTests
 		Assert.Throws<ArgumentException>(() => PropertyCopy<Generic<Derived>>.CopyFrom(source));
 	}
 
-	class Base { }
+	private class Base { }
 
-	class Derived : Base { }
+	private class Derived : Base { }
 
-	class Simple
+	private class Simple
 	{
 		public string Value { get; set; }
 	}
 
-	class Other
+	private class Other
 	{
 		public string Value { get; set; }
 	}
 
-	class ReadOnly
+	private class ReadOnly
 	{
 		public string Value => "readonly";
 	}
 
-	class WriteOnly
+	private class WriteOnly
 	{
 		public string writeField;
-		public string Write { set { writeField = value; } }
+		public string Write { set => writeField = value; }
 		public string Value { get; set; }
 	}
 
-	class Generic<T>
+	private class Generic<T>
 	{
 		public T Value { get; set; }
 	}
 
-	class Three
+	private class Three
 	{
 		public string First  { get; set; }
 		public int    Second { get; set; }

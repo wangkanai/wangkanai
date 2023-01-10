@@ -7,11 +7,11 @@ namespace Wangkanai.Graph.Handlers;
 
 public class GraphApiAuthorizationMessageHandler : AuthorizationMessageHandler
 {
-    public GraphApiAuthorizationMessageHandler(IAccessTokenProvider provider, NavigationManager navigation)
-        : base(provider, navigation)
-    {
-        ConfigureHandler(
-            new[] { "https://graph.microsoft.com" },
-            new[] { "https://graph.microsoft.com/User.Read" });
-    }
+	public GraphApiAuthorizationMessageHandler(IAccessTokenProvider provider, NavigationManager navigation)
+		: base(provider, navigation)
+	{
+		ConfigureHandler(
+			new[] { "https://graph.microsoft.com" },
+			new[] { "https://graph.microsoft.com/User.Read" });
+	}
 }

@@ -6,15 +6,17 @@ namespace Wangkanai.Webmaster;
 
 public sealed class WebmasterMiddleware
 {
-    private readonly RequestDelegate _next;
+	private readonly RequestDelegate _next;
 
-    public WebmasterMiddleware(RequestDelegate next)
-        => _next = next.ThrowIfNull();
+	public WebmasterMiddleware(RequestDelegate next)
+	{
+		_next = next.ThrowIfNull();
+	}
 
-    public async Task InvokeAsync(HttpContext context)
-    {
-        context.ThrowIfNull();
+	public async Task InvokeAsync(HttpContext context)
+	{
+		context.ThrowIfNull();
 
-        await _next(context).ConfigureAwait(false);
-    }
+		await _next(context).ConfigureAwait(false);
+	}
 }

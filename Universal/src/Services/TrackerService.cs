@@ -2,6 +2,4 @@
 
 namespace Wangkanai.Universal.Services;
 
-public sealed class TrackerService : ITrackerService
-{
-}
+public sealed class TrackerService : ITrackerService { }

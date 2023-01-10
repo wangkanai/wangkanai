@@ -4,8 +4,10 @@ namespace Microsoft.Extensions.DependencyInjection;
 
 public sealed class WebserverBuilder : IWebserverBuilder
 {
-    public WebserverBuilder(IServiceCollection services)
-        => Services = services.ThrowIfNull();
+	public WebserverBuilder(IServiceCollection services)
+	{
+		Services = services.ThrowIfNull();
+	}
 
-    public IServiceCollection Services { get; }
+	public IServiceCollection Services { get; }
 }

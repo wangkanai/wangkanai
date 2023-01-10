@@ -7,21 +7,21 @@ namespace Microsoft.Extensions.DependencyInjection;
 
 public static class SendGridCollectionExtensions
 {
-    public static ISendGridBuilder AddSendGrid(this IServiceCollection services)
-    {
-        return services.AddSendGridBuilder()
-                       .AddRequiredPlatformServices()
-                       .AddCoreServices();
-    }
+	public static ISendGridBuilder AddSendGrid(this IServiceCollection services)
+	{
+		return services.AddSendGridBuilder()
+		               .AddRequiredPlatformServices()
+		               .AddCoreServices();
+	}
 
-    public static ISendGridBuilder AddSendGrid(this IServiceCollection services, Action<SendGridOptions> options)
-    {
-        return services.Configure(options)
-                       .AddSendGrid();
-    }
+	public static ISendGridBuilder AddSendGrid(this IServiceCollection services, Action<SendGridOptions> options)
+	{
+		return services.Configure(options)
+		               .AddSendGrid();
+	}
 
-    private static ISendGridBuilder AddSendGridBuilder(this IServiceCollection services)
-    {
-        return new SendGridBuilder(services);
-    }
+	private static ISendGridBuilder AddSendGridBuilder(this IServiceCollection services)
+	{
+		return new SendGridBuilder(services);
+	}
 }

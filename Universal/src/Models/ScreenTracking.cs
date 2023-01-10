@@ -6,16 +6,16 @@ namespace Wangkanai.Universal.Models;
 
 public sealed class ScreenTracking : Send
 {
-    public ScreenTracking(string name)
-    {
-        option            = new ScreenTrackingOption();
-        option.ScreenName = name;
-    }
+	public ScreenTracking(string name)
+	{
+		option            = new ScreenTrackingOption();
+		option.ScreenName = name;
+	}
 
-    private ScreenTrackingOption option { get; }
+	private ScreenTrackingOption option { get; }
 
-    public override string ToString()
-    {
-        return "ga('send','screenview'," + option + "});";
-    }
+	public override string ToString()
+	{
+		return "ga('send','screenview'," + option + "});";
+	}
 }

@@ -2,6 +2,4 @@
 
 namespace Wangkanai.Universal.Models;
 
-internal abstract class Require
-{
-}
+internal abstract class Require { }

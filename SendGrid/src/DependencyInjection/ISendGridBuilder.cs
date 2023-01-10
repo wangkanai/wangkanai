@@ -5,5 +5,5 @@ namespace Microsoft.Extensions.DependencyInjection;
 
 public interface ISendGridBuilder
 {
-    IServiceCollection Services { get; }
+	IServiceCollection Services { get; }
 }

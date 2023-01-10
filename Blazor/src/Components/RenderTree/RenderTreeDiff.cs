@@ -4,14 +4,14 @@ namespace Wangkanai.Blazor.Components.RenderTree;
 
 public readonly struct RenderTreeDiff
 {
-    public readonly int                                 ComponentId;
-    public readonly ArrayBuilderSegment<RenderTreeEdit> Edits;
+	public readonly int                                 ComponentId;
+	public readonly ArrayBuilderSegment<RenderTreeEdit> Edits;
 
-    internal RenderTreeDiff(
-        int                                 componentId,
-        ArrayBuilderSegment<RenderTreeEdit> entries)
-    {
-        ComponentId = componentId;
-        Edits       = entries;
-    }
+	internal RenderTreeDiff(
+		int                                 componentId,
+		ArrayBuilderSegment<RenderTreeEdit> entries)
+	{
+		ComponentId = componentId;
+		Edits       = entries;
+	}
 }

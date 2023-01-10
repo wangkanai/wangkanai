@@ -118,8 +118,8 @@ the device type in before the file extension **_.cshtml_** like **_.mobile.cshtm
 
 ### Responsive Tag Helpers
 
-The next exciting feature is Tag Helpers. This make you able to use the same view and just show/hide specific part of the 
-views to the client base upon their type, this include Device, Browser, Platform, Engine, and Crawler that our 
+The next exciting feature is Tag Helpers. This make you able to use the same view and just show/hide specific part of the
+views to the client base upon their type, this include Device, Browser, Platform, Engine, and Crawler that our
 detection resolver could determine from
 the resolver parsing services.
 
@@ -217,7 +217,7 @@ All contribution are welcome, please contact the author.
 
 This project exists thanks to all the people who contribute. [[Contribute](CONTRIBUTING.md)].
 <a href="https://github.com/wangkanai/Detection/graphs/contributors">
-    <img src="https://opencollective.com/wangkanai/contributors.svg?width=890&button=false" />
+<img src="https://opencollective.com/wangkanai/contributors.svg?width=890&button=false" />
 </a>
 
 ### Financial Contributors

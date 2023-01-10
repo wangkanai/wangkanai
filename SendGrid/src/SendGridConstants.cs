@@ -4,8 +4,8 @@ namespace Wangkanai.SendGrid;
 
 public static class SendGridConstants
 {
-    public const string SendGrid = "SendGrid";
-    public const string ApiKey   = "ApiKey";
-    public const string Name     = "Name";
-    public const string Email    = "Email";
+	public const string SendGrid = "SendGrid";
+	public const string ApiKey   = "ApiKey";
+	public const string Name     = "Name";
+	public const string Email    = "Email";
 }

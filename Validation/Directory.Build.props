@@ -7,7 +7,7 @@
         <Title>Wangkanai Validation</Title>
         <Description>Domain Driven Design Validation library for .NET developement</Description>
         <PackageTags>aspnetcore;validation;</PackageTags>
-        
+
         <RootNamespace>Wangkanai.Validation</RootNamespace>
         <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Validation</PackageProjectUrl>
     </PropertyGroup>

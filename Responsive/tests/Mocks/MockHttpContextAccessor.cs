@@ -6,5 +6,5 @@ namespace Wangkanai.Responsive.Mocks;
 
 public class MockHttpContextAccessor : IHttpContextAccessor
 {
-    public HttpContext? HttpContext { get; set; } = new DefaultHttpContext();
+	public HttpContext? HttpContext { get; set; } = new DefaultHttpContext();
 }

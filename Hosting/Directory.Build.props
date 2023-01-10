@@ -10,7 +10,7 @@
 
         <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Hosting</PackageProjectUrl>
     </PropertyGroup>
-    
+
     <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Hosting'">
         <PackageIcon>wangkanai-logo.png</PackageIcon>
         <PackageReadmeFile>README.md</PackageReadmeFile>

@@ -2,8 +2,6 @@
 
 namespace Wangkanai.Attributes;
 
+[Deprecate<NewRecord>] internal record OldRecord { }
 
-[Deprecate<NewRecord>]
-record OldRecord { }
-
-record NewRecord { }
+internal record NewRecord { }

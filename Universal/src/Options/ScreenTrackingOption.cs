@@ -4,5 +4,5 @@ namespace Wangkanai.Universal.Options;
 
 internal class ScreenTrackingOption : FieldOption
 {
-    public string ScreenName { get; set; }
+	public string ScreenName { get; set; }
 }

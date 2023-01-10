@@ -5,13 +5,13 @@ namespace Wangkanai.Blazor.Components.RenderTree;
 
 internal static class ArrayBuilderExtensions
 {
-    public static ArrayRange<T> ToRange<T>(this ArrayBuilder<T> builder)
-    {
-        return new(builder.Buffer, builder.Count);
-    }
+	public static ArrayRange<T> ToRange<T>(this ArrayBuilder<T> builder)
+	{
+		return new ArrayRange<T>(builder.Buffer, builder.Count);
+	}
 
-    public static ArrayBuilderSegment<T> ToSegment<T>(this ArrayBuilder<T> builder, int fromIndexInclusive, int toIndexExclusive)
-    {
-        return new(builder, fromIndexInclusive, toIndexExclusive - fromIndexInclusive);
-    }
+	public static ArrayBuilderSegment<T> ToSegment<T>(this ArrayBuilder<T> builder, int fromIndexInclusive, int toIndexExclusive)
+	{
+		return new ArrayBuilderSegment<T>(builder, fromIndexInclusive, toIndexExclusive - fromIndexInclusive);
+	}
 }

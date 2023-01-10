@@ -8,7 +8,9 @@ public static class PropertyCopy<TTarget> where TTarget : class, new()
 {
 	public static TTarget CopyFrom<TSource>(TSource source)
 		where TSource : class
-		=> PropertyCopier<TSource>.Copy(source);
+	{
+		return PropertyCopier<TSource>.Copy(source);
+	}
 
 	private static class PropertyCopier<TSource> where TSource : class
 	{

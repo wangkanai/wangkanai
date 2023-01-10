@@ -6,15 +6,15 @@ namespace Wangkanai.SendGrid.Extensions;
 
 public static class MessageExtensions
 {
-    public static void SetImportance(this SendGridMessage email, bool importance = true)
-    {
-        if (!importance)
-            return;
+	public static void SetImportance(this SendGridMessage email, bool importance = true)
+	{
+		if (!importance)
+			return;
 
-        email.Headers ??= new Dictionary<string, string>();
+		email.Headers ??= new Dictionary<string, string>();
 
-        email.Headers.Add("Importance", "high");
-        email.Headers.Add("X-Priority", "1");
-        email.Headers.Add("Priority", "Urgent");
-    }
+		email.Headers.Add("Importance", "high");
+		email.Headers.Add("X-Priority", "1");
+		email.Headers.Add("Priority", "Urgent");
+	}
 }

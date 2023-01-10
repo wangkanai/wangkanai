@@ -10,33 +10,35 @@ namespace Microsoft.Extensions.DependencyInjection;
 
 public static class ResponsiveApplicationExtensions
 {
-    public static IApplicationBuilder UseResponsive(this IApplicationBuilder app)
-    {
-        app.ThrowIfNull();
+	public static IApplicationBuilder UseResponsive(this IApplicationBuilder app)
+	{
+		app.ThrowIfNull();
 
-        var options = app.ApplicationServices.GetRequiredService<ResponsiveOptions>();
-        var context = app.ApplicationServices.GetRequiredService<IHttpContextAccessor>()?.HttpContext;
+		var options = app.ApplicationServices.GetRequiredService<ResponsiveOptions>();
+		var context = app.ApplicationServices.GetRequiredService<IHttpContextAccessor>()?.HttpContext;
 
-        ValidateOptions(options);
+		ValidateOptions(options);
 
-        if (options.Disable)
-            return app;
+		if (options.Disable)
+			return app;
 
-        // if (context.IsWebApi(options))
-        //     return app;
+		// if (context.IsWebApi(options))
+		//     return app;
 
-        app.UseSession();
-        app.UseMiddleware<ResponsiveMiddleware>();
+		app.UseSession();
+		app.UseMiddleware<ResponsiveMiddleware>();
 
-        return app;
-    }
+		return app;
+	}
 
-    private static bool IsWebApi(this HttpContext context, ResponsiveOptions options) 
-        => context.Request.Path.StartsWithSegments(options.WebApiPath);
+	private static bool IsWebApi(this HttpContext context, ResponsiveOptions options)
+	{
+		return context.Request.Path.StartsWithSegments(options.WebApiPath);
+	}
 
-    private static void ValidateOptions(ResponsiveOptions options)
-    {
-        if (options.Disable && options.IncludeWebApi)
-            throw new InvalidOperationException("IncludeWebApi is not needed if already Disable");
-    }
+	private static void ValidateOptions(ResponsiveOptions options)
+	{
+		if (options.Disable && options.IncludeWebApi)
+			throw new InvalidOperationException("IncludeWebApi is not needed if already Disable");
+	}
 }

@@ -182,7 +182,7 @@ public class CheckTests
 		double?  _double  = 0.0;
 		decimal? _decimal = 0;
 		char?    _char    = 'a';
-		string?  _string  = "xyz";
+		var      _string  = "xyz";
 
 		Assert.False(_byte.TrueIfNull());
 		Assert.False(_short.TrueIfNull());
@@ -243,7 +243,7 @@ public class CheckTests
 		Assert.Equal(10, 10.ThrowIfOutOfRange(5, 11));
 		Assert.Equal(10, 10.ThrowIfOutOfRange(0, 15));
 	}
-	
+
 	[Fact]
 	public void IndexIsOutOfRange()
 	{
@@ -260,7 +260,7 @@ public class CheckTests
 		Assert.Throws<ArgumentOutOfRangeException>(() => 10.ThrowIfOutOfRange(0, -2));
 		Assert.Throws<ArgumentOutOfRangeException>(() => 10.ThrowIfOutOfRange(-1, -2));
 	}
-	
+
 #pragma warning restore CS0612
 	[Fact]
 	public void ListIsNullOrEmpty()

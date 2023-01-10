@@ -6,22 +6,22 @@ namespace Microsoft.Extensions.DependencyInjection;
 
 public static class MultiTenantCollectionExtensions
 {
-    public static IMultiTenantBuilder AddMultitenant(this IServiceCollection services)
-    {
-        return services.AddMultitenantBuilder()
-                       .AddRequiredServices()
-                       .AddCoreServices()
-                       .AddMarkerService();
-    }
+	public static IMultiTenantBuilder AddMultitenant(this IServiceCollection services)
+	{
+		return services.AddMultitenantBuilder()
+		               .AddRequiredServices()
+		               .AddCoreServices()
+		               .AddMarkerService();
+	}
 
-    public static IMultiTenantBuilder AddMultiTenant(this IServiceCollection services, Action<MultiTenantOption> setAction)
-    {
-        return services.Configure(setAction)
-                       .AddMultitenant();
-    }
+	public static IMultiTenantBuilder AddMultiTenant(this IServiceCollection services, Action<MultiTenantOption> setAction)
+	{
+		return services.Configure(setAction)
+		               .AddMultitenant();
+	}
 
-    internal static IMultiTenantBuilder AddMultitenantBuilder(this IServiceCollection services)
-    {
-        return new MultiTenantBuilder(services);
-    }
+	internal static IMultiTenantBuilder AddMultitenantBuilder(this IServiceCollection services)
+	{
+		return new MultiTenantBuilder(services);
+	}
 }

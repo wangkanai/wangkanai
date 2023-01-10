@@ -6,23 +6,23 @@ namespace Wangkanai.SendGrid.Configurations;
 
 public static class ConfigurationExtensions
 {
-    public static IConfigurationSection GetSendGrid(this IConfiguration configuration)
-    {
-        return configuration?.GetSection(SendGridConstants.SendGrid);
-    }
+	public static IConfigurationSection GetSendGrid(this IConfiguration configuration)
+	{
+		return configuration?.GetSection(SendGridConstants.SendGrid);
+	}
 
-    public static string GetApiKey(this IConfigurationSection configuration)
-    {
-        return configuration?[SendGridConstants.ApiKey];
-    }
+	public static string GetApiKey(this IConfigurationSection configuration)
+	{
+		return configuration?[SendGridConstants.ApiKey];
+	}
 
-    public static string GetName(this IConfigurationSection configuration)
-    {
-        return configuration?[SendGridConstants.Name];
-    }
+	public static string GetName(this IConfigurationSection configuration)
+	{
+		return configuration?[SendGridConstants.Name];
+	}
 
-    public static string GetEmail(this IConfigurationSection configuration)
-    {
-        return configuration?[SendGridConstants.Email];
-    }
+	public static string GetEmail(this IConfigurationSection configuration)
+	{
+		return configuration?[SendGridConstants.Email];
+	}
 }

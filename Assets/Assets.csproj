@@ -6,7 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Content Include="*.*" />
+        <Content Include="*.*"/>
     </ItemGroup>
 
 </Project>

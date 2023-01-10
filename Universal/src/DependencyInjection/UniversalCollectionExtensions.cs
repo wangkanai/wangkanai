@@ -9,22 +9,22 @@ namespace Microsoft.Extensions.DependencyInjection;
 /// </summary>
 public static class UniversalCollectionExtensions
 {
-    public static IUniversalBuilder AddGoogleAnalytics(this IServiceCollection services)
-    {
-        return services.AddUniversalBuilder()
-                       .AddRequiredPlatformServices()
-                       .AddCoreServices()
-                       .AddMarkerService();
-    }
+	public static IUniversalBuilder AddGoogleAnalytics(this IServiceCollection services)
+	{
+		return services.AddUniversalBuilder()
+		               .AddRequiredPlatformServices()
+		               .AddCoreServices()
+		               .AddMarkerService();
+	}
 
-    public static IUniversalBuilder AddGoogleAnalytics(this IServiceCollection services, Action<UniversalOption> setAction)
-    {
-        return services.Configure(setAction)
-                       .AddGoogleAnalytics();
-    }
+	public static IUniversalBuilder AddGoogleAnalytics(this IServiceCollection services, Action<UniversalOption> setAction)
+	{
+		return services.Configure(setAction)
+		               .AddGoogleAnalytics();
+	}
 
-    internal static IUniversalBuilder AddUniversalBuilder(this IServiceCollection services)
-    {
-        return new UniversalBuilder(services);
-    }
+	internal static IUniversalBuilder AddUniversalBuilder(this IServiceCollection services)
+	{
+		return new UniversalBuilder(services);
+	}
 }

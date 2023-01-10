@@ -36,13 +36,13 @@ public sealed class Range<T>
 	/// <summary>
 	/// Constructor a new inclusive range using the default comparer
 	/// </summary>
-	public Range(T start, T end) 
+	public Range(T start, T end)
 		: this(start, end, Comparer<T>.Default, true, true) { }
 
 	/// <summary>
 	/// Constructor a new including or excluding each end as specified with the given comparer
 	/// </summary>
-	public Range(T start, T end, IComparer<T> comparer) 
+	public Range(T start, T end, IComparer<T> comparer)
 		: this(start, end, comparer, true, true) { }
 
 	/// <summary>
@@ -114,12 +114,12 @@ public sealed class Range<T>
 	public bool Contains(T value)
 	{
 		var lower = Comparer.Compare(value, Start);
-		if (lower < 0 || (lower == 0 && !IncludesStart))
+		if (lower < 0 || lower == 0 && !IncludesStart)
 			return false;
 
 		var upper = Comparer.Compare(value, End);
 
-		if (upper < 0 || (upper == 0 && IncludesEnd))
+		if (upper < 0 || upper == 0 && IncludesEnd)
 			return true;
 
 		return false;
@@ -130,14 +130,20 @@ public sealed class Range<T>
 	/// The start and end points are included or excluded according to this range.
 	/// </summary>
 	/// <param name="step">Delegate to apply to the "current value" on each iteration</param>
-	public RangeIterator<T> FromStart(Func<T, T> step) => new(this, step);
+	public RangeIterator<T> FromStart(Func<T, T> step)
+	{
+		return new(this, step);
+	}
 
 	/// <summary>
 	/// Return an iterator which begins at the end of this range, applying the given step delegate on each iteration until the start is reached or passed.
 	/// The start and end points are included or excluded according to this range.
 	/// </summary>
 	/// <param name="step">Delegate to apply to the "current value" on each iteration</param>
-	public RangeIterator<T> FromEnd(Func<T, T> step) => new(this, step, false);
+	public RangeIterator<T> FromEnd(Func<T, T> step)
+	{
+		return new(this, step, false);
+	}
 
 	/// <summary>
 	/// Returns an iterator which steps through the range, applying the specified step delegate on each iteration.

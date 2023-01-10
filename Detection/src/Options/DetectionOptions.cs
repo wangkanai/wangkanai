@@ -7,8 +7,8 @@ namespace Wangkanai.Detection;
 /// </summary>
 public sealed class DetectionOptions
 {
-    /// <summary>
-    ///     Gets the default <see cref="CrawlerOptions" /> used by this application.
-    /// </summary>
-    public CrawlerOptions Crawler { get; } = new();
+	/// <summary>
+	///     Gets the default <see cref="CrawlerOptions" /> used by this application.
+	/// </summary>
+	public CrawlerOptions Crawler { get; } = new();
 }

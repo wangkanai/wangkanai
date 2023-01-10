@@ -6,10 +6,10 @@ namespace Wangkanai.Markdown.Builder;
 
 public sealed class MarkdownBuilder : IMarkdownBuilder
 {
-    public MarkdownBuilder(IServiceCollection services)
-    {
-        Services = services ?? throw new ArgumentNullException(nameof(services));
-    }
+	public MarkdownBuilder(IServiceCollection services)
+	{
+		Services = services ?? throw new ArgumentNullException(nameof(services));
+	}
 
-    public IServiceCollection Services { get; }
+	public IServiceCollection Services { get; }
 }

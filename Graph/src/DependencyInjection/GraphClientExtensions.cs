@@ -11,23 +11,21 @@ namespace Wangkanai.Graph.DependencyInjection;
 
 public static class GraphClientExtensions
 {
-    public static IServiceCollection AddGraphClient(this IServiceCollection services, params string[] scopes)
-    {
-        services.Configure<RemoteAuthenticationOptions<MsalProviderOptions>>(options =>
-        {
-            foreach (var scope in scopes) options.ProviderOptions.AdditionalScopesToConsent.Add(scope);
-        });
+	public static IServiceCollection AddGraphClient(this IServiceCollection services, params string[] scopes)
+	{
+		services.Configure<RemoteAuthenticationOptions<MsalProviderOptions>>(options => {
+			foreach (var scope in scopes) options.ProviderOptions.AdditionalScopesToConsent.Add(scope);
+		});
 
-        services.AddScoped<IAuthenticationProvider, NoOpGraphAuthenticationProvider>();
-        services.AddScoped<IHttpProvider, HttpClientHttpProvider>(sp => new HttpClientHttpProvider(new HttpClient()));
-        services.AddScoped(sp =>
-        {
-            var authenticationProvider = sp.GetRequiredService<IAuthenticationProvider>();
-            var httpProvider           = sp.GetRequiredService<IHttpProvider>();
-            return new GraphServiceClient(authenticationProvider, httpProvider);
-        });
-        services.AddScoped<GraphApiAuthorizationMessageHandler>();
+		services.AddScoped<IAuthenticationProvider, NoOpGraphAuthenticationProvider>();
+		services.AddScoped<IHttpProvider, HttpClientHttpProvider>(sp => new HttpClientHttpProvider(new HttpClient()));
+		services.AddScoped(sp => {
+			var authenticationProvider = sp.GetRequiredService<IAuthenticationProvider>();
+			var httpProvider           = sp.GetRequiredService<IHttpProvider>();
+			return new GraphServiceClient(authenticationProvider, httpProvider);
+		});
+		services.AddScoped<GraphApiAuthorizationMessageHandler>();
 
-        return services;
-    }
+		return services;
+	}
 }
