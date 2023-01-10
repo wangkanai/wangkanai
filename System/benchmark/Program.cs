@@ -5,6 +5,8 @@ global using BenchmarkDotNet.Running;
 
 global using Wangkanai;
 
-BenchmarkRunner.Run<HashBenchmark>();
+//BenchmarkRunner.Run<HashBenchmark>();
 // BenchmarkRunner.Run<MathBenchmark>();
 // BenchmarkRunner.Run<ForloopBenchmark>();
+
+BenchmarkRunner.Run<StaticRandomTests>();
