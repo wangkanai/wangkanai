@@ -11,11 +11,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="BenchmarkDotNet" Version="0.13.2"/>
+        <PackageReference Include="BenchmarkDotNet" Version="0.13.3" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\src\Wangkanai.System.csproj"/>
+        <ProjectReference Include="..\src\Wangkanai.System.csproj" />
+        <ProjectReference Include="..\tests\Wangkanai.System.Tests.csproj" />
     </ItemGroup>
 
 </Project>
