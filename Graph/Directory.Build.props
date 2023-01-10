@@ -2,7 +2,7 @@
     <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props"/>
 
     <PropertyGroup>
-        <VersionPrefix>0.9.1</VersionPrefix>
+        <VersionPrefix>0.9.2</VersionPrefix>
 
         <Title>Wangkanai Graph</Title>
         <PackageTags>aspnetcore;microsft;graph;</PackageTags>
