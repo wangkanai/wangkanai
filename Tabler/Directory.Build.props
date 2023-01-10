@@ -2,7 +2,7 @@
     <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props"/>
 
     <PropertyGroup>
-        <VersionPrefix>0.15.2</VersionPrefix>
+        <VersionPrefix>0.15.3</VersionPrefix>
 
         <Title>Wangkanai Tabler</Title>
         <PackageTags>aspnetcore;blazor;tabler;</PackageTags>
