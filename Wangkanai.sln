@@ -440,6 +440,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{15
 		Identity\README.md = Identity\README.md
 		Identity\Directory.Build.props = Identity\Directory.Build.props
 		Identity\sign.ps1 = Identity\sign.ps1
+		Identity\.editorconfig = Identity\.editorconfig
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Identity", "Identity\src\Wangkanai.Identity.csproj", "{754AFFD1-0597-49C6-A651-D0B6BAE6BF86}"
