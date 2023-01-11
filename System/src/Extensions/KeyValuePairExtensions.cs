@@ -12,6 +12,7 @@ public static class KeyValuePairExtensions
     /// <typeparam name="TKey">The type of the TKey</typeparam>
     /// <typeparam name="TValue">The type of the TValue</typeparam>
     /// <returns>KeyValuePair{``0``1}</returns>
+    [DebuggerStepThrough]
     public static KeyValuePair<TKey, TValue> WithKey<TKey, TValue>(this KeyValuePair<TKey, TValue> keyvalue, TKey newKey)
         => new(newKey, keyvalue.Value);
 
@@ -23,6 +24,7 @@ public static class KeyValuePairExtensions
     /// <typeparam name="TKey">The type of the TKey</typeparam>
     /// <typeparam name="TValue">The type of the TValue</typeparam>
     /// <returns>KeyValuePair{``0``1}</returns>
+    [DebuggerStepThrough]
     public static KeyValuePair<TKey, TValue> WithValue<TKey, TValue>(this KeyValuePair<TKey, TValue> keyvalue, TValue newValue)
         => new(keyvalue.Key, newValue);
 }

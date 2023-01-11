@@ -9,9 +9,11 @@ namespace Wangkanai.Extensions;
 
 public static class IQueryableExtensions
 {
+	[DebuggerStepThrough]
     public static IOrderedQueryable<T> OrderBy<T>(this IQueryable<T> source, string property)
         => ApplyOrder(source, property, nameof(OrderBy));
 
+    [DebuggerStepThrough]
     public static IOrderedQueryable<T> ApplyOrder<T>(IQueryable<T> source, string property, string method)
     {
         property.ThrowIfNull();

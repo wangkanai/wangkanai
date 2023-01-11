@@ -18,8 +18,9 @@ public static class OidcConstants
 	public static class Discovery
 	{
 		public const string Configuration = ".well-known/openid-configuration";
+		public const string Issuer        = "issuer";
 	}
-	
+
 	/// <summary>
 	/// Authorization Servers MUST support the use of the HTTP POST (Best Practise) methods defined in RFC 2616 [RFC2616] at the Authorization Endpoint.
 	/// - https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest
@@ -78,5 +79,19 @@ public static class OidcConstants
 		public const string Error                    = "error";
 		public const string ErrorDescription         = "error_description";
 		public const string ErrorUri                 = "error_uri";
+	}
+
+	public static class TokenRequest { }
+
+	public static class TokenResponse { }
+
+	public static class TokenErrors { }
+
+	public static class TokenTypes { }
+
+	public static class ResponseTypes
+	{
+		public const string Code  = "code";
+		public const string Token = "token";
 	}
 }

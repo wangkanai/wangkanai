@@ -5,6 +5,7 @@ namespace Wangkanai.Extensions;
 
 public static class TreeExtensions
 {
+	[DebuggerStepThrough]
     public static IEnumerable<T> Traverse<T>(this T node, Func<T, IEnumerable<T>> children)
     {
         yield return node;
@@ -15,6 +16,7 @@ public static class TreeExtensions
                 yield return child;
     }
 
+    [DebuggerStepThrough]
     public static IEnumerable<TItem> GetAncestors<TItem>(TItem item, Func<TItem, TItem> getParentFunc)
     {
         getParentFunc.ThrowIfNull();

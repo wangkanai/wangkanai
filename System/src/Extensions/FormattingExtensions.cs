@@ -6,9 +6,11 @@ public static class FormattingExtensions
 {
     private static readonly string[] sizes = { "B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB" };
 
+    [DebuggerStepThrough]
     public static string ToHumanReadable(this int length)
         => ((long)length).ToHumanReadable();
 
+    [DebuggerStepThrough]
     public static string ToHumanReadable(this long length)
     {
         int order = 0;
@@ -21,6 +23,7 @@ public static class FormattingExtensions
         return $"{length:0.##} {sizes[order]}";
     }
 
+    [DebuggerStepThrough]
     public static string ToHumanReadable(this ulong length)
     {
         int order = 0;
