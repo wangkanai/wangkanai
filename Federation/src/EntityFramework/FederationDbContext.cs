@@ -39,7 +39,7 @@ public abstract class FederationDbContext<TUser, TRole, TKey, TClient, TClientOr
 	where TRole : IdentityRole<TKey>
 	where TKey : IEquatable<TKey>
 	where TClient : IdentityClient<TKey>
-	where TClientOrigin : IdentityClientCorsOrigin<TKey>
+	where TClientOrigin : IdentityClientCorsOrigin<TKey, string>
 	where TScope : IdentityScope<TKey>
 	where TResource : IdentityResource<TKey>
 	where TDirectory : IdentityDirectory<TKey>

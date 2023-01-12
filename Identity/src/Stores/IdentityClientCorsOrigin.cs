@@ -2,18 +2,34 @@
 
 namespace Wangkanai.Identity;
 
-public class IdentityClientCorsOrigin : IdentityClientCorsOrigin<string>
+public class IdentityClientCorsOrigin : IdentityClientCorsOrigin<string, string>
 {
 	public IdentityClientCorsOrigin()
 	{
 		Id = Guid.NewGuid().ToString();
 	}
+
+	public IdentityClientCorsOrigin(string clientId, string origin) : this()
+	{
+		ClientId = clientId;
+		Origin   = origin;
+	}
 }
 
-public class IdentityClientCorsOrigin<TKey> where TKey : IEquatable<TKey>
+public class IdentityClientCorsOrigin<TKey, TClient>
+	where TKey : IEquatable<TKey>
+	where TClient : IEquatable<TClient>
 {
-	public TKey                 Id       { get; set; }
-	public string               Origin   { get; set; }
-	public TKey                 ClientId { get; set; }
-	public IdentityClient<TKey> Client   { get; set; }
+	public IdentityClientCorsOrigin() { }
+
+	public IdentityClientCorsOrigin(TClient clientId, string origin) : this()
+	{
+		ClientId = clientId;
+		Origin   = origin;
+	}
+
+	public TKey                    Id       { get; set; }
+	public string                  Origin   { get; set; }
+	public TClient                 ClientId { get; set; }
+	public IdentityClient<TClient> Client   { get; set; }
 }
