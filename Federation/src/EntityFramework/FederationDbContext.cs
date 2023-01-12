@@ -33,11 +33,13 @@ public class FederationDbContext<TUser, TRole, TKey> : IdentityDbContext<TUser, 
 	protected FederationDbContext() { }
 }
 
-public abstract class FederationDbContext<TUser, TRole, TKey, TClient, TScope, TResource, TDirectory> : IdentityDbContext<TUser, TRole, TKey>
+public abstract class FederationDbContext<TUser, TRole, TKey, TClient, TClientOrigin, TScope, TResource, TDirectory>
+	: IdentityDbContext<TUser, TRole, TKey>
 	where TUser : IdentityUser<TKey>
 	where TRole : IdentityRole<TKey>
 	where TKey : IEquatable<TKey>
 	where TClient : IdentityClient<TKey>
+	where TClientOrigin : IdentityClientCorsOrigin<TKey>
 	where TScope : IdentityScope<TKey>
 	where TResource : IdentityResource<TKey>
 	where TDirectory : IdentityDirectory<TKey>
@@ -46,10 +48,11 @@ public abstract class FederationDbContext<TUser, TRole, TKey, TClient, TScope, T
 
 	protected FederationDbContext() { }
 
-	public virtual DbSet<TClient>    Clients     { get; set; } = default!;
-	public virtual DbSet<TScope>     Scopes      { get; set; } = default!;
-	public virtual DbSet<TResource>  Resources   { get; set; } = default!;
-	public virtual DbSet<TDirectory> Directories { get; set; } = default!;
+	public virtual DbSet<TClient>       Clients       { get; set; } = default!;
+	public virtual DbSet<TClientOrigin> ClientOrigins { get; set; } = default!;
+	public virtual DbSet<TScope>        Scopes        { get; set; } = default!;
+	public virtual DbSet<TResource>     Resources     { get; set; } = default!;
+	public virtual DbSet<TDirectory>    Directories   { get; set; } = default!;
 
 	protected override void OnModelCreating(ModelBuilder builder)
 	{

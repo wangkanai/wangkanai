@@ -22,7 +22,7 @@ public class PrimaryKeyResolvingMap
             {
                 pair.Key.Id = pair.Value.Id;
 
-                if (pair.Key is IAuditable transient && pair.Value is IAuditable presistent)
+                if (pair.Key is IUserAuditable transient && pair.Value is IUserAuditable presistent)
                 {
                     transient.CreatedBy   = presistent.CreatedBy;
                     transient.CreatedDate = presistent.CreatedDate;
