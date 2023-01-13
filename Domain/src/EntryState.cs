@@ -4,9 +4,9 @@ namespace Wangkanai.Domain;
 
 public enum EntryState
 {
-    Deteched  = 1,
-    Unchanged = 1 << 1,
-    Added     = 1 << 2,
-    Deleted   = 1 << 3,
-    Modified  = 1 << 4
+	Detached  = 1,
+	Unchanged = 1 << 1,
+	Added     = 1 << 2,
+	Deleted   = 1 << 3,
+	Modified  = 1 << 4
 }

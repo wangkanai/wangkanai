@@ -8,6 +8,7 @@ namespace Wangkanai.Extensions;
 
 public static class TypeExtensions
 {
+	[DebuggerStepThrough]
     public static Type[] GetTypeInheritanceChainTo(this Type type, Type toBaseType)
     {
         var retVal   = new List<Type> { type };
@@ -23,6 +24,7 @@ public static class TypeExtensions
 
     private static readonly ConcurrentDictionary<Type, string> PrettyPrintCache = new();
 
+    [DebuggerStepThrough]
     public static string PrettyPrint(this Type type)
         => PrettyPrintCache.GetOrAdd(type, t =>
         {
@@ -38,9 +40,11 @@ public static class TypeExtensions
 
     private static readonly ConcurrentDictionary<Type, string> TypeCacheKeys = new();
 
+    [DebuggerStepThrough]
     public static string GetCacheKey(this Type type)
         => TypeCacheKeys.GetOrAdd(type, t => $"{t.PrettyPrint()}");
 
+    [DebuggerStepThrough]
     private static string PrettyPrintRecursive(Type type, int depth)
     {
         if (depth > 3)
@@ -56,12 +60,14 @@ public static class TypeExtensions
                    : $"{nameParts[0]}<{string.Join(",", genericArgs.Select(t => PrettyPrintRecursive(t, depth + 1)))}>";
     }
 
+    [DebuggerStepThrough]
     public static IEnumerable<KeyValuePair<string, object>> TraverseObjectGraph(this object original)
     {
         foreach (var result in original.TraverseObjectGraphRecursively(new List<object>(), original.GetType().Name))
             yield return result;
     }
 
+    [DebuggerStepThrough]
     private static IEnumerable<KeyValuePair<string, object>> TraverseObjectGraphRecursively(this object obj, List<object> visited, string memberPath)
     {
         yield return new KeyValuePair<string, object>(memberPath, obj);
@@ -99,6 +105,7 @@ public static class TypeExtensions
     /// </summary>
     /// <param name="type"></param>
     /// <returns></returns>
+    [DebuggerStepThrough]
     private static bool IsPrimitive(this Type type)
     {
         if (type == typeof(string))
@@ -111,9 +118,11 @@ public static class TypeExtensions
     /// </summary>
     /// <param name="obj"></param>
     /// <returns></returns>
+    [DebuggerStepThrough]
     public static bool IsPrimitive(this object obj)
         => obj == null || obj.GetType().IsPrimitive();
 
+    [DebuggerStepThrough]
     public static bool IsNullableType(this Type type)
     {
         var typeInfo = type.GetTypeInfo();
@@ -123,6 +132,7 @@ public static class TypeExtensions
                && typeInfo.GetGenericTypeDefinition() == typeof(Nullable<>);
     }
 
+    [DebuggerStepThrough]
     public static Type MakeNullable(this Type type, bool nullable = true)
         => type.IsNullableType() == nullable
                ? type
@@ -130,9 +140,11 @@ public static class TypeExtensions
                    ? typeof(Nullable<>).MakeGenericType(type)
                    : type.GetGenericArguments()[0];
 
+    [DebuggerStepThrough]
     public static Type UnwrapNullableType(this Type type)
         => Nullable.GetUnderlyingType(type) ?? type;
 
+    [DebuggerStepThrough]
     public static Type UnwrapEnumType(this Type type)
     {
         var isNullable                = type.IsNullableType();

@@ -4,6 +4,7 @@ namespace Wangkanai.Extensions;
 
 public static class AttributeExtensions
 {
+	[DebuggerStepThrough]
     public static string[] SplitString(this Attribute attribute, string original, char separator)
         => string.IsNullOrEmpty(original)
                ? Array.Empty<string>()

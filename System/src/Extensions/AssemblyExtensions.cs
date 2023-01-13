@@ -4,18 +4,22 @@ namespace Wangkanai.Extensions;
 
 public static class AssemblyExtensions
 {
+	[DebuggerStepThrough]
     public static string GetVersion(this Assembly assembly)
         => assembly.GetName().Version.ToString();
 
+    [DebuggerStepThrough]
     public static string GetVersion(this Type type)
         => type.Assembly.GetVersion();
-
+	
+    [DebuggerStepThrough]
     public static string GetInformationalVersion(this Assembly assembly)
         => assembly.GetCustomAttributes(false)
                    .OfType<AssemblyInformationalVersionAttribute>()
                    .Single()
                    .InformationalVersion;
 
+    [DebuggerStepThrough]
     public static string GetFileVersion(this Assembly assembly)
     {
         assembly.ThrowIfNull();

@@ -37,6 +37,18 @@ public static class StringExtensions
 		=> input.IsNotNullOrEmpty() && !input.EndsWith("/")
 			   ? input + "/"
 			   : input;
+	
+	[DebuggerStepThrough]
+	public static string RemoveLeadingSlash(this string input)
+		=> input.IsNotNullOrEmpty() && input.StartsWith("/")
+			   ? input.Substring(1)
+			   : input;
+	
+	[DebuggerStepThrough]
+	public static string RemoveTrailingSlash(this string input)
+		=> input.IsNotNullOrEmpty() && input.EndsWith("/")
+			   ? input.Substring(0, input.Length - 1)
+			   : input;
 
 	[DebuggerStepThrough]
 	public static string EnsureEndsWith(this string input, char c)
@@ -264,4 +276,17 @@ public static class StringExtensions
 	/// <returns></returns>
 	public static bool EqualsInvariant(this string str1, string str2)
 		=> string.Equals(str1, str2, StringComparison.OrdinalIgnoreCase);
+
+	[DebuggerStepThrough]
+	public static string ToSpaceSeparatedString(this IEnumerable<string> list) 
+		=> list.IsNullOrEmpty() 
+			   ? string.Empty 
+			   : string.Join(' ', list);
+
+	[DebuggerStepThrough]
+	public static IEnumerable<string> FromSpaceSeparatedString(this string input)
+	{
+		input = input.Trim();
+		return input.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+	}
 }
