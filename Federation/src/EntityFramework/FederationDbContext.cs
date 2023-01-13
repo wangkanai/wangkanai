@@ -1,8 +1,14 @@
 ﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
+using System.Numerics;
+
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 
 using Wangkanai.Identity;
 
@@ -56,6 +62,11 @@ public abstract class FederationDbContext<TUser, TRole, TKey, TClient, TClientOr
 
 	protected override void OnModelCreating(ModelBuilder builder)
 	{
+		var                     storeOptions        = GetStoreOptions();
+		var                     maxKeyLength        = storeOptions?.MaxLengthForKeys ?? 0;
+		var                     encryptPersonalData = storeOptions?.ProtectPersonalData ?? false;
+		FederationDataConverter converter           = null;
+
 		builder.Entity<TClient>(b => {
 			b.HasKey(c => c.Id);
 			b.HasIndex(c => c.ClientId).HasDatabaseName("ClientIdIndex").IsUnique();
@@ -63,5 +74,24 @@ public abstract class FederationDbContext<TUser, TRole, TKey, TClient, TClientOr
 
 			b.Property(c => c.ClientId).HasMaxLength(256).IsRequired();
 		});
+
+		builder.Entity<TScope>(b => {
+			b.HasKey(s=> s.Id);
+			b.HasIndex(s => s.Name).HasDatabaseName("ScopeIndex").IsUnique();
+		});
+	}
+
+	private StoreOptions? GetStoreOptions()
+		=> this.GetService<IDbContextOptions>()
+		       .Extensions.OfType<CoreOptionsExtension>()
+		       .FirstOrDefault()
+		       ?.ApplicationServiceProvider
+		       ?.GetService<IOptions<FederationOptions>>()
+		       ?.Value?.Stores;
+
+	private sealed class FederationDataConverter : ValueConverter<string, string>
+	{
+		public FederationDataConverter(IPersonalDataProtector protector)
+			: base(x => protector.Protect(x), x => protector.Unprotect(x), default) { }
 	}
 }
