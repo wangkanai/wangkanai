@@ -5,11 +5,11 @@ using Microsoft.AspNetCore.Identity;
 namespace Wangkanai.Federation;
 
 /// <summary>
-///     Provides programmatic configuration for the <see cref="FederationMiddleware" />.
+/// Provides programmatic configuration for the <see cref="FederationMiddleware" />.
 /// </summary>
 public sealed class FederationOptions
 {
-	public DiscoveryOptions Discovery { get; set; } = new();
-	public EndpointsOptions Endpoints { get; set; } = new();
-	public StoreOptions     Stores    { get; set; } = new();
+	public DiscoveryOptions      Discovery { get; set; } = new();
+	public EndpointsOptions      Endpoints { get; set; } = new();
+	public OperationStoreOptions Stores    { get; set; } = new();
 }

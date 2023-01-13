@@ -62,10 +62,10 @@ public abstract class FederationDbContext<TUser, TRole, TKey, TClient, TClientOr
 
 	protected override void OnModelCreating(ModelBuilder builder)
 	{
-		var                     storeOptions        = GetStoreOptions();
-		var                     maxKeyLength        = storeOptions?.MaxLengthForKeys ?? 0;
-		var                     encryptPersonalData = storeOptions?.ProtectPersonalData ?? false;
-		FederationDataConverter converter           = null;
+		var                     storeOptions = GetStoreOptions();
+		var                     maxKeyLength = storeOptions?.MaxLengthForKeys ?? 0;
+		var                     encryptData  = storeOptions?.EncryptData ?? false;
+		FederationDataConverter converter    = null;
 
 		builder.Entity<TClient>(b => {
 			b.HasKey(c => c.Id);
@@ -76,18 +76,20 @@ public abstract class FederationDbContext<TUser, TRole, TKey, TClient, TClientOr
 		});
 
 		builder.Entity<TScope>(b => {
-			b.HasKey(s=> s.Id);
+			b.HasKey(s => s.Id);
 			b.HasIndex(s => s.Name).HasDatabaseName("ScopeIndex").IsUnique();
 		});
 	}
 
-	private StoreOptions? GetStoreOptions()
-		=> this.GetService<IDbContextOptions>()
-		       .Extensions.OfType<CoreOptionsExtension>()
-		       .FirstOrDefault()
-		       ?.ApplicationServiceProvider
-		       ?.GetService<IOptions<FederationOptions>>()
-		       ?.Value?.Stores;
+	private OperationStoreOptions? GetStoreOptions()
+	{
+		return this.GetService<IDbContextOptions>()
+		           .Extensions.OfType<CoreOptionsExtension>()
+		           .FirstOrDefault()
+		           ?.ApplicationServiceProvider
+		           ?.GetService<IOptions<FederationOptions>>()
+		           ?.Value?.Stores;
+	}
 
 	private sealed class FederationDataConverter : ValueConverter<string, string>
 	{
