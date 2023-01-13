@@ -2,11 +2,11 @@
 
 namespace Wangkanai.Federation.Models;
 
-public class IdentityClientCorsOrigin : IdentityClientCorsOrigin<Guid, string>
+public class IdentityClientCorsOrigin : IdentityClientCorsOrigin<string, string>
 {
 	public IdentityClientCorsOrigin()
 	{
-		//Id = Guid.NewGuid().ToString();
+		Id = Guid.NewGuid().ToString();
 	}
 
 	public IdentityClientCorsOrigin(string clientId, string origin) : this()

@@ -9,7 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
 using Wangkanai.Federation.Models;
-using Wangkanai.Identity;
+using Wangkanai.Federation.EntityFramework.Extensions;
 
 namespace Wangkanai.Federation.EntityFramework;
 
@@ -38,13 +38,13 @@ public class FederationDbContext<TUser, TRole, TKey> : IdentityDbContext<TUser, 
 	protected FederationDbContext() { }
 }
 
-public abstract class FederationDbContext<TUser, TRole, TKey, TClient, TClientOrigin, TScope, TResource, TDirectory>
+public abstract class FederationDbContext<TUser, TRole, TKey, TClient, TClientCorsOrigin, TScope, TResource, TDirectory>
 	: IdentityDbContext<TUser, TRole, TKey>
 	where TUser : IdentityUser<TKey>
 	where TRole : IdentityRole<TKey>
 	where TKey : IEquatable<TKey>
 	where TClient : IdentityClient<TKey>
-	where TClientOrigin : IdentityClientCorsOrigin<TKey, string>
+	where TClientCorsOrigin : IdentityClientCorsOrigin<TKey, TKey>
 	where TScope : IdentityScope<TKey>
 	where TResource : IdentityResource<TKey>
 	where TDirectory : IdentityDirectory<TKey>
@@ -53,11 +53,11 @@ public abstract class FederationDbContext<TUser, TRole, TKey, TClient, TClientOr
 
 	protected FederationDbContext() { }
 
-	public virtual DbSet<TClient>       Clients       { get; set; } = default!;
-	public virtual DbSet<TClientOrigin> ClientOrigins { get; set; } = default!;
-	public virtual DbSet<TScope>        Scopes        { get; set; } = default!;
-	public virtual DbSet<TResource>     Resources     { get; set; } = default!;
-	public virtual DbSet<TDirectory>    Directories   { get; set; } = default!;
+	public virtual DbSet<TClient>           Clients           { get; set; } = default!;
+	public virtual DbSet<TClientCorsOrigin> ClientCorsOrigins { get; set; } = default!;
+	public virtual DbSet<TScope>            Scopes            { get; set; } = default!;
+	public virtual DbSet<TResource>         Resources         { get; set; } = default!;
+	public virtual DbSet<TDirectory>        Directories       { get; set; } = default!;
 
 	protected override void OnModelCreating(ModelBuilder builder)
 	{
@@ -66,35 +66,18 @@ public abstract class FederationDbContext<TUser, TRole, TKey, TClient, TClientOr
 		var                     encryptData  = storeOptions?.EncryptData ?? false;
 		FederationDataConverter converter    = null;
 
-		builder.Entity<TClient>(b => {
-			b.HasKey(c => c.Id);
-			b.HasIndex(c => c.ClientId).HasDatabaseName("ClientIdIndex").IsUnique();
-			b.ToTable("AspNetClients");
-
-			b.Property(c => c.ClientId).HasMaxLength(256).IsRequired();
-		});
-
-		builder.Entity<TClientOrigin>(b => {
-			b.HasKey(c => c.Id);
-			b.HasIndex(c=>c.ClientId).HasDatabaseName("")
-		});
-		
-		builder.Entity<TScope>(b => {
-			b.HasKey(s => s.Id);
-			b.HasIndex(s => s.Name).HasDatabaseName("ScopeIndex").IsUnique();
-		});
-
+		builder.ConfigureClientContext<TClient, TKey>();
+		builder.ConfigureClientCorsOriginContext<TClientCorsOrigin, TKey>();
+		builder.ConfigureScope<TScope, TKey>();
 	}
-
+	
 	private FederationStoreOptions? GetStoreOptions()
-	{
-		return this.GetService<IDbContextOptions>()
-		           .Extensions.OfType<CoreOptionsExtension>()
-		           .FirstOrDefault()
-		           ?.ApplicationServiceProvider
-		           ?.GetService<IOptions<FederationOptions>>()
-		           ?.Value?.Stores;
-	}
+		=> this.GetService<IDbContextOptions>()
+		       .Extensions.OfType<CoreOptionsExtension>()
+		       .FirstOrDefault()
+		       ?.ApplicationServiceProvider?
+		       .GetService<IOptions<FederationOptions>>()
+		       ?.Value?.Stores;
 
 	private sealed class FederationDataConverter : ValueConverter<string, string>
 	{
