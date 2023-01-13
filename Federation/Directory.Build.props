@@ -9,6 +9,8 @@
         <Description>OAuth 2.1 and OpenID Connect Framework for ASP.NET Core for Authentication and Authorization with flexible permission policy.</Description>
 
         <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Federation</PackageProjectUrl>
+        
+        <RootNamespace>Wangkanai.Federation</RootNamespace>
     </PropertyGroup>
 
     <PropertyGroup Condition="$(MSBuildProjectDirectory.Contains('src'))">

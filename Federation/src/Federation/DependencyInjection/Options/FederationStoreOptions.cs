@@ -5,7 +5,7 @@ namespace Wangkanai.Federation;
 /// <summary>
 /// Used for store specific federation options
 /// </summary>
-public sealed class OperationStoreOptions
+public sealed class FederationStoreOptions
 {
 	/// <summary>
 	/// If set to a positive number, the default OnModelCreating will use this as the max length for any

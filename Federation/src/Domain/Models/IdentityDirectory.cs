@@ -3,7 +3,7 @@
 
 using Microsoft.AspNetCore.Identity;
 
-namespace Wangkanai.Identity;
+namespace Wangkanai.Federation.Models;
 
 public class IdentityDirectory : IdentityDirectory<string>
 {

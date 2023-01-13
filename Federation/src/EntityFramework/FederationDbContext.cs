@@ -1,7 +1,5 @@
 ﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-using System.Numerics;
-
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
+using Wangkanai.Federation.Models;
 using Wangkanai.Identity;
 
 namespace Wangkanai.Federation.EntityFramework;
@@ -75,13 +74,19 @@ public abstract class FederationDbContext<TUser, TRole, TKey, TClient, TClientOr
 			b.Property(c => c.ClientId).HasMaxLength(256).IsRequired();
 		});
 
+		builder.Entity<TClientOrigin>(b => {
+			b.HasKey(c => c.Id);
+			b.HasIndex(c=>c.ClientId).HasDatabaseName("")
+		});
+		
 		builder.Entity<TScope>(b => {
 			b.HasKey(s => s.Id);
 			b.HasIndex(s => s.Name).HasDatabaseName("ScopeIndex").IsUnique();
 		});
+
 	}
 
-	private OperationStoreOptions? GetStoreOptions()
+	private FederationStoreOptions? GetStoreOptions()
 	{
 		return this.GetService<IDbContextOptions>()
 		           .Extensions.OfType<CoreOptionsExtension>()
