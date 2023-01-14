@@ -22,14 +22,13 @@ public class IdentityClientCorsOrigin<TKey, TKeyClient>
 {
 	public IdentityClientCorsOrigin() { }
 
-	public IdentityClientCorsOrigin(TKeyClient clientId, string origin) : this()
+	public IdentityClientCorsOrigin(string origin) : this()
 	{
-		ClientId = clientId;
 		Origin   = origin;
 	}
 
-	public TKey                       Id       { get; set; }
-	public string                     Origin   { get; set; }
-	public TKeyClient                 ClientId { get; set; }
-	public IdentityClient<TKeyClient> Client   { get; set; }
+	public TKey           Id       { get; set; }
+	public string         Origin   { get; set; }
+	public TKeyClient     ClientId { get; set; }
+	public IdentityClient Client   { get; set; }
 }

@@ -407,6 +407,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Federation", "Federation\src\Federation\Wangkanai.Federation.csproj", "{C49B819D-2F40-4427-A152-5E1C1323AEBC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "hosts", "hosts", "{93BD0D45-3A9F-4171-A265-C47F03E27FE2}"
+	ProjectSection(SolutionItems) = preProject
+		Federation\hosts\Directory.Build.props = Federation\hosts\Directory.Build.props
+		Federation\hosts\.gitignore = Federation\hosts\.gitignore
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Federation.Domain", "Federation\src\Domain\Wangkanai.Federation.Domain.csproj", "{D9B8E83E-84F4-47D3-95AD-A7D369095BB7}"
 EndProject

@@ -38,7 +38,7 @@ public class FederationDbContext<TUser, TRole, TKey> : IdentityDbContext<TUser, 
 	protected FederationDbContext() { }
 }
 
-public abstract class FederationDbContext<TUser, TRole, TKey, TClient, TClientCorsOrigin, TScope, TResource, TDirectory>
+public abstract class FederationDbContext<TUser, TRole, TKey, TClient, TClientCorsOrigin, TScope, TGroup, TResource, TDirectory>
 	: IdentityDbContext<TUser, TRole, TKey>
 	where TUser : IdentityUser<TKey>
 	where TRole : IdentityRole<TKey>
@@ -46,6 +46,7 @@ public abstract class FederationDbContext<TUser, TRole, TKey, TClient, TClientCo
 	where TClient : IdentityClient<TKey>
 	where TClientCorsOrigin : IdentityClientCorsOrigin<TKey, TKey>
 	where TScope : IdentityScope<TKey>
+	where TGroup : IdentityGroup<TKey>
 	where TResource : IdentityResource<TKey>
 	where TDirectory : IdentityDirectory<TKey>
 {
@@ -55,6 +56,7 @@ public abstract class FederationDbContext<TUser, TRole, TKey, TClient, TClientCo
 
 	public virtual DbSet<TClient>           Clients           { get; set; } = default!;
 	public virtual DbSet<TClientCorsOrigin> ClientCorsOrigins { get; set; } = default!;
+	public virtual DbSet<TGroup>            Groups            { get; set; } = default!;
 	public virtual DbSet<TScope>            Scopes            { get; set; } = default!;
 	public virtual DbSet<TResource>         Resources         { get; set; } = default!;
 	public virtual DbSet<TDirectory>        Directories       { get; set; } = default!;
@@ -70,13 +72,12 @@ public abstract class FederationDbContext<TUser, TRole, TKey, TClient, TClientCo
 		builder.ConfigureClientCorsOriginContext<TClientCorsOrigin, TKey>();
 		builder.ConfigureScope<TScope, TKey>();
 	}
-	
+
 	private FederationStoreOptions? GetStoreOptions()
 		=> this.GetService<IDbContextOptions>()
 		       .Extensions.OfType<CoreOptionsExtension>()
 		       .FirstOrDefault()
-		       ?.ApplicationServiceProvider?
-		       .GetService<IOptions<FederationOptions>>()
+		       ?.ApplicationServiceProvider?.GetService<IOptions<FederationOptions>>()
 		       ?.Value?.Stores;
 
 	private sealed class FederationDataConverter : ValueConverter<string, string>

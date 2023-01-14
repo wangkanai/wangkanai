@@ -4,4 +4,7 @@ namespace Wangkanai.Federation.Models;
 
 public class IdentityResource : IdentityResource<string> { }
 
-public class IdentityResource<TKey> where TKey : IEquatable<TKey> { }
+public class IdentityResource<TKey> where TKey : IEquatable<TKey>
+{
+	public virtual string? ConcurrencyStamp { get; set; } = Guid.NewGuid().ToString();
+}

@@ -6,8 +6,9 @@ public class IdentityScope : IdentityScope<string> { }
 
 public class IdentityScope<TKey> where TKey : IEquatable<TKey>
 {
-	public virtual TKey   Id          { get; set; } = default!;
-	public virtual string Name        { get; set; }
-	public virtual string DisplayName { get; set; }
-	public virtual string Description { get; set; }
+	public virtual TKey    Id               { get; set; } = default!;
+	public virtual string  Name             { get; set; }
+	public virtual string  DisplayName      { get; set; }
+	public virtual string  Description      { get; set; }
+	public virtual string? ConcurrencyStamp { get; set; } = Guid.NewGuid().ToString();
 }

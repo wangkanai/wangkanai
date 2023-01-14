@@ -4,4 +4,7 @@ namespace Wangkanai.Federation.Models;
 
 public class IdentityPermission : IdentityPermission<string> { }
 
-public class IdentityPermission<TKey> where TKey : IEquatable<TKey> { }
+public class IdentityPermission<TKey> where TKey : IEquatable<TKey>
+{
+	public virtual string? ConcurrencyStamp { get; set; } = Guid.NewGuid().ToString();
+}

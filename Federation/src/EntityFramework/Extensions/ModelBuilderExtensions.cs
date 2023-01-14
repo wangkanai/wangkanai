@@ -16,8 +16,11 @@ internal static class ModelBuilderExtensions
 			b.HasKey(c => c.Id);
 			b.HasIndex(c => c.ClientId).HasDatabaseName("ClientIdIndex").IsUnique();
 			b.ToTable("AspNetClients");
+			b.Property(c => c.ConcurrencyStamp).IsConcurrencyToken();
 
 			b.Property(c => c.ClientId).HasMaxLength(256).IsRequired();
+			b.Property(c => c.ClientName).HasMaxLength(256);
+			
 			b.Property(c => c.ProtocolType).IsRequired();
 		});
 	}

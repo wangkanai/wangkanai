@@ -4,4 +4,7 @@ namespace Wangkanai.Federation.Models;
 
 public class IdentityGroup : IdentityGroup<string> { }
 
-public class IdentityGroup<TKey> where TKey : IEquatable<TKey> { }
+public class IdentityGroup<TKey> where TKey : IEquatable<TKey>
+{
+	public virtual string? ConcurrencyStamp { get; set; } = Guid.NewGuid().ToString();
+}
