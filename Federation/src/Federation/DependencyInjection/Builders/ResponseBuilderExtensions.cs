@@ -8,7 +8,7 @@ namespace Microsoft.Extensions.DependencyInjection;
 
 public static class FederationResponseBuilderExtensions
 {
-	public static IFederationBuilder AddResponseMaker(this IFederationBuilder builder)
+	public static IFederationBuilder AddResponseMakers(this IFederationBuilder builder)
 	{
 		builder.Services.TryAddTransient<IDiscoveryResponseMaker, DiscoveryResponseMaker>();
 		

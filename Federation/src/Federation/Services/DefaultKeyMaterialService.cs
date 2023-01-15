@@ -6,14 +6,17 @@ using Wangkanai.Federation.Models;
 
 namespace Wangkanai.Federation.Services;
 
+
 public class DefaultKeyMaterialService : IKeyMaterialService
 {
-	public Task<IEnumerable<SecurityKeyInfo>> GetValidationKeysAsync()
+	public DefaultKeyMaterialService() { }
+
+	public async Task<SigningCredentials> GetSigningCredentialsAsync(IEnumerable<string> allowedAlgorithms)
 	{
 		throw new NotImplementedException();
 	}
 
-	public Task<SigningCredentials> GetSigningCredentialsAsync(IEnumerable<string> allowedAlgorithms)
+	public async Task<IEnumerable<SecurityKeyInfo>> GetValidationKeysAsync()
 	{
 		throw new NotImplementedException();
 	}
