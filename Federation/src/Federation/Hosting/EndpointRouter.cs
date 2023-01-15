@@ -3,6 +3,8 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 
+using Wangkanai.Federation.Extensions;
+
 namespace Wangkanai.Federation.Hosting;
 
 public class EndpointRouter : IEndpointRouter
@@ -23,6 +25,24 @@ public class EndpointRouter : IEndpointRouter
 
 	public IEndpointHandler Find(HttpContext context)
 	{
-		throw new NotImplementedException();
+		context.ThrowIfNull();
+
+		foreach (var endpoint in _endpoints)
+		{
+			var path = endpoint.Path;
+			if (context.Request.Path.Equals(path, StringComparison.OrdinalIgnoreCase))
+				return GetEndpointHandler(endpoint, context);
+		}
+
+		return null;
+	}
+
+	private IEndpointHandler GetEndpointHandler(Endpoint endpoint, HttpContext context)
+	{
+		if (_options.Endpoints.IsEnabled(endpoint))
+			if (context.RequestServices.GetService(endpoint.Handler) is IEndpointHandler handler)
+				return handler;
+
+		return null;
 	}
 }

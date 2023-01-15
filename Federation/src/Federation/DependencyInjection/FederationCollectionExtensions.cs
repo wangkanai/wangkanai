@@ -20,6 +20,7 @@ public static class FederationCollectionExtensions
                        .AddRequiredServices()
                        .AddCoreServices()
                        .AddDefaultEndpoints()
+                       .AddResponseMaker()
                        .AddMarkerService();
     }
 

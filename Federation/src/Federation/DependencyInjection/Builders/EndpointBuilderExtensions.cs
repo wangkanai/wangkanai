@@ -12,13 +12,12 @@ namespace Microsoft.Extensions.DependencyInjection;
 
 public static class FederationEndpointBuilderExtensions
 {
-	
 	/// <summary>
 	/// Adds Federation default endpoints
 	/// </summary>
 	/// <param name="builder"></param>
 	/// <returns></returns>
-	internal static IFederationBuilder AddDefaultEndpoints(this IFederationBuilder builder)
+	public static IFederationBuilder AddDefaultEndpoints(this IFederationBuilder builder)
 	{
 		builder.Services.AddTransient<IEndpointRouter, EndpointRouter>();
 
@@ -27,7 +26,7 @@ public static class FederationEndpointBuilderExtensions
 		return builder;
 	}
 
-	private static IFederationBuilder AddEndpoint<T>(this IFederationBuilder builder, string name, PathString path)
+	public static IFederationBuilder AddEndpoint<T>(this IFederationBuilder builder, string name, PathString path)
 		where T : class, IEndpointHandler
 	{
 		builder.Services.AddTransient<T>();
