@@ -24,6 +24,8 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Compile Include="..\..\..\Shared\src\Tracing.cs"/>
+        <Compile Include="..\..\..\Shared\src\Tracing.cs">
+            <Link>Tracing.cs</Link>
+        </Compile>
     </ItemGroup>
 </Project>
