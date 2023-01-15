@@ -55,12 +55,13 @@ public abstract class FederationDbContext<TUser, TRole, TClient, TScope, TGroup,
 
 	protected FederationDbContext() { }
 
-	public virtual DbSet<TClient>                  Clients           { get; set; } = default!;
+	public virtual DbSet<TClient>    Clients     { get; set; } = default!;
+	public virtual DbSet<TGroup>     Groups      { get; set; } = default!;
+	public virtual DbSet<TScope>     Scopes      { get; set; } = default!;
+	public virtual DbSet<TResource>  Resources   { get; set; } = default!;
+	public virtual DbSet<TDirectory> Directories { get; set; } = default!;
+
 	public virtual DbSet<IdentityClientCorsOrigin> ClientCorsOrigins { get; set; } = default!;
-	public virtual DbSet<TGroup>                   Groups            { get; set; } = default!;
-	public virtual DbSet<TScope>                   Scopes            { get; set; } = default!;
-	public virtual DbSet<TResource>                Resources         { get; set; } = default!;
-	public virtual DbSet<TDirectory>               Directories       { get; set; } = default!;
 
 	protected override void OnModelCreating(ModelBuilder builder)
 	{
@@ -69,10 +70,60 @@ public abstract class FederationDbContext<TUser, TRole, TClient, TScope, TGroup,
 		var                     encryptData  = storeOptions?.EncryptData ?? false;
 		FederationDataConverter converter    = null;
 
-		builder.ConfigureClientContext<TClient, TKey>();
-		builder.ConfigureClientCorsOriginContext<TKey, IdentityClientCorsOrigin<TKey, TKey>>();
-		builder.ConfigureScope<TScope, TKey>();
-		
+		builder.Entity<TClient>(b => {
+			b.HasKey(c => c.Id);
+			b.HasIndex(c => c.ClientId).HasDatabaseName("ClientIdIndex").IsUnique();
+			b.ToTable("AspNetClients");
+			b.Property(c => c.ConcurrencyStamp).IsConcurrencyToken();
+
+			b.Property(c => c.ClientId).HasMaxLength(256).IsRequired();
+			b.Property(c => c.ClientName).HasMaxLength(256);
+			b.Property(c => c.ProtocolType).IsRequired();
+
+			//b.HasMany<IdentityClientCorsOrigin>().WithOne().HasForeignKey(x => x.ClientId).IsRequired().OnDelete(DeleteBehavior.Cascade);
+		});
+
+		builder.Entity<IdentityClientCorsOrigin>(b => {
+			b.HasKey(c => c.Id);
+			b.HasIndex(c => c.Origin).HasDatabaseName("OriginIndex").IsUnique();
+			//b.HasIndex(c => c.ClientId).HasDatabaseName("ClientIdIndex").IsUnique();
+			b.ToTable("AspNetClientCorsOrigins");
+
+			b.Property(c => c.Origin).HasMaxLength(150).IsRequired();
+		});
+
+		builder.Entity<TScope>(b => {
+			b.HasKey(s => s.Id);
+			b.HasIndex(s => s.Name).HasDatabaseName("ScopeIndex").IsUnique();
+			b.ToTable("AspNetScopes");
+
+			b.Property(s => s.Name).HasMaxLength(256).IsRequired();
+		});
+
+		builder.Entity<TGroup>(b => {
+			b.HasKey(g => g.Id);
+			b.HasIndex(g => g.Name).HasDatabaseName("GroupIndex").IsUnique();
+			b.ToTable("AspNetGroups");
+
+			b.Property(g => g.Name).HasMaxLength(256).IsRequired();
+		});
+
+		builder.Entity<TResource>(b => {
+			b.HasKey(r => r.Id);
+			b.HasIndex(r => r.Name).HasDatabaseName("ResourceIndex").IsUnique();
+			b.ToTable("AspNetResources");
+
+			b.Property(r => r.Name).HasMaxLength(256).IsRequired();
+		});
+
+		builder.Entity<TDirectory>(b => {
+			b.HasKey(d => d.Id);
+			b.HasIndex(d => d.Name).HasDatabaseName("DirectoryIndex").IsUnique();
+			b.ToTable("AspNetDirectories");
+
+			b.Property(d => d.Name).HasMaxLength(256).IsRequired();
+		});
+
 		base.OnModelCreating(builder);
 	}
 

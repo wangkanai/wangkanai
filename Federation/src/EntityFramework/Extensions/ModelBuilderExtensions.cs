@@ -25,18 +25,8 @@ internal static class ModelBuilderExtensions
 		});
 	}
 
-	public static void ConfigureClientCorsOriginContext<TKey, TClientCorsOrigin>(this ModelBuilder builder)
-		where TClientCorsOrigin : IdentityClientCorsOrigin<TKey, TKey>
-		where TKey : IEquatable<TKey>
-	{
-		builder.Entity<TClientCorsOrigin>(b => {
-			b.HasKey(c => c.Id);
-			b.HasIndex(c => c.ClientId).HasDatabaseName("ClientIdIndex").IsUnique();
-			b.ToTable("AspNetClientCorsOrigins");
-
-			b.Property(c => c.Origin).HasMaxLength(150).IsRequired();
-		});
-	}
+	public static void ConfigureClientCorsOriginContext<TKey>(this ModelBuilder builder)
+		where TKey : IEquatable<TKey> { }
 
 	public static void ConfigureScope<TScope, TKey>(this ModelBuilder builder)
 		where TScope : IdentityScope<TKey>
