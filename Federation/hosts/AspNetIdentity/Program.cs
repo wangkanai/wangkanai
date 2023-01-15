@@ -42,10 +42,10 @@ app.UseStaticFiles();
 
 app.UseRouting();
 app.UseFederation();
-app.UseAuthentication();
-app.UseAuthorization();
+// app.UseAuthentication();
+// app.UseAuthorization();
 
-app.MapControllers().RequireAuthorization(FederationConstants.LocalApi.PolicyName);
-app.MapRazorPages().RequireAuthorization();
+app.MapControllers();//.RequireAuthorization(FederationConstants.LocalApi.PolicyName);
+app.MapRazorPages();//.RequireAuthorization();
 
 app.Run();
