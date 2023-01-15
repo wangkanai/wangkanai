@@ -3,6 +3,8 @@
 using Microsoft.Extensions.Logging;
 
 using Wangkanai.Federation.Models;
+using Wangkanai.Identity;
+using Wangkanai.Internal;
 
 namespace Wangkanai.Federation.Responses;
 
@@ -19,9 +21,20 @@ public class DiscoveryResponseMaker : IDiscoveryResponseMaker
 		_logger  = logger;
 	}
 
-	public Task<Dictionary<string, object>> CreateResultAsync(string issuerUri, string baseUri)
+	public virtual async Task<Dictionary<string, object>> CreateResultAsync(string baseUri, string issuerUri)
 	{
-		throw new NotImplementedException();
+		using var activity = Tracing.BasicActivitySource.StartActivity();
+
+		baseUri = baseUri.EnsureTrailingSlash();
+
+		var entries = new Dictionary<string, object>
+		{
+			{ OidcConstants.Discovery.Issuer, issuerUri }
+		};
+		
+		// to do work list
+
+		return entries;
 	}
 
 	public Task<IEnumerable<JsonWebKey>> CreateJwkAsync()

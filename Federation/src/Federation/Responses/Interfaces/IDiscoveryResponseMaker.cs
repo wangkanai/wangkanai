@@ -4,13 +4,12 @@ using Wangkanai.Federation.Models;
 
 namespace Wangkanai.Federation.Responses;
 
-
 /// <summary>
 /// Discovery endpoint response maker contract
 /// </summary>
 public interface IDiscoveryResponseMaker
 {
-	Task<Dictionary<string, object>> CreateResultAsync(string issuerUri, string baseUri);
+	Task<Dictionary<string, object>> CreateResultAsync(string baseUri, string issuerUri);
 
 	Task<IEnumerable<JsonWebKey>> CreateJwkAsync();
 }

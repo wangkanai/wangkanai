@@ -18,4 +18,6 @@
         <ProjectReference Include="..\Domain\Wangkanai.Federation.Domain.csproj" />
     </ItemGroup>
 
+
+
 </Project>
