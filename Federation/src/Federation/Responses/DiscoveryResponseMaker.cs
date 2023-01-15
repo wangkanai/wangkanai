@@ -3,6 +3,7 @@
 using Microsoft.Extensions.Logging;
 
 using Wangkanai.Federation.Models;
+using Wangkanai.Federation.Services;
 using Wangkanai.Identity;
 using Wangkanai.Internal;
 
@@ -11,13 +12,16 @@ namespace Wangkanai.Federation.Responses;
 public class DiscoveryResponseMaker : IDiscoveryResponseMaker
 {
 	private readonly FederationOptions               _options;
+	private readonly IKeyMaterialService             _keys;
 	private readonly ILogger<DiscoveryResponseMaker> _logger;
 
 	public DiscoveryResponseMaker(
 		FederationOptions               options,
+		IKeyMaterialService             keys,
 		ILogger<DiscoveryResponseMaker> logger)
 	{
 		_options = options;
+		_keys    = keys;
 		_logger  = logger;
 	}
 
@@ -31,14 +35,23 @@ public class DiscoveryResponseMaker : IDiscoveryResponseMaker
 		{
 			{ OidcConstants.Discovery.Issuer, issuerUri }
 		};
-		
+
 		// to do work list
 
 		return entries;
 	}
 
-	public Task<IEnumerable<JsonWebKey>> CreateJwkAsync()
+	public virtual async Task<IEnumerable<JsonWebKey>> CreateJwkAsync()
 	{
-		throw new NotImplementedException();
+		using var activity = Tracing.BasicActivitySource.StartActivity();
+
+		var webKeys = new List<JsonWebKey>();
+
+		foreach (var key in await _keys.GetValidationKeysAsync())
+		{
+			// to do work list
+		}
+
+		return webKeys;
 	}
 }

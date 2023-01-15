@@ -13,6 +13,11 @@
     </ItemGroup>
 
     <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" />
+        <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.23.1" />
+    </ItemGroup>
+
+    <ItemGroup>
         <ProjectReference Include="..\..\..\System\src\Wangkanai.System.csproj" />
         <ProjectReference Include="..\..\..\Webserver\src\Wangkanai.Webserver.csproj" />
         <ProjectReference Include="..\Domain\Wangkanai.Federation.Domain.csproj" />
