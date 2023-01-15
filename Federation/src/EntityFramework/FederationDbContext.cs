@@ -28,7 +28,9 @@ public class FederationDbContext<TUser> : FederationDbContext<TUser, IdentityRol
 	protected FederationDbContext() { }
 }
 
-public class FederationDbContext<TUser, TRole, TKey> : IdentityDbContext<TUser, TRole, TKey>
+public class FederationDbContext<TUser, TRole, TKey>
+	: FederationDbContext<TUser, TRole, IdentityClient<TKey>, IdentityScope<TKey>, IdentityGroup<TKey>, IdentityResource<TKey>,
+		IdentityDirectory<TKey>, TKey>
 	where TUser : IdentityUser<TKey>
 	where TRole : IdentityRole<TKey>
 	where TKey : IEquatable<TKey>
@@ -38,28 +40,27 @@ public class FederationDbContext<TUser, TRole, TKey> : IdentityDbContext<TUser, 
 	protected FederationDbContext() { }
 }
 
-public abstract class FederationDbContext<TUser, TRole, TKey, TClient, TClientCorsOrigin, TScope, TGroup, TResource, TDirectory>
+public abstract class FederationDbContext<TUser, TRole, TClient, TScope, TGroup, TResource, TDirectory, TKey>
 	: IdentityDbContext<TUser, TRole, TKey>
 	where TUser : IdentityUser<TKey>
 	where TRole : IdentityRole<TKey>
-	where TKey : IEquatable<TKey>
 	where TClient : IdentityClient<TKey>
-	where TClientCorsOrigin : IdentityClientCorsOrigin<TKey, TKey>
 	where TScope : IdentityScope<TKey>
 	where TGroup : IdentityGroup<TKey>
 	where TResource : IdentityResource<TKey>
 	where TDirectory : IdentityDirectory<TKey>
+	where TKey : IEquatable<TKey>
 {
 	public FederationDbContext(DbContextOptions options) : base(options) { }
 
 	protected FederationDbContext() { }
 
-	public virtual DbSet<TClient>           Clients           { get; set; } = default!;
-	public virtual DbSet<TClientCorsOrigin> ClientCorsOrigins { get; set; } = default!;
-	public virtual DbSet<TGroup>            Groups            { get; set; } = default!;
-	public virtual DbSet<TScope>            Scopes            { get; set; } = default!;
-	public virtual DbSet<TResource>         Resources         { get; set; } = default!;
-	public virtual DbSet<TDirectory>        Directories       { get; set; } = default!;
+	public virtual DbSet<TClient>                  Clients           { get; set; } = default!;
+	public virtual DbSet<IdentityClientCorsOrigin> ClientCorsOrigins { get; set; } = default!;
+	public virtual DbSet<TGroup>                   Groups            { get; set; } = default!;
+	public virtual DbSet<TScope>                   Scopes            { get; set; } = default!;
+	public virtual DbSet<TResource>                Resources         { get; set; } = default!;
+	public virtual DbSet<TDirectory>               Directories       { get; set; } = default!;
 
 	protected override void OnModelCreating(ModelBuilder builder)
 	{
@@ -69,8 +70,10 @@ public abstract class FederationDbContext<TUser, TRole, TKey, TClient, TClientCo
 		FederationDataConverter converter    = null;
 
 		builder.ConfigureClientContext<TClient, TKey>();
-		builder.ConfigureClientCorsOriginContext<TClientCorsOrigin, TKey>();
+		builder.ConfigureClientCorsOriginContext<TKey, IdentityClientCorsOrigin<TKey, TKey>>();
 		builder.ConfigureScope<TScope, TKey>();
+		
+		base.OnModelCreating(builder);
 	}
 
 	private FederationStoreOptions? GetStoreOptions()

@@ -20,12 +20,12 @@ internal static class ModelBuilderExtensions
 
 			b.Property(c => c.ClientId).HasMaxLength(256).IsRequired();
 			b.Property(c => c.ClientName).HasMaxLength(256);
-			
+
 			b.Property(c => c.ProtocolType).IsRequired();
 		});
 	}
 
-	public static void ConfigureClientCorsOriginContext<TClientCorsOrigin, TKey>(this ModelBuilder builder)
+	public static void ConfigureClientCorsOriginContext<TKey, TClientCorsOrigin>(this ModelBuilder builder)
 		where TClientCorsOrigin : IdentityClientCorsOrigin<TKey, TKey>
 		where TKey : IEquatable<TKey>
 	{
@@ -46,7 +46,7 @@ internal static class ModelBuilderExtensions
 			b.HasKey(s => s.Id);
 			b.HasIndex(s => s.Name).HasDatabaseName("ScopeIndex").IsUnique();
 			b.ToTable("AspNetScopes");
-			
+
 			b.Property(s => s.Name).HasMaxLength(256).IsRequired();
 		});
 	}

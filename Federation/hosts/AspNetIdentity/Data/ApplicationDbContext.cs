@@ -4,9 +4,11 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
+using Wangkanai.Federation.EntityFramework;
+
 namespace Wangkanai.Federation.RazorApp.Data;
 
-public class ApplicationDbContext : IdentityDbContext<IdentityUser, IdentityRole, string>
+public class ApplicationDbContext : FederationDbContext<IdentityUser, IdentityRole, string>
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
