@@ -2,27 +2,27 @@
 
 using Wangkanai.Domain;
 
-namespace Wangkanai.Federation.Models;
+namespace Wangkanai.Federation.Entities;
 
-public class IdentityResource : IdentityResource<Guid>
+public class IdentityScope : IdentityScope<Guid>
 {
-	public IdentityResource()
+	public IdentityScope()
 	{
 		Id = Guid.NewGuid();
 	}
 
-	public IdentityResource(string name) : this()
+	public IdentityScope(string name) : this()
 	{
 		Name = name;
 	}
 }
 
-public class IdentityResource<TKey> : IAuditable
+public class IdentityScope<TKey> : IAuditable
 	where TKey : IEquatable<TKey>
 {
-	public IdentityResource() { }
+	public IdentityScope() { }
 
-	public IdentityResource(string name) : this()
+	public IdentityScope(string name) : this()
 	{
 		Name = name;
 	}

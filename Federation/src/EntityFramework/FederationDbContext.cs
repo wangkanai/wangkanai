@@ -8,8 +8,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
-using Wangkanai.Federation.Models;
-using Wangkanai.Federation.EntityFramework.Extensions;
+using Wangkanai.Federation.Entities;
+
 
 namespace Wangkanai.Federation.EntityFramework;
 

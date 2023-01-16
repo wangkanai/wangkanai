@@ -1,8 +1,9 @@
 ﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using Wangkanai.Domain;
+using Wangkanai.Federation.Models;
 
-namespace Wangkanai.Federation.Models;
+namespace Wangkanai.Federation.Entities;
 
 public class IdentityClient : IdentityClient<Guid>
 {

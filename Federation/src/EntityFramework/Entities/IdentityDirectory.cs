@@ -1,11 +1,9 @@
 // Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 
-using Microsoft.AspNetCore.Identity;
-
 using Wangkanai.Domain;
 
-namespace Wangkanai.Federation.Models;
+namespace Wangkanai.Federation.Entities;
 
 public class IdentityDirectory : IdentityDirectory<Guid>
 {
