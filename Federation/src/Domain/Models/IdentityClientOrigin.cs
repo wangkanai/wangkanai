@@ -2,26 +2,26 @@
 
 namespace Wangkanai.Federation.Models;
 
-public class IdentityClientCorsOrigin : IdentityClientCorsOrigin<string>
+public class IdentityClientOrigin : IdentityClientOrigin<Guid>
 {
-	public IdentityClientCorsOrigin()
+	public IdentityClientOrigin()
 	{
 		Id = Guid.NewGuid();
 	}
 
-	public IdentityClientCorsOrigin(string clientId, string origin) : this()
+	public IdentityClientOrigin(Guid clientId, string origin) : this()
 	{
 		ClientId = clientId;
 		Origin   = origin;
 	}
 }
 
-public class IdentityClientCorsOrigin<TKey>
+public class IdentityClientOrigin<TKey>
 	where TKey : IEquatable<TKey>
 {
-	public IdentityClientCorsOrigin() { }
+	public IdentityClientOrigin() { }
 
-	public IdentityClientCorsOrigin(TKey clientId, string origin) : this()
+	public IdentityClientOrigin(TKey clientId, string origin) : this()
 	{
 		ClientId = clientId;
 		Origin   = origin;

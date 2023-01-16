@@ -2,9 +2,13 @@
 
 namespace Wangkanai.Federation.Models;
 
-public class IdentityPermission : IdentityPermission<string> { }
-
-public class IdentityPermission<TKey> where TKey : IEquatable<TKey>
+[Flags]
+public enum IdentityPermission
 {
-	public virtual string? ConcurrencyStamp { get; set; } = Guid.NewGuid().ToString();
+	None   = 0,
+	View   = 1 << 0,
+	Edit   = 1 << 1,
+	Create = 1 << 2,
+	Delete = 1 << 3,
+	All    = ~None
 }

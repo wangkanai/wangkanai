@@ -4,11 +4,11 @@ using Wangkanai.Domain;
 
 namespace Wangkanai.Federation.Models;
 
-public class IdentityGroup : IdentityGroup<string>
+public class IdentityGroup : IdentityGroup<Guid>
 {
 	public IdentityGroup()
 	{
-		Id = Guid.NewGuid().ToString();
+		Id = Guid.NewGuid();
 	}
 
 	public IdentityGroup(string name) : this()
@@ -28,7 +28,7 @@ public class IdentityGroup<TKey> : IAuditable
 	}
 
 	public virtual TKey      Id               { get; set; } = default!;
-	public virtual string    Name        { get; set; }
+	public virtual string    Name             { get; set; }
 	public virtual DateTime  Created          { get; set; } = DateTime.UtcNow;
 	public virtual DateTime? Updated          { get; set; }
 	public virtual string?   ConcurrencyStamp { get; set; } = Guid.NewGuid().ToString();

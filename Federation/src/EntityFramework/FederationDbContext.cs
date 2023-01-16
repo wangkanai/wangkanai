@@ -13,15 +13,15 @@ using Wangkanai.Federation.EntityFramework.Extensions;
 
 namespace Wangkanai.Federation.EntityFramework;
 
-public class FederationDbContext : FederationDbContext<IdentityUser, IdentityRole, string>
+public class FederationDbContext : FederationDbContext<IdentityUser<Guid>, IdentityRole<Guid>, Guid>
 {
 	public FederationDbContext(DbContextOptions options) : base(options) { }
 
 	protected FederationDbContext() { }
 }
 
-public class FederationDbContext<TUser> : FederationDbContext<TUser, IdentityRole, string>
-	where TUser : IdentityUser
+public class FederationDbContext<TUser> : FederationDbContext<TUser, IdentityRole<Guid>, Guid>
+	where TUser : IdentityUser<Guid>
 {
 	public FederationDbContext(DbContextOptions options) : base(options) { }
 
@@ -29,8 +29,13 @@ public class FederationDbContext<TUser> : FederationDbContext<TUser, IdentityRol
 }
 
 public class FederationDbContext<TUser, TRole, TKey>
-	: FederationDbContext<TUser, TRole, IdentityClient<TKey>, IdentityScope<TKey>, IdentityGroup<TKey>, IdentityResource<TKey>,
-		IdentityDirectory<TKey>, TKey>
+	: FederationDbContext<TUser, TRole,
+		IdentityClient<TKey>,
+		IdentityScope<TKey>,
+		IdentityResource<TKey>,
+		IdentityDirectory<TKey>,
+		IdentityGroup<TKey>,
+		TKey>
 	where TUser : IdentityUser<TKey>
 	where TRole : IdentityRole<TKey>
 	where TKey : IEquatable<TKey>
@@ -40,15 +45,15 @@ public class FederationDbContext<TUser, TRole, TKey>
 	protected FederationDbContext() { }
 }
 
-public abstract class FederationDbContext<TUser, TRole, TClient, TScope, TGroup, TResource, TDirectory, TKey>
+public abstract class FederationDbContext<TUser, TRole, TClient, TScope, TResource, TDirectory, TGroup, TKey>
 	: IdentityDbContext<TUser, TRole, TKey>
 	where TUser : IdentityUser<TKey>
 	where TRole : IdentityRole<TKey>
 	where TClient : IdentityClient<TKey>
 	where TScope : IdentityScope<TKey>
-	where TGroup : IdentityGroup<TKey>
 	where TResource : IdentityResource<TKey>
 	where TDirectory : IdentityDirectory<TKey>
+	where TGroup : IdentityGroup<TKey>
 	where TKey : IEquatable<TKey>
 {
 	public FederationDbContext(DbContextOptions options) : base(options) { }
@@ -61,7 +66,7 @@ public abstract class FederationDbContext<TUser, TRole, TClient, TScope, TGroup,
 	public virtual DbSet<TResource>  Resources   { get; set; } = default!;
 	public virtual DbSet<TDirectory> Directories { get; set; } = default!;
 
-	public virtual DbSet<IdentityClientCorsOrigin> ClientCorsOrigins { get; set; } = default!;
+	public virtual DbSet<IdentityClientOrigin> ClientCorsOrigins { get; set; } = default!;
 
 	protected override void OnModelCreating(ModelBuilder builder)
 	{
@@ -77,17 +82,17 @@ public abstract class FederationDbContext<TUser, TRole, TClient, TScope, TGroup,
 			b.Property(c => c.ConcurrencyStamp).IsConcurrencyToken();
 
 			b.Property(c => c.ClientId).HasMaxLength(256).IsRequired();
-			b.Property(c => c.ClientName).HasMaxLength(256);
+			b.Property(c => c.Name).HasMaxLength(256);
 			b.Property(c => c.ProtocolType).IsRequired();
 
 			//b.HasMany<IdentityClientCorsOrigin>().WithOne().HasForeignKey(x => x.ClientId).IsRequired().OnDelete(DeleteBehavior.Cascade);
 		});
 
-		builder.Entity<IdentityClientCorsOrigin>(b => {
+		builder.Entity<IdentityClientOrigin>(b => {
 			b.HasKey(c => c.Id);
 			b.HasIndex(c => c.Origin).HasDatabaseName("OriginIndex").IsUnique();
 			//b.HasIndex(c => c.ClientId).HasDatabaseName("ClientIdIndex").IsUnique();
-			b.ToTable("AspNetClientCorsOrigins");
+			b.ToTable("AspNetClientOrigins");
 
 			b.Property(c => c.Origin).HasMaxLength(150).IsRequired();
 		});
@@ -98,14 +103,6 @@ public abstract class FederationDbContext<TUser, TRole, TClient, TScope, TGroup,
 			b.ToTable("AspNetScopes");
 
 			b.Property(s => s.Name).HasMaxLength(256).IsRequired();
-		});
-
-		builder.Entity<TGroup>(b => {
-			b.HasKey(g => g.Id);
-			b.HasIndex(g => g.Name).HasDatabaseName("GroupIndex").IsUnique();
-			b.ToTable("AspNetGroups");
-
-			b.Property(g => g.Name).HasMaxLength(256).IsRequired();
 		});
 
 		builder.Entity<TResource>(b => {
@@ -122,6 +119,14 @@ public abstract class FederationDbContext<TUser, TRole, TClient, TScope, TGroup,
 			b.ToTable("AspNetDirectories");
 
 			b.Property(d => d.Name).HasMaxLength(256).IsRequired();
+		});
+
+		builder.Entity<TGroup>(b => {
+			b.HasKey(g => g.Id);
+			b.HasIndex(g => g.Name).HasDatabaseName("GroupIndex").IsUnique();
+			b.ToTable("AspNetGroups");
+
+			b.Property(g => g.Name).HasMaxLength(256).IsRequired();
 		});
 
 		base.OnModelCreating(builder);

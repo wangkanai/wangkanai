@@ -4,11 +4,11 @@ using Wangkanai.Domain;
 
 namespace Wangkanai.Federation.Models;
 
-public class IdentityScope : IdentityScope<string>
+public class IdentityScope : IdentityScope<Guid>
 {
 	public IdentityScope()
 	{
-		Id = Guid.NewGuid().ToString();
+		Id = Guid.NewGuid();
 	}
 
 	public IdentityScope(string name) : this()

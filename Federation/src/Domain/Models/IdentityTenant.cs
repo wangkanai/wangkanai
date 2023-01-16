@@ -2,11 +2,11 @@
 
 namespace Wangkanai.Federation.Models;
 
-public class IdentityTenant : IdentityTenant<string>
+public class IdentityTenant : IdentityTenant<Guid>
 {
 	public IdentityTenant()
 	{
-		Id = Guid.NewGuid().ToString();
+		Id = Guid.NewGuid();
 	}
 
 	public IdentityTenant(string tenantName) : this()

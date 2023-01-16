@@ -7,11 +7,11 @@ using Wangkanai.Domain;
 
 namespace Wangkanai.Federation.Models;
 
-public class IdentityDirectory : IdentityDirectory<string>
+public class IdentityDirectory : IdentityDirectory<Guid>
 {
 	public IdentityDirectory()
 	{
-		Id = Guid.NewGuid().ToString();
+		Id = Guid.NewGuid();
 	}
 
 	public IdentityDirectory(string name) : this()
@@ -30,9 +30,7 @@ public class IdentityDirectory<TKey> : IAuditable
 		Name = name;
 	}
 
-	[PersonalData]
-	public virtual TKey Id { get; set; } = default!;
-
+	public virtual TKey      Id               { get; set; } = default!;
 	public virtual string    Name             { get; set; }
 	public virtual string    DisplayName      { get; set; }
 	public virtual string    Description      { get; set; }
