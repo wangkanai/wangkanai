@@ -27,7 +27,7 @@ public class IdentityClientOrigin<TKey> where TKey : IEquatable<TKey>
 	}
 
 	public virtual TKey           Id       { get; set; }
-	public virtual string         Origin   { get; set; }
 	public virtual TKey           ClientId { get; set; }
 	public virtual IdentityClient Client   { get; set; }
+	public virtual string         Origin   { get; set; }
 }

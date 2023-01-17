@@ -77,11 +77,11 @@ public abstract class FederationDbContext<TUser, TRole, TClient, TScope, TResour
 			b.ToTable(configOptions.Client);
 			b.HasKey(c => c.Id);
 			b.HasIndex(c => c.ClientId).HasDatabaseName("ClientIdIndex").IsUnique();
-			b.Property(c => c.ConcurrencyStamp).IsConcurrencyToken();
 
 			b.Property(c => c.ClientId).HasMaxLength(256).IsRequired();
 			b.Property(c => c.Name).HasMaxLength(256);
 			b.Property(c => c.ProtocolType).IsRequired();
+			b.Property(c => c.ConcurrencyStamp).IsConcurrencyToken();
 		});
 
 		builder.Entity<IdentityClientOrigin>(b => {
@@ -93,12 +93,20 @@ public abstract class FederationDbContext<TUser, TRole, TClient, TScope, TResour
 			b.HasOne(x => x.Client).WithMany(x => x.Origins).IsRequired();
 		});
 
+		builder.Entity<IdentityClientGrantType>(b => {
+			b.ToTable(configOptions.ClientGrantType);
+			b.HasKey(c => c.Id);
+			
+			b.HasOne(c => c.Client).WithMany(c => c.AllowedGrantTypes).IsRequired();
+		});
+
 		builder.Entity<TScope>(b => {
 			b.ToTable(configOptions.Scope);
 			b.HasKey(s => s.Id);
 			b.HasIndex(s => s.Name).HasDatabaseName("ScopeIndex").IsUnique();
 
 			b.Property(s => s.Name).HasMaxLength(256).IsRequired();
+			b.Property(c => c.ConcurrencyStamp).IsConcurrencyToken();
 		});
 
 		builder.Entity<TResource>(b => {
@@ -107,6 +115,7 @@ public abstract class FederationDbContext<TUser, TRole, TClient, TScope, TResour
 			b.HasIndex(r => r.Name).HasDatabaseName("ResourceIndex").IsUnique();
 
 			b.Property(r => r.Name).HasMaxLength(256).IsRequired();
+			b.Property(c => c.ConcurrencyStamp).IsConcurrencyToken();
 		});
 
 		builder.Entity<TDirectory>(b => {
@@ -115,6 +124,7 @@ public abstract class FederationDbContext<TUser, TRole, TClient, TScope, TResour
 			b.HasIndex(d => d.Name).HasDatabaseName("DirectoryIndex").IsUnique();
 
 			b.Property(d => d.Name).HasMaxLength(256).IsRequired();
+			b.Property(c => c.ConcurrencyStamp).IsConcurrencyToken();
 		});
 
 		builder.Entity<TGroup>(b => {
@@ -123,6 +133,7 @@ public abstract class FederationDbContext<TUser, TRole, TClient, TScope, TResour
 			b.HasIndex(g => g.Name).HasDatabaseName("GroupIndex").IsUnique();
 
 			b.Property(g => g.Name).HasMaxLength(256).IsRequired();
+			b.Property(c => c.ConcurrencyStamp).IsConcurrencyToken();
 		});
 
 		base.OnModelCreating(builder);
