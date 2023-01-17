@@ -100,6 +100,13 @@ public abstract class FederationDbContext<TUser, TRole, TClient, TScope, TResour
 			b.HasOne(c => c.Client).WithMany(c => c.AllowedGrantTypes).IsRequired();
 		});
 
+		builder.Entity<IdentityClientRedirectUri>(b => {
+			b.ToTable(configOptions.ClientRedirectUri);
+			b.HasKey(c=>c.Id);
+
+			b.HasOne(c => c.Client).WithMany(x => x.RedirectUris).IsRequired();
+		});
+
 		builder.Entity<TScope>(b => {
 			b.ToTable(configOptions.Scope);
 			b.HasKey(s => s.Id);
