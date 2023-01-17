@@ -56,11 +56,8 @@ public class EnumExtensionsTests
 [Flags]
 public enum Country
 {
-	[Description("ประเทศไทย")]
-	Thailand = 0,
-
-	[EnumMember(Value = "jp")]
-	Japan = 1 << 0,
-	Singapore = 1 << 1,
-	Australia = 1 << 2
+	[Description("ประเทศไทย")] Thailand  = 0,
+	[EnumMember(Value = "jp")] Japan     = 1 << 0,
+	[EnumMember(Value = "sg")] Singapore = 1 << 1,
+	[EnumMember(Value = "au")] Australia = 1 << 2
 }
