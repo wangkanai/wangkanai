@@ -40,7 +40,7 @@ public static class EnumExtensions
 	}
 
 	[DebuggerStepThrough]
-	public static string GetMember(this Enum value)
+	public static string GetMemberValue(this Enum value)
 	{
 		var field = value.GetType().GetField(value.ToString());
 
