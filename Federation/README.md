@@ -21,3 +21,13 @@ OAuth 2.1 and OpenID Connect Framework for ASP.NET Core for Authentication and A
     - Authorization Code Grant with PKCE
     - Client Credentials Grant
     - Refresh Token Flow
+* Identity Model Structure
+    - Identity User
+    - Identity Role
+    - Identity Client
+    - Identity Resource
+    - Identity Scope
+    - Identity Directory
+    - Identity Group
+    - Identity Permission
+    - Identity Tenant (to be determined #620) 
