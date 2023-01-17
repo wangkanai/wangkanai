@@ -2,7 +2,7 @@
     <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props"/>
 
     <PropertyGroup>
-        <VersionPrefix>1.9.2</VersionPrefix>
+        <VersionPrefix>1.9.3</VersionPrefix>
 
         <Title>Wngkanai Webmaster</Title>
         <Description>ASP.NET Core Search Engine Optimization for Webmaster lets you improve the art, craft, and science of driving web traffic to enabling you with easy and efficiency native tool build in the asp.net core library.</Description>
