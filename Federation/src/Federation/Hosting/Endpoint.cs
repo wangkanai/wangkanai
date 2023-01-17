@@ -4,14 +4,14 @@ namespace Wangkanai.Federation.Hosting;
 
 public class Endpoint
 {
-	public string Name        { get; }
-	public string Path        { get; }
-	public Type   HandlerType { get; }
+	public string Name    { get; }
+	public string Path    { get; }
+	public Type   Handler { get; }
 
-	public Endpoint(string name, string path, Type handlerType)
+	public Endpoint(string name, string path, Type handler)
 	{
-		Name        = name;
-		Path        = path;
-		HandlerType = handlerType;
+		Name    = name;
+		Path    = path;
+		Handler = handler;
 	}
 }

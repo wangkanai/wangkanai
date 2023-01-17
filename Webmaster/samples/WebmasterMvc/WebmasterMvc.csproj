@@ -7,11 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="2.1.175" />
-    <PackageReference Update="Microsoft.SourceLink.GitHub" Version="1.1.1" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\..\Detection\src\Wangkanai.Detection.csproj" />
     <ProjectReference Include="..\..\src\Wangkanai.Webmaster.csproj" />
   </ItemGroup>

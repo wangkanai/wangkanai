@@ -3,20 +3,20 @@
     <PropertyGroup>
         <TargetFramework>net7.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
+        <Nullable>disable</Nullable>
     </PropertyGroup>
     
     <ItemGroup>
-        <FrameworkReference Include="Microsoft.AspNetCore.App"/>
+        <FrameworkReference Include="Microsoft.AspNetCore.App" />
     </ItemGroup>
     
     <ItemGroup>
-        <ProjectReference Include="..\Federation\Wangkanai.Federation.csproj"/>
+        <ProjectReference Include="..\Federation\Wangkanai.Federation.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.0"/>
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0"/>
+        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.2" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="7.0.2" />
     </ItemGroup>
 
 </Project>

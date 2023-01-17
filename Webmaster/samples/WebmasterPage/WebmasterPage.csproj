@@ -6,11 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Wangkanai.Detection" Version="6.11.2" />
-    <PackageReference Update="Microsoft.SourceLink.GitHub" Version="1.1.1" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\..\Detection\src\Wangkanai.Detection.csproj" />
     <ProjectReference Include="..\..\src\Wangkanai.Webmaster.csproj" />
   </ItemGroup>

@@ -20,6 +20,7 @@ public static class FederationCoreBuilderExtensions
         // Add Federation Options
         builder.Services.AddOptions();
         builder.Services.TryAddSingleton(p => p.GetRequiredService<IOptions<FederationOptions>>().Value);
+        builder.Services.AddHttpClient();
 
         return builder;
     }
@@ -27,6 +28,8 @@ public static class FederationCoreBuilderExtensions
     internal static IFederationBuilder AddCoreServices(this IFederationBuilder builder)
     {
         // Add basic core services
+        builder.Services.AddTransient<IServerUris, DefaultServerUris>();
+        builder.Services.AddTransient<IIssuerNameService, DefaultIssuerNameService>();
 
         return builder;
     }
