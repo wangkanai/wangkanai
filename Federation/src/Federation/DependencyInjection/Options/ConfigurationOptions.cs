@@ -19,11 +19,12 @@ public sealed class ConfigurationOptions
 	/// </summary>
 	public bool EncryptData { get; set; }
 
-	public string Client          { get; set; } = "AspNetClients";
-	public string ClientOrigin    { get; set; } = "AspNetClientOrigins";
-	public string ClientGrantType { get; set; } = "AspNetClientGrantTypes";
-	public string Scope           { get; set; } = "AspNetScopes";
-	public string Resource        { get; set; } = "AspNetResources";
-	public string Directory       { get; set; } = "AspNetDirectories";
-	public string Group           { get; set; } = "AspNetGroups";
+	public string Client            { get; set; } = "AspNetClients";
+	public string ClientOrigin      { get; set; } = "AspNetClientOrigins";
+	public string ClientGrantType   { get; set; } = "AspNetClientGrantTypes";
+	public string ClientRedirectUri { get; set; } = "AspNetClientRedirectUris";
+	public string Scope             { get; set; } = "AspNetScopes";
+	public string Resource          { get; set; } = "AspNetResources";
+	public string Directory         { get; set; } = "AspNetDirectories";
+	public string Group             { get; set; } = "AspNetGroups";
 }
