@@ -1,7 +1,7 @@
 ## Wangkanai Public Web
 
 <p align="center">
-  <a href="https://github.com/wangkanai/wangkanai" alt="repository"><img alt="Files Logo" src="Assets/wangkanai-banner.svg?sanitize=true" width="100%" /></a>
+  <a href="https://github.com/wangkanai/wangkanai" alt="repository"><img alt="Files Logo" src="/Assets/wangkanai-banner.svg?sanitize=true" width="100%" /></a>
 </p>
 
 I'm a solution architect, trainer, mentor, and full stack developer with 20 years professional experience. I work for
