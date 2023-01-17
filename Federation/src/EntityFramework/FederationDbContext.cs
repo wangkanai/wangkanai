@@ -10,18 +10,17 @@ using Microsoft.Extensions.Options;
 
 using Wangkanai.Federation.Entities;
 
-
 namespace Wangkanai.Federation.EntityFramework;
 
-public class FederationDbContext : FederationDbContext<IdentityUser<Guid>, IdentityRole<Guid>, Guid>
+public class FederationDbContext : FederationDbContext<IdentityUser, IdentityRole, Guid>
 {
 	public FederationDbContext(DbContextOptions options) : base(options) { }
 
 	protected FederationDbContext() { }
 }
 
-public class FederationDbContext<TUser> : FederationDbContext<TUser, IdentityRole<Guid>, Guid>
-	where TUser : IdentityUser<Guid>
+public class FederationDbContext<TUser> : FederationDbContext<TUser, IdentityRole, Guid>
+	where TUser : IdentityUser
 {
 	public FederationDbContext(DbContextOptions options) : base(options) { }
 
@@ -36,8 +35,8 @@ public class FederationDbContext<TUser, TRole, TKey>
 		IdentityDirectory<TKey>,
 		IdentityGroup<TKey>,
 		TKey>
-	where TUser : IdentityUser<TKey>
-	where TRole : IdentityRole<TKey>
+	where TUser : IdentityUser
+	where TRole : IdentityRole
 	where TKey : IEquatable<TKey>
 {
 	public FederationDbContext(DbContextOptions options) : base(options) { }
@@ -46,9 +45,9 @@ public class FederationDbContext<TUser, TRole, TKey>
 }
 
 public abstract class FederationDbContext<TUser, TRole, TClient, TScope, TResource, TDirectory, TGroup, TKey>
-	: IdentityDbContext<TUser, TRole, TKey>
-	where TUser : IdentityUser<TKey>
-	where TRole : IdentityRole<TKey>
+	: IdentityDbContext<TUser, TRole, string>
+	where TUser : IdentityUser
+	where TRole : IdentityRole
 	where TClient : IdentityClient<TKey>
 	where TScope : IdentityScope<TKey>
 	where TResource : IdentityResource<TKey>
@@ -66,7 +65,7 @@ public abstract class FederationDbContext<TUser, TRole, TClient, TScope, TResour
 	public virtual DbSet<TResource>  Resources   { get; set; } = default!;
 	public virtual DbSet<TDirectory> Directories { get; set; } = default!;
 
-	public virtual DbSet<IdentityClientOrigin> ClientCorsOrigins { get; set; } = default!;
+	public virtual DbSet<IdentityClientOrigin> ClientCorsOrigins { get; set; }
 
 	protected override void OnModelCreating(ModelBuilder builder)
 	{
@@ -84,17 +83,15 @@ public abstract class FederationDbContext<TUser, TRole, TClient, TScope, TResour
 			b.Property(c => c.ClientId).HasMaxLength(256).IsRequired();
 			b.Property(c => c.Name).HasMaxLength(256);
 			b.Property(c => c.ProtocolType).IsRequired();
-
-			//b.HasMany<IdentityClientCorsOrigin>().WithOne().HasForeignKey(x => x.ClientId).IsRequired().OnDelete(DeleteBehavior.Cascade);
 		});
 
 		builder.Entity<IdentityClientOrigin>(b => {
 			b.HasKey(c => c.Id);
-			b.HasIndex(c => c.Origin).HasDatabaseName("OriginIndex").IsUnique();
-			//b.HasIndex(c => c.ClientId).HasDatabaseName("ClientIdIndex").IsUnique();
 			b.ToTable("AspNetClientOrigins");
-
 			b.Property(c => c.Origin).HasMaxLength(150).IsRequired();
+			b.HasIndex(c => new { c.ClientId, c.Origin }).IsUnique();
+
+			b.HasOne(x => x.Client).WithMany(x => x.Origins).IsRequired();
 		});
 
 		builder.Entity<TScope>(b => {
