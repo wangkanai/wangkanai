@@ -69,15 +69,14 @@ public abstract class FederationDbContext<TUser, TRole, TClient, TScope, TResour
 
 	protected override void OnModelCreating(ModelBuilder builder)
 	{
-		var                     storeOptions = GetStoreOptions();
-		var                     maxKeyLength = storeOptions?.MaxLengthForKeys ?? 0;
-		var                     encryptData  = storeOptions?.EncryptData ?? false;
-		FederationDataConverter converter    = null;
+		var configOptions = GetConfigurationOptions();
+		var maxKeyLength  = configOptions?.MaxLengthForKeys ?? 0;
+		var encryptData   = configOptions?.EncryptData ?? false;
 
 		builder.Entity<TClient>(b => {
+			b.ToTable(configOptions.Client);
 			b.HasKey(c => c.Id);
 			b.HasIndex(c => c.ClientId).HasDatabaseName("ClientIdIndex").IsUnique();
-			b.ToTable("AspNetClients");
 			b.Property(c => c.ConcurrencyStamp).IsConcurrencyToken();
 
 			b.Property(c => c.ClientId).HasMaxLength(256).IsRequired();
@@ -86,8 +85,8 @@ public abstract class FederationDbContext<TUser, TRole, TClient, TScope, TResour
 		});
 
 		builder.Entity<IdentityClientOrigin>(b => {
+			b.ToTable(configOptions.ClientOrigin);
 			b.HasKey(c => c.Id);
-			b.ToTable("AspNetClientOrigins");
 			b.Property(c => c.Origin).HasMaxLength(150).IsRequired();
 			b.HasIndex(c => new { c.ClientId, c.Origin }).IsUnique();
 
@@ -95,33 +94,33 @@ public abstract class FederationDbContext<TUser, TRole, TClient, TScope, TResour
 		});
 
 		builder.Entity<TScope>(b => {
+			b.ToTable(configOptions.Scope);
 			b.HasKey(s => s.Id);
 			b.HasIndex(s => s.Name).HasDatabaseName("ScopeIndex").IsUnique();
-			b.ToTable("AspNetScopes");
 
 			b.Property(s => s.Name).HasMaxLength(256).IsRequired();
 		});
 
 		builder.Entity<TResource>(b => {
+			b.ToTable(configOptions.Resource);
 			b.HasKey(r => r.Id);
 			b.HasIndex(r => r.Name).HasDatabaseName("ResourceIndex").IsUnique();
-			b.ToTable("AspNetResources");
 
 			b.Property(r => r.Name).HasMaxLength(256).IsRequired();
 		});
 
 		builder.Entity<TDirectory>(b => {
+			b.ToTable(configOptions.Directory);
 			b.HasKey(d => d.Id);
 			b.HasIndex(d => d.Name).HasDatabaseName("DirectoryIndex").IsUnique();
-			b.ToTable("AspNetDirectories");
 
 			b.Property(d => d.Name).HasMaxLength(256).IsRequired();
 		});
 
 		builder.Entity<TGroup>(b => {
+			b.ToTable(configOptions.Group);
 			b.HasKey(g => g.Id);
 			b.HasIndex(g => g.Name).HasDatabaseName("GroupIndex").IsUnique();
-			b.ToTable("AspNetGroups");
 
 			b.Property(g => g.Name).HasMaxLength(256).IsRequired();
 		});
@@ -129,7 +128,7 @@ public abstract class FederationDbContext<TUser, TRole, TClient, TScope, TResour
 		base.OnModelCreating(builder);
 	}
 
-	private FederationStoreOptions? GetStoreOptions()
+	private ConfigurationOptions? GetConfigurationOptions()
 		=> this.GetService<IDbContextOptions>()
 		       .Extensions.OfType<CoreOptionsExtension>()
 		       .FirstOrDefault()
