@@ -1,26 +1,22 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFrameworks>net6.0;net7.0;netcoreapp3.1</TargetFrameworks>
-    <LangVersion>11</LangVersion>
-    <Nullable>enable</Nullable>
-    <NoWarn>8602,8632</NoWarn>
-  </PropertyGroup>
-
-  <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp3.1' ">
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.0" />
-  </ItemGroup>
+    <PropertyGroup>
+        <TargetFrameworks>net6.0;net7.0;</TargetFrameworks>
+        <LangVersion>11</LangVersion>
+        <Nullable>enable</Nullable>
+        <NoWarn>8602,8632</NoWarn>
+    </PropertyGroup>
   
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' ">
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
-  </ItemGroup>
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' ">
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0"/>
+    </ItemGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net7.0' ">
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
-  </ItemGroup>
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net7.0' ">
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\Detection\src\Wangkanai.Detection.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\..\Detection\src\Wangkanai.Detection.csproj"/>
+    </ItemGroup>
 
 </Project>
