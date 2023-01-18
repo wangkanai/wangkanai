@@ -1,13 +1,13 @@
 <Project>
-    <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props"/>
-    
+    <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
+
     <PropertyGroup>
         <VersionPrefix>6.11.3</VersionPrefix>
 
         <Title>Wangkanai Detection</Title>
         <Description>ASP.NET Core Detection service components for identifying details about client device, browser, engine, platform, and crawler.</Description>
         <PackageTags>aspnetcore;detection;</PackageTags>
-        
+
         <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Detection</PackageProjectUrl>
     </PropertyGroup>
 
@@ -17,8 +17,8 @@
     </PropertyGroup>
 
     <ItemGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Detection'">
-        <None Include="..\..\assets\wangkanai-logo.png" Pack="true" PackagePath="\"/>
-        <None Include="..\README.md" Pack="true" PackagePath="\"/>
-        <None Include="..\NUGET.md" Pack="true" PackagePath="\"/>
+        <None Include="..\..\assets\wangkanai-logo.png" Pack="true" PackagePath="\" />
+        <None Include="..\README.md" Pack="true" PackagePath="\" />
+        <None Include="..\NUGET.md" Pack="true" PackagePath="\" />
     </ItemGroup>
 </Project>

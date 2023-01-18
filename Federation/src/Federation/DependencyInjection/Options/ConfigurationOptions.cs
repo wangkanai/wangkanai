@@ -21,7 +21,7 @@ public sealed class ConfigurationOptions
 
 	public string Client            { get; set; } = "AspNetClients";
 	public string ClientOrigin      { get; set; } = "AspNetClientOrigins";
-	public string ClientGrantType   { get; set; } = "AspNetClientGrantTypes";
+	public string ClientFlowType    { get; set; } = "AspNetClientFlowTypes";
 	public string ClientRedirectUri { get; set; } = "AspNetClientRedirectUris";
 	public string Scope             { get; set; } = "AspNetScopes";
 	public string Resource          { get; set; } = "AspNetResources";

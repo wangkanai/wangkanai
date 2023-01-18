@@ -93,11 +93,11 @@ public abstract class FederationDbContext<TUser, TRole, TClient, TScope, TResour
 			b.HasOne(x => x.Client).WithMany(x => x.Origins).IsRequired();
 		});
 
-		builder.Entity<IdentityClientGrantType>(b => {
-			b.ToTable(configOptions.ClientGrantType);
+		builder.Entity<IdentityClientFlowType>(b => {
+			b.ToTable(configOptions.ClientFlowType);
 			b.HasKey(c => c.Id);
 			
-			b.HasOne(c => c.Client).WithMany(c => c.AllowedGrantTypes).IsRequired();
+			b.HasOne(c => c.Client).WithMany(c => c.FlowTypes).IsRequired();
 		});
 
 		builder.Entity<IdentityClientRedirectUri>(b => {

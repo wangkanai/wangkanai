@@ -4,13 +4,13 @@ using System.Runtime.Serialization;
 
 namespace Wangkanai.Federation.Models;
 
-public enum GrantTypes
+public enum FlowTypes
 {
-	[EnumMember(Value = GrantType.AuthorizationCode)]
+	[EnumMember(Value = FlowType.AuthorizationCode)]
 	AuthorizationCode = 0,
 }
 
-public static class GrantType
+public static class FlowType
 {
 	public const string AuthorizationCode = "authorization_code";
 }
