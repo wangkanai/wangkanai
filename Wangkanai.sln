@@ -199,10 +199,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Graph.Tests", "Gr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{C4E60FE9-2D5B-4510-854C-44C88209A236}"
 	ProjectSection(SolutionItems) = preProject
-		.github\ISSUE_TEMPLATE\bug_report.md = .github\ISSUE_TEMPLATE\bug_report.md
-		.github\ISSUE_TEMPLATE\feature_request.md = .github\ISSUE_TEMPLATE\feature_request.md
 		.github\FUNDING.yml = .github\FUNDING.yml
-		.github\design_note.md = .github\design_note.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tabler", "Tabler", "{89052ADF-DFC9-4281-A1A1-E83434F434BC}"
@@ -474,6 +471,13 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Web.Server", "Web\src\Wangkanai.Web.Server.csproj", "{6D062ED8-AAEC-4218-9494-08AB4F8D139D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Web.Server.Tests", "Web\tests\Wangkanai.Web.Server.Tests.csproj", "{0A62349C-836F-4C40-80F0-D6AF2D0ED799}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ISSUE_TEMPLATE", "ISSUE_TEMPLATE", "{8C6C7F6B-6CAD-4434-B6F7-3DAE90266B68}"
+	ProjectSection(SolutionItems) = preProject
+		.github\ISSUE_TEMPLATE\bug_report.md = .github\ISSUE_TEMPLATE\bug_report.md
+		.github\ISSUE_TEMPLATE\feature_request.md = .github\ISSUE_TEMPLATE\feature_request.md
+		.github\ISSUE_TEMPLATE\design_note.md = .github\ISSUE_TEMPLATE\design_note.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -990,6 +994,7 @@ Global
 		{CB4F3B8B-1D7B-4C6B-9051-F38C64DD53EB} = {CEB6F6F6-7AE2-43A0-B9DE-B8A8D9154405}
 		{6D062ED8-AAEC-4218-9494-08AB4F8D139D} = {700EC70E-E161-4461-B84F-1FCF166D0486}
 		{0A62349C-836F-4C40-80F0-D6AF2D0ED799} = {700EC70E-E161-4461-B84F-1FCF166D0486}
+		{8C6C7F6B-6CAD-4434-B6F7-3DAE90266B68} = {C4E60FE9-2D5B-4510-854C-44C88209A236}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1BA0A192-D7BE-40A1-96AE-B3C8C6BC9B69}
