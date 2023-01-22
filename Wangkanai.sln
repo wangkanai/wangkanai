@@ -199,10 +199,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Graph.Tests", "Gr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{C4E60FE9-2D5B-4510-854C-44C88209A236}"
 	ProjectSection(SolutionItems) = preProject
-		.github\ISSUE_TEMPLATE\bug_report.md = .github\ISSUE_TEMPLATE\bug_report.md
-		.github\ISSUE_TEMPLATE\feature_request.md = .github\ISSUE_TEMPLATE\feature_request.md
 		.github\FUNDING.yml = .github\FUNDING.yml
-		.github\design_note.md = .github\design_note.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tabler", "Tabler", "{89052ADF-DFC9-4281-A1A1-E83434F434BC}"
@@ -324,8 +321,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Assets", "Assets\Assets.csproj", "{2B818DEC-9D03-4C61-B4D1-A180A263868F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{700EC70E-E161-4461-B84F-1FCF166D0486}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Web.Server", "Web\Server\Wangkanai.Web.Server.csproj", "{02830AF5-0DC5-4F99-AD31-8E5C375C3783}"
+	ProjectSection(SolutionItems) = preProject
+		Web\README.md = Web\README.md
+		Web\Directory.Build.props = Web\Directory.Build.props
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extensions", "Extensions", "{ABDB88B8-683A-466C-A2DB-AFD516359619}"
 	ProjectSection(SolutionItems) = preProject
@@ -468,6 +467,17 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Security.RazorApp", "Security\samples\Razor\Wangkanai.Security.RazorApp.csproj", "{B77299F2-CBC6-43DC-BD7F-EB908B2896DE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Security.Core", "Security\src\Core\Wangkanai.Security.Core.csproj", "{CB4F3B8B-1D7B-4C6B-9051-F38C64DD53EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Web.Server", "Web\src\Wangkanai.Web.Server.csproj", "{6D062ED8-AAEC-4218-9494-08AB4F8D139D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Web.Server.Tests", "Web\tests\Wangkanai.Web.Server.Tests.csproj", "{0A62349C-836F-4C40-80F0-D6AF2D0ED799}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ISSUE_TEMPLATE", "ISSUE_TEMPLATE", "{8C6C7F6B-6CAD-4434-B6F7-3DAE90266B68}"
+	ProjectSection(SolutionItems) = preProject
+		.github\ISSUE_TEMPLATE\bug_report.md = .github\ISSUE_TEMPLATE\bug_report.md
+		.github\ISSUE_TEMPLATE\feature_request.md = .github\ISSUE_TEMPLATE\feature_request.md
+		.github\ISSUE_TEMPLATE\design_note.md = .github\ISSUE_TEMPLATE\design_note.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -710,10 +720,6 @@ Global
 		{2B818DEC-9D03-4C61-B4D1-A180A263868F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B818DEC-9D03-4C61-B4D1-A180A263868F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B818DEC-9D03-4C61-B4D1-A180A263868F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{02830AF5-0DC5-4F99-AD31-8E5C375C3783}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{02830AF5-0DC5-4F99-AD31-8E5C375C3783}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{02830AF5-0DC5-4F99-AD31-8E5C375C3783}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{02830AF5-0DC5-4F99-AD31-8E5C375C3783}.Release|Any CPU.Build.0 = Release|Any CPU
 		{19A26CED-9F29-4897-990C-79C23011BDD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{19A26CED-9F29-4897-990C-79C23011BDD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19A26CED-9F29-4897-990C-79C23011BDD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -862,6 +868,14 @@ Global
 		{CB4F3B8B-1D7B-4C6B-9051-F38C64DD53EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CB4F3B8B-1D7B-4C6B-9051-F38C64DD53EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CB4F3B8B-1D7B-4C6B-9051-F38C64DD53EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D062ED8-AAEC-4218-9494-08AB4F8D139D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D062ED8-AAEC-4218-9494-08AB4F8D139D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D062ED8-AAEC-4218-9494-08AB4F8D139D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D062ED8-AAEC-4218-9494-08AB4F8D139D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A62349C-836F-4C40-80F0-D6AF2D0ED799}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A62349C-836F-4C40-80F0-D6AF2D0ED799}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A62349C-836F-4C40-80F0-D6AF2D0ED799}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A62349C-836F-4C40-80F0-D6AF2D0ED799}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -936,7 +950,6 @@ Global
 		{5CDA521B-A2B6-4E96-B8D6-CFD1FAF2FC11} = {89052ADF-DFC9-4281-A1A1-E83434F434BC}
 		{2CEADA4F-C9A2-4C1D-8CF4-816291BABCAA} = {89052ADF-DFC9-4281-A1A1-E83434F434BC}
 		{677CDEB8-D55A-47AA-9622-C151B71B3298} = {89052ADF-DFC9-4281-A1A1-E83434F434BC}
-		{02830AF5-0DC5-4F99-AD31-8E5C375C3783} = {700EC70E-E161-4461-B84F-1FCF166D0486}
 		{EE1EF4E3-ADB8-460F-9793-2E87E6DAA2E6} = {ABDB88B8-683A-466C-A2DB-AFD516359619}
 		{19A26CED-9F29-4897-990C-79C23011BDD5} = {EE1EF4E3-ADB8-460F-9793-2E87E6DAA2E6}
 		{80FFA07F-975B-4F2E-BE7C-79676344055E} = {EE1EF4E3-ADB8-460F-9793-2E87E6DAA2E6}
@@ -979,6 +992,9 @@ Global
 		{FBF6F35E-B9C3-4AA8-AE85-377F9254FB11} = {CEB6F6F6-7AE2-43A0-B9DE-B8A8D9154405}
 		{B77299F2-CBC6-43DC-BD7F-EB908B2896DE} = {FBF6F35E-B9C3-4AA8-AE85-377F9254FB11}
 		{CB4F3B8B-1D7B-4C6B-9051-F38C64DD53EB} = {CEB6F6F6-7AE2-43A0-B9DE-B8A8D9154405}
+		{6D062ED8-AAEC-4218-9494-08AB4F8D139D} = {700EC70E-E161-4461-B84F-1FCF166D0486}
+		{0A62349C-836F-4C40-80F0-D6AF2D0ED799} = {700EC70E-E161-4461-B84F-1FCF166D0486}
+		{8C6C7F6B-6CAD-4434-B6F7-3DAE90266B68} = {C4E60FE9-2D5B-4510-854C-44C88209A236}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1BA0A192-D7BE-40A1-96AE-B3C8C6BC9B69}

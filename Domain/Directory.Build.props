@@ -2,7 +2,7 @@
     <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props"/>
     
     <PropertyGroup>
-        <VersionPrefix>0.7.3</VersionPrefix>
+        <VersionPrefix>0.7.4</VersionPrefix>
 
         <Title>Wangkanai Domain</Title>
         <PackageTags>aspnetcore;entity;domain;ddd;</PackageTags>
