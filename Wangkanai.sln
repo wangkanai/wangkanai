@@ -479,6 +479,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ISSUE_TEMPLATE", "ISSUE_TEM
 		.github\ISSUE_TEMPLATE\design_note.md = .github\ISSUE_TEMPLATE\design_note.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Federation.BackendForFrontend", "Federation\src\BackendForFrontend\Wangkanai.Federation.BackendForFrontend.csproj", "{B7C1416A-18B2-469D-9365-505A3A16BE32}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -876,6 +878,10 @@ Global
 		{0A62349C-836F-4C40-80F0-D6AF2D0ED799}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A62349C-836F-4C40-80F0-D6AF2D0ED799}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A62349C-836F-4C40-80F0-D6AF2D0ED799}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7C1416A-18B2-469D-9365-505A3A16BE32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7C1416A-18B2-469D-9365-505A3A16BE32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7C1416A-18B2-469D-9365-505A3A16BE32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7C1416A-18B2-469D-9365-505A3A16BE32}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -995,6 +1001,7 @@ Global
 		{6D062ED8-AAEC-4218-9494-08AB4F8D139D} = {700EC70E-E161-4461-B84F-1FCF166D0486}
 		{0A62349C-836F-4C40-80F0-D6AF2D0ED799} = {700EC70E-E161-4461-B84F-1FCF166D0486}
 		{8C6C7F6B-6CAD-4434-B6F7-3DAE90266B68} = {C4E60FE9-2D5B-4510-854C-44C88209A236}
+		{B7C1416A-18B2-469D-9365-505A3A16BE32} = {B67C6017-6D9F-457A-807A-69381475D2EF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1BA0A192-D7BE-40A1-96AE-B3C8C6BC9B69}
