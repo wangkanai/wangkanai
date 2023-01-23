@@ -1,7 +1,6 @@
 ﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using Wangkanai.Domain;
-using Wangkanai.Federation.Models;
 
 namespace Wangkanai.Federation.Entities;
 
@@ -37,5 +36,7 @@ public class IdentityClient<TKey> : IAuditable where TKey : IEquatable<TKey>
 	public virtual DateTime? LastAccessed     { get; set; }
 	public virtual string?   ConcurrencyStamp { get; set; } = Guid.NewGuid().ToString();
 
-	public virtual List<IdentityClientOrigin> Origins { get; set; } = new();
+	public virtual List<IdentityClientOrigin>      Origins      { get; set; } = new();
+	public virtual List<IdentityClientFlowType>    FlowTypes    { get; set; } = new();
+	public virtual List<IdentityClientRedirectUri> RedirectUris { get; set; } = new();
 }

@@ -10,5 +10,5 @@ public sealed class FederationOptions
 	public DiscoveryOptions       Discovery { get; set; } = new();
 	public IssuerOptions          Issuer    { get; set; } = new();
 	public EndpointsOptions       Endpoints { get; set; } = new();
-	public FederationStoreOptions Stores    { get; set; } = new();
+	public ConfigurationOptions Stores    { get; set; } = new();
 }
