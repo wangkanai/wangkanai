@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <VersionPrefix>4.0.1</VersionPrefix>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
