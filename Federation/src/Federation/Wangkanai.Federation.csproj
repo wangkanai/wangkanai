@@ -23,5 +23,9 @@
         <ProjectReference Include="..\Domain\Wangkanai.Federation.Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Responses\Models" />
+    </ItemGroup>
+
 
 </Project>

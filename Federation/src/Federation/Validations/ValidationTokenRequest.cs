@@ -2,7 +2,7 @@
 
 namespace Wangkanai.Federation.Validations;
 
-public class ValidatedTokenRequest : ValidatedRequest
+public class ValidationTokenRequest : ValidationRequest
 {
     public string GrantType                  { get; set; }
     public string RequestedResourceIndicator { get; set; }
