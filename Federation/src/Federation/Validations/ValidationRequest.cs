@@ -10,4 +10,6 @@ public class ValidationRequest
 	public int             AccessTokenLifetime { get; set; }
 	public ClaimsPrincipal Subject             { get; set; }
 	public string          SessionId           { get; set; }
+
+	public ResourceValidationResult ValidationResources { get; set; }
 }

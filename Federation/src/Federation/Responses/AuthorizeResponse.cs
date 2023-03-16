@@ -7,5 +7,8 @@ namespace Wangkanai.Federation.Responses;
 public class AuthorizeResponse
 {
 	public ValidationAuthorizeRequest Request { get; set; }
+
 	public string RedirectUri => Request?.RedirectUri;
+	public string State       => Request?.State;
+	public string Scope       => Request?.ValidationResources?.RawScopeValues;
 }
