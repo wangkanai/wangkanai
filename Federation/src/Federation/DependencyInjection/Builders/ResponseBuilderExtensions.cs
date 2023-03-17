@@ -10,7 +10,7 @@ public static class FederationResponseBuilderExtensions
 {
 	public static IFederationBuilder AddResponseMakers(this IFederationBuilder builder)
 	{
-		builder.Services.TryAddTransient<IDiscoveryResponseMaker, DiscoveryResponseMaker>();
+		builder.Services.TryAddTransient<IDiscoveryResponseFactory, DiscoveryResponseFactory>();
 		
 		return builder;
 	}	

@@ -158,6 +158,7 @@ public static class Check
 		=> ThrowIfNull<ArgumentNullException>(value, message);
 
 	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
 	public static string ThrowIfNull<T>(this string? value)
 		where T : Exception
 		=> value ?? throw CreateExceptionInstance<T>(nameof(value));
@@ -166,6 +167,30 @@ public static class Check
 	public static string ThrowIfNull<T>(this string? value, string message)
 		where T : Exception
 		=> value ?? throw CreateExceptionInstance<T>(message);
+
+	public static string ThrowIfNullOrWhitespace(this string? value)
+		=> ThrowIfNullOrWhitespace<ArgumentNullException>(value);
+
+	public static string ThrowIfNullOrWhitespace(this string? value, string message)
+		=> ThrowIfNullOrWhitespace<ArgumentNullException>(value, message);
+
+	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+	public static string ThrowIfNullOrWhitespace<T>(this string? value)
+		where T : Exception
+	{
+		if (value.IsNullOrWhiteSpace()) 
+			throw CreateExceptionInstance<T>(nameof(value));
+		return value;
+	}
+
+	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+	public static string ThrowIfNullOrWhitespace<T>(this string? value, string message)
+		where T : Exception
+	{
+		if(value.IsNullOrWhiteSpace())
+			throw CreateExceptionInstance<T>(message);
+		return value;
+	}
 
 	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
 	public static object ThrowIfNull<T>(this object? value)
@@ -194,7 +219,7 @@ public static class Check
 
 	public static bool FalseIfNull<T>(this T? value)
 		=> !value.TrueIfNull();
-	
+
 	public static T ReturnIfNotNull<T>(this T? value)
 		=> value ?? value!.ThrowIfNull<T>();
 
@@ -218,22 +243,7 @@ public static class Check
 		return index;
 	}
 #endif
-// #region prepare depreciate
-//
-// [Deprecate(nameof(ThrowIfNull))]
-// [Obsolete]
-// [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
-// public static T NotNull<T>([CanBeNull] T value)
-// 	=> NotNull(value, nameof(value));
-//
-// [Obsolete]
-// [ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
-// internal static T NotNull<T>([CanBeNull] T value, [InvokerParameterName] string parameterName)
-// 	=> value is null
-// 		   ? throw new ArgumentNullException(parameterName)
-// 		   : value;
-//
-// #endregion
+
 	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
 	public static string NotNullOrEmpty(string value)
 		=> NotNullOrEmpty(value, nameof(value));

@@ -1,0 +1,11 @@
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+
+using System.Diagnostics;
+
+namespace Wangkanai.Federation.Models;
+
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
+public class FederationScope : FederationResource
+{
+	private string DebuggerDisplay => Name ?? $"{{{typeof(FederationResource)}}}";
+}

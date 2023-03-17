@@ -4,29 +4,29 @@ namespace Wangkanai.Federation.Models;
 
 public class FederationResources
 {
-	public bool                               OfflineAccess     { get; set; }
-	public ICollection<IdentityResource>      IdentityResources { get; set; } = new HashSet<IdentityResource>();
-	public ICollection<FederationApiResource> ApiResources      { get; set; } = new HashSet<FederationApiResource>();
-	public ICollection<FederationApiScope>    ApiScopes         { get; set; } = new List<FederationApiScope>();
+	public bool                            OfflineAccess     { get; set; }
+	public ICollection<FederationResource> Resources { get; set; } = new HashSet<FederationResource>();
+	public ICollection<FederationResource> ApiResources      { get; set; } = new HashSet<FederationResource>();
+	public ICollection<FederationScope>    Scopes         { get; set; } = new List<FederationScope>();
 
 	public FederationResources() { }
 
 	public FederationResources(FederationResources other)
-		: this(other.IdentityResources, other.ApiResources, other.ApiScopes)
+		: this(other.Resources, other.ApiResources, other.Scopes)
 	{
 		OfflineAccess = other.OfflineAccess;
 	}
 
 	public FederationResources(
-		IEnumerable<IdentityResource>      identityResources,
-		IEnumerable<FederationApiResource> apiResources,
-		IEnumerable<FederationApiScope>    apiScopes)
+		IEnumerable<FederationResource> identityResources,
+		IEnumerable<FederationResource> apiResources,
+		IEnumerable<FederationScope>    apiScopes)
 	{
 		if (identityResources?.Any() == true)
-			IdentityResources = new HashSet<IdentityResource>(identityResources);
+			Resources = new HashSet<FederationResource>(identityResources);
 		if (apiResources?.Any() == true)
-			ApiResources = new HashSet<FederationApiResource>(apiResources);
+			ApiResources = new HashSet<FederationResource>(apiResources);
 		if (apiScopes?.Any() == true)
-			ApiScopes = new HashSet<FederationApiScope>(apiScopes);
+			Scopes = new HashSet<FederationScope>(apiScopes);
 	}
 }

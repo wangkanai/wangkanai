@@ -9,16 +9,16 @@ using Wangkanai.Internal;
 
 namespace Wangkanai.Federation.Responses;
 
-public class DiscoveryResponseMaker : IDiscoveryResponseMaker
+public class DiscoveryResponseFactory : IDiscoveryResponseFactory
 {
 	private readonly FederationOptions               _options;
 	private readonly IKeyMaterialService             _keys;
-	private readonly ILogger<DiscoveryResponseMaker> _logger;
+	private readonly ILogger<DiscoveryResponseFactory> _logger;
 
-	public DiscoveryResponseMaker(
+	public DiscoveryResponseFactory(
 		FederationOptions               options,
 		IKeyMaterialService             keys,
-		ILogger<DiscoveryResponseMaker> logger)
+		ILogger<DiscoveryResponseFactory> logger)
 	{
 		_options = options;
 		_keys    = keys;

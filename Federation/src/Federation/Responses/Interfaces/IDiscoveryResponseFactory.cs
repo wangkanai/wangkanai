@@ -7,7 +7,7 @@ namespace Wangkanai.Federation.Responses;
 /// <summary>
 /// Discovery endpoint response maker contract
 /// </summary>
-public interface IDiscoveryResponseMaker
+public interface IDiscoveryResponseFactory
 {
 	Task<Dictionary<string, object>> CreateResultAsync(string baseUri, string issuerUri);
 
