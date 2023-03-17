@@ -35,7 +35,7 @@ public class FederationApi : FederationResource
 
 	public bool RequireApiIndicator { get; set; }
 
-	public ICollection<Secret> Secrets { get; set; } = new HashSet<Secret>();
+	public ICollection<FederationSecret> Secrets { get; set; } = new HashSet<FederationSecret>();
 	public ICollection<string> Scopes  { get; set; } = new HashSet<string>();
 
 	public ICollection<string> AllowedAccessTokenSigningAlgorithms { get; set; } = new HashSet<string>();
