@@ -12,5 +12,5 @@ public class TokenResponse
 	public string Scope               { get; set; }
 	public string Nonce               { get; set; }
 
-	public Dictionary<string, object> Custom { get; set; }
+	public Dictionary<string, object> Custom { get; set; } = new();
 }

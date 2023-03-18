@@ -8,4 +8,7 @@ public class TokenErrorResponse
 {
 	public string Error       { get; set; } = OidcConstants.TokenErrors.InvalidRequest;
 	public string Description { get; set; }
+	public string Nonce       { get; set; }
+
+	public Dictionary<string, object> Custom { get; set; } = new();
 }
