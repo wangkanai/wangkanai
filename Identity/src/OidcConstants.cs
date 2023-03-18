@@ -86,7 +86,10 @@ public static class OidcConstants
 
 	public static class TokenResponse { }
 
-	public static class TokenErrors { }
+	public static class TokenErrors
+	{
+		public const string InvalidRequest = "invalid_request";
+	}
 
 	public static class TokenTypes { }
 
