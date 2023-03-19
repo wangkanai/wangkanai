@@ -11,18 +11,18 @@ namespace Wangkanai.Federation.Responses;
 
 public class DiscoveryResponseFactory : IDiscoveryResponseFactory
 {
-	private readonly FederationOptions               _options;
-	private readonly IKeyMaterialService             _keys;
-	private readonly ILogger<DiscoveryResponseFactory> _logger;
+	protected readonly FederationOptions                 Options;
+	protected readonly IKeyMaterialService               Keys;
+	protected readonly ILogger<DiscoveryResponseFactory> Logger;
 
 	public DiscoveryResponseFactory(
-		FederationOptions               options,
-		IKeyMaterialService             keys,
+		FederationOptions                 options,
+		IKeyMaterialService               keys,
 		ILogger<DiscoveryResponseFactory> logger)
 	{
-		_options = options;
-		_keys    = keys;
-		_logger  = logger;
+		Options = options;
+		Keys    = keys;
+		Logger  = logger;
 	}
 
 	public virtual async Task<Dictionary<string, object>> CreateResultAsync(string baseUri, string issuerUri)
@@ -47,7 +47,7 @@ public class DiscoveryResponseFactory : IDiscoveryResponseFactory
 
 		var webKeys = new List<JsonWebKey>();
 
-		foreach (var key in await _keys.GetValidationKeysAsync())
+		foreach (var key in await Keys.GetValidationKeysAsync())
 		{
 			// to do work list
 		}
