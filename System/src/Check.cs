@@ -6,7 +6,7 @@ using Wangkanai.Exceptions;
 using Wangkanai.Extensions;
 using Wangkanai.Resources;
 
-#nullable enable
+// #nullable enable
 
 namespace Wangkanai;
 
@@ -158,7 +158,6 @@ public static class Check
 		=> ThrowIfNull<ArgumentNullException>(value, message);
 
 	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
 	public static string ThrowIfNull<T>(this string? value)
 		where T : Exception
 		=> value ?? throw CreateExceptionInstance<T>(nameof(value));
@@ -178,7 +177,7 @@ public static class Check
 	public static string ThrowIfNullOrWhitespace<T>(this string? value)
 		where T : Exception
 	{
-		if (value.IsNullOrWhiteSpace()) 
+		if (value.IsNullOrWhiteSpace())
 			throw CreateExceptionInstance<T>(nameof(value));
 		return value;
 	}
@@ -187,7 +186,7 @@ public static class Check
 	public static string ThrowIfNullOrWhitespace<T>(this string? value, string message)
 		where T : Exception
 	{
-		if(value.IsNullOrWhiteSpace())
+		if (value.IsNullOrWhiteSpace())
 			throw CreateExceptionInstance<T>(message);
 		return value;
 	}
@@ -205,6 +204,10 @@ public static class Check
 	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
 	public static T ThrowIfNull<T>(this T value)
 		=> value ?? throw CreateExceptionInstance<ArgumentNullException>(nameof(value));
+
+	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+	public static T ThrowIfNull<T>(this T value, string message)
+		=> value ?? throw CreateExceptionInstance<ArgumentNullException>(message);
 
 	private static T CreateExceptionInstance<T>(string name)
 		where T : Exception

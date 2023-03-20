@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 
+using Wangkanai.Federation.Extensions;
 using Wangkanai.Identity;
 using Wangkanai.Webserver.Services;
 
@@ -35,7 +36,18 @@ public sealed class FederationAuthenticationService : IAuthenticationService
 
 	public async Task SignInAsync(HttpContext context, string? scheme, ClaimsPrincipal principal, AuthenticationProperties? properties)
 	{
-		throw new NotImplementedException();
+		var defaultScheme = await _schemes.GetDefaultSignInSchemeAsync();
+		var cookieScheme  = await context.GetCookieAuthenticationSchemeAsync();
+
+		if (scheme == null && defaultScheme?.Name == cookieScheme ||
+		    scheme == cookieScheme)
+		{
+			AugmentPrincipal(principal);
+			properties ??= new AuthenticationProperties();
+			await _session.CreateSessionIdAsync(principal, properties);
+		}
+
+		await _inner.SignInAsync(context, scheme, principal, properties);
 	}
 
 	public async Task SignOutAsync(HttpContext context, string? scheme, AuthenticationProperties? properties)
@@ -78,12 +90,25 @@ public sealed class FederationAuthenticationService : IAuthenticationService
 	{
 		var identity = principal.Identities.First();
 
-		if (identity.FindFirst(JwtClaimTypes.IdentityProvider) == null)
-		{
-			_logger.LogDebug("Adding idp claim with value: {idp}", FederationConstants.LocalIdentityProvider);
-			identity.AddClaim(new Claim(JwtClaimTypes.IdentityProvider, FederationConstants.LocalIdentityProvider));
-		}
+		AugmentGoogleProvider(identity);
+		AugmentLocalIdentityProvider(identity);
+		AugmentAuthenticationMethod(identity);
+		AugmentAuthenticationTime(now, identity);
+	}
 
+	private void AugmentAuthenticationTime(DateTime now, ClaimsIdentity identity)
+	{
+		if (identity.FindFirst(JwtClaimTypes.AuthenticationTime) == null)
+		{
+			var time = new DateTimeOffset(now).ToUnixTimeSeconds().ToString();
+
+			_logger.LogDebug("Adding auth_time claim with value: {time}", time);
+			identity.AddClaim(new Claim(JwtClaimTypes.AuthenticationTime, time, ClaimValueTypes.Integer64));
+		}
+	}
+
+	private void AugmentAuthenticationMethod(ClaimsIdentity identity)
+	{
 		if (identity.FindFirst(JwtClaimTypes.AuthenticationMethod) == null)
 		{
 			if (identity.FindFirst(JwtClaimTypes.IdentityProvider).Value == FederationConstants.LocalIdentityProvider)
@@ -97,13 +122,33 @@ public sealed class FederationAuthenticationService : IAuthenticationService
 				identity.AddClaim(new Claim(JwtClaimTypes.AuthenticationMethod, FederationConstants.ExternalAuthenticationMethod));
 			}
 		}
+	}
 
-		if (identity.FindFirst(JwtClaimTypes.AuthenticationTime) == null)
+	private void AugmentGoogleProvider(ClaimsIdentity identity)
+	{
+		var idp = identity.FindFirst(ClaimTypes.AuthenticationMethod);
+		if (idp == null)
+			return;
+		if (identity.FindFirst(JwtClaimTypes.IdentityProvider) == null &&
+		    identity.FindFirst(JwtClaimTypes.AuthenticationMethod) == null)
 		{
-			var time = new DateTimeOffset(now).ToUnixTimeSeconds().ToString();
+			_logger.LogDebug("Removing amr claim with value: {idp}", idp.Value);
+			identity.RemoveClaim(idp);
 
-			_logger.LogDebug("Adding auth_time claim with value: {time}", time);
-			identity.AddClaim(new Claim(JwtClaimTypes.AuthenticationTime, time, ClaimValueTypes.Integer64));
+			_logger.LogDebug("Adding idp claim with value: {idp}", idp.Value);
+			identity.AddClaim(new Claim(JwtClaimTypes.IdentityProvider, idp.Value));
+
+			_logger.LogDebug("Adding amr claim with value: {amr}", FederationConstants.ExternalAuthenticationMethod);
+			identity.AddClaim(new Claim(JwtClaimTypes.AuthenticationMethod, FederationConstants.ExternalAuthenticationMethod));
+		}
+	}
+
+	private void AugmentLocalIdentityProvider(ClaimsIdentity identity)
+	{
+		if (identity.FindFirst(JwtClaimTypes.IdentityProvider) == null)
+		{
+			_logger.LogDebug("Adding idp claim with value: {idp}", FederationConstants.LocalIdentityProvider);
+			identity.AddClaim(new Claim(JwtClaimTypes.IdentityProvider, FederationConstants.LocalIdentityProvider));
 		}
 	}
 }
