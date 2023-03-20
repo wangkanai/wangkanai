@@ -52,23 +52,24 @@ public sealed class FederationAuthenticationService : IAuthenticationService
 
 	public async Task SignOutAsync(HttpContext context, string? scheme, AuthenticationProperties? properties)
 	{
-		throw new NotImplementedException();
+		var defaultScheme = await _schemes.GetDefaultSignOutSchemeAsync();
+		var cookieScheme  = await context.GetCookieAuthenticationSchemeAsync();
+
+		if (scheme == null && defaultScheme?.Name == cookieScheme ||
+		    scheme == cookieScheme)
+			context.SetSignOutCalled();
+
+		await _inner.SignOutAsync(context, scheme, properties);
 	}
 
 	public async Task<AuthenticateResult> AuthenticateAsync(HttpContext context, string? scheme)
-	{
-		throw new NotImplementedException();
-	}
+		=> await _inner.AuthenticateAsync(context, scheme);
 
-	public async Task ChallengeAsync(HttpContext context, string? scheme, AuthenticationProperties? properties)
-	{
-		throw new NotImplementedException();
-	}
+	public Task ChallengeAsync(HttpContext context, string? scheme, AuthenticationProperties? properties)
+		=> Task.FromResult(_inner.ChallengeAsync(context, scheme, properties));
 
-	public async Task ForbidAsync(HttpContext context, string? scheme, AuthenticationProperties? properties)
-	{
-		throw new NotImplementedException();
-	}
+	public Task ForbidAsync(HttpContext context, string? scheme, AuthenticationProperties? properties)
+		=> Task.FromResult(_inner.ForbidAsync(context, scheme, properties));
 
 	private void AugmentPrincipal(ClaimsPrincipal principal)
 	{

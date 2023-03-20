@@ -15,4 +15,9 @@ internal static class Constants
 
 		public const string DiscoveryConfiguration = ".well-known/openid-configuration";
 	}
+
+	public static class EnvironmentKeys
+	{
+		public const string SignOutCalled = "federation:SignOutCalled";
+	}
 }
