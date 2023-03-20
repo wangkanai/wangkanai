@@ -1,11 +1,10 @@
 // Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-using System.Collections.Generic;
 using System.Security.Claims;
 
 using Microsoft.AspNetCore.Authentication;
 
-namespace Wangkanai.Webserver.Services;
+namespace Wangkanai.Federation.Services;
 
 public sealed class FederationUserSession: IUserSession
 {

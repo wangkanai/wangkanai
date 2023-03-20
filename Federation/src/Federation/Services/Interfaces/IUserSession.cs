@@ -5,7 +5,7 @@ using System.Security.Claims;
 
 using Microsoft.AspNetCore.Authentication;
 
-namespace Wangkanai.Webserver.Services;
+namespace Wangkanai.Federation.Services;
 
 public interface IUserSession
 {

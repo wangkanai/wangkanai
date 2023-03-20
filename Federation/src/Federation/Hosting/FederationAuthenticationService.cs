@@ -7,8 +7,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 
 using Wangkanai.Federation.Extensions;
+using Wangkanai.Federation.Services;
 using Wangkanai.Identity;
-using Wangkanai.Webserver.Services;
 
 namespace Wangkanai.Federation.Hosting;
 
