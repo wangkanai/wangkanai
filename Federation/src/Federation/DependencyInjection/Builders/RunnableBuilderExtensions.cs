@@ -10,7 +10,7 @@ public static class RunnableBuilderExtensions
 {
 	public static IFederationBuilder AddRunnableServices(this IFederationBuilder builder)
 	{
-		builder.Services.TryAddTransient<IKeyMaterialService, DefaultKeyMaterialService>();
+		builder.Services.TryAddTransient<IKeyMaterialService, FederationKeyMaterialService>();
 
 		return builder;
 	}

@@ -2,7 +2,7 @@
 
 namespace Wangkanai.Federation.Services;
 
-public class DefaultServerUris : IServerUris
+public class FederationServerUris : IServerUris
 {
 	public string Origin   { get; set; }
 	public string BasePath { get; set; }

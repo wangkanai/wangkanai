@@ -7,9 +7,9 @@ using Wangkanai.Federation.Models;
 namespace Wangkanai.Federation.Services;
 
 
-public class DefaultKeyMaterialService : IKeyMaterialService
+public class FederationKeyMaterialService : IKeyMaterialService
 {
-	public DefaultKeyMaterialService() { }
+	public FederationKeyMaterialService() { }
 
 	public async Task<SigningCredentials> GetSigningCredentialsAsync(IEnumerable<string> allowedAlgorithms)
 	{
