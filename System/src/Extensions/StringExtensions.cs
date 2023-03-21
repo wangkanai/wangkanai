@@ -21,6 +21,10 @@ public static class StringExtensions
 	[DebuggerStepThrough]
 	public static bool IsNullOrWhiteSpace(this string input)
 		=> string.IsNullOrWhiteSpace(input);
+	
+	[DebuggerStepThrough]
+	public static bool IsExist(this string input)
+		=> !string.IsNullOrWhiteSpace(input);
 
 	[DebuggerStepThrough]
 	public static bool IsUnicode(this string input)

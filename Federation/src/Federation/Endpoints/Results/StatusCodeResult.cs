@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 
 using Wangkanai.Federation.Hosting;
 
-namespace Wangkanai.Federation.Results;
+namespace Wangkanai.Federation.Endpoints.Results;
 
 /// <summary>
 /// Result for a RAW Http status code

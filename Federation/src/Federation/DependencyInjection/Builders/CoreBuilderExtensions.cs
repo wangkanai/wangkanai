@@ -28,8 +28,8 @@ public static class FederationCoreBuilderExtensions
     internal static IFederationBuilder AddCoreServices(this IFederationBuilder builder)
     {
         // Add basic core services
-        builder.Services.AddTransient<IServerUris, DefaultServerUris>();
-        builder.Services.AddTransient<IIssuerNameService, DefaultIssuerNameService>();
+        builder.Services.AddTransient<IServerUris, FederationServerUris>();
+        builder.Services.AddTransient<IIssuerNameService, FederationIssuerNameService>();
 
         return builder;
     }

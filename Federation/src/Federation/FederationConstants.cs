@@ -5,6 +5,11 @@ namespace Wangkanai.Federation;
 public static class FederationConstants
 {
 	public const string DefaultCookieAuthenticationScheme = "federation";
+	public const string LocalIdentityProvider             = "federation";
+	public const string ExternalAuthenticationMethod      = "external";
+
+	public static readonly TimeSpan DefaultCookieLifetime = TimeSpan.FromHours(10);
+	public static readonly TimeSpan DefaultCacheDuration  = TimeSpan.FromMinutes(48);
 
 	public static class Discovery
 	{

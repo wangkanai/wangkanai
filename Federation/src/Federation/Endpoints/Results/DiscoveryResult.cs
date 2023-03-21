@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 using Wangkanai.Federation.Hosting;
 
-namespace Wangkanai.Federation.Results;
+namespace Wangkanai.Federation.Endpoints.Results;
 
 
 /// <summary>

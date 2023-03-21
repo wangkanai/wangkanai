@@ -15,3 +15,4 @@ public interface IFederationBuilder
     /// </value>
     IServiceCollection Services { get; }
 }
+

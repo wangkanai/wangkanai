@@ -2,11 +2,11 @@
 
 namespace Wangkanai.Federation.Services;
 
-public class DefaultIssuerNameService : IIssuerNameService
+public class FederationIssuerNameService : IIssuerNameService
 {
 	private readonly FederationOptions _options;
 
-	public DefaultIssuerNameService(FederationOptions options)
+	public FederationIssuerNameService(FederationOptions options)
 	{
 		_options = options;
 	}
