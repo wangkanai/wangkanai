@@ -30,7 +30,7 @@ public class GraphUserAccountFactory : AccountClaimsPrincipalFactory<RemoteUserA
 
         if (initialUser.Identity.TrueIfNull())
             return initialUser;
-        if (!initialUser.Identity.IsAuthenticated)
+        if (!initialUser.Identity!.IsAuthenticated)
             return initialUser;
 
         var identity = initialUser.Identity as ClaimsIdentity;

@@ -4,7 +4,7 @@
     <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
     <LangVersion>11</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <Nullable>warnings</Nullable>
     <NoWarn>8603</NoWarn>
   </PropertyGroup>
 
