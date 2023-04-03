@@ -14,7 +14,7 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="7.0.0" />
-        <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.27.0" />
+        <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.28.0" />
     </ItemGroup>
 
     <ItemGroup>

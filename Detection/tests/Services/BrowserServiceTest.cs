@@ -92,6 +92,7 @@ public sealed class BrowserServiceTest
     [InlineData("Opera/9.80 (Macintosh; Intel Mac OS X 10.14.1) Presto/2.12.388 Version/12.16")]
     [InlineData("Opera/9.80 (Windows NT 6.0) Presto/2.12.388 Version/12.14")]
     [InlineData("Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0) Opera 12.14")]
+    [InlineData("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 OPR/96.0.0.0")]
     public void Opera(string agent)
     {
         var resolver = MockService.BrowserService(agent);
