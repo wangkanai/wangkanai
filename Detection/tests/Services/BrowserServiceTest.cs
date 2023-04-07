@@ -88,15 +88,16 @@ public sealed class BrowserServiceTest
     }
 
     [Theory]
-    [InlineData("Opera/9.80 (X11; Linux i686; Ubuntu/14.10) Presto/2.12.388 Version/12.16")]
-    [InlineData("Opera/9.80 (Macintosh; Intel Mac OS X 10.14.1) Presto/2.12.388 Version/12.16")]
-    [InlineData("Opera/9.80 (Windows NT 6.0) Presto/2.12.388 Version/12.14")]
-    [InlineData("Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0) Opera 12.14")]
-    [InlineData("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 OPR/96.0.0.0")]
-    public void Opera(string agent)
+    [InlineData("12.16","Opera/9.80 (X11; Linux i686; Ubuntu/14.10) Presto/2.12.388 Version/12.16")]
+    [InlineData("12.16","Opera/9.80 (Macintosh; Intel Mac OS X 10.14.1) Presto/2.12.388 Version/12.16")]
+    [InlineData("12.14","Opera/9.80 (Windows NT 6.0) Presto/2.12.388 Version/12.14")]
+    [InlineData("12.14","Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0) Opera 12.14")]
+    [InlineData("96.0.0.0","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 OPR/96.0.0.0")]
+    public void Opera(string version, string agent)
     {
         var resolver = MockService.BrowserService(agent);
         Assert.Equal(Browser.Opera, resolver.Name);
+        Assert.Equal(new Version(version), resolver.Version);
     }
 
     [Theory]
