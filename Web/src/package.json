@@ -20,7 +20,7 @@
         "clean": "npm-run-all --parallel clean-*",
         "clean-dist": "rimraf wwwroot/dist/",
         "clean-lib": "rimraf wwwroot/lib/",
-        "lib": "npm-run-all --parallel lib-rfs lib-bootstrap lib-jquery lib-jquery-validation jquery-validation-unobtrusive",
+        "lib": "npm-run-all --parallel lib-bootstrap lib-jquery lib-jquery-validation jquery-validation-unobtrusive",
         "lib-rfs": "cpy node_modules/rfs/**/*.* wwwroot/lib/rfs",
         "lib-bootstrap": "cpy node_modules/bootstrap/dist/**/*.* wwwroot/lib/bootstrap/dist",
         "lib-jquery": "cpy node_modules/jquery/dist/**/*.* wwwroot/lib/jquery/dist",
