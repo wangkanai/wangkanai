@@ -1,8 +1,8 @@
 ﻿{
     "compilerOptions": {
-        "module": "commonjs",
+        "module": "system",
         "target": "es5",
-        "outFile": "wwwroot/js/wangkanai.js",
+        "outFile": "wwwroot/dist/wangkanai.js",
         "removeComments": true,
         "preserveConstEnums": true,
         "sourceMap": true
@@ -11,6 +11,7 @@
         "wwwroot/ts/**/*"
     ],
     "exclude": [
-        "node_modules"
+        "node_modules",
+        "**/*.spec.ts"
     ]
 }
