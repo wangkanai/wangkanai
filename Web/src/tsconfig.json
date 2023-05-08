@@ -1,0 +1,17 @@
+﻿{
+    "compilerOptions": {
+        "module": "system",
+        "target": "es5",
+        "outFile": "wwwroot/dist/wangkanai.js",
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "sourceMap": true
+    },
+    "include": [
+        "wwwroot/ts/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "**/*.spec.ts"
+    ]
+}

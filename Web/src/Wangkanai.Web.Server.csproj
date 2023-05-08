@@ -9,16 +9,12 @@
     <ItemGroup Condition="'$(DotNetWatchBuild)'=='true'">
         <Watch Include="**/*.css;**/*.scss;**/*.jpg" Exclude="node_modules/**;**/*.js.map;**/*.css.map;obj/**/*;bin/**/*" />
     </ItemGroup>
-
+    
     <ItemGroup>
         <Content Remove="wwwroot\lib\**" />
         <Content Include="wwwroot\lib\**" Watch="false" />
     </ItemGroup>
-
-    <ItemGroup>
-      <TypeScriptCompile Include="wwwroot\ts\wangkanai.ts" />
-    </ItemGroup>
-
+    
     <Target Name="NpmInstall" Inputs="package.json" Outputs="node_modules/.install-stamp">
         <Message Text=" npm install" Importance="high" />
         <Exec Command="npm ci" Condition="$(RestorePackagesWithLockFile) == 'true'" />
@@ -32,4 +28,20 @@
         <Message Text=" BeforeTargets=Compile: npm run scss" Importance="high" />
         <Exec Command="npm run --silent scss" />
     </Target>
+
+    <!-- Include default props at the top -->
+    <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+    <!-- TypeScript configurations go here -->
+    <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+        <TypeScriptRemoveComments>false</TypeScriptRemoveComments>
+        <TypeScriptSourceMap>true</TypeScriptSourceMap>
+        <TypeScriptNoEmitOnError>true</TypeScriptNoEmitOnError>
+        <TypeScriptNoImplicitReturns>true</TypeScriptNoImplicitReturns>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+        <TypeScriptRemoveComments>true</TypeScriptRemoveComments>
+        <TypeScriptSourceMap>false</TypeScriptSourceMap>
+    </PropertyGroup>
+    <!-- Include default targets at the bottom -->
+    <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
 </Project>

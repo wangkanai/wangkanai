@@ -1,4 +1,8 @@
-body,
-.body{
-    margin: 0 auto;
-}
+@import "../lib/rfs/scss";
+@import "functions";
+@import "variables";
+@import "root";
+
+@import "content";
+@import "navbar";
+
