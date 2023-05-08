@@ -1,0 +1,16 @@
+﻿{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es5",
+        "outFile": "wwwroot/js/wangkanai.js",
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "sourceMap": true
+    },
+    "include": [
+        "wwwroot/ts/**/*"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}
