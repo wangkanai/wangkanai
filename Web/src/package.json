@@ -47,6 +47,7 @@
         "sass": "^1.62.1",
         "stylelint": "^15.6.1",
         "stylelint-config-recommended-scss": "^11.0.0",
-        "stylelint-config-twbs-bootstrap": "^10.0.0"
+        "stylelint-config-twbs-bootstrap": "^10.0.0",
+        "typescript": "^5.0.4"
     }
 }
