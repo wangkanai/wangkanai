@@ -30,8 +30,8 @@
     </Target>
     <Target Name="NpmRunBuild" DependsOnTargets="NpmInstall" BeforeTargets="BeforeBuild">
         <Exec Command="npm run --silent lib" Condition="$(Configuration) != 'DEBUG'" />
-        <Exec Command="npm run --silent app" Condition="$(Configuration) != 'DEBUG'"  />
-        <Exec Command="npm run --silent scss" Condition="$(Configuration) != 'DEBUG'"  />
+        <Exec Command="npm run --silent app" Condition="$(Configuration) != 'DEBUG'" />
+        <Exec Command="npm run --silent scss" Condition="$(Configuration) != 'DEBUG'" />
     </Target>
     
     <!-- Include default props at the top -->

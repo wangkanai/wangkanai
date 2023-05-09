@@ -1,4 +1,9 @@
 ﻿:root {
-    --bs-body-bg:    $black !important;
-    --bs-body-color: $white !important;
+    --bs-body-bg:       $dark !important;
+    --bs-body-color:    $white !important;
+    --bs-border-radius: 0 !important;
+}
+
+[data-bs-theme=dark] {
+    --bs-border-color: $border-color !important;
 }
