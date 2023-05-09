@@ -6,6 +6,13 @@
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
 
+    <ItemGroup>
+        <PackageReference Include="Serilog" Version="2.12.0" />
+        <PackageReference Include="Serilog.AspNetCore" Version="6.1.0" />
+        <PackageReference Include="Serilog.Sinks.Async" Version="1.5.0" />
+        <PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
+    </ItemGroup>
+
     <ItemGroup Condition="'$(DotNetWatchBuild)'=='true'">
         <Watch Include="**/*.css;**/*.scss;**/*.jpg" Exclude="node_modules/**;**/*.js.map;**/*.css.map;obj/**/*;bin/**/*" />
     </ItemGroup>
@@ -23,7 +30,8 @@
     </Target>
     <Target Name="NpmRunBuild" DependsOnTargets="NpmInstall" BeforeTargets="BeforeBuild">
         <Exec Command="npm run --silent lib" Condition="$(Configuration) != 'DEBUG'" />
-        <Exec Command="npm run --silent scss" />
+        <Exec Command="npm run --silent app" Condition="$(Configuration) != 'DEBUG'"  />
+        <Exec Command="npm run --silent scss" Condition="$(Configuration) != 'DEBUG'"  />
     </Target>
     
     <!-- Include default props at the top -->
