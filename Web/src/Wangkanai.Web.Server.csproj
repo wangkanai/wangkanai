@@ -23,12 +23,9 @@
     </Target>
     <Target Name="NpmRunBuild" DependsOnTargets="NpmInstall" BeforeTargets="BeforeBuild">
         <Exec Command="npm run --silent lib" Condition="$(Configuration) != 'DEBUG'" />
-    </Target>
-    <Target Name="NpmRunBeforeTargetsCompile" DependsOnTargets="NpmInstall" BeforeTargets="Compile">
-        <Message Text=" BeforeTargets=Compile: npm run scss" Importance="high" />
         <Exec Command="npm run --silent scss" />
     </Target>
-
+    
     <!-- Include default props at the top -->
     <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
     <!-- TypeScript configurations go here -->
