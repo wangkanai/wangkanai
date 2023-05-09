@@ -10,10 +10,10 @@
         <Watch Include="**/*.css;**/*.scss;**/*.jpg" Exclude="node_modules/**;**/*.js.map;**/*.css.map;obj/**/*;bin/**/*" />
     </ItemGroup>
     
-    <ItemGroup>
-        <Content Remove="wwwroot\lib\**" />
-        <Content Include="wwwroot\lib\**" Watch="false" />
-    </ItemGroup>
+<!--    <ItemGroup>-->
+<!--        <Content Remove="wwwroot\lib\**" />-->
+<!--        <Content Include="wwwroot\lib\**" Watch="false" />-->
+<!--    </ItemGroup>-->
     
     <Target Name="NpmInstall" Inputs="package.json" Outputs="node_modules/.install-stamp">
         <Message Text=" npm install" Importance="high" />
