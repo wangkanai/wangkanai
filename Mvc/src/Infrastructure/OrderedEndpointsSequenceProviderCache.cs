@@ -4,7 +4,7 @@ using System.Collections.Concurrent;
 
 using Microsoft.AspNetCore.Routing;
 
-namespace Wangkanai.Markdown.Infrastructure;
+namespace Wangkanai.Mvc.Infrastructure;
 
 internal sealed class OrderedEndpointsSequenceProviderCache
 {

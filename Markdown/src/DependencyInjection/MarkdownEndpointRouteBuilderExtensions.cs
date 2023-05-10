@@ -1,16 +1,17 @@
 ﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
 
+using Wangkanai.Markdown.Builder;
 using Wangkanai.Markdown.Infrastructure;
+using Wangkanai.Mvc.Infrastructure;
 
 namespace Wangkanai.Markdown.DependencyInjection;
 
-public static class MarkdownPagesEndpointRouteBuilderExtensions
+public static class MarkdownEndpointRouteBuilderExtensions
 {
-	public static PageActionEndpointConventionBuilder MapMarkdownPages(this IEndpointRouteBuilder endpoints)
+	public static MarkdownActionEndpointConventionBuilder MapMarkdownPages(this IEndpointRouteBuilder endpoints)
 	{
 		endpoints.ThrowIfNull(nameof(endpoints));
 
@@ -21,12 +22,12 @@ public static class MarkdownPagesEndpointRouteBuilderExtensions
 
 	private static void EnsureMarkdownPagesServices(IEndpointRouteBuilder endpoints)
 	{
-		var marker = endpoints.ServiceProvider.GetService<PageActionEndpointDataSourceFactory>();
+		var marker = endpoints.ServiceProvider.GetService<MarkdownActionEndpointDataSourceFactory>();
 	}
 
-	private static PageActionEndpointDataSource GetOrCreateDataSource(IEndpointRouteBuilder endpoints)
+	private static MarkdownActionEndpointDataSource GetOrCreateDataSource(IEndpointRouteBuilder endpoints)
 	{
-		var dataSource = endpoints.DataSources.OfType<PageActionEndpointDataSource>().FirstOrDefault();
+		var dataSource = endpoints.DataSources.OfType<MarkdownActionEndpointDataSource>().FirstOrDefault();
 		if (dataSource == null)
 		{
 			var orderProviderCache = endpoints.ServiceProvider.GetRequiredService<OrderedEndpointsSequenceProviderCache>();

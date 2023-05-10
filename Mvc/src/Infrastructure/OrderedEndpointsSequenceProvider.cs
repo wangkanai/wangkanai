@@ -2,7 +2,7 @@
 
 using System.Threading;
 
-namespace Wangkanai.Markdown.Infrastructure;
+namespace Wangkanai.Mvc.Infrastructure;
 
 internal sealed class OrderedEndpointsSequenceProvider
 {

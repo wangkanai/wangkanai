@@ -1,17 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
-    <LangVersion>preview</LangVersion>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <FrameworkReference Include="Microsoft.AspNetCore.App" />
-  </ItemGroup>
+    <ItemGroup>
+        <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\Detection\src\Wangkanai.Detection.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\..\Detection\src\Wangkanai.Detection.csproj" />
+        <ProjectReference Include="..\..\Mvc\src\Wangkanai.Mvc.csproj" />
+        <ProSjectReference Include="..\..\Detection\src\Wangkanai.Detection.csproj" />
+    </ItemGroup>
 
 </Project>

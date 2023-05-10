@@ -8,16 +8,16 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.AspNetCore.Routing.Patterns;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Wangkanai.Markdown.Routing;
+namespace Wangkanai.Mvc.Routing;
 
-internal sealed class ActionEndpointFactory
+internal sealed class MarkdownActionEndpointFactory
 {
 	private readonly RoutePatternTransformer   _routePatternTransformer;
 	private readonly RequestDelegate           _requestDelegate;
 	private readonly IRequestDelegateFactory[] _requestDelegateFactories;
 	private readonly IServiceProvider          _serviceProvider;
 
-	public ActionEndpointFactory(
+	public MarkdownActionEndpointFactory(
 		RoutePatternTransformer              routePatternTransformer,
 		IEnumerable<IRequestDelegateFactory> requestDelegateFactories,
 		IServiceProvider                     serviceProvider)
@@ -62,6 +62,13 @@ internal sealed class ActionEndpointFactory
 		}
 
 		return null;
-		
+	}
+
+	public void AddEndpoints(
+		List<Endpoint> endpoints, 
+		HashSet<string> routeNames,
+		ActionDescriptor action,
+		IReadOnlyList<ConventionalRouteEntry> routes)
+	{
 	}
 }

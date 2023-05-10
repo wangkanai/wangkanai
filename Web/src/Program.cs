@@ -33,7 +33,7 @@ app.UseRouting();
 app.UseAuthorization();
 app.UseSerilogRequestLogging();
 
-app.MapMarkdownPages();
+// app.MapMarkdownPages();
 app.MapRazorPages();
 
 app.Run();

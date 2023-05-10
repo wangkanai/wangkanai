@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc.Abstractions;
 using Microsoft.AspNetCore.Routing.Patterns;
 using Microsoft.Extensions.Primitives;
 
-namespace Wangkanai.Markdown.Routing;
+namespace Wangkanai.Mvc.Routing;
 
 internal abstract class ActionEndpointDataSourceBase : EndpointDataSource, IDisposable
 {

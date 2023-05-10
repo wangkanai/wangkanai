@@ -1,28 +1,29 @@
 ﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-using Microsoft.AspNetCore.Mvc.Abstractions;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 
-using Wangkanai.Markdown.Routing;
+using Wangkanai.Mvc.Infrastructure;
+using Wangkanai.Mvc.Routing;
 
 namespace Wangkanai.Markdown.Infrastructure;
 
-internal sealed class PageActionEndpointDataSourceFactory
+internal sealed class MarkdownActionEndpointDataSourceFactory
 {
 	private readonly PageActionEndpointDataSourceIdProvider _dataSourceIdProvider;
 	private readonly IActionDescriptorCollectionProvider    _actions;
-	private readonly ActionEndpointFactory                  _endpointFactory;
+	private readonly MarkdownActionEndpointFactory                  _endpointFactory;
 
-	public PageActionEndpointDataSourceFactory(
+	public MarkdownActionEndpointDataSourceFactory(
 		PageActionEndpointDataSourceIdProvider dataSourceIdProvider,
 		IActionDescriptorCollectionProvider    actions,
-		ActionEndpointFactory                  endpointFactory)
+		MarkdownActionEndpointFactory                  endpointFactory)
 	{
 		_dataSourceIdProvider = dataSourceIdProvider;
 		_actions              = actions;
 		_endpointFactory      = endpointFactory;
 	}
 
-	public PageActionEndpointDataSource Create(OrderedEndpointsSequenceProvider orderProvider)
-		=> new PageActionEndpointDataSource(_dataSourceIdProvider, _actions, _endpointFactory, orderProvider);
+	public MarkdownActionEndpointDataSource Create(
+		OrderedEndpointsSequenceProvider orderProvider)
+		=> new MarkdownActionEndpointDataSource(_dataSourceIdProvider, _actions, _endpointFactory, orderProvider);
 }

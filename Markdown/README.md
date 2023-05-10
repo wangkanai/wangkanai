@@ -27,11 +27,11 @@ service in the `ConfigureServices` method.
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
-    services.AddMarkdown();    
+    services.AddMarkdownPages();    
 }
 ```
 
-* `AddMarkdown()` Adds the markdown services to the services container.
+* `AddMarkdownPages()` Adds the markdown services to the services container.
 
 Adding the Markdown middleware to the pipeline. The Markdown middleware is enabled in the `Configure` method of *
 Startup.cs* file.
@@ -44,7 +44,7 @@ public void Configure(IApplicationBuilder app)
 
     app.UseRouting();
 
-    app.UseEndpoints(endpoints => endpoints.MapMarkdownPages());
+    app.MapMarkdownPages();
 }
 ```
 

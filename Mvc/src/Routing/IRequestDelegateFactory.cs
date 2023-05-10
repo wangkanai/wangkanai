@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Abstractions;
 using Microsoft.AspNetCore.Routing;
 
-namespace Wangkanai.Markdown.Routing;
+namespace Wangkanai.Mvc.Routing;
 
 internal interface IRequestDelegateFactory
 {
