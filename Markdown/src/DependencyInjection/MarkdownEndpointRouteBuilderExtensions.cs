@@ -31,8 +31,11 @@ public static class MarkdownEndpointRouteBuilderExtensions
 		if (dataSource == null)
 		{
 			var orderProviderCache = endpoints.ServiceProvider.GetRequiredService<OrderedEndpointsSequenceProviderCache>();
+			var factory            = endpoints.ServiceProvider.GetRequiredService<MarkdownActionEndpointDataSourceFactory>();
+			dataSource = factory.Create(orderProviderCache.GetOrCreateOrderedEndpointsSequenceProvider(endpoints));
+			endpoints.DataSources.Add(dataSource);
 		}
+
+		return dataSource;
 	}
-
 }
-

@@ -11,12 +11,12 @@ internal sealed class MarkdownActionEndpointDataSourceFactory
 {
 	private readonly PageActionEndpointDataSourceIdProvider _dataSourceIdProvider;
 	private readonly IActionDescriptorCollectionProvider    _actions;
-	private readonly MarkdownActionEndpointFactory                  _endpointFactory;
+	private readonly ActionEndpointFactory                  _endpointFactory;
 
 	public MarkdownActionEndpointDataSourceFactory(
 		PageActionEndpointDataSourceIdProvider dataSourceIdProvider,
 		IActionDescriptorCollectionProvider    actions,
-		MarkdownActionEndpointFactory                  endpointFactory)
+		ActionEndpointFactory                  endpointFactory)
 	{
 		_dataSourceIdProvider = dataSourceIdProvider;
 		_actions              = actions;
