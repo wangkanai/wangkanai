@@ -1,0 +1,13 @@
+﻿@{
+    Layout = "_LayoutApp";
+}
+<partial name="_Area"/>
+<div class="container">
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+</div>
+
+@section Scripts{
+    @await RenderSectionAsync("Scripts", required: false)
+}
