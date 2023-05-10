@@ -2,8 +2,8 @@
     &-menu {
         --bs-dropdown-spacer:        0.5rem;
         --bs-dropdown-border-radius: var(--bs-border-radius);
-        --bs-dropdown-bg:            $night !important;
-        --bs-dropdown-color:         $white !important;
+        --bs-dropdown-bg:            $body-bg-dark !important;
+        --bs-dropdown-color:         $body-color-dark !important;
         background-color:            $night !important;
     }
 
