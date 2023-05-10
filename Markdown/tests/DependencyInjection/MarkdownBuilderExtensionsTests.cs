@@ -12,7 +12,7 @@ public class MarkdownBuilderExtensionsTests
     [Fact]
     public void AddMarkdown_Null_Exception()
     {
-        Assert.Throws<ArgumentNullException>(() => ((IServiceCollection)null).AddMarkdown());
+        Assert.Throws<ArgumentNullException>(() => ((IServiceCollection)null).AddMarkdownPages());
     }
 
     [Fact]

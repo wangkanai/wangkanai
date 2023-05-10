@@ -32,6 +32,10 @@
       <_ContentIncludedByDefault Remove="Pages\Tabler\System.cshtml" />
     </ItemGroup>
     
+    <ItemGroup>
+      <ProjectReference Include="..\..\Markdown\src\Wangkanai.Markdown.csproj" />
+    </ItemGroup>
+    
     <Target Name="NpmInstall" Inputs="package.json" Outputs="node_modules/.install-stamp">
         <Message Text=" npm install" Importance="high" />
         <Exec Command="npm ci" Condition="$(RestorePackagesWithLockFile) == 'true'" />

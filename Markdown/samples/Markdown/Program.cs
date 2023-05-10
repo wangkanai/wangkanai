@@ -1,20 +1,39 @@
 // Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
+using Serilog;
 
-namespace Markdown;
+var builder = WebApplication.CreateBuilder(args);
+var environment = builder.Environment;
 
-public class Program
+builder.Host.UseSerilog();
+
+// Add services to the container.
+builder.Services.AddMarkdownPages();
+builder.Services.AddRazorPages();
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
 {
-    public static void Main(string[] args)
-    {
-        CreateHostBuilder(args).Build().Run();
-    }
-
-    public static IHostBuilder CreateHostBuilder(string[] args)
-    {
-        return Host.CreateDefaultBuilder(args)
-                   .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
-    }
+	app.UseDeveloperExceptionPage();
 }
+else
+{
+	app.UseExceptionHandler("/Error");
+	// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+	app.UseHsts();
+}
+
+app.UseHttpsRedirection();
+app.UseStaticFiles();
+
+app.UseRouting();
+
+app.UseAuthorization();
+app.UseSerilogRequestLogging();
+
+// app.MapMarkdownPages();
+app.MapRazorPages();
+
+app.Run();

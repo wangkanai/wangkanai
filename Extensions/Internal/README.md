@@ -1,15 +1,15 @@
-## Wangkanai Extensions Html
+## Wangkanai Extensions Internal
 
-Html wrapper utilities library
+Internal Extensions library
 
 ### Roadmap
 
-- [ ] Convert plane text to html
+- [ ] Object Method Executor
 
 **Please show me some love and click the** :star:
 
-[![NuGet Badge](https://buildstats.info/nuget/wangkanai.extensions.html)](https://www.nuget.org/packages/wangkanai.extensions.html)
-[![NuGet Badge](https://buildstats.info/nuget/wangkanai.extensions.html?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.extensions.html)
+[![NuGet Badge](https://buildstats.info/nuget/wangkanai.extensions.internal)](https://www.nuget.org/packages/wangkanai.extensions.internal)
+[![NuGet Badge](https://buildstats.info/nuget/wangkanai.extensions.internal?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.extensions.internal)
 
 [![Build Status](https://dev.azure.com/wangkanai/GitHub/_apis/build/status/wangkanai?branchName=main)](https://dev.azure.com/wangkanai/GitHub/_build/latest?definitionId=20&branchName=main)
 [![Open Collective](https://img.shields.io/badge/open%20collective-support%20me-3385FF.svg)](https://opencollective.com/wangkanai)
