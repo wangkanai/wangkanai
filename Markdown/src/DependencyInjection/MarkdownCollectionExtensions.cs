@@ -10,19 +10,18 @@ namespace Microsoft.Extensions.DependencyInjection;
 /// </summary>
 public static class MarkdownCollectionExtensions
 {
-    public static IMarkdownBuilder AddMarkdown(this IServiceCollection services)
+    public static IMarkdownBuilder AddMarkdownPages(this IServiceCollection services)
     {
         return services.AddMarkdownBuilder()
                        .AddRequiredServices()
                        .AddCoreServices()
-                       .AddMarkdownPages()
                        .AddMarkerService();
     }
 
-    public static IMarkdownBuilder AddMarkdown(this IServiceCollection services, Action<MarkdownOptions> setAction)
+    public static IMarkdownBuilder AddMarkdownPages(this IServiceCollection services, Action<MarkdownOptions> setAction)
     {
         return services.Configure(setAction)
-                       .AddMarkdown();
+                       .AddMarkdownPages();
     }
 
     // For internal unit tests
