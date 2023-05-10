@@ -3,5 +3,6 @@
     
     <PropertyGroup>
         <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Tools</PackageProjectUrl>
+        <PackageNamespace>True</PackageNamespace>
     </PropertyGroup>
 </Project>

@@ -21,12 +21,42 @@ $dirs = [ordered]@{
     20 = "Analytics";
     21 = "Blazor";
     22 = "Tabler";
-
+    23 = "Solver";
 }
 
-for ($i = 0; $i -lt $dirs.count + 1; $i++) {
-    Write-Host $dirs[$i] -ForegroundColor Red;
+Set-Location -Path D:\Sources\Wangkanai\
+
+for ($i = 0; $i -lt $dirs.count; $i++) {
+    $error.clear()
     pushd $dirs[$i];
-    .\sign.ps1;
+    try
+    {
+        Write-Host $dirs[$i] -ForegroundColor Red;
+        [Xml]$xml = Get-Content -Path .\Directory.Build.props;
+        $version = $xml.Project.PropertyGroup.VersionPrefix[0];
+        $namespace = $xml.Project.PropertyGroup.PackageNamespace[0];
+        $primary = $xml.Project.PropertyGroup.PackagePrimary[0];
+        write-host $version + $namespace -foregroundcolor yellow;
+        $name = "Wangkanai." + $dirs[$i];
+        if($namespace -or (-not ([string]::IsNullOrEmpty($primary)))){
+            $name += "."+$primary;
+        }
+        write-host $name -foregroundcolor green;
+        $package = Find-Package -Name $name -ProviderName NuGet -AllVersions
+        $last = $package | Select-Object -First 1
+        $latest = $last.Version;
+        Write-Host $latest -foregroundcolor Magenta;
+        if($latest -ne $version){
+            write-host "Update" -foregroundcolor Cyan;
+            .\sign.ps1
+        }
+        else{
+            write-host "Skip" -foregroundcolor DarkGray;
+        }
+    }
+    catch{
+        write-host "New" -foregroundcolor Blue;
+        .\sign.ps1
+    }
     popd;
 }

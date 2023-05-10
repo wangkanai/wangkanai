@@ -9,6 +9,8 @@
         <Description>Extending the Security ASP.NET with add features</Description>
 
         <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Security</PackageProjectUrl>
+        <PackageNamespace>True</PackageNamespace>
+        <PackagePrimary>Authorization</PackagePrimary>
     </PropertyGroup>
 
     <PropertyGroup>
