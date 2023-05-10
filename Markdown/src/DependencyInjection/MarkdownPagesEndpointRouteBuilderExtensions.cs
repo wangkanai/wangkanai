@@ -2,6 +2,9 @@
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Routing;
+using Microsoft.Extensions.DependencyInjection;
+
+using Wangkanai.Markdown.Infrastructure;
 
 namespace Wangkanai.Markdown.DependencyInjection;
 
@@ -21,4 +24,14 @@ public static class MarkdownPagesEndpointRouteBuilderExtensions
 		var marker = endpoints.ServiceProvider.GetService<PageActionEndpointDataSourceFactory>();
 	}
 
+	private static PageActionEndpointDataSource GetOrCreateDataSource(IEndpointRouteBuilder endpoints)
+	{
+		var dataSource = endpoints.DataSources.OfType<PageActionEndpointDataSource>().FirstOrDefault();
+		if (dataSource == null)
+		{
+			var orderProviderCache = endpoints.ServiceProvider.GetRequiredService<OrderedEndpointsSequenceProviderCache>();
+		}
+	}
+
 }
+
