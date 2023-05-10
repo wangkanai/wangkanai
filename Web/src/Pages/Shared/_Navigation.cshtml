@@ -1,7 +1,23 @@
 ﻿<ul class="navbar-nav ms-auto">
     <li class="nav-item"><a class="nav-link text-white" asp-area="" asp-page="/blog/index">Blog</a></li>
-    <li class="nav-item"><a class="nav-link text-white" asp-area="" asp-page="/development/index">Development</a></li>
-    <li class="nav-item"><a class="nav-link text-white" asp-area="" asp-page="/design/index">Design</a></li>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown" role="button" aria-expanded="false" href="#">Development</a>
+        <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" asp-area="" asp-page="/development/detection">Detection</a></li>
+            <li><a class="dropdown-item" asp-area="" asp-page="/development/responsive">Responsive</a></li>
+            <li><a class="dropdown-item" asp-area="" asp-page="/development/system">System</a></li>
+            <li><a class="dropdown-item" asp-area="" asp-page="/development/federation">Federation</a></li>
+            <li><a class="dropdown-item" asp-area="" asp-page="/development/analytics">Analytics</a></li>
+            <li><a class="dropdown-item" href="https://blazor.wangkanai.com">Blazor</a></li>
+            <li><a class="dropdown-item" href="https://Tabler.wangkanai.com">Tabler</a></li>
+        </ul>
+    </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown" role="button" aria-expanded="false" href="#">Fonts</a>
+        <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" asp-area="" asp-page="/fonts/visawakom">Visawakom Mono</a></li>
+        </ul>
+    </li>
     <li class="nav-item"><a class="nav-link text-white" asp-area="" asp-page="/engineering/index">Engineering</a></li>
     <li class="nav-item"><a class="nav-link text-white" asp-area="" asp-page="/architecture/index">Architecture</a></li>
     <li class="nav-item"><a class="nav-link text-white" asp-area="" asp-page="/about/index">About</a></li>
