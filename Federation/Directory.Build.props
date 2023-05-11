@@ -11,6 +11,7 @@
         <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Federation</PackageProjectUrl>
 
         <RootNamespace>Wangkanai.Federation</RootNamespace>
+        <PackageNamespace>True</PackageNamespace>
     </PropertyGroup>
 
     <PropertyGroup Condition="$(MSBuildProjectDirectory.Contains('src'))">

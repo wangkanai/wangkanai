@@ -2,8 +2,6 @@
     <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props"/>
 
     <PropertyGroup>
-        <VersionPrefix>0.3.0</VersionPrefix>
-
         <Title>Wangkanai Sign Code Tool</Title>
         <PackageTags>aspnetcore;nuget;sign;tool;</PackageTags>
         <Description>This project is a global wrapper for code signing the nuget packages before publishing on nuget.</Description>
