@@ -1,13 +1,13 @@
 $dirs = [ordered]@{
-    1 = "System";
-    2 = "Validation";
-    3 = "Extensions";
-    4 = "Hosting";
-    5 = "Tools";
-    6 = "Watcher";
-    7 = "Mvc";
-    8 = "Webserver";
-    9 = "Webmaster";
+    1  = "System";
+    2  = "Validation";
+    3  = "Extensions";
+    4  = "Hosting";
+    5  = "Tools";
+    6  = "Watcher";
+    7  = "Mvc";
+    8  = "Webserver";
+    9  = "Webmaster";
     10 = "Detection";
     11 = "Responsive";
     12 = "EntityFramework";
@@ -29,33 +29,42 @@ Set-Location -Path D:\Sources\Wangkanai\
 for ($i = 0; $i -lt $dirs.count; $i++) {
     $error.clear()
     pushd $dirs[$i];
-    try
-    {
+    try {
         Write-Host $dirs[$i] -ForegroundColor Red;
         [Xml]$xml = Get-Content -Path .\Directory.Build.props;
-        $version = $xml.Project.PropertyGroup.VersionPrefix[0];
-        $namespace = $xml.Project.PropertyGroup.PackageNamespace[0];
-        $primary = $xml.Project.PropertyGroup.PackagePrimary[0];
-        write-host $version + $namespace -foregroundcolor yellow;
-        $name = "Wangkanai." + $dirs[$i];
-        if($namespace -or (-not ([string]::IsNullOrEmpty($primary)))){
-            $name += "."+$primary;
+        $version = $xml.Project.PropertyGroup.VersionPrefix;
+        if ($version.GetType().FullName -ne "System.String") {
+            $version = $version[0];
         }
-        write-host $name -foregroundcolor green;
+        $namespace = $xml.Project.PropertyGroup.PackageNamespace;
+        $primary = $xml.Project.PropertyGroup.PackagePrimary;
+
+        Write-Host $version -ForegroundColor yellow;
+        $name = "Wangkanai." + $dirs[$i];
+        if (-not ([string]::IsNullOrEmpty($primary[0]))) {
+            if ($namespace -like "true") {
+                $name = $name + "." + $primary;
+            }
+            else {
+                $name = "Wangkanai." + $primary; ;
+            }
+        }
+        $name = $name.Trim();
+        Write-Host $name -ForegroundColor green;
         $package = Find-Package -Name $name -ProviderName NuGet -AllVersions
         $last = $package | Select-Object -First 1
         $latest = $last.Version;
-        Write-Host $latest -foregroundcolor Magenta;
-        if($latest -ne $version){
-            write-host "Update" -foregroundcolor Cyan;
+        Write-Host $latest -ForegroundColor Magenta;
+        if ($latest -ne $version) {
+            Write-Host "Update" -ForegroundColor Cyan;
             .\sign.ps1
         }
-        else{
-            write-host "Skip" -foregroundcolor DarkGray;
+        else {
+            Write-Host "Skip" -ForegroundColor DarkGray;
         }
     }
-    catch{
-        write-host "New" -foregroundcolor Blue;
+    catch {
+        Write-Host "New" -ForegroundColor Blue;
         .\sign.ps1
     }
     popd;
