@@ -1,4 +1,3 @@
-
 $dirs = [ordered]@{
     1  = "System";
     2  = "Validation";
@@ -11,8 +10,8 @@ $dirs = [ordered]@{
     9  = "Webmaster";
     10 = "Detection";
     11 = "Responsive";
-    12 = "EntityFramework";
-    13 = "Domain";
+    12 = "Domain";
+    13 = "EntityFramework";
     14 = "Identity";
     15 = "Security";
     16 = "Federation";
