@@ -41,10 +41,19 @@ internal abstract class ActionEndpointDataSourceBase : EndpointDataSource, IDisp
 		{
 			Initialize();
 			Debug.Assert(_changeToken != null);
-			Debug.Assert(_endpoints != null);
+			Debug.Assert(_endpoints   != null);
 			return _endpoints;
 		}
 	}
+
+	public override IReadOnlyList<Endpoint> GetGroupedEndpoints(RouteGroupContext context)
+		=> CreateEndpoints(
+			context.Prefix,
+			_actions.ActionDescriptors.Items,
+			Conventions,
+			context.Conventions,
+			FinallyConventions,
+			context.FinallyConventions);
 
 	private void Initialize()
 	{
@@ -64,7 +73,7 @@ internal abstract class ActionEndpointDataSourceBase : EndpointDataSource, IDisp
 	{
 		lock (Lock)
 		{
-			var endpoints                  = CreateEndpoints(
+			var endpoints = CreateEndpoints(
 				groupPrefix: null,
 				_actions.ActionDescriptors.Items,
 				Conventions,
@@ -88,6 +97,19 @@ internal abstract class ActionEndpointDataSourceBase : EndpointDataSource, IDisp
 		IReadOnlyList<Action<EndpointBuilder>> finallyConventions,
 		IReadOnlyList<Action<EndpointBuilder>> groupFinallyConventions);
 
+	protected void Subscribe()
+	{
+		if (_actions is ActionDescriptorCollectionProvider collectionProviderWithChangeToken) 
+			_disposable = ChangeToken.OnChange(() => collectionProviderWithChangeToken.GetChangeToken(), UpdateEndpoints);
+	}
+
+	public override IChangeToken GetChangeToken()
+	{ 
+		Initialize();
+		Debug.Assert(_changeToken != null);
+		Debug.Assert(_endpoints != null);
+		return _changeToken;
+	}
 
 	public void Dispose()
 	{

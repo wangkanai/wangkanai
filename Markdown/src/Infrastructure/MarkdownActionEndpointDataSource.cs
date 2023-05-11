@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Abstractions;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.AspNetCore.Routing.Patterns;
 using Microsoft.Extensions.Primitives;
 
@@ -16,8 +17,8 @@ namespace Wangkanai.Markdown.Infrastructure;
 
 internal sealed class MarkdownActionEndpointDataSource : ActionEndpointDataSourceBase
 {
-	private readonly MarkdownActionEndpointDataSourceIdProvider _dataSourceIdProvider;
-	private readonly ActionEndpointFactory          _endpointFactory;
+	private readonly ActionEndpointFactory            _endpointFactory;
+	private readonly OrderedEndpointsSequenceProvider _orderSequence;
 
 	public int  DataSourceId         { get; }
 	public bool CreateInertEndpoints { get; set; }
@@ -26,21 +27,17 @@ internal sealed class MarkdownActionEndpointDataSource : ActionEndpointDataSourc
 
 	public MarkdownActionEndpointDataSource(
 		MarkdownActionEndpointDataSourceIdProvider dataSourceIdProvider,
-		IActionDescriptorCollectionProvider    actions,
-		ActionEndpointFactory          endpointFactory,
-		OrderedEndpointsSequenceProvider       orderedEndpoints)
+		IActionDescriptorCollectionProvider        actions,
+		ActionEndpointFactory                      endpointFactory,
+		OrderedEndpointsSequenceProvider           orderedEndpoints)
 		: base(actions)
 	{
-		DataSourceId          = dataSourceIdProvider.CreateId();
-		_dataSourceIdProvider = dataSourceIdProvider;
-		_endpointFactory      = endpointFactory;
-		DefaultBuilder        = new MarkdownActionEndpointConventionBuilder(Lock, Conventions, FinallyConventions);
-	}
+		DataSourceId     = dataSourceIdProvider.CreateId();
+		_endpointFactory = endpointFactory;
+		_orderSequence   = orderedEndpoints;
+		DefaultBuilder   = new MarkdownActionEndpointConventionBuilder(Lock, Conventions, FinallyConventions);
 
-
-	public override IChangeToken GetChangeToken()
-	{
-		throw new NotImplementedException();
+		Subscribe();
 	}
 
 	protected override List<Endpoint> CreateEndpoints(
@@ -70,5 +67,25 @@ internal sealed class MarkdownActionEndpointDataSource : ActionEndpointDataSourc
 			}
 
 		return endpoints;
+	}
+
+	internal void AddDynamicMarkdownEndpoint(
+		IEndpointRouteBuilder endpoints,
+		string                pattern,
+		Type                  transformerType,
+		object?               state,
+		int?                  order = null)
+	{
+		CreateInertEndpoints = true;
+		lock (Lock)
+		{
+			order ??= _orderSequence.GetNext();
+			endpoints.Map(pattern, context => throw new InvalidOperationException("This endpoint is not expected to be executed directly."))
+			         .Add(b => {
+				         ((RouteEndpointBuilder)b).Order = order.Value;
+				         b.Metadata.Add(new DynamicMarkdownRouteValueTransformerMetadata(transformerType, state));
+				         b.Metadata.Add(new MarkdownEndpointDataSourceIdMetadata(DataSourceId));
+			         });
+		}
 	}
 }
