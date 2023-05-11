@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 
 using Wangkanai.Extensions.Internal;
-using Wangkanai.System.Extensions.Internal;
 using Wangkanai.Routing.Controllers;
 
 namespace Wangkanai.Mvc.Infrastructure;
