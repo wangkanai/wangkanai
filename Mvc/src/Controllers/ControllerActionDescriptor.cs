@@ -5,7 +5,6 @@ using System.Globalization;
 using System.Reflection;
 
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Abstractions;
 
 using Wangkanai.Extensions.Internal;
@@ -63,17 +62,8 @@ public class ControllerActionDescriptor : ActionDescriptor
 
 		set
 		{
-			if (value == null)
-			{
-				throw new ArgumentNullException(nameof(value));
-			}
-
+			value.ThrowIfNull();
 			base.DisplayName = value;
 		}
 	}
 }
-
-internal delegate Task ControllerBinderDelegate(
-	ControllerContext           controllerContext,
-	object                      controller,
-	Dictionary<string, object?> arguments);
