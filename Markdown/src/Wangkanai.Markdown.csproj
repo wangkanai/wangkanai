@@ -15,4 +15,8 @@
         <ProSjectReference Include="..\..\Detection\src\Wangkanai.Detection.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Models\" />
+    </ItemGroup>
+
 </Project>

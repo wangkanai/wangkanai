@@ -3,3 +3,5 @@
 using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("Wangkanai.System.Test")]
+
+[assembly: InternalsVisibleTo("Wangkanai.Mvc")]
