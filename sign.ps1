@@ -22,6 +22,7 @@ $dirs = [ordered]@{
     21 = "Blazor";
     22 = "Tabler";
     23 = "Solver";
+    24 = "IdentityAdmin";
 }
 
 Set-Location -Path D:\Sources\Wangkanai\
