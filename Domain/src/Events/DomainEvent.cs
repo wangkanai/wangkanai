@@ -2,7 +2,7 @@
 
 using System;
 
-namespace Wangkanai.Domain.Events;
+namespace Wangkanai.System.Domain.Events;
 
 public class DomainEvent : DomainEvent<Guid>
 {

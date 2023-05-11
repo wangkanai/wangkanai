@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace Wangkanai.Domain.Common;
+namespace Wangkanai.System.Domain.Common;
 
 public static class ReflectionUtility
 {

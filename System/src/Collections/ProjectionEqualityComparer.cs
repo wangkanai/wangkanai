@@ -1,6 +1,6 @@
 ﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-namespace Wangkanai.Collections;
+namespace Wangkanai.System.Collections;
 
 /// <summary>
 /// Default ProjectionEqualityComparer helper to produce instances of the generic <see cref="ProjectionEqualityComparer{TSource,TKey}"/> class.

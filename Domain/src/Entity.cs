@@ -3,7 +3,7 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Wangkanai.Domain;
+namespace Wangkanai.System.Domain;
 
 public abstract class Entity : Entity<Guid> { }
 

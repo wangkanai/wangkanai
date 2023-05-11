@@ -2,7 +2,7 @@
 
 using System.IO;
 
-using Wangkanai.Extensions.CommandLine.Internal;
+using Wangkanai.System.Extensions.CommandLine.Internal;
 
 namespace Wangkanai.Sign.Tools;
 

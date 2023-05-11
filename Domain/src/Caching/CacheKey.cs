@@ -2,9 +2,9 @@
 
 using System;
 
-using Wangkanai.Extensions;
+using Wangkanai.System.Extensions;
 
-namespace Wangkanai.Domain.Caching;
+namespace Wangkanai.System.Domain.Caching;
 
 public static class CacheKey
 {

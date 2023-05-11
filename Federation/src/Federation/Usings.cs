@@ -3,4 +3,4 @@
 global using System;
 
 global using Wangkanai;
-global using Wangkanai.Extensions;
+global using Wangkanai.System.Extensions;

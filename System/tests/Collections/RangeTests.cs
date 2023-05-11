@@ -4,7 +4,7 @@ using System.Security.Cryptography.X509Certificates;
 
 using Xunit;
 
-namespace Wangkanai.Collections;
+namespace Wangkanai.System.Collections;
 
 public class RangeTests
 {

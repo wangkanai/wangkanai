@@ -3,7 +3,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-using Wangkanai.Extensions.Internal;
+using Wangkanai.System.Extensions.Internal;
 using Wangkanai.Mvc.Infrastructure;
 
 namespace Wangkanai.Routing.Controllers;

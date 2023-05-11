@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 
 using Xunit;
 
-namespace Wangkanai.Extensions;
+namespace Wangkanai.System.Extensions;
 
 public class EnumExtensionsTests
 {

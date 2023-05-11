@@ -3,7 +3,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Wangkanai.Domain.Common;
+namespace Wangkanai.System.Domain.Common;
 
 public class PrimaryKeyResolvingMap
 {

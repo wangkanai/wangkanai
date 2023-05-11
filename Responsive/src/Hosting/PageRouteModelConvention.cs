@@ -3,7 +3,7 @@
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 
 using Wangkanai.Detection.Models;
-using Wangkanai.Extensions;
+using Wangkanai.System.Extensions;
 
 namespace Wangkanai.Responsive.Hosting;
 

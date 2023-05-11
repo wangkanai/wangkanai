@@ -3,7 +3,7 @@
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 
-namespace Wangkanai.Extensions;
+namespace Wangkanai.System.Extensions;
 
 /// <summary>
 /// Class that provides extension method to collection

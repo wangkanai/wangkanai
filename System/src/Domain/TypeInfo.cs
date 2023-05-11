@@ -1,8 +1,8 @@
 ﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-using Wangkanai.Extensions;
+using Wangkanai.System.Extensions;
 
-namespace Wangkanai.Domain;
+namespace Wangkanai.System.Domain;
 
 public class TypeInfo<BaseType>
 {

@@ -2,7 +2,7 @@
 
 using System.Linq.Expressions;
 
-namespace Wangkanai.Reflection;
+namespace Wangkanai.System.Reflection;
 
 public static class PropertyCopy<TTarget> where TTarget : class, new()
 {

@@ -2,7 +2,7 @@
 
 using System.Collections.ObjectModel;
 
-namespace Wangkanai.Domain;
+namespace Wangkanai.System.Domain;
 
 public class NullCollection<T> : ObservableCollection<T>
 {

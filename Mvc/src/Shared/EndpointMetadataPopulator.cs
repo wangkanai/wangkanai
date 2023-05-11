@@ -6,7 +6,7 @@ using System.Reflection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http.Metadata;
 
-using Wangkanai.Extensions.Internal;
+using Wangkanai.System.Extensions.Internal;
 
 namespace Wangkanai.Mvc.Shared;
 

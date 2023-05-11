@@ -5,7 +5,7 @@ using System.Linq;
 using SendGrid;
 using SendGrid.Helpers.Mail;
 
-using Wangkanai.Extensions;
+using Wangkanai.System.Extensions;
 using Wangkanai.SendGrid.Extensions;
 using Wangkanai.SendGrid.Options;
 

@@ -2,7 +2,7 @@
 
 using Xunit;
 
-namespace Wangkanai.Reflection;
+namespace Wangkanai.System.Reflection;
 
 public class PropertyCopyTests
 {

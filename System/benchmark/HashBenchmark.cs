@@ -4,7 +4,7 @@ using BenchmarkDotNet.Engines;
 
 using Perfolizer.Mathematics.OutlierDetection;
 
-using Wangkanai.Cryptography;
+using Wangkanai.System.Cryptography;
 
 namespace Wangkanai;
 

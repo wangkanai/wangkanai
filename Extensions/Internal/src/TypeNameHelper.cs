@@ -3,7 +3,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
-namespace Wangkanai.Extensions.Internal;
+namespace Wangkanai.System.Extensions.Internal;
 
 internal static class TypeNameHelper
 {

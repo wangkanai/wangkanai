@@ -4,7 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
-namespace Wangkanai.Extensions.Internal;
+namespace Wangkanai.System.Extensions.Internal;
 
 internal readonly struct AwaitableInfo
 {

@@ -2,7 +2,7 @@
 
 using System;
 
-namespace Wangkanai.Domain;
+namespace Wangkanai.System.Domain;
 
 public interface IAuditable
 {

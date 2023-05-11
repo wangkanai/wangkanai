@@ -8,7 +8,7 @@ using Moq;
 
 using Xunit;
 
-namespace Wangkanai.Extensions.FileProviders;
+namespace Wangkanai.System.Extensions.FileProviders;
 
 public class FileInfoExtensionTests
 {

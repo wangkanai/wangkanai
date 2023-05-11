@@ -10,8 +10,8 @@ using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.FileProviders;
 
-using Wangkanai.Extensions;
-using Wangkanai.Extensions.FileProviders;
+using Wangkanai.System.Extensions;
+using Wangkanai.System.Extensions.FileProviders;
 
 namespace Wangkanai.Webmaster.TagHelpers;
 

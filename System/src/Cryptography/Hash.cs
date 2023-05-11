@@ -3,7 +3,7 @@
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Wangkanai.Cryptography;
+namespace Wangkanai.System.Cryptography;
 
 public static class Hash
 {

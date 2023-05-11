@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 
 using Xunit;
 
-namespace Wangkanai.Collections;
+namespace Wangkanai.System.Collections;
 
 public class RangeIteratorTests
 {

@@ -2,7 +2,7 @@
 
 using Xunit;
 
-namespace Wangkanai.Extensions.DateTimeFactory;
+namespace Wangkanai.System.Extensions.DateTimeFactory;
 
 public class TimeSpanFactoryExtensionsTests
 {

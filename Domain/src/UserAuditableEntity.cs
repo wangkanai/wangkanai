@@ -3,7 +3,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Wangkanai.Domain;
+namespace Wangkanai.System.Domain;
 
 public abstract class UserAuditableEntity<T> : Entity<T>, IUserAuditable
 {

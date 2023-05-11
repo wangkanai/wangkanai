@@ -3,7 +3,7 @@
 using System.IO;
 using System.Xml.Serialization;
 
-namespace Wangkanai.Extensions;
+namespace Wangkanai.System.Extensions;
 
 public static class SerializationExtensions
 {

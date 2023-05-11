@@ -3,7 +3,7 @@
 using System.Globalization;
 using System.Text;
 
-namespace Wangkanai.Extensions.CommandLine;
+namespace Wangkanai.System.Extensions.CommandLine;
 
 public class CommandLineApplication
 {

@@ -2,7 +2,7 @@
 
 using System.Reflection;
 
-namespace Wangkanai.Extensions.CommandLine;
+namespace Wangkanai.System.Extensions.CommandLine;
 
 internal static class ApplicationExtensions
 {

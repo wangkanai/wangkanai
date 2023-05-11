@@ -3,7 +3,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
 
-namespace Wangkanai.Extensions.Internal;
+namespace Wangkanai.System.Extensions.Internal;
 
 internal readonly struct CoercedAwaitableInfo
 {

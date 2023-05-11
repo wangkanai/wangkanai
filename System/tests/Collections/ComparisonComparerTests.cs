@@ -4,7 +4,7 @@ using Moq;
 
 using Xunit;
 
-namespace Wangkanai.Collections;
+namespace Wangkanai.System.Collections;
 
 public class ComparisonComparerTests
 {

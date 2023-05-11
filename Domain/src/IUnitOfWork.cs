@@ -2,7 +2,7 @@
 
 using System.Threading.Tasks;
 
-namespace Wangkanai.Domain;
+namespace Wangkanai.System.Domain;
 
 public interface IUnitOfWork
 {

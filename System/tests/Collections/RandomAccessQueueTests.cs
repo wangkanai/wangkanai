@@ -2,9 +2,11 @@
 
 using System.Collections;
 
+using Wangkanai.System.Collections;
+
 using Xunit;
 
-using StringQueue = Wangkanai.Collections.RandomAccessQueue<string>;
+using StringQueue = Wangkanai.System.Collections.RandomAccessQueue<string>;
 
 namespace Wangkanai.Collections;
 

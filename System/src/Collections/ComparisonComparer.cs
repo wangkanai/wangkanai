@@ -1,6 +1,6 @@
 ﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-namespace Wangkanai.Collections;
+namespace Wangkanai.System.Collections;
 
 /// <summary>
 /// Delegate comparison implementing generic of <see cref="IComparer<T>"/> and method extensions to perform reverse operation.

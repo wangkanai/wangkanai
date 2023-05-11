@@ -4,8 +4,8 @@ using System.Diagnostics.CodeAnalysis;
 
 using Microsoft.AspNetCore.Http.Extensions;
 
-using Wangkanai.Cryptography;
-using Wangkanai.Extensions;
+using Wangkanai.System.Cryptography;
+using Wangkanai.System.Extensions;
 using Wangkanai.Webmaster.Models;
 
 namespace Wangkanai.Helpers;

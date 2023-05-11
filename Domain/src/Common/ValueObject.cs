@@ -7,9 +7,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-using Wangkanai.Domain.Caching;
+using Wangkanai.System.Domain.Caching;
 
-namespace Wangkanai.Domain.Common;
+namespace Wangkanai.System.Domain.Common;
 
 public abstract class ValueObject : IValueObject, ICacheKey, ICloneable
 {

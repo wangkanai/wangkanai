@@ -2,7 +2,7 @@
 
 using System;
 
-namespace Wangkanai.Domain;
+namespace Wangkanai.System.Domain;
 
 public abstract class AuditableEntity<T> : Entity<T>, IAuditable
 {

@@ -2,7 +2,7 @@
 
 using System.Collections;
 
-namespace Wangkanai.Extensions.CommandLine;
+namespace Wangkanai.System.Extensions.CommandLine;
 
 internal sealed class CommandArgumentEnumerator : IEnumerator<CommandArgument>
 {

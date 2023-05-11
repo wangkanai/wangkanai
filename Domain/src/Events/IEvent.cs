@@ -2,9 +2,9 @@
 
 using System;
 
-using Wangkanai.Domain.Messages;
+using Wangkanai.System.Domain.Messages;
 
-namespace Wangkanai.Domain.Events;
+namespace Wangkanai.System.Domain.Events;
 
 public interface IEvent : IEntity, IMessage
 {

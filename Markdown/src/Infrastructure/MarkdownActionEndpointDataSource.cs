@@ -20,7 +20,7 @@ internal sealed class MarkdownActionEndpointDataSource : ActionEndpointDataSourc
 	private readonly ActionEndpointFactory          _endpointFactory;
 
 	public int  DataSourceId         { get; }
-	public bool CreateInnerEndpoints { get; set; }
+	public bool CreateInertEndpoints { get; set; }
 
 	public MarkdownActionEndpointConventionBuilder DefaultBuilder { get; }
 
@@ -65,7 +65,7 @@ internal sealed class MarkdownActionEndpointDataSource : ActionEndpointDataSourc
 					groupConventions,
 					finallyConventions,
 					groupFinallyConventions,
-					CreateInnerEndpoints,
+					CreateInertEndpoints,
 					groupPrefix);
 			}
 

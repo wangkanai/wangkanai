@@ -2,7 +2,7 @@
 
 using System.Threading.Tasks;
 
-namespace Wangkanai.Domain.Messages;
+namespace Wangkanai.System.Domain.Messages;
 
 public interface IHandler<in T> where T : IMessage
 {

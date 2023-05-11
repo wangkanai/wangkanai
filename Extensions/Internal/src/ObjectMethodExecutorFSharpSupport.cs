@@ -4,7 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
 using System.Reflection;
 
-namespace Wangkanai.Extensions.Internal;
+namespace Wangkanai.System.Extensions.Internal;
 
 /// <summary>
 /// Helper for detecting whether a given type is FSharpAsync`1, and if so, supplying

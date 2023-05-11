@@ -1,6 +1,6 @@
 ﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-namespace Wangkanai.Collections;
+namespace Wangkanai.System.Collections;
 
 /// <summary>
 /// Represents a range of values, an <see cref="IComparer{T}"/> is used to compare specific values with a start and end point.

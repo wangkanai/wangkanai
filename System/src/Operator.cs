@@ -3,7 +3,7 @@
 using System.Linq.Expressions;
 
 using Wangkanai.Linq;
-using Wangkanai.Operators;
+using Wangkanai.System.Operators;
 
 namespace Wangkanai;
 

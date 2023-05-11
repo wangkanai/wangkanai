@@ -3,9 +3,9 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-using Wangkanai.Domain.Messages;
+using Wangkanai.System.Domain.Messages;
 
-namespace Wangkanai.Domain.Events;
+namespace Wangkanai.System.Domain.Events;
 
 public interface ICancellableEventHandler<in T>
     where T : IMessage

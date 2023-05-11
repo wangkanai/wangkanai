@@ -2,7 +2,7 @@
 
 using System.Runtime.CompilerServices;
 
-namespace Wangkanai.Extensions.Internal;
+namespace Wangkanai.System.Extensions.Internal;
 
 /// <summary>
 /// Provides a common awaitable structure that <see cref="ObjectMethodExecutor.ExecuteAsync"/> can

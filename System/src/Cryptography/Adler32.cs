@@ -2,7 +2,7 @@
 
 using System.IO;
 
-namespace Wangkanai.Cryptography;
+namespace Wangkanai.System.Cryptography;
 
 public class Adler32
 {

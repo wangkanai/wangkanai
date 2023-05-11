@@ -2,7 +2,7 @@
 
 using System.Collections.Concurrent;
 
-namespace Wangkanai.Extensions;
+namespace Wangkanai.System.Extensions;
 
 #nullable disable
 

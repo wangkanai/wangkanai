@@ -3,7 +3,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Wangkanai.Domain.Events;
+namespace Wangkanai.System.Domain.Events;
 
 public interface IEventPublisher
 {

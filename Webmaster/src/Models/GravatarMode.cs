@@ -1,5 +1,7 @@
 // Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
+using System.ComponentModel;
+
 namespace Wangkanai.Webmaster.Models;
 
 public enum GravatarMode
@@ -25,8 +27,8 @@ public enum GravatarMode
     [Display(Name = "Blank")]
     Blank,
 
-    [System.ComponentModel.Browsable(false)]
-    [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+    [Browsable(false)]
+    [EditorBrowsable(EditorBrowsableState.Never)]
     Default
 }
 

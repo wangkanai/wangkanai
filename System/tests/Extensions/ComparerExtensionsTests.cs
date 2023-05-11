@@ -2,11 +2,11 @@
 
 using System.Runtime.InteropServices;
 
-using Wangkanai.Collections;
+using Wangkanai.System.Collections;
 
 using Xunit;
 
-namespace Wangkanai.Extensions;
+namespace Wangkanai.System.Extensions;
 
 public class ComparerExtensionsTests
 {

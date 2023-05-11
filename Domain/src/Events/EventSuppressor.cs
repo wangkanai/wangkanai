@@ -4,7 +4,7 @@ using System;
 using System.Net.NetworkInformation;
 using System.Threading;
 
-namespace Wangkanai.Domain.Events;
+namespace Wangkanai.System.Domain.Events;
 
 public static class EventSuppressor
 {

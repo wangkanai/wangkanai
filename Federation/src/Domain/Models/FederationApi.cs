@@ -2,7 +2,7 @@
 
 using System.Diagnostics;
 
-using Wangkanai.Extensions;
+using Wangkanai.System.Extensions;
 
 namespace Wangkanai.Federation.Models;
 

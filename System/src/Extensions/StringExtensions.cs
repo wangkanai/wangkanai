@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Wangkanai.Extensions;
+namespace Wangkanai.System.Extensions;
 
 public static class StringExtensions
 {

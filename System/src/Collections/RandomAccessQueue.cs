@@ -1,6 +1,6 @@
 ﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-namespace Wangkanai.Collections;
+namespace Wangkanai.System.Collections;
 
 public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneable
 {
@@ -52,7 +52,7 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 	/// </summary>
 	/// <param name="capacity">The initial capacity of the queue</param>
 	public RandomAccessQueue(int capacity)
-		=> _buffer = new T[System.Math.Max(capacity, DefaultCapacity)];
+		=> _buffer = new T[global::System.Math.Max(capacity, DefaultCapacity)];
 
 	/// <summary>
 	/// Private constructor for cloning
@@ -213,7 +213,7 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 	/// </summary>
 	public void TrimToSize()
 	{
-		var newCapacity = System.Math.Max(Count, DefaultCapacity);
+		var newCapacity = global::System.Math.Max(Count, DefaultCapacity);
 		if (Capacity == newCapacity)
 			return;
 

@@ -3,9 +3,9 @@
 using System.Linq.Expressions;
 using System.Runtime.ExceptionServices;
 
-using Wangkanai.Domain;
+using Wangkanai.System.Domain;
 
-namespace Wangkanai.Extensions;
+namespace Wangkanai.System.Extensions;
 
 public static class IQueryableExtensions
 {

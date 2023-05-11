@@ -7,7 +7,7 @@ using System.Reflection;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Abstractions;
 
-using Wangkanai.Extensions.Internal;
+using Wangkanai.System.Extensions.Internal;
 
 namespace Wangkanai.Routing.Controllers;
 

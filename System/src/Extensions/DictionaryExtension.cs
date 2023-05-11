@@ -2,7 +2,7 @@
 
 using System.Net.Http.Headers;
 
-namespace Wangkanai.Extensions;
+namespace Wangkanai.System.Extensions;
 
 public static class DictionaryExtension
 {
