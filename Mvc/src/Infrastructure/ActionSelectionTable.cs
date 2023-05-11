@@ -2,8 +2,13 @@
 
 #nullable enable
 
+using System.Diagnostics;
+using System.Globalization;
+
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Abstractions;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.AspNetCore.Routing;
 
 using Wangkanai.System.Collections;
 
@@ -41,6 +46,16 @@ internal sealed class ActionSelectionTable<TItem>
 			});
 	}
 
+	public static ActionSelectionTable<Endpoint> Create(IEnumerable<Endpoint> endpoints)
+		=> CreateCore(version: 0,
+		              items: endpoints.Where(e => e.GetType() == typeof(Endpoint)),
+		              getRouteKeys: e => e.Metadata.GetMetadata<ActionDescriptor>()?.RouteValues?.Keys,
+		              getRouteValue: (e, key) => {
+			              string? value = null;
+			              e.Metadata.GetMetadata<ActionDescriptor>()?.RouteValues?.TryGetValue(key, out value);
+			              return Convert.ToString(value, CultureInfo.InvariantCulture) ?? string.Empty;
+		              });
+
 	private static ActionSelectionTable<T> CreateCore<T>(
 		int                           version,
 		IEnumerable<T>                items,
@@ -51,7 +66,6 @@ internal sealed class ActionSelectionTable<TItem>
 		var ordinalIgnoreCaseEntries = new Dictionary<string[], List<T>>(StringArrayComparer.OrdinalIgnoreCase);
 		var routeKeys                = new SortedSet<string>(StringComparer.OrdinalIgnoreCase);
 
-		// Working conditional
 		foreach (var item in items)
 		{
 			var keys = getRouteKeys(item);
@@ -84,5 +98,26 @@ internal sealed class ActionSelectionTable<TItem>
 		}
 
 		return new ActionSelectionTable<T>(version, routeKeys.ToArray(), ordinalEntries, ordinalIgnoreCaseEntries);
+	}
+
+	public IReadOnlyList<TItem> Select(RouteValueDictionary values)
+	{
+		var routeKeys   = RouteKeys;
+		var routeValues = new string[routeKeys.Length];
+		for (var i = 0; i < routeKeys.Length; i++)
+		{
+			values.TryGetValue(routeKeys[i], out var value);
+			routeValues[i] = value as string ?? Convert.ToString(value, CultureInfo.InvariantCulture) ?? string.Empty;
+		}
+
+		if (OrdinalEntries.TryGetValue(routeValues, out var matches) ||
+		    OrdinalIgnoreCaseEntries.TryGetValue(routeValues, out matches))
+		{
+			Debug.Assert(matches       != null);
+			Debug.Assert(matches.Count >= 0);
+			return matches;
+		}
+
+		return Array.Empty<TItem>();
 	}
 }

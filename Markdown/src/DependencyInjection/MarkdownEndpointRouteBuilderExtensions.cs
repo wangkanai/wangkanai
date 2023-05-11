@@ -30,7 +30,7 @@ public static class MarkdownEndpointRouteBuilderExtensions
 		page.ThrowIfNull();
 
 		MarkdownConventionCollection.EnsureValidPageName(page, nameof(page));
-		
+
 		EnsureMarkdownPagesServices(endpoints);
 
 		var pageDataSource = GetOrCreateDataSource(endpoints);
@@ -39,12 +39,19 @@ public static class MarkdownEndpointRouteBuilderExtensions
 
 		var builder = endpoints.MapFallback(context => Task.CompletedTask);
 		builder.Add(b => {
-			b.Metadata.Add(CreateDynamicPageMetadata(page));
+			b.Metadata.Add(CreateDynamicMarkdownMetadata(page, null));
 			b.Metadata.Add(new MarkdownEndpointDataSourceIdMetadata(pageDataSource.DataSourceId));
 		});
 
 		return builder;
 	}
+
+	private static DynamicMarkdownMetadata CreateDynamicMarkdownMetadata(string page, string? area)
+		=> new DynamicMarkdownMetadata(new RouteValueDictionary()
+		{
+			{ "page", page },
+			{ "area", area }
+		});
 
 	private static void EnsureMarkdownPagesServices(IEndpointRouteBuilder endpoints)
 	{
@@ -66,7 +73,7 @@ public static class MarkdownEndpointRouteBuilderExtensions
 
 		return dataSource;
 	}
-	
+
 	private static void RegisterInCache(IServiceProvider serviceProvider, MarkdownActionEndpointDataSource dataSource)
 	{
 		var cache = serviceProvider.GetRequiredService<DynamicMarkdownEndpointDataSelectorCache>();

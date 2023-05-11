@@ -2,6 +2,6 @@
 
 using System.Runtime.CompilerServices;
 
-[assembly: InternalsVisibleTo("Wangkanai.Blazor.Web")]
+[assembly: InternalsVisibleTo("Wangkanai.Blazor.Components")]
 
-[assembly: InternalsVisibleTo("Wangkanai.Blazor.Web.Test")]
+[assembly: InternalsVisibleTo("Wangkanai.Blazor.Test")]
