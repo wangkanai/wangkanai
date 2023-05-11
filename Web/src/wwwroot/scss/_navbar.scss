@@ -1,6 +1,8 @@
 .navbar {
     --bs-navbar-color:       var(--bs-emphasis-color);
     --bs-navbar-brand-color: var(--bs-emphasis-color);
+    --bs-navbar-padding-x:   #{$navbar-padding-x};
+    --bs-navbar-padding-y:   #{$navbar-padding-y};
 
     --bs-area-title-color:   #{$area-title-color};
     --bs-area-font-size:     #{$area-title-font-size};
