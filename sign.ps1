@@ -1,3 +1,4 @@
+
 $dirs = [ordered]@{
     1  = "System";
     2  = "Validation";
@@ -28,7 +29,7 @@ Set-Location -Path D:\Sources\Wangkanai\
 
 for ($i = 0; $i -lt $dirs.count; $i++) {
     $error.clear()
-    pushd $dirs[$i];
+    Push-Location $dirs[$i];
     try {
         Write-Host $dirs[$i] -ForegroundColor Red;
         [Xml]$xml = Get-Content -Path .\Directory.Build.props;
@@ -38,8 +39,6 @@ for ($i = 0; $i -lt $dirs.count; $i++) {
         }
         $namespace = $xml.Project.PropertyGroup.PackageNamespace;
         $primary = $xml.Project.PropertyGroup.PackagePrimary;
-
-        Write-Host $version -ForegroundColor yellow;
         $name = "Wangkanai." + $dirs[$i];
         if (-not ([string]::IsNullOrEmpty($primary[0]))) {
             if ($namespace -like "true") {
@@ -50,22 +49,22 @@ for ($i = 0; $i -lt $dirs.count; $i++) {
             }
         }
         $name = $name.Trim();
-        Write-Host $name -ForegroundColor green;
         $package = Find-Package -Name $name -ProviderName NuGet -AllVersions
         $last = $package | Select-Object -First 1
         $latest = $last.Version;
-        Write-Host $latest -ForegroundColor Magenta;
+        
         if ($latest -ne $version) {
-            Write-Host "Update" -ForegroundColor Cyan;
+            Write-Host $latest " < " $version " Update" -ForegroundColor Green;
             .\sign.ps1
         }
         else {
-            Write-Host "Skip" -ForegroundColor DarkGray;
+            Write-Host $latest " = " $version " Skip" -ForegroundColor DarkGray;
         }
     }
     catch {
-        Write-Host "New" -ForegroundColor Blue;
+        Write-Host "New " $latest -ForegroundColor Blue;
         .\sign.ps1
     }
-    popd;
+
+    Pop-Location;
 }
