@@ -7,6 +7,8 @@ builder.Host.UseSerilog();
 
 // Add services to the container.
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
+builder.Services.AddWebmaster();
+builder.Services.AddAnalytics();
 
 builder.Services.AddMarkdownPages();
 builder.Services.AddRazorPages();
@@ -33,7 +35,10 @@ app.UseRouting();
 app.UseAuthorization();
 app.UseSerilogRequestLogging();
 
-// app.MapMarkdownPages();
+app.UseWebmaster();
+app.UseAnalytics();
+
+app.MapMarkdownPages();
 app.MapRazorPages();
 
 app.Run();

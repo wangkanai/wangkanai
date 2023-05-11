@@ -33,7 +33,9 @@
     </ItemGroup>
     
     <ItemGroup>
+      <ProjectReference Include="..\..\Analytics\src\Wangkanai.Analytics.csproj" />
       <ProjectReference Include="..\..\Markdown\src\Wangkanai.Markdown.csproj" />
+      <ProjectReference Include="..\..\Webmaster\src\Wangkanai.Webmaster.csproj" />
     </ItemGroup>
     
     <Target Name="NpmInstall" Inputs="package.json" Outputs="node_modules/.install-stamp">
