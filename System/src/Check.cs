@@ -6,7 +6,7 @@ using Wangkanai.Exceptions;
 using Wangkanai.Extensions;
 using Wangkanai.Resources;
 
-// #nullable enable
+#nullable enable
 
 namespace Wangkanai;
 
@@ -179,7 +179,7 @@ public static class Check
 	{
 		if (value.IsNullOrWhiteSpace())
 			throw CreateExceptionInstance<T>(nameof(value));
-		return value;
+		return value!;
 	}
 
 	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
@@ -188,7 +188,7 @@ public static class Check
 	{
 		if (value.IsNullOrWhiteSpace())
 			throw CreateExceptionInstance<T>(message);
-		return value;
+		return value!;
 	}
 
 	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]

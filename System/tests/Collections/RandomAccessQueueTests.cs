@@ -31,7 +31,7 @@ public class RandomAccessQueueTests
 	{
 		var queue = new StringQueue();
 
-		Assert.Equal(0, queue.Count);
+		Assert.Empty(queue);
 		queue.Enqueue("1");
 		queue.Enqueue("2");
 		Assert.Equal(2, queue.Count);
@@ -39,7 +39,7 @@ public class RandomAccessQueueTests
 		Assert.Equal("1", queue.Dequeue());
 		Assert.Equal("2", queue.Dequeue());
 
-		Assert.Equal(0, queue.Count);
+		Assert.Empty(queue);
 	}
 
 	[Fact]
@@ -157,7 +157,7 @@ public class RandomAccessQueueTests
 	}
 
 	[Fact]
-	public void ICloneableClone()
+	public void CloneableClone()
 	{
 		var queue = new RandomAccessQueue<object>();
 
@@ -189,7 +189,7 @@ public class RandomAccessQueueTests
 		queue.Enqueue("2");
 		queue.Clear();
 
-		Assert.Equal(0, queue.Count);
+		Assert.Empty(queue);
 	}
 
 	[Fact]
@@ -344,9 +344,9 @@ public class RandomAccessQueueTests
 	{
 		var queue = new StringQueue();
 		queue.Add("1");
-		Assert.False(queue.Contains(null));
+		Assert.DoesNotContain(null, queue);
 		queue.Add(null);
-		Assert.True(queue.Contains(null));
+		Assert.Contains(null, queue);
 	}
 
 	[Fact]
@@ -358,8 +358,8 @@ public class RandomAccessQueueTests
 		queue.Enqueue("2");
 
 		Assert.True(queue.Remove("1"));
-		Assert.False(queue.Contains("1"));
-		Assert.Equal(1, queue.Count);
+		Assert.DoesNotContain("1", queue);
+		Assert.Single(queue);
 	}
 
 	[Fact]
@@ -370,7 +370,7 @@ public class RandomAccessQueueTests
 		queue.Enqueue("1");
 
 		Assert.False(queue.Remove("2"));
-		Assert.Equal(1, queue.Count);
+		Assert.Single(queue);
 	}
 
 	[Fact]
@@ -381,7 +381,7 @@ public class RandomAccessQueueTests
 		queue.Enqueue("1");
 
 		Assert.False(queue.Remove(null));
-		Assert.Equal(1, queue.Count);
+		Assert.Single(queue);
 	}
 
 	[Fact]
@@ -480,7 +480,7 @@ public class RandomAccessQueueTests
 
 		queue.Enqueue("1");
 
-		Assert.True(queue.Contains("1"));
+		Assert.Contains("1", queue);
 	}
 
 	[Fact]
@@ -490,7 +490,7 @@ public class RandomAccessQueueTests
 
 		queue.Enqueue("1");
 
-		Assert.False(queue.Contains("2"));
+		Assert.DoesNotContain("2", queue);
 	}
 
 	[Fact]
@@ -511,6 +511,8 @@ public class RandomAccessQueueTests
 		Assert.True(enumerator.MoveNext());
 		Assert.Equal("3", enumerator.Current);
 		Assert.False(enumerator.MoveNext());
+		
+		enumerator.Dispose();
 	}
 
 	[Fact]
@@ -527,6 +529,8 @@ public class RandomAccessQueueTests
 		queue.Enqueue("3");
 
 		Assert.Throws<InvalidOperationException>(() => enumerator.MoveNext());
+		
+		enumerator.Dispose();
 	}
 
 	[Fact]
@@ -545,6 +549,8 @@ public class RandomAccessQueueTests
 		queue.Dequeue();
 
 		Assert.Throws<InvalidOperationException>(() => enumerator.MoveNext());
+		
+		enumerator.Dispose();
 	}
 
 	[Fact]
@@ -564,7 +570,7 @@ public class RandomAccessQueueTests
 	{
 		var queue = new StringQueue();
 
-		Assert.Equal(0, queue.Count);
+		Assert.Empty(queue);
 		queue.Add("1");
 		queue.Add("2");
 		Assert.Equal(2, queue.Count);
