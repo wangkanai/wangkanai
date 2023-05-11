@@ -4,7 +4,7 @@ using System.Threading;
 
 namespace Wangkanai.Markdown.Infrastructure;
 
-internal sealed class PageActionEndpointDataSourceIdProvider
+internal sealed class MarkdownActionEndpointDataSourceIdProvider
 {
 	private int _nextId = 1;
 

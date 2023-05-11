@@ -9,12 +9,12 @@ namespace Wangkanai.Markdown.Infrastructure;
 
 internal sealed class MarkdownActionEndpointDataSourceFactory
 {
-	private readonly PageActionEndpointDataSourceIdProvider _dataSourceIdProvider;
+	private readonly MarkdownActionEndpointDataSourceIdProvider _dataSourceIdProvider;
 	private readonly IActionDescriptorCollectionProvider    _actions;
 	private readonly ActionEndpointFactory                  _endpointFactory;
 
 	public MarkdownActionEndpointDataSourceFactory(
-		PageActionEndpointDataSourceIdProvider dataSourceIdProvider,
+		MarkdownActionEndpointDataSourceIdProvider dataSourceIdProvider,
 		IActionDescriptorCollectionProvider    actions,
 		ActionEndpointFactory                  endpointFactory)
 	{

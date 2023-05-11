@@ -192,6 +192,15 @@ public static class Check
 	}
 
 	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+	public static string ThrowIfNullOrWhitespace<T>(this string? value, string message, string paramName)
+		where T : ArgumentException
+	{
+		if (value.IsNullOrWhiteSpace())
+			throw CreateExceptionInstance<T>(message, paramName);
+		return value!;
+	}
+
+	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
 	public static object ThrowIfNull<T>(this object? value)
 		where T : Exception
 		=> value ?? throw CreateExceptionInstance<T>(nameof(value));
@@ -212,6 +221,10 @@ public static class Check
 	private static T CreateExceptionInstance<T>(string name)
 		where T : Exception
 		=> (Activator.CreateInstance(typeof(T), name) as T)!;
+
+	private static T CreateExceptionInstance<T>(string name, string paramName)
+		where T : ArgumentException
+		=> (Activator.CreateInstance(typeof(T), name, paramName) as T)!;
 
 	#endregion
 
