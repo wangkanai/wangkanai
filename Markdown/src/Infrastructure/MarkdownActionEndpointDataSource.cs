@@ -16,7 +16,7 @@ namespace Wangkanai.Markdown.Infrastructure;
 
 internal sealed class MarkdownActionEndpointDataSource : ActionEndpointDataSourceBase
 {
-	private readonly PageActionEndpointDataSourceIdProvider _dataSourceIdProvider;
+	private readonly MarkdownActionEndpointDataSourceIdProvider _dataSourceIdProvider;
 	private readonly ActionEndpointFactory          _endpointFactory;
 
 	public int  DataSourceId         { get; }
@@ -25,7 +25,7 @@ internal sealed class MarkdownActionEndpointDataSource : ActionEndpointDataSourc
 	public MarkdownActionEndpointConventionBuilder DefaultBuilder { get; }
 
 	public MarkdownActionEndpointDataSource(
-		PageActionEndpointDataSourceIdProvider dataSourceIdProvider,
+		MarkdownActionEndpointDataSourceIdProvider dataSourceIdProvider,
 		IActionDescriptorCollectionProvider    actions,
 		ActionEndpointFactory          endpointFactory,
 		OrderedEndpointsSequenceProvider       orderedEndpoints)
