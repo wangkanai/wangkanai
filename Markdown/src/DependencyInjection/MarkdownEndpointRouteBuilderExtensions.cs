@@ -7,7 +7,7 @@ using Wangkanai.Markdown.Builder;
 using Wangkanai.Markdown.Infrastructure;
 using Wangkanai.Mvc.Infrastructure;
 
-namespace Wangkanai.Markdown.DependencyInjection;
+namespace Microsoft.Extensions.DependencyInjection;
 
 public static class MarkdownEndpointRouteBuilderExtensions
 {
