@@ -18,7 +18,7 @@ public static class MarkdownCollectionExtensions
                        .AddMarkerService();
     }
 
-    public static IMarkdownBuilder AddMarkdownPages(this IServiceCollection services, Action<MarkdownOptions> setAction)
+    public static IMarkdownBuilder AddMarkdownPages(this IServiceCollection services, Action<MarkdownPagesOptions> setAction)
     {
         return services.Configure(setAction)
                        .AddMarkdownPages();

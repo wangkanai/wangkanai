@@ -18,7 +18,7 @@ public static class MarkdownEndpointRouteBuilderExtensions
 {
 	public static MarkdownActionEndpointConventionBuilder MapMarkdownPages(this IEndpointRouteBuilder endpoints)
 	{
-		endpoints.ThrowIfNull(nameof(endpoints));
+		endpoints.ThrowIfNull();
 
 		EnsureMarkdownPagesServices(endpoints);
 
@@ -135,7 +135,7 @@ public static class MarkdownEndpointRouteBuilderExtensions
 	{
 		endpoints.ThrowIfNull();
 		pattern.ThrowIfNull();
-		
+
 		EnsureMarkdownPagesServices(endpoints);
 
 		var pageDataSource = GetOrCreateDataSource(endpoints);
@@ -145,17 +145,18 @@ public static class MarkdownEndpointRouteBuilderExtensions
 	}
 
 	private static DynamicMarkdownMetadata CreateDynamicMarkdownMetadata(string page, string? area)
-			=> new DynamicMarkdownMetadata(new RouteValueDictionary()
-			{
-				{ "page", page },
-				{ "area", area }
-			});
+		=> new DynamicMarkdownMetadata(new RouteValueDictionary()
+		{
+			{ "page", page },
+			{ "area", area }
+		});
 
 	private static void EnsureMarkdownPagesServices(IEndpointRouteBuilder endpoints)
 	{
 		var marker = endpoints.ServiceProvider.GetService<MarkdownActionEndpointDataSourceFactory>();
 		marker.ThrowIfNull<InvalidOperationException>(
-			$"Unable to find the required services. Please add all the required services by calling '{nameof(IServiceCollection)}.AddMarkdownPages' inside the call to 'ConfigureService(...)' in the application startup code.");
+			string.Format(Wangkanai.Mvc.Resources.UnableToFindServices, nameof(IServiceCollection), "AddMarkdownPages", "ConfigureServices(...)")
+		);
 	}
 
 	private static MarkdownActionEndpointDataSource GetOrCreateDataSource(IEndpointRouteBuilder endpoints)
@@ -177,6 +178,4 @@ public static class MarkdownEndpointRouteBuilderExtensions
 		var cache = serviceProvider.GetRequiredService<DynamicMarkdownEndpointDataSelectorCache>();
 		cache.AddDataSource(dataSource);
 	}
-
-
 }
