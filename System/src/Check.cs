@@ -167,9 +167,50 @@ public static class Check
 		where T : Exception
 		=> value ?? throw CreateExceptionInstance<T>(message);
 
+	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+	public static string ThrowIfNullOrEmpty(this string? value)
+		=> value.ThrowIfNullOrEmpty<ArgumentNullException>();
+
+	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+	public static string ThrowIfNullOrEmpty(this string? value, string message)
+		=> value.ThrowIfNullOrEmpty<ArgumentNullException>(message);
+	
+	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+	public static string ThrowIfNullOrEmpty(this string? value, string message, string paramName)
+		=> value.ThrowIfNullOrEmpty<ArgumentException>(message, paramName);
+
+	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+	public static string ThrowIfNullOrEmpty<T>(this string? value)
+		where T : Exception
+	{
+		if (value.IsNullOrEmpty())
+			throw CreateExceptionInstance<T>(nameof(value));
+		return value!;
+	}
+
+	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+	public static string ThrowIfNullOrEmpty<T>(this string? value, string message)
+		where T : Exception
+	{
+		if (value.IsNullOrEmpty())
+			throw CreateExceptionInstance<T>(message);
+		return value!;
+	}
+
+	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+	public static string ThrowIfNullOrEmpty<T>(this string? value, string message, string paramName)
+		where T : ArgumentException
+	{
+		if (value.IsNullOrEmpty())
+			throw CreateExceptionInstance<T>(message, paramName);
+		return value!;
+	}
+
+	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
 	public static string ThrowIfNullOrWhitespace(this string? value)
 		=> ThrowIfNullOrWhitespace<ArgumentNullException>(value);
 
+	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
 	public static string ThrowIfNullOrWhitespace(this string? value, string message)
 		=> ThrowIfNullOrWhitespace<ArgumentNullException>(value, message);
 

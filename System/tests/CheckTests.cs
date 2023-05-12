@@ -145,6 +145,53 @@ public class CheckTests
 
 	#endregion
 
+	#region ThrowIfNullOrEmpty
+
+	[Fact]
+	public void StringIsNullOrEmptyThrowNullException()
+	{
+		string? _null  = null;
+		string? _empty = string.Empty;
+
+		Assert.Throws<ArgumentNullException>(() => _null.ThrowIfNullOrEmpty());
+		Assert.Throws<ArgumentNullException>(() => _null.ThrowIfNullOrEmpty<ArgumentNullException>());
+		Assert.Throws<CustomNullException>(() => _null.ThrowIfNullOrEmpty<CustomNullException>());
+
+		Assert.Throws<ArgumentNullException>(() => _empty.ThrowIfNullOrEmpty());
+		Assert.Throws<ArgumentNullException>(() => _empty.ThrowIfNullOrEmpty<ArgumentNullException>());
+		Assert.Throws<CustomNullException>(() => _empty.ThrowIfNullOrEmpty<CustomNullException>());
+	}
+
+	[Fact]
+	public void StringIsNullOrEmptyThrowArgumentException()
+	{
+		string? _null  = null;
+		string? _empty = string.Empty;
+
+		Assert.Throws<ArgumentException>(() => _null.ThrowIfNullOrEmpty<ArgumentException>());
+		Assert.Throws<ArgumentException>(() => _null.ThrowIfNullOrEmpty<ArgumentException>("Null Exception"));
+		Assert.Throws<ArgumentException>(() => _null.ThrowIfNullOrEmpty<ArgumentException>("Null Exception", nameof(_null)));
+		
+		Assert.Throws<ArgumentException>(() => _empty.ThrowIfNullOrEmpty<ArgumentException>());
+		Assert.Throws<ArgumentException>(() => _empty.ThrowIfNullOrEmpty<ArgumentException>("Null Exception"));
+		Assert.Throws<ArgumentException>(() => _empty.ThrowIfNullOrEmpty<ArgumentException>("Null Exception", nameof(_null)));
+	}
+
+	[Fact]
+	public void StringIsNotNullOrEmptyReturnValue()
+	{
+		string abc = "abc";
+
+		Assert.Equal(abc, abc.ThrowIfNullOrEmpty());
+		Assert.Equal(abc, abc.ThrowIfNullOrEmpty<ArgumentNullException>());
+		
+		Assert.Equal(abc, abc.ThrowIfNullOrEmpty<ArgumentException>());
+		Assert.Equal(abc, abc.ThrowIfNullOrEmpty<ArgumentException>("Null Exception"));
+		Assert.Equal(abc, abc.ThrowIfNullOrEmpty<ArgumentException>("Null Exception", nameof(abc)));
+	}
+
+	#endregion
+
 	#region TrueIfNull
 
 	[Fact]
@@ -197,6 +244,8 @@ public class CheckTests
 
 	#endregion
 
+	#region GenericNull
+
 	[Fact]
 	public void StringThrowIfNull()
 	{
@@ -243,7 +292,7 @@ public class CheckTests
 		Assert.Equal(10, 10.ThrowIfOutOfRange(5, 11));
 		Assert.Equal(10, 10.ThrowIfOutOfRange(0, 15));
 	}
-	
+
 	[Fact]
 	public void IndexIsOutOfRange()
 	{
@@ -260,7 +309,7 @@ public class CheckTests
 		Assert.Throws<ArgumentOutOfRangeException>(() => 10.ThrowIfOutOfRange(0, -2));
 		Assert.Throws<ArgumentOutOfRangeException>(() => 10.ThrowIfOutOfRange(-1, -2));
 	}
-	
+
 #pragma warning restore CS0612
 	[Fact]
 	public void ListIsNullOrEmpty()
@@ -315,6 +364,8 @@ public class CheckTests
 		Assert.True(test.Length.NotEqual(4, new ArgumentTestException()));
 		Assert.Throws<ArgumentTestException>(() => test.Length.NotEqual(8, new ArgumentTestException()));
 	}
+
+	#endregion
 }
 
 public class ArgumentTestException : ArgumentException { }

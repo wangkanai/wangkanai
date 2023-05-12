@@ -24,7 +24,7 @@ public class MarkdownPagesOptions : IEnumerable<ICompatibilitySwitch>
 		get => _root;
 		set
 		{
-			value.ThrowIfNullOrWhitespace<ArgumentException>(Resources.ArgumentCannotBeNullOrEmpty, nameof(value));
+			value.ThrowIfNullOrEmpty<ArgumentException>(Resources.ArgumentCannotBeNullOrEmpty, nameof(value));
 			if (value[0] != '/')
 				throw new ArgumentException(Resources.PathMustBeRootRelativePath, nameof(value));
 			
