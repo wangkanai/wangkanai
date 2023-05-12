@@ -36,10 +36,12 @@ try
     if ($version.GetType().FullName -ne "System.String") {
         $version = $version[0];
     }
+
+    Write-Host "Wangkanai.System: " $version -ForegroundColor DarkGreen;
 }
 catch
 {
-
+    Write-Host "Wangkanai.System: version error" -ForegroundColor Red;
 }
 
 Pop-Location
