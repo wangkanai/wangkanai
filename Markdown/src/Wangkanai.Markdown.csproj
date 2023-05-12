@@ -12,11 +12,25 @@
     <ItemGroup>
         <ProjectReference Include="..\..\Detection\src\Wangkanai.Detection.csproj" />
         <ProjectReference Include="..\..\Mvc\src\Wangkanai.Mvc.csproj" />
-        <ProSjectReference Include="..\..\Detection\src\Wangkanai.Detection.csproj" />
     </ItemGroup>
 
     <ItemGroup>
       <Folder Include="Models\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Update="Resources.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Resources.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Resources.resx</DependentUpon>
+      </Compile>
     </ItemGroup>
 
 </Project>
