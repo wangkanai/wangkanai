@@ -3,13 +3,12 @@
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
-var environment = builder.Environment;
 
 builder.Host.UseSerilog();
 
 // Add services to the container.
-builder.Services.AddMarkdownPages();
 builder.Services.AddRazorPages();
+builder.Services.AddMarkdownPages();
 
 var app = builder.Build();
 
@@ -30,7 +29,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseAuthorization();
+// app.UseAuthorization();
 app.UseSerilogRequestLogging();
 
 app.MapMarkdownPages();

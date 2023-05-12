@@ -4,7 +4,6 @@
         <TargetFramework>net7.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <RootNamespace>Wangkanai.Routing</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -12,8 +11,27 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\Extensions\Internal\src\Wangkanai.Extensions.Internal.csproj" />
-      <ProjectReference Include="..\..\System\src\Wangkanai.System.csproj" />
+        <ProjectReference Include="..\..\Extensions\Internal\src\Wangkanai.Extensions.Internal.csproj" />
+        <ProjectReference Include="..\..\System\src\Wangkanai.System.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <InternalsVisibleTo Include="Wangkanai.Markdown" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Update="Resources.resx">
+            <Generator>ResXFileCodeGenerator</Generator>
+            <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Update="Resources.Designer.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>Resources.resx</DependentUpon>
+        </Compile>
     </ItemGroup>
 
 </Project>
