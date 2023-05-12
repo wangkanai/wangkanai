@@ -25,22 +25,23 @@ $dirs = [ordered]@{
     24 = "IdentityAdmin";
 }
 
-Set-Location -Path D:\Sources\Wangkanai\
+$root = "D:\Sources\Wangkanai\"
+Set-Location -Path $root
 
 Push-Location .\System
 
-try
-{
-    [Xml]$xml = Get-Content -Path .\Directory.Build.props;
-    $version = $xml.Project.PropertyGroup.VersionPrefix;
-    if ($version.GetType().FullName -ne "System.String") {
-        $version = $version[0];
-    }
+try {
+    $path = $root + "System" + "\Directory.Build.props";
+    [Xml]$xml = Get-Content -Path $path;
+    $node = $xml.SelectSingleNode("/Project/PropertyGroup/VersionPrefix");
+    $old = [System.Version]$node.InnerText;
+    $new = [System.Version]::new($old.Major, $old.Minor + 1, 0);
+    $node.InnerText = $new.ToString();
+    $xml.Save($path);
 
-    Write-Host "Wangkanai.System: " $version -ForegroundColor DarkGreen;
+    Write-Host "Wangkanai.System: " $old " > " $new -ForegroundColor DarkGreen;
 }
-catch
-{
+catch {
     Write-Host "Wangkanai.System: version error" -ForegroundColor Red;
 }
 
