@@ -27,6 +27,7 @@ public static class MarkdownCollectionExtensions
     // For internal unit tests
     internal static IMarkdownBuilder AddMarkdownBuilder(this IServiceCollection services)
     {
+	    services.ThrowIfNull();
         return new MarkdownBuilder(services);
     }
 }
