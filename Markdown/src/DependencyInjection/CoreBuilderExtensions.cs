@@ -2,6 +2,7 @@
 
 using System.Reflection.Metadata;
 
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
 
@@ -10,6 +11,8 @@ using Wangkanai.Markdown;
 using Wangkanai.Markdown.DependencyInjection.Options;
 using Wangkanai.Markdown.Infrastructure;
 using Wangkanai.Markdown.Services;
+using Wangkanai.Mvc.Infrastructure;
+using Wangkanai.Mvc.Routing;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
@@ -32,10 +35,23 @@ internal static class MarkdownCoreBuilderExtensions
 		if (MetadataUpdater.IsSupported)
 			builder.Services.TryAddSingleton<MarkdownHotReload>();
 
+		// Options
 		builder.Services.TryAddEnumerable(ServiceDescriptor.Transient<IConfigureOptions<MarkdownViewEngineOptions>, MarkdownViewEngineOptionsSetup>());
 		builder.Services.TryAddEnumerable(ServiceDescriptor.Transient<IConfigureOptions<MarkdownPagesOptions>, MarkdownPagesOptionsSetup>());
-		
+
+		// Routing
+		// builder.Services.TryAddEnumerable(ServiceDescriptor.Singleton<MatcherPolicy, DynamicMarkdownEndpointMatcherPolicy>());
+		// builder.Services.TryAddSingleton<DynamicMarkdownEndpointSelectorCache>();
+		builder.Services.TryAddSingleton<OrderedEndpointsSequenceProviderCache>();
+		builder.Services.TryAddSingleton<ActionEndpointFactory>();
+		builder.Services.TryAddSingleton<MarkdownActionEndpointDataSourceIdProvider>();
+
+		// Action description and invocation
 		builder.Services.TryAddSingleton<MarkdownActionEndpointDataSourceFactory>();
+
+		// Page and Page model create and activation
+
+		// Action executors
 
 		return builder;
 	}

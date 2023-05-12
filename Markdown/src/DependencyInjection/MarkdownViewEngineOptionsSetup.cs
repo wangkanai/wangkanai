@@ -1,7 +1,11 @@
 // Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
+using System.Diagnostics;
+
+using Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure;
 using Microsoft.Extensions.Options;
 
+using Wangkanai.Markdown;
 using Wangkanai.Markdown.DependencyInjection.Options;
 
 namespace Microsoft.Extensions.DependencyInjection;
@@ -17,7 +21,39 @@ internal sealed class MarkdownViewEngineOptionsSetup : IConfigureOptions<Markdow
 
 	public void Configure(MarkdownViewEngineOptions options)
 	{
-		throw new NotImplementedException();
+		options.ThrowIfNull();
+
+		var rootDirectory = _pagesOptions.RootDirectory;
+		Debug.Assert(!string.IsNullOrEmpty(rootDirectory));
+		var defaultPageSearchPath = CombinePath(rootDirectory, "{1}/{0}" + MarkdownViewEngine.ViewExtension);
+		options.PageViewLocationFormats.Add(defaultPageSearchPath);
+		
+		// /Markdowns/Shared/{0}.md
+		var pagesSharedDirectory = CombinePath(rootDirectory, "Shared/{0}" + MarkdownViewEngine.ViewExtension);
+		options.PageViewLocationFormats.Add(pagesSharedDirectory);
+		options.PageViewLocationFormats.Add("/Views/Shared/{0}" + MarkdownViewEngine.ViewExtension);
+		
+		var areaDirectory = CombinePath("/Areas/", "{2}");
+		// Areas/{2}/Markdowns/
+		var areaPagesDirectory = CombinePath(areaDirectory, "/Markdowns/");
+		
+		// Areas/{2}/Markdowns/{1}/{0}.md
+		// Areas/{2}/Markdowns/Shared/{0}.md
+		// Areas/{2}/Views/Shared/{0}.md
+		// Markdowns/Shared/{0}.md
+		// Views/Shared/{0}.md
+		var areaSearchPath = CombinePath(areaPagesDirectory, "{1}/{0}" + MarkdownViewEngine.ViewExtension);
+		options.AreaPageViewLocationFormats.Add(areaSearchPath);
+		
+		var areaPagesSharedSearchPath = CombinePath(areaPagesDirectory, "Shared/{0}" + MarkdownViewEngine.ViewExtension);
+		options.AreaPageViewLocationFormats.Add(areaPagesSharedSearchPath);
+		options.AreaPageViewLocationFormats.Add(pagesSharedDirectory);
+		options.AreaPageViewLocationFormats.Add("/Views/Shared/{0}" + MarkdownViewEngine.ViewExtension);
+		
+		options.ViewLocationFormats.Add(pagesSharedDirectory);
+		options.AreaViewLocationFormats.Add(pagesSharedDirectory);
+
+		options.ViewLocationExpanders.Add(new PageViewLocationExpander());
 	}
 
 	private static string CombinePath(string path1, string path2)
