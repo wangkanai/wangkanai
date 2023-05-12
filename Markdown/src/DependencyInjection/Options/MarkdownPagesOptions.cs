@@ -5,6 +5,8 @@ using System.Collections;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 
+using Wangkanai.Markdown.Models;
+
 namespace Wangkanai.Markdown.DependencyInjection.Options;
 
 public class MarkdownPagesOptions : IEnumerable<ICompatibilitySwitch>
@@ -13,7 +15,7 @@ public class MarkdownPagesOptions : IEnumerable<ICompatibilitySwitch>
 
 	private string _root = "/Pages";
 
-	public PageConventionCollection Conventions { get; internal set; } = new();
+	public MarkdownConventionCollection Conventions { get; internal set; } = new();
 
 	public IEnumerator<ICompatibilitySwitch> GetEnumerator() => _switches.GetEnumerator();
 
