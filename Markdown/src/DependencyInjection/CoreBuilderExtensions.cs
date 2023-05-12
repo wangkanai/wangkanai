@@ -1,10 +1,17 @@
 // Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
+using System.Reflection.Metadata;
+
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
 
 using Wangkanai.Detection;
+using Wangkanai.Markdown;
+using Wangkanai.Markdown.DependencyInjection.Options;
+using Wangkanai.Markdown.Infrastructure;
 using Wangkanai.Markdown.Services;
+using Wangkanai.Mvc.Infrastructure;
+using Wangkanai.Mvc.Routing;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
