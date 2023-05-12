@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
 
 using Wangkanai.Detection;
+using Wangkanai.Markdown.Infrastructure;
 using Wangkanai.Markdown.Services;
 
 namespace Microsoft.Extensions.DependencyInjection;
@@ -25,6 +26,8 @@ public static class MarkdownCoreBuilderExtensions
     public static IMarkdownBuilder AddCoreServices(this IMarkdownBuilder builder)
     {
         // Add basic core to services
+        
+        builder.Services.TryAddSingleton<MarkdownActionEndpointDataSourceFactory>();
 
         return builder;
     }
