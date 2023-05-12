@@ -1,13 +1,13 @@
 $dirs = [ordered]@{
-    1  = "System";
-    2  = "Validation";
-    3  = "Extensions";
-    4  = "Hosting";
-    5  = "Tools";
-    6  = "Watcher";
-    7  = "Mvc";
-    8  = "Webserver";
-    9  = "Webmaster";
+    1 = "System";
+    2 = "Validation";
+    3 = "Extensions";
+    4 = "Hosting";
+    5 = "Tools";
+    6 = "Watcher";
+    7 = "Mvc";
+    8 = "Webserver";
+    9 = "Webmaster";
     10 = "Detection";
     11 = "Responsive";
     12 = "Domain";
@@ -24,15 +24,17 @@ $dirs = [ordered]@{
     23 = "Solver";
     24 = "IdentityAdmin";
 }
-
+$e = [char]27
 $root = "D:\Sources\Wangkanai\"
+$result = @()
 Set-Location -Path $root
 
 for ($i = 0; $i -lt $dirs.count; $i++){
     $error.clear()
     Push-Location $dirs[$i];
 
-    try {
+    try
+    {
         $path = $root + $dirs[$i] + "\Directory.Build.props";
         [Xml]$xml = Get-Content -Path $path;
         $node = $xml.SelectSingleNode("/Project/PropertyGroup/VersionPrefix");
@@ -40,13 +42,14 @@ for ($i = 0; $i -lt $dirs.count; $i++){
         $new = [System.Version]::new($old.Major, $old.Minor + 1, 0);
         $node.InnerText = $new.ToString();
         $xml.Save($path);
-    
-        Write-Host "Wangkanai." $dirs[$i] ": " $old " > " $new -ForegroundColor DarkGreen;
+
+        $result += [PSCustomObject]@{ NuGet = "$e[36m" + $dirs[$i] + "$e[0m"; Version = "$e[32m$old => $new $e[0m" }
     }
-    catch {
-        Write-Host "Wangkanai." $dirs[$i] ": version error" -ForegroundColor Red;
+    catch
+    {
+        $result += [PSCustomObject]@{ NuGet = "$e[31m" + $dirs[$i] + "$e[0m"; Version = "$e[31mError $e[0m" }
     }
-    
+
     Pop-Location
 }
-
+$result
