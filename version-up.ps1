@@ -28,21 +28,25 @@ $dirs = [ordered]@{
 $root = "D:\Sources\Wangkanai\"
 Set-Location -Path $root
 
-Push-Location .\System
+for ($i = 0; $i -lt $dirs.count; $i++){
+    $error.clear()
+    Push-Location $dirs[$i];
 
-try {
-    $path = $root + "System" + "\Directory.Build.props";
-    [Xml]$xml = Get-Content -Path $path;
-    $node = $xml.SelectSingleNode("/Project/PropertyGroup/VersionPrefix");
-    $old = [System.Version]$node.InnerText;
-    $new = [System.Version]::new($old.Major, $old.Minor + 1, 0);
-    $node.InnerText = $new.ToString();
-    $xml.Save($path);
-
-    Write-Host "Wangkanai.System: " $old " > " $new -ForegroundColor DarkGreen;
+    try {
+        $path = $root + $dirs[$i] + "\Directory.Build.props";
+        [Xml]$xml = Get-Content -Path $path;
+        $node = $xml.SelectSingleNode("/Project/PropertyGroup/VersionPrefix");
+        $old = [System.Version]$node.InnerText;
+        $new = [System.Version]::new($old.Major, $old.Minor + 1, 0);
+        $node.InnerText = $new.ToString();
+        $xml.Save($path);
+    
+        Write-Host "Wangkanai." $dirs[$i] ": " $old " > " $new -ForegroundColor DarkGreen;
+    }
+    catch {
+        Write-Host "Wangkanai." $dirs[$i] ": version error" -ForegroundColor Red;
+    }
+    
+    Pop-Location
 }
-catch {
-    Write-Host "Wangkanai.System: version error" -ForegroundColor Red;
-}
 
-Pop-Location
