@@ -2,7 +2,7 @@
 
 namespace Wangkanai.Markdown.DependencyInjection.Options;
 
-public class MarkdownOptions
+public class MarkdownViewEngineOptions
 {
-    public bool Demo { get; set; }
+	
 }
