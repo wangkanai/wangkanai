@@ -175,7 +175,7 @@ public static class MarkdownEndpointRouteBuilderExtensions
 
 	private static void RegisterInCache(IServiceProvider serviceProvider, MarkdownActionEndpointDataSource dataSource)
 	{
-		var cache = serviceProvider.GetRequiredService<DynamicMarkdownEndpointDataSelectorCache>();
+		var cache = serviceProvider.GetRequiredService<DynamicMarkdownEndpointSelectorCache>();
 		cache.AddDataSource(dataSource);
 	}
 }
