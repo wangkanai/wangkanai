@@ -7,27 +7,28 @@ using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.Extensions.Options;
 
+using Wangkanai.Markdown.ApplicationModels;
 using Wangkanai.Markdown.DependencyInjection.Options;
 
 namespace Wangkanai.Markdown.Infrastructure;
 
 public class MarkdownActionDescriptorProvider : IActionDescriptorProvider
 {
-	private readonly IMarkdownRouteModelProvider[] _routeModelProviders;
-	private readonly MvcOptions                    _mvcOptions;
-	private readonly IPageRouteModelConvention[]   _conventions;
+	private readonly IMarkdownRouteModelProvider[]   _routeModelProviders;
+	private readonly MvcOptions                      _mvcOptions;
+	private readonly IMarkdownRouteModelConvention[] _conventions;
 
 	public MarkdownActionDescriptorProvider(
-		IEnumerable<IMarkdownRouteModelProvider> pageRouteModelProviders,
+		IEnumerable<IMarkdownRouteModelProvider> markdownRouteModelProviders,
 		IOptions<MvcOptions>                     mvcOptionsAccessor,
-		IOptions<MarkdownPagesOptions>           pagesOptionsAccessor)
+		IOptions<MarkdownPagesOptions>           MarkdownOptionsAccessor)
 	{
-		_routeModelProviders = pageRouteModelProviders.OrderBy(p => p.Order).ToArray();
+		_routeModelProviders = markdownRouteModelProviders.OrderBy(p => p.Order).ToArray();
 		_mvcOptions          = mvcOptionsAccessor.Value;
 
-		_conventions = pagesOptionsAccessor.Value.Conventions
-		                                   .OfType<IMarkdownRouteModelConvention>()
-		                                   .ToArray();
+		_conventions = MarkdownOptionsAccessor.Value.Conventions
+		                                      .OfType<IMarkdownRouteModelConvention>()
+		                                      .ToArray();
 	}
 
 	public int Order { get; set; } = -900;
@@ -59,10 +60,8 @@ public class MarkdownActionDescriptorProvider : IActionDescriptorProvider
 
 	private void AddActionDescriptors(IList<ActionDescriptor> actions, MarkdownRouteModel model)
 	{
-		for (var i = 0; i < _conventions.Length; i++)
-		{
+		for (var i = 0; i < _conventions.Length; i++) 
 			_conventions[i].Apply(model);
-		}
 
 		foreach (var selector in model.Selectors)
 		{
@@ -106,12 +105,12 @@ public class MarkdownActionDescriptorProvider : IActionDescriptorProvider
 		if (markdownRouteMetadata == null)
 			return selectorModel.AttributeRouteModel!.Template;
 
-		var segments = (string?[])markdownRouteMetadata.PageRoute.Split('/');
+		var segments = (string?[])markdownRouteMetadata.MarkdownRoute.Split('/');
 		for (var i = 0; i < segments.Length; i++)
 			segments[i] = model.RouteParameterTransformer.TransformOutbound(segments[i]);
 
 		var transformedPageRoute = string.Join("/", segments);
-		
+
 		return AttributeRouteModel.CombineTemplates(transformedPageRoute, markdownRouteMetadata.RouteTemplate);
 	}
 }

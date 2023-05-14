@@ -69,6 +69,15 @@ namespace Wangkanai.Markdown {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The model type for &apos;{0}&apos; is of type &apos;{1}&apos; which is not assignable to its declared model type &apos;{2}&apos;..
+        /// </summary>
+        internal static string InvalidActionDescriptorModelType {
+            get {
+                return ResourceManager.GetString("InvalidActionDescriptorModelType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Path must be a root relative path that starts with a forward slash &apos;/&apos;..
         /// </summary>
         internal static string PathMustBeRootRelativePath {
@@ -78,7 +87,7 @@ namespace Wangkanai.Markdown {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Transformer &apos;{0}&apos; was retrieved from dependency injection with a state value. State can only be specified when the dynamic route is mapped using MapDynamicPageRoute&apos;s state argument together with transient lifetime transformer. Ensure that &apos;{0}&apos; doesn&apos;t set its own state and that the transformer is registered with a transient lifetime in dependency injection..
         /// </summary>
         internal static string StateShouldBeNullForRouteValueTransformers {
             get {

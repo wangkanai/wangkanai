@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.AspNetCore.Mvc.Razor.Compilation;
 using Microsoft.Extensions.Options;
 
+using Wangkanai.Markdown.ApplicationModels;
 using Wangkanai.Markdown.DependencyInjection.Options;
 
 namespace Wangkanai.Markdown.Infrastructure;
@@ -16,23 +17,23 @@ public sealed class CompiledMarkdownActionDescriptorProvider : IActionDescriptor
 	private readonly ApplicationPartManager                  _applicationPartManager;
 	private readonly CompiledMarkdownActionDescriptorFactory _compiledPageActionDescriptorFactory;
 
-	public CompiledPageActionDescriptorProvider(
-		IEnumerable<IMarkdownRouteModelProvider>       pageRouteModelProviders,
+	public CompiledMarkdownActionDescriptorProvider(
+		IEnumerable<IMarkdownRouteModelProvider>       markdownRouteModelProviders,
 		IEnumerable<IMarkdownApplicationModelProvider> applicationModelProviders,
 		ApplicationPartManager                         applicationPartManager,
 		IOptions<MvcOptions>                           mvcOptions,
 		IOptions<MarkdownPagesOptions>                 pageOptions)
 	{
-		_pageActionDescriptorProvider        = new MarkdownActionDescriptorProvider(pageRouteModelProviders, mvcOptions, pageOptions);
+		_pageActionDescriptorProvider        = new MarkdownActionDescriptorProvider(markdownRouteModelProviders, mvcOptions, pageOptions);
 		_applicationPartManager              = applicationPartManager;
 		_compiledPageActionDescriptorFactory = new CompiledMarkdownActionDescriptorFactory(applicationModelProviders, mvcOptions.Value, pageOptions.Value);
 	}
 	
 	public int Order => _pageActionDescriptorProvider.Order;
 
-	public void OnProvidersExecuting(MarkdownDescriptorProviderContext context)
+	public void OnProvidersExecuting(ActionDescriptorProviderContext context)
 	{
-		var newContext = new MarkdownDescriptorProviderContext();
+		var newContext = new ActionDescriptorProviderContext();
 		_pageActionDescriptorProvider.OnProvidersExecuting(newContext);
 		_pageActionDescriptorProvider.OnProvidersExecuted(newContext);
 
