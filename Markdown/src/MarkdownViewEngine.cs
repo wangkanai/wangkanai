@@ -25,4 +25,19 @@ public partial class MarkdownViewEngine : IMarkdownViewEngine
 	{
 		throw new NotImplementedException();
 	}
+
+	public MarkdownPageResult FindPage(ActionContext context, string pageName)
+	{
+		throw new NotImplementedException();
+	}
+
+	public MarkdownPageResult GetPage(string executingFilePath, string pagePath)
+	{
+		throw new NotImplementedException();
+	}
+
+	public string? GetAbsolutePath(string? executingFilePath, string? pagePath)
+	{
+		throw new NotImplementedException();
+	}
 }
