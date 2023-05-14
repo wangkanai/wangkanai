@@ -2,6 +2,9 @@
 
 using System.Reflection.Metadata;
 
+using Microsoft.AspNetCore.Mvc.Abstractions;
+using Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
 
@@ -35,17 +38,30 @@ internal static class MarkdownCoreBuilderExtensions
 			builder.Services.TryAddSingleton<MarkdownHotReload>();
 
 		// Options
-		builder.Services.TryAddEnumerable(ServiceDescriptor.Transient<IConfigureOptions<MarkdownViewEngineOptions>, MarkdownViewEngineOptionsSetup>());
-		builder.Services.TryAddEnumerable(ServiceDescriptor.Transient<IConfigureOptions<MarkdownPagesOptions>, MarkdownPagesOptionsSetup>());
+		builder.Services.TryAddEnumerable(
+			ServiceDescriptor.Transient<IConfigureOptions<MarkdownViewEngineOptions>, MarkdownViewEngineOptionsSetup>());
+		builder.Services.TryAddEnumerable(
+			ServiceDescriptor.Transient<IConfigureOptions<MarkdownPagesOptions>, MarkdownPagesOptionsSetup>());
 
 		// Routing
-		// builder.Services.TryAddEnumerable(ServiceDescriptor.Singleton<MatcherPolicy, DynamicMarkdownEndpointMatcherPolicy>());
-		// builder.Services.TryAddSingleton<DynamicMarkdownEndpointSelectorCache>();
+		builder.Services.TryAddEnumerable(ServiceDescriptor.Singleton<MatcherPolicy, DynamicMarkdownEndpointMatcherPolicy>());
+		builder.Services.TryAddSingleton<DynamicMarkdownEndpointSelectorCache>();
+		builder.Services.TryAddSingleton<MarkdownActionEndpointDataSourceIdProvider>();
+
 		builder.Services.TryAddSingleton<OrderedEndpointsSequenceProviderCache>();
 		builder.Services.TryAddSingleton<ActionEndpointFactory>();
 		builder.Services.TryAddSingleton<MarkdownActionEndpointDataSourceIdProvider>();
 
 		// Action description and invocation
+		var actionDescriptorProvider = builder.Services.FirstOrDefault(
+			f =>
+				f.ServiceType        == typeof(IActionDescriptorProvider) &&
+				f.ImplementationType == typeof(MarkdownActionDescriptorProvider));
+
+		if (actionDescriptorProvider is null)
+			builder.Services.TryAddEnumerable(
+				ServiceDescriptor.Singleton<IActionDescriptorProvider, CompiledMarkdownActionDescriptorProvider>());
+
 		builder.Services.TryAddSingleton<MarkdownActionEndpointDataSourceFactory>();
 
 		// Page and Page model create and activation

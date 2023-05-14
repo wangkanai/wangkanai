@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
-namespace Wangkanai.Markdown.Models;
+namespace Wangkanai.Markdown.ApplicationModels;
 
 public class MarkdownConventionCollection : Collection<IMarkdownConvention>
 {
@@ -19,10 +19,8 @@ public class MarkdownConventionCollection : Collection<IMarkdownConvention>
 	public MarkdownConventionCollection(IList<IMarkdownConvention> conventions)
 		: base(conventions) { }
 
-	internal MarkdownConventionCollection(IServiceProvider? serviceProvider)
-	{
-		_serviceProvider = serviceProvider;
-	}
+	internal MarkdownConventionCollection(IServiceProvider? serviceProvider) 
+		=> _serviceProvider = serviceProvider;
 
 	internal MvcOptions MvcOptions
 	{
@@ -33,7 +31,7 @@ public class MarkdownConventionCollection : Collection<IMarkdownConvention>
 		}
 	}
 
-	internal static void EnsureValidPageName(string pageName, string argumentName = "pageName")
+	internal static void EnsureValidMarkdownName(string pageName, string argumentName = "pageName")
 	{
 		pageName.ThrowIfNullOrWhitespace<ArgumentException>("Value cannot be null or empty.", argumentName);
 

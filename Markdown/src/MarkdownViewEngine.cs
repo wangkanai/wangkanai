@@ -7,14 +7,12 @@ namespace Wangkanai.Markdown;
 
 public partial class MarkdownViewEngine : IMarkdownViewEngine
 {
-	/// <summary>
-	/// The view extension
-	/// </summary>
 	public static readonly string ViewExtension = ".md";
 	
 	private const string AreaKey       = "area";
 	private const string ControllerKey = "controller";
 	private const string PageKey       = "page";
+	private const string MarkdownKey   = "markdown";
 	
 	private static readonly TimeSpan _cacheExpirationDuration = TimeSpan.FromMinutes(20);
 	

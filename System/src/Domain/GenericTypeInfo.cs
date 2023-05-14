@@ -4,7 +4,7 @@ using Wangkanai.Extensions;
 
 namespace Wangkanai.Domain;
 
-public class TypeInfo<BaseType>
+public class GenericTypeInfo<BaseType>
 {
     public string              TypeName    { get; private set; }
     public Type                Type        { get; private set; }
@@ -13,7 +13,7 @@ public class TypeInfo<BaseType>
     public Func<BaseType>      Factory     { get; private set; }
     public Action<BaseType>    SetupAction { get; private set; }
 
-    public TypeInfo(Type type)
+    public GenericTypeInfo(Type type)
     {
         Services = new List<object>();
         Type     = type;
@@ -32,7 +32,7 @@ public class TypeInfo<BaseType>
         => Type.GetTypeInheritanceChainTo(typeof(BaseType))
                .ToArray();
 
-    public TypeInfo<BaseType> WithService<T>(T service)
+    public GenericTypeInfo<BaseType> WithService<T>(T service)
     {
         if (!Services.Contains(service))
             Services.Add(service);
@@ -40,25 +40,25 @@ public class TypeInfo<BaseType>
         return this;
     }
 
-    public TypeInfo<BaseType> MapToType<T>()
+    public GenericTypeInfo<BaseType> MapToType<T>()
     {
         MappedType = typeof(T);
         return this;
     }
 
-    public TypeInfo<BaseType> WithFactory(Func<BaseType> factory)
+    public GenericTypeInfo<BaseType> WithFactory(Func<BaseType> factory)
     {
         Factory = factory;
         return this;
     }
 
-    public TypeInfo<BaseType> WithSetupAction(Action<BaseType> setupAction)
+    public GenericTypeInfo<BaseType> WithSetupAction(Action<BaseType> setupAction)
     {
         SetupAction = setupAction;
         return this;
     }
 
-    public TypeInfo<BaseType> WithTypeName(string name)
+    public GenericTypeInfo<BaseType> WithTypeName(string name)
     {
         TypeName = name;
         return this;
