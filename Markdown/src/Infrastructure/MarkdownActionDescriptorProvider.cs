@@ -37,10 +37,8 @@ public class MarkdownActionDescriptorProvider : IActionDescriptorProvider
 	{
 		var pageRouteModels = BuildModel();
 
-		for (var i = 0; i < pageRouteModels.Count; i++)
-		{
+		for (var i = 0; i < pageRouteModels.Count; i++) 
 			AddActionDescriptors(context.Results, pageRouteModels[i]);
-		}
 	}
 
 	protected IList<MarkdownRouteModel> BuildModel()

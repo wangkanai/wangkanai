@@ -39,35 +39,17 @@ internal sealed class MarkdownActionInvokerCacheEntry
 
     public CompiledMarkdownActionDescriptor ActionDescriptor { get; }
 
-    public Func<MarkdownContext, ViewContext, object> MarkdownFactory { get; }
-
-    /// <summary>
-    /// The action invoked to release a page. This may be <c>null</c>.
-    /// </summary>
+    public Func<MarkdownContext, ViewContext, object>             MarkdownFactory { get; }
     public Func<MarkdownContext, ViewContext, object, ValueTask>? ReleaseMarkdown { get; }
-
-    public Func<MarkdownContext, object>? ModelFactory { get; }
-
-    /// <summary>
-    /// The delegate invoked to release a model. This may be <c>null</c>.
-    /// </summary>
-    public Func<MarkdownContext, object, ValueTask>? ReleaseModel { get; }
-
-    /// <summary>
-    /// The delegate invoked to bind either the handler type (page or model).
-    /// This may be <c>null</c>.
-    /// </summary>
-    public Func<MarkdownContext, object, Task> PropertyBinder { get; }
+    public Func<MarkdownContext, object>?                         ModelFactory    { get; }
+    public Func<MarkdownContext, object, ValueTask>?              ReleaseModel    { get; }
+    public Func<MarkdownContext, object, Task>                    PropertyBinder  { get; }
 
     public MarkdownHandlerExecutorDelegate[] HandlerExecutors { get; }
-
-    public MarkdownHandlerBinderDelegate[] HandlerBinders { get; }
+    public MarkdownHandlerBinderDelegate[]   HandlerBinders   { get; }
 
     public Func<IModelMetadataProvider, ModelStateDictionary, ViewDataDictionary> ViewDataFactory { get; }
 
-    /// <summary>
-    /// Gets the applicable ViewStart pages.
-    /// </summary>
     public IReadOnlyList<Func<IMarkdownPage>> ViewStartFactories { get; }
 
     public FilterItem[] CacheableFilters { get; }

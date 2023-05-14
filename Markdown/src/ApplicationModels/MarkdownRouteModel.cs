@@ -12,8 +12,8 @@ public class MarkdownRouteModel
 
 	public MarkdownRouteModel(string relativePath, string viewEnginePath, string? areaName)
 	{
-		RelativePath   = relativePath   ?? throw new ArgumentNullException(nameof(relativePath));
-		ViewEnginePath = viewEnginePath ?? throw new ArgumentNullException(nameof(viewEnginePath));
+		RelativePath   = relativePath.ThrowIfNull();
+		ViewEnginePath = viewEnginePath.ThrowIfNull();
 		AreaName       = areaName;
 
 		Properties  = new Dictionary<object, object?>();
@@ -23,7 +23,7 @@ public class MarkdownRouteModel
 	
 	public MarkdownRouteModel(MarkdownRouteModel other)
 	{
-		ArgumentNullException.ThrowIfNull(other);
+		other.ThrowIfNull();
 
 		RelativePath              = other.RelativePath;
 		ViewEnginePath            = other.ViewEnginePath;

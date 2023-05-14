@@ -39,7 +39,7 @@ public class MarkdownApplicationModel
 
 	public MarkdownApplicationModel(MarkdownApplicationModel other)
 	{
-		ArgumentNullException.ThrowIfNull(other);
+		other.ThrowIfNull();
 
 		ActionDescriptor = other.ActionDescriptor;
 		HandlerType      = other.HandlerType;
