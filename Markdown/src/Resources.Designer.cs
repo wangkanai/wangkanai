@@ -94,5 +94,14 @@ namespace Wangkanai.Markdown {
                 return ResourceManager.GetString("StateShouldBeNullForRouteValueTransformers", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &apos;{0}&apos; cannot be empty. These locations are required to locate a view for rendering..
+        /// </summary>
+        internal static string ViewLocationFormatsIsRequired {
+            get {
+                return ResourceManager.GetString("ViewLocationFormatsIsRequired", resourceCulture);
+            }
+        }
     }
 }

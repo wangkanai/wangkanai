@@ -30,4 +30,7 @@
     <data name="InvalidActionDescriptorModelType" xml:space="preserve">
         <value>The model type for '{0}' is of type '{1}' which is not assignable to its declared model type '{2}'.</value>
     </data>
+    <data name="ViewLocationFormatsIsRequired" xml:space="preserve">
+        <value>'{0}' cannot be empty. These locations are required to locate a view for rendering.</value>
+    </data>
 </root>
