@@ -76,5 +76,14 @@ namespace Wangkanai.Markdown {
                 return ResourceManager.GetString("PathMustBeRootRelativePath", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string StateShouldBeNullForRouteValueTransformers {
+            get {
+                return ResourceManager.GetString("StateShouldBeNullForRouteValueTransformers", resourceCulture);
+            }
+        }
     }
 }

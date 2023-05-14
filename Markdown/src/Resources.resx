@@ -24,4 +24,7 @@
     <data name="PathMustBeRootRelativePath" xml:space="preserve">
         <value>Path must be a root relative path that starts with a forward slash '/'.</value>
     </data>
+    <data name="StateShouldBeNullForRouteValueTransformers" xml:space="preserve">
+        <value />
+    </data>
 </root>
