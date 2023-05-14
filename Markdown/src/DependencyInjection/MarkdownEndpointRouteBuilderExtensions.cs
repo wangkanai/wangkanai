@@ -3,13 +3,12 @@
 using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.AspNetCore.Routing;
 
 using Wangkanai.Markdown.Builder;
 using Wangkanai.Markdown.Infrastructure;
-using Wangkanai.Markdown.Models;
+using Wangkanai.Markdown.ApplicationModels;
 using Wangkanai.Mvc.Infrastructure;
 
 namespace Microsoft.Extensions.DependencyInjection;
@@ -25,14 +24,14 @@ public static class MarkdownEndpointRouteBuilderExtensions
 		return GetOrCreateDataSource(endpoints).DefaultBuilder;
 	}
 
-	public static IEndpointConventionBuilder MapFallbackToPage(
+	public static IEndpointConventionBuilder MapFallbackToMarkdown(
 		this IEndpointRouteBuilder endpoints,
 		string                     page)
 	{
 		endpoints.ThrowIfNull();
 		page.ThrowIfNull();
 
-		MarkdownConventionCollection.EnsureValidPageName(page, nameof(page));
+		MarkdownConventionCollection.EnsureValidMarkdownName(page, nameof(page));
 
 		EnsureMarkdownPagesServices(endpoints);
 
@@ -49,7 +48,7 @@ public static class MarkdownEndpointRouteBuilderExtensions
 		return builder;
 	}
 
-	public static IEndpointConventionBuilder MapFallbackToPage(
+	public static IEndpointConventionBuilder MapFallbackToMarkdown(
 		this IEndpointRouteBuilder endpoints,
 		string                     pattern,
 		string                     page)
@@ -58,7 +57,7 @@ public static class MarkdownEndpointRouteBuilderExtensions
 		pattern.ThrowIfNull();
 		page.ThrowIfNull();
 
-		MarkdownConventionCollection.EnsureValidPageName(page, nameof(page));
+		MarkdownConventionCollection.EnsureValidMarkdownName(page, nameof(page));
 
 		EnsureMarkdownPagesServices(endpoints);
 
@@ -82,7 +81,7 @@ public static class MarkdownEndpointRouteBuilderExtensions
 		endpoints.ThrowIfNull();
 		page.ThrowIfNull();
 
-		MarkdownConventionCollection.EnsureValidPageName(page, nameof(page));
+		MarkdownConventionCollection.EnsureValidMarkdownName(page, nameof(page));
 
 		EnsureMarkdownPagesServices(endpoints);
 
@@ -108,7 +107,7 @@ public static class MarkdownEndpointRouteBuilderExtensions
 		pattern.ThrowIfNull();
 		page.ThrowIfNull();
 
-		MarkdownConventionCollection.EnsureValidPageName(page, nameof(page));
+		MarkdownConventionCollection.EnsureValidMarkdownName(page, nameof(page));
 
 		EnsureMarkdownPagesServices(endpoints);
 

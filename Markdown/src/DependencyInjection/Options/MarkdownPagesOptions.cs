@@ -5,7 +5,7 @@ using System.Collections;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 
-using Wangkanai.Markdown.Models;
+using Wangkanai.Markdown.ApplicationModels;
 
 namespace Wangkanai.Markdown.DependencyInjection.Options;
 

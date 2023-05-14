@@ -6,18 +6,18 @@ namespace Wangkanai.Domain;
 
 public static class AbstractTypeFactory<BaseType>
 {
-    private static readonly List<TypeInfo<BaseType>> _typeInfos = new();
+    private static readonly List<GenericTypeInfo<BaseType>> _typeInfos = new();
 
-    public static IEnumerable<TypeInfo<BaseType>> AllTypeInfos
+    public static IEnumerable<GenericTypeInfo<BaseType>> AllTypeInfos
         => _typeInfos;
 
     public static bool HasOverrides
         => _typeInfos.Count > 0;
 
-    public static TypeInfo<BaseType> RegisterType<T>() where T : BaseType
+    public static GenericTypeInfo<BaseType> RegisterType<T>() where T : BaseType
         => RegisterType(typeof(T));
 
-    public static TypeInfo<BaseType> RegisterType(Type type)
+    public static GenericTypeInfo<BaseType> RegisterType(Type type)
     {
         type.ThrowIfNull();
 
@@ -25,7 +25,7 @@ public static class AbstractTypeFactory<BaseType>
         if (result != null)
             return result;
 
-        result = new TypeInfo<BaseType>(type);
+        result = new GenericTypeInfo<BaseType>(type);
         _typeInfos.Add(result);
 
         return result;
@@ -35,12 +35,12 @@ public static class AbstractTypeFactory<BaseType>
     /// Override already registered  type to new 
     /// </summary>
     /// <returns>TypeInfo instance to continue configuration through fluent syntax</returns>
-    public static TypeInfo<BaseType> OverrideType<OldType, NewType>() where NewType : BaseType
+    public static GenericTypeInfo<BaseType> OverrideType<OldType, NewType>() where NewType : BaseType
     {
         var oldType       = typeof(OldType);
         var newType       = typeof(NewType);
         var existTypeInfo = _typeInfos.FirstOrDefault(x => x.Type == oldType);
-        var newTypeInfo   = new TypeInfo<BaseType>(newType);
+        var newTypeInfo   = new GenericTypeInfo<BaseType>(newType);
         if (existTypeInfo != null)
             _typeInfos.Remove(existTypeInfo);
 
@@ -94,7 +94,7 @@ public static class AbstractTypeFactory<BaseType>
         return result;
     }
 
-    public static TypeInfo<BaseType> FindTypeInfoByName(string typeName)
+    public static GenericTypeInfo<BaseType> FindTypeInfoByName(string typeName)
     {
         // Try find first direct type match from registered types
         var result = _typeInfos.FirstOrDefault(x => x.TypeName.EqualsInvariant(typeName));

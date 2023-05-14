@@ -3,7 +3,7 @@
 using Microsoft.Extensions.Options;
 
 using Wangkanai.Markdown.DependencyInjection.Options;
-using Wangkanai.Markdown.Models;
+using Wangkanai.Markdown.ApplicationModels;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
