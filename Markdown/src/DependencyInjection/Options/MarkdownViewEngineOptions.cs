@@ -6,9 +6,10 @@ namespace Wangkanai.Markdown.DependencyInjection.Options;
 
 public class MarkdownViewEngineOptions
 {
-	public IList<IViewLocationExpander> ViewLocationExpanders       { get; } = new List<IViewLocationExpander>();
-	public IList<string>                ViewLocationFormats         { get; } = new List<string>();
-	public IList<string>                AreaViewLocationFormats     { get; } = new List<string>();
-	public IList<string>                PageViewLocationFormats     { get; } = new List<string>();
-	public IList<string>                AreaPageViewLocationFormats { get; } = new List<string>();
+	public List<IMarkdownViewLocationExpander> ViewLocationExpanders { get; } = new();
+
+	public List<string> ViewLocationFormats         { get; } = new();
+	public List<string> AreaViewLocationFormats     { get; } = new();
+	public List<string> PageViewLocationFormats     { get; } = new();
+	public List<string> AreaPageViewLocationFormats { get; } = new();
 }

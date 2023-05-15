@@ -78,6 +78,15 @@ namespace Wangkanai.Markdown {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Path must begin with a forward slash &apos;/&apos;..
+        /// </summary>
+        internal static string MarkdownProject_PathMustStartWithForwardSlash {
+            get {
+                return ResourceManager.GetString("MarkdownProject_PathMustStartWithForwardSlash", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Path must be a root relative path that starts with a forward slash &apos;/&apos;..
         /// </summary>
         internal static string PathMustBeRootRelativePath {

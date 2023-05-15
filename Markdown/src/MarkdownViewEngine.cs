@@ -1,6 +1,7 @@
 ﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using System.Diagnostics;
+using System.Globalization;
 using System.Text.Encodings.Web;
 
 using Microsoft.AspNetCore.Mvc;
@@ -11,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Primitives;
 
+using Wangkanai.Extensions;
 using Wangkanai.Markdown.DependencyInjection.Options;
 using Wangkanai.Mvc.Routing;
 
@@ -79,9 +81,7 @@ public partial class MarkdownViewEngine : IMarkdownViewEngine
 	public MarkdownPageResult FindPage(ActionContext context, string pageName)
 	{
 		context.ThrowIfNull();
-
-		if (string.IsNullOrEmpty(pageName))
-			throw new ArgumentException(Resources.ArgumentCannotBeNullOrEmpty, nameof(pageName));
+		pageName.ThrowIfNullOrEmpty<ArgumentException>(Resources.ArgumentCannotBeNullOrEmpty);
 
 		if (IsApplicationRelativePath(pageName) || IsRelativePath(pageName))
 			return new MarkdownPageResult(pageName, Enumerable.Empty<string>());
@@ -110,7 +110,7 @@ public partial class MarkdownViewEngine : IMarkdownViewEngine
 			cacheEntryOptions.SetSlidingExpiration(_cacheExpirationDuration);
 			foreach (var expirationToken in expirationTokens)
 				cacheEntryOptions.AddExpirationToken(expirationToken);
-			
+
 			if (cacheResult == null)
 				cacheResult = new MarkdownViewLocationCacheResult(new[] { applicationRelativePath });
 
@@ -122,7 +122,7 @@ public partial class MarkdownViewEngine : IMarkdownViewEngine
 
 		return cacheResult!;
 	}
-	
+
 	internal MarkdownViewLocationCacheResult? CreateCacheResult(
 		HashSet<IChangeToken> expirationTokens,
 		string                relativePath,
@@ -132,22 +132,21 @@ public partial class MarkdownViewEngine : IMarkdownViewEngine
 		var viewDescriptor = factoryResult.ViewDescriptor;
 		if (viewDescriptor?.ExpirationTokens != null)
 		{
-			var viewExpirationTokens = viewDescriptor.ExpirationTokens;
-			// Read interface .Count once rather than per iteration
+			var viewExpirationTokens      = viewDescriptor.ExpirationTokens;
 			var viewExpirationTokensCount = viewExpirationTokens.Count;
-			for (var i = 0; i < viewExpirationTokensCount; i++) 
+			for (var i = 0; i < viewExpirationTokensCount; i++)
 				expirationTokens.Add(viewExpirationTokens[i]);
 		}
 
 		if (factoryResult.Success)
 		{
 			// Only need to lookup _ViewStarts for the main page.
-			var viewStartPages = isMainPage 
-				                     ? GetViewStartPages(viewDescriptor!.RelativePath, expirationTokens) 
+			var viewStartPages = isMainPage
+				                     ? GetViewStartPages(viewDescriptor!.RelativePath, expirationTokens)
 				                     : Array.Empty<MarkdownViewLocationCacheItem>();
 
 			return new MarkdownViewLocationCacheResult(
-				new MarkdownViewLocationCacheItem(factoryResult.RazorPageFactory, relativePath),
+				new MarkdownViewLocationCacheItem(factoryResult.MarkdownPageFactory, relativePath),
 				viewStartPages);
 		}
 
@@ -159,14 +158,14 @@ public partial class MarkdownViewEngine : IMarkdownViewEngine
 		string        pageName,
 		bool          isMainPage)
 	{
-		var     controllerName = GetNormalizedRouteValue(actionContext, ControllerKey);
-		var     areaName       = GetNormalizedRouteValue(actionContext, AreaKey);
-		
-		string? razorPageName  = null;
+		var controllerName = GetNormalizedRouteValue(actionContext, ControllerKey);
+		var areaName       = GetNormalizedRouteValue(actionContext, AreaKey);
+
+		string? razorPageName = null;
 		if (actionContext.ActionDescriptor.RouteValues.ContainsKey(PageKey))
 			razorPageName = GetNormalizedRouteValue(actionContext, PageKey);
 
-		var expanderContext = new ViewLocationExpanderContext(
+		var expanderContext = new MarkdownViewLocationExpanderContext(
 			actionContext,
 			pageName,
 			controllerName,
@@ -184,7 +183,7 @@ public partial class MarkdownViewEngine : IMarkdownViewEngine
 			expanderContext.Values = expanderValues;
 
 			// Perf: Avoid allocations
-			for (var i = 0; i < expandersCount; i++) 
+			for (var i = 0; i < expandersCount; i++)
 				expanders[i].PopulateValues(expanderContext);
 		}
 
@@ -202,10 +201,55 @@ public partial class MarkdownViewEngine : IMarkdownViewEngine
 			cacheResult = OnCacheMiss(expanderContext, cacheKey);
 		}
 		else
-		{
 			Log.ViewLookupCacheHit(_logger, cacheKey.ViewName, cacheKey.ControllerName);
+
+		return cacheResult;
+	}
+
+	private MarkdownViewLocationCacheResult OnCacheMiss(
+		MarkdownViewLocationExpanderContext expanderContext,
+		MarkdownViewLocationCacheKey        cacheKey)
+	{
+		var viewLocations = GetViewLocationFormats(expanderContext);
+
+		var expanders      = _options.ViewLocationExpanders;
+		var expandersCount = expanders.Count;
+
+		for (var i = 0; i < expandersCount; i++)
+			viewLocations = expanders[i].ExpandViewLocations(expanderContext, viewLocations);
+
+		MarkdownViewLocationCacheResult? cacheResult = null;
+
+		var searchedLocations = new List<string>();
+		var expirationTokens  = new HashSet<IChangeToken>();
+		foreach (var location in viewLocations)
+		{
+			var path = string.Format(
+				CultureInfo.InvariantCulture,
+				location,
+				expanderContext.ViewName,
+				expanderContext.ControllerName,
+				expanderContext.AreaName);
+
+			path = ViewEnginePath.ResolvePath(path);
+
+			cacheResult = CreateCacheResult(expirationTokens, path, expanderContext.IsMainPage);
+			if (cacheResult != null)
+				break;
+
+			searchedLocations.Add(path);
 		}
 
+		// No views were found at the specified location. Create a not found result.
+		if (cacheResult == null)
+			cacheResult = new MarkdownViewLocationCacheResult(searchedLocations);
+
+		var cacheEntryOptions = new MemoryCacheEntryOptions();
+		cacheEntryOptions.SetSlidingExpiration(_cacheExpirationDuration);
+		foreach (var expirationToken in expirationTokens)
+			cacheEntryOptions.AddExpirationToken(expirationToken);
+
+		ViewLookupCache.Set(cacheKey, cacheResult, cacheEntryOptions);
 		return cacheResult;
 	}
 
@@ -218,18 +262,16 @@ public partial class MarkdownViewEngine : IMarkdownViewEngine
 	private static bool IsRelativePath(string name)
 	{
 		Debug.Assert(!string.IsNullOrEmpty(name));
-
-		// Though ./ViewName looks like a relative path, framework searches for that view using view locations.
 		return name.EndsWith(ViewExtension, StringComparison.OrdinalIgnoreCase);
 	}
-	
+
 	private IReadOnlyList<MarkdownViewLocationCacheItem> GetViewStartPages(
 		string                path,
 		HashSet<IChangeToken> expirationTokens)
 	{
 		var viewStartPages = new List<MarkdownViewLocationCacheItem>();
 
-		foreach (var filePath in RazorFileHierarchy.GetViewStartPaths(path))
+		foreach (var filePath in MarkdownFileHierarchy.GetViewStartPaths(path))
 		{
 			var result         = _pageFactory.CreateFactory(filePath);
 			var viewDescriptor = result.ViewDescriptor;
@@ -237,11 +279,28 @@ public partial class MarkdownViewEngine : IMarkdownViewEngine
 				for (var i = 0; i < viewDescriptor.ExpirationTokens.Count; i++)
 					expirationTokens.Add(viewDescriptor.ExpirationTokens[i]);
 
-			if (result.Success) 
-				viewStartPages.Insert(0, new MarkdownViewLocationCacheItem(result.RazorPageFactory, filePath));
+			if (result.Success)
+				viewStartPages.Insert(0, new MarkdownViewLocationCacheItem(result.MarkdownPageFactory, filePath));
 		}
 
 		return viewStartPages;
+	}
+
+	internal IEnumerable<string> GetViewLocationFormats(MarkdownViewLocationExpanderContext context)
+	{
+		if (!context.AreaName.IsNullOrEmpty() && !context.ControllerName.IsNullOrEmpty())
+			return _options.AreaViewLocationFormats;
+
+		if (!context.ControllerName.IsNullOrEmpty())
+			return _options.ViewLocationFormats;
+
+		if (!context.AreaName.IsNullOrEmpty() && !context.PageName.IsNullOrEmpty())
+			return _options.AreaPageViewLocationFormats;
+
+		if (!context.PageName.IsNullOrEmpty())
+			return _options.PageViewLocationFormats;
+
+		return _options.ViewLocationFormats;
 	}
 
 	public ViewEngineResult FindView(ActionContext context, string viewName, bool isMainPage)
@@ -253,7 +312,7 @@ public partial class MarkdownViewEngine : IMarkdownViewEngine
 	{
 		throw new NotImplementedException();
 	}
-	
+
 	public MarkdownPageResult GetPage(string executingFilePath, string pagePath)
 	{
 		throw new NotImplementedException();
@@ -262,5 +321,14 @@ public partial class MarkdownViewEngine : IMarkdownViewEngine
 	public string? GetAbsolutePath(string? executingFilePath, string? pagePath)
 	{
 		throw new NotImplementedException();
+	}
+
+	private static partial class Log
+	{
+		[LoggerMessage(1, LogLevel.Debug, "View lookup cache miss for view '{ViewName}' in controller '{ControllerName}'.", EventName = "ViewLookupCacheMiss")]
+		public static partial void ViewLookupCacheMiss(ILogger logger, string viewName, string? controllerName);
+
+		[LoggerMessage(2, LogLevel.Debug, "View lookup cache hit for view '{ViewName}' in controller '{ControllerName}'.", EventName = "ViewLookupCacheHit")]
+		public static partial void ViewLookupCacheHit(ILogger logger, string viewName, string? controllerName);
 	}
 }

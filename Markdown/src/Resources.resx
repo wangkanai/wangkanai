@@ -33,4 +33,7 @@
     <data name="ViewLocationFormatsIsRequired" xml:space="preserve">
         <value>'{0}' cannot be empty. These locations are required to locate a view for rendering.</value>
     </data>
+    <data name="MarkdownProject_PathMustStartWithForwardSlash" xml:space="preserve">
+        <value>Path must begin with a forward slash '/'.</value>
+    </data>
 </root>

@@ -4,5 +4,5 @@ namespace Wangkanai.Markdown;
 
 public interface IMarkdownPageFactoryProvider
 {
-	
+	MarkdownPageFactoryResult CreateFactory(string relativePath);
 }
