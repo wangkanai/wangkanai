@@ -11,6 +11,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 using Wangkanai.Markdown.DependencyInjection.Options;
+using Wangkanai.Mvc.Routing;
 
 namespace Wangkanai.Markdown;
 
@@ -70,6 +71,9 @@ public partial class MarkdownViewEngine : IMarkdownViewEngine
 
 	internal void ClearCache()
 		=> ViewLookupCache = new MemoryCache(new MemoryCacheOptions());
+
+	public static string? GetNormalizedRouteValue(ActionContext context, string key)
+		=> NormalizedRouteValue.GetNormalizedRouteValue(context, key);
 
 	public ViewEngineResult FindView(ActionContext context, string viewName, bool isMainPage)
 	{
