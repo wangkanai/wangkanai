@@ -1,25 +1,19 @@
 <Project>
-    <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props"/>
-
-    <PropertyGroup>
-        <VersionPrefix>1.11.0</VersionPrefix>
-
-        <Title>Wngkanai Webmaster</Title>
-        <Description>ASP.NET Core Search Engine Optimization for Webmaster lets you improve the art, craft, and science of driving web traffic to enabling you with easy and efficiency native tool build in the asp.net core library.</Description>
-        <PackageTags>aspnetcore;webmaster;seo;search;optimization;taghelper</PackageTags>
-
-        <RootNamespace>Wangkanai</RootNamespace>
-
-        <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Webmaster</PackageProjectUrl>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Webmaster'">
-        <PackageIcon>wangkanai-logo.png</PackageIcon>
-        <PackageReadmeFile>README.md</PackageReadmeFile>
-    </PropertyGroup>
-
-    <ItemGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Webmaster'">
-        <None Include="..\..\assets\wangkanai-logo.png" Pack="true" PackagePath="\"/>
-        <None Include="..\README.md" Pack="true" PackagePath="\"/>
-    </ItemGroup>
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
+  <PropertyGroup>
+    <VersionPrefix>1.12.0</VersionPrefix>
+    <Title>Wngkanai Webmaster</Title>
+    <Description>ASP.NET Core Search Engine Optimization for Webmaster lets you improve the art, craft, and science of driving web traffic to enabling you with easy and efficiency native tool build in the asp.net core library.</Description>
+    <PackageTags>aspnetcore;webmaster;seo;search;optimization;taghelper</PackageTags>
+    <RootNamespace>Wangkanai</RootNamespace>
+    <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Webmaster</PackageProjectUrl>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Webmaster'">
+    <PackageIcon>wangkanai-logo.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Webmaster'">
+    <None Include="..\..\assets\wangkanai-logo.png" Pack="true" PackagePath="\" />
+    <None Include="..\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
 </Project>

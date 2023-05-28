@@ -78,6 +78,15 @@ namespace Wangkanai.Markdown {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Path must begin with a forward slash &apos;/&apos;..
+        /// </summary>
+        internal static string MarkdownProject_PathMustStartWithForwardSlash {
+            get {
+                return ResourceManager.GetString("MarkdownProject_PathMustStartWithForwardSlash", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Path must be a root relative path that starts with a forward slash &apos;/&apos;..
         /// </summary>
         internal static string PathMustBeRootRelativePath {
@@ -92,6 +101,15 @@ namespace Wangkanai.Markdown {
         internal static string StateShouldBeNullForRouteValueTransformers {
             get {
                 return ResourceManager.GetString("StateShouldBeNullForRouteValueTransformers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &apos;{0}&apos; cannot be empty. These locations are required to locate a view for rendering..
+        /// </summary>
+        internal static string ViewLocationFormatsIsRequired {
+            get {
+                return ResourceManager.GetString("ViewLocationFormatsIsRequired", resourceCulture);
             }
         }
     }

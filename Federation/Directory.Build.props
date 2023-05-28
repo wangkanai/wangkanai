@@ -1,32 +1,25 @@
 <Project>
-    <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props"/>
-
-    <PropertyGroup>
-        <VersionPrefix>0.6.0</VersionPrefix>
-
-        <Title>Wangkanai Federation</Title>
-        <PackageTags>aspnetcore;identity;federation;</PackageTags>
-        <Description>OAuth 2.1 and OpenID Connect Framework for ASP.NET Core for Authentication and Authorization with flexible permission policy.</Description>
-
-        <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Federation</PackageProjectUrl>
-
-        <RootNamespace>Wangkanai.Federation</RootNamespace>
-        <PackageNamespace>True</PackageNamespace>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="$(MSBuildProjectDirectory.Contains('src'))">
-        <PackageIcon>federation-logo.png</PackageIcon>
-        <PackageReadmeFile>README.md</PackageReadmeFile>
-    </PropertyGroup>
-
-    <ItemGroup Condition="$(MSBuildProjectDirectory.Contains('src'))">
-        <None Include="..\..\..\assets\federation-logo.png" Pack="true" PackagePath="\"/>
-        <None Include="..\..\README.md" Pack="true" PackagePath="\"/>
-    </ItemGroup>
-
-    <ItemGroup Condition="'$(MSBuildProjectName)' != 'Wangkanai.Federation.Benchmark'">
-        <Compile Include="..\..\..\Shared\src\Tracing.cs">
-            <Link>Tracing.cs</Link>
-        </Compile>
-    </ItemGroup>
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
+  <PropertyGroup>
+    <VersionPrefix>0.7.0</VersionPrefix>
+    <Title>Wangkanai Federation</Title>
+    <PackageTags>aspnetcore;identity;federation;</PackageTags>
+    <Description>OAuth 2.1 and OpenID Connect Framework for ASP.NET Core for Authentication and Authorization with flexible permission policy.</Description>
+    <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Federation</PackageProjectUrl>
+    <RootNamespace>Wangkanai.Federation</RootNamespace>
+    <PackageNamespace>True</PackageNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition="$(MSBuildProjectDirectory.Contains('src'))">
+    <PackageIcon>federation-logo.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+  <ItemGroup Condition="$(MSBuildProjectDirectory.Contains('src'))">
+    <None Include="..\..\..\assets\federation-logo.png" Pack="true" PackagePath="\" />
+    <None Include="..\..\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(MSBuildProjectName)' != 'Wangkanai.Federation.Benchmark'">
+    <Compile Include="..\..\..\Shared\src\Tracing.cs">
+      <Link>Tracing.cs</Link>
+    </Compile>
+  </ItemGroup>
 </Project>

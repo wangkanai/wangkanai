@@ -1,23 +1,18 @@
 <Project>
-    <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props"/>
-
-    <PropertyGroup>
-        <VersionPrefix>0.14.0</VersionPrefix>
-
-        <Title>Wangkanai Markdown</Title>
-        <Description>ASP.NET Core Markdown pages make you able to use markdown pages as an alternative view source in ASP.NET Core view.</Description>
-        <PackageTags>aspnetcore;markdown;pages</PackageTags>
-
-        <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Markdown</PackageProjectUrl>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Markdown'">
-        <PackageIcon>wangkanai-logo.png</PackageIcon>
-        <PackageReadmeFile>README.md</PackageReadmeFile>
-    </PropertyGroup>
-
-    <ItemGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Markdown'">
-        <None Include="..\..\assets\wangkanai-logo.png" Pack="true" PackagePath="\"/>
-        <None Include="..\README.md" Pack="true" PackagePath="\"/>
-    </ItemGroup>
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
+  <PropertyGroup>
+    <VersionPrefix>0.15.0</VersionPrefix>
+    <Title>Wangkanai Markdown</Title>
+    <Description>ASP.NET Core Markdown pages make you able to use markdown pages as an alternative view source in ASP.NET Core view.</Description>
+    <PackageTags>aspnetcore;markdown;pages</PackageTags>
+    <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Markdown</PackageProjectUrl>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Markdown'">
+    <PackageIcon>wangkanai-logo.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Markdown'">
+    <None Include="..\..\assets\wangkanai-logo.png" Pack="true" PackagePath="\" />
+    <None Include="..\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
 </Project>

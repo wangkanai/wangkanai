@@ -1,25 +1,19 @@
 <Project>
-    <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props"/>
-    
-    <PropertyGroup>
-        <VersionPrefix>0.9.0</VersionPrefix>
-
-        <Title>Wangkanai Domain</Title>
-        <PackageTags>aspnetcore;entity;domain;ddd;</PackageTags>
-        <Description>Wangkanai .NET Domain Driven Design core library.</Description>
-        
-        <RootNamespace>Wangkanai</RootNamespace>
-
-        <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Domain</PackageProjectUrl>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Domain'">
-        <PackageIcon>wangkanai-logo.png</PackageIcon>
-        <PackageReadmeFile>README.md</PackageReadmeFile>
-    </PropertyGroup>
-
-    <ItemGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Domain'">
-        <None Include="..\..\assets\wangkanai-logo.png" Pack="true" PackagePath="\"/>
-        <None Include="..\README.md" Pack="true" PackagePath="\"/>
-    </ItemGroup>
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
+  <PropertyGroup>
+    <VersionPrefix>0.10.0</VersionPrefix>
+    <Title>Wangkanai Domain</Title>
+    <PackageTags>aspnetcore;entity;domain;ddd;</PackageTags>
+    <Description>Wangkanai .NET Domain Driven Design core library.</Description>
+    <RootNamespace>Wangkanai</RootNamespace>
+    <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Domain</PackageProjectUrl>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Domain'">
+    <PackageIcon>wangkanai-logo.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Domain'">
+    <None Include="..\..\assets\wangkanai-logo.png" Pack="true" PackagePath="\" />
+    <None Include="..\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
 </Project>

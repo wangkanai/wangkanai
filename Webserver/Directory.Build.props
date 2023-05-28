@@ -1,24 +1,18 @@
 <Project>
-    <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props"/>
-
-    <PropertyGroup>
-        <VersionPrefix>1.4.0</VersionPrefix>
-
-        <Title>Wangkanai Webserver</Title>
-        <Description>ASP.NET Core Webserver extension library to help make life easier..</Description>
-        <PackageTags>aspnetcore;webserver;</PackageTags>
-
-
-        <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Webserver</PackageProjectUrl>
-    </PropertyGroup>
-
-    <PropertyGroup>
-        <PackageIcon>wangkanai-logo.png</PackageIcon>
-        <PackageReadmeFile>README.md</PackageReadmeFile>
-    </PropertyGroup>
-
-    <ItemGroup>
-        <None Include="..\..\assets\wangkanai-logo.png" Pack="true" PackagePath="\"/>
-        <None Include="..\README.md" Pack="true" PackagePath="\"/>
-    </ItemGroup>
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
+  <PropertyGroup>
+    <VersionPrefix>1.5.0</VersionPrefix>
+    <Title>Wangkanai Webserver</Title>
+    <Description>ASP.NET Core Webserver extension library to help make life easier..</Description>
+    <PackageTags>aspnetcore;webserver;</PackageTags>
+    <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Webserver</PackageProjectUrl>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PackageIcon>wangkanai-logo.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="..\..\assets\wangkanai-logo.png" Pack="true" PackagePath="\" />
+    <None Include="..\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
 </Project>
