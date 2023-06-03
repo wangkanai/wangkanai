@@ -12,8 +12,11 @@ public class Adler32
 	public static int ComputeChecksum(int initial, byte[] data, int start, int length)
 	{
 		data.ThrowIfNull();
+		initial.NotLessThan(0);
+		start.NotLessThan(0);
+		length.NotLessThan(0);
 
-		var a = initial & 0xFFFF;
+		var a = initial         & 0xFFFF;
 		var b = (initial >> 16) & 0xFFFF;
 
 		var index = start;

@@ -1,5 +1,7 @@
 ﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
+using Wangkanai.Exceptions;
+
 using Xunit;
 
 namespace Wangkanai.Cryptography;
@@ -10,6 +12,12 @@ public class Adler32Tests
 	public void ComputeChecksumThrowIfNull()
 	{
 		Assert.Throws<ArgumentNullException>(() => Adler32.ComputeChecksum(0, null!));
-		Assert.Throws<ArgumentNullException>(() => Adler32.ComputeChecksum(0, null!, 0, 0));
+	}
+
+	public void ChecksumThrowIfLessThanZero()
+	{
+		Assert.Throws<ArgumentLessThanException>(() => Adler32.ComputeChecksum(-1, new byte[0]));
+		Assert.Throws<ArgumentLessThanException>(() => Adler32.ComputeChecksum(-1, new byte[0], -1, 0));
+		Assert.Throws<ArgumentLessThanException>(() => Adler32.ComputeChecksum(-1, new byte[0], 0, -1));
 	}
 }
