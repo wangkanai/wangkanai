@@ -7,7 +7,7 @@
         "lib-icons": "cpy node_modules/@tabler/icons/**/*.* wwwroot/lib/icons/"
     },
     "dependencies": {
-        "@tabler/core": "^1.0.0-beta17",
+        "@tabler/core": "^1.0.0-beta19",
         "rfs": "^10.0.0"
     },
     "devDependencies": {
