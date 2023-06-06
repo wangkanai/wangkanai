@@ -212,19 +212,19 @@ public static class Check
 
 	public static string ThrowIfNullOrWhitespace(this string? value, string message)
 		=> ThrowIfNullOrWhitespace<ArgumentNullException>(value, message);
-	
+
 	public static string ThrowIfNullOrWhitespace<T>(this string? value)
 		where T : ArgumentException
 		=> value.ThrowIfNullOrWhitespace<T>(nameof(value));
-	
+
 	public static string ThrowIfNullOrWhitespace<T>(this string? value, string message)
 		where T : ArgumentException
 		=> value.ThrowIfNullOrWhitespace<T>(message, nameof(value));
 
 	public static string ThrowIfNullOrWhitespace<T>(this string? value, string message, [InvokerParameterName] string parameterName)
 		where T : ArgumentException
-		=> value.IsNullOrWhiteSpace() 
-			   ? throw CreateExceptionInstance<T>(message, parameterName) 
+		=> value.IsNullOrWhiteSpace()
+			   ? throw CreateExceptionInstance<T>(message, parameterName)
 			   : value!;
 
 	// Throw if value object is null
@@ -299,6 +299,42 @@ public static class Check
 		=> value > expected
 			   ? throw CreateExceptionInstance<T>(parameterName)
 			   : true;
+
+	// Throw if value is negative
+
+	public static int ThrowIfNegative(this int value)
+		=> value.ThrowIfNegative<ArgumentNegativeException>(nameof(value));
+
+	public static int ThrowIfNegative(this int value, [InvokerParameterName] string parameterName)
+		=> value.ThrowIfNegative<ArgumentNegativeException>(parameterName);
+
+	public static int ThrowIfNegative<T>(this int value)
+		where T : ArgumentException
+		=> value.ThrowIfNegative<T>(nameof(value));
+
+	public static int ThrowIfNegative<T>(this int value, [InvokerParameterName] string parameterName)
+		where T : ArgumentException
+		=> value < 0
+			   ? throw CreateExceptionInstance<T>(parameterName)
+			   : value;
+
+	// Throw if value is positive
+	
+	public static int ThrowIfPositive(this int value)
+		=> value.ThrowIfPositive<ArgumentPositiveException>(nameof(value));
+
+	public static int ThrowIfPositive(this int value, [InvokerParameterName] string parameterName)
+		=> value.ThrowIfPositive<ArgumentPositiveException>(parameterName);
+
+	public static int ThrowIfPositive<T>(this int value)
+		where T : ArgumentException
+		=> value.ThrowIfPositive<T>(nameof(value));
+
+	public static int ThrowIfPositive<T>(this int value, [InvokerParameterName] string parameterName)
+		where T : ArgumentException
+		=> value < 0
+			   ? throw CreateExceptionInstance<T>(parameterName)
+			   : value;
 
 	// Throw if value is zero
 
