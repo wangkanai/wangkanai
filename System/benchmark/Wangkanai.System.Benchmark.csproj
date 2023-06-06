@@ -7,7 +7,7 @@
         <Nullable>enable</Nullable>
         <NoWarn>8600</NoWarn>
         <IsPackable>false</IsPackable>
-        <TargetFramework>net6.0</TargetFramework>
+        <TargetFramework>net7.0</TargetFramework>
     </PropertyGroup>
 
     <ItemGroup>
