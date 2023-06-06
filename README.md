@@ -38,7 +38,7 @@ And much more! Feel free to explore, use, and contribute to these projects.
 
 I appreciate every star ⭐ that my projects receive, and your support means a lot to me! If you find my projects useful or enjoyable, please consider giving them a star.
 
-For inquiries, suggestions, or contributions, feel free to open an issue or a pull request. You can also reach out to me directly via [LinkedIn](https://www.linkedin.com/in/sarinnawangkanai/.
+For inquiries, suggestions, or contributions, feel free to open an issue or a pull request. You can also reach out to me directly via [LinkedIn](https://www.linkedin.com/in/sarinnawangkanai/).
 
 Thank you for your interest in my work, and happy coding!
 
