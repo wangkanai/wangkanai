@@ -171,7 +171,7 @@ public class CheckTests
 		Assert.Throws<ArgumentException>(() => _null.ThrowIfNullOrEmpty<ArgumentException>());
 		Assert.Throws<ArgumentException>(() => _null.ThrowIfNullOrEmpty<ArgumentException>("Null Exception"));
 		Assert.Throws<ArgumentException>(() => _null.ThrowIfNullOrEmpty<ArgumentException>("Null Exception", nameof(_null)));
-		
+
 		Assert.Throws<ArgumentException>(() => _empty.ThrowIfNullOrEmpty<ArgumentException>());
 		Assert.Throws<ArgumentException>(() => _empty.ThrowIfNullOrEmpty<ArgumentException>("Null Exception"));
 		Assert.Throws<ArgumentException>(() => _empty.ThrowIfNullOrEmpty<ArgumentException>("Null Exception", nameof(_null)));
@@ -184,7 +184,7 @@ public class CheckTests
 
 		Assert.Equal(abc, abc.ThrowIfNullOrEmpty());
 		Assert.Equal(abc, abc.ThrowIfNullOrEmpty<ArgumentNullException>());
-		
+
 		Assert.Equal(abc, abc.ThrowIfNullOrEmpty<ArgumentException>());
 		Assert.Equal(abc, abc.ThrowIfNullOrEmpty<ArgumentException>("Null Exception"));
 		Assert.Equal(abc, abc.ThrowIfNullOrEmpty<ArgumentException>("Null Exception", nameof(abc)));
@@ -335,37 +335,40 @@ public class CheckTests
 	[Fact]
 	public void LessThanExpected()
 	{
-		Assert.True(1.NotLessThan(0));
-		Assert.True(1.NotLessThan(1));
-		Assert.True(0.NotLessThan(0));
-		Assert.Throws<ArgumentLessThanException>(() => 0.NotLessThan(1));
+		Assert.True(1.ThrowIfLessThan(0));
+		Assert.True(1.ThrowIfLessThan(1));
+		Assert.True(0.ThrowIfLessThan(0));
+		Assert.Throws<ArgumentLessThanException>(() => 0.ThrowIfLessThan(1));
 	}
 
 	[Fact]
 	public void MoreThanExpected()
 	{
-		Assert.True(0.NotMoreThan(1));
-		Assert.True(1.NotMoreThan(1));
-		Assert.True(0.NotMoreThan(0));
-		Assert.Throws<ArgumentMoreThanException>(() => 1.NotMoreThan(0));
+		Assert.True(0.ThrowIfMoreThan(1));
+		Assert.True(1.ThrowIfMoreThan(1));
+		Assert.True(0.ThrowIfMoreThan(0));
+		Assert.Throws<ArgumentMoreThanException>(() => 1.ThrowIfMoreThan(0));
 	}
 
 	[Fact]
 	public void NotEqual()
 	{
-		Assert.True(1.NotEqual(1));
-		Assert.Throws<ArgumentEqualException>(() => 1.NotEqual(0));
+		Assert.True(1.ThrowIfNotEqual(1));
+		Assert.Throws<ArgumentNotEqualException>(() => 1.ThrowIfNotEqual(0));
 	}
 
 	[Fact]
 	public void NotEqualExtension()
 	{
 		var test = "test";
-		Assert.True(test.Length.NotEqual(4, new ArgumentTestException()));
-		Assert.Throws<ArgumentTestException>(() => test.Length.NotEqual(8, new ArgumentTestException()));
+		Assert.True(test.Length.ThrowIfNotEqual(4));
+		Assert.Throws<ArgumentTestException>(() => test.Length.ThrowIfNotEqual<ArgumentTestException>(8, nameof(test)));
 	}
 
 	#endregion
 }
 
-public class ArgumentTestException : ArgumentException { }
+public class ArgumentTestException : ArgumentException
+{
+	public ArgumentTestException(string message) : base(message) { }
+}

@@ -114,7 +114,7 @@ public static class StringExtensions
 	public static string Left(this string input, int length)
 	{
 		input.ThrowIfNull();
-		input.Length.NotLessThan(length, nameof(length));
+		input.Length.ThrowIfLessThan(length, nameof(length));
 
 		return input.Substring(0, length);
 	}
@@ -123,7 +123,7 @@ public static class StringExtensions
 	public static string Right(this string input, int length)
 	{
 		input.ThrowIfNull();
-		input.Length.NotMoreThan(length);
+		input.Length.ThrowIfMoreThan(length);
 
 		return input.Substring(input.Length - length, length);
 	}
