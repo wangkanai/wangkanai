@@ -16,7 +16,7 @@ public static class Check
 	#region Throw
 
 	// Throw if value is null (all possible types)
-	
+
 	public static bool? ThrowIfNull(this bool? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
@@ -168,38 +168,33 @@ public static class Check
 		where T : Exception
 		=> value ?? throw CreateExceptionInstance<T>(message);
 
-	
+
 	// Throw is value string is null or empty
 
 	public static string ThrowIfNullOrEmpty(this string? value)
 		=> value.ThrowIfNullOrEmpty<ArgumentNullException>();
 
-
 	public static string ThrowIfNullOrEmpty(this string? value, string message)
 		=> value.ThrowIfNullOrEmpty<ArgumentNullException>(message);
 
-
 	public static string ThrowIfNullOrEmpty(this string? value, string message, string paramName)
-		=> value.ThrowIfNullOrEmpty<ArgumentException>(message, paramName);
-
+		=> value.ThrowIfNullOrEmpty<ArgumentNullException>(message, paramName);
 
 	public static string ThrowIfNullOrEmpty<T>(this string? value)
-		where T : Exception
+		where T : ArgumentException
 	{
 		if (value.IsNullOrEmpty())
 			throw CreateExceptionInstance<T>(nameof(value));
 		return value!;
 	}
 
-
 	public static string ThrowIfNullOrEmpty<T>(this string? value, string message)
-		where T : Exception
+		where T : ArgumentException
 	{
 		if (value.IsNullOrEmpty())
 			throw CreateExceptionInstance<T>(message);
 		return value!;
 	}
-
 
 	public static string ThrowIfNullOrEmpty<T>(this string? value, string message, string paramName)
 		where T : ArgumentException
@@ -209,42 +204,28 @@ public static class Check
 		return value!;
 	}
 
-
 	// Throw if value string is null or whitespace
-	
+
 	public static string ThrowIfNullOrWhitespace(this string? value)
 		=> ThrowIfNullOrWhitespace<ArgumentNullException>(value);
 
 
 	public static string ThrowIfNullOrWhitespace(this string? value, string message)
 		=> ThrowIfNullOrWhitespace<ArgumentNullException>(value, message);
-
-
+	
 	public static string ThrowIfNullOrWhitespace<T>(this string? value)
-		where T : Exception
-	{
-		if (value.IsNullOrWhiteSpace())
-			throw CreateExceptionInstance<T>(nameof(value));
-		return value!;
-	}
-
-
-	public static string ThrowIfNullOrWhitespace<T>(this string? value, string message)
-		where T : Exception
-	{
-		if (value.IsNullOrWhiteSpace())
-			throw CreateExceptionInstance<T>(message);
-		return value!;
-	}
-
-
-	public static string ThrowIfNullOrWhitespace<T>(this string? value, string message, string paramName)
 		where T : ArgumentException
-	{
-		if (value.IsNullOrWhiteSpace())
-			throw CreateExceptionInstance<T>(message, paramName);
-		return value!;
-	}
+		=> value.ThrowIfNullOrWhitespace<T>(nameof(value));
+	
+	public static string ThrowIfNullOrWhitespace<T>(this string? value, string message)
+		where T : ArgumentException
+		=> value.ThrowIfNullOrWhitespace<T>(message, nameof(value));
+
+	public static string ThrowIfNullOrWhitespace<T>(this string? value, string message, [InvokerParameterName] string parameterName)
+		where T : ArgumentException
+		=> value.IsNullOrWhiteSpace() 
+			   ? throw CreateExceptionInstance<T>(message, parameterName) 
+			   : value!;
 
 	// Throw if value object is null
 
@@ -267,7 +248,7 @@ public static class Check
 
 
 	// Throw if value is not equal to expected
-	
+
 	public static bool ThrowIfNotEqual(this int value, int expected)
 		=> value.ThrowIfNotEqual<ArgumentNotEqualException>(expected, nameof(value));
 
@@ -280,30 +261,30 @@ public static class Check
 		=> value != expected
 			   ? throw CreateExceptionInstance<T>(parameterName)
 			   : true;
-	
+
 	// Throw if value is less than expected
 
 	public static bool ThrowIfLessThan(this int value, int expected)
 		=> value.ThrowIfLessThan<ArgumentLessThanException>(expected, nameof(value));
-	
+
 	public static bool ThrowIfLessThan(this int value, int expected, [InvokerParameterName] string parameterName)
 		=> value.ThrowIfLessThan<ArgumentLessThanException>(expected, parameterName);
-	
+
 	public static bool ThrowIfLessThan<T>(this int value, int expected)
 		where T : ArgumentException
 		=> value.ThrowIfLessThan<T>(expected, nameof(value));
-	
+
 	public static bool ThrowIfLessThan<T>(this int value, int expected, [InvokerParameterName] string parameterName)
 		where T : ArgumentException
 		=> value < expected
 			   ? throw CreateExceptionInstance<T>(parameterName)
 			   : true;
-	
+
 	// Throw if value is more than expected
-	
+
 	public static bool ThrowIfMoreThan(this int value, int expected)
 		=> value.ThrowIfMoreThan<ArgumentMoreThanException>(expected, nameof(value));
-	
+
 	public static bool ThrowIfMoreThan(this int value, int expected, [InvokerParameterName] string parameterName)
 		=> value.ThrowIfMoreThan<ArgumentMoreThanException>(expected, parameterName);
 
@@ -320,7 +301,7 @@ public static class Check
 			   : true;
 
 	// Throw if value is zero
-	
+
 	public static bool ThrowIfZero(this int value)
 		=> value.ThrowIfZero<ArgumentZeroException>(nameof(value));
 
@@ -350,6 +331,7 @@ public static class Check
 	public static bool FalseIfNull<T>(this T? value)
 		=> !value.TrueIfNull();
 
+	[Obsolete(ObsoleteResources.Duplicated)]
 	public static T ReturnIfNotNull<T>(this T? value)
 		=> value ?? value!.ThrowIfNull<T>();
 

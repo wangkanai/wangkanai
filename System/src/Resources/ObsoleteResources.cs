@@ -4,5 +4,6 @@ namespace Wangkanai.Resources;
 
 internal static class ObsoleteResources
 {
-	internal const string Net8 = "This method is obsolete and will be removed in a future version of .NET8.";
+	internal const string Duplicated = "This method is duplicated and will be removed in a future version of .NET8.";
+	internal const string Net8       = "This method is obsolete and will be removed in a future version of .NET8.";
 }
