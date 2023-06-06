@@ -15,6 +15,7 @@ public class Adler32
 		initial.ThrowIfLessThan(0);
 		start.ThrowIfLessThan(0);
 		length.ThrowIfLessThan(0);
+		//length.ThrowIfZero();
 
 		var a = initial         & 0xFFFF;
 		var b = (initial >> 16) & 0xFFFF;
