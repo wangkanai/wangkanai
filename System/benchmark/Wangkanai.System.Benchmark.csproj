@@ -2,21 +2,23 @@
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
-        <TargetFramework>net7.0</TargetFramework>
+        <Optimize>true</Optimize>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <Optimize>true</Optimize>
         <NoWarn>8600</NoWarn>
         <IsPackable>false</IsPackable>
+        <TargetFramework>net6.0</TargetFramework>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="BenchmarkDotNet" Version="0.13.5" />
-    </ItemGroup>
-
-    <ItemGroup>
         <ProjectReference Include="..\src\Wangkanai.System.csproj" />
-        <ProjectReference Include="..\tests\Wangkanai.System.Tests.csproj" />
     </ItemGroup>
-
+    
+    <ItemGroup>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.1" />
+        <PackageReference Include="BenchmarkDotNet" Version="0.13.5" />
+        <PackageReference Include="xunit" Version="2.4.2" />
+        <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5" PrivateAssets="All" />
+    </ItemGroup>
+    
 </Project>
