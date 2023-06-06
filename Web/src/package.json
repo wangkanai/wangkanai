@@ -28,7 +28,7 @@
         "lib-jquery-validation-unobtrusive": "cpy node_modules/jquery-validation-unobtrusive/dist/**/*.* wwwroot/lib/jquery-validation-unobtrusive/dist"
     },
     "dependencies": {
-        "bootstrap": "^5.3.0-alpha3",
+        "bootstrap": "^5.3.0",
         "jquery": "^3.6.4",
         "jquery-validation": "^1.19.5",
         "jquery-validation-unobtrusive": "^4.0.0",
