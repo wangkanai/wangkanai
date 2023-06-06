@@ -13,191 +13,189 @@ namespace Wangkanai;
 [DebuggerStepThrough]
 public static class Check
 {
-	#region ThrowIfNull
+	#region Throw
 
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+	// Throw if value is null (all possible types)
+
 	public static bool? ThrowIfNull(this bool? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+
 	public static bool? ThrowIfNull<T>(this bool? value)
 		where T : Exception
 		=> value ?? throw CreateExceptionInstance<T>(nameof(value));
 
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+
 	public static sbyte? ThrowIfNull(this sbyte? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+
 	public static sbyte? ThrowIfNull<T>(this sbyte? value)
 		where T : Exception
 		=> value ?? throw CreateExceptionInstance<T>(nameof(value));
 
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+
 	public static byte? ThrowIfNull(this byte? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+
 	public static byte? ThrowIfNull<T>(this byte? value)
 		where T : Exception
 		=> value ?? throw CreateExceptionInstance<T>(nameof(value));
 
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+
 	public static short? ThrowIfNull(this short? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+
 	public static short? ThrowIfNull<T>(this short? value)
 		where T : Exception
 		=> value ?? throw CreateExceptionInstance<T>(nameof(value));
 
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+
 	public static ushort? ThrowIfNull(this ushort? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+
 	public static ushort? ThrowIfNull<T>(this ushort? value)
 		where T : Exception
 		=> value ?? throw CreateExceptionInstance<T>(nameof(value));
 
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+
 	public static int? ThrowIfNull(this int? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+
 	public static int? ThrowIfNull<T>(this int? value)
 		where T : Exception
 		=> value ?? throw CreateExceptionInstance<T>(nameof(value));
 
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+
 	public static uint? ThrowIfNull(this uint? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+
 	public static uint? ThrowIfNull<T>(this uint? value)
 		where T : Exception
 		=> value ?? throw CreateExceptionInstance<T>(nameof(value));
 
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+
 	public static nint? ThrowIfNull(this nint? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+
 	public static nint? ThrowIfNull<T>(this nint? value)
 		where T : Exception
 		=> value ?? throw CreateExceptionInstance<T>(nameof(value));
 
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+
 	public static nuint? ThrowIfNull(this nuint? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+
 	public static nuint? ThrowIfNull<T>(this nuint? value)
 		where T : Exception
 		=> value ?? throw CreateExceptionInstance<T>(nameof(value));
 
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+
 	public static long? ThrowIfNull(this long? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+
 	public static long? ThrowIfNull<T>(this long? value)
 		where T : Exception
 		=> value ?? throw CreateExceptionInstance<T>(nameof(value));
 
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+
 	public static ulong? ThrowIfNull(this ulong? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+
 	public static ulong? ThrowIfNull<T>(this ulong? value)
 		where T : Exception
 		=> value ?? throw CreateExceptionInstance<T>(nameof(value));
 
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+
 	public static float? ThrowIfNull(this float? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+
 	public static float? ThrowIfNull<T>(this float? value)
 		where T : Exception
 		=> value ?? throw CreateExceptionInstance<T>(nameof(value));
 
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+
 	public static double? ThrowIfNull(this double? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+
 	public static double? ThrowIfNull<T>(this double? value)
 		where T : Exception
 		=> value ?? throw CreateExceptionInstance<T>(nameof(value));
 
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+
 	public static decimal? ThrowIfNull(this decimal? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+
 	public static decimal? ThrowIfNull<T>(this decimal? value)
 		where T : Exception
 		=> value ?? throw CreateExceptionInstance<T>(nameof(value));
 
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+
 	public static char? ThrowIfNull(this char? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+
 	public static char? ThrowIfNull<T>(this char? value)
 		where T : Exception
 		=> value ?? throw CreateExceptionInstance<T>(nameof(value));
 
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+
 	public static string ThrowIfNull(this string? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
 	public static string ThrowIfNull(this string? value, string message)
 		=> ThrowIfNull<ArgumentNullException>(value, message);
 
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+
 	public static string ThrowIfNull<T>(this string? value)
 		where T : Exception
 		=> value ?? throw CreateExceptionInstance<T>(nameof(value));
 
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+
 	public static string ThrowIfNull<T>(this string? value, string message)
 		where T : Exception
 		=> value ?? throw CreateExceptionInstance<T>(message);
 
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+
+	// Throw is value string is null or empty
+
 	public static string ThrowIfNullOrEmpty(this string? value)
 		=> value.ThrowIfNullOrEmpty<ArgumentNullException>();
 
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
 	public static string ThrowIfNullOrEmpty(this string? value, string message)
 		=> value.ThrowIfNullOrEmpty<ArgumentNullException>(message);
 
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
 	public static string ThrowIfNullOrEmpty(this string? value, string message, string paramName)
-		=> value.ThrowIfNullOrEmpty<ArgumentException>(message, paramName);
+		=> value.ThrowIfNullOrEmpty<ArgumentNullException>(message, paramName);
 
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
 	public static string ThrowIfNullOrEmpty<T>(this string? value)
-		where T : Exception
+		where T : ArgumentException
 	{
 		if (value.IsNullOrEmpty())
 			throw CreateExceptionInstance<T>(nameof(value));
 		return value!;
 	}
 
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
 	public static string ThrowIfNullOrEmpty<T>(this string? value, string message)
-		where T : Exception
+		where T : ArgumentException
 	{
 		if (value.IsNullOrEmpty())
 			throw CreateExceptionInstance<T>(message);
 		return value!;
 	}
 
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
 	public static string ThrowIfNullOrEmpty<T>(this string? value, string message, string paramName)
 		where T : ArgumentException
 	{
@@ -206,58 +204,122 @@ public static class Check
 		return value!;
 	}
 
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+	// Throw if value string is null or whitespace
+
 	public static string ThrowIfNullOrWhitespace(this string? value)
 		=> ThrowIfNullOrWhitespace<ArgumentNullException>(value);
 
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+
 	public static string ThrowIfNullOrWhitespace(this string? value, string message)
 		=> ThrowIfNullOrWhitespace<ArgumentNullException>(value, message);
-
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+	
 	public static string ThrowIfNullOrWhitespace<T>(this string? value)
-		where T : Exception
-	{
-		if (value.IsNullOrWhiteSpace())
-			throw CreateExceptionInstance<T>(nameof(value));
-		return value!;
-	}
-
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
-	public static string ThrowIfNullOrWhitespace<T>(this string? value, string message)
-		where T : Exception
-	{
-		if (value.IsNullOrWhiteSpace())
-			throw CreateExceptionInstance<T>(message);
-		return value!;
-	}
-
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
-	public static string ThrowIfNullOrWhitespace<T>(this string? value, string message, string paramName)
 		where T : ArgumentException
-	{
-		if (value.IsNullOrWhiteSpace())
-			throw CreateExceptionInstance<T>(message, paramName);
-		return value!;
-	}
+		=> value.ThrowIfNullOrWhitespace<T>(nameof(value));
+	
+	public static string ThrowIfNullOrWhitespace<T>(this string? value, string message)
+		where T : ArgumentException
+		=> value.ThrowIfNullOrWhitespace<T>(message, nameof(value));
 
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+	public static string ThrowIfNullOrWhitespace<T>(this string? value, string message, [InvokerParameterName] string parameterName)
+		where T : ArgumentException
+		=> value.IsNullOrWhiteSpace() 
+			   ? throw CreateExceptionInstance<T>(message, parameterName) 
+			   : value!;
+
+	// Throw if value object is null
+
 	public static object ThrowIfNull<T>(this object? value)
 		where T : Exception
 		=> value ?? throw CreateExceptionInstance<T>(nameof(value));
 
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+
 	public static object ThrowIfNull<T>(this object? value, string message)
 		where T : Exception
 		=> value ?? throw CreateExceptionInstance<T>(message);
 
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+
 	public static T ThrowIfNull<T>(this T value)
 		=> value ?? throw CreateExceptionInstance<ArgumentNullException>(nameof(value));
 
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
+
 	public static T ThrowIfNull<T>(this T value, string message)
 		=> value ?? throw CreateExceptionInstance<ArgumentNullException>(message);
+
+
+	// Throw if value is not equal to expected
+
+	public static bool ThrowIfNotEqual(this int value, int expected)
+		=> value.ThrowIfNotEqual<ArgumentNotEqualException>(expected, nameof(value));
+
+	public static bool ThrowIfNotEqual<T>(this int value, int expected)
+		where T : ArgumentException
+		=> value.ThrowIfNotEqual<T>(expected, nameof(value));
+
+	public static bool ThrowIfNotEqual<T>(this int value, int expected, [InvokerParameterName] string parameterName)
+		where T : ArgumentException
+		=> value != expected
+			   ? throw CreateExceptionInstance<T>(parameterName)
+			   : true;
+
+	// Throw if value is less than expected
+
+	public static bool ThrowIfLessThan(this int value, int expected)
+		=> value.ThrowIfLessThan<ArgumentLessThanException>(expected, nameof(value));
+
+	public static bool ThrowIfLessThan(this int value, int expected, [InvokerParameterName] string parameterName)
+		=> value.ThrowIfLessThan<ArgumentLessThanException>(expected, parameterName);
+
+	public static bool ThrowIfLessThan<T>(this int value, int expected)
+		where T : ArgumentException
+		=> value.ThrowIfLessThan<T>(expected, nameof(value));
+
+	public static bool ThrowIfLessThan<T>(this int value, int expected, [InvokerParameterName] string parameterName)
+		where T : ArgumentException
+		=> value < expected
+			   ? throw CreateExceptionInstance<T>(parameterName)
+			   : true;
+
+	// Throw if value is more than expected
+
+	public static bool ThrowIfMoreThan(this int value, int expected)
+		=> value.ThrowIfMoreThan<ArgumentMoreThanException>(expected, nameof(value));
+
+	public static bool ThrowIfMoreThan(this int value, int expected, [InvokerParameterName] string parameterName)
+		=> value.ThrowIfMoreThan<ArgumentMoreThanException>(expected, parameterName);
+
+
+	public static bool ThrowIfMoreThan<T>(this int value, int expected)
+		where T : ArgumentException
+		=> value.ThrowIfMoreThan<T>(expected, nameof(value));
+
+
+	public static bool ThrowIfMoreThan<T>(this int value, int expected, [InvokerParameterName] string parameterName)
+		where T : ArgumentException
+		=> value > expected
+			   ? throw CreateExceptionInstance<T>(parameterName)
+			   : true;
+
+	// Throw if value is zero
+
+	public static bool ThrowIfZero(this int value)
+		=> value.ThrowIfZero<ArgumentZeroException>(nameof(value));
+
+
+	public static bool ThrowIfZero(this int value, [InvokerParameterName] string parameterName)
+		=> value.ThrowIfZero<ArgumentZeroException>(parameterName);
+
+
+	public static bool ThrowIfZero<T>(this int value)
+		where T : ArgumentException
+		=> value.ThrowIfZero<T>(nameof(value));
+
+
+	public static bool ThrowIfZero<T>(this int value, [InvokerParameterName] string parameterName)
+		where T : ArgumentException
+		=> value == 0
+			   ? throw CreateExceptionInstance<T>(parameterName)
+			   : true;
 
 	#endregion
 
@@ -269,42 +331,12 @@ public static class Check
 	public static bool FalseIfNull<T>(this T? value)
 		=> !value.TrueIfNull();
 
+	[Obsolete(ObsoleteResources.Duplicated)]
 	public static T ReturnIfNotNull<T>(this T? value)
 		=> value ?? value!.ThrowIfNull<T>();
 
 	#endregion
 
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
-	public static bool ThrowIfNotEqual(this int value, int expected)
-		=> value.ThrowIfNotEqual<ArgumentNotEqualException>(expected, nameof(value));
-
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
-	public static bool ThrowIfNotEqual<T>(this int value, int expected, [InvokerParameterName] string parameterName)
-		where T : ArgumentException
-		=> value != expected
-			   ? throw CreateExceptionInstance<T>(parameterName)
-			   : true;
-
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
-	public static bool ThrowIfLessThan(this int value, int expected)
-		=> ThrowIfLessThan(value, expected, nameof(value));
-
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
-	public static bool ThrowIfLessThan(this int value, int expected, [InvokerParameterName] string parameterName)
-		=> value < expected
-			   ? throw new ArgumentLessThanException(parameterName)
-			   : true;
-
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
-	public static bool ThrowIfMoreThan(this int value, int expected)
-		=> ThrowIfMoreThan(value, expected, nameof(value));
-
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
-	internal static bool ThrowIfMoreThan(this int value, int expected, [InvokerParameterName] [NotNull] string parameterName)
-		=> value > expected
-			   ? throw new ArgumentMoreThanException(parameterName)
-			   : true;
-	
 #if NET7_0_OR_GREATER
 	public static T ThrowIfOutOfRange<T>(this T index, [NonNegativeValue] T lower, [NonNegativeValue] T upper)
 		where T : IBinaryInteger<T>
@@ -339,43 +371,36 @@ public static class Check
 	#region Obsolete
 
 	[Obsolete(ObsoleteResources.Net8)]
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
 	public static string NotNullOrEmpty(string value)
 		=> NotNullOrEmpty(value, nameof(value));
 
 	[Obsolete(ObsoleteResources.Net8)]
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
 	private static string NotNullOrEmpty(string value, [InvokerParameterName] string parameterName)
 		=> value.IsNullOrEmpty()
 			   ? throw new ArgumentNullOrEmptyException(parameterName)
 			   : value;
 
 	[Obsolete(ObsoleteResources.Net8)]
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
 	public static bool NotNullOrEmpty<T>(this IEnumerable<T> value)
 		=> NotNullOrEmpty(value, nameof(value));
 
 	[Obsolete(ObsoleteResources.Net8)]
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
 	internal static bool NotNullOrEmpty<T>(this IEnumerable<T> value, [InvokerParameterName] string parameterName)
 		=> value.IsNullOrEmpty()
 			   ? throw new ArgumentNullOrEmptyException(parameterName)
 			   : true;
 
 	[Obsolete(ObsoleteResources.Net8)]
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
 	public static bool NotEqual(this int value, int expected)
 		=> value.NotEqual(expected, nameof(value));
 
 	[Obsolete(ObsoleteResources.Net8)]
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
 	public static bool NotEqual(this int value, int expected, ArgumentException exception)
 		=> value != expected
 			   ? throw exception
 			   : true;
 
 	[Obsolete(ObsoleteResources.Net8)]
-	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
 	internal static bool NotEqual(this int value, int expected, [InvokerParameterName] string parameterName)
 		=> value != expected
 			   ? throw new ArgumentNotEqualException(parameterName)
