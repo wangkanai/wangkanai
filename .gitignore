@@ -4,6 +4,9 @@
 .obsidian/
 .notes/
 
+# dotCover is a Code Coverage Tool
+dotCover.Output.xml
+
 # User-specific files
 *.suo
 *.user
