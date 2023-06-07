@@ -1,4 +1,4 @@
-﻿@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
+﻿@import url('../lib/open-iconic/font/css/open-iconic-bootstrap.min.css');
 
 .theme-dark {
   --bs-body-color: #d4d4d4 !important;
