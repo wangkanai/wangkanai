@@ -1,7 +1,7 @@
 <Project>
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
   <PropertyGroup>
-    <VersionPrefix>0.7.0</VersionPrefix>
+    <VersionPrefix>0.7.1</VersionPrefix>
     <Title>Wangkanai Watcher</Title>
     <Description>ASP.NET Core Development dotnet-watch file watcher task execution.</Description>
     <PackageTags>aspnetcore;watcher;task;job;</PackageTags>
