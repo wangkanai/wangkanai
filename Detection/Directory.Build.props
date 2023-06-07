@@ -1,7 +1,7 @@
 <Project>
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
   <PropertyGroup>
-    <VersionPrefix>7.3.1</VersionPrefix>
+    <VersionPrefix>7.3.2</VersionPrefix>
     <Title>Wangkanai Detection</Title>
     <Description>ASP.NET Core Detection service components for identifying details about client device, browser, engine, platform, and crawler.</Description>
     <PackageTags>aspnetcore;detection;</PackageTags>
