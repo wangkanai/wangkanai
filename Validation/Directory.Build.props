@@ -1,7 +1,7 @@
 <Project>
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
   <PropertyGroup>
-    <VersionPrefix>1.13.0</VersionPrefix>
+    <VersionPrefix>1.13.1</VersionPrefix>
     <Title>Wangkanai Validation</Title>
     <Description>Domain Driven Design Validation library for .NET developement</Description>
     <PackageTags>aspnetcore;validation;</PackageTags>

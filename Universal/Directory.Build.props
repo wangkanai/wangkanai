@@ -1,7 +1,7 @@
 <Project>
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
   <PropertyGroup>
-    <VersionPrefix>0.20.0</VersionPrefix>
+    <VersionPrefix>0.20.1</VersionPrefix>
     <Title>Wangkanai Universal</Title>
     <Description>ASP.NET Core Google Analytics service is lightweight server-side code that generator library that JavaScript client-side on the fly for Google Analytics analytics.js. The goal of the framework is to stay out of the way as much as possible and provide a super interaction with Google all from C#.</Description>
     <PackageTags>aspnetcore;google;analytics;universal;</PackageTags>
