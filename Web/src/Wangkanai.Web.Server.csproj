@@ -23,16 +23,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <_ContentIncludedByDefault Remove="Pages\Tabler\Analytics.cshtml"/>
-        <_ContentIncludedByDefault Remove="Pages\Tabler\Blazor.cshtml"/>
-        <_ContentIncludedByDefault Remove="Pages\Tabler\Detection.cshtml"/>
-        <_ContentIncludedByDefault Remove="Pages\Tabler\Federation.cshtml"/>
-        <_ContentIncludedByDefault Remove="Pages\Tabler\Index.cshtml"/>
-        <_ContentIncludedByDefault Remove="Pages\Tabler\Responsive.cshtml"/>
-        <_ContentIncludedByDefault Remove="Pages\Tabler\System.cshtml"/>
-    </ItemGroup>
-
-    <ItemGroup>
         <ProjectReference Include="..\..\Markdown\src\Wangkanai.Markdown.csproj"/>
     </ItemGroup>
 
