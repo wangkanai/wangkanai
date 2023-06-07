@@ -11,7 +11,7 @@ crawler.
 [![Patreon](https://img.shields.io/badge/patreon-support%20me-d9643a.svg)](https://www.patreon.com/wangkanai)
 [![GitHub](https://img.shields.io/github/license/wangkanai/wangkanai)](https://github.com/wangkanai/wangkanai/blob/main/LICENSE)
 
-![ASP.NET Core Detection](https://raw.githubusercontent.com/wangkanai/wangkanai/main/Asset/aspnet-core-detection-3.svg?sanitize=true)
+![ASP.NET Core Detection](https://raw.githubusercontent.com/wangkanai/wangkanai/main/Assets/aspnet-core-detection-3.svg?sanitize=true)
 
 ## Installation
 
