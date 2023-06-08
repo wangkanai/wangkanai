@@ -5,6 +5,7 @@
         <RootNamespace>Page</RootNamespace>
         <PreserveCompilationContext>true</PreserveCompilationContext>
         <MvcRazorCompileOnPublish>false</MvcRazorCompileOnPublish>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     </PropertyGroup>
 
     <ItemGroup>
