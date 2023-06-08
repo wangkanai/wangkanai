@@ -6,6 +6,8 @@
 
 # dotCover is a Code Coverage Tool
 dotCover.Output.xml
+dotCover.Output.html
+dotCover.Output/
 
 # User-specific files
 *.suo
