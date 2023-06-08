@@ -2,7 +2,6 @@
 
     <PropertyGroup>
         <TargetFramework>net7.0</TargetFramework>
-        <RootNamespace>View</RootNamespace>
         <PreserveCompilationContext>true</PreserveCompilationContext>
         <MvcRazorCompileOnPublish>false</MvcRazorCompileOnPublish>
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
