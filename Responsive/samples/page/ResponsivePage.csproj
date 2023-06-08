@@ -3,6 +3,8 @@
     <PropertyGroup>
         <TargetFramework>net7.0</TargetFramework>
         <RootNamespace>Page</RootNamespace>
+        <PreserveCompilationContext>true</PreserveCompilationContext>
+        <MvcRazorCompileOnPublish>false</MvcRazorCompileOnPublish>
     </PropertyGroup>
 
     <ItemGroup>
