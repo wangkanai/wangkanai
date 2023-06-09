@@ -14,6 +14,6 @@ public class AnalyticsBenchmark
 	public void Service()
 	{
 		var service = new AnalyticsService();
-		service.ToString();
+		service.ThrowIfNull();
 	}
 }
