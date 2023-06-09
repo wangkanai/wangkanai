@@ -129,7 +129,8 @@ internal sealed class RendererSynchronizationContext : SynchronizationContext
 
     public override void Post(SendOrPostCallback d, object state)
     {
-        lock (_state.Lock)
+	    object _lock = _state.Lock;
+	    lock (_lock)
             _state.Task = Enqueue(_state.Task, d, state, forceAsync: true);
     }
 
