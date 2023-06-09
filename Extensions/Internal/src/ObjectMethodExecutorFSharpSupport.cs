@@ -68,26 +68,15 @@ internal static class ObjectMethodExecutorFSharpSupport
 
 	private static bool IsFSharpAsyncOpenGenericType(Type possibleFSharpAsyncGenericType)
 	{
+		possibleFSharpAsyncGenericType.ThrowIfNull();
+		
 		var typeFullName = possibleFSharpAsyncGenericType?.FullName;
 		if (!string.Equals(typeFullName, "Microsoft.FSharp.Control.FSharpAsync`1", StringComparison.Ordinal))
-		{
 			return false;
-		}
 
 		lock (_fsharpValuesCacheLock)
 		{
-			if (_fsharpCoreAssembly != null)
-			{
-				// Since we've already found the real FSharpAsync.Core assembly, we just have
-				// to check that the supplied FSharpAsync`1 type is the one from that assembly.
-				return possibleFSharpAsyncGenericType.Assembly == _fsharpCoreAssembly;
-			}
-			else
-			{
-				// We'll keep trying to find the FSharp types/values each time any type called
-				// FSharpAsync`1 is supplied.
-				return TryPopulateFSharpValueCaches(possibleFSharpAsyncGenericType);
-			}
+			return possibleFSharpAsyncGenericType?.Assembly == _fsharpCoreAssembly;
 		}
 	}
 

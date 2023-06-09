@@ -239,6 +239,7 @@ public static class Check
 		=> value ?? throw CreateExceptionInstance<T>(message);
 
 
+	[ContractAnnotation(AnnotationResources.ValueNullThenHalt)]
 	public static T ThrowIfNull<T>(this T value)
 		=> value ?? throw CreateExceptionInstance<ArgumentNullException>(nameof(value));
 
