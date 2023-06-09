@@ -8,7 +8,7 @@
         "sourceMap": true
     },
     "include": [
-        "wwwroot/ts/**/*"
+        "wwwroot/ts/**/*.ts"
     ],
     "exclude": [
         "node_modules",
