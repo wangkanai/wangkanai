@@ -5,13 +5,15 @@ using Microsoft.Extensions.DependencyInjection;
 
 using Wangkanai.Analytics.Services;
 
+namespace Wangkanai.Analytics;
+
 [MemoryDiagnoser]
 public class AnalyticsBenchmark
 {
-    [Benchmark]
-    public void Service()
-    {
-        var service = new AnalyticsService();
-        service.ToString();
-    }
+	[Benchmark]
+	public void Service()
+	{
+		var service = new AnalyticsService();
+		service.ThrowIfNull();
+	}
 }
