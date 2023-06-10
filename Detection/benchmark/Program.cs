@@ -4,4 +4,6 @@ global using System.Linq;
 global using BenchmarkDotNet.Running;
 global using BenchmarkDotNet.Attributes;
 
+using Wangkanai.Detection;
+
 BenchmarkRunner.Run<DetectionBenchmark>();

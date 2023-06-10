@@ -1,17 +1,18 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
-    <OutputType>Exe</OutputType>
-    <IsPackable>false</IsPackable>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <OutputType>Exe</OutputType>
+        <IsPackable>false</IsPackable>
+        <IsPackable>false</IsPackable>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="BenchmarkDotNet" Version="0.13.5" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="BenchmarkDotNet" Version="0.13.5"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\src\Wangkanai.Detection.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\src\Wangkanai.Detection.csproj"/>
+    </ItemGroup>
 
 </Project>

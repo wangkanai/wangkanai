@@ -5,13 +5,14 @@
         <OutputType>Exe</OutputType>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <IsPackable>false</IsPackable>
     </PropertyGroup>
-    
+
     <ItemGroup>
-        <PackageReference Include="BenchmarkDotNet" Version="0.13.5" />
+        <PackageReference Include="BenchmarkDotNet" Version="0.13.5"/>
     </ItemGroup>
-    
+
     <ItemGroup>
-      <ProjectReference Include="..\src\Wangkanai.Domain.csproj" />
+        <ProjectReference Include="..\src\Wangkanai.Domain.csproj"/>
     </ItemGroup>
 </Project>

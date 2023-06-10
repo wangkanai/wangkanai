@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Http;
 
 using Wangkanai.Detection.Services;
 
+namespace Wangkanai.Detection;
+
 [MemoryDiagnoser]
 public class DetectionBenchmark
 {
