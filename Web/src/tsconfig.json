@@ -8,8 +8,7 @@
         "sourceMap": true
     },
     "include": [
-        "wwwroot/ts/**/*.ts",
-        “wwwroot/ts/wangkanai.ts”
+        "wwwroot/ts/**/wangkanai.ts"
     ],
     "exclude": [
         "node_modules",
