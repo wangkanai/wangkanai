@@ -113,8 +113,7 @@ internal sealed class ActionSelectionTable<TItem>
 		if (OrdinalEntries.TryGetValue(routeValues, out var matches) ||
 		    OrdinalIgnoreCaseEntries.TryGetValue(routeValues, out matches))
 		{
-			Debug.Assert(matches       != null);
-			Debug.Assert(matches.Count >= 0);
+			Debug.Assert(matches != null);
 			return matches;
 		}
 
