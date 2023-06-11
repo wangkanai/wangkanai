@@ -26,7 +26,8 @@ internal sealed class DynamicMarkdownEndpointSelector : IDisposable
 	private static ActionSelectionTable<Endpoint> Initialize(IReadOnlyList<Endpoint> endpoints)
 		=> ActionSelectionTable<Endpoint>.Create(endpoints);
 
-	private ActionSelectionTable<Endpoint> Table => _cache.EnsureInitialized();
+	private ActionSelectionTable<Endpoint> Table 
+		=> _cache.EnsureInitialized();
 
 	public IReadOnlyList<Endpoint> SelectEndpoints(RouteValueDictionary values)
 	{
