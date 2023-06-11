@@ -9,6 +9,10 @@ dotCover.Output.xml
 dotCover.Output.html
 dotCover.Output/
 
+# SonarScanner Cloud
+
+.sonarqube/
+
 # User-specific files
 *.suo
 *.user
@@ -276,3 +280,4 @@ msbuild.binlog
 # BenchmarkDotNet Artifacts
 **/BenchmarkDotNet.Artifacts/results/
 MiscUtil/
+
