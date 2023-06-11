@@ -14,12 +14,13 @@ internal sealed class DataSourceDependentCache<T> : IDisposable where T : class
 	private readonly Func<T>                          _initializer;
 	private readonly Action<object?>                  _initializerWithState;
 
-	private object _lock;
-	private bool   _initialized;
-	private T?     _value;
+	private readonly object _lock;
 
+	private bool         _initialized;
+	private T?           _value;
 	private IDisposable? _disposable;
 	private bool         _disposed;
+	private object       _syncLock;
 
 	public DataSourceDependentCache(EndpointDataSource dataSource, Func<IReadOnlyList<Endpoint>, T> initialize)
 	{
@@ -28,16 +29,19 @@ internal sealed class DataSourceDependentCache<T> : IDisposable where T : class
 
 		_dataSource     = dataSource;
 		_initializeCore = initialize;
-
-		_initializer = Initialize;
+		_initializer    = Initialize;
 	}
 
 	[NotNullIfNotNull(nameof(_value))]
-	public T? Value => _value;
+	public T? Value
+		=> _value;
 
 	[MemberNotNull(nameof(_value))]
 	public T EnsureInitialized()
-		=> LazyInitializer.EnsureInitialized<T>(ref _value, ref _initialized, ref _lock, _initializer);
+	{
+		_syncLock = _lock;
+		return LazyInitializer.EnsureInitialized<T>(ref _value, ref _initialized, ref _syncLock, _initializer);
+	}
 
 	private T Initialize()
 	{
