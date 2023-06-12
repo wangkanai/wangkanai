@@ -1,11 +1,6 @@
 rimraf .sonarqube/out
-
-dotnet sonarscanner begin /k:wangkanai_wangkanai /o:wangkanai /d:sonar.host.url=https://sonarcloud.io
-
 dotnet restore
-
-dotnet build -c release
-
+dotnet sonarscanner begin /k:wangkanai_wangkanai /o:wangkanai /d:sonar.cs.dotcover.reportsPaths=dotCover.Output.html
+dotnet build  –no-incremental
 dotnet dotcover test --dcReportType=HTML
-
 dotnet sonarscanner end
