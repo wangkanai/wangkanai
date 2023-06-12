@@ -1,3 +1,5 @@
+rimraf .sonarqube/out
+
 dotnet sonarscanner begin /k:wangkanai_wangkanai /o:wangkanai /d:sonar.host.url=https://sonarcloud.io
 
 dotnet restore
