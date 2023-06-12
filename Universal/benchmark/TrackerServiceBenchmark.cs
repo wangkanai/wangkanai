@@ -4,6 +4,8 @@
 
 using Wangkanai.Universal.Services;
 
+namespace Wangkanai.Universal;
+
 [MemoryDiagnoser]
 public class TrackerServiceBenchmark
 {
