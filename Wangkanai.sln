@@ -17,7 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".solutions", ".solutions", 
 		sign.ps1 = sign.ps1
 		version-up.ps1 = version-up.ps1
 		Wangkanai.sln.DotSettings = Wangkanai.sln.DotSettings
-		sonar-scanner.properties = sonar-scanner.properties
+		sonar-project.properties = sonar-project.properties
 		dotnet-sonar.ps1 = dotnet-sonar.ps1
 	EndProjectSection
 EndProject
