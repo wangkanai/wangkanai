@@ -12,6 +12,7 @@ dotCover.Output/
 # SonarScanner Cloud
 
 .sonarqube/
+.sonarlint/
 
 # BenchmarkDotNet Artifacts
 
