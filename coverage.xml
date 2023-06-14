@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AnalyseParams>
+    <ReportType>html</ReportType>
+    <Filters>
+        <ExcludeFilters>
+            <FilterEntry>
+                <ModuleMask>Tests</ModuleMask>
+            </FilterEntry>
+            <FilterEntry>
+                <ClassMask>MainTests.Unit*</ClassMask>
+            </FilterEntry>
+            <FilterEntry>
+                <ClassMask>MainTests.IntegrationTests</ClassMask>
+                <FunctionMask>TestFeature1</FunctionMask>
+            </FilterEntry>
+        </ExcludeFilters>
+    </Filters>
+</AnalyseParams>

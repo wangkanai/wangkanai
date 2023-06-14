@@ -447,7 +447,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Identity.Benchmar
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{718791D4-3866-4A7E-8242-32D6EC763738}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Federation.Tests", "Federation\tests\Federation\Wangkanai.Federation.Tests.csproj", "{1CA62F74-44EC-4B71-B9FE-30E1A0563686}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Federation.Test", "Federation\tests\Federation\Wangkanai.Federation.Test.csproj", "{1CA62F74-44EC-4B71-B9FE-30E1A0563686}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Security", "Security", "{CEB6F6F6-7AE2-43A0-B9DE-B8A8D9154405}"
 	ProjectSection(SolutionItems) = preProject
@@ -522,6 +522,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".sonar", ".sonar", "{EEF194
 		dotnet-sonar.ps1 = dotnet-sonar.ps1
 		SonarQube.Analysis.xml = SonarQube.Analysis.xml
 		sonar-project.properties = sonar-project.properties
+		coverage.xml = coverage.xml
 	EndProjectSection
 EndProject
 Global
