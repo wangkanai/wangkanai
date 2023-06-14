@@ -10,11 +10,13 @@
     <Property Name="sonar.project.monorepo.enabled">true</Property>
     <!-- Source   -->
     <Property Name="sonar.source">.</Property>
-    <Property name="sonar.exclusions">**/node_modules/**/*, **/lib/**/*, **/benchmark/**/*, **/tests/**/*, **/BenchmarkDotNet.Artifacts/**/*, **/demo/**/*, **/samples/**/*</Property>
+    <Property name="sonar.exclusions">**/node_modules/**/*, **/lib/**/*, **/BenchmarkDotNet.Artifacts/**/*</Property>
     <!-- Tests    -->
-    <Property Name="sonar.tests"></Property>
+    <!--    <Property Name="sonar.tests"></Property>-->
+    <!--    <Property Name="sonar.tests.inclusions"></Property>-->
+    <!--    <Property Name="sonar.tests.exclusions"></Property>-->
     <!-- Coverage -->
     <Property Name="sonar.cs.vscoveragexml.reportsPaths">coverage.xml</Property>
-    <Property Name="sonar.coverage.exclusions">**/tests/**/*, **/demo/**/*, **/samples/**/*, **/benchmark/**/*</Property>
+    <Property Name="sonar.coverage.exclusions">**/tests/**/*, **/demo/**/*, **/samples/**/*, **/hosts/**/*, **/benchmark/**/*</Property>
     <!-- Duplicate-->
 </SonarQubeAnalysisProperties>
