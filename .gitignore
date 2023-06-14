@@ -9,6 +9,8 @@ dotCover.Output.xml
 dotCover.Output.html
 dotCover.Output/
 
+coverage.xml
+
 # SonarScanner Cloud
 
 .sonarqube/
