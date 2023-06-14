@@ -1,0 +1,20 @@
+<SonarQubeAnalysisProperties xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                             xmlns="http://www.sonarsource.com/msbuild/integration/2015/1">
+    <!-- Generic  -->
+    <Property Name="sonar.projectKey">wangkanai_wangkanai</Property>
+    <Property Name="sonar.organization">wangkanai</Property>
+    <Property Name="sonar.host.url">https://sonarcloud.io</Property>
+    
+    <Property Name="sonar.branch.target">main</Property>
+    <Property Name="sonar.project.monorepo.enabled">true</Property>
+    <!-- Source   -->
+    <Property Name="sonar.source">**/src/</Property>
+    <Property name="sonar.exclusions">**/node_modules/**/*, **/lib/**/*, **/benchmark/**/*, **/tests/**/*, **/BenchmarkDotNet.Artifacts/**/*, **/demo/**/*, **/samples/**/*</Property>
+    <!-- Tests    -->
+    <Property Name="sonar.tests">**/tests/</Property>
+    <!-- Coverage -->
+    <Property Name="sonar.cs.dotcover.reportsPaths">dotCover.Output.html</Property>
+    <Property Name="sonar.coverage.exclusions">**/tests/**/*, **/demo/**/*, **/samples/**/*, **/benchmark/**/*</Property>
+    <!-- Duplicate-->
+</SonarQubeAnalysisProperties>

@@ -20,8 +20,18 @@
         <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
     </PropertyGroup>
 
+    <!-- SonarScanner for MSBuild -->
+    <PropertyGroup>
+        <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory).sonarlint\wangkanai_wangkanaicsharp.ruleset</CodeAnalysisRuleSet>
+    </PropertyGroup>
+
     <ItemGroup>
-        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All"/>
+        <AdditionalFiles Include="$(MSBuildThisFileDirectory).sonarlint\wangkanai_wangkanai\CSharp\SonarLint.xml"
+                         Link="SonarLint.xml" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
     </ItemGroup>
 
     <!-- Source code settings -->
