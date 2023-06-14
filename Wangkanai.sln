@@ -17,8 +17,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".solutions", ".solutions", 
 		sign.ps1 = sign.ps1
 		version-up.ps1 = version-up.ps1
 		Wangkanai.sln.DotSettings = Wangkanai.sln.DotSettings
-		dotnet-sonar.ps1 = dotnet-sonar.ps1
-		SonarQube.Analysis.xml = SonarQube.Analysis.xml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{C26D86D6-4B4E-407E-9F1D-9CA1765768CE}"
@@ -518,6 +516,13 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.IdentityAdmin", "IdentityAdmin\src\Wangkanai.IdentityAdmin.csproj", "{C5D44518-DD28-4F89-BD09-E60E0A1259EF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.IdentityAdmin.Test", "IdentityAdmin\tests\Wangkanai.IdentityAdmin.Test.csproj", "{FE230712-9BEA-4859-88BD-7A098DB0AFEF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".sonar", ".sonar", "{EEF194BC-9D6A-4EEB-8526-63CC9BFF6FB4}"
+	ProjectSection(SolutionItems) = preProject
+		dotnet-sonar.ps1 = dotnet-sonar.ps1
+		SonarQube.Analysis.xml = SonarQube.Analysis.xml
+		sonar-project.properties = sonar-project.properties
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
