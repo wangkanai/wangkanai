@@ -18,7 +18,7 @@
     <!--    <Property Name="sonar.tests.inclusions">**/tests/**</Property>-->
     <!--    <Property Name="sonar.tests.exclusions">Assets/</Property>-->
     <!-- Coverage -->
-    <Property Name="sonar.cs.vscoveragexml.reportsPaths">coverage.xml</Property>
+<!--    <Property Name="sonar.cs.vscoveragexml.reportsPaths">coverage.xml</Property> -->
     <Property Name="sonar.coverage.exclusions">**/demo/**, **/samples/**, **/hosts/**
     </Property>
     <!-- Duplicate-->
