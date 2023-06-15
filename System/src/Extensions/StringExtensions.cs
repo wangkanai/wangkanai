@@ -21,7 +21,7 @@ public static class StringExtensions
 	[DebuggerStepThrough]
 	public static bool IsNullOrWhiteSpace(this string input)
 		=> string.IsNullOrWhiteSpace(input);
-	
+
 	[DebuggerStepThrough]
 	public static bool IsExist(this string input)
 		=> !string.IsNullOrWhiteSpace(input);
@@ -41,13 +41,13 @@ public static class StringExtensions
 		=> input.IsNotNullOrEmpty() && !input.EndsWith("/")
 			   ? input + "/"
 			   : input;
-	
+
 	[DebuggerStepThrough]
 	public static string RemoveLeadingSlash(this string input)
 		=> input.IsNotNullOrEmpty() && input.StartsWith("/")
 			   ? input.Substring(1)
 			   : input;
-	
+
 	[DebuggerStepThrough]
 	public static string RemoveTrailingSlash(this string input)
 		=> input.IsNotNullOrEmpty() && input.EndsWith("/")
@@ -247,20 +247,20 @@ public static class StringExtensions
 	/// http://api.jquery.com/category/selectors/
 	/// </summary>
 	public static string EscapeSelector(this string attribute)
-		=> Regex.Replace(attribute, string.Format("([{0}])", "/[!\"#$%&'()*+,./:;<=>?@^`{|}~\\]"), @"\\$1");
+		=> Regex.Replace(attribute, string.Format("([{0}])", "/[!\"#$%&'()*+,./:;<=>?@^`{|}~\\]"), @"\\$1", RegexOptions.Compiled, Constants.RegexTimeout);
 
 	public static string GenerateSlug(this string phrase)
 	{
 		string str = phrase.RemoveAccent().ToLower();
 
 		// invalid chars
-		str = Regex.Replace(str, @"[^a-z0-9\s-]", "");
+		str = Regex.Replace(str, @"[^a-z0-9\s-]", "", RegexOptions.Compiled, Constants.RegexTimeout);
 		// convert multiple spaces into one space
-		str = Regex.Replace(str, @"\s+", " ").Trim();
+		str = Regex.Replace(str, @"\s+", " ", RegexOptions.Compiled, Constants.RegexTimeout).Trim();
 		// cut and trim it
 		str = str.Substring(0, str.Length <= 240 ? str.Length : 240).Trim();
 		// hyphens
-		str = Regex.Replace(str, @"\s", "-");
+		str = Regex.Replace(str, @"\s", "-", RegexOptions.Compiled, Constants.RegexTimeout);
 
 		return str;
 	}
@@ -282,9 +282,9 @@ public static class StringExtensions
 		=> string.Equals(str1, str2, StringComparison.OrdinalIgnoreCase);
 
 	[DebuggerStepThrough]
-	public static string ToSpaceSeparatedString(this IEnumerable<string> list) 
-		=> list.IsNullOrEmpty() 
-			   ? string.Empty 
+	public static string ToSpaceSeparatedString(this IEnumerable<string> list)
+		=> list.IsNullOrEmpty()
+			   ? string.Empty
 			   : string.Join(' ', list);
 
 	[DebuggerStepThrough]
