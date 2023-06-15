@@ -9,7 +9,7 @@
     <!--    <Property Name="sonar.organization">wangkanai</Property>-->
     <!-- <Property Name="sonar.project.monorepo.enabled">true</Property> -->
     <!-- Source   -->
-    <!--    <Property Name="sonar.sources">.</Property>-->
+    <Property Name="sonar.sources">.</Property>
     <!--    <Property Name="sonar.inclusions"></Property>-->
     <!--    <Property name="sonar.exclusions">**/node_modules/**/*, **/lib/**/*, **/BenchmarkDotNet.Artifacts/**/*</Property>-->
     <!-- Tests    -->
