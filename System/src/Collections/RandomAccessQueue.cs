@@ -133,8 +133,9 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 					return false;
 
 				RemoveAt(i);
-				return true;
 			}
+
+			return true;
 		}
 
 		var comparer = EqualityComparer<T>.Default;
@@ -290,7 +291,7 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 			else
 			{
 				first  = _buffer.Length - _start;
-				second = _count - first;
+				second = _count         - first;
 			}
 
 			Array.Copy(_buffer, _start, newBuffer, 0, first);
@@ -344,8 +345,8 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 		{
 			Array.Copy(
 				_buffer, _start + index - Capacity + 1,
-				_buffer, _start + index - Capacity,
-				_count - index - 1);
+				_buffer, _start         + index    - Capacity,
+				_count                             - index - 1);
 
 			_buffer[_start + _count - 1 - Capacity] = default;
 		}
