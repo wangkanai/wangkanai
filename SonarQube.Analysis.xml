@@ -8,7 +8,7 @@
     <Property Name="sonar.sourceEncoding">UTF-8</Property>
     <!-- <Property Name="sonar.project.monorepo.enabled">true</Property> -->
     <!-- Source   -->
-       <Property Name="sonar.sources">.</Property>
+    <!-- <Property Name="sonar.sources">.</Property> -->
     <!--    <Property Name="sonar.inclusions"></Property>-->
     <Property Name="sonar.exclusions">Assets/, **/benchmark/**/*, **/node_modules/**/*, **/lib/**/*, **/BenchmarkDotNet.Artifacts/**/*</Property>
     <!-- Tests    -->
