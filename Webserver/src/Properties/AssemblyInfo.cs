@@ -2,4 +2,4 @@
 
 using System.Runtime.CompilerServices;
 
-[assembly: InternalsVisibleTo("Wangkanai.Webserver.Test")]
+[assembly: InternalsVisibleTo("Wangkanai.Webserver.Tests")]
