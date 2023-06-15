@@ -33,6 +33,10 @@
         <PackageReference Include="coverlet.collector" Version="6.0.0" PrivateAssets="all" />
         <PackageReference Include="coverlet.msbuild" Version="6.0.0" PrivateAssets="all" />
     </ItemGroup>
+
+    <ItemGroup Condition="$(MSBuildProjectName.Contains('Benchmark'))">
+        <PackageReference Include="BenchmarkDotNet" Version="0.13.5"/>
+    </ItemGroup>
     
     <!-- SonarScanner for MSBuild -->
     <PropertyGroup Condition="$(MSBuildProjectName.Contains('Benchmark'))">
