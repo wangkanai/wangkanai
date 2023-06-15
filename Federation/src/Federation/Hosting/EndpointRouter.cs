@@ -34,15 +34,14 @@ public class EndpointRouter : IEndpointRouter
 				return GetEndpointHandler(endpoint, context);
 		}
 
-		return null;
+		return null!;
 	}
 
 	private IEndpointHandler GetEndpointHandler(Endpoint endpoint, HttpContext context)
 	{
-		if (_options.Endpoints.IsEnabled(endpoint))
-			if (context.RequestServices.GetService(endpoint.Handler) is IEndpointHandler handler)
-				return handler;
+		if (_options.Endpoints.IsEnabled(endpoint) && context.RequestServices.GetService(endpoint.Handler) is IEndpointHandler handler) 
+			return handler;
 
-		return null;
+		return null!;
 	}
 }
