@@ -4,12 +4,7 @@
         <TargetFramework>net7.0</TargetFramework>
         <OutputType>Exe</OutputType>
         <IsPackable>false</IsPackable>
-        <IsPackable>false</IsPackable>
     </PropertyGroup>
-
-    <ItemGroup>
-        <PackageReference Include="BenchmarkDotNet" Version="0.13.5"/>
-    </ItemGroup>
 
     <ItemGroup>
         <ProjectReference Include="..\src\Wangkanai.Detection.csproj"/>
