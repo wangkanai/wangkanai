@@ -27,12 +27,6 @@ public static class Hash
                  .ComputeHash(value.GetAsciiBytes())
                  .HashDataToString();
 
-    [Obsolete]
-    public static string HashSha1([NotNull] this string value)
-        => SHA1.Create()
-               .ComputeHash(value.GetAsciiBytes())
-               .HashDataToString();
-
     #region Internal
 
     private static byte[] GetAsciiBytes([NotNull] this string value)
