@@ -5,11 +5,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <IsPackable>false</IsPackable>
-    <RuntimeIdentifiers>win10-x64;linux-x64</RuntimeIdentifiers>
+    <IsTestProject>true</IsTestProject>
+    <RootNamespace>Wangkanai.Extensions.Internal.Test</RootNamespace>
   </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\src\Wangkanai.Hosting.csproj" />
-  </ItemGroup>
 
 </Project>
