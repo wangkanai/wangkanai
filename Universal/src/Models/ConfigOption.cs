@@ -4,11 +4,7 @@ namespace Wangkanai.Universal.Models;
 
 public sealed class ConfigOption
 {
-    private ConfigOption()
-    {
-    }
-
-    /// <summary>
+	/// <summary>
     ///     Name of the tracker object
     /// </summary>
     public string Name { get; set; }
