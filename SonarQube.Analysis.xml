@@ -10,6 +10,7 @@
     <!-- <Property Name="sonar.project.monorepo.enabled">true</Property> -->
     <!-- Source   -->
     <Property Name="sonar.sources">.</Property>
+    <Property Name="sonar.exclusions">**/benchmark/**/*</Property>
     <!--    <Property Name="sonar.inclusions"></Property>-->
     <!--    <Property name="sonar.exclusions">**/node_modules/**/*, **/lib/**/*, **/BenchmarkDotNet.Artifacts/**/*</Property>-->
     <!-- Tests    -->
