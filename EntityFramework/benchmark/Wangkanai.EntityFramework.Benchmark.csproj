@@ -11,8 +11,4 @@
     <ProjectReference Include="..\src\Wangkanai.EntityFramework.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="BenchmarkDotNet" Version="0.13.5" />
-  </ItemGroup>
-
 </Project>
