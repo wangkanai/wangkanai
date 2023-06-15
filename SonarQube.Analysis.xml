@@ -8,14 +8,14 @@
     <Property Name="sonar.sourceEncoding">UTF-8</Property>
     <!-- <Property Name="sonar.project.monorepo.enabled">true</Property> -->
     <!-- Source   -->
-    <Property Name="sonar.sources">.</Property>
+    <!--    <Property Name="sonar.sources">.</Property>-->
     <!--    <Property Name="sonar.inclusions"></Property>-->
     <Property Name="sonar.exclusions">Assets/, **/tests/**, **/benchmark/**, **/node_modules/**, **/lib/**,
         **/BenchmarkDotNet.Artifacts/**
     </Property>
     <!-- Tests    -->
-    <Property Name="sonar.tests">.</Property>
-    <Property Name="sonar.tests.inclusions">**/tests/**</Property>
+    <!--    <Property Name="sonar.tests">.</Property>-->
+    <!--    <Property Name="sonar.tests.inclusions">**/tests/**</Property>-->
     <!--    <Property Name="sonar.tests.exclusions">Assets/</Property>-->
     <!-- Coverage -->
     <Property Name="sonar.cs.vscoveragexml.reportsPaths">coverage.xml</Property>
