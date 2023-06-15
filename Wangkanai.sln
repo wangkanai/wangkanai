@@ -129,7 +129,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Markdown", "Markdown", "{38
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Markdown", "Markdown\src\Wangkanai.Markdown.csproj", "{33B2A6FA-15BB-4071-A3D1-2644F0A35AAA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Markdown.Test", "Markdown\tests\Wangkanai.Markdown.Test.csproj", "{BA993356-DADC-412B-A24F-8AEACDC5FA53}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Markdown.Tests", "Markdown\tests\Wangkanai.Markdown.Tests.csproj", "{BA993356-DADC-412B-A24F-8AEACDC5FA53}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{A3C4F552-BD1E-40C6-81C9-99F61B8916EA}"
 EndProject
