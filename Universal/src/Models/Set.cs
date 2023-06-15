@@ -4,7 +4,7 @@ namespace Wangkanai.Universal.Models;
 
 public class Set : Field
 {
-    private Set() { format = "ga('set','{0}','{1}');"; }
+	public Set() { format = "ga('set','{0}','{1}');"; }
 
     #region Hit
 
