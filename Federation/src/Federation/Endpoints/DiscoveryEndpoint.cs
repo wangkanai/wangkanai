@@ -16,20 +16,20 @@ public class DiscoveryEndpoint : IEndpointHandler
 {
 	private readonly FederationOptions          _options;
 	private readonly IIssuerNameService         _issuerNameService;
-	private readonly IDiscoveryResponseFactory    _responseFactory;
+	private readonly IDiscoveryResponseFactory  _responseFactory;
 	private readonly IServerUris                _uris;
 	private readonly ILogger<DiscoveryEndpoint> _logger;
 
 	public DiscoveryEndpoint(
 		FederationOptions          options,
 		IIssuerNameService         issuerNameService,
-		IDiscoveryResponseFactory    responseFactory,
+		IDiscoveryResponseFactory  responseFactory,
 		IServerUris                uris,
 		ILogger<DiscoveryEndpoint> logger)
 	{
 		_options           = options;
 		_issuerNameService = issuerNameService;
-		_responseFactory     = responseFactory;
+		_responseFactory   = responseFactory;
 		_uris              = uris;
 		_logger            = logger;
 	}
@@ -46,15 +46,15 @@ public class DiscoveryEndpoint : IEndpointHandler
 		}
 
 		_logger.LogDebug("Start discovery request");
-		
-		if(!_options.Endpoints.EnableDiscoveryEndpoint)
+
+		if (!_options.Endpoints.EnableDiscoveryEndpoint)
 		{
-			_logger.LogWarning("Discovery endpoint is disabled. 404 Not Found.");
+			_logger.LogWarning("Discovery endpoint is disabled. 404 Not Found");
 			return new StatusCodeResult(HttpStatusCode.NotFound);
 		}
 
-		var baseUri   = _uris.BaseUri;
 		var issuerUri = await _issuerNameService.GetCurrentAsync();
+		var baseUri   = _uris.BaseUri;
 
 		_logger.LogTrace("Calling into discovery response maker: {Type}", _responseFactory.GetType().FullName);
 		var response = await _responseFactory.CreateResultAsync(issuerUri, baseUri);
