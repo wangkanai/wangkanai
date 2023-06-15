@@ -5,21 +5,18 @@
     <Property Name="sonar.host.url">https://sonarcloud.io</Property>
     <!-- Generic  -->
     <Property Name="sonar.branch.name">main</Property>
-    <!--    <Property Name="sonar.projectKey">wangkanai_wangkanai</Property>-->
-    <!--    <Property Name="sonar.organization">wangkanai</Property>-->
     <!-- <Property Name="sonar.project.monorepo.enabled">true</Property> -->
     <!-- Source   -->
     <Property Name="sonar.sources">.</Property>
-    <Property Name="sonar.exclusions">**/benchmark/**/*</Property>
     <!--    <Property Name="sonar.inclusions"></Property>-->
-    <!--    <Property name="sonar.exclusions">**/node_modules/**/*, **/lib/**/*, **/BenchmarkDotNet.Artifacts/**/*</Property>-->
+    <Property Name="sonar.exclusions">Assets/, **/benchmark/**/*, **/tests/**/*, **/node_modules/**/*, **/lib/**/*</Property>
     <!-- Tests    -->
-    <!--    <Property Name="sonar.tests"></Property>-->
-    <!--    <Property Name="sonar.tests.inclusions"></Property>-->
+    <Property Name="sonar.tests">.</Property>
+    <Property Name="sonar.tests.inclusions">**/tests/**/*</Property>
     <!--    <Property Name="sonar.tests.exclusions"></Property>-->
     <!-- Coverage -->
     <!--    <Property Name="sonar.cs.vscoveragexml.reportsPaths">coverage.xml</Property>-->
-    <Property Name="sonar.coverage.exclusions">**/node_modules/**/*, **/lib/**/*, **/BenchmarkDotNet.Artifacts/**/*,
+    <Property Name="sonar.coverage.exclusions">**/BenchmarkDotNet.Artifacts/**/*,
         **/tests/**/*, **/demo/**/*, **/samples/**/*, **/hosts/**/*, **/benchmark/**/*
     </Property>
     <!-- Duplicate-->
