@@ -8,7 +8,7 @@
     <Property Name="sonar.projectVersion">1.4</Property>
     
     <Property Name="sonar.branch.name">main</Property>
-    <Property Name="sonar.project.monorepo.enabled">true</Property>
+    <!-- <Property Name="sonar.project.monorepo.enabled">true</Property> -->
     <!-- Source   -->
     <Property Name="sonar.source">.</Property>
     <Property name="sonar.exclusions">**/node_modules/**/*, **/lib/**/*, **/BenchmarkDotNet.Artifacts/**/*</Property>
