@@ -1,7 +1,7 @@
 <Project>
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
   <PropertyGroup>
-    <VersionPrefix>0.7.1</VersionPrefix>
+    <VersionPrefix>0.8.0</VersionPrefix>
     <Title>Wangkanai Federation</Title>
     <PackageTags>aspnetcore;identity;federation;</PackageTags>
     <Description>OAuth 2.1 and OpenID Connect Framework for ASP.NET Core for Authentication and Authorization with flexible permission policy.</Description>
