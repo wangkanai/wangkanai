@@ -403,44 +403,4 @@ public static class Check
 		=> (Activator.CreateInstance(typeof(T), name, paramName) as T)!;
 
 	#endregion
-
-	#region Obsolete
-
-	[Obsolete(ObsoleteResources.Net8)]
-	public static string NotNullOrEmpty(string value)
-		=> NotNullOrEmpty(value, nameof(value));
-
-	[Obsolete(ObsoleteResources.Net8)]
-	private static string NotNullOrEmpty(string value, [InvokerParameterName] string parameterName)
-		=> value.IsNullOrEmpty()
-			   ? throw new ArgumentNullOrEmptyException(parameterName)
-			   : value;
-
-	[Obsolete(ObsoleteResources.Net8)]
-	public static bool NotNullOrEmpty<T>(this IEnumerable<T> value)
-		=> NotNullOrEmpty(value, nameof(value));
-
-	[Obsolete(ObsoleteResources.Net8)]
-	internal static bool NotNullOrEmpty<T>(this IEnumerable<T> value, [InvokerParameterName] string parameterName)
-		=> value.IsNullOrEmpty()
-			   ? throw new ArgumentNullOrEmptyException(parameterName)
-			   : true;
-
-	[Obsolete(ObsoleteResources.Net8)]
-	public static bool NotEqual(this int value, int expected)
-		=> value.NotEqual(expected, nameof(value));
-
-	[Obsolete(ObsoleteResources.Net8)]
-	public static bool NotEqual(this int value, int expected, ArgumentException exception)
-		=> value != expected
-			   ? throw exception
-			   : true;
-
-	[Obsolete(ObsoleteResources.Net8)]
-	internal static bool NotEqual(this int value, int expected, [InvokerParameterName] string parameterName)
-		=> value != expected
-			   ? throw new ArgumentNotEqualException(parameterName)
-			   : true;
-
-	#endregion
 }
