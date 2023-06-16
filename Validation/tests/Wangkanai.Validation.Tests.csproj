@@ -2,14 +2,11 @@
 
     <PropertyGroup>
         <TargetFramework>net7.0</TargetFramework>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
-
         <IsPackable>false</IsPackable>
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\src\Core\Wangkanai.Tabler.csproj"/>
+        <ProjectReference Include="..\src\Wangkanai.Validation.csproj" />
     </ItemGroup>
 
 </Project>

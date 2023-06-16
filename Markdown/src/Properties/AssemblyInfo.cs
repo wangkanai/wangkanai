@@ -2,4 +2,4 @@
 
 using System.Runtime.CompilerServices;
 
-[assembly: InternalsVisibleTo("Wangkanai.Markdown.Test")]
+[assembly: InternalsVisibleTo("Wangkanai.Markdown.Tests")]
