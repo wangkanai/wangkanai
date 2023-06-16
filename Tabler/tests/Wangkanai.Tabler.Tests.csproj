@@ -1,22 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
 
-    <IsPackable>false</IsPackable>
-  </PropertyGroup>
+        <IsPackable>false</IsPackable>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.5.0" />
-    <PackageReference Include="xunit" Version="2.4.2" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5" PrivateAssets="all" />
-    <PackageReference Include="coverlet.collector" Version="3.2.0" PrivateAssets="all" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\src\Core\Wangkanai.Tabler.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\src\Core\Wangkanai.Tabler.csproj"/>
+    </ItemGroup>
 
 </Project>
