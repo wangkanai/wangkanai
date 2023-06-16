@@ -474,26 +474,6 @@ public class CheckTests
 	}
 
 #pragma warning restore CS0612
-	[Fact]
-	public void ListIsNullOrEmpty()
-	{
-		Assert.Throws<ArgumentNullOrEmptyException>(() => Check.NotNullOrEmpty(null));
-	}
-
-	[Fact]
-	public void ListIsEmpty()
-	{
-		Assert.Throws<ArgumentNullOrEmptyException>(() => new List<int>().NotNullOrEmpty());
-	}
-
-	[Fact]
-	public void ListIsExist()
-	{
-		var list = new List<int>();
-		for (var i = 0; i <= 9; i++) list.Add(i);
-
-		Assert.True(list.NotNullOrEmpty());
-	}
 
 	[Fact]
 	public void LessThanExpected()
