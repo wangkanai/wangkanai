@@ -2,6 +2,7 @@
 
     <PropertyGroup>
         <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
+        <LangVersion>Preview</LangVersion>
         <NoWarn>0162</NoWarn>
     </PropertyGroup>
 
