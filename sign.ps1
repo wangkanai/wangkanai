@@ -16,13 +16,10 @@ $dirs = [ordered]@{
     15 = "Security";
     16 = "Federation";
     17 = "Markdown";
-    18 = "Graph";
-    19 = "Universal";
     20 = "Analytics";
     21 = "Blazor";
     22 = "Tabler";
     23 = "Solver";
-    24 = "IdentityAdmin";
 }
 
 Set-Location -Path D:\Sources\Wangkanai\
