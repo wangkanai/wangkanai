@@ -1,8 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>net6.0;net7.0;netstandard2.1</TargetFrameworks>
-        <LangVersion>preview</LangVersion>
+        <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
         <NoWarn>0162</NoWarn>
     </PropertyGroup>
 
