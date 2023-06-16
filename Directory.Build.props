@@ -43,6 +43,9 @@
     <PropertyGroup Condition="$(MSBuildProjectName.Contains('Benchmark'))">
         <SonarQubeExclude>true</SonarQubeExclude>
     </PropertyGroup>
+    <PropertyGroup Condition="$(MSBuildProjectName.Contains('Tests'))">
+        <SonarQubeExclude>true</SonarQubeExclude>
+    </PropertyGroup>
 
     <!-- Source code settings -->
     <PropertyGroup>
