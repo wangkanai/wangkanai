@@ -8,7 +8,7 @@
 dotCover.Output.xml
 dotCover.Output.html
 dotCover.Output/
-
+.dotcover/
 coverage.xml
 
 # SonarScanner Cloud

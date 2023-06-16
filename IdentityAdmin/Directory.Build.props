@@ -1,7 +1,7 @@
 <Project>
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
   <PropertyGroup>
-    <VersionPrefix>0.2.1</VersionPrefix>
+    <VersionPrefix>0.3.0</VersionPrefix>
     <Title>Wangkanai IdentityAdmin</Title>
     <Description>IdentityAdmin is a free, open source that provides the necessary administration portal for managing IdentityServer to manage clients and users. IdentityAdmin will allow easier implementation of IdentityServer whom provides no administration tool for managing its configuration.</Description>
     <PackageTags>aspnetcore;identityserver;admin</PackageTags>
