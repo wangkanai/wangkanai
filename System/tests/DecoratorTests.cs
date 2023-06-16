@@ -145,4 +145,18 @@ public class DecoratorTests
 		var decorator = new DisposableDecorator<string>("test");
 		Assert.NotEqual(string.Empty, decorator.Instance);
 	}
+	
+	[Fact]
+	public void DisposableInstanceIsNotEqualWithNullObject()
+	{
+		var decorator = new DisposableDecorator<string>("test");
+		Assert.NotEqual(new object(), decorator.Instance);
+	}
+	
+	[Fact]
+	public void DisposableInstanceIsDisposable()
+	{
+		var decorator = new DisposableDecorator<string>("test");
+		Assert.IsAssignableFrom<IDisposable>(decorator);
+	}
 }
