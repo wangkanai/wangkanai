@@ -39,7 +39,7 @@ for ($i = 0; $i -lt $dirs.count; $i++){
         [Xml]$xml = Get-Content -Path $path;
         $node = $xml.SelectSingleNode("/Project/PropertyGroup/VersionPrefix");
         $old = [System.Version]$node.InnerText;
-        $new = [System.Version]::new($old.Major, $old.Minor, $old.Build + 1); #0);
+        $new = [System.Version]::new($old.Major, $old.Minor+1, 0);#, $old.Build + 1); #0);
         $node.InnerText = $new.ToString();
         $xml.Save($path);
 

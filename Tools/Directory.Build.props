@@ -1,7 +1,7 @@
 <Project>
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
   <PropertyGroup>
-    <VersionPrefix>0.6.1</VersionPrefix>
+    <VersionPrefix>0.7.0</VersionPrefix>
     <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Tools</PackageProjectUrl>
     <PackageNamespace>False</PackageNamespace>
     <PackagePrimary>MSBuild</PackagePrimary>

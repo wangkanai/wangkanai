@@ -1,7 +1,7 @@
 <Project>
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
   <PropertyGroup>
-    <VersionPrefix>0.10.1</VersionPrefix>
+    <VersionPrefix>0.11.0</VersionPrefix>
     <Title>Wangkanai Domain</Title>
     <PackageTags>aspnetcore;entity;domain;ddd;</PackageTags>
     <Description>Wangkanai .NET Domain Driven Design core library.</Description>

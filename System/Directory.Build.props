@@ -1,7 +1,7 @@
 <Project>
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
   <PropertyGroup>
-    <VersionPrefix>1.18.1</VersionPrefix>
+    <VersionPrefix>1.19.0</VersionPrefix>
     <Title>Wangkanai System</Title>
     <PackageTags>aspnetcore;sytem;runtime;</PackageTags>
     <Description>Wangkanai .NET Core System library to serve as the foundation for future development.</Description>
