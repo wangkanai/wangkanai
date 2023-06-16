@@ -13,7 +13,7 @@ public class ForloopBenchmark
             list.Add(i.ToString());
     }
 
-    [Benchmark()]
+    [Benchmark]
     public void ForEnumeratorArray()
     {
         var array = new string[100];
