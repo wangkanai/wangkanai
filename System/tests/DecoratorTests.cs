@@ -159,4 +159,12 @@ public class DecoratorTests
 		var decorator = new DisposableDecorator<string>("test");
 		Assert.IsAssignableFrom<IDisposable>(decorator);
 	}
+	
+	[Fact]
+	public void DisposeExecuted()
+	{
+		var decorator = new DisposableDecorator<string>("test");
+		decorator.Dispose();
+		Assert.IsAssignableFrom<IDisposable>(decorator);
+	}
 }
