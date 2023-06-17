@@ -16,9 +16,7 @@ public static class Check
 	#region Throw
 
 	// Throw if value is null (all possible types)
-
-	#region ThrowIfNullStandard
-
+	
 	public static bool? ThrowIfNull(this bool? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
@@ -30,7 +28,6 @@ public static class Check
 
 	public static ushort? ThrowIfNull(this ushort? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
-
 
 	public static short? ThrowIfNull(this short? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
@@ -70,10 +67,6 @@ public static class Check
 
 	public static string ThrowIfNull(this string? value, string message)
 		=> ThrowIfNull<ArgumentNullException>(value, message);
-
-	#endregion
-
-	#region ThrowIfNullGeneric
 
 	public static bool? ThrowIfNull<T>(this bool? value)
 		where T : Exception
@@ -184,8 +177,7 @@ public static class Check
 
 	public static string ThrowIfNullOrWhitespace(this string? value)
 		=> ThrowIfNullOrWhitespace<ArgumentNullException>(value);
-
-
+	
 	public static string ThrowIfNullOrWhitespace(this string? value, string message)
 		=> ThrowIfNullOrWhitespace<ArgumentNullException>(value, message);
 
@@ -209,16 +201,13 @@ public static class Check
 		where T : Exception
 		=> value ?? throw CreateExceptionInstance<T>(nameof(value));
 
-
 	public static object ThrowIfNull<T>(this object? value, string message)
 		where T : Exception
 		=> value ?? throw CreateExceptionInstance<T>(message);
 
-
 	public static T ThrowIfNull<T>(this T value)
 		=> value ?? throw CreateExceptionInstance<ArgumentNullException>(nameof(value));
-
-
+	
 	public static T ThrowIfNull<T>(this T value, string message)
 		=> value ?? throw CreateExceptionInstance<ArgumentNullException>(message);
 
@@ -264,12 +253,10 @@ public static class Check
 	public static bool ThrowIfMoreThan(this int value, int expected, [InvokerParameterName] string parameterName)
 		=> value.ThrowIfMoreThan<ArgumentMoreThanException>(expected, parameterName);
 
-
 	public static bool ThrowIfMoreThan<T>(this int value, int expected)
 		where T : ArgumentException
 		=> value.ThrowIfMoreThan<T>(expected, nameof(value));
-
-
+	
 	public static bool ThrowIfMoreThan<T>(this int value, int expected, [InvokerParameterName] string parameterName)
 		where T : ArgumentException
 		=> value > expected
@@ -317,23 +304,18 @@ public static class Check
 	public static bool ThrowIfZero(this int value)
 		=> value.ThrowIfZero<ArgumentZeroException>(nameof(value));
 
-
 	public static bool ThrowIfZero(this int value, [InvokerParameterName] string parameterName)
 		=> value.ThrowIfZero<ArgumentZeroException>(parameterName);
-
 
 	public static bool ThrowIfZero<T>(this int value)
 		where T : ArgumentException
 		=> value.ThrowIfZero<T>(nameof(value));
-
 
 	public static bool ThrowIfZero<T>(this int value, [InvokerParameterName] string parameterName)
 		where T : ArgumentException
 		=> value == 0
 			   ? throw CreateExceptionInstance<T>(parameterName)
 			   : true;
-
-	#endregion
 
 	#region IfNull
 
