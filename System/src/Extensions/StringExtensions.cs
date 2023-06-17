@@ -12,13 +12,13 @@ public static class StringExtensions
 	public static bool IsNotNullOrEmpty(this string value)
 		=> !string.IsNullOrEmpty(value);
 
-	[ContractAnnotation("null => true")]
 	[DebuggerStepThrough]
+	[ContractAnnotation("null => true")]
 	public static bool IsNullOrEmpty(this string input)
 		=> string.IsNullOrEmpty(input);
 
-	[ContractAnnotation("null => true")]
 	[DebuggerStepThrough]
+	[ContractAnnotation("null => true")]
 	public static bool IsNullOrWhiteSpace(this string input)
 		=> string.IsNullOrWhiteSpace(input);
 
