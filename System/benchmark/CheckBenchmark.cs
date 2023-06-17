@@ -6,8 +6,7 @@ using Xunit;
 
 namespace Wangkanai;
 
-[SimpleJob(RuntimeMoniker.Net60, baseline: true)]
-[SimpleJob(RuntimeMoniker.Net70)]
+[SimpleJob(RuntimeMoniker.Net70, baseline: true)]
 [SimpleJob(RuntimeMoniker.Net80)]
 [RPlotExporter]
 [MemoryDiagnoser]
