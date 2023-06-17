@@ -1,20 +1,20 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
         <LangVersion>preview</LangVersion>
         <Nullable>enable</Nullable>
         <IsTrimmable>true</IsTrimmable>
         <Optimize>true</Optimize>
         <NoWarn>8765</NoWarn>
+        <TargetFramework>net7.0</TargetFramework>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
+        <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0"/>
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\System\src\Wangkanai.System.csproj" />
+        <ProjectReference Include="..\..\System\src\Wangkanai.System.csproj"/>
     </ItemGroup>
 
 </Project>
