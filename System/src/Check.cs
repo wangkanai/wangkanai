@@ -326,8 +326,7 @@ public static class Check
 		=> !value.TrueIfNull();
 	
 	#endregion
-
-#if NET7_0_OR_GREATER
+	
 	public static T ThrowIfOutOfRange<T>(this T index, [NonNegativeValue] T lower, [NonNegativeValue] T upper)
 		where T : IBinaryInteger<T>
 	{
@@ -336,16 +335,7 @@ public static class Check
 
 		return index;
 	}
-#else
-	public static int ThrowIfOutOfRange(this int index, [NonNegativeValue] int lower, [NonNegativeValue] int upper)
-	{
-		if (index < lower || index >= upper)
-			throw new ArgumentOutOfRangeException(nameof(index));
-
-		return index;
-	}
-#endif
-
+	
 	#region Instance
 
 	private static T CreateExceptionInstance<T>(string name)
