@@ -324,11 +324,7 @@ public static class Check
 
 	public static bool FalseIfNull<T>(this T? value)
 		=> !value.TrueIfNull();
-
-	[Obsolete(ObsoleteResources.Duplicated)]
-	public static T ReturnIfNotNull<T>(this T? value)
-		=> value ?? value!.ThrowIfNull<T>();
-
+	
 	#endregion
 
 #if NET7_0_OR_GREATER
