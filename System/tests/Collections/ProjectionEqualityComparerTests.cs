@@ -99,7 +99,7 @@ internal static class ProjectionEqualityComparerExtensions
 	{
 		Assert.False(comparer.Equals(x, y));
 		Assert.False(comparer.Equals(y, x));
-		
+
 		if (x != null && y != null)
 			Assert.NotEqual(comparer.GetHashCode(x), comparer.GetHashCode(y));
 	}
@@ -133,6 +133,6 @@ internal static class ProjectionEqualityComparerExtensions
 		comparer.AssertNotEqual(null, A10);
 		comparer.AssertNotEqual(null, B15);
 
-		Assert.Throws<ArgumentNullException>(()=>comparer.GetHashCode(null));
+		Assert.Throws<ArgumentNullException>(() => comparer.GetHashCode(null));
 	}
 }

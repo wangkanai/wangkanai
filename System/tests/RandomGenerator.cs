@@ -10,17 +10,17 @@ public class RandomGenerator
 	public RandomGenerator(int size, bool keep)
 	{
 		_size = size;
-		
-		if (keep) 
+
+		if (keep)
 			_numbers = new int[size];
 	}
-	
+
 	public void Generate()
 	{
 		for (var i = 0; i < _size; i++)
 		{
 			var number = StaticRandom.Next(100_000);
-			if(_numbers != null)
+			if (_numbers != null)
 				_numbers[i] = number;
 		}
 	}

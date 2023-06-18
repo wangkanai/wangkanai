@@ -68,7 +68,7 @@ public class ProjectionComparerTest
 		var ordinal     = new ProjectionComparer<NameAndNumber, string>(x => x.Name, StringComparer.Ordinal);
 		var insensitive = new ProjectionComparer<NameAndNumber, string>(x => x.Name, StringComparer.OrdinalIgnoreCase);
 
-		Assert.True(ordinal.Compare(lowerA, upperZ) > 0);
+		Assert.True(ordinal.Compare(lowerA, upperZ)     > 0);
 		Assert.True(insensitive.Compare(lowerA, upperZ) < 0);
 	}
 }

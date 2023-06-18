@@ -43,34 +43,34 @@ public class RangeIteratorTests
 		var subject = new RangeIterator<int>(new Range<int>(0, 5), x => x - 1, false);
 		Assert.True(subject.SequenceEqual(new[] { 5, 4, 3, 2, 1, 0 }));
 	}
-	
+
 	[Fact]
 	public void DescendingRangeExcludingStart()
 	{
 		var subject = new RangeIterator<int>(new Range<int>(0, 5).ExcludeStart(), x => x - 1, false);
 		Assert.True(subject.SequenceEqual(new[] { 5, 4, 3, 2, 1 }));
 	}
-	
+
 	[Fact]
 	public void DescendingRangeExcludingEnd()
 	{
 		var subject = new RangeIterator<int>(new Range<int>(0, 5).ExcludeEnd(), x => x - 1, false);
 		Assert.True(subject.SequenceEqual(new[] { 4, 3, 2, 1, 0 }));
 	}
-	
+
 	[Fact]
 	public void DescendingRangeExcludingBoth()
 	{
 		var subject = new RangeIterator<int>(new Range<int>(0, 5).ExcludeStart().ExcludeEnd(), x => x - 1, false);
 		Assert.True(subject.SequenceEqual(new[] { 4, 3, 2, 1 }));
 	}
-	
+
 	[Fact]
 	public void StepWrongWayThrows()
 	{
 		Assert.Throws<ArgumentException>(() => new RangeIterator<int>(new Range<int>(0, 5), x => x - 1));
 	}
-	
+
 	[Fact]
 	public void NoOpStepThrows()
 	{
@@ -82,7 +82,7 @@ public class RangeIteratorTests
 	{
 		Assert.Throws<ArgumentNullException>(() => new RangeIterator<int>(new Range<int>(0, 5), null));
 	}
-	
+
 	[Fact]
 	public void DescendingStepWrongWayThrows()
 	{

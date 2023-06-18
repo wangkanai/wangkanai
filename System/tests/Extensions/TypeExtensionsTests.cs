@@ -2,6 +2,4 @@
 
 namespace Wangkanai.Extensions;
 
-public class TypeExtensionsTests
-{
-}
+public class TypeExtensionsTests { }

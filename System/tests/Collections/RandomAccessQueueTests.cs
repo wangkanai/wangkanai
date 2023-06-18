@@ -511,7 +511,7 @@ public class RandomAccessQueueTests
 		Assert.True(enumerator.MoveNext());
 		Assert.Equal("3", enumerator.Current);
 		Assert.False(enumerator.MoveNext());
-		
+
 		enumerator.Dispose();
 	}
 
@@ -529,7 +529,7 @@ public class RandomAccessQueueTests
 		queue.Enqueue("3");
 
 		Assert.Throws<InvalidOperationException>(() => enumerator.MoveNext());
-		
+
 		enumerator.Dispose();
 	}
 
@@ -549,7 +549,7 @@ public class RandomAccessQueueTests
 		queue.Dequeue();
 
 		Assert.Throws<InvalidOperationException>(() => enumerator.MoveNext());
-		
+
 		enumerator.Dispose();
 	}
 
@@ -686,7 +686,7 @@ public class RandomAccessQueueTests
 	public void BinarySearchComparable()
 	{
 		var queue = new StringQueue();
-		
+
 		queue.Enqueue("1");
 		queue.Enqueue("3");
 		queue.Enqueue("5");
