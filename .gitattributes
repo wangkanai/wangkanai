@@ -1,10 +1,13 @@
-*.js     linguist-vendored=false
-
 *.cshtml linguist-detectable=true 
 *.razor  linguist-detectable=true
  
 *.cshtml linguist-language=Razor
 *.razor  linguist-language=Razor
+
+*.js     linguist-vendored=false
+*.html   linguist-vendored=false
+*.cshtml linguist-vendored=false
+*.razor  linguist-vendored=false
 
 ###############################################################################
 # Set default behavior to automatically normalize line endings.
