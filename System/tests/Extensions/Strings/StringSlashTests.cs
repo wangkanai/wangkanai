@@ -14,20 +14,21 @@ public class StringSlashTests
 
 	string slash = "/";
 	string start = "start";
+	string end   = "end";
 
+	// Ensure leading slash
+	
 	[Fact]
 	public void EnsureLeadingHasSlash()
 	{
-		string expected = "/start";
-		string value    = slash + start;
-		Assert.Equal(expected, value.EnsureLeadingSlash());
+		string value = slash + start;
+		Assert.Equal("/start", value.EnsureLeadingSlash());
 	}
 
 	[Fact]
 	public void EnsureLeadingNoSlash()
 	{
-		string expected = "/start";
-		Assert.Equal(expected, start.EnsureLeadingSlash());
+		Assert.Equal("/start", start.EnsureLeadingSlash());
 	}
 
 	[Fact]
@@ -36,5 +37,28 @@ public class StringSlashTests
 		Assert.Null(_null.EnsureLeadingSlash());
 		Assert.Empty(_empty.EnsureLeadingSlash());
 		Assert.Equal(_space, _space.EnsureLeadingSlash());
+	}
+	
+	// Ensure trailing slash
+	
+	[Fact]
+	public void EnsureTrailingHasSlash()
+	{
+		string value = end + slash;
+		Assert.Equal("end/", value.EnsureTrailingSlash());
+	}
+
+	[Fact]
+	public void EnsureTrailingNoSlash()
+	{
+		Assert.Equal("end/", end.EnsureTrailingSlash());
+	}
+
+	[Fact]
+	public void EnsureLTrailingWhenNullDoNothing()
+	{
+		Assert.Null(_null.EnsureTrailingSlash());
+		Assert.Empty(_empty.EnsureTrailingSlash());
+		Assert.Equal(_space, _space.EnsureTrailingSlash());
 	}
 }
