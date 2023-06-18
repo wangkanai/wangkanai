@@ -6,14 +6,13 @@ using Xunit;
 
 namespace Wangkanai;
 
-[SimpleJob(RuntimeMoniker.Net70, baseline: true)]
+[SimpleJob(RuntimeMoniker.Net60, baseline: true)]
+[SimpleJob(RuntimeMoniker.Net70)]
 // [SimpleJob(RuntimeMoniker.Net80)]
 [RPlotExporter]
 [MemoryDiagnoser]
-public class CheckNullBenchmark
+public class CheckNumericBenchmark
 {
-	private char?    _char      = null;
-	
 	private byte?    _byte1     = null;
 	private short?   _short2    = null;
 	private int?     _int4      = null;
@@ -21,8 +20,7 @@ public class CheckNullBenchmark
 	private float?   _float16   = null;
 	private double?  _double32  = null;
 	private decimal? _decimal32 = null;
-
-	[Benchmark] public void Char()    => Assert.Throws<ArgumentNullException>(() => _char.ThrowIfNull());
+	
 	[Benchmark] public void Byte()    => Assert.Throws<ArgumentNullException>(() => _byte1.ThrowIfNull());
 	[Benchmark] public void Short()   => Assert.Throws<ArgumentNullException>(() => _short2.ThrowIfNull());
 	[Benchmark] public void Int()     => Assert.Throws<ArgumentNullException>(() => _int4.ThrowIfNull());
