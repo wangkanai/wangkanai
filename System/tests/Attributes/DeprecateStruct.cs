@@ -2,7 +2,6 @@
 
 namespace Wangkanai.Attributes;
 
-
 [Deprecate<NewStruct>]
 struct OldStruct { }
 

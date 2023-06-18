@@ -5,7 +5,7 @@ using Xunit;
 
 namespace Wangkanai.Checks;
 
-public class CheckIfNullTests
+public class CheckNullTests
 {
 	[Fact]
 	public void BooleanThrowIfNull()

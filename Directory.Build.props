@@ -22,23 +22,23 @@
 
     <!-- GitHub Source Link -->
     <ItemGroup>
-        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All"/>
     </ItemGroup>
-    
+
     <ItemGroup Condition="$(MSBuildProjectName.Contains('Test'))">
-        <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="7.0.7" />
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.2" />
-        <PackageReference Include="Moq" Version="4.18.4" />
-        <PackageReference Include="xunit" Version="2.4.2" />
-        <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5" PrivateAssets="all" />
-        <PackageReference Include="coverlet.collector" Version="6.0.0" PrivateAssets="all" />
-        <PackageReference Include="coverlet.msbuild" Version="6.0.0" PrivateAssets="all" />
+        <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="7.0.7"/>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.2"/>
+        <PackageReference Include="Moq" Version="4.18.4"/>
+        <PackageReference Include="xunit" Version="2.4.2"/>
+        <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5" PrivateAssets="all"/>
+        <PackageReference Include="coverlet.collector" Version="6.0.0" PrivateAssets="all"/>
+        <PackageReference Include="coverlet.msbuild" Version="6.0.0" PrivateAssets="all"/>
     </ItemGroup>
 
     <ItemGroup Condition="$(MSBuildProjectName.Contains('Benchmark'))">
         <PackageReference Include="BenchmarkDotNet" Version="0.13.5"/>
     </ItemGroup>
-    
+
     <!-- SonarScanner for MSBuild -->
     <PropertyGroup Condition="$(MSBuildProjectName.Contains('Benchmark'))">
         <SonarQubeExclude>true</SonarQubeExclude>

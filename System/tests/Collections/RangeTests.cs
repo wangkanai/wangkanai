@@ -153,7 +153,7 @@ public class RangeTests
 	{
 		Assert.Throws<ArgumentOutOfRangeException>(() => new Range<int>(5, 0));
 	}
-	
+
 
 	[Fact]
 	public void Ascending()
@@ -165,7 +165,7 @@ public class RangeTests
 	[Fact]
 	public void Descending()
 	{
-		var subject = new Range<int>(0,5).FromEnd(x => x - 2);
+		var subject = new Range<int>(0, 5).FromEnd(x => x - 2);
 		Assert.True(subject.SequenceEqual(new[] { 5, 3, 1 }));
 	}
 
