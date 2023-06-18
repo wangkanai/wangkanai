@@ -259,6 +259,23 @@ public static class Check
 
 	// Throw if value is not equal to expected
 	[DebuggerStepThrough]
+	public static bool ThrowIfEqual(this int value, int expected)
+		=> value.ThrowIfEqual<ArgumentEqualException>(expected, nameof(value));
+
+	[DebuggerStepThrough]
+	public static bool ThrowIfEqual<T>(this int value, int expected)
+		where T : ArgumentException
+		=> value.ThrowIfEqual<T>(expected, nameof(value));
+
+	[DebuggerStepThrough]
+	public static bool ThrowIfEqual<T>(this int value, int expected, [InvokerParameterName] string parameterName)
+		where T : ArgumentException
+		=> value == expected
+			   ? throw CreateExceptionInstance<T>(parameterName)
+			   : false;
+	
+	// Throw if value is not equal to expected
+	[DebuggerStepThrough]
 	public static bool ThrowIfNotEqual(this int value, int expected)
 		=> value.ThrowIfNotEqual<ArgumentNotEqualException>(expected, nameof(value));
 

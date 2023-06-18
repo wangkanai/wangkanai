@@ -404,7 +404,7 @@ public class CheckTests
 		Assert.False(_char.TrueIfNull());
 		Assert.False(_string.TrueIfNull());
 	}
-	
+
 	[Fact]
 	public void CheckFalseIfNullThenReturnFalse()
 	{
@@ -542,18 +542,37 @@ public class CheckTests
 	}
 
 	[Fact]
-	public void NotEqual()
+	public void ThrowIfEqualCondition()
+	{
+		Assert.False(1.ThrowIfEqual(0));
+		Assert.Throws<ArgumentEqualException>(() => 1.ThrowIfEqual(1));
+	}
+
+	[Fact]
+	public void ThrowIfEqualExtension()
+	{
+		var test = "test";
+		Assert.False(test.Length.ThrowIfEqual(8));
+		Assert.Throws<ArgumentEqualException>(() => test.Length.ThrowIfEqual(4));
+		Assert.Throws<ArgumentEqualException>(() => test.Length.ThrowIfEqual<ArgumentEqualException>(4));
+		Assert.Throws<ArgumentEqualException>(() => test.Length.ThrowIfEqual<ArgumentEqualException>(4, nameof(test)));
+	}
+
+	[Fact]
+	public void ThrowIfNotEqualCondition()
 	{
 		Assert.True(1.ThrowIfNotEqual(1));
 		Assert.Throws<ArgumentNotEqualException>(() => 1.ThrowIfNotEqual(0));
 	}
 
 	[Fact]
-	public void NotEqualExtension()
+	public void ThrowIfNotEqualExtension()
 	{
 		var test = "test";
 		Assert.True(test.Length.ThrowIfNotEqual(4));
-		Assert.Throws<ArgumentTestException>(() => test.Length.ThrowIfNotEqual<ArgumentTestException>(8, nameof(test)));
+		Assert.Throws<ArgumentNotEqualException>(() => test.Length.ThrowIfNotEqual(8));
+		Assert.Throws<ArgumentNotEqualException>(() => test.Length.ThrowIfNotEqual<ArgumentNotEqualException>(8));
+		Assert.Throws<ArgumentNotEqualException>(() => test.Length.ThrowIfNotEqual<ArgumentNotEqualException>(8, nameof(test)));
 	}
 
 	#endregion
