@@ -13,7 +13,7 @@ public static class StringExtensions
 	[DebuggerStepThrough]
 	public static bool IsNullOrEmpty(this string value)
 		=> string.IsNullOrEmpty(value);
-	
+
 	[DebuggerStepThrough]
 	public static bool IsNotNullOrEmpty(this string value)
 		=> !string.IsNullOrEmpty(value);
@@ -21,7 +21,7 @@ public static class StringExtensions
 	[DebuggerStepThrough]
 	public static bool IsNullOrWhiteSpace(this string value)
 		=> string.IsNullOrWhiteSpace(value);
-	
+
 	[DebuggerStepThrough]
 	public static bool IsNotNullOrWhiteSpace(this string value)
 		=> !value.IsNullOrWhiteSpace();
@@ -36,25 +36,25 @@ public static class StringExtensions
 
 	[DebuggerStepThrough]
 	public static string EnsureLeadingSlash(this string value)
-		=> value.IsNotNullOrEmpty() && !value.StartsWith("/")
+		=> value.IsNotNullOrWhiteSpace() && !value.StartsWith("/")
 			   ? "/" + value
 			   : value;
 
 	[DebuggerStepThrough]
 	public static string EnsureTrailingSlash(this string value)
-		=> value.IsNotNullOrEmpty() && !value.EndsWith("/")
+		=> value.IsNotNullOrWhiteSpace() && !value.EndsWith("/")
 			   ? value + "/"
 			   : value;
 
 	[DebuggerStepThrough]
 	public static string RemoveLeadingSlash(this string value)
-		=> value.IsNotNullOrEmpty() && value.StartsWith("/")
+		=> value.IsNotNullOrWhiteSpace() && value.StartsWith("/")
 			   ? value.Substring(1)
 			   : value;
 
 	[DebuggerStepThrough]
 	public static string RemoveTrailingSlash(this string value)
-		=> value.IsNotNullOrEmpty() && value.EndsWith("/")
+		=> value.IsNotNullOrWhiteSpace() && value.EndsWith("/")
 			   ? value.Substring(0, value.Length - 1)
 			   : value;
 
@@ -96,7 +96,6 @@ public static class StringExtensions
 		var match = regex.Match(source);
 		return match.Success ? match : Match.Empty;
 	}
-
 
 	[DebuggerStepThrough]
 	public static string Left(this string value, int length)
@@ -229,7 +228,7 @@ public static class StringExtensions
 
 		return result.ToString().Trim();
 	}
-	
+
 	public static string EscapeSelector(this string attribute)
 		=> Regex.Replace(attribute, string.Format("([{0}])", "/[!\"#$%&'()*+,./:;<=>?@^`{|}~\\]"), @"\\$1", RegexOptions.Compiled, Constants.RegexTimeout);
 
@@ -255,7 +254,7 @@ public static class StringExtensions
 		byte[] bytes = Encoding.GetEncoding("Cyrillic").GetBytes(value);
 		return Encoding.ASCII.GetString(bytes);
 	}
-	
+
 	[DebuggerStepThrough]
 	public static bool EqualsInvariant(this string str1, string str2)
 		=> string.Equals(str1, str2, StringComparison.OrdinalIgnoreCase);

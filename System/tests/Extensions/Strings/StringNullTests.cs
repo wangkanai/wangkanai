@@ -46,4 +46,14 @@ public class StringNullTests
 		Assert.False(_space.IsNotNullOrWhiteSpace());
 		Assert.True(_test.IsNotNullOrWhiteSpace());
 	}
+
+	[Fact]
+	public void StringIsExist()
+	{
+		// same as string is not null or whitespace
+		Assert.False(_null.IsExist());
+		Assert.False(_empty.IsExist());
+		Assert.False(_space.IsExist());
+		Assert.True(_test.IsExist());
+	}
 }
