@@ -32,7 +32,7 @@ public class StringSlashTests
 	}
 
 	[Fact]
-	public void EnsureLeadingWhenNullDoNothing()
+	public void EnsureLeadingDoNothingWhenNull()
 	{
 		Assert.Null(_null.EnsureLeadingSlash());
 		Assert.Empty(_empty.EnsureLeadingSlash());
@@ -55,10 +55,56 @@ public class StringSlashTests
 	}
 
 	[Fact]
-	public void EnsureLTrailingWhenNullDoNothing()
+	public void EnsureTrailingDoNothingWhenNull()
 	{
 		Assert.Null(_null.EnsureTrailingSlash());
 		Assert.Empty(_empty.EnsureTrailingSlash());
 		Assert.Equal(_space, _space.EnsureTrailingSlash());
+	}
+	
+	// Remove leading slash
+
+	[Fact]
+	public void RemoveLeadingHasSlash()
+	{
+		var value = slash + start;
+		Assert.Equal(start, value.RemoveLeadingSlash());
+	}
+
+	[Fact]
+	public void RemoveLeadingNoSlash()
+	{
+		Assert.Equal(start, start.RemoveLeadingSlash());
+	}
+
+	[Fact]
+	public void RemoveLeadingDoNothingWhenNull()
+	{
+		Assert.Null(_null.RemoveLeadingSlash());
+		Assert.Empty(_empty.RemoveLeadingSlash());
+		Assert.Equal(_space, _space.RemoveLeadingSlash());
+	}
+	
+	// Remove trailing slash
+
+	[Fact]
+	public void RemoveTrailingHasSlash()
+	{
+		var value = end + slash;
+		Assert.Equal(end, value.RemoveTrailingSlash());
+	}
+
+	[Fact]
+	public void RemoveTrailingNoSlash()
+	{
+		Assert.Equal(end, end.RemoveTrailingSlash());
+	}
+
+	[Fact]
+	public void RemoveTrailingDoNothingWhenNull()
+	{
+		Assert.Null(_null.RemoveTrailingSlash());
+		Assert.Empty(_empty.RemoveTrailingSlash());
+		Assert.Equal(_space, _space.RemoveTrailingSlash());
 	}
 }
