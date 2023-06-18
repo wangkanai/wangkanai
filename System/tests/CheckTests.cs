@@ -524,21 +524,43 @@ public class CheckTests
 #pragma warning restore CS0612
 
 	[Fact]
-	public void LessThanExpected()
+	public void LessThanExpectedTrue()
 	{
 		Assert.True(1.ThrowIfLessThan(0));
 		Assert.True(1.ThrowIfLessThan(1));
 		Assert.True(0.ThrowIfLessThan(0));
-		Assert.Throws<ArgumentLessThanException>(() => 0.ThrowIfLessThan(1));
+		Assert.True(1.ThrowIfLessThan(0, nameof(LessThanExpectedTrue)));
+		Assert.True(1.ThrowIfLessThan(1, nameof(LessThanExpectedTrue)));
+		Assert.True(0.ThrowIfLessThan(0, nameof(LessThanExpectedTrue)));
 	}
 
 	[Fact]
-	public void MoreThanExpected()
+	public void LessThanExpectedThrow()
+	{
+		Assert.Throws<ArgumentLessThanException>(() => 0.ThrowIfLessThan(1));
+		Assert.Throws<ArgumentLessThanException>(() => 0.ThrowIfLessThan(1, nameof(LessThanExpectedThrow)));
+		Assert.Throws<ArgumentLessThanException>(() => 0.ThrowIfLessThan<ArgumentLessThanException>(1));
+		Assert.Throws<ArgumentLessThanException>(() => 0.ThrowIfLessThan<ArgumentLessThanException>(1, nameof(LessThanExpectedThrow)));
+	}
+
+	[Fact]
+	public void MoreThanExpectedTrue()
 	{
 		Assert.True(0.ThrowIfMoreThan(1));
 		Assert.True(1.ThrowIfMoreThan(1));
 		Assert.True(0.ThrowIfMoreThan(0));
+		Assert.True(0.ThrowIfMoreThan(1, nameof(MoreThanExpectedTrue)));
+		Assert.True(1.ThrowIfMoreThan(1, nameof(MoreThanExpectedTrue)));
+		Assert.True(0.ThrowIfMoreThan(0, nameof(MoreThanExpectedTrue)));
+	}
+
+	[Fact]
+	public void MoreThanExpectedThrow()
+	{
 		Assert.Throws<ArgumentMoreThanException>(() => 1.ThrowIfMoreThan(0));
+		Assert.Throws<ArgumentMoreThanException>(() => 1.ThrowIfMoreThan(0, nameof(MoreThanExpectedThrow)));
+		Assert.Throws<ArgumentMoreThanException>(() => 1.ThrowIfMoreThan<ArgumentMoreThanException>(0));
+		Assert.Throws<ArgumentMoreThanException>(() => 1.ThrowIfMoreThan<ArgumentMoreThanException>(0, nameof(MoreThanExpectedThrow)));
 	}
 
 	[Fact]
