@@ -4,103 +4,92 @@ using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
 
+using Wangkanai.Resources;
+
 namespace Wangkanai.Extensions;
 
 public static class StringExtensions
 {
 	[DebuggerStepThrough]
+	public static bool IsNullOrEmpty(this string value)
+		=> string.IsNullOrEmpty(value);
+
+	[DebuggerStepThrough]
 	public static bool IsNotNullOrEmpty(this string value)
 		=> !string.IsNullOrEmpty(value);
 
 	[DebuggerStepThrough]
-	[ContractAnnotation("null => true")]
-	public static bool IsNullOrEmpty(this string input)
-		=> string.IsNullOrEmpty(input);
+	public static bool IsNullOrWhiteSpace(this string value)
+		=> string.IsNullOrWhiteSpace(value);
 
 	[DebuggerStepThrough]
-	[ContractAnnotation("null => true")]
-	public static bool IsNullOrWhiteSpace(this string input)
-		=> string.IsNullOrWhiteSpace(input);
+	public static bool IsNotNullOrWhiteSpace(this string value)
+		=> !value.IsNullOrWhiteSpace();
 
 	[DebuggerStepThrough]
-	public static bool IsExist(this string input)
-		=> !string.IsNullOrWhiteSpace(input);
+	public static bool IsExist(this string value)
+		=> !value.IsNullOrWhiteSpace();
 
 	[DebuggerStepThrough]
-	public static bool IsUnicode(this string input)
-		=> Encoding.ASCII.GetByteCount(input) != Encoding.UTF8.GetByteCount(input);
+	public static bool IsUnicode(this string value)
+		=> Encoding.ASCII.GetByteCount(value) != Encoding.UTF8.GetByteCount(value);
 
 	[DebuggerStepThrough]
-	public static string EnsureLeadingSlash(this string input)
-		=> input.IsNotNullOrEmpty() && !input.StartsWith("/")
-			   ? "/" + input
-			   : input;
+	public static string EnsureLeadingSlash(this string value)
+		=> value.IsNotNullOrWhiteSpace() && !value.StartsWith("/")
+			   ? "/" + value
+			   : value;
 
 	[DebuggerStepThrough]
-	public static string EnsureTrailingSlash(this string input)
-		=> input.IsNotNullOrEmpty() && !input.EndsWith("/")
-			   ? input + "/"
-			   : input;
+	public static string EnsureTrailingSlash(this string value)
+		=> value.IsNotNullOrWhiteSpace() && !value.EndsWith("/")
+			   ? value + "/"
+			   : value;
 
 	[DebuggerStepThrough]
-	public static string RemoveLeadingSlash(this string input)
-		=> input.IsNotNullOrEmpty() && input.StartsWith("/")
-			   ? input.Substring(1)
-			   : input;
+	public static string RemoveLeadingSlash(this string value)
+		=> value.IsNotNullOrWhiteSpace() && value.StartsWith("/")
+			   ? value.Substring(1)
+			   : value;
 
 	[DebuggerStepThrough]
-	public static string RemoveTrailingSlash(this string input)
-		=> input.IsNotNullOrEmpty() && input.EndsWith("/")
-			   ? input.Substring(0, input.Length - 1)
-			   : input;
+	public static string RemoveTrailingSlash(this string value)
+		=> value.IsNotNullOrWhiteSpace() && value.EndsWith("/")
+			   ? value.Substring(0, value.Length - 1)
+			   : value;
 
 	[DebuggerStepThrough]
-	public static string EnsureEndsWith(this string input, char c)
-		=> input.EnsureEndsWith(c, StringComparison.Ordinal);
+	public static string EnsureStartsWith(this string value, char c)
+		=> value.EnsureStartsWith(c, StringComparison.Ordinal);
 
 	[DebuggerStepThrough]
-	public static string EnsureEndsWith(this string input, char c, StringComparison comparison)
-	{
-		input.ThrowIfNull();
-
-		return input.EndsWith(c.ToString(), comparison)
-			       ? input
-			       : input + c;
-	}
+	public static string EnsureStartsWith(this string value, char c, StringComparison comparison)
+		=> value.ThrowIfNull().StartsWith(c.ToString(), comparison)
+			   ? value
+			   : c + value;
 
 	[DebuggerStepThrough]
-	public static string EnsureEndsWith(this string input, char c, bool ignoreCase, CultureInfo culture)
-	{
-		input.ThrowIfNull();
-
-		return input.EndsWith(c.ToString(culture), ignoreCase, culture)
-			       ? input
-			       : input + c;
-	}
+	public static string EnsureStartsWith(this string value, char c, bool ignoreCase, CultureInfo culture)
+		=> value.ThrowIfNull().StartsWith(c.ToString(culture), ignoreCase, culture)
+			   ? value
+			   : c + value;
 
 	[DebuggerStepThrough]
-	public static string EnsureStartsWith(this string input, char c)
-		=> input.EnsureStartsWith(c, StringComparison.Ordinal);
+	public static string EnsureEndsWith(this string value, char c)
+		=> value.EnsureEndsWith(c, StringComparison.Ordinal);
 
 	[DebuggerStepThrough]
-	public static string EnsureStartsWith(this string input, char c, StringComparison comparison)
-	{
-		input.ThrowIfNull();
-
-		return input.StartsWith(c.ToString(), comparison)
-			       ? input
-			       : c + input;
-	}
+	public static string EnsureEndsWith(this string value, char c, StringComparison comparison)
+		=> value.ThrowIfNull().EndsWith(c.ToString(), comparison)
+			   ? value
+			   : value + c;
 
 	[DebuggerStepThrough]
-	public static string EnsureStartsWith(this string input, char c, bool ignoreCase, CultureInfo culture)
-	{
-		input.ThrowIfNull();
+	public static string EnsureEndsWith(this string value, char c, bool ignoreCase, CultureInfo culture)
+		=> value.ThrowIfNull().EndsWith(c.ToString(culture), ignoreCase, culture)
+			   ? value
+			   : value + c;
 
-		return input.StartsWith(c.ToString(culture), ignoreCase, culture)
-			       ? input
-			       : c + input;
-	}
 
 	[DebuggerStepThrough]
 	public static Match RegexMatch(this Regex regex, string source)
@@ -109,23 +98,22 @@ public static class StringExtensions
 		return match.Success ? match : Match.Empty;
 	}
 
-
 	[DebuggerStepThrough]
-	public static string Left(this string input, int length)
+	public static string Left(this string value, int length)
 	{
-		input.ThrowIfNull();
-		input.Length.ThrowIfLessThan(length, nameof(length));
+		value.ThrowIfNull();
+		value.Length.ThrowIfLessThan(length, nameof(length));
 
-		return input.Substring(0, length);
+		return value.Substring(0, length);
 	}
 
 	[DebuggerStepThrough]
-	public static string Right(this string input, int length)
+	public static string Right(this string value, int length)
 	{
-		input.ThrowIfNull();
-		input.Length.ThrowIfMoreThan(length);
+		value.ThrowIfNull();
+		value.Length.ThrowIfMoreThan(length);
 
-		return input.Substring(input.Length - length, length);
+		return value.Substring(value.Length - length, length);
 	}
 
 	[DebuggerStepThrough]
@@ -205,22 +193,22 @@ public static class StringExtensions
 	}
 
 	[DebuggerStepThrough]
-	public static string SubstringSafe(this string input, int start, int length)
-		=> input.Length <= start
+	public static string SubstringSafe(this string value, int start, int length)
+		=> value.Length <= start
 			   ? ""
-			   : input.Length - start <= length
-				   ? input[start..]
-				   : input.Substring(start, length);
+			   : value.Length - start <= length
+				   ? value[start..]
+				   : value.Substring(start, length);
 
 	[DebuggerStepThrough]
-	public static string SubstringSafe(this string input, int start)
-		=> input.Length <= start
+	public static string SubstringSafe(this string value, int start)
+		=> value.Length <= start
 			   ? ""
-			   : input[start..];
+			   : value[start..];
 
 	[DebuggerStepThrough]
-	public static string ToTitleCase(this string input)
-		=> input.First().ToString().ToUpper() + input.Substring(1);
+	public static string ToTitleCase(this string value)
+		=> value.First().ToString().ToUpper() + value.Substring(1);
 
 	[DebuggerStepThrough]
 	public static string EscapeSearchTerm(this string term)
@@ -242,10 +230,6 @@ public static class StringExtensions
 		return result.ToString().Trim();
 	}
 
-	/// <summary>
-	/// Escapes the selector. Query requires special characters to be escaped in query
-	/// http://api.jquery.com/category/selectors/
-	/// </summary>
 	public static string EscapeSelector(this string attribute)
 		=> Regex.Replace(attribute, string.Format("([{0}])", "/[!\"#$%&'()*+,./:;<=>?@^`{|}~\\]"), @"\\$1", RegexOptions.Compiled, Constants.RegexTimeout);
 
@@ -266,18 +250,13 @@ public static class StringExtensions
 	}
 
 	[DebuggerStepThrough]
-	public static string RemoveAccent(this string input)
+	public static string RemoveAccent(this string value)
 	{
-		byte[] bytes = Encoding.GetEncoding("Cyrillic").GetBytes(input);
+		byte[] bytes = Encoding.GetEncoding("Cyrillic").GetBytes(value);
 		return Encoding.ASCII.GetString(bytes);
 	}
 
-	/// <summary>
-	/// Equals invariant
-	/// </summary>
-	/// <param name="str1">The STR1.</param>
-	/// <param name="str2">The STR2.</param>
-	/// <returns></returns>
+	[DebuggerStepThrough]
 	public static bool EqualsInvariant(this string str1, string str2)
 		=> string.Equals(str1, str2, StringComparison.OrdinalIgnoreCase);
 
@@ -288,9 +267,7 @@ public static class StringExtensions
 			   : string.Join(' ', list);
 
 	[DebuggerStepThrough]
-	public static IEnumerable<string> FromSpaceSeparatedString(this string input)
-	{
-		input = input.Trim();
-		return input.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-	}
+	public static IEnumerable<string> FromSpaceSeparatedString(this string value)
+		=> value.Trim()
+		        .Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 }
