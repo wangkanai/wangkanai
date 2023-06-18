@@ -59,6 +59,22 @@ public static class StringExtensions
 			   : value;
 
 	[DebuggerStepThrough]
+	public static string EnsureStartsWith(this string value, char c)
+		=> value.EnsureStartsWith(c, StringComparison.Ordinal);
+
+	[DebuggerStepThrough]
+	public static string EnsureStartsWith(this string value, char c, StringComparison comparison)
+		=> value.ThrowIfNull().StartsWith(c.ToString(), comparison)
+			   ? value
+			   : c + value;
+
+	[DebuggerStepThrough]
+	public static string EnsureStartsWith(this string value, char c, bool ignoreCase, CultureInfo culture)
+		=> value.ThrowIfNull().StartsWith(c.ToString(culture), ignoreCase, culture)
+			   ? value
+			   : c + value;
+
+	[DebuggerStepThrough]
 	public static string EnsureEndsWith(this string value, char c)
 		=> value.EnsureEndsWith(c, StringComparison.Ordinal);
 
@@ -74,21 +90,6 @@ public static class StringExtensions
 			   ? value
 			   : value + c;
 
-	[DebuggerStepThrough]
-	public static string EnsureStartsWith(this string value, char c)
-		=> value.EnsureStartsWith(c, StringComparison.Ordinal);
-
-	[DebuggerStepThrough]
-	public static string EnsureStartsWith(this string value, char c, StringComparison comparison)
-		=> value.ThrowIfNull().StartsWith(c.ToString(), comparison)
-			   ? value
-			   : c + value;
-
-	[DebuggerStepThrough]
-	public static string EnsureStartsWith(this string value, char c, bool ignoreCase, CultureInfo culture)
-		=> value.ThrowIfNull().StartsWith(c.ToString(culture), ignoreCase, culture)
-			   ? value
-			   : c + value;
 
 	[DebuggerStepThrough]
 	public static Match RegexMatch(this Regex regex, string source)
