@@ -111,7 +111,7 @@ public static class StringExtensions
 	public static string Right(this string value, int length)
 	{
 		value.ThrowIfNull();
-		value.Length.ThrowIfMoreThan(length);
+		value.Length.ThrowIfLessThan(length);
 
 		return value.Substring(value.Length - length, length);
 	}
