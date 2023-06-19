@@ -49,7 +49,7 @@ public class StringDirectionSubstringTests
 		Assert.Throws<ArgumentLessThanException>(() => _space.Left(3));
 		Assert.Throws<ArgumentLessThanException>(() => _space.Left(4));
 	}
-	
+
 	[Fact]
 	public void RightExist()
 	{
@@ -57,7 +57,7 @@ public class StringDirectionSubstringTests
 		Assert.Equal("de", text.Right(2));
 		Assert.Equal("abcde", text.Right(5));
 	}
-	
+
 	[Fact]
 	public void RightNull()
 	{
@@ -66,7 +66,7 @@ public class StringDirectionSubstringTests
 		Assert.Throws<ArgumentNullException>(() => _null.Right(1));
 		Assert.Throws<ArgumentNullException>(() => _null.Right(2));
 	}
-	
+
 	[Fact]
 	public void RightEmpty()
 	{
@@ -74,7 +74,7 @@ public class StringDirectionSubstringTests
 		Assert.Throws<ArgumentOutOfRangeException>(() => _empty.Right(-1));
 		Assert.Throws<ArgumentOutOfRangeException>(() => _empty.Right(-2));
 	}
-	
+
 	[Fact]
 	public void RightSpace()
 	{
@@ -83,5 +83,20 @@ public class StringDirectionSubstringTests
 		Assert.Throws<ArgumentLessThanException>(() => _space.Right(2));
 		Assert.Throws<ArgumentLessThanException>(() => _space.Right(3));
 		Assert.Throws<ArgumentLessThanException>(() => _space.Right(4));
+	}
+
+	[Fact]
+	public void RemoveAllExist()
+	{
+		Assert.Empty(text.RemoveAll(text));
+		Assert.NotNull(text.RemoveAll(text));
+	}
+
+	[Fact]
+	public void RemoveAllNothing()
+	{
+		Assert.Null(_null.RemoveAll());
+		Assert.Empty(_empty.RemoveAll());
+		Assert.Equal(_space, _space.RemoveAll());
 	}
 }
