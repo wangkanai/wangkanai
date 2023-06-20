@@ -1,8 +1,8 @@
-*.cshtml linguist-detectable=true 
-*.razor  linguist-detectable=true
+#*.cshtml linguist-detectable=true 
+#*.razor  linguist-detectable=true
  
-*.cshtml linguist-language=Razor
-*.razor  linguist-language=Razor
+#*.cshtml linguist-language=Razor
+#*.razor  linguist-language=Razor
 
 *.js     linguist-vendored=false
 *.html   linguist-vendored=false
