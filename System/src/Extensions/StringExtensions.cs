@@ -175,7 +175,8 @@ public static class StringExtensions
 	public static T ToEnum<T>(this string value, bool ignoreCase = true) 
 		where T : struct
 	{
-		value.ThrowIfNull();
+		value.ThrowIfNullOrEmpty();
+		value.ThrowIfNullOrWhitespace();
 
 		return (T)Enum.Parse(typeof(T), value, ignoreCase);
 	}
