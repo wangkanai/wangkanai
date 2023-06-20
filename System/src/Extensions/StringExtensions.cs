@@ -200,26 +200,28 @@ public static class StringExtensions
 		maxLength.ThrowIfLessThan(0);
 		maxLength.ThrowIfLessThan(postfix.Length);
 
-		return value.Length <= maxLength 
-			       ? value 
+		return value.Length <= maxLength
+			       ? value
 			       : value.Left(maxLength - postfix.Length) + postfix;
 	}
 
 	[DebuggerStepThrough]
-	public static string SubstringSafe(this string value, int start = 0, int length = 0)
-	{
-		if (value.Length <= start)
-			return "";
-		return value.Length - start <= length
-			       ? value[start..]
-			       : value.Substring(start, length);
-	}
+	public static string SubstringSafe(this string value, int start)
+		=> value.SubstringSafe(start, value.Length);
 
 	[DebuggerStepThrough]
-	public static string SubstringSafe(this string value, int start = 0)
-		=> value.Length <= start
-			   ? ""
-			   : value[start..];
+	public static string SubstringSafe(this string value, int start, int length)
+	{
+		value.ThrowIfNull();
+		value.ThrowIfNullOrEmpty();
+		start.ThrowIfLessThan(-1);
+		length.ThrowIfLessThan(0);
+		value.Length.ThrowIfLessThan(length);
+
+		return value.Length - start > length
+			       ? value.Substring(start, length)
+			       : value[start..];
+	}
 
 	[DebuggerStepThrough]
 	public static string ToTitleCase(this string value)
