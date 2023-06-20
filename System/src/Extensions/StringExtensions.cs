@@ -222,7 +222,6 @@ public static class StringExtensions
 		value.ThrowIfNullOrEmpty();
 		start.ThrowIfLessThan(-1);
 		length.ThrowIfLessThan(0);
-		//value.Length.ThrowIfLessThan(length);
 
 		return value.Length - start > length
 			       ? value.Substring(start, length)
@@ -231,7 +230,13 @@ public static class StringExtensions
 
 	[DebuggerStepThrough]
 	public static string ToTitleCase(this string value)
-		=> value.First().ToString().ToUpper() + value.Substring(1);
+	{
+		value.ThrowIfNull();
+		value.ThrowIfNullOrEmpty();
+		value = value.ToLower();
+		
+		return value.First().ToString().ToUpper() + value.Substring(1);
+	}
 
 	[DebuggerStepThrough]
 	public static string EscapeSearchTerm(this string term)
