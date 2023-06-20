@@ -1,5 +1,7 @@
 // Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
+using Wangkanai.Exceptions;
+
 using Xunit;
 
 
@@ -28,12 +30,12 @@ public class CheckStringTests
 		string? _null  = null;
 		string? _empty = string.Empty;
 
-		Assert.Throws<ArgumentNullException>(() => _null.ThrowIfNullOrEmpty());
-		Assert.Throws<ArgumentNullException>(() => _null.ThrowIfNullOrEmpty<ArgumentNullException>());
+		Assert.Throws<ArgumentNullOrEmptyException>(() => _null.ThrowIfNullOrEmpty());
+		Assert.Throws<ArgumentNullOrEmptyException>(() => _null.ThrowIfNullOrEmpty<ArgumentNullOrEmptyException>());
 		Assert.Throws<CustomNullException>(() => _null.ThrowIfNullOrEmpty<CustomNullException>());
 
-		Assert.Throws<ArgumentNullException>(() => _empty.ThrowIfNullOrEmpty());
-		Assert.Throws<ArgumentNullException>(() => _empty.ThrowIfNullOrEmpty<ArgumentNullException>());
+		Assert.Throws<ArgumentNullOrEmptyException>(() => _empty.ThrowIfNullOrEmpty());
+		Assert.Throws<ArgumentNullOrEmptyException>(() => _empty.ThrowIfNullOrEmpty<ArgumentNullOrEmptyException>());
 		Assert.Throws<CustomNullException>(() => _empty.ThrowIfNullOrEmpty<CustomNullException>());
 	}
 
@@ -76,21 +78,21 @@ public class CheckStringTests
 		string? _space = " ";
 
 
-		Assert.Throws<ArgumentNullException>(() => _null.ThrowIfNullOrWhitespace());
-		Assert.Throws<ArgumentNullException>(() => _null.ThrowIfNullOrWhitespace("Null Exception"));
-		Assert.Throws<ArgumentNullException>(() => _null.ThrowIfNullOrWhitespace<ArgumentNullException>());
-		Assert.Throws<ArgumentNullException>(() => _null.ThrowIfNullOrWhitespace<ArgumentNullException>("Null Exception"));
+		Assert.Throws<ArgumentNullOrWhitespaceException>(() => _null.ThrowIfNullOrWhitespace());
+		Assert.Throws<ArgumentNullOrWhitespaceException>(() => _null.ThrowIfNullOrWhitespace("Null Exception"));
+		Assert.Throws<ArgumentNullOrWhitespaceException>(() => _null.ThrowIfNullOrWhitespace<ArgumentNullOrWhitespaceException>());
+		Assert.Throws<ArgumentNullOrWhitespaceException>(() => _null.ThrowIfNullOrWhitespace<ArgumentNullOrWhitespaceException>("Null Exception"));
 		Assert.Throws<CustomNullException>(() => _null.ThrowIfNullOrWhitespace<CustomNullException>());
 		Assert.Throws<CustomNullException>(() => _null.ThrowIfNullOrWhitespace<CustomNullException>("Null Exception"));
 
-		Assert.Throws<ArgumentNullException>(() => _empty.ThrowIfNullOrWhitespace());
-		Assert.Throws<ArgumentNullException>(() => _empty.ThrowIfNullOrWhitespace("Null Exception"));
-		Assert.Throws<ArgumentNullException>(() => _empty.ThrowIfNullOrWhitespace<ArgumentNullException>());
+		Assert.Throws<ArgumentNullOrWhitespaceException>(() => _empty.ThrowIfNullOrWhitespace());
+		Assert.Throws<ArgumentNullOrWhitespaceException>(() => _empty.ThrowIfNullOrWhitespace("Null Exception"));
+		Assert.Throws<ArgumentNullOrWhitespaceException>(() => _empty.ThrowIfNullOrWhitespace<ArgumentNullOrWhitespaceException>());
 		Assert.Throws<CustomNullException>(() => _empty.ThrowIfNullOrWhitespace<CustomNullException>());
 
-		Assert.Throws<ArgumentNullException>(() => _space.ThrowIfNullOrWhitespace());
-		Assert.Throws<ArgumentNullException>(() => _space.ThrowIfNullOrWhitespace("Null Exception"));
-		Assert.Throws<ArgumentNullException>(() => _space.ThrowIfNullOrWhitespace<ArgumentNullException>());
+		Assert.Throws<ArgumentNullOrWhitespaceException>(() => _space.ThrowIfNullOrWhitespace());
+		Assert.Throws<ArgumentNullOrWhitespaceException>(() => _space.ThrowIfNullOrWhitespace("Null Exception"));
+		Assert.Throws<ArgumentNullOrWhitespaceException>(() => _space.ThrowIfNullOrWhitespace<ArgumentNullOrWhitespaceException>());
 		Assert.Throws<CustomNullException>(() => _space.ThrowIfNullOrWhitespace<CustomNullException>());
 	}
 
@@ -101,7 +103,7 @@ public class CheckStringTests
 
 		Assert.Equal(_abc, _abc.ThrowIfNullOrWhitespace());
 		Assert.Equal(_abc, _abc.ThrowIfNullOrWhitespace("Null Exception"));
-		Assert.Equal(_abc, _abc.ThrowIfNullOrWhitespace<ArgumentNullException>());
+		Assert.Equal(_abc, _abc.ThrowIfNullOrWhitespace<ArgumentNullOrWhitespaceException>());
 		Assert.Equal(_abc, _abc.ThrowIfNullOrWhitespace<ArgumentException>());
 		Assert.Equal(_abc, _abc.ThrowIfNullOrWhitespace<ArgumentException>("Null Exception"));
 		Assert.Equal(_abc, _abc.ThrowIfNullOrWhitespace<ArgumentException>("Null Exception", nameof(_abc)));

@@ -4,7 +4,6 @@ using System.Numerics;
 
 using Wangkanai.Exceptions;
 using Wangkanai.Extensions;
-using Wangkanai.Resources;
 
 #nullable enable
 
@@ -174,15 +173,15 @@ public static class Check
 	// Throw is value string is null or empty
 	[DebuggerStepThrough]
 	public static string ThrowIfNullOrEmpty(this string? value)
-		=> value.ThrowIfNullOrEmpty<ArgumentNullException>();
+		=> value.ThrowIfNullOrEmpty<ArgumentNullOrEmptyException>();
 
 	[DebuggerStepThrough]
 	public static string ThrowIfNullOrEmpty(this string? value, string message)
-		=> value.ThrowIfNullOrEmpty<ArgumentNullException>(message);
+		=> value.ThrowIfNullOrEmpty<ArgumentNullOrEmptyException>(message);
 
 	[DebuggerStepThrough]
 	public static string ThrowIfNullOrEmpty(this string? value, string message, string paramName)
-		=> value.ThrowIfNullOrEmpty<ArgumentNullException>(message, paramName);
+		=> value.ThrowIfNullOrEmpty<ArgumentNullOrEmptyException>(message, paramName);
 
 	[DebuggerStepThrough]
 	public static string ThrowIfNullOrEmpty<T>(this string? value)
@@ -214,11 +213,11 @@ public static class Check
 	// Throw if value string is null or whitespace
 	[DebuggerStepThrough]
 	public static string ThrowIfNullOrWhitespace(this string? value)
-		=> ThrowIfNullOrWhitespace<ArgumentNullException>(value);
+		=> ThrowIfNullOrWhitespace<ArgumentNullOrWhitespaceException>(value);
 
 	[DebuggerStepThrough]
 	public static string ThrowIfNullOrWhitespace(this string? value, string message)
-		=> ThrowIfNullOrWhitespace<ArgumentNullException>(value, message);
+		=> ThrowIfNullOrWhitespace<ArgumentNullOrWhitespaceException>(value, message);
 
 	[DebuggerStepThrough]
 	public static string ThrowIfNullOrWhitespace<T>(this string? value)
