@@ -206,8 +206,14 @@ public static class StringExtensions
 	}
 
 	[DebuggerStepThrough]
-	public static string SubstringSafe(this string value, int start)
-		=> value.SubstringSafe(start, value.Length);
+	public static string SubstringSafe(this string value, int start = 0)
+	{
+		value.ThrowIfNull();
+		value.ThrowIfNullOrEmpty();
+		start.ThrowIfLessThan(-1);
+		
+		return value.SubstringSafe(start, value.Length);
+	}
 
 	[DebuggerStepThrough]
 	public static string SubstringSafe(this string value, int start, int length)
@@ -216,7 +222,7 @@ public static class StringExtensions
 		value.ThrowIfNullOrEmpty();
 		start.ThrowIfLessThan(-1);
 		length.ThrowIfLessThan(0);
-		value.Length.ThrowIfLessThan(length);
+		//value.Length.ThrowIfLessThan(length);
 
 		return value.Length - start > length
 			       ? value.Substring(start, length)
