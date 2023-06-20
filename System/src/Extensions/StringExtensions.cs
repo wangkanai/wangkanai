@@ -4,8 +4,6 @@ using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
 
-using Wangkanai.Resources;
-
 namespace Wangkanai.Extensions;
 
 public static class StringExtensions
@@ -90,7 +88,6 @@ public static class StringExtensions
 			   ? value
 			   : value + c;
 
-
 	[DebuggerStepThrough]
 	public static Match RegexMatch(this Regex regex, string source)
 	{
@@ -125,24 +122,15 @@ public static class StringExtensions
 		=> current.Replace(target, "", StringComparison.Ordinal);
 
 	[DebuggerStepThrough]
-	public static string RemovePostFix(this string value, params string[] postfixes)
-	{
-		if (value is null)
-			return null;
-		if (value.IsNullOrEmpty())
-			return string.Empty;
-		if (postfixes.IsNullOrEmpty())
-			return value;
-
-		foreach (var postfix in postfixes)
-			if (value.EndsWith(postfix))
-				return value.Left(value.Length - postfix.Length);
-
-		return value;
-	}
+	public static string RemovePreFixes(this string value, params string[] prefixes)
+		=> value.RemovePreFixes(StringComparison.OrdinalIgnoreCase, prefixes);
 
 	[DebuggerStepThrough]
-	public static string RemovePreFix(this string value, params string[] prefixes)
+	public static string RemovePreFixes(this string value, StringComparison comparison, params string[] prefixes)
+		=> value.RemovePreFixes(true, CultureInfo.InvariantCulture, prefixes);
+
+	[DebuggerStepThrough]
+	public static string RemovePreFixes(this string value, bool ignoreCase, CultureInfo culture, params string[] prefixes)
 	{
 		if (value.TrueIfNull())
 			return null;
@@ -152,14 +140,40 @@ public static class StringExtensions
 			return value;
 
 		foreach (var prefix in prefixes)
-			if (value.StartsWith(prefix))
+			if (value.StartsWith(prefix, ignoreCase, culture))
 				return value.Right(value.Length - prefix.Length);
 
 		return value;
 	}
 
 	[DebuggerStepThrough]
-	public static T ToEnum<T>(this string value, bool ignoreCase = true) where T : struct
+	public static string RemovePostFixes(this string value, params string[] postfixes)
+		=> value.RemovePostFixes(StringComparison.OrdinalIgnoreCase, postfixes);
+
+	[DebuggerStepThrough]
+	public static string RemovePostFixes(this string value, StringComparison comparison, params string[] postfixes)
+		=> value.RemovePostFixes(true, CultureInfo.InvariantCulture, postfixes);
+
+	[DebuggerStepThrough]
+	public static string RemovePostFixes(this string value, bool ignoreCase, CultureInfo culture, params string[] postfixes)
+	{
+		if (value is null)
+			return null;
+		if (value.IsNullOrEmpty())
+			return string.Empty;
+		if (postfixes.IsNullOrEmpty())
+			return value;
+
+		foreach (var postfix in postfixes)
+			if (value.EndsWith(postfix, ignoreCase, culture))
+				return value.Left(value.Length - postfix.Length);
+
+		return value;
+	}
+
+	[DebuggerStepThrough]
+	public static T ToEnum<T>(this string value, bool ignoreCase = true) 
+		where T : struct
 	{
 		value.ThrowIfNull();
 
@@ -169,8 +183,8 @@ public static class StringExtensions
 	[DebuggerStepThrough]
 	public static string Truncate(this string value, int maxLength)
 	{
-		if (value.TrueIfNull())
-			return null;
+		value.ThrowIfNull();
+		maxLength.ThrowIfLessThan(0);
 
 		return value.Length <= maxLength
 			       ? value
@@ -178,7 +192,7 @@ public static class StringExtensions
 	}
 
 	[DebuggerStepThrough]
-	public static string TruncateWithPostfix(this string value, int maxLength, string postfix = "...")
+	public static string TruncateWithPostfix(this string value, int maxLength = Int32.MaxValue, string postfix = "...")
 	{
 		if (value.TrueIfNull())
 			return null;
@@ -193,15 +207,17 @@ public static class StringExtensions
 	}
 
 	[DebuggerStepThrough]
-	public static string SubstringSafe(this string value, int start, int length)
-		=> value.Length <= start
-			   ? ""
-			   : value.Length - start <= length
-				   ? value[start..]
-				   : value.Substring(start, length);
+	public static string SubstringSafe(this string value, int start = 0, int length = 0)
+	{
+		if (value.Length <= start)
+			return "";
+		return value.Length - start <= length
+			       ? value[start..]
+			       : value.Substring(start, length);
+	}
 
 	[DebuggerStepThrough]
-	public static string SubstringSafe(this string value, int start)
+	public static string SubstringSafe(this string value, int start = 0)
 		=> value.Length <= start
 			   ? ""
 			   : value[start..];
