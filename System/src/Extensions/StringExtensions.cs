@@ -122,15 +122,15 @@ public static class StringExtensions
 		=> current.Replace(target, "", StringComparison.Ordinal);
 
 	[DebuggerStepThrough]
-	public static string RemovePreFix(this string value, params string[] prefixes)
-		=> value.RemovePreFix(StringComparison.OrdinalIgnoreCase, prefixes);
+	public static string RemovePreFixes(this string value, params string[] prefixes)
+		=> value.RemovePreFixes(StringComparison.OrdinalIgnoreCase, prefixes);
 
 	[DebuggerStepThrough]
-	public static string RemovePreFix(this string value, StringComparison comparison, params string[] prefixes)
-		=> value.RemovePreFix(true, CultureInfo.InvariantCulture, prefixes);
+	public static string RemovePreFixes(this string value, StringComparison comparison, params string[] prefixes)
+		=> value.RemovePreFixes(true, CultureInfo.InvariantCulture, prefixes);
 
 	[DebuggerStepThrough]
-	public static string RemovePreFix(this string value, bool ignoreCase, CultureInfo culture, params string[] prefixes)
+	public static string RemovePreFixes(this string value, bool ignoreCase, CultureInfo culture, params string[] prefixes)
 	{
 		if (value.TrueIfNull())
 			return null;
@@ -147,15 +147,15 @@ public static class StringExtensions
 	}
 
 	[DebuggerStepThrough]
-	public static string RemovePostFix(this string value, params string[] postfixes)
-		=> value.RemovePostFix(StringComparison.OrdinalIgnoreCase, postfixes);
+	public static string RemovePostFixes(this string value, params string[] postfixes)
+		=> value.RemovePostFixes(StringComparison.OrdinalIgnoreCase, postfixes);
 
 	[DebuggerStepThrough]
-	public static string RemovePostFix(this string value, StringComparison comparison, params string[] postfixes)
-		=> value.RemovePostFix(true, CultureInfo.InvariantCulture, postfixes);
+	public static string RemovePostFixes(this string value, StringComparison comparison, params string[] postfixes)
+		=> value.RemovePostFixes(true, CultureInfo.InvariantCulture, postfixes);
 
 	[DebuggerStepThrough]
-	public static string RemovePostFix(this string value, bool ignoreCase, CultureInfo culture, params string[] postfixes)
+	public static string RemovePostFixes(this string value, bool ignoreCase, CultureInfo culture, params string[] postfixes)
 	{
 		if (value is null)
 			return null;
@@ -172,7 +172,8 @@ public static class StringExtensions
 	}
 
 	[DebuggerStepThrough]
-	public static T ToEnum<T>(this string value, bool ignoreCase = true) where T : struct
+	public static T ToEnum<T>(this string value, bool ignoreCase = true) 
+		where T : struct
 	{
 		value.ThrowIfNull();
 
@@ -191,7 +192,7 @@ public static class StringExtensions
 	}
 
 	[DebuggerStepThrough]
-	public static string TruncateWithPostfix(this string value, int maxLength, string postfix = "...")
+	public static string TruncateWithPostfix(this string value, int maxLength = Int32.MaxValue, string postfix = "...")
 	{
 		if (value.TrueIfNull())
 			return null;
@@ -206,7 +207,7 @@ public static class StringExtensions
 	}
 
 	[DebuggerStepThrough]
-	public static string SubstringSafe(this string value, int start, int length)
+	public static string SubstringSafe(this string value, int start = 0, int length = 0)
 	{
 		if (value.Length <= start)
 			return "";
@@ -216,7 +217,7 @@ public static class StringExtensions
 	}
 
 	[DebuggerStepThrough]
-	public static string SubstringSafe(this string value, int start)
+	public static string SubstringSafe(this string value, int start = 0)
 		=> value.Length <= start
 			   ? ""
 			   : value[start..];
