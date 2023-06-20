@@ -8,7 +8,7 @@ namespace Wangkanai.Extensions.Strings;
 
 #nullable enable
 
-public class StringDirectionSubstringTests
+public class StringTrimTests
 {
 	string? _null  = null;
 	string? _empty = string.Empty;
