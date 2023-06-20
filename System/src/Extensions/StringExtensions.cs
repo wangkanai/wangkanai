@@ -172,7 +172,7 @@ public static class StringExtensions
 	}
 
 	[DebuggerStepThrough]
-	public static T ToEnum<T>(this string value, bool ignoreCase = true) 
+	public static T ToEnum<T>(this string value, bool ignoreCase = true)
 		where T : struct
 	{
 		value.ThrowIfNullOrEmpty();
@@ -185,26 +185,24 @@ public static class StringExtensions
 	public static string Truncate(this string value, int maxLength)
 	{
 		value.ThrowIfNull();
+		value.ThrowIfNullOrEmpty();
 		maxLength.ThrowIfLessThan(0);
+		value.Length.ThrowIfLessThan(maxLength);
 
-		return value.Length <= maxLength
-			       ? value
-			       : value.Left(maxLength);
+		return value.Left(maxLength);
 	}
 
 	[DebuggerStepThrough]
-	public static string TruncateWithPostfix(this string value, int maxLength = Int32.MaxValue, string postfix = "...")
+	public static string TruncateWithPostfix(this string value, int maxLength, string postfix = "...")
 	{
-		if (value.TrueIfNull())
-			return null;
-		if (value.IsNullOrEmpty() || maxLength == 0)
-			return string.Empty;
-		if (value.Length <= maxLength)
-			return value;
-		if (maxLength <= postfix.Length)
-			return postfix.Left(maxLength);
+		value.ThrowIfNull();
+		value.ThrowIfNullOrEmpty();
+		maxLength.ThrowIfLessThan(0);
+		maxLength.ThrowIfLessThan(postfix.Length);
 
-		return value.Left(maxLength - postfix.Length) + postfix;
+		return value.Length <= maxLength 
+			       ? value 
+			       : value.Left(maxLength - postfix.Length) + postfix;
 	}
 
 	[DebuggerStepThrough]
