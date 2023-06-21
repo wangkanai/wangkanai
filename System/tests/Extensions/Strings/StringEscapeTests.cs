@@ -39,4 +39,10 @@ public class StringEscapeTests
 	{
 		Assert.Empty(_space.EscapeSearch());
 	}
+	
+	[Fact]
+	public void Plus()
+	{
+		Assert.Equal(@"a\+b\+c\+d\+e", text_plus.EscapeSearch());
+	}
 }
