@@ -61,4 +61,46 @@ public class StringSelectorTests
 	{
 		Assert.Equal(@"test\\,test", "test,test".EscapeSelector());
 	}
+	
+	[Fact]
+	public void Colon()
+	{
+		Assert.Equal(@"test\\:test", "test:test".EscapeSelector());
+	}
+	
+	[Fact]
+	public void Semicolon()
+	{
+		Assert.Equal(@"test\\;test", "test;test".EscapeSelector());
+	}
+	
+	[Fact]
+	public void Plus()
+	{
+		Assert.Equal(@"test\\+test", "test+test".EscapeSelector());
+	}
+	
+	[Fact]
+	public void Equal()
+	{
+		Assert.Equal(@"\\=test\\=", "=test=".EscapeSelector());
+	}
+	
+	[Fact]
+	public void Question()
+	{
+		Assert.Equal(@"test\\?test", "test?test".EscapeSelector());
+	}
+	
+	[Fact]
+	public void Ampersand()
+	{
+		Assert.Equal(@"test\\&test", "test&test".EscapeSelector());
+	}
+	
+	[Fact]
+	public void Percent()
+	{
+		Assert.Equal(@"test\\%test", "test%test".EscapeSelector());
+	}
 }
