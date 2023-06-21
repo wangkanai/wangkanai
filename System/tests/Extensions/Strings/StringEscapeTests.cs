@@ -19,4 +19,10 @@ public class StringEscapeTests
 	{
 		Assert.Equal(text, text.EscapeSearch());
 	}
+
+	[Fact]
+	public void Null()
+	{
+		Assert.Throws<ArgumentNullException>(() => _null.EscapeSearch());
+	}
 }

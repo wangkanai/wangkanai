@@ -241,6 +241,9 @@ public static class StringExtensions
 	[DebuggerStepThrough]
 	public static string EscapeSearch(this string value)
 	{
+		value.ThrowIfNull();
+		value.ThrowIfNullOrEmpty();
+		
 		char[] specialCharacters = { '+', '-', '!', '(', ')', '{', '}', '[', ']', '^', '"', '~', '*', '?', ':', '\\' };
 		var    result            = new StringBuilder("");
 		//'&&', '||',
