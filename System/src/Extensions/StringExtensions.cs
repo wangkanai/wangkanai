@@ -239,12 +239,15 @@ public static class StringExtensions
 	}
 
 	[DebuggerStepThrough]
-	public static string EscapeSearchTerm(this string term)
+	public static string EscapeSearch(this string value)
 	{
+		value.ThrowIfNull();
+		value.ThrowIfNullOrEmpty();
+		
 		char[] specialCharacters = { '+', '-', '!', '(', ')', '{', '}', '[', ']', '^', '"', '~', '*', '?', ':', '\\' };
 		var    result            = new StringBuilder("");
 		//'&&', '||',
-		foreach (var ch in term)
+		foreach (var ch in value)
 		{
 			if (specialCharacters.Any(x => x == ch))
 				result.Append("\\");
@@ -258,8 +261,8 @@ public static class StringExtensions
 		return result.ToString().Trim();
 	}
 
-	public static string EscapeSelector(this string attribute)
-		=> Regex.Replace(attribute, string.Format("([{0}])", "/[!\"#$%&'()*+,./:;<=>?@^`{|}~\\]"), @"\\$1", RegexOptions.Compiled, Constants.RegexTimeout);
+	public static string EscapeSelector(this string value)
+		=> Regex.Replace(value, string.Format("([{0}])", "/[!\"#$%&'()*+,./:;<=>?@^`{|}~\\]"), @"\\$1", RegexOptions.Compiled, Constants.RegexTimeout);
 
 	public static string GenerateSlug(this string phrase)
 	{
