@@ -57,4 +57,11 @@ public class StringEscapeTests
 	{
 		Assert.Equal(@"a\-b", "a-b".EscapeSearch());
 	}
+	
+	[Fact]
+	public void Exclamation()
+	{
+		Assert.Equal(@"a\!b", "a!b".EscapeSearch());
+	}
+	
 }
