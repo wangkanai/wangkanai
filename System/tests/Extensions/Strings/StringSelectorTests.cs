@@ -43,4 +43,22 @@ public class StringSelectorTests
 	{
 		Assert.Equal(@"test\\/test", "test/test".EscapeSelector());
 	}
+	
+	[Fact]
+	public void Dot()
+	{
+		Assert.Equal(@"test\\.test", "test.test".EscapeSelector());
+	}
+	
+	[Fact]
+	public void Hash()
+	{
+		Assert.Equal(@"test\\#test", "test#test".EscapeSelector());
+	}
+	
+	[Fact]
+	public void Comma()
+	{
+		Assert.Equal(@"test\\,test", "test,test".EscapeSelector());
+	}
 }
