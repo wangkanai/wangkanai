@@ -14,7 +14,9 @@ Welcome to my repository, where you'll find a vast collection of projects that I
 I am a seasoned solution architect, mentor, trainer, and full-stack developer with a rich professional experience under my belt. I am currently employed at Wangkanai Sugar, where I specialize in building enterprise applications and teaching .NET, Blazor, and Azure. I am always up for a challenge, and I take pride in transforming simple proposals into robust, well-defined, and thoroughly tested solutions.
 
 [![NuGet](https://raw.githubusercontent.com/wangkanai/wangkanai/main/Assets/wangkanai-badge-nuget.svg?sanitize=true)](https://www.nuget.org/profiles/wangkanai)
+
 [![Build status](https://dev.azure.com/wangkanai/GitHub/_apis/build/status/wangkanai)](https://dev.azure.com/wangkanai/GitHub/_build/latest?definitionId=22)
+[![Board Status](https://dev.azure.com/wangkanai/e03e9c5f-ef72-4783-b288-5a5383d5511f/96a4bfff-be89-445a-ad0d-b66ba56be0eb/_apis/work/boardbadge/0686aed2-48ec-4d5c-beb7-43377097680f?columnOptions=1)](https://dev.azure.com/wangkanai/e03e9c5f-ef72-4783-b288-5a5383d5511f/_boards/board/t/96a4bfff-be89-445a-ad0d-b66ba56be0eb/Stories/)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=wangkanai_wangkanai&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=wangkanai_wangkanai)
 
 [![Open Collective](https://img.shields.io/badge/open%20collective-support%20me-3385FF.svg)](https://opencollective.com/wangkanai)
