@@ -25,4 +25,10 @@ public class StringEscapeTests
 	{
 		Assert.Throws<ArgumentNullException>(() => _null.EscapeSearch());
 	}
+	
+	[Fact]
+	public void Empty()
+	{
+		Assert.Throws<ArgumentNullException>(() => _empty.EscapeSearch());
+	}
 }
