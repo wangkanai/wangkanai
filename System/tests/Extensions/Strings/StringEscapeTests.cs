@@ -129,4 +129,10 @@ public class StringEscapeTests
 	{
 		Assert.Equal(@"a\:b", "a:b".EscapeSearch());
 	}
+	
+	[Fact]
+	public void Backslash()
+	{
+		Assert.Equal(@"a\\b", "a\\b".EscapeSearch());
+	}
 }
