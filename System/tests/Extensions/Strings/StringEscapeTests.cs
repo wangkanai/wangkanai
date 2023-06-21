@@ -76,4 +76,28 @@ public class StringEscapeTests
 		Assert.Equal(@"a\)b", "a)b".EscapeSearch());
 	}
 	
+	[Fact]
+	public void OpenBracket()
+	{
+		Assert.Equal(@"a\[b", "a[b".EscapeSearch());
+	}
+	
+	[Fact]
+	public void CloseBracket()
+	{
+		Assert.Equal(@"a\]b", "a]b".EscapeSearch());
+	}
+	
+	[Fact]
+	public void OpenBrace()
+	{
+		Assert.Equal(@"a\{b", "a{b".EscapeSearch());
+	}
+	
+	[Fact]
+	public void CloseBrace()
+	{
+		Assert.Equal(@"a\}b", "a}b".EscapeSearch());
+	}
+	
 }
