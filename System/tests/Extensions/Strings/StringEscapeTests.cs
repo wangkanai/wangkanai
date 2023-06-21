@@ -64,4 +64,16 @@ public class StringEscapeTests
 		Assert.Equal(@"a\!b", "a!b".EscapeSearch());
 	}
 	
+	[Fact]
+	public void OpenParenthesis()
+	{
+		Assert.Equal(@"a\(b", "a(b".EscapeSearch());
+	}
+	
+	[Fact]
+	public void CloseParenthesis()
+	{
+		Assert.Equal(@"a\)b", "a)b".EscapeSearch());
+	}
+	
 }
