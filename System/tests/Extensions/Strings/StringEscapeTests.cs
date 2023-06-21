@@ -51,4 +51,10 @@ public class StringEscapeTests
 	{
 		Assert.Equal(@"a\+b", "a+b".EscapeSearch());
 	}
+	
+	[Fact]
+	public void Minus()
+	{
+		Assert.Equal(@"a\-b", "a-b".EscapeSearch());
+	}
 }
