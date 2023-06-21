@@ -7,7 +7,7 @@ using Xunit;
 
 namespace Wangkanai.Extensions.Strings;
 
-public class StringSubstring
+public class StringSubstringTests
 {
 	string? _null  = null;
 	string? _empty = string.Empty;

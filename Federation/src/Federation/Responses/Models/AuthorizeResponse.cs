@@ -10,7 +10,7 @@ public class AuthorizeResponse
 
 	public string RedirectUri => Request?.RedirectUri;
 	public string State       => Request?.State;
-	public string Scope       => Request?.ValidationResources?.RawScopeValues.ToSpaceSeparatedString();
+	public string Scope       => Request?.ValidationResources?.RawScopeValues.SeparateToSpace();
 
 	public string IdentityToken       { get; set; }
 	public string AccessToken         { get; set; }

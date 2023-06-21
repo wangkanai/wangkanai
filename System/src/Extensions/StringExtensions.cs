@@ -289,13 +289,13 @@ public static class StringExtensions
 		=> string.Equals(str1, str2, StringComparison.OrdinalIgnoreCase);
 
 	[DebuggerStepThrough]
-	public static string ToSpaceSeparatedString(this IEnumerable<string> list)
+	public static string SeparateToSpace(this IEnumerable<string> list)
 		=> list.IsNullOrEmpty()
 			   ? string.Empty
 			   : string.Join(' ', list);
 
 	[DebuggerStepThrough]
-	public static IEnumerable<string> FromSpaceSeparatedString(this string value)
+	public static IEnumerable<string> SeparateFromSpace(this string value)
 		=> value.Trim()
 		        .Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 }
