@@ -41,8 +41,14 @@ public class StringEscapeTests
 	}
 	
 	[Fact]
-	public void Plus()
+	public void TextGeneral()
 	{
 		Assert.Equal(@"a\+b\+c\+d\+e", text_plus.EscapeSearch());
+	}
+	
+	[Fact]
+	public void Plus()
+	{
+		Assert.Equal(@"a\+b", "a+b".EscapeSearch());
 	}
 }
