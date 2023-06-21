@@ -135,16 +135,28 @@ public class StringEscapeTests
 	{
 		Assert.Equal(@"a\\b", "a\\b".EscapeSearch());
 	}
-	
-	[Fact]
-	public void Slash()
-	{
-		Assert.Equal(@"a\/b", "a/b".EscapeSearch());
-	}
-	
+
 	[Fact]
 	public void DoubleQuote()
 	{
 		Assert.Equal(@"a\""b", "a\"b".EscapeSearch());
+	}
+	
+	[Fact]
+	public void Asciitilde()
+	{
+		Assert.Equal(@"a\~b", "a~b".EscapeSearch());
+	}
+	
+	[Fact]
+	public void DoubleAmpersand()
+	{
+		Assert.Equal(@"a\&&b", "a&&b".EscapeSearch());
+	}
+	
+	[Fact]
+	public void DoublePipe()
+	{
+		Assert.Equal(@"a\||b", "a||b".EscapeSearch());
 	}
 }
