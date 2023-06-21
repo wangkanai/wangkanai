@@ -2,6 +2,8 @@
 
 #nullable enable
 
+using Wangkanai.Exceptions;
+
 using Xunit;
 
 namespace Wangkanai.Extensions.Strings;
@@ -25,10 +27,16 @@ public class StringEscapeTests
 	{
 		Assert.Throws<ArgumentNullException>(() => _null.EscapeSearch());
 	}
-	
+
 	[Fact]
 	public void Empty()
 	{
-		Assert.Throws<ArgumentNullException>(() => _empty.EscapeSearch());
+		Assert.Throws<ArgumentNullOrEmptyException>(() => _empty.EscapeSearch());
+	}
+
+	[Fact]
+	public void Space()
+	{
+		Assert.Empty(_space.EscapeSearch());
 	}
 }
