@@ -118,4 +118,15 @@ public class StringEscapeTests
 		Assert.Equal(@"a\*b", "a*b".EscapeSearch());
 	}
 	
+	[Fact]
+	public void Question()
+	{
+		Assert.Equal(@"a\?b", "a?b".EscapeSearch());
+	}
+	
+	[Fact]
+	public void Colon()
+	{
+		Assert.Equal(@"a\:b", "a:b".EscapeSearch());
+	}
 }
