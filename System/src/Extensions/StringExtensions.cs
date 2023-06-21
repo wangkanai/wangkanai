@@ -211,7 +211,7 @@ public static class StringExtensions
 		value.ThrowIfNull();
 		value.ThrowIfNullOrEmpty();
 		start.ThrowIfLessThan(-1);
-		
+
 		return value.SubstringSafe(start, value.Length);
 	}
 
@@ -234,7 +234,7 @@ public static class StringExtensions
 		value.ThrowIfNull();
 		value.ThrowIfNullOrEmpty();
 		value = value.ToLower();
-		
+
 		return value.First().ToString().ToUpper() + value.Substring(1);
 	}
 
@@ -243,7 +243,7 @@ public static class StringExtensions
 	{
 		value.ThrowIfNull();
 		value.ThrowIfNullOrEmpty();
-		
+
 		char[] specialCharacters = { '+', '-', '!', '(', ')', '{', '}', '[', ']', '^', '"', '~', '*', '?', ':', '\\' };
 		var    result            = new StringBuilder("");
 		//'&&', '||',
@@ -262,7 +262,14 @@ public static class StringExtensions
 	}
 
 	public static string EscapeSelector(this string value)
-		=> Regex.Replace(value, string.Format("([{0}])", "/[!\"#$%&'()*+,./:;<=>?@^`{|}~\\]"), @"\\$1", RegexOptions.Compiled, Constants.RegexTimeout);
+	{
+		value.ThrowIfNull();
+		value.ThrowIfNullOrEmpty();
+
+		var pattern     = string.Format("([{0}])", "/[!\"#$%&'()*+,./:;<=>?@^`{|}~\\]");
+		var replacement = @"\\$1";
+		return Regex.Replace(value, pattern, replacement, RegexOptions.Compiled, Constants.RegexTimeout);
+	}
 
 	public static string GenerateSlug(this string phrase)
 	{
