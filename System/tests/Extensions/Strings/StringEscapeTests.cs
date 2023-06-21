@@ -17,6 +17,6 @@ public class StringEscapeTests
 	[Fact]
 	public void Normal()
 	{
-		Assert.Equal(text, text.EscapeSearchTerm());
+		Assert.Equal(text, text.EscapeSearch());
 	}
 }
