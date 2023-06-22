@@ -463,6 +463,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".sonar", ".sonar", "{EEF194
 		dotnet-sonar.ps1 = dotnet-sonar.ps1
 		SonarQube.Analysis.xml = SonarQube.Analysis.xml
 		sonar-scanner.properties = sonar-scanner.properties
+		sonar-begin.ps1 = sonar-begin.ps1
+		sonar-prep.ps1 = sonar-prep.ps1
 	EndProjectSection
 EndProject
 Global
