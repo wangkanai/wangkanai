@@ -271,9 +271,22 @@ public static class StringExtensions
 		return Regex.Replace(value, pattern, replacement, RegexOptions.Compiled, Constants.RegexTimeout);
 	}
 
-	public static string GenerateSlug(this string phrase)
+	[DebuggerStepThrough]
+	public static string RemoveAccent(this string value)
 	{
-		string str = phrase.RemoveAccent().ToLower();
+		value.ThrowIfNull();
+		value.ThrowIfNullOrEmpty();
+		
+		Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+		var encoding = Encoding.GetEncoding("Cyrillic");
+		byte[] bytes = encoding.GetBytes(value);
+		return Encoding.ASCII.GetString(bytes);
+	}
+
+	[DebuggerStepThrough]
+	public static string GenerateSlug(this string value)
+	{
+		string str = value.RemoveAccent().ToLower();
 
 		// invalid chars
 		str = Regex.Replace(str, @"[^a-z0-9\s-]", "", RegexOptions.Compiled, Constants.RegexTimeout);
@@ -287,12 +300,6 @@ public static class StringExtensions
 		return str;
 	}
 
-	[DebuggerStepThrough]
-	public static string RemoveAccent(this string value)
-	{
-		byte[] bytes = Encoding.GetEncoding("Cyrillic").GetBytes(value);
-		return Encoding.ASCII.GetString(bytes);
-	}
 
 	[DebuggerStepThrough]
 	public static bool EqualsInvariant(this string str1, string str2)
