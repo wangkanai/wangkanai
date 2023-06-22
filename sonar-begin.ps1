@@ -27,6 +27,7 @@ if ("main" -ne $env:Build_SourceBranchName) {
 else
 {
     $base      = "main"
+    $buildDir  = $env:Agent_BuildDirector
 
     Write-Host "PR Not:"              $pullrequest
     Write-Host "sonar.branch.name : " $base
