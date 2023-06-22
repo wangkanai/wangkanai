@@ -139,4 +139,16 @@ public class StringSelectorTests
 	{
 		Assert.Equal(@"test\\]test", "test]test".EscapeSelector());
 	}
+	
+	[Fact]
+	public void LeftParenthesis()
+	{
+		Assert.Equal(@"test\\(test", "test(test".EscapeSelector());
+	}
+	
+	[Fact]
+	public void RightParenthesis()
+	{
+		Assert.Equal(@"test\\)test", "test)test".EscapeSelector());
+	}
 }
