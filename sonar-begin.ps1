@@ -25,7 +25,8 @@ if ("main" -ne $env:Build_SourceBranchName) {
 }
 else
 {
-    Write-Host "PR Not:" $pullrequest
+    Write-Host "PR Not:"              $pullrequest
+    Write-Host "sonar.branch.name : " $base
 
     dotnet sonarscanner begin `
             /k:wangkanai_wangkanai `
