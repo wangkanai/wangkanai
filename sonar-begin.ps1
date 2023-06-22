@@ -1,5 +1,4 @@
-if ("$( sonar.pullrequest.base )" -ne "$( sonar.pullrequest.branch )")
-{
+if ("main" -ne "$(Build.SourceBranchName)") {
     $version     = 1.6
     $pullrequest = $true
     $source      = $(Build.SourcesDirectory)
