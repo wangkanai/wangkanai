@@ -38,5 +38,5 @@ else
             /s:$sourceDir/SonarQube.Analysis.xml `
             /d:sonar.host.url=https://sonarcloud.io `
             /d:sonar.cs.vscoveragexml.reportsPaths=$buildDir/coverage.xml `
-            /d:sonar.branch.name=$base
+          #  /d:sonar.branch.name=$base
 }
