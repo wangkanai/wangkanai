@@ -103,4 +103,28 @@ public class StringSelectorTests
 	{
 		Assert.Equal(@"test\\%test", "test%test".EscapeSelector());
 	}
+	
+	[Fact]
+	public void Tilde()
+	{
+		Assert.Equal(@"test\\~test", "test~test".EscapeSelector());
+	}
+	
+	[Fact]
+	public void Quote()
+	{
+		Assert.Equal(@"test\\'test", "test'test".EscapeSelector());
+	}
+	
+	[Fact]
+	public void DoubleQuote()
+	{
+		Assert.Equal("test\\\\\"test", "test\"test".EscapeSelector());
+	}
+	
+	// [Fact]
+	// public void Backslash()
+	// {
+	// 	Assert.Equal(@"\\test", "\\test".EscapeSelector());
+	// }
 }

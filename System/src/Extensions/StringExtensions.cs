@@ -266,7 +266,7 @@ public static class StringExtensions
 		value.ThrowIfNull();
 		value.ThrowIfNullOrEmpty();
 
-		var pattern     = string.Format("([{0}])", "/[!\"#$%&'()*+,./:;<=>?@^`{|}~\\]");
+		var pattern     = string.Format("([{0}])", "/[!\"#$%&'()*+,./:;<=>?@^`{{|}}~\\]");
 		var replacement = @"\\$1";
 		return Regex.Replace(value, pattern, replacement, RegexOptions.Compiled, Constants.RegexTimeout);
 	}
