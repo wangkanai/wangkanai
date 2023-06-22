@@ -1,10 +1,11 @@
-if ("main" -ne "$(Build.SourceBranchName)") {
+if ("main" -ne $env:Build.SourceBranchName) {
     $version     = 1.6
     $pullrequest = $true
-    $source      = $(Build.SourcesDirectory)
-    $base        = $(System.PullRequest.TargetBranch)
-    $branch      = $(System.PullRequest.SourceBranch)
-    $key         = "$(Build.SourceBranch)".Split("/")[2]
+    $directory   = $env:Build.SourcesDirectory
+    $source      = $env:Build.SourceBranch
+    $base        = $env:System.PullRequest.TargetBranch
+    $branch      = $env:System.PullRequest.SourceBranch
+    $key         = $source.Split("/")[2]
     
     Write-Host "PR Yes:" $pullrequest
     Write-Host "sonar.pullrequest.base : "   $base
