@@ -22,7 +22,7 @@ if ("main" -ne $env:Build_SourceBranchName)
 else
 {
     $pullrequest = $false
-    $base        = $env:System_PullRequest_TargetBranch
+    $base        = "main"
 
     Write-Host "PR Not:" $pullrequest
     Write-Host "sonar.branch.name : "   $base

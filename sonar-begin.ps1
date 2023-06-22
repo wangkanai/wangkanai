@@ -1,8 +1,9 @@
+$buildDir    = $env:Agent_BuildDirectory
+$sourceDir   = $env:Build_SourcesDirectory
+$version     = 1.6
+
 if ("main" -ne $env:Build_SourceBranchName) {
-    $version     = 1.6
     $pullrequest = $true
-    $buildDir    = $env:Agent_BuildDirectory
-    $sourceDir   = $env:Build_SourcesDirectory
     $source      = $env:Build_SourceBranch
     $base        = $env:System_PullRequest_TargetBranch
     $branch      = $env:System_PullRequest_SourceBranch
@@ -27,7 +28,6 @@ if ("main" -ne $env:Build_SourceBranchName) {
 else
 {
     $base      = "main"
-    $buildDir  = $env:Agent_BuildDirector
 
     Write-Host "PR Not:"              $pullrequest
     Write-Host "sonar.branch.name : " $base
@@ -39,5 +39,5 @@ else
             /s:$sourceDir/SonarQube.Analysis.xml `
             /d:sonar.host.url=https://sonarcloud.io `
             /d:sonar.cs.vscoveragexml.reportsPaths=$buildDir/coverage.xml `
-          #  /d:sonar.branch.name=$base
+            /d:sonar.branch.name=$base
 }
