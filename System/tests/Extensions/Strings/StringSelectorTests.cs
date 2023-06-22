@@ -127,4 +127,16 @@ public class StringSelectorTests
 	// {
 	// 	Assert.Equal(@"\\test", "\\test".EscapeSelector());
 	// }
+	
+	[Fact]
+	public void LeftBracket()
+	{
+		Assert.Equal(@"test\\[test", "test[test".EscapeSelector());
+	}
+	
+	[Fact]
+	public void RightBracket()
+	{
+		Assert.Equal(@"test\\]test", "test]test".EscapeSelector());
+	}
 }
