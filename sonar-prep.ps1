@@ -1,12 +1,12 @@
 if ("main" -ne $env:Build_SourceBranchName)
 {
-    $version = 1.6
+    $version     = 1.6
     $pullrequest = $true
-    $directory = $env:Agent_BuildDirectory
-    $source = $env:Build_SourceBranch
-    $base = $env:System_PullRequest_TargetBranch
-    $branch = $env:System_PullRequest_SourceBranch
-    $key = $source.Split("/")[2]
+    $directory   = $env:Agent_BuildDirectory
+    $source      = $env:Build_SourceBranch
+    $base        = $env:System_PullRequest_TargetBranch
+    $branch      = $env:System_PullRequest_SourceBranch
+    $key         = $source.Split("/")[2]
 
     Write-Host "PR Yes:" $pullrequest
     Write-Host "sonar.pullrequest.base : "   $base
@@ -17,6 +17,8 @@ if ("main" -ne $env:Build_SourceBranchName)
 else
 {
     $pullrequest = $false
+    $base        = $env:System_PullRequest_TargetBranch
 
     Write-Host "PR Not:" $pullrequest
+    Write-Host "sonar.branch.name : "   $base
 } 
