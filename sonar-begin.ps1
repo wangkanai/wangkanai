@@ -1,7 +1,8 @@
 if ("main" -ne $env:Build_SourceBranchName) {
     $version     = 1.6
     $pullrequest = $true
-    $directory   = $env:Agent_BuildDirectory
+    $buildDir    = $env:Agent_BuildDirectory
+    $sourceDir   = $env:Build_SourceDirectory
     $source      = $env:Build_SourceBranch
     $base        = $env:System_PullRequest_TargetBranch
     $branch      = $env:System_PullRequest_SourceBranch
@@ -16,9 +17,9 @@ if ("main" -ne $env:Build_SourceBranchName) {
             /k:wangkanai_wangkanai `
             /o:wangkanai `
             /v:$version `
-            /s:$directory/SonarQube.Analysis.xml `
+            /s:$sourceDir/SonarQube.Analysis.xml `
             /d:sonar.host.url=https://sonarcloud.io `
-            /d:sonar.cs.vscoveragexml.reportsPaths=$directory/coverage.xml `
+            /d:sonar.cs.vscoveragexml.reportsPaths=$buildDir/coverage.xml `
             /d:sonar.pullrequest.base=$base `
             /d:sonar.pullrequest.branch=$branch `
             /d:sonar.pullrequest.key=$key
@@ -32,8 +33,8 @@ else
             /k:wangkanai_wangkanai `
             /o:wangkanai `
             /v:$version `
-            /s:$directory/SonarQube.Analysis.xml `
+            /s:$sourceDir/SonarQube.Analysis.xml `
             /d:sonar.host.url=https://sonarcloud.io `
-            /d:sonar.cs.vscoveragexml.reportsPaths=$directory/coverage.xml `
+            /d:sonar.cs.vscoveragexml.reportsPaths=$buildDir/coverage.xml `
             /d:sonar.branch.name=$base
 }
