@@ -1,10 +1,10 @@
-if ("main" -ne $env:Build.SourceBranchName) {
+if ("main" -ne $env:Build_SourceBranchName) {
     $version     = 1.6
     $pullrequest = $true
-    $directory   = $env:Build.SourcesDirectory
-    $source      = $env:Build.SourceBranch
-    $base        = $env:System.PullRequest.TargetBranch
-    $branch      = $env:System.PullRequest.SourceBranch
+    $directory   = $env:Build_SourcesDirectory
+    $source      = $env:Build_SourceBranch
+    $base        = $env:System_PullRequest_TargetBranch
+    $branch      = $env:System_PullRequest_SourceBranch
     $key         = $source.Split("/")[2]
     
     Write-Host "PR Yes:" $pullrequest
