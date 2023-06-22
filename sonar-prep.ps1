@@ -1,3 +1,9 @@
+    $buildDir    = $env:Agent_BuildDirectory
+    $sourceDir   = $env:Build_SourcesDirectory
+
+    write-host "Agent.BuildDirectory : "  $buildDir
+    write-host "Build.SourcesDirectoy : " $sourceDir
+
 if ("main" -ne $env:Build_SourceBranchName)
 {
     $version     = 1.6
