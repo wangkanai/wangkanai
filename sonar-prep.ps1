@@ -1,14 +1,13 @@
-    $buildDir    = $env:Agent_BuildDirectory
-    $sourceDir   = $env:Build_SourcesDirectory
+$buildDir    = $env:Agent_BuildDirectory
+$sourceDir   = $env:Build_SourcesDirectory
 
-    write-host "Agent.BuildDirectory : "  $buildDir
-    write-host "Build.SourcesDirectoy : " $sourceDir
+write-host "Agent.BuildDirectory : "  $buildDir
+write-host "Build.SourcesDirectoy : " $sourceDir
 
 if ("main" -ne $env:Build_SourceBranchName)
 {
     $version     = 1.6
     $pullrequest = $true
-    $directory   = $env:Agent_BuildDirectory
     $source      = $env:Build_SourceBranch
     $base        = $env:System_PullRequest_TargetBranch
     $branch      = $env:System_PullRequest_SourceBranch
