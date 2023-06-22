@@ -2,7 +2,7 @@ if ("main" -ne $env:Build_SourceBranchName)
 {
     $version = 1.6
     $pullrequest = $true
-    $directory = $env:Build_SourcesDirectory
+    $directory = $env:Agent_BuildDirectory
     $source = $env:Build_SourceBranch
     $base = $env:System_PullRequest_TargetBranch
     $branch = $env:System_PullRequest_SourceBranch
