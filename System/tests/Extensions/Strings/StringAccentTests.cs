@@ -48,4 +48,28 @@ public class StringAccentTests
 	{
 		Assert.Equal("hello world", "héllö wórld".RemoveAccent());
 	}
+	
+	[Fact]
+	public void EnglishWithAccentAndSpace()
+	{
+		Assert.Equal("hello world", "héllö wórld".RemoveAccent());
+	}
+	
+	[Fact]
+	public void EnglishWithAccentAndSpaceAndSymbol()
+	{
+		Assert.Equal("hello world!", "héllö wórld!".RemoveAccent());
+	}
+	
+	[Fact]
+	public void EnglishWithAccentAndSpaceAndSymbolAndNumber()
+	{
+		Assert.Equal("hello world! 123", "héllö wórld! 123".RemoveAccent());
+	}
+	
+	[Fact]
+	public void EnglishWithAccentAndSpaceAndSymbolAndNumberAndSpecial()
+	{
+		Assert.Equal("hello world! 123 @#$%^&*()", "héllö wórld! 123 @#$%^&*()".RemoveAccent());
+	}
 }
