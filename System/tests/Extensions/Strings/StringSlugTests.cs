@@ -13,5 +13,14 @@ public class StringSlugTests
 	string? _space = " ";
 
 	[Fact]
-	public void Normal() { }
+	public void Normal()
+	{
+		Assert.Equal("hello-world", "hello world".GenerateSlug());
+	}
+
+	[Fact]
+	public void Null()
+	{
+		Assert.Throws<ArgumentNullException>(() => _null.GenerateSlug());
+	}
 }
