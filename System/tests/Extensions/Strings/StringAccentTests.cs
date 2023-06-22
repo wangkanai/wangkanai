@@ -36,4 +36,16 @@ public class StringAccentTests
 	{
 		Assert.Equal(_space, _space.RemoveAccent());
 	}
+	
+	[Fact]
+	public void English()
+	{
+		Assert.Equal("hello world", "hello world".RemoveAccent());
+	}
+	
+	[Fact]
+	public void EnglishWithAccent()
+	{
+		Assert.Equal("hello world", "héllö wórld".RemoveAccent());
+	}
 }
