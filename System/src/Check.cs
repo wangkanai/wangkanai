@@ -139,19 +139,16 @@ public static class Check
 	#region Empty
 
 	public static IEnumerable<T> ThrowIfEmpty<T>(this IEnumerable<T>? value)
-		where T : struct
 		=> !value.ThrowIfNull().Any()
 			   ? throw CreateArgumentExceptionInstance<ArgumentEmptyException>(nameof(value))
 			   : value;
 
 	public static IEnumerable<T> ThrowIfEmpty<T>(this IEnumerable<T>? value, string message)
-		where T : struct
 		=> !value.ThrowIfNull().Any()
 			   ? throw CreateArgumentExceptionInstance<ArgumentEmptyException>(nameof(value), message)
 			   : value;
 
 	public static IEnumerable<TType> ThrowIfEmpty<TException, TType>(this IEnumerable<TType>? value)
-		where TType : struct
 		where TException : ArgumentException
 	{
 		value.ThrowIfNull<TException>();
@@ -161,7 +158,6 @@ public static class Check
 	}
 
 	public static IEnumerable<TType> ThrowIfEmpty<TException, TType>(this IEnumerable<TType>? value, string message)
-		where TType : struct
 		where TException : ArgumentException
 	{
 		value.ThrowIfNull<TException>();

@@ -262,7 +262,7 @@ public static class StringExtensions
 	{
 		value.ThrowIfNull();
 		value.ThrowIfEmpty();
-		
+
 		string str = value.RemoveAccent().ToLower();
 
 		// invalid chars
@@ -283,8 +283,9 @@ public static class StringExtensions
 	public static string SeparateToSpace(this IEnumerable<string> list)
 	{
 		list.ThrowIfNull();
-		return !list.Any() 
-			       ? throw new ArgumentEmptyException(nameof(list)) 
+		list.ThrowIfEmpty();
+		return !list.Any()
+			       ? throw new ArgumentEmptyException(nameof(list))
 			       : string.Join(' ', list);
 	}
 
