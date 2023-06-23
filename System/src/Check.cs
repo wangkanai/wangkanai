@@ -153,16 +153,22 @@ public static class Check
 	public static IEnumerable<TType> ThrowIfEmpty<TException, TType>(this IEnumerable<TType>? value)
 		where TException : ArgumentException
 		where TType : struct
-		=> !value.ThrowIfNull().Any()
-			   ? throw CreateArgumentExceptionInstance<TException>(nameof(value))
-			   : value;
+	{
+		value.ThrowIfNull<TException>();
+		return !value.Any()
+			       ? throw CreateArgumentExceptionInstance<TException>(nameof(value))
+			       : value;
+	}
 
 	public static IEnumerable<TType> ThrowIfEmpty<TException, TType>(this IEnumerable<TType>? value, string message)
 		where TException : ArgumentException
 		where TType : struct
-		=> !value.ThrowIfNull().Any()
-			   ? throw CreateArgumentExceptionInstance<TException>(nameof(value), message)
-			   : value;
+	{
+		value.ThrowIfNull<TException>();
+		return !value.Any()
+			       ? throw CreateArgumentExceptionInstance<TException>(nameof(value), message)
+			       : value;
+	}
 
 	#endregion
 
