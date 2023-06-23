@@ -260,6 +260,9 @@ public static class StringExtensions
 
 	public static string GenerateSlug(this string value)
 	{
+		value.ThrowIfNull();
+		value.ThrowIfEmpty();
+		
 		string str = value.RemoveAccent().ToLower();
 
 		// invalid chars
