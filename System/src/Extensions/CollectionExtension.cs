@@ -1,78 +1,70 @@
 // Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
-
 namespace Wangkanai.Extensions;
 
 /// <summary>
 /// Class that provides extension method to collection
 /// </summary>
+[DebuggerStepThrough]
 public static class CollectionExtension
 {
-	[DebuggerStepThrough]
-	public static bool IsNullOrEmpty<T>(this ICollection<T> source)
-		=> source is null || source.Count <= 0;
+	public static bool IsNull<T>(this ICollection<T> list)
+		=> list is null;
+
+	public static bool IsEmpty<T>(this ICollection<T> list)
+		=> list is null || list.Count <= 0;
+
+	public static bool IsNullOrEmpty<T>(this ICollection<T> list)
+		=> list is null || list.Count <= 0;
 
 	/// <summary>
 	/// Add a range of items to a collection.
 	/// </summary>
-	/// <param name="collection">Type of objects within the collection.</param>
+	/// <param name="list">Type of objects within the collection.</param>
 	/// <param name="items">The collection to add items to.</param>
 	/// <typeparam name="T">the collection.</typeparam>
 	/// <returns>The collection.</returns>
-	/// <exception cref="System.ArgumentNullException">An <see cref="System.ArgumentNullException"/> is thrown if <paramref name="collection"/> or <paramref name="items"/> is <see langword="null"/>.</exception>
-	[DebuggerStepThrough]
-	public static ICollection<T> AddRange<T>(this ICollection<T> collection, IEnumerable<T> items)
+	/// <exception cref="System.ArgumentNullException">An <see cref="System.ArgumentNullException"/> is thrown if <paramref name="list"/> or <paramref name="items"/> is <see langword="null"/>.</exception>
+	public static ICollection<T> AddRangeSafe<T>(this ICollection<T> list, IEnumerable<T> items)
 	{
-		collection.ThrowIfNull();
+		list.ThrowIfNull();
 		items.ThrowIfNull();
 
 		foreach (var each in items)
-			collection.Add(each);
+			list.Add(each);
 
-		return collection;
+		return list;
 	}
 
-	[DebuggerStepThrough]
-	public static void AddDistinct<T>(this ICollection<T> obj, params T[] items)
-		=> AddDistinct(obj, null, items);
+	public static ICollection<T> AddDistinct<T>(this ICollection<T> list, params T[] items)
+		=> AddDistinct(list, null, items);
 
-	[DebuggerStepThrough]
-	public static void AddDistinct<T>(this ICollection<T> obj, IEqualityComparer<T> comparer, params T[] items)
+	public static ICollection<T> AddDistinct<T>(this ICollection<T> list, IEqualityComparer<T> comparer, params T[] items)
 	{
-		obj.ThrowIfNull();
+		list.ThrowIfNull()
+		    .ThrowIfEmpty();
+
 		items.ThrowIfNull();
 
 		foreach (var item in items)
 		{
-			var contains = comparer != null ? obj.Contains(item, comparer) : obj.Contains(item);
+			var contains = comparer != null ? list.Contains(item, comparer) : list.Contains(item);
 
 			if (!contains)
-				obj.Add(item);
+				list.Add(item);
 		}
+
+		return list;
 	}
 
-	[DebuggerStepThrough]
-	public static void Replace<T>(this ICollection<T> obj, IEnumerable<T> newItems)
+	public static ICollection<T> Replace<T>(this ICollection<T> list, IEnumerable<T> items)
 	{
-		obj.ThrowIfNull();
+		list.ThrowIfNull()
+		    .ThrowIfEmpty();
 
-		obj.Clear();
-		obj.AddRange(newItems);
-	}
+		list.Clear();
+		list.AddRangeSafe(items);
 
-	[DebuggerStepThrough]
-	public static void ObserveCollection<T>(this ObservableCollection<T> collection, Action<T> addAction, Action<T> removeAction)
-	{
-		collection.CollectionChanged += (sender, args) => {
-			if (args.Action == NotifyCollectionChangedAction.Add && addAction != null)
-				foreach (var newItem in args.NewItems)
-					addAction((T)newItem);
-
-			if (args.Action == NotifyCollectionChangedAction.Remove && removeAction != null)
-				foreach (var removeItem in args.OldItems)
-					removeAction((T)removeItem);
-		};
+		return list;
 	}
 }
