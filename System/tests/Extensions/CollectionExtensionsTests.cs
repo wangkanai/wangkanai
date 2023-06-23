@@ -78,8 +78,8 @@ public class CollectionExtensionsTests
 	[Fact]
 	public void RangeEmptyNull()
 	{
-		Assert.Throws<ArgumentEmptyException>(() => emptyStrings!.AddRangeSafe(null!));
-		Assert.Throws<ArgumentEmptyException>(() => emptyInts!.AddRangeSafe(null!));
+		Assert.Throws<ArgumentNullException>(() => emptyStrings!.AddRangeSafe(null!));
+		Assert.Throws<ArgumentNullException>(() => emptyInts!.AddRangeSafe(null!));
 	}
 
 	[Fact]
@@ -156,21 +156,21 @@ public class CollectionExtensionsTests
 
 	EqualityComparer<string> comparerString = EqualityComparer<string>.Default;
 	EqualityComparer<int>    comparerInt    = EqualityComparer<int>.Default;
-	
+
 	[Fact]
 	public void DistinctComparerNullNull()
 	{
 		Assert.Throws<ArgumentNullException>(() => nullStrings!.AddDistinct(comparerString, null!));
 		Assert.Throws<ArgumentNullException>(() => nullInts!.AddDistinct(comparerInt, null!));
 	}
-	
+
 	[Fact]
 	public void DistinctComparerEmptyNull()
 	{
 		Assert.Throws<ArgumentEmptyException>(() => emptyStrings!.AddDistinct(comparerString, null!));
 		Assert.Throws<ArgumentEmptyException>(() => emptyInts!.AddDistinct(comparerInt, null!));
 	}
-	
+
 	[Fact]
 	public void DistinctComparerListString()
 	{
@@ -179,7 +179,7 @@ public class CollectionExtensionsTests
 		Assert.Equal(strings, strings.AddDistinct(comparerString, "hello"));
 		Assert.Equal(strings, strings.AddDistinct(comparerString, "hello", "world"));
 	}
-	
+
 	[Fact]
 	public void DistinctComparerListInt()
 	{
@@ -192,28 +192,48 @@ public class CollectionExtensionsTests
 	[Fact]
 	public void ReplaceNullNull()
 	{
-		Assert.Throws<ArgumentNullException>(()=> nullStrings!.Replace(nullStrings));
-		Assert.Throws<ArgumentNullException>(()=> nullInts!.Replace(nullInts));
+		Assert.Throws<ArgumentNullException>(() => nullStrings!.Replace(nullStrings));
+		Assert.Throws<ArgumentNullException>(() => nullInts!.Replace(nullInts));
 	}
-	
+
 	[Fact]
 	public void ReplaceEmptyNull()
 	{
-		Assert.Throws<ArgumentEmptyException>(()=> emptyStrings!.Replace(nullStrings));
-		Assert.Throws<ArgumentEmptyException>(()=> emptyInts!.Replace(nullInts));
+		Assert.Throws<ArgumentEmptyException>(() => emptyStrings!.Replace(nullStrings));
+		Assert.Throws<ArgumentEmptyException>(() => emptyInts!.Replace(nullInts));
 	}
-	
+
 	[Fact]
 	public void ReplaceNullEmpty()
 	{
-		Assert.Throws<ArgumentNullException>(()=> nullStrings!.Replace(emptyStrings));
-		Assert.Throws<ArgumentNullException>(()=> nullInts!.Replace(emptyInts));
+		Assert.Throws<ArgumentNullException>(() => nullStrings!.Replace(emptyStrings));
+		Assert.Throws<ArgumentNullException>(() => nullInts!.Replace(emptyInts));
 	}
-	
+
 	[Fact]
 	public void ReplaceEmptyEmpty()
 	{
-		Assert.Throws<ArgumentEmptyException>(()=> emptyStrings!.Replace(emptyStrings));
-		Assert.Throws<ArgumentEmptyException>(()=> emptyInts!.Replace(emptyInts));
+		Assert.Throws<ArgumentEmptyException>(() => emptyStrings!.Replace(emptyStrings));
+		Assert.Throws<ArgumentEmptyException>(() => emptyInts!.Replace(emptyInts));
+	}
+
+	[Fact]
+	public void ReplaceListString()
+	{
+		var strings1 = new List<string> { "hello", "world" };
+		var strings2 = new List<string> { "bonjour", "monde" };
+		var expected = new List<string> { "bonjour", "monde" };
+
+		Assert.Equal(expected, strings1.Replace(strings2));
+	}
+	
+	[Fact]
+	public void ReplaceListInt()
+	{
+		var ints1    = new List<int> { 1, 2 };
+		var ints2    = new List<int> { 3, 4 };
+		var expected = new List<int> { 3, 4 };
+
+		Assert.Equal(expected, ints1.Replace(ints2));
 	}
 }
