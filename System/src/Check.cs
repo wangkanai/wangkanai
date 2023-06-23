@@ -227,21 +227,21 @@ public static class Check
 	[DebuggerStepThrough]
 	public static string ThrowIfEmpty<T>(this string? value)
 		where T : ArgumentException
-		=> value.IsEmpty()
+		=> value.ThrowIfNull<T>().IsEmpty()
 			   ? throw CreateArgumentExceptionInstance<T>(nameof(value))
 			   : value!;
 
 	[DebuggerStepThrough]
 	public static string ThrowIfEmpty<T>(this string? value, string message)
 		where T : ArgumentException
-		=> value.IsEmpty()
+		=> value.ThrowIfNull<T>().IsEmpty()
 			   ? throw CreateArgumentExceptionInstance<T>(nameof(value), message)
 			   : value!;
 
 	[DebuggerStepThrough]
 	public static string ThrowIfEmpty<T>(this string? value, string message, string paramName)
 		where T : ArgumentException
-		=> value.IsEmpty()
+		=> value.ThrowIfNull<T>().IsEmpty()
 			   ? throw CreateArgumentExceptionInstance<T>(paramName, message)
 			   : value!;
 

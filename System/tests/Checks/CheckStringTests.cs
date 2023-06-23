@@ -31,6 +31,42 @@ public class CheckStringTests
 		string? _empty = string.Empty;
 		
 		Assert.Throws<ArgumentEmptyException>(() => _null.ThrowIfEmpty());
+		Assert.Throws<ArgumentEmptyException>(() => _null.ThrowIfEmpty<ArgumentEmptyException>());
+		Assert.Throws<CustomNullException>(() => _null.ThrowIfEmpty<CustomNullException>());
+		
+		Assert.Throws<ArgumentEmptyException>(() => _empty.ThrowIfEmpty());
+		Assert.Throws<ArgumentEmptyException>(() => _empty.ThrowIfEmpty<ArgumentEmptyException>());
+		Assert.Throws<CustomNullException>(() => _empty.ThrowIfEmpty<CustomNullException>());
+	}
+	
+	[Fact]
+	public void StringIsEmptyThrowException()
+	{
+		string? _null  = null;
+		string? _empty = string.Empty;
+		
+		Assert.Throws<ArgumentException>(() => _null.ThrowIfEmpty<ArgumentException>());
+		Assert.Throws<ArgumentException>(() => _null.ThrowIfEmpty<ArgumentException>("Empty Exception"));
+		Assert.Throws<ArgumentException>(() => _null.ThrowIfEmpty<ArgumentException>("Empty Exception", nameof(_null)));
+		
+		Assert.Throws<ArgumentException>(() => _empty.ThrowIfEmpty<ArgumentException>());
+		Assert.Throws<ArgumentException>(() => _empty.ThrowIfEmpty<ArgumentException>("Empty Exception"));
+		Assert.Throws<ArgumentException>(() => _empty.ThrowIfEmpty<ArgumentException>("Empty Exception", nameof(_empty)));
+	}
+
+	[Fact]
+	public void StringIsNotEmptyReturnValue()
+	{
+		var abc = "abc";
+		
+		Assert.Equal(abc, abc.ThrowIfEmpty());
+		Assert.Equal(abc, abc.ThrowIfEmpty<ArgumentEmptyException>());
+		Assert.Equal(abc, abc.ThrowIfEmpty<ArgumentEmptyException>("Empty Exception"));
+		Assert.Equal(abc, abc.ThrowIfEmpty<ArgumentEmptyException>("Empty Exception", nameof(abc)));
+		
+		Assert.Equal(abc, abc.ThrowIfEmpty<CustomNullException>());
+		Assert.Equal(abc, abc.ThrowIfEmpty<CustomNullException>("Empty Exception"));
+		Assert.Equal(abc, abc.ThrowIfEmpty<CustomNullException>("Empty Exception", nameof(abc)));
 	}
 
 	[Fact]
