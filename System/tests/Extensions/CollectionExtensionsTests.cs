@@ -2,6 +2,8 @@
 
 #nullable enable
 
+using System.Collections.ObjectModel;
+
 using Wangkanai.Exceptions;
 using Wangkanai.Extensions;
 
