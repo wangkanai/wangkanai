@@ -4,6 +4,8 @@ using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
 
+using Wangkanai.Exceptions;
+
 namespace Wangkanai.Extensions;
 
 [DebuggerStepThrough]
@@ -116,7 +118,7 @@ public static class StringExtensions
 	public static string RemovePreFixes(this string value, bool ignoreCase, CultureInfo culture, params string[] prefixes)
 	{
 		value.ThrowIfNull();
-		
+
 		if (value.IsNullOrEmpty())
 			return string.Empty;
 		if (prefixes.IsNullOrEmpty())
@@ -138,7 +140,7 @@ public static class StringExtensions
 	public static string RemovePostFixes(this string value, bool ignoreCase, CultureInfo culture, params string[] postfixes)
 	{
 		value.ThrowIfNull();
-		
+
 		if (value.IsNullOrEmpty())
 			return string.Empty;
 		if (postfixes.IsNullOrEmpty())
@@ -258,6 +260,9 @@ public static class StringExtensions
 
 	public static string GenerateSlug(this string value)
 	{
+		value.ThrowIfNull();
+		value.ThrowIfEmpty();
+		
 		string str = value.RemoveAccent().ToLower();
 
 		// invalid chars
@@ -276,11 +281,16 @@ public static class StringExtensions
 		=> string.Equals(str1, str2, StringComparison.OrdinalIgnoreCase);
 
 	public static string SeparateToSpace(this IEnumerable<string> list)
-		=> list != null && list.Any() == true
-			   ? string.Empty
-			   : string.Join(' ', list);
+	{
+		list.ThrowIfNull();
+		return !list.Any() 
+			       ? throw new ArgumentEmptyException(nameof(list)) 
+			       : string.Join(' ', list);
+	}
 
 	public static IEnumerable<string> SeparateFromSpace(this string value)
-		=> value.Trim()
+		=> value.ThrowIfNull()
+		        .ThrowIfEmpty()
+		        .Trim()
 		        .Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 }
