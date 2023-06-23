@@ -28,7 +28,7 @@ public class StringAccentTests
 	[Fact]
 	public void Empty()
 	{
-		Assert.Throws<ArgumentNullOrEmptyException>(() => _empty!.RemoveAccent());
+		Assert.Throws<ArgumentEmptyException>(() => _empty!.RemoveAccent());
 	}
 	
 	[Fact]

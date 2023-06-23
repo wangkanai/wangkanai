@@ -36,7 +36,7 @@ public class StringTruncateTests
 	[Fact]
 	public void Empty()
 	{
-		Assert.Throws<ArgumentNullOrEmptyException>(() => _empty.Truncate(10));
+		Assert.Throws<ArgumentEmptyException>(() => _empty.Truncate(10));
 	}
 
 	[Fact]
@@ -90,7 +90,7 @@ public class StringTruncateTests
 	[Fact]
 	public void EmptyWithEllipsis()
 	{
-		Assert.Throws<ArgumentNullOrEmptyException>(() => _empty.TruncateWithPostfix(10, "..."));
+		Assert.Throws<ArgumentEmptyException>(() => _empty.TruncateWithPostfix(10, "..."));
 	}
 
 	[Fact]
