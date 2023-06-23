@@ -11,7 +11,7 @@ public static class StringExtensions
 {
 	public static bool IsEmpty(this string value)
 		=> value == string.Empty;
-	
+
 	public static bool IsNullOrEmpty(this string value)
 		=> string.IsNullOrEmpty(value);
 
@@ -78,6 +78,9 @@ public static class StringExtensions
 
 	public static Match RegexMatch(this Regex regex, string source)
 	{
+		regex.ThrowIfNull();
+		source.ThrowIfNull();
+
 		var match = regex.Match(source);
 		return match.Success ? match : Match.Empty;
 	}
@@ -99,21 +102,21 @@ public static class StringExtensions
 	}
 
 	public static string RemoveAll(this string source, params string[] strings)
-		=> strings.Aggregate(source, ReplaceOrdinal);
+		=> strings.ThrowIfNull().Aggregate(source.ThrowIfNull(), ReplaceOrdinal);
 
 	private static string ReplaceOrdinal(string current, string target)
-		=> current.Replace(target, "", StringComparison.Ordinal);
+		=> current.ThrowIfNull().Replace(target.ThrowIfNull(), "", StringComparison.Ordinal);
 
 	public static string RemovePreFixes(this string value, params string[] prefixes)
-		=> value.RemovePreFixes(StringComparison.OrdinalIgnoreCase, prefixes);
+		=> value.ThrowIfNull().RemovePreFixes(StringComparison.OrdinalIgnoreCase, prefixes);
 
 	public static string RemovePreFixes(this string value, StringComparison comparison, params string[] prefixes)
-		=> value.RemovePreFixes(true, CultureInfo.InvariantCulture, prefixes);
+		=> value.ThrowIfNull().RemovePreFixes(true, CultureInfo.InvariantCulture, prefixes);
 
 	public static string RemovePreFixes(this string value, bool ignoreCase, CultureInfo culture, params string[] prefixes)
 	{
-		if (value.TrueIfNull())
-			return null;
+		value.ThrowIfNull();
+		
 		if (value.IsNullOrEmpty())
 			return string.Empty;
 		if (prefixes.IsNullOrEmpty())
@@ -134,8 +137,8 @@ public static class StringExtensions
 
 	public static string RemovePostFixes(this string value, bool ignoreCase, CultureInfo culture, params string[] postfixes)
 	{
-		if (value is null)
-			return null;
+		value.ThrowIfNull();
+		
 		if (value.IsNullOrEmpty())
 			return string.Empty;
 		if (postfixes.IsNullOrEmpty())
@@ -151,7 +154,8 @@ public static class StringExtensions
 	public static T ToEnum<T>(this string value, bool ignoreCase = true)
 		where T : struct
 	{
-		value.ThrowIfNullOrEmpty();
+		value.ThrowIfNull();
+		value.ThrowIfEmpty();
 		value.ThrowIfNullOrWhitespace();
 
 		return (T)Enum.Parse(typeof(T), value, ignoreCase);
@@ -160,7 +164,7 @@ public static class StringExtensions
 	public static string Truncate(this string value, int maxLength)
 	{
 		value.ThrowIfNull();
-		value.ThrowIfNullOrEmpty();
+		value.ThrowIfEmpty();
 		maxLength.ThrowIfLessThan(0);
 		value.Length.ThrowIfLessThan(maxLength);
 
@@ -170,7 +174,7 @@ public static class StringExtensions
 	public static string TruncateWithPostfix(this string value, int maxLength, string postfix = "...")
 	{
 		value.ThrowIfNull();
-		value.ThrowIfNullOrEmpty();
+		value.ThrowIfEmpty();
 		maxLength.ThrowIfLessThan(0);
 		maxLength.ThrowIfLessThan(postfix.Length);
 
@@ -182,7 +186,7 @@ public static class StringExtensions
 	public static string SubstringSafe(this string value, int start = 0)
 	{
 		value.ThrowIfNull();
-		value.ThrowIfNullOrEmpty();
+		value.ThrowIfEmpty();
 		start.ThrowIfLessThan(-1);
 
 		return value.SubstringSafe(start, value.Length);
@@ -191,7 +195,7 @@ public static class StringExtensions
 	public static string SubstringSafe(this string value, int start, int length)
 	{
 		value.ThrowIfNull();
-		value.ThrowIfNullOrEmpty();
+		value.ThrowIfEmpty();
 		start.ThrowIfLessThan(-1);
 		length.ThrowIfLessThan(0);
 
@@ -203,7 +207,7 @@ public static class StringExtensions
 	public static string ToTitleCase(this string value)
 	{
 		value.ThrowIfNull();
-		value.ThrowIfNullOrEmpty();
+		value.ThrowIfEmpty();
 		value = value.ToLower();
 
 		return value.First().ToString().ToUpper() + value.Substring(1);
@@ -212,7 +216,7 @@ public static class StringExtensions
 	public static string EscapeSearch(this string value)
 	{
 		value.ThrowIfNull();
-		value.ThrowIfNullOrEmpty();
+		value.ThrowIfEmpty();
 
 		char[] specialCharacters = { '+', '-', '!', '(', ')', '{', '}', '[', ']', '^', '"', '~', '*', '?', ':', '\\' };
 		var    result            = new StringBuilder("");
@@ -234,7 +238,7 @@ public static class StringExtensions
 	public static string EscapeSelector(this string value)
 	{
 		value.ThrowIfNull();
-		value.ThrowIfNullOrEmpty();
+		value.ThrowIfEmpty();
 
 		var pattern     = string.Format("([{0}])", "/[!\"#$%&'()*+,./:;<=>?@^`{{|}}~\\]");
 		var replacement = @"\\$1";
@@ -244,7 +248,7 @@ public static class StringExtensions
 	public static string RemoveAccent(this string value)
 	{
 		value.ThrowIfNull();
-		value.ThrowIfNullOrEmpty();
+		value.ThrowIfEmpty();
 
 		Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 		var    encoding = Encoding.GetEncoding("Cyrillic");
@@ -272,7 +276,7 @@ public static class StringExtensions
 		=> string.Equals(str1, str2, StringComparison.OrdinalIgnoreCase);
 
 	public static string SeparateToSpace(this IEnumerable<string> list)
-		=> list.IsNullOrEmpty()
+		=> list != null && list.Any() == true
 			   ? string.Empty
 			   : string.Join(' ', list);
 

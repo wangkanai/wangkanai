@@ -52,13 +52,13 @@ public class StringEnumTests
 	[Fact]
 	public void ValueNull()
 	{
-		Assert.Throws<ArgumentNullOrEmptyException>(() => _null!.ToEnum<Names>());
+		Assert.Throws<ArgumentNullException>(() => _null!.ToEnum<Names>());
 	}
 
 	[Fact]
 	public void ValueEmpty()
 	{
-		Assert.Throws<ArgumentNullOrEmptyException>(() => _empty!.ToEnum<Names>());
+		Assert.Throws<ArgumentEmptyException>(() => _empty!.ToEnum<Names>());
 	}
 
 	[Fact]
