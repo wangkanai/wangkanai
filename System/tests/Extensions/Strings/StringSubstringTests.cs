@@ -67,19 +67,19 @@ public class StringSubstringTests
 	[Fact]
 	public void EmptyStartZero()
 	{
-		Assert.Throws<ArgumentNullOrEmptyException>(() => _empty.SubstringSafe());
+		Assert.Throws<ArgumentEmptyException>(() => _empty.SubstringSafe());
 	}
 
 	[Fact]
 	public void EmptyStartOne()
 	{
-		Assert.Throws<ArgumentNullOrEmptyException>(() => _empty.SubstringSafe(1));
+		Assert.Throws<ArgumentEmptyException>(() => _empty.SubstringSafe(1));
 	}
 
 	[Fact]
 	public void EmptyStartLength()
 	{
-		Assert.Throws<ArgumentNullOrEmptyException>(() => _empty.SubstringSafe(0, 1));
+		Assert.Throws<ArgumentEmptyException>(() => _empty.SubstringSafe(0, 1));
 	}
 
 	[Fact]

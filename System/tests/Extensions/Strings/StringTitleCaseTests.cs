@@ -24,7 +24,7 @@ public class StringTitleCaseTests
 	[Fact]
 	public void Empty()
 	{
-		Assert.Throws<ArgumentNullOrEmptyException>(() => _empty.ToTitleCase());
+		Assert.Throws<ArgumentEmptyException>(() => _empty.ToTitleCase());
 	}
 
 	[Fact]

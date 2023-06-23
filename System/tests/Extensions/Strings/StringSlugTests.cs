@@ -29,7 +29,7 @@ public class StringSlugTests
 	[Fact]
 	public void Empty()
 	{
-		Assert.Throws<ArgumentNullOrEmptyException>(() => _empty.GenerateSlug());
+		Assert.Throws<ArgumentEmptyException>(() => _empty.GenerateSlug());
 	}
 
 	[Fact]

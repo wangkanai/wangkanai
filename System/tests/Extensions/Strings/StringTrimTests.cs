@@ -95,7 +95,7 @@ public class StringTrimTests
 	[Fact]
 	public void RemoveAllNothing()
 	{
-		Assert.Null(_null.RemoveAll());
+		Assert.Throws<ArgumentNullException>(() => _null.RemoveAll());
 		Assert.Empty(_empty.RemoveAll());
 		Assert.Equal(_space, _space.RemoveAll());
 	}
