@@ -136,7 +136,44 @@ public static class Check
 
 	#endregion
 
+	#region Empty
+
+	public static IEnumerable<T> ThrowIfEmpty<T>(this IEnumerable<T>? value)
+		where T : struct
+		=> !value.ThrowIfNull().Any()
+			   ? throw CreateArgumentExceptionInstance<ArgumentEmptyException>(nameof(value))
+			   : value;
+
+	public static IEnumerable<T> ThrowIfEmpty<T>(this IEnumerable<T>? value, string message)
+		where T : struct
+		=> !value.ThrowIfNull().Any()
+			   ? throw CreateArgumentExceptionInstance<ArgumentEmptyException>(nameof(value), message)
+			   : value;
+
+	public static IEnumerable<TType> ThrowIfEmpty<TException, TType>(this IEnumerable<TType>? value)
+		where TType : struct
+		where TException : ArgumentException
+	{
+		value.ThrowIfNull<TException>();
+		return !value.Any()
+			       ? throw CreateArgumentExceptionInstance<TException>(nameof(value))
+			       : value;
+	}
+
+	public static IEnumerable<TType> ThrowIfEmpty<TException, TType>(this IEnumerable<TType>? value, string message)
+		where TType : struct
+		where TException : ArgumentException
+	{
+		value.ThrowIfNull<TException>();
+		return !value.Any()
+			       ? throw CreateArgumentExceptionInstance<TException>(nameof(value), message)
+			       : value;
+	}
+
+	#endregion
+
 	// Throw is value string is null or empty
+
 	public static string ThrowIfNullOrEmpty(this string? value)
 		=> value.ThrowIfNullOrEmpty<ArgumentNullOrEmptyException>();
 
@@ -200,7 +237,7 @@ public static class Check
 			   : value!;
 
 	// Throw if value string is null or whitespace
-	
+
 	public static string ThrowIfNullOrWhitespace(this string? value)
 		=> ThrowIfNullOrWhitespace<ArgumentNullOrWhitespaceException>(value);
 
@@ -222,7 +259,7 @@ public static class Check
 			   : value!;
 
 	// Throw if value object is null
-	
+
 	public static object ThrowIfNull<T>(this object? value)
 		where T : Exception
 		=> value ?? throw CreateGenericExceptionInstance<T>();
@@ -253,7 +290,7 @@ public static class Check
 			   : false;
 
 	// Throw if value is not equal to expected
-	
+
 	public static bool ThrowIfNotEqual(this int value, int expected)
 		=> value.ThrowIfNotEqual<ArgumentNotEqualException>(expected, nameof(value));
 
@@ -268,7 +305,7 @@ public static class Check
 			   : true;
 
 	// Throw if value is less than expected
-	
+
 	public static bool ThrowIfLessThan(this int value, int expected)
 		=> value.ThrowIfLessThan<ArgumentLessThanException>(expected, nameof(value));
 
@@ -286,7 +323,7 @@ public static class Check
 			   : true;
 
 	// Throw if value is more than expected
-	
+
 	public static bool ThrowIfMoreThan(this int value, int expected)
 		=> value.ThrowIfMoreThan<ArgumentMoreThanException>(expected, nameof(value));
 
@@ -304,7 +341,7 @@ public static class Check
 			   : true;
 
 	// Throw if value is negative
-	
+
 	public static int ThrowIfNegative(this int value)
 		=> value.ThrowIfNegative<ArgumentNegativeException>(nameof(value));
 
@@ -322,7 +359,7 @@ public static class Check
 			   : value;
 
 	// Throw if value is positive
-	
+
 	public static int ThrowIfPositive(this int value)
 		=> value.ThrowIfPositive<ArgumentPositiveException>(nameof(value));
 
@@ -340,7 +377,7 @@ public static class Check
 			   : value;
 
 	// Throw if value is zero
-	
+
 	public static bool ThrowIfZero(this int value)
 		=> value.ThrowIfZero<ArgumentZeroException>(nameof(value));
 
