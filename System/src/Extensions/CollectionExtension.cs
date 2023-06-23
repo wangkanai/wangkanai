@@ -8,9 +8,10 @@ namespace Wangkanai.Extensions;
 /// <summary>
 /// Class that provides extension method to collection
 /// </summary>
+[DebuggerStepThrough]
 public static class CollectionExtension
 {
-	[DebuggerStepThrough]
+	
 	public static bool IsNullOrEmpty<T>(this ICollection<T> source)
 		=> source is null || source.Count <= 0;
 
@@ -22,10 +23,11 @@ public static class CollectionExtension
 	/// <typeparam name="T">the collection.</typeparam>
 	/// <returns>The collection.</returns>
 	/// <exception cref="System.ArgumentNullException">An <see cref="System.ArgumentNullException"/> is thrown if <paramref name="collection"/> or <paramref name="items"/> is <see langword="null"/>.</exception>
-	[DebuggerStepThrough]
 	public static ICollection<T> AddRange<T>(this ICollection<T> collection, IEnumerable<T> items)
 	{
-		collection.ThrowIfNull();
+		collection.ThrowIfNull()
+		          .ThrowIfEmpty();
+		
 		items.ThrowIfNull();
 
 		foreach (var each in items)
@@ -34,14 +36,14 @@ public static class CollectionExtension
 		return collection;
 	}
 
-	[DebuggerStepThrough]
 	public static void AddDistinct<T>(this ICollection<T> obj, params T[] items)
 		=> AddDistinct(obj, null, items);
 
-	[DebuggerStepThrough]
 	public static void AddDistinct<T>(this ICollection<T> obj, IEqualityComparer<T> comparer, params T[] items)
 	{
-		obj.ThrowIfNull();
+		obj.ThrowIfNull()
+		   .ThrowIfEmpty();
+		
 		items.ThrowIfNull();
 
 		foreach (var item in items)
@@ -53,16 +55,15 @@ public static class CollectionExtension
 		}
 	}
 
-	[DebuggerStepThrough]
 	public static void Replace<T>(this ICollection<T> obj, IEnumerable<T> newItems)
 	{
-		obj.ThrowIfNull();
+		obj.ThrowIfNull()
+		   .ThrowIfEmpty();
 
 		obj.Clear();
 		obj.AddRange(newItems);
 	}
 
-	[DebuggerStepThrough]
 	public static void ObserveCollection<T>(this ObservableCollection<T> collection, Action<T> addAction, Action<T> removeAction)
 	{
 		collection.CollectionChanged += (sender, args) => {
