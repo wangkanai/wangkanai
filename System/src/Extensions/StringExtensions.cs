@@ -6,100 +6,82 @@ using System.Text.RegularExpressions;
 
 namespace Wangkanai.Extensions;
 
+[DebuggerStepThrough]
 public static class StringExtensions
 {
-	[DebuggerStepThrough]
 	public static bool IsEmpty(this string value)
 		=> value == string.Empty;
 	
-	[DebuggerStepThrough]
 	public static bool IsNullOrEmpty(this string value)
 		=> string.IsNullOrEmpty(value);
 
-	[DebuggerStepThrough]
 	public static bool IsNotNullOrEmpty(this string value)
 		=> !string.IsNullOrEmpty(value);
 
-	[DebuggerStepThrough]
 	public static bool IsNullOrWhiteSpace(this string value)
 		=> string.IsNullOrWhiteSpace(value);
 
-	[DebuggerStepThrough]
 	public static bool IsNotNullOrWhiteSpace(this string value)
 		=> !value.IsNullOrWhiteSpace();
 
-	[DebuggerStepThrough]
 	public static bool IsExist(this string value)
 		=> !value.IsNullOrWhiteSpace();
 
-	[DebuggerStepThrough]
 	public static bool IsUnicode(this string value)
 		=> Encoding.ASCII.GetByteCount(value) != Encoding.UTF8.GetByteCount(value);
 
-	[DebuggerStepThrough]
 	public static string EnsureLeadingSlash(this string value)
 		=> value.IsNotNullOrWhiteSpace() && !value.StartsWith("/")
 			   ? "/" + value
 			   : value;
 
-	[DebuggerStepThrough]
 	public static string EnsureTrailingSlash(this string value)
 		=> value.IsNotNullOrWhiteSpace() && !value.EndsWith("/")
 			   ? value + "/"
 			   : value;
 
-	[DebuggerStepThrough]
 	public static string RemoveLeadingSlash(this string value)
 		=> value.IsNotNullOrWhiteSpace() && value.StartsWith("/")
 			   ? value.Substring(1)
 			   : value;
 
-	[DebuggerStepThrough]
 	public static string RemoveTrailingSlash(this string value)
 		=> value.IsNotNullOrWhiteSpace() && value.EndsWith("/")
 			   ? value.Substring(0, value.Length - 1)
 			   : value;
 
-	[DebuggerStepThrough]
 	public static string EnsureStartsWith(this string value, char c)
 		=> value.EnsureStartsWith(c, StringComparison.Ordinal);
 
-	[DebuggerStepThrough]
 	public static string EnsureStartsWith(this string value, char c, StringComparison comparison)
 		=> value.ThrowIfNull().StartsWith(c.ToString(), comparison)
 			   ? value
 			   : c + value;
 
-	[DebuggerStepThrough]
 	public static string EnsureStartsWith(this string value, char c, bool ignoreCase, CultureInfo culture)
 		=> value.ThrowIfNull().StartsWith(c.ToString(culture), ignoreCase, culture)
 			   ? value
 			   : c + value;
 
-	[DebuggerStepThrough]
 	public static string EnsureEndsWith(this string value, char c)
 		=> value.EnsureEndsWith(c, StringComparison.Ordinal);
 
-	[DebuggerStepThrough]
 	public static string EnsureEndsWith(this string value, char c, StringComparison comparison)
 		=> value.ThrowIfNull().EndsWith(c.ToString(), comparison)
 			   ? value
 			   : value + c;
 
-	[DebuggerStepThrough]
 	public static string EnsureEndsWith(this string value, char c, bool ignoreCase, CultureInfo culture)
 		=> value.ThrowIfNull().EndsWith(c.ToString(culture), ignoreCase, culture)
 			   ? value
 			   : value + c;
 
-	[DebuggerStepThrough]
 	public static Match RegexMatch(this Regex regex, string source)
 	{
 		var match = regex.Match(source);
 		return match.Success ? match : Match.Empty;
 	}
 
-	[DebuggerStepThrough]
 	public static string Left(this string value, int length)
 	{
 		value.ThrowIfNull();
@@ -108,7 +90,6 @@ public static class StringExtensions
 		return value.Substring(0, length);
 	}
 
-	[DebuggerStepThrough]
 	public static string Right(this string value, int length)
 	{
 		value.ThrowIfNull();
@@ -117,23 +98,18 @@ public static class StringExtensions
 		return value.Substring(value.Length - length, length);
 	}
 
-	[DebuggerStepThrough]
 	public static string RemoveAll(this string source, params string[] strings)
 		=> strings.Aggregate(source, ReplaceOrdinal);
 
-	[DebuggerStepThrough]
 	private static string ReplaceOrdinal(string current, string target)
 		=> current.Replace(target, "", StringComparison.Ordinal);
 
-	[DebuggerStepThrough]
 	public static string RemovePreFixes(this string value, params string[] prefixes)
 		=> value.RemovePreFixes(StringComparison.OrdinalIgnoreCase, prefixes);
 
-	[DebuggerStepThrough]
 	public static string RemovePreFixes(this string value, StringComparison comparison, params string[] prefixes)
 		=> value.RemovePreFixes(true, CultureInfo.InvariantCulture, prefixes);
 
-	[DebuggerStepThrough]
 	public static string RemovePreFixes(this string value, bool ignoreCase, CultureInfo culture, params string[] prefixes)
 	{
 		if (value.TrueIfNull())
@@ -150,15 +126,12 @@ public static class StringExtensions
 		return value;
 	}
 
-	[DebuggerStepThrough]
 	public static string RemovePostFixes(this string value, params string[] postfixes)
 		=> value.RemovePostFixes(StringComparison.OrdinalIgnoreCase, postfixes);
 
-	[DebuggerStepThrough]
 	public static string RemovePostFixes(this string value, StringComparison comparison, params string[] postfixes)
 		=> value.RemovePostFixes(true, CultureInfo.InvariantCulture, postfixes);
 
-	[DebuggerStepThrough]
 	public static string RemovePostFixes(this string value, bool ignoreCase, CultureInfo culture, params string[] postfixes)
 	{
 		if (value is null)
@@ -175,7 +148,6 @@ public static class StringExtensions
 		return value;
 	}
 
-	[DebuggerStepThrough]
 	public static T ToEnum<T>(this string value, bool ignoreCase = true)
 		where T : struct
 	{
@@ -185,7 +157,6 @@ public static class StringExtensions
 		return (T)Enum.Parse(typeof(T), value, ignoreCase);
 	}
 
-	[DebuggerStepThrough]
 	public static string Truncate(this string value, int maxLength)
 	{
 		value.ThrowIfNull();
@@ -196,7 +167,6 @@ public static class StringExtensions
 		return value.Left(maxLength);
 	}
 
-	[DebuggerStepThrough]
 	public static string TruncateWithPostfix(this string value, int maxLength, string postfix = "...")
 	{
 		value.ThrowIfNull();
@@ -209,7 +179,6 @@ public static class StringExtensions
 			       : value.Left(maxLength - postfix.Length) + postfix;
 	}
 
-	[DebuggerStepThrough]
 	public static string SubstringSafe(this string value, int start = 0)
 	{
 		value.ThrowIfNull();
@@ -219,7 +188,6 @@ public static class StringExtensions
 		return value.SubstringSafe(start, value.Length);
 	}
 
-	[DebuggerStepThrough]
 	public static string SubstringSafe(this string value, int start, int length)
 	{
 		value.ThrowIfNull();
@@ -232,7 +200,6 @@ public static class StringExtensions
 			       : value[start..];
 	}
 
-	[DebuggerStepThrough]
 	public static string ToTitleCase(this string value)
 	{
 		value.ThrowIfNull();
@@ -242,7 +209,6 @@ public static class StringExtensions
 		return value.First().ToString().ToUpper() + value.Substring(1);
 	}
 
-	[DebuggerStepThrough]
 	public static string EscapeSearch(this string value)
 	{
 		value.ThrowIfNull();
@@ -275,7 +241,6 @@ public static class StringExtensions
 		return Regex.Replace(value, pattern, replacement, RegexOptions.Compiled, Constants.RegexTimeout);
 	}
 
-	[DebuggerStepThrough]
 	public static string RemoveAccent(this string value)
 	{
 		value.ThrowIfNull();
@@ -287,7 +252,6 @@ public static class StringExtensions
 		return Encoding.ASCII.GetString(bytes);
 	}
 
-	[DebuggerStepThrough]
 	public static string GenerateSlug(this string value)
 	{
 		string str = value.RemoveAccent().ToLower();
@@ -304,17 +268,14 @@ public static class StringExtensions
 		return str;
 	}
 
-	[DebuggerStepThrough]
 	public static bool EqualsInvariant(this string str1, string str2)
 		=> string.Equals(str1, str2, StringComparison.OrdinalIgnoreCase);
 
-	[DebuggerStepThrough]
 	public static string SeparateToSpace(this IEnumerable<string> list)
 		=> list.IsNullOrEmpty()
 			   ? string.Empty
 			   : string.Join(' ', list);
 
-	[DebuggerStepThrough]
 	public static IEnumerable<string> SeparateFromSpace(this string value)
 		=> value.Trim()
 		        .Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
