@@ -23,7 +23,7 @@ public class StringSelectorTests
 	[Fact]
 	public void Empty()
 	{
-		Assert.Throws<ArgumentNullOrEmptyException>(() => _empty.EscapeSelector());
+		Assert.Throws<ArgumentEmptyException>(() => _empty.EscapeSelector());
 	}
 	
 	[Fact]
