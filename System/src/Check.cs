@@ -85,37 +85,37 @@ public static class Check
 
 	[DebuggerStepThrough]
 	public static bool? ThrowIfNull<T>(this bool? value)
-		where T : Exception
+		where T : ArgumentException
 		=> value ?? throw CreateExceptionInstance<T>(nameof(value));
 
 	[DebuggerStepThrough]
 	public static sbyte? ThrowIfNull<T>(this sbyte? value)
-		where T : Exception
+		where T : ArgumentException
 		=> value ?? throw CreateExceptionInstance<T>(nameof(value));
 
 	[DebuggerStepThrough]
 	public static byte? ThrowIfNull<T>(this byte? value)
-		where T : Exception
+		where T : ArgumentException
 		=> value ?? throw CreateExceptionInstance<T>(nameof(value));
 
 	[DebuggerStepThrough]
 	public static short? ThrowIfNull<T>(this short? value)
-		where T : Exception
+		where T : ArgumentException
 		=> value ?? throw CreateExceptionInstance<T>(nameof(value));
 
 	[DebuggerStepThrough]
 	public static ushort? ThrowIfNull<T>(this ushort? value)
-		where T : Exception
+		where T : ArgumentException
 		=> value ?? throw CreateExceptionInstance<T>(nameof(value));
 
 	[DebuggerStepThrough]
 	public static int? ThrowIfNull<T>(this int? value)
-		where T : Exception
+		where T : ArgumentException
 		=> value ?? throw CreateExceptionInstance<T>(nameof(value));
 
 	[DebuggerStepThrough]
 	public static uint? ThrowIfNull<T>(this uint? value)
-		where T : Exception
+		where T : ArgumentException
 		=> value ?? throw CreateExceptionInstance<T>(nameof(value));
 
 	[DebuggerStepThrough]
@@ -125,17 +125,17 @@ public static class Check
 
 	[DebuggerStepThrough]
 	public static nuint? ThrowIfNull<T>(this nuint? value)
-		where T : Exception
+		where T : ArgumentException
 		=> value ?? throw CreateExceptionInstance<T>(nameof(value));
 
 	[DebuggerStepThrough]
 	public static long? ThrowIfNull<T>(this long? value)
-		where T : Exception
+		where T : ArgumentException
 		=> value ?? throw CreateExceptionInstance<T>(nameof(value));
 
 	[DebuggerStepThrough]
 	public static ulong? ThrowIfNull<T>(this ulong? value)
-		where T : Exception
+		where T : ArgumentException
 		=> value ?? throw CreateExceptionInstance<T>(nameof(value));
 
 	[DebuggerStepThrough]
@@ -145,27 +145,27 @@ public static class Check
 
 	[DebuggerStepThrough]
 	public static double? ThrowIfNull<T>(this double? value)
-		where T : Exception
+		where T : ArgumentException
 		=> value ?? throw CreateExceptionInstance<T>(nameof(value));
 
 	[DebuggerStepThrough]
 	public static decimal? ThrowIfNull<T>(this decimal? value)
-		where T : Exception
+		where T : ArgumentException
 		=> value ?? throw CreateExceptionInstance<T>(nameof(value));
 
 	[DebuggerStepThrough]
 	public static char? ThrowIfNull<T>(this char? value)
-		where T : Exception
+		where T : ArgumentException
 		=> value ?? throw CreateExceptionInstance<T>(nameof(value));
 
 	[DebuggerStepThrough]
 	public static string ThrowIfNull<T>(this string? value)
-		where T : Exception
+		where T : ArgumentException
 		=> value ?? throw CreateExceptionInstance<T>(nameof(value));
 
 	[DebuggerStepThrough]
 	public static string ThrowIfNull<T>(this string? value, string message)
-		where T : Exception
+		where T : ArgumentException
 		=> value ?? throw CreateExceptionInstance<T>(message);
 
 	#endregion
@@ -209,6 +209,41 @@ public static class Check
 			throw CreateExceptionInstance<T>(message, paramName);
 		return value!;
 	}
+	
+	// Throw if value string is empty
+	
+	[DebuggerStepThrough]
+	public static string ThrowIfEmpty(this string? value)
+		=> ThrowIfEmpty<ArgumentEmptyException>(value);
+	
+	[DebuggerStepThrough]
+	public static string ThrowIfEmpty(this string? value, string message)
+		=> ThrowIfEmpty<ArgumentEmptyException>(value, message);
+	
+	[DebuggerStepThrough]
+	public static string ThrowIfEmpty(this string? value, string message, string paramName)
+		=> ThrowIfEmpty<ArgumentEmptyException>(value, message, paramName);
+	
+	[DebuggerStepThrough]
+	public static string ThrowIfEmpty<T>(this string? value)
+		where T : ArgumentException
+		=> value.IsEmpty() 
+			   ? throw CreateExceptionInstance<T>(nameof(value)) 
+			   : value!;
+
+	[DebuggerStepThrough]
+	public static string ThrowIfEmpty<T>(this string? value, string message)
+		where T : ArgumentException
+		=> value.IsEmpty() 
+			   ? throw CreateExceptionInstance<T>(message) 
+			   : value!;
+
+	[DebuggerStepThrough]
+	public static string ThrowIfEmpty<T>(this string? value, string message, string paramName)
+		where T : ArgumentException
+		=> value.IsEmpty() 
+			   ? throw CreateExceptionInstance<T>(message, paramName) 
+			   : value!;
 
 	// Throw if value string is null or whitespace
 	[DebuggerStepThrough]
@@ -239,12 +274,12 @@ public static class Check
 	// Throw if value object is null
 	[DebuggerStepThrough]
 	public static object ThrowIfNull<T>(this object? value)
-		where T : Exception
+		where T : ArgumentException
 		=> value ?? throw CreateExceptionInstance<T>(nameof(value));
 
 	[DebuggerStepThrough]
 	public static object ThrowIfNull<T>(this object? value, string message)
-		where T : Exception
+		where T : ArgumentException
 		=> value ?? throw CreateExceptionInstance<T>(message);
 
 	[DebuggerStepThrough]
@@ -420,7 +455,7 @@ public static class Check
 	#region Instance
 
 	private static T CreateExceptionInstance<T>(string name)
-		where T : Exception
+		where T : ArgumentException
 		=> (Activator.CreateInstance(typeof(T), name) as T)!;
 
 	private static T CreateExceptionInstance<T>(string name, string paramName)

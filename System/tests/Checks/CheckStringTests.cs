@@ -25,7 +25,16 @@ public class CheckStringTests
 	}
 
 	[Fact]
-	public void StringIsNullOrEmptyThrowNullException()
+	public void StringIsEmpty()
+	{
+		string? _null  = null;
+		string? _empty = string.Empty;
+		
+		Assert.Throws<ArgumentEmptyException>(() => _null.ThrowIfEmpty());
+	}
+
+	[Fact]
+	public void StringIsNullOrEmptyThrowNull()
 	{
 		string? _null  = null;
 		string? _empty = string.Empty;
@@ -40,7 +49,7 @@ public class CheckStringTests
 	}
 
 	[Fact]
-	public void StringIsNullOrEmptyThrowArgumentException()
+	public void StringIsNullOrEmptyThrowException()
 	{
 		string? _null  = null;
 		string? _empty = string.Empty;

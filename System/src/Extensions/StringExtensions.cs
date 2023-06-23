@@ -9,6 +9,10 @@ namespace Wangkanai.Extensions;
 public static class StringExtensions
 {
 	[DebuggerStepThrough]
+	public static bool IsEmpty(this string value)
+		=> value == string.Empty;
+	
+	[DebuggerStepThrough]
 	public static bool IsNullOrEmpty(this string value)
 		=> string.IsNullOrEmpty(value);
 
@@ -276,10 +280,10 @@ public static class StringExtensions
 	{
 		value.ThrowIfNull();
 		value.ThrowIfNullOrEmpty();
-		
+
 		Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-		var encoding = Encoding.GetEncoding("Cyrillic");
-		byte[] bytes = encoding.GetBytes(value);
+		var    encoding = Encoding.GetEncoding("Cyrillic");
+		byte[] bytes    = encoding.GetBytes(value);
 		return Encoding.ASCII.GetString(bytes);
 	}
 
@@ -299,7 +303,6 @@ public static class StringExtensions
 
 		return str;
 	}
-
 
 	[DebuggerStepThrough]
 	public static bool EqualsInvariant(this string str1, string str2)
