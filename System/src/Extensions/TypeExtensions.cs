@@ -10,19 +10,8 @@ public static class TypeExtensions
 	private static readonly ConcurrentDictionary<Type, string> PrettyPrintCache = new();
 	private static readonly ConcurrentDictionary<Type, string> TypeCacheKeys    = new();
 
-	public static Type[] GetTypeInheritanceChainTo(this Type child, Type parent)
-	{
-		var retVal   = new List<Type> { child };
-		var baseType = child.BaseType;
-		while (baseType != parent && baseType != typeof(object))
-		{
-			retVal.Add(baseType);
-			baseType = baseType.BaseType;
-		}
-
-		return retVal.ToArray();
-	}
-
+	public static string GetCacheKey(this Type type)
+		=> TypeCacheKeys.GetOrAdd(type, t => $"{t.PrettyPrint()}");
 
 	public static string PrettyPrint(this Type type)
 		=> PrettyPrintCache.GetOrAdd(type, t => {
@@ -36,14 +25,9 @@ public static class TypeExtensions
 			}
 		});
 
-
-	public static string GetCacheKey(this Type type)
-		=> TypeCacheKeys.GetOrAdd(type, t => $"{t.PrettyPrint()}");
-
 	private static string PrettyPrintRecursive(Type type, int depth)
 	{
-		if (depth > 3)
-			return type.Name;
+		if (depth > 3) return type.Name;
 
 		var nameParts = type.Name.Split('`');
 		if (nameParts.Length == 1)
@@ -53,6 +37,19 @@ public static class TypeExtensions
 		return !type.IsConstructedGenericType
 			       ? $"{nameParts[0]}<{new string(',', genericArgs.Length - 1)}>"
 			       : $"{nameParts[0]}<{string.Join(",", genericArgs.Select(t => PrettyPrintRecursive(t, depth + 1)))}>";
+	}
+
+	public static Type[] GetTypeInheritanceChainTo(this Type child, Type parent)
+	{
+		var retVal   = new List<Type> { child };
+		var baseType = child.BaseType;
+		while (baseType != parent && baseType != typeof(object))
+		{
+			retVal.Add(baseType);
+			baseType = baseType.BaseType;
+		}
+
+		return retVal.ToArray();
 	}
 
 	public static IEnumerable<KeyValuePair<string, object>> TraverseObjectGraph(this object original)

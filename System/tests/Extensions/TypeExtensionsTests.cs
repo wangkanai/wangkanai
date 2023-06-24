@@ -2,6 +2,8 @@
 
 #nullable enable
 
+using System.Numerics;
+
 using Xunit;
 
 namespace Wangkanai.Extensions;
@@ -50,5 +52,30 @@ public class TypeExtensionsTests
 		var result = alone.GetTypeInheritanceChainTo(alone);
 		Assert.Single(result);
 		Assert.Equal(typeof(Alone), result[0]);
+	}
+
+	[Fact]
+	public void IntTypeInheritanceChainToNumeric()
+	{
+		var result = typeof(int).GetTypeInheritanceChainTo(typeof(INumber<>));
+		Assert.Equal(2, result.Length);
+		Assert.Equal(typeof(int), result[0]);
+		Assert.Equal(typeof(ValueType), result[1]);
+	}
+
+	[Fact]
+	public void IntTypeInheritanceChainToValueType()
+	{
+		var result = typeof(int).GetTypeInheritanceChainTo(typeof(ValueType));
+		Assert.Single(result);
+		Assert.Equal(typeof(int), result[0]);
+	}
+	
+	[Fact]
+	public void PrettyPrint()
+	{
+		var alone  = typeof(Alone);
+		var result = alone.PrettyPrint();
+		Assert.Equal("Alone", result);
 	}
 }
