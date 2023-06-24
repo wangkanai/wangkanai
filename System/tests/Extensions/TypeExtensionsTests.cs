@@ -72,10 +72,71 @@ public class TypeExtensionsTests
 	}
 	
 	[Fact]
-	public void PrettyPrint()
+	public void PrettyPrintAlone()
 	{
 		var alone  = typeof(Alone);
-		var result = alone.PrettyPrint();
-		Assert.Equal("Alone", result);
+		Assert.Equal("Alone", alone.PrettyPrint());
 	}
+	
+	[Fact]
+	public void PrettyPrintInt()
+	{
+		var alone  = typeof(int);
+		Assert.Equal("Int32", alone.PrettyPrint());
+	}
+
+	[Fact]
+	public void PrettyPrintChain()
+	{
+		var parent = typeof(Parent);
+		Assert.Equal("Parent", parent.PrettyPrint());
+		
+	}
+
+	[Fact]
+	public void PrettyPrintChainDepth()
+	{
+		var parent = typeof(Parent);
+		Assert.Equal("Parent", parent.PrettyPrint(1));
+	}
+
+	[Fact]
+	public void PrettyPrintRecursive()
+	{
+		var alone  = typeof(Alone);
+		Assert.Equal("Alone", alone.PrettyPrintRecursive(0));
+	}
+	
+	[Fact]
+	public void PrettyPrintRecursiveInt()
+	{
+		var alone  = typeof(int);
+		Assert.Equal("Int32", alone.PrettyPrintRecursive(0));
+	}
+	
+	[Fact]
+	public void PrettyPrintRecursiveIntDepth()
+	{
+		var alone  = typeof(int);
+		Assert.Equal("Int32", alone.PrettyPrintRecursive(1));
+	}
+	
+	[Fact]
+	public void PrettyPrintRecursiveChain()
+	{
+		var parent = typeof(Parent);
+		var child  = typeof(Child);
+		Assert.Equal("Parent", parent.PrettyPrintRecursive(0));
+		Assert.Equal("Child", child.PrettyPrintRecursive(0));
+	}
+	
+	[Fact]
+	public void PrettyPrintRecursiveChainDepth()
+	{
+		var parent = typeof(Parent);
+		var child  = typeof(Child);
+		Assert.Equal("Parent", parent.PrettyPrintRecursive(1));
+		Assert.Equal("Child", child.PrettyPrintRecursive(1));
+	}
+	
 }

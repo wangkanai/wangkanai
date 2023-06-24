@@ -17,7 +17,19 @@ public static class TypeExtensions
 		=> PrettyPrintCache.GetOrAdd(type, t => {
 			try
 			{
-				return PrettyPrintRecursive(t, 0);
+				return t.PrettyPrintRecursive( 0);
+			}
+			catch (Exception)
+			{
+				return t.Name;
+			}
+		});
+	
+	public static string PrettyPrint(this Type type, int depth)
+		=> PrettyPrintCache.GetOrAdd(type, t => {
+			try
+			{
+				return t.PrettyPrintRecursive( depth);
 			}
 			catch (Exception)
 			{
@@ -25,7 +37,7 @@ public static class TypeExtensions
 			}
 		});
 
-	private static string PrettyPrintRecursive(Type type, int depth)
+	public static string PrettyPrintRecursive(this Type type, int depth)
 	{
 		if (depth > 3) return type.Name;
 
