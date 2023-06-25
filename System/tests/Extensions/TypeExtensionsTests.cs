@@ -139,4 +139,54 @@ public class TypeExtensionsTests
 		Assert.Equal("Child", child.PrettyPrintRecursive(1));
 	}
 	
+	[Fact]
+	public void PrimitiveType()
+	{
+		Assert.True(typeof(int).IsPrimitive);
+	}
+	
+	[Fact]
+	public void NotPrimitiveType()
+	{
+		Assert.False(typeof(Alone).IsPrimitive);
+	}
+
+	[Fact]
+	public void PrimitiveObject()
+	{
+		Assert.True(1.IsPrimitive());
+	}
+	
+	[Fact]
+	public void NotPrimitiveObjectNull()
+	{
+		Assert.True(((object?)null).IsPrimitive());
+	}
+	
+	[Fact]
+	public void NotPrimitiveObjectString()
+	{
+		Assert.True("".IsPrimitive());
+	}
+	
+	[Fact]
+	public void NotPrimitiveObject()
+	{
+		var alone = new Alone();
+		Assert.False(alone.IsPrimitive());
+	}
+
+	[Fact]
+	public void TypeIsNullable()
+	{
+		var type = typeof(int?);
+		Assert.True(type.IsNullableType());
+	}
+	
+	[Fact]
+	public void TypeIsNotNullable()
+	{
+		var type = typeof(int);
+		Assert.False(type.IsNullableType());
+	}
 }

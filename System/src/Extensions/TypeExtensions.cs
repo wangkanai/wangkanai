@@ -63,45 +63,7 @@ public static class TypeExtensions
 
 		return retVal.ToArray();
 	}
-
-	public static IEnumerable<KeyValuePair<string, object>> TraverseObjectGraph(this object original)
-	{
-		foreach (var result in original.TraverseObjectGraphRecursively(new List<object>(), original.GetType().Name))
-			yield return result;
-	}
-
-	private static IEnumerable<KeyValuePair<string, object>> TraverseObjectGraphRecursively(this object obj, List<object> visited, string memberPath)
-	{
-		yield return new KeyValuePair<string, object>(memberPath, obj);
-		if (obj != null)
-		{
-			var typeOfOriginal = obj.GetType();
-			// ReferenceEquals is a mandatory approach
-			if (!IsPrimitive(typeOfOriginal) && !visited.Any(x => ReferenceEquals(obj, x)))
-			{
-				visited.Add(obj);
-				if (obj is IEnumerable objEnum)
-				{
-					var originalEnumerator = objEnum.GetEnumerator();
-					var index              = 0;
-					while (originalEnumerator.MoveNext())
-					{
-						foreach (var result in originalEnumerator.Current.TraverseObjectGraphRecursively(visited, $@"{memberPath}[{index++}]"))
-							yield return result;
-					}
-				}
-				else
-				{
-					foreach (var propertyInfo in typeOfOriginal.GetProperties(BindingFlags.Instance | BindingFlags.Public))
-					{
-						foreach (var result in propertyInfo.GetValue(obj).TraverseObjectGraphRecursively(visited, $@"{memberPath}.{propertyInfo.Name}"))
-							yield return result;
-					}
-				}
-			}
-		}
-	}
-
+	
 	/// <summary>
 	/// Check if type is a value-type, primitive type or string
 	/// </summary>
@@ -150,5 +112,43 @@ public static class TypeExtensions
 
 		var underlyingEnumType = Enum.GetUnderlyingType(underlyingNonNullableType);
 		return isNullable ? MakeNullable(underlyingEnumType) : underlyingEnumType;
+	}
+	
+	public static IEnumerable<KeyValuePair<string, object>> TraverseObjectGraph(this object original)
+	{
+		foreach (var result in original.TraverseObjectGraphRecursively(new List<object>(), original.GetType().Name))
+			yield return result;
+	}
+
+	private static IEnumerable<KeyValuePair<string, object>> TraverseObjectGraphRecursively(this object obj, List<object> visited, string memberPath)
+	{
+		yield return new KeyValuePair<string, object>(memberPath, obj);
+		if (obj != null)
+		{
+			var typeOfOriginal = obj.GetType();
+			// ReferenceEquals is a mandatory approach
+			if (!IsPrimitive(typeOfOriginal) && !visited.Any(x => ReferenceEquals(obj, x)))
+			{
+				visited.Add(obj);
+				if (obj is IEnumerable objEnum)
+				{
+					var originalEnumerator = objEnum.GetEnumerator();
+					var index              = 0;
+					while (originalEnumerator.MoveNext())
+					{
+						foreach (var result in originalEnumerator.Current.TraverseObjectGraphRecursively(visited, $@"{memberPath}[{index++}]"))
+							yield return result;
+					}
+				}
+				else
+				{
+					foreach (var propertyInfo in typeOfOriginal.GetProperties(BindingFlags.Instance | BindingFlags.Public))
+					{
+						foreach (var result in propertyInfo.GetValue(obj).TraverseObjectGraphRecursively(visited, $@"{memberPath}.{propertyInfo.Name}"))
+							yield return result;
+					}
+				}
+			}
+		}
 	}
 }
