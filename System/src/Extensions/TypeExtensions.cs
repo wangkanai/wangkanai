@@ -17,19 +17,19 @@ public static class TypeExtensions
 		=> PrettyPrintCache.GetOrAdd(type, t => {
 			try
 			{
-				return t.PrettyPrintRecursive( 0);
+				return t.PrettyPrintRecursive(0);
 			}
 			catch (Exception)
 			{
 				return t.Name;
 			}
 		});
-	
+
 	public static string PrettyPrint(this Type type, int depth)
 		=> PrettyPrintCache.GetOrAdd(type, t => {
 			try
 			{
-				return t.PrettyPrintRecursive( depth);
+				return t.PrettyPrintRecursive(depth);
 			}
 			catch (Exception)
 			{
@@ -63,7 +63,7 @@ public static class TypeExtensions
 
 		return retVal.ToArray();
 	}
-	
+
 	/// <summary>
 	/// Check if type is a value-type, primitive type or string
 	/// </summary>
@@ -113,7 +113,7 @@ public static class TypeExtensions
 		var underlyingEnumType = Enum.GetUnderlyingType(underlyingNonNullableType);
 		return isNullable ? MakeNullable(underlyingEnumType) : underlyingEnumType;
 	}
-	
+
 	public static IEnumerable<KeyValuePair<string, object>> TraverseObjectGraph(this object original)
 	{
 		foreach (var result in original.TraverseObjectGraphRecursively(new List<object>(), original.GetType().Name))
@@ -123,30 +123,28 @@ public static class TypeExtensions
 	private static IEnumerable<KeyValuePair<string, object>> TraverseObjectGraphRecursively(this object obj, List<object> visited, string memberPath)
 	{
 		yield return new KeyValuePair<string, object>(memberPath, obj);
-		if (obj != null)
+
+		if (obj == null) yield break;
+
+		var typeOfOriginal = obj.GetType();
+		// ReferenceEquals is a mandatory approach
+		if (!IsPrimitive(typeOfOriginal) && !visited.Any(x => ReferenceEquals(obj, x)))
 		{
-			var typeOfOriginal = obj.GetType();
-			// ReferenceEquals is a mandatory approach
-			if (!IsPrimitive(typeOfOriginal) && !visited.Any(x => ReferenceEquals(obj, x)))
+			visited.Add(obj);
+			if (obj is IEnumerable objEnum)
 			{
-				visited.Add(obj);
-				if (obj is IEnumerable objEnum)
+				var originalEnumerator = objEnum.GetEnumerator();
+				var index              = 0;
+				while (originalEnumerator.MoveNext())
+					foreach (var result in originalEnumerator.Current.TraverseObjectGraphRecursively(visited, $@"{memberPath}[{index++}]"))
+						yield return result;
+			}
+			else
+			{
+				foreach (var propertyInfo in typeOfOriginal.GetProperties(BindingFlags.Instance | BindingFlags.Public))
 				{
-					var originalEnumerator = objEnum.GetEnumerator();
-					var index              = 0;
-					while (originalEnumerator.MoveNext())
-					{
-						foreach (var result in originalEnumerator.Current.TraverseObjectGraphRecursively(visited, $@"{memberPath}[{index++}]"))
-							yield return result;
-					}
-				}
-				else
-				{
-					foreach (var propertyInfo in typeOfOriginal.GetProperties(BindingFlags.Instance | BindingFlags.Public))
-					{
-						foreach (var result in propertyInfo.GetValue(obj).TraverseObjectGraphRecursively(visited, $@"{memberPath}.{propertyInfo.Name}"))
-							yield return result;
-					}
+					foreach (var result in propertyInfo.GetValue(obj).TraverseObjectGraphRecursively(visited, $@"{memberPath}.{propertyInfo.Name}"))
+						yield return result;
 				}
 			}
 		}
