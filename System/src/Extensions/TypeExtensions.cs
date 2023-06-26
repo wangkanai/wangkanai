@@ -17,19 +17,19 @@ public static class TypeExtensions
 		=> PrettyPrintCache.GetOrAdd(type, t => {
 			try
 			{
-				return t.PrettyPrintRecursive( 0);
+				return t.PrettyPrintRecursive(0);
 			}
 			catch (Exception)
 			{
 				return t.Name;
 			}
 		});
-	
+
 	public static string PrettyPrint(this Type type, int depth)
 		=> PrettyPrintCache.GetOrAdd(type, t => {
 			try
 			{
-				return t.PrettyPrintRecursive( depth);
+				return t.PrettyPrintRecursive(depth);
 			}
 			catch (Exception)
 			{
@@ -64,44 +64,6 @@ public static class TypeExtensions
 		return retVal.ToArray();
 	}
 
-	public static IEnumerable<KeyValuePair<string, object>> TraverseObjectGraph(this object original)
-	{
-		foreach (var result in original.TraverseObjectGraphRecursively(new List<object>(), original.GetType().Name))
-			yield return result;
-	}
-
-	private static IEnumerable<KeyValuePair<string, object>> TraverseObjectGraphRecursively(this object obj, List<object> visited, string memberPath)
-	{
-		yield return new KeyValuePair<string, object>(memberPath, obj);
-		if (obj != null)
-		{
-			var typeOfOriginal = obj.GetType();
-			// ReferenceEquals is a mandatory approach
-			if (!IsPrimitive(typeOfOriginal) && !visited.Any(x => ReferenceEquals(obj, x)))
-			{
-				visited.Add(obj);
-				if (obj is IEnumerable objEnum)
-				{
-					var originalEnumerator = objEnum.GetEnumerator();
-					var index              = 0;
-					while (originalEnumerator.MoveNext())
-					{
-						foreach (var result in originalEnumerator.Current.TraverseObjectGraphRecursively(visited, $@"{memberPath}[{index++}]"))
-							yield return result;
-					}
-				}
-				else
-				{
-					foreach (var propertyInfo in typeOfOriginal.GetProperties(BindingFlags.Instance | BindingFlags.Public))
-					{
-						foreach (var result in propertyInfo.GetValue(obj).TraverseObjectGraphRecursively(visited, $@"{memberPath}.{propertyInfo.Name}"))
-							yield return result;
-					}
-				}
-			}
-		}
-	}
-
 	/// <summary>
 	/// Check if type is a value-type, primitive type or string
 	/// </summary>
@@ -122,7 +84,7 @@ public static class TypeExtensions
 	public static bool IsPrimitive(this object obj)
 		=> obj == null || obj.GetType().IsPrimitive();
 
-	public static bool IsNullableType(this Type type)
+	public static bool IsNullable(this Type type)
 	{
 		var typeInfo = type.GetTypeInfo();
 
@@ -132,23 +94,63 @@ public static class TypeExtensions
 	}
 
 	public static Type MakeNullable(this Type type, bool nullable = true)
-		=> type.IsNullableType() == nullable
-			   ? type
-			   : nullable
-				   ? typeof(Nullable<>).MakeGenericType(type)
-				   : type.GetGenericArguments()[0];
+	{
+		if (type.IsNullable() == nullable)
+			return type;
 
-	public static Type UnwrapNullableType(this Type type)
+		if (nullable)
+			return typeof(Nullable<>).MakeGenericType(type);
+		
+		return type.GetGenericArguments()[0];
+	}
+
+	public static Type UnwrapNullable(this Type type)
 		=> Nullable.GetUnderlyingType(type) ?? type;
 
-	public static Type UnwrapEnumType(this Type type)
+	public static Type UnwrapEnum(this Type type)
 	{
-		var isNullable                = type.IsNullableType();
-		var underlyingNonNullableType = isNullable ? type.UnwrapNullableType() : type;
+		var isNullable                = type.IsNullable();
+		var underlyingNonNullableType = isNullable ? type.UnwrapNullable() : type;
 		if (!underlyingNonNullableType.GetTypeInfo().IsEnum)
 			return type;
 
 		var underlyingEnumType = Enum.GetUnderlyingType(underlyingNonNullableType);
 		return isNullable ? MakeNullable(underlyingEnumType) : underlyingEnumType;
+	}
+
+	public static IEnumerable<KeyValuePair<string, object>> TraverseObjectGraph(this object original)
+	{
+		foreach (var result in original.TraverseObjectGraphRecursively(new List<object>(), original.GetType().Name))
+			yield return result;
+	}
+
+	private static IEnumerable<KeyValuePair<string, object>> TraverseObjectGraphRecursively(this object original, ICollection<object> visited, string memberPath)
+	{
+		yield return new KeyValuePair<string, object>(memberPath, original);
+
+		if (original == null) yield break;
+
+		var typeOfOriginal = original.GetType();
+		// ReferenceEquals is a mandatory approach
+		if (!IsPrimitive(typeOfOriginal) && !visited.Any(x => ReferenceEquals(original, x)))
+		{
+			visited.Add(original);
+			if (original is IEnumerable objEnum)
+			{
+				var originalEnumerator = objEnum.GetEnumerator();
+				var index              = 0;
+				while (originalEnumerator.MoveNext())
+					foreach (var result in originalEnumerator.Current.TraverseObjectGraphRecursively(visited, $@"{memberPath}[{index++}]"))
+						yield return result;
+			}
+			else
+			{
+				foreach (var propertyInfo in typeOfOriginal.GetProperties(BindingFlags.Instance | BindingFlags.Public))
+				{
+					foreach (var result in propertyInfo.GetValue(original).TraverseObjectGraphRecursively(visited, $@"{memberPath}.{propertyInfo.Name}"))
+						yield return result;
+				}
+			}
+		}
 	}
 }
