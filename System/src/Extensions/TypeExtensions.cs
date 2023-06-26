@@ -84,7 +84,7 @@ public static class TypeExtensions
 	public static bool IsPrimitive(this object obj)
 		=> obj == null || obj.GetType().IsPrimitive();
 
-	public static bool IsNullableType(this Type type)
+	public static bool IsNullable(this Type type)
 	{
 		var typeInfo = type.GetTypeInfo();
 
@@ -94,19 +94,23 @@ public static class TypeExtensions
 	}
 
 	public static Type MakeNullable(this Type type, bool nullable = true)
-		=> type.IsNullableType() == nullable
-			   ? type
-			   : nullable
-				   ? typeof(Nullable<>).MakeGenericType(type)
-				   : type.GetGenericArguments()[0];
+	{
+		if (type.IsNullable() == nullable)
+			return type;
 
-	public static Type UnwrapNullableType(this Type type)
+		if (nullable)
+			return typeof(Nullable<>).MakeGenericType(type);
+		
+		return type.GetGenericArguments()[0];
+	}
+
+	public static Type UnwrapNullable(this Type type)
 		=> Nullable.GetUnderlyingType(type) ?? type;
 
-	public static Type UnwrapEnumType(this Type type)
+	public static Type UnwrapEnum(this Type type)
 	{
-		var isNullable                = type.IsNullableType();
-		var underlyingNonNullableType = isNullable ? type.UnwrapNullableType() : type;
+		var isNullable                = type.IsNullable();
+		var underlyingNonNullableType = isNullable ? type.UnwrapNullable() : type;
 		if (!underlyingNonNullableType.GetTypeInfo().IsEnum)
 			return type;
 
@@ -120,18 +124,18 @@ public static class TypeExtensions
 			yield return result;
 	}
 
-	private static IEnumerable<KeyValuePair<string, object>> TraverseObjectGraphRecursively(this object obj, List<object> visited, string memberPath)
+	private static IEnumerable<KeyValuePair<string, object>> TraverseObjectGraphRecursively(this object original, ICollection<object> visited, string memberPath)
 	{
-		yield return new KeyValuePair<string, object>(memberPath, obj);
+		yield return new KeyValuePair<string, object>(memberPath, original);
 
-		if (obj == null) yield break;
+		if (original == null) yield break;
 
-		var typeOfOriginal = obj.GetType();
+		var typeOfOriginal = original.GetType();
 		// ReferenceEquals is a mandatory approach
-		if (!IsPrimitive(typeOfOriginal) && !visited.Any(x => ReferenceEquals(obj, x)))
+		if (!IsPrimitive(typeOfOriginal) && !visited.Any(x => ReferenceEquals(original, x)))
 		{
-			visited.Add(obj);
-			if (obj is IEnumerable objEnum)
+			visited.Add(original);
+			if (original is IEnumerable objEnum)
 			{
 				var originalEnumerator = objEnum.GetEnumerator();
 				var index              = 0;
@@ -143,7 +147,7 @@ public static class TypeExtensions
 			{
 				foreach (var propertyInfo in typeOfOriginal.GetProperties(BindingFlags.Instance | BindingFlags.Public))
 				{
-					foreach (var result in propertyInfo.GetValue(obj).TraverseObjectGraphRecursively(visited, $@"{memberPath}.{propertyInfo.Name}"))
+					foreach (var result in propertyInfo.GetValue(original).TraverseObjectGraphRecursively(visited, $@"{memberPath}.{propertyInfo.Name}"))
 						yield return result;
 				}
 			}
