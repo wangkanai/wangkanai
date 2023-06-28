@@ -160,7 +160,7 @@ internal sealed class QueryParameterValueSupplier
             }
         }
 
-        mappings?.Sort((a, b) => QueryParameterNameComparer.Instance.Compare(a.QueryParameterName, b.QueryParameterName));
+        //mappings?.Sort((a, b) => QueryParameterNameComparer.Instance.Compare(a.QueryParameterName, b.QueryParameterName));
         return mappings?.ToArray();
     }
 
