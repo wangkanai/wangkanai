@@ -1,7 +1,7 @@
 <Project>
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
   <PropertyGroup>
-    <VersionPrefix>0.11.0</VersionPrefix>
+    <VersionPrefix>1.0.0</VersionPrefix>
     <Title>Wangkanai Hosting</Title>
     <PackageTags>aspnetcore;hosting;</PackageTags>
     <Description>Wangkanai Hosting provides the entry point for configuring and running your application.</Description>
