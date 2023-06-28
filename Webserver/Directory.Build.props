@@ -1,7 +1,7 @@
 <Project>
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
   <PropertyGroup>
-    <VersionPrefix>1.6.0</VersionPrefix>
+    <VersionPrefix>2.0.0</VersionPrefix>
     <Title>Wangkanai Webserver</Title>
     <Description>ASP.NET Core Webserver extension library to help make life easier..</Description>
     <PackageTags>aspnetcore;webserver;</PackageTags>
