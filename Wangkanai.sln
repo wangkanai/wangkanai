@@ -465,6 +465,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".sonar", ".sonar", "{EEF194
 		sonar-prep.ps1 = sonar-prep.ps1
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Blazor.Tests", "Blazor\tests\Wangkanai.Blazor.Tests.csproj", "{235F3D6E-8F3D-4A68-8E4F-7CEF06022164}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -843,6 +845,10 @@ Global
 		{2ADC834E-E648-44D0-B5C0-3B2E02BB42CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2ADC834E-E648-44D0-B5C0-3B2E02BB42CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2ADC834E-E648-44D0-B5C0-3B2E02BB42CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{235F3D6E-8F3D-4A68-8E4F-7CEF06022164}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{235F3D6E-8F3D-4A68-8E4F-7CEF06022164}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{235F3D6E-8F3D-4A68-8E4F-7CEF06022164}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{235F3D6E-8F3D-4A68-8E4F-7CEF06022164}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -956,6 +962,7 @@ Global
 		{0A7F10BF-EA60-4A19-9F07-3D9CE40F5952} = {ABDB88B8-683A-466C-A2DB-AFD516359619}
 		{DE1B420A-E7F3-446D-9FB6-77FA89AC17B6} = {0A7F10BF-EA60-4A19-9F07-3D9CE40F5952}
 		{2ADC834E-E648-44D0-B5C0-3B2E02BB42CA} = {0A7F10BF-EA60-4A19-9F07-3D9CE40F5952}
+		{235F3D6E-8F3D-4A68-8E4F-7CEF06022164} = {9D20D5E6-879B-463C-964A-3DA13FFAE9E3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1BA0A192-D7BE-40A1-96AE-B3C8C6BC9B69}
