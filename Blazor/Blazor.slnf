@@ -9,8 +9,6 @@
       "Blazor\\src\\Components\\Wangkanai.Blazor.Components.csproj",
       "Blazor\\src\\Core\\Wangkanai.Blazor.csproj",
       "Blazor\\src\\Web\\Wangkanai.Blazor.Components.Web.csproj",
-      "Blazor\\tests\\Wangkanai.Blazor.Test.csproj",
-      "Blazor\\tests\\Wangkanai.Blazor.Tests.csproj",
       "System\\src\\Wangkanai.System.csproj",
       "Validation\\src\\Wangkanai.Validation.csproj"
     ]
