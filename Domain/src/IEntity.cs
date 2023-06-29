@@ -4,11 +4,9 @@ using System;
 
 namespace Wangkanai.Domain;
 
-public interface IEntity : IEntity<Guid>
-{
-}
+public interface IEntity : IEntity<Guid> { }
 
 public interface IEntity<T>
 {
-    T Id { get; set; }
+	T Id { get; set; }
 }

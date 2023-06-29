@@ -2,7 +2,4 @@
 
 namespace Wangkanai.Domain.Messages;
 
-public interface IMessage
-{
-    
-}
+public interface IMessage { }

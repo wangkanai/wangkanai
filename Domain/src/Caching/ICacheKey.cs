@@ -4,5 +4,5 @@ namespace Wangkanai.Domain.Caching;
 
 public interface ICacheKey
 {
-    string GetCacheKey();
+	string GetCacheKey();
 }

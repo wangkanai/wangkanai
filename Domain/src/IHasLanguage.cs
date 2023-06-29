@@ -4,5 +4,5 @@ namespace Wangkanai.Domain;
 
 public interface IHasLanguage
 {
-    string LanguageCode { get; }
+	string LanguageCode { get; }
 }

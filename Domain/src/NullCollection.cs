@@ -4,7 +4,4 @@ using System.Collections.ObjectModel;
 
 namespace Wangkanai.Domain;
 
-public class NullCollection<T> : ObservableCollection<T>
-{
-    
-}
+public class NullCollection<T> : ObservableCollection<T> { }

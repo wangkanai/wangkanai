@@ -4,7 +4,4 @@ using Wangkanai.Domain.Messages;
 
 namespace Wangkanai.Domain.Events;
 
-public interface IEventHandler<in T> : IHandler<T> where T : IEvent
-{
-    
-}
+public interface IEventHandler<in T> : IHandler<T> where T : IEvent { }

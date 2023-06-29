@@ -2,7 +2,4 @@
 
 namespace Wangkanai.Domain.Events;
 
-public class GenericChangedEntry<T>:IValueObject
-{
-    
-}
+public class GenericChangedEntry<T> : IValueObject { }

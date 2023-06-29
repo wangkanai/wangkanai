@@ -6,7 +6,7 @@ namespace Wangkanai.Domain;
 
 public interface IDataEntity<TEntity, TModel>
 {
-    public TModel  ToModel(TModel   model);
-    public TEntity FromModel(TModel model, PrimaryKeyResolvingMap pkMap);
-    public void    Patch(TEntity    target);
+	public TModel  ToModel(TModel   model);
+	public TEntity FromModel(TModel model, PrimaryKeyResolvingMap pkMap);
+	public void    Patch(TEntity    target);
 }

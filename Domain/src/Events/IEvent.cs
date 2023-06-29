@@ -8,12 +8,12 @@ namespace Wangkanai.Domain.Events;
 
 public interface IEvent : IEntity, IMessage
 {
-    int            Version    { get; set; }
-    DateTimeOffset TimeStamp { get; set; }
+	int            Version   { get; set; }
+	DateTimeOffset TimeStamp { get; set; }
 }
 
 public interface IEvent<T> : IEntity<T>, IMessage
 {
-    int            Version    { get; set; }
-    DateTimeOffset TimeStamp { get; set; }
+	int            Version   { get; set; }
+	DateTimeOffset TimeStamp { get; set; }
 }

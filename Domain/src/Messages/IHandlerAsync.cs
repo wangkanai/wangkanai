@@ -6,5 +6,5 @@ namespace Wangkanai.Domain.Messages;
 
 public interface IHandlerAsync<in T> where T : IMessage
 {
-    Task HandleAsync(T message);
+	Task HandleAsync(T message);
 }

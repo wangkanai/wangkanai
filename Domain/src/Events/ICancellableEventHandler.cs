@@ -8,7 +8,7 @@ using Wangkanai.Domain.Messages;
 namespace Wangkanai.Domain.Events;
 
 public interface ICancellableEventHandler<in T>
-    where T : IMessage
+	where T : IMessage
 {
-    Task Handle(T message, CancellationToken token = default);
+	Task Handle(T message, CancellationToken token = default);
 }
