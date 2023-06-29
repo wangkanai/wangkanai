@@ -2,6 +2,4 @@
 
 namespace Detection.Models;
 
-public class DetectionViewModel
-{
-}
+public class DetectionViewModel { }

@@ -10,7 +10,8 @@ PM> install-package Wangkanai.Detection
 
 This library host the component to resolve the access client device type.
 
-Implement of the library into your web application is done by configuring the `Startup.cs` by adding the detection service in the `ConfigureServices` method.
+Implement of the library into your web application is done by configuring the `Startup.cs` by adding the detection
+service in the `ConfigureServices` method.
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -46,7 +47,8 @@ public void ConfigureServices(IServiceCollection services)
 
 * `AddDetection()` Adds the detection services to the services container.
 
-The current device on a request is set in the Responsive middleware. The Responsive middleware is enabled in the `Configure` method of *Startup.cs* file.
+The current device on a request is set in the Responsive middleware. The Responsive middleware is enabled in
+the `Configure` method of *Startup.cs* file.
 
 ```csharp
 public void Configure(IApplicationBuilder app, IHostingEnvironment env)

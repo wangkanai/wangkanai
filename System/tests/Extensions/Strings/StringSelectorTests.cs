@@ -25,7 +25,7 @@ public class StringSelectorTests
 	{
 		Assert.Throws<ArgumentEmptyException>(() => _empty.EscapeSelector());
 	}
-	
+
 	[Fact]
 	public void Space()
 	{
@@ -37,115 +37,115 @@ public class StringSelectorTests
 	{
 		Assert.Equal(@"\\{test\\}", "{test}".EscapeSelector());
 	}
-	
+
 	[Fact]
 	public void Slash()
 	{
 		Assert.Equal(@"test\\/test", "test/test".EscapeSelector());
 	}
-	
+
 	[Fact]
 	public void Dot()
 	{
 		Assert.Equal(@"test\\.test", "test.test".EscapeSelector());
 	}
-	
+
 	[Fact]
 	public void Hash()
 	{
 		Assert.Equal(@"test\\#test", "test#test".EscapeSelector());
 	}
-	
+
 	[Fact]
 	public void Comma()
 	{
 		Assert.Equal(@"test\\,test", "test,test".EscapeSelector());
 	}
-	
+
 	[Fact]
 	public void Colon()
 	{
 		Assert.Equal(@"test\\:test", "test:test".EscapeSelector());
 	}
-	
+
 	[Fact]
 	public void Semicolon()
 	{
 		Assert.Equal(@"test\\;test", "test;test".EscapeSelector());
 	}
-	
+
 	[Fact]
 	public void Plus()
 	{
 		Assert.Equal(@"test\\+test", "test+test".EscapeSelector());
 	}
-	
+
 	[Fact]
 	public void Equal()
 	{
 		Assert.Equal(@"\\=test\\=", "=test=".EscapeSelector());
 	}
-	
+
 	[Fact]
 	public void Question()
 	{
 		Assert.Equal(@"test\\?test", "test?test".EscapeSelector());
 	}
-	
+
 	[Fact]
 	public void Ampersand()
 	{
 		Assert.Equal(@"test\\&test", "test&test".EscapeSelector());
 	}
-	
+
 	[Fact]
 	public void Percent()
 	{
 		Assert.Equal(@"test\\%test", "test%test".EscapeSelector());
 	}
-	
+
 	[Fact]
 	public void Tilde()
 	{
 		Assert.Equal(@"test\\~test", "test~test".EscapeSelector());
 	}
-	
+
 	[Fact]
 	public void Quote()
 	{
 		Assert.Equal(@"test\\'test", "test'test".EscapeSelector());
 	}
-	
+
 	[Fact]
 	public void DoubleQuote()
 	{
 		Assert.Equal("test\\\\\"test", "test\"test".EscapeSelector());
 	}
-	
+
 	// [Fact]
 	// public void Backslash()
 	// {
 	// 	Assert.Equal(@"\\test", "\\test".EscapeSelector());
 	// }
-	
+
 	[Fact]
 	public void LeftBracket()
 	{
 		Assert.Equal(@"test\\[test", "test[test".EscapeSelector());
 	}
-	
+
 	[Fact]
 	public void RightBracket()
 	{
 		Assert.Equal(@"test\\]test", "test]test".EscapeSelector());
 	}
-	
+
 	[Fact]
 	public void LeftParenthesis()
 	{
 		Assert.Equal(@"test\\(test", "test(test".EscapeSelector());
 	}
-	
+
 	[Fact]
 	public void RightParenthesis()
 	{

@@ -8,17 +8,17 @@ namespace Microsoft.Extensions.DependencyInjection;
 
 public static class CoreCollectionExtensions
 {
-    public static IWebmasterBuilder AddCoreServices(this IWebmasterBuilder builder)
-    {
-        builder.Services.TryAddSingleton<IWebmasterService, WebmasterService>();
+	public static IWebmasterBuilder AddCoreServices(this IWebmasterBuilder builder)
+	{
+		builder.Services.TryAddSingleton<IWebmasterService, WebmasterService>();
 
-        return builder;
-    }
+		return builder;
+	}
 
-    public static IWebmasterBuilder AddMarkerService(this IWebmasterBuilder builder)
-    {
-        builder.Services.TryAddSingleton<WebmasterMarkerService, WebmasterMarkerService>();
+	public static IWebmasterBuilder AddMarkerService(this IWebmasterBuilder builder)
+	{
+		builder.Services.TryAddSingleton<WebmasterMarkerService, WebmasterMarkerService>();
 
-        return builder;
-    }
+		return builder;
+	}
 }

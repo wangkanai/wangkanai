@@ -1,12 +1,12 @@
 {
-  "solution": {
-    "path": "..\\Wangkanai.sln",
-    "projects": [
-      "Tabler\\benchmark\\Wangkanai.Tabler.Benchmark.csproj",
-      "Tabler\\src\\Components\\Wangkanai.Tabler.Components.csproj",
-      "Tabler\\src\\Core\\Wangkanai.Tabler.csproj",
-      "Tabler\\src\\Web\\Wangkanai.Tabler.Components.Web.csproj",
-      "Tabler\\tests\\Wangkanai.Tabler.Tests.csproj"
-    ]
-  }
+    "solution": {
+        "path": "..\\Wangkanai.sln",
+        "projects": [
+            "Tabler\\benchmark\\Wangkanai.Tabler.Benchmark.csproj",
+            "Tabler\\src\\Components\\Wangkanai.Tabler.Components.csproj",
+            "Tabler\\src\\Core\\Wangkanai.Tabler.csproj",
+            "Tabler\\src\\Web\\Wangkanai.Tabler.Components.Web.csproj",
+            "Tabler\\tests\\Wangkanai.Tabler.Tests.csproj"
+        ]
+    }
 }

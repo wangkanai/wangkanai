@@ -6,13 +6,13 @@ public static partial class Math
 {
 	public static short Divider(short value, short divider)
 		=> (short)(divider != 0 ? value / divider : 0);
-	
+
 	public static int Divider(int value, int divider)
 		=> divider != 0 ? value / divider : 0;
-	
+
 	public static long Divider(long value, long divider)
 		=> divider != 0 ? value / divider : 0;
-	
+
 	public static float Divider(float value, float divider)
 		=> divider != 0 ? value / divider : 0;
 

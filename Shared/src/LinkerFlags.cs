@@ -10,7 +10,7 @@ internal static class LinkerFlags
 	///     Flags for a member that is JSON (de)serialized.
 	/// </summary>
 	public const DynamicallyAccessedMemberTypes JsonSerialized = DynamicallyAccessedMemberTypes.PublicConstructors |
-	                                                             DynamicallyAccessedMemberTypes.PublicFields |
+	                                                             DynamicallyAccessedMemberTypes.PublicFields       |
 	                                                             DynamicallyAccessedMemberTypes.PublicProperties;
 
 	/// <summary>

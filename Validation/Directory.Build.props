@@ -1,19 +1,19 @@
 <Project>
-  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
-  <PropertyGroup>
-    <VersionPrefix>2.0.0</VersionPrefix>
-    <Title>Wangkanai Validation</Title>
-    <Description>Domain Driven Design Validation library for .NET developement</Description>
-    <PackageTags>aspnetcore;validation;</PackageTags>
-    <RootNamespace>Wangkanai.Validation</RootNamespace>
-    <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Validation</PackageProjectUrl>
-  </PropertyGroup>
-  <PropertyGroup>
-    <PackageIcon>wangkanai-logo.png</PackageIcon>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
-  </PropertyGroup>
-  <ItemGroup>
-    <None Include="..\..\assets\wangkanai-logo.png" Pack="true" PackagePath="\" />
-    <None Include="..\README.md" Pack="true" PackagePath="\" />
-  </ItemGroup>
+    <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props"/>
+    <PropertyGroup>
+        <VersionPrefix>2.0.0</VersionPrefix>
+        <Title>Wangkanai Validation</Title>
+        <Description>Domain Driven Design Validation library for .NET developement</Description>
+        <PackageTags>aspnetcore;validation;</PackageTags>
+        <RootNamespace>Wangkanai.Validation</RootNamespace>
+        <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Validation</PackageProjectUrl>
+    </PropertyGroup>
+    <PropertyGroup>
+        <PackageIcon>wangkanai-logo.png</PackageIcon>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+    </PropertyGroup>
+    <ItemGroup>
+        <None Include="..\..\assets\wangkanai-logo.png" Pack="true" PackagePath="\"/>
+        <None Include="..\README.md" Pack="true" PackagePath="\"/>
+    </ItemGroup>
 </Project>

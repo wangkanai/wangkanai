@@ -4,7 +4,7 @@ namespace Wangkanai.Blazor.Components;
 
 public interface IComponent
 {
-    void Attach(RenderHandle renderHandle);
+	void Attach(RenderHandle renderHandle);
 
-    Task SetParametersAsync(ParameterView parameters);
+	Task SetParametersAsync(ParameterView parameters);
 }

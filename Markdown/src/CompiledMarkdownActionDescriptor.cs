@@ -18,13 +18,14 @@ public class CompiledMarkdownActionDescriptor : MarkdownActionDescriptor
 
 	public IList<HandlerMethodDescriptor> HandlerMethods { get; set; } = default!;
 
-	public   TypeInfo                     HandlerTypeInfo       { get; set; } = default!;
-	public   TypeInfo?                    DeclaredModelTypeInfo { get; set; }
-	public   TypeInfo?                    ModelTypeInfo         { get; set; }
-	public   TypeInfo                     MarkdownTypeInfo      { get; set; } = default!;
-	public   Endpoint?                    Endpoint              { get; set; }
-	
-	internal MarkdownActionInvokerCacheEntry? CacheEntry            { get; set; }
+	public TypeInfo  HandlerTypeInfo       { get; set; } = default!;
+	public TypeInfo? DeclaredModelTypeInfo { get; set; }
+	public TypeInfo? ModelTypeInfo         { get; set; }
+	public TypeInfo  MarkdownTypeInfo      { get; set; } = default!;
+	public Endpoint? Endpoint              { get; set; }
+
+	internal MarkdownActionInvokerCacheEntry? CacheEntry { get; set; }
+
 	internal override CompiledMarkdownActionDescriptor? CompiledMarkdownDescriptor
 	{
 		get => this;

@@ -4,7 +4,7 @@ namespace Wangkanai.Webmaster.DependencyInjection.Options;
 
 public sealed class WebmasterOptions
 {
-    public bool Test { get; set; } = false;
+	public bool Test { get; set; } = false;
 
-    public WebmasterOptions() { }
+	public WebmasterOptions() { }
 }

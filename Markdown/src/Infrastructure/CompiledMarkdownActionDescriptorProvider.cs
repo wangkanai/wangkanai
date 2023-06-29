@@ -28,7 +28,7 @@ public sealed class CompiledMarkdownActionDescriptorProvider : IActionDescriptor
 		_applicationPartManager              = applicationPartManager;
 		_compiledPageActionDescriptorFactory = new CompiledMarkdownActionDescriptorFactory(applicationModelProviders, mvcOptions.Value, pageOptions.Value);
 	}
-	
+
 	public int Order => _pageActionDescriptorProvider.Order;
 
 	public void OnProvidersExecuting(ActionDescriptorProviderContext context)
@@ -42,7 +42,7 @@ public sealed class CompiledMarkdownActionDescriptorProvider : IActionDescriptor
 
 		var lookup = new Dictionary<string, CompiledViewDescriptor>(feature.ViewDescriptors.Count, StringComparer.Ordinal);
 
-		foreach (var viewDescriptor in feature.ViewDescriptors) 
+		foreach (var viewDescriptor in feature.ViewDescriptors)
 			lookup.TryAdd(ViewPath.NormalizePath(viewDescriptor.RelativePath), viewDescriptor);
 
 		foreach (var item in newContext.Results)

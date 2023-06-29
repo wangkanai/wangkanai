@@ -1,26 +1,35 @@
 ## Responsive: Bridging the Gap Between Devices and Experiences
 
-Welcome to `Responsive`, a powerful ASP.NET Core middleware library that dynamically tailors your application's view to the requesting client device. 
-It's not just about resizing and rearranging elements - it's about creating unique, device-specific experiences that engage users.
+Welcome to `Responsive`, a powerful ASP.NET Core middleware library that dynamically tailors your application's view to
+the requesting client device.
+It's not just about resizing and rearranging elements - it's about creating unique, device-specific experiences that
+engage users.
 
-In an era where users can access your application from a myriad of devices, creating a one-size-fits-all UI is no longer feasible. 
-Yet, managing different versions of the same page can be daunting and inefficient. 
-That's where `Responsive` steps in, bridging the gap between various devices and delivering optimized experiences straight from the server side.
+In an era where users can access your application from a myriad of devices, creating a one-size-fits-all UI is no longer
+feasible.
+Yet, managing different versions of the same page can be daunting and inefficient.
+That's where `Responsive` steps in, bridging the gap between various devices and delivering optimized experiences
+straight from the server side.
 
-The magic of `Responsive` lies in its ability to discern the type of device making the request, be it a desktop, tablet, or mobile phone. 
-With this information at hand, Responsive routes the request to a view specifically tailored for that device. 
+The magic of `Responsive` lies in its ability to discern the type of device making the request, be it a desktop, tablet,
+or mobile phone.
+With this information at hand, Responsive routes the request to a view specifically tailored for that device.
 The result? An application that feels right at home on any device, providing a seamless user experience.
 
-But `Responsive` doesn't stop there! Recognizing that user preference is paramount, this library incorporates a feature that allows users to choose their preferred view, giving them control and enhancing their overall experience.
+But `Responsive` doesn't stop there! Recognizing that user preference is paramount, this library incorporates a feature
+that allows users to choose their preferred view, giving them control and enhancing their overall experience.
 
 ### Show Some Love
 
-If `Responsive` has streamlined your development process or improved your application's user experience, we'd love to hear about it! 
+If `Responsive` has streamlined your development process or improved your application's user experience, we'd love to
+hear about it!
 Show your support and help others discover this library by giving us a star ⭐ on GitHub.
 
-For any inquiries, suggestions, or contributions, please feel free to open an issue or submit a pull request. Let's work together to make Responsive even better!
+For any inquiries, suggestions, or contributions, please feel free to open an issue or submit a pull request. Let's work
+together to make Responsive even better!
 
-This version of the introduction highlights the benefits of using the Responsive library and how it can improve the user experience. 
+This version of the introduction highlights the benefits of using the Responsive library and how it can improve the user
+experience.
 It also includes a call to action for other developers to star your project, which can help increase your star count.
 
 [![NuGet Badge](https://buildstats.info/nuget/wangkanai.responsive)](https://www.nuget.org/packages/wangkanai.responsive)
@@ -134,8 +143,9 @@ the device type in before the file extension **_.cshtml_** like **_.mobile.cshtm
 
 ### Responsive Tag Helpers
 
-The next exciting feature is Tag Helpers. This make you able to use the same view and just show/hide specific part of the 
-views to the client base upon their type, this include Device, Browser, Platform, Engine, and Crawler that our 
+The next exciting feature is Tag Helpers. This make you able to use the same view and just show/hide specific part of
+the
+views to the client base upon their type, this include Device, Browser, Platform, Engine, and Crawler that our
 detection resolver could determine from
 the resolver parsing services.
 
@@ -233,7 +243,7 @@ All contribution are welcome, please contact the author.
 
 This project exists thanks to all the people who contribute. [[Contribute](CONTRIBUTING.md)].
 <a href="https://github.com/wangkanai/Detection/graphs/contributors">
-    <img src="https://opencollective.com/wangkanai/contributors.svg?width=890&button=false" />
+<img src="https://opencollective.com/wangkanai/contributors.svg?width=890&button=false" />
 </a>
 
 ### Financial Contributors

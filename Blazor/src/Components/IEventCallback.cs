@@ -4,7 +4,7 @@ namespace Wangkanai.Blazor.Components;
 
 internal interface IEventCallback
 {
-    bool HasDelegate { get; }
+	bool HasDelegate { get; }
 
-    object? UnpackForRenderTree();
+	object? UnpackForRenderTree();
 }

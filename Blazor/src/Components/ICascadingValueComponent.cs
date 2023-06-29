@@ -6,12 +6,12 @@ namespace Wangkanai.Blazor.Components;
 
 internal interface ICascadingValueComponent
 {
-    object? CurrentValue { get; }
+	object? CurrentValue { get; }
 
-    bool CurrentValueIsFixed { get; }
-    bool CanSupplyValue(Type valueType, string? valueName);
+	bool CurrentValueIsFixed { get; }
+	bool CanSupplyValue(Type valueType, string? valueName);
 
-    void Subscribe(ComponentState subscriber);
+	void Subscribe(ComponentState subscriber);
 
-    void Unsubscribe(ComponentState subscriber);
+	void Unsubscribe(ComponentState subscriber);
 }

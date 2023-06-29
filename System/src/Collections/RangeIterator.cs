@@ -12,15 +12,17 @@ public sealed class RangeIterator<T> : IEnumerable<T>
 	/// <summary>
 	/// Returns the range this object iterates over.
 	/// </summary>
-	public Range<T>   Range     { get; }
+	public Range<T> Range { get; }
+
 	/// <summary>
 	/// Returns the step function used for this range
 	/// </summary>
-	public Func<T, T> Step      { get; }
+	public Func<T, T> Step { get; }
+
 	/// <summary>
 	/// Returns whether or not this iterator works up from the start point (ascending) or down from the end point (descending)
 	/// </summary>
-	public bool       Ascending { get; }
+	public bool Ascending { get; }
 
 	/// <summary>
 	/// Create a ascending iterator iver the given range with the given step function, with the specified direction (optional)
@@ -29,8 +31,8 @@ public sealed class RangeIterator<T> : IEnumerable<T>
 	{
 		step.ThrowIfNull();
 
-		if (ascending && range.Comparer.Compare(range.Start, step(range.Start)) >= 0 ||
-		    !ascending && range.Comparer.Compare(range.End, step(range.End)) <= 0)
+		if (ascending  && range.Comparer.Compare(range.Start, step(range.Start)) >= 0 ||
+		    !ascending && range.Comparer.Compare(range.End, step(range.End))     <= 0)
 			throw new ArgumentException("Step does nothing, or progresses the wrong way");
 
 		Range     = range;

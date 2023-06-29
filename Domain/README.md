@@ -1,6 +1,6 @@
 ## Wangkanai Domain
 
-Domain Driven Design core library 
+Domain Driven Design core library
 
 **Please show me some love and click the** :star:
 

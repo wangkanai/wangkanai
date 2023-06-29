@@ -12,32 +12,30 @@ namespace Wangkanai.Webmaster.TagHelpers;
 [HtmlTargetElement(InlineStyleAttributeName, Attributes = HrefAttributeName, TagStructure = TagStructure.WithoutEndTag)]
 public sealed class InlineStyleTagHelper : InlineTagHelper
 {
-    private const string InlineStyleAttributeName = "inline-style";
-    private const string HrefAttributeName = "href";
+	private const string InlineStyleAttributeName = "inline-style";
+	private const string HrefAttributeName        = "href";
 
-    [HtmlAttributeName(HrefAttributeName)]
-    public string Href { get; set; }
+	[HtmlAttributeName(HrefAttributeName)]
+	public string Href { get; set; }
 
-    public InlineStyleTagHelper(IWebHostEnvironment webHostEnvironment, IMemoryCache cache, HtmlEncoder htmlEncoder, IUrlHelperFactory urlHelperFactory)
-        : base(webHostEnvironment, cache, htmlEncoder, urlHelperFactory)
-    {
-    }
+	public InlineStyleTagHelper(IWebHostEnvironment webHostEnvironment, IMemoryCache cache, HtmlEncoder htmlEncoder, IUrlHelperFactory urlHelperFactory)
+		: base(webHostEnvironment, cache, htmlEncoder, urlHelperFactory) { }
 
-    public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
-    {
-        context.ThrowIfNull();
-        output.ThrowIfNull();
+	public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
+	{
+		context.ThrowIfNull();
+		output.ThrowIfNull();
 
-        var fileContent = await GetFileContentStringAsync(Href);
-        if (fileContent is null)
-        {
-            output.SuppressOutput();
-            return;
-        }
+		var fileContent = await GetFileContentStringAsync(Href);
+		if (fileContent is null)
+		{
+			output.SuppressOutput();
+			return;
+		}
 
-        output.TagName = "style";
-        output.Attributes.RemoveAll("href");
-        output.TagMode = TagMode.StartTagAndEndTag;
-        output.Content.AppendHtml(fileContent);
-    }
+		output.TagName = "style";
+		output.Attributes.RemoveAll("href");
+		output.TagMode = TagMode.StartTagAndEndTag;
+		output.Content.AppendHtml(fileContent);
+	}
 }

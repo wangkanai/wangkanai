@@ -2,6 +2,4 @@
 
 namespace Wangkanai.Blazor.Components;
 
-public abstract class ElementReferenceContext
-{
-}
+public abstract class ElementReferenceContext { }

@@ -4,8 +4,8 @@ namespace Wangkanai.Detection.Models;
 
 public enum Processor
 {
-    ARM,
-    x64,
-    x86,
-    Others
+	ARM,
+	x64,
+	x86,
+	Others
 }

@@ -2,6 +2,4 @@
 
 namespace Wangkanai.Webserver.Tests.DependencyInjection;
 
-public class WebserverCollectionExtensionTests
-{
-}
+public class WebserverCollectionExtensionTests { }

@@ -9,10 +9,10 @@ public sealed class MarkdownBuilder : IMarkdownBuilder
 {
 	public MarkdownBuilder(IServiceCollection services)
 	{
-		Services    = services.ThrowIfNull();
+		Services = services.ThrowIfNull();
 		// PartManager = manager.ThrowIfNull();
 	}
 
-	public IServiceCollection     Services    { get; }
+	public IServiceCollection Services { get; }
 	// public ApplicationPartManager PartManager { get; }
 }

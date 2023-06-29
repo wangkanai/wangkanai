@@ -62,7 +62,7 @@ public class StringTitleCaseTests
 	{
 		Assert.Equal("Abcde fghij 123 !@#$%^&*() กขคง", "abcde fghij 123 !@#$%^&*() กขคง".ToTitleCase());
 	}
-	
+
 	[Fact]
 	public void TextWithSpaceAndSymbolAndUnicodeAndNewLine()
 	{

@@ -4,6 +4,4 @@ using Microsoft.AspNetCore.Builder;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
-public static class ApplicationBuilderExtensions
-{
-}
+public static class ApplicationBuilderExtensions { }

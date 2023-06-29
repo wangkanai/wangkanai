@@ -27,7 +27,7 @@ public class CheckEmptyTests
 		Assert.Throws<ArgumentEmptyException>(() => _empty.ThrowIfEmpty());
 		Assert.Throws<ArgumentEmptyException>(() => _empty.ThrowIfEmpty("can not be empty"));
 	}
-	
+
 	[Fact]
 	public void BasicList()
 	{
@@ -41,14 +41,14 @@ public class CheckEmptyTests
 		Assert.Throws<ArgumentNullException>(() => _null.ThrowIfEmpty<int>());
 		Assert.Throws<ArgumentNullException>(() => _null.ThrowIfEmpty<int>("can not be null"));
 	}
-	
+
 	[Fact]
 	public void GenericEmpty()
 	{
 		Assert.Throws<ArgumentEmptyException>(() => _empty.ThrowIfEmpty<int>());
 		Assert.Throws<ArgumentEmptyException>(() => _empty.ThrowIfEmpty<int>("can not be empty"));
 	}
-	
+
 	[Fact]
 	public void GenericList()
 	{
@@ -69,7 +69,7 @@ public class CheckEmptyTests
 		Assert.Throws<CustomEmptyException>(() => _empty.ThrowIfEmpty<CustomEmptyException, int>());
 		Assert.Throws<CustomEmptyException>(() => _empty.ThrowIfEmpty<CustomEmptyException, int>("can not be empty"));
 	}
-	
+
 	[Fact]
 	public void CustomList()
 	{

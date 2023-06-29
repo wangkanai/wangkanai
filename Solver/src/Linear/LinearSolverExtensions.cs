@@ -4,5 +4,5 @@ namespace Wangkanai.Solver.Linear;
 
 public static class LinearSolverExtensions
 {
-    //public IVariable[] MakeNumVar(int count)
+	//public IVariable[] MakeNumVar(int count)
 }

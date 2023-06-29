@@ -12,18 +12,18 @@ namespace Microsoft.Extensions.DependencyInjection;
 /// </summary>
 public static class WebmasterApplicationExtensions
 {
-    public static IApplicationBuilder UseWebmaster(this IApplicationBuilder app)
-    {
-        app.ThrowIfNull();
+	public static IApplicationBuilder UseWebmaster(this IApplicationBuilder app)
+	{
+		app.ThrowIfNull();
 
-        app.Validate();
-        app.VerifyMarkerIsRegistered<WebmasterMarkerService>();
+		app.Validate();
+		app.VerifyMarkerIsRegistered<WebmasterMarkerService>();
 
-        return app.UseMiddleware<WebmasterMiddleware>();
-    }
+		return app.UseMiddleware<WebmasterMiddleware>();
+	}
 
-    private static void Validate(this IApplicationBuilder app)
-    {
-        // What should I validate?
-    }
+	private static void Validate(this IApplicationBuilder app)
+	{
+		// What should I validate?
+	}
 }

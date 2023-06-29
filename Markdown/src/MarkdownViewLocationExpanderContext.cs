@@ -14,7 +14,7 @@ public class MarkdownViewLocationExpanderContext
 	public bool          IsMainPage     { get; }
 
 	public IDictionary<string, string?> Values { get; set; } = default!;
-	
+
 	public MarkdownViewLocationExpanderContext(
 		ActionContext actionContext,
 		string        viewName,

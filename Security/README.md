@@ -7,7 +7,9 @@
 
 Extending the Security ASP.NET with add features.
 
-- Authentication [![NuGet Badge](https://buildstats.info/nuget/wangkanai.security.authentication)](https://www.nuget.org/packages/wangkanai.security.authentication)
-  [![NuGet Badge](https://buildstats.info/nuget/wangkanai.security.authentication?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.security.authentication)
-- Authorization [![NuGet Badge](https://buildstats.info/nuget/wangkanai.security.authorization)](https://www.nuget.org/packages/wangkanai.security.authorization)
-  [![NuGet Badge](https://buildstats.info/nuget/wangkanai.security.authorization?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.security.authorization)
+-
+Authentication [![NuGet Badge](https://buildstats.info/nuget/wangkanai.security.authentication)](https://www.nuget.org/packages/wangkanai.security.authentication)
+[![NuGet Badge](https://buildstats.info/nuget/wangkanai.security.authentication?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.security.authentication)
+-
+Authorization [![NuGet Badge](https://buildstats.info/nuget/wangkanai.security.authorization)](https://www.nuget.org/packages/wangkanai.security.authorization)
+[![NuGet Badge](https://buildstats.info/nuget/wangkanai.security.authorization?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.security.authorization)

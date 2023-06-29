@@ -2,7 +2,4 @@
 
 namespace Wangkanai.Markdown.Services;
 
-public sealed class MarkdownService
-{
-    
-}
+public sealed class MarkdownService { }

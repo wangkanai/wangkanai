@@ -2,7 +2,4 @@
 
 namespace Wangkanai.Markdown;
 
-public interface IMarkdownPageActivator
-{
-	
-}
+public interface IMarkdownPageActivator { }

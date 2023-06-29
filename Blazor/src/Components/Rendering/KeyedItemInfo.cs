@@ -4,33 +4,33 @@ namespace Wangkanai.Blazor.Components.Rendering;
 
 internal readonly struct KeyedItemInfo
 {
-    public readonly int OldIndex;
-    public readonly int NewIndex;
-    public readonly int OldSiblingIndex;
-    public readonly int NewSiblingIndex;
+	public readonly int OldIndex;
+	public readonly int NewIndex;
+	public readonly int OldSiblingIndex;
+	public readonly int NewSiblingIndex;
 
-    public KeyedItemInfo(int oldIndex, int newIndex)
-    {
-        OldIndex        = oldIndex;
-        NewIndex        = newIndex;
-        OldSiblingIndex = -1;
-        NewSiblingIndex = -1;
-    }
+	public KeyedItemInfo(int oldIndex, int newIndex)
+	{
+		OldIndex        = oldIndex;
+		NewIndex        = newIndex;
+		OldSiblingIndex = -1;
+		NewSiblingIndex = -1;
+	}
 
-    private KeyedItemInfo(in KeyedItemInfo copyFrom, int oldSiblingIndex, int newSiblingIndex)
-    {
-        this            = copyFrom;
-        OldSiblingIndex = oldSiblingIndex;
-        NewSiblingIndex = newSiblingIndex;
-    }
+	private KeyedItemInfo(in KeyedItemInfo copyFrom, int oldSiblingIndex, int newSiblingIndex)
+	{
+		this            = copyFrom;
+		OldSiblingIndex = oldSiblingIndex;
+		NewSiblingIndex = newSiblingIndex;
+	}
 
-    public KeyedItemInfo WithOldSiblingIndex(int oldSiblingIndex)
-    {
-        return new(this, oldSiblingIndex, NewSiblingIndex);
-    }
+	public KeyedItemInfo WithOldSiblingIndex(int oldSiblingIndex)
+	{
+		return new(this, oldSiblingIndex, NewSiblingIndex);
+	}
 
-    public KeyedItemInfo WithNewSiblingIndex(int newSiblingIndex)
-    {
-        return new(this, OldSiblingIndex, newSiblingIndex);
-    }
+	public KeyedItemInfo WithNewSiblingIndex(int newSiblingIndex)
+	{
+		return new(this, OldSiblingIndex, newSiblingIndex);
+	}
 }

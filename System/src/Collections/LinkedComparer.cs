@@ -26,8 +26,8 @@ internal class LinkedComparer<T> : IComparer<T>
 	public int Compare(T x, T y)
 	{
 		var result = _primary.Compare(x, y);
-		return result == 0 
-			       ? _secondary.Compare(x, y) 
+		return result == 0
+			       ? _secondary.Compare(x, y)
 			       : result;
 	}
 }

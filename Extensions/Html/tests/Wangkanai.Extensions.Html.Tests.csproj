@@ -1,15 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
-    <RuntimeIdentifiers>win10-x64;linux-x64</RuntimeIdentifiers>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-    <IsPackable>false</IsPackable>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <RuntimeIdentifiers>win10-x64;linux-x64</RuntimeIdentifiers>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <IsPackable>false</IsPackable>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\src\Wangkanai.Extensions.Html.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\src\Wangkanai.Extensions.Html.csproj"/>
+    </ItemGroup>
 
 </Project>

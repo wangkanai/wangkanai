@@ -18,7 +18,7 @@ public class CheckNumericBenchmark
 	private float?   _float16   = null;
 	private double?  _double32  = null;
 	private decimal? _decimal32 = null;
-	
+
 	[Benchmark] public void Byte()    => Assert.Throws<ArgumentNullException>(() => _byte1.ThrowIfNull());
 	[Benchmark] public void Short()   => Assert.Throws<ArgumentNullException>(() => _short2.ThrowIfNull());
 	[Benchmark] public void Int()     => Assert.Throws<ArgumentNullException>(() => _int4.ThrowIfNull());

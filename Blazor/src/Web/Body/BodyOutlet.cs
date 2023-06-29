@@ -11,22 +11,22 @@ namespace Wangkanai.Blazor.Components.Sections;
 /// </summary>
 public sealed class BodyOutlet : BlazorComponentBase
 {
-    private const string GetAndRemoveExisingClass = "Blazor._internal.BodyClass.getAndRemoveExisingClass";
-    
-    internal const string BodySectionOutletName = "body";
-    internal const string CssClassOutletName    = "class";
-    
-    private string? _defaultClass;
+	private const string GetAndRemoveExisingClass = "Blazor._internal.BodyClass.getAndRemoveExisingClass";
 
-    private IJSRuntime JSRuntime { get; set; } = default;
-    
-    /// <inheritdoc />
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            _defaultClass = await JSRuntime.InvokeAsync<string>(GetAndRemoveExisingClass);
-            StateHasChanged();
-        }
-    }
+	internal const string BodySectionOutletName = "body";
+	internal const string CssClassOutletName    = "class";
+
+	private string? _defaultClass;
+
+	private IJSRuntime JSRuntime { get; set; } = default;
+
+	/// <inheritdoc />
+	protected override async Task OnAfterRenderAsync(bool firstRender)
+	{
+		if (firstRender)
+		{
+			_defaultClass = await JSRuntime.InvokeAsync<string>(GetAndRemoveExisingClass);
+			StateHasChanged();
+		}
+	}
 }

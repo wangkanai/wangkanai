@@ -4,5 +4,5 @@ namespace Wangkanai.Blazor.Components.Sections;
 
 internal interface ISectionContentProvider
 {
-    RenderFragment? Content { get; }
+	RenderFragment? Content { get; }
 }

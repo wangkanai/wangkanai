@@ -8,7 +8,7 @@
     "scripts": {
         "clean-lib": "rimraf wwwroot/lib/",
         "lib": "npm-run-all --parallel lib-*",
-        "lib-iconic" : "cpy node_modules/open-iconic/font/**/*.* wwwroot/lib/open-iconic/font/",
+        "lib-iconic": "cpy node_modules/open-iconic/font/**/*.* wwwroot/lib/open-iconic/font/",
         "lib-bootstrap": "cpy node_modules/bootstrap/dist/**/*.* wwwroot/lib/bootstrap/dist",
         "lib-jquery": "cpy node_modules/jquery/dist/**/*.* wwwroot/lib/jquery/dist",
         "lib-jquery-validation": "cpy node_modules/jquery-validation/dist/**/*.* wwwroot/lib/jquery-validation/dist",

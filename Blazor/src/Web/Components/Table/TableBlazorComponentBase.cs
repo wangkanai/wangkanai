@@ -6,6 +6,6 @@ namespace Wangkanai.Blazor;
 
 public class TableBlazorComponentBase : DomBlazorComponentBase
 {
-    [Parameter]
-    public RenderFragment ChildContent { get; set; }
+	[Parameter]
+	public RenderFragment ChildContent { get; set; }
 }
