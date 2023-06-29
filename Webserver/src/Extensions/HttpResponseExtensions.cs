@@ -17,13 +17,13 @@ public static class HttpResponseExtensions
 			if (!response.Headers.ContainsKey(WebserverConstants.CacheControl.ControlKey))
 				response.Headers.Add(WebserverConstants.CacheControl.ControlKey, WebserverConstants.CacheControl.ControlMaxAge(maxAge));
 
-			if (varys?.Any() != true) 
+			if (varys?.Any() != true)
 				return;
-			
+
 			var vary = varys.Aggregate((x, y) => x + "," + y);
-			if(response.Headers.ContainsKey(WebserverConstants.Vary.Key))
+			if (response.Headers.ContainsKey(WebserverConstants.Vary.Key))
 				vary = response.Headers[WebserverConstants.Vary.Key] + "," + vary;
-				
+
 			response.Headers[WebserverConstants.Vary.Key] = vary;
 		}
 	}

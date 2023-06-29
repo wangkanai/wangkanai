@@ -71,7 +71,7 @@ internal readonly struct MarkdownViewLocationCacheKey : IEquatable<MarkdownViewL
 	}
 
 	/// <inheritdoc />
-	public override bool Equals(object? obj) 
+	public override bool Equals(object? obj)
 		=> obj is MarkdownViewLocationCacheKey cacheKey && Equals(cacheKey);
 
 	/// <inheritdoc />

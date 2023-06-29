@@ -1,11 +1,11 @@
 <Project>
     <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props"/>
-    
+
     <PropertyGroup>
         <Title>Wangkanai Extensions FileProviders</Title>
         <PackageTags>aspnetcore;filelio;</PackageTags>
         <Description>Wangkanai .NET Extensions library</Description>
-        
+
         <RootNamespace>Wangkanai</RootNamespace>
     </PropertyGroup>
 

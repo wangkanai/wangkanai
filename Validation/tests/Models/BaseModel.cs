@@ -6,17 +6,17 @@ namespace Wangkanai.Validation.Models;
 
 public class BaseModel
 {
-    public static PropertyInfo GetProperty<T>(string name)
-        where T : BaseModel
-    {
-        return typeof(T).GetProperty(name);
-    }
+	public static PropertyInfo GetProperty<T>(string name)
+		where T : BaseModel
+	{
+		return typeof(T).GetProperty(name);
+	}
 }
 
 public class BaseModel<T>
 {
-    public static PropertyInfo GetProperty(string name)
-    {
-        return typeof(T).GetProperty(name);
-    }
+	public static PropertyInfo GetProperty(string name)
+	{
+		return typeof(T).GetProperty(name);
+	}
 }

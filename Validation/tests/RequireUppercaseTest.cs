@@ -12,45 +12,45 @@ namespace Wangkanai.Validation;
 
 public class RequireUppercaseTest
 {
-    private readonly ITestOutputHelper _output;
-    private readonly PropertyInfo      _password = UppercaseModel.GetProperty(nameof(UppercaseModel.Password));
+	private readonly ITestOutputHelper _output;
+	private readonly PropertyInfo      _password = UppercaseModel.GetProperty(nameof(UppercaseModel.Password));
 
-    public RequireUppercaseTest(ITestOutputHelper output)
-    {
-        _output = output;
-    }
+	public RequireUppercaseTest(ITestOutputHelper output)
+	{
+		_output = output;
+	}
 
-    [Fact]
-    public void Uppercase()
-    {
-        var vm = new UppercaseModel { Password = "ABC" };
+	[Fact]
+	public void Uppercase()
+	{
+		var vm = new UppercaseModel { Password = "ABC" };
 
-        var validations = vm.Validate(vm.Password, _password);
-        validations.Print(_output);
+		var validations = vm.Validate(vm.Password, _password);
+		validations.Print(_output);
 
-        Assert.Empty(validations);
-    }
+		Assert.Empty(validations);
+	}
 
-    [Fact]
-    public void Lowercase()
-    {
-        var vm = new UppercaseModel { Password = "abc" };
+	[Fact]
+	public void Lowercase()
+	{
+		var vm = new UppercaseModel { Password = "abc" };
 
-        var validations = vm.Validate(vm.Password, _password);
-        validations.Print(_output);
+		var validations = vm.Validate(vm.Password, _password);
+		validations.Print(_output);
 
-        Assert.Collection(validations, v =>
-            v.ErrorMessage = "Uppercase is required");
-    }
+		Assert.Collection(validations, v =>
+			                  v.ErrorMessage = "Uppercase is required");
+	}
 
-    [Fact]
-    public void Mix()
-    {
-        var vm = new UppercaseModel { Password = "Abc" };
+	[Fact]
+	public void Mix()
+	{
+		var vm = new UppercaseModel { Password = "Abc" };
 
-        var validations = vm.Validate(vm.Password, _password);
-        validations.Print(_output);
+		var validations = vm.Validate(vm.Password, _password);
+		validations.Print(_output);
 
-        Assert.Empty(validations);
-    }
+		Assert.Empty(validations);
+	}
 }

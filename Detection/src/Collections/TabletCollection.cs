@@ -6,16 +6,16 @@ namespace Wangkanai.Detection.Collections;
 
 internal static class TabletCollection
 {
-    private static readonly string[] Keywords =
-    {
-        "tablet",
-        "ipad",
-        "playbook",
-        "hp-tablet",
-        "kindle",
-        "sm-t",
-        "kfauwi"
-    };
+	private static readonly string[] Keywords =
+	{
+		"tablet",
+		"ipad",
+		"playbook",
+		"hp-tablet",
+		"kindle",
+		"sm-t",
+		"kfauwi"
+	};
 
-    public static readonly IndexTree KeywordsSearchTree = Keywords.BuildIndexTree();
+	public static readonly IndexTree KeywordsSearchTree = Keywords.BuildIndexTree();
 }

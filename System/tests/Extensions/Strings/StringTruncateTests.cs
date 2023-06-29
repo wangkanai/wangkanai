@@ -99,7 +99,7 @@ public class StringTruncateTests
 		Assert.Throws<ArgumentLessThanException>(() => _space.TruncateWithPostfix(1, "..."));
 		Assert.Throws<ArgumentLessThanException>(() => _space.TruncateWithPostfix(0, "..."));
 	}
-	
+
 	[Fact]
 	public void NegativeWithEllipsis()
 	{

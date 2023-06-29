@@ -9,8 +9,8 @@ namespace Wangkanai.Detection.Services;
 /// </summary>
 public interface IUserAgentService
 {
-    /// <summary>
-    ///     Get the <see cref="UserAgent" /> of the request client.
-    /// </summary>
-    UserAgent UserAgent { get; }
+	/// <summary>
+	///     Get the <see cref="UserAgent" /> of the request client.
+	/// </summary>
+	UserAgent UserAgent { get; }
 }

@@ -33,10 +33,10 @@ internal sealed class CompiledMarkdownActionDescriptorFactory
 		CompiledViewDescriptor   viewDescriptor)
 	{
 		var context = new MarkdownApplicationModelProviderContext(actionDescriptor, viewDescriptor.Type!.GetTypeInfo());
-		for (var i = 0; i < _applicationModelProviders.Length; i++) 
+		for (var i = 0; i < _applicationModelProviders.Length; i++)
 			_applicationModelProviders[i].OnProvidersExecuting(context);
 
-		for (var i = _applicationModelProviders.Length - 1; i >= 0; i--) 
+		for (var i = _applicationModelProviders.Length - 1; i >= 0; i--)
 			_applicationModelProviders[i].OnProvidersExecuted(context);
 
 		ApplyConventions(_conventions, context.MarkdownApplicationModel);
@@ -52,7 +52,7 @@ internal sealed class CompiledMarkdownActionDescriptorFactory
 		MarkdownApplicationModel     pageApplicationModel)
 	{
 		var applicationModelConventions = GetConventions<IMarkdownApplicationModelConvention>(pageApplicationModel.HandlerTypeAttributes);
-		foreach (var convention in applicationModelConventions) 
+		foreach (var convention in applicationModelConventions)
 			convention.Apply(pageApplicationModel);
 
 		var handlers = pageApplicationModel.HandlerMethods.ToArray();

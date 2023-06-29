@@ -55,12 +55,12 @@ public class ProjectionEqualityComparer<TSource, TKey> : IEqualityComparer<TSour
 	/// </returns>
 	public bool Equals(TSource x, TSource y)
 		=> (x, y) switch
-		{
-			(null, null) => true,
-			(null, _)    => false,
-			(_, null)    => false,
-			_            => _comparer.Equals(_projection(x), _projection(y))
-		};
+		   {
+			   (null, null) => true,
+			   (null, _)    => false,
+			   (_, null)    => false,
+			   _            => _comparer.Equals(_projection(x), _projection(y))
+		   };
 
 	/// <summary>
 	/// Produces a hash code for the given value by projecting it and then asking the equality comparer for the hash code of the resulting key.

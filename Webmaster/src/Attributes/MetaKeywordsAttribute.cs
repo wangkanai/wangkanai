@@ -7,18 +7,18 @@ namespace Wangkanai.Webmaster.Core;
 [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
 public sealed class MetaKeywordsAttribute : Attribute
 {
-    private readonly List<string> _keywords;
+	private readonly List<string> _keywords;
 
-    public MetaKeywordsAttribute(params string[] keywords)
-    {
-        _keywords = new List<string>(keywords);
-    }
+	public MetaKeywordsAttribute(params string[] keywords)
+	{
+		_keywords = new List<string>(keywords);
+	}
 }
 
 public abstract class MetaAttribute : ActionFilterAttribute
 {
-    public override void OnActionExecuting(ActionExecutingContext context)
-    {
-        context.ThrowIfNull();
-    }
+	public override void OnActionExecuting(ActionExecutingContext context)
+	{
+		context.ThrowIfNull();
+	}
 }

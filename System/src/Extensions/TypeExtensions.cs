@@ -100,7 +100,7 @@ public static class TypeExtensions
 
 		if (nullable)
 			return typeof(Nullable<>).MakeGenericType(type);
-		
+
 		return type.GetGenericArguments()[0];
 	}
 

@@ -37,7 +37,7 @@ public class MarkdownActionDescriptorProvider : IActionDescriptorProvider
 	{
 		var pageRouteModels = BuildModel();
 
-		for (var i = 0; i < pageRouteModels.Count; i++) 
+		for (var i = 0; i < pageRouteModels.Count; i++)
 			AddActionDescriptors(context.Results, pageRouteModels[i]);
 	}
 
@@ -58,7 +58,7 @@ public class MarkdownActionDescriptorProvider : IActionDescriptorProvider
 
 	private void AddActionDescriptors(IList<ActionDescriptor> actions, MarkdownRouteModel model)
 	{
-		for (var i = 0; i < _conventions.Length; i++) 
+		for (var i = 0; i < _conventions.Length; i++)
 			_conventions[i].Apply(model);
 
 		foreach (var selector in model.Selectors)

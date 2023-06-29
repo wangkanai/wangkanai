@@ -120,7 +120,7 @@ internal sealed class DynamicMarkdownEndpointMatcherPolicy : MatcherPolicy, IEnd
 					continue;
 				}
 			}
-			
+
 			candidates.ReplaceEndpoint(i, endpoint, values);
 
 			var loadedEndpoints = new List<Endpoint>(endpoints);

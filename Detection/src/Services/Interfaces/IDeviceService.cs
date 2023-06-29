@@ -9,8 +9,8 @@ namespace Wangkanai.Detection.Services;
 /// </summary>
 public interface IDeviceService
 {
-    /// <summary>
-    ///     Gets the <see cref="Device" /> of the request client.
-    /// </summary>
-    public Device Type { get; }
+	/// <summary>
+	///     Gets the <see cref="Device" /> of the request client.
+	/// </summary>
+	public Device Type { get; }
 }

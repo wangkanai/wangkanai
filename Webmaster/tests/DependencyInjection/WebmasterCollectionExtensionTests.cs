@@ -8,10 +8,10 @@ namespace Wangkanai.Webmaster;
 
 public class WebmasterCollectionExtensionTests
 {
-    [Fact]
-    public void AddRequiredPlatformServices_ReturnsExpected()
-    {
-        var services = new ServiceCollection();
-        var builder = services.AddWebmasterBuilder();
-    }
+	[Fact]
+	public void AddRequiredPlatformServices_ReturnsExpected()
+	{
+		var services = new ServiceCollection();
+		var builder  = services.AddWebmasterBuilder();
+	}
 }

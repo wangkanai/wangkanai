@@ -23,8 +23,8 @@ internal sealed class StringArrayComparer : IEqualityComparer<string[]>
 
 		if (x == null && y == null)
 			return true;
-		
-		if(x== null || y == null)
+
+		if (x == null || y == null)
 			return false;
 
 		if (x.Length != y.Length)
@@ -34,8 +34,8 @@ internal sealed class StringArrayComparer : IEqualityComparer<string[]>
 		{
 			if (string.IsNullOrEmpty(x[i]) && string.IsNullOrEmpty(y[i]))
 				continue;
-			
-			if(!_valueComparer.Equals(x[i], y[i]))
+
+			if (!_valueComparer.Equals(x[i], y[i]))
 				return false;
 		}
 
@@ -48,7 +48,7 @@ internal sealed class StringArrayComparer : IEqualityComparer<string[]>
 			return 0;
 
 		var hash = new HashCode();
-		for(var i=0; i<obj.Length; i++)
+		for (var i = 0; i < obj.Length; i++)
 			hash.Add(obj[i] ?? string.Empty, _valueComparer);
 
 		return hash.ToHashCode();

@@ -2,6 +2,4 @@
 
 namespace Wangkanai.Detection.Services;
 
-internal sealed class DetectionMarkerService
-{
-}
+internal sealed class DetectionMarkerService { }

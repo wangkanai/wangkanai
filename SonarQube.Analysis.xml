@@ -1,6 +1,5 @@
-<SonarQubeAnalysisProperties xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-                             xmlns="http://www.sonarsource.com/msbuild/integration/2015/1">
+<SonarQubeAnalysisProperties
+    xmlns="http://www.sonarsource.com/msbuild/integration/2015/1">
     <!-- Mandatory-->
     <Property Name="sonar.host.url">https://sonarcloud.io</Property>
     <!-- Generic  -->

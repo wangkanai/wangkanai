@@ -4,11 +4,11 @@ namespace Wangkanai.Resources;
 
 internal static class AnnotationResources
 {
-    internal const string ValueNullThenHalt    = "null => halt";
-    internal const string ValueNullThenStop    = "null => stop";
-    internal const string ValueNullThenVoid    = "null => void";
-    internal const string ValueNullThenNothing = "null => nothing";
+	internal const string ValueNullThenHalt    = "null => halt";
+	internal const string ValueNullThenStop    = "null => stop";
+	internal const string ValueNullThenVoid    = "null => void";
+	internal const string ValueNullThenNothing = "null => nothing";
 
-    internal const string ValueNullThenTrue  = "null => true";
-    internal const string ValueNullThenFalse = "null => false";
+	internal const string ValueNullThenTrue  = "null => true";
+	internal const string ValueNullThenFalse = "null => false";
 }

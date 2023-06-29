@@ -6,6 +6,6 @@ namespace Wangkanai.Validation.Models;
 
 public class UppercaseModel : BaseModel<UppercaseModel>
 {
-    [RequireUppercase]
-    public string Password { get; set; }
+	[RequireUppercase]
+	public string Password { get; set; }
 }

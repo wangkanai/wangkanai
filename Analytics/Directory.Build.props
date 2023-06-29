@@ -1,19 +1,19 @@
 <Project>
-  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
-  <PropertyGroup>
-    <VersionPrefix>1.0.0</VersionPrefix>
-    <Title>Wangkanai Analytics</Title>
-    <Description>Wangkanai Analytics is a .NET Core library extension that tracks and generates details statistics about visitors to your website. The core feature is to track website activity such as session duration, pages per session, bounce rate and etc. of individuals using the site, along with the information on the source of the traffic..</Description>
-    <PackageTags>aspnetcore;analytics;</PackageTags>
-    <RootNamespace>Wangkanai.Analytics</RootNamespace>
-    <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Analytics</PackageProjectUrl>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Analytics'">
-    <PackageIcon>analytics-logo.png</PackageIcon>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
-  </PropertyGroup>
-  <ItemGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Analytics'">
-    <None Include="..\..\assets\analytics-logo.png" Pack="true" PackagePath="\" />
-    <None Include="..\README.md" Pack="true" PackagePath="\" />
-  </ItemGroup>
+    <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props"/>
+    <PropertyGroup>
+        <VersionPrefix>1.0.0</VersionPrefix>
+        <Title>Wangkanai Analytics</Title>
+        <Description>Wangkanai Analytics is a .NET Core library extension that tracks and generates details statistics about visitors to your website. The core feature is to track website activity such as session duration, pages per session, bounce rate and etc. of individuals using the site, along with the information on the source of the traffic..</Description>
+        <PackageTags>aspnetcore;analytics;</PackageTags>
+        <RootNamespace>Wangkanai.Analytics</RootNamespace>
+        <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Analytics</PackageProjectUrl>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Analytics'">
+        <PackageIcon>analytics-logo.png</PackageIcon>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+    </PropertyGroup>
+    <ItemGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Analytics'">
+        <None Include="..\..\assets\analytics-logo.png" Pack="true" PackagePath="\"/>
+        <None Include="..\README.md" Pack="true" PackagePath="\"/>
+    </ItemGroup>
 </Project>

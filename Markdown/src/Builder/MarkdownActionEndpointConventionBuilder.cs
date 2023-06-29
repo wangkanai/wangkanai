@@ -15,8 +15,8 @@ public sealed class MarkdownActionEndpointConventionBuilder : IEndpointConventio
 		List<Action<EndpointBuilder>> conventions,
 		List<Action<EndpointBuilder>> finallyConventions)
 	{
-		_lock                    = @lock;
-		_conventions             = conventions;
+		_lock               = @lock;
+		_conventions        = conventions;
 		_finallyConventions = finallyConventions;
 	}
 
@@ -32,7 +32,7 @@ public sealed class MarkdownActionEndpointConventionBuilder : IEndpointConventio
 	{
 		finalConvention.ThrowIfNull();
 
-		lock(_lock)
+		lock (_lock)
 			_finallyConventions.Add(finalConvention);
 	}
 }

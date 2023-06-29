@@ -4,8 +4,8 @@ namespace Wangkanai.Solver;
 
 public partial class Solver
 {
-    public static Solver CreateSolver(SolverType type)
-    {
-        return new Solver(type);
-    }
+	public static Solver CreateSolver(SolverType type)
+	{
+		return new Solver(type);
+	}
 }

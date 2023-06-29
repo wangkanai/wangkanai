@@ -228,7 +228,7 @@ public class CollectionExtensionsTests
 
 		Assert.Equal(expected, strings1.Replace(strings2));
 	}
-	
+
 	[Fact]
 	public void ReplaceListInt()
 	{

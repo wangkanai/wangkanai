@@ -4,6 +4,4 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Wangkanai.Webmaster.TagHelpers;
 
-public sealed class AlternateTagHelper : TagHelper
-{
-}
+public sealed class AlternateTagHelper : TagHelper { }

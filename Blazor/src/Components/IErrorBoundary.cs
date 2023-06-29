@@ -4,5 +4,5 @@ namespace Wangkanai.Blazor.Components;
 
 internal interface IErrorBoundary
 {
-    void HandleException(Exception error);
+	void HandleException(Exception error);
 }

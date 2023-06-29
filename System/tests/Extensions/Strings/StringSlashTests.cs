@@ -17,7 +17,7 @@ public class StringSlashTests
 	string end   = "end";
 
 	// Ensure leading slash
-	
+
 	[Fact]
 	public void EnsureLeadingHasSlash()
 	{
@@ -38,9 +38,9 @@ public class StringSlashTests
 		Assert.Empty(_empty.EnsureLeadingSlash());
 		Assert.Equal(_space, _space.EnsureLeadingSlash());
 	}
-	
+
 	// Ensure trailing slash
-	
+
 	[Fact]
 	public void EnsureTrailingHasSlash()
 	{
@@ -61,7 +61,7 @@ public class StringSlashTests
 		Assert.Empty(_empty.EnsureTrailingSlash());
 		Assert.Equal(_space, _space.EnsureTrailingSlash());
 	}
-	
+
 	// Remove leading slash
 
 	[Fact]
@@ -84,7 +84,7 @@ public class StringSlashTests
 		Assert.Empty(_empty.RemoveLeadingSlash());
 		Assert.Equal(_space, _space.RemoveLeadingSlash());
 	}
-	
+
 	// Remove trailing slash
 
 	[Fact]

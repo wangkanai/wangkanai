@@ -53,7 +53,7 @@ internal static class CompiledMarkdownActionDescriptorBuilder
 	{
 		var handlerMetatdata = applicationModel.HandlerTypeAttributes;
 		var endpointMetadata = applicationModel.EndpointMetadata;
-		
+
 		return Enumerable.Concat(handlerMetatdata, endpointMetadata).ToList();
 	}
 

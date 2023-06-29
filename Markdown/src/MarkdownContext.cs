@@ -46,13 +46,13 @@ public class MarkdownContext : ActionContext
 		}
 		set => _valueProviderFactories = value.ThrowIfNull();
 	}
-	
+
 	public virtual ViewDataDictionary ViewData
 	{
 		get => _viewData!;
 		set => _viewData = value.ThrowIfNull();
 	}
-	
+
 	public virtual IList<Func<IMarkdownPage>> ViewStartFactories
 	{
 		get => _viewStartFactories!;

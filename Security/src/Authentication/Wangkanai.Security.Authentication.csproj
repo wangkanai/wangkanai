@@ -11,7 +11,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Core\Wangkanai.Security.Core.csproj" PrivateAssets="all" />
+        <ProjectReference Include="..\Core\Wangkanai.Security.Core.csproj" PrivateAssets="all"/>
     </ItemGroup>
-    
+
 </Project>

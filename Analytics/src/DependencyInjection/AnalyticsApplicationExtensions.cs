@@ -12,24 +12,24 @@ namespace Microsoft.Extensions.DependencyInjection;
 /// </summary>
 public static class AnalyticsApplicationExtensions
 {
-    public static IApplicationBuilder UseAnalytics(this IApplicationBuilder app)
-    {
-        app.ThrowIfNull();
+	public static IApplicationBuilder UseAnalytics(this IApplicationBuilder app)
+	{
+		app.ThrowIfNull();
 
-        app.Validate();
-        app.VerifyMarkerIsRegistered<AnalyticsMarkerService>();
+		app.Validate();
+		app.VerifyMarkerIsRegistered<AnalyticsMarkerService>();
 
-        app.UseMiddleware<AnalyticsMiddleware>();
+		app.UseMiddleware<AnalyticsMiddleware>();
 
-        return app;
-    }
+		return app;
+	}
 
-    private static void Validate(this IApplicationBuilder app)
-    {
-        //var factory = app.ApplicationServices.GetService(typeof(ILoggerFactory)) as ILoggerFactory;
-        //Check.NotNull(factory);
+	private static void Validate(this IApplicationBuilder app)
+	{
+		//var factory = app.ApplicationServices.GetService(typeof(ILoggerFactory)) as ILoggerFactory;
+		//Check.NotNull(factory);
 
-        // var logger = factory.CreateLogger("Analytics.Startup");
-        // logger.LogInformation("Starting Analytics version {version}", typeof(AnalyticsApplicationExtensions)?.Assembly?.GetName()?.Version?.ToString());
-    }
+		// var logger = factory.CreateLogger("Analytics.Startup");
+		// logger.LogInformation("Starting Analytics version {version}", typeof(AnalyticsApplicationExtensions)?.Assembly?.GetName()?.Version?.ToString());
+	}
 }

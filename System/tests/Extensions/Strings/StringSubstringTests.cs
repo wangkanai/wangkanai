@@ -111,23 +111,22 @@ public class StringSubstringTests
 	{
 		Assert.Equal(text, text.SubstringSafe());
 	}
-	
+
 	[Fact]
 	public void TextStartOne()
 	{
 		Assert.Equal("bcde", text.SubstringSafe(1));
 	}
-	
+
 	[Fact]
 	public void TextStartLength()
 	{
 		Assert.Equal("bcde", text.SubstringSafe(1, 4));
 	}
-	
+
 	[Fact]
 	public void TextStartLengthOverflow()
 	{
 		Assert.Equal("bcde", text.SubstringSafe(1, 10));
 	}
-
 }
