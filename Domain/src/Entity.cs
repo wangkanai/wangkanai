@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2023 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using System;
 using System.Diagnostics.CodeAnalysis;
@@ -45,7 +45,7 @@ public abstract class Entity<T> : IEntity<T> // where T : IComparable<T> //, Nul
 			return false;
 
 		var other = obj as Entity<T>;
-		
+
 		return other != null && Operator.Equal(Id, other.Id);
 	}
 

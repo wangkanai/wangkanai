@@ -87,7 +87,7 @@ dotnet_sort_system_directives_first = true
 dotnet_separate_import_directive_groups = true
 
 [*.{cs, cpp, h}]
-file_header_template = Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+file_header_template = Copyright (c) 2014-2023 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 [*.{html, cshtml}]
 indent_size = 4

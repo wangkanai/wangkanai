@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2023 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ public class PrimaryKeyResolvingMap
 {
 	private readonly Dictionary<IEntity, IEntity> _resolvingMap = new Dictionary<IEntity, IEntity>();
 
-	public void AddPair(IEntity transient, IEntity persistent) 
+	public void AddPair(IEntity transient, IEntity persistent)
 		=> _resolvingMap[transient] = persistent;
 
 	public void ResolvePrimaryKeys()

@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2023 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using System;
 using System.Collections.Generic;
@@ -38,7 +38,7 @@ public static class ReflectionUtility
 		return result;
 	}
 
-	public static bool IsAssignableFromGenericList(this Type type) 
+	public static bool IsAssignableFromGenericList(this Type type)
 		=> type.GetInterfaces().Any(intType => intType.IsGenericType && intType.GetGenericTypeDefinition() == typeof(IList<>));
 
 	private class ObjectReferenceComparer : IEqualityComparer<object>
