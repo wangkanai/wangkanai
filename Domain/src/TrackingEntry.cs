@@ -8,6 +8,5 @@ public class TrackingEntry
 	public   EntryState EntryState   { get; set; }
 	internal bool       IsSubscribed { get; set; }
 
-	public override string ToString()
-		=> $"{Entity ?? "null"} {EntryState}";
+	public override string ToString() => $"{Entity ?? "null"} {EntryState}";
 }

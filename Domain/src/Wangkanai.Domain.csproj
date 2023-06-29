@@ -5,11 +5,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="JetBrains.Annotations" Version="2022.3.1"/>
+        <PackageReference Include="JetBrains.Annotations" Version="2022.3.1" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\System\src\Wangkanai.System.csproj"/>
+        <ProjectReference Include="..\..\System\src\Wangkanai.System.csproj" />
     </ItemGroup>
 
 </Project>

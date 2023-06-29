@@ -85,6 +85,5 @@ public abstract class ValueObject : IValueObject, ICacheKey, ICloneable
 		                 .OrderBy(p => p.Name)
 		                 .ToList();
 
-	public object Clone()
-		=> MemberwiseClone();
+	public object Clone() => MemberwiseClone();
 }

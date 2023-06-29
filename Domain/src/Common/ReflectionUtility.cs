@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 
 namespace Wangkanai.Domain.Common;
@@ -37,16 +38,8 @@ public static class ReflectionUtility
 		return result;
 	}
 
-	public static bool IsAssignableFromGenericList(this Type type)
-	{
-		foreach (var intType in type.GetInterfaces())
-		{
-			if (intType.IsGenericType && intType.GetGenericTypeDefinition() == typeof(IList<>))
-				return true;
-		}
-
-		return false;
-	}
+	public static bool IsAssignableFromGenericList(this Type type) 
+		=> type.GetInterfaces().Any(intType => intType.IsGenericType && intType.GetGenericTypeDefinition() == typeof(IList<>));
 
 	private class ObjectReferenceComparer : IEqualityComparer<object>
 	{

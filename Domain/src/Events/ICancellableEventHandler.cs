@@ -12,3 +12,9 @@ public interface ICancellableEventHandler<in T>
 {
 	Task Handle(T message, CancellationToken token = default);
 }
+
+public interface ICancellableEventHandlerAsync<in T>
+	where T : IMessage
+{
+	Task HandleAsync(T message, CancellationToken token = default);
+}

@@ -9,10 +9,8 @@ public class PrimaryKeyResolvingMap
 {
 	private readonly Dictionary<IEntity, IEntity> _resolvingMap = new Dictionary<IEntity, IEntity>();
 
-	public void AddPair(IEntity transient, IEntity persistent)
-	{
-		_resolvingMap[transient] = persistent;
-	}
+	public void AddPair(IEntity transient, IEntity persistent) 
+		=> _resolvingMap[transient] = persistent;
 
 	public void ResolvePrimaryKeys()
 	{

@@ -7,5 +7,10 @@ namespace Wangkanai.Domain.Messages;
 
 public interface ICancellableHandler<in T> where T : IMessage
 {
+	Task Handle(T message, CancellationToken token = default);
+}
+
+public interface ICancellableHandlerAsync<in T> where T : IMessage
+{
 	Task HandleAsync(T message, CancellationToken token = default);
 }

@@ -6,10 +6,7 @@ namespace Wangkanai.Domain.Events;
 
 public class DomainEvent : DomainEvent<Guid>
 {
-	public DomainEvent()
-	{
-		Id = Guid.NewGuid();
-	}
+	public DomainEvent() => Id = Guid.NewGuid();
 }
 
 public class DomainEvent<T> : Entity<T>, IEvent<T>
@@ -17,8 +14,5 @@ public class DomainEvent<T> : Entity<T>, IEvent<T>
 	public int            Version   { get; set; }
 	public DateTimeOffset TimeStamp { get; set; }
 
-	public DomainEvent()
-	{
-		TimeStamp = DateTime.UtcNow;
-	}
+	public DomainEvent() => TimeStamp = DateTime.UtcNow;
 }

@@ -8,3 +8,8 @@ public interface IHandler<in T> where T : IMessage
 {
 	Task Handle(T message);
 }
+
+public interface IHandlerAsync<in T> where T : IMessage
+{
+	Task HandleAsync(T message);
+}
