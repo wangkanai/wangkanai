@@ -11,10 +11,9 @@ public abstract class Entity<T> : IEntity<T> // where T : IComparable<T> //, Nul
 {
 	public T Id { get; set; }
 
-	public bool IsTransient()
-		=> Id == null;
+	public bool IsTransient() => Id == null || Id.Equals(default(T));
 
-	private Type GetRealObjectType(object obj)
+	private static Type GetRealObjectType(object obj)
 	{
 		var retValue = obj.GetType();
 		// because can ne compared two object with same id and 'types' but own of it is EF dynamics proxy type)
