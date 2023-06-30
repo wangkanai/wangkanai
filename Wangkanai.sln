@@ -88,6 +88,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Analytics", "Analytics", "{
 		Analytics\Directory.Build.props = Analytics\Directory.Build.props
 		Analytics\README.md = Analytics\README.md
 		Analytics\sign.ps1 = Analytics\sign.ps1
+		Analytics\INSTALL.md = Analytics\INSTALL.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Analytics", "Analytics\src\Wangkanai.Analytics.csproj", "{3BF37E15-B706-409C-96F7-AF2D033F509E}"
