@@ -4,7 +4,7 @@
         <VersionPrefix>1.0.0</VersionPrefix>
         <Title>Wangkanai Federation</Title>
         <PackageTags>aspnetcore;identity;federation;</PackageTags>
-        <Description>OAuth 2.1 and OpenID Connect Framework for ASP.NET Core for Authentication and Authorization with flexible permission policy.</Description>
+        <Description>Take control of Authentication and Authorization in ASP.NET Core with `Federation`, your partner for seamless OAuth 2.1 and OpenID Connect integrations. From managing JWTs and external authentication providers to a comprehensive identity model structure, `Federation` offers a robust, secure, and flexible solution. Discover `Federation` and let's redefine Authentication and Authorization together.</Description>
         <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Federation</PackageProjectUrl>
         <RootNamespace>Wangkanai.Federation</RootNamespace>
         <PackageNamespace>True</PackageNamespace>
