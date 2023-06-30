@@ -1,8 +1,4 @@
-## Wangkanai Hosting
-
-Hosting provides the entry point for configuring and running your application.
-
-**Please show me some love and click the** :star:
+## Hosting: Turbocharge Your .NET Application's Configuration and Runtime
 
 [![NuGet Badge](https://buildstats.info/nuget/wangkanai.hosting)](https://www.nuget.org/packages/wangkanai.hosting)
 [![NuGet Badge](https://buildstats.info/nuget/wangkanai.hosting?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.hosting)
@@ -12,46 +8,22 @@ Hosting provides the entry point for configuring and running your application.
 [![Patreon](https://img.shields.io/badge/patreon-support%20me-d9643a.svg)](https://www.patreon.com/wangkanai)
 [![GitHub](https://img.shields.io/github/license/wangkanai/wangkanai)](https://github.com/wangkanai/wangkanai/blob/main/LICENSE)
 
-## Directory Structure
+Welcome to `Hosting`, a game-changing .NET library that's more than just an entry point for running your application. 
+It's your command center, your launchpad, your backstage pass to configuring and managing your application like a pro.
 
-* `src` - The source code of this project lives here
-* `test` - The test code of this project lives here
-* `collection` - Collection of sample user agents for lab testing
-* `sample` - Contains sample web application of usage
-* `doc` - Contains the documentation on how utilized this library
+In today's fast-paced development landscape, fine-tuning your application's configuration and runtime isn't just a task - it's an art. 
+`Hosting` embraces this philosophy, providing you with the tools and flexibility to shape your application's behavior to your exact needs.
 
-### Contributing
+But `Hosting` is more than just a configuration toolkit. It's a catalyst for efficiency and performance, streamlining the process of setting up and running your application. 
+Whether you're working on a complex enterprise system or a personal project, `Hosting` gives you the control you need to get your application up and running smoothly.
 
-All contribution are welcome, please contact the author.
+At the heart of `Hosting` is a vibrant community of developers who believe in the power of efficient configuration and runtime management. 
+We're dedicated to making these crucial aspects of application development accessible and manageable for all .NET developers.
 
-## Contributors
+### Become a Part of Our Journey
 
-### Code Contributors
+If `Hosting` has simplified your application setup, enhanced your project's performance, or just made your developer life a little easier, we'd love to hear about it! 
+Show your support by giving us a star ⭐ on GitHub. Your stars not only motivate us, but they also help other developers discover `Hosting`.
 
-This project exists thanks to all the people who contribute. [[Contribute](CONTRIBUTING.md)].
-<a href="https://github.com/wangkanai/wangkanai/graphs/contributors"><img src="https://opencollective.com/wangkanai/contributors.svg?width=890&button=false" /></a>
-
-### Financial Contributors
-
-Become a financial contributor and help us sustain our
-community. [[Contribute](https://opencollective.com/wangkanai/contribute)]
-
-#### Individuals
-
-[![Individuals Contributors](https://opencollective.com/wangkanai/individuals.svg?width=890)](https://opencollective.com/wangkanai)
-
-#### Organizations
-
-Support this project with your organization. Your logo will show up here with a link to your website.
-[[Contribute](https://opencollective.com/wangkanai/contribute)]
-
-<a href="https://opencollective.com/wangkanai/organization/0/website"><img src="https://opencollective.com/wangkanai/organization/0/avatar.svg"></a>
-<a href="https://opencollective.com/wangkanai/organization/1/website"><img src="https://opencollective.com/wangkanai/organization/1/avatar.svg"></a>
-<a href="https://opencollective.com/wangkanai/organization/2/website"><img src="https://opencollective.com/wangkanai/organization/2/avatar.svg"></a>
-<a href="https://opencollective.com/wangkanai/organization/3/website"><img src="https://opencollective.com/wangkanai/organization/3/avatar.svg"></a>
-<a href="https://opencollective.com/wangkanai/organization/4/website"><img src="https://opencollective.com/wangkanai/organization/4/avatar.svg"></a>
-<a href="https://opencollective.com/wangkanai/organization/5/website"><img src="https://opencollective.com/wangkanai/organization/5/avatar.svg"></a>
-<a href="https://opencollective.com/wangkanai/organization/6/website"><img src="https://opencollective.com/wangkanai/organization/6/avatar.svg"></a>
-<a href="https://opencollective.com/wangkanai/organization/7/website"><img src="https://opencollective.com/wangkanai/organization/7/avatar.svg"></a>
-<a href="https://opencollective.com/wangkanai/organization/8/website"><img src="https://opencollective.com/wangkanai/organization/8/avatar.svg"></a>
-<a href="https://opencollective.com/wangkanai/organization/9/website"><img src="https://opencollective.com/wangkanai/organization/9/avatar.svg"></a>
+For any inquiries, suggestions, or contributions, don't hesitate to open an issue or a pull request. 
+Together, let's redefine what's possible with application configuration and runtime management!
