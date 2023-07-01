@@ -41,6 +41,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Responsive", "Responsive", 
 		Responsive\Directory.Build.props = Responsive\Directory.Build.props
 		Responsive\README.md = Responsive\README.md
 		Responsive\sign.ps1 = Responsive\sign.ps1
+		Responsive\INSTALL.md = Responsive\INSTALL.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Validation", "Validation", "{7FB8FAE5-9EFC-42D3-AA14-F9E1A9B7AB26}"
