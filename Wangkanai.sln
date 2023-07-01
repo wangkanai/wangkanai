@@ -78,6 +78,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Webmaster", "Webmaster", "{
 		Webmaster\Directory.Build.props = Webmaster\Directory.Build.props
 		Webmaster\README.md = Webmaster\README.md
 		Webmaster\sign.ps1 = Webmaster\sign.ps1
+		Webmaster\INSTALL.md = Webmaster\INSTALL.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Webmaster", "Webmaster\src\Wangkanai.Webmaster.csproj", "{40C64D52-CDFF-45DA-BC80-A5775C0EBBC0}"
