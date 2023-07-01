@@ -1,5 +1,13 @@
 ## System: Unleashing the Full Potential of .NET Runtime
 
+[![NuGet Badge](https://buildstats.info/nuget/wangkanai.system)](https://www.nuget.org/packages/wangkanai.system)
+[![NuGet Badge](https://buildstats.info/nuget/wangkanai.system?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.system)
+
+[![Build Status](https://dev.azure.com/wangkanai/GitHub/_apis/build/status/wangkanai?branchName=main)](https://dev.azure.com/wangkanai/GitHub/_build/latest?definitionId=20&branchName=main)
+[![Open Collective](https://img.shields.io/badge/open%20collective-support%20me-3385FF.svg)](https://opencollective.com/wangkanai)
+[![Patreon](https://img.shields.io/badge/patreon-support%20me-d9643a.svg)](https://www.patreon.com/wangkanai)
+[![GitHub](https://img.shields.io/github/license/wangkanai/wangkanai)](https://github.com/wangkanai/wangkanai/blob/main/LICENSE)
+
 Welcome to `System`, a library of extensions designed to make .NET runtime not only more manageable but also much more
 powerful.
 It goes beyond just simplifying your coding process – it's about making your code cleaner, more structured, and
@@ -28,12 +36,4 @@ Your support not only motivates us but also helps other developers discover this
 
 For any inquiries, suggestions, or contributions, feel free to open an issue or a pull request.
 Let's work together to make .NET development even more powerful and enjoyable!
-
-[![NuGet Badge](https://buildstats.info/nuget/wangkanai.system)](https://www.nuget.org/packages/wangkanai.system)
-[![NuGet Badge](https://buildstats.info/nuget/wangkanai.system?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.system)
-
-[![Build Status](https://dev.azure.com/wangkanai/GitHub/_apis/build/status/wangkanai?branchName=main)](https://dev.azure.com/wangkanai/GitHub/_build/latest?definitionId=20&branchName=main)
-[![Open Collective](https://img.shields.io/badge/open%20collective-support%20me-3385FF.svg)](https://opencollective.com/wangkanai)
-[![Patreon](https://img.shields.io/badge/patreon-support%20me-d9643a.svg)](https://www.patreon.com/wangkanai)
-[![GitHub](https://img.shields.io/github/license/wangkanai/wangkanai)](https://github.com/wangkanai/wangkanai/blob/main/LICENSE)
 
