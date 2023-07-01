@@ -4,7 +4,7 @@
         <VersionPrefix>1.0.0</VersionPrefix>
         <Title>Wangkanai Identity</Title>
         <PackageTags>aspnetcore;identity;model;</PackageTags>
-        <Description>OpenID Connect and OAuth 2.1 collection helper models.</Description>
+        <Description>Introducing `Identity`, your essential toolkit for OpenID Connect and OAuth 2 integration in ASP.NET Core. Simplify your authentication and authorization systems with our handpicked collection of helper models. Whether for enterprise-level applications or personal projects, `Identity` offers versatility and ease-of-use. Discover Identity and take your security implementation to new heights.</Description>
         <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Identity</PackageProjectUrl>
     </PropertyGroup>
     <PropertyGroup Condition="$(MSBuildProjectDirectory.Contains('src'))">
