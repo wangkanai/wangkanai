@@ -113,6 +113,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Markdown", "Markdown", "{38
 		Markdown\Directory.Build.props = Markdown\Directory.Build.props
 		Markdown\README.md = Markdown\README.md
 		Markdown\sign.ps1 = Markdown\sign.ps1
+		Markdown\INSTALL.md = Markdown\INSTALL.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Markdown", "Markdown\src\Wangkanai.Markdown.csproj", "{33B2A6FA-15BB-4071-A3D1-2644F0A35AAA}"
