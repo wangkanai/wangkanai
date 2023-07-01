@@ -29,10 +29,6 @@ Your support not only motivates us but also helps other developers discover this
 For any inquiries, suggestions, or contributions, feel free to open an issue or a pull request.
 Let's work together to make .NET development even more powerful and enjoyable!
 
-This version of the introduction emphasizes the benefits of the `System` library, encourages other developers to star
-the project,
-and promotes community engagement, which can help increase your star count.
-
 [![NuGet Badge](https://buildstats.info/nuget/wangkanai.system)](https://www.nuget.org/packages/wangkanai.system)
 [![NuGet Badge](https://buildstats.info/nuget/wangkanai.system?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.system)
 
