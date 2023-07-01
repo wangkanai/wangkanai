@@ -67,8 +67,7 @@ public class RequireUniqueTests
 		if (unique >= 2)
 			Assert.Empty(validations);
 		else
-			Assert.Collection(validations, v =>
-				                  v.ErrorMessage = "2 unique characters are required");
+			Assert.Collection(validations, v => v.ErrorMessage = "2 unique characters are required");
 	}
 
 	[Theory]
@@ -83,8 +82,7 @@ public class RequireUniqueTests
 		if (unique >= 3)
 			Assert.Empty(validations);
 		else
-			Assert.Collection(validations, v =>
-				                  v.ErrorMessage = "3 unique characters are required");
+			Assert.Collection(validations, v => v.ErrorMessage = "3 unique characters are required");
 	}
 
 	[Theory]
@@ -99,7 +97,6 @@ public class RequireUniqueTests
 		if (unique >= 4)
 			Assert.Empty(validations);
 		else
-			Assert.Collection(validations, v =>
-				                  v.ErrorMessage = "4 unique characters are required");
+			Assert.Collection(validations, v => v.ErrorMessage = "4 unique characters are required");
 	}
 }

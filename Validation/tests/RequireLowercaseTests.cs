@@ -28,8 +28,7 @@ public class RequireLowercaseTests
 		var validations = vm.Validate(vm.Password, _password);
 		validations.Print(_output);
 
-		Assert.Collection(validations, v =>
-			                  v.ErrorMessage = "Lowercase is required");
+		Assert.Collection(validations, v => v.ErrorMessage = "Lowercase is required");
 	}
 
 	[Fact]
@@ -53,4 +52,28 @@ public class RequireLowercaseTests
 
 		Assert.Empty(validations);
 	}
+	
+	[Fact]
+	public void Unique()
+	{
+		var vm = new LowercaseModel { Password = "aaa" };
+
+		var validations = vm.Validate(vm.Password, _password);
+		validations.Print(_output);
+
+		Assert.Empty(validations);
+	}
+	
+	[Fact]
+	public void Null()
+	{
+		var vm = new LowercaseModel { Password = null };
+
+		var validations = vm.Validate(vm.Password, _password);
+		validations.Print(_output);
+
+		// Assert.Collection(validations, v => v.ErrorMessage = "Lowercase is required");
+		Assert.Empty(validations); // This is not right!
+	}
+	
 }

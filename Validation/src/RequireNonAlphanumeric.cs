@@ -9,12 +9,10 @@ public sealed class RequireNonAlphanumeric : ValidationAttribute
 		: base(() => "Non Alphanumeric is required") { }
 
 	public override bool IsValid(object value)
-	{
-		return value switch
-		       {
-			       null          => true,
-			       string actual => !actual.All(char.IsLetterOrDigit),
-			       _             => false
-		       };
-	}
+		=> value switch
+		   {
+			   null          => true,
+			   string actual => !actual.All(char.IsLetterOrDigit),
+			   _             => false
+		   };
 }

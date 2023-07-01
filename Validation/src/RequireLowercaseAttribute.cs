@@ -9,12 +9,10 @@ public sealed class RequireLowercaseAttribute : ValidationAttribute
 		: base(() => "Lowercase is required") { }
 
 	public override bool IsValid(object value)
-	{
-		return value switch
-		       {
-			       null          => true, // Required duty
-			       string actual => actual.Any(char.IsLower),
-			       _             => false
-		       };
-	}
+		=> value switch
+		   {
+			   null          => true, // Required duty
+			   string actual => actual.Any(char.IsLower),
+			   _             => false
+		   };
 }

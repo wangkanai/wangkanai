@@ -13,4 +13,12 @@ public class BooleanModel : BaseModel<BooleanModel>
 	[Required]
 	[RequireFalse]
 	public bool WannaFalse { get; set; }
+
+	[Required]
+	[RequireTrue]
+	public bool? NullableTrue { get; set; }
+	
+	[Required]
+	[RequireFalse]
+	public bool? NullableFalse { get; set; }
 }
