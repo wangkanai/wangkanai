@@ -8,6 +8,7 @@
 *.html   linguist-vendored=false
 *.cshtml linguist-vendored=false
 *.razor  linguist-vendored=false
+*.md     linguist-vendored=false
 
 ###############################################################################
 # Set default behavior to automatically normalize line endings.
