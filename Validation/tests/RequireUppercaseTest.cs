@@ -39,8 +39,7 @@ public class RequireUppercaseTest
 		var validations = vm.Validate(vm.Password, _password);
 		validations.Print(_output);
 
-		Assert.Collection(validations, v =>
-			                  v.ErrorMessage = "Uppercase is required");
+		Assert.Collection(validations, v => v.ErrorMessage = "Uppercase is required");
 	}
 
 	[Fact]

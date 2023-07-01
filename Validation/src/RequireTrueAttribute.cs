@@ -9,12 +9,10 @@ public sealed class RequireTrueAttribute : ValidationAttribute
 		: base(() => "Checked is required") { }
 
 	public override bool IsValid(object value)
-	{
-		return value switch
-		       {
-			       null        => true,
-			       bool actual => actual,
-			       _           => false
-		       };
-	}
+		=> value switch
+		   {
+			   null        => true,
+			   bool actual => actual,
+			   _           => false
+		   };
 }
