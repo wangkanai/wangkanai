@@ -3,7 +3,7 @@
     <PropertyGroup>
         <VersionPrefix>2.0.0</VersionPrefix>
         <Title>Wangkanai Webserver</Title>
-        <Description>ASP.NET Core Webserver extension library to help make life easier..</Description>
+        <Description>ASP.NET Core extension library that streamlines your server setup process. Simplify your configuration, make your server more resilient, and create a more enjoyable development experience. This is the tool you need to take your web development to the next level.</Description>
         <PackageTags>aspnetcore;webserver;</PackageTags>
         <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Webserver</PackageProjectUrl>
     </PropertyGroup>
