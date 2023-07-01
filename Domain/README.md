@@ -34,6 +34,5 @@ discover Domain.
 For any inquiries, suggestions, or contributions, don't hesitate to open an issue or a pull request.
 Together, let's push the boundaries of what's possible with DDD and .NET!
 
-This version of the introduction is designed to be engaging and emphasizes the benefits of using the Domain library.
-It also includes a call to action for other developers to star the project, which can help increase your star count.
+
 
