@@ -15,9 +15,4 @@ public sealed class HttpContextService : IHttpContextService
 
 		Context = accessor?.HttpContext ?? new DefaultHttpContext();
 	}
-
-	// private HttpContextService()
-	// {
-	// 	Context = new DefaultHttpContext();
-	// }
 }
