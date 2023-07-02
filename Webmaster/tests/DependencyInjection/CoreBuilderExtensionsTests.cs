@@ -15,23 +15,23 @@ namespace Wangkanai.Webmaster;
 public class CoreBuilderExtensionsTests
 {
 	[Fact]
-	public void AddRequiredPlatformServices_ReturnsExpected()
-	{
-		var services = new ServiceCollection();
-		var builder  = services.AddWebmasterBuilder();
-		Assert.Same(services, builder.Services);
-	}
-
-	[Fact]
 	public void AddMarkerServices_ReturnsExpected()
 	{
-		var services = new ServiceCollection();
-		var builder  = services.AddWebmasterBuilder().AddMarkerService();
+		var services    = new ServiceCollection();
+		var builder     = services.AddWebmasterBuilder().AddMarkerService();
 		var descriptors = new List<ServiceDescriptor>();
 		descriptors.Add(new(typeof(WebmasterMarkerService), typeof(WebmasterMarkerService), ServiceLifetime.Singleton));
 
 		Assert.NotNull(builder);
 		Assert.NotNull(builder.Services);
 		descriptors.AssertServices(builder.Services);
+	}
+
+	[Fact]
+	public void AddRequiredPlatformServices_ReturnsExpected()
+	{
+		var services = new ServiceCollection();
+		var builder  = services.AddWebmasterBuilder();
+		Assert.Same(services, builder.Services);
 	}
 }

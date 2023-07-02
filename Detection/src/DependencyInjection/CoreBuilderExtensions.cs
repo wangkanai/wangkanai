@@ -22,7 +22,7 @@ internal static class DetectionCoreBuilderExtensions
 
 		// Add Detection Options
 		builder.Services.AddOptions();
-		builder.Services.TryAddSingleton(p => p.GetRequiredService<IOptions<DetectionOptions>>().Value);
+		builder.Services.TryAddSingleton(provider => provider.GetRequiredService<IOptions<DetectionOptions>>().Value);
 
 		return builder;
 	}
