@@ -6,7 +6,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\src\Wangkanai.Webmaster.csproj"/>
+        <ProjectReference Include="..\..\Hosting\tests\Wangkanai.Hosting.Tests.csproj" />
+        <ProjectReference Include="..\src\Wangkanai.Webmaster.csproj" />
     </ItemGroup>
 
 </Project>
