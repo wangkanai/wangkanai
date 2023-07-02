@@ -46,9 +46,9 @@ public class CoreBuilderExtensionsTest
 	[Fact]
 	public void AddCoreServices_ReturnsExpected()
 	{
-		var serviceCollection = new ServiceCollection();
-		var builder           = serviceCollection.AddDetectionBuilder().AddCoreServices();
-		var descriptors       = new List<ServiceDescriptor>();
+		var services    = new ServiceCollection();
+		var builder     = services.AddDetectionBuilder().AddCoreServices();
+		var descriptors = new List<ServiceDescriptor>();
 		descriptors.Add(new(typeof(IHttpContextService), typeof(HttpContextService), ServiceLifetime.Scoped));
 		descriptors.Add(new(typeof(IUserAgentService), typeof(UserAgentService), ServiceLifetime.Scoped));
 		descriptors.Add(new(typeof(IDeviceService), typeof(DeviceService), ServiceLifetime.Scoped));

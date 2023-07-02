@@ -27,7 +27,7 @@ internal static class CoreCollectionExtensions
 	internal static IWebmasterBuilder AddCoreServices(this IWebmasterBuilder builder)
 	{
 		// Add Basic core to services
-		builder.Services.TryAddSingleton<IWebmasterService, WebmasterService>();
+		builder.Services.TryAddScoped<IWebmasterService, WebmasterService>();
 
 		return builder;
 	}

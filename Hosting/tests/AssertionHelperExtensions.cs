@@ -11,7 +11,7 @@ public static class AssertionHelperExtensions
 		for (var i = 0; i < descriptors.Count; i++)
 		{
 			Assert.Equal(descriptors[i].ServiceType, services[i].ServiceType);
-			Assert.Equal(descriptors[i].ImplementationType, services[i].ImplementationType);
+			Assert.Equal(descriptors[i].ImplementationInstance, services[i].ImplementationInstance);
 			Assert.Equal(descriptors[i].Lifetime, services[i].Lifetime);
 		}
 	}
