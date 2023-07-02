@@ -13,5 +13,15 @@ public class WebmasterCollectionExtensionTests
 	{
 		var services = new ServiceCollection();
 		var builder  = services.AddWebmasterBuilder();
+		Assert.Same(services, builder.Services);
+	}
+	
+	[Fact]
+	public void AddRequiredPlatformServices_OnlyAddsOnce()
+	{
+		var services = new ServiceCollection();
+		services.AddWebmasterBuilder();
+		services.AddWebmasterBuilder();
+		Assert.Single(services);
 	}
 }

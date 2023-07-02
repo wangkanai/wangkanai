@@ -9,8 +9,5 @@ public class GravatarBenchmark
 	private readonly Gravatar _gravatar = new Gravatar("john@don.com");
 
 	[Benchmark]
-	public string GetGravatarUrl()
-	{
-		return _gravatar.ToString();
-	}
+	public string GetGravatarUrl() => _gravatar.ToString();
 }
