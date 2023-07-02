@@ -17,7 +17,7 @@ public static class WebmasterApplicationExtensions
 		app.ThrowIfNull();
 
 		app.Validate();
-		app.VerifyMarkerIsRegistered<WebmasterMarkerService>();
+		app.VerifyMarkerIsRegistered<WebmasterMarkerService>(); // Verify that is service is registered and exist only since.
 
 		return app.UseMiddleware<WebmasterMiddleware>();
 	}
