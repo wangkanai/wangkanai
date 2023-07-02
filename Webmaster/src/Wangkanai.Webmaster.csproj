@@ -5,15 +5,15 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <FrameworkReference Include="Microsoft.AspNetCore.App"/>
+        <FrameworkReference Include="Microsoft.AspNetCore.App" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\Extensions\FileProviders\src\Wangkanai.Extensions.FileProviders.csproj"/>
-        <ProjectReference Include="..\..\Hosting\src\Wangkanai.Hosting.csproj"/>
-        <ProjectReference Include="..\..\System\src\Wangkanai.System.csproj"/>
-        <ProjectReference Include="..\..\Validation\src\Wangkanai.Validation.csproj"/>
-        <ProjectReference Include="..\..\Webserver\src\Wangkanai.Webserver.csproj"/>
+        <ProjectReference Include="..\..\Extensions\FileProviders\src\Wangkanai.Extensions.FileProviders.csproj" />
+        <ProjectReference Include="..\..\Hosting\src\Wangkanai.Hosting.csproj" />
+        <ProjectReference Include="..\..\System\src\Wangkanai.System.csproj" />
+        <ProjectReference Include="..\..\Validation\src\Wangkanai.Validation.csproj" />
+        <ProjectReference Include="..\..\Webserver\src\Wangkanai.Webserver.csproj" />
     </ItemGroup>
 
 </Project>

@@ -3,12 +3,12 @@
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
 
-using Wangkanai.Webmaster.DependencyInjection.Options;
+using Wangkanai.Webmaster;
 using Wangkanai.Webmaster.Services;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
-internal static class CoreCollectionExtensions
+internal static class WebmasterCoreCollectionBuilderExtensions
 {
 	internal static IWebmasterBuilder AddRequiredServices(this IWebmasterBuilder builder)
 	{
