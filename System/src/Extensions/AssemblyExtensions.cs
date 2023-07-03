@@ -6,7 +6,7 @@ public static class AssemblyExtensions
 {
 	[DebuggerStepThrough]
 	public static string GetVersion(this Assembly assembly)
-		=> assembly.GetName().Version.ToString();
+		=> assembly.GetName().Version?.ToString();
 
 	[DebuggerStepThrough]
 	public static string GetVersion(this Type type)

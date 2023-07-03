@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 
 using Wangkanai.Detection;
 using Wangkanai.Detection.Services;
+using Wangkanai.Extensions;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
@@ -36,7 +37,7 @@ public static class DetectionApplicationExtensions
 
 	private static void Validate(this IApplicationBuilder app)
 	{
-		var version = typeof(DetectionApplicationExtensions)?.Assembly?.GetName()?.Version?.ToString();
+		var version = typeof(DetectionApplicationExtensions).GetVersion();
 
 		var loggerFactory = app.ApplicationServices.GetService(typeof(ILoggerFactory)) as ILoggerFactory;
 		loggerFactory.ThrowIfNull();
