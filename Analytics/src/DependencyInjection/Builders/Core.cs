@@ -7,7 +7,7 @@ using Wangkanai.Analytics.Services;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
-internal static class CoreBuilderExtensions
+internal static class AnalyticsCoreBuilderExtensions
 {
 	public static IAnalyticsBuilder AddRequiredServices(this IAnalyticsBuilder builder)
 	{
