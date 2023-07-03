@@ -87,7 +87,7 @@ dotnet_sort_system_directives_first = true
 dotnet_separate_import_directive_groups = true
 
 [*.{cs, cpp, h}]
-file_header_template = Copyright (c) 2014-2023 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+file_header_template = Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 [*.{html, cshtml}]
 indent_size = 4
@@ -95,6 +95,12 @@ ij_html_do_not_indent_children_of_tags = none
 
 [*.csproj]
 indent_size = 4
+ij_xml_space_inside_empty_tag = true
+
+[*.{props, targets}]
+indent_size = 2
+max_line_length = 200
+ij_xml_space_inside_empty_tag = true
 
 [*.{ps1, psd1}]
 indent_size = 4

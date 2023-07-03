@@ -6,7 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\src\Wangkanai.Validation.csproj"/>
+        <ProjectReference Include="..\src\Wangkanai.Validation.csproj" />
     </ItemGroup>
 
 </Project>

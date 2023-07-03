@@ -8,7 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\src\Wangkanai.Identity.csproj"/>
+        <ProjectReference Include="..\src\Wangkanai.Identity.csproj" />
     </ItemGroup>
 
 </Project>

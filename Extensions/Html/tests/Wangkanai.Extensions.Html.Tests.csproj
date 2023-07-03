@@ -9,7 +9,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\src\Wangkanai.Extensions.Html.csproj"/>
+        <ProjectReference Include="..\src\Wangkanai.Extensions.Html.csproj" />
     </ItemGroup>
 
 </Project>

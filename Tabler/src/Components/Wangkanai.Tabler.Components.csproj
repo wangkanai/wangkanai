@@ -9,15 +9,15 @@
 
 
     <ItemGroup>
-        <SupportedPlatform Include="browser"/>
+        <SupportedPlatform Include="browser" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.0"/>
+        <PackageReference Include="Microsoft.AspNetCore.Components.Web" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\..\Blazor\src\Core\Wangkanai.Blazor.csproj"/>
+        <ProjectReference Include="..\..\..\Blazor\src\Core\Wangkanai.Blazor.csproj" />
     </ItemGroup>
 
 </Project>

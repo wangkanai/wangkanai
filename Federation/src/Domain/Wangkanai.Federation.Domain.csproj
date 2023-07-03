@@ -7,11 +7,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <FrameworkReference Include="Microsoft.AspNetCore.App"/>
+        <FrameworkReference Include="Microsoft.AspNetCore.App" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\..\Identity\src\Wangkanai.Identity.csproj"/>
+        <ProjectReference Include="..\..\..\Identity\src\Wangkanai.Identity.csproj" />
     </ItemGroup>
 
 </Project>
