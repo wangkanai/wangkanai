@@ -2,6 +2,4 @@
 
 namespace Wangkanai.Analytics.Services;
 
-internal sealed class AnalyticsMarkerService
-{
-}
+internal sealed class AnalyticsMarkerService { }

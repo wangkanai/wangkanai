@@ -4,27 +4,27 @@ namespace Wangkanai.Solver.Linear;
 
 public class VariableWrapper : LinearExpression
 {
-    private readonly Variable _var;
+	private readonly Variable _var;
 
-    public VariableWrapper(Variable var)
-    {
-        _var = var;
-    }
+	public VariableWrapper(Variable var)
+	{
+		_var = var;
+	}
 
-    public override string ToString()
-    {
-        return _var.Name;
-    }
+	public override string ToString()
+	{
+		return _var.Name;
+	}
 
-    public override double DoVisit(Dictionary<Variable, double> coefficients, double multiplier)
-    {
-        if (multiplier == 0.0) return 0.0;
+	public override double DoVisit(Dictionary<Variable, double> coefficients, double multiplier)
+	{
+		if (multiplier == 0.0) return 0.0;
 
-        if (coefficients.ContainsKey(_var))
-            coefficients[_var] += multiplier;
-        else
-            coefficients[_var] = multiplier;
+		if (coefficients.ContainsKey(_var))
+			coefficients[_var] += multiplier;
+		else
+			coefficients[_var] = multiplier;
 
-        return 0.0;
-    }
+		return 0.0;
+	}
 }

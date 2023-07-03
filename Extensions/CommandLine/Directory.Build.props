@@ -1,19 +1,20 @@
 <Project>
-    <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props"/>
-    
-    <PropertyGroup>
-        <Title>Wangkanai Extensions CommandLine</Title>
-        <PackageTags>dotnet;extension;commandline;utilities</PackageTags>
-        <Description>This project is a shared commandline runtime utilities.</Description>
-    </PropertyGroup>
+  <Import
+    Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
 
-    <PropertyGroup>
-        <PackageIcon>wangkanai-logo.png</PackageIcon>
-        <PackageReadmeFile>README.md</PackageReadmeFile>
-    </PropertyGroup>
+  <PropertyGroup>
+    <Title>Wangkanai Extensions CommandLine</Title>
+    <PackageTags>dotnet;extension;commandline;utilities</PackageTags>
+    <Description>This project is a shared commandline runtime utilities.</Description>
+  </PropertyGroup>
 
-    <ItemGroup>
-        <None Include="..\..\..\assets\wangkanai-logo.png" Pack="true" PackagePath="\"/>
-        <None Include="..\README.md" Pack="true" PackagePath="\"/>
-    </ItemGroup>
+  <PropertyGroup>
+    <PackageIcon>wangkanai-logo.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\assets\wangkanai-logo.png" Pack="true" PackagePath="\" />
+    <None Include="..\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
 </Project>

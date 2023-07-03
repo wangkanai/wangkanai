@@ -20,7 +20,7 @@ get-childitem .\ -directory | where { $_.Name -ne 'signed' } | foreach{
 
     dotnet nuget sign .\artifacts\*.nupkg -v diag --timestamper http://timestamp.digicert.com --certificate-subject-name "Sarin Na Wangkanai" -o .\signed
     dotnet nuget sign .\artifacts\*.snupkg -v diag --timestamper http://timestamp.digicert.com --certificate-subject-name "Sarin Na Wangkanai" -o .\signed
-    
+
     copy-item -path .\signed\*.* -destination .\..\signed\ -force
 
     pop-location

@@ -1,18 +1,18 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-    <IsTrimmable>true</IsTrimmable>
-    <Optimize>true</Optimize>
-    <NoWarn>8600,8765</NoWarn>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <IsTrimmable>true</IsTrimmable>
+        <Optimize>true</Optimize>
+        <NoWarn>8600,8765</NoWarn>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\Validation\src\Wangkanai.Validation.csproj" />
-    
-    <ProjectReference Include="..\Web\Wangkanai.Blazor.Components.Web.csproj" PrivateAssets="all" />
-  </ItemGroup>
-  
+    <ItemGroup>
+        <ProjectReference Include="..\..\..\Validation\src\Wangkanai.Validation.csproj"/>
+
+        <ProjectReference Include="..\Web\Wangkanai.Blazor.Components.Web.csproj" PrivateAssets="all"/>
+    </ItemGroup>
+
 </Project>

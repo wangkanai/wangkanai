@@ -3,21 +3,22 @@
 using System;
 
 using Xunit;
+
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Wangkanai.Markdown;
 
 public class MarkdownBuilderExtensionsTests
 {
-    [Fact]
-    public void AddMarkdown_Null_Exception()
-    {
-        Assert.Throws<ArgumentNullException>(() => ((IServiceCollection)null).AddMarkdownPages());
-    }
+	[Fact]
+	public void AddMarkdown_Null_Exception()
+	{
+		Assert.Throws<ArgumentNullException>(() => ((IServiceCollection)null).AddMarkdownPages());
+	}
 
-    [Fact]
-    public void AddMarkdownBuilder_Null_Exception()
-    {
-        Assert.Throws<ArgumentNullException>(() => ((IServiceCollection)null).AddMarkdownBuilder());
-    }
+	[Fact]
+	public void AddMarkdownBuilder_Null_Exception()
+	{
+		Assert.Throws<ArgumentNullException>(() => ((IServiceCollection)null).AddMarkdownBuilder());
+	}
 }

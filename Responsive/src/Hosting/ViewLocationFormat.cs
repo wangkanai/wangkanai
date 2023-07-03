@@ -7,6 +7,6 @@ namespace Wangkanai.Responsive.Hosting;
 /// </summary>
 public enum ResponsiveViewLocationFormat
 {
-    Subfolder,
-    Suffix
+	Subfolder,
+	Suffix
 }

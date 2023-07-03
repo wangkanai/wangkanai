@@ -1,9 +1,9 @@
 <Project>
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
   <PropertyGroup>
-    <VersionPrefix>0.8.0</VersionPrefix>
+    <VersionPrefix>1.1.0</VersionPrefix>
     <Title>Wangkanai Watcher</Title>
-    <Description>ASP.NET Core Development dotnet-watch file watcher task execution.</Description>
+    <Description>An enhanced ASP.NET Core Development tool to supercharge `dotnet-watch`. Automates file monitoring and task executions to streamline your workflow. Boost your productivity, focus on coding, and contribute to an easier development process.</Description>
     <PackageTags>aspnetcore;watcher;task;job;</PackageTags>
     <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Watcher</PackageProjectUrl>
   </PropertyGroup>

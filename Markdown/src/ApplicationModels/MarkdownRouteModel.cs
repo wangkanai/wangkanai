@@ -20,7 +20,7 @@ public class MarkdownRouteModel
 		Selectors   = new List<SelectorModel>();
 		RouteValues = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 	}
-	
+
 	public MarkdownRouteModel(MarkdownRouteModel other)
 	{
 		other.ThrowIfNull();

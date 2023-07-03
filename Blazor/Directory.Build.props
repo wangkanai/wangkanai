@@ -1,10 +1,10 @@
 <Project>
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
   <PropertyGroup>
-    <VersionPrefix>1.16.0</VersionPrefix>
+    <VersionPrefix>2.1.0</VersionPrefix>
     <Title>Wangkanai Blazor</Title>
-    <Description>Wangkanai Blazor Component library.</Description>
-    <PackageTags>aspnetcore;blazor;component;</PackageTags>
+    <Description>Wangkanai Blazor: Empowering Web UIs with Interactive Components. This project hosts a collection of carefully crafted components designed to breathe life into your Blazor applications. Our components follow common interaction patterns and adhere to the highest standards of semantic specifications, offering you reliable building blocks for your web UI.</Description>
+    <PackageTags>aspnetcore;blazor;component;grid;</PackageTags>
     <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Blazor</PackageProjectUrl>
   </PropertyGroup>
   <PropertyGroup>

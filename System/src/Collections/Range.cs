@@ -36,13 +36,13 @@ public sealed class Range<T>
 	/// <summary>
 	/// Constructor a new inclusive range using the default comparer
 	/// </summary>
-	public Range(T start, T end) 
+	public Range(T start, T end)
 		: this(start, end, Comparer<T>.Default, true, true) { }
 
 	/// <summary>
 	/// Constructor a new including or excluding each end as specified with the given comparer
 	/// </summary>
-	public Range(T start, T end, IComparer<T> comparer) 
+	public Range(T start, T end, IComparer<T> comparer)
 		: this(start, end, comparer, true, true) { }
 
 	/// <summary>

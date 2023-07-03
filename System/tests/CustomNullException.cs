@@ -2,7 +2,7 @@
 
 namespace Wangkanai;
 
-public class CustomNullException : ArgumentNullException
+public class CustomNullException : ArgumentException
 {
 	public CustomNullException()
 		: base() { }

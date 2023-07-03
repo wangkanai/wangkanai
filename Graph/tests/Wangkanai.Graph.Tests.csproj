@@ -1,9 +1,0 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
-    <IsPackable>false</IsPackable>
-    <RuntimeIdentifiers>win10-x64;linux-x64</RuntimeIdentifiers>
-  </PropertyGroup>
-
-</Project>

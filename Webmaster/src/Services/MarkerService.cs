@@ -2,6 +2,4 @@
 
 namespace Wangkanai.Webmaster.Services;
 
-internal sealed class WebmasterMarkerService
-{
-}
+internal sealed class WebmasterMarkerService { }

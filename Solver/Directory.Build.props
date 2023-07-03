@@ -1,10 +1,10 @@
 <Project>
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
   <PropertyGroup>
-    <VersionPrefix>0.11.0</VersionPrefix>
+    <VersionPrefix>1.1.0</VersionPrefix>
     <Title>Wangkanai Solver</Title>
     <PackageTags>aspnetcore;solver;optimization;simludation;scheduling;</PackageTags>
-    <Description>Mathematical optimization and simulation and modeling solver which seeks to find the best solution to a given problem out of very large dataset. This would enable us find the optimal maximal or minimal value of a given functions, and model complex systems by using decision variables and constraints.</Description>
+    <Description>Embrace Wangkanai Solver, a mathematical powerhouse for handling complex optimization and simulation problems. Great for finding optimal solutions within extensive datasets, and modeling intricate systems. Join our community, contribute, and help revolutionize mathematical problem solving!</Description>
     <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Solver</PackageProjectUrl>
   </PropertyGroup>
   <PropertyGroup>

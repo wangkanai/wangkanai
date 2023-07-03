@@ -1,13 +1,15 @@
-## Wangkanai Solver
+## Wangkanai Solver: Optimize and Simulate Like Never Before
 
-Mathematical optimization and simulation and modeling solver which seeks to find the best solution to a given problem
-out of very large dataset. This would enable us find the optimal maximal or minimal value of a given functions, and
-model complex systems by using decision variables and constraints.
+Wangkanai `Solver` is not just another mathematical library. It's a powerhouse for handling complex mathematical problems. 
+Solver provides you with the means to find the best possible solution for a myriad of problems, even when dealing with extensive datasets. 
+It excels in finding optimal maximal or minimal values of given functions and in modeling intricate systems using decision variables and constraints.
 
-The goals might be overwhelming and going to have a lot challenges ahead. While this is project has roots back 20 years
-ago during my bachelor degree do project thesis on management information system, seeking to find the optimum
-manufacturing production capacity planning. I understand that this project very much ambitious to solve alone and would
-like everyone to help me on my journey.
+This ambitious project, grounded in a 20-year journey that began with a bachelor's thesis on management information systems, aims to redefine how we approach mathematical optimization and simulation. 
+The goal is to enable solutions for challenges like optimum manufacturing production capacity planning and other complex problems.
+
+The path to solving these problems is filled with obstacles and challenges. 
+Yet, with the collective strength of a community of developers, we can overcome these hurdles. 
+So, join us on this exciting journey. Your stars :star: will not only motivate us but also help us reach more people and gather a community of like-minded developers eager to revolutionize mathematical problem solving.
 
 ### Roadmap
 
@@ -21,8 +23,6 @@ like everyone to help me on my journey.
 - [ ] Constraint satisfaction programming
 - [ ] Scheduling
 - [ ] Bin packing
-
-**Please show me some love and click the** :star:
 
 [![NuGet Badge](https://buildstats.info/nuget/wangkanai.solver)](https://www.nuget.org/packages/wangkanai.solver)
 [![NuGet Badge](https://buildstats.info/nuget/wangkanai.solver?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.solver)

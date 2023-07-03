@@ -4,8 +4,6 @@ namespace Wangkanai.Detection.Services;
 
 public class DetectionServiceTest
 {
-    [Fact]
-    public void IfNull()
-    {
-    }
+	[Fact]
+	public void IfNull() { }
 }

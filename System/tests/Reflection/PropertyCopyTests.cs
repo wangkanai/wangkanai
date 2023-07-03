@@ -92,7 +92,7 @@ public class PropertyCopyTests
 	{
 		var source = new Generic<Derived>() { Value = new Derived() };
 		var target = PropertyCopy<Generic<Base>>.CopyFrom(source);
-		
+
 		Assert.Same(source.Value, target.Value);
 	}
 

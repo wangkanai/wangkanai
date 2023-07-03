@@ -6,35 +6,33 @@ namespace Wangkanai.Blazor.Components;
 
 public readonly struct ElementReference
 {
-    private static long _nextIdForWebAssemblyOnly = 1;
+	private static long _nextIdForWebAssemblyOnly = 1;
 
-    public string Id { get; }
+	public string Id { get; }
 
-    public ElementReferenceContext? Context { get; }
+	public ElementReferenceContext? Context { get; }
 
-    public ElementReference(string id, ElementReferenceContext? context)
-    {
-        Id      = id;
-        Context = context;
-    }
+	public ElementReference(string id, ElementReferenceContext? context)
+	{
+		Id      = id;
+		Context = context;
+	}
 
-    public ElementReference(string id) : this(id, null)
-    {
-    }
+	public ElementReference(string id) : this(id, null) { }
 
-    internal static ElementReference CreateWithUniqueId(ElementReferenceContext? context)
-    {
-        return new(CreateUniqueId(), context);
-    }
+	internal static ElementReference CreateWithUniqueId(ElementReferenceContext? context)
+	{
+		return new(CreateUniqueId(), context);
+	}
 
-    private static string CreateUniqueId()
-    {
-        if (OperatingSystem.IsBrowser())
-        {
-            var id = Interlocked.Increment(ref _nextIdForWebAssemblyOnly);
-            return id.ToString(CultureInfo.InvariantCulture);
-        }
+	private static string CreateUniqueId()
+	{
+		if (OperatingSystem.IsBrowser())
+		{
+			var id = Interlocked.Increment(ref _nextIdForWebAssemblyOnly);
+			return id.ToString(CultureInfo.InvariantCulture);
+		}
 
-        return Guid.NewGuid().ToString("D", CultureInfo.InvariantCulture);
-    }
+		return Guid.NewGuid().ToString("D", CultureInfo.InvariantCulture);
+	}
 }

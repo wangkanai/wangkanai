@@ -1,21 +1,19 @@
 <Project>
-    <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props"/>
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
 
-    <PropertyGroup>
-        
+  <PropertyGroup>
+    <Title>Wangkanai MSBuild</Title>
+    <Description>ASP.NET Core MSBuild Extension</Description>
+    <PackageTags>aspnetcore;msbuild;</PackageTags>
+  </PropertyGroup>
 
-        <Title>Wangkanai MSBuild</Title>
-        <Description>ASP.NET Core MSBuild Extension</Description>
-        <PackageTags>aspnetcore;msbuild;</PackageTags>
-    </PropertyGroup>
+  <PropertyGroup>
+    <PackageIcon>wangkanai-logo.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
 
-    <PropertyGroup>
-        <PackageIcon>wangkanai-logo.png</PackageIcon>
-        <PackageReadmeFile>README.md</PackageReadmeFile>
-    </PropertyGroup>
-
-    <ItemGroup>
-        <None Include="..\..\..\assets\wangkanai-logo.png" Pack="true" PackagePath="\"/>
-        <None Include="..\README.md" Pack="true" PackagePath="\"/>
-    </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\assets\wangkanai-logo.png" Pack="true" PackagePath="\" />
+    <None Include="..\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
 </Project>

@@ -6,18 +6,13 @@ namespace Wangkanai.Detection.Services;
 
 public sealed class HttpContextService : IHttpContextService
 {
-    public HttpContextService(IHttpContextAccessor accessor)
-    {
-        accessor.ThrowIfNull();
+	public HttpContext Context { get; }
+	public HttpRequest Request => Context.Request;
 
-        Context = accessor?.HttpContext ?? new DefaultHttpContext();
-    }
+	public HttpContextService(IHttpContextAccessor accessor)
+	{
+		accessor.ThrowIfNull();
 
-    private HttpContextService()
-    {
-        Context = new DefaultHttpContext();
-    }
-
-    public HttpContext Context { get; }
-    public HttpRequest Request => Context.Request;
+		Context = accessor?.HttpContext ?? new DefaultHttpContext();
+	}
 }

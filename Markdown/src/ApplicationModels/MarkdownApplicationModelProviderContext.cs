@@ -13,8 +13,8 @@ public class MarkdownApplicationModelProviderContext
 	}
 
 	public MarkdownActionDescriptor ActionDescriptor { get; }
-	
+
 	public TypeInfo PageType { get; }
-	
+
 	public MarkdownApplicationModel MarkdownApplicationModel { get; set; } = default!;
 }

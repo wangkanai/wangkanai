@@ -6,5 +6,5 @@ namespace Wangkanai.Blazor.Components;
 
 public interface IComponentActivator
 {
-    IComponent CreateInstance([DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] Type componentType);
+	IComponent CreateInstance([DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] Type componentType);
 }

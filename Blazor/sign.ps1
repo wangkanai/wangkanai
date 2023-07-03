@@ -2,7 +2,7 @@ remove-item -path .\signed\*.*
 
 dotnet --version
 dotnet clean Blazor.slnf
-dotnet restore Blazor.slnf  
+dotnet restore Blazor.slnf
 dotnet build -c Release Blazor.slnf
 Get-ChildItem .\src\ -Recurse Wangkanai.*.dll | where { $_.Name -like "*release*" } | foreach {
     signtool sign /fd SHA256 /n "Sarin Na Wangkanai" $_.FullName

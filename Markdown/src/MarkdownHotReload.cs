@@ -2,7 +2,4 @@
 
 namespace Wangkanai.Markdown;
 
-internal sealed class MarkdownHotReload
-{
-	
-}
+internal sealed class MarkdownHotReload { }

@@ -20,7 +20,7 @@ public class MarkdownParameterModel : ParameterModelBase, ICommonModel, IBinding
 
 		ParameterInfo = parameterInfo;
 	}
-	
+
 	public MarkdownParameterModel(MarkdownParameterModel other)
 		: base(other)
 	{
@@ -33,9 +33,9 @@ public class MarkdownParameterModel : ParameterModelBase, ICommonModel, IBinding
 	public MarkdownHandlerModel Handler { get; set; } = default!;
 
 	MemberInfo ICommonModel.MemberInfo => ParameterInfo.Member;
-	
+
 	public ParameterInfo ParameterInfo { get; }
-	
+
 	public string ParameterName
 	{
 		get => Name;

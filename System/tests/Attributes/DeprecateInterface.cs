@@ -2,10 +2,7 @@
 
 namespace Wangkanai.Attributes;
 
-
 [Deprecate<INewInterface>]
 interface IOldInterface { }
 
-interface INewInterface{}
-
-
+interface INewInterface { }

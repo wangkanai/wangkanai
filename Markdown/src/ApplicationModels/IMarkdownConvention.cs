@@ -2,6 +2,4 @@
 
 namespace Wangkanai.Markdown.ApplicationModels;
 
-public interface IMarkdownConvention
-{
-}
+public interface IMarkdownConvention { }

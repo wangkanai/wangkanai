@@ -3,10 +3,6 @@
 namespace Wangkanai.Attributes;
 
 [Deprecate<NewClass>]
-class OldClass
-{
-}
+class OldClass { }
 
-class NewClass
-{
-}
+class NewClass { }

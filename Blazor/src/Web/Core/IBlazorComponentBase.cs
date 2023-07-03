@@ -2,6 +2,4 @@
 
 namespace Wangkanai.Blazor;
 
-public interface IBlazorComponentBase
-{
-}
+public interface IBlazorComponentBase { }

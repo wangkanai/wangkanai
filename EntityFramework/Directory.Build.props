@@ -1,10 +1,10 @@
 <Project>
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
   <PropertyGroup>
-    <VersionPrefix>0.4.0</VersionPrefix>
+    <VersionPrefix>1.1.0</VersionPrefix>
     <Title>Wangkanai EntityFramework</Title>
     <PackageTags>aspnetcore;entityframework;efcore;</PackageTags>
-    <Description>EntityFramework extra features and helper that would make life easier for developers.</Description>
+    <Description>Elevate your Entity Framework experience with `EntityFramework`. A productivity powerhouse, this library comes packed with extra features and helpers to simplify your development workflow. From managing complex relationships to executing efficient queries, `EntityFramework` is your ultimate tool for data handling in ASP.NET Core.</Description>
     <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/EntityFramework</PackageProjectUrl>
   </PropertyGroup>
   <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.EntityFramework'">

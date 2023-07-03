@@ -20,7 +20,7 @@ public class MarkdownPagesOptions : IEnumerable<ICompatibilitySwitch>
 	public IEnumerator<ICompatibilitySwitch> GetEnumerator() => _switches.GetEnumerator();
 
 	IEnumerator IEnumerable.GetEnumerator() => _switches.GetEnumerator();
-	
+
 	public string RootDirectory
 	{
 		get => _root;
@@ -29,7 +29,7 @@ public class MarkdownPagesOptions : IEnumerable<ICompatibilitySwitch>
 			value.ThrowIfNullOrEmpty<ArgumentException>(Resources.ArgumentCannotBeNullOrEmpty, nameof(value));
 			if (value[0] != '/')
 				throw new ArgumentException(Resources.PathMustBeRootRelativePath, nameof(value));
-			
+
 			_root = value;
 		}
 	}

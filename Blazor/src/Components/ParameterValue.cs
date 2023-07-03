@@ -4,14 +4,14 @@ namespace Wangkanai.Blazor.Components;
 
 public readonly struct ParameterValue
 {
-    public string Name      { get; }
-    public object Value     { get; }
-    public bool   Cascading { get; }
+	public string Name      { get; }
+	public object Value     { get; }
+	public bool   Cascading { get; }
 
-    internal ParameterValue(string name, object value, bool cascading)
-    {
-        Name      = name;
-        Value     = value;
-        Cascading = cascading;
-    }
+	internal ParameterValue(string name, object value, bool cascading)
+	{
+		Name      = name;
+		Value     = value;
+		Cascading = cascading;
+	}
 }

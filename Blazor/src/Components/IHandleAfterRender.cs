@@ -4,5 +4,5 @@ namespace Wangkanai.Blazor.Components;
 
 public interface IHandleAfterRender
 {
-    Task OnAfterRenderAsync();
+	Task OnAfterRenderAsync();
 }

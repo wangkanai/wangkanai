@@ -4,11 +4,11 @@ using Microsoft.AspNetCore.Routing;
 
 namespace Wangkanai.Markdown.Infrastructure;
 
-internal sealed class DynamicMarkdownMetadata: IDynamicEndpointMetadata
+internal sealed class DynamicMarkdownMetadata : IDynamicEndpointMetadata
 {
-	public RouteValueDictionary Values { get; }
-	public bool IsDynamic => true;
-	
+	public RouteValueDictionary Values    { get; }
+	public bool                 IsDynamic => true;
+
 	public DynamicMarkdownMetadata(RouteValueDictionary values)
 	{
 		values.ThrowIfNull();

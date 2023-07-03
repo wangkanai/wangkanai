@@ -2,7 +2,4 @@
 
 namespace Wangkanai.Resources;
 
-internal static class ExceptionResources
-{
-	
-}
+internal static class ExceptionResources { }

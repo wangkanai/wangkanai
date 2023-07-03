@@ -1,10 +1,10 @@
 <Project>
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
   <PropertyGroup>
-    <VersionPrefix>0.11.0</VersionPrefix>
+    <VersionPrefix>1.1.0</VersionPrefix>
     <Title>Wangkanai Hosting</Title>
     <PackageTags>aspnetcore;hosting;</PackageTags>
-    <Description>Wangkanai Hosting provides the entry point for configuring and running your application.</Description>
+    <Description>Elevate your application's configuration and runtime with `Hosting`, a .NET library that puts you in control. Streamline your setup process, enhance your application's performance, and manage your project like a pro. Whether it's for an enterprise system or a personal project, `Hosting` simplifies and supercharges your application management. Join our community, discover the art of efficient configuration, and let's redefine application runtime with Hosting.</Description>
     <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Hosting</PackageProjectUrl>
   </PropertyGroup>
   <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Hosting'">

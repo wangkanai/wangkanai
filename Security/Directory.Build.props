@@ -1,10 +1,10 @@
 <Project>
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
   <PropertyGroup>
-    <VersionPrefix>0.6.0</VersionPrefix>
+    <VersionPrefix>1.1.0</VersionPrefix>
     <Title>Wangkanai Security</Title>
     <PackageTags>aspnetcore;security;</PackageTags>
-    <Description>Extending the Security ASP.NET with add features</Description>
+    <Description>Enhance your ASP.NET Core applications with Security, an extension to the native ASP.NET Core Security. This library brings advanced features for a comprehensive and proactive security solution.</Description>
     <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Security</PackageProjectUrl>
     <PackageNamespace>True</PackageNamespace>
     <PackagePrimary>Authorization</PackagePrimary>

@@ -4,8 +4,8 @@ namespace Wangkanai.Blazor.Helpers;
 
 public static class IdGeneratorHelper
 {
-    public static string Generate(string prefix)
-    {
-        return prefix + Guid.NewGuid();
-    }
+	public static string Generate(string prefix)
+	{
+		return prefix + Guid.NewGuid();
+	}
 }

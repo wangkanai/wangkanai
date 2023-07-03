@@ -2,7 +2,7 @@
 
 namespace Wangkanai.Markdown.ApplicationModels;
 
-public interface IMarkdownHandlerModelConvention: IMarkdownConvention
+public interface IMarkdownHandlerModelConvention : IMarkdownConvention
 {
 	void Apply(MarkdownHandlerModel model);
 }

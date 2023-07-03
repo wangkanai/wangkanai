@@ -1,10 +1,17 @@
-## Wangkanai Webmaster
+## Wangkanai Webmaster: Revolutionizing SEO with ASP.NET Core
 
-ASP.NET Core Search Engine Optimization for Webmaster lets you improve the art, craft, and science of driving web
-traffic to enabling you with easy and efficiency native tool build in the asp.net core library.
+Welcome to the journey of Wangkanai `Webmaster`, an exceptional ASP.NET Core library tailored for empowering your Search Engine Optimization (SEO)! 
+Our mission is to revolutionize the way web traffic is driven. We fuse artistry, craftsmanship, and the essence of science to create a unique SEO experience.
 
-**Please give some love by clicking on the star!** :star::star::star: This help movtivate me to continue on developing
-the project.
+Born from the heart of ASP.NET Core, this toolkit is not merely a tool—it's a game changer. It's about making your site not just visible, but unforgettable.
+
+Yet, we're not stopping there. Our vision is to foster a community that continually pushes the boundaries of SEO. 
+We dream of a web where every site is an adventure, a story waiting to be discovered.
+
+And we want you to be part of this journey. Together, we can transform the web, one site at a time. 
+So, join us, star us, and let's write the future of SEO together!
+
+
 
 [![NuGet Badge](https://buildstats.info/nuget/wangkanai.Webmaster)](https://www.nuget.org/packages/wangkanai.Webmaster)
 [![NuGet Badge](https://buildstats.info/nuget/wangkanai.Webmaster?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.Webmaster)
@@ -16,42 +23,4 @@ the project.
 
 ### Installation
 
-Installation of Wangkanai Webmaster
-
-```powershell
-PM> install-package Wangkanai.Webmaster
-```
-
-Implementation of the library into your web application is done by configuring the `startup.cs` by adding the Webmaster
-service in the `ConfigureServices` method.
-
-```csharp
-public void ConfigureServices(IServiceCollection services)
-{
-    services.AddWebmaster();
-
-    services.AddControllersWithViews();
-}
-```
-
-Adding the Webmaster middleware to the pipeline. The Webmaster middleware is enabled in the `Configure` method
-of `Startup.cs` file.
-
-```csharp
-public void Configure(IApplicationBuilder app)
-{
-    app.UseWebmaster();
-
-    app.UseEndpoints(endpoints => endpoints.MapDefaultControllerRoute());
-}
-```
-
-### Directory Structure
-
-- `src` - The code of this project lives here
-- `test` - The unit test of this project lives here
-- `sample` - The sample web app of this project lives here
-
-### Contributing
-
-All contribution are welcome, please contact the author.
+[Please follow the installation instruction here](https://github.com/wangkanai/wangkanai/blob/main/Webmaster/INSTALL.md).

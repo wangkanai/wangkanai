@@ -16,13 +16,10 @@ $dirs = [ordered]@{
     15 = "Security";
     16 = "Federation";
     17 = "Markdown";
-    18 = "Graph";
-    19 = "Universal";
-    20 = "Analytics";
-    21 = "Blazor";
-    22 = "Tabler";
-    23 = "Solver";
-    24 = "IdentityAdmin";
+    18 = "Analytics";
+    19 = "Blazor";
+    20 = "Tabler";
+    21 = "Solver";
 }
 $e = [char]27
 $root = "D:\Sources\Wangkanai\"
@@ -39,7 +36,7 @@ for ($i = 0; $i -lt $dirs.count; $i++){
         [Xml]$xml = Get-Content -Path $path;
         $node = $xml.SelectSingleNode("/Project/PropertyGroup/VersionPrefix");
         $old = [System.Version]$node.InnerText;
-        $new = [System.Version]::new($old.Major, $old.Minor+1, 0);#, $old.Build + 1); #0);
+        $new = [System.Version]::new($old.Major, $old.Minor + 1, 0); #, $old.Build + 1); #0);
         $node.InnerText = $new.ToString();
         $xml.Save($path);
 

@@ -2,6 +2,4 @@
 
 namespace Microsoft.Extensions.DependencyInjection;
 
-public class WebserverOptions
-{
-}
+public class WebserverOptions { }

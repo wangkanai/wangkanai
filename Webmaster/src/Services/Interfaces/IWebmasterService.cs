@@ -2,6 +2,4 @@
 
 namespace Wangkanai.Webmaster.Services;
 
-public interface IWebmasterService
-{
-}
+public interface IWebmasterService { }

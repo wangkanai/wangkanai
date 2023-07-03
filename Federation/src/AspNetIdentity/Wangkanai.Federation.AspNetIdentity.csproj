@@ -7,9 +7,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\..\Identity\src\Wangkanai.Identity.csproj"/>
-        <ProjectReference Include="..\..\..\Webserver\src\Wangkanai.Webserver.csproj"/>
-        <ProjectReference Include="..\Federation\Wangkanai.Federation.csproj"/>
+        <ProjectReference Include="..\..\..\Identity\src\Wangkanai.Identity.csproj" />
+        <ProjectReference Include="..\..\..\Webserver\src\Wangkanai.Webserver.csproj" />
+        <ProjectReference Include="..\Federation\Wangkanai.Federation.csproj" />
     </ItemGroup>
 
 </Project>

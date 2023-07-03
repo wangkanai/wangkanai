@@ -8,7 +8,7 @@ dotnet clean Security.slnf
 dotnet restore Security.slnf
 dotnet build -c Release Security.slnf
 Get-ChildItem .\src\ -Recurse Wangkanai.*.dll | where { $_.Name -like "*release*" } | foreach {
-	signtool sign /fd SHA256 /tr http://ts.ssl.com /td sha256 /n "Sarin Na Wangkanai" $_.FullName
+    signtool sign /fd SHA256 /tr http://ts.ssl.com /td sha256 /n "Sarin Na Wangkanai" $_.FullName
 }
 
 dotnet pack Security.slnf -c Release -o .\artifacts --include-symbols -p:SymbolPackageFormat=snupkg

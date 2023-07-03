@@ -4,231 +4,226 @@ using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
 
+using Wangkanai.Exceptions;
+
 namespace Wangkanai.Extensions;
 
+[DebuggerStepThrough]
 public static class StringExtensions
 {
-	[DebuggerStepThrough]
+	public static bool IsEmpty(this string value)
+		=> value == string.Empty;
+
+	public static bool IsNullOrEmpty(this string value)
+		=> string.IsNullOrEmpty(value);
+
 	public static bool IsNotNullOrEmpty(this string value)
 		=> !string.IsNullOrEmpty(value);
 
-	[ContractAnnotation("null => true")]
-	[DebuggerStepThrough]
-	public static bool IsNullOrEmpty(this string input)
-		=> string.IsNullOrEmpty(input);
+	public static bool IsNullOrWhiteSpace(this string value)
+		=> string.IsNullOrWhiteSpace(value);
 
-	[ContractAnnotation("null => true")]
-	[DebuggerStepThrough]
-	public static bool IsNullOrWhiteSpace(this string input)
-		=> string.IsNullOrWhiteSpace(input);
+	public static bool IsNotNullOrWhiteSpace(this string value)
+		=> !value.IsNullOrWhiteSpace();
 
-	[DebuggerStepThrough]
-	public static bool IsExist(this string input)
-		=> !string.IsNullOrWhiteSpace(input);
+	public static bool IsExist(this string value)
+		=> !value.IsNullOrWhiteSpace();
 
-	[DebuggerStepThrough]
-	public static bool IsUnicode(this string input)
-		=> Encoding.ASCII.GetByteCount(input) != Encoding.UTF8.GetByteCount(input);
+	public static bool IsUnicode(this string value)
+		=> Encoding.ASCII.GetByteCount(value) != Encoding.UTF8.GetByteCount(value);
 
-	[DebuggerStepThrough]
-	public static string EnsureLeadingSlash(this string input)
-		=> input.IsNotNullOrEmpty() && !input.StartsWith("/")
-			   ? "/" + input
-			   : input;
+	public static string EnsureLeadingSlash(this string value)
+		=> value.IsNotNullOrWhiteSpace() && !value.StartsWith("/")
+			   ? "/" + value
+			   : value;
 
-	[DebuggerStepThrough]
-	public static string EnsureTrailingSlash(this string input)
-		=> input.IsNotNullOrEmpty() && !input.EndsWith("/")
-			   ? input + "/"
-			   : input;
+	public static string EnsureTrailingSlash(this string value)
+		=> value.IsNotNullOrWhiteSpace() && !value.EndsWith("/")
+			   ? value + "/"
+			   : value;
 
-	[DebuggerStepThrough]
-	public static string RemoveLeadingSlash(this string input)
-		=> input.IsNotNullOrEmpty() && input.StartsWith("/")
-			   ? input.Substring(1)
-			   : input;
+	public static string RemoveLeadingSlash(this string value)
+		=> value.IsNotNullOrWhiteSpace() && value.StartsWith("/")
+			   ? value.Substring(1)
+			   : value;
 
-	[DebuggerStepThrough]
-	public static string RemoveTrailingSlash(this string input)
-		=> input.IsNotNullOrEmpty() && input.EndsWith("/")
-			   ? input.Substring(0, input.Length - 1)
-			   : input;
+	public static string RemoveTrailingSlash(this string value)
+		=> value.IsNotNullOrWhiteSpace() && value.EndsWith("/")
+			   ? value.Substring(0, value.Length - 1)
+			   : value;
 
-	[DebuggerStepThrough]
-	public static string EnsureEndsWith(this string input, char c)
-		=> input.EnsureEndsWith(c, StringComparison.Ordinal);
+	public static string EnsureStartsWith(this string value, char c)
+		=> value.EnsureStartsWith(c, StringComparison.Ordinal);
 
-	[DebuggerStepThrough]
-	public static string EnsureEndsWith(this string input, char c, StringComparison comparison)
-	{
-		input.ThrowIfNull();
+	public static string EnsureStartsWith(this string value, char c, StringComparison comparison)
+		=> value.ThrowIfNull().StartsWith(c.ToString(), comparison)
+			   ? value
+			   : c + value;
 
-		return input.EndsWith(c.ToString(), comparison)
-			       ? input
-			       : input + c;
-	}
+	public static string EnsureStartsWith(this string value, char c, bool ignoreCase, CultureInfo culture)
+		=> value.ThrowIfNull().StartsWith(c.ToString(culture), ignoreCase, culture)
+			   ? value
+			   : c + value;
 
-	[DebuggerStepThrough]
-	public static string EnsureEndsWith(this string input, char c, bool ignoreCase, CultureInfo culture)
-	{
-		input.ThrowIfNull();
+	public static string EnsureEndsWith(this string value, char c)
+		=> value.EnsureEndsWith(c, StringComparison.Ordinal);
 
-		return input.EndsWith(c.ToString(culture), ignoreCase, culture)
-			       ? input
-			       : input + c;
-	}
+	public static string EnsureEndsWith(this string value, char c, StringComparison comparison)
+		=> value.ThrowIfNull().EndsWith(c.ToString(), comparison)
+			   ? value
+			   : value + c;
 
-	[DebuggerStepThrough]
-	public static string EnsureStartsWith(this string input, char c)
-		=> input.EnsureStartsWith(c, StringComparison.Ordinal);
+	public static string EnsureEndsWith(this string value, char c, bool ignoreCase, CultureInfo culture)
+		=> value.ThrowIfNull().EndsWith(c.ToString(culture), ignoreCase, culture)
+			   ? value
+			   : value + c;
 
-	[DebuggerStepThrough]
-	public static string EnsureStartsWith(this string input, char c, StringComparison comparison)
-	{
-		input.ThrowIfNull();
-
-		return input.StartsWith(c.ToString(), comparison)
-			       ? input
-			       : c + input;
-	}
-
-	[DebuggerStepThrough]
-	public static string EnsureStartsWith(this string input, char c, bool ignoreCase, CultureInfo culture)
-	{
-		input.ThrowIfNull();
-
-		return input.StartsWith(c.ToString(culture), ignoreCase, culture)
-			       ? input
-			       : c + input;
-	}
-
-	[DebuggerStepThrough]
 	public static Match RegexMatch(this Regex regex, string source)
 	{
+		regex.ThrowIfNull();
+		source.ThrowIfNull();
+
 		var match = regex.Match(source);
 		return match.Success ? match : Match.Empty;
 	}
 
-
-	[DebuggerStepThrough]
-	public static string Left(this string input, int length)
+	public static string Left(this string value, int length)
 	{
-		input.ThrowIfNull();
-		input.Length.ThrowIfLessThan(length, nameof(length));
+		value.ThrowIfNull();
+		value.Length.ThrowIfLessThan(length, nameof(length));
 
-		return input.Substring(0, length);
+		return value.Substring(0, length);
 	}
 
-	[DebuggerStepThrough]
-	public static string Right(this string input, int length)
+	public static string Right(this string value, int length)
 	{
-		input.ThrowIfNull();
-		input.Length.ThrowIfMoreThan(length);
+		value.ThrowIfNull();
+		value.Length.ThrowIfLessThan(length);
 
-		return input.Substring(input.Length - length, length);
+		return value.Substring(value.Length - length, length);
 	}
 
-	[DebuggerStepThrough]
 	public static string RemoveAll(this string source, params string[] strings)
-		=> strings.Aggregate(source, ReplaceOrdinal);
+		=> strings.ThrowIfNull().Aggregate(source.ThrowIfNull(), ReplaceOrdinal);
 
-	[DebuggerStepThrough]
 	private static string ReplaceOrdinal(string current, string target)
-		=> current.Replace(target, "", StringComparison.Ordinal);
+		=> current.ThrowIfNull().Replace(target.ThrowIfNull(), "", StringComparison.Ordinal);
 
-	[DebuggerStepThrough]
-	public static string RemovePostFix(this string value, params string[] postfixes)
+	public static string RemovePreFixes(this string value, params string[] prefixes)
+		=> value.ThrowIfNull().RemovePreFixes(StringComparison.OrdinalIgnoreCase, prefixes);
+
+	public static string RemovePreFixes(this string value, StringComparison comparison, params string[] prefixes)
+		=> value.ThrowIfNull().RemovePreFixes(true, CultureInfo.InvariantCulture, prefixes);
+
+	public static string RemovePreFixes(this string value, bool ignoreCase, CultureInfo culture, params string[] prefixes)
 	{
-		if (value is null)
-			return null;
-		if (value.IsNullOrEmpty())
-			return string.Empty;
-		if (postfixes.IsNullOrEmpty())
-			return value;
+		value.ThrowIfNull();
 
-		foreach (var postfix in postfixes)
-			if (value.EndsWith(postfix))
-				return value.Left(value.Length - postfix.Length);
-
-		return value;
-	}
-
-	[DebuggerStepThrough]
-	public static string RemovePreFix(this string value, params string[] prefixes)
-	{
-		if (value.TrueIfNull())
-			return null;
 		if (value.IsNullOrEmpty())
 			return string.Empty;
 		if (prefixes.IsNullOrEmpty())
 			return value;
 
 		foreach (var prefix in prefixes)
-			if (value.StartsWith(prefix))
+			if (value.StartsWith(prefix, ignoreCase, culture))
 				return value.Right(value.Length - prefix.Length);
 
 		return value;
 	}
 
-	[DebuggerStepThrough]
-	public static T ToEnum<T>(this string value, bool ignoreCase = true) where T : struct
+	public static string RemovePostFixes(this string value, params string[] postfixes)
+		=> value.RemovePostFixes(StringComparison.OrdinalIgnoreCase, postfixes);
+
+	public static string RemovePostFixes(this string value, StringComparison comparison, params string[] postfixes)
+		=> value.RemovePostFixes(true, CultureInfo.InvariantCulture, postfixes);
+
+	public static string RemovePostFixes(this string value, bool ignoreCase, CultureInfo culture, params string[] postfixes)
 	{
 		value.ThrowIfNull();
+
+		if (value.IsNullOrEmpty())
+			return string.Empty;
+		if (postfixes.IsNullOrEmpty())
+			return value;
+
+		foreach (var postfix in postfixes)
+			if (value.EndsWith(postfix, ignoreCase, culture))
+				return value.Left(value.Length - postfix.Length);
+
+		return value;
+	}
+
+	public static T ToEnum<T>(this string value, bool ignoreCase = true)
+		where T : struct
+	{
+		value.ThrowIfNull();
+		value.ThrowIfEmpty();
+		value.ThrowIfNullOrWhitespace();
 
 		return (T)Enum.Parse(typeof(T), value, ignoreCase);
 	}
 
-	[DebuggerStepThrough]
 	public static string Truncate(this string value, int maxLength)
 	{
-		if (value.TrueIfNull())
-			return null;
+		value.ThrowIfNull();
+		value.ThrowIfEmpty();
+		maxLength.ThrowIfLessThan(0);
+		value.Length.ThrowIfLessThan(maxLength);
+
+		return value.Left(maxLength);
+	}
+
+	public static string TruncateWithPostfix(this string value, int maxLength, string postfix = "...")
+	{
+		value.ThrowIfNull();
+		value.ThrowIfEmpty();
+		maxLength.ThrowIfLessThan(0);
+		maxLength.ThrowIfLessThan(postfix.Length);
 
 		return value.Length <= maxLength
 			       ? value
-			       : value.Left(maxLength);
+			       : value.Left(maxLength - postfix.Length) + postfix;
 	}
 
-	[DebuggerStepThrough]
-	public static string TruncateWithPostfix(this string value, int maxLength, string postfix = "...")
+	public static string SubstringSafe(this string value, int start = 0)
 	{
-		if (value.TrueIfNull())
-			return null;
-		if (value.IsNullOrEmpty() || maxLength == 0)
-			return string.Empty;
-		if (value.Length <= maxLength)
-			return value;
-		if (maxLength <= postfix.Length)
-			return postfix.Left(maxLength);
+		value.ThrowIfNull();
+		value.ThrowIfEmpty();
+		start.ThrowIfLessThan(-1);
 
-		return value.Left(maxLength - postfix.Length) + postfix;
+		return value.SubstringSafe(start, value.Length);
 	}
 
-	[DebuggerStepThrough]
-	public static string SubstringSafe(this string input, int start, int length)
-		=> input.Length <= start
-			   ? ""
-			   : input.Length - start <= length
-				   ? input[start..]
-				   : input.Substring(start, length);
-
-	[DebuggerStepThrough]
-	public static string SubstringSafe(this string input, int start)
-		=> input.Length <= start
-			   ? ""
-			   : input[start..];
-
-	[DebuggerStepThrough]
-	public static string ToTitleCase(this string input)
-		=> input.First().ToString().ToUpper() + input.Substring(1);
-
-	[DebuggerStepThrough]
-	public static string EscapeSearchTerm(this string term)
+	public static string SubstringSafe(this string value, int start, int length)
 	{
+		value.ThrowIfNull();
+		value.ThrowIfEmpty();
+		start.ThrowIfLessThan(-1);
+		length.ThrowIfLessThan(0);
+
+		return value.Length - start > length
+			       ? value.Substring(start, length)
+			       : value[start..];
+	}
+
+	public static string ToTitleCase(this string value)
+	{
+		value.ThrowIfNull();
+		value.ThrowIfEmpty();
+		value = value.ToLower();
+
+		return value.First().ToString().ToUpper() + value.Substring(1);
+	}
+
+	public static string EscapeSearch(this string value)
+	{
+		value.ThrowIfNull();
+		value.ThrowIfEmpty();
+
 		char[] specialCharacters = { '+', '-', '!', '(', ')', '{', '}', '[', ']', '^', '"', '~', '*', '?', ':', '\\' };
 		var    result            = new StringBuilder("");
 		//'&&', '||',
-		foreach (var ch in term)
+		foreach (var ch in value)
 		{
 			if (specialCharacters.Any(x => x == ch))
 				result.Append("\\");
@@ -242,16 +237,33 @@ public static class StringExtensions
 		return result.ToString().Trim();
 	}
 
-	/// <summary>
-	/// Escapes the selector. Query requires special characters to be escaped in query
-	/// http://api.jquery.com/category/selectors/
-	/// </summary>
-	public static string EscapeSelector(this string attribute)
-		=> Regex.Replace(attribute, string.Format("([{0}])", "/[!\"#$%&'()*+,./:;<=>?@^`{|}~\\]"), @"\\$1", RegexOptions.Compiled, Constants.RegexTimeout);
-
-	public static string GenerateSlug(this string phrase)
+	public static string EscapeSelector(this string value)
 	{
-		string str = phrase.RemoveAccent().ToLower();
+		value.ThrowIfNull();
+		value.ThrowIfEmpty();
+
+		var pattern     = string.Format("([{0}])", "/[!\"#$%&'()*+,./:;<=>?@^`{{|}}~\\]");
+		var replacement = @"\\$1";
+		return Regex.Replace(value, pattern, replacement, RegexOptions.Compiled, Constants.RegexTimeout);
+	}
+
+	public static string RemoveAccent(this string value)
+	{
+		value.ThrowIfNull();
+		value.ThrowIfEmpty();
+
+		Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+		var    encoding = Encoding.GetEncoding("Cyrillic");
+		byte[] bytes    = encoding.GetBytes(value);
+		return Encoding.ASCII.GetString(bytes);
+	}
+
+	public static string GenerateSlug(this string value)
+	{
+		value.ThrowIfNull();
+		value.ThrowIfEmpty();
+
+		string str = value.RemoveAccent().ToLower();
 
 		// invalid chars
 		str = Regex.Replace(str, @"[^a-z0-9\s-]", "", RegexOptions.Compiled, Constants.RegexTimeout);
@@ -265,32 +277,21 @@ public static class StringExtensions
 		return str;
 	}
 
-	[DebuggerStepThrough]
-	public static string RemoveAccent(this string input)
-	{
-		byte[] bytes = Encoding.GetEncoding("Cyrillic").GetBytes(input);
-		return Encoding.ASCII.GetString(bytes);
-	}
-
-	/// <summary>
-	/// Equals invariant
-	/// </summary>
-	/// <param name="str1">The STR1.</param>
-	/// <param name="str2">The STR2.</param>
-	/// <returns></returns>
 	public static bool EqualsInvariant(this string str1, string str2)
 		=> string.Equals(str1, str2, StringComparison.OrdinalIgnoreCase);
 
-	[DebuggerStepThrough]
-	public static string ToSpaceSeparatedString(this IEnumerable<string> list)
-		=> list.IsNullOrEmpty()
-			   ? string.Empty
-			   : string.Join(' ', list);
-
-	[DebuggerStepThrough]
-	public static IEnumerable<string> FromSpaceSeparatedString(this string input)
+	public static string SeparateToSpace(this IEnumerable<string> list)
 	{
-		input = input.Trim();
-		return input.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+		list.ThrowIfNull();
+		list.ThrowIfEmpty();
+		return !list.Any()
+			       ? throw new ArgumentEmptyException(nameof(list))
+			       : string.Join(' ', list);
 	}
+
+	public static IEnumerable<string> SeparateFromSpace(this string value)
+		=> value.ThrowIfNull()
+		        .ThrowIfEmpty()
+		        .Trim()
+		        .Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 }

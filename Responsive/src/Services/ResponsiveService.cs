@@ -63,11 +63,11 @@ public sealed class ResponsiveService : IResponsiveService
 	private static Device DefaultView(Device device, ResponsiveOptions options)
 	{
 		return device switch
-		{
-			Device.Mobile  => options.DefaultMobile,
-			Device.Tablet  => options.DefaultTablet,
-			Device.Desktop => options.DefaultDesktop,
-			_              => device
-		};
+		       {
+			       Device.Mobile  => options.DefaultMobile,
+			       Device.Tablet  => options.DefaultTablet,
+			       Device.Desktop => options.DefaultDesktop,
+			       _              => device
+		       };
 	}
 }

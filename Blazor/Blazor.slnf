@@ -3,10 +3,15 @@
     "path": "..\\Wangkanai.sln",
     "projects": [
       "Blazor\\benchmark\\Wangkanai.Blazor.Benchmark.csproj",
+      "Blazor\\demo\\Client\\Wangkanai.Blazor.Demo.Client.csproj",
+      "Blazor\\demo\\Domain\\Wangkanai.Blazor.Demo.Domain.csproj",
+      "Blazor\\demo\\Server\\Wangkanai.Blazor.Demo.Server.csproj",
       "Blazor\\src\\Components\\Wangkanai.Blazor.Components.csproj",
       "Blazor\\src\\Core\\Wangkanai.Blazor.csproj",
       "Blazor\\src\\Web\\Wangkanai.Blazor.Components.Web.csproj",
-      "Blazor\\tests\\Wangkanai.Blazor.Test.csproj"
+      "Blazor\\tests\\Wangkanai.Blazor.Tests.csproj",
+      "System\\src\\Wangkanai.System.csproj",
+      "Validation\\src\\Wangkanai.Validation.csproj"
     ]
   }
 }

@@ -19,7 +19,7 @@ public class MarkdownConventionCollection : Collection<IMarkdownConvention>
 	public MarkdownConventionCollection(IList<IMarkdownConvention> conventions)
 		: base(conventions) { }
 
-	internal MarkdownConventionCollection(IServiceProvider? serviceProvider) 
+	internal MarkdownConventionCollection(IServiceProvider? serviceProvider)
 		=> _serviceProvider = serviceProvider;
 
 	internal MvcOptions MvcOptions
