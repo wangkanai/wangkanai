@@ -166,6 +166,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{C4E60FE9-2D5B-4510-854C-44C88209A236}"
 	ProjectSection(SolutionItems) = preProject
 		.github\FUNDING.yml = .github\FUNDING.yml
+		.github\RELEASE.yml = .github\RELEASE.yml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tabler", "Tabler", "{89052ADF-DFC9-4281-A1A1-E83434F434BC}"
