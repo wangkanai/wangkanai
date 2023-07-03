@@ -9,7 +9,7 @@ using Moq;
 
 namespace Wangkanai.Detection.Builder;
 
-public class DetectionApplicationBuilderExtensionsTest
+public class ApplicationExtensionsTest
 {
 	[Fact]
 	public void UseDetection_ThrowsInvalidOptionException_IfDetectionMarkerServiceIsNotRegistered()

@@ -11,9 +11,9 @@ using Moq;
 
 using Xunit;
 
-namespace Wangkanai.Analytics.Builder;
+namespace Microsoft.Extensions.DependencyInjection;
 
-public class ApplicationBuilderExtensionsTest
+public class ApplicationExtensionsTests
 {
 	[Fact]
 	public void UseAnalytics_ThrowsInvalidOptionException_IfMakerServiceIsNotRegister()
@@ -25,9 +25,9 @@ public class ApplicationBuilderExtensionsTest
 		var app = new Mock<IApplicationBuilder>();
 		app.Setup(x => x.ApplicationServices)
 		   .Returns(provider.Object);
+
 		// Act
-		var exception = Assert.Throws<InvalidOperationException>(
-			() => app.Object.UseAnalytics());
+		var exception = Assert.Throws<InvalidOperationException>(() => app.Object.UseAnalytics());
 
 		// Assert
 		Assert.Equal("AnalyticsMarkerService is not added to ConfigureServices(...)", exception.Message);
