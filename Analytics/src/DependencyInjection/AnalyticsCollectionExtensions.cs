@@ -18,7 +18,7 @@ public static class AnalyticsCollectionExtensions
 		               .AddAnalytics();
 	}
 
-	private static IAnalyticsBuilder AddAnalyticsBuilder(this IServiceCollection services)
+	internal static IAnalyticsBuilder AddAnalyticsBuilder(this IServiceCollection services)
 	{
 		return new AnalyticsBuilder(services);
 	}

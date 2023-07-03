@@ -25,8 +25,7 @@ public class ApplicationExtensionsTest
 			.Returns(serviceProvider.Object);
 
 		// Act
-		var exception = Assert.Throws<InvalidOperationException>(
-			() => applicationBuilderMock.Object.UseDetection());
+		var exception = Assert.Throws<InvalidOperationException>(() => applicationBuilderMock.Object.UseDetection());
 
 		// Assert
 		Assert.Equal("DetectionMarkerService is not added to ConfigureServices(...)", exception.Message);
