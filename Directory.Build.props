@@ -22,7 +22,7 @@
 
     <!-- GitHub Source Link -->
     <ItemGroup>
-        <PackageReference Include="Microsoft.SourceLink.GitHub"/>
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All"/>
     </ItemGroup>
 
     <ItemGroup Condition="$(MSBuildProjectName.Contains('Test'))">

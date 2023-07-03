@@ -9,7 +9,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\src\Wangkanai.Solver.csproj"/>
+        <ProjectReference Include="..\src\Wangkanai.Solver.csproj" />
     </ItemGroup>
 
 </Project>

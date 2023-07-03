@@ -9,8 +9,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\Blazor\src\Components\Wangkanai.Blazor.Components.csproj"/>
-        <ProjectReference Include="..\src\Core\Wangkanai.Tabler.csproj"/>
+        <ProjectReference Include="..\..\Blazor\src\Components\Wangkanai.Blazor.Components.csproj" />
+        <ProjectReference Include="..\src\Core\Wangkanai.Tabler.csproj" />
     </ItemGroup>
 
 </Project>

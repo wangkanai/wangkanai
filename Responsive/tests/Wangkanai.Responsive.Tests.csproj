@@ -7,7 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\src\Wangkanai.Responsive.csproj"/>
+        <ProjectReference Include="..\src\Wangkanai.Responsive.csproj" />
     </ItemGroup>
 
 </Project>

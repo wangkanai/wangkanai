@@ -6,9 +6,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <!--build related-->
-        <PackageReference Update="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All"/>
-
         <!--tests -->
         <PackageReference Update="Microsoft.AspNetCore.TestHost" Version="7.0.7"/>
         <PackageReference Update="Microsoft.NET.Test.Sdk" Version="17.6.3"/>
