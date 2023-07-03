@@ -1,19 +1,19 @@
 <Project>
-    <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props"/>
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
 
-    <PropertyGroup>
-        <Title>Wangkanai Extensions Internal</Title>
-        <PackageTags>aspnetcore;extensions;internal;</PackageTags>
-        <Description>Html wrapper utilities library</Description>
-    </PropertyGroup>
+  <PropertyGroup>
+    <Title>Wangkanai Extensions Internal</Title>
+    <PackageTags>aspnetcore;extensions;internal;</PackageTags>
+    <Description>Html wrapper utilities library</Description>
+  </PropertyGroup>
 
-    <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Extensions.Internal'">
-        <PackageIcon>wangkanai-logo.png</PackageIcon>
-        <PackageReadmeFile>README.md</PackageReadmeFile>
-    </PropertyGroup>
+  <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Extensions.Internal'">
+    <PackageIcon>wangkanai-logo.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
 
-    <ItemGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Extensions.Internal'">
-        <None Include="..\..\..\assets\wangkanai-logo.png" Pack="true" PackagePath="\"/>
-        <None Include="..\README.md" Pack="true" PackagePath="\"/>
-    </ItemGroup>
+  <ItemGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Extensions.Internal'">
+    <None Include="..\..\..\assets\wangkanai-logo.png" Pack="true" PackagePath="\" />
+    <None Include="..\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
 </Project>

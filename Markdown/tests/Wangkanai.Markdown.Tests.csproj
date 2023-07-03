@@ -6,7 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\src\Wangkanai.Markdown.csproj"/>
+        <ProjectReference Include="..\src\Wangkanai.Markdown.csproj" />
     </ItemGroup>
 
 </Project>

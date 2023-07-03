@@ -6,7 +6,6 @@
         <Nullable>enable</Nullable>
         <IsPackable>false</IsPackable>
         <IsTestProject>true</IsTestProject>
-        <RootNamespace>Wangkanai.Extensions.Internal.Test</RootNamespace>
     </PropertyGroup>
 
 </Project>

@@ -1,0 +1,39 @@
+<Project>
+    <PropertyGroup Condition=" '$(TargetFramework)' == 'net7.0'">
+        <FrameworkVersion>7.0.0</FrameworkVersion>
+        <ExtensionsVersion>7.0.0</ExtensionsVersion>
+        <EntityFrameworkVersion>7.0.0</EntityFrameworkVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <!--build related-->
+        <PackageReference Update="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All"/>
+
+        <!--tests -->
+        <PackageReference Update="Microsoft.AspNetCore.TestHost" Version="7.0.7"/>
+        <PackageReference Update="Microsoft.NET.Test.Sdk" Version="17.6.3"/>
+        <PackageReference Update="Moq" Version="4.18.4"/>
+        <PackageReference Update="xunit" Version="2.4.2"/>
+        <PackageReference Update="xunit.runner.visualstudio" Version="2.4.5" PrivateAssets="all"/>
+        <PackageReference Update="coverlet.collector" Version="6.0.0" PrivateAssets="all"/>
+        <PackageReference Update="coverlet.msbuild" Version="6.0.0" PrivateAssets="all"/>
+
+        <!--benchmarks-->
+        <PackageReference Update="BenchmarkDotNet" Version="0.13.5"/>
+
+        <!--code analysis-->
+
+        <!--framework-->
+        <PackageReference Update="Microsoft.AspNetCore.Components" Version="$(FrameworkVersion)"/>
+        <PackageReference Update="Microsoft.AspNetCore.Components.Web" Version="$(FrameworkVersion)"/>
+        <PackageReference Update="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="$(FrameworkVersion)" />
+        <PackageReference Update="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="$(FrameworkVersion)"/>
+        <PackageReference Update="Microsoft.EntityFrameworkCore.SqlServer" Version="$(FrameworkVersion)"/>
+        <PackageReference Update="Microsoft.EntityFrameworkCore.Relational" Version="$(FrameworkVersion)"/>
+        <PackageReference Update="Microsoft.IdentityModel.Tokens" Version="6.31.0"/>
+
+
+        <!--packages-->
+        <PackageReference Update="JetBrains.Annotations" Version="2022.3.1"/>
+    </ItemGroup>
+</Project>
