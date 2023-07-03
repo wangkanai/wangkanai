@@ -13,10 +13,8 @@ public sealed class FederationBuilder : IFederationBuilder
     /// <param name="services">
     ///     The <see cref="IServiceCollection" /> to attached to.
     /// </param>
-    public FederationBuilder(IServiceCollection services)
-    {
-        Services = services;
-    }
+    public FederationBuilder(IServiceCollection services) 
+	    => Services = services.ThrowIfNull();
 
     /// <summary>
     ///     Get the <see cref="IServiceCollection" /> services are attached to.
