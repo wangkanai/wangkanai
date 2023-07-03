@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
+using Wangkanai.Detection.Services;
 using Wangkanai.Hosting;
 using Wangkanai.Webmaster.Services;
 
@@ -33,8 +34,8 @@ public class CoreBuilderExtensionsTests
 	[Fact]
 	public void AddRequiredPlatformServices_ReturnsExpected()
 	{
-		var services = new ServiceCollection();
-		var builder  = services.AddWebmasterBuilder().AddRequiredServices();
+		var services    = new ServiceCollection();
+		var builder     = services.AddWebmasterBuilder().AddRequiredServices();
 		var descriptors = new List<ServiceDescriptor>();
 		descriptors.Add(new(typeof(IHttpContextAccessor), typeof(HttpContextAccessor), ServiceLifetime.Singleton));
 		descriptors.Add(new(typeof(IOptions<>), typeof(WebmasterOptions), ServiceLifetime.Singleton));
@@ -52,11 +53,11 @@ public class CoreBuilderExtensionsTests
 	[Fact]
 	public void AddCoreServices_ReturnsExpected()
 	{
-		var services = new ServiceCollection();
-		var builder  = services.AddWebmasterBuilder().AddCoreServices();
+		var services    = new ServiceCollection();
+		var builder     = services.AddWebmasterBuilder().AddCoreServices();
 		var descriptors = new List<ServiceDescriptor>();
 		descriptors.Add(new(typeof(IWebmasterService), typeof(WebmasterService), ServiceLifetime.Scoped));
-		
+
 		Assert.NotNull(builder);
 		Assert.NotNull(builder.Services);
 		descriptors.AssertServices(builder.Services);
@@ -67,7 +68,7 @@ public class CoreBuilderExtensionsTests
 	{
 		Assert.Throws<ArgumentNullException>(() => ((IServiceCollection)null!).AddWebmaster());
 	}
-	
+
 	[Fact]
 	public void AddWebmasterBuilder_Null_ArgumentNullException()
 	{
