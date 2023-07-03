@@ -11,10 +11,8 @@ public sealed class AnalyticsBuilder : IAnalyticsBuilder
 	///     Creates a new instance of <see cref="AnalyticsBuilder" />
 	/// </summary>
 	/// <param name="services">The <see cref="IServiceCollection" /> to attach to.</param>
-	public AnalyticsBuilder(IServiceCollection services)
-	{
-		Services = services.ThrowIfNull();
-	}
+	public AnalyticsBuilder(IServiceCollection services) 
+		=> Services = services.ThrowIfNull();
 
 	/// <summary>
 	///     Gets the <see cref="IServiceCollection" /> services are attached to.
