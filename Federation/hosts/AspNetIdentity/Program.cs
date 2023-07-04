@@ -1,3 +1,5 @@
+// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,7 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 
 builder.Services.AddDbContext<ApplicationDbContext>(
-    options => options.UseSqlServer(builder.Configuration.GetConnectionString(AppSettings.ConnectionStrings.Default))
+	options => options.UseSqlServer(builder.Configuration.GetConnectionString(AppSettings.ConnectionStrings.Default))
 );
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
@@ -28,12 +30,12 @@ var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
-    app.UseDeveloperExceptionPage();
+	app.UseDeveloperExceptionPage();
 else
 {
-    app.UseExceptionHandler("/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
+	app.UseExceptionHandler("/Error");
+	// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+	app.UseHsts();
 }
 
 app.UseHttpsRedirection();
@@ -45,7 +47,7 @@ app.UseFederation();
 // app.UseAuthentication();
 // app.UseAuthorization();
 
-app.MapControllers();//.RequireAuthorization(FederationConstants.LocalApi.PolicyName);
-app.MapRazorPages();//.RequireAuthorization();
+app.MapControllers(); //.RequireAuthorization(FederationConstants.LocalApi.PolicyName);
+app.MapRazorPages();  //.RequireAuthorization();
 
 app.Run();
