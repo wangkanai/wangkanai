@@ -9,9 +9,7 @@ using Wangkanai.Federation.AspNetIdentity;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
-/// <summary>
-///     Extension methods for setting up ASP.NET Identity in federation services.
-/// </summary>
+/// <summary>Extension methods for setting up ASP.NET Identity in federation services.</summary>
 public static class FederationBuilderExtensions
 {
 	public static IFederationBuilder AddAspNetIdentity<TUser>(this IFederationBuilder builder)
