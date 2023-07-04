@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using System.Security.Claims;
 
@@ -130,7 +130,7 @@ public sealed class FederationAuthenticationService : IAuthenticationService
 		var idp = identity.FindFirst(ClaimTypes.AuthenticationMethod);
 		if (idp == null)
 			return;
-		if (identity.FindFirst(JwtClaimTypes.IdentityProvider) == null &&
+		if (identity.FindFirst(JwtClaimTypes.IdentityProvider)     == null &&
 		    identity.FindFirst(JwtClaimTypes.AuthenticationMethod) == null)
 		{
 			_logger.LogDebug("Removing amr claim with value: {idp}", idp.Value);

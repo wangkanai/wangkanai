@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
@@ -39,7 +39,7 @@ public class EndpointRouter : IEndpointRouter
 
 	private IEndpointHandler GetEndpointHandler(Endpoint endpoint, HttpContext context)
 	{
-		if (_options.Endpoints.IsEnabled(endpoint) && context.RequestServices.GetService(endpoint.Handler) is IEndpointHandler handler) 
+		if (_options.Endpoints.IsEnabled(endpoint) && context.RequestServices.GetService(endpoint.Handler) is IEndpointHandler handler)
 			return handler;
 
 		return null!;

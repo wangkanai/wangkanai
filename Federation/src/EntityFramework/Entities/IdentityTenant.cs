@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 namespace Wangkanai.Federation.Entities;
 
@@ -24,7 +24,7 @@ public class IdentityTenant<TKey> where TKey : IEquatable<TKey>
 		Name = tenantName;
 	}
 
-	public virtual TKey    Id               { get; set; } = default!;
+	public virtual TKey   Id               { get; set; } = default!;
 	public virtual string Name             { get; set; }
 	public virtual string NormalizedName   { get; set; }
 	public virtual string ConcurrencyStamp { get; set; } = Guid.NewGuid().ToString();

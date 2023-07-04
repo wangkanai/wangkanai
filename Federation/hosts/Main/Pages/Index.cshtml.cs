@@ -1,15 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Host.Main.Pages;
 
 public class IndexModel : PageModel
 {
-    private readonly ILogger<IndexModel> _logger;
+	private readonly ILogger<IndexModel> _logger;
 
-    public IndexModel(ILogger<IndexModel> logger)
-    {
-        _logger = logger;
-    }
+	public IndexModel(ILogger<IndexModel> logger)
+	{
+		_logger = logger;
+	}
 
-    public void OnGet() { }
+	public void OnGet() { }
 }
