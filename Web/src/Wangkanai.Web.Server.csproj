@@ -12,6 +12,10 @@
         <PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
     </ItemGroup>
 
+    <ItemGroup>
+        <ProjectReference Include="..\..\Markdown\src\Wangkanai.Markdown.csproj" />
+    </ItemGroup>
+
     <ItemGroup Condition="'$(DotNetWatchBuild)'=='true'">
         <Watch Include="**/*.css;**/*.scss;**/*.jpg" Exclude="node_modules/**;**/*.js.map;**/*.css.map;obj/**/*;bin/**/*" />
     </ItemGroup>
@@ -19,10 +23,6 @@
     <ItemGroup>
         <Content Remove="wwwroot\lib\**" />
         <Content Include="wwwroot\lib\**" Watch="false" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <ProjectReference Include="..\..\Markdown\src\Wangkanai.Markdown.csproj" />
     </ItemGroup>
 
     <Target Name="NpmInstall" Inputs="package.json" Outputs="node_modules/.install-stamp">
