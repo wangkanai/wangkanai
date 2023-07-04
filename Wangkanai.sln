@@ -124,6 +124,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Markdown.Tests", "Markdown\tests\Wangkanai.Markdown.Tests.csproj", "{BA993356-DADC-412B-A24F-8AEACDC5FA53}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{A3C4F552-BD1E-40C6-81C9-99F61B8916EA}"
+	ProjectSection(SolutionItems) = preProject
+		Webmaster\samples\Directory.Build.props = Webmaster\samples\Directory.Build.props
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hosting", "Hosting", "{10D7A0CF-E53B-4355-8942-B5D224EB7B98}"
 	ProjectSection(SolutionItems) = preProject
@@ -472,6 +475,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".sonar", ".sonar", "{EEF194
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Blazor.Tests", "Blazor\tests\Wangkanai.Blazor.Tests.csproj", "{235F3D6E-8F3D-4A68-8E4F-7CEF06022164}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Host.Main", "Webmaster\samples\Main\Host.Main.csproj", "{E07139C6-8529-4DED-899F-4E75E93B6B41}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -855,6 +860,10 @@ Global
 		{235F3D6E-8F3D-4A68-8E4F-7CEF06022164}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{235F3D6E-8F3D-4A68-8E4F-7CEF06022164}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{235F3D6E-8F3D-4A68-8E4F-7CEF06022164}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E07139C6-8529-4DED-899F-4E75E93B6B41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E07139C6-8529-4DED-899F-4E75E93B6B41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E07139C6-8529-4DED-899F-4E75E93B6B41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E07139C6-8529-4DED-899F-4E75E93B6B41}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -969,6 +978,7 @@ Global
 		{DE1B420A-E7F3-446D-9FB6-77FA89AC17B6} = {0A7F10BF-EA60-4A19-9F07-3D9CE40F5952}
 		{2ADC834E-E648-44D0-B5C0-3B2E02BB42CA} = {0A7F10BF-EA60-4A19-9F07-3D9CE40F5952}
 		{235F3D6E-8F3D-4A68-8E4F-7CEF06022164} = {9D20D5E6-879B-463C-964A-3DA13FFAE9E3}
+		{E07139C6-8529-4DED-899F-4E75E93B6B41} = {A3C4F552-BD1E-40C6-81C9-99F61B8916EA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1BA0A192-D7BE-40A1-96AE-B3C8C6BC9B69}
