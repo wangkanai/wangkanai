@@ -99,6 +99,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Analytics.Tests", "Analytics\tests\Wangkanai.Analytics.Tests.csproj", "{5502A4D7-EB68-4389-8696-10500E9347CB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{8B50F062-61B9-483B-9212-9A01F6F12EF8}"
+	ProjectSection(SolutionItems) = preProject
+		Responsive\samples\Directory.Build.props = Responsive\samples\Directory.Build.props
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Webserver", "Webserver", "{1CD41CBB-76E2-42CE-9C17-040527E90C6A}"
 	ProjectSection(SolutionItems) = preProject
@@ -309,12 +312,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Extensions.Html",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Extensions.Html.Tests", "Extensions\Html\tests\Wangkanai.Extensions.Html.Tests.csproj", "{6701A779-DA42-4B26-A920-631E8855855D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{261C090A-5DAB-4A84-A35F-59D04ECE7357}"
-	ProjectSection(SolutionItems) = preProject
-		Responsive\docs\responsive-pages-file-structure.png = Responsive\docs\responsive-pages-file-structure.png
-		Responsive\docs\responsive-views-file-structure.png = Responsive\docs\responsive-views-file-structure.png
-	EndProjectSection
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.System", "System\src\Wangkanai.System.csproj", "{77FDD6D6-9FF8-4B04-B936-C8CC81174649}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.System.Tests", "System\tests\Wangkanai.System.Tests.csproj", "{5925CD69-175B-479F-93E8-FEB244928F95}"
@@ -473,6 +470,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Blazor.Tests", "Blazor\tests\Wangkanai.Blazor.Tests.csproj", "{235F3D6E-8F3D-4A68-8E4F-7CEF06022164}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Host.Main", "Webmaster\samples\Main\Host.Main.csproj", "{E07139C6-8529-4DED-899F-4E75E93B6B41}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Host.Main", "Responsive\samples\Main\Host.Main.csproj", "{6225D02B-904E-432D-ADB7-0A09DF4F9E91}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -852,6 +851,10 @@ Global
 		{E07139C6-8529-4DED-899F-4E75E93B6B41}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E07139C6-8529-4DED-899F-4E75E93B6B41}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E07139C6-8529-4DED-899F-4E75E93B6B41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6225D02B-904E-432D-ADB7-0A09DF4F9E91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6225D02B-904E-432D-ADB7-0A09DF4F9E91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6225D02B-904E-432D-ADB7-0A09DF4F9E91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6225D02B-904E-432D-ADB7-0A09DF4F9E91}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -919,7 +922,6 @@ Global
 		{80FFA07F-975B-4F2E-BE7C-79676344055E} = {EE1EF4E3-ADB8-460F-9793-2E87E6DAA2E6}
 		{4017F4ED-E775-4AA7-831A-8467EFBC542E} = {DFCE57F8-CA4D-4F85-A14D-F15173B8CC42}
 		{6701A779-DA42-4B26-A920-631E8855855D} = {DFCE57F8-CA4D-4F85-A14D-F15173B8CC42}
-		{261C090A-5DAB-4A84-A35F-59D04ECE7357} = {7C2D39ED-FF02-492B-84E0-958A4291B51C}
 		{77FDD6D6-9FF8-4B04-B936-C8CC81174649} = {3220F767-41DB-4C06-9952-619F50EB0567}
 		{5925CD69-175B-479F-93E8-FEB244928F95} = {3220F767-41DB-4C06-9952-619F50EB0567}
 		{460147BC-7960-4E70-8B1E-D602675D16F3} = {3220F767-41DB-4C06-9952-619F50EB0567}
@@ -965,6 +967,7 @@ Global
 		{2ADC834E-E648-44D0-B5C0-3B2E02BB42CA} = {0A7F10BF-EA60-4A19-9F07-3D9CE40F5952}
 		{235F3D6E-8F3D-4A68-8E4F-7CEF06022164} = {9D20D5E6-879B-463C-964A-3DA13FFAE9E3}
 		{E07139C6-8529-4DED-899F-4E75E93B6B41} = {A3C4F552-BD1E-40C6-81C9-99F61B8916EA}
+		{6225D02B-904E-432D-ADB7-0A09DF4F9E91} = {8B50F062-61B9-483B-9212-9A01F6F12EF8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1BA0A192-D7BE-40A1-96AE-B3C8C6BC9B69}
