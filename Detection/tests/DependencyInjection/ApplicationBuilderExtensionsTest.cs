@@ -9,7 +9,7 @@ using Moq;
 
 namespace Wangkanai.Detection.Builder;
 
-public class DetectionApplicationBuilderExtensionsTest
+public class ApplicationExtensionsTest
 {
 	[Fact]
 	public void UseDetection_ThrowsInvalidOptionException_IfDetectionMarkerServiceIsNotRegistered()
@@ -25,8 +25,7 @@ public class DetectionApplicationBuilderExtensionsTest
 			.Returns(serviceProvider.Object);
 
 		// Act
-		var exception = Assert.Throws<InvalidOperationException>(
-			() => applicationBuilderMock.Object.UseDetection());
+		var exception = Assert.Throws<InvalidOperationException>(() => applicationBuilderMock.Object.UseDetection());
 
 		// Assert
 		Assert.Equal("DetectionMarkerService is not added to ConfigureServices(...)", exception.Message);
