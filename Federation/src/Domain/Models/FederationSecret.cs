@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 namespace Wangkanai.Federation.Models;
 
@@ -35,7 +35,7 @@ public class FederationSecret
 		{
 			var hash = Convert.ToInt32(0x11);
 			hash = hash * Convert.ToInt32(0x17) + (Value?.GetHashCode() ?? 0);
-			hash = hash * Convert.ToInt32(0x17) + (Type?.GetHashCode() ?? 0);
+			hash = hash * Convert.ToInt32(0x17) + (Type?.GetHashCode()  ?? 0);
 
 			return hash;
 		}
@@ -44,7 +44,7 @@ public class FederationSecret
 	public override bool Equals(object? obj)
 	{
 		var other = obj as FederationSecret;
-		
+
 		if (obj == null)
 			return false;
 		if (other == null)

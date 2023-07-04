@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using System.Diagnostics;
 
@@ -10,7 +10,7 @@ namespace Wangkanai.Federation.Models;
 public class FederationScope : FederationResource
 {
 	private string DebuggerDisplay => Name ?? $"{{{typeof(FederationScope)}}}";
-	
+
 	public bool Required  { get; set; }
 	public bool Emphasize { get; set; }
 
@@ -28,9 +28,9 @@ public class FederationScope : FederationResource
 		Name        = name;
 		DisplayName = displayName;
 
-		if (claims.IsNullOrEmpty()) 
+		if (claims.IsNullOrEmpty())
 			return;
-		
+
 		foreach (var claim in claims)
 			UserClaims.Add(claim);
 	}

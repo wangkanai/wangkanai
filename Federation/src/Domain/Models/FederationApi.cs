@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using System.Diagnostics;
 
@@ -36,7 +36,7 @@ public class FederationApi : FederationResource
 	public bool RequireApiIndicator { get; set; }
 
 	public ICollection<FederationSecret> Secrets { get; set; } = new HashSet<FederationSecret>();
-	public ICollection<string> Scopes  { get; set; } = new HashSet<string>();
+	public ICollection<string>           Scopes  { get; set; } = new HashSet<string>();
 
 	public ICollection<string> AllowedAccessTokenSigningAlgorithms { get; set; } = new HashSet<string>();
 }

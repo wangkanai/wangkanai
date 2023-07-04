@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -71,7 +71,7 @@ public abstract class FederationDbContext<TUser, TRole, TClient, TScope, TResour
 	{
 		var configOptions = GetConfigurationOptions();
 		var maxKeyLength  = configOptions?.MaxLengthForKeys ?? 0;
-		var encryptData   = configOptions?.EncryptData ?? false;
+		var encryptData   = configOptions?.EncryptData      ?? false;
 
 		builder.Entity<TClient>(b => {
 			b.ToTable(configOptions.Client);
@@ -96,13 +96,13 @@ public abstract class FederationDbContext<TUser, TRole, TClient, TScope, TResour
 		builder.Entity<IdentityClientFlowType>(b => {
 			b.ToTable(configOptions.ClientFlowType);
 			b.HasKey(c => c.Id);
-			
+
 			b.HasOne(c => c.Client).WithMany(c => c.FlowTypes).IsRequired();
 		});
 
 		builder.Entity<IdentityClientRedirectUri>(b => {
 			b.ToTable(configOptions.ClientRedirectUri);
-			b.HasKey(c=>c.Id);
+			b.HasKey(c => c.Id);
 
 			b.HasOne(c => c.Client).WithMany(x => x.RedirectUris).IsRequired();
 		});
