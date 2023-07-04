@@ -16,7 +16,7 @@ public class CoreBuilderExtensionsTests
 	{
 		Assert.Throws<ArgumentNullException>(() => ((IServiceCollection)null!).AddFederation());
 	}
-	
+
 	[Fact]
 	public void AddFederationBuilder_Null_ArgumentNullException()
 	{
@@ -30,12 +30,12 @@ public class CoreBuilderExtensionsTests
 		var builder     = services.AddFederationBuilder().AddMarkerService();
 		var descriptors = new List<ServiceDescriptor>();
 		descriptors.Add(new(typeof(FederationMarkerService), typeof(FederationMarkerService), ServiceLifetime.Singleton));
-		
+
 		Assert.NotNull(builder);
 		Assert.NotNull(builder.Services);
 		descriptors.AssertServices(builder.Services);
 	}
-	
+
 	[Fact]
 	public void AddRequiredPlatformServices_ReturnsExpected()
 	{
@@ -49,12 +49,12 @@ public class CoreBuilderExtensionsTests
 		descriptors.Add(new(typeof(IOptionsFactory<>), typeof(FederationOptions), ServiceLifetime.Transient));
 		descriptors.Add(new(typeof(IOptionsMonitorCache<>), typeof(FederationOptions), ServiceLifetime.Singleton));
 		descriptors.Add(new(typeof(FederationOptions), typeof(FederationOptions), ServiceLifetime.Singleton));
-		
+
 		Assert.NotNull(builder);
 		Assert.NotNull(builder.Services);
 		descriptors.AssertServices(builder.Services);
 	}
-	
+
 	[Fact]
 	public void AddCoreServices_ReturnsExpected()
 	{
@@ -64,7 +64,6 @@ public class CoreBuilderExtensionsTests
 		descriptors.Add(new(typeof(IServerUris), typeof(FederationServerUris), ServiceLifetime.Transient));
 		descriptors.Add(new(typeof(IIssuerNameService), typeof(FederationIssuerNameService), ServiceLifetime.Transient));
 
-		
 		Assert.NotNull(builder);
 		Assert.NotNull(builder.Services);
 		descriptors.AssertServices(builder.Services);

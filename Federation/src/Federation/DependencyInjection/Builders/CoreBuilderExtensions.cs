@@ -13,13 +13,11 @@ public static class FederationCoreBuilderExtensions
 	internal static IFederationBuilder AddRequiredServices(this IFederationBuilder builder)
 	{
 		builder.ThrowIfNull();
-
-		// Hosting doesn't add IHttpContextAccessor by default
+		
 		builder.Services.AddHttpContextAccessor();
-
-		// Add Federation Options
 		builder.Services.AddOptions();
-		builder.Services.TryAddSingleton(p => p.GetRequiredService<IOptions<FederationOptions>>().Value);
+		builder.Services.AddSingleton(provider => provider.GetRequiredService<IOptions<FederationOptions>>().Value);
+		builder.Services.AddTransient(provider => provider.GetRequiredService<IOptions<FederationOptions>>().Value.PersistentGrants);
 		builder.Services.AddHttpClient();
 
 		return builder;
