@@ -1,5 +1,9 @@
 ## Responsive: Bridging the Gap Between Devices and Experiences
 
+<p align="center">
+  <img alt="Files Logo" src=".././Assets/aspnet-core-responsive.svg?sanitize=true" width="100%" />
+</p>
+
 Welcome to `Responsive`, a powerful ASP.NET Core middleware library that dynamically tailors your application's view to
 the requesting client device.
 It's not just about resizing and rearranging elements - it's about creating unique, device-specific experiences that
