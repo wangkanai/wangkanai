@@ -1,0 +1,12 @@
+﻿@{
+    Layout = "_Layout";
+}
+<div class="container mt-3">
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+</div>
+
+@section Scripts {
+    @await RenderSectionAsync("Scripts", required: false)
+}

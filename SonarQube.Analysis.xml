@@ -9,8 +9,7 @@
     <!-- Source   -->
     <!-- <Property Name="sonar.sources">.</Property> -->
     <!-- <Property Name="sonar.inclusions"></Property>-->
-    <Property Name="sonar.exclusions">Assets/, **/tests/**, **/benchmark/**, **/node_modules/**, **/lib/**,
-        **/BenchmarkDotNet.Artifacts/**
+    <Property Name="sonar.exclusions">Assets/**, **/tests/**, **/benchmark/**, **/node_modules/**, **/lib/**, **/BenchmarkDotNet.Artifacts/**
     </Property>
     <!-- Tests    -->
     <!-- <Property Name="sonar.tests">.</Property>-->
@@ -21,5 +20,5 @@
     <Property Name="sonar.coverage.exclusions">**/demo/**, **/samples/**, **/hosts/**
     </Property>
     <!-- Duplicate-->
-    <!--    <Property Name="sonar.cpd.exclusions"></Property>-->
+    <Property Name="sonar.cpd.exclusions">**/demo/**, **/samples/**, **/hosts/**</Property>
 </SonarQubeAnalysisProperties>
