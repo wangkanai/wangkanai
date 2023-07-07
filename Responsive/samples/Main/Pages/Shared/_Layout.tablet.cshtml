@@ -12,13 +12,13 @@
 
     <partial name="_Header"/>
     
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+    @RenderBody()
 
     <partial name="_Footer"/>
+    
+        <div class="container">
+            <div class="alert alert-secondary">/Pages/Shared/_Layout.tablet.cshtml</div>
+        </div>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

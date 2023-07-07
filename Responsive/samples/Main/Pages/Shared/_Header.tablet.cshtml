@@ -1,21 +1,22 @@
 ﻿<header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3">
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow">
         <div class="container">
-            <a class="navbar-brand" asp-area="" asp-page="/Index">Responsive</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <a class="navbar-brand" asp-area="" asp-page="/Index">Responsive</a>
                 <ul class="navbar-nav flex-grow-1">
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-page="/Index">Home</a>
+                        <a class="nav-link" asp-area="Admin" asp-page="/Index">Admin</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" asp-area="" asp-page="/Privacy">Privacy</a>
                     </li>
                 </ul>
             </div>
+            <span class="navbar-text px-3 text-danger-emphasis bg-danger-subtle border border-danger-subtle rounded-3">/Pages/Shared/_Header.tablet.cshtml</span>
         </div>
     </nav>
 </header>

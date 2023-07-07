@@ -1,0 +1,15 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+<partial name="_Navigation"/>
+
+<div class="container">
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+</div>
+
+@section Scripts {
+    @await RenderSectionAsync("Scripts", required: false)
+}
