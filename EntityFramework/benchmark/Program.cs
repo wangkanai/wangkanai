@@ -1,2 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿global using BenchmarkDotNet.Running;
+global using BenchmarkDotNet.Attributes;
+
+BenchmarkRunner.Run<EntityFrameworkBenchmark>();
