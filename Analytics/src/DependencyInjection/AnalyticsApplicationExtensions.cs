@@ -7,11 +7,12 @@ using Wangkanai.Analytics.Services;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
-/// <summary>
-///     Pipeline extension methods for adding Analytics
-/// </summary>
+/// <summary>Pipeline extension methods for adding Analytics</summary>
 public static class AnalyticsApplicationExtensions
 {
+	/// <summary>Adds Analytics to <see cref="IApplicationBuilder" /> request execution pipeline.</summary>
+	/// <param name="app">The application.</param>
+	/// <returns>Return the <see cref="IApplicationBuilder" /> for further pipeline</returns>
 	public static IApplicationBuilder UseAnalytics(this IApplicationBuilder app)
 	{
 		app.ThrowIfNull();
