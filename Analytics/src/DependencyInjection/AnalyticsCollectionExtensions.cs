@@ -2,9 +2,7 @@
 
 namespace Microsoft.Extensions.DependencyInjection;
 
-/// <summary>
-/// Contains extension method to <see cref="IServiceCollection"/> for configuring client services
-/// </summary>
+/// <summary>Contains extension method to <see cref="IServiceCollection"/> for configuring client services</summary>
 public static class AnalyticsCollectionExtensions
 {
 	/// <summary> Add Analytics service to the services container</summary>
@@ -24,6 +22,7 @@ public static class AnalyticsCollectionExtensions
 		=> services.Configure(setAction)
 		           .AddAnalytics();
 
+	// For internal unit tests
 	internal static IAnalyticsBuilder AddAnalyticsBuilder(this IServiceCollection services)
 		=> new AnalyticsBuilder(services);
 }
