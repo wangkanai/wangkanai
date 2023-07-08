@@ -4,7 +4,7 @@ using Wangkanai.Detection.Models;
 
 namespace Wangkanai.Detection.Extensions;
 
-public class UserAgentExtensionsTest
+public class UserAgentExtensionsTests
 {
 	[Fact]
 	public void IsNull()

@@ -5,7 +5,7 @@ using Wangkanai.Detection.Models;
 
 namespace Wangkanai.Detection.Services;
 
-public class DeviceServiceTest
+public class DeviceServiceTests
 {
 	[Fact]
 	public void UserAgentIsNull()

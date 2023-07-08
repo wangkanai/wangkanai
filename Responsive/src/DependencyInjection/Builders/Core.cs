@@ -13,25 +13,23 @@ namespace Microsoft.Extensions.DependencyInjection;
 
 public static class ResponsiveCoreBuilderExtensions
 {
-	public static IResponsiveBuilder AddRequiredPlatformServices(this IResponsiveBuilder builder)
+	public static IResponsiveBuilder AddRequiredServices(this IResponsiveBuilder builder)
 	{
 		builder.ThrowIfNull();
 
-		// Hosting doesn't add IHttpContextAccessor by default
 		builder.Services.AddHttpContextAccessor();
-
-		// Add Detection Options
 		builder.Services.AddOptions();
 		builder.Services.TryAddSingleton(provider => provider.GetRequiredService<IOptions<ResponsiveOptions>>().Value);
-
+		
+		builder.Services.AddDetection();
+		
 		return builder;
 	}
 
 	public static IResponsiveBuilder AddCoreServices(this IResponsiveBuilder builder)
 	{
-		// Add core to services
-		builder.Services.AddDetection();
-
+		builder.ThrowIfNull();
+		
 		return builder;
 	}
 
@@ -49,7 +47,8 @@ public static class ResponsiveCoreBuilderExtensions
 
 	public static IResponsiveBuilder AddSessionServices(this IResponsiveBuilder builder)
 	{
-		// Add Session to services
+		builder.ThrowIfNull();
+		
 		builder.Services.AddDistributedMemoryCache();
 		builder.Services.AddSession(
 			options => {
@@ -57,6 +56,13 @@ public static class ResponsiveCoreBuilderExtensions
 				options.IdleTimeout        = TimeSpan.FromSeconds(10);
 				options.Cookie.IsEssential = true;
 			});
+
+		return builder;
+	}
+	
+	internal static IResponsiveBuilder AddMarkerService(this IResponsiveBuilder builder)
+	{
+		builder.Services.TryAddSingleton<ResponsiveMarkerService>();
 
 		return builder;
 	}
@@ -78,4 +84,6 @@ public static class ResponsiveCoreBuilderExtensions
 
 		return services;
 	}
+	
+
 }

@@ -12,7 +12,7 @@ using Xunit;
 
 namespace Wangkanai.Responsive.DependencyInjection;
 
-public class ResponsiveBuilderExtensionsTest
+public class ResponsiveBuilderExtensionsTests
 {
 	[Fact]
 	public void AddResponsive_Options_Builder_Service()

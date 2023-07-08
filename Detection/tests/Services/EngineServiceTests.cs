@@ -5,7 +5,7 @@ using Wangkanai.Detection.Models;
 
 namespace Wangkanai.Detection.Services;
 
-public class EngineServiceTest
+public class EngineServiceTests
 {
 	[Fact]
 	public void Null()

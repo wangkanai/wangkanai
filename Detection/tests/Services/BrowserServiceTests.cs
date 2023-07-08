@@ -5,7 +5,7 @@ using Wangkanai.Detection.Models;
 
 namespace Wangkanai.Detection.Services;
 
-public sealed class BrowserServiceTest
+public sealed class BrowserServiceTests
 {
 	[Fact]
 	public void Null()
