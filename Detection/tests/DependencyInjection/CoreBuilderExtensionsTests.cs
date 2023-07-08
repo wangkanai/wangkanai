@@ -9,8 +9,20 @@ using Wangkanai.Hosting;
 
 namespace Wangkanai.Detection.DependencyInjection;
 
-public class CoreBuilderExtensionsTest
+public class CoreBuilderExtensionsTests
 {
+	[Fact]
+	public void AddDetection_Null_ArgumentNullException()
+	{
+		Assert.Throws<ArgumentNullException>(() => ((IServiceCollection)null!).AddDetection());
+	}
+
+	[Fact]
+	public void AddDetectionBuilder_Null_ArgumentNullException()
+	{
+		Assert.Throws<ArgumentNullException>(() => ((IServiceCollection)null!).AddDetectionBuilder());
+	}
+	
 	[Fact]
 	public void AddMarkerServices_ReturnsExpected()
 	{
@@ -61,17 +73,5 @@ public class CoreBuilderExtensionsTest
 		Assert.NotNull(builder);
 		Assert.NotNull(builder.Services);
 		descriptors.AssertServices(builder.Services);
-	}
-
-	[Fact]
-	public void AddDetection_Null_ArgumentNullException()
-	{
-		Assert.Throws<ArgumentNullException>(() => ((IServiceCollection)null!).AddDetection());
-	}
-
-	[Fact]
-	public void AddDetectionBuilder_Null_ArgumentNullException()
-	{
-		Assert.Throws<ArgumentNullException>(() => ((IServiceCollection)null!).AddDetectionBuilder());
 	}
 }

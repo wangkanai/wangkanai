@@ -2,7 +2,7 @@
 
 namespace Wangkanai.Detection.Extensions;
 
-public class VersionExtensionsTest
+public class VersionExtensionsTests
 {
 	[Fact]
 	public void RemoveWritespaceTest()

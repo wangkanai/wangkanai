@@ -4,9 +4,7 @@ using Wangkanai.Detection;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
-/// <summary>
-///     Contains extension method to <see cref="IServiceCollection" /> for configuring client services
-/// </summary>
+/// <summary>Contains extension method to <see cref="IServiceCollection" /> for configuring client services</summary>
 public static class DetectionCollectionExtensions
 {
 	/// <summary>Add Detection service to the services container</summary>

@@ -5,7 +5,7 @@ using Wangkanai.Detection.Models;
 
 namespace Wangkanai.Detection.Services;
 
-public class CrawlerServiceTest
+public class CrawlerServiceTests
 {
 	[Fact]
 	public void Null()

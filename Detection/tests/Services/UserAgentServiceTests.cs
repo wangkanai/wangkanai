@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace Wangkanai.Detection.Services;
 
-public class UserAgentServiceTest
+public class UserAgentServiceTests
 {
 	[Fact]
 	public void Ctor_IServiceProvider_Success()

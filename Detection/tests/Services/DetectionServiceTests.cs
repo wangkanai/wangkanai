@@ -2,7 +2,7 @@
 
 namespace Wangkanai.Detection.Services;
 
-public class DetectionServiceTest
+public class DetectionServiceTests
 {
 	[Fact]
 	public void IfNull() { }

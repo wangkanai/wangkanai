@@ -7,11 +7,11 @@ using Xunit.Abstractions;
 
 namespace Wangkanai.Detection.Services;
 
-public class PlatformServiceTest
+public class PlatformServiceTests
 {
 	private readonly ITestOutputHelper _testOutputHelper;
 
-	public PlatformServiceTest(ITestOutputHelper testOutputHelper)
+	public PlatformServiceTests(ITestOutputHelper testOutputHelper)
 	{
 		_testOutputHelper = testOutputHelper;
 	}
