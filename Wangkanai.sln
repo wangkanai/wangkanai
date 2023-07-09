@@ -477,6 +477,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Extensions.Html.B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Extensions.Internal.Benchmark", "Extensions\Internal\benchmark\Wangkanai.Extensions.Internal.Benchmark.csproj", "{849B38B6-C435-4045-9F36-E5EC2911CF3C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Hosting.Benchmark", "Hosting\benchmark\Wangkanai.Hosting.Benchmark.csproj", "{3CA7783B-052F-4245-97EC-27A38A226AD8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -863,6 +865,10 @@ Global
 		{849B38B6-C435-4045-9F36-E5EC2911CF3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{849B38B6-C435-4045-9F36-E5EC2911CF3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{849B38B6-C435-4045-9F36-E5EC2911CF3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CA7783B-052F-4245-97EC-27A38A226AD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CA7783B-052F-4245-97EC-27A38A226AD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CA7783B-052F-4245-97EC-27A38A226AD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CA7783B-052F-4245-97EC-27A38A226AD8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -977,6 +983,7 @@ Global
 		{D280E9F4-F6CF-4D77-8689-BF8A9A11798E} = {EE1EF4E3-ADB8-460F-9793-2E87E6DAA2E6}
 		{2196F649-CE8A-4A95-B86A-360E1A1C9220} = {DFCE57F8-CA4D-4F85-A14D-F15173B8CC42}
 		{849B38B6-C435-4045-9F36-E5EC2911CF3C} = {0A7F10BF-EA60-4A19-9F07-3D9CE40F5952}
+		{3CA7783B-052F-4245-97EC-27A38A226AD8} = {10D7A0CF-E53B-4355-8942-B5D224EB7B98}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1BA0A192-D7BE-40A1-96AE-B3C8C6BC9B69}
