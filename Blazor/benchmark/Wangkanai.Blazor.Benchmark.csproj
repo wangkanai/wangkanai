@@ -9,7 +9,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\src\Core\Wangkanai.Blazor.csproj"/>
+        <ProjectReference Include="..\src\Core\Wangkanai.Blazor.csproj" />
     </ItemGroup>
 
 </Project>
