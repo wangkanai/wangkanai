@@ -1,15 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
+        <OutputType>Exe</OutputType>
         <TargetFramework>net7.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <OutputType>Exe</OutputType>
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\src\Authentication\Wangkanai.Security.Authentication.csproj" />
-        <ProjectReference Include="..\src\Authorization\Wangkanai.Security.Authorization.csproj" />
+        <ProjectReference Include="..\src\Wangkanai.Extensions.FileProviders.csproj" />
     </ItemGroup>
 
 </Project>
