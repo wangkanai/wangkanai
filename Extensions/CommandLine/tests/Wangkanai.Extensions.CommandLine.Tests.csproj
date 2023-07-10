@@ -5,9 +5,9 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <IsPackable>false</IsPackable>
+        <IsTestProject>true</IsTestProject>
     </PropertyGroup>
-
-
+    
     <ItemGroup>
         <ProjectReference Include="..\src\Wangkanai.Extensions.CommandLine.csproj" />
     </ItemGroup>
