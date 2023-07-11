@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
 using Wangkanai.Detection.Services;
-using Wangkanai.Hosting;
+using Wangkanai.Testing;
 
 namespace Wangkanai.Detection.DependencyInjection;
 

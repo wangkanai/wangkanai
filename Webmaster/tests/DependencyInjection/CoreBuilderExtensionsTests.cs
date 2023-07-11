@@ -2,14 +2,12 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
-using Wangkanai.Detection.Services;
-using Wangkanai.Hosting;
+using Wangkanai.Testing;
 using Wangkanai.Webmaster.Services;
 
 using Xunit;
