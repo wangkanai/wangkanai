@@ -481,6 +481,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{6652
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Host.Main", "Tabler\samples\Main\Host.Main.csproj", "{CDA8A70A-1A73-42AA-9F36-A91C789CD85D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{2F4F2D83-797D-4F4F-8378-C1D2F6CC6A56}"
+	ProjectSection(SolutionItems) = preProject
+		Testing\Directory.Build.props = Testing\Directory.Build.props
+		Testing\README.md = Testing\README.md
+		Testing\sign.ps1 = Testing\sign.ps1
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
