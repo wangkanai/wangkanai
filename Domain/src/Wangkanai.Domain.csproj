@@ -1,15 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net7.0</TargetFramework>
+        <TargetFrameworks>net7.0;net8.0</TargetFrameworks>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="JetBrains.Annotations"/>
+        <PackageReference Include="JetBrains.Annotations" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\System\src\Wangkanai.System.csproj"/>
+        <ProjectReference Include="..\..\System\src\Wangkanai.System.csproj" />
     </ItemGroup>
 
 </Project>
