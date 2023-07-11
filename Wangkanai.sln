@@ -479,6 +479,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Shared.Benchmark", "Shared\benchmark\Wangkanai.Shared.Benchmark.csproj", "{9961DCCE-01C5-4EC5-9806-DDF42A9D2448}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{6827EA37-E105-4411-ADC8-B12E6AA2BFDB}"
+	ProjectSection(SolutionItems) = preProject
+		Blazor\samples\README.md = Blazor\samples\README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
