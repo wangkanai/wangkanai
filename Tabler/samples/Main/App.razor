@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Tabler - Premium and Open Source dashboard template with responsive and high quality UI.</title>
+    <base href="/" />
+    <link href="lib/tabler/dist/css/tabler.min.css" rel="stylesheet" />
+    <link href="lib/tabler/dist/css/tabler-flags.min.css" rel="stylesheet" />
+    <link href="lib/tabler/dist/css/tabler-payments.min.css" rel="stylesheet" />
+    <link href="lib/tabler/dist/css/tabler-vendors.min.css" rel="stylesheet" />
+    <link href="lib/tabler/dist/css/demo.min.css" rel="stylesheet" />
+    <link href="lib/icons/iconfont/tabler-icons.css" rel="stylesheet" />
+    <link href="css/app.css" rel="stylesheet" />
+    <link rel="icon" type="image/ico" href="favicon.ico" />
+    <link href="Host.Main.styles.css" rel="stylesheet" />
+    <HeadOutlet />
+</head>
+
+<body class="theme-dark">
+
+    <Router AppAssembly="@typeof(App).Assembly">
+        <Found Context="routeData">
+            <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+            <FocusOnNavigate RouteData="@routeData" Selector="h1" />
+        </Found>
+        <NotFound>
+            <PageTitle>Not found</PageTitle>
+            <LayoutView Layout="@typeof(MainLayout)">
+                <p role="alert">Sorry, there's nothing at this address.</p>
+            </LayoutView>
+        </NotFound>
+    </Router>
+
+    <script src="_framework/blazor.web.js" suppress-error="BL9992"></script>
+</body>
+</html>
