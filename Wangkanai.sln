@@ -197,10 +197,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Tabler.Demo.Clien
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Tabler.Demo.Server", "Tabler\demo\Server\Wangkanai.Tabler.Demo.Server.csproj", "{10401268-943D-4A62-9FDB-E1F944EBB40D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{39B164DD-4B67-4527-94FE-EB2E0C9B36B6}"
-	ProjectSection(SolutionItems) = preProject
-		Blazor\demo\README.md = Blazor\demo\README.md
-	EndProjectSection
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "demo", "demo", "{39B164DD-4B67-4527-94FE-EB2E0C9B36B6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Blazor.Demo.Client", "Blazor\demo\Client\Wangkanai.Blazor.Demo.Client.csproj", "{E1D8712E-7A70-41DE-98B3-447A735E8BAE}"
 EndProject
@@ -488,6 +485,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.WebServer.Benchmark", "Webserver\benchmark\Wangkanai.WebServer.Benchmark.csproj", "{6349F534-369A-4BEA-B0CC-FB1236088C23}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Shared.Benchmark", "Shared\benchmark\Wangkanai.Shared.Benchmark.csproj", "{9961DCCE-01C5-4EC5-9806-DDF42A9D2448}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{6827EA37-E105-4411-ADC8-B12E6AA2BFDB}"
+	ProjectSection(SolutionItems) = preProject
+		Blazor\demo\README.md = Blazor\demo\README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1019,6 +1021,7 @@ Global
 		{D5F94D7F-DFCD-4BEC-AEA2-AEECD3E79F24} = {700EC70E-E161-4461-B84F-1FCF166D0486}
 		{6349F534-369A-4BEA-B0CC-FB1236088C23} = {1CD41CBB-76E2-42CE-9C17-040527E90C6A}
 		{9961DCCE-01C5-4EC5-9806-DDF42A9D2448} = {FB2F585C-6B7A-4D40-9FE0-08E0F9A30386}
+		{6827EA37-E105-4411-ADC8-B12E6AA2BFDB} = {9D20D5E6-879B-463C-964A-3DA13FFAE9E3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1BA0A192-D7BE-40A1-96AE-B3C8C6BC9B69}
