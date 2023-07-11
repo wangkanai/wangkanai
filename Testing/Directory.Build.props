@@ -1,0 +1,18 @@
+<Project>
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
+  <PropertyGroup>
+    <VersionPrefix>0.0.0</VersionPrefix>
+    <Title>Wangkanai Testing</Title>
+    <PackageTags>aspnetcore;testing;</PackageTags>
+    <Description></Description>
+    <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Testing</PackageProjectUrl>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Testing'">
+    <PackageIcon>wangkanai-logo.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Testing'">
+    <None Include="..\..\assets\wangkanai-logo.png" Pack="true" PackagePath="\" />
+    <None Include="..\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+</Project>

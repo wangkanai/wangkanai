@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
-using Wangkanai.Hosting;
+using Wangkanai.Testing;
 using Wangkanai.Responsive.Services;
 
 using Xunit;
