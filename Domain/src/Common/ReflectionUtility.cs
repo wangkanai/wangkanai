@@ -9,7 +9,7 @@ namespace Wangkanai.Domain.Common;
 
 public static class ReflectionUtility
 {
-	private static readonly ObjectReferenceComparer _comparer = new();
+	private static readonly ObjectReferenceComparer Comparer = new();
 
 	public static IEnumerable<string> GetPropertyNames<T>(params Expression<Func<T, object>>[] propertyExpressions)
 	{

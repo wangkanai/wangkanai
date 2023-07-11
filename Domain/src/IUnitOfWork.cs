@@ -6,6 +6,10 @@ namespace Wangkanai.Domain;
 
 public interface IUnitOfWork
 {
-	int       Commit();
+	int Commit();
+}
+
+public interface IAsyncUnitOfWork
+{
 	Task<int> CommitAsync();
 }

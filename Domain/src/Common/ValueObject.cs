@@ -54,6 +54,14 @@ public abstract class ValueObject : IValueObject, ICacheKey, ICloneable
 
 		return string.Join("|", keyValues);
 	}
+	
+	public virtual IEnumerable<PropertyInfo> GetProperties()
+		=> TypeProperties.GetOrAdd(GetType(), t => t.GetTypeInfo()
+		                                            .GetProperties(BindingFlags.Instance | BindingFlags.Public))
+		                 .OrderBy(p => p.Name)
+		                 .ToList();
+
+	public object Clone() => MemberwiseClone();
 
 	protected virtual IEnumerable<object> GetEqualityComponents()
 	{
@@ -78,12 +86,4 @@ public abstract class ValueObject : IValueObject, ICacheKey, ICloneable
 			}
 		}
 	}
-
-	public virtual IEnumerable<PropertyInfo> GetProperties()
-		=> TypeProperties.GetOrAdd(GetType(), t => t.GetTypeInfo()
-		                                            .GetProperties(BindingFlags.Instance | BindingFlags.Public))
-		                 .OrderBy(p => p.Name)
-		                 .ToList();
-
-	public object Clone() => MemberwiseClone();
 }

@@ -31,7 +31,6 @@ public abstract class Entity<T> : IEntity<T> // where T : IComparable<T> //, Nul
 			   : Id.GetHashCode();
 
 	public static bool operator ==(Entity<T> left, Entity<T> right) => Equals(left, right);
-
 	public static bool operator !=(Entity<T> left, Entity<T> right) => !Equals(left, right);
 
 	public override bool Equals(object obj)
