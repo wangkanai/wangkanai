@@ -22,4 +22,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\src\Wangkanai.Testing.csproj" />
+  </ItemGroup>
+
 </Project>

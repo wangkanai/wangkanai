@@ -8,7 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\Hosting\tests\Wangkanai.Hosting.Tests.csproj" />
+        <ProjectReference Include="..\..\Testing\src\Wangkanai.Testing.csproj" />
         <ProjectReference Include="..\src\Wangkanai.Responsive.csproj" />
     </ItemGroup>
 

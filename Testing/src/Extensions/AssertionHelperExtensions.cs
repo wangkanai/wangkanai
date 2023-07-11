@@ -2,7 +2,7 @@
 
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Wangkanai.Hosting;
+namespace Wangkanai.Testing;
 
 public static class AssertionHelperExtensions
 {
