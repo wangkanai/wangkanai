@@ -1,0 +1,40 @@
+﻿<a class="nav-link dropdown-toggle @ShowCssClass" href="#" @onclick="OnToggle" @onfocusout="OnToggle" role="button" aria-expanded="@NavDropdown">
+  <span class="nav-link-icon d-md-none d-lg-inline-block">
+    <!-- Download SVG icon from http://tabler-icons.io/i/layout-2 -->
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><rect x="4" y="4" width="6" height="5" rx="2"/><rect x="4" y="13" width="6" height="7" rx="2"/><rect x="14" y="4" width="6" height="7" rx="2"/><rect x="14" y="15" width="6" height="5" rx="2"/></svg>
+  </span>
+  <span class="nav-link-title">Layout</span>
+</a>
+<div class="dropdown-menu @ShowCssClass" @onpointerout="OnToggle" data-bs-popper="@DataBsPopper">
+  <div class="dropdown-menu-columns">
+    <div class="dropdown-menu-column">
+      <NavLink class="dropdown-item" href="/Layout/Horizontal">Horizontal</NavLink>
+      <NavLink class="dropdown-item" href="/Layout/Boxed">Boxed<span class="badge badge-sm bg-green text-uppercase ms-2">New</span></NavLink>
+      <NavLink class="dropdown-item" href="/Layout/Vertical">Vertical</NavLink>
+      <NavLink class="dropdown-item" href="/Layout/VerticalTransparent">Vertical transparent</NavLink>
+      <NavLink class="dropdown-item" href="/Layout/VerticalRight">Right vertical</NavLink>
+      <NavLink class="dropdown-item" href="/Layout/Condensed">Condensed</NavLink>
+      <NavLink class="dropdown-item" href="/Layout/Combo">Combined</NavLink>
+    </div>
+    <div class="dropdown-menu-column">
+      <NavLink class="dropdown-item" href="/Layout/NavbarDark">Navbar dark</NavLink>
+      <NavLink class="dropdown-item" href="/Layout/NavbarSticky">Navbar sticky</NavLink>
+      <NavLink class="dropdown-item" href="/Layout/NavbarOverlap">Navbar overlap</NavLink>
+      <NavLink class="dropdown-item" href="/Layout/Rtl">RTL mode</NavLink>
+      <NavLink class="dropdown-item" href="/Layout/Fluid">Fluid</NavLink>
+      <NavLink class="dropdown-item" href="/Layout/FluidVertical">Fluid vertical</NavLink>
+    </div>
+  </div>
+</div>
+
+@code {
+  private bool NavDropdown { get; set; } = false;
+  private string ShowCssClass => NavDropdown ? "show" : "";
+  private string DataBsPopper => NavDropdown ? "static" : "";
+
+  private void OnToggle()
+  {
+    NavDropdown = !NavDropdown;
+  }
+
+}
