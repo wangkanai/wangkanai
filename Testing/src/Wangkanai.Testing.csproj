@@ -12,4 +12,8 @@
         <PackageReference Include="xunit.runner.visualstudio" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\..\System\src\Wangkanai.System.csproj" />
+    </ItemGroup>
+
 </Project>
