@@ -20,10 +20,10 @@ public static class ResponsiveCollectionExtensions
 
 	/// <summary>Add Responsive service to the service container</summary>
 	/// <param name="services">The services available in the application</param>
-	/// <param name="setAction">An <see cref="Action{ResposnsiveOptions}" /> to configure the provided<see cref="ResponsiveOptions" /></param>
+	/// <param name="configure">An <see cref="Action{ResposnsiveOptions}" /> to configure the provided<see cref="ResponsiveOptions" /></param>
 	/// <returns>An <see cref="IResponsiveBuilder" /> so that additional calls can be chained</returns>
-	public static IResponsiveBuilder AddResponsive(this IServiceCollection services, Action<ResponsiveOptions> setAction)
-		=> services.Configure(setAction)
+	public static IResponsiveBuilder AddResponsive(this IServiceCollection services, Action<ResponsiveOptions> configure)
+		=> services.Configure(configure)
 		           .AddResponsive();
 
 	// For internal unit tests
