@@ -1,4 +1,5 @@
 remove-item -path .\signed\*.*
+new-item -Path signed -ItemType Directory -Force
 
 dotnet --version
 dotnet clean .\src\
