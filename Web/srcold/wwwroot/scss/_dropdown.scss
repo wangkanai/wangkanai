@@ -1,0 +1,15 @@
+﻿.dropdown {
+    &-menu {
+        --bs-dropdown-spacer:        0.4rem;
+        --bs-dropdown-border-radius: var(--bs-border-radius);
+        --bs-dropdown-bg:            $body-bg-dark !important;
+        --bs-dropdown-color:         $body-color-dark !important;
+        background-color:            $night !important;
+    }
+
+    &-item {
+        --bs-dropdown-bg:    $night !important;
+        --bs-dropdown-color: $white !important;
+        background-color:    $night !important;
+    }
+}
