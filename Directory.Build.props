@@ -27,7 +27,7 @@
 
   <PropertyGroup Condition="$(MSBuildProjectName.Contains('Tests'))">
     <IsPackable>false</IsPackable>
-    <IsTestProject>false</IsTestProject>
+    <!--    <IsTestProject>false</IsTestProject>-->
   </PropertyGroup>
 
   <ItemGroup Condition="$(MSBuildProjectName.Contains('Tests'))">
