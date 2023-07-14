@@ -183,7 +183,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tabler", "Tabler", "{89052A
 		Tabler\Directory.Build.props = Tabler\Directory.Build.props
 		Tabler\README.md = Tabler\README.md
 		Tabler\sign.ps1 = Tabler\sign.ps1
-		Tabler\Tabler.slnf = Tabler\Tabler.slnf
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Tabler.Tests", "Tabler\tests\Wangkanai.Tabler.Tests.csproj", "{3BC55F8B-971B-4611-B012-CDABA944BE96}"
