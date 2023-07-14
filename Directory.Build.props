@@ -34,6 +34,10 @@
     <PackageReference Include="coverlet.collector" />
     <PackageReference Include="coverlet.msbuild" />
   </ItemGroup>
+  
+  <ItemGroup Condition="$(MSBuildProjectName.Contains('Tests'))">
+    <ProjectReference Include=".\Testing\src\Wangkanai.Testing.csproj" />
+  </ItemGroup>
 
   <ItemGroup Condition="$(MSBuildProjectName.Contains('Benchmark'))">
     <PackageReference Include="BenchmarkDotNet" />
@@ -44,7 +48,8 @@
     <SonarQubeExclude>true</SonarQubeExclude>
   </PropertyGroup>
   <PropertyGroup Condition="$(MSBuildProjectName.Contains('Tests'))">
-    <SonarQubeExclude>true</SonarQubeExclude>
+    <IsPackable>false</IsPackable>
+    <!--    <SonarQubeExclude>true</SonarQubeExclude>-->
   </PropertyGroup>
 
   <!-- Source code settings -->
