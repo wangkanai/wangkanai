@@ -4,8 +4,7 @@
         <TargetFramework>net7.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <IsTrimmable>true</IsTrimmable>
-        <Optimize>true</Optimize>
+        <IsPackable>true</IsPackable>
     </PropertyGroup>
 
     <ItemGroup>
