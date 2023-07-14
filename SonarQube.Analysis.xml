@@ -9,7 +9,7 @@
     <!-- Source   -->
     <!-- <Property Name="sonar.sources">.</Property> -->
     <!-- <Property Name="sonar.inclusions"></Property>-->
-    <Property Name="sonar.exclusions">Assets/**, **/benchmark/**, **/node_modules/**, **/lib/**, **/BenchmarkDotNet.Artifacts/**
+    <Property Name="sonar.exclusions">**/tests/**, Assets/**, **/benchmark/**, **/node_modules/**, **/lib/**, **/BenchmarkDotNet.Artifacts/**
     </Property>
     <!-- Tests    -->
     <!-- <Property Name="sonar.tests">.</Property>-->
