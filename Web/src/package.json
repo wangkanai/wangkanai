@@ -20,15 +20,17 @@
         "clean": "npm-run-all --parallel clean-*",
         "clean-dist": "rimraf wwwroot/dist/",
         "clean-lib": "rimraf wwwroot/lib/",
-        "lib": "npm-run-all --parallel lib-bootstrap lib-jquery lib-jquery-validation lib-jquery-validation-unobtrusive",
+        "lib": "npm-run-all --parallel lib-bootstrap lib-bootstrap-icons lib-jquery lib-jquery-validation lib-jquery-validation-unobtrusive",
         "lib-rfs": "cpy node_modules/rfs/**/*.* wwwroot/lib/rfs",
         "lib-bootstrap": "cpy node_modules/bootstrap/dist/**/*.* wwwroot/lib/bootstrap/dist",
+        "lib-bootstrap-icons": "cpy node_modules/bootstrap-icons/font/**/*.* wwwroot/lib/bootstrap-icons/font",
         "lib-jquery": "cpy node_modules/jquery/dist/**/*.* wwwroot/lib/jquery/dist",
         "lib-jquery-validation": "cpy node_modules/jquery-validation/dist/**/*.* wwwroot/lib/jquery-validation/dist",
         "lib-jquery-validation-unobtrusive": "cpy node_modules/jquery-validation-unobtrusive/dist/**/*.* wwwroot/lib/jquery-validation-unobtrusive/dist"
     },
     "dependencies": {
         "bootstrap": "^5.3.0",
+        "bootstrap-icons": "^1.10.5",
         "jquery": "^3.6.4",
         "jquery-validation": "^1.19.5",
         "jquery-validation-unobtrusive": "^4.0.0",
