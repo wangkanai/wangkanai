@@ -1,4 +1,0 @@
-// Colors
-@function to-rgb($value) {
-    @return red($value), green($value), blue($value);
-}
