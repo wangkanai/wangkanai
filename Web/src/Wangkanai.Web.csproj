@@ -12,13 +12,4 @@
       <PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Pages\Architecture\" />
-    <Folder Include="Pages\Blog\" />
-    <Folder Include="Pages\Design\" />
-    <Folder Include="Pages\Development\" />
-    <Folder Include="Pages\Engineering\" />
-    <Folder Include="Pages\Fonts\" />
-  </ItemGroup>
-
 </Project>
