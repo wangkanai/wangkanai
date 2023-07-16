@@ -4,11 +4,15 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
 using Wangkanai.Federation.Entities;
+
+using IdentityRole = Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole;
+using IdentityUser = Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUser;
 
 namespace Wangkanai.Federation.EntityFramework;
 

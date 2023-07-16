@@ -2,7 +2,15 @@
     <PropertyGroup Condition=" '$(TargetFramework)' == 'net7.0'">
         <FrameworkVersion>7.0.0</FrameworkVersion>
         <ExtensionsVersion>7.0.0</ExtensionsVersion>
+        <IdentityEntityFrameworkVersion>7.0.0</IdentityEntityFrameworkVersion>
         <EntityFrameworkVersion>7.0.0</EntityFrameworkVersion>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(TargetFramework)' == 'net8.0'">
+        <FrameworkVersion>8.0.100-preview.6.23330.14</FrameworkVersion>
+        <ExtensionsVersion>8.0.100-preview.6.23330.14</ExtensionsVersion>
+        <IdentityEntityFrameworkVersion>8.0.0-preview.6.23329.11</IdentityEntityFrameworkVersion>
+        <EntityFrameworkVersion>8.0.0-preview.6.23329.4</EntityFrameworkVersion>
     </PropertyGroup>
 
     <ItemGroup>
@@ -24,9 +32,9 @@
         <PackageReference Update="Microsoft.AspNetCore.Components" Version="$(FrameworkVersion)"/>
         <PackageReference Update="Microsoft.AspNetCore.Components.Web" Version="$(FrameworkVersion)"/>
         <PackageReference Update="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="$(FrameworkVersion)"/>
-        <PackageReference Update="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="$(FrameworkVersion)"/>
-        <PackageReference Update="Microsoft.EntityFrameworkCore.SqlServer" Version="$(FrameworkVersion)"/>
-        <PackageReference Update="Microsoft.EntityFrameworkCore.Relational" Version="$(FrameworkVersion)"/>
+        <PackageReference Update="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="$(IdentityEntityFrameworkVersion)"/>
+        <PackageReference Update="Microsoft.EntityFrameworkCore.SqlServer" Version="$(EntityFrameworkVersion)"/>
+        <PackageReference Update="Microsoft.EntityFrameworkCore.Relational" Version="$(EntityFrameworkVersion)"/>
         <PackageReference Update="Microsoft.IdentityModel.Tokens" Version="6.31.0"/>
         
         <!--packages-->
