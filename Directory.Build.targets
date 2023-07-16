@@ -35,6 +35,10 @@
         <PackageReference Update="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="$(IdentityEntityFrameworkVersion)"/>
         <PackageReference Update="Microsoft.EntityFrameworkCore.SqlServer" Version="$(EntityFrameworkVersion)"/>
         <PackageReference Update="Microsoft.EntityFrameworkCore.Relational" Version="$(EntityFrameworkVersion)"/>
+        <PackageReference Update="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="$(FrameworkVersion)"/>
+        <PackageReference Update="Microsoft.EntityFrameworkCore" Version="$(EntityFrameworkVersion)" />
+        <PackageReference Update="Microsoft.EntityFrameworkCore.SqlServer" Version="$(EntityFrameworkVersion)"/>
+        <PackageReference Update="Microsoft.EntityFrameworkCore.Relational" Version="$(EntityFrameworkVersion)"/>
         <PackageReference Update="Microsoft.IdentityModel.Tokens" Version="6.31.0"/>
         
         <!--packages-->

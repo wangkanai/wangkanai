@@ -16,7 +16,8 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="8.0.0-preview.6.23329.4" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" />
     </ItemGroup>
 
 </Project>
