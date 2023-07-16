@@ -32,6 +32,7 @@
         <PackageReference Update="Microsoft.AspNetCore.Components" Version="$(FrameworkVersion)"/>
         <PackageReference Update="Microsoft.AspNetCore.Components.Web" Version="$(FrameworkVersion)"/>
         <PackageReference Update="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="$(FrameworkVersion)"/>
+        
         <PackageReference Update="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="$(EntityFramrworkIdentityVersion)"/>
 
         <PackageReference Update="Microsoft.EntityFrameworkCore" Version="$(EntityFrameworkVersion)"/>
