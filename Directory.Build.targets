@@ -3,6 +3,14 @@
         <FrameworkVersion>7.0.0</FrameworkVersion>
         <ExtensionsVersion>7.0.0</ExtensionsVersion>
         <EntityFrameworkVersion>7.0.0</EntityFrameworkVersion>
+        <EntityFramrworkIdentityVersion>7.0.0</EntityFramrworkIdentityVersion>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(TargetFramework)' == 'net8.0'">
+        <FrameworkVersion>8.0.0-preview.6.23329.11</FrameworkVersion>
+        <ExtensionsVersion>8.0.0-preview.6.23329.7</ExtensionsVersion>
+        <EntityFrameworkVersion>8.0.0-preview.6.23329.4</EntityFrameworkVersion>
+        <EntityFramrworkIdentityVersion>8.0.0-preview.6.23329.11</EntityFramrworkIdentityVersion>
     </PropertyGroup>
 
     <ItemGroup>
@@ -24,12 +32,17 @@
         <PackageReference Update="Microsoft.AspNetCore.Components" Version="$(FrameworkVersion)"/>
         <PackageReference Update="Microsoft.AspNetCore.Components.Web" Version="$(FrameworkVersion)"/>
         <PackageReference Update="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="$(FrameworkVersion)"/>
-        <PackageReference Update="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="$(FrameworkVersion)"/>
-        <PackageReference Update="Microsoft.EntityFrameworkCore" Version="$(EntityFrameworkVersion)" />
+        
+        <PackageReference Update="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="$(EntityFramrworkIdentityVersion)"/>
+
+        <PackageReference Update="Microsoft.EntityFrameworkCore" Version="$(EntityFrameworkVersion)"/>
         <PackageReference Update="Microsoft.EntityFrameworkCore.SqlServer" Version="$(EntityFrameworkVersion)"/>
         <PackageReference Update="Microsoft.EntityFrameworkCore.Relational" Version="$(EntityFrameworkVersion)"/>
+
+        <PackageReference Update="Microsoft.Extensions.DependencyInjection" Version="$(ExtensionsVersion)"/>
+
         <PackageReference Update="Microsoft.IdentityModel.Tokens" Version="6.31.0"/>
-        
+
         <!--packages-->
         <PackageReference Update="JetBrains.Annotations" Version="2023.2.0"/>
     </ItemGroup>
