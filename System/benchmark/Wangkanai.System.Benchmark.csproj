@@ -1,13 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net7.0</TargetFramework>
+        <TargetFramework>$(DefaultNetCoreTargetFramework)</TargetFramework>
         <Optimize>true</Optimize>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <NoWarn>8600</NoWarn>
-        <OutputType>Exe</OutputType>
         <IsPackable>false</IsPackable>
+        <OutputType>Exe</OutputType>
     </PropertyGroup>
 
     <ItemGroup>
