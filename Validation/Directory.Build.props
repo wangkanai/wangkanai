@@ -1,7 +1,7 @@
 <Project>
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
   <PropertyGroup>
-    <VersionPrefix>2.1.0</VersionPrefix>
+    <VersionPrefix>3.0.0</VersionPrefix>
     <Title>Wangkanai Validation</Title>
     <Description>Maintain data integrity with `Validation`, a robust .NET Data Annotation library. Enforce validation rules effortlessly, ensure data accuracy, and enhance your data validation process. Try it today and revolutionize your .NET projects</Description>
     <PackageTags>aspnetcore;validation;</PackageTags>
