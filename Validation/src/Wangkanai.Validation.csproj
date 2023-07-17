@@ -1,12 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <LangVersion>preview</LangVersion>
+        <TargetFramework>$(DefaultNetCoreTargetFramework)</TargetFramework>
         <Nullable>enable</Nullable>
         <IsTrimmable>true</IsTrimmable>
         <Optimize>true</Optimize>
         <NoWarn>8765</NoWarn>
-        <TargetFramework>net7.0</TargetFramework>
     </PropertyGroup>
 
     <ItemGroup>
