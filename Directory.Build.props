@@ -11,6 +11,10 @@
     <PackageLicense>https://github.com/wangkanai/wangkanai/blob/main/LICENSE</PackageLicense>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
   </PropertyGroup>
+  
+  <PropertyGroup>
+    <DefaultNetCoreTargetFramework>net8.0</DefaultNetCoreTargetFramework>
+  </PropertyGroup>
 
   <PropertyGroup>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
