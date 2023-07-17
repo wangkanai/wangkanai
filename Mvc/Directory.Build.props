@@ -1,7 +1,7 @@
 <Project>
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
   <PropertyGroup>
-    <VersionPrefix>1.1.0</VersionPrefix>
+    <VersionPrefix>2.0.0</VersionPrefix>
     <Title>Wangkanai Mvc</Title>
     <Description>ASP.NET Core Mvc.</Description>
     <PackageTags>aspnetcore;mvc;routing;infrastructure</PackageTags>
