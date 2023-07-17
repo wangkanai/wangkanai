@@ -5,7 +5,6 @@ $dirs = [ordered]@{
     4  = "Testing";
     5  = "Hosting";
     6  = "Tools";
-    7  = "Watcher";
     8  = "Mvc";
     9  = "Webserver";
     10 = "Webmaster";
