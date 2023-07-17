@@ -99,9 +99,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Analytics.Tests", "Analytics\tests\Wangkanai.Analytics.Tests.csproj", "{5502A4D7-EB68-4389-8696-10500E9347CB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{8B50F062-61B9-483B-9212-9A01F6F12EF8}"
-	ProjectSection(SolutionItems) = preProject
-		Responsive\samples\Directory.Build.props = Responsive\samples\Directory.Build.props
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Webserver", "Webserver", "{1CD41CBB-76E2-42CE-9C17-040527E90C6A}"
 	ProjectSection(SolutionItems) = preProject
