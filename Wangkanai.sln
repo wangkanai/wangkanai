@@ -21,9 +21,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".solutions", ".solutions", 
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{C26D86D6-4B4E-407E-9F1D-9CA1765768CE}"
-	ProjectSection(SolutionItems) = preProject
-		Detection\samples\Directory.Build.props = Detection\samples\Directory.Build.props
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Detection", "Detection", "{7EED59CF-550E-4571-A1C0-4719F456AD8A}"
 	ProjectSection(SolutionItems) = preProject
@@ -130,9 +127,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Markdown.Tests", "Markdown\tests\Wangkanai.Markdown.Tests.csproj", "{BA993356-DADC-412B-A24F-8AEACDC5FA53}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{A3C4F552-BD1E-40C6-81C9-99F61B8916EA}"
-	ProjectSection(SolutionItems) = preProject
-		Webmaster\samples\Directory.Build.props = Webmaster\samples\Directory.Build.props
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hosting", "Hosting", "{10D7A0CF-E53B-4355-8942-B5D224EB7B98}"
 	ProjectSection(SolutionItems) = preProject
