@@ -4,6 +4,5 @@
     <VersionPrefix>1.2.0</VersionPrefix>
     <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Tools</PackageProjectUrl>
     <PackageNamespace>False</PackageNamespace>
-    <PackagePrimary>MSBuild</PackagePrimary>
   </PropertyGroup>
 </Project>
