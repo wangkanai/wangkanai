@@ -4,25 +4,20 @@ namespace Wangkanai.Federation.Models;
 
 public class FederationSecret
 {
-	public string    Description { get; set; }
-	public string    Value       { get; set; }
+	public string?   Description { get; set; }
+	public string?   Value       { get; set; }
 	public DateTime? Expiration  { get; set; }
-	public string    Type        { get; set; }
+	public string    Type        { get; set; } = DomainConstants.SecretTypes.SharedSecret;
 
-	public FederationSecret()
-	{
-		Type = FederationConstants.SecretTypes.SharedSecret;
-	}
+	public FederationSecret() { }
 
-	public FederationSecret(string value, DateTime? expiration = null)
-		: this()
+	public FederationSecret(string value, DateTime? expiration = null) : this()
 	{
 		Value      = value;
 		Expiration = expiration;
 	}
 
-	public FederationSecret(string value, string description, DateTime? expiration = null)
-		: this()
+	public FederationSecret(string value, string description, DateTime? expiration = null) : this()
 	{
 		Description = description;
 		Value       = value;
