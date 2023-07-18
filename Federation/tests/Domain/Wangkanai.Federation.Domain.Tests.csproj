@@ -22,4 +22,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Domain\Wangkanai.Federation.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

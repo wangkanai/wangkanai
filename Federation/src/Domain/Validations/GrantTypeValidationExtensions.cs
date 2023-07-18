@@ -4,7 +4,7 @@ using Wangkanai.Federation.Models;
 
 namespace Wangkanai.Federation.Validations;
 
-public static class GrantTypeValidationExtensions
+internal static class GrantTypeValidationExtensions
 {
 	public static IEnumerable<string> ValidateGrantTypes(this IEnumerable<string> grantTypes)
 	{
