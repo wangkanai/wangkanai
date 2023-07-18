@@ -2,7 +2,7 @@
 
 namespace Wangkanai.Federation.AuthProxyBackend;
 
-public static class Constants
+public static class AuthProxyBackendConstants
 {
 	internal const string MiddlewareMarker = "Wangkanai.Federation.AuthProxyBackend.MiddlewareMarker";
 }
