@@ -2,12 +2,15 @@
 
 using System.Diagnostics;
 
+using Wangkanai.Federation.Validations;
+
 namespace Wangkanai.Federation.Models;
 
 [DebuggerDisplay("{DebuggerDisplay,nq}")]
 public class FederationClient
 {
-	private string DebuggerDisplay => ClientId ?? $"{{{typeof(FederationClient)}}}";
+	private ICollection<string> _allowedGrantTypes;
+	private string              DebuggerDisplay => ClientId ?? $"{{{typeof(FederationClient)}}}";
 
 	public bool   Enabled              { get; set; } = true;
 	public string ClientId             { get; set; } = default!;
@@ -21,8 +24,14 @@ public class FederationClient
 	public bool   AllowPlainTextPkce   { get; set; } = false;
 	public bool   RequireRequestObject { get; set; } = false;
 	public bool   RequireDPoP          { get; set; }
-	 
 
 
-	public ICollection<FederationSecret> ClientSecrets { get; set; } = new HashSet<FederationSecret>();
+	public  ICollection<FederationSecret> ClientSecrets    { get; set; } = new HashSet<FederationSecret>();
+	private ICollection<string>           _allowGrantTypes { get; set; } = new GrantTypeValidationHashSet();
+
+	public ICollection<string> AllowedGrantTypes
+	{
+		get => _allowedGrantTypes;
+		set => _allowedGrantTypes = new GrantTypeValidationHashSet(value.ValidateGrantTypes());
+	}
 }
