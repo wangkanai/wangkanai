@@ -17,6 +17,8 @@ internal class GrantTypeValidationHashSet : ICollection<string>
 
 	public void Add(string item)
 	{
+		item.ThrowIfNull();
+		item.ThrowIfEmpty();
 		CloneWith(item).ValidateGrantTypes();
 		_inner.Add(item);
 	}
