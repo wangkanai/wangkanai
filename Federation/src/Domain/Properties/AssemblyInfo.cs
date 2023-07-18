@@ -3,5 +3,4 @@
 using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("Wangkanai.Federation")]
-// [assembly: InternalsVisibleTo("Wangkanai.Federation.AspNetIdentity")]
-// [assembly: InternalsVisibleTo("Wangkanai.Federation.EntityFramework")]
+[assembly: InternalsVisibleTo("Wangkanai.Federation.Domain.Tests")]

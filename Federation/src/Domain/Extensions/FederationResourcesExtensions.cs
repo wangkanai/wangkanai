@@ -9,7 +9,7 @@ public static class FederationResourcesExtensions
 		var names = resources.Resources.Select(x => x.Name).ToList();
 		names.AddRange(resources.Scopes.Select(x => x.Name));
 		if (resources.OfflineAccess)
-			names.Add(FederationConstants.StandardScopes.OfflineAccess);
+			names.Add(DomainConstants.StandardScopes.OfflineAccess);
 
 		return names;
 	}
