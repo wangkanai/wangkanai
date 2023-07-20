@@ -305,7 +305,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Federation", "Federation", 
 		Federation\Directory.Build.props = Federation\Directory.Build.props
 		Federation\README.md = Federation\README.md
 		Federation\sign.ps1 = Federation\sign.ps1
-		Federation\.editorconfig = Federation\.editorconfig
 		Federation\Federation.slnf = Federation\Federation.slnf
 	EndProjectSection
 EndProject

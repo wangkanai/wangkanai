@@ -19,5 +19,6 @@ internal static class Constants
 	public static class EnvironmentKeys
 	{
 		public const string SignOutCalled = "federation:SignOutCalled";
+		public const string BasePath      = "federation:FederationBasePath";
 	}
 }

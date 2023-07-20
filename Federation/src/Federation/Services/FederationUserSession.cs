@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 
+using Wangkanai.Federation.Extensions;
+
 namespace Wangkanai.Federation.Services;
 
-public sealed class FederationUserSession : IUserSession
+public class FederationUserSession : IUserSession
 {
 	internal readonly IHttpContextAccessor           HttpContextAccessor;
 	internal readonly FederationOptions              Options;
@@ -21,9 +23,29 @@ public sealed class FederationUserSession : IUserSession
 
 	internal HttpContext HttpContext => HttpContextAccessor.HttpContext;
 
-	public async Task<string> CreateSessionIdAsync(ClaimsPrincipal principal, AuthenticationProperties properties)
+	protected virtual async Task AuthenticateAsync()
 	{
-		throw new NotImplementedException();
+		if (Principal == null || Properties == null)
+		{
+			var scheme  = await HttpContext.GetCookieAuthenticationSchemeAsync();
+			var handler = await HandlerProvider.GetHandlerAsync(HttpContext, scheme);
+			handler.ThrowIfNull<InvalidOperationException>($"No authentication handler is configured to authenticate for the scheme: {scheme}");
+			var result = await handler.AuthenticateAsync();
+			if (result != null && result.Succeeded && result.Principal.Identity.IsAuthenticated)
+			{
+				Principal  = result.Principal;
+				Properties = result.Properties;
+			}
+		}
+	}
+
+	public virtual async Task<string> CreateSessionIdAsync(ClaimsPrincipal principal, AuthenticationProperties properties)
+	{
+		principal.ThrowIfNull();
+		properties.ThrowIfNull();
+
+		var currentSubjectId = (await GetUserAsync())?.GetSubjectId();
+		var newSubjectId     = principal.GetSubjectId();
 	}
 
 	public async Task<ClaimsPrincipal> GetUserAsync()
