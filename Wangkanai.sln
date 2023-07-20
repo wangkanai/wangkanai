@@ -187,14 +187,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSBuild", "MSBuild", "{F32D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Watcher", "Watcher", "{6B7D8653-4ADC-45AD-8289-C933FCDA34B2}"
 	ProjectSection(SolutionItems) = preProject
-		Watcher\Directory.Build.props = Watcher\Directory.Build.props
-		Watcher\README.md = Watcher\README.md
-		Watcher\sign.ps1 = Watcher\sign.ps1
+		Tools\Watcher\Directory.Build.props = Tools\Watcher\Directory.Build.props
+		Tools\Watcher\README.md = Tools\Watcher\README.md
+		Tools\Watcher\sign.ps1 = Tools\Watcher\sign.ps1
 	EndProjectSection
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Watcher", "Watcher\src\Wangkanai.Watcher.csproj", "{271306A6-4903-4EB2-AE7B-86B0826BD81E}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Watcher.Tests", "Watcher\tests\Wangkanai.Watcher.Tests.csproj", "{37B59B4E-88FD-4FAE-BBFC-290E2E249216}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CommandLine", "CommandLine", "{C5C4D631-1DA0-40D1-9B62-D4D5D41E8859}"
 	ProjectSection(SolutionItems) = preProject
@@ -310,6 +306,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Federation", "Federation", 
 		Federation\README.md = Federation\README.md
 		Federation\sign.ps1 = Federation\sign.ps1
 		Federation\.editorconfig = Federation\.editorconfig
+		Federation\Federation.slnf = Federation\Federation.slnf
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Federation", "Federation\src\Federation\Wangkanai.Federation.csproj", "{C49B819D-2F40-4427-A152-5E1C1323AEBC}"
@@ -489,6 +486,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "benchmenks", "benchmenks", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{A32A06C9-BDA6-47CF-9677-2F220BDC3D33}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Watcher", "Tools\Watcher\src\Wangkanai.Watcher.csproj", "{8BEF7BDD-B13F-448B-8B7D-37A855A32422}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Watcher.Tests", "Tools\Watcher\tests\Wangkanai.Watcher.Tests.csproj", "{56F2E615-348E-4576-AC72-579124DD4F98}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -575,14 +576,6 @@ Global
 		{3BC55F8B-971B-4611-B012-CDABA944BE96}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3BC55F8B-971B-4611-B012-CDABA944BE96}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3BC55F8B-971B-4611-B012-CDABA944BE96}.Release|Any CPU.Build.0 = Release|Any CPU
-		{271306A6-4903-4EB2-AE7B-86B0826BD81E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{271306A6-4903-4EB2-AE7B-86B0826BD81E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{271306A6-4903-4EB2-AE7B-86B0826BD81E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{271306A6-4903-4EB2-AE7B-86B0826BD81E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{37B59B4E-88FD-4FAE-BBFC-290E2E249216}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{37B59B4E-88FD-4FAE-BBFC-290E2E249216}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{37B59B4E-88FD-4FAE-BBFC-290E2E249216}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{37B59B4E-88FD-4FAE-BBFC-290E2E249216}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A80B6DAF-AA55-465E-9D99-6BFF7270DF36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A80B6DAF-AA55-465E-9D99-6BFF7270DF36}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A80B6DAF-AA55-465E-9D99-6BFF7270DF36}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -891,6 +884,14 @@ Global
 		{EC16E6D9-DEED-42B1-B510-EAB705D337A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC16E6D9-DEED-42B1-B510-EAB705D337A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC16E6D9-DEED-42B1-B510-EAB705D337A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BEF7BDD-B13F-448B-8B7D-37A855A32422}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BEF7BDD-B13F-448B-8B7D-37A855A32422}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BEF7BDD-B13F-448B-8B7D-37A855A32422}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BEF7BDD-B13F-448B-8B7D-37A855A32422}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56F2E615-348E-4576-AC72-579124DD4F98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56F2E615-348E-4576-AC72-579124DD4F98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56F2E615-348E-4576-AC72-579124DD4F98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56F2E615-348E-4576-AC72-579124DD4F98}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -922,8 +923,6 @@ Global
 		{DFCE57F8-CA4D-4F85-A14D-F15173B8CC42} = {ABDB88B8-683A-466C-A2DB-AFD516359619}
 		{3BC55F8B-971B-4611-B012-CDABA944BE96} = {89052ADF-DFC9-4281-A1A1-E83434F434BC}
 		{F32D16F1-3419-4401-9036-94B60C2C14BE} = {084E5C3F-9E52-40A3-9094-C406A2306BAB}
-		{271306A6-4903-4EB2-AE7B-86B0826BD81E} = {6B7D8653-4ADC-45AD-8289-C933FCDA34B2}
-		{37B59B4E-88FD-4FAE-BBFC-290E2E249216} = {6B7D8653-4ADC-45AD-8289-C933FCDA34B2}
 		{C5C4D631-1DA0-40D1-9B62-D4D5D41E8859} = {ABDB88B8-683A-466C-A2DB-AFD516359619}
 		{A80B6DAF-AA55-465E-9D99-6BFF7270DF36} = {F32D16F1-3419-4401-9036-94B60C2C14BE}
 		{02E6D09F-C053-4A66-8229-518DA83F05D4} = {F32D16F1-3419-4401-9036-94B60C2C14BE}
@@ -1014,6 +1013,8 @@ Global
 		{A32A06C9-BDA6-47CF-9677-2F220BDC3D33} = {CEB6F6F6-7AE2-43A0-B9DE-B8A8D9154405}
 		{BF2DA6CE-5671-4121-A5B4-170FCB0F5F5A} = {13554116-5D16-4BD4-9E78-D630C07F393B}
 		{0A5F5EC2-AA85-479A-99BD-79008225CF1B} = {A32A06C9-BDA6-47CF-9677-2F220BDC3D33}
+		{8BEF7BDD-B13F-448B-8B7D-37A855A32422} = {6B7D8653-4ADC-45AD-8289-C933FCDA34B2}
+		{56F2E615-348E-4576-AC72-579124DD4F98} = {6B7D8653-4ADC-45AD-8289-C933FCDA34B2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1BA0A192-D7BE-40A1-96AE-B3C8C6BC9B69}

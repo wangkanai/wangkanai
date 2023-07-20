@@ -1,7 +1,6 @@
 <Project>
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
   <PropertyGroup>
-    <VersionPrefix>1.2.0</VersionPrefix>
     <Title>Wangkanai Watcher</Title>
     <Description>An enhanced ASP.NET Core Development tool to supercharge `dotnet-watch`. Automates file monitoring and task executions to streamline your workflow. Boost your productivity, focus on coding, and contribute to an easier development process.</Description>
     <PackageTags>aspnetcore;watcher;task;job;</PackageTags>
@@ -12,7 +11,7 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="..\..\assets\wangkanai-logo.png" Pack="true" PackagePath="\" />
+    <None Include="..\..\..\assets\wangkanai-logo.png" Pack="true" PackagePath="\" />
     <None Include="..\README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 </Project>
