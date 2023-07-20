@@ -1,9 +1,0 @@
-{
-    "solution": {
-        "path": "..\\Wangkanai.sln",
-        "projects": [
-            "Security\\src\\Authentication\\Wangkanai.Security.Authentication.csproj",
-            "Security\\src\\Authorization\\Wangkanai.Security.Authorization.csproj"
-        ]
-    }
-}

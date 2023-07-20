@@ -366,7 +366,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Security", "Security", "{CE
 		Security\README.md = Security\README.md
 		Security\Directory.Build.props = Security\Directory.Build.props
 		Security\sign.ps1 = Security\sign.ps1
-		Security\Security.slnf = Security\Security.slnf
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Security.Authentication", "Security\src\Authentication\Wangkanai.Security.Authentication.csproj", "{BF58B446-84AD-455B-A086-B2093B5BD404}"
