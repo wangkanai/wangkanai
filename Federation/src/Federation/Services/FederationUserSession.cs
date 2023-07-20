@@ -4,6 +4,7 @@ using System.Security.Claims;
 
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
 using Wangkanai.Cryptography;
@@ -17,12 +18,16 @@ public class FederationUserSession : IUserSession
 	internal readonly FederationOptions              Options;
 	internal readonly IAuthenticationHandlerProvider HandlerProvider;
 	internal readonly IClock                         Clock;
+	internal readonly IServerUrls                    Urls;
 	internal readonly ILogger                        Logger;
 
 	internal ClaimsPrincipal          Principal;
 	internal AuthenticationProperties Properties;
 
-	internal HttpContext HttpContext => HttpContextAccessor.HttpContext;
+	internal HttpContext  HttpContext               => HttpContextAccessor.HttpContext;
+	internal string       SessionCookieName         => Options.Authentication.SessionCookieName;
+	internal string       SessionCookieDomain       => Options.Authentication.SessionCookieDomain;
+	internal SameSiteMode SessionCookieSameSiteMode => Options.Authentication.SessionCookieSameSiteMode;
 
 	protected virtual async Task AuthenticateAsync()
 	{
@@ -64,6 +69,7 @@ public class FederationUserSession : IUserSession
 		}
 
 		var sid = properties.GetSessionId();
+		IssueSessionIdCookie(sid);
 
 		Principal  = principal;
 		Properties = properties;
@@ -99,5 +105,34 @@ public class FederationUserSession : IUserSession
 	public async Task<IEnumerable<string>> GetClientListAsync()
 	{
 		throw new NotImplementedException();
+	}
+
+	public virtual void IssueSessionIdCookie(string sid)
+	{
+		if (!Options.Endpoints.EnableDiscoveryEndpoint)
+			return;
+
+		if (HttpContext.Request.Cookies[SessionCookieName] != sid)
+			HttpContext.Response.Cookies.Append(
+				Options.Authentication.SessionCookieName,
+				sid,
+				CreateSessionIdCookieOption());
+	}
+
+	public virtual CookieOptions CreateSessionIdCookieOption()
+	{
+		var secure = HttpContext.Request.IsHttps;
+		var path   = Urls.BasePath.CleanUrlPath();
+
+		var options = new CookieOptions
+		{
+			HttpOnly    = false,
+			Secure      = secure,
+			IsEssential = true,
+			Domain      = SessionCookieDomain,
+			SameSite    = SessionCookieSameSiteMode,
+		};
+
+		return options;
 	}
 }

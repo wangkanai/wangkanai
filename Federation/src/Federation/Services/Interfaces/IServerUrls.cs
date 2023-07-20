@@ -5,7 +5,7 @@ namespace Wangkanai.Federation.Services;
 /// <summary>
 /// Configures the per-request URIs and paths into the current server
 /// </summary>
-public interface IServerUris
+public interface IServerUrls
 {
 	string Origin   { get; set; }
 	string BasePath { get; set; }

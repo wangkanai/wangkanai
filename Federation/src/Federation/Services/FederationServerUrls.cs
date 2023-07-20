@@ -4,11 +4,11 @@ using Microsoft.AspNetCore.Http;
 
 namespace Wangkanai.Federation.Services;
 
-public class FederationServerUris : IServerUris
+public class FederationServerUrls : IServerUrls
 {
 	private readonly IHttpContextAccessor _httpContextAccessor;
 
-	public FederationServerUris(IHttpContextAccessor httpContextAccessor)
+	public FederationServerUrls(IHttpContextAccessor httpContextAccessor)
 		=> _httpContextAccessor = httpContextAccessor;
 
 	public string Origin
