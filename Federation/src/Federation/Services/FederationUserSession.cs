@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 
+using Wangkanai.Cryptography;
 using Wangkanai.Federation.Extensions;
 
 namespace Wangkanai.Federation.Services;
@@ -49,11 +50,25 @@ public class FederationUserSession : IUserSession
 		if (properties.GetSessionId() == null)
 		{
 			var currentSid = await GetSessionIdAsync();
-			if (newSubjectId == currentSubjectId && currentSid != null) {properties.SetSessionId(currentSid);
-				  var clients = Properties.GetClientList();
-}
-			
+			if (newSubjectId == currentSubjectId && currentSid != null)
+			{
+				properties.SetSessionId(currentSid);
+				var clients = Properties.GetClientList();
+				if (clients.Any())
+					properties.SetClientList(clients);
+			}
+			else
+			{
+				properties.SetSessionId(HashRandom.CreateUniqueId(16, HashRandom.OutputFormat.Hexadecimal));
+			}
 		}
+
+		var sid = properties.GetSessionId();
+
+		Principal  = principal;
+		Properties = properties;
+
+		return sid!;
 	}
 
 	public async Task<ClaimsPrincipal> GetUserAsync()
