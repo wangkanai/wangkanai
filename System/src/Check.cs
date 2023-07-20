@@ -1,5 +1,6 @@
 // Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
+using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
 
 using Wangkanai.Exceptions;
@@ -15,49 +16,56 @@ public static class Check
 	#region Throw
 
 	// Throw if value is null (all possible types)
-	public static bool? ThrowIfNull(this bool? value)
+	[MemberNotNull]
+	public static bool ThrowIfNull(this bool? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
-	public static sbyte? ThrowIfNull(this sbyte? value)
+	[MemberNotNull]
+	public static sbyte ThrowIfNull(this sbyte? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
-	public static byte? ThrowIfNull(this byte? value)
+	[MemberNotNull]
+	public static byte ThrowIfNull(this byte? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
-	public static ushort? ThrowIfNull(this ushort? value)
+	[MemberNotNull]
+	public static ushort ThrowIfNull(this ushort? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
-	public static short? ThrowIfNull(this short? value)
+	[MemberNotNull]
+	public static short ThrowIfNull(this short? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
-	public static int? ThrowIfNull(this int? value)
+	[MemberNotNull]
+	public static int ThrowIfNull(this int? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
-	public static uint? ThrowIfNull(this uint? value)
+	[MemberNotNull]
+	public static uint ThrowIfNull(this uint? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
-	public static nint? ThrowIfNull(this nint? value)
+	public static nint ThrowIfNull(this nint? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
-	public static nuint? ThrowIfNull(this nuint? value)
+	public static nuint ThrowIfNull(this nuint? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
-	public static long? ThrowIfNull(this long? value)
+	public static long ThrowIfNull(this long? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
-	public static ulong? ThrowIfNull(this ulong? value)
+	public static ulong ThrowIfNull(this ulong? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
-	public static float? ThrowIfNull(this float? value)
+	public static float ThrowIfNull(this float? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
-	public static decimal? ThrowIfNull(this decimal? value)
+	public static decimal ThrowIfNull(this decimal? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
-	public static double? ThrowIfNull(this double? value)
+	public static double ThrowIfNull(this double? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
-	public static char? ThrowIfNull(this char? value)
+	public static char ThrowIfNull(this char? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
 	public static string ThrowIfNull(this string? value)
@@ -66,70 +74,87 @@ public static class Check
 	public static string ThrowIfNull(this string? value, string message)
 		=> ThrowIfNull<ArgumentNullException>(value, message);
 
-	public static bool? ThrowIfNull<T>(this bool? value)
+	[MemberNotNull]
+	public static bool ThrowIfNull<T>(this bool? value)
 		where T : ArgumentException
 		=> value ?? throw CreateArgumentExceptionInstance<T>(nameof(value));
 
-	public static sbyte? ThrowIfNull<T>(this sbyte? value)
+	[MemberNotNull]
+	public static sbyte ThrowIfNull<T>(this sbyte? value)
 		where T : ArgumentException
 		=> value ?? throw CreateArgumentExceptionInstance<T>(nameof(value));
 
-	public static byte? ThrowIfNull<T>(this byte? value)
+	[MemberNotNull]
+	public static byte ThrowIfNull<T>(this byte? value)
 		where T : ArgumentException
 		=> value ?? throw CreateArgumentExceptionInstance<T>(nameof(value));
 
-	public static short? ThrowIfNull<T>(this short? value)
+	[MemberNotNull]
+	public static short ThrowIfNull<T>(this short? value)
 		where T : ArgumentException
 		=> value ?? throw CreateArgumentExceptionInstance<T>(nameof(value));
 
-	public static ushort? ThrowIfNull<T>(this ushort? value)
+	[MemberNotNull]
+	public static ushort ThrowIfNull<T>(this ushort? value)
 		where T : ArgumentException
 		=> value ?? throw CreateArgumentExceptionInstance<T>(nameof(value));
 
-	public static int? ThrowIfNull<T>(this int? value)
+	[MemberNotNull]
+	public static int ThrowIfNull<T>(this int? value)
 		where T : ArgumentException
 		=> value ?? throw CreateArgumentExceptionInstance<T>(nameof(value));
 
-	public static uint? ThrowIfNull<T>(this uint? value)
+	[MemberNotNull]
+	public static uint ThrowIfNull<T>(this uint? value)
 		where T : ArgumentException
 		=> value ?? throw CreateArgumentExceptionInstance<T>(nameof(value));
 
-	public static nint? ThrowIfNull<T>(this nint? value)
+	[MemberNotNull]
+	public static nint ThrowIfNull<T>(this nint? value)
 		where T : ArgumentException
 		=> value ?? throw CreateArgumentExceptionInstance<T>(nameof(value));
 
-	public static nuint? ThrowIfNull<T>(this nuint? value)
+	[MemberNotNull]
+	public static nuint ThrowIfNull<T>(this nuint? value)
 		where T : ArgumentException
 		=> value ?? throw CreateArgumentExceptionInstance<T>(nameof(value));
 
-	public static long? ThrowIfNull<T>(this long? value)
+	[MemberNotNull]
+	public static long ThrowIfNull<T>(this long? value)
 		where T : ArgumentException
 		=> value ?? throw CreateArgumentExceptionInstance<T>(nameof(value));
 
-	public static ulong? ThrowIfNull<T>(this ulong? value)
+	[MemberNotNull]
+	public static ulong ThrowIfNull<T>(this ulong? value)
 		where T : ArgumentException
 		=> value ?? throw CreateArgumentExceptionInstance<T>(nameof(value));
 
-	public static float? ThrowIfNull<T>(this float? value)
+	[MemberNotNull]
+	public static float ThrowIfNull<T>(this float? value)
 		where T : ArgumentException
 		=> value ?? throw CreateArgumentExceptionInstance<T>(nameof(value));
 
-	public static double? ThrowIfNull<T>(this double? value)
+	[MemberNotNull]
+	public static double ThrowIfNull<T>(this double? value)
 		where T : ArgumentException
 		=> value ?? throw CreateArgumentExceptionInstance<T>(nameof(value));
 
-	public static decimal? ThrowIfNull<T>(this decimal? value)
+	[MemberNotNull]
+	public static decimal ThrowIfNull<T>(this decimal? value)
 		where T : ArgumentException
 		=> value ?? throw CreateArgumentExceptionInstance<T>(nameof(value));
 
-	public static char? ThrowIfNull<T>(this char? value)
+	[MemberNotNull]
+	public static char ThrowIfNull<T>(this char? value)
 		where T : ArgumentException
 		=> value ?? throw CreateArgumentExceptionInstance<T>(nameof(value));
 
+	[MemberNotNull]
 	public static string ThrowIfNull<T>(this string? value)
 		where T : ArgumentException
 		=> value ?? throw CreateArgumentExceptionInstance<T>(nameof(value));
 
+	[MemberNotNull]
 	public static string ThrowIfNull<T>(this string? value, string message)
 		where T : ArgumentException
 		=> value ?? throw CreateArgumentExceptionInstance<T>(nameof(value), message);

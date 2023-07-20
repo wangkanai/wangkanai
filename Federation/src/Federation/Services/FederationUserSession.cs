@@ -44,9 +44,16 @@ public class FederationUserSession : IUserSession
 		principal.ThrowIfNull();
 		properties.ThrowIfNull();
 
-		var currentSubjectId = (await GetUserAsync())?.GetSubjectId();
+		var currentSubjectId = (await GetUserAsync()).GetSubjectId();
 		var newSubjectId     = principal.GetSubjectId();
-		
+		if (properties.GetSessionId() == null)
+		{
+			var currentSid = await GetSessionIdAsync();
+			if (newSubjectId == currentSubjectId && currentSid != null) {properties.SetSessionId(currentSid);
+				  var clients = Properties.GetClientList();
+}
+			
+		}
 	}
 
 	public async Task<ClaimsPrincipal> GetUserAsync()
