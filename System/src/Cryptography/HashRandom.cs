@@ -18,6 +18,8 @@ public class HashRandom : Random
 	
 	public static byte[] CreateRandomKey(int length)
 	{
+		length.ThrowIfLessThan(1);
+
 		var bytes = new byte[length];
 		Generator.GetBytes(bytes);
 		return bytes;
@@ -25,6 +27,8 @@ public class HashRandom : Random
 	
 	public static string CreateUniqueId(int length = 32, OutputFormat format = OutputFormat.Base64Url)
 	{
+		length.ThrowIfLessThan(1);
+		
 		var bytes = CreateRandomKey(length);
 		return format switch
 		{

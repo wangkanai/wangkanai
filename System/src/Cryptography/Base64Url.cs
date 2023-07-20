@@ -15,6 +15,9 @@ public static class Base64Url
 
 	public static byte[] Decode(string arg)
 	{
+		arg.ThrowIfNull();
+		arg.ThrowIfEmpty();
+		
 		var str = arg;
 		str = str.Replace('-', '+');
 		str = str.Replace('_', '/');

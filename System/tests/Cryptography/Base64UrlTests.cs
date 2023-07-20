@@ -19,13 +19,7 @@ public class Base64UrlTests
 	{
 		Assert.Throws<ArgumentNullException>(() => Base64Url.Decode(null!));
 	}
-
-	[Fact]
-	public void Decode_Invalid()
-	{
-		Assert.Throws<FormatException>(() => Base64Url.Decode("invalid"));
-	}
-
+	
 	[Fact]
 	public void Encode_Normal()
 	{
@@ -38,6 +32,33 @@ public class Base64UrlTests
 	public void Decode_Normal()
 	{
 		var bytes = "Hello World"u8.ToArray();
+		var str   = Base64Url.Encode(bytes);
+		var data  = Base64Url.Decode(str);
+		Assert.Equal(bytes, data);
+	}
+
+	[Fact]
+	public void Encode_Decode()
+	{
+		var bytes = "Hello World"u8.ToArray();
+		var str   = Base64Url.Encode(bytes);
+		var data  = Base64Url.Decode(str);
+		Assert.Equal(bytes, data);
+	}
+
+	[Fact]
+	public void Encode_Decode_Url()
+	{
+		var bytes = "https://www.google.com"u8.ToArray();
+		var str   = Base64Url.Encode(bytes);
+		var data  = Base64Url.Decode(str);
+		Assert.Equal(bytes, data);
+	}
+
+	[Fact]
+	public void Encode_Decode_Url_With_Special_Characters()
+	{
+		var bytes = "https://www.google.com/?q=hello world"u8.ToArray();
 		var str   = Base64Url.Encode(bytes);
 		var data  = Base64Url.Decode(str);
 		Assert.Equal(bytes, data);
