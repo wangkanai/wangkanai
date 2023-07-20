@@ -46,6 +46,7 @@ public class FederationUserSession : IUserSession
 
 		var currentSubjectId = (await GetUserAsync())?.GetSubjectId();
 		var newSubjectId     = principal.GetSubjectId();
+		
 	}
 
 	public async Task<ClaimsPrincipal> GetUserAsync()
