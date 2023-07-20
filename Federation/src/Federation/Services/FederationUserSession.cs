@@ -3,11 +3,24 @@
 using System.Security.Claims;
 
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
 
 namespace Wangkanai.Federation.Services;
 
 public sealed class FederationUserSession : IUserSession
 {
+	internal readonly IHttpContextAccessor           HttpContextAccessor;
+	internal readonly FederationOptions              Options;
+	internal readonly IAuthenticationHandlerProvider HandlerProvider;
+	internal readonly IClock                         Clock;
+	internal readonly ILogger                        Logger;
+
+	internal ClaimsPrincipal          Principal;
+	internal AuthenticationProperties Properties;
+
+	internal HttpContext HttpContext => HttpContextAccessor.HttpContext;
+
 	public async Task<string> CreateSessionIdAsync(ClaimsPrincipal principal, AuthenticationProperties properties)
 	{
 		throw new NotImplementedException();

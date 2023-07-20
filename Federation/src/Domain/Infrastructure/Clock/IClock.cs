@@ -1,5 +1,8 @@
 ﻿// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-namespace Wangkanai.Internal.Services;
+namespace Wangkanai.Federation;
 
-public class MarkerServiceTests { }
+public interface IClock
+{
+	DateTimeOffset UtcNow { get; }
+}
