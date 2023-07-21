@@ -2,7 +2,7 @@
 
 namespace Wangkanai.Cryptography;
 
-public class Adler32
+public static class Adler32
 {
 	private const int Base = 65521;
 	private const int Max  = 5552;
@@ -14,7 +14,7 @@ public class Adler32
 	{
 		path.ThrowIfNull();
 		using var stream = new FileStream(path, FileMode.Open, FileAccess.Read);
-
+		stream.ThrowIfNull();
 		return ComputeChecksum(stream);
 	}
 

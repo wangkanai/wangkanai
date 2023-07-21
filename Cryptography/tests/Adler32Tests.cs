@@ -44,4 +44,11 @@ public class Adler32Tests
 		var data = Array.Empty<byte>();
 		Assert.Throws<ArgumentZeroException>(() => Adler32.ComputeChecksum(0, data, 0, 0));
 	}
+	
+	[Fact]
+	public void Checksum_Invalid()
+	{
+		var data = "Hello World"u8.ToArray();
+		Assert.NotEqual(0, Adler32.ComputeChecksum(0, data));
+	}
 }
