@@ -123,16 +123,15 @@ public class FederationUserSession : IUserSession
 	{
 		var secure = HttpContext.Request.IsHttps;
 		var path   = Urls.BasePath.CleanUrlPath();
-
-		var options = new CookieOptions
+		
+		return new CookieOptions
 		{
 			HttpOnly    = false,
 			Secure      = secure,
+			Path        = path,
 			IsEssential = true,
 			Domain      = SessionCookieDomain,
 			SameSite    = SessionCookieSameSiteMode,
 		};
-
-		return options;
 	}
 }
