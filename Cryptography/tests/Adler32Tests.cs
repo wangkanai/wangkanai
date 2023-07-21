@@ -11,15 +11,17 @@ public class Adler32Tests
 	[Fact]
 	public void Checksum_LessThanZero()
 	{
-		Assert.Throws<ArgumentLessThanException>(() => Adler32.ComputeChecksum(-1, new byte[0]));
-		Assert.Throws<ArgumentLessThanException>(() => Adler32.ComputeChecksum(-1, new byte[0], -1, 0));
-		Assert.Throws<ArgumentLessThanException>(() => Adler32.ComputeChecksum(-1, new byte[0], 0, -1));
+		var data = Array.Empty<byte>();
+		Assert.Throws<ArgumentLessThanException>(() => Adler32.ComputeChecksum(-1, data));
+		Assert.Throws<ArgumentLessThanException>(() => Adler32.ComputeChecksum(-1, data, -1, 0));
+		Assert.Throws<ArgumentLessThanException>(() => Adler32.ComputeChecksum(-1, data, 0, -1));
 	}
 
 	[Fact]
 	public void Checksum_Zero()
 	{
-		Assert.Throws<ArgumentZeroException>(() => Adler32.ComputeChecksum(0, new byte[0], 0, 0));
+		var data = Array.Empty<byte>();
+		Assert.Throws<ArgumentZeroException>(() => Adler32.ComputeChecksum(0, data, 0, 0));
 	}
 
 	[Fact]
@@ -39,6 +41,7 @@ public class Adler32Tests
 	[Fact]
 	public void Checksum_Empty()
 	{
-		Assert.Throws<ArgumentZeroException>(() => Adler32.ComputeChecksum(0, new byte[0], 0, 0));
+		var data = Array.Empty<byte>();
+		Assert.Throws<ArgumentZeroException>(() => Adler32.ComputeChecksum(0, data, 0, 0));
 	}
 }
