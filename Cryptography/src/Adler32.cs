@@ -13,9 +13,9 @@ public sealed class Adler32 : HashAlgorithm
 	private const ushort Max  = 0x15B0; //  5552
 
 	private ushort _a;
-	private ushort _b;
-
-	private Adler32()
+	private ushort _b; 
+	
+	public Adler32()
 		=> Initialize();
 
 	public static int Checksum(string text)
