@@ -7,5 +7,10 @@ namespace Wangkanai.Internal.Services;
 public class FederationUserSessionTests
 {
 	[Fact]
-	public void GetSessionIdAsync_ReturnsExpected() { }
+	public void CreateSessionIdCookieOptions_ReturnsExpected()
+	{
+		var session = new FederationUserSession();
+		var options = session.CreateSessionIdCookieOption();
+		// Assert.NotNull(options);   
+	}
 }
