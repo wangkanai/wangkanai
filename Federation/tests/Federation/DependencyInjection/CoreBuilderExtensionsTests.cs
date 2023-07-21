@@ -61,7 +61,7 @@ public class CoreBuilderExtensionsTests
 		var services    = new ServiceCollection();
 		var builder     = services.AddFederationBuilder().AddCoreServices();
 		var descriptors = new List<ServiceDescriptor>();
-		descriptors.Add(new(typeof(IServerUris), typeof(FederationServerUris), ServiceLifetime.Transient));
+		descriptors.Add(new(typeof(IServerUrls), typeof(FederationServerUrls), ServiceLifetime.Transient));
 		descriptors.Add(new(typeof(IIssuerNameService), typeof(FederationIssuerNameService), ServiceLifetime.Transient));
 
 		Assert.NotNull(builder);

@@ -1,9 +1,0 @@
-// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
-
-namespace Wangkanai.Federation.Services;
-
-public class FederationServerUris : IServerUris
-{
-	public string Origin   { get; set; }
-	public string BasePath { get; set; }
-}

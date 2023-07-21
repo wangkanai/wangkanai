@@ -17,20 +17,20 @@ public class DiscoveryEndpoint : IEndpointHandler
 	private readonly FederationOptions          _options;
 	private readonly IIssuerNameService         _issuerNameService;
 	private readonly IDiscoveryResponseFactory  _responseFactory;
-	private readonly IServerUris                _uris;
+	private readonly IServerUrls                _urls;
 	private readonly ILogger<DiscoveryEndpoint> _logger;
 
 	public DiscoveryEndpoint(
 		FederationOptions          options,
 		IIssuerNameService         issuerNameService,
 		IDiscoveryResponseFactory  responseFactory,
-		IServerUris                uris,
+		IServerUrls                urls,
 		ILogger<DiscoveryEndpoint> logger)
 	{
 		_options           = options;
 		_issuerNameService = issuerNameService;
 		_responseFactory   = responseFactory;
-		_uris              = uris;
+		_urls              = urls;
 		_logger            = logger;
 	}
 
@@ -54,7 +54,7 @@ public class DiscoveryEndpoint : IEndpointHandler
 		}
 
 		var issuerUri = await _issuerNameService.GetCurrentAsync();
-		var baseUri   = _uris.BaseUri;
+		var baseUri   = _urls.BaseUri;
 
 		_logger.LogTrace("Calling into discovery response maker: {Type}", _responseFactory.GetType().FullName);
 		var response = await _responseFactory.CreateResultAsync(issuerUri, baseUri);

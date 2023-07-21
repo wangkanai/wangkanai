@@ -7,6 +7,6 @@ internal static class IdentityConstants
 	public static class ProtocolTypes
 	{
 		public const string OpenIdConnect = "oidc";
-		public const string OAuth2 = "oauth2";
+		public const string OAuth2        = "oauth2";
 	}
 }
