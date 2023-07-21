@@ -4,7 +4,7 @@ using System.Diagnostics;
 
 using Wangkanai.Extensions;
 
-namespace Microsoft.Extensions.DependencyInjection;
+namespace Wangkanai.Hosting;
 
 [DebuggerStepThrough]
 public static class StringExtensions

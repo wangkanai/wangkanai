@@ -4,11 +4,11 @@ using System.Security.Claims;
 
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
 using Wangkanai.Cryptography;
 using Wangkanai.Federation.Extensions;
+using Wangkanai.Hosting;
 
 namespace Wangkanai.Federation.Services;
 
@@ -123,7 +123,7 @@ public class FederationUserSession : IUserSession
 	{
 		var secure = HttpContext.Request.IsHttps;
 		var path   = Urls.BasePath.CleanUrlPath();
-		
+
 		return new CookieOptions
 		{
 			HttpOnly    = false,

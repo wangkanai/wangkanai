@@ -6,6 +6,9 @@ public static class Base64Url
 {
 	public static string Encode(byte[] arg)
 	{
+		arg.ThrowIfNull();
+		arg.ThrowIfEmpty();
+		
 		var str = Convert.ToBase64String(arg);
 		str = str.Split('=')[0];
 		str = str.Replace('+', '-');
