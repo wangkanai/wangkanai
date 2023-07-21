@@ -5,5 +5,13 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
+	
+	<ItemGroup>
+	  <ProjectReference Include="..\..\System\src\Wangkanai.System.csproj" />
+	</ItemGroup>
+	
+	<ItemGroup>
+	  <PackageReference Include="JetBrains.Annotations" Version="2023.2.0" />
+	</ItemGroup>
 
 </Project>

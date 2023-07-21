@@ -3,6 +3,8 @@
 using System.Security.Cryptography;
 using System.Text;
 
+using JetBrains.Annotations;
+
 namespace Wangkanai.Cryptography;
 
 public static class Hash
