@@ -3,38 +3,32 @@
 using System.Security.Cryptography;
 using System.Text;
 
-using JetBrains.Annotations;
-
 namespace Wangkanai.Cryptography;
 
 public static class Hash
 {
-	public static string HashMd5([NotNull] this string value)
-		=> MD5.Create()
-		      .ComputeHash(value.GetAsciiBytes())
+	public static string HashMd5(this string value)
+		=> MD5.HashData(value.GetAsciiBytes())
 		      .HashDataToString();
 
-	public static string HashSha512([NotNull] this string value)
-		=> SHA512.Create()
-		         .ComputeHash(value.GetAsciiBytes())
+	public static string HashSha512(this string value)
+		=> SHA512.HashData(value.GetAsciiBytes())
 		         .HashDataToString();
 
-	public static string HashSha384([NotNull] this string value)
-		=> SHA384.Create()
-		         .ComputeHash(value.GetAsciiBytes())
+	public static string HashSha384(this string value)
+		=> SHA384.HashData(value.GetAsciiBytes())
 		         .HashDataToString();
 
-	public static string HashSha256([NotNull] this string value)
-		=> SHA256.Create()
-		         .ComputeHash(value.GetAsciiBytes())
+	public static string HashSha256(this string value)
+		=> SHA256.HashData(value.GetAsciiBytes())
 		         .HashDataToString();
 
 	#region Internal
 
-	private static byte[] GetAsciiBytes([NotNull] this string value)
+	private static byte[] GetAsciiBytes(this string value)
 		=> Encoding.ASCII.GetBytes(value);
 
-	private static string HashDataToString([NotNull] this IEnumerable<byte> data)
+	private static string HashDataToString(this IEnumerable<byte> data)
 	{
 		var builder = new StringBuilder();
 		foreach (var index in data)

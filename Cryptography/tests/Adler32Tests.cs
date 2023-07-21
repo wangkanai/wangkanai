@@ -1,5 +1,7 @@
 ﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
+using System.Text;
+
 using Wangkanai.Exceptions;
 
 namespace Wangkanai.Cryptography;
@@ -15,9 +17,16 @@ public class Adler32Tests
 	}
 
 	[Fact]
+	public void Checksum_Zero()
+	{
+		Assert.Throws<ArgumentZeroException>(() => Adler32.ComputeChecksum(0, new byte[0], 0, 0));
+	}
+
+	[Fact]
 	public void Checksum_Normal()
 	{
-		var checksum = Adler32.ComputeChecksum(0, new byte[0]);
+		var data     = new byte[] { 0 };
+		var checksum = Adler32.ComputeChecksum(0, data);
 		Assert.Equal(0, checksum);
 	}
 
@@ -30,6 +39,6 @@ public class Adler32Tests
 	[Fact]
 	public void Checksum_Empty()
 	{
-		//Assert.Throws<ArgumentZeroException>(() => Adler32.ComputeChecksum(0, new byte[0], 0, 0));
+		Assert.Throws<ArgumentZeroException>(() => Adler32.ComputeChecksum(0, new byte[0], 0, 0));
 	}
 }
