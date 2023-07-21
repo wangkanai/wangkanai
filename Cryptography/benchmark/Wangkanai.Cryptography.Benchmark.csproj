@@ -7,4 +7,8 @@
 		<OutputType>Exe</OutputType>
 	</PropertyGroup>
 
+	<ItemGroup>
+	  <ProjectReference Include="..\src\Wangkanai.Cryptography.csproj" />
+	</ItemGroup>
+
 </Project>

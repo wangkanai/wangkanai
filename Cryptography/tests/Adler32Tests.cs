@@ -2,8 +2,6 @@
 
 using Wangkanai.Exceptions;
 
-using Xunit;
-
 namespace Wangkanai.Cryptography;
 
 public class Adler32Tests

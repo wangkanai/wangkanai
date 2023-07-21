@@ -6,5 +6,10 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
+	<ItemGroup>
+	  <ProjectReference Include="..\..\System\src\Wangkanai.System.csproj" />
+	  <ProjectReference Include="..\src\Wangkanai.Cryptography.csproj" />
+	</ItemGroup>
+
 
 </Project>
