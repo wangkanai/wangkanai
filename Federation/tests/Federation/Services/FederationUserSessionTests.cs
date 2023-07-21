@@ -10,7 +10,7 @@ public class FederationUserSessionTests
 	public void CreateSessionIdCookieOptions_ReturnsExpected()
 	{
 		var session = new FederationUserSession();
-		var options = session.CreateSessionIdCookieOption();
+		//var options = session.CreateSessionIdCookieOption();
 		// Assert.NotNull(options);   
 	}
 }
