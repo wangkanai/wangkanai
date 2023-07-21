@@ -2,8 +2,6 @@
 
 using System.Security.Cryptography;
 
-using ArgumentException = System.ArgumentException;
-
 namespace Wangkanai.Cryptography;
 
 public class HashRandom : Random
@@ -35,7 +33,7 @@ public class HashRandom : Random
 			OutputFormat.Base64Url => Base64Url.Encode(bytes),
 			OutputFormat.Base64    => Convert.ToBase64String(bytes),
 			OutputFormat.Hex       => BitConverter.ToString(bytes).Replace("-", ""),
-			_                      => throw new ArgumentException("Invalid output format", nameof(format))
+			_                      => throw new ArgumentOutOfRangeException("Invalid output format", nameof(format))
 		};
 	}
 
