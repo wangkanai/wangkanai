@@ -1,6 +1,7 @@
 ﻿// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using System.Security.Cryptography;
+using System.Text;
 
 namespace Wangkanai.Cryptography;
 
@@ -14,17 +15,28 @@ public sealed class Adler32 : HashAlgorithm
 	private ushort _a;
 	private ushort _b;
 
-	private Adler32() => Initialize();
+	private Adler32()
+		=> Initialize();
 
-	//public static int Checksum(string text) { }
+	public static int Checksum(string text)
+		=> Checksum(Encoding.ASCII.GetBytes(text));
+
+	public static int Checksum(byte[] bytes)
+	{
+		bytes.ThrowIfNull();
+		
+		var adler32 = new Adler32();
+		adler32.HashCore(bytes, 0, bytes.Length);
+		return BitConverter.ToInt32(adler32.HashFinal(), 0);
+	}
 
 	public override int HashSize => 32;
 
 	public override void Initialize()
 	{
 		// reset the sum values
-		_a = 1;
-		_b = 0;
+		_a = 1; // 0x0001
+		_b = 0; // 0x0000
 	}
 
 	protected override void HashCore(byte[] data, int start, int length)
