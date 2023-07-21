@@ -64,7 +64,7 @@ public class FederationUserSession : IUserSession
 			}
 			else
 			{
-				properties.SetSessionId(HashRandom.CreateUniqueId(16, HashRandom.OutputFormat.Hexadecimal));
+				properties.SetSessionId(HashRandom.CreateUniqueId(16, HashRandom.OutputFormat.Hex));
 			}
 		}
 

@@ -1,13 +1,22 @@
 ﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-using System.IO;
-
 namespace Wangkanai.Cryptography;
 
-public class Adler32
+public static class Adler32
 {
-	const int Base = 65521;
-	const int Max  = 5552;
+	private const int Base = 65521;
+	private const int Max  = 5552;
+
+	public static int ComputeChecksum(int initial, byte[] data)
+		=> ComputeChecksum(initial, data.ThrowIfNull(), 0, data.Length);
+
+	public static int ComputeChecksum(string path)
+	{
+		path.ThrowIfNull();
+		using var stream = new FileStream(path, FileMode.Open, FileAccess.Read);
+		stream.ThrowIfNull();
+		return ComputeChecksum(stream);
+	}
 
 	public static int ComputeChecksum(int initial, byte[] data, int start, int length)
 	{
@@ -15,9 +24,9 @@ public class Adler32
 		initial.ThrowIfLessThan(0);
 		start.ThrowIfLessThan(0);
 		length.ThrowIfLessThan(0);
-		//length.ThrowIfZero();
+		length.ThrowIfZero();
 
-		var a = initial         & 0xFFFF;
+		var a = initial & 0xFFFF;
 		var b = (initial >> 16) & 0xFFFF;
 
 		var index = start;
@@ -40,16 +49,6 @@ public class Adler32
 		return b << 16 | a;
 	}
 
-	public static int ComputeChecksum(int initial, byte[] data)
-		=> ComputeChecksum(initial, data.ThrowIfNull(), 0, data.Length);
-
-	public static int ComputeChecksum(string path)
-	{
-		path.ThrowIfNull();
-		using var stream = new FileStream(path, FileMode.Open, FileAccess.Read);
-
-		return ComputeChecksum(stream);
-	}
 
 	public static int ComputeChecksum(Stream stream)
 	{

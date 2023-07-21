@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>$(DefaultNetCoreTargetFramework)</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\System\src\Wangkanai.System.csproj" />
+	  <ProjectReference Include="..\src\Wangkanai.Cryptography.csproj" />
+	</ItemGroup>
+
+
+</Project>

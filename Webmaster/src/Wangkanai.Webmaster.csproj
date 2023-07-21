@@ -9,6 +9,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\..\Cryptography\src\Wangkanai.Cryptography.csproj" />
         <ProjectReference Include="..\..\Detection\src\Wangkanai.Detection.csproj" />
         <ProjectReference Include="..\..\Extensions\FileProviders\src\Wangkanai.Extensions.FileProviders.csproj" />
         <ProjectReference Include="..\..\Hosting\src\Wangkanai.Hosting.csproj" />

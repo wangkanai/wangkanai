@@ -489,6 +489,19 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Watcher", "Tools\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Watcher.Tests", "Tools\Watcher\tests\Wangkanai.Watcher.Tests.csproj", "{56F2E615-348E-4576-AC72-579124DD4F98}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cryptography", "Cryptography", "{234A4BD2-EDC0-4BCF-A712-583FBDE9A270}"
+	ProjectSection(SolutionItems) = preProject
+		Cryptography\Directory.Build.props = Cryptography\Directory.Build.props
+		Cryptography\README.md = Cryptography\README.md
+		Cryptography\sign.ps1 = Cryptography\sign.ps1
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Cryptography", "Cryptography\src\Wangkanai.Cryptography.csproj", "{40A02C7A-7A10-41D6-BE3A-BC9D8ED5B985}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Cryptography.Tests", "Cryptography\tests\Wangkanai.Cryptography.Tests.csproj", "{A496FC6F-E5C7-4581-9818-A06C81079447}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Cryptography.Benchmark", "Cryptography\benchmark\Wangkanai.Cryptography.Benchmark.csproj", "{BA3A2AB1-9201-48F5-BCA0-5975994E50FD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -891,6 +904,18 @@ Global
 		{56F2E615-348E-4576-AC72-579124DD4F98}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56F2E615-348E-4576-AC72-579124DD4F98}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56F2E615-348E-4576-AC72-579124DD4F98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40A02C7A-7A10-41D6-BE3A-BC9D8ED5B985}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40A02C7A-7A10-41D6-BE3A-BC9D8ED5B985}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40A02C7A-7A10-41D6-BE3A-BC9D8ED5B985}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40A02C7A-7A10-41D6-BE3A-BC9D8ED5B985}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A496FC6F-E5C7-4581-9818-A06C81079447}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A496FC6F-E5C7-4581-9818-A06C81079447}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A496FC6F-E5C7-4581-9818-A06C81079447}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A496FC6F-E5C7-4581-9818-A06C81079447}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA3A2AB1-9201-48F5-BCA0-5975994E50FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA3A2AB1-9201-48F5-BCA0-5975994E50FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA3A2AB1-9201-48F5-BCA0-5975994E50FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA3A2AB1-9201-48F5-BCA0-5975994E50FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1014,6 +1039,9 @@ Global
 		{0A5F5EC2-AA85-479A-99BD-79008225CF1B} = {A32A06C9-BDA6-47CF-9677-2F220BDC3D33}
 		{8BEF7BDD-B13F-448B-8B7D-37A855A32422} = {6B7D8653-4ADC-45AD-8289-C933FCDA34B2}
 		{56F2E615-348E-4576-AC72-579124DD4F98} = {6B7D8653-4ADC-45AD-8289-C933FCDA34B2}
+		{40A02C7A-7A10-41D6-BE3A-BC9D8ED5B985} = {234A4BD2-EDC0-4BCF-A712-583FBDE9A270}
+		{A496FC6F-E5C7-4581-9818-A06C81079447} = {234A4BD2-EDC0-4BCF-A712-583FBDE9A270}
+		{BA3A2AB1-9201-48F5-BCA0-5975994E50FD} = {234A4BD2-EDC0-4BCF-A712-583FBDE9A270}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1BA0A192-D7BE-40A1-96AE-B3C8C6BC9B69}
