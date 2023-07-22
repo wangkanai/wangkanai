@@ -1,54 +1,120 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+
 
 using System.Text;
-
-using Wangkanai.Exceptions;
 
 namespace Wangkanai.Cryptography;
 
 public class Adler32Tests
 {
 	[Fact]
-	public void Checksum_LessThanZero()
+	public void Wikipedia_Text()
 	{
-		var data = Array.Empty<byte>();
-		Assert.Throws<ArgumentLessThanException>(() => Adler32.ComputeChecksum(-1, data));
-		Assert.Throws<ArgumentLessThanException>(() => Adler32.ComputeChecksum(-1, data, -1, 0));
-		Assert.Throws<ArgumentLessThanException>(() => Adler32.ComputeChecksum(-1, data, 0, -1));
+		var checksum = Adler32.Checksum("Wikipedia");
+		Assert.Equal(0x11E60398, checksum);
 	}
 
 	[Fact]
-	public void Checksum_Zero()
+	public void Wikipedia_Bytes()
 	{
-		var data = Array.Empty<byte>();
-		Assert.Throws<ArgumentZeroException>(() => Adler32.ComputeChecksum(0, data, 0, 0));
-	}
-
-	[Fact]
-	public void Checksum_Normal()
-	{
-		var data     = new byte[] { 0 };
-		var checksum = Adler32.ComputeChecksum(0, data);
-		Assert.Equal(0, checksum);
+		var bytes    = "Wikipedia"u8.ToArray();
+		var checksum = Adler32.Checksum(bytes);
+		Assert.Equal(0x11E60398, checksum);
 	}
 
 	[Fact]
 	public void Checksum_Null()
 	{
-		Assert.Throws<ArgumentNullException>(() => Adler32.ComputeChecksum(0, null!));
+		Assert.Throws<ArgumentNullException>(() => Adler32.Checksum((byte[])null!));
+		Assert.Throws<ArgumentNullException>(() => Adler32.Checksum((string)null!));
 	}
 
 	[Fact]
 	public void Checksum_Empty()
 	{
-		var data = Array.Empty<byte>();
-		Assert.Throws<ArgumentZeroException>(() => Adler32.ComputeChecksum(0, data, 0, 0));
+		var empty = string.Empty;
+		var bytes = Encoding.ASCII.GetBytes(empty);
+		Assert.Equal(0x00000001, Adler32.Checksum(empty));
+		Assert.Equal(0x00000001, Adler32.Checksum(bytes));
 	}
-	
+
 	[Fact]
-	public void Checksum_Invalid()
+	public void Text_a1()
 	{
-		var data = "Hello World"u8.ToArray();
-		Assert.NotEqual(0, Adler32.ComputeChecksum(0, data));
+		// a = 97 = 0x61
+		// _a = 1 + 97 = 98  0x62
+		// _b = 0 + _a = 98  0x62
+		// output = (_b   << 16) + _a
+		//        = (0x62 << 16) + 0x62
+		//        = 0x620000 + 0x000062
+		//        = 0x620062
+		var text     = "a";
+		var checksum = Adler32.Checksum(text);
+		Assert.Equal(0x620062, checksum); // 0x620062 = 6422626
+	}
+
+	[Fact]
+	public void Text_a2()
+	{
+		//             | A             | B
+		// round 1 > a |  1 + 97 =  98 |  0 +  98 =  98
+		// round 2 > a | 98 + 97 = 195 | 98 + 195 = 293
+		//             | 0xC3          | 0x125
+		// output = (0x125 << 16) + 0xC3 = 0x1250000 + 0x00000C3 = 0x12500C3 = 19028675
+		var text     = "aa";
+		var checksum = Adler32.Checksum(text);
+		Assert.Equal(0x12500C3, checksum);
+	}
+
+	[Fact]
+	public void Text_a3()
+	{
+		//             | A              | B
+		// round 1 > a |   1 + 97 =  98 |   0 +  98 =  98
+		// round 2 > a |  98 + 97 = 195 |  98 + 195 = 293
+		// round 3 > a | 195 + 97 = 292 | 293 + 292 = 585
+		//             | 0x124		    | 0x249
+		// output = (0x249 << 16) + 0x124 = 0x2490000 + 0x0000124 = 0x2490124 = 37889220
+		var text     = "aaa";
+		var checksum = Adler32.Checksum(text);
+		Assert.Equal(0x2490124, checksum);
+	}
+
+	[Fact]
+	public void Text_a4()
+	{
+		// 		   | A              | B
+		// round 1 > a |   1 + 97 =  98 |   0 +  98 =  98
+		// round 2 > a |  98 + 97 = 195 |  98 + 195 = 293
+		// round 3 > a | 195 + 97 = 292 | 293 + 292 = 585
+		// round 4 > a | 292 + 97 = 389 | 585 + 389 = 974
+		//             | 0x185		    | 0x3CE
+		// output = (0x3CE << 16) + 0x185 = 0x3CE0000 + 0x0000185 = 0x3CE0185 
+		var text     = "aaaa";
+		var checksum = Adler32.Checksum(text);
+		Assert.Equal(0x3CE0185, checksum);
+	}
+
+	[Fact]
+	public void Text_abcd()
+	{
+		// 		       | A              | B
+		// round 1 > a |   1 + 97 =  98 |   0 +  98 =  98
+		// round 2 > b |  98 + 98 = 196 |  98 + 196 = 294
+		// round 3 > c | 196 + 99 = 295 | 294 + 295 = 589
+		// round 4 > d | 295 + 100 = 395| 589 + 395 = 984
+		//             | 0x18B		    | 0x3D8
+		// output = (0x3D8 << 16) + 0x18B = 0x3D80000 + 0x000018B = 0x3D8018B
+		var text     = "abcd";
+		var checksum = Adler32.Checksum(text);
+		Assert.Equal(0x3D8018B, checksum);
+	}
+
+	[Fact]
+	public void Text_a128()
+	{
+		var text     = new string('a', 128);
+		var checksum = Adler32.Checksum(text);
+		Assert.Equal(0x38C03081, checksum); // 0x38C03081 = 952119425
 	}
 }

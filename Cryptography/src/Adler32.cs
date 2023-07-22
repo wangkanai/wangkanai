@@ -1,65 +1,67 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Wangkanai.Cryptography;
 
-public static class Adler32
+public sealed class Adler32 : HashAlgorithm
 {
-	private const int Base = 65521;
-	private const int Max  = 5552;
+	// Reference: https://en.wikipedia.org/wiki/Adler-32
 
-	public static int ComputeChecksum(int initial, byte[] data)
-		=> ComputeChecksum(initial, data.ThrowIfNull(), 0, data.Length);
+	private const ushort Base = 0xFFF1; // 65521
+	private const ushort Max  = 0x15B0; //  5552
 
-	public static int ComputeChecksum(string path)
+	private ushort _a;
+	private ushort _b; 
+	
+	public Adler32()
+		=> Initialize();
+
+	public static int Checksum(string text)
+		=> Checksum(Encoding.ASCII.GetBytes(text));
+
+	public static int Checksum(byte[] bytes)
 	{
-		path.ThrowIfNull();
-		using var stream = new FileStream(path, FileMode.Open, FileAccess.Read);
-		stream.ThrowIfNull();
-		return ComputeChecksum(stream);
+		bytes.ThrowIfNull();
+		
+		var adler32 = new Adler32();
+		adler32.HashCore(bytes, 0, bytes.Length);
+		return BitConverter.ToInt32(adler32.HashFinal(), 0);
 	}
 
-	public static int ComputeChecksum(int initial, byte[] data, int start, int length)
+	public override int HashSize => 32;
+
+	public override void Initialize()
 	{
-		data.ThrowIfNull();
-		initial.ThrowIfLessThan(0);
-		start.ThrowIfLessThan(0);
-		length.ThrowIfLessThan(0);
-		length.ThrowIfZero();
+		// reset the sum values
+		_a = 1; // 0x0001
+		_b = 0; // 0x0000
+	}
 
-		var a = initial & 0xFFFF;
-		var b = (initial >> 16) & 0xFFFF;
-
+	protected override void HashCore(byte[] data, int start, int length)
+	{
 		var index = start;
 		var end   = start + length;
 
 		while (end > 0)
 		{
-			var k = end < Max ? end : Max;
-			end -= k;
-			for (int i = 0; i < k; i++)
+			var endian = end < Max ? end : Max;
+			end -= endian;
+			for (int i = 0; i < endian; i++)
 			{
-				a += data[index++];
-				b += a;
+				_a += data[index++];
+				_b += _a;
 			}
 
-			a %= Base;
-			b %= Base;
+			_a %= Base;
+			_b %= Base;
 		}
-
-		return b << 16 | a;
 	}
 
-
-	public static int ComputeChecksum(Stream stream)
+	protected override byte[] HashFinal()
 	{
-		stream.ThrowIfNull();
-
-		var buffer   = new byte[8172];
-		var checksum = 1;
-		int size;
-		while ((size = stream.Read(buffer, 0, buffer.Length)) > 0)
-			checksum = ComputeChecksum(checksum, buffer, 0, size);
-
-		return checksum;
+		var concat = (uint)(_b << 16) | _a;
+		return BitConverter.GetBytes(concat);
 	}
 }
