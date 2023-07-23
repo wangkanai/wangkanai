@@ -46,4 +46,10 @@ public class StringSplitTests
 	{
 		Assert.Throws<DivideByZeroException>(() => "AAAAABBBBBCCCCC".Split(0));
 	}
+	
+	[Fact]
+	public void SplitBySizeWithNegative()
+	{
+		Assert.Throws<ArgumentOutOfRangeException>(() => "AAAAABBBBBCCCCC".Split(-1));
+	}
 }
