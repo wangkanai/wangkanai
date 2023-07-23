@@ -1,8 +1,7 @@
 ﻿// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-using Microsoft.Extensions.DependencyInjection.Extensions;
-
 using Wangkanai.Testing;
+using Wangkanai.Testing.Builders;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
@@ -14,6 +13,9 @@ public static class AssertionCollectionExtensions
 	/// <returns>An <see cref="IAssertionBuilder" /> so that additional calls can be chained</returns>
 	public static IAssertionBuilder AddAssertion(this IServiceCollection services)
 		=> services.AddAssertionBuilder()
+		           .AddRequiredService()
+		           .AddLifetimeService()
+		           .AddMockService()
 		           .AddMarkerService();
 
 	/// <summary>Add Assertion service to the service container</summary>
@@ -27,11 +29,4 @@ public static class AssertionCollectionExtensions
 	// For internal unit tests
 	internal static IAssertionBuilder AddAssertionBuilder(this IServiceCollection services)
 		=> new AssertionBuilder(services);
-
-	// For internal unit tests
-	internal static IAssertionBuilder AddMarkerService(this IAssertionBuilder builder)
-	{
-		builder.Services.TryAddSingleton<AssertionMarkerService>();
-		return builder;
-	}
 }
