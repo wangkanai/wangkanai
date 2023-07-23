@@ -23,6 +23,7 @@ public sealed class Adler32 : HashAlgorithm
 	{
 		bytes.ThrowIfNull();
 		bytes.ThrowIfEmpty();
+		bytes.Length.ThrowIfMoreThan(4095);
 
 		var adler32 = new Adler32();
 		adler32.HashCore(bytes, 0, bytes.Length);

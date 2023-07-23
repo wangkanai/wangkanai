@@ -117,4 +117,19 @@ public class Adler32Tests
 		var checksum = Adler32.Checksum(text);
 		Assert.Equal(0x38C03081, checksum); // 0x38C03081 = 952119425
 	}
+
+	[Fact]
+	public void Test_x4095()
+	{
+		var text = new string('x', 4095);
+		var checksum = Adler32.Checksum(text);
+		Assert.Equal(0x4FFF7F89, checksum);
+	}
+	
+	[Fact]
+	public void Test_x4096_OutOfScope()
+	{
+		var text = new string('x', 4096);
+		Assert.Throws<ArgumentMoreThanException>(() => Adler32.Checksum(text));
+	}
 }
