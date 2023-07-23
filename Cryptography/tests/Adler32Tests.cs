@@ -3,6 +3,8 @@
 
 using System.Text;
 
+using Wangkanai.Exceptions;
+
 namespace Wangkanai.Cryptography;
 
 public class Adler32Tests
@@ -34,8 +36,8 @@ public class Adler32Tests
 	{
 		var empty = string.Empty;
 		var bytes = Encoding.ASCII.GetBytes(empty);
-		Assert.Equal(0x00000001, Adler32.Checksum(empty));
-		Assert.Equal(0x00000001, Adler32.Checksum(bytes));
+		Assert.Throws<ArgumentEmptyException>(() => Adler32.Checksum(empty));
+		Assert.Throws<ArgumentEmptyException>(() => Adler32.Checksum(bytes));
 	}
 
 	[Fact]
