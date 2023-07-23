@@ -40,16 +40,14 @@ public class Adler32Tests
 		Assert.Throws<ArgumentEmptyException>(() => Adler32.Checksum(bytes));
 	}
 
+	// a = ASCII 97 = 0x61
 	[Fact]
 	public void Text_a1()
 	{
-		// a = 97 = 0x61
-		// _a = 1 + 97 = 98  0x62
-		// _b = 0 + _a = 98  0x62
-		// output = (_b   << 16) + _a
-		//        = (0x62 << 16) + 0x62
-		//        = 0x620000 + 0x000062
-		//        = 0x620062
+		//             | A             | B
+		// round 1 > a |  1 + 97 =  98 |  0 +  98 =  98
+		//             | 0x62          | 0x62
+		// output = (0x62 << 16) + 0x62 = 0x620000 + 0x000062 = 0x620062 = 6422626
 		var text     = "a";
 		var checksum = Adler32.Checksum(text);
 		Assert.Equal(0x620062, checksum); // 0x620062 = 6422626
@@ -85,7 +83,7 @@ public class Adler32Tests
 	[Fact]
 	public void Text_a4()
 	{
-		// 		   | A              | B
+		// 		       | A              | B
 		// round 1 > a |   1 + 97 =  98 |   0 +  98 =  98
 		// round 2 > a |  98 + 97 = 195 |  98 + 195 = 293
 		// round 3 > a | 195 + 97 = 292 | 293 + 292 = 585
