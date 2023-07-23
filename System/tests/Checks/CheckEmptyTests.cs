@@ -59,8 +59,8 @@ public class CheckEmptyTests
 	[Fact]
 	public void CustomNull()
 	{
-		Assert.Throws<CustomNullException>(() => _null.ThrowIfEmpty<CustomNullException, int>());
-		Assert.Throws<CustomNullException>(() => _null.ThrowIfEmpty<CustomNullException, int>("can not be null"));
+		Assert.Throws<CustomArgumentException>(() => _null.ThrowIfEmpty<CustomArgumentException, int>());
+		Assert.Throws<CustomArgumentException>(() => _null.ThrowIfEmpty<CustomArgumentException, int>("can not be null"));
 	}
 
 	[Fact]

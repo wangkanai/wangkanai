@@ -231,13 +231,13 @@ public static class Check
 	// Throw if value string is empty
 
 	public static string ThrowIfEmpty(this string? value)
-		=> ThrowIfEmpty<ArgumentEmptyException>(value);
+		=> value.ThrowIfEmpty<ArgumentEmptyException>();
 
 	public static string ThrowIfEmpty(this string? value, string message)
-		=> ThrowIfEmpty<ArgumentEmptyException>(value, message);
+		=> value.ThrowIfEmpty<ArgumentEmptyException>(message);
 
 	public static string ThrowIfEmpty(this string? value, string message, string paramName)
-		=> ThrowIfEmpty<ArgumentEmptyException>(value, message, paramName);
+		=> value.ThrowIfEmpty<ArgumentEmptyException>(message, paramName);
 
 	public static string ThrowIfEmpty<T>(this string? value)
 		where T : ArgumentException
@@ -260,10 +260,10 @@ public static class Check
 	// Throw if value string is null or whitespace
 
 	public static string ThrowIfNullOrWhitespace(this string? value)
-		=> ThrowIfNullOrWhitespace<ArgumentNullOrWhitespaceException>(value);
+		=> value.ThrowIfNullOrWhitespace<ArgumentNullOrWhitespaceException>();
 
 	public static string ThrowIfNullOrWhitespace(this string? value, string message)
-		=> ThrowIfNullOrWhitespace<ArgumentNullOrWhitespaceException>(value, message);
+		=> value.ThrowIfNullOrWhitespace<ArgumentNullOrWhitespaceException>(message);
 
 	public static string ThrowIfNullOrWhitespace<T>(this string? value)
 		where T : ArgumentException
@@ -276,6 +276,28 @@ public static class Check
 	public static string ThrowIfNullOrWhitespace<T>(this string? value, string message, [InvokerParameterName] string paramName)
 		where T : ArgumentException
 		=> value.IsNullOrWhiteSpace()
+			   ? throw CreateArgumentExceptionInstance<T>(paramName, message)
+			   : value!;
+
+	// Throw if value string is whitespace
+
+	public static string ThrowIfWhitespace(this string? value)
+		=> value.ThrowIfWhitespace<ArgumentWhitespaceException>();
+
+	public static string ThrowIfWhitespace(this string? value, string message)
+		=> value.ThrowIfWhitespace<ArgumentWhitespaceException>(message);
+
+	public static string ThrowIfWhitespace<T>(this string? value)
+		where T : ArgumentException
+		=> value.ThrowIfWhitespace<T>(nameof(value));
+
+	public static string ThrowIfWhitespace<T>(this string? value, string message)
+		where T : ArgumentException
+		=> value.ThrowIfWhitespace<T>(message, nameof(value));
+
+	public static string ThrowIfWhitespace<T>(this string? value, string message, [InvokerParameterName] string paramName)
+		where T : ArgumentException
+		=> value.IsWhiteSpace()
 			   ? throw CreateArgumentExceptionInstance<T>(paramName, message)
 			   : value!;
 

@@ -52,4 +52,10 @@ public class StringSplitTests
 	{
 		Assert.Throws<ArgumentOutOfRangeException>(() => "AAAAABBBBBCCCCC".Split(-1));
 	}
+	
+	[Fact]
+	public void SplitBySizeWithWhiteSpace()
+	{
+		Assert.Throws<ArgumentEmptyException>(() => " ".Split(5));
+	}
 }
