@@ -2,4 +2,4 @@
 
 namespace Wangkanai.Testing;
 
-public interface IScopedService { }
+public interface IScopedService : ILifetimeService  { }
