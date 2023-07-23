@@ -28,7 +28,7 @@ public sealed class Adler32 : HashAlgorithm
 		adler32.HashCore(bytes, 0, bytes.Length);
 		return BitConverter.ToInt32(adler32.HashFinal(), 0);
 	}
-	
+
 	#region override
 
 	public override int HashSize => 0x20; // 2 bytes
@@ -47,10 +47,13 @@ public sealed class Adler32 : HashAlgorithm
 		while (end > 0)
 		{
 			// Big-endian > Reference: https://en.wikipedia.org/wiki/Endianness
-			var endian = end < Max ? end : Max; 
+			var endian = end < Max ? end : Max;
 			end -= endian;
-			for (int i = 0; i < endian; i++) 
-				_b += _a += data[index++];
+			for (int i = 0; i < endian; i++)
+			{
+				_a += data[index++];
+				_b += _a;
+			}
 
 			_a %= Mod;
 			_b %= Mod;
