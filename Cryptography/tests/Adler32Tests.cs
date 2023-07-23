@@ -119,11 +119,11 @@ public class Adler32Tests
 	}
 
 	[Fact]
-	public void Test_x4095()
+	public void Test_x4095_WithInScope()
 	{
 		var text = new string('x', 4095);
 		var checksum = Adler32.Checksum(text);
-		Assert.Equal(0x4FFF7F89, checksum);
+		Assert.Equal(0x4FFF7F89, checksum); // 0x4FFF7F89 = 1342144393
 	}
 	
 	[Fact]
