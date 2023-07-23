@@ -231,13 +231,13 @@ public static class Check
 	// Throw if value string is empty
 
 	public static string ThrowIfEmpty(this string? value)
-		=> ThrowIfEmpty<ArgumentEmptyException>(value);
+		=> value.ThrowIfEmpty<ArgumentEmptyException>();
 
 	public static string ThrowIfEmpty(this string? value, string message)
-		=> ThrowIfEmpty<ArgumentEmptyException>(value, message);
+		=> value.ThrowIfEmpty<ArgumentEmptyException>(message);
 
 	public static string ThrowIfEmpty(this string? value, string message, string paramName)
-		=> ThrowIfEmpty<ArgumentEmptyException>(value, message, paramName);
+		=> value.ThrowIfEmpty<ArgumentEmptyException>(message, paramName);
 
 	public static string ThrowIfEmpty<T>(this string? value)
 		where T : ArgumentException
