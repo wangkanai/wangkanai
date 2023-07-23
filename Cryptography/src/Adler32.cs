@@ -3,6 +3,8 @@
 using System.Security.Cryptography;
 using System.Text;
 
+using Wangkanai.Extensions;
+
 namespace Wangkanai.Cryptography;
 
 public sealed class Adler32 : HashAlgorithm
@@ -17,7 +19,9 @@ public sealed class Adler32 : HashAlgorithm
 	public Adler32() => Initialize();
 
 	public static int Checksum(string text)
-		=> Checksum(Encoding.ASCII.GetBytes(text));
+	{
+		return Checksum(Encoding.ASCII.GetBytes(text));
+	}
 
 	public static int Checksum(byte[] bytes)
 	{
