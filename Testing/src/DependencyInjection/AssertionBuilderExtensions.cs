@@ -16,11 +16,11 @@ internal static class AssertionBuilderExtensions
 		builder.ThrowIfNull();
 		builder.Services.AddHttpContextAccessor();
 		builder.Services.AddOptions();
-		builder.Services.TryAddSingleton(provider => ServiceProviderServiceExtensions.GetRequiredService<IOptions<AssertionOptions>>(provider).Value);
-		
+		builder.Services.TryAddSingleton(provider => provider.GetRequiredService<IOptions<AssertionOptions>>().Value);
+
 		return builder;
 	}
-	
+
 	internal static IAssertionBuilder AddLifetimeService(this IAssertionBuilder builder)
 	{
 		builder.Services.TryAddSingleton<ISingletonService, SingletonService>();

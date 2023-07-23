@@ -1,64 +1,61 @@
 <Project>
-  <PropertyGroup>
-    <Company>Wangkanai</Company>
-    <Authors>Sarin Na Wangkanai</Authors>
-    <Copyright>©2014-2024 Sarin Na Wangkanai, All rights reserved</Copyright>
+	<PropertyGroup>
+		<Company>Wangkanai</Company>
+		<Authors>Sarin Na Wangkanai</Authors>
+		<Copyright>©2014-2024 Sarin Na Wangkanai, All rights reserved</Copyright>
 
-    <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>git://github.com/wangkanai/wangkanai</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<RepositoryUrl>git://github.com/wangkanai/wangkanai</RepositoryUrl>
 
-    <PackageProjectUrl>https://github.com/wangkanai/wangkanai</PackageProjectUrl>
-    <PackageLicense>https://github.com/wangkanai/wangkanai/blob/main/LICENSE</PackageLicense>
-    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-  </PropertyGroup>
-  
-  <PropertyGroup>
-    <DefaultNetCoreTargetFramework>net8.0</DefaultNetCoreTargetFramework>
-    <BaseNetCoreTargetFrameworks>net7.0;net8.0</BaseNetCoreTargetFrameworks>
-  </PropertyGroup>
+		<PackageProjectUrl>https://github.com/wangkanai/wangkanai</PackageProjectUrl>
+		<PackageLicense>https://github.com/wangkanai/wangkanai/blob/main/LICENSE</PackageLicense>
+		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+	</PropertyGroup>
 
-  <PropertyGroup>
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <EmbedUntrackedSources>true</EmbedUntrackedSources>
-    <IncludeSymbols>true</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
-  </PropertyGroup>
+	<PropertyGroup>
+		<DefaultNetCoreTargetFramework>net8.0</DefaultNetCoreTargetFramework>
+		<BaseNetCoreTargetFrameworks>net7.0;net8.0</BaseNetCoreTargetFrameworks>
+	</PropertyGroup>
 
-  <!-- GitHub Source Link -->
-  <ItemGroup>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
-  </ItemGroup>
+	<PropertyGroup>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+	</PropertyGroup>
 
-  <ItemGroup Condition="$(MSBuildProjectName.Contains('Tests'))">
-    <PackageReference Include="Microsoft.AspNetCore.TestHost" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" />
-    <PackageReference Include="Moq" />
-    <PackageReference Include="xunit" />
-    <PackageReference Include="xunit.runner.visualstudio" />
-    <PackageReference Include="coverlet.collector" />
-    <PackageReference Include="coverlet.msbuild" />
-  </ItemGroup>
-  
-<!--  <ItemGroup Condition="$(MSBuildProjectName.Contains('Tests'))">-->
-<!--    <ProjectReference Include=".\Testing\src\Wangkanai.Testing.csproj" />-->
-<!--  </ItemGroup>-->
+	<!-- GitHub Source Link -->
+	<ItemGroup>
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
+	</ItemGroup>
 
-  <ItemGroup Condition="$(MSBuildProjectName.Contains('Benchmark'))">
-    <PackageReference Include="BenchmarkDotNet" />
-  </ItemGroup>
+	<ItemGroup Condition="$(MSBuildProjectName.Contains('Tests'))">
+		<PackageReference Include="Microsoft.AspNetCore.TestHost" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" />
+		<PackageReference Include="Moq" />
+		<PackageReference Include="xunit" />
+		<PackageReference Include="xunit.runner.visualstudio" />
+		<PackageReference Include="coverlet.collector" />
+		<PackageReference Include="coverlet.msbuild" />
+	</ItemGroup>
 
-  <!-- SonarScanner for MSBuild -->
-  <PropertyGroup Condition="$(MSBuildProjectName.Contains('Benchmark'))">
-    <SonarQubeExclude>true</SonarQubeExclude>
-  </PropertyGroup>
-  <PropertyGroup Condition="$(MSBuildProjectName.Contains('Tests'))">
-    <IsPackable>false</IsPackable>
-    <!--    <SonarQubeExclude>true</SonarQubeExclude>-->
-  </PropertyGroup>
+	<ItemGroup Condition="$(MSBuildProjectName.Contains('Benchmark'))">
+		<PackageReference Include="BenchmarkDotNet" />
+	</ItemGroup>
 
-  <!-- Source code settings -->
-  <PropertyGroup>
-    <SharedSourceRoot>$(MSBuildThisFileDirectory)Shared\src\</SharedSourceRoot>
-  </PropertyGroup>
+	<!-- SonarScanner for MSBuild -->
+	<PropertyGroup Condition="$(MSBuildProjectName.Contains('Benchmark'))">
+		<SonarQubeExclude>true</SonarQubeExclude>
+	</PropertyGroup>
+	
+	<PropertyGroup Condition="$(MSBuildProjectName.Contains('Tests'))">
+		<IsPackable>false</IsPackable>
+		<!--    <SonarQubeExclude>true</SonarQubeExclude>-->
+	</PropertyGroup>
+
+	<!-- Source code settings -->
+	<PropertyGroup>
+		<SharedSourceRoot>$(MSBuildThisFileDirectory)Shared\src\</SharedSourceRoot>
+	</PropertyGroup>
 </Project>
