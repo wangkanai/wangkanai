@@ -155,7 +155,7 @@ public static class StringExtensions
 
 	public static IEnumerable<string> Split(this string value, int size)
 	{
-		value.ThrowIfNull().ThrowIfEmpty();
+		value.ThrowIfNull().ThrowIfEmpty().ThrowIfNullOrWhitespace<ArgumentEmptyException>();
 		return Enumerable.Range(0, value.Length / size).Select(index => value.Substring(index * size, size));
 	}
 
