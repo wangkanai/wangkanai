@@ -155,12 +155,8 @@ public static class StringExtensions
 
 	public static IEnumerable<string> Split(this string value, int size)
 	{
-		value.ThrowIfNull();
-		value.ThrowIfEmpty();
-		
-		var chuck = value.Length/size;
-		return Enumerable.Range(0, chuck )
-		                 .Select(index => value.Substring(index * size, size));
+		value.ThrowIfNull().ThrowIfEmpty();
+		return Enumerable.Range(0, value.Length / size).Select(index => value.Substring(index * size, size));
 	}
 
 	public static T ToEnum<T>(this string value, bool ignoreCase = true)
