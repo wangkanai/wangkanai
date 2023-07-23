@@ -18,10 +18,8 @@ public sealed class Adler32 : HashAlgorithm
 
 	public Adler32() => Initialize();
 
-	public static int Checksum(string text)
-	{
-		return Checksum(Encoding.ASCII.GetBytes(text));
-	}
+	public static int Checksum(string text) 
+		=> Checksum(Encoding.ASCII.GetBytes(text));
 
 	public static int Checksum(byte[] bytes)
 	{
