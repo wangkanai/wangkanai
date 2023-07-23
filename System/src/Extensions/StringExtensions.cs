@@ -23,6 +23,9 @@ public static class StringExtensions
 	public static bool IsNullOrWhiteSpace(this string value)
 		=> string.IsNullOrWhiteSpace(value);
 
+	public static bool IsWhiteSpace(this string value)
+		=> !value.IsNullOrEmpty() && value.All(char.IsWhiteSpace);
+
 	public static bool IsNotNullOrWhiteSpace(this string value)
 		=> !value.IsNullOrWhiteSpace();
 
