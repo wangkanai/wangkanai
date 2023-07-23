@@ -3,6 +3,8 @@
 
 using System.Text;
 
+using Wangkanai.Exceptions;
+
 namespace Wangkanai.Cryptography;
 
 public class Adler32Tests
@@ -34,20 +36,18 @@ public class Adler32Tests
 	{
 		var empty = string.Empty;
 		var bytes = Encoding.ASCII.GetBytes(empty);
-		Assert.Equal(0x00000001, Adler32.Checksum(empty));
-		Assert.Equal(0x00000001, Adler32.Checksum(bytes));
+		Assert.Throws<ArgumentEmptyException>(() => Adler32.Checksum(empty));
+		Assert.Throws<ArgumentEmptyException>(() => Adler32.Checksum(bytes));
 	}
 
+	// a = ASCII 97 = 0x61
 	[Fact]
 	public void Text_a1()
 	{
-		// a = 97 = 0x61
-		// _a = 1 + 97 = 98  0x62
-		// _b = 0 + _a = 98  0x62
-		// output = (_b   << 16) + _a
-		//        = (0x62 << 16) + 0x62
-		//        = 0x620000 + 0x000062
-		//        = 0x620062
+		//             | A             | B
+		// round 1 > a |  1 + 97 =  98 |  0 +  98 =  98
+		//             | 0x62          | 0x62
+		// output = (0x62 << 16) + 0x62 = 0x620000 + 0x000062 = 0x620062 = 6422626
 		var text     = "a";
 		var checksum = Adler32.Checksum(text);
 		Assert.Equal(0x620062, checksum); // 0x620062 = 6422626
@@ -83,7 +83,7 @@ public class Adler32Tests
 	[Fact]
 	public void Text_a4()
 	{
-		// 		   | A              | B
+		// 		       | A              | B
 		// round 1 > a |   1 + 97 =  98 |   0 +  98 =  98
 		// round 2 > a |  98 + 97 = 195 |  98 + 195 = 293
 		// round 3 > a | 195 + 97 = 292 | 293 + 292 = 585
@@ -116,5 +116,20 @@ public class Adler32Tests
 		var text     = new string('a', 128);
 		var checksum = Adler32.Checksum(text);
 		Assert.Equal(0x38C03081, checksum); // 0x38C03081 = 952119425
+	}
+
+	[Fact]
+	public void Test_x4095_WithInScope()
+	{
+		var text = new string('x', 4095);
+		var checksum = Adler32.Checksum(text);
+		Assert.Equal(0x4FFF7F89, checksum); // 0x4FFF7F89 = 1342144393
+	}
+	
+	[Fact]
+	public void Test_x4096_OutOfScope()
+	{
+		var text = new string('x', 4096);
+		Assert.Throws<ArgumentMoreThanException>(() => Adler32.Checksum(text));
 	}
 }

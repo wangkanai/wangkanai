@@ -8,15 +8,13 @@ namespace Wangkanai.Cryptography;
 public sealed class Adler32 : HashAlgorithm
 {
 	// Reference: https://en.wikipedia.org/wiki/Adler-32
-
-	private const ushort Base = 0xFFF1; // 65521
-	private const ushort Max  = 0x15B0; //  5552
+	private const ushort Mod = 0xFFF1; // 65521
+	private const ushort Max = 0x15B0; //  5552
 
 	private ushort _a;
-	private ushort _b; 
-	
-	public Adler32()
-		=> Initialize();
+	private ushort _b;
+
+	public Adler32() => Initialize();
 
 	public static int Checksum(string text)
 		=> Checksum(Encoding.ASCII.GetBytes(text));
@@ -24,17 +22,20 @@ public sealed class Adler32 : HashAlgorithm
 	public static int Checksum(byte[] bytes)
 	{
 		bytes.ThrowIfNull();
-		
+		bytes.ThrowIfEmpty();
+		bytes.Length.ThrowIfMoreThan(4095);
+
 		var adler32 = new Adler32();
 		adler32.HashCore(bytes, 0, bytes.Length);
 		return BitConverter.ToInt32(adler32.HashFinal(), 0);
 	}
 
-	public override int HashSize => 32;
+	#region override
+
+	public override int HashSize => 0x20; // 2 bytes
 
 	public override void Initialize()
 	{
-		// reset the sum values
 		_a = 1; // 0x0001
 		_b = 0; // 0x0000
 	}
@@ -46,6 +47,7 @@ public sealed class Adler32 : HashAlgorithm
 
 		while (end > 0)
 		{
+			// Big-endian > Reference: https://en.wikipedia.org/wiki/Endianness
 			var endian = end < Max ? end : Max;
 			end -= endian;
 			for (int i = 0; i < endian; i++)
@@ -54,14 +56,16 @@ public sealed class Adler32 : HashAlgorithm
 				_b += _a;
 			}
 
-			_a %= Base;
-			_b %= Base;
+			_a %= Mod;
+			_b %= Mod;
 		}
 	}
 
 	protected override byte[] HashFinal()
 	{
-		var concat = (uint)(_b << 16) | _a;
+		var concat = (uint)(_b << 0x10) | _a;
 		return BitConverter.GetBytes(concat);
 	}
+
+	#endregion
 }
