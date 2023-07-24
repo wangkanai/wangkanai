@@ -2,7 +2,7 @@ remove-item -path .\signed\*.*
 new-item -Path signed -ItemType Directory -Force
 
 dotnet --version
-dotnet clean   .\src\ -c Release 
+dotnet clean   .\src\ -c Release
 dotnet restore .\src\
 dotnet build   .\src\ -c Release
 Get-ChildItem .\src\ -Recurse Wangkanai.*.dll | where { $_.Name -like "*release*" } | foreach {
@@ -11,7 +11,7 @@ Get-ChildItem .\src\ -Recurse Wangkanai.*.dll | where { $_.Name -like "*release*
 
 Remove-Item .\artifacts\*.*
 
-dotnet pack .\src\ -c Release -o .\artifacts\ --include-symbols -p:SymbolPackageFormat=snupkg
+dotnet pack .\src\ -c Release -o .\artifacts\ --include-symbols -p:SymbolPackageFormat = snupkg
 
 dotnet nuget sign .\artifacts\*.nupkg -v diag --timestamper http://timestamp.digicert.com --certificate-subject-name "Sarin Na Wangkanai" -o .\signed
 dotnet nuget sign .\artifacts\*.snupkg -v diag --timestamper http://timestamp.digicert.com --certificate-subject-name "Sarin Na Wangkanai" -o .\signed

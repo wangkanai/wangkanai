@@ -4,10 +4,10 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Wangkanai.Testing;
 
-public class ScopedService : IScopedService
+public interface ILifetimeService
 {
 	public DateTime        Start    { get; set; }
 	public DateTime        Stop     { get; set; }
-	public TimeSpan        Elapsed  => Stop - Start;
-	public ServiceLifetime Lifetime => ServiceLifetime.Scoped;
+	public TimeSpan        Elapsed  { get; }
+	public ServiceLifetime Lifetime { get; }
 }
