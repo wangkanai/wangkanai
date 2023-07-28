@@ -1,51 +1,51 @@
 <Project>
-    <PropertyGroup Condition=" '$(TargetFramework)' == 'net7.0'">
-        <FrameworkVersion>7.0.0</FrameworkVersion>
-        <ExtensionsVersion>7.0.0</ExtensionsVersion>
-        <EntityFrameworkVersion>7.0.0</EntityFrameworkVersion>
-        <EntityFramrworkIdentityVersion>7.0.0</EntityFramrworkIdentityVersion>
-    </PropertyGroup>
+	<PropertyGroup Condition=" '$(TargetFramework)' == 'net7.0'">
+		<FrameworkVersion>7.0.0</FrameworkVersion>
+		<ExtensionsVersion>7.0.0</ExtensionsVersion>
+		<EntityFrameworkVersion>7.0.0</EntityFrameworkVersion>
+		<EntityFramrworkIdentityVersion>7.0.0</EntityFramrworkIdentityVersion>
+	</PropertyGroup>
 
-    <PropertyGroup Condition=" '$(TargetFramework)' == 'net8.0'">
-        <FrameworkVersion>8.0.0-preview.6.23329.11</FrameworkVersion>
-        <ExtensionsVersion>8.0.0-preview.6.23329.7</ExtensionsVersion>
-        <EntityFrameworkVersion>8.0.0-preview.6.23329.4</EntityFrameworkVersion>
-        <EntityFramrworkIdentityVersion>8.0.0-preview.6.23329.11</EntityFramrworkIdentityVersion>
-    </PropertyGroup>
+	<PropertyGroup Condition=" '$(TargetFramework)' == 'net8.0'">
+		<FrameworkVersion>8.0.0-preview.6.23329.11</FrameworkVersion>
+		<ExtensionsVersion>8.0.0-preview.6.23329.7</ExtensionsVersion>
+		<EntityFrameworkVersion>8.0.0-preview.6.23329.4</EntityFrameworkVersion>
+		<EntityFramrworkIdentityVersion>8.0.0-preview.6.23329.11</EntityFramrworkIdentityVersion>
+	</PropertyGroup>
 
-    <ItemGroup>
-        <!--tests -->
-        <PackageReference Update="Microsoft.AspNetCore.TestHost" Version="7.0.9"/>
-        <PackageReference Update="Microsoft.NET.Test.Sdk" Version="17.6.3"/>
-        <PackageReference Update="Moq" Version="4.18.4"/>
-        <PackageReference Update="xunit" Version="2.5.0"/>
-        <PackageReference Update="xunit.runner.visualstudio" Version="2.5.0" PrivateAssets="all"/>
-        <PackageReference Update="coverlet.collector" Version="6.0.0" PrivateAssets="all"/>
-        <PackageReference Update="coverlet.msbuild" Version="6.0.0" PrivateAssets="all"/>
+	<ItemGroup>
+		<!--tests -->
+		<PackageReference Update="Microsoft.AspNetCore.TestHost" Version="$(FrameworkVersion)"/>
+		<PackageReference Update="Microsoft.NET.Test.Sdk" Version="17.6.3"/>
+		<PackageReference Update="Moq" Version="4.18.4"/>
+		<PackageReference Update="xunit" Version="2.5.0"/>
+		<PackageReference Update="xunit.runner.visualstudio" Version="2.5.0" PrivateAssets="all"/>
+		<PackageReference Update="coverlet.collector" Version="6.0.0" PrivateAssets="all"/>
+		<PackageReference Update="coverlet.msbuild" Version="6.0.0" PrivateAssets="all"/>
 
-        <!--benchmarks-->
-        <PackageReference Update="BenchmarkDotNet" Version="0.13.6"/>
+		<!--benchmarks-->
+		<PackageReference Update="BenchmarkDotNet" Version="0.13.6"/>
 
-        <!--code analysis-->
+		<!--code analysis-->
 
-        <!--framework-->
-        <PackageReference Update="Microsoft.AspNetCore.Authorization" Version="$(FrameworkVersion)"/>
-        <PackageReference Update="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="$(FrameworkVersion)"/>
-        <PackageReference Update="Microsoft.AspNetCore.Components" Version="$(FrameworkVersion)"/>
-        <PackageReference Update="Microsoft.AspNetCore.Components.Web" Version="$(FrameworkVersion)"/>
+		<!--framework-->
+		<PackageReference Update="Microsoft.AspNetCore.Authorization" Version="$(FrameworkVersion)"/>
+		<PackageReference Update="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="$(FrameworkVersion)"/>
+		<PackageReference Update="Microsoft.AspNetCore.Components" Version="$(FrameworkVersion)"/>
+		<PackageReference Update="Microsoft.AspNetCore.Components.Web" Version="$(FrameworkVersion)"/>
 
-        <PackageReference Update="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="$(EntityFramrworkIdentityVersion)"/>
+		<PackageReference Update="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="$(EntityFramrworkIdentityVersion)"/>
 
-        <PackageReference Update="Microsoft.EntityFrameworkCore" Version="$(EntityFrameworkVersion)"/>
-        <PackageReference Update="Microsoft.EntityFrameworkCore.SqlServer" Version="$(EntityFrameworkVersion)"/>
-        <PackageReference Update="Microsoft.EntityFrameworkCore.Relational" Version="$(EntityFrameworkVersion)"/>
-        <PackageReference Update="Microsoft.EntityFrameworkCore.Tools" Version="$(EntityFrameworkVersion)"/>
+		<PackageReference Update="Microsoft.EntityFrameworkCore" Version="$(EntityFrameworkVersion)"/>
+		<PackageReference Update="Microsoft.EntityFrameworkCore.SqlServer" Version="$(EntityFrameworkVersion)"/>
+		<PackageReference Update="Microsoft.EntityFrameworkCore.Relational" Version="$(EntityFrameworkVersion)"/>
+		<PackageReference Update="Microsoft.EntityFrameworkCore.Tools" Version="$(EntityFrameworkVersion)"/>
 
-        <PackageReference Update="Microsoft.Extensions.DependencyInjection" Version="$(ExtensionsVersion)"/>
+		<PackageReference Update="Microsoft.Extensions.DependencyInjection" Version="$(ExtensionsVersion)"/>
 
-        <PackageReference Update="Microsoft.IdentityModel.Tokens" Version="6.32.0"/>
+		<PackageReference Update="Microsoft.IdentityModel.Tokens" Version="6.32.0"/>
 
-        <!--packages-->
-        <PackageReference Update="JetBrains.Annotations" Version="2023.2.0"/>
-    </ItemGroup>
+		<!--packages-->
+		<PackageReference Update="JetBrains.Annotations" Version="2023.2.0"/>
+	</ItemGroup>
 </Project>
