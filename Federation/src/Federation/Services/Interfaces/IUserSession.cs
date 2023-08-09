@@ -15,7 +15,7 @@ public interface IUserSession
 
 	Task EnsureSessionIdCookieAsync();
 	Task RemoveSessionIdCookieAsync();
-	Task AddClientIdAsync();
+	Task AddClientIdAsync(string clientId);
 
 	Task<IEnumerable<string>> GetClientListAsync();
 }

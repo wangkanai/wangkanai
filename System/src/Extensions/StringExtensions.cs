@@ -23,6 +23,9 @@ public static class StringExtensions
 	public static bool IsNullOrWhiteSpace(this string value)
 		=> string.IsNullOrWhiteSpace(value);
 
+	public static bool IsWhiteSpace(this string value)
+		=> !value.IsNullOrEmpty() && value.All(char.IsWhiteSpace);
+
 	public static bool IsNotNullOrWhiteSpace(this string value)
 		=> !value.IsNullOrWhiteSpace();
 
@@ -151,6 +154,12 @@ public static class StringExtensions
 				return value.Left(value.Length - postfix.Length);
 
 		return value;
+	}
+
+	public static IEnumerable<string> Split(this string value, int size)
+	{
+		value.ThrowIfNull().ThrowIfEmpty().ThrowIfNullOrWhitespace<ArgumentEmptyException>();
+		return Enumerable.Range(0, value.Length / size).Select(index => value.Substring(index * size, size));
 	}
 
 	public static T ToEnum<T>(this string value, bool ignoreCase = true)

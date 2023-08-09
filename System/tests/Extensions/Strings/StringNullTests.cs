@@ -57,4 +57,19 @@ public class StringNullTests
 		Assert.False(_space.IsExist());
 		Assert.True(_test.IsExist());
 	}
+	
+	[Fact]
+	public void StringIsWhiteSpace()
+	{
+		Assert.False(_null.IsWhiteSpace());
+		Assert.False(_empty.IsWhiteSpace());
+		Assert.True(_space.IsWhiteSpace());
+		Assert.False(_test.IsWhiteSpace());
+	}
+
+	[Fact]
+	public void StringIsWhiteSpaceLong()
+	{
+		Assert.True(new string(' ', 10).IsWhiteSpace());
+	}
 }

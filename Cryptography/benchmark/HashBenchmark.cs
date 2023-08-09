@@ -1,17 +1,8 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-using BenchmarkDotNet.Attributes;
-using BenchmarkDotNet.Engines;
-
-using Perfolizer.Mathematics.OutlierDetection;
-
-using Wangkanai.Cryptography;
-
-namespace Wangkanai;
+namespace Wangkanai.Cryptography;
 
 [MemoryDiagnoser]
-[Outliers(OutlierMode.DontRemove)]
-[SimpleJob(RunStrategy.Monitoring)]
 public class HashBenchmark
 {
 	private const string text = "F41k7dPvkYUpA5zYUwtWMkV4gwzxGcw7Oh9x9PXIif6o9C7oBSoaJw3c4I5bRyokmp3AMa";

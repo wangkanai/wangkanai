@@ -21,16 +21,10 @@ public static class AuthenticationPropertiesExtensions
 	public static void SetSessionId(this AuthenticationProperties properties, string sid)
 		=> properties.Items[SessionIdKey] = sid;
 
-	public static IEnumerable<string> GetClientList(this AuthenticationProperties properties)
-	{
-		if (properties?.Items.ContainsKey(ClientListKey) == true)
-		{
-			var value = properties.Items[ClientListKey];
-			return DecodeList(value);
-		}
-
-		return Enumerable.Empty<string>();
-	}
+	public static IEnumerable<string> GetClientList(this AuthenticationProperties properties) 
+		=> properties.Items.TryGetValue(ClientListKey, out var value) 
+			   ? DecodeList(value) 
+			   : Enumerable.Empty<string>();
 
 
 	public static void SetClientList(this AuthenticationProperties properties, IEnumerable<string> clientIds)
@@ -39,6 +33,22 @@ public static class AuthenticationPropertiesExtensions
 		var bytes = Encoding.UTF8.GetBytes(list);
 		var value = Base64Url.Encode(bytes);
 		properties.Items[ClientListKey] = value;
+	}
+	
+	public static void RemoveClientList(this AuthenticationProperties properties)
+		=> properties.Items.Remove(ClientListKey);
+
+	public static void AddClientId(this AuthenticationProperties properties, string clientId)
+	{
+		clientId.ThrowIfNull();
+
+		var clients = properties.GetClientList();
+		if (clients.Contains(clientId)) 
+			return;
+		
+		var update = clients.ToList();
+		update.Add(clientId);
+		properties.SetClientList(update);
 	}
 
 	private static string EncodeList(IEnumerable<string> list)

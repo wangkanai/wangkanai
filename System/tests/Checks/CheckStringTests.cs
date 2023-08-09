@@ -4,7 +4,6 @@ using Wangkanai.Exceptions;
 
 using Xunit;
 
-
 #nullable enable
 
 namespace Wangkanai.Checks;
@@ -20,8 +19,8 @@ public class CheckStringTests
 		Assert.Throws<ArgumentNullException>(() => _char.ThrowIfNull());
 		Assert.Throws<ArgumentNullException>(() => _string.ThrowIfNull());
 
-		Assert.Throws<CustomNullException>(() => _char.ThrowIfNull<CustomNullException>());
-		Assert.Throws<CustomNullException>(() => _string.ThrowIfNull<CustomNullException>());
+		Assert.Throws<CustomArgumentException>(() => _char.ThrowIfNull<CustomArgumentException>());
+		Assert.Throws<CustomArgumentException>(() => _string.ThrowIfNull<CustomArgumentException>());
 	}
 
 	[Fact]
@@ -32,11 +31,11 @@ public class CheckStringTests
 
 		Assert.Throws<ArgumentEmptyException>(() => _null.ThrowIfEmpty());
 		Assert.Throws<ArgumentEmptyException>(() => _null.ThrowIfEmpty<ArgumentEmptyException>());
-		Assert.Throws<CustomNullException>(() => _null.ThrowIfEmpty<CustomNullException>());
+		Assert.Throws<CustomArgumentException>(() => _null.ThrowIfEmpty<CustomArgumentException>());
 
 		Assert.Throws<ArgumentEmptyException>(() => _empty.ThrowIfEmpty());
 		Assert.Throws<ArgumentEmptyException>(() => _empty.ThrowIfEmpty<ArgumentEmptyException>());
-		Assert.Throws<CustomNullException>(() => _empty.ThrowIfEmpty<CustomNullException>());
+		Assert.Throws<CustomArgumentException>(() => _empty.ThrowIfEmpty<CustomArgumentException>());
 	}
 
 	[Fact]
@@ -64,9 +63,9 @@ public class CheckStringTests
 		Assert.Equal(abc, abc.ThrowIfEmpty<ArgumentEmptyException>("Empty Exception"));
 		Assert.Equal(abc, abc.ThrowIfEmpty<ArgumentEmptyException>("Empty Exception", nameof(abc)));
 
-		Assert.Equal(abc, abc.ThrowIfEmpty<CustomNullException>());
-		Assert.Equal(abc, abc.ThrowIfEmpty<CustomNullException>("Empty Exception"));
-		Assert.Equal(abc, abc.ThrowIfEmpty<CustomNullException>("Empty Exception", nameof(abc)));
+		Assert.Equal(abc, abc.ThrowIfEmpty<CustomArgumentException>());
+		Assert.Equal(abc, abc.ThrowIfEmpty<CustomArgumentException>("Empty Exception"));
+		Assert.Equal(abc, abc.ThrowIfEmpty<CustomArgumentException>("Empty Exception", nameof(abc)));
 	}
 
 	[Fact]
@@ -77,11 +76,11 @@ public class CheckStringTests
 
 		Assert.Throws<ArgumentNullOrEmptyException>(() => _null.ThrowIfNullOrEmpty());
 		Assert.Throws<ArgumentNullOrEmptyException>(() => _null.ThrowIfNullOrEmpty<ArgumentNullOrEmptyException>());
-		Assert.Throws<CustomNullException>(() => _null.ThrowIfNullOrEmpty<CustomNullException>());
+		Assert.Throws<CustomArgumentException>(() => _null.ThrowIfNullOrEmpty<CustomArgumentException>());
 
 		Assert.Throws<ArgumentNullOrEmptyException>(() => _empty.ThrowIfNullOrEmpty());
 		Assert.Throws<ArgumentNullOrEmptyException>(() => _empty.ThrowIfNullOrEmpty<ArgumentNullOrEmptyException>());
-		Assert.Throws<CustomNullException>(() => _empty.ThrowIfNullOrEmpty<CustomNullException>());
+		Assert.Throws<CustomArgumentException>(() => _empty.ThrowIfNullOrEmpty<CustomArgumentException>());
 	}
 
 	[Fact]
@@ -110,9 +109,9 @@ public class CheckStringTests
 
 		Assert.Equal(abc, abc.ThrowIfNullOrEmpty<ArgumentNullException>());
 		Assert.Equal(abc, abc.ThrowIfNullOrEmpty<ArgumentNullException>("Null Exception"));
-		Assert.Equal(abc, abc.ThrowIfNullOrEmpty<CustomNullException>());
-		Assert.Equal(abc, abc.ThrowIfNullOrEmpty<CustomNullException>("Null Exception"));
-		Assert.Equal(abc, abc.ThrowIfNullOrEmpty<CustomNullException>("Null Exception", nameof(abc)));
+		Assert.Equal(abc, abc.ThrowIfNullOrEmpty<CustomArgumentException>());
+		Assert.Equal(abc, abc.ThrowIfNullOrEmpty<CustomArgumentException>("Null Exception"));
+		Assert.Equal(abc, abc.ThrowIfNullOrEmpty<CustomArgumentException>("Null Exception", nameof(abc)));
 	}
 
 	[Fact]
@@ -127,18 +126,18 @@ public class CheckStringTests
 		Assert.Throws<ArgumentNullOrWhitespaceException>(() => _null.ThrowIfNullOrWhitespace("Null Exception"));
 		Assert.Throws<ArgumentNullOrWhitespaceException>(() => _null.ThrowIfNullOrWhitespace<ArgumentNullOrWhitespaceException>());
 		Assert.Throws<ArgumentNullOrWhitespaceException>(() => _null.ThrowIfNullOrWhitespace<ArgumentNullOrWhitespaceException>("Null Exception"));
-		Assert.Throws<CustomNullException>(() => _null.ThrowIfNullOrWhitespace<CustomNullException>());
-		Assert.Throws<CustomNullException>(() => _null.ThrowIfNullOrWhitespace<CustomNullException>("Null Exception"));
+		Assert.Throws<CustomArgumentException>(() => _null.ThrowIfNullOrWhitespace<CustomArgumentException>());
+		Assert.Throws<CustomArgumentException>(() => _null.ThrowIfNullOrWhitespace<CustomArgumentException>("Null Exception"));
 
 		Assert.Throws<ArgumentNullOrWhitespaceException>(() => _empty.ThrowIfNullOrWhitespace());
 		Assert.Throws<ArgumentNullOrWhitespaceException>(() => _empty.ThrowIfNullOrWhitespace("Null Exception"));
 		Assert.Throws<ArgumentNullOrWhitespaceException>(() => _empty.ThrowIfNullOrWhitespace<ArgumentNullOrWhitespaceException>());
-		Assert.Throws<CustomNullException>(() => _empty.ThrowIfNullOrWhitespace<CustomNullException>());
+		Assert.Throws<CustomArgumentException>(() => _empty.ThrowIfNullOrWhitespace<CustomArgumentException>());
 
 		Assert.Throws<ArgumentNullOrWhitespaceException>(() => _space.ThrowIfNullOrWhitespace());
 		Assert.Throws<ArgumentNullOrWhitespaceException>(() => _space.ThrowIfNullOrWhitespace("Null Exception"));
 		Assert.Throws<ArgumentNullOrWhitespaceException>(() => _space.ThrowIfNullOrWhitespace<ArgumentNullOrWhitespaceException>());
-		Assert.Throws<CustomNullException>(() => _space.ThrowIfNullOrWhitespace<CustomNullException>());
+		Assert.Throws<CustomArgumentException>(() => _space.ThrowIfNullOrWhitespace<CustomArgumentException>());
 	}
 
 	[Fact]
@@ -152,7 +151,44 @@ public class CheckStringTests
 		Assert.Equal(_abc, _abc.ThrowIfNullOrWhitespace<ArgumentException>());
 		Assert.Equal(_abc, _abc.ThrowIfNullOrWhitespace<ArgumentException>("Null Exception"));
 		Assert.Equal(_abc, _abc.ThrowIfNullOrWhitespace<ArgumentException>("Null Exception", nameof(_abc)));
-		Assert.Equal(_abc, _abc.ThrowIfNullOrWhitespace<CustomNullException>());
-		Assert.Equal(_abc, _abc.ThrowIfNullOrWhitespace<CustomNullException>("Null Exception"));
+		Assert.Equal(_abc, _abc.ThrowIfNullOrWhitespace<CustomArgumentException>());
+		Assert.Equal(_abc, _abc.ThrowIfNullOrWhitespace<CustomArgumentException>("Null Exception"));
+	}
+
+	[Fact]
+	public void StringIsWhitespaceThrowException()
+	{
+		string? _space     = " ";
+		string? _paragraph = new string(' ', 10);
+
+		Assert.Throws<ArgumentWhitespaceException>(() => _space.ThrowIfWhitespace());
+		Assert.Throws<ArgumentWhitespaceException>(() => _space.ThrowIfWhitespace("Whitespace Exception"));
+		Assert.Throws<ArgumentWhitespaceException>(() => _space.ThrowIfWhitespace<ArgumentWhitespaceException>());
+		Assert.Throws<ArgumentWhitespaceException>(() => _space.ThrowIfWhitespace<ArgumentWhitespaceException>("Whitespace Exception"));
+		Assert.Throws<CustomArgumentException>(() => _space.ThrowIfWhitespace<CustomArgumentException>());
+		Assert.Throws<CustomArgumentException>(() => _space.ThrowIfWhitespace<CustomArgumentException>("Whitespace Exception"));
+
+		Assert.Throws<ArgumentWhitespaceException>(() => _paragraph.ThrowIfWhitespace());
+		Assert.Throws<ArgumentWhitespaceException>(() => _paragraph.ThrowIfWhitespace("Whitespace Exception"));
+		Assert.Throws<ArgumentWhitespaceException>(() => _paragraph.ThrowIfWhitespace<ArgumentWhitespaceException>());
+		Assert.Throws<ArgumentWhitespaceException>(() => _paragraph.ThrowIfWhitespace<ArgumentWhitespaceException>("Whitespace Exception"));
+		Assert.Throws<CustomArgumentException>(() => _paragraph.ThrowIfWhitespace<CustomArgumentException>());
+		Assert.Throws<CustomArgumentException>(() => _paragraph.ThrowIfWhitespace<CustomArgumentException>("Whitespace Exception"));
+	}
+
+	[Fact]
+	public void StringIsNotWhitespaceThenReturn()
+	{
+		string? abc = "abc";
+
+		Assert.Equal(abc, abc.ThrowIfWhitespace());
+		Assert.Equal(abc, abc.ThrowIfWhitespace("Whitespace Exception"));
+		Assert.Equal(abc, abc.ThrowIfWhitespace<ArgumentWhitespaceException>());
+		Assert.Equal(abc, abc.ThrowIfWhitespace<ArgumentException>());
+		Assert.Equal(abc, abc.ThrowIfWhitespace<ArgumentException>("Whitespace Exception"));
+		Assert.Equal(abc, abc.ThrowIfWhitespace<ArgumentException>("Whitespace Exception", nameof(abc)));
+		Assert.Equal(abc, abc.ThrowIfWhitespace<CustomArgumentException>());
+		Assert.Equal(abc, abc.ThrowIfWhitespace<CustomArgumentException>("Whitespace Exception"));
+		Assert.Equal(abc, abc.ThrowIfWhitespace<CustomArgumentException>("Whitespace Exception", nameof(abc)));
 	}
 }

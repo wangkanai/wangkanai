@@ -63,9 +63,7 @@ public class FederationUserSession : IUserSession
 					properties.SetClientList(clients);
 			}
 			else
-			{
 				properties.SetSessionId(HashRandom.CreateUniqueId(16, HashRandom.OutputFormat.Hex));
-			}
 		}
 
 		var sid = properties.GetSessionId();
@@ -77,34 +75,76 @@ public class FederationUserSession : IUserSession
 		return sid!;
 	}
 
-	public async Task<ClaimsPrincipal> GetUserAsync()
+	public virtual async Task<ClaimsPrincipal> GetUserAsync()
 	{
-		throw new NotImplementedException();
+		await AuthenticateAsync();
+
+		return Principal;
 	}
 
-	public async Task<string> GetSessionIdAsync()
+	public virtual async Task<string> GetSessionIdAsync()
 	{
-		throw new NotImplementedException();
+		await AuthenticateAsync();
+
+		return Properties.GetSessionId()!;
 	}
 
-	public async Task EnsureSessionIdCookieAsync()
+	public virtual async Task EnsureSessionIdCookieAsync()
 	{
-		throw new NotImplementedException();
+		var sid = await GetSessionIdAsync();
+		if (sid != null)
+			IssueSessionIdCookie(sid);
+		else
+			await RemoveSessionIdCookieAsync();
 	}
 
-	public async Task RemoveSessionIdCookieAsync()
+	public virtual Task RemoveSessionIdCookieAsync()
 	{
-		throw new NotImplementedException();
+		if (HttpContext.Request.Cookies.ContainsKey(SessionCookieName))
+		{
+			var options = CreateSessionIdCookieOption();
+			options.Expires = Clock.UtcNow.UtcDateTime.AddYears(-1);
+			HttpContext.Response.Cookies.Append(SessionCookieName, ".", options);
+		}
+
+		return Task.CompletedTask;
 	}
 
-	public async Task AddClientIdAsync()
+	public virtual async Task AddClientIdAsync(string clientId)
 	{
-		throw new NotImplementedException();
+		clientId.ThrowIfNull();
+
+		await AuthenticateAsync();
+		if (Properties != null)
+		{
+			var clientIds = Properties.GetClientList();
+			if (!clientIds.Contains(clientId))
+			{
+				Properties.AddClientId(clientId);
+				await UpdateSessionCookie();
+			}
+		}
 	}
 
 	public async Task<IEnumerable<string>> GetClientListAsync()
 	{
-		throw new NotImplementedException();
+		await AuthenticateAsync();
+
+		if (Properties.TrueIfNull())
+			return Enumerable.Empty<string>();
+
+		try
+		{
+			return Properties.GetClientList();
+		}
+		catch (Exception exception)
+		{
+			Logger.LogError(exception, "Error decoding client list");
+			Properties.RemoveClientList();
+			await UpdateSessionCookie();
+		}
+
+		return Enumerable.Empty<string>();
 	}
 
 	public virtual void IssueSessionIdCookie(string sid)
@@ -133,5 +173,16 @@ public class FederationUserSession : IUserSession
 			Domain      = SessionCookieDomain,
 			SameSite    = SessionCookieSameSiteMode,
 		};
+	}
+
+	private async Task UpdateSessionCookie()
+	{
+		await AuthenticateAsync();
+
+		Principal.ThrowIfNull<InvalidOperationException>("User is not currently authenticated");
+		Properties.ThrowIfNull<InvalidOperationException>("User is not currently authenticated");
+
+		var scheme = await HttpContext.GetCookieAuthenticationSchemeAsync();
+		await HttpContext.SignInAsync(scheme, Principal, Properties);
 	}
 }
