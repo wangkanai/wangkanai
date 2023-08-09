@@ -2,4 +2,4 @@
 
 namespace Wangkanai.Testing;
 
-public interface ISingletonService { }
+public interface ITransientService : ILifetimeService { }

@@ -8,4 +8,5 @@
 [![Patreon](https://img.shields.io/badge/patreon-support%20me-d9643a.svg)](https://www.patreon.com/wangkanai)
 [![GitHub](https://img.shields.io/github/license/wangkanai/wangkanai)](https://github.com/wangkanai/wangkanai/blob/main/LICENSE)
 
-This project is to turbocharge your .NET unit tests code coverage. It is a collection of helper classes and extension methods to help you write unit tests faster and easier.
+This project is to turbocharge your .NET unit tests code coverage. It is a collection of helper classes and extension
+methods to help you write unit tests faster and easier.
