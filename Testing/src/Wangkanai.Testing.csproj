@@ -1,23 +1,23 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <TargetFramework>$(DefaultNetCoreTargetFramework)</TargetFramework>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
-        <IsPackable>true</IsPackable>
-    </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>$(DefaultNetCoreTargetFramework)</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<IsPackable>true</IsPackable>
+	</PropertyGroup>
 
-    <ItemGroup>
-        <FrameworkReference Include="Microsoft.AspNetCore.App" />
-    </ItemGroup>
+	<ItemGroup>
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+	</ItemGroup>
 
-    <ItemGroup>
-        <PackageReference Include="xunit" />
+	<ItemGroup>
+		<PackageReference Include="xunit" />
 
-    </ItemGroup>
+	</ItemGroup>
 
-    <ItemGroup>
-        <ProjectReference Include="..\..\System\src\Wangkanai.System.csproj" />
-    </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\System\src\Wangkanai.System.csproj" />
+	</ItemGroup>
 
 </Project>

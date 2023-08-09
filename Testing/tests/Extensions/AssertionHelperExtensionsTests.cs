@@ -9,8 +9,8 @@ public class AssertionHelperExtensionsTests
 	[Fact]
 	public void Null_Services()
 	{
-		ServiceCollection       services    = null!;
-		List<ServiceDescriptor> descriptors = new List<ServiceDescriptor>();
+		ServiceCollection services    = null!;
+		var               descriptors = new List<ServiceDescriptor>();
 		descriptors.AssertServices(services);
 		Assert.Null(services);
 		Assert.Empty(descriptors);
@@ -19,7 +19,7 @@ public class AssertionHelperExtensionsTests
 	[Fact]
 	public void Null_Descriptors()
 	{
-		ServiceCollection       services    = new ServiceCollection();
+		var                     services    = new ServiceCollection();
 		List<ServiceDescriptor> descriptors = null!;
 		Assert.Throws<NullReferenceException>(() => descriptors.AssertServices(services));
 	}
@@ -33,7 +33,6 @@ public class AssertionHelperExtensionsTests
 		Assert.Empty(services);
 		Assert.Empty(descriptors);
 		descriptors.AssertServices(services);
-		
 	}
 
 	[Fact]
@@ -43,7 +42,7 @@ public class AssertionHelperExtensionsTests
 		services.AddSingleton<IAssertionService, AssertionService>();
 
 		var descriptors = new List<ServiceDescriptor>();
-		descriptors.Add(new(typeof(IAssertionService), typeof(AssertionService), ServiceLifetime.Singleton));
+		descriptors.Add(new ServiceDescriptor(typeof(IAssertionService), typeof(AssertionService), ServiceLifetime.Singleton));
 
 		Assert.NotNull(services);
 		descriptors.AssertServices(services);
@@ -90,10 +89,10 @@ public class AssertionHelperExtensionsTests
 	[Fact]
 	public void Assert_Builder()
 	{
-		var services = new ServiceCollection();
-		var builder  = services.AddAssertionBuilder().AddMarkerService();
+		var services    = new ServiceCollection();
+		var builder     = services.AddAssertionBuilder().AddMarkerService();
 		var descriptors = new List<ServiceDescriptor>();
-		descriptors.Add(new(typeof(AssertionMarkerService), typeof(AssertionMarkerService), ServiceLifetime.Singleton));
+		descriptors.Add(new ServiceDescriptor(typeof(AssertionMarkerService), typeof(AssertionMarkerService), ServiceLifetime.Singleton));
 
 		Assert.NotNull(builder);
 		Assert.NotNull(builder.Services);
