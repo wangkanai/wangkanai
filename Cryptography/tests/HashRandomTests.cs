@@ -69,7 +69,7 @@ public class HashRandomTests
 	[Fact]
 	public void CreateUniqueId_Length16_FormatInvalid()
 	{
-		Assert.Throws<ArgumentException>(() => HashRandom.CreateUniqueId(16, (HashRandom.OutputFormat) 99));
+		Assert.Throws<ArgumentOutOfRangeException>(() => HashRandom.CreateUniqueId(16, (HashRandom.OutputFormat) 99));
 	}
 	
 	[Fact]

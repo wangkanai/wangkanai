@@ -21,15 +21,6 @@ public sealed class Adler32 : HashAlgorithm
 	public static int Checksum(string text) 
 		=> Checksum(Encoding.ASCII.GetBytes(text));
 
-	public static int ChecksumBefore(string text)
-	{
-		text.ThrowIfNull();
-		text.ThrowIfEmpty();
-		//text.Length.ThrowIfMoreThan(4095);
-
-		return Checksum(Encoding.ASCII.GetBytes(text));
-	}
-
 	public static int Checksum(byte[] bytes)
 	{
 		bytes.ThrowIfNull();
