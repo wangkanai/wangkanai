@@ -2,6 +2,7 @@
 
 global using BenchmarkDotNet.Attributes;
 global using BenchmarkDotNet.Running;
+using BenchmarkDotNet.Configs;
 
 
-BenchmarkRunner.Run<FirstBenchmark>();
+BenchmarkRunner.Run<FirstBenchmark>(new DebugInProcessConfig());

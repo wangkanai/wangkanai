@@ -1,38 +1,24 @@
 ﻿// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
+
 namespace Wangkanai.Cryptography;
 
 [MemoryDiagnoser]
-public class HashBenchmark
+public class Adler32Benchmark
 {
 	private const string text = "F41k7dPvkYUpA5zYUwtWMkV4gwzxGcw7Oh9x9PXIif6o9C7oBSoaJw3c4I5bRyokmp3AMa";
 
 	[Benchmark]
-	public void Md5()
+	public void Adler32Text()
 	{
 		for (int i = 0; i < 100_000; i++)
-			text.HashMd5();
+			Adler32.ChecksumBefore(text);
 	}
-
-
+	
 	[Benchmark]
-	public void Sha256()
+	public void Adler32Bytes()
 	{
 		for (int i = 0; i < 100_000; i++)
-			text.HashSha256();
-	}
-
-	[Benchmark]
-	public void Sha384()
-	{
-		for (int i = 0; i < 100_000; i++)
-			text.HashSha384();
-	}
-
-	[Benchmark]
-	public void Sha512()
-	{
-		for (int i = 0; i < 100_000; i++)
-			text.HashSha512();
+			Adler32.Checksum(text);
 	}
 }
