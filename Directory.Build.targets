@@ -42,7 +42,8 @@
 
 		<PackageReference Update="Microsoft.Extensions.DependencyInjection" Version="$(ExtensionsVersion)"/>
 
-		<PackageReference Update="Microsoft.IdentityModel.Tokens" Version="6.32.0"/>
+		<PackageReference Update="Microsoft.IdentityModel.Protocols" Version="7.0.0-preview"/>
+		<PackageReference Update="Microsoft.IdentityModel.Tokens" Version="7.0.0-preview"/>
 
 		<!--packages-->
 		<PackageReference Update="JetBrains.Annotations" Version="2023.2.0"/>
