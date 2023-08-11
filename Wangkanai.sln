@@ -18,6 +18,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".solutions", ".solutions", 
 		version-up.ps1 = version-up.ps1
 		Wangkanai.sln.DotSettings = Wangkanai.sln.DotSettings
 		Directory.Build.targets = Directory.Build.targets
+		qodana.yaml = qodana.yaml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{C26D86D6-4B4E-407E-9F1D-9CA1765768CE}"
