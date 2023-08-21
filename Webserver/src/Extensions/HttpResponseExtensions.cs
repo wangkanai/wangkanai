@@ -21,8 +21,8 @@ public static class HttpResponseExtensions
 				return;
 
 			var vary = varys.Aggregate((x, y) => x + "," + y);
-			if (response.Headers.ContainsKey(WebserverConstants.Vary.Key))
-				vary = response.Headers[WebserverConstants.Vary.Key] + "," + vary;
+			if (response.Headers.TryGetValue(WebserverConstants.Vary.Key, out var header))
+				vary = header + "," + vary;
 
 			response.Headers[WebserverConstants.Vary.Key] = vary;
 		}

@@ -172,7 +172,7 @@ internal sealed class RendererSynchronizationContext : SynchronizationContext
 			executionContext = ExecutionContext.Capture();
 
 		var flags = forceAsync ? TaskContinuationOptions.RunContinuationsAsynchronously : TaskContinuationOptions.None;
-		return antecedent.ContinueWith(BackgroundWorkThunk, new WorkItem()
+		return antecedent.ContinueWith(BackgroundWorkThunk!, new WorkItem()
 		{
 			SynchronizationContext = this,
 			ExecutionContext       = executionContext,
