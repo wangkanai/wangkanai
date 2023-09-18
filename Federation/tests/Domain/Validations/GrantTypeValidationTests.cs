@@ -129,10 +129,10 @@ public class GrantTypeValidationTests
 	}
 	
 	[Fact]
-	public void HashSete_ImplicitAndHybrid()
+	public void HashSet_ImplicitAndHybrid()
 	{
 		var grantTypes = new GrantTypeValidationHashSet();
-		grantTypes.Add(GrantType.Implicit); ;
+		grantTypes.Add(GrantType.Implicit);
 		Assert.Throws<InvalidOperationException>(() => grantTypes.Add(GrantType.Hybrid));
 	}
 	

@@ -93,8 +93,7 @@ internal sealed class ActionSelectionTable<TItem>
 
 			entries.Add(item);
 
-			if (!ordinalEntries.ContainsKey(routeValues))
-				ordinalEntries.Add(routeValues, entries);
+			ordinalEntries.TryAdd(routeValues, entries);
 		}
 
 		return new ActionSelectionTable<T>(version, routeKeys.ToArray(), ordinalEntries, ordinalIgnoreCaseEntries);

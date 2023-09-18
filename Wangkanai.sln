@@ -150,13 +150,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Solver", "Solver\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Solver.Tests", "Solver\tests\Wangkanai.Solver.Tests.csproj", "{FF587B44-9646-43F7-9C92-57D26400C91B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".config", ".config", "{53EE3363-603E-430E-8DA6-906C47D1FD96}"
-	ProjectSection(SolutionItems) = preProject
-		.config\keypair.snk = .config\keypair.snk
-		.config\public.snk = .config\public.snk
-		.config\sgKey.snk = .config\sgKey.snk
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Html", "Html", "{DFCE57F8-CA4D-4F85-A14D-F15173B8CC42}"
 	ProjectSection(SolutionItems) = preProject
 		Extensions\Html\Directory.Build.props = Extensions\Html\Directory.Build.props

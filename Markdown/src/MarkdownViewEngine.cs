@@ -197,11 +197,11 @@ public partial class MarkdownViewEngine : IMarkdownViewEngine
 
 		if (!ViewLookupCache.TryGetValue<MarkdownViewLocationCacheResult>(cacheKey, out var cacheResult) || cacheResult is null)
 		{
-			Log.ViewLookupCacheMiss(_logger, cacheKey.ViewName, cacheKey.ControllerName);
+			//Log.ViewLookupCacheMiss(_logger, cacheKey.ViewName, cacheKey.ControllerName);
 			cacheResult = OnCacheMiss(expanderContext, cacheKey);
 		}
-		else
-			Log.ViewLookupCacheHit(_logger, cacheKey.ViewName, cacheKey.ControllerName);
+		//else
+			//Log.ViewLookupCacheHit(_logger, cacheKey.ViewName, cacheKey.ControllerName);
 
 		return cacheResult;
 	}
@@ -323,12 +323,12 @@ public partial class MarkdownViewEngine : IMarkdownViewEngine
 		throw new NotImplementedException();
 	}
 
-	private static partial class Log
-	{
-		[LoggerMessage(1, LogLevel.Debug, "View lookup cache miss for view '{ViewName}' in controller '{ControllerName}'.", EventName = "ViewLookupCacheMiss")]
-		public static partial void ViewLookupCacheMiss(ILogger logger, string viewName, string? controllerName);
-
-		[LoggerMessage(2, LogLevel.Debug, "View lookup cache hit for view '{ViewName}' in controller '{ControllerName}'.", EventName = "ViewLookupCacheHit")]
-		public static partial void ViewLookupCacheHit(ILogger logger, string viewName, string? controllerName);
-	}
+	// private static partial class Log
+	// {
+	// 	[LoggerMessage(1, LogLevel.Debug, "View lookup cache miss for view '{ViewName}' in controller '{ControllerName}'.", EventName = "ViewLookupCacheMiss")]
+	// 	public static partial void ViewLookupCacheMiss(ILogger logger, string viewName, string? controllerName);
+	//
+	// 	[LoggerMessage(2, LogLevel.Debug, "View lookup cache hit for view '{ViewName}' in controller '{ControllerName}'.", EventName = "ViewLookupCacheHit")]
+	// 	public static partial void ViewLookupCacheHit(ILogger logger, string viewName, string? controllerName);
+	// }
 }
