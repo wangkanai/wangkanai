@@ -41,18 +41,18 @@
 		<PackageReference Update="Microsoft.EntityFrameworkCore.Tools" Version="$(EntityFrameworkVersion)"/>
 
 		<PackageReference Update="Microsoft.Extensions.DependencyInjection" Version="$(ExtensionsVersion)"/>
-		<PackageReference Update="Microsoft.Extensions.DependencyInjection.Abstractions" Version="$(ExtensionsVersion)"/>
-		<PackageReference Update="Microsoft.Extensions.FileProviders.Abstractions" Version="$(ExtensionsVersion)"/>
+		<PackageReference Update="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0-rc.1.23470.11"/>
+		<PackageReference Update="Microsoft.Extensions.FileProviders.Abstractions" Version="8.0.0-rc.1.23470.11"/>
 
 		<PackageReference Update="Microsoft.IdentityModel.Abstractions" Version="$(IdentityModelVersion)"/>
 		<PackageReference Update="Microsoft.IdentityModel.Tokens" Version="$(IdentityModelVersion)"/>
 		<PackageReference Update="Microsoft.IdentityModel.Protocols" Version="$(IdentityModelVersion)"/>
-		<PackageReference Update="Microsoft.IdentityModel.Protocols.OpenIdConnect" Version="$(IdentityModelVersion)"/>		
+		<PackageReference Update="Microsoft.IdentityModel.Protocols.OpenIdConnect" Version="$(IdentityModelVersion)"/>
 
 		<!--serilog-->
-		<PackageReference Update="Serilog" Version="3.0.1" />
-		<PackageReference Update="Serilog.AspNetCore" Version="7.0.0" />
-		<PackageReference Update="Serilog.Sinks.Console" Version="4.1.0" />
+		<PackageReference Update="Serilog" Version="3.0.1"/>
+		<PackageReference Update="Serilog.AspNetCore" Version="7.0.0"/>
+		<PackageReference Update="Serilog.Sinks.Console" Version="4.1.0"/>
 
 		<!--packages-->
 		<PackageReference Update="JetBrains.Annotations" Version="2023.2.0"/>
