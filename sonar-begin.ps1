@@ -6,7 +6,7 @@ write-host "Agent.BuildDirectory:  " $buildDir
 write-host "Build.SourcesDirectoy: " $sourceDir
 write-host "Version:               " $version
 
-if ("main" -ne $env:Build_SourceBranchName) {
+if ("main" -ne $env:BUILD_SOURCEBRANCHNAME) {
     $pullrequest = $true
     $source      = $env:BUILD_SOURCEBRANCH
     $base        = $env:SYSTEM_PULLREQUEST_TARGETBRANCH
@@ -14,6 +14,7 @@ if ("main" -ne $env:Build_SourceBranchName) {
     $key         = $env:SYSTEM_PULLREQUEST_PULLREQUESTNUMBER
 
     Write-Host "PR Yes:                   " $pullrequest
+    Write-Host "soruce:                   " $source    
     Write-Host "sonar.pullrequest.base:   " $base
     Write-Host "sonar.pullrequest.branch: " $branch
     Write-Host "sonar.pullrequest.key:    " $key
