@@ -42,7 +42,7 @@
 
 		<PackageReference Update="Microsoft.Extensions.DependencyInjection" Version="$(ExtensionsVersion)"/>
 		<PackageReference Update="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0-rc.1.23470.11"/>
-		<PackageReference Update="Microsoft.Extensions.FileProviders.Abstractions" Version="8.0.0-rc.1.23470.11"/>
+		<PackageReference Update="Microsoft.Extensions.FileProviders.Abstractions" Version="8.0.0-rc.1.23419.4"/>
 
 		<PackageReference Update="Microsoft.IdentityModel.Abstractions" Version="$(IdentityModelVersion)"/>
 		<PackageReference Update="Microsoft.IdentityModel.Tokens" Version="$(IdentityModelVersion)"/>
