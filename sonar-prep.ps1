@@ -27,6 +27,6 @@ else
     $pullrequest = $false
     $base        = "main"
 
-    Write-Host "PR Not:" $pullrequest
+    Write-Host "PR Not:            "   $pullrequest
     Write-Host "sonar.branch.name: "   $base
 } 

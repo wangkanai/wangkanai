@@ -1,7 +1,7 @@
 <Project>
 	<Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
 	<PropertyGroup>
-		<VersionPrefix>0.1.0</VersionPrefix>
+		<VersionPrefix>0.2.0</VersionPrefix>
 		<Title>Wangkanai Cryptography</Title>
 		<PackageTags>aspnetcore;cryptography;</PackageTags>
 		<Description>Advanced data security for .NET developers. Hash, encode, and decode with ease using our intuitive API. Protect sensitive information, fortify your applications, and ensure tamper-proof data.</Description>
