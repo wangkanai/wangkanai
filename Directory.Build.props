@@ -13,6 +13,7 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
+		<SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
 		<DefaultNetCoreTargetFramework>net8.0</DefaultNetCoreTargetFramework>
 		<BaseNetCoreTargetFrameworks>net7.0;net8.0</BaseNetCoreTargetFrameworks>
 	</PropertyGroup>
