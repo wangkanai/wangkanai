@@ -11,9 +11,10 @@ if ("main" -ne $env:Build_SourceBranchName) {
     $source      = $env:Build_SourceBranch
     $base        = $env:System_PullRequest_TargetBranch
     $branch      = $env:System_PullRequest_SourceBranch
-    $key         = $source.Split("/")[2]
+    $key         = $source.Split("/")[1]
 
     Write-Host "PR Yes:                   " $pullrequest
+    Write-host "Source:                   " $source
     Write-Host "sonar.pullrequest.base:   " $base
     Write-Host "sonar.pullrequest.branch: " $branch
     Write-Host "sonar.pullrequest.key:    " $key
