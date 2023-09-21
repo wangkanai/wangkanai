@@ -1,7 +1,7 @@
 <Project>
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
   <PropertyGroup>
-    <VersionPrefix>3.0.0</VersionPrefix>
+    <VersionPrefix>2.1.0</VersionPrefix>
     <Title>Wangkanai Identity</Title>
     <PackageTags>aspnetcore;identity;model;</PackageTags>
     <Description>Introducing `Identity`, your essential toolkit for OpenID Connect and OAuth 2 integration in ASP.NET Core. Simplify your authentication and authorization systems with our handpicked collection of helper models. Whether for enterprise-level applications or personal projects, `Identity` offers versatility and ease-of-use. Discover Identity and take your security implementation to new heights.</Description>

@@ -1,5 +1,5 @@
-$buildDir    = $env:Agent_BuildDirectory
-$sourceDir   = $env:Build_SourcesDirectory
+$buildDir    = $env:AGENT_BUILDDIRECTORY
+$sourceDir   = $env:BUILD_SOURCESDIRECTORY
 $version     = 1.6
 
 write-host "Agent.BuildDirectory:  " $buildDir
@@ -8,10 +8,10 @@ write-host "Version:               " $version
 
 if ("main" -ne $env:Build_SourceBranchName) {
     $pullrequest = $true
-    $source      = $env:Build_SourceBranch
-    $base        = $env:System_PullRequest_TargetBranch
-    $branch      = $env:System_PullRequest_SourceBranch
-    $key         = $source.Split("/")[2]
+    $source      = $env:BUILD_SOURCEBRANCH
+    $base        = $env:SYSTEM_PULLREQUEST_TARGETBRANCH
+    $branch      = $env:SYSTEM_PULLREQUEST_SOURCEBRANCH
+    $key         = $env:SYSTEM_PULLREQUEST_PULLREQUESTNUMBER
 
     Write-Host "PR Yes:                   " $pullrequest
     Write-Host "sonar.pullrequest.base:   " $base
