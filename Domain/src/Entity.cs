@@ -1,17 +1,33 @@
 ﻿// Copyright (c) 2014-2023 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-using System;
-using System.Diagnostics.CodeAnalysis;
-
 namespace Wangkanai.Domain;
 
-public abstract class Entity : Entity<Guid> { }
+public abstract class Entity : Entity<Guid>
+{
+	protected Entity(string name, Model model, bool owned, ConfigurationSource configurationSource)
+		: base(name, model, owned, configurationSource) { }
 
-public abstract class Entity<T> : IEntity<T> // where T : IComparable<T> //, Nullable<T>
+	protected Entity(Type type, Model model, bool owned, ConfigurationSource configurationSource)
+		: base(type, model, owned, configurationSource) { }
+
+	protected Entity(string name, Type type, Model model, bool owned, ConfigurationSource configurationSource)
+		: base(name, type, model, owned, configurationSource) { }
+}
+
+public abstract class Entity<T> : EntityType, IEntity<T> // where T : IComparable<T> //, Nullable<T>
 {
 	public T Id { get; set; }
 
 	public bool IsTransient() => Id == null || Id.Equals(default(T));
+
+	protected Entity(string name, Model model, bool owned, ConfigurationSource configurationSource)
+		: base(name, model, owned, configurationSource) { }
+
+	protected Entity(Type type, Model model, bool owned, ConfigurationSource configurationSource)
+		: base(type, model, owned, configurationSource) { }
+
+	protected Entity(string name, Type type, Model model, bool owned, ConfigurationSource configurationSource)
+		: base(name, type, model, owned, configurationSource) { }
 
 	private static Type GetRealObjectType(object obj)
 	{

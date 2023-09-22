@@ -2,7 +2,6 @@
 
 using System.Diagnostics;
 
-using Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure;
 using Microsoft.Extensions.Options;
 
 using Wangkanai.Markdown;

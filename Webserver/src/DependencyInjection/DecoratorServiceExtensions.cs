@@ -2,8 +2,6 @@
 
 using System.Linq;
 
-using Microsoft.Extensions.DependencyInjection.Extensions;
-
 namespace Microsoft.Extensions.DependencyInjection;
 
 public static class DecoratorServiceExtensions

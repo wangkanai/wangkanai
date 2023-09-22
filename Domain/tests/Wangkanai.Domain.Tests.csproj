@@ -10,4 +10,5 @@
         <ProjectReference Include="..\src\Wangkanai.Domain.csproj" />
     </ItemGroup>
 
+
 </Project>

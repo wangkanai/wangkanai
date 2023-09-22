@@ -5,7 +5,6 @@ using System;
 using Castle.Core.Logging;
 
 using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
 
 using Moq;
 
