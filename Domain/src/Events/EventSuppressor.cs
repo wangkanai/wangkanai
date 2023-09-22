@@ -6,7 +6,7 @@ namespace Wangkanai.Domain.Events;
 
 public static class EventSuppressor
 {
-	private class DisposableActionGuard : IDisposable
+	private sealed class DisposableActionGuard : IDisposable
 	{
 		private readonly Action _action;
 
