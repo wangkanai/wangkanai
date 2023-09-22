@@ -2,4 +2,12 @@
 
 namespace Wangkanai.Domain.Models;
 
-public class GuidEntity : KeyGuidEntity { }
+public class GuidEntity : KeyGuidEntity
+{
+	public GuidEntity() => Id = Guid.NewGuid();
+}
+
+public class TransientGuidEntity : KeyGuidEntity
+{
+	public TransientGuidEntity() => Id = Guid.Empty;
+}

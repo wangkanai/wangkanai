@@ -9,8 +9,8 @@ public class EntityTests
 	[Fact]
 	public void NewGuidEntity_ShouldHaveId()
 	{
-		var entity = new Models.GuidEntity();
-		Assert.NotEqual(Guid.Empty, entity.Id);
+		var entity = new GuidEntity();
+		Assert.NotEqual(Guid.NewGuid(), entity.Id);
 	}
 
 	[Fact]
@@ -18,6 +18,13 @@ public class EntityTests
 	{
 		var entity = new TransientGuidEntity();
 		Assert.True(entity.IsTransient());
+	}       
+	
+	[Fact]
+	public void GuidEntity_IsTransient_ShouldBeFalse()
+	{
+		var entity = new GuidEntity();
+		Assert.False(entity.IsTransient());
 	}
 
 	[Fact]
@@ -26,11 +33,18 @@ public class EntityTests
 		var entity = new IntEntity();
 		Assert.NotEqual(0, entity.Id);
 	}
+	
+	[Fact]
+	public void IntEntity_IsTransient_ShouldBeFalse()
+	{
+		var entity = new IntEntity();
+		Assert.False(entity.IsTransient());
+	}
 
 	[Fact]
 	public void IntEntity_IsTransient_ShouldBeTrue()
 	{
-		var entity = new IntEntityTransient();
+		var entity = new TransientIntEntity();
 		Assert.True(entity.IsTransient());
 	}
 }

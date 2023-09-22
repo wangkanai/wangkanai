@@ -7,4 +7,4 @@ public class IntEntity : Entity<int>
 	public IntEntity() => Id = 1;
 }
 
-public class IntEntityTransient : Entity<int> { }
+public class TransientIntEntity : Entity<int> { }
