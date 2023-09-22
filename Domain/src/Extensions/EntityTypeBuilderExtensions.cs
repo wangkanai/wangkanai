@@ -6,8 +6,8 @@ namespace Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 public static class EntityTypeBuilderExtensions
 {
-	public static void KeyGuidNewOnAdd<T>(this EntityTypeBuilder<T> builder)
-		where T : class, IEntity
+	public static void NewKeyOnAdd<T>(this EntityTypeBuilder<T> builder)
+		where T : class, IEntity<Guid>
 		=> builder.Property(x => x.Id)
 		          .ValueGeneratedOnAdd();
 	
@@ -16,4 +16,14 @@ public static class EntityTypeBuilderExtensions
 		=> builder.Property(x => x.Created)
 		          .HasDefaultValue(DateTime.Now)
 		          .ValueGeneratedOnAdd();
+	
+	public static void HasDefaultCreatedAndUpdated<T>(this EntityTypeBuilder<T> builder)
+		where T : class, ICreatedEntity, IUpdatedEntity
+	{
+		builder.HasDefaultCreated();
+
+		builder.Property(x => x.Updated)
+		       .HasDefaultValue(DateTime.Now)
+		       .ValueGeneratedOnAddOrUpdate();
+	}
 }

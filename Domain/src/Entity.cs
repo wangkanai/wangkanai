@@ -10,7 +10,6 @@ public abstract class Entity<T> : IEntity<T> // where T : IComparable<T> //, Nul
 
 	public bool IsTransient() => Id == null || Id.Equals(default(T));
 
-
 	private static Type GetRealObjectType(object obj)
 	{
 		var retValue = obj.GetType();
