@@ -10,7 +10,5 @@ public class DomainEvent : DomainEvent<Guid>
 public class DomainEvent<T> : Entity<T>, IEvent<T>
 {
 	public int            Version   { get; set; }
-	public DateTimeOffset TimeStamp { get; set; }
-
-	public DomainEvent() => TimeStamp = DateTime.UtcNow;
+	public DateTimeOffset TimeStamp { get; set; } = DateTimeOffset.UtcNow;
 }

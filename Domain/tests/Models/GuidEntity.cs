@@ -4,7 +4,10 @@ namespace Wangkanai.Domain.Tests.Models;
 
 public class GuidEntity : Entity
 {
-	public GuidEntity() => Id = Guid.NewGuid();
+
 }
 
-public class GuidEntityTransient : Entity { }
+public class GuidEntityTransient : Entity
+{
+
+}
