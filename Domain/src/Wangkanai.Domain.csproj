@@ -6,10 +6,13 @@
 
     <ItemGroup>
         <PackageReference Include="JetBrains.Annotations" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" />
+
     </ItemGroup>
 
     <ItemGroup>
         <ProjectReference Include="..\..\System\src\Wangkanai.System.csproj" />
     </ItemGroup>
+
 
 </Project>

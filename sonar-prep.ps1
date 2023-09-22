@@ -21,7 +21,6 @@ if ("main" -ne $env:BUILD_SOURCEBRANCHNAME)
     Write-Host "sonar.pullrequest.base:   " $base
     Write-Host "sonar.pullrequest.branch: " $branch
     Write-Host "sonar.pullrequest.key:    " $key
-
 }
 else
 {
