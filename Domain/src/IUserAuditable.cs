@@ -2,10 +2,10 @@
 
 namespace Wangkanai.Domain;
 
-public interface IUserAuditable
+public interface IUserAuditable: ICreatedEntity, IUpdatedEntity
 {
-	DateTime? CreatedDate { get; set; }
-	DateTime? UpdatedDate { get; set; }
-	string    CreatedBy   { get; set; }
-	string    UpdatedBy   { get; set; }
+	DateTime Created   { get; set; }
+	DateTime Updated   { get; set; }
+	string   CreatedBy { get; set; }
+	string   UpdatedBy { get; set; }
 }

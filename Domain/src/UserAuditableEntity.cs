@@ -6,8 +6,8 @@ public abstract class UserAuditableEntity<T> : Entity<T>, IUserAuditable
 {
 	#region IUserAuditable Members
 
-	public DateTime? CreatedDate { get; set; }
-	public DateTime? UpdatedDate { get; set; }
+	public DateTime Created { get; set; }
+	public DateTime Updated { get; set; }
 
 	[StringLength(128)]
 	public string CreatedBy { get; set; }

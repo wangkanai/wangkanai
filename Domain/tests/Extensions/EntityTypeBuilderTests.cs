@@ -16,6 +16,6 @@ public class EntityTypeBuilderTests
 		builder.NewKeyOnAdd();
 		var entity = builder.Metadata;
 		var id     = entity.FindProperty(nameof(GuidEntity.Id));
-		Assert.True(id.ValueGenerated == ValueGenerated.OnAdd);
+		Assert.True(id!.ValueGenerated == ValueGenerated.OnAdd);
 	}
 }

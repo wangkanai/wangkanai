@@ -9,14 +9,14 @@ public class EntityTests
 	[Fact]
 	public void NewGuidEntity_ShouldHaveId()
 	{
-		var entity = new GuidEntity();
+		var entity = new Models.GuidEntity();
 		Assert.NotEqual(Guid.Empty, entity.Id);
 	}
 
 	[Fact]
 	public void GuidEntity_IsTransient_ShouldBeTrue()
 	{
-		var entity = new GuidEntityTransient();
+		var entity = new TransientGuidEntity();
 		Assert.True(entity.IsTransient());
 	}
 

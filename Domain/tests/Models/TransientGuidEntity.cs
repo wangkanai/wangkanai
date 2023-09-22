@@ -2,7 +2,7 @@
 
 namespace Wangkanai.Domain.Models;
 
-public class GuidEntityTransient : Entity
+public class TransientGuidEntity : Domain.KeyGuidEntity
 {
 
 }

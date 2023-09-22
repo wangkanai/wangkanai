@@ -2,4 +2,4 @@
 
 namespace Wangkanai.Domain.Models;
 
-public class GuidEntity : Entity { }
+public class GuidEntity : KeyGuidEntity { }

@@ -4,7 +4,7 @@ using Wangkanai.Domain.Messages;
 
 namespace Wangkanai.Domain.Events;
 
-public interface IEvent : IEntity, IMessage
+public interface IEvent : IKeyGuidEntity, IMessage
 {
 	int            Version   { get; set; }
 	DateTimeOffset TimeStamp { get; set; }

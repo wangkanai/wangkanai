@@ -14,8 +14,6 @@ public class MockDbContext : DbContext
 	public MockDbContext(DbContextOptions<MockDbContext> options)
 		: base(options) { }
 
-	protected override void OnModelCreating(ModelBuilder builder)
-	{
-		base.OnModelCreating(builder);
-	}
+	protected override void OnModelCreating(ModelBuilder builder) 
+		=> base.OnModelCreating(builder);
 }
