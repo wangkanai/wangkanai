@@ -6,8 +6,8 @@ public abstract class AuditableEntity<T> : Entity<T>, IAuditable
 {
 	#region IAuditable Members
 
-	public DateTime? Created { get; set; }
-	public DateTime? Updated { get; set; }
+	public DateTime Created { get; set; }
+	public DateTime Updated { get; set; }
 
 	#endregion
 

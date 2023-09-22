@@ -10,4 +10,10 @@ public static class EntityTypeBuilderExtensions
 		where T : class, IEntity
 		=> builder.Property(x => x.Id)
 		          .ValueGeneratedOnAdd();
+	
+	public static void HasDefaultCreated<T>(this EntityTypeBuilder<T> builder)
+		where T : class, ICreatedEntity
+		=> builder.Property(x => x.Created)
+		          .HasDefaultValue(DateTime.Now)
+		          .ValueGeneratedOnAdd();
 }

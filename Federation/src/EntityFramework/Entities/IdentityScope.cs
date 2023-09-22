@@ -31,7 +31,7 @@ public class IdentityScope<TKey> : IAuditable
 	public virtual string    Name             { get; set; }
 	public virtual string    DisplayName      { get; set; }
 	public virtual string    Description      { get; set; }
-	public virtual DateTime? Created          { get; set; } = DateTime.UtcNow;
-	public virtual DateTime? Updated          { get; set; }
+	public virtual DateTime Created          { get; set; } = DateTime.UtcNow;
+	public virtual DateTime Updated          { get; set; }
 	public virtual string    ConcurrencyStamp { get; set; } = Guid.NewGuid().ToString();
 }
