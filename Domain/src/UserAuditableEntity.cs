@@ -1,16 +1,14 @@
 ﻿// Copyright (c) 2014-2023 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-using System;
-using System.ComponentModel.DataAnnotations;
-
 namespace Wangkanai.Domain;
 
-public abstract class UserAuditableEntity<T> : Entity<T>, IUserAuditable
+public abstract class UserAuditableEntity<T> : Entity<T>, IUserAuditable 
+	where T : IComparable<T>
 {
 	#region IUserAuditable Members
 
-	public DateTime? CreatedDate { get; set; }
-	public DateTime? UpdatedDate { get; set; }
+	public DateTime Created { get; set; }
+	public DateTime Updated { get; set; }
 
 	[StringLength(128)]
 	public string CreatedBy { get; set; }

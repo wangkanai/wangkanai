@@ -1,15 +1,12 @@
 ﻿// Copyright (c) 2014-2023 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-using System;
-using System.Collections.Generic;
-
 namespace Wangkanai.Domain.Common;
 
 public class PrimaryKeyResolvingMap
 {
-	private readonly Dictionary<IEntity, IEntity> _resolvingMap = new Dictionary<IEntity, IEntity>();
+	private readonly Dictionary<IKeyGuidEntity, IKeyGuidEntity> _resolvingMap = new();
 
-	public void AddPair(IEntity transient, IEntity persistent)
+	public void AddPair(IKeyGuidEntity transient, IKeyGuidEntity persistent)
 		=> _resolvingMap[transient] = persistent;
 
 	public void ResolvePrimaryKeys()
@@ -22,10 +19,10 @@ public class PrimaryKeyResolvingMap
 
 				if (pair.Key is IUserAuditable transient && pair.Value is IUserAuditable presistent)
 				{
-					transient.CreatedBy   = presistent.CreatedBy;
-					transient.CreatedDate = presistent.CreatedDate;
-					transient.UpdatedBy   = presistent.UpdatedBy;
-					transient.UpdatedDate = presistent.UpdatedDate;
+					transient.CreatedBy = presistent.CreatedBy;
+					transient.Created   = presistent.Created;
+					transient.UpdatedBy = presistent.UpdatedBy;
+					transient.Updated   = presistent.Updated;
 				}
 			}
 		}

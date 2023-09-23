@@ -3,7 +3,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
-using Wangkanai.Federation;
 using Wangkanai.Federation.RazorApp.Data;
 using Wangkanai.Webserver;
 

@@ -2,7 +2,6 @@
 
 using Microsoft.AspNetCore.Http;
 
-using Wangkanai.Federation;
 using Wangkanai.Federation.Endpoints;
 using Wangkanai.Federation.Hosting;
 

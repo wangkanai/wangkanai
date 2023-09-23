@@ -2,7 +2,6 @@
 
 using System.Reflection;
 
-using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.AspNetCore.Mvc.Filters;
 
 using Wangkanai.Internal;

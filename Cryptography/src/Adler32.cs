@@ -3,8 +3,6 @@
 using System.Security.Cryptography;
 using System.Text;
 
-using Wangkanai.Extensions;
-
 namespace Wangkanai.Cryptography;
 
 public sealed class Adler32 : HashAlgorithm

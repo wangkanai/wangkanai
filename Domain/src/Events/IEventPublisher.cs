@@ -8,5 +8,5 @@ namespace Wangkanai.Domain.Events;
 public interface IEventPublisher
 {
 	Task Publish<T>(T @event, CancellationToken token = default)
-		where T : class, IEvent;
+		where T : class, IGuidEvent;
 }

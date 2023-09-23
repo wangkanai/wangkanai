@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.AspNetCore.Routing.Patterns;
-using Microsoft.Extensions.Primitives;
 
 using Wangkanai.Mvc.Infrastructure;
 using Wangkanai.Markdown.Builder;

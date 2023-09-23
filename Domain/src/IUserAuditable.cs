@@ -1,13 +1,9 @@
 ﻿// Copyright (c) 2014-2023 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-using System;
-
 namespace Wangkanai.Domain;
 
-public interface IUserAuditable
+public interface IUserAuditable: ICreatedEntity, IUpdatedEntity
 {
-	DateTime? CreatedDate { get; set; }
-	DateTime? UpdatedDate { get; set; }
-	string    CreatedBy   { get; set; }
-	string    UpdatedBy   { get; set; }
+	string   CreatedBy { get; set; }
+	string   UpdatedBy { get; set; }
 }

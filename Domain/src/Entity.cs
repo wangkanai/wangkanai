@@ -1,13 +1,14 @@
-﻿// Copyright (c) 2014-2023 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
-
-using System;
-using System.Diagnostics.CodeAnalysis;
+// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 namespace Wangkanai.Domain;
 
-public abstract class Entity : Entity<Guid> { }
+public abstract class KeyByteEntity : Entity<byte>;
+public abstract class KeyIntEntity : Entity<int>;
+public abstract class KeyLongEntity : Entity<long>;
+public abstract class KeyGuidEntity : Entity<Guid>;
+public abstract class KeyStringEntity : Entity<string>;
 
-public abstract class Entity<T> : IEntity<T> // where T : IComparable<T> //, Nullable<T>
+public abstract class Entity<T> : IEntity<T>  where T : IComparable<T>
 {
 	public T Id { get; set; }
 

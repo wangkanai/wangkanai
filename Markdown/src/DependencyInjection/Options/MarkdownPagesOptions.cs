@@ -2,7 +2,6 @@
 
 using System.Collections;
 
-using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 
 using Wangkanai.Markdown.ApplicationModels;

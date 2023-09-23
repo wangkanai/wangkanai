@@ -2,8 +2,6 @@
 
 using Microsoft.Extensions.Configuration;
 
-using Wangkanai.Webserver;
-
 namespace Microsoft.Extensions.DependencyInjection;
 
 public static class ConfigurationExtensions

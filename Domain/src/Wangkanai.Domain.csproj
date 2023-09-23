@@ -1,15 +1,18 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <TargetFramework>$(DefaultNetCoreTargetFramework)</TargetFramework>
-    </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>$(DefaultNetCoreTargetFramework)</TargetFramework>
+	</PropertyGroup>
 
-    <ItemGroup>
-        <PackageReference Include="JetBrains.Annotations" />
-    </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="JetBrains.Annotations" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" />
+	</ItemGroup>
 
-    <ItemGroup>
-        <ProjectReference Include="..\..\System\src\Wangkanai.System.csproj" />
-    </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\System\src\Wangkanai.System.csproj" />
+	</ItemGroup>
+
 
 </Project>

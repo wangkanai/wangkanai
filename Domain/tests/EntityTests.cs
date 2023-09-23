@@ -1,6 +1,6 @@
 ﻿// Copyright (c) 2014-2023 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-using Wangkanai.Domain.Tests.Models;
+using Wangkanai.Domain.Models;
 
 namespace Wangkanai.Domain.Tests;
 
@@ -10,14 +10,21 @@ public class EntityTests
 	public void NewGuidEntity_ShouldHaveId()
 	{
 		var entity = new GuidEntity();
-		Assert.NotEqual(Guid.Empty, entity.Id);
+		Assert.NotEqual(Guid.NewGuid(), entity.Id);
 	}
 
 	[Fact]
 	public void GuidEntity_IsTransient_ShouldBeTrue()
 	{
-		var entity = new GuidEntityTransient();
+		var entity = new TransientGuidEntity();
 		Assert.True(entity.IsTransient());
+	}       
+	
+	[Fact]
+	public void GuidEntity_IsTransient_ShouldBeFalse()
+	{
+		var entity = new GuidEntity();
+		Assert.False(entity.IsTransient());
 	}
 
 	[Fact]
@@ -26,11 +33,45 @@ public class EntityTests
 		var entity = new IntEntity();
 		Assert.NotEqual(0, entity.Id);
 	}
+	
+	[Fact]
+	public void IntEntity_IsTransient_ShouldBeFalse()
+	{
+		var entity = new IntEntity();
+		Assert.False(entity.IsTransient());
+	}
 
 	[Fact]
 	public void IntEntity_IsTransient_ShouldBeTrue()
 	{
-		var entity = new IntEntityTransient();
+		var entity = new TransientIntEntity();
 		Assert.True(entity.IsTransient());
+	}
+
+	[Fact]
+	public void Entity_Transient_HashCode()
+	{
+		var entity = new IntEntity();
+		Assert.Equal(entity.Id.GetHashCode(), entity.GetHashCode());
+		entity.Id = default;
+		Assert.NotEqual(entity.Id.GetHashCode(), entity.GetHashCode());
+	}
+	
+	[Fact]
+	public void Entity_Equals_ShouldBeTrue()
+	{
+		var entity = new IntEntity();
+		var other  = new IntEntity();
+		Assert.True(entity.Equals(other));
+		Assert.True(entity == other);
+	}
+	
+	[Fact]
+	public void Entity_Equals_ShouldBeFalse()
+	{
+		var entity = new IntEntity();
+		var other  = new TransientIntEntity();
+		Assert.False(entity.Equals(other));
+		Assert.False(entity == other);
 	}
 }
