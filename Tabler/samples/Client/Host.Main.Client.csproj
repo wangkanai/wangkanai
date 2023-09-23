@@ -16,8 +16,10 @@
 	  <AdditionalFiles Include="Layout\Header\HeaderNotification.razor" />
 	</ItemGroup>
 
-<!--	<ItemGroup>-->
-<!--		<ProjectReference Include="..\..\src\Core\Wangkanai.Tabler.csproj" />-->
-<!--	</ItemGroup>-->
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\src\Core\Wangkanai.Tabler.csproj" />
+	  <ProjectReference Include="..\..\src\Components\Wangkanai.Tabler.Components.csproj" />
+	</ItemGroup>
 
 </Project>

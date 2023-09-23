@@ -20,4 +20,5 @@
         <ProjectReference Include="..\..\..\Blazor\src\Core\Wangkanai.Blazor.csproj" />
     </ItemGroup>
 
+
 </Project>

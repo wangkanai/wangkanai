@@ -1,21 +1,34 @@
-﻿<div class="nav-item dropdown">
-  <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
-    <span class="avatar avatar-sm" style="background-image: url(./static/avatars/000m.jpg)"></span>
-    <div class="d-none d-xl-block ps-2">
-      <div>Paweł Kuna</div>
-      <div class="mt-1 small text-muted">UI Designer</div>
-    </div>
-  </a>
-  <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-    <a href="#" class="dropdown-item">Set status</a>
-    <a href="#" class="dropdown-item">Profile & account</a>
-    <a href="#" class="dropdown-item">Feedback</a>
-    <div class="dropdown-divider"></div>
-    <a href="#" class="dropdown-item">Settings</a>
-    <a href="#" class="dropdown-item">Logout</a>
-  </div>
+﻿@attribute [RenderModeAuto]
+
+<div class="nav-item dropdown">
+	<a class="nav-link d-flex lh-1 text-reset p-0 @Show" @onclick="ToggleProfile" data-bs-toggle="dropdown" aria-label="Open user menu" @attributes="AriaExpanded">
+		<span class="avatar avatar-sm" style="background-image: url(./static/avatars/000m.jpg)"></span>
+		<div class="d-none d-xl-block ps-2">
+			<div>Paweł Kuna</div>
+			<div class="mt-1 small text-muted">UI Designer</div>
+		</div>
+	</a>
+	<div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow @Show" @attributes="DataBsPopper">
+		<a href="#" class="dropdown-item">Set status</a>
+		<a href="#" class="dropdown-item">Profile & account</a>
+		<a href="#" class="dropdown-item">Feedback</a>
+		<div class="dropdown-divider"></div>
+		<a href="#" class="dropdown-item">Settings</a>
+		<a href="#" class="dropdown-item">Logout</a>
+	</div>
 </div>
 
 @code {
+	private bool _show = false;
+	private string? Show => _show ? "show" : null;
+	public Dictionary<string, object>? DataBsPopper { get; set; }
+	public Dictionary<string, object>? AriaExpanded { get; set; }
+
+	void ToggleProfile()
+	{
+		_show = !_show;
+		DataBsPopper = _show ? new() { { "data-bs-popper", "static" } } : null;
+		AriaExpanded = _show ? new() { { "aria-expanded", "true" } } : null;
+	}
 
 }
