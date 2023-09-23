@@ -8,7 +8,7 @@ public abstract class KeyLongEntity : Entity<long>;
 public abstract class KeyGuidEntity : Entity<Guid>;
 public abstract class KeyStringEntity : Entity<string>;
 
-public abstract class Entity<T> : IEntity<T> // where T : IComparable<T> //, Nullable<T>
+public abstract class Entity<T> : IEntity<T>  where T : IComparable<T>
 {
 	public T Id { get; set; }
 

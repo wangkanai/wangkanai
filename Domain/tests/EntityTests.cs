@@ -47,4 +47,31 @@ public class EntityTests
 		var entity = new TransientIntEntity();
 		Assert.True(entity.IsTransient());
 	}
+
+	[Fact]
+	public void Entity_Transient_HashCode()
+	{
+		var entity = new IntEntity();
+		Assert.Equal(entity.Id.GetHashCode(), entity.GetHashCode());
+		entity.Id = default;
+		Assert.NotEqual(entity.Id.GetHashCode(), entity.GetHashCode());
+	}
+	
+	[Fact]
+	public void Entity_Equals_ShouldBeTrue()
+	{
+		var entity = new IntEntity();
+		var other  = new IntEntity();
+		Assert.True(entity.Equals(other));
+		Assert.True(entity == other);
+	}
+	
+	[Fact]
+	public void Entity_Equals_ShouldBeFalse()
+	{
+		var entity = new IntEntity();
+		var other  = new TransientIntEntity();
+		Assert.False(entity.Equals(other));
+		Assert.False(entity == other);
+	}
 }

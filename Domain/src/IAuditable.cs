@@ -2,8 +2,4 @@
 
 namespace Wangkanai.Domain;
 
-public interface IAuditable: ICreatedEntity, IUpdatedEntity
-{
-	DateTime Created { get; set; }
-	DateTime Updated { get; set; }
-}
+public interface IAuditable: ICreatedEntity, IUpdatedEntity;

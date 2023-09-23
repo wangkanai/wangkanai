@@ -2,9 +2,9 @@
 
 namespace Wangkanai.Domain.Models;
 
-public class IntEntity : Entity<int>
+public class IntEntity : KeyIntEntity
 {
 	public IntEntity() => Id = 1;
 }
 
-public class TransientIntEntity : Entity<int> { }
+public class TransientIntEntity : KeyIntEntity { }

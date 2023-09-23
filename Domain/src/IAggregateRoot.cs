@@ -2,6 +2,8 @@
 
 namespace Wangkanai.Domain;
 
-public interface IAggregateRoot : IKeyGuidEntity;
+public interface IAggregateRoot : IAggregateRoot<int>, IKeyIntEntity;
+
+public interface IGuidAggregateRoot : IAggregateRoot<Guid>, IKeyGuidEntity;
 
 public interface IAggregateRoot<T> : IEntity<T>;
