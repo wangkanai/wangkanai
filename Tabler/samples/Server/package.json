@@ -9,6 +9,7 @@
     },
     "dependencies": {
         "@tabler/core": "^1.0.0-beta20",
+		"@tabler/icons": "^1.0.0-beta20",
         "rfs": "^10.0.0"
     },
     "devDependencies": {

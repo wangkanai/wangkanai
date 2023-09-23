@@ -28,6 +28,12 @@
 		</None>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <AdditionalFiles Include="Components\Layout\Header\HeaderList.razor" />
+	  <AdditionalFiles Include="Components\Layout\Header\HeaderProfile.razor" />
+	  <AdditionalFiles Include="Components\Layout\Header\HeaderTheme.razor" />
+	</ItemGroup>
+
 	<Target Name="NpmInstall" Inputs="package.json" Outputs="node_modules/.install-stamp">
 		<Exec Command="npm ci" Condition="$(RestorePackagesWithLockFile) == 'true'" />
 		<Exec Command="npm install" Condition="$(RestorePackagesWithLockFile) != 'true'" />
