@@ -1,13 +1,14 @@
 ﻿@attribute [RenderModeAuto]
-<div class="nav-item dropdown d-none d-md-flex me-3">
-	<a class="nav-link px-0 @Show" @onclick="ToggleNotification" @attributes="AriaExpanded" data-bs-toggle="dropdown" tabindex="-1" aria-label="Show notifications">
+
+<div class="nav-item dropdown d-none d-md-flex me-3" @onclick="ToggleNotification">
+	<a class="nav-link px-0 @Show" data-bs-toggle="dropdown" tabindex="-1" aria-label="Show notifications" @attributes="AriaExpanded" >
 		<!-- Download SVG icon from http://tabler-icons.io/i/bell -->
 		<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
 			<path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 5a2 2 0 0 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6"/><path d="M9 17v1a3 3 0 0 0 6 0v-1"/>
 		</svg>
 		<span class="badge bg-red"></span>
 	</a>
-	<div class="dropdown-menu dropdown-menu-arrow dropdown-menu-end dropdown-menu-card @Show" @attributes="AriaPopper">
+	<div class="dropdown-menu dropdown-menu-arrow dropdown-menu-end dropdown-menu-card @Show" @attributes="DataBsPopper">
 		<div class="card">
 			<div class="card-header">
 				<h3 class="card-title">Last updates</h3>
@@ -106,13 +107,16 @@
 	private bool _show = false;
 
 	private string? Show => _show ? "show" : null;
-	private Dictionary<string, object>? AriaPopper => _show ? new() { { "aria-popper", "true" } } : null;
-	private Dictionary<string, object>? AriaExpanded => _show ? new() { { "aria-expanded", "true" } } : null;
+
+	public Dictionary<string, object>? DataBsPopper { get; set; }
+	
+	public Dictionary<string, object>? AriaExpanded { get; set; }
 
 	void ToggleNotification()
 	{
 		_show = !_show;
-		Console.Write("Show: " + _show + "\n");
+		DataBsPopper = _show ? new() { { "data-bs-popper", "static" } } : null;
+		AriaExpanded = _show ? new() { { "aria-expanded", "true" } } : null;
 	}
 
 }

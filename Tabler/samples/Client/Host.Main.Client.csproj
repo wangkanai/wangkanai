@@ -12,6 +12,10 @@
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <AdditionalFiles Include="Layout\Header\HeaderNotification.razor" />
+	</ItemGroup>
+
 <!--	<ItemGroup>-->
 <!--		<ProjectReference Include="..\..\src\Core\Wangkanai.Tabler.csproj" />-->
 <!--	</ItemGroup>-->
