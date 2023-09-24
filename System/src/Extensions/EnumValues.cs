@@ -12,16 +12,18 @@ public static class EnumValues
 
 public static class EnumValues<T> where T : Enum
 {
-	private static readonly Dictionary<T, string> Names = new();
-	private static readonly T[]                   Values;
+	private static readonly T[] Values = (T[])Enum.GetValues(typeof(T));
 
-	[DebuggerStepThrough]
-	static EnumValues()
-	{
-		Values = (T[])Enum.GetValues(typeof(T));
-		foreach (var value in Values)
-			Names.Add(value, value.ToString().ToLowerInvariant());
-	}
+	private static Dictionary<T, string> Names 
+		=> Values.ToDictionary(value => value, value => value.ToString().ToLowerInvariant());
+	//
+	// [DebuggerStepThrough]
+	// static EnumValues()
+	// {
+	// 	//Values = (T[])Enum.GetValues(typeof(T));
+	// 	foreach (var value in Values)
+	// 		Names.Add(value, value.ToString().ToLowerInvariant());
+	// }
 
 	[DebuggerStepThrough]
 	public static T[] GetValues()

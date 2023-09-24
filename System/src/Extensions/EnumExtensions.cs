@@ -32,7 +32,7 @@ public static class EnumExtensions
 			return value.ToString();
 
 		var attributes = member[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
-		if (attributes.Any())
+		if (attributes.IsEmpty())
 			return attributes.OfType<DescriptionAttribute>()
 			                 .SingleOrDefault()
 			                 ?.Description ?? string.Empty;
@@ -49,7 +49,7 @@ public static class EnumExtensions
 			return string.Empty;
 
 		var attributes = field.GetCustomAttributes(typeof(EnumMemberAttribute), false);
-		if (attributes.Any())
+		if (attributes.IsEmpty())
 			return attributes.OfType<EnumMemberAttribute>()
 			                 .SingleOrDefault()
 			                 ?.Value ?? string.Empty;
