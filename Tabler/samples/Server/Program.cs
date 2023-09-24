@@ -1,13 +1,9 @@
-using Host.Main.Client.Layout;
-using Host.Main.Components;
-
 using Wangkanai.Tabler.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddScoped<ThemeService>();
-builder.Services.AddCascadingValue(ts => new ThemeService());
 
 builder.Services.AddRazorComponents()
        .AddServerComponents()
@@ -33,7 +29,7 @@ app.UseStaticFiles();
 
 app.MapRazorComponents<App>()
    .AddServerRenderMode()
-   .AddWebAssemblyRenderMode()
-   .AddAdditionalAssemblies(typeof(HeaderDisplay).Assembly);
+   .AddWebAssemblyRenderMode();
+//.AddAdditionalAssemblies(typeof(HeaderDisplay).Assembly);
 
 app.Run();
