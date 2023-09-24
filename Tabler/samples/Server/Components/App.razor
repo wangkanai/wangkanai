@@ -12,14 +12,20 @@
 	<link href="lib/tabler/dist/css/demo.min.css" rel="stylesheet"/>
 	<link href="lib/icons/iconfont/tabler-icons.css" rel="stylesheet"/>
 	<link rel="stylesheet" href="app.css"/>
-	<link rel="stylesheet" href="Host.Main.styles.css"/>    
-	<link rel="icon" type="image/ico" href="favicon.ico" />
-	<HeadOutlet/>
+	<link rel="stylesheet" href="Host.Main.styles.css"/>
+	<link rel="icon" type="image/ico" href="favicon.ico"/>
+	<HeadOutlet @rendermode="@RenderMode.Auto"/>
 </head>
 
-<body data-bs-theme="dark">
-	<Routes/>
+<body data-bs-theme="@Theme.Theme">
+	<Routes @rendermode="@RenderMode.Auto"/>
 	<script src="_framework/blazor.web.js"></script>
 </body>
 
 </html>
+
+@code
+{
+	[CascadingParameter]
+	public ThemeService? Theme { get; set; }
+}

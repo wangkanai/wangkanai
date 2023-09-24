@@ -20,6 +20,7 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\..\src\Core\Wangkanai.Tabler.csproj" />
 	  <ProjectReference Include="..\..\src\Components\Wangkanai.Tabler.Components.csproj" />
+	  <ProjectReference Include="..\..\src\Web\Wangkanai.Tabler.Components.Web.csproj" />
 	</ItemGroup>
 
 </Project>

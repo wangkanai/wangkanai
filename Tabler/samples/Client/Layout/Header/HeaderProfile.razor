@@ -1,6 +1,6 @@
 ﻿@attribute [RenderModeAuto]
 
-<div class="nav-item dropdown">
+<div class="nav-item dropdown" @onpointerleave="LeaveProfile">
 	<a class="nav-link d-flex lh-1 text-reset p-0 @Show" @onclick="ToggleProfile" data-bs-toggle="dropdown" aria-label="Open user menu" @attributes="AriaExpanded">
 		<span class="avatar avatar-sm" style="background-image: url(./static/avatars/000m.jpg)"></span>
 		<div class="d-none d-xl-block ps-2">
@@ -27,6 +27,17 @@
 	void ToggleProfile()
 	{
 		_show = !_show;
+		ToggleAria();
+	}
+	
+	void LeaveProfile()
+	{
+		_show = false;
+		ToggleAria();
+	}
+
+	void ToggleAria()
+	{
 		DataBsPopper = _show ? new() { { "data-bs-popper", "static" } } : null;
 		AriaExpanded = _show ? new() { { "aria-expanded", "true" } } : null;
 	}

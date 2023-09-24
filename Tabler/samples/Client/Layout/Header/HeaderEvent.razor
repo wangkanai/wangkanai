@@ -1,7 +1,7 @@
 ﻿<div class="list-group-item">
 	<div class="row align-items-center">
 		<div class="col-auto">
-			<span class="status-dot status-dot-animated bg-red d-block"></span>
+			<span class="status-dot @TagClass d-block"></span>
 		</div>
 		<div class="col text-truncate">
 			<a href="#" class="text-body d-block">@Title</a>
@@ -21,7 +21,7 @@
 @code {
 
 	[Parameter]
-	public TextColor Color { get; set; } = TextColor.None;
+	public TextColor Color { get; set; }
 
 	[Parameter]
 	public string Title { get; set; } = "";
@@ -36,9 +36,10 @@
 	private string StarClass => Stared ? "text-yellow" : "text-muted";
 	private string TagClass => Color != TextColor.None ? "status-dot-animated " + BgColor : "";
 
-	private string BgColor => Color switch{
-	                          TextColor.Red => "bg-red",
-	                          TextColor.Green => "bg-green",
+	private string BgColor => Color switch {
+	                          TextColor.Red    => "bg-red",
+	                          TextColor.Yellow => "bg-yellow",
+	                          TextColor.Green  => "bg-green",
 	                          _ => ""
 	                          };
 
