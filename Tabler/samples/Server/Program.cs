@@ -6,6 +6,7 @@ using Wangkanai.Tabler.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddScoped<ThemeService>();
 builder.Services.AddCascadingValue(ts => new ThemeService());
 
 builder.Services.AddRazorComponents()

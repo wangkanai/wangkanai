@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@inject ThemeService Theme;
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -14,13 +16,13 @@
 	<link rel="stylesheet" href="app.css"/>
 	<link rel="stylesheet" href="Host.Main.styles.css"/>
 	<link rel="icon" type="image/ico" href="favicon.ico"/>
-	@* <HeadOutlet/> *@
-	<HeadOutlet @rendermode="@RenderMode.Auto"/>
+	<HeadOutlet/>
+	@* <HeadOutlet @rendermode="@RenderMode.InteractiveAuto" /> *@
 </head>
 
 <body data-bs-theme="@Theme.Theme">
-	@* <Routes/> *@
-	<Routes @rendermode="@RenderMode.Auto"/>
+	<Routes/>
+	@* <Routes @rendermode="@RenderMode.InteractiveAuto" /> *@
 	<script src="_framework/blazor.web.js"></script>
 </body>
 
@@ -28,6 +30,7 @@
 
 @code
 {
-	[CascadingParameter]
-	public ThemeService? Theme { get; set; }
+	private bool DarkMode { get; set; } = true;
+	private string ThemeClass => DarkMode ? "dark" : "light";
+	public void Toggle() => DarkMode = !DarkMode;
 }

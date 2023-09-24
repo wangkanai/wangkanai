@@ -4,7 +4,11 @@ namespace Wangkanai.Tabler.Services;
 
 public class ThemeService
 {
-	public bool   DarkMode { get; private set; } = true;
+	public bool   DarkMode { get; set; } = true;
 	public string Theme    => DarkMode ? "dark" : "light";
-	public void   Toggle() => DarkMode = !DarkMode;
+	public void   Toggle()
+	{
+		DarkMode = !DarkMode;
+		Console.WriteLine("Theme: " + Theme);
+	}
 }
