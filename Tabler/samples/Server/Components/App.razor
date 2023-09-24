@@ -1,6 +1,4 @@
-﻿@inject ThemeService Theme;
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -20,7 +18,7 @@
 	@* <HeadOutlet @rendermode="@RenderMode.InteractiveAuto" /> *@
 </head>
 
-<body data-bs-theme="@Theme.Theme">
+<body data-bs-theme="@ThemeClass">
 	<Routes/>
 	@* <Routes @rendermode="@RenderMode.InteractiveAuto" /> *@
 	<script src="_framework/blazor.web.js"></script>
@@ -30,7 +28,7 @@
 
 @code
 {
-	private bool DarkMode { get; set; } = true;
-	private string ThemeClass => DarkMode ? "dark" : "light";
-	public void Toggle() => DarkMode = !DarkMode;
+	public ThemeInfo? Theme { get; set; }
+	private string ThemeClass => Theme.DarkMode ? "dark" : "light";
+	public void Toggle() => Theme.DarkMode = !Theme.DarkMode;
 }

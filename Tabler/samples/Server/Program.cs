@@ -1,9 +1,7 @@
-using Wangkanai.Tabler.Services;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddScoped<ThemeService>();
+builder.Logging.AddConsole();
 
 builder.Services.AddRazorComponents()
        .AddServerComponents()
