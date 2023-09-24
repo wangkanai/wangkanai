@@ -1,3 +1,4 @@
+using Host.Main.Client.Layout;
 using Host.Main.Components;
 
 using Wangkanai.Tabler.Services;
@@ -31,6 +32,7 @@ app.UseStaticFiles();
 
 app.MapRazorComponents<App>()
    .AddServerRenderMode()
-   .AddWebAssemblyRenderMode();
+   .AddWebAssemblyRenderMode()
+   .AddAdditionalAssemblies(typeof(HeaderDisplay).Assembly);
 
 app.Run();
