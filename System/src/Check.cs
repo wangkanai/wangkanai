@@ -163,6 +163,8 @@ public static class Check
 
 	#region Empty
 
+#pragma warning disable CS8604 // Possible null reference argument.
+#pragma warning disable CS8603 // Possible null reference return.
 	public static IEnumerable<T> ThrowIfEmpty<T>(this IEnumerable<T>? value)
 		=> !value.ThrowIfNull().Any()
 			   ? throw CreateArgumentExceptionInstance<ArgumentEmptyException>(nameof(value))
@@ -190,6 +192,8 @@ public static class Check
 			       ? throw CreateArgumentExceptionInstance<TException>(nameof(value), message)
 			       : value;
 	}
+#pragma warning restore CS8603 // Possible null reference return.
+#pragma warning restore CS8604 // Possible null reference argument.
 
 	#endregion
 
@@ -310,6 +314,7 @@ public static class Check
 	public static object ThrowIfNull<T>(this object? value, string message)
 		where T : Exception
 		=> value ?? throw CreateGenericExceptionInstance<T>(message);
+
 
 	public static T ThrowIfNull<T>(this T value)
 		=> value ?? throw CreateArgumentExceptionInstance<ArgumentNullException>(nameof(value));
