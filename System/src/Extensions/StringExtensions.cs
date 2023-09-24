@@ -36,22 +36,22 @@ public static class StringExtensions
 		=> Encoding.ASCII.GetByteCount(value) != Encoding.UTF8.GetByteCount(value);
 
 	public static string EnsureLeadingSlash(this string value)
-		=> value.IsNotNullOrWhiteSpace() && !value.StartsWith("/")
+		=> value.IsNotNullOrWhiteSpace() && !value.StartsWith('/')
 			   ? "/" + value
 			   : value;
 
 	public static string EnsureTrailingSlash(this string value)
-		=> value.IsNotNullOrWhiteSpace() && !value.EndsWith("/")
+		=> value.IsNotNullOrWhiteSpace() && !value.EndsWith('/')
 			   ? value + "/"
 			   : value;
 
 	public static string RemoveLeadingSlash(this string value)
-		=> value.IsNotNullOrWhiteSpace() && value.StartsWith("/")
+		=> value.IsNotNullOrWhiteSpace() && value.StartsWith('/')
 			   ? value.Substring(1)
 			   : value;
 
 	public static string RemoveTrailingSlash(this string value)
-		=> value.IsNotNullOrWhiteSpace() && value.EndsWith("/")
+		=> value.IsNotNullOrWhiteSpace() && value.EndsWith('/')
 			   ? value.Substring(0, value.Length - 1)
 			   : value;
 

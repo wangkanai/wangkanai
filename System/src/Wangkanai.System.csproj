@@ -2,7 +2,6 @@
 
     <PropertyGroup>
         <TargetFramework>$(DefaultNetCoreTargetFramework)</TargetFramework>
-        <NoWarn>0162</NoWarn>
     </PropertyGroup>
 
     <ItemGroup>
