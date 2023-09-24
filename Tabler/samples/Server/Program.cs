@@ -1,8 +1,6 @@
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Logging.AddConsole();
-
 builder.Services.AddRazorComponents()
        .AddServerComponents()
        .AddWebAssemblyComponents();
