@@ -7,6 +7,7 @@ namespace Wangkanai.Exceptions;
 [Serializable]
 public sealed class ArgumentEqualException : ArgumentException
 {
+	private ArgumentEqualException(SerializationInfo info, StreamingContext context) : base(info, context) { }
 	public ArgumentEqualException() : base(SystemResources.ArgumentEqualGeneric) { }
 	public ArgumentEqualException(string paramName) : base(SystemResources.ArgumentEqualGeneric, paramName) { }
 	public ArgumentEqualException(string message,   Exception innerException) : base(message, innerException) { }

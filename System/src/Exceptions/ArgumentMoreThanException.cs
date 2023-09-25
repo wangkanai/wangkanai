@@ -7,6 +7,7 @@ namespace Wangkanai.Exceptions;
 [Serializable]
 public sealed class ArgumentMoreThanException : ArgumentException
 {
+	private ArgumentMoreThanException(SerializationInfo info, StreamingContext context) : base(info, context) { }
 	public ArgumentMoreThanException() : base(SystemResources.ArgumentMoreThanGeneric) { }
 	public ArgumentMoreThanException(string paramName) : base(SystemResources.ArgumentMoreThanGeneric, paramName) { }
 	public ArgumentMoreThanException(string message,   Exception innerException) : base(message, innerException) { }

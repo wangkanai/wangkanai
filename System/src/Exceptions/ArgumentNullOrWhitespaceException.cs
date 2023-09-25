@@ -7,6 +7,7 @@ namespace Wangkanai.Exceptions;
 [Serializable]
 public sealed class ArgumentNullOrWhitespaceException : ArgumentException
 {
+	private ArgumentNullOrWhitespaceException(SerializationInfo info, StreamingContext context) : base(info, context) { }
 	public ArgumentNullOrWhitespaceException() : base(SystemResources.ArgumentNullOrEmptyGeneric) { }
 	public ArgumentNullOrWhitespaceException(string paramName) : base(paramName, SystemResources.ArgumentNullOrEmptyGeneric) { }
 	public ArgumentNullOrWhitespaceException(string paramName, string    message) : base(paramName, message) { }

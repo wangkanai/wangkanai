@@ -7,6 +7,7 @@ namespace Wangkanai.Exceptions;
 [Serializable]
 public sealed class ArgumentEmptyException : ArgumentException
 {
+	private ArgumentEmptyException(SerializationInfo info, StreamingContext context) : base(info, context) { }
 	public ArgumentEmptyException() : base(SystemResources.ArgumentEmptyGeneric) { }
 	public ArgumentEmptyException(string paramName) : base(SystemResources.ArgumentEmptyGeneric, paramName) { }
 	public ArgumentEmptyException(string message,   Exception innerException) : base(message, innerException) { }

@@ -7,6 +7,7 @@ namespace Wangkanai.Exceptions;
 [Serializable]
 public sealed class ArgumentWhitespaceException : ArgumentException
 {
+	private ArgumentWhitespaceException(SerializationInfo info, StreamingContext context) : base(info, context) { }
 	public ArgumentWhitespaceException() : base(SystemResources.ArgumentEmptyGeneric) { }
 	public ArgumentWhitespaceException(string paramName) : base(SystemResources.ArgumentEmptyGeneric, paramName) { }
 	public ArgumentWhitespaceException(string message,   Exception innerException) : base(message, innerException) { }
