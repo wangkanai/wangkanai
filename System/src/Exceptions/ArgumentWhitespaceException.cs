@@ -5,7 +5,7 @@ using Wangkanai.Resources;
 namespace Wangkanai.Exceptions;
 
 [Serializable]
-public class ArgumentWhitespaceException : ArgumentException
+public sealed class ArgumentWhitespaceException : ArgumentException
 {
 	public ArgumentWhitespaceException() : base(SystemResources.ArgumentEmptyGeneric) { }
 	public ArgumentWhitespaceException(string paramName) : base(SystemResources.ArgumentEmptyGeneric, paramName) { }

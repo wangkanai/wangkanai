@@ -5,7 +5,7 @@ using Wangkanai.Resources;
 namespace Wangkanai.Exceptions;
 
 [Serializable]
-public class ArgumentNegativeException : ArgumentException
+public sealed class ArgumentNegativeException : ArgumentException
 {
 	public ArgumentNegativeException() : base(SystemResources.ArgumentNegativeGeneric) { }
 	public ArgumentNegativeException(string paramName) : base(SystemResources.ArgumentZeroGeneric, paramName) { }

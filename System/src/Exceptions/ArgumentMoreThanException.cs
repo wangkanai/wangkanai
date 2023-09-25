@@ -5,7 +5,7 @@ using Wangkanai.Resources;
 namespace Wangkanai.Exceptions;
 
 [Serializable]
-public class ArgumentMoreThanException : ArgumentException
+public sealed class ArgumentMoreThanException : ArgumentException
 {
 	public ArgumentMoreThanException() : base(SystemResources.ArgumentMoreThanGeneric) { }
 	public ArgumentMoreThanException(string paramName) : base(SystemResources.ArgumentMoreThanGeneric, paramName) { }

@@ -5,7 +5,7 @@ using Wangkanai.Resources;
 namespace Wangkanai.Exceptions;
 
 [Serializable]
-public class ArgumentNotEqualException : ArgumentException
+public sealed class ArgumentNotEqualException : ArgumentException
 {
 	public ArgumentNotEqualException() : base(SystemResources.ArgumentNotEqualGeneric) { }
 	public ArgumentNotEqualException(string paramName) : base(SystemResources.ArgumentNotEqualGeneric, paramName) { }
