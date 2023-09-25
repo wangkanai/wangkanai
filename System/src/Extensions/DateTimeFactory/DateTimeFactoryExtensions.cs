@@ -4,7 +4,7 @@ namespace Wangkanai.Extensions.DateTimeFactory;
 
 public static class DateTimeFactoryExtensions
 {
-	public static DateTime January(this   int day, int year) => new(year, 1, day);
+	public static DateTime January(this   int day, int year) => new(year, 1, day,0,0,0,DateTimeKind.Utc);
 	public static DateTime February(this  int day, int year) => new(year, 2, day);
 	public static DateTime March(this     int day, int year) => new(year, 3, day);
 	public static DateTime April(this     int day, int year) => new(year, 4, day);
