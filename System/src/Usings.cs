@@ -6,5 +6,6 @@ global using System.Collections.Generic;
 global using System.Diagnostics;
 global using System.Linq;
 global using System.Reflection;
+global using System.Runtime.Serialization;
 
 global using JetBrains.Annotations;
