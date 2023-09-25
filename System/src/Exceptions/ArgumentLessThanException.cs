@@ -5,7 +5,7 @@ using Wangkanai.Resources;
 namespace Wangkanai.Exceptions;
 
 [Serializable]
-public class ArgumentLessThanException : ArgumentException
+public sealed class ArgumentLessThanException : ArgumentException
 {
 	public ArgumentLessThanException() : base(SystemResources.ArgumentLessThanGeneric) { }
 	public ArgumentLessThanException(string paramName) : base(SystemResources.ArgumentLessThanGeneric, paramName) { }

@@ -5,7 +5,7 @@ using Wangkanai.Resources;
 namespace Wangkanai.Exceptions;
 
 [Serializable]
-public class ArgumentEqualException : ArgumentException
+public sealed class ArgumentEqualException : ArgumentException
 {
 	public ArgumentEqualException() : base(SystemResources.ArgumentEqualGeneric) { }
 	public ArgumentEqualException(string paramName) : base(SystemResources.ArgumentEqualGeneric, paramName) { }

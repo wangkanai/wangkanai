@@ -5,7 +5,7 @@ using Wangkanai.Resources;
 namespace Wangkanai.Exceptions;
 
 [Serializable]
-public class ArgumentEmptyException : ArgumentException
+public sealed class ArgumentEmptyException : ArgumentException
 {
 	public ArgumentEmptyException() : base(SystemResources.ArgumentEmptyGeneric) { }
 	public ArgumentEmptyException(string paramName) : base(SystemResources.ArgumentEmptyGeneric, paramName) { }
