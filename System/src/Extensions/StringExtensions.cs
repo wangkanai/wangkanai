@@ -144,7 +144,7 @@ public static class StringExtensions
 	{
 		value.ThrowIfNull();
 
-		if (value.IsNullOrEmpty())
+		if (value.IsEmpty())
 			return string.Empty;
 		if (postfixes.IsNullOrEmpty())
 			return value;
@@ -221,8 +221,8 @@ public static class StringExtensions
 		value.ThrowIfEmpty();
 		value = value.ToLower();
 
-		return value.First().ToString().ToUpper() + value.Substring(1);
-	}
+		return string.Concat(value.AsSpan(0,1).ToString().ToUpper(), value.AsSpan(1));
+	}                                                                   
 
 	public static string EscapeSearch(this string value)
 	{
