@@ -144,7 +144,7 @@ public static class StringExtensions
 	{
 		value.ThrowIfNull();
 
-		if (value.IsNullOrEmpty())
+		if (value.IsEmpty())
 			return string.Empty;
 		if (postfixes.IsNullOrEmpty())
 			return value;
@@ -216,6 +216,16 @@ public static class StringExtensions
 	}
 
 	public static string ToTitleCase(this string value)
+	{
+		value.ThrowIfNull();
+		value.ThrowIfEmpty();
+		value = value.ToLower();
+
+		//return string.Concat(value.First().ToString().ToUpper(), value.AsSpan(1));
+		return value.First().ToString().ToUpper() + value.Substring(1);
+	}
+
+	public static string ToTitleCaseSubstring(this string value)
 	{
 		value.ThrowIfNull();
 		value.ThrowIfEmpty();
