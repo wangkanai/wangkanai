@@ -2,10 +2,9 @@
 
     <PropertyGroup>
         <TargetFramework>$(DefaultNetCoreTargetFramework)</TargetFramework>
-        <OutputType>Exe</OutputType>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <IsPackable>false</IsPackable>
+        <OutputType>Exe</OutputType>
     </PropertyGroup>
 
     <ItemGroup>

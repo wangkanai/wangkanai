@@ -4,7 +4,6 @@
         <TargetFramework>$(DefaultNetCoreTargetFramework)</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <IsPackable>false</IsPackable>
         <OutputType>Exe</OutputType>
     </PropertyGroup>
 

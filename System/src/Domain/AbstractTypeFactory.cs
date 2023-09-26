@@ -4,20 +4,20 @@ using Wangkanai.Extensions;
 
 namespace Wangkanai.Domain;
 
-public static class AbstractTypeFactory<BaseType>
+public static class AbstractTypeFactory<TBaseType>
 {
-	private static readonly List<GenericTypeInfo<BaseType>> _typeInfos = new();
+	private static readonly List<GenericTypeInfo<TBaseType>> _typeInfos = new();
 
-	public static IEnumerable<GenericTypeInfo<BaseType>> AllTypeInfos
+	public static IEnumerable<GenericTypeInfo<TBaseType>> AllTypeInfos
 		=> _typeInfos;
 
 	public static bool HasOverrides
 		=> _typeInfos.Count > 0;
 
-	public static GenericTypeInfo<BaseType> RegisterType<T>() where T : BaseType
+	public static GenericTypeInfo<TBaseType> RegisterType<T>() where T : TBaseType
 		=> RegisterType(typeof(T));
 
-	public static GenericTypeInfo<BaseType> RegisterType(Type type)
+	public static GenericTypeInfo<TBaseType> RegisterType(Type type)
 	{
 		type.ThrowIfNull();
 
@@ -25,7 +25,7 @@ public static class AbstractTypeFactory<BaseType>
 		if (result != null)
 			return result;
 
-		result = new GenericTypeInfo<BaseType>(type);
+		result = new GenericTypeInfo<TBaseType>(type);
 		_typeInfos.Add(result);
 
 		return result;
@@ -35,12 +35,12 @@ public static class AbstractTypeFactory<BaseType>
 	/// Override already registered  type to new 
 	/// </summary>
 	/// <returns>TypeInfo instance to continue configuration through fluent syntax</returns>
-	public static GenericTypeInfo<BaseType> OverrideType<OldType, NewType>() where NewType : BaseType
+	public static GenericTypeInfo<TBaseType> OverrideType<OldType, NewType>() where NewType : TBaseType
 	{
 		var oldType       = typeof(OldType);
 		var newType       = typeof(NewType);
 		var existTypeInfo = _typeInfos.FirstOrDefault(x => x.Type == oldType);
-		var newTypeInfo   = new GenericTypeInfo<BaseType>(newType);
+		var newTypeInfo   = new GenericTypeInfo<TBaseType>(newType);
 		if (existTypeInfo != null)
 			_typeInfos.Remove(existTypeInfo);
 
@@ -51,16 +51,16 @@ public static class AbstractTypeFactory<BaseType>
 	/// <summary>
 	/// Create BaseType instance considering type mapping information
 	/// </summary>
-	public static BaseType TryCreateInstance()
-		=> TryCreateInstance(typeof(BaseType).Name);
+	public static TBaseType TryCreateInstance()
+		=> TryCreateInstance(typeof(TBaseType).Name);
 
 	/// <summary>
 	/// Create derived from BaseType  specified type instance considering type mapping information
 	/// </summary>
-	public static T TryCreateInstance<T>() where T : BaseType
+	public static T TryCreateInstance<T>() where T : TBaseType
 		=> (T)TryCreateInstance(typeof(T).Name);
 
-	public static BaseType TryCreateInstance(string typeName, BaseType defaultObj)
+	public static TBaseType TryCreateInstance(string typeName, TBaseType defaultObj)
 	{
 		var result   = defaultObj;
 		var typeInfo = FindTypeInfoByName(typeName);
@@ -70,31 +70,32 @@ public static class AbstractTypeFactory<BaseType>
 		return result;
 	}
 
-	public static BaseType TryCreateInstance(string typeName)
+	public static TBaseType TryCreateInstance(string typeName)
 	{
-		BaseType result;
+		TBaseType result;
 		var      typeInfo = FindTypeInfoByName(typeName);
 		if (typeInfo != null)
 		{
 			if (typeInfo.Factory != null)
 				result = typeInfo.Factory();
 			else
-				result = (BaseType)Activator.CreateInstance(typeInfo.Type);
+				result = (TBaseType)Activator.CreateInstance(typeInfo.Type);
+			
 			typeInfo.SetupAction?.Invoke(result);
 		}
 		else
 		{
-			var baseType = typeof(BaseType);
+			var baseType = typeof(TBaseType);
 			if (baseType.IsAbstract)
 				throw new OperationCanceledException($"A type with {typeName} name is not registered in the AbstractFactory, you cannot create an instance of an abstract class {baseType.Name} because it does not have a complete implementation");
 
-			result = (BaseType)Activator.CreateInstance(typeof(BaseType));
+			result = (TBaseType)Activator.CreateInstance(typeof(TBaseType));
 		}
 
 		return result;
 	}
 
-	public static GenericTypeInfo<BaseType> FindTypeInfoByName(string typeName)
+	public static GenericTypeInfo<TBaseType> FindTypeInfoByName(string typeName)
 	{
 		// Try find first direct type match from registered types
 		var result = _typeInfos.FirstOrDefault(x => x.TypeName.EqualsInvariant(typeName));

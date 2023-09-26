@@ -44,6 +44,8 @@
 
 	<!-- SonarScanner for MSBuild -->
 	<PropertyGroup Condition="$(MSBuildProjectName.Contains('Benchmark'))">
+		<Optimize>true</Optimize>
+		<IsPackable>false</IsPackable>
 		<NoWarn>NU1504</NoWarn>
 		<SonarQubeExclude>true</SonarQubeExclude>
 	</PropertyGroup>
