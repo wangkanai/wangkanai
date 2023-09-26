@@ -2,10 +2,8 @@
 
 	<PropertyGroup>
 		<TargetFramework>$(DefaultNetCoreTargetFramework)</TargetFramework>
-		<Optimize>true</Optimize>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-		<IsPackable>false</IsPackable>
 		<OutputType>Exe</OutputType>
 	</PropertyGroup>
 
