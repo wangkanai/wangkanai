@@ -2,8 +2,6 @@
 
 	<PropertyGroup>
 		<TargetFramework>$(DefaultNetCoreTargetFramework)</TargetFramework>
-		<!--		<TargetFrameworks>net8.0;net7.0</TargetFrameworks>-->
-		<!--		<LangVersion>Preview</LangVersion>-->
 	</PropertyGroup>
 
 	<ItemGroup>

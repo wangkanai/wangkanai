@@ -6,12 +6,12 @@ using Wangkanai.Extensions;
 
 namespace Wangkanai;
 
-// [SimpleJob(RuntimeMoniker.Net80)]
+[SimpleJob(RuntimeMoniker.Net80)]
 [MemoryDiagnoser]
 public class StringSpanVsSubstringBenchmark
 {
 	string str = "Hello World";
 
-	[Benchmark] public void ToTitleCase() => str.ToTitleCase();
-	//[Benchmark] public void Substring() => str.ToTitleCaseSubstring();
+	[Benchmark] public void AsSpan() => str.ToTitleCase();
+	[Benchmark] public void Substring() => str.ToTitleCaseSubstring();
 }

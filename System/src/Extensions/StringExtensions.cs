@@ -221,8 +221,8 @@ public static class StringExtensions
 		value.ThrowIfEmpty();
 		value = value.ToLower();
 
-		//return string.Concat(value.First().ToString().ToUpper(), value.AsSpan(1));
-		return value.First().ToString().ToUpper() + value.Substring(1);
+		return string.Concat(value.AsSpan(0,1).ToString().ToUpper(), value.AsSpan(1));
+		//return value.First().ToString().ToUpper() + value.Substring(1);
 	}
 
 	public static string ToTitleCaseSubstring(this string value)
