@@ -41,15 +41,17 @@
 		<PackageReference Include="coverlet.collector" />
 		<PackageReference Include="coverlet.msbuild" />
 	</ItemGroup>
-	
-	<ItemGroup Condition="$(MSBuildProjectName.Contains('Benchmark'))">
-		<PackageReference Include="BenchmarkDotNet"/>
-	</ItemGroup>
 
 	<!-- SonarScanner for MSBuild -->
 	<PropertyGroup Condition="$(MSBuildProjectName.Contains('Benchmark'))">
+		<NoWarn>NU1504</NoWarn>
 		<SonarQubeExclude>true</SonarQubeExclude>
 	</PropertyGroup>
+
+	<ItemGroup Condition="$(MSBuildProjectName.Contains('Benchmark'))">
+		<PackageReference Include="BenchmarkDotNet" Version="0.13.8"/>
+	</ItemGroup>
+	
 	<PropertyGroup Condition="$(MSBuildProjectName.Contains('Tests'))">
 		<IsPackable>false</IsPackable>
 	</PropertyGroup>

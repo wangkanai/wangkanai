@@ -222,17 +222,7 @@ public static class StringExtensions
 		value = value.ToLower();
 
 		return string.Concat(value.AsSpan(0,1).ToString().ToUpper(), value.AsSpan(1));
-		//return value.First().ToString().ToUpper() + value.Substring(1);
-	}
-
-	public static string ToTitleCaseSubstring(this string value)
-	{
-		value.ThrowIfNull();
-		value.ThrowIfEmpty();
-		value = value.ToLower();
-
-		return value.First().ToString().ToUpper() + value.Substring(1);
-	}
+	}                                                                   
 
 	public static string EscapeSearch(this string value)
 	{
