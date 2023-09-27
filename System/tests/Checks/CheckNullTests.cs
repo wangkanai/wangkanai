@@ -164,7 +164,11 @@ public class CheckNullTests
 
 		Assert.Throws<ArgumentNullException>(() => _null.ThrowIfNull("Null Exception"));
 		Assert.Throws<ArgumentNullException>(() => _null.ThrowIfNull<ArgumentNullException>("Null Exception"));
-		Assert.Throws<CustomArgumentException>(() => _null.ThrowIfNull<CustomArgumentException>("Null Exception"));
+		Assert.Throws<CustomArgumentException>(() => _null.ThrowIfNull<CustomArgumentException>("Null Exception"));    
+		
+		Assert.Throws<ArgumentNullException>(() => _null.ThrowIfNull("Null Exception", new Exception()));
+		Assert.Throws<ArgumentNullException>(() => _null.ThrowIfNull<ArgumentNullException>("Null Exception", new Exception()));
+		Assert.Throws<CustomArgumentException>(() => _null.ThrowIfNull<CustomArgumentException>("Null Exception", new Exception()));
 	}
 
 	[Fact]
@@ -179,6 +183,10 @@ public class CheckNullTests
 		Assert.Equal(_obj, _obj.ThrowIfNull("Null Exception"));
 		Assert.Equal(_obj, _obj.ThrowIfNull<ArgumentNullException>("Null Exception"));
 		Assert.Equal(_obj, _obj.ThrowIfNull<CustomArgumentException>("Null Exception"));
+		
+		Assert.Equal(_obj, _obj.ThrowIfNull("Null Exception", new Exception()));
+		Assert.Equal(_obj, _obj.ThrowIfNull<ArgumentNullException>("Null Exception", new Exception()));
+		Assert.Equal(_obj, _obj.ThrowIfNull<CustomArgumentException>("Null Exception", new Exception()));
 	}
 
 	[Fact]
