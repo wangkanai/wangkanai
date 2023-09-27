@@ -329,14 +329,15 @@ public static class Check
 	public static object ThrowIfNull<T>(this object? value, string message, Exception inner)
 		where T : Exception
 		=> value ?? throw CreateGenericExceptionInstance<T>(message, inner);
-
-	public static T ThrowIfNull<T>(this T value)
+	
+	
+	public static T ThrowIfNull<T>(this T? value)
 		=> value ?? throw CreateArgumentExceptionInstance<ArgumentNullException>(nameof(value));
 
-	public static T ThrowIfNull<T>(this T value, string message)
-		=> value ?? throw CreateArgumentExceptionInstance<ArgumentNullException>(message);
+	public static T ThrowIfNull<T>(this T? value, string message)
+		=> value ?? throw CreateArgumentExceptionInstance<ArgumentNullException>(nameof(value), message);
 
-	public static T ThrowIfNull<T>(this T value, string message, Exception inner)
+	public static T ThrowIfNull<T>(this T? value, string message, Exception inner)
 		=> value ?? throw CreateArgumentExceptionInstance<ArgumentNullException>(nameof(value), message, inner);
 
 	// Throw if value is not equal to expected
