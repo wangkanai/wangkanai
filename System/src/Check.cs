@@ -444,7 +444,7 @@ public static class Check
 
 	public static int ThrowIfPositive<T>(this int value, string message)
 		where T : ArgumentException
-		=> value < 0
+		=> value > 0
 			   ? throw CreateArgumentExceptionInstance<T>(nameof(value), message)
 			   : value;
 
