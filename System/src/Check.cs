@@ -44,33 +44,43 @@ public static class Check
 	public static uint ThrowIfNull(this uint? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
+	[MemberNotNull]
 	public static nint ThrowIfNull(this nint? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
+	[MemberNotNull]
 	public static nuint ThrowIfNull(this nuint? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
+	[MemberNotNull]
 	public static long ThrowIfNull(this long? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
+	[MemberNotNull]
 	public static ulong ThrowIfNull(this ulong? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
+	[MemberNotNull]
 	public static float ThrowIfNull(this float? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
+	[MemberNotNull]
 	public static decimal ThrowIfNull(this decimal? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
+	[MemberNotNull]
 	public static double ThrowIfNull(this double? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
+	[MemberNotNull]
 	public static char ThrowIfNull(this char? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
+	[MemberNotNull]
 	public static string ThrowIfNull(this string? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
+	[MemberNotNull]
 	public static string ThrowIfNull(this string? value, string message)
 		=> ThrowIfNull<ArgumentNullException>(value, message);
 
