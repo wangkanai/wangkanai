@@ -24,16 +24,4 @@ public class CreateExceptionInstanceTests
 		Assert.Equal(typeof(ArgumentNullException), exception.GetType());
 		Assert.Equal("message (Parameter 'value')", exception.Message);
 	}
-
-	// [Fact]
-	// public void CreateExceptionInstanceWithMessageAndInnerException()
-	// {
-	// 	var value          = 1;
-	// 	var innerException = new Exception();
-	// 	var exception      = Check.CreateArgumentExceptionInstance<ArgumentNullException>(nameof(value), "message", innerException);
-	// 	Assert.Equal(1, value);
-	// 	Assert.Equal(typeof(ArgumentNullException), exception.GetType());
-	// 	Assert.Equal("message", exception.Message);
-	// 	Assert.Equal(innerException, exception.InnerException);
-	// }
 }
