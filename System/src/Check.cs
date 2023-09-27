@@ -442,21 +442,21 @@ public static class Check
 
 	// Throw if value is zero
 
-	public static bool ThrowIfZero(this int value)
+	public static int ThrowIfZero(this int value)
 		=> value.ThrowIfZero<ArgumentZeroException>(nameof(value));
 
-	public static bool ThrowIfZero(this int value, [InvokerParameterName] string paramName)
+	public static int ThrowIfZero(this int value, [InvokerParameterName] string paramName)
 		=> value.ThrowIfZero<ArgumentZeroException>(paramName);
 
-	public static bool ThrowIfZero<T>(this int value)
+	public static int ThrowIfZero<T>(this int value)
 		where T : ArgumentException
 		=> value.ThrowIfZero<T>(nameof(value));
 
-	public static bool ThrowIfZero<T>(this int value, [InvokerParameterName] string paramName)
+	public static int ThrowIfZero<T>(this int value, [InvokerParameterName] string paramName)
 		where T : ArgumentException
 		=> value == 0
 			   ? throw CreateArgumentExceptionInstance<T>(paramName)
-			   : true;
+			   : value;
 
 	#region IfNull
 

@@ -32,4 +32,40 @@ public class CheckNumericTests
 		Assert.Throws<ArgumentNullException>(() => Check.ThrowIfNull(double32));
 		Assert.Throws<ArgumentNullException>(() => Check.ThrowIfNull(decimal32));
 	}
+
+	[Fact]
+	public void ThrowIfNegative()
+	{
+		int postitive = 1;
+		int negative  = -1;
+		int zero      = 0;
+
+		Assert.Throws<ArgumentNullException>(() => negative.ThrowIfNegative());
+		Assert.Equal(0, zero.ThrowIfNegative());
+		Assert.Equal(1, postitive.ThrowIfNegative());
+	}
+
+	[Fact]
+	public void ThrowIfZero()
+	{
+		int posittive = 1;
+		int negative  = -1;
+		int zero      = 0;
+
+		Assert.Throws<ArgumentNullException>(() => zero.ThrowIfZero());
+		Assert.Equal(1, posittive.ThrowIfZero());
+		Assert.Equal(-1, negative.ThrowIfZero());
+	}
+
+	[Fact]
+	public void ThrowIfPositive()
+	{
+		int posittive = 1;
+		int negative  = -1;
+		int zero      = 0;
+
+		Assert.Throws<ArgumentNullException>(() => posittive.ThrowIfPositive());
+		Assert.Equal(0, zero.ThrowIfPositive());
+		Assert.Equal(-1, negative.ThrowIfPositive());
+	}
 }
