@@ -8,7 +8,7 @@ using Xunit;
 
 namespace Wangkanai.Checks;
 
-public class CheckEmptyTests
+public class CheckEmptyListTests
 {
 	List<int>? _null  = null!;
 	List<int>? _empty = new();

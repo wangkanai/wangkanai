@@ -43,6 +43,7 @@ public class CheckNumericTests
 		int zero      = 0;
 
 		Assert.Throws<ArgumentNegativeException>(() => negative.ThrowIfNegative());
+		Assert.Throws<ArgumentNegativeException>(() => negative.ThrowIfNegative("message"));
 		Assert.Equal(0, zero.ThrowIfNegative());
 		Assert.Equal(1, postitive.ThrowIfNegative());
 	}
@@ -55,6 +56,7 @@ public class CheckNumericTests
 		int zero      = 0;
 
 		Assert.Throws<ArgumentZeroException>(() => zero.ThrowIfZero());
+		Assert.Throws<ArgumentZeroException>(() => zero.ThrowIfZero("message"));
 		Assert.Equal(1, posittive.ThrowIfZero());
 		Assert.Equal(-1, negative.ThrowIfZero());
 	}
@@ -67,6 +69,7 @@ public class CheckNumericTests
 		int zero      = 0;
 
 		Assert.Throws<ArgumentPositiveException>(() => posittive.ThrowIfPositive());
+		Assert.Throws<ArgumentPositiveException>(() => posittive.ThrowIfPositive("message"));
 		Assert.Equal(0, zero.ThrowIfPositive());
 		Assert.Equal(-1, negative.ThrowIfPositive());
 	}
