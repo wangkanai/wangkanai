@@ -29,8 +29,8 @@ public class CheckStringTests
 		string? _null  = null;
 		string? _empty = string.Empty;
 
-		Assert.Throws<ArgumentEmptyException>(() => _null.ThrowIfEmpty());
-		Assert.Throws<ArgumentEmptyException>(() => _null.ThrowIfEmpty<ArgumentEmptyException>());
+		Assert.Throws<ArgumentNullException>(() => _null.ThrowIfEmpty());
+		Assert.Throws<ArgumentNullException>(() => _null.ThrowIfEmpty<ArgumentNullException>());
 		Assert.Throws<CustomArgumentException>(() => _null.ThrowIfEmpty<CustomArgumentException>());
 
 		Assert.Throws<ArgumentEmptyException>(() => _empty.ThrowIfEmpty());

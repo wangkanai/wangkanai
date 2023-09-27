@@ -59,9 +59,7 @@ public class CheckCompareTests
 	public void LessThanExpectedThrow()
 	{
 		Assert.Throws<ArgumentLessThanException>(() => 0.ThrowIfLessThan(1));
-		Assert.Throws<ArgumentLessThanException>(() => 0.ThrowIfLessThan(1, nameof(LessThanExpectedThrow)));
 		Assert.Throws<ArgumentLessThanException>(() => 0.ThrowIfLessThan<ArgumentLessThanException>(1));
-		Assert.Throws<ArgumentLessThanException>(() => 0.ThrowIfLessThan<ArgumentLessThanException>(1, nameof(LessThanExpectedThrow)));
 	}
 
 	[Fact]
@@ -85,23 +83,21 @@ public class CheckCompareTests
 	}
 
 	[Fact]
-	public void ThrowIfZeroTruePositive()
+	public void ThrowIfZeroPositive()
 	{
 		var positive = 1;
-		Assert.True(positive.ThrowIfZero());
-		Assert.True(positive.ThrowIfZero(nameof(ThrowIfZeroTruePositive)));
-		Assert.True(positive.ThrowIfZero<ArgumentZeroException>());
-		Assert.True(positive.ThrowIfZero<ArgumentZeroException>(nameof(ThrowIfZeroTruePositive)));
+		Assert.Equal(1, positive.ThrowIfZero());
+		Assert.Equal(1, positive.ThrowIfZero<ArgumentZeroException>());
+		Assert.Equal(1, positive.ThrowIfZero<ArgumentZeroException>(nameof(ThrowIfZeroPositive)));
 	}
 
 	[Fact]
-	public void ThrowIfZeroTrueNegative()
+	public void ThrowIfZeroNegative()
 	{
 		var negative = -1;
-		Assert.True(negative.ThrowIfZero());
-		Assert.True(negative.ThrowIfZero(nameof(ThrowIfZeroTrueNegative)));
-		Assert.True(negative.ThrowIfZero<ArgumentZeroException>());
-		Assert.True(negative.ThrowIfZero<ArgumentZeroException>(nameof(ThrowIfZeroTrueNegative)));
+		Assert.Equal(-1, negative.ThrowIfZero());
+		Assert.Equal(-1, negative.ThrowIfZero<ArgumentZeroException>());
+		Assert.Equal(-1, negative.ThrowIfZero<ArgumentZeroException>(nameof(ThrowIfZeroNegative)));
 	}
 
 	[Fact]
@@ -109,7 +105,6 @@ public class CheckCompareTests
 	{
 		var zero = 0;
 		Assert.Throws<ArgumentZeroException>(() => zero.ThrowIfZero());
-		Assert.Throws<ArgumentZeroException>(() => zero.ThrowIfZero(nameof(ThrowIfZeroFail)));
 		Assert.Throws<ArgumentZeroException>(() => zero.ThrowIfZero<ArgumentZeroException>());
 		Assert.Throws<ArgumentZeroException>(() => zero.ThrowIfZero<ArgumentZeroException>(nameof(ThrowIfZeroFail)));
 	}

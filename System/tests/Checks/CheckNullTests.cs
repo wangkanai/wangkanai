@@ -164,7 +164,7 @@ public class CheckNullTests
 
 		Assert.Throws<ArgumentNullException>(() => _null.ThrowIfNull("Null Exception"));
 		Assert.Throws<ArgumentNullException>(() => _null.ThrowIfNull<ArgumentNullException>("Null Exception"));
-		Assert.Throws<CustomArgumentException>(() => _null.ThrowIfNull<CustomArgumentException>("Null Exception"));
+		Assert.Throws<CustomArgumentException>(() => _null.ThrowIfNull<CustomArgumentException>("Null Exception"));    
 	}
 
 	[Fact]

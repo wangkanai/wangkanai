@@ -44,33 +44,43 @@ public static class Check
 	public static uint ThrowIfNull(this uint? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
+	[MemberNotNull]
 	public static nint ThrowIfNull(this nint? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
+	[MemberNotNull]
 	public static nuint ThrowIfNull(this nuint? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
+	[MemberNotNull]
 	public static long ThrowIfNull(this long? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
+	[MemberNotNull]
 	public static ulong ThrowIfNull(this ulong? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
+	[MemberNotNull]
 	public static float ThrowIfNull(this float? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
+	[MemberNotNull]
 	public static decimal ThrowIfNull(this decimal? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
+	[MemberNotNull]
 	public static double ThrowIfNull(this double? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
+	[MemberNotNull]
 	public static char ThrowIfNull(this char? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
+	[MemberNotNull]
 	public static string ThrowIfNull(this string? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
+	[MemberNotNull]
 	public static string ThrowIfNull(this string? value, string message)
 		=> ThrowIfNull<ArgumentNullException>(value, message);
 
@@ -198,14 +208,13 @@ public static class Check
 	#endregion
 
 	// Throw is value string is null or empty
-
 	public static string ThrowIfNullOrEmpty(this string? value)
 		=> value.ThrowIfNullOrEmpty<ArgumentNullOrEmptyException>();
 
 	public static string ThrowIfNullOrEmpty(this string? value, string message)
 		=> value.ThrowIfNullOrEmpty<ArgumentNullOrEmptyException>(message);
 
-	public static string ThrowIfNullOrEmpty(this string? value, string message, string paramName)
+	public static string ThrowIfNullOrEmpty(this string? value, string message, [InvokerParameterName] string paramName)
 		=> value.ThrowIfNullOrEmpty<ArgumentNullOrEmptyException>(message, paramName);
 
 	public static string ThrowIfNullOrEmpty<T>(this string? value)
@@ -224,7 +233,7 @@ public static class Check
 		return value!;
 	}
 
-	public static string ThrowIfNullOrEmpty<T>(this string? value, string message, string paramName)
+	public static string ThrowIfNullOrEmpty<T>(this string? value, string message, [InvokerParameterName] string paramName)
 		where T : ArgumentException
 	{
 		if (value.IsNullOrEmpty())
@@ -233,15 +242,11 @@ public static class Check
 	}
 
 	// Throw if value string is empty
-
 	public static string ThrowIfEmpty(this string? value)
-		=> value.ThrowIfEmpty<ArgumentEmptyException>();
+		=> value.ThrowIfNull().ThrowIfEmpty<ArgumentEmptyException>();
 
 	public static string ThrowIfEmpty(this string? value, string message)
-		=> value.ThrowIfEmpty<ArgumentEmptyException>(message);
-
-	public static string ThrowIfEmpty(this string? value, string message, string paramName)
-		=> value.ThrowIfEmpty<ArgumentEmptyException>(message, paramName);
+		=> value.ThrowIfNull().ThrowIfEmpty<ArgumentEmptyException>(message);
 
 	public static string ThrowIfEmpty<T>(this string? value)
 		where T : ArgumentException
@@ -255,14 +260,13 @@ public static class Check
 			   ? throw CreateArgumentExceptionInstance<T>(nameof(value), message)
 			   : value!;
 
-	public static string ThrowIfEmpty<T>(this string? value, string message, string paramName)
+	public static string ThrowIfEmpty<T>(this string? value, string message, [InvokerParameterName] string paramName)
 		where T : ArgumentException
 		=> value.ThrowIfNull<T>().IsEmpty()
 			   ? throw CreateArgumentExceptionInstance<T>(paramName, message)
 			   : value!;
 
 	// Throw if value string is null or whitespace
-
 	public static string ThrowIfNullOrWhitespace(this string? value)
 		=> value.ThrowIfNullOrWhitespace<ArgumentNullOrWhitespaceException>();
 
@@ -284,7 +288,6 @@ public static class Check
 			   : value!;
 
 	// Throw if value string is whitespace
-
 	public static string ThrowIfWhitespace(this string? value)
 		=> value.ThrowIfWhitespace<ArgumentWhitespaceException>();
 
@@ -306,22 +309,19 @@ public static class Check
 			   : value!;
 
 	// Throw if value object is null
-
 	public static object ThrowIfNull<T>(this object? value)
 		where T : Exception
-		=> value ?? throw CreateGenericExceptionInstance<T>();
+		=> value ?? throw CreateGenericExceptionInstance<T>(nameof(value));
 
 	public static object ThrowIfNull<T>(this object? value, string message)
 		where T : Exception
-		=> value ?? throw CreateGenericExceptionInstance<T>(message);
-
+		=> value ?? throw CreateGenericExceptionInstance<T>(nameof(value), message);
 
 	public static T ThrowIfNull<T>(this T value)
 		=> value ?? throw CreateArgumentExceptionInstance<ArgumentNullException>(nameof(value));
 
 	public static T ThrowIfNull<T>(this T value, string message)
-		=> value ?? throw CreateArgumentExceptionInstance<ArgumentNullException>(message);
-
+		=> value ?? throw CreateArgumentExceptionInstance<ArgumentNullException>(nameof(value), message);
 
 	// Throw if value is not equal to expected
 	public static bool ThrowIfEqual(this int value, int expected)
@@ -338,7 +338,6 @@ public static class Check
 			   : false;
 
 	// Throw if value is not equal to expected
-
 	public static bool ThrowIfNotEqual(this int value, int expected)
 		=> value.ThrowIfNotEqual<ArgumentNotEqualException>(expected, nameof(value));
 
@@ -353,94 +352,91 @@ public static class Check
 			   : true;
 
 	// Throw if value is less than expected
-
 	public static bool ThrowIfLessThan(this int value, int expected)
 		=> value.ThrowIfLessThan<ArgumentLessThanException>(expected, nameof(value));
 
-	public static bool ThrowIfLessThan(this int value, int expected, [InvokerParameterName] string paramName)
-		=> value.ThrowIfLessThan<ArgumentLessThanException>(expected, paramName);
+	public static bool ThrowIfLessThan(this int value, int expected, string message)
+		=> value.ThrowIfLessThan<ArgumentLessThanException>(expected, message);
 
 	public static bool ThrowIfLessThan<T>(this int value, int expected)
 		where T : ArgumentException
 		=> value.ThrowIfLessThan<T>(expected, nameof(value));
 
-	public static bool ThrowIfLessThan<T>(this int value, int expected, [InvokerParameterName] string paramName)
+	public static bool ThrowIfLessThan<T>(this int value, int expected, string message)
 		where T : ArgumentException
 		=> value < expected
-			   ? throw CreateArgumentExceptionInstance<T>(paramName)
+			   ? throw CreateArgumentExceptionInstance<T>(message)
 			   : true;
 
 	// Throw if value is more than expected
-
 	public static bool ThrowIfMoreThan(this int value, int expected)
-		=> value.ThrowIfMoreThan<ArgumentMoreThanException>(expected, nameof(value));
+		=> value.ThrowIfMoreThan<ArgumentMoreThanException>(expected);
 
-	public static bool ThrowIfMoreThan(this int value, int expected, [InvokerParameterName] string paramName)
-		=> value.ThrowIfMoreThan<ArgumentMoreThanException>(expected, paramName);
+	public static bool ThrowIfMoreThan(this int value, int expected, string message)
+		=> value.ThrowIfMoreThan<ArgumentMoreThanException>(expected, message);
 
 	public static bool ThrowIfMoreThan<T>(this int value, int expected)
 		where T : ArgumentException
 		=> value.ThrowIfMoreThan<T>(expected, nameof(value));
 
-	public static bool ThrowIfMoreThan<T>(this int value, int expected, [InvokerParameterName] string paramName)
+	public static bool ThrowIfMoreThan<T>(this int value, int expected, string message)
 		where T : ArgumentException
 		=> value > expected
-			   ? throw CreateArgumentExceptionInstance<T>(paramName)
+			   ? throw CreateArgumentExceptionInstance<T>(message)
 			   : true;
 
 	// Throw if value is negative
-
 	public static int ThrowIfNegative(this int value)
-		=> value.ThrowIfNegative<ArgumentNegativeException>(nameof(value));
+		=> value.ThrowIfNegative<ArgumentNegativeException>();
 
-	public static int ThrowIfNegative(this int value, [InvokerParameterName] string paramName)
-		=> value.ThrowIfNegative<ArgumentNegativeException>(paramName);
+	public static int ThrowIfNegative(this int value, string message)
+		=> value.ThrowIfNegative<ArgumentNegativeException>(message);
 
 	public static int ThrowIfNegative<T>(this int value)
 		where T : ArgumentException
 		=> value.ThrowIfNegative<T>(nameof(value));
 
-	public static int ThrowIfNegative<T>(this int value, [InvokerParameterName] string paramName)
+	public static int ThrowIfNegative<T>(this int value, string message)
 		where T : ArgumentException
 		=> value < 0
-			   ? throw CreateArgumentExceptionInstance<T>(paramName)
+			   ? throw CreateArgumentExceptionInstance<T>(nameof(value), message)
 			   : value;
 
 	// Throw if value is positive
-
 	public static int ThrowIfPositive(this int value)
-		=> value.ThrowIfPositive<ArgumentPositiveException>(nameof(value));
+		=> value.ThrowIfPositive<ArgumentPositiveException>();
 
-	public static int ThrowIfPositive(this int value, [InvokerParameterName] string paramName)
-		=> value.ThrowIfPositive<ArgumentPositiveException>(paramName);
+	public static int ThrowIfPositive(this int value, string message)
+		=> value.ThrowIfPositive<ArgumentPositiveException>(message);
 
 	public static int ThrowIfPositive<T>(this int value)
 		where T : ArgumentException
 		=> value.ThrowIfPositive<T>(nameof(value));
 
-	public static int ThrowIfPositive<T>(this int value, [InvokerParameterName] string paramName)
+	public static int ThrowIfPositive<T>(this int value, string message)
 		where T : ArgumentException
-		=> value < 0
-			   ? throw CreateArgumentExceptionInstance<T>(paramName)
+		=> value > 0
+			   ? throw CreateArgumentExceptionInstance<T>(nameof(value), message)
 			   : value;
 
 	// Throw if value is zero
+	public static int ThrowIfZero(this int value)
+		=> value.ThrowIfZero<ArgumentZeroException>();
 
-	public static bool ThrowIfZero(this int value)
-		=> value.ThrowIfZero<ArgumentZeroException>(nameof(value));
+	public static int ThrowIfZero(this int value, string message)
+		=> value.ThrowIfZero<ArgumentZeroException>(message);
 
-	public static bool ThrowIfZero(this int value, [InvokerParameterName] string paramName)
-		=> value.ThrowIfZero<ArgumentZeroException>(paramName);
-
-	public static bool ThrowIfZero<T>(this int value)
-		where T : ArgumentException
-		=> value.ThrowIfZero<T>(nameof(value));
-
-	public static bool ThrowIfZero<T>(this int value, [InvokerParameterName] string paramName)
+	public static int ThrowIfZero<T>(this int value)
 		where T : ArgumentException
 		=> value == 0
-			   ? throw CreateArgumentExceptionInstance<T>(paramName)
-			   : true;
+			   ? throw CreateArgumentExceptionInstance<T>(nameof(value))
+			   : value;
+
+	public static int ThrowIfZero<T>(this int value, string message)
+		where T : ArgumentException
+		=> value == 0
+			   ? throw CreateArgumentExceptionInstance<T>(nameof(value), message)
+			   : value;
 
 	#region IfNull
 
@@ -463,29 +459,21 @@ public static class Check
 
 	#region Instance
 
-	private static T CreateGenericExceptionInstance<T>()
+	internal static T CreateGenericExceptionInstance<T>([InvokerParameterName] string paramName)
 		where T : Exception
-		=> (Activator.CreateInstance(typeof(T)) as T)!;
+		=> (Activator.CreateInstance(typeof(T), paramName) as T)!;
 
-	private static T CreateGenericExceptionInstance<T>(string message)
+	internal static T CreateGenericExceptionInstance<T>([InvokerParameterName] string paramName, string message)
 		where T : Exception
-		=> (Activator.CreateInstance(typeof(T), message) as T)!;
+		=> (Activator.CreateInstance(typeof(T), paramName, message) as T)!;
 
-	private static T CreateGenericExceptionInstance<T>(string message, Exception? innerException)
-		where T : Exception
-		=> (Activator.CreateInstance(typeof(T), message, innerException) as T)!;
-
-	private static T CreateArgumentExceptionInstance<T>(string paramName)
+	internal static T CreateArgumentExceptionInstance<T>([InvokerParameterName] string paramName)
 		where T : ArgumentException
 		=> (Activator.CreateInstance(typeof(T), paramName) as T)!;
 
-	private static T CreateArgumentExceptionInstance<T>(string paramName, string message)
+	internal static T CreateArgumentExceptionInstance<T>([InvokerParameterName] string paramName, string message)
 		where T : ArgumentException
-		=> (Activator.CreateInstance(typeof(T), message, paramName) as T)!;
-
-	private static T CreateArgumentExceptionInstance<T>(string paramName, string message, Exception? innerException)
-		where T : ArgumentException
-		=> (Activator.CreateInstance(typeof(T), message, paramName, innerException) as T)!;
+		=> (Activator.CreateInstance(typeof(T), paramName, message) as T)!;
 
 	#endregion
 }
