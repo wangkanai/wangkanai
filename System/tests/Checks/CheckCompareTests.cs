@@ -59,9 +59,7 @@ public class CheckCompareTests
 	public void LessThanExpectedThrow()
 	{
 		Assert.Throws<ArgumentLessThanException>(() => 0.ThrowIfLessThan(1));
-		Assert.Throws<ArgumentLessThanException>(() => 0.ThrowIfLessThan(1, nameof(LessThanExpectedThrow)));
 		Assert.Throws<ArgumentLessThanException>(() => 0.ThrowIfLessThan<ArgumentLessThanException>(1));
-		Assert.Throws<ArgumentLessThanException>(() => 0.ThrowIfLessThan<ArgumentLessThanException>(1, nameof(LessThanExpectedThrow)));
 	}
 
 	[Fact]
@@ -89,7 +87,6 @@ public class CheckCompareTests
 	{
 		var positive = 1;
 		Assert.Equal(1, positive.ThrowIfZero());
-		Assert.Equal(1, positive.ThrowIfZero(nameof(ThrowIfZeroPositive)));
 		Assert.Equal(1, positive.ThrowIfZero<ArgumentZeroException>());
 		Assert.Equal(1, positive.ThrowIfZero<ArgumentZeroException>(nameof(ThrowIfZeroPositive)));
 	}
@@ -99,7 +96,6 @@ public class CheckCompareTests
 	{
 		var negative = -1;
 		Assert.Equal(-1, negative.ThrowIfZero());
-		Assert.Equal(-1, negative.ThrowIfZero(nameof(ThrowIfZeroNegative)));
 		Assert.Equal(-1, negative.ThrowIfZero<ArgumentZeroException>());
 		Assert.Equal(-1, negative.ThrowIfZero<ArgumentZeroException>(nameof(ThrowIfZeroNegative)));
 	}
@@ -109,7 +105,6 @@ public class CheckCompareTests
 	{
 		var zero = 0;
 		Assert.Throws<ArgumentZeroException>(() => zero.ThrowIfZero());
-		Assert.Throws<ArgumentZeroException>(() => zero.ThrowIfZero(nameof(ThrowIfZeroFail)));
 		Assert.Throws<ArgumentZeroException>(() => zero.ThrowIfZero<ArgumentZeroException>());
 		Assert.Throws<ArgumentZeroException>(() => zero.ThrowIfZero<ArgumentZeroException>(nameof(ThrowIfZeroFail)));
 	}

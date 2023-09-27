@@ -1,6 +1,8 @@
 ﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 #nullable enable
+using Wangkanai.Exceptions;
+
 using Xunit;
 
 namespace Wangkanai.Checks;
@@ -40,7 +42,7 @@ public class CheckNumericTests
 		int negative  = -1;
 		int zero      = 0;
 
-		Assert.Throws<ArgumentNullException>(() => negative.ThrowIfNegative());
+		Assert.Throws<ArgumentNegativeException>(() => negative.ThrowIfNegative());
 		Assert.Equal(0, zero.ThrowIfNegative());
 		Assert.Equal(1, postitive.ThrowIfNegative());
 	}
@@ -52,7 +54,7 @@ public class CheckNumericTests
 		int negative  = -1;
 		int zero      = 0;
 
-		Assert.Throws<ArgumentNullException>(() => zero.ThrowIfZero());
+		Assert.Throws<ArgumentZeroException>(() => zero.ThrowIfZero());
 		Assert.Equal(1, posittive.ThrowIfZero());
 		Assert.Equal(-1, negative.ThrowIfZero());
 	}
@@ -64,7 +66,7 @@ public class CheckNumericTests
 		int negative  = -1;
 		int zero      = 0;
 
-		Assert.Throws<ArgumentNullException>(() => posittive.ThrowIfPositive());
+		Assert.Throws<ArgumentPositiveException>(() => posittive.ThrowIfPositive());
 		Assert.Equal(0, zero.ThrowIfPositive());
 		Assert.Equal(-1, negative.ThrowIfPositive());
 	}
