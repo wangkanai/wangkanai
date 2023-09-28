@@ -1,6 +1,6 @@
 $buildDir    = $env:AGENT_BUILDDIRECTORY
 $sourceDir   = $env:BUILD_SOURCESDIRECTORY
-$version     = 1.6
+$version     = 1.7
 
 # Get-ChildItem -Path Env:\ | Format-List
 
