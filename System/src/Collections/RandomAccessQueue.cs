@@ -178,26 +178,26 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 	/// Copies the elements of the queue to the given array, starting at the given index in the array.
 	/// </summary>
 	/// <param name="array">The array to copy the contents of the queue into</param>
-	/// <param name="arrayIndex">The zero-based index in array at which coping begins</param>
+	/// <param name="index">The zero-based index in array at which coping begins</param>
 	/// <exception cref="ArgumentException">When not enough space in the array</exception>
-	public void CopyTo(T[] array, int arrayIndex)
+	public void CopyTo(T[] array, int index)
 	{
 		array.ThrowIfNull();
-		arrayIndex.ThrowIfOutOfRange(0, array.Length);
+		index.ThrowIfOutOfRange(0, array.Length);
 
-		if (array.Length < arrayIndex + Count)
+		if (array.Length < index + Count)
 			throw new ArgumentException("Not enough space in the array", nameof(array));
 
 		for (var i = 0; i < Count; i++)
-			array[i + arrayIndex] = this[i];
+			array[i + index] = this[i];
 	}
 
 	/// <summary>
 	/// Copies the elements of the queue to the given array, beginning at the given index.
 	/// </summary>
 	/// <param name="array">The array to copy to the contents of the queue into</param>
-	/// <param name="arrayIndex">The zero-based index in array at which coping begins</param>
-	public void CopyTo(Array array, int arrayIndex)
+	/// <param name="index">The zero-based index in array at which coping begins</param>
+	public void CopyTo(Array array, int index)
 	{
 		array.ThrowIfNull();
 
@@ -205,7 +205,7 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 
 		strong.ThrowIfNull<ArgumentException>($"Cannot copy elements of type {typeof(T).Name} to an array of type {array.GetType().GetElementType().Name}");
 
-		CopyTo(strong, arrayIndex);
+		CopyTo(strong, index);
 	}
 
 	/// <summary>
