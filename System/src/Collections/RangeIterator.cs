@@ -31,8 +31,8 @@ public sealed class RangeIterator<T> : IEnumerable<T>
 	{
 		step.ThrowIfNull();
 
-		if (ascending  && range.Comparer.Compare(range.Start, step(range.Start)) >= 0 ||
-		    !ascending && range.Comparer.Compare(range.End, step(range.End))     <= 0)
+		if (ascending && range.Comparer.Compare(range.Start, step(range.Start)) >= 0 ||
+		    !ascending && range.Comparer.Compare(range.End, step(range.End)) <= 0)
 			throw new ArgumentException("Step does nothing, or progresses the wrong way");
 
 		Range     = range;
@@ -53,10 +53,9 @@ public sealed class RangeIterator<T> : IEnumerable<T>
 		var comparer = Ascending ? Range.Comparer : Range.Comparer.Reverse();
 
 		var value = start;
-		if (includeStart)
-			// In case that start point == end point
-			if (includeEnd || comparer.Compare(value, end) < 0)
-				yield return value;
+		// In case that start point == end point
+		if (includeStart && (includeEnd || comparer.Compare(value, end) < 0))
+			yield return value;
 
 		value = Step(value);
 

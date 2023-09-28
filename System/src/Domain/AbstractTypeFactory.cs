@@ -14,7 +14,8 @@ public static class AbstractTypeFactory<TBaseType>
 	public static bool HasOverrides
 		=> _typeInfos.Count > 0;
 
-	public static GenericTypeInfo<TBaseType> RegisterType<T>() where T : TBaseType
+	public static GenericTypeInfo<TBaseType> RegisterType<T>() 
+		where T : TBaseType
 		=> RegisterType(typeof(T));
 
 	public static GenericTypeInfo<TBaseType> RegisterType(Type type)
@@ -35,7 +36,8 @@ public static class AbstractTypeFactory<TBaseType>
 	/// Override already registered  type to new 
 	/// </summary>
 	/// <returns>TypeInfo instance to continue configuration through fluent syntax</returns>
-	public static GenericTypeInfo<TBaseType> OverrideType<OldType, NewType>() where NewType : TBaseType
+	public static GenericTypeInfo<TBaseType> OverrideType<OldType, NewType>() 
+		where NewType : TBaseType
 	{
 		var oldType       = typeof(OldType);
 		var newType       = typeof(NewType);
@@ -57,7 +59,8 @@ public static class AbstractTypeFactory<TBaseType>
 	/// <summary>
 	/// Create derived from BaseType  specified type instance considering type mapping information
 	/// </summary>
-	public static T TryCreateInstance<T>() where T : TBaseType
+	public static T TryCreateInstance<T>() 
+		where T : TBaseType
 		=> (T)TryCreateInstance(typeof(T).Name);
 
 	public static TBaseType TryCreateInstance(string typeName, TBaseType defaultObj)
@@ -101,7 +104,7 @@ public static class AbstractTypeFactory<TBaseType>
 		var result = _typeInfos.FirstOrDefault(x => x.TypeName.EqualsInvariant(typeName));
 		// Then need to find in inheritance chain from registered types
 		if (result == null)
-			result = _typeInfos.FirstOrDefault(x => x.IsAssignableTo(typeName));
+			result = _typeInfos.First(x => x.IsAssignableTo(typeName));
 
 		return result;
 	}

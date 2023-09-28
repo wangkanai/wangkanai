@@ -340,7 +340,6 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 			return result;
 		}
 
-		var current = this[index];
 		if (_start + index >= Capacity)
 		{
 			Array.Copy(

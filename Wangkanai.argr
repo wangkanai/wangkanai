@@ -16,10 +16,10 @@
   <Module Identifier="5925CD69-175B-479F-93E8-FEB244928F95" Name="Wangkanai.System.Tests" />
   <Module Identifier="460147BC-7960-4E70-8B1E-D602675D16F3" Name="Wangkanai.System.Benchmark" />
   <Module Identifier="BB8EB797-48CD-4A23-9650-D68723C0162B" Name="Host.Main" />
-  <Module Identifier="52ACE4EB-C551-4189-B92F-F7B92C333B34" Name="Wangkanai.Blazor.Benchmark" />
-  <Module Identifier="83F84C5F-228C-461B-9177-F48AC1A15DE4" Name="Wangkanai.Blazor" />
-  <Module Identifier="66C6499D-1F34-46B9-9419-31D9FE3C392A" Name="Wangkanai.Blazor.Components.Web" />
   <Module Identifier="4D626185-D5F9-43C0-B0D3-8AADAFAC3B9F" Name="Wangkanai.Blazor.Components" />
+  <Module Identifier="66C6499D-1F34-46B9-9419-31D9FE3C392A" Name="Wangkanai.Blazor.Components.Web" />
+  <Module Identifier="83F84C5F-228C-461B-9177-F48AC1A15DE4" Name="Wangkanai.Blazor" />
+  <Module Identifier="52ACE4EB-C551-4189-B92F-F7B92C333B34" Name="Wangkanai.Blazor.Benchmark" />
   <Module Identifier="235F3D6E-8F3D-4A68-8E4F-7CEF06022164" Name="Wangkanai.Blazor.Tests" />
   <Module Identifier="E07139C6-8529-4DED-899F-4E75E93B6B41" Name="Host.Main" />
   <Module Identifier="40C64D52-CDFF-45DA-BC80-A5775C0EBBC0" Name="Wangkanai.Webmaster" />
@@ -44,12 +44,12 @@
   <Module Identifier="AC302302-E3A7-4FAA-AA41-7F7CC2077B57" Name="Wangkanai.Solver" />
   <Module Identifier="FF587B44-9646-43F7-9C92-57D26400C91B" Name="Wangkanai.Solver.Tests" />
   <Module Identifier="B550C798-01DE-4BD9-ACD4-B6698DE68E71" Name="Wangkanai.Solver.Benchmark" />
-  <Module Identifier="4835BB3E-D9DF-4B1D-8739-FF9385E91CB6" Name="Host.Old" />
+  <Module Identifier="966A46E5-95DF-452A-BC81-A6C2EEB29412" Name="Host.Main.Client" />
   <Module Identifier="5CDA521B-A2B6-4E96-B8D6-CFD1FAF2FC11" Name="Wangkanai.Tabler" />
   <Module Identifier="2CEADA4F-C9A2-4C1D-8CF4-816291BABCAA" Name="Wangkanai.Tabler.Components" />
   <Module Identifier="677CDEB8-D55A-47AA-9622-C151B71B3298" Name="Wangkanai.Tabler.Components.Web" />
   <Module Identifier="C0874388-1C37-4868-8638-6AE7E17A83D6" Name="Host.Main" />
-  <Module Identifier="966A46E5-95DF-452A-BC81-A6C2EEB29412" Name="Host.Main.Client" />
+  <Module Identifier="4835BB3E-D9DF-4B1D-8739-FF9385E91CB6" Name="Host.Old" />
   <Module Identifier="3BC55F8B-971B-4611-B012-CDABA944BE96" Name="Wangkanai.Tabler.Tests" />
   <Module Identifier="9FD10445-6D7E-4D09-B123-F8E39A35709D" Name="Wangkanai.Tabler.Benchmark" />
   <Module Identifier="A80B6DAF-AA55-465E-9D99-6BFF7270DF36" Name="Wangkanai.MSBuild" />
@@ -76,9 +76,9 @@
   <Module Identifier="9A65939A-42CF-4B60-8046-77F7DCC74AEF" Name="Wangkanai.Domain.Benchmark" />
   <Module Identifier="F322AA9B-D32D-461D-BB18-9C97616F734B" Name="Host.AspNetIdentity" />
   <Module Identifier="3E52A670-7D9C-402F-97E2-C76A4284078D" Name="Wangkanai.Federation.AspNetIdentity" />
+  <Module Identifier="754AFFD1-0597-49C6-A651-D0B6BAE6BF86" Name="Wangkanai.Identity" />
   <Module Identifier="C49B819D-2F40-4427-A152-5E1C1323AEBC" Name="Wangkanai.Federation" />
   <Module Identifier="D9B8E83E-84F4-47D3-95AD-A7D369095BB7" Name="Wangkanai.Federation.Domain" />
-  <Module Identifier="754AFFD1-0597-49C6-A651-D0B6BAE6BF86" Name="Wangkanai.Identity" />
   <Module Identifier="CF8E2A33-8D94-4019-9B16-E2BFAA6E3624" Name="Wangkanai.Federation.EntityFramework" />
   <Module Identifier="F02CF688-1D8A-4099-A9D7-C14E2C8CF652" Name="Host.EntityFramework" />
   <Module Identifier="6E1F42BA-8881-4F33-896F-092CA49B5E8E" Name="Host.Main" />
@@ -140,10 +140,10 @@
   <Reference Identifier="43F1616D-9D04-4086-9410-A4647FC39088/r:Wangkanai.System" SourceId="43F1616D-9D04-4086-9410-A4647FC39088" Name="Wangkanai.System" TargetId="77FDD6D6-9FF8-4B04-B936-C8CC81174649" />
   <Reference Identifier="5925CD69-175B-479F-93E8-FEB244928F95/r:Wangkanai.System" SourceId="5925CD69-175B-479F-93E8-FEB244928F95" Name="Wangkanai.System" TargetId="77FDD6D6-9FF8-4B04-B936-C8CC81174649" />
   <Reference Identifier="460147BC-7960-4E70-8B1E-D602675D16F3/r:Wangkanai.System" SourceId="460147BC-7960-4E70-8B1E-D602675D16F3" Name="Wangkanai.System" TargetId="77FDD6D6-9FF8-4B04-B936-C8CC81174649" />
-  <Reference Identifier="83F84C5F-228C-461B-9177-F48AC1A15DE4/r:Wangkanai.Validation" SourceId="83F84C5F-228C-461B-9177-F48AC1A15DE4" Name="Wangkanai.Validation" TargetId="973E7E37-27FD-404E-BBD2-D632470C67C9" />
   <Reference Identifier="66C6499D-1F34-46B9-9419-31D9FE3C392A/r:Wangkanai.Validation" SourceId="66C6499D-1F34-46B9-9419-31D9FE3C392A" Name="Wangkanai.Validation" TargetId="973E7E37-27FD-404E-BBD2-D632470C67C9" />
   <Reference Identifier="66C6499D-1F34-46B9-9419-31D9FE3C392A/r:Wangkanai.Blazor.Components" SourceId="66C6499D-1F34-46B9-9419-31D9FE3C392A" Name="Wangkanai.Blazor.Components" TargetId="4D626185-D5F9-43C0-B0D3-8AADAFAC3B9F" />
   <Reference Identifier="66C6499D-1F34-46B9-9419-31D9FE3C392A/r:Wangkanai.System" SourceId="66C6499D-1F34-46B9-9419-31D9FE3C392A" Name="Wangkanai.System" TargetId="77FDD6D6-9FF8-4B04-B936-C8CC81174649" />
+  <Reference Identifier="83F84C5F-228C-461B-9177-F48AC1A15DE4/r:Wangkanai.Validation" SourceId="83F84C5F-228C-461B-9177-F48AC1A15DE4" Name="Wangkanai.Validation" TargetId="973E7E37-27FD-404E-BBD2-D632470C67C9" />
   <Reference Identifier="83F84C5F-228C-461B-9177-F48AC1A15DE4/r:Wangkanai.Blazor.Components.Web" SourceId="83F84C5F-228C-461B-9177-F48AC1A15DE4" Name="Wangkanai.Blazor.Components.Web" TargetId="66C6499D-1F34-46B9-9419-31D9FE3C392A" />
   <Reference Identifier="83F84C5F-228C-461B-9177-F48AC1A15DE4/r:Wangkanai.System" SourceId="83F84C5F-228C-461B-9177-F48AC1A15DE4" Name="Wangkanai.System" TargetId="77FDD6D6-9FF8-4B04-B936-C8CC81174649" />
   <Reference Identifier="52ACE4EB-C551-4189-B92F-F7B92C333B34/r:Wangkanai.Blazor" SourceId="52ACE4EB-C551-4189-B92F-F7B92C333B34" Name="Wangkanai.Blazor" TargetId="83F84C5F-228C-461B-9177-F48AC1A15DE4" />
@@ -237,25 +237,25 @@
   <Reference Identifier="FF587B44-9646-43F7-9C92-57D26400C91B/r:Wangkanai.System" SourceId="FF587B44-9646-43F7-9C92-57D26400C91B" Name="Wangkanai.System" TargetId="77FDD6D6-9FF8-4B04-B936-C8CC81174649" />
   <Reference Identifier="B550C798-01DE-4BD9-ACD4-B6698DE68E71/r:Wangkanai.Solver" SourceId="B550C798-01DE-4BD9-ACD4-B6698DE68E71" Name="Wangkanai.Solver" TargetId="AC302302-E3A7-4FAA-AA41-7F7CC2077B57" />
   <Reference Identifier="B550C798-01DE-4BD9-ACD4-B6698DE68E71/r:Wangkanai.System" SourceId="B550C798-01DE-4BD9-ACD4-B6698DE68E71" Name="Wangkanai.System" TargetId="77FDD6D6-9FF8-4B04-B936-C8CC81174649" />
-  <Reference Identifier="4835BB3E-D9DF-4B1D-8739-FF9385E91CB6/r:Wangkanai.Validation" SourceId="4835BB3E-D9DF-4B1D-8739-FF9385E91CB6" Name="Wangkanai.Validation" TargetId="973E7E37-27FD-404E-BBD2-D632470C67C9" />
-  <Reference Identifier="4835BB3E-D9DF-4B1D-8739-FF9385E91CB6/r:Wangkanai.System" SourceId="4835BB3E-D9DF-4B1D-8739-FF9385E91CB6" Name="Wangkanai.System" TargetId="77FDD6D6-9FF8-4B04-B936-C8CC81174649" />
   <Reference Identifier="5CDA521B-A2B6-4E96-B8D6-CFD1FAF2FC11/r:Wangkanai.Validation" SourceId="5CDA521B-A2B6-4E96-B8D6-CFD1FAF2FC11" Name="Wangkanai.Validation" TargetId="973E7E37-27FD-404E-BBD2-D632470C67C9" />
   <Reference Identifier="5CDA521B-A2B6-4E96-B8D6-CFD1FAF2FC11/r:Wangkanai.Tabler.Components" SourceId="5CDA521B-A2B6-4E96-B8D6-CFD1FAF2FC11" Name="Wangkanai.Tabler.Components" TargetId="2CEADA4F-C9A2-4C1D-8CF4-816291BABCAA" />
   <Reference Identifier="677CDEB8-D55A-47AA-9622-C151B71B3298/r:Wangkanai.Tabler.Components" SourceId="677CDEB8-D55A-47AA-9622-C151B71B3298" Name="Wangkanai.Tabler.Components" TargetId="2CEADA4F-C9A2-4C1D-8CF4-816291BABCAA" />
   <Reference Identifier="5CDA521B-A2B6-4E96-B8D6-CFD1FAF2FC11/r:Wangkanai.Tabler.Components.Web" SourceId="5CDA521B-A2B6-4E96-B8D6-CFD1FAF2FC11" Name="Wangkanai.Tabler.Components.Web" TargetId="677CDEB8-D55A-47AA-9622-C151B71B3298" />
   <Reference Identifier="5CDA521B-A2B6-4E96-B8D6-CFD1FAF2FC11/r:Wangkanai.System" SourceId="5CDA521B-A2B6-4E96-B8D6-CFD1FAF2FC11" Name="Wangkanai.System" TargetId="77FDD6D6-9FF8-4B04-B936-C8CC81174649" />
-  <Reference Identifier="4835BB3E-D9DF-4B1D-8739-FF9385E91CB6/r:Wangkanai.Tabler" SourceId="4835BB3E-D9DF-4B1D-8739-FF9385E91CB6" Name="Wangkanai.Tabler" TargetId="5CDA521B-A2B6-4E96-B8D6-CFD1FAF2FC11" />
-  <Reference Identifier="966A46E5-95DF-452A-BC81-A6C2EEB29412/r:Wangkanai.Validation" SourceId="966A46E5-95DF-452A-BC81-A6C2EEB29412" Name="Wangkanai.Validation" TargetId="973E7E37-27FD-404E-BBD2-D632470C67C9" />
-  <Reference Identifier="966A46E5-95DF-452A-BC81-A6C2EEB29412/r:Wangkanai.Tabler.Components.Web" SourceId="966A46E5-95DF-452A-BC81-A6C2EEB29412" Name="Wangkanai.Tabler.Components.Web" TargetId="677CDEB8-D55A-47AA-9622-C151B71B3298" />
-  <Reference Identifier="966A46E5-95DF-452A-BC81-A6C2EEB29412/r:Wangkanai.Tabler.Components" SourceId="966A46E5-95DF-452A-BC81-A6C2EEB29412" Name="Wangkanai.Tabler.Components" TargetId="2CEADA4F-C9A2-4C1D-8CF4-816291BABCAA" />
   <Reference Identifier="966A46E5-95DF-452A-BC81-A6C2EEB29412/r:Wangkanai.Tabler" SourceId="966A46E5-95DF-452A-BC81-A6C2EEB29412" Name="Wangkanai.Tabler" TargetId="5CDA521B-A2B6-4E96-B8D6-CFD1FAF2FC11" />
+  <Reference Identifier="966A46E5-95DF-452A-BC81-A6C2EEB29412/r:Wangkanai.Tabler.Components" SourceId="966A46E5-95DF-452A-BC81-A6C2EEB29412" Name="Wangkanai.Tabler.Components" TargetId="2CEADA4F-C9A2-4C1D-8CF4-816291BABCAA" />
+  <Reference Identifier="966A46E5-95DF-452A-BC81-A6C2EEB29412/r:Wangkanai.Tabler.Components.Web" SourceId="966A46E5-95DF-452A-BC81-A6C2EEB29412" Name="Wangkanai.Tabler.Components.Web" TargetId="677CDEB8-D55A-47AA-9622-C151B71B3298" />
   <Reference Identifier="966A46E5-95DF-452A-BC81-A6C2EEB29412/r:Wangkanai.System" SourceId="966A46E5-95DF-452A-BC81-A6C2EEB29412" Name="Wangkanai.System" TargetId="77FDD6D6-9FF8-4B04-B936-C8CC81174649" />
+  <Reference Identifier="966A46E5-95DF-452A-BC81-A6C2EEB29412/r:Wangkanai.Validation" SourceId="966A46E5-95DF-452A-BC81-A6C2EEB29412" Name="Wangkanai.Validation" TargetId="973E7E37-27FD-404E-BBD2-D632470C67C9" />
   <Reference Identifier="C0874388-1C37-4868-8638-6AE7E17A83D6/r:Host.Main.Client" SourceId="C0874388-1C37-4868-8638-6AE7E17A83D6" Name="Host.Main.Client" TargetId="966A46E5-95DF-452A-BC81-A6C2EEB29412" />
-  <Reference Identifier="C0874388-1C37-4868-8638-6AE7E17A83D6/r:Wangkanai.Validation" SourceId="C0874388-1C37-4868-8638-6AE7E17A83D6" Name="Wangkanai.Validation" TargetId="973E7E37-27FD-404E-BBD2-D632470C67C9" />
-  <Reference Identifier="C0874388-1C37-4868-8638-6AE7E17A83D6/r:Wangkanai.Tabler.Components.Web" SourceId="C0874388-1C37-4868-8638-6AE7E17A83D6" Name="Wangkanai.Tabler.Components.Web" TargetId="677CDEB8-D55A-47AA-9622-C151B71B3298" />
-  <Reference Identifier="C0874388-1C37-4868-8638-6AE7E17A83D6/r:Wangkanai.Tabler.Components" SourceId="C0874388-1C37-4868-8638-6AE7E17A83D6" Name="Wangkanai.Tabler.Components" TargetId="2CEADA4F-C9A2-4C1D-8CF4-816291BABCAA" />
-  <Reference Identifier="C0874388-1C37-4868-8638-6AE7E17A83D6/r:Wangkanai.Tabler" SourceId="C0874388-1C37-4868-8638-6AE7E17A83D6" Name="Wangkanai.Tabler" TargetId="5CDA521B-A2B6-4E96-B8D6-CFD1FAF2FC11" />
   <Reference Identifier="C0874388-1C37-4868-8638-6AE7E17A83D6/r:Wangkanai.System" SourceId="C0874388-1C37-4868-8638-6AE7E17A83D6" Name="Wangkanai.System" TargetId="77FDD6D6-9FF8-4B04-B936-C8CC81174649" />
+  <Reference Identifier="C0874388-1C37-4868-8638-6AE7E17A83D6/r:Wangkanai.Tabler" SourceId="C0874388-1C37-4868-8638-6AE7E17A83D6" Name="Wangkanai.Tabler" TargetId="5CDA521B-A2B6-4E96-B8D6-CFD1FAF2FC11" />
+  <Reference Identifier="C0874388-1C37-4868-8638-6AE7E17A83D6/r:Wangkanai.Tabler.Components" SourceId="C0874388-1C37-4868-8638-6AE7E17A83D6" Name="Wangkanai.Tabler.Components" TargetId="2CEADA4F-C9A2-4C1D-8CF4-816291BABCAA" />
+  <Reference Identifier="C0874388-1C37-4868-8638-6AE7E17A83D6/r:Wangkanai.Tabler.Components.Web" SourceId="C0874388-1C37-4868-8638-6AE7E17A83D6" Name="Wangkanai.Tabler.Components.Web" TargetId="677CDEB8-D55A-47AA-9622-C151B71B3298" />
+  <Reference Identifier="C0874388-1C37-4868-8638-6AE7E17A83D6/r:Wangkanai.Validation" SourceId="C0874388-1C37-4868-8638-6AE7E17A83D6" Name="Wangkanai.Validation" TargetId="973E7E37-27FD-404E-BBD2-D632470C67C9" />
+  <Reference Identifier="4835BB3E-D9DF-4B1D-8739-FF9385E91CB6/r:Wangkanai.System" SourceId="4835BB3E-D9DF-4B1D-8739-FF9385E91CB6" Name="Wangkanai.System" TargetId="77FDD6D6-9FF8-4B04-B936-C8CC81174649" />
+  <Reference Identifier="4835BB3E-D9DF-4B1D-8739-FF9385E91CB6/r:Wangkanai.Tabler" SourceId="4835BB3E-D9DF-4B1D-8739-FF9385E91CB6" Name="Wangkanai.Tabler" TargetId="5CDA521B-A2B6-4E96-B8D6-CFD1FAF2FC11" />
+  <Reference Identifier="4835BB3E-D9DF-4B1D-8739-FF9385E91CB6/r:Wangkanai.Validation" SourceId="4835BB3E-D9DF-4B1D-8739-FF9385E91CB6" Name="Wangkanai.Validation" TargetId="973E7E37-27FD-404E-BBD2-D632470C67C9" />
   <Reference Identifier="3BC55F8B-971B-4611-B012-CDABA944BE96/r:Wangkanai.Tabler" SourceId="3BC55F8B-971B-4611-B012-CDABA944BE96" Name="Wangkanai.Tabler" TargetId="5CDA521B-A2B6-4E96-B8D6-CFD1FAF2FC11" />
   <Reference Identifier="3BC55F8B-971B-4611-B012-CDABA944BE96/r:Wangkanai.System" SourceId="3BC55F8B-971B-4611-B012-CDABA944BE96" Name="Wangkanai.System" TargetId="77FDD6D6-9FF8-4B04-B936-C8CC81174649" />
   <Reference Identifier="3BC55F8B-971B-4611-B012-CDABA944BE96/r:Wangkanai.Validation" SourceId="3BC55F8B-971B-4611-B012-CDABA944BE96" Name="Wangkanai.Validation" TargetId="973E7E37-27FD-404E-BBD2-D632470C67C9" />
@@ -281,12 +281,13 @@
   <Reference Identifier="9A65939A-42CF-4B60-8046-77F7DCC74AEF/r:Wangkanai.Domain" SourceId="9A65939A-42CF-4B60-8046-77F7DCC74AEF" Name="Wangkanai.Domain" TargetId="D8DD2FA3-55C6-4699-933B-77DE41C0EB82" />
   <Reference Identifier="9A65939A-42CF-4B60-8046-77F7DCC74AEF/r:Wangkanai.System" SourceId="9A65939A-42CF-4B60-8046-77F7DCC74AEF" Name="Wangkanai.System" TargetId="77FDD6D6-9FF8-4B04-B936-C8CC81174649" />
   <Reference Identifier="F322AA9B-D32D-461D-BB18-9C97616F734B/r:Wangkanai.Webserver" SourceId="F322AA9B-D32D-461D-BB18-9C97616F734B" Name="Wangkanai.Webserver" TargetId="717BA7DD-96E6-4661-A385-BF2923112C6E" />
+  <Reference Identifier="754AFFD1-0597-49C6-A651-D0B6BAE6BF86/r:Wangkanai.Domain" SourceId="754AFFD1-0597-49C6-A651-D0B6BAE6BF86" Name="Wangkanai.Domain" TargetId="D8DD2FA3-55C6-4699-933B-77DE41C0EB82" />
+  <Reference Identifier="754AFFD1-0597-49C6-A651-D0B6BAE6BF86/r:Wangkanai.System" SourceId="754AFFD1-0597-49C6-A651-D0B6BAE6BF86" Name="Wangkanai.System" TargetId="77FDD6D6-9FF8-4B04-B936-C8CC81174649" />
+  <Reference Identifier="3E52A670-7D9C-402F-97E2-C76A4284078D/r:Wangkanai.Identity" SourceId="3E52A670-7D9C-402F-97E2-C76A4284078D" Name="Wangkanai.Identity" TargetId="754AFFD1-0597-49C6-A651-D0B6BAE6BF86" />
   <Reference Identifier="3E52A670-7D9C-402F-97E2-C76A4284078D/r:Wangkanai.Webserver" SourceId="3E52A670-7D9C-402F-97E2-C76A4284078D" Name="Wangkanai.Webserver" TargetId="717BA7DD-96E6-4661-A385-BF2923112C6E" />
   <Reference Identifier="C49B819D-2F40-4427-A152-5E1C1323AEBC/r:Wangkanai.Cryptography" SourceId="C49B819D-2F40-4427-A152-5E1C1323AEBC" Name="Wangkanai.Cryptography" TargetId="40A02C7A-7A10-41D6-BE3A-BC9D8ED5B985" />
   <Reference Identifier="C49B819D-2F40-4427-A152-5E1C1323AEBC/r:Wangkanai.System" SourceId="C49B819D-2F40-4427-A152-5E1C1323AEBC" Name="Wangkanai.System" TargetId="77FDD6D6-9FF8-4B04-B936-C8CC81174649" />
   <Reference Identifier="C49B819D-2F40-4427-A152-5E1C1323AEBC/r:Wangkanai.Webserver" SourceId="C49B819D-2F40-4427-A152-5E1C1323AEBC" Name="Wangkanai.Webserver" TargetId="717BA7DD-96E6-4661-A385-BF2923112C6E" />
-  <Reference Identifier="754AFFD1-0597-49C6-A651-D0B6BAE6BF86/r:Wangkanai.Domain" SourceId="754AFFD1-0597-49C6-A651-D0B6BAE6BF86" Name="Wangkanai.Domain" TargetId="D8DD2FA3-55C6-4699-933B-77DE41C0EB82" />
-  <Reference Identifier="754AFFD1-0597-49C6-A651-D0B6BAE6BF86/r:Wangkanai.System" SourceId="754AFFD1-0597-49C6-A651-D0B6BAE6BF86" Name="Wangkanai.System" TargetId="77FDD6D6-9FF8-4B04-B936-C8CC81174649" />
   <Reference Identifier="D9B8E83E-84F4-47D3-95AD-A7D369095BB7/r:Wangkanai.Identity" SourceId="D9B8E83E-84F4-47D3-95AD-A7D369095BB7" Name="Wangkanai.Identity" TargetId="754AFFD1-0597-49C6-A651-D0B6BAE6BF86" />
   <Reference Identifier="D9B8E83E-84F4-47D3-95AD-A7D369095BB7/r:Wangkanai.Domain" SourceId="D9B8E83E-84F4-47D3-95AD-A7D369095BB7" Name="Wangkanai.Domain" TargetId="D8DD2FA3-55C6-4699-933B-77DE41C0EB82" />
   <Reference Identifier="D9B8E83E-84F4-47D3-95AD-A7D369095BB7/r:Wangkanai.System" SourceId="D9B8E83E-84F4-47D3-95AD-A7D369095BB7" Name="Wangkanai.System" TargetId="77FDD6D6-9FF8-4B04-B936-C8CC81174649" />
@@ -300,24 +301,23 @@
   <Reference Identifier="3E52A670-7D9C-402F-97E2-C76A4284078D/r:Wangkanai.Federation.Domain" SourceId="3E52A670-7D9C-402F-97E2-C76A4284078D" Name="Wangkanai.Federation.Domain" TargetId="D9B8E83E-84F4-47D3-95AD-A7D369095BB7" />
   <Reference Identifier="3E52A670-7D9C-402F-97E2-C76A4284078D/r:Wangkanai.Hosting" SourceId="3E52A670-7D9C-402F-97E2-C76A4284078D" Name="Wangkanai.Hosting" TargetId="994F5DCC-4701-4897-91A9-2F3634F3EAEB" />
   <Reference Identifier="3E52A670-7D9C-402F-97E2-C76A4284078D/r:Wangkanai.System" SourceId="3E52A670-7D9C-402F-97E2-C76A4284078D" Name="Wangkanai.System" TargetId="77FDD6D6-9FF8-4B04-B936-C8CC81174649" />
-  <Reference Identifier="3E52A670-7D9C-402F-97E2-C76A4284078D/r:Wangkanai.Identity" SourceId="3E52A670-7D9C-402F-97E2-C76A4284078D" Name="Wangkanai.Identity" TargetId="754AFFD1-0597-49C6-A651-D0B6BAE6BF86" />
   <Reference Identifier="F322AA9B-D32D-461D-BB18-9C97616F734B/r:Wangkanai.Federation.AspNetIdentity" SourceId="F322AA9B-D32D-461D-BB18-9C97616F734B" Name="Wangkanai.Federation.AspNetIdentity" TargetId="3E52A670-7D9C-402F-97E2-C76A4284078D" />
   <Reference Identifier="CF8E2A33-8D94-4019-9B16-E2BFAA6E3624/r:Wangkanai.Federation" SourceId="CF8E2A33-8D94-4019-9B16-E2BFAA6E3624" Name="Wangkanai.Federation" TargetId="C49B819D-2F40-4427-A152-5E1C1323AEBC" />
   <Reference Identifier="CF8E2A33-8D94-4019-9B16-E2BFAA6E3624/r:Wangkanai.Cryptography" SourceId="CF8E2A33-8D94-4019-9B16-E2BFAA6E3624" Name="Wangkanai.Cryptography" TargetId="40A02C7A-7A10-41D6-BE3A-BC9D8ED5B985" />
   <Reference Identifier="CF8E2A33-8D94-4019-9B16-E2BFAA6E3624/r:Wangkanai.Domain" SourceId="CF8E2A33-8D94-4019-9B16-E2BFAA6E3624" Name="Wangkanai.Domain" TargetId="D8DD2FA3-55C6-4699-933B-77DE41C0EB82" />
   <Reference Identifier="CF8E2A33-8D94-4019-9B16-E2BFAA6E3624/r:Wangkanai.Federation.Domain" SourceId="CF8E2A33-8D94-4019-9B16-E2BFAA6E3624" Name="Wangkanai.Federation.Domain" TargetId="D9B8E83E-84F4-47D3-95AD-A7D369095BB7" />
   <Reference Identifier="CF8E2A33-8D94-4019-9B16-E2BFAA6E3624/r:Wangkanai.Hosting" SourceId="CF8E2A33-8D94-4019-9B16-E2BFAA6E3624" Name="Wangkanai.Hosting" TargetId="994F5DCC-4701-4897-91A9-2F3634F3EAEB" />
+  <Reference Identifier="CF8E2A33-8D94-4019-9B16-E2BFAA6E3624/r:Wangkanai.Identity" SourceId="CF8E2A33-8D94-4019-9B16-E2BFAA6E3624" Name="Wangkanai.Identity" TargetId="754AFFD1-0597-49C6-A651-D0B6BAE6BF86" />
   <Reference Identifier="CF8E2A33-8D94-4019-9B16-E2BFAA6E3624/r:Wangkanai.System" SourceId="CF8E2A33-8D94-4019-9B16-E2BFAA6E3624" Name="Wangkanai.System" TargetId="77FDD6D6-9FF8-4B04-B936-C8CC81174649" />
   <Reference Identifier="CF8E2A33-8D94-4019-9B16-E2BFAA6E3624/r:Wangkanai.Webserver" SourceId="CF8E2A33-8D94-4019-9B16-E2BFAA6E3624" Name="Wangkanai.Webserver" TargetId="717BA7DD-96E6-4661-A385-BF2923112C6E" />
-  <Reference Identifier="CF8E2A33-8D94-4019-9B16-E2BFAA6E3624/r:Wangkanai.Identity" SourceId="CF8E2A33-8D94-4019-9B16-E2BFAA6E3624" Name="Wangkanai.Identity" TargetId="754AFFD1-0597-49C6-A651-D0B6BAE6BF86" />
   <Reference Identifier="F322AA9B-D32D-461D-BB18-9C97616F734B/r:Wangkanai.Federation.EntityFramework" SourceId="F322AA9B-D32D-461D-BB18-9C97616F734B" Name="Wangkanai.Federation.EntityFramework" TargetId="CF8E2A33-8D94-4019-9B16-E2BFAA6E3624" />
   <Reference Identifier="F322AA9B-D32D-461D-BB18-9C97616F734B/r:Wangkanai.Federation" SourceId="F322AA9B-D32D-461D-BB18-9C97616F734B" Name="Wangkanai.Federation" TargetId="C49B819D-2F40-4427-A152-5E1C1323AEBC" />
   <Reference Identifier="F322AA9B-D32D-461D-BB18-9C97616F734B/r:Wangkanai.Cryptography" SourceId="F322AA9B-D32D-461D-BB18-9C97616F734B" Name="Wangkanai.Cryptography" TargetId="40A02C7A-7A10-41D6-BE3A-BC9D8ED5B985" />
   <Reference Identifier="F322AA9B-D32D-461D-BB18-9C97616F734B/r:Wangkanai.Domain" SourceId="F322AA9B-D32D-461D-BB18-9C97616F734B" Name="Wangkanai.Domain" TargetId="D8DD2FA3-55C6-4699-933B-77DE41C0EB82" />
   <Reference Identifier="F322AA9B-D32D-461D-BB18-9C97616F734B/r:Wangkanai.Federation.Domain" SourceId="F322AA9B-D32D-461D-BB18-9C97616F734B" Name="Wangkanai.Federation.Domain" TargetId="D9B8E83E-84F4-47D3-95AD-A7D369095BB7" />
   <Reference Identifier="F322AA9B-D32D-461D-BB18-9C97616F734B/r:Wangkanai.Hosting" SourceId="F322AA9B-D32D-461D-BB18-9C97616F734B" Name="Wangkanai.Hosting" TargetId="994F5DCC-4701-4897-91A9-2F3634F3EAEB" />
-  <Reference Identifier="F322AA9B-D32D-461D-BB18-9C97616F734B/r:Wangkanai.System" SourceId="F322AA9B-D32D-461D-BB18-9C97616F734B" Name="Wangkanai.System" TargetId="77FDD6D6-9FF8-4B04-B936-C8CC81174649" />
   <Reference Identifier="F322AA9B-D32D-461D-BB18-9C97616F734B/r:Wangkanai.Identity" SourceId="F322AA9B-D32D-461D-BB18-9C97616F734B" Name="Wangkanai.Identity" TargetId="754AFFD1-0597-49C6-A651-D0B6BAE6BF86" />
+  <Reference Identifier="F322AA9B-D32D-461D-BB18-9C97616F734B/r:Wangkanai.System" SourceId="F322AA9B-D32D-461D-BB18-9C97616F734B" Name="Wangkanai.System" TargetId="77FDD6D6-9FF8-4B04-B936-C8CC81174649" />
   <Reference Identifier="F02CF688-1D8A-4099-A9D7-C14E2C8CF652/r:Wangkanai.System" SourceId="F02CF688-1D8A-4099-A9D7-C14E2C8CF652" Name="Wangkanai.System" TargetId="77FDD6D6-9FF8-4B04-B936-C8CC81174649" />
   <Reference Identifier="6E1F42BA-8881-4F33-896F-092CA49B5E8E/r:Wangkanai.Federation.EntityFramework" SourceId="6E1F42BA-8881-4F33-896F-092CA49B5E8E" Name="Wangkanai.Federation.EntityFramework" TargetId="CF8E2A33-8D94-4019-9B16-E2BFAA6E3624" />
   <Reference Identifier="6E1F42BA-8881-4F33-896F-092CA49B5E8E/r:Wangkanai.Cryptography" SourceId="6E1F42BA-8881-4F33-896F-092CA49B5E8E" Name="Wangkanai.Cryptography" TargetId="40A02C7A-7A10-41D6-BE3A-BC9D8ED5B985" />
@@ -325,30 +325,30 @@
   <Reference Identifier="6E1F42BA-8881-4F33-896F-092CA49B5E8E/r:Wangkanai.Federation" SourceId="6E1F42BA-8881-4F33-896F-092CA49B5E8E" Name="Wangkanai.Federation" TargetId="C49B819D-2F40-4427-A152-5E1C1323AEBC" />
   <Reference Identifier="6E1F42BA-8881-4F33-896F-092CA49B5E8E/r:Wangkanai.Federation.Domain" SourceId="6E1F42BA-8881-4F33-896F-092CA49B5E8E" Name="Wangkanai.Federation.Domain" TargetId="D9B8E83E-84F4-47D3-95AD-A7D369095BB7" />
   <Reference Identifier="6E1F42BA-8881-4F33-896F-092CA49B5E8E/r:Wangkanai.Hosting" SourceId="6E1F42BA-8881-4F33-896F-092CA49B5E8E" Name="Wangkanai.Hosting" TargetId="994F5DCC-4701-4897-91A9-2F3634F3EAEB" />
+  <Reference Identifier="6E1F42BA-8881-4F33-896F-092CA49B5E8E/r:Wangkanai.Identity" SourceId="6E1F42BA-8881-4F33-896F-092CA49B5E8E" Name="Wangkanai.Identity" TargetId="754AFFD1-0597-49C6-A651-D0B6BAE6BF86" />
   <Reference Identifier="6E1F42BA-8881-4F33-896F-092CA49B5E8E/r:Wangkanai.System" SourceId="6E1F42BA-8881-4F33-896F-092CA49B5E8E" Name="Wangkanai.System" TargetId="77FDD6D6-9FF8-4B04-B936-C8CC81174649" />
   <Reference Identifier="6E1F42BA-8881-4F33-896F-092CA49B5E8E/r:Wangkanai.Webserver" SourceId="6E1F42BA-8881-4F33-896F-092CA49B5E8E" Name="Wangkanai.Webserver" TargetId="717BA7DD-96E6-4661-A385-BF2923112C6E" />
-  <Reference Identifier="6E1F42BA-8881-4F33-896F-092CA49B5E8E/r:Wangkanai.Identity" SourceId="6E1F42BA-8881-4F33-896F-092CA49B5E8E" Name="Wangkanai.Identity" TargetId="754AFFD1-0597-49C6-A651-D0B6BAE6BF86" />
   <Reference Identifier="1CA62F74-44EC-4B71-B9FE-30E1A0563686/r:Wangkanai.Testing" SourceId="1CA62F74-44EC-4B71-B9FE-30E1A0563686" Name="Wangkanai.Testing" TargetId="48D78AC0-157A-4CCA-AAC7-BCBFB2D2BD96" />
   <Reference Identifier="1CA62F74-44EC-4B71-B9FE-30E1A0563686/r:Wangkanai.Federation" SourceId="1CA62F74-44EC-4B71-B9FE-30E1A0563686" Name="Wangkanai.Federation" TargetId="C49B819D-2F40-4427-A152-5E1C1323AEBC" />
   <Reference Identifier="1CA62F74-44EC-4B71-B9FE-30E1A0563686/r:Wangkanai.Cryptography" SourceId="1CA62F74-44EC-4B71-B9FE-30E1A0563686" Name="Wangkanai.Cryptography" TargetId="40A02C7A-7A10-41D6-BE3A-BC9D8ED5B985" />
   <Reference Identifier="1CA62F74-44EC-4B71-B9FE-30E1A0563686/r:Wangkanai.Domain" SourceId="1CA62F74-44EC-4B71-B9FE-30E1A0563686" Name="Wangkanai.Domain" TargetId="D8DD2FA3-55C6-4699-933B-77DE41C0EB82" />
   <Reference Identifier="1CA62F74-44EC-4B71-B9FE-30E1A0563686/r:Wangkanai.Federation.Domain" SourceId="1CA62F74-44EC-4B71-B9FE-30E1A0563686" Name="Wangkanai.Federation.Domain" TargetId="D9B8E83E-84F4-47D3-95AD-A7D369095BB7" />
   <Reference Identifier="1CA62F74-44EC-4B71-B9FE-30E1A0563686/r:Wangkanai.Hosting" SourceId="1CA62F74-44EC-4B71-B9FE-30E1A0563686" Name="Wangkanai.Hosting" TargetId="994F5DCC-4701-4897-91A9-2F3634F3EAEB" />
+  <Reference Identifier="1CA62F74-44EC-4B71-B9FE-30E1A0563686/r:Wangkanai.Identity" SourceId="1CA62F74-44EC-4B71-B9FE-30E1A0563686" Name="Wangkanai.Identity" TargetId="754AFFD1-0597-49C6-A651-D0B6BAE6BF86" />
   <Reference Identifier="1CA62F74-44EC-4B71-B9FE-30E1A0563686/r:Wangkanai.System" SourceId="1CA62F74-44EC-4B71-B9FE-30E1A0563686" Name="Wangkanai.System" TargetId="77FDD6D6-9FF8-4B04-B936-C8CC81174649" />
   <Reference Identifier="1CA62F74-44EC-4B71-B9FE-30E1A0563686/r:Wangkanai.Webserver" SourceId="1CA62F74-44EC-4B71-B9FE-30E1A0563686" Name="Wangkanai.Webserver" TargetId="717BA7DD-96E6-4661-A385-BF2923112C6E" />
-  <Reference Identifier="1CA62F74-44EC-4B71-B9FE-30E1A0563686/r:Wangkanai.Identity" SourceId="1CA62F74-44EC-4B71-B9FE-30E1A0563686" Name="Wangkanai.Identity" TargetId="754AFFD1-0597-49C6-A651-D0B6BAE6BF86" />
   <Reference Identifier="EC16E6D9-DEED-42B1-B510-EAB705D337A3/r:Wangkanai.Federation.Domain" SourceId="EC16E6D9-DEED-42B1-B510-EAB705D337A3" Name="Wangkanai.Federation.Domain" TargetId="D9B8E83E-84F4-47D3-95AD-A7D369095BB7" />
   <Reference Identifier="EC16E6D9-DEED-42B1-B510-EAB705D337A3/r:Wangkanai.Domain" SourceId="EC16E6D9-DEED-42B1-B510-EAB705D337A3" Name="Wangkanai.Domain" TargetId="D8DD2FA3-55C6-4699-933B-77DE41C0EB82" />
-  <Reference Identifier="EC16E6D9-DEED-42B1-B510-EAB705D337A3/r:Wangkanai.System" SourceId="EC16E6D9-DEED-42B1-B510-EAB705D337A3" Name="Wangkanai.System" TargetId="77FDD6D6-9FF8-4B04-B936-C8CC81174649" />
   <Reference Identifier="EC16E6D9-DEED-42B1-B510-EAB705D337A3/r:Wangkanai.Identity" SourceId="EC16E6D9-DEED-42B1-B510-EAB705D337A3" Name="Wangkanai.Identity" TargetId="754AFFD1-0597-49C6-A651-D0B6BAE6BF86" />
+  <Reference Identifier="EC16E6D9-DEED-42B1-B510-EAB705D337A3/r:Wangkanai.System" SourceId="EC16E6D9-DEED-42B1-B510-EAB705D337A3" Name="Wangkanai.System" TargetId="77FDD6D6-9FF8-4B04-B936-C8CC81174649" />
   <Reference Identifier="ECD6586E-059A-4318-9A8A-A440D2972FA4/r:Wangkanai.Federation" SourceId="ECD6586E-059A-4318-9A8A-A440D2972FA4" Name="Wangkanai.Federation" TargetId="C49B819D-2F40-4427-A152-5E1C1323AEBC" />
   <Reference Identifier="ECD6586E-059A-4318-9A8A-A440D2972FA4/r:Wangkanai.Cryptography" SourceId="ECD6586E-059A-4318-9A8A-A440D2972FA4" Name="Wangkanai.Cryptography" TargetId="40A02C7A-7A10-41D6-BE3A-BC9D8ED5B985" />
   <Reference Identifier="ECD6586E-059A-4318-9A8A-A440D2972FA4/r:Wangkanai.Domain" SourceId="ECD6586E-059A-4318-9A8A-A440D2972FA4" Name="Wangkanai.Domain" TargetId="D8DD2FA3-55C6-4699-933B-77DE41C0EB82" />
   <Reference Identifier="ECD6586E-059A-4318-9A8A-A440D2972FA4/r:Wangkanai.Federation.Domain" SourceId="ECD6586E-059A-4318-9A8A-A440D2972FA4" Name="Wangkanai.Federation.Domain" TargetId="D9B8E83E-84F4-47D3-95AD-A7D369095BB7" />
   <Reference Identifier="ECD6586E-059A-4318-9A8A-A440D2972FA4/r:Wangkanai.Hosting" SourceId="ECD6586E-059A-4318-9A8A-A440D2972FA4" Name="Wangkanai.Hosting" TargetId="994F5DCC-4701-4897-91A9-2F3634F3EAEB" />
+  <Reference Identifier="ECD6586E-059A-4318-9A8A-A440D2972FA4/r:Wangkanai.Identity" SourceId="ECD6586E-059A-4318-9A8A-A440D2972FA4" Name="Wangkanai.Identity" TargetId="754AFFD1-0597-49C6-A651-D0B6BAE6BF86" />
   <Reference Identifier="ECD6586E-059A-4318-9A8A-A440D2972FA4/r:Wangkanai.System" SourceId="ECD6586E-059A-4318-9A8A-A440D2972FA4" Name="Wangkanai.System" TargetId="77FDD6D6-9FF8-4B04-B936-C8CC81174649" />
   <Reference Identifier="ECD6586E-059A-4318-9A8A-A440D2972FA4/r:Wangkanai.Webserver" SourceId="ECD6586E-059A-4318-9A8A-A440D2972FA4" Name="Wangkanai.Webserver" TargetId="717BA7DD-96E6-4661-A385-BF2923112C6E" />
-  <Reference Identifier="ECD6586E-059A-4318-9A8A-A440D2972FA4/r:Wangkanai.Identity" SourceId="ECD6586E-059A-4318-9A8A-A440D2972FA4" Name="Wangkanai.Identity" TargetId="754AFFD1-0597-49C6-A651-D0B6BAE6BF86" />
   <Reference Identifier="4F88F51A-EDD7-4ABE-B033-1768AC7A7670/r:Wangkanai.System" SourceId="4F88F51A-EDD7-4ABE-B033-1768AC7A7670" Name="Wangkanai.System" TargetId="77FDD6D6-9FF8-4B04-B936-C8CC81174649" />
   <Reference Identifier="B06BB37F-9F89-4B36-9829-0D22BD5E8205/r:Wangkanai.EntityFramework" SourceId="B06BB37F-9F89-4B36-9829-0D22BD5E8205" Name="Wangkanai.EntityFramework" TargetId="4F88F51A-EDD7-4ABE-B033-1768AC7A7670" />
   <Reference Identifier="B06BB37F-9F89-4B36-9829-0D22BD5E8205/r:Wangkanai.System" SourceId="B06BB37F-9F89-4B36-9829-0D22BD5E8205" Name="Wangkanai.System" TargetId="77FDD6D6-9FF8-4B04-B936-C8CC81174649" />
