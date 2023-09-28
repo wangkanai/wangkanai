@@ -4,35 +4,27 @@ using Wangkanai.Extensions;
 
 namespace Wangkanai.Domain;
 
-public class GenericTypeInfo<BaseType>
+public class GenericTypeInfo<TBaseType>(Type type)
 {
-	public string              TypeName    { get; private set; }
-	public Type                Type        { get; private set; }
+	public ICollection<object> Services    { get; set; } = new List<object>();
 	public Type                MappedType  { get; set; }
-	public ICollection<object> Services    { get; set; }
-	public Func<BaseType>      Factory     { get; private set; }
-	public Action<BaseType>    SetupAction { get; private set; }
-
-	public GenericTypeInfo(Type type)
-	{
-		Services = new List<object>();
-		Type     = type;
-		TypeName = type.Name;
-	}
+	public string              TypeName    { get; private set; } = type.Name;
+	public Type                Type        { get; private set; } = type;
+	public Func<TBaseType>     Factory     { get; private set; }
+	public Action<TBaseType>   SetupAction { get; private set; }
 
 	public T GetService<T>()
 		=> Services.OfType<T>().FirstOrDefault();
 
 	public bool IsAssignableTo(string typeName)
-		=> Type.GetTypeInheritanceChainTo(typeof(BaseType))
-		       .Concat(new[] { typeof(BaseType) })
+		=> Type.GetTypeInheritanceChainTo(typeof(TBaseType))
+		       .Concat(new[] { typeof(TBaseType) })
 		       .Any(t => typeName.EqualsInvariant(t.Name));
 
 	public IEnumerable<Type> AllSubclasses
-		=> Type.GetTypeInheritanceChainTo(typeof(BaseType))
-		       .ToArray();
+		=> (Type[])Type.GetTypeInheritanceChainTo(typeof(TBaseType)).Clone();
 
-	public GenericTypeInfo<BaseType> WithService<T>(T service)
+	public GenericTypeInfo<TBaseType> WithService<T>(T service)
 	{
 		if (!Services.Contains(service))
 			Services.Add(service);
@@ -40,25 +32,25 @@ public class GenericTypeInfo<BaseType>
 		return this;
 	}
 
-	public GenericTypeInfo<BaseType> MapToType<T>()
+	public GenericTypeInfo<TBaseType> MapToType<T>()
 	{
 		MappedType = typeof(T);
 		return this;
 	}
 
-	public GenericTypeInfo<BaseType> WithFactory(Func<BaseType> factory)
+	public GenericTypeInfo<TBaseType> WithFactory(Func<TBaseType> factory)
 	{
 		Factory = factory;
 		return this;
 	}
 
-	public GenericTypeInfo<BaseType> WithSetupAction(Action<BaseType> setupAction)
+	public GenericTypeInfo<TBaseType> WithSetupAction(Action<TBaseType> setupAction)
 	{
 		SetupAction = setupAction;
 		return this;
 	}
 
-	public GenericTypeInfo<BaseType> WithTypeName(string name)
+	public GenericTypeInfo<TBaseType> WithTypeName(string name)
 	{
 		TypeName = name;
 		return this;
