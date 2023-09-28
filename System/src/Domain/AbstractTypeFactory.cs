@@ -14,14 +14,15 @@ public static class AbstractTypeFactory<TBaseType>
 	public static bool HasOverrides
 		=> _typeInfos.Count > 0;
 
-	public static GenericTypeInfo<TBaseType> RegisterType<T>() where T : TBaseType
+	public static GenericTypeInfo<TBaseType> RegisterType<T>() 
+		where T : TBaseType
 		=> RegisterType(typeof(T));
 
 	public static GenericTypeInfo<TBaseType> RegisterType(Type type)
 	{
 		type.ThrowIfNull();
 
-		var result = _typeInfos.First(x => x.AllSubclasses.Contains(type));
+		var result = _typeInfos.FirstOrDefault(x => x.AllSubclasses.Contains(type));
 		if (result != null)
 			return result;
 
@@ -35,11 +36,12 @@ public static class AbstractTypeFactory<TBaseType>
 	/// Override already registered  type to new 
 	/// </summary>
 	/// <returns>TypeInfo instance to continue configuration through fluent syntax</returns>
-	public static GenericTypeInfo<TBaseType> OverrideType<OldType, NewType>() where NewType : TBaseType
+	public static GenericTypeInfo<TBaseType> OverrideType<OldType, NewType>() 
+		where NewType : TBaseType
 	{
 		var oldType       = typeof(OldType);
 		var newType       = typeof(NewType);
-		var existTypeInfo = _typeInfos.First(x => x.Type == oldType);
+		var existTypeInfo = _typeInfos.FirstOrDefault(x => x.Type == oldType);
 		var newTypeInfo   = new GenericTypeInfo<TBaseType>(newType);
 		if (existTypeInfo != null)
 			_typeInfos.Remove(existTypeInfo);
@@ -57,7 +59,8 @@ public static class AbstractTypeFactory<TBaseType>
 	/// <summary>
 	/// Create derived from BaseType  specified type instance considering type mapping information
 	/// </summary>
-	public static T TryCreateInstance<T>() where T : TBaseType
+	public static T TryCreateInstance<T>() 
+		where T : TBaseType
 		=> (T)TryCreateInstance(typeof(T).Name);
 
 	public static TBaseType TryCreateInstance(string typeName, TBaseType defaultObj)
