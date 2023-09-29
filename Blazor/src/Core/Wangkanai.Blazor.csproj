@@ -6,7 +6,6 @@
         <Nullable>enable</Nullable>
         <IsTrimmable>true</IsTrimmable>
         <Optimize>true</Optimize>
-        <NoWarn>8600,8765</NoWarn>
     </PropertyGroup>
 
     <ItemGroup>

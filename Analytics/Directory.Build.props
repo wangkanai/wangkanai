@@ -1,19 +1,23 @@
 <Project>
 	<Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
+
 	<PropertyGroup>
-		<VersionPrefix>1.3.0</VersionPrefix>
+		<VersionPrefix>1.5.0</VersionPrefix>
 		<Title>Wangkanai Analytics</Title>
 		<Description>Embrace the power of data with Analytics, a .NET Core library for comprehensive website tracking. Delve into insightful statistics, understand your audience better, and make data-driven decisions with ease. From session duration to bounce rate, Analytics transforms raw data into meaningful insights. Join our community, shine a light on your website's performance, and let's unlock the full potential of website analytics with Analytics.</Description>
 		<PackageTags>aspnetcore;analytics;</PackageTags>
 		<RootNamespace>Wangkanai.Analytics</RootNamespace>
 		<PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Analytics</PackageProjectUrl>
 	</PropertyGroup>
+	
 	<PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Analytics'">
 		<PackageIcon>analytics-logo.png</PackageIcon>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
+	
 	<ItemGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Analytics'">
 		<None Include="..\..\assets\analytics-logo.png" Pack="true" PackagePath="\" />
 		<None Include="..\README.md" Pack="true" PackagePath="\" />
 	</ItemGroup>
+	
 </Project>

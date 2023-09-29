@@ -1,33 +1,39 @@
 <Project>
-  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
-  <PropertyGroup>
-    <VersionPrefix>3.2.0</VersionPrefix>
-    <Title>Wangkanai Tabler</Title>
-    <PackageTags>aspnetcore;blazor;tabler;</PackageTags>
-    <Description>A robust integration of the Tabler CSS framework into Blazor. Crafted for developing responsive, mobile-first, and desktop-first web applications. Enhance productivity, reduce development time, and ensure your applications look stunning on any device. Power up your Blazor projects with Tabler</Description>
-    <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Tabler</PackageProjectUrl>
-  </PropertyGroup>
-  <PropertyGroup>
-    <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
-  </PropertyGroup>
-  <Target Name="CopyProjectReferencesToPackage" DependsOnTargets="BuildOnlySettings;ResolveReferences">
-    <ItemGroup>
-      <!-- Filter out unnecessary files -->
-      <_ReferenceCopyLocalPaths Include="@(ReferenceCopyLocalPaths-&gt;WithMetadataValue('ReferenceSourceTarget', 'ProjectReference')-&gt;WithMetadataValue('PrivateAssets', 'All'))" />
-    </ItemGroup>
-    <!-- Print batches for debug purposes -->
-    <Message Text="Batch for .nupkg: ReferenceCopyLocalPaths = @(_ReferenceCopyLocalPaths), ReferenceCopyLocalPaths.DestinationSubDirectory = %(_ReferenceCopyLocalPaths.DestinationSubDirectory) Filename = %(_ReferenceCopyLocalPaths.Filename) Extension = %(_ReferenceCopyLocalPaths.Extension)" Importance="High" Condition="'@(_ReferenceCopyLocalPaths)' != ''" />
-    <ItemGroup>
-      <!-- Add file to package with consideration of sub folder. If empty, the root folder is chosen. -->
-      <BuildOutputInPackage Include="@(_ReferenceCopyLocalPaths)" TargetPath="%(_ReferenceCopyLocalPaths.DestinationSubDirectory)" />
-    </ItemGroup>
-  </Target>
-  <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Tabler'">
-    <PackageIcon>wangkanai-logo.png</PackageIcon>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
-  </PropertyGroup>
-  <ItemGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Tabler'">
-    <None Include="..\..\..\assets\wangkanai-logo.png" Pack="true" PackagePath="\" />
-    <None Include="..\..\README.md" Pack="true" PackagePath="\" />
-  </ItemGroup>
+	<Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
+
+	<PropertyGroup>
+		<VersionPrefix>3.4.0</VersionPrefix>
+		<Title>Wangkanai Tabler</Title>
+		<PackageTags>aspnetcore;blazor;tabler;</PackageTags>
+		<Description>A robust integration of the Tabler CSS framework into Blazor. Crafted for developing responsive, mobile-first, and desktop-first web applications. Enhance productivity, reduce development time, and ensure your applications look stunning on any device. Power up your Blazor projects with Tabler</Description>
+		<PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Tabler</PackageProjectUrl>
+	</PropertyGroup>
+	
+	<PropertyGroup>
+		<TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
+	</PropertyGroup>
+	
+	<Target Name="CopyProjectReferencesToPackage" DependsOnTargets="BuildOnlySettings;ResolveReferences">
+		<ItemGroup>
+			<!-- Filter out unnecessary files -->
+			<_ReferenceCopyLocalPaths Include="@(ReferenceCopyLocalPaths-&gt;WithMetadataValue('ReferenceSourceTarget', 'ProjectReference')-&gt;WithMetadataValue('PrivateAssets', 'All'))" />
+		</ItemGroup>
+		<!-- Print batches for debug purposes -->
+		<Message Text="Batch for .nupkg: ReferenceCopyLocalPaths = @(_ReferenceCopyLocalPaths), ReferenceCopyLocalPaths.DestinationSubDirectory = %(_ReferenceCopyLocalPaths.DestinationSubDirectory) Filename = %(_ReferenceCopyLocalPaths.Filename) Extension = %(_ReferenceCopyLocalPaths.Extension)" Importance="High" Condition="'@(_ReferenceCopyLocalPaths)' != ''" />
+		<ItemGroup>
+			<!-- Add file to package with consideration of sub folder. If empty, the root folder is chosen. -->
+			<BuildOutputInPackage Include="@(_ReferenceCopyLocalPaths)" TargetPath="%(_ReferenceCopyLocalPaths.DestinationSubDirectory)" />
+		</ItemGroup>
+	</Target>
+	
+	<PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Tabler'">
+		<PackageIcon>wangkanai-logo.png</PackageIcon>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+	</PropertyGroup>
+	
+	<ItemGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Tabler'">
+		<None Include="..\..\..\assets\wangkanai-logo.png" Pack="true" PackagePath="\" />
+		<None Include="..\..\README.md" Pack="true" PackagePath="\" />
+	</ItemGroup>
+	
 </Project>

@@ -33,7 +33,9 @@ for ($i = 0; $i -lt $dirs.count; $i++){
     try
     {
         $path = $root + $dirs[$i] + "\Directory.Build.props";
-        [Xml]$xml = Get-Content -Path $path;
+        $xml = New-Object System.Xml.XmlDocument
+        $xml.PreserveWhitespace = $true
+        $xml.Load($path);
         $node = $xml.SelectSingleNode("/Project/PropertyGroup/VersionPrefix");
         $old = [System.Version]$node.InnerText;
         $new = [System.Version]::new($old.Major, $old.Minor + 1, 0); #, $old.Build + 1); #0);

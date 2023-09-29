@@ -3,7 +3,6 @@
     <PropertyGroup>
         <TargetFramework>$(DefaultNetCoreTargetFramework)</TargetFramework>
         <Nullable>enable</Nullable>
-        <NoWarn>8602,8632</NoWarn>
     </PropertyGroup>
 
     <ItemGroup>
