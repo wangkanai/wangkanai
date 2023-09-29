@@ -2,7 +2,7 @@
 	<Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
 
 	<PropertyGroup>
-		<VersionPrefix>1.4.0</VersionPrefix>
+		<VersionPrefix>1.5.0</VersionPrefix>
 		<Title>Wangkanai Solver</Title>
 		<PackageTags>aspnetcore;solver;optimization;simludation;scheduling;</PackageTags>
 		<Description>Embrace Wangkanai Solver, a mathematical powerhouse for handling complex optimization and simulation problems. Great for finding optimal solutions within extensive datasets, and modeling intricate systems. Join our community, contribute, and help revolutionize mathematical problem solving!</Description>
