@@ -2,9 +2,9 @@ remove-item -path .\signed\*.*
 new-item -Path signed -ItemType Directory -Force
 
 dotnet --version
-dotnet clean .\src\
+dotnet clean   .\src\
 dotnet restore .\src\
-dotnet build .\src\ -c Release
+dotnet build   .\src\ -c Release
 Get-ChildItem .\src\ -Recurse Wangkanai.*.dll | where { $_.Name -like "*release*" } | foreach {
     signtool sign /fd SHA256 /n "Sarin Na Wangkanai" $_.FullName
 }
