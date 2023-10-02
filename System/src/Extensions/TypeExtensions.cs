@@ -69,12 +69,8 @@ public static class TypeExtensions
 	/// </summary>
 	/// <param name="type"></param>
 	/// <returns></returns>
-	private static bool IsPrimitive(this Type type)
-	{
-		if (type == typeof(string))
-			return true;
-		return type.IsValueType || type.IsPrimitive;
-	}
+	private static bool IsPrimitive(this Type type) 
+		=> type == typeof(string) || type.IsValueType || type.IsPrimitive;
 
 	/// <summary>
 	/// Check if type is a value-type, primitype or string
@@ -98,10 +94,9 @@ public static class TypeExtensions
 		if (type.IsNullable() == nullable)
 			return type;
 
-		if (nullable)
-			return typeof(Nullable<>).MakeGenericType(type);
-
-		return type.GetGenericArguments()[0];
+		return nullable
+			       ? typeof(Nullable<>).MakeGenericType(type)
+			       : type.GetGenericArguments()[0];
 	}
 
 	public static Type UnwrapNullable(this Type type)
@@ -119,10 +114,7 @@ public static class TypeExtensions
 	}
 
 	public static IEnumerable<KeyValuePair<string, object>> TraverseObjectGraph(this object original)
-	{
-		foreach (var result in original.TraverseObjectGraphRecursively(new List<object>(), original.GetType().Name))
-			yield return result;
-	}
+		=> original.TraverseObjectGraphRecursively(new List<object>(), original.GetType().Name);
 
 	private static IEnumerable<KeyValuePair<string, object>> TraverseObjectGraphRecursively(this object original, ICollection<object> visited, string memberPath)
 	{
@@ -132,25 +124,27 @@ public static class TypeExtensions
 
 		var typeOfOriginal = original.GetType();
 		// ReferenceEquals is a mandatory approach
-		if (!IsPrimitive(typeOfOriginal) && !visited.Any(x => ReferenceEquals(original, x)))
-		{
-			visited.Add(original);
-			if (original is IEnumerable objEnum)
-			{
-				var originalEnumerator = objEnum.GetEnumerator();
-				var index              = 0;
-				while (originalEnumerator.MoveNext())
-					foreach (var result in originalEnumerator.Current.TraverseObjectGraphRecursively(visited, $@"{memberPath}[{index++}]"))
-						yield return result;
-			}
-			else
-			{
-				foreach (var propertyInfo in typeOfOriginal.GetProperties(BindingFlags.Instance | BindingFlags.Public))
-				{
-					foreach (var result in propertyInfo.GetValue(original).TraverseObjectGraphRecursively(visited, $@"{memberPath}.{propertyInfo.Name}"))
-						yield return result;
-				}
-			}
-		}
+		if (IsPrimitive(typeOfOriginal) || visited.Any(x => ReferenceEquals(original, x)))
+			yield break;
+		visited.Add(original);
+
+		if (original is IEnumerable objEnum)
+			foreach (var keyValuePair in YieldOriginalEnumerator(visited, memberPath, objEnum))
+				yield return keyValuePair;
+		else
+			foreach (var keyValuePair1 in YieldPropertyEnumerator(original, visited, memberPath, typeOfOriginal))
+				yield return keyValuePair1;
+	}
+
+	private static IEnumerable<KeyValuePair<string, object>> YieldPropertyEnumerator(object original, ICollection<object> visited, string memberPath, Type typeOfOriginal)
+		=> typeOfOriginal.GetProperties(BindingFlags.Instance | BindingFlags.Public).SelectMany(propertyInfo => propertyInfo.GetValue(original).TraverseObjectGraphRecursively(visited, $@"{memberPath}.{propertyInfo.Name}"));
+
+	private static IEnumerable<KeyValuePair<string, object>> YieldOriginalEnumerator(ICollection<object> visited, string memberPath, IEnumerable objEnum)
+	{
+		var originalEnumerator = objEnum.GetEnumerator();
+		var index              = 0;
+		while (originalEnumerator.MoveNext())
+			foreach (var result in originalEnumerator.Current.TraverseObjectGraphRecursively(visited, $@"{memberPath}[{index++}]"))
+				yield return result;
 	}
 }
