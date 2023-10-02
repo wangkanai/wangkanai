@@ -10,20 +10,21 @@ public static class TreeExtensions
 		yield return node;
 
 		var childNodes = children(node);
-		if (children != null)
-			foreach (var child in childNodes.SelectMany(n => n.Traverse(children)))
-				yield return child;
+		if (children.TrueIfNull()) 
+			yield break;
+		foreach (var child in childNodes.SelectMany(n => n.Traverse(children)))
+			yield return child;
 	}
 
 	[DebuggerStepThrough]
-	public static IEnumerable<TItem> GetAncestors<TItem>(TItem item, Func<TItem, TItem> getParentFunc)
+	public static IEnumerable<T> GetAncestors<T>(T item, Func<T, T> getParentFunc)
 	{
 		getParentFunc.ThrowIfNull();
 
 		if (ReferenceEquals(item, null))
 			yield break;
 
-		for (TItem curItem = getParentFunc(item); !ReferenceEquals(curItem, null); curItem = getParentFunc(curItem))
+		for (T curItem = getParentFunc(item); !ReferenceEquals(curItem, null); curItem = getParentFunc(curItem))
 			yield return curItem;
 	}
 }
