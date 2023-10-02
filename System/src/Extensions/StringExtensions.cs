@@ -221,8 +221,8 @@ public static class StringExtensions
 		value.ThrowIfEmpty();
 		value = value.ToLower();
 
-		return string.Concat(value.AsSpan(0,1).ToString().ToUpper(), value.AsSpan(1));
-	}                                                                   
+		return string.Concat(value.AsSpan(0, 1).ToString().ToUpper(), value.AsSpan(1));
+	}
 
 	public static string EscapeSearch(this string value)
 	{
@@ -235,7 +235,7 @@ public static class StringExtensions
 		foreach (var ch in value)
 		{
 			if (specialCharacters.Any(x => x == ch))
-				result.Append("\\");
+				result.Append('\\');
 
 			result.Append(ch);
 		}
@@ -302,5 +302,7 @@ public static class StringExtensions
 		=> value.ThrowIfNull()
 		        .ThrowIfEmpty()
 		        .Trim()
-		        .Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+		        .Split(Separator, StringSplitOptions.RemoveEmptyEntries);
+
+	private static readonly char[] Separator = { ' ' };
 }
