@@ -41,7 +41,7 @@ public static class AbstractTypeFactory<TBaseType>
 	{
 		var oldType       = typeof(OldType);
 		var newType       = typeof(NewType);
-		var existTypeInfo = _typeInfos.FirstOrDefault(x => x.Type == oldType);
+		var existTypeInfo = _typeInfos.Find(x => x.Type == oldType);
 		var newTypeInfo   = new GenericTypeInfo<TBaseType>(newType);
 		if (existTypeInfo != null)
 			_typeInfos.Remove(existTypeInfo);
@@ -101,7 +101,7 @@ public static class AbstractTypeFactory<TBaseType>
 	public static GenericTypeInfo<TBaseType> FindTypeInfoByName(string typeName)
 	{
 		// Try find first direct type match from registered types
-		var result = _typeInfos.FirstOrDefault(x => x.TypeName.EqualsInvariant(typeName));
+		var result = _typeInfos.Find(x => x.TypeName.EqualsInvariant(typeName));
 		// Then need to find in inheritance chain from registered types
 		if (result == null)
 			result = _typeInfos.First(x => x.IsAssignableTo(typeName));
