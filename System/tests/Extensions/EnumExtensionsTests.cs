@@ -49,7 +49,7 @@ public class EnumExtensionsTests
 	{
 		var japan = Country.Japan.GetMemberValue();
 		Assert.Equal("jp", japan);
-		Assert.NotEqual("japan", japan);
+		Assert.NotEqual("Japan", japan);
 	}
 }
 

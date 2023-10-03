@@ -23,7 +23,8 @@ public class EnumValuesTests
 	[Fact]
 	public void GetValesGeneric()
 	{
-		Fruit.Apple.GetValues();
+		var values = Fruit.Apple.GetValues();
+		Assert.Equal(4, values.Length);
 	}
 }
 
