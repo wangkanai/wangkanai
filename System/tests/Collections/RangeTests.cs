@@ -152,32 +152,36 @@ public class RangeTests
 		Assert.Throws<ArgumentOutOfRangeException>(() => new Range<int>(5, 0));
 	}
 
+	private static readonly int[] even      = { 0, 2, 4 };
+	private static readonly int[] odd       = { 5, 3, 1 };
+	private static readonly int[] zero_five = { 0, 1, 2, 3, 4, 5 };
+	private static readonly int[] five_zero = { 5, 4, 3, 2, 1, 0 };
 
 	[Fact]
 	public void Ascending()
 	{
 		var subject = new Range<int>(0, 5).FromStart(x => x + 2);
-		Assert.True(subject.SequenceEqual(new[] { 0, 2, 4 }));
+		Assert.True(subject.SequenceEqual(even));
 	}
 
 	[Fact]
 	public void Descending()
 	{
 		var subject = new Range<int>(0, 5).FromEnd(x => x - 2);
-		Assert.True(subject.SequenceEqual(new[] { 5, 3, 1 }));
+		Assert.True(subject.SequenceEqual(odd));
 	}
 
 	[Fact]
 	public void StepAscending()
 	{
 		var subject = new Range<int>(0, 5).Step(x => x + 1);
-		Assert.True(subject.SequenceEqual(new[] { 0, 1, 2, 3, 4, 5 }));
+		Assert.True(subject.SequenceEqual(zero_five));
 	}
 
 	[Fact]
 	public void StepDescending()
 	{
 		var subject = new Range<int>(0, 5).Step(x => x - 1);
-		Assert.True(subject.SequenceEqual(new[] { 5, 4, 3, 2, 1, 0 }));
+		Assert.True(subject.SequenceEqual(five_zero));
 	}
 }

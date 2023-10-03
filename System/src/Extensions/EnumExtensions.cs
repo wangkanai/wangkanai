@@ -32,12 +32,13 @@ public static class EnumExtensions
 			return value.ToString();
 
 		var attributes = member[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
-		if (attributes.IsEmpty())
-			return attributes.OfType<DescriptionAttribute>()
-			                 .SingleOrDefault()
-			                 ?.Description ?? string.Empty;
+		if (attributes.IsEmpty()) 
+			return value.ToString();
+		
+		return attributes.OfType<DescriptionAttribute>()
+		                 .SingleOrDefault()
+		                 ?.Description ?? string.Empty;
 
-		return value.ToString();
 	}
 
 	[DebuggerStepThrough]
@@ -49,11 +50,11 @@ public static class EnumExtensions
 			return string.Empty;
 
 		var attributes = field.GetCustomAttributes(typeof(EnumMemberAttribute), false);
-		if (attributes.IsEmpty())
-			return attributes.OfType<EnumMemberAttribute>()
-			                 .SingleOrDefault()
-			                 ?.Value ?? string.Empty;
-
-		return value.ToString();
+		if (attributes.IsEmpty()) 
+			return value.ToString();
+		
+		return attributes.OfType<EnumMemberAttribute>()
+		                 .SingleOrDefault()
+		                 ?.Value ?? string.Empty;
 	}
 }

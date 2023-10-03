@@ -38,7 +38,7 @@ public class DecoratorTests
 	public void InstanceIsNotEqualWithNull()
 	{
 		var decorator = new Decorator<string>("test");
-		Assert.NotEqual(null, decorator.Instance);
+		Assert.NotNull(decorator.Instance);
 	}
 
 	[Fact]
@@ -87,7 +87,7 @@ public class DecoratorTests
 	public void ImplementationIsNotEqualWithNull()
 	{
 		var decorator = new Decorator<string, string>("test");
-		Assert.NotEqual(null, decorator.Instance);
+		Assert.NotNull(decorator.Instance);
 	}
 
 	[Fact]
@@ -136,7 +136,7 @@ public class DecoratorTests
 	public void DisposableInstanceIsNotEqualWithNull()
 	{
 		var decorator = new DisposableDecorator<string>("test");
-		Assert.NotEqual(null, decorator.Instance);
+		Assert.NotNull(decorator.Instance);
 	}
 
 	[Fact]
