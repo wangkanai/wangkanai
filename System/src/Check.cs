@@ -21,19 +21,19 @@ public static class Check
 		=> ThrowIfNull<ArgumentNullException>(value);
 
 	[MemberNotNull]
-	public static sbyte ThrowIfNull(this sbyte? value)
-		=> ThrowIfNull<ArgumentNullException>(value);
-
-	[MemberNotNull]
 	public static byte ThrowIfNull(this byte? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
 	[MemberNotNull]
-	public static ushort ThrowIfNull(this ushort? value)
+	public static sbyte ThrowIfNull(this sbyte? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
 	[MemberNotNull]
 	public static short ThrowIfNull(this short? value)
+		=> ThrowIfNull<ArgumentNullException>(value);
+
+	[MemberNotNull]
+	public static ushort ThrowIfNull(this ushort? value)
 		=> ThrowIfNull<ArgumentNullException>(value);
 
 	[MemberNotNull]
@@ -456,7 +456,7 @@ public static class Check
 
 		return index;
 	}
-
+	
 	#region Instance
 
 	internal static T CreateGenericExceptionInstance<T>([InvokerParameterName] string paramName)
