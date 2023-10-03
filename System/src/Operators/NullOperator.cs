@@ -2,13 +2,13 @@
 
 namespace Wangkanai.Operators;
 
-interface INullOperator<T>
+public interface INullOperator<T>
 {
-	bool HasValue(T         Value);
+	bool HasValue(T         value);
 	bool AddIfNotNull(ref T accumulator, T value);
 }
 
-sealed class StructNullOperator<T> : INullOperator<T>
+public sealed class StructNullOperator<T> : INullOperator<T>
 	where T : struct
 {
 	public bool HasValue(T value)
@@ -21,7 +21,7 @@ sealed class StructNullOperator<T> : INullOperator<T>
 	}
 }
 
-sealed class ClassNullOperator<T> : INullOperator<T>
+public sealed class ClassNullOperator<T> : INullOperator<T>
 	where T : class
 {
 	public bool HasValue(T value)

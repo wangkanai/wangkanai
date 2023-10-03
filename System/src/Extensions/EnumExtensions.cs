@@ -56,6 +56,5 @@ public static class EnumExtensions
 		return attributes.OfType<EnumMemberAttribute>()
 		                 .SingleOrDefault()
 		                 ?.Value ?? string.Empty;
-
 	}
 }
