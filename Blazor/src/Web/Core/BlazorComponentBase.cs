@@ -9,10 +9,7 @@ public abstract class BlazorComponentBase : ComponentBase, IBlazorComponentBase,
 {
 	protected bool Disposed { get; private set; }
 
-	public virtual void Dispose()
-	{
-		Disposed = true;
-	}
+	public virtual void Dispose() => Disposed = true;
 
-	protected virtual void BuildRenderTree(RenderTreeBuilder builder) { }
+	protected override void BuildRenderTree(RenderTreeBuilder builder) { }
 }
