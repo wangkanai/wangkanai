@@ -18,21 +18,21 @@ public class GenericTypeInfoTests
 		Assert.Throws<NullReferenceException>(() => _null.GetType());
 		Assert.Throws<NullReferenceException>(() => _null.GetService<Parent>());
 		Assert.Throws<NullReferenceException>(() => _null.IsAssignableTo(nameof(Parent)));
-		Assert.Throws<NullReferenceException>(() => _null.AllSubclasses);
+		Assert.Throws<NullReferenceException>(() => _null.GetAllSubclasses());
 	}
 
 	[Fact]
 	public void ParentToParent()
 	{
 		Assert.NotEqual(parent.Type, parent.Type.BaseType);
-		Assert.Equal(parent.Type, parent.AllSubclasses.First());
+		Assert.Equal(parent.Type, parent.GetAllSubclasses().First());
 	}
 
 	[Fact]
 	public void ChildToParent()
 	{
-		Assert.Contains(parent.Type, child.AllSubclasses);
-		Assert.Contains(child.Type, child.AllSubclasses);
+		Assert.Contains(parent.Type, child.GetAllSubclasses());
+		Assert.Contains(child.Type, child.GetAllSubclasses());
 	}
 
 	[Fact]
