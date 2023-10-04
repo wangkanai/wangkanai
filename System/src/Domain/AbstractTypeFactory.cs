@@ -22,7 +22,7 @@ public static class AbstractTypeFactory<TBaseType>
 	{
 		type.ThrowIfNull();
 
-		var result = _typeInfos.FirstOrDefault(x => x.AllSubclasses.Contains(type));
+		var result = _typeInfos.FirstOrDefault(x => x.GetAllSubclasses().Contains(type));
 		if (result != null)
 			return result;
 

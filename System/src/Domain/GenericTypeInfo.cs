@@ -34,7 +34,7 @@ public class GenericTypeInfo<TBaseType>
 		       .Concat(new[] { typeof(TBaseType) })
 		       .Any(t => typeName.EqualsInvariant(t.Name));
 
-	public IEnumerable<Type> AllSubclasses
+	public IEnumerable<Type> GetAllSubclasses() 
 		=> (Type[])Type.GetTypeInheritanceChainTo(typeof(TBaseType)).Clone();
 
 	public GenericTypeInfo<TBaseType> WithService<T>(T service)
