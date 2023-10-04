@@ -1,8 +1,7 @@
 // Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using Microsoft.AspNetCore.Components;
-
-using Wangkanai.Blazor.Components.Rendering;
+using Microsoft.AspNetCore.Components.Rendering;
 
 namespace Wangkanai.Blazor;
 
