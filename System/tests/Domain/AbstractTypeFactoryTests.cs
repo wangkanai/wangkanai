@@ -38,7 +38,7 @@ public class AbstractTypeFactoryTests
 		var result = AbstractTypeFactory<Child>.RegisterType<Child>();
 		RegisterType(_childInfo, result);
 	}
-	
+
 	[Fact]
 	public void RegisterType_Child_Method()
 	{
@@ -65,6 +65,9 @@ public class AbstractTypeFactoryTests
 	}
 }
 
-public class Parent;
+public class Parent
+{
+	public string Name { get; set; }
+}
 
 public class Child : Parent;

@@ -55,4 +55,25 @@ public class GenericTypeInfoTests
 		var custom = parent.WithService(new Parent());
 		Assert.Equal(parent, custom);
 	}
+	
+	[Fact]
+	public void AssignNewMappedType()
+	{
+		var custom = parent.MapToType<Parent>();
+		Assert.Equal(typeof(Parent), custom.MappedType);
+	}
+	
+	[Fact]
+	public void AssignNewFactory()
+	{
+		var custom = parent.WithFactory(() => new Parent());
+		Assert.NotNull(custom.Factory);
+	}
+	
+	[Fact]
+	public void AssignNewSetupAction()
+	{
+		var custom = parent.WithSetupAction(p => p.Name = "custom");
+		Assert.NotNull(custom.SetupAction);
+	}
 }
