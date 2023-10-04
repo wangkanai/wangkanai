@@ -1,6 +1,6 @@
 $buildDir    = $env:AGENT_BUILDDIRECTORY
 $sourceDir   = $env:BUILD_SOURCESDIRECTORY
-$version     = 1.7
+$version     = 1.8
 
 write-host "Agent.BuildDirectory:  " $buildDir
 write-host "Build.SourcesDirectoy: " $sourceDir
