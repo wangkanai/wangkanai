@@ -41,4 +41,18 @@ public class GenericTypeInfoTests
 		var custom = parent.WithTypeName("custom");
 		Assert.Equal("custom", custom.TypeName);
 	}
+	
+	[Fact]
+	public void AssignNewService()
+	{
+		var custom = parent.WithService(new Parent());
+		Assert.NotNull(custom.GetService<Parent>());
+	}
+	
+	[Fact]
+	public void WithServiceReturnSelf()
+	{
+		var custom = parent.WithService(new Parent());
+		Assert.Equal(parent, custom);
+	}
 }
