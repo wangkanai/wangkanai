@@ -45,7 +45,7 @@
 		<PackageReference Update="Microsoft.Extensions.FileProviders.Abstractions" Version="8.0.0-rc.1.23419.4"/>
 
 		<PackageReference Update="Microsoft.IdentityModel.Abstractions" Version="$(IdentityModelVersion)"/>
-		<PackageReference Update="Microsoft.IdentityModel.Tokens" Version="$(IdentityModelVersion)"/>
+		<PackageReference Update="Microsoft.IdentityModel.Tokens" Version="7.0.2"/>
 		<PackageReference Update="Microsoft.IdentityModel.Protocols" Version="$(IdentityModelVersion)"/>
 		<PackageReference Update="Microsoft.IdentityModel.Protocols.OpenIdConnect" Version="$(IdentityModelVersion)"/>
 

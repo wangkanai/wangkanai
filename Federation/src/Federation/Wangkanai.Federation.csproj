@@ -1,28 +1,27 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <TargetFramework>$(DefaultNetCoreTargetFramework)</TargetFramework>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
-        <IsTrimmable>true</IsTrimmable>
-        <Optimize>true</Optimize>
-    </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>$(DefaultNetCoreTargetFramework)</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<IsTrimmable>true</IsTrimmable>
+		<Optimize>true</Optimize>
+	</PropertyGroup>
 
-    <ItemGroup>
-        <FrameworkReference Include="Microsoft.AspNetCore.App" />
-    </ItemGroup>
+	<ItemGroup>
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+	</ItemGroup>
 
-    <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" />
-        <PackageReference Include="Microsoft.IdentityModel.Tokens" />
-    </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" />
+		<PackageReference Include="Microsoft.IdentityModel.Tokens" />
+	</ItemGroup>
 
-    <ItemGroup>
-        <ProjectReference Include="..\..\..\Cryptography\src\Wangkanai.Cryptography.csproj" />
-        <ProjectReference Include="..\..\..\System\src\Wangkanai.System.csproj" />
-        <ProjectReference Include="..\..\..\Webserver\src\Wangkanai.Webserver.csproj" />
-        <ProjectReference Include="..\Domain\Wangkanai.Federation.Domain.csproj" />
-    </ItemGroup>
-
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\Cryptography\src\Wangkanai.Cryptography.csproj" />
+		<ProjectReference Include="..\..\..\System\src\Wangkanai.System.csproj" />
+		<ProjectReference Include="..\..\..\Webserver\src\Wangkanai.Webserver.csproj" />
+		<ProjectReference Include="..\Domain\Wangkanai.Federation.Domain.csproj" />
+	</ItemGroup>
 
 </Project>
