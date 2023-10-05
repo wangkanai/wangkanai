@@ -10,9 +10,10 @@ public sealed class RequireFalseAttribute : ValidationAttribute
 
 	public override bool IsValid(object value)
 		=> value switch
-		   {
-			   null        => true,
-			   bool actual => actual == false,
-			   _           => false
-		   };
+		{
+			null        => true,
+			true        => false,
+			false       => true,
+			_           => false
+		};
 }

@@ -11,6 +11,7 @@
     <ItemGroup>
         <ProjectReference Include="..\..\..\Validation\src\Wangkanai.Validation.csproj"/>
 
+		<ProjectReference Include="..\Components\Wangkanai.Blazor.Components.csproj" PrivateAssets="all"/>
         <ProjectReference Include="..\Web\Wangkanai.Blazor.Components.Web.csproj" PrivateAssets="all"/>
     </ItemGroup>
 
