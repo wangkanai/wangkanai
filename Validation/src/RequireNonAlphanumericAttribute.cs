@@ -3,9 +3,9 @@
 namespace System.ComponentModel.DataAnnotations;
 
 [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter)]
-public sealed class RequireNonAlphanumeric : ValidationAttribute
+public sealed class RequireNonAlphanumericAttribute : ValidationAttribute
 {
-	public RequireNonAlphanumeric()
+	public RequireNonAlphanumericAttribute()
 		: base(() => "Non Alphanumeric is required") { }
 
 	public override bool IsValid(object value)
