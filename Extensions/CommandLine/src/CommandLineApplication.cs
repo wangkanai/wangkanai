@@ -327,7 +327,7 @@ public sealed class CommandLineApplication
 
 			argumentsBuilder.AppendLine();
 			argumentsBuilder.AppendLine("Arguments:");
-			var maxArgLen    = arguments.Max(a => a.Name.Length);
+			var maxArgLen    = arguments.Max(a => a.Name!.Length);
 			var outputFormat = string.Format(CultureInfo.InvariantCulture, "  {{0, -{0}}}{{1}}", maxArgLen + 2);
 			foreach (var arg in arguments)
 			{
@@ -359,7 +359,7 @@ public sealed class CommandLineApplication
 
 			commandsBuilder.AppendLine();
 			commandsBuilder.AppendLine("Commands:");
-			var maxCmdLen    = commands.Max(c => c.Name.Length);
+			var maxCmdLen    = commands.Max(c => c.Name!.Length);
 			var outputFormat = string.Format(CultureInfo.InvariantCulture, "  {{0, -{0}}}{{1}}", maxCmdLen + 2);
 			foreach (var cmd in commands.OrderBy(c => c.Name))
 			{
