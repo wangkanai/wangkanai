@@ -4,7 +4,6 @@
         <TargetFramework>$(DefaultNetCoreTargetFramework)</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-		<NoWarn>8600,8602</NoWarn>
     </PropertyGroup>
     
     <ItemGroup>
