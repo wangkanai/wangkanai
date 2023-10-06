@@ -4,7 +4,7 @@ using Wangkanai.Federation.Validations;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
-public static class ValidatorBuilderExtensions
+public static class FederationValidatorBuilderExtensions
 {
 	public static IFederationBuilder AddResourceOwnerValidator<T>(this IFederationBuilder builder)
 		where T : class, IResourceOwnerPasswordValidator

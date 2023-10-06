@@ -2,6 +2,8 @@
 
 using Wangkanai.Federation.Services;
 
+namespace Wangkanai.Federation;
+
 [MemoryDiagnoser]
 public class FederationBenchmark
 {

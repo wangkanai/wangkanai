@@ -1,7 +1,7 @@
 <Project>
 	<Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
 	<PropertyGroup>
-		<VersionPrefix>8.5.0</VersionPrefix>
+		<VersionPrefix>8.6.0</VersionPrefix>
 		<Title>Wangkanai Detection</Title>
 		<Description>Introducing `Detection` – your gateway to understanding your users' interactions with your ASP.NET Core application. With over 6.5 million downloads, `Detection` offers invaluable insights into your client's device, browser, engine, and platform, even identifying crawlers. Tailor your application to your users' needs, enhance the user experience, and optimize for SEO. Discover the power of `Detection` and let's create seamless, personalized experiences for all users.</Description>
 		<PackageTags>aspnetcore;detection;</PackageTags>

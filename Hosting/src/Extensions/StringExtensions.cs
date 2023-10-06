@@ -13,7 +13,7 @@ public static class StringExtensions
 	{
 		if (url.IsNullOrWhiteSpace())
 			url = "/";
-		if (url != "/" && url.EndsWith("/"))
+		if (url != "/" && url.EndsWith('/'))
 			url = url.Substring(0, url.Length - 1);
 
 		return url;

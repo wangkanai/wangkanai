@@ -5,6 +5,7 @@ using Microsoft.Extensions.Options;
 
 using Wangkanai.Detection;
 using Wangkanai.Detection.Services;
+using Wangkanai.Hosting.DependencyInjection;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
@@ -44,7 +45,7 @@ internal static class DetectionCoreBuilderExtensions
 
 	internal static IDetectionBuilder AddMarkerService(this IDetectionBuilder builder)
 	{
-		builder.Services.TryAddSingleton<DetectionMarkerService>();
+		builder.Services.AddMarkerService<DetectionMarkerService>();
 
 		return builder;
 	}

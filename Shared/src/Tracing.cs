@@ -6,7 +6,7 @@ namespace Wangkanai.Internal;
 
 internal static class Tracing
 {
-	private static readonly Version AssemblyVersion = typeof(Tracing).Assembly.GetName().Version;
+	private static readonly Version AssemblyVersion = typeof(Tracing).Assembly.GetName().Version!;
 
 	/// <summary>
 	/// Service version
