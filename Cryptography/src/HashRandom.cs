@@ -33,7 +33,7 @@ public class HashRandom : Random
 			OutputFormat.Base64Url => Base64Url.Encode(bytes),
 			OutputFormat.Base64    => Convert.ToBase64String(bytes),
 			OutputFormat.Hex       => BitConverter.ToString(bytes).Replace("-", ""),
-			_                      => throw new ArgumentOutOfRangeException("Invalid output format", nameof(format))
+			_                      => throw new ArgumentOutOfRangeException(nameof(format), "Invalid output format")
 		};
 	}
 
