@@ -1,36 +1,50 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using System.Globalization;
 using System.Text;
 
 namespace Wangkanai.Extensions.CommandLine;
 
-public class CommandLineApplication(bool throwOnUnexpectedArg = true, bool continueAfterUnexpectedArg = false, bool treatUnmatchedOptionsAsArguments = false)
+public sealed class CommandLineApplication
 {
-	private readonly bool _throwOnUnexpectedArg = throwOnUnexpectedArg;
+	private readonly bool _continueAfterUnexpectedArg;
+	private readonly bool _treatUnmatchedOptionsAsArguments;
+	private readonly bool _throwOnUnexpectedArg;
 
-	public CommandLineApplication? Parent { get; set; }
+	public CommandLineApplication(bool throwOnUnexpectedArg = true, bool continueAfterUnexpectedArg = false, bool treatUnmatchedOptionsAsArguments = false)
+	{
+		_throwOnUnexpectedArg             = throwOnUnexpectedArg;
+		_continueAfterUnexpectedArg       = continueAfterUnexpectedArg;
+		_treatUnmatchedOptionsAsArguments = treatUnmatchedOptionsAsArguments;
+
+		Options            = new List<CommandOption>();
+		Arguments          = new List<CommandArgument>();
+		Commands           = new List<CommandLineApplication>();
+		RemainingArguments = new List<string>();
+		Invoke             = () => 0;
+	}
+
+	internal readonly List<CommandOption>          Options;
+	internal readonly List<CommandArgument>        Arguments;
+	internal readonly List<CommandLineApplication> Commands;
+	internal readonly List<string>                 RemainingArguments;
+
+	public CommandLineApplication? Parent        { get; private set; }
+	public CommandOption?          OptionHelp    { get; private set; }
+	public CommandOption?          OptionVersion { get; private set; }
+
+	public Func<int>     Invoke             { get; set; }
+	public Func<string>? LongVersionGetter  { get; set; }
+	public Func<string>? ShortVersionGetter { get; set; }
 
 	public string? Name                   { get; set; }
 	public string? FullName               { get; set; }
 	public string? Syntax                 { get; set; }
 	public string? Description            { get; set; }
 	public string? ExtendedHelpText       { get; set; }
-	public bool    ShowInHelpText         { get; set; } = true;
+	public bool    ShowInHelpText         { get; set; }
 	public bool    IsShowingInformation   { get; set; } // Is showing help or version?
 	public bool    AllowArgumentSeparator { get; set; }
-
-	public CommandOption? OptionHelp    { get; private set; }
-	public CommandOption? OptionVersion { get; private set; }
-
-	internal readonly List<CommandOption>          Options            = new();
-	internal readonly List<CommandArgument>        Arguments          = new();
-	internal readonly List<CommandLineApplication> Commands           = new();
-	internal readonly List<string>                 RemainingArguments = new();
-
-	public Func<int>     Invoke             { get; set; } = () => 0;
-	public Func<string>? LongVersionGetter  { get; set; }
-	public Func<string>? ShortVersionGetter { get; set; }
 
 	public TextWriter Out   { get; set; } = Console.Out;
 	public TextWriter Error { get; set; } = Console.Error;
@@ -49,10 +63,7 @@ public class CommandLineApplication(bool throwOnUnexpectedArg = true, bool conti
 		return expr;
 	}
 
-	public CommandLineApplication Command(
-		string                         name,
-		Action<CommandLineApplication> configuration,
-		bool                           throwOnUnexpectedArg = true)
+	public CommandLineApplication Command(string name, Action<CommandLineApplication> configuration, bool throwOnUnexpectedArg = true)
 	{
 		var command = new CommandLineApplication(throwOnUnexpectedArg)
 		{
@@ -65,7 +76,7 @@ public class CommandLineApplication(bool throwOnUnexpectedArg = true, bool conti
 	}
 
 	public CommandOption Option(string template, string description, CommandOptionType optionType)
-		=> Option(template, description, optionType, _ => { }, inherited: false);
+		=> Option(template, description, optionType, inherited: false);
 
 	public CommandOption Option(string template, string description, CommandOptionType optionType, bool inherited)
 		=> Option(template, description, optionType, _ => { }, inherited);
@@ -111,7 +122,7 @@ public class CommandLineApplication(bool throwOnUnexpectedArg = true, bool conti
 		return argument;
 	}
 
-	public void OnExecute(Func<int> invoke)
+	public void OnExecute(Func<int> invoke)      
 		=> Invoke = invoke;
 
 	public void OnExecute(Func<Task<int>> invoke)
@@ -146,7 +157,7 @@ public class CommandLineApplication(bool throwOnUnexpectedArg = true, bool conti
 					var longOptionName = longOption[0];
 					option = command.GetOptions().SingleOrDefault(opt => string.Equals(opt.LongName, longOptionName, StringComparison.Ordinal));
 
-					if (option == null && treatUnmatchedOptionsAsArguments)
+					if (option == null && _treatUnmatchedOptionsAsArguments)
 						if (command.ProcessArguments(arg, ref arguments, ref processed, ref argumentsAssigned))
 							continue;
 
@@ -205,9 +216,8 @@ public class CommandLineApplication(bool throwOnUnexpectedArg = true, bool conti
 					processed = true;
 					option    = command.GetOptions().SingleOrDefault(opt => string.Equals(opt.ShortName, shortOption[0], StringComparison.Ordinal));
 
-					if (option == null && treatUnmatchedOptionsAsArguments)
-						if (command.ProcessArguments(arg, ref arguments, ref processed, ref argumentsAssigned))
-							continue;
+					if (option == null && _treatUnmatchedOptionsAsArguments && command.ProcessArguments(arg, ref arguments, ref processed, ref argumentsAssigned)) 
+						continue;
 
 					// If not a short option, try symbol option
 					if (option == null)
@@ -326,7 +336,7 @@ public class CommandLineApplication(bool throwOnUnexpectedArg = true, bool conti
 		Out.WriteLine(GetHelpText(commandName));
 	}
 
-	public virtual string GetHelpText(string? commandName = null)
+	public string GetHelpText(string? commandName = null)
 	{
 		var headerBuilder = new StringBuilder("Usage:");
 		for (var cmd = this; cmd != null; cmd = cmd.Parent)
@@ -455,7 +465,7 @@ public class CommandLineApplication(bool throwOnUnexpectedArg = true, bool conti
 			throw new CommandParsingException(command, $"Unrecognized {argTypeName} '{args[index]}'");
 		}
 
-		if (continueAfterUnexpectedArg && !ignoreContinueAfterUnexpectedArg)
+		if (_continueAfterUnexpectedArg && !ignoreContinueAfterUnexpectedArg)
 		{
 			// Store argument for further use.
 			command.RemainingArguments.Add(args[index]);
