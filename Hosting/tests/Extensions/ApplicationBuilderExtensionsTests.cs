@@ -4,9 +4,5 @@ namespace Wangkanai.Hosting.Tests.Extensions;
 
 public class ApplicationBuilderExtensionsTests
 {
-	[Fact]
-	public void IsServiceRegistered()
-	{
-		
-	}
+	
 }
