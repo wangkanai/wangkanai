@@ -5,6 +5,7 @@ using Microsoft.Extensions.Options;
 
 using Wangkanai.Federation;
 using Wangkanai.Federation.Services;
+using Wangkanai.Hosting.DependencyInjection;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
@@ -34,7 +35,7 @@ public static class FederationCoreBuilderExtensions
 
 	internal static IFederationBuilder AddMarkerService(this IFederationBuilder builder)
 	{
-		builder.Services.TryAddSingleton<FederationMarkerService>();
+		builder.Services.AddMarkerService<FederationMarkerService>();
 
 		return builder;
 	}

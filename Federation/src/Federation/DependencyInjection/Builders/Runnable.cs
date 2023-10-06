@@ -6,7 +6,7 @@ using Wangkanai.Federation.Services;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
-public static class RunnableBuilderExtensions
+public static class FederationRunnableBuilderExtensions
 {
 	public static IFederationBuilder AddRunnableServices(this IFederationBuilder builder)
 	{

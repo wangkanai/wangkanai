@@ -18,13 +18,14 @@ public static class ApplicationBuilderExtensions
 		option.ThrowIfNull();
 	}
 	
-	public static bool VerifyMarkerIsRegistered<T>(this IApplicationBuilder app)
+	public static void VerifyMarkerIsRegistered<T>(this IApplicationBuilder app)
 		where T : class
 	{
+		app.ThrowIfNull();
+		
 		var type = typeof(T);
-		return app.ApplicationServices.GetService(type) is null 
-			       ? throw new InvalidOperationException($"{type.Name} is not added to ConfigureServices(...)") 
-			       : true;
+		if (app.ApplicationServices.GetService(type) is null)
+			throw new InvalidOperationException($"{type.Name} is not added to ConfigureServices(...)");
 	}
 	
 	public static void VerifyEndpointRoutingMiddlewareIsNotRegistered(this IApplicationBuilder app, Func<IApplicationBuilder, IApplicationBuilder> middleware)
