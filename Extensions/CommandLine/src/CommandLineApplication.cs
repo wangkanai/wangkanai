@@ -49,20 +49,6 @@ public sealed class CommandLineApplication
 	public TextWriter Out   { get; set; } = Console.Out;
 	public TextWriter Error { get; set; } = Console.Error;
 
-	public IEnumerable<CommandOption> GetOptions()
-	{
-		var expr     = Options.AsEnumerable();
-		var rootNode = this;
-
-		while (rootNode.Parent != null)
-		{
-			rootNode = rootNode.Parent;
-			expr     = expr.Concat(rootNode.Options.Where(o => o.Inherited));
-		}
-
-		return expr;
-	}
-
 	public CommandLineApplication Command(string name, Action<CommandLineApplication> configuration, bool throwOnUnexpectedArg = true)
 	{
 		var command = new CommandLineApplication(throwOnUnexpectedArg)
@@ -122,18 +108,20 @@ public sealed class CommandLineApplication
 		return argument;
 	}
 
-	public void OnExecute(Func<int> invoke)      
+	public void OnExecute(Func<int> invoke)
 		=> Invoke = invoke;
 
 	public void OnExecute(Func<Task<int>> invoke)
 		=> Invoke = () => invoke().Result;
 
+	private static readonly char[] separator = { ':', '=' };
+
 	public int Execute(params string[] args)
 	{
-		CommandLineApplication        command           = this;
-		CommandOption?                option            = null;
-		IEnumerator<CommandArgument>? arguments         = null;
-		var                           argumentsAssigned = false;
+		CommandLineApplication        command   = this;
+		CommandOption?                option    = null;
+		IEnumerator<CommandArgument>? arguments = null;
+		var                           assigned  = false;
 
 		command.ThrowIfNull();
 
@@ -147,9 +135,9 @@ public sealed class CommandLineApplication
 				string[]? shortOption = null;
 
 				if (arg.StartsWith("--", StringComparison.Ordinal))
-					longOption = arg.Substring(2).Split(new[] { ':', '=' }, 2);
+					longOption = arg.Substring(2).Split(separator, 2);
 				else if (arg.StartsWith("-", StringComparison.Ordinal))
-					shortOption = arg.Substring(1).Split(new[] { ':', '=' }, 2);
+					shortOption = arg.Substring(1).Split(separator, 2);
 
 				if (longOption != null)
 				{
@@ -157,16 +145,13 @@ public sealed class CommandLineApplication
 					var longOptionName = longOption[0];
 					option = command.GetOptions().SingleOrDefault(opt => string.Equals(opt.LongName, longOptionName, StringComparison.Ordinal));
 
-					if (option == null && _treatUnmatchedOptionsAsArguments)
-						if (command.ProcessArguments(arg, ref arguments, ref processed, ref argumentsAssigned))
-							continue;
+					if (option == null && _treatUnmatchedOptionsAsArguments && command.ProcessArguments(arg, ref arguments, ref processed, ref assigned))
+						continue;
 
 					if (option == null)
 					{
 						var ignoreContinueAfterUnexpectedArg = false;
-						if (string.IsNullOrEmpty(longOptionName) &&
-						    !command._throwOnUnexpectedArg &&
-						    AllowArgumentSeparator)
+						if (longOptionName.IsNullOrEmpty() && !command._throwOnUnexpectedArg && AllowArgumentSeparator)
 						{
 							// Skip over the '--' argument separator then consume all remaining arguments. All
 							// remaining arguments are unconditionally stored for further use.
@@ -182,25 +167,14 @@ public sealed class CommandLineApplication
 
 					// If we find a help/version option, show information and stop parsing
 					if (command.OptionHelp == option)
-					{
-						command.ShowHelp();
-						return 0;
-					}
+						return command.ShowHelp();
 
 					if (command.OptionVersion == option)
-					{
-						command.ShowVersion();
-						return 0;
-					}
+						return command.ShowVersion();
 
 					if (longOption.Length == 2)
 					{
-						if (!option.TryParse(longOption[1]))
-						{
-							command.ShowHint();
-							throw new CommandParsingException(command, $"Unexpected value '{longOption[1]}' for option '{option.LongName}'");
-						}
-
+						command.ShowHint(option, longOption);
 						option = null;
 					}
 					else if (option.OptionType == CommandOptionType.NoValue)
@@ -216,7 +190,7 @@ public sealed class CommandLineApplication
 					processed = true;
 					option    = command.GetOptions().SingleOrDefault(opt => string.Equals(opt.ShortName, shortOption[0], StringComparison.Ordinal));
 
-					if (option == null && _treatUnmatchedOptionsAsArguments && command.ProcessArguments(arg, ref arguments, ref processed, ref argumentsAssigned)) 
+					if (option == null && _treatUnmatchedOptionsAsArguments && command.ProcessArguments(arg, ref arguments, ref processed, ref assigned))
 						continue;
 
 					// If not a short option, try symbol option
@@ -233,25 +207,14 @@ public sealed class CommandLineApplication
 
 					// If we find a help/version option, show information and stop parsing
 					if (command.OptionHelp == option)
-					{
-						command.ShowHelp();
-						return 0;
-					}
+						return command.ShowHelp();
 
 					if (command.OptionVersion == option)
-					{
-						command.ShowVersion();
-						return 0;
-					}
+						return command.ShowVersion();
 
 					if (shortOption.Length == 2)
 					{
-						if (!option.TryParse(shortOption[1]))
-						{
-							command.ShowHint();
-							throw new CommandParsingException(command, $"Unexpected value '{shortOption[1]}' for option '{option.LongName}'");
-						}
-
+						command.ShowHint(option, shortOption);
 						option = null;
 					}
 					else if (option.OptionType == CommandOptionType.NoValue)
@@ -266,7 +229,7 @@ public sealed class CommandLineApplication
 			if (!processed && option != null)
 				command.ProcessOptionThrowException(arg, ref processed, ref option);
 
-			if (!processed && !argumentsAssigned)
+			if (!processed && !assigned)
 				command = command.ProcessArgumentAssigned(arg, ref processed);
 
 			if (!processed)
@@ -297,19 +260,13 @@ public sealed class CommandLineApplication
 		return OptionHelp;
 	}
 
-	public CommandOption VersionOption(
-		string  template,
-		string  shortFormVersion,
-		string? longFormVersion = null)
+	public CommandOption VersionOption(string template, string shortFormVersion, string? longFormVersion = null)
 		=> longFormVersion == null
 			   ? VersionOption(template, () => shortFormVersion)
 			   : VersionOption(template, () => shortFormVersion, () => longFormVersion);
 
 	// Helper method that adds a version option
-	public CommandOption VersionOption(
-		string        template,
-		Func<string>  shortFormVersionGetter,
-		Func<string>? longFormVersionGetter = null)
+	public CommandOption VersionOption(string template, Func<string> shortFormVersionGetter, Func<string>? longFormVersionGetter = null)
 	{
 		// Version option is special because we stop parsing once we see it
 		// So we store it separately for further use
@@ -328,12 +285,14 @@ public sealed class CommandLineApplication
 	}
 
 	// Show full help
-	public void ShowHelp(string? commandName = null)
+	public int ShowHelp(string? commandName = null)
 	{
 		for (var cmd = this; cmd != null; cmd = cmd.Parent)
 			cmd.IsShowingInformation = true;
 
 		Out.WriteLine(GetHelpText(commandName));
+
+		return 0;
 	}
 
 	public string GetHelpText(string? commandName = null)
@@ -428,13 +387,15 @@ public sealed class CommandLineApplication
 		return nameAndVersion.ToString() + headerBuilder + argumentsBuilder + optionsBuilder + commandsBuilder + target.ExtendedHelpText;
 	}
 
-	public void ShowVersion()
+	public int ShowVersion()
 	{
 		for (var cmd = this; cmd != null; cmd = cmd.Parent)
 			cmd.IsShowingInformation = true;
 
 		Out.WriteLine(FullName);
 		Out.WriteLine(LongVersionGetter!());
+
+		return 0;
 	}
 
 	public string? GetFullNameAndVersion()
@@ -452,12 +413,7 @@ public sealed class CommandLineApplication
 		Out.WriteLine();
 	}
 
-	private bool HandleUnexpectedArg(
-		CommandLineApplication command,
-		string[]               args,
-		int                    index,
-		string                 argTypeName,
-		bool                   ignoreContinueAfterUnexpectedArg = false)
+	private bool HandleUnexpectedArg(CommandLineApplication command, string[] args, int index, string argTypeName, bool ignoreContinueAfterUnexpectedArg = false)
 	{
 		if (command._throwOnUnexpectedArg)
 		{

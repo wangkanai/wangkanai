@@ -45,4 +45,13 @@ internal static class ApplicationExtensions
 
         return versionAttribute.ThrowIfNull() ?? throw new InvalidOperationException();
     }
+    
+    internal static void ShowHint(this CommandLineApplication command, CommandOption option, string[] options)
+    {
+	    if (option.TryParse(options[1])) 
+		    return;
+	    
+	    command.ShowHint();
+	    throw new CommandParsingException(command, $"Unexpected value '{options[1]}' for option '{option.LongName}'");
+    }
 }
