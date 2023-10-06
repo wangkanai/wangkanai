@@ -4,4 +4,4 @@ using Wangkanai.Hosting.Abstractions;
 
 namespace Wangkanai.Hosting.Services;
 
-internal sealed class MarkerService : IMarkerService { }
+internal sealed class MarkerService : IMarkerService;

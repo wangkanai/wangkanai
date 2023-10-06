@@ -6,12 +6,17 @@ using Microsoft.AspNetCore.Builder;
 
 using Wangkanai;
 
+// ReSharper disable once CheckNamespace
 namespace Microsoft.Extensions.DependencyInjection;
 
 public static class ApplicationBuilderExtensions
 {
 	public static void ValidateOption<T>(this IApplicationBuilder app, T option)
-		where T : class { }
+		where T : class
+	{
+		app.ThrowIfNull();
+		option.ThrowIfNull();
+	}
 	
 	public static bool VerifyMarkerIsRegistered<T>(this IApplicationBuilder app)
 		where T : class
