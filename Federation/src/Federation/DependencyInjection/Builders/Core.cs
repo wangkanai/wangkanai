@@ -1,12 +1,12 @@
 ﻿// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
 
 using Wangkanai.Federation;
 using Wangkanai.Federation.Services;
 using Wangkanai.Hosting.DependencyInjection;
 
+// ReSharper disable once CheckNamespace
 namespace Microsoft.Extensions.DependencyInjection;
 
 public static class FederationCoreBuilderExtensions
