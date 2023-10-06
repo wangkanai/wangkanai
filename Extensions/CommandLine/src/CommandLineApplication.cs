@@ -321,60 +321,14 @@ public sealed class CommandLineApplication
 		var argumentsBuilder = new StringBuilder();
 
 		var arguments = target.Arguments.Where(a => a.ShowInHelpText).ToList();
-		if (arguments.Any())
-		{
-			headerBuilder.Append(" [arguments]");
-
-			argumentsBuilder.AppendLine();
-			argumentsBuilder.AppendLine("Arguments:");
-			var maxArgLen    = arguments.Max(a => a.Name!.Length);
-			var outputFormat = string.Format(CultureInfo.InvariantCulture, "  {{0, -{0}}}{{1}}", maxArgLen + 2);
-			foreach (var arg in arguments)
-			{
-				argumentsBuilder.AppendFormat(CultureInfo.InvariantCulture, outputFormat, arg.Name, arg.Description);
-				argumentsBuilder.AppendLine();
-			}
-		}
-
+		arguments.BuildHelp(ref argumentsBuilder, ref headerBuilder);
+		
 		var options = target.GetOptions().Where(o => o.ShowInHelpText).ToList();
-		if (options.Any())
-		{
-			headerBuilder.Append(" [options]");
-
-			optionsBuilder.AppendLine();
-			optionsBuilder.AppendLine("Options:");
-			var maxOptLen    = options.Max(o => o.Template.Length);
-			var outputFormat = string.Format(CultureInfo.InvariantCulture, "  {{0, -{0}}}{{1}}", maxOptLen + 2);
-			foreach (var opt in options)
-			{
-				optionsBuilder.AppendFormat(CultureInfo.InvariantCulture, outputFormat, opt.Template, opt.Description);
-				optionsBuilder.AppendLine();
-			}
-		}
+		options.BuildHelp(ref headerBuilder, ref optionsBuilder);
 
 		var commands = target.Commands.Where(c => c.ShowInHelpText).ToList();
-		if (commands.Any())
-		{
-			headerBuilder.Append(" [command]");
-
-			commandsBuilder.AppendLine();
-			commandsBuilder.AppendLine("Commands:");
-			var maxCmdLen    = commands.Max(c => c.Name!.Length);
-			var outputFormat = string.Format(CultureInfo.InvariantCulture, "  {{0, -{0}}}{{1}}", maxCmdLen + 2);
-			foreach (var cmd in commands.OrderBy(c => c.Name))
-			{
-				commandsBuilder.AppendFormat(CultureInfo.InvariantCulture, outputFormat, cmd.Name, cmd.Description);
-				commandsBuilder.AppendLine();
-			}
-
-			if (OptionHelp != null)
-			{
-				commandsBuilder.AppendLine();
-				commandsBuilder.Append($"Use \"{target.Name} [command] --{OptionHelp.LongName}\" for more information about a command.");
-				commandsBuilder.AppendLine();
-			}
-		}
-
+		commands.BuildHelp(ref headerBuilder, ref commandsBuilder, ref target, OptionHelp);
+		
 		if (target.AllowArgumentSeparator)
 			headerBuilder.Append(" [[--] <arg>...]");
 
