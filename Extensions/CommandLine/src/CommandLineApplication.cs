@@ -5,24 +5,9 @@ using System.Text;
 
 namespace Wangkanai.Extensions.CommandLine;
 
-public class CommandLineApplication
+public class CommandLineApplication(bool throwOnUnexpectedArg = true, bool continueAfterUnexpectedArg = false, bool treatUnmatchedOptionsAsArguments = false)
 {
-	private readonly bool _throwOnUnexpectedArg;
-	private readonly bool _continueAfterUnexpectedArg;
-	private readonly bool _treatUnmatchedOptionsAsArguments;
-
-	public CommandLineApplication(bool throwOnUnexpectedArg = true, bool continueAfterUnexpectedArg = false, bool treatUnmatchedOptionsAsArguments = false)
-	{
-		_throwOnUnexpectedArg             = throwOnUnexpectedArg;
-		_continueAfterUnexpectedArg       = continueAfterUnexpectedArg;
-		_treatUnmatchedOptionsAsArguments = treatUnmatchedOptionsAsArguments;
-
-		Options            = new List<CommandOption>();
-		Arguments          = new List<CommandArgument>();
-		Commands           = new List<CommandLineApplication>();
-		RemainingArguments = new List<string>();
-		Invoke             = () => 0;
-	}
+	private readonly bool _throwOnUnexpectedArg = throwOnUnexpectedArg;
 
 	public CommandLineApplication? Parent { get; set; }
 
@@ -38,12 +23,12 @@ public class CommandLineApplication
 	public CommandOption? OptionHelp    { get; private set; }
 	public CommandOption? OptionVersion { get; private set; }
 
-	internal readonly List<CommandOption>          Options;
-	internal readonly List<CommandArgument>        Arguments;
-	internal readonly List<CommandLineApplication> Commands;
-	internal readonly List<string>                 RemainingArguments;
+	internal readonly List<CommandOption>          Options            = new();
+	internal readonly List<CommandArgument>        Arguments          = new();
+	internal readonly List<CommandLineApplication> Commands           = new();
+	internal readonly List<string>                 RemainingArguments = new();
 
-	public Func<int>     Invoke             { get; set; }
+	public Func<int>     Invoke             { get; set; } = () => 0;
 	public Func<string>? LongVersionGetter  { get; set; }
 	public Func<string>? ShortVersionGetter { get; set; }
 
@@ -161,7 +146,7 @@ public class CommandLineApplication
 					var longOptionName = longOption[0];
 					option = command.GetOptions().SingleOrDefault(opt => string.Equals(opt.LongName, longOptionName, StringComparison.Ordinal));
 
-					if (option == null && _treatUnmatchedOptionsAsArguments)
+					if (option == null && treatUnmatchedOptionsAsArguments)
 						if (command.ProcessArguments(arg, ref arguments, ref processed, ref argumentsAssigned))
 							continue;
 
@@ -169,7 +154,7 @@ public class CommandLineApplication
 					{
 						var ignoreContinueAfterUnexpectedArg = false;
 						if (string.IsNullOrEmpty(longOptionName) &&
-						    !command._throwOnUnexpectedArg       &&
+						    !command._throwOnUnexpectedArg &&
 						    AllowArgumentSeparator)
 						{
 							// Skip over the '--' argument separator then consume all remaining arguments. All
@@ -220,7 +205,7 @@ public class CommandLineApplication
 					processed = true;
 					option    = command.GetOptions().SingleOrDefault(opt => string.Equals(opt.ShortName, shortOption[0], StringComparison.Ordinal));
 
-					if (option == null && _treatUnmatchedOptionsAsArguments)
+					if (option == null && treatUnmatchedOptionsAsArguments)
 						if (command.ProcessArguments(arg, ref arguments, ref processed, ref argumentsAssigned))
 							continue;
 
@@ -470,7 +455,7 @@ public class CommandLineApplication
 			throw new CommandParsingException(command, $"Unrecognized {argTypeName} '{args[index]}'");
 		}
 
-		if (_continueAfterUnexpectedArg && !ignoreContinueAfterUnexpectedArg)
+		if (continueAfterUnexpectedArg && !ignoreContinueAfterUnexpectedArg)
 		{
 			// Store argument for further use.
 			command.RemainingArguments.Add(args[index]);
