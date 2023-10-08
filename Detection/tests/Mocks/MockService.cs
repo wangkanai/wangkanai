@@ -21,15 +21,6 @@ public static class MockService
 
 	#endregion
 
-	#region HttpContextService
-
-	internal static IHttpContextService HttpContextService(string agent)
-	{
-		return MockHttpContextService(agent).Object;
-	}
-
-	#endregion
-
 	#region Browser
 
 	internal static BrowserService BrowserService(string agent)
@@ -37,7 +28,7 @@ public static class MockService
 		return BrowserService(UserAgentService(agent));
 	}
 
-	internal static BrowserService BrowserService(IUserAgentService agent)
+	private static BrowserService BrowserService(IUserAgentService agent)
 	{
 		var platform = PlatformService(agent);
 		var engine   = EngineService(agent);
@@ -127,6 +118,15 @@ public static class MockService
 		service.Setup(f => f.Context)
 		       .Returns(context);
 		return service;
+	}
+
+	#endregion
+	
+	#region HttpContextService
+
+	internal static IHttpContextService HttpContextService(string agent)
+	{
+		return MockHttpContextService(agent).Object;
 	}
 
 	#endregion
