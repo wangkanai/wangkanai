@@ -37,6 +37,7 @@ public class BrowserTagHelper : TagHelper
 		output.ThrowIfNull();
 
 		output.TagName = null;
+		output.TagMode = TagMode.StartTagAndEndTag;
 
 		if (Include.IsNullOrEmpty() && Exclude.IsNullOrEmpty())
 			return;
