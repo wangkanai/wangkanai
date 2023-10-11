@@ -16,8 +16,9 @@ public class BrowserTagHelper : TagHelper
 	private const string IncludeAttributeName = "include";
 	private const string ExcludeAttributeName = "exclude";
 
-	private static readonly char[]          NameSeparator = { ',' };
-	private readonly        IBrowserService _resolver;
+	private readonly IBrowserService _resolver;
+
+	private static readonly char[] NameSeparator = { ',' };
 
 	public BrowserTagHelper(IBrowserService resolver)
 	{
@@ -36,6 +37,7 @@ public class BrowserTagHelper : TagHelper
 		output.ThrowIfNull();
 
 		output.TagName = null;
+		output.TagMode = TagMode.StartTagAndEndTag;
 
 		if (Include.IsNullOrEmpty() && Exclude.IsNullOrEmpty())
 			return;
