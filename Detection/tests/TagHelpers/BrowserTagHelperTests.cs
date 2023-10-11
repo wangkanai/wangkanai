@@ -1,41 +1,16 @@
 ﻿// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-using System.Text.Encodings.Web;
-
 using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
 using Wangkanai.Detection.Mocks;
 
-namespace Wangkanai.Detection.Tests.TagHelpers;
+namespace Wangkanai.Detection.TagHelpers;
 
 public class BrowserTagHelperTests
 {
-	private static readonly TagHelperContext Context = new(
-		new TagHelperAttributeList(),
-		new Dictionary<object, object>(),
-		Guid.NewGuid().ToString("N"));
-
-	private static readonly TagHelperOutput OutputEmpty = new(
-		"div",
-		new TagHelperAttributeList(),
-		(result, encoder) => {
-			var tagHelperContent = new DefaultTagHelperContent();
-			tagHelperContent.SetHtmlContent(string.Empty);
-			return Task.FromResult<TagHelperContent>(tagHelperContent);
-		});
-
-	private static readonly TagHelperOutput OutputChrome = new(
-		"div",
-		new TagHelperAttributeList(),
-		(result, encoder) => {
-			var defaultContent= new DefaultTagHelperContent();
-			var content          = "<p>Chrome</p>";
-			var helperContent    = defaultContent.SetHtmlContent(content);
-			return Task.FromResult(helperContent);
-		});
-
 	private const string Agent = "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US) AppleWebKit/525.19 (KHTML, like Gecko) Chrome/1.0.154.53 Safari/525.19";
+	private const string Tag   = "<p>Chrome</p>";
 
 	[Fact]
 	public void ResolverIsNull()
@@ -48,7 +23,8 @@ public class BrowserTagHelperTests
 	{
 		var resolver  = MockService.BrowserService("test");
 		var tagHelper = new BrowserTagHelper(resolver);
-		Assert.Throws<ArgumentNullException>(() => tagHelper.Process(null!, OutputEmpty));
+		var output    = MockTagHelper.Output(string.Empty);
+		Assert.Throws<ArgumentNullException>(() => tagHelper.Process(null!, output));
 	}
 
 	[Fact]
@@ -56,7 +32,8 @@ public class BrowserTagHelperTests
 	{
 		var resolver  = MockService.BrowserService("test");
 		var tagHelper = new BrowserTagHelper(resolver);
-		Assert.Throws<ArgumentNullException>(() => tagHelper.Process(Context, null!));
+		var context   = MockTagHelper.Context;
+		Assert.Throws<ArgumentNullException>(() => tagHelper.Process(context, null!));
 	}
 
 	[Fact]
@@ -64,9 +41,11 @@ public class BrowserTagHelperTests
 	{
 		var resolver  = MockService.BrowserService(Agent);
 		var tagHelper = new BrowserTagHelper(resolver);
+		var output    = MockTagHelper.Output(string.Empty);
+		var context   = MockTagHelper.Context;
 		tagHelper.Include = null;
-		tagHelper.Process(Context, OutputEmpty);
-		Assert.Null(OutputEmpty.TagName);
+		tagHelper.Process(context, output);
+		Assert.Null(output.TagName);
 	}
 
 	[Fact]
@@ -74,9 +53,11 @@ public class BrowserTagHelperTests
 	{
 		var resolver  = MockService.BrowserService(Agent);
 		var tagHelper = new BrowserTagHelper(resolver);
+		var output    = MockTagHelper.Output(string.Empty);
+		var context   = MockTagHelper.Context;
 		tagHelper.Include = string.Empty;
-		tagHelper.Process(Context, OutputEmpty);
-		Assert.Null(OutputEmpty.TagName);
+		tagHelper.Process(context, output);
+		Assert.Null(output.TagName);
 	}
 
 	[Fact]
@@ -84,9 +65,11 @@ public class BrowserTagHelperTests
 	{
 		var resolver  = MockService.BrowserService(Agent);
 		var tagHelper = new BrowserTagHelper(resolver);
+		var output    = MockTagHelper.Output(string.Empty);
+		var context   = MockTagHelper.Context;
 		tagHelper.Include = " ";
-		tagHelper.Process(Context, OutputEmpty);
-		Assert.Null(OutputEmpty.TagName);
+		tagHelper.Process(context, output);
+		Assert.Null(output.TagName);
 	}
 
 	[Fact]
@@ -94,9 +77,11 @@ public class BrowserTagHelperTests
 	{
 		var resolver  = MockService.BrowserService(Agent);
 		var tagHelper = new BrowserTagHelper(resolver);
+		var output    = MockTagHelper.Output(string.Empty);
+		var context   = MockTagHelper.Context;
 		tagHelper.Include = "test";
-		tagHelper.Process(Context, OutputEmpty);
-		Assert.Null(OutputEmpty.TagName);
+		tagHelper.Process(context, output);
+		Assert.Null(output.TagName);
 	}
 
 	[Fact]
@@ -104,9 +89,11 @@ public class BrowserTagHelperTests
 	{
 		var resolver  = MockService.BrowserService(Agent);
 		var tagHelper = new BrowserTagHelper(resolver);
+		var output    = MockTagHelper.Output(Tag);
+		var context   = MockTagHelper.Context;
 		tagHelper.Include = "chrome";
-		tagHelper.Process(Context, OutputChrome);
-		Assert.Equal("<p>Chrome</p>", OutputChrome.Content.GetContent());
+		tagHelper.Process(context, output);
+		Assert.Equal(Tag, output.Content.GetContent());
 	}
 
 	[Fact]
@@ -114,9 +101,11 @@ public class BrowserTagHelperTests
 	{
 		var resolver  = MockService.BrowserService(Agent);
 		var tagHelper = new BrowserTagHelper(resolver);
+		var output    = MockTagHelper.Output(Tag);
+		var context   = MockTagHelper.Context;
 		tagHelper.Exclude = null;
-		tagHelper.Process(Context, OutputChrome);
-		Assert.Equal("<p>Chrome</p>", OutputChrome.Content.GetContent());
+		tagHelper.Process(context, output);
+		Assert.Equal(Tag, output.Content.GetContent());
 	}
 
 	[Fact]
@@ -124,9 +113,11 @@ public class BrowserTagHelperTests
 	{
 		var resolver  = MockService.BrowserService(Agent);
 		var tagHelper = new BrowserTagHelper(resolver);
+		var output    = MockTagHelper.Output(Tag);
+		var context   = MockTagHelper.Context;
 		tagHelper.Exclude = string.Empty;
-		tagHelper.Process(Context, OutputChrome);
-		Assert.Equal("<p>Chrome</p>", OutputChrome.Content.GetContent());
+		tagHelper.Process(context, output);
+		Assert.Equal(Tag, output.Content.GetContent());
 	}
 
 	[Fact]
@@ -134,9 +125,11 @@ public class BrowserTagHelperTests
 	{
 		var resolver  = MockService.BrowserService(Agent);
 		var tagHelper = new BrowserTagHelper(resolver);
+		var output    = MockTagHelper.Output(Tag);
+		var context   = MockTagHelper.Context;
 		tagHelper.Exclude = " ";
-		tagHelper.Process(Context, OutputChrome);
-		Assert.Equal("<p>Chrome</p>", OutputChrome.Content.GetContent());
+		tagHelper.Process(context, output);
+		Assert.Equal(Tag, output.Content.GetContent());
 	}
 
 	[Fact]
@@ -144,9 +137,11 @@ public class BrowserTagHelperTests
 	{
 		var resolver  = MockService.BrowserService(Agent);
 		var tagHelper = new BrowserTagHelper(resolver);
+		var output    = MockTagHelper.Output(Tag);
+		var context   = MockTagHelper.Context;
 		tagHelper.Exclude = "test";
-		tagHelper.Process(Context, OutputChrome);
-		Assert.Equal("<p>Chrome</p>", OutputChrome.Content.GetContent());
+		tagHelper.Process(context, output);
+		Assert.Equal(Tag, output.Content.GetContent());
 	}
 
 	[Fact]
@@ -154,9 +149,11 @@ public class BrowserTagHelperTests
 	{
 		var resolver  = MockService.BrowserService(Agent);
 		var tagHelper = new BrowserTagHelper(resolver);
+		var output    = MockTagHelper.Output(Tag);
+		var context   = MockTagHelper.Context;
 		tagHelper.Exclude = "chrome";
-		tagHelper.Process(Context, OutputChrome);
-		Assert.Null(OutputChrome.TagName);
+		tagHelper.Process(context, output);
+		Assert.Equal(Tag, output.Content.GetContent());
 	}
 
 	[Fact]
@@ -164,9 +161,11 @@ public class BrowserTagHelperTests
 	{
 		var resolver  = MockService.BrowserService(Agent);
 		var tagHelper = new BrowserTagHelper(resolver);
+		var output    = MockTagHelper.Output(Tag);
+		var context   = MockTagHelper.Context;
 		tagHelper.Include = "chrome";
 		tagHelper.Exclude = "chrome";
-		tagHelper.Process(Context, OutputChrome);
-		Assert.Null(OutputChrome.TagName);
+		tagHelper.Process(context, output);
+		Assert.Equal(Tag, output.Content.GetContent());
 	}
 }
