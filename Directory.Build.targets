@@ -7,10 +7,11 @@
 	</PropertyGroup>
 
 	<PropertyGroup Condition=" '$(TargetFramework)' == 'net8.0'">
-		<FrameworkVersion>8.0.0-rc.1.23421.29</FrameworkVersion>
-		<ExtensionsVersion>8.0.0-rc.1.23421.29</ExtensionsVersion>
-		<EntityFrameworkVersion>8.0.0-rc.1.23419.6</EntityFrameworkVersion>
-		<EntityFramrworkIdentityVersion>8.0.0-rc.1.23419.6</EntityFramrworkIdentityVersion>
+		<FrameworkVersion>8.0.0-rc.2.23480.2</FrameworkVersion>
+		<AspNetCoreVersion>8.0.0-rc.2.23480.2</AspNetCoreVersion>
+		<ExtensionsVersion>8.0.0-rc.2.23480.2</ExtensionsVersion>
+		<EntityFrameworkVersion>8.0.0-rc.2.23480.1</EntityFrameworkVersion>
+		<EntityFramrworkIdentityVersion>8.0.0-rc.2.23480.2</EntityFramrworkIdentityVersion>
 		<IdentityModelVersion>7.0.0</IdentityModelVersion>
 	</PropertyGroup>
 
@@ -41,8 +42,8 @@
 		<PackageReference Update="Microsoft.EntityFrameworkCore.InMemory" Version="$(EntityFrameworkVersion)"/>
 
 		<PackageReference Update="Microsoft.Extensions.DependencyInjection" Version="$(ExtensionsVersion)"/>
-		<PackageReference Update="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0-rc.1.23419.4"/>
-		<PackageReference Update="Microsoft.Extensions.FileProviders.Abstractions" Version="8.0.0-rc.1.23419.4"/>
+		<PackageReference Update="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0-rc.2.23479.6"/>
+		<PackageReference Update="Microsoft.Extensions.FileProviders.Abstractions" Version="8.0.0-rc.2.23479.6"/>
 
 		<PackageReference Update="Microsoft.IdentityModel.Abstractions" Version="$(IdentityModelVersion)"/>
 		<PackageReference Update="Microsoft.IdentityModel.Tokens" Version="7.0.2"/>

@@ -46,12 +46,11 @@
 	<PropertyGroup Condition="$(MSBuildProjectName.Contains('Benchmark'))">
 		<Optimize>true</Optimize>
 		<IsPackable>false</IsPackable>
-		<NoWarn>NU1504</NoWarn>
 		<SonarQubeExclude>true</SonarQubeExclude>
 	</PropertyGroup>
 
 	<ItemGroup Condition="$(MSBuildProjectName.Contains('Benchmark'))">
-		<PackageReference Include="BenchmarkDotNet" Version="0.13.8"/>
+		<PackageReference Include="BenchmarkDotNet" Version="0.13.9"/>
 	</ItemGroup>
 	
 	<PropertyGroup Condition="$(MSBuildProjectName.Contains('Tests'))">
