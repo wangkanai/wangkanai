@@ -2,6 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>$(DefaultNetCoreTargetFramework)</TargetFramework>
+		<RootNamespace>Wangkanai.Detection</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
