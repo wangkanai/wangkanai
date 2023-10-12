@@ -11,10 +11,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Client\Host.Main.Client.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<Content Remove="wwwroot\lib\**" />
 		<Content Include="wwwroot\lib\**" Watch="false" />
 		<Content Remove="wwwroot\favicon.png" />
