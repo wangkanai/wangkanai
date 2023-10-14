@@ -29,9 +29,10 @@
 
 	<!-- GitHub Source Link -->
 	<ItemGroup>
-		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
+		<PackageReference Include="Microsoft.SourceLink.GitHub" />
 	</ItemGroup>
 
+	<!-- xUnit Tests-->
 	<ItemGroup Condition="$(MSBuildProjectName.Contains('Tests'))">
 		<PackageReference Include="Microsoft.AspNetCore.TestHost" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" />
@@ -50,7 +51,7 @@
 	</PropertyGroup>
 
 	<ItemGroup Condition="$(MSBuildProjectName.Contains('Benchmark'))">
-		<PackageReference Include="BenchmarkDotNet" Version="0.13.9"/>
+		<PackageReference Include="BenchmarkDotNet"/>
 	</ItemGroup>
 	
 	<PropertyGroup Condition="$(MSBuildProjectName.Contains('Tests'))">
