@@ -1,45 +1,23 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
 	<PropertyGroup>
-		<TargetFramework>$(DefaultNetCoreTargetFramework)</TargetFramework>
+		<TargetFramework>net8.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
+		<UserSecretsId>aspnet-Host.Main-9fea4942-360b-4aac-b043-8c581f7a177f</UserSecretsId>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<ProjectReference Include="..\Client\Host.Main.Client.csproj" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.0-rc.2.23480.2" />
+		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.0-rc.2.23480.2" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.0-rc.2.23480.2" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.0-rc.2.23480.1" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.0-rc.2.23480.1" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<Content Remove="wwwroot\lib\**" />
-		<Content Include="wwwroot\lib\**" Watch="false" />
-		<Content Remove="wwwroot\favicon.png" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<Content Remove="package.json;package-lock.json" />
-		<None Include="package.json;package-lock.json">
-			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</None>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <_ContentIncludedByDefault Remove="Components\Layout\Header\HeaderList.razor" />
-	  <_ContentIncludedByDefault Remove="Components\Layout\Header\HeaderNotification.razor" />
-	  <_ContentIncludedByDefault Remove="Components\Layout\Header\HeaderProfile.razor" />
-	  <_ContentIncludedByDefault Remove="Components\Layout\Header\HeaderTheme.razor" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <AdditionalFiles Include="Components\Layout\Header\HeaderEvent.razor" />
-	  <AdditionalFiles Include="Components\Layout\Header\HeaderList.razor" />
-	  <AdditionalFiles Include="Components\Layout\Header\HeaderProfile.razor" />
-	  <AdditionalFiles Include="Components\Layout\Header\HeaderTheme.razor" />
+	  <Folder Include="Components\Layout\Header\" />
 	</ItemGroup>
 
 	<Target Name="NpmInstall" Inputs="package.json" Outputs="node_modules/.install-stamp">

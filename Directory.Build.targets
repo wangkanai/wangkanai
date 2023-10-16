@@ -7,23 +7,30 @@
 	</PropertyGroup>
 
 	<PropertyGroup Condition=" '$(TargetFramework)' == 'net8.0'">
-		<FrameworkVersion>8.0.0-rc.1.23421.29</FrameworkVersion>
-		<ExtensionsVersion>8.0.0-rc.1.23421.29</ExtensionsVersion>
-		<EntityFrameworkVersion>8.0.0-rc.1.23419.6</EntityFrameworkVersion>
-		<EntityFramrworkIdentityVersion>8.0.0-rc.1.23419.6</EntityFramrworkIdentityVersion>
+		<FrameworkVersion>8.0.0-rc.2.23480.2</FrameworkVersion>
+		<AspNetCoreVersion>8.0.0-rc.2.23480.2</AspNetCoreVersion>
+		<ExtensionsVersion>8.0.0-rc.2.23480.2</ExtensionsVersion>
+		<EntityFrameworkVersion>8.0.0-rc.2.23480.1</EntityFrameworkVersion>
+		<EntityFramrworkIdentityVersion>8.0.0-rc.2.23480.2</EntityFramrworkIdentityVersion>
 		<IdentityModelVersion>7.0.0</IdentityModelVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
+		<!--sourcelink-->
+		<PackageReference Update="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
+		
 		<!--tests -->
 		<PackageReference Update="Microsoft.AspNetCore.TestHost" Version="$(FrameworkVersion)"/>
 		<PackageReference Update="Microsoft.NET.Test.Sdk" Version="17.7.2"/>
 		<PackageReference Update="Moq" Version="4.20.69"/>
-		<PackageReference Update="xunit" Version="2.5.1"/>
-		<PackageReference Update="xunit.runner.visualstudio" Version="2.5.1" PrivateAssets="all"/>
+		<PackageReference Update="xunit" Version="2.5.2"/>
+		<PackageReference Update="xunit.runner.visualstudio" Version="2.5.2" PrivateAssets="all"/>
 		<PackageReference Update="coverlet.collector" Version="6.0.0" PrivateAssets="all"/>
 		<PackageReference Update="coverlet.msbuild" Version="6.0.0" PrivateAssets="all"/>
-
+		
+		<!--benchmark-->
+		<PackageReference Update="BenchmarkDotNet" Version="0.13.9"/>
+		
 		<!--framework-->
 		<PackageReference Update="Microsoft.AspNetCore.Authorization" Version="$(FrameworkVersion)"/>
 		<PackageReference Update="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="$(FrameworkVersion)"/>
@@ -41,8 +48,8 @@
 		<PackageReference Update="Microsoft.EntityFrameworkCore.InMemory" Version="$(EntityFrameworkVersion)"/>
 
 		<PackageReference Update="Microsoft.Extensions.DependencyInjection" Version="$(ExtensionsVersion)"/>
-		<PackageReference Update="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0-rc.1.23419.4"/>
-		<PackageReference Update="Microsoft.Extensions.FileProviders.Abstractions" Version="8.0.0-rc.1.23419.4"/>
+		<PackageReference Update="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0-rc.2.23479.6"/>
+		<PackageReference Update="Microsoft.Extensions.FileProviders.Abstractions" Version="8.0.0-rc.2.23479.6"/>
 
 		<PackageReference Update="Microsoft.IdentityModel.Abstractions" Version="$(IdentityModelVersion)"/>
 		<PackageReference Update="Microsoft.IdentityModel.Tokens" Version="7.0.2"/>

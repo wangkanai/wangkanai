@@ -10,15 +10,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".solutions", ".solutions", 
 		.gitignore = .gitignore
 		azure-pipelines.yml = azure-pipelines.yml
 		Directory.Build.props = Directory.Build.props
+		Directory.Build.targets = Directory.Build.targets
 		.github\FUNDING.yml = .github\FUNDING.yml
 		global.json = global.json
 		md-styles.css = md-styles.css
+		qodana.yaml = qodana.yaml
 		README.md = README.md
 		sign.ps1 = sign.ps1
 		version-up.ps1 = version-up.ps1
 		Wangkanai.sln.DotSettings = Wangkanai.sln.DotSettings
-		Directory.Build.targets = Directory.Build.targets
-		qodana.yaml = qodana.yaml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{C26D86D6-4B4E-407E-9F1D-9CA1765768CE}"
@@ -26,10 +26,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Detection", "Detection", "{7EED59CF-550E-4571-A1C0-4719F456AD8A}"
 	ProjectSection(SolutionItems) = preProject
 		Detection\Directory.Build.props = Detection\Directory.Build.props
+		Detection\INSTALL.md = Detection\INSTALL.md
 		Detection\NUGET.md = Detection\NUGET.md
 		Detection\README.md = Detection\README.md
 		Detection\sign.ps1 = Detection\sign.ps1
-		Detection\INSTALL.md = Detection\INSTALL.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection", "Detection\src\Wangkanai.Detection.csproj", "{F03915B4-D898-4A10-A6C9-E35DC1E527F8}"
@@ -41,9 +41,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Responsive", "Responsive", "{7C2D39ED-FF02-492B-84E0-958A4291B51C}"
 	ProjectSection(SolutionItems) = preProject
 		Responsive\Directory.Build.props = Responsive\Directory.Build.props
+		Responsive\INSTALL.md = Responsive\INSTALL.md
 		Responsive\README.md = Responsive\README.md
 		Responsive\sign.ps1 = Responsive\sign.ps1
-		Responsive\INSTALL.md = Responsive\INSTALL.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Validation", "Validation", "{7FB8FAE5-9EFC-42D3-AA14-F9E1A9B7AB26}"
@@ -78,9 +78,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Webmaster", "Webmaster", "{D7A979ED-443A-47D3-B34C-5D243D4F39D4}"
 	ProjectSection(SolutionItems) = preProject
 		Webmaster\Directory.Build.props = Webmaster\Directory.Build.props
+		Webmaster\INSTALL.md = Webmaster\INSTALL.md
 		Webmaster\README.md = Webmaster\README.md
 		Webmaster\sign.ps1 = Webmaster\sign.ps1
-		Webmaster\INSTALL.md = Webmaster\INSTALL.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Webmaster", "Webmaster\src\Wangkanai.Webmaster.csproj", "{40C64D52-CDFF-45DA-BC80-A5775C0EBBC0}"
@@ -90,9 +90,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Analytics", "Analytics", "{6CEA291F-82A1-49D0-B559-3E16E1A0E763}"
 	ProjectSection(SolutionItems) = preProject
 		Analytics\Directory.Build.props = Analytics\Directory.Build.props
+		Analytics\INSTALL.md = Analytics\INSTALL.md
 		Analytics\README.md = Analytics\README.md
 		Analytics\sign.ps1 = Analytics\sign.ps1
-		Analytics\INSTALL.md = Analytics\INSTALL.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Analytics", "Analytics\src\Wangkanai.Analytics.csproj", "{3BF37E15-B706-409C-96F7-AF2D033F509E}"
@@ -115,9 +115,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Markdown", "Markdown", "{383E27FE-2B5F-48A9-BE6A-F9973E6D8B1A}"
 	ProjectSection(SolutionItems) = preProject
 		Markdown\Directory.Build.props = Markdown\Directory.Build.props
+		Markdown\INSTALL.md = Markdown\INSTALL.md
 		Markdown\README.md = Markdown\README.md
 		Markdown\sign.ps1 = Markdown\sign.ps1
-		Markdown\INSTALL.md = Markdown\INSTALL.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Markdown", "Markdown\src\Wangkanai.Markdown.csproj", "{33B2A6FA-15BB-4071-A3D1-2644F0A35AAA}"
@@ -242,8 +242,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Assets", "Assets\Assets.csp
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{700EC70E-E161-4461-B84F-1FCF166D0486}"
 	ProjectSection(SolutionItems) = preProject
-		Web\README.md = Web\README.md
 		Web\Directory.Build.props = Web\Directory.Build.props
+		Web\README.md = Web\README.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extensions", "Extensions", "{ABDB88B8-683A-466C-A2DB-AFD516359619}"
@@ -297,91 +297,91 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Federation", "Federation", "{B67C6017-6D9F-457A-807A-69381475D2EF}"
 	ProjectSection(SolutionItems) = preProject
 		Federation\Directory.Build.props = Federation\Directory.Build.props
+		Federation\Federation.slnf = Federation\Federation.slnf
 		Federation\README.md = Federation\README.md
 		Federation\sign.ps1 = Federation\sign.ps1
-		Federation\Federation.slnf = Federation\Federation.slnf
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Federation", "Federation\src\Federation\Wangkanai.Federation.csproj", "{C49B819D-2F40-4427-A152-5E1C1323AEBC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Federation", "Federation\src\Federation\Wangkanai.Federation.csproj", "{C49B819D-2F40-4427-A152-5E1C1323AEBC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "hosts", "hosts", "{93BD0D45-3A9F-4171-A265-C47F03E27FE2}"
 	ProjectSection(SolutionItems) = preProject
-		Federation\hosts\Directory.Build.props = Federation\hosts\Directory.Build.props
 		Federation\hosts\.gitignore = Federation\hosts\.gitignore
+		Federation\hosts\Directory.Build.props = Federation\hosts\Directory.Build.props
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Federation.Domain", "Federation\src\Domain\Wangkanai.Federation.Domain.csproj", "{D9B8E83E-84F4-47D3-95AD-A7D369095BB7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Federation.Domain", "Federation\src\Domain\Wangkanai.Federation.Domain.csproj", "{D9B8E83E-84F4-47D3-95AD-A7D369095BB7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Federation.AspNetIdentity", "Federation\src\AspNetIdentity\Wangkanai.Federation.AspNetIdentity.csproj", "{3E52A670-7D9C-402F-97E2-C76A4284078D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Federation.AspNetIdentity", "Federation\src\AspNetIdentity\Wangkanai.Federation.AspNetIdentity.csproj", "{3E52A670-7D9C-402F-97E2-C76A4284078D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EntityFramework", "EntityFramework", "{A0AD7904-0E47-4652-8BF9-C0EE13C8B7E1}"
 	ProjectSection(SolutionItems) = preProject
-		EntityFramework\sign.ps1 = EntityFramework\sign.ps1
-		EntityFramework\README.md = EntityFramework\README.md
 		EntityFramework\Directory.Build.props = EntityFramework\Directory.Build.props
+		EntityFramework\README.md = EntityFramework\README.md
+		EntityFramework\sign.ps1 = EntityFramework\sign.ps1
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Federation.Benchmark", "Federation\benchmark\Wangkanai.Federation.Benchmark.csproj", "{ECD6586E-059A-4318-9A8A-A440D2972FA4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Federation.Benchmark", "Federation\benchmark\Wangkanai.Federation.Benchmark.csproj", "{ECD6586E-059A-4318-9A8A-A440D2972FA4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.EntityFramework", "EntityFramework\src\Wangkanai.EntityFramework.csproj", "{4F88F51A-EDD7-4ABE-B033-1768AC7A7670}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.EntityFramework", "EntityFramework\src\Wangkanai.EntityFramework.csproj", "{4F88F51A-EDD7-4ABE-B033-1768AC7A7670}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.EntityFramework.Tests", "EntityFramework\tests\Wangkanai.EntityFramework.Tests.csproj", "{B06BB37F-9F89-4B36-9829-0D22BD5E8205}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.EntityFramework.Tests", "EntityFramework\tests\Wangkanai.EntityFramework.Tests.csproj", "{B06BB37F-9F89-4B36-9829-0D22BD5E8205}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.EntityFramework.Benchmark", "EntityFramework\benchmark\Wangkanai.EntityFramework.Benchmark.csproj", "{96A100AF-C5B2-472C-8CE3-69343D8990D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.EntityFramework.Benchmark", "EntityFramework\benchmark\Wangkanai.EntityFramework.Benchmark.csproj", "{96A100AF-C5B2-472C-8CE3-69343D8990D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Federation.EntityFramework", "Federation\src\EntityFramework\Wangkanai.Federation.EntityFramework.csproj", "{CF8E2A33-8D94-4019-9B16-E2BFAA6E3624}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Federation.EntityFramework", "Federation\src\EntityFramework\Wangkanai.Federation.EntityFramework.csproj", "{CF8E2A33-8D94-4019-9B16-E2BFAA6E3624}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Host.AspNetIdentity", "Federation\hosts\AspNetIdentity\Host.AspNetIdentity.csproj", "{F322AA9B-D32D-461D-BB18-9C97616F734B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Host.AspNetIdentity", "Federation\hosts\AspNetIdentity\Host.AspNetIdentity.csproj", "{F322AA9B-D32D-461D-BB18-9C97616F734B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Host.EntityFramework", "Federation\hosts\EntityFramework\Host.EntityFramework.csproj", "{F02CF688-1D8A-4099-A9D7-C14E2C8CF652}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Host.EntityFramework", "Federation\hosts\EntityFramework\Host.EntityFramework.csproj", "{F02CF688-1D8A-4099-A9D7-C14E2C8CF652}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Host.Main", "Federation\hosts\Main\Host.Main.csproj", "{6E1F42BA-8881-4F33-896F-092CA49B5E8E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Host.Main", "Federation\hosts\Main\Host.Main.csproj", "{6E1F42BA-8881-4F33-896F-092CA49B5E8E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{155178B3-7B1C-49EE-886C-BDBAA8277375}"
 	ProjectSection(SolutionItems) = preProject
-		Identity\README.md = Identity\README.md
-		Identity\Directory.Build.props = Identity\Directory.Build.props
-		Identity\sign.ps1 = Identity\sign.ps1
 		Identity\.editorconfig = Identity\.editorconfig
+		Identity\Directory.Build.props = Identity\Directory.Build.props
+		Identity\README.md = Identity\README.md
+		Identity\sign.ps1 = Identity\sign.ps1
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Identity", "Identity\src\Wangkanai.Identity.csproj", "{754AFFD1-0597-49C6-A651-D0B6BAE6BF86}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Identity", "Identity\src\Wangkanai.Identity.csproj", "{754AFFD1-0597-49C6-A651-D0B6BAE6BF86}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Identity.Tests", "Identity\tests\Wangkanai.Identity.Tests.csproj", "{D73ABB2B-F5F0-4FDC-BFF0-0A1F04DEC220}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Identity.Tests", "Identity\tests\Wangkanai.Identity.Tests.csproj", "{D73ABB2B-F5F0-4FDC-BFF0-0A1F04DEC220}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Identity.Benchmark", "Identity\benchmark\Wangkanai.Identity.Benchmark.csproj", "{475CFA60-752F-44A6-9FA6-89987EEB6EC9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Identity.Benchmark", "Identity\benchmark\Wangkanai.Identity.Benchmark.csproj", "{475CFA60-752F-44A6-9FA6-89987EEB6EC9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{718791D4-3866-4A7E-8242-32D6EC763738}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Federation.Tests", "Federation\tests\Federation\Wangkanai.Federation.Tests.csproj", "{1CA62F74-44EC-4B71-B9FE-30E1A0563686}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Federation.Tests", "Federation\tests\Federation\Wangkanai.Federation.Tests.csproj", "{1CA62F74-44EC-4B71-B9FE-30E1A0563686}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Security", "Security", "{CEB6F6F6-7AE2-43A0-B9DE-B8A8D9154405}"
 	ProjectSection(SolutionItems) = preProject
-		Security\README.md = Security\README.md
 		Security\Directory.Build.props = Security\Directory.Build.props
-		Security\sign.ps1 = Security\sign.ps1
+		Security\README.md = Security\README.md
 		Security\Security.slnf = Security\Security.slnf
+		Security\sign.ps1 = Security\sign.ps1
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Security.Authentication", "Security\src\Authentication\Wangkanai.Security.Authentication.csproj", "{BF58B446-84AD-455B-A086-B2093B5BD404}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Security.Authentication", "Security\src\Authentication\Wangkanai.Security.Authentication.csproj", "{BF58B446-84AD-455B-A086-B2093B5BD404}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Security.Authorization", "Security\src\Authorization\Wangkanai.Security.Authorization.csproj", "{87950E10-2F01-4535-AD4F-B36137E84D93}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Security.Authorization", "Security\src\Authorization\Wangkanai.Security.Authorization.csproj", "{87950E10-2F01-4535-AD4F-B36137E84D93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Security.Tests", "Security\tests\Security\Wangkanai.Security.Tests.csproj", "{0A5F5EC2-AA85-479A-99BD-79008225CF1B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Security.Tests", "Security\tests\Security\Wangkanai.Security.Tests.csproj", "{0A5F5EC2-AA85-479A-99BD-79008225CF1B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Security.Benchmark", "Security\benchmark\Wangkanai.Security.Benchmark.csproj", "{BF2DA6CE-5671-4121-A5B4-170FCB0F5F5A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Security.Benchmark", "Security\benchmark\Wangkanai.Security.Benchmark.csproj", "{BF2DA6CE-5671-4121-A5B4-170FCB0F5F5A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{FBF6F35E-B9C3-4AA8-AE85-377F9254FB11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Security.RazorApp", "Security\samples\Razor\Wangkanai.Security.RazorApp.csproj", "{B77299F2-CBC6-43DC-BD7F-EB908B2896DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Security.RazorApp", "Security\samples\Razor\Wangkanai.Security.RazorApp.csproj", "{B77299F2-CBC6-43DC-BD7F-EB908B2896DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Security.Core", "Security\src\Core\Wangkanai.Security.Core.csproj", "{CB4F3B8B-1D7B-4C6B-9051-F38C64DD53EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Security.Core", "Security\src\Core\Wangkanai.Security.Core.csproj", "{CB4F3B8B-1D7B-4C6B-9051-F38C64DD53EB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ISSUE_TEMPLATE", "ISSUE_TEMPLATE", "{8C6C7F6B-6CAD-4434-B6F7-3DAE90266B68}"
 	ProjectSection(SolutionItems) = preProject
 		.github\ISSUE_TEMPLATE\bug_report.md = .github\ISSUE_TEMPLATE\bug_report.md
-		.github\ISSUE_TEMPLATE\feature_request.md = .github\ISSUE_TEMPLATE\feature_request.md
 		.github\ISSUE_TEMPLATE\design_note.md = .github\ISSUE_TEMPLATE\design_note.md
+		.github\ISSUE_TEMPLATE\feature_request.md = .github\ISSUE_TEMPLATE\feature_request.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mvc", "Mvc", "{047F1FC1-32F6-4C73-BB4F-75A6E4BF6D56}"
@@ -391,9 +391,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mvc", "Mvc", "{047F1FC1-32F
 		Mvc\sign.ps1 = Mvc\sign.ps1
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Mvc", "Mvc\src\Wangkanai.Mvc.csproj", "{87D8623E-9584-43D1-BC01-2988E5149C8D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Mvc", "Mvc\src\Wangkanai.Mvc.csproj", "{87D8623E-9584-43D1-BC01-2988E5149C8D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Mvc.Tests", "Mvc\tests\Wangkanai.Mvc.Tests.csproj", "{C254BBC0-B828-4D16-852D-EAC04B904046}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Mvc.Tests", "Mvc\tests\Wangkanai.Mvc.Tests.csproj", "{C254BBC0-B828-4D16-852D-EAC04B904046}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Internal", "Internal", "{0A7F10BF-EA60-4A19-9F07-3D9CE40F5952}"
 	ProjectSection(SolutionItems) = preProject
@@ -402,48 +402,48 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Internal", "Internal", "{0A
 		Extensions\Internal\sign.ps1 = Extensions\Internal\sign.ps1
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Extensions.Internal", "Extensions\Internal\src\Wangkanai.Extensions.Internal.csproj", "{DE1B420A-E7F3-446D-9FB6-77FA89AC17B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Extensions.Internal", "Extensions\Internal\src\Wangkanai.Extensions.Internal.csproj", "{DE1B420A-E7F3-446D-9FB6-77FA89AC17B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Extensions.Internal.Tests", "Extensions\Internal\tests\Wangkanai.Extensions.Internal.Tests.csproj", "{2ADC834E-E648-44D0-B5C0-3B2E02BB42CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Extensions.Internal.Tests", "Extensions\Internal\tests\Wangkanai.Extensions.Internal.Tests.csproj", "{2ADC834E-E648-44D0-B5C0-3B2E02BB42CA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".sonar", ".sonar", "{EEF194BC-9D6A-4EEB-8526-63CC9BFF6FB4}"
 	ProjectSection(SolutionItems) = preProject
 		dotnet-sonar.ps1 = dotnet-sonar.ps1
-		SonarQube.Analysis.xml = SonarQube.Analysis.xml
 		sonar-begin.ps1 = sonar-begin.ps1
 		sonar-prep.ps1 = sonar-prep.ps1
+		SonarQube.Analysis.xml = SonarQube.Analysis.xml
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Blazor.Tests", "Blazor\tests\Wangkanai.Blazor.Tests.csproj", "{235F3D6E-8F3D-4A68-8E4F-7CEF06022164}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Blazor.Tests", "Blazor\tests\Wangkanai.Blazor.Tests.csproj", "{235F3D6E-8F3D-4A68-8E4F-7CEF06022164}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Host.Main", "Webmaster\samples\Main\Host.Main.csproj", "{E07139C6-8529-4DED-899F-4E75E93B6B41}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Host.Main", "Webmaster\samples\Main\Host.Main.csproj", "{E07139C6-8529-4DED-899F-4E75E93B6B41}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Host.Main", "Responsive\samples\Main\Host.Main.csproj", "{6225D02B-904E-432D-ADB7-0A09DF4F9E91}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Host.Main", "Responsive\samples\Main\Host.Main.csproj", "{6225D02B-904E-432D-ADB7-0A09DF4F9E91}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Host.Main", "Detection\samples\Main\Host.Main.csproj", "{A576108B-0921-48FB-B9B0-51B5A0220AD0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Host.Main", "Detection\samples\Main\Host.Main.csproj", "{A576108B-0921-48FB-B9B0-51B5A0220AD0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Extensions.FileProviders.Benchmark", "Extensions\FileProviders\benchmark\Wangkanai.Extensions.FileProviders.Benchmark.csproj", "{D280E9F4-F6CF-4D77-8689-BF8A9A11798E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Extensions.FileProviders.Benchmark", "Extensions\FileProviders\benchmark\Wangkanai.Extensions.FileProviders.Benchmark.csproj", "{D280E9F4-F6CF-4D77-8689-BF8A9A11798E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Extensions.Html.Benchmark", "Extensions\Html\benchmark\Wangkanai.Extensions.Html.Benchmark.csproj", "{2196F649-CE8A-4A95-B86A-360E1A1C9220}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Extensions.Html.Benchmark", "Extensions\Html\benchmark\Wangkanai.Extensions.Html.Benchmark.csproj", "{2196F649-CE8A-4A95-B86A-360E1A1C9220}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Extensions.Internal.Benchmark", "Extensions\Internal\benchmark\Wangkanai.Extensions.Internal.Benchmark.csproj", "{849B38B6-C435-4045-9F36-E5EC2911CF3C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Extensions.Internal.Benchmark", "Extensions\Internal\benchmark\Wangkanai.Extensions.Internal.Benchmark.csproj", "{849B38B6-C435-4045-9F36-E5EC2911CF3C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Hosting.Benchmark", "Hosting\benchmark\Wangkanai.Hosting.Benchmark.csproj", "{3CA7783B-052F-4245-97EC-27A38A226AD8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Hosting.Benchmark", "Hosting\benchmark\Wangkanai.Hosting.Benchmark.csproj", "{3CA7783B-052F-4245-97EC-27A38A226AD8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Mvc.Benchmark", "Mvc\benchmark\Wangkanai.Mvc.Benchmark.csproj", "{AFA529AA-7FE4-473C-AF32-A799E6A69B85}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Mvc.Benchmark", "Mvc\benchmark\Wangkanai.Mvc.Benchmark.csproj", "{AFA529AA-7FE4-473C-AF32-A799E6A69B85}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Validation.Benchmark", "Validation\benchmark\Wangkanai.Validation.Benchmark.csproj", "{43F1616D-9D04-4086-9410-A4647FC39088}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Validation.Benchmark", "Validation\benchmark\Wangkanai.Validation.Benchmark.csproj", "{43F1616D-9D04-4086-9410-A4647FC39088}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.WebServer.Benchmark", "Webserver\benchmark\Wangkanai.WebServer.Benchmark.csproj", "{6349F534-369A-4BEA-B0CC-FB1236088C23}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.WebServer.Benchmark", "Webserver\benchmark\Wangkanai.WebServer.Benchmark.csproj", "{6349F534-369A-4BEA-B0CC-FB1236088C23}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Shared.Benchmark", "Shared\benchmark\Wangkanai.Shared.Benchmark.csproj", "{9961DCCE-01C5-4EC5-9806-DDF42A9D2448}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Shared.Benchmark", "Shared\benchmark\Wangkanai.Shared.Benchmark.csproj", "{9961DCCE-01C5-4EC5-9806-DDF42A9D2448}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{6827EA37-E105-4411-ADC8-B12E6AA2BFDB}"
 	ProjectSection(SolutionItems) = preProject
 		Blazor\samples\README.md = Blazor\samples\README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Host.Main", "Blazor\samples\Main\Host.Main.csproj", "{BB8EB797-48CD-4A23-9650-D68723C0162B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Host.Main", "Blazor\samples\Main\Host.Main.csproj", "{BB8EB797-48CD-4A23-9650-D68723C0162B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{2F4F2D83-797D-4F4F-8378-C1D2F6CC6A56}"
 	ProjectSection(SolutionItems) = preProject
@@ -452,21 +452,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{2F4F
 		Testing\sign.ps1 = Testing\sign.ps1
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Testing", "Testing\src\Wangkanai.Testing.csproj", "{48D78AC0-157A-4CCA-AAC7-BCBFB2D2BD96}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Testing", "Testing\src\Wangkanai.Testing.csproj", "{48D78AC0-157A-4CCA-AAC7-BCBFB2D2BD96}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Testing.Tests", "Testing\tests\Wangkanai.Testing.Tests.csproj", "{6C12A933-2BEC-49B8-8EB1-906171040E40}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Testing.Tests", "Testing\tests\Wangkanai.Testing.Tests.csproj", "{6C12A933-2BEC-49B8-8EB1-906171040E40}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Testing.Benchmark", "Testing\benchmark\Wangkanai.Testing.Benchmark.csproj", "{F1F7675D-EBE7-4138-9E30-F4DFB0416B8C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Testing.Benchmark", "Testing\benchmark\Wangkanai.Testing.Benchmark.csproj", "{F1F7675D-EBE7-4138-9E30-F4DFB0416B8C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Web", "Web\src\Wangkanai.Web.csproj", "{A64FBD4C-804F-456C-ABF6-B00B50DD6B9A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Web", "Web\src\Wangkanai.Web.csproj", "{A64FBD4C-804F-456C-ABF6-B00B50DD6B9A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Federation.AuthProxyBackend", "Federation\src\AuthProxyBackend\Wangkanai.Federation.AuthProxyBackend.csproj", "{CA3D9B31-DA0B-443F-B143-AC504CA57597}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Federation.AuthProxyBackend", "Federation\src\AuthProxyBackend\Wangkanai.Federation.AuthProxyBackend.csproj", "{CA3D9B31-DA0B-443F-B143-AC504CA57597}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Federation.Domain.Tests", "Federation\tests\Domain\Wangkanai.Federation.Domain.Tests.csproj", "{EC16E6D9-DEED-42B1-B510-EAB705D337A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Federation.Domain.Tests", "Federation\tests\Domain\Wangkanai.Federation.Domain.Tests.csproj", "{EC16E6D9-DEED-42B1-B510-EAB705D337A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Watcher", "Tools\Watcher\src\Wangkanai.Watcher.csproj", "{8BEF7BDD-B13F-448B-8B7D-37A855A32422}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Watcher", "Tools\Watcher\src\Wangkanai.Watcher.csproj", "{8BEF7BDD-B13F-448B-8B7D-37A855A32422}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Watcher.Tests", "Tools\Watcher\tests\Wangkanai.Watcher.Tests.csproj", "{56F2E615-348E-4576-AC72-579124DD4F98}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Watcher.Tests", "Tools\Watcher\tests\Wangkanai.Watcher.Tests.csproj", "{56F2E615-348E-4576-AC72-579124DD4F98}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cryptography", "Cryptography", "{234A4BD2-EDC0-4BCF-A712-583FBDE9A270}"
 	ProjectSection(SolutionItems) = preProject
@@ -475,19 +475,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cryptography", "Cryptograph
 		Cryptography\sign.ps1 = Cryptography\sign.ps1
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Cryptography", "Cryptography\src\Wangkanai.Cryptography.csproj", "{40A02C7A-7A10-41D6-BE3A-BC9D8ED5B985}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Cryptography", "Cryptography\src\Wangkanai.Cryptography.csproj", "{40A02C7A-7A10-41D6-BE3A-BC9D8ED5B985}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Cryptography.Tests", "Cryptography\tests\Wangkanai.Cryptography.Tests.csproj", "{A496FC6F-E5C7-4581-9818-A06C81079447}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Cryptography.Tests", "Cryptography\tests\Wangkanai.Cryptography.Tests.csproj", "{A496FC6F-E5C7-4581-9818-A06C81079447}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Cryptography.Benchmark", "Cryptography\benchmark\Wangkanai.Cryptography.Benchmark.csproj", "{BA3A2AB1-9201-48F5-BCA0-5975994E50FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Cryptography.Benchmark", "Cryptography\benchmark\Wangkanai.Cryptography.Benchmark.csproj", "{BA3A2AB1-9201-48F5-BCA0-5975994E50FD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{EE8CF0E8-0381-4D63-B141-5677B05BDCA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Host.Main.Client", "Tabler\samples\Client\Host.Main.Client.csproj", "{966A46E5-95DF-452A-BC81-A6C2EEB29412}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Host.Old", "Tabler\samples\Old\Host.Old.csproj", "{4835BB3E-D9DF-4B1D-8739-FF9385E91CB6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Host.Main", "Tabler\samples\Server\Host.Main.csproj", "{C0874388-1C37-4868-8638-6AE7E17A83D6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Host.Main.Client", "Tabler\samples\Client\Host.Main.Client.csproj", "{49C4C4AC-DD92-4878-B569-31D392E1B0F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Host.Old", "Tabler\samples\Old\Host.Old.csproj", "{4835BB3E-D9DF-4B1D-8739-FF9385E91CB6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Host.Main", "Tabler\samples\Server\Host.Main.csproj", "{EE853AE1-E8B8-4B75-9518-56E2E7ECFF6E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -899,18 +899,18 @@ Global
 		{BA3A2AB1-9201-48F5-BCA0-5975994E50FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA3A2AB1-9201-48F5-BCA0-5975994E50FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA3A2AB1-9201-48F5-BCA0-5975994E50FD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{966A46E5-95DF-452A-BC81-A6C2EEB29412}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{966A46E5-95DF-452A-BC81-A6C2EEB29412}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{966A46E5-95DF-452A-BC81-A6C2EEB29412}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{966A46E5-95DF-452A-BC81-A6C2EEB29412}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C0874388-1C37-4868-8638-6AE7E17A83D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C0874388-1C37-4868-8638-6AE7E17A83D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C0874388-1C37-4868-8638-6AE7E17A83D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C0874388-1C37-4868-8638-6AE7E17A83D6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4835BB3E-D9DF-4B1D-8739-FF9385E91CB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4835BB3E-D9DF-4B1D-8739-FF9385E91CB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4835BB3E-D9DF-4B1D-8739-FF9385E91CB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4835BB3E-D9DF-4B1D-8739-FF9385E91CB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49C4C4AC-DD92-4878-B569-31D392E1B0F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49C4C4AC-DD92-4878-B569-31D392E1B0F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49C4C4AC-DD92-4878-B569-31D392E1B0F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49C4C4AC-DD92-4878-B569-31D392E1B0F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE853AE1-E8B8-4B75-9518-56E2E7ECFF6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE853AE1-E8B8-4B75-9518-56E2E7ECFF6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE853AE1-E8B8-4B75-9518-56E2E7ECFF6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE853AE1-E8B8-4B75-9518-56E2E7ECFF6E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -942,6 +942,7 @@ Global
 		{DFCE57F8-CA4D-4F85-A14D-F15173B8CC42} = {ABDB88B8-683A-466C-A2DB-AFD516359619}
 		{3BC55F8B-971B-4611-B012-CDABA944BE96} = {89052ADF-DFC9-4281-A1A1-E83434F434BC}
 		{F32D16F1-3419-4401-9036-94B60C2C14BE} = {084E5C3F-9E52-40A3-9094-C406A2306BAB}
+		{6B7D8653-4ADC-45AD-8289-C933FCDA34B2} = {084E5C3F-9E52-40A3-9094-C406A2306BAB}
 		{C5C4D631-1DA0-40D1-9B62-D4D5D41E8859} = {ABDB88B8-683A-466C-A2DB-AFD516359619}
 		{A80B6DAF-AA55-465E-9D99-6BFF7270DF36} = {F32D16F1-3419-4401-9036-94B60C2C14BE}
 		{02E6D09F-C053-4A66-8229-518DA83F05D4} = {F32D16F1-3419-4401-9036-94B60C2C14BE}
@@ -955,6 +956,7 @@ Global
 		{04C1AF6E-C899-403F-8F69-B507883824EF} = {383E27FE-2B5F-48A9-BE6A-F9973E6D8B1A}
 		{47A46DE7-D743-4C22-9977-144FAB77DC24} = {7C2D39ED-FF02-492B-84E0-958A4291B51C}
 		{C5C0B9F1-C2FC-4428-AE27-0188EC5EE131} = {6CEA291F-82A1-49D0-B559-3E16E1A0E763}
+		{52ACE4EB-C551-4189-B92F-F7B92C333B34} = {9D20D5E6-879B-463C-964A-3DA13FFAE9E3}
 		{9FD10445-6D7E-4D09-B123-F8E39A35709D} = {89052ADF-DFC9-4281-A1A1-E83434F434BC}
 		{5CDA521B-A2B6-4E96-B8D6-CFD1FAF2FC11} = {89052ADF-DFC9-4281-A1A1-E83434F434BC}
 		{2CEADA4F-C9A2-4C1D-8CF4-816291BABCAA} = {89052ADF-DFC9-4281-A1A1-E83434F434BC}
@@ -978,6 +980,7 @@ Global
 		{93BD0D45-3A9F-4171-A265-C47F03E27FE2} = {B67C6017-6D9F-457A-807A-69381475D2EF}
 		{D9B8E83E-84F4-47D3-95AD-A7D369095BB7} = {B67C6017-6D9F-457A-807A-69381475D2EF}
 		{3E52A670-7D9C-402F-97E2-C76A4284078D} = {B67C6017-6D9F-457A-807A-69381475D2EF}
+		{ECD6586E-059A-4318-9A8A-A440D2972FA4} = {B67C6017-6D9F-457A-807A-69381475D2EF}
 		{4F88F51A-EDD7-4ABE-B033-1768AC7A7670} = {A0AD7904-0E47-4652-8BF9-C0EE13C8B7E1}
 		{B06BB37F-9F89-4B36-9829-0D22BD5E8205} = {A0AD7904-0E47-4652-8BF9-C0EE13C8B7E1}
 		{96A100AF-C5B2-472C-8CE3-69343D8990D6} = {A0AD7904-0E47-4652-8BF9-C0EE13C8B7E1}
@@ -992,6 +995,8 @@ Global
 		{1CA62F74-44EC-4B71-B9FE-30E1A0563686} = {718791D4-3866-4A7E-8242-32D6EC763738}
 		{BF58B446-84AD-455B-A086-B2093B5BD404} = {CEB6F6F6-7AE2-43A0-B9DE-B8A8D9154405}
 		{87950E10-2F01-4535-AD4F-B36137E84D93} = {CEB6F6F6-7AE2-43A0-B9DE-B8A8D9154405}
+		{0A5F5EC2-AA85-479A-99BD-79008225CF1B} = {CEB6F6F6-7AE2-43A0-B9DE-B8A8D9154405}
+		{BF2DA6CE-5671-4121-A5B4-170FCB0F5F5A} = {CEB6F6F6-7AE2-43A0-B9DE-B8A8D9154405}
 		{FBF6F35E-B9C3-4AA8-AE85-377F9254FB11} = {CEB6F6F6-7AE2-43A0-B9DE-B8A8D9154405}
 		{B77299F2-CBC6-43DC-BD7F-EB908B2896DE} = {FBF6F35E-B9C3-4AA8-AE85-377F9254FB11}
 		{CB4F3B8B-1D7B-4C6B-9051-F38C64DD53EB} = {CEB6F6F6-7AE2-43A0-B9DE-B8A8D9154405}
@@ -1019,7 +1024,6 @@ Global
 		{6C12A933-2BEC-49B8-8EB1-906171040E40} = {2F4F2D83-797D-4F4F-8378-C1D2F6CC6A56}
 		{F1F7675D-EBE7-4138-9E30-F4DFB0416B8C} = {2F4F2D83-797D-4F4F-8378-C1D2F6CC6A56}
 		{A64FBD4C-804F-456C-ABF6-B00B50DD6B9A} = {700EC70E-E161-4461-B84F-1FCF166D0486}
-		{6B7D8653-4ADC-45AD-8289-C933FCDA34B2} = {084E5C3F-9E52-40A3-9094-C406A2306BAB}
 		{CA3D9B31-DA0B-443F-B143-AC504CA57597} = {B67C6017-6D9F-457A-807A-69381475D2EF}
 		{EC16E6D9-DEED-42B1-B510-EAB705D337A3} = {718791D4-3866-4A7E-8242-32D6EC763738}
 		{8BEF7BDD-B13F-448B-8B7D-37A855A32422} = {6B7D8653-4ADC-45AD-8289-C933FCDA34B2}
@@ -1028,13 +1032,9 @@ Global
 		{A496FC6F-E5C7-4581-9818-A06C81079447} = {234A4BD2-EDC0-4BCF-A712-583FBDE9A270}
 		{BA3A2AB1-9201-48F5-BCA0-5975994E50FD} = {234A4BD2-EDC0-4BCF-A712-583FBDE9A270}
 		{EE8CF0E8-0381-4D63-B141-5677B05BDCA0} = {89052ADF-DFC9-4281-A1A1-E83434F434BC}
-		{966A46E5-95DF-452A-BC81-A6C2EEB29412} = {EE8CF0E8-0381-4D63-B141-5677B05BDCA0}
-		{C0874388-1C37-4868-8638-6AE7E17A83D6} = {EE8CF0E8-0381-4D63-B141-5677B05BDCA0}
 		{4835BB3E-D9DF-4B1D-8739-FF9385E91CB6} = {EE8CF0E8-0381-4D63-B141-5677B05BDCA0}
-		{52ACE4EB-C551-4189-B92F-F7B92C333B34} = {9D20D5E6-879B-463C-964A-3DA13FFAE9E3}
-		{BF2DA6CE-5671-4121-A5B4-170FCB0F5F5A} = {CEB6F6F6-7AE2-43A0-B9DE-B8A8D9154405}
-		{0A5F5EC2-AA85-479A-99BD-79008225CF1B} = {CEB6F6F6-7AE2-43A0-B9DE-B8A8D9154405}
-		{ECD6586E-059A-4318-9A8A-A440D2972FA4} = {B67C6017-6D9F-457A-807A-69381475D2EF}
+		{49C4C4AC-DD92-4878-B569-31D392E1B0F6} = {EE8CF0E8-0381-4D63-B141-5677B05BDCA0}
+		{EE853AE1-E8B8-4B75-9518-56E2E7ECFF6E} = {EE8CF0E8-0381-4D63-B141-5677B05BDCA0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1BA0A192-D7BE-40A1-96AE-B3C8C6BC9B69}
