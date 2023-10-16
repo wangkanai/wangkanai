@@ -27,6 +27,10 @@
 		<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
 	</PropertyGroup>
 
+	<PropertyGroup>
+		<NoWarn>NU1008</NoWarn>
+	</PropertyGroup>
+
 	<!-- GitHub Source Link -->
 	<ItemGroup>
 		<PackageReference Include="Microsoft.SourceLink.GitHub" />
