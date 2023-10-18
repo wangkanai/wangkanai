@@ -6,7 +6,7 @@
 
 		<RepositoryType>git</RepositoryType>
 		<RepositoryUrl>git://github.com/wangkanai/wangkanai</RepositoryUrl>
-
+		
 		<PackageProjectUrl>https://github.com/wangkanai/wangkanai</PackageProjectUrl>
 		<PackageLicense>https://github.com/wangkanai/wangkanai/blob/main/LICENSE</PackageLicense>
 		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
@@ -19,16 +19,13 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+		<!--todo: enable again once all warnings are addressed-->
+		<!--<ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>-->
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 		<EmbedUntrackedSources>true</EmbedUntrackedSources>
 		<IncludeSymbols>true</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
-	</PropertyGroup>
-
-	<PropertyGroup>
-		<NoWarn>NU1008</NoWarn>
 	</PropertyGroup>
 
 	<!-- GitHub Source Link -->
