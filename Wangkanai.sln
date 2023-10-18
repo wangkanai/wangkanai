@@ -485,9 +485,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{EE8C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Host.Old", "Tabler\samples\Old\Host.Old.csproj", "{4835BB3E-D9DF-4B1D-8739-FF9385E91CB6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Host.Main.Client", "Tabler\samples\Client\Host.Main.Client.csproj", "{49C4C4AC-DD92-4878-B569-31D392E1B0F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Host.Main.Client", "Tabler\samples\Client\Host.Main.Client.csproj", "{49C4C4AC-DD92-4878-B569-31D392E1B0F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Host.Main", "Tabler\samples\Server\Host.Main.csproj", "{EE853AE1-E8B8-4B75-9518-56E2E7ECFF6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Host.Main", "Tabler\samples\Server\Host.Main.csproj", "{EE853AE1-E8B8-4B75-9518-56E2E7ECFF6E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
