@@ -1,4 +1,4 @@
-﻿{
+{
 	"name": "@wangkanai/tabler",
 	"version": "1.0.0",
 	"scripts": {
@@ -14,6 +14,7 @@
 	},
 	"devDependencies": {
 		"rimraf": "^5.0.1",
+		"eslint": "^8.51.0",
 		"cpy-cli": "^5.0.0",
 		"node-sass": "^9.0.0",
 		"node-sass-package-importer": "^5.3.3",

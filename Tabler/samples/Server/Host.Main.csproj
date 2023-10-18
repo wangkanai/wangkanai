@@ -17,8 +17,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Components\Layout\Header\" />
+		<Content Remove="wwwroot\lib\**" />
+		<Content Include="wwwroot\lib\**" Watch="false" />
+		<Content Remove="wwwroot\favicon.png" />
 	</ItemGroup>
+
 
 	<Target Name="NpmInstall" Inputs="package.json" Outputs="node_modules/.install-stamp">
 		<Exec Command="npm ci" Condition="$(RestorePackagesWithLockFile) == 'true'" />
