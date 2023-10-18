@@ -1,18 +1,18 @@
-<Project>
-	<PropertyGroup Condition=" '$(TargetFramework)' == 'net7.0'">
+<Project>	
+	<!--<PropertyGroup Condition=" '$(TargetFramework)' == 'net7.0'">
 		<FrameworkVersion>7.0.0</FrameworkVersion>
 		<ExtensionsVersion>7.0.0</ExtensionsVersion>
 		<EntityFrameworkVersion>7.0.0</EntityFrameworkVersion>
 		<EntityFramrworkIdentityVersion>7.0.0</EntityFramrworkIdentityVersion>
-	</PropertyGroup>
+	</PropertyGroup>-->
 
 	<PropertyGroup Condition=" '$(TargetFramework)' == 'net8.0'">
-		<FrameworkVersion>8.0.0-rc.2.23480.2</FrameworkVersion>
-		<AspNetCoreVersion>8.0.0-rc.2.23480.2</AspNetCoreVersion>
-		<ExtensionsVersion>8.0.0-rc.2.23480.2</ExtensionsVersion>
-		<EntityFrameworkVersion>8.0.0-rc.2.23480.1</EntityFrameworkVersion>
-		<EntityFramrworkIdentityVersion>8.0.0-rc.2.23480.2</EntityFramrworkIdentityVersion>
-		<IdentityModelVersion>7.0.0</IdentityModelVersion>
+		<FrameworkVersion>8.0.0-rc.2.*</FrameworkVersion>
+		<AspNetCoreVersion>8.0.0-rc.2.*</AspNetCoreVersion>
+		<ExtensionsVersion>8.0.0-rc.2.*</ExtensionsVersion>
+		<EntityFrameworkVersion>8.0.0-rc.2.*</EntityFrameworkVersion>
+		<EntityFramrworkIdentityVersion>8.0.0-rc.2.*</EntityFramrworkIdentityVersion>
+		<IdentityModelVersion>7.0.3</IdentityModelVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -23,8 +23,8 @@
 		<PackageReference Update="Microsoft.AspNetCore.TestHost" Version="$(FrameworkVersion)"/>
 		<PackageReference Update="Microsoft.NET.Test.Sdk" Version="17.7.2"/>
 		<PackageReference Update="Moq" Version="4.20.69"/>
-		<PackageReference Update="xunit" Version="2.5.2"/>
-		<PackageReference Update="xunit.runner.visualstudio" Version="2.5.2" PrivateAssets="all"/>
+		<PackageReference Update="xunit" Version="2.5.3"/>
+		<PackageReference Update="xunit.runner.visualstudio" Version="2.5.3" PrivateAssets="all"/>
 		<PackageReference Update="coverlet.collector" Version="6.0.0" PrivateAssets="all"/>
 		<PackageReference Update="coverlet.msbuild" Version="6.0.0" PrivateAssets="all"/>
 		
@@ -52,7 +52,7 @@
 		<PackageReference Update="Microsoft.Extensions.FileProviders.Abstractions" Version="8.0.0-rc.2.23479.6"/>
 
 		<PackageReference Update="Microsoft.IdentityModel.Abstractions" Version="$(IdentityModelVersion)"/>
-		<PackageReference Update="Microsoft.IdentityModel.Tokens" Version="7.0.2"/>
+		<PackageReference Update="Microsoft.IdentityModel.Tokens" Version="$(IdentityModelVersion)"/>
 		<PackageReference Update="Microsoft.IdentityModel.Protocols" Version="$(IdentityModelVersion)"/>
 		<PackageReference Update="Microsoft.IdentityModel.Protocols.OpenIdConnect" Version="$(IdentityModelVersion)"/>
 
