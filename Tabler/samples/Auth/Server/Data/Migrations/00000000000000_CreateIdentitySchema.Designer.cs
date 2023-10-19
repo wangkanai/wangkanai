@@ -2,7 +2,7 @@
 
 using System;
 
-using Host.Main.Data;
+using Host.Auth.Data;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Host.Main.Migrations
+namespace Host.Auth.Migrations
 {
 	[DbContext(typeof(ApplicationDbContext))]
 	[Migration("00000000000000_CreateIdentitySchema")]

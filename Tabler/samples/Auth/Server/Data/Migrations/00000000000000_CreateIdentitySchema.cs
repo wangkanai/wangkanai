@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Host.Main.Migrations
+namespace Host.Auth.Migrations
 {
 	/// <inheritdoc />
 	public partial class CreateIdentitySchema : Migration

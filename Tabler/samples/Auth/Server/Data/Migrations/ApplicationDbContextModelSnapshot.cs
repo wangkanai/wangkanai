@@ -1,17 +1,11 @@
 // Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-using System;
-
-using Host.Main.Data;
+#nullable disable
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-#nullable disable
-
-namespace Host.Main.Migrations
+namespace Host.Auth.Data.Migrations
 {
 	[DbContext(typeof(ApplicationDbContext))]
 	partial class ApplicationDbContextModelSnapshot : ModelSnapshot

@@ -1,8 +1,9 @@
 // Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-using Host.Main.Components;
-using Host.Main.Data;
-using Host.Main.Identity;
+using Host.Auth.Data;
+using Host.Auth.Identity;
+using Host.Auth.Identity.Extensions;
+using Host.Auth.Components;
 
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -58,7 +59,7 @@ app.UseAntiforgery();
 app.MapRazorComponents<App>()
 	.AddInteractiveServerRenderMode()
 	.AddInteractiveWebAssemblyRenderMode()
-	.AddAdditionalAssemblies(typeof(Host.Main.Client._Imports).Assembly);
+	.AddAdditionalAssemblies(typeof(Host.Auth.Client._Imports).Assembly);
 
 // Add additional endpoints required by the Identity /Account Razor components.
 app.MapAdditionalIdentityEndpoints();

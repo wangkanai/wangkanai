@@ -2,9 +2,7 @@
 
 using System.Text.Json;
 
-using Host.Main.Components.Pages.Account;
-using Host.Main.Components.Pages.Account.Manage;
-using Host.Main.Data;
+using Host.Auth.Data;
 
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Components.Authorization;
@@ -13,7 +11,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Primitives;
 
-namespace Microsoft.AspNetCore.Routing
+namespace Host.Auth.Identity.Extensions
 {
 	internal static class IdentityComponentsEndpointRouteBuilderExtensions
 	{

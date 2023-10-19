@@ -22,6 +22,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\..\..\..\System\src\Wangkanai.System.csproj" />
 	  <ProjectReference Include="..\Client\Host.Auth.Client.csproj" />
 	</ItemGroup>
 

@@ -1,9 +1,9 @@
 ﻿@page "/Account/LoginWith2fa"
 
 @using System.ComponentModel.DataAnnotations
+@using Host.Auth.Data
+@using Host.Auth.Identity
 @using Microsoft.AspNetCore.Identity
-@using Host.Main.Data
-@using Host.Main.Identity
 
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager

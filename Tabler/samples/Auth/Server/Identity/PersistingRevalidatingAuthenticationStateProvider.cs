@@ -3,8 +3,8 @@
 using System.Diagnostics;
 using System.Security.Claims;
 
-using Host.Main.Client;
-using Host.Main.Data;
+using Host.Auth.Client;
+using Host.Auth.Data;
 
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 
-namespace Host.Main.Identity
+namespace Host.Auth.Identity
 {
 	public class PersistingRevalidatingAuthenticationStateProvider : RevalidatingServerAuthenticationStateProvider
 	{
