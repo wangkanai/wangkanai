@@ -41,8 +41,8 @@
 
 	void ToggleAria()
 	{
-		DataBsPopper = _show ? new() { { "data-bs-popper", "static" } } : null;
-		AriaExpanded = _show ? new() { { "aria-expanded", "true" } } : null;
+		DataBsPopper = _show ? new Dictionary<string, object> { { "data-bs-popper", "static" } } : null;
+		AriaExpanded = _show ? new Dictionary<string, object> { { "aria-expanded", "true" } } : null;
 	}
 
 }
