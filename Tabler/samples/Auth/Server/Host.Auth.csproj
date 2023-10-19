@@ -8,7 +8,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Client\Host.Auth.Client.csproj" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" />
 		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore"/>
 		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
@@ -20,6 +19,10 @@
 		<Content Remove="wwwroot\lib\**" />
 		<Content Include="wwwroot\lib\**" Watch="false" />
 		<Content Remove="wwwroot\favicon.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Client\Host.Auth.Client.csproj" />
 	</ItemGroup>
 
 
