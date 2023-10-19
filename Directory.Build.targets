@@ -42,6 +42,7 @@
 		<PackageReference Update="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="$(FrameworkVersion)"/>
 		<PackageReference Update="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="$(FrameworkVersion)"/>
 
+
 		<PackageReference Update="Microsoft.EntityFrameworkCore" Version="$(EntityFrameworkVersion)"/>
 		<PackageReference Update="Microsoft.EntityFrameworkCore.SqlServer" Version="$(EntityFrameworkVersion)"/>
 		<PackageReference Update="Microsoft.EntityFrameworkCore.Relational" Version="$(EntityFrameworkVersion)"/>
@@ -57,6 +58,9 @@
 		<PackageReference Update="Microsoft.IdentityModel.Protocols" Version="$(IdentityModelVersion)"/>
 		<PackageReference Update="Microsoft.IdentityModel.Protocols.OpenIdConnect" Version="$(IdentityModelVersion)"/>
 
+		<!--tools-->
+		<PackageReference Update="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="$(FrameworkVersion)" />
+		
 		<!--serilog-->
 		<PackageReference Update="Serilog" Version="3.0.1"/>
 		<PackageReference Update="Serilog.AspNetCore" Version="7.0.0"/>
