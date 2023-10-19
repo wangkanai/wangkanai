@@ -8,11 +8,11 @@
 		<Description>A robust integration of the Tabler CSS framework into Blazor. Crafted for developing responsive, mobile-first, and desktop-first web applications. Enhance productivity, reduce development time, and ensure your applications look stunning on any device. Power up your Blazor projects with Tabler</Description>
 		<PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Tabler</PackageProjectUrl>
 	</PropertyGroup>
-	
+
 	<PropertyGroup>
 		<TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
 	</PropertyGroup>
-	
+
 	<Target Name="CopyProjectReferencesToPackage" DependsOnTargets="BuildOnlySettings;ResolveReferences">
 		<ItemGroup>
 			<!-- Filter out unnecessary files -->
@@ -25,15 +25,15 @@
 			<BuildOutputInPackage Include="@(_ReferenceCopyLocalPaths)" TargetPath="%(_ReferenceCopyLocalPaths.DestinationSubDirectory)" />
 		</ItemGroup>
 	</Target>
-	
+
 	<PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Tabler'">
 		<PackageIcon>wangkanai-logo.png</PackageIcon>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
-	
+
 	<ItemGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Tabler'">
 		<None Include="..\..\..\assets\wangkanai-logo.png" Pack="true" PackagePath="\" />
 		<None Include="..\..\README.md" Pack="true" PackagePath="\" />
 	</ItemGroup>
-	
+
 </Project>

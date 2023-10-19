@@ -1,4 +1,4 @@
-<Project>	
+<Project>
 	<!--<PropertyGroup Condition=" '$(TargetFramework)' == 'net7.0'">
 		<FrameworkVersion>7.0.0</FrameworkVersion>
 		<ExtensionsVersion>7.0.0</ExtensionsVersion>
@@ -17,8 +17,8 @@
 
 	<ItemGroup>
 		<!--sourcelink-->
-		<PackageReference Update="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
-		
+		<PackageReference Update="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All"/>
+
 		<!--tests -->
 		<PackageReference Update="Microsoft.AspNetCore.TestHost" Version="$(FrameworkVersion)"/>
 		<PackageReference Update="Microsoft.NET.Test.Sdk" Version="17.7.2"/>
@@ -27,10 +27,10 @@
 		<PackageReference Update="xunit.runner.visualstudio" Version="2.5.3" PrivateAssets="all"/>
 		<PackageReference Update="coverlet.collector" Version="6.0.0" PrivateAssets="all"/>
 		<PackageReference Update="coverlet.msbuild" Version="6.0.0" PrivateAssets="all"/>
-		
+
 		<!--benchmark-->
 		<PackageReference Update="BenchmarkDotNet" Version="0.13.9"/>
-		
+
 		<!--framework-->
 		<PackageReference Update="Microsoft.AspNetCore.Authorization" Version="$(FrameworkVersion)"/>
 		<PackageReference Update="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="$(FrameworkVersion)"/>
@@ -38,8 +38,8 @@
 		<PackageReference Update="Microsoft.AspNetCore.Components.Web" Version="$(FrameworkVersion)"/>
 		<PackageReference Update="Microsoft.AspNetCore.Components.WebAssembly" Version="$(FrameworkVersion)"/>
 		<PackageReference Update="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="$(FrameworkVersion)"/>
-        <PackageReference Update="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="$(FrameworkVersion)" />
-		<PackageReference Update="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="$(FrameworkVersion)" />
+		<PackageReference Update="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="$(FrameworkVersion)"/>
+		<PackageReference Update="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="$(FrameworkVersion)"/>
 		<PackageReference Update="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="$(FrameworkVersion)"/>
 
 		<PackageReference Update="Microsoft.EntityFrameworkCore" Version="$(EntityFrameworkVersion)"/>
