@@ -59,8 +59,8 @@
 		<PackageReference Update="Microsoft.IdentityModel.Protocols.OpenIdConnect" Version="$(IdentityModelVersion)"/>
 
 		<!--tools-->
-		<PackageReference Update="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="$(FrameworkVersion)" />
-		
+		<PackageReference Update="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="$(FrameworkVersion)"/>
+
 		<!--serilog-->
 		<PackageReference Update="Serilog" Version="3.0.1"/>
 		<PackageReference Update="Serilog.AspNetCore" Version="7.0.0"/>
