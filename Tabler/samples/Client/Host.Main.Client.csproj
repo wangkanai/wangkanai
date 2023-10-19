@@ -6,14 +6,16 @@
 		<Nullable>enable</Nullable>
 		<NoDefaultLaunchSettingsFile>true</NoDefaultLaunchSettingsFile>
 		<StaticWebAssetProjectMode>Default</StaticWebAssetProjectMode>
+		<ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" />
+		<ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\..\System\src\Wangkanai.System.csproj" />
+		<ProjectReference Include="..\..\..\System\src\Wangkanai.System.csproj" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" />
 	</ItemGroup>
 
 </Project>
