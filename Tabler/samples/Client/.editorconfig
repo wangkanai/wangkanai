@@ -1,0 +1,3 @@
+﻿[*.razor]
+resharper_html_allow_far_alignment = true
+resharper_html_linebreaks_inside_tags_for_elements_with_child_elements = false
