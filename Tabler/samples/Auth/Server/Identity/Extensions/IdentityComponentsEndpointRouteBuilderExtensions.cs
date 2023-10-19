@@ -2,6 +2,8 @@
 
 using System.Text.Json;
 
+using Host.Auth.Components.Pages.Account;
+using Host.Auth.Components.Pages.Account.Manage;
 using Host.Auth.Data;
 
 using Microsoft.AspNetCore.Authentication;
