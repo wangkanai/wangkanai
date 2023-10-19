@@ -12,17 +12,21 @@
 	<link href="lib/tabler/dist/css/demo.min.css" rel="stylesheet"/>
 	<link href="lib/icons/iconfont/tabler-icons.css" rel="stylesheet"/>
 	<link rel="stylesheet" href="app.css"/>
-	<link rel="stylesheet" href="Host.Main.styles.css"/>   
+	<link rel="stylesheet" href="Host.Main.styles.css"/>
 	<link rel="icon" type="image/ico" href="favicon.ico"/>
+	<link href="manifest.webmanifest" rel="manifest"/>
+	<link rel="apple-touch-icon" sizes="512x512" href="icon-512.png"/>
+	<link rel="apple-touch-icon" sizes="192x192" href="icon-192.png"/>
 	<HeadOutlet @rendermode="@InteractiveAuto"/>
 </head>
 
 <body data-bs-theme="@ThemeClass">
 	<Routes @rendermode="@InteractiveAuto"/>
-	<script src="_framework/blazor.web.js"></script>
+	<script src="_framework/blazor.web.js"></script>    
+	<script>navigator.serviceWorker.register('service-worker.js');</script>
 </body>
 
-</html>        
+</html>
 
 @code
 {
