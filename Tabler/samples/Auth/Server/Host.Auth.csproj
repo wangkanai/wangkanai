@@ -8,7 +8,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Client\Host.Main.Client.csproj" />
+		<ProjectReference Include="..\Client\Host.Auth.Client.csproj" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" />
 		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore"/>
 		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
