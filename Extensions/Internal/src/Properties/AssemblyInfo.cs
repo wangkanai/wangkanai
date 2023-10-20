@@ -2,7 +2,7 @@
 
 using System.Runtime.CompilerServices;
 
-[assembly: InternalsVisibleTo("Wangkanai.Extensions.Internal.Test")]
+[assembly: InternalsVisibleTo("Wangkanai.Extensions.Internal.Tests")]
 
 [assembly: InternalsVisibleTo("Wangkanai.Mvc")]
 [assembly: InternalsVisibleTo("Wangkanai.Markdown")]
