@@ -1,23 +1,20 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
 	<PropertyGroup>
-		<TargetFramework>net8.0</TargetFramework>
+		<TargetFramework>$(DefaultNetCoreTargetFramework)</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
-		<UserSecretsId>aspnet-Host.Main-9fea4942-360b-4aac-b043-8c581f7a177f</UserSecretsId>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\Client\Host.Main.Client.csproj" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.0-rc.2.23480.2" />
-		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.0-rc.2.23480.2" />
-		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.0-rc.2.23480.2" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.0-rc.2.23480.1" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.0-rc.2.23480.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Components\Layout\Header\" />
+		<Content Remove="wwwroot\lib\**" />
+		<Content Include="wwwroot\lib\**" Watch="false" />
+		<Content Remove="wwwroot\favicon.png" />
 	</ItemGroup>
 
 	<Target Name="NpmInstall" Inputs="package.json" Outputs="node_modules/.install-stamp">

@@ -6,7 +6,7 @@
 
 		<RepositoryType>git</RepositoryType>
 		<RepositoryUrl>git://github.com/wangkanai/wangkanai</RepositoryUrl>
-		
+
 		<PackageProjectUrl>https://github.com/wangkanai/wangkanai</PackageProjectUrl>
 		<PackageLicense>https://github.com/wangkanai/wangkanai/blob/main/LICENSE</PackageLicense>
 		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
@@ -52,9 +52,9 @@
 	</PropertyGroup>
 
 	<ItemGroup Condition="$(MSBuildProjectName.Contains('Benchmark'))">
-		<PackageReference Include="BenchmarkDotNet"/>
+		<PackageReference Include="BenchmarkDotNet" />
 	</ItemGroup>
-	
+
 	<PropertyGroup Condition="$(MSBuildProjectName.Contains('Tests'))">
 		<IsPackable>false</IsPackable>
 	</PropertyGroup>
