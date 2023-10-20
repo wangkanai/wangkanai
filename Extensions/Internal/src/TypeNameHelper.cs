@@ -30,7 +30,7 @@ internal static class TypeNameHelper
 	};
 
 	[return: NotNullIfNotNull("item")]
-	public static string? GetTypeDisplayName(object? item, bool fullName = true)
+	public static string? GetTypeDisplayName(this object? item, bool fullName = true)
 		=> item == null ? null : GetTypeDisplayName(item.GetType(), fullName);
 
 	/// <summary>
@@ -42,14 +42,14 @@ internal static class TypeNameHelper
 	/// <param name="includeGenericParameters"><c>true</c> to include generic parameters.</param>
 	/// <param name="nestedTypeDelimiter">Character to use as a delimiter in nested type names</param>
 	/// <returns>The pretty printed type name.</returns>
-	public static string GetTypeDisplayName(Type type, bool fullName = true, bool includeGenericParameterNames = false, bool includeGenericParameters = true, char nestedTypeDelimiter = DefaultNestedTypeDelimiter)
+	public static string GetTypeDisplayName(this Type type, bool fullName = true, bool includeGenericParameterNames = false, bool includeGenericParameters = true, char nestedTypeDelimiter = DefaultNestedTypeDelimiter)
 	{
 		var builder = new StringBuilder();
 		ProcessType(builder, type, new DisplayNameOptions(fullName, includeGenericParameterNames, includeGenericParameters, nestedTypeDelimiter));
 		return builder.ToString();
 	}
 
-	private static void ProcessType(StringBuilder builder, Type type, in DisplayNameOptions options)
+	private static void ProcessType(this StringBuilder builder, Type type, in DisplayNameOptions options)
 	{
 		if (type.IsGenericType)
 		{
@@ -75,7 +75,7 @@ internal static class TypeNameHelper
 		}
 	}
 
-	private static void ProcessArrayType(StringBuilder builder, Type type, in DisplayNameOptions options)
+	private static void ProcessArrayType(this StringBuilder builder, Type type, in DisplayNameOptions options)
 	{
 		var innerType = type;
 		while (innerType.IsArray)
@@ -92,7 +92,7 @@ internal static class TypeNameHelper
 		}
 	}
 
-	private static void ProcessGenericType(StringBuilder builder, Type type, Type[] genericArguments, int length, in DisplayNameOptions options)
+	private static void ProcessGenericType(this StringBuilder builder, Type type, Type[] genericArguments, int length, in DisplayNameOptions options)
 	{
 		var offset = 0;
 		if (type.IsNested)
