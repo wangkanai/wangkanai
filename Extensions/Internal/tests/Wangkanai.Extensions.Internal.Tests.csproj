@@ -6,4 +6,8 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\src\Wangkanai.Extensions.Internal.csproj" />
+    </ItemGroup>
+
 </Project>
