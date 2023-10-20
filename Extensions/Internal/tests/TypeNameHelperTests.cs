@@ -103,6 +103,46 @@ public class TypeNameHelperTests
 		builder.ProcessType(type, option);
 		Assert.Equal("DisplayNumeric", builder.ToString());
 	}
+	
+	[Fact]
+	public void Builder_ProcessType_IsGenericType_WithFullName()
+	{
+		var builder = new StringBuilder();
+		var type    = typeof(DisplayNumeric);
+		var option  = new TypeNameHelper.DisplayNameOptions(true);
+		builder.ProcessType(type, option);
+		Assert.Equal("Wangkanai.Extensions.Internal.DisplayNumeric", builder.ToString());
+	}
+	
+	[Fact]
+	public void Builder_ProcessType_IsGenericType_WithFullName_WithGenericParameterNames()
+	{
+		var builder = new StringBuilder();
+		var type    = typeof(DisplayNumeric);
+		var option  = new TypeNameHelper.DisplayNameOptions(true, true);
+		builder.ProcessType(type, option);
+		Assert.Equal("Wangkanai.Extensions.Internal.DisplayNumeric", builder.ToString());
+	}
+	
+	[Fact]
+	public void Builder_ProcessType_IsGenericType_WithFullName_WithGenericParameterNames_WithGenericParameters()
+	{
+		var builder = new StringBuilder();
+		var type    = typeof(DisplayNumeric);
+		var option  = new TypeNameHelper.DisplayNameOptions(true, true, true);
+		builder.ProcessType(type, option);
+		Assert.Equal("Wangkanai.Extensions.Internal.DisplayNumeric", builder.ToString());
+	}
+	
+	[Fact]
+	public void Builder_ProcessType_IsGenericType_WithFullName_WithGenericParameterNames_WithGenericParameters_WithNestedTypeDelimiter()
+	{
+		var builder = new StringBuilder();
+		var type    = typeof(DisplayNumeric);
+		var option  = new TypeNameHelper.DisplayNameOptions(true, true, true, '+');
+		builder.ProcessType(type, option);
+		Assert.Equal("Wangkanai.Extensions.Internal.DisplayNumeric", builder.ToString());
+	}
 }
 
 public class DisplayNumeric;

@@ -145,7 +145,11 @@ internal static class TypeNameHelper
 		{ typeof(ushort), "ushort" }
 	};
 
-	internal readonly struct DisplayNameOptions(bool fullName, bool includeGenericParameterNames, bool includeGenericParameters, char nestedTypeDelimiter)
+	internal readonly struct DisplayNameOptions(
+		bool fullName = false, 
+		bool includeGenericParameterNames = false, 
+		bool includeGenericParameters = false, 
+		char nestedTypeDelimiter = '.')
 	{
 		public bool FullName                     { get; } = fullName;
 		public bool IncludeGenericParameters     { get; } = includeGenericParameters;
