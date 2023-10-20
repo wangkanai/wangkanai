@@ -9,7 +9,7 @@ internal static class TypeNameHelper
 {
 	private const char DefaultNestedTypeDelimiter = '+';
 
-	private static readonly Dictionary<Type, string> _builtInTypeNames = new Dictionary<Type, string>
+	private static readonly Dictionary<Type, string> _builtInTypeNames = new()
 	{
 		{ typeof(void), "void" },
 		{ typeof(bool), "bool" },
@@ -30,7 +30,7 @@ internal static class TypeNameHelper
 	};
 
 	[return: NotNullIfNotNull("item")]
-	public static string? GetTypeDisplayName(object? item, bool fullName = true) 
+	public static string? GetTypeDisplayName(object? item, bool fullName = true)
 		=> item == null ? null : GetTypeDisplayName(item.GetType(), fullName);
 
 	/// <summary>
@@ -62,7 +62,7 @@ internal static class TypeNameHelper
 			builder.Append(builtInName);
 		else if (type.IsGenericParameter)
 		{
-			if (options.IncludeGenericParameterNames) 
+			if (options.IncludeGenericParameterNames)
 				builder.Append(type.Name);
 		}
 		else
@@ -70,7 +70,7 @@ internal static class TypeNameHelper
 			var name = options.FullName ? type.FullName! : type.Name;
 			builder.Append(name);
 
-			if (options.NestedTypeDelimiter != DefaultNestedTypeDelimiter) 
+			if (options.NestedTypeDelimiter != DefaultNestedTypeDelimiter)
 				builder.Replace(DefaultNestedTypeDelimiter, options.NestedTypeDelimiter, builder.Length - name.Length, name.Length);
 		}
 	}
@@ -121,40 +121,28 @@ internal static class TypeNameHelper
 
 		builder.Append(type.Name, 0, genericPartIndex);
 
-		if (options.IncludeGenericParameters)
+		if (!options.IncludeGenericParameters)
+			return;
+
+		builder.Append('<');
+		for (var i = offset; i < length; i++)
 		{
-			builder.Append('<');
-			for (var i = offset; i < length; i++)
-			{
-				ProcessType(builder, genericArguments[i], options);
-				if (i + 1 == length)
-					continue;
-
-				builder.Append(',');
-				if (options.IncludeGenericParameterNames || !genericArguments[i + 1].IsGenericParameter)
-					builder.Append(' ');
-			}
-
-			builder.Append('>');
+			ProcessType(builder, genericArguments[i], options);
+			if (i + 1 == length)
+				continue;
+			builder.Append(',');
+			if (options.IncludeGenericParameterNames || !genericArguments[i + 1].IsGenericParameter)
+				builder.Append(' ');
 		}
+
+		builder.Append('>');
 	}
 
-	private readonly struct DisplayNameOptions
+	private readonly struct DisplayNameOptions(bool fullName, bool includeGenericParameterNames, bool includeGenericParameters, char nestedTypeDelimiter)
 	{
-		public DisplayNameOptions(bool fullName, bool includeGenericParameterNames, bool includeGenericParameters, char nestedTypeDelimiter)
-		{
-			FullName                     = fullName;
-			IncludeGenericParameters     = includeGenericParameters;
-			IncludeGenericParameterNames = includeGenericParameterNames;
-			NestedTypeDelimiter          = nestedTypeDelimiter;
-		}
-
-		public bool FullName { get; }
-
-		public bool IncludeGenericParameters { get; }
-
-		public bool IncludeGenericParameterNames { get; }
-
-		public char NestedTypeDelimiter { get; }
+		public bool FullName                     { get; } = fullName;
+		public bool IncludeGenericParameters     { get; } = includeGenericParameters;
+		public bool IncludeGenericParameterNames { get; } = includeGenericParameterNames;
+		public char NestedTypeDelimiter          { get; } = nestedTypeDelimiter;
 	}
 }

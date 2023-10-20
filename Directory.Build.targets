@@ -42,7 +42,6 @@
 		<PackageReference Update="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="$(FrameworkVersion)"/>
 		<PackageReference Update="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="$(FrameworkVersion)"/>
 
-
 		<PackageReference Update="Microsoft.EntityFrameworkCore" Version="$(EntityFrameworkVersion)"/>
 		<PackageReference Update="Microsoft.EntityFrameworkCore.SqlServer" Version="$(EntityFrameworkVersion)"/>
 		<PackageReference Update="Microsoft.EntityFrameworkCore.Relational" Version="$(EntityFrameworkVersion)"/>
@@ -50,8 +49,8 @@
 		<PackageReference Update="Microsoft.EntityFrameworkCore.InMemory" Version="$(EntityFrameworkVersion)"/>
 
 		<PackageReference Update="Microsoft.Extensions.DependencyInjection" Version="$(ExtensionsVersion)"/>
-		<PackageReference Update="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0-rc.2.23479.6"/>
-		<PackageReference Update="Microsoft.Extensions.FileProviders.Abstractions" Version="8.0.0-rc.2.23479.6"/>
+		<PackageReference Update="Microsoft.Extensions.DependencyInjection.Abstractions" Version="$(ExtensionsVersion)"/>
+		<PackageReference Update="Microsoft.Extensions.FileProviders.Abstractions" Version="$(ExtensionsVersion)"/>
 
 		<PackageReference Update="Microsoft.IdentityModel.Abstractions" Version="$(IdentityModelVersion)"/>
 		<PackageReference Update="Microsoft.IdentityModel.Tokens" Version="$(IdentityModelVersion)"/>
