@@ -49,7 +49,7 @@ internal static class TypeNameHelper
 		return builder.ToString();
 	}
 
-	private static void ProcessType(this StringBuilder builder, Type type, in DisplayNameOptions options)
+	internal static void ProcessType(this StringBuilder builder, Type type, in DisplayNameOptions options)
 	{
 		if (type.IsGenericType)
 		{
@@ -75,7 +75,7 @@ internal static class TypeNameHelper
 		}
 	}
 
-	private static void ProcessArrayType(this StringBuilder builder, Type type, in DisplayNameOptions options)
+	internal static void ProcessArrayType(this StringBuilder builder, Type type, in DisplayNameOptions options)
 	{
 		var innerType = type;
 		while (innerType.IsArray)
@@ -92,7 +92,7 @@ internal static class TypeNameHelper
 		}
 	}
 
-	private static void ProcessGenericType(this StringBuilder builder, Type type, Type[] genericArguments, int length, in DisplayNameOptions options)
+	internal static void ProcessGenericType(this StringBuilder builder, Type type, Type[] genericArguments, int length, in DisplayNameOptions options)
 	{
 		var offset = 0;
 		if (type.IsNested)
@@ -138,7 +138,7 @@ internal static class TypeNameHelper
 		builder.Append('>');
 	}
 
-	private readonly struct DisplayNameOptions(bool fullName, bool includeGenericParameterNames, bool includeGenericParameters, char nestedTypeDelimiter)
+	internal readonly struct DisplayNameOptions(bool fullName, bool includeGenericParameterNames, bool includeGenericParameters, char nestedTypeDelimiter)
 	{
 		public bool FullName                     { get; } = fullName;
 		public bool IncludeGenericParameters     { get; } = includeGenericParameters;
