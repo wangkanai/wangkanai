@@ -9,7 +9,7 @@ public class TypeNameHelperTests
 	{
 		var type   = typeof(DisplayNumeric);
 		var result = type.GetTypeDisplayName();
-		Assert.Equal("Wangkanai.Extensions.Internal.DisplayNumeric", result);
+		Assert.Equal("DisplayNumeric", result);
 	}
 
 	[Fact]
@@ -73,7 +73,7 @@ public class TypeNameHelperTests
 	{
 		var instance = new DisplayNumeric();
 		var result   = instance.GetTypeDisplayName();
-		Assert.Equal("Wangkanai.Extensions.Internal.DisplayNumeric", result);
+		Assert.Equal("DisplayNumeric", result);
 	}
 	
 	[Fact]

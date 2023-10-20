@@ -7,30 +7,14 @@ namespace Wangkanai.Extensions.Internal;
 
 internal static class TypeNameHelper
 {
-	private const char DefaultNestedTypeDelimiter = '+';
-
-	private static readonly Dictionary<Type, string> _builtInTypeNames = new()
-	{
-		{ typeof(void), "void" },
-		{ typeof(bool), "bool" },
-		{ typeof(byte), "byte" },
-		{ typeof(char), "char" },
-		{ typeof(decimal), "decimal" },
-		{ typeof(double), "double" },
-		{ typeof(float), "float" },
-		{ typeof(int), "int" },
-		{ typeof(long), "long" },
-		{ typeof(object), "object" },
-		{ typeof(sbyte), "sbyte" },
-		{ typeof(short), "short" },
-		{ typeof(string), "string" },
-		{ typeof(uint), "uint" },
-		{ typeof(ulong), "ulong" },
-		{ typeof(ushort), "ushort" }
-	};
-
+	/// <summary>
+	/// Pretty print a type name.
+	/// </summary>
+	/// <param name="item">The <see cref="object"/>.</param>
+	/// <param name="fullName"><c>true</c> to print a full qualified name.</param>
+	/// <returns>The pretty printed type name.</returns>
 	[return: NotNullIfNotNull("item")]
-	public static string? GetTypeDisplayName(this object? item, bool fullName = true)
+	public static string? GetTypeDisplayName(this object? item, bool fullName = false)
 		=> item == null ? null : GetTypeDisplayName(item.GetType(), fullName);
 
 	/// <summary>
@@ -42,10 +26,11 @@ internal static class TypeNameHelper
 	/// <param name="includeGenericParameters"><c>true</c> to include generic parameters.</param>
 	/// <param name="nestedTypeDelimiter">Character to use as a delimiter in nested type names</param>
 	/// <returns>The pretty printed type name.</returns>
-	public static string GetTypeDisplayName(this Type type, bool fullName = true, bool includeGenericParameterNames = false, bool includeGenericParameters = true, char nestedTypeDelimiter = DefaultNestedTypeDelimiter)
+	public static string GetTypeDisplayName(this Type type, bool fullName = false, bool includeGenericParameterNames = false, bool includeGenericParameters = true, char nestedTypeDelimiter = DefaultNestedTypeDelimiter)
 	{
 		var builder = new StringBuilder();
-		ProcessType(builder, type, new DisplayNameOptions(fullName, includeGenericParameterNames, includeGenericParameters, nestedTypeDelimiter));
+		var option  = new DisplayNameOptions(fullName, includeGenericParameterNames, includeGenericParameters, nestedTypeDelimiter);
+		builder.ProcessType(type, option);
 		return builder.ToString();
 	}
 
@@ -137,6 +122,28 @@ internal static class TypeNameHelper
 
 		builder.Append('>');
 	}
+
+	private const char DefaultNestedTypeDelimiter = '+';
+
+	private static readonly Dictionary<Type, string> _builtInTypeNames = new()
+	{
+		{ typeof(void), "void" },
+		{ typeof(bool), "bool" },
+		{ typeof(byte), "byte" },
+		{ typeof(char), "char" },
+		{ typeof(decimal), "decimal" },
+		{ typeof(double), "double" },
+		{ typeof(float), "float" },
+		{ typeof(int), "int" },
+		{ typeof(long), "long" },
+		{ typeof(object), "object" },
+		{ typeof(sbyte), "sbyte" },
+		{ typeof(short), "short" },
+		{ typeof(string), "string" },
+		{ typeof(uint), "uint" },
+		{ typeof(ulong), "ulong" },
+		{ typeof(ushort), "ushort" }
+	};
 
 	internal readonly struct DisplayNameOptions(bool fullName, bool includeGenericParameterNames, bool includeGenericParameters, char nestedTypeDelimiter)
 	{
