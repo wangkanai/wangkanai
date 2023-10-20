@@ -178,18 +178,18 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 	/// Copies the elements of the queue to the given array, starting at the given index in the array.
 	/// </summary>
 	/// <param name="array">The array to copy the contents of the queue into</param>
-	/// <param name="index">The zero-based index in array at which coping begins</param>
+	/// <param name="arrayIndex">The zero-based index in array at which coping begins</param>
 	/// <exception cref="ArgumentException">When not enough space in the array</exception>
-	public void CopyTo(T[] array, int index)
+	public void CopyTo(T[] array, int arrayIndex)
 	{
 		array.ThrowIfNull();
-		index.ThrowIfOutOfRange(0, array.Length);
+		arrayIndex.ThrowIfOutOfRange(0, array.Length);
 
-		if (array.Length < index + Count)
+		if (array.Length < arrayIndex + Count)
 			throw new ArgumentException("Not enough space in the array", nameof(array));
 
 		for (var i = 0; i < Count; i++)
-			array[i + index] = this[i];
+			array[i + arrayIndex] = this[i];
 	}
 
 	/// <summary>
