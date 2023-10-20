@@ -39,10 +39,10 @@ internal static class TypeNameHelper
 		if (type.IsGenericType)
 		{
 			var genericArguments = type.GetGenericArguments();
-			ProcessGenericType(builder, type, genericArguments, genericArguments.Length, options);
+			builder.ProcessGenericType(type, genericArguments, genericArguments.Length, options);
 		}
 		else if (type.IsArray)
-			ProcessArrayType(builder, type, options);
+			builder.ProcessArrayType(type, options);
 		else if (_builtInTypeNames.TryGetValue(type, out var builtInName))
 			builder.Append(builtInName);
 		else if (type.IsGenericParameter)
@@ -66,7 +66,7 @@ internal static class TypeNameHelper
 		while (innerType.IsArray)
 			innerType = innerType.GetElementType()!;
 
-		ProcessType(builder, innerType, options);
+		builder.ProcessType(innerType, options);
 
 		while (type.IsArray)
 		{
@@ -87,7 +87,7 @@ internal static class TypeNameHelper
 		{
 			if (type.IsNested)
 			{
-				ProcessGenericType(builder, type.DeclaringType!, genericArguments, offset, options);
+				builder.ProcessGenericType(type.DeclaringType!, genericArguments, offset, options);
 				builder.Append(options.NestedTypeDelimiter);
 			}
 			else if (!type.Namespace.IsNullOrEmpty())
@@ -112,7 +112,7 @@ internal static class TypeNameHelper
 		builder.Append('<');
 		for (var i = offset; i < length; i++)
 		{
-			ProcessType(builder, genericArguments[i], options);
+			builder.ProcessType(genericArguments[i], options);
 			if (i + 1 == length)
 				continue;
 			builder.Append(',');
