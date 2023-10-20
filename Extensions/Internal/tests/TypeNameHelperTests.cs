@@ -1,5 +1,7 @@
 ﻿// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
+using System.Text;
+
 namespace Wangkanai.Extensions.Internal;
 
 public class TypeNameHelperTests
@@ -90,6 +92,16 @@ public class TypeNameHelperTests
 		var instance = new DisplayNumeric();
 		var result   = instance.GetTypeDisplayName(false);
 		Assert.Equal("DisplayNumeric", result);
+	}
+	
+	[Fact]
+	public void Builder_ProcessType_IsGenericType()
+	{
+		var builder = new StringBuilder();
+		var type    = typeof(DisplayNumeric);
+		var option  = new TypeNameHelper.DisplayNameOptions();
+		builder.ProcessType(type, option);
+		Assert.Equal("DisplayNumeric", builder.ToString());
 	}
 }
 
