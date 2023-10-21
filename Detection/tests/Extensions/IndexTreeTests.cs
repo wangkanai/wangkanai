@@ -244,4 +244,44 @@ public class IndexTreeTests
 		Assert.True(tree.ContainsWithAnyIn(source));
 		Assert.True(tree.StartsWithAnyIn(source));
 	}
+	
+	[Fact]
+	public void KeywordsExist_SourceNotSub_SeedIsZero()
+	{
+		var keywords = new[] { "abc" };
+		var source   = "d";
+		var tree     = new IndexTree(keywords);
+		Assert.False(tree.ContainsWithAnyIn(source));
+		Assert.False(tree.StartsWithAnyIn(source));
+	}
+	
+	[Fact]
+	public void KeywordsExist_SourceNotSub_SeedIsOne()
+	{
+		var keywords = new[] { "abc" };
+		var source   = "d";
+		var tree     = new IndexTree(keywords, 1);
+		Assert.False(tree.ContainsWithAnyIn(source));
+		Assert.False(tree.StartsWithAnyIn(source));
+	}
+	
+	[Fact]
+	public void KeywordsExist_SourceNotSub_SeedIsTwo()
+	{
+		var keywords = new[] { "abc" };
+		var source   = "d";
+		var tree     = new IndexTree(keywords, 2);
+		Assert.False(tree.ContainsWithAnyIn(source));
+		Assert.False(tree.StartsWithAnyIn(source));
+	}
+	
+	[Fact]
+	public void KeywordsExist_SourceNotSub_SeedIsThree()
+	{
+		var keywords = new[] { "abc" };
+		var source   = "d";
+		var tree     = new IndexTree(keywords, 3);
+		Assert.True(tree.ContainsWithAnyIn(source));
+		Assert.True(tree.StartsWithAnyIn(source));
+	}
 }
