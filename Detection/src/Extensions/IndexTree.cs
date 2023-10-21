@@ -11,9 +11,7 @@ public readonly struct IndexTree
 
 	private bool IsEnd => _lookup?.Length == 0;
 
-	private static IEnumerable<(char Key, IGrouping<char, string> x)> KeywordsGroupBySeed(string[] keywords, int seed)
-		=> keywords.GroupBy(k => k[seed])
-		           .Select(x => (x.Key, x));
+
 
 	public IndexTree(string[]? keywords, int seed = 0)
 	{
@@ -33,7 +31,7 @@ public readonly struct IndexTree
 		_offset = lower;
 		_lookup = new IndexTree[upper - lower + 1];
 
-		foreach (var (key, list) in KeywordsGroupBySeed(keywords!, seed))
+		foreach (var (key, list) in KeywordsGroupBySeed(keywords, seed))
 		{
 			var newKeys = list.ToArray();
 			_lookup[key - lower] = newKeys.Any(k => seed + 1 >= k.Length)
@@ -41,6 +39,10 @@ public readonly struct IndexTree
 				                       : new IndexTree(newKeys, seed + 1);
 		}
 	}
+	
+	private static IEnumerable<(char Key, IGrouping<char, string> x)> KeywordsGroupBySeed(string[] keywords, int seed)
+		=> keywords.GroupBy(k => k[seed])
+		           .Select(x => (x.Key, x));
 
 	public bool StartsWithAnyIn(ReadOnlySpan<char> source)
 	{
@@ -64,7 +66,7 @@ public readonly struct IndexTree
 			if (current._lookup == null)
 				return false;
 
-			source = source.Slice(1);
+			source = source[1..];
 		}
 
 		return true;
@@ -81,7 +83,7 @@ public readonly struct IndexTree
 			if (found)
 				return true;
 
-			source = source.Slice(1);
+			source = source[1..];
 		}
 
 		return false;
@@ -118,7 +120,7 @@ public readonly struct IndexTree
 				break;
 			}
 
-			slice = slice.Slice(1);
+			slice = slice[1..];
 		}
 
 		return found;
