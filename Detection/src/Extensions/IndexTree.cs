@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using Wangkanai.Extensions;
 
@@ -12,10 +12,8 @@ public readonly struct IndexTree
 	private bool IsEnd => _lookup?.Length == 0;
 
 	private static IEnumerable<(char Key, IGrouping<char, string> x)> KeywordsGroupBySeed(string[] keywords, int seed)
-	{
-		return keywords.GroupBy(k => k[seed])
-		               .Select(x => (x.Key, x));
-	}
+		=> keywords.GroupBy(k => k[seed])
+		           .Select(x => (x.Key, x));
 
 	public IndexTree(string[]? keywords, int seed = 0)
 	{
@@ -39,57 +37,9 @@ public readonly struct IndexTree
 		{
 			var newKeys = list.ToArray();
 			_lookup[key - lower] = newKeys.Any(k => seed + 1 >= k.Length)
-				                       ? new IndexTree(null, seed    + 1)
+				                       ? new IndexTree(null, seed + 1)
 				                       : new IndexTree(newKeys, seed + 1);
 		}
-	}
-
-	public bool ContainsWithAnyIn(ReadOnlySpan<char> searchSource)
-	{
-		while (searchSource.Length > 0)
-		{
-			var source = searchSource;
-
-			var current = this;
-			var found   = true;
-
-			while (!current.IsEnd)
-			{
-				var lookup = current._lookup;
-
-				if (source.Length == 0 || lookup == null)
-				{
-					found = false;
-					break;
-				}
-
-				var c      = source[0];
-				var offset = current._offset;
-
-				if (c - offset < 0 || c - offset >= lookup.Length)
-				{
-					found = false;
-					break;
-				}
-
-				current = lookup[c - offset];
-
-				if (current._lookup == null)
-				{
-					found = false;
-					break;
-				}
-
-				source = source.Slice(1);
-			}
-
-			if (found)
-				return true;
-
-			searchSource = searchSource.Slice(1);
-		}
-
-		return false;
 	}
 
 	public bool StartsWithAnyIn(ReadOnlySpan<char> source)
@@ -118,5 +68,59 @@ public readonly struct IndexTree
 		}
 
 		return true;
+	}
+
+	public bool ContainsWithAnyIn(ReadOnlySpan<char> source)
+	{
+		while (source.Length > 0)
+		{
+			var slice   = source;
+			var current = this;
+			var found   = SearchCurrentSource(current, slice);
+
+			if (found)
+				return true;
+
+			source = source.Slice(1);
+		}
+
+		return false;
+	}
+
+	private static bool SearchCurrentSource(IndexTree current, ReadOnlySpan<char> slice)
+	{
+		var found = true;
+
+		while (!current.IsEnd)
+		{
+			var lookup = current._lookup;
+
+			if (slice.Length == 0 || lookup == null)
+			{
+				found = false;
+				break;
+			}
+
+			var c      = slice[0];
+			var offset = current._offset;
+
+			if (c - offset < 0 || c - offset >= lookup.Length)
+			{
+				found = false;
+				break;
+			}
+
+			current = lookup[c - offset];
+
+			if (current._lookup == null)
+			{
+				found = false;
+				break;
+			}
+
+			slice = slice.Slice(1);
+		}
+
+		return found;
 	}
 }
