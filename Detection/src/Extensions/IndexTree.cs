@@ -12,10 +12,8 @@ public readonly struct IndexTree
 	private bool IsEnd => _lookup?.Length == 0;
 
 	private static IEnumerable<(char Key, IGrouping<char, string> x)> KeywordsGroupBySeed(string[] keywords, int seed)
-	{
-		return keywords.GroupBy(k => k[seed])
-		               .Select(x => (x.Key, x));
-	}
+		=> keywords.GroupBy(k => k[seed])
+		           .Select(x => (x.Key, x));
 
 	public IndexTree(string[]? keywords, int seed = 0)
 	{
@@ -39,16 +37,16 @@ public readonly struct IndexTree
 		{
 			var newKeys = list.ToArray();
 			_lookup[key - lower] = newKeys.Any(k => seed + 1 >= k.Length)
-				                       ? new IndexTree(null, seed    + 1)
+				                       ? new IndexTree(null, seed + 1)
 				                       : new IndexTree(newKeys, seed + 1);
 		}
 	}
 
-	public bool ContainsWithAnyIn(ReadOnlySpan<char> searchSource)
+	public bool ContainsWithAnyIn(ReadOnlySpan<char> source)
 	{
-		while (searchSource.Length > 0)
+		while (source.Length > 0)
 		{
-			var source = searchSource;
+			var slice = source;
 
 			var current = this;
 			var found   = true;
@@ -57,13 +55,13 @@ public readonly struct IndexTree
 			{
 				var lookup = current._lookup;
 
-				if (source.Length == 0 || lookup == null)
+				if (slice.Length == 0 || lookup == null)
 				{
 					found = false;
 					break;
 				}
 
-				var c      = source[0];
+				var c      = slice[0];
 				var offset = current._offset;
 
 				if (c - offset < 0 || c - offset >= lookup.Length)
@@ -80,13 +78,13 @@ public readonly struct IndexTree
 					break;
 				}
 
-				source = source.Slice(1);
+				slice = slice.Slice(1);
 			}
 
 			if (found)
 				return true;
 
-			searchSource = searchSource.Slice(1);
+			source = source.Slice(1);
 		}
 
 		return false;
