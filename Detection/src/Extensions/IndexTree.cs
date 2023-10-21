@@ -47,7 +47,6 @@ public readonly struct IndexTree
 		while (source.Length > 0)
 		{
 			var slice = source;
-
 			var current = this;
 			var found   = true;
 
