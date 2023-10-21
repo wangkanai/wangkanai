@@ -48,37 +48,7 @@ public readonly struct IndexTree
 		{
 			var slice = source;
 			var current = this;
-			var found   = true;
-
-			while (!current.IsEnd)
-			{
-				var lookup = current._lookup;
-
-				if (slice.Length == 0 || lookup == null)
-				{
-					found = false;
-					break;
-				}
-
-				var c      = slice[0];
-				var offset = current._offset;
-
-				if (c - offset < 0 || c - offset >= lookup.Length)
-				{
-					found = false;
-					break;
-				}
-
-				current = lookup[c - offset];
-
-				if (current._lookup == null)
-				{
-					found = false;
-					break;
-				}
-
-				slice = slice.Slice(1);
-			}
+			var found = SearchCurrentSource(current, slice);
 
 			if (found)
 				return true;
@@ -87,6 +57,43 @@ public readonly struct IndexTree
 		}
 
 		return false;
+	}
+
+	private static bool SearchCurrentSource(IndexTree current, ReadOnlySpan<char> slice)
+	{
+		var found = true;
+		
+		while (!current.IsEnd)
+		{
+			var lookup = current._lookup;
+
+			if (slice.Length == 0 || lookup == null)
+			{
+				found = false;
+				break;
+			}
+
+			var c      = slice[0];
+			var offset = current._offset;
+
+			if (c - offset < 0 || c - offset >= lookup.Length)
+			{
+				found = false;
+				break;
+			}
+
+			current = lookup[c - offset];
+
+			if (current._lookup == null)
+			{
+				found = false;
+				break;
+			}
+
+			slice = slice.Slice(1);
+		}
+
+		return found;
 	}
 
 	public bool StartsWithAnyIn(ReadOnlySpan<char> source)
