@@ -27,8 +27,8 @@ public readonly struct IndexTree
 			return;
 		}
 
-		var lower = keywords.Min(k => k[seed]);
-		var upper = keywords.Max(k => k[seed]);
+		var lower = keywords!.Min(k => k[seed]);
+		var upper = keywords!.Max(k => k[seed]);
 
 		_offset = lower;
 		_lookup = new IndexTree[upper - lower + 1];
