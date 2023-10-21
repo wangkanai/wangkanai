@@ -31,7 +31,7 @@ public readonly struct IndexTree
 		_offset = lower;
 		_lookup = new IndexTree[upper - lower + 1];
 
-		foreach (var (key, list) in KeywordsGroupBySeed(keywords, seed))
+		foreach (var (key, list) in KeywordsGroupBySeed(keywords!, seed))
 		{
 			var newKeys = list.ToArray();
 			_lookup[key - lower] = newKeys.Any(k => seed + 1 >= k.Length)

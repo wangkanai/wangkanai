@@ -4,21 +4,21 @@ namespace Wangkanai.Detection.Extensions;
 
 public static class SearchExtensions
 {
-	public static IndexTree BuildIndexTree(this string[] keywords)
-		=> new IndexTree(keywords);
+	public static bool SearchStartsWith(this string search, IndexTree tree)
+		=> search.AsSpan().SearchStartsWith(tree);
 
-	public static IndexTree BuildIndexTree(this IEnumerable<string> keywords)
-		=> new IndexTree(keywords.Distinct().ToArray());
+	private static bool SearchStartsWith(this ReadOnlySpan<char> search, IndexTree tree)
+		=> tree.StartsWithAnyIn(search);
 
-	public static bool SearchStartsWith(this string searchString, IndexTree searchTree)
-		=> searchString.AsSpan().SearchStartsWith(searchTree);
+	public static bool SearchContains(this string search, IndexTree tree)
+		=> search.AsSpan().SearchContains(tree);
 
-	private static bool SearchStartsWith(this ReadOnlySpan<char> searchString, IndexTree searchTree)
-		=> searchTree.StartsWithAnyIn(searchString);
+	private static bool SearchContains(this ReadOnlySpan<char> search, IndexTree tree)
+		=> tree.ContainsWithAnyIn(search);
+	
+	public static IndexTree BuildIndexTree(this string[] keywords) 
+		=> new(keywords);
 
-	public static bool SearchContains(this string searchString, IndexTree searchTree)
-		=> searchString.AsSpan().SearchContains(searchTree);
-
-	public static bool SearchContains(this ReadOnlySpan<char> searchString, IndexTree searchTree)
-		=> searchTree.ContainsWithAnyIn(searchString);
+	public static IndexTree BuildIndexTree(this IEnumerable<string> keywords) 
+		=> new(keywords.Distinct().ToArray());
 }
