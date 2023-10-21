@@ -13,7 +13,7 @@ internal static class UserAgentExtensions
 	public static bool Contains(this UserAgent agent, string word)
 		=> !agent.IsNullOrEmpty()
 		   && !word.IsNullOrEmpty()
-		   && agent.ToLower().Contains(word.ToLower());
+		   && agent.ToLower().Contains(word, StringComparison.CurrentCultureIgnoreCase);
 
 	public static bool Contains(this UserAgent agent, string[] array)
 		=> !agent.IsNullOrEmpty()
@@ -58,8 +58,7 @@ internal static class UserAgentExtensions
 	public static bool StartsWith(this UserAgent agent, string word)
 		=> !word.IsNullOrEmpty()
 		   && !agent.IsNullOrEmpty()
-		   && agent.ToLower()
-		           .StartsWith(word.ToLower());
+		   && agent.ToLower().StartsWith(word, StringComparison.CurrentCultureIgnoreCase);
 
 	public static bool StartsWith(this UserAgent agent, string[] array)
 		=> array.AnyStartsWith(agent);
