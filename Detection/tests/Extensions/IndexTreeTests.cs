@@ -8,41 +8,41 @@ public class IndexTreeTests
 	[Fact]
 	public void KeywordsIsNull()
 	{
-		string[] _null = null!;
-		var      abc   = "abc";
-		var      tree  = new IndexTree(_null);
-		Assert.True(tree.ContainsWithAnyIn(abc));
-		Assert.True(tree.StartsWithAnyIn(abc));
+		string[] _null  = null!;
+		var      source = "abc";
+		var      tree   = new IndexTree(_null);
+		Assert.True(tree.ContainsWithAnyIn(source));
+		Assert.True(tree.StartsWithAnyIn(source));
 	}
 
 	[Fact]
 	public void KeywordsIsEmpty()
 	{
 		var _empty = Array.Empty<string>();
-		var abc    = "abc";
+		var source = "abc";
 		var tree   = new IndexTree(_empty);
-		Assert.True(tree.ContainsWithAnyIn(abc));
-		Assert.True(tree.StartsWithAnyIn(abc));
+		Assert.True(tree.ContainsWithAnyIn(source));
+		Assert.True(tree.StartsWithAnyIn(source));
 	}
 
 	[Fact]
 	public void KeywordsIsNull_SourceExist_SeedIsOne()
 	{
-		string[] _null = null!;
-		var      abc   = "abc";
-		var      tree  = new IndexTree(_null, 1);
-		Assert.True(tree.ContainsWithAnyIn(abc));
-		Assert.True(tree.StartsWithAnyIn(abc));
+		string[] _null  = null!;
+		var      source = "abc";
+		var      tree   = new IndexTree(_null, 1);
+		Assert.True(tree.ContainsWithAnyIn(source));
+		Assert.True(tree.StartsWithAnyIn(source));
 	}
 
 	[Fact]
 	public void KeywordsIsEmpty_SourceExist_SeedIsOne()
 	{
 		var _empty = Array.Empty<string>();
-		var abc    = "abc";
+		var source = "abc";
 		var tree   = new IndexTree(_empty, 1);
-		Assert.True(tree.ContainsWithAnyIn(abc));
-		Assert.True(tree.StartsWithAnyIn(abc));
+		Assert.True(tree.ContainsWithAnyIn(source));
+		Assert.True(tree.StartsWithAnyIn(source));
 	}
 
 	[Fact]
@@ -54,7 +54,7 @@ public class IndexTreeTests
 		Assert.False(tree.ContainsWithAnyIn(source));
 		Assert.False(tree.StartsWithAnyIn(source));
 	}
-	
+
 	[Fact]
 	public void KeywordsExist_SourceIsNull_SeedIsOne()
 	{
@@ -64,7 +64,7 @@ public class IndexTreeTests
 		Assert.False(tree.ContainsWithAnyIn(source));
 		Assert.False(tree.StartsWithAnyIn(source));
 	}
-	
+
 	[Fact]
 	public void KeywordsExist_SourceIsNull_SeedIsTwo()
 	{
@@ -74,7 +74,7 @@ public class IndexTreeTests
 		Assert.False(tree.ContainsWithAnyIn(source));
 		Assert.False(tree.StartsWithAnyIn(source));
 	}
-	
+
 	[Fact]
 	public void KeywordsExist_SourceIsNull_SeedIsThree()
 	{
@@ -94,7 +94,7 @@ public class IndexTreeTests
 		Assert.False(tree.ContainsWithAnyIn(source));
 		Assert.False(tree.StartsWithAnyIn(source));
 	}
-	
+
 	[Fact]
 	public void KeywordsExist_SourceIsEmpty_SeedIsOne()
 	{
@@ -104,7 +104,7 @@ public class IndexTreeTests
 		Assert.False(tree.ContainsWithAnyIn(source));
 		Assert.False(tree.StartsWithAnyIn(source));
 	}
-	
+
 	[Fact]
 	public void KeywordsExist_SourceIsEmpty_SeedIsTwo()
 	{
@@ -114,7 +114,7 @@ public class IndexTreeTests
 		Assert.False(tree.ContainsWithAnyIn(source));
 		Assert.False(tree.StartsWithAnyIn(source));
 	}
-	
+
 	[Fact]
 	public void KeywordsExist_SourceIsEmpty_SeedIsThree()
 	{
@@ -124,7 +124,7 @@ public class IndexTreeTests
 		Assert.False(tree.ContainsWithAnyIn(source));
 		Assert.True(tree.StartsWithAnyIn(source));
 	}
-	
+
 	[Fact]
 	public void KeywordsExist_SourceIsWhiteSpace_SeedIsZero()
 	{
@@ -134,7 +134,7 @@ public class IndexTreeTests
 		Assert.False(tree.ContainsWithAnyIn(source));
 		Assert.False(tree.StartsWithAnyIn(source));
 	}
-	
+
 	[Fact]
 	public void KeywordsExist_SourceIsWhiteSpace_SeedIsOne()
 	{
@@ -144,7 +144,7 @@ public class IndexTreeTests
 		Assert.False(tree.ContainsWithAnyIn(source));
 		Assert.False(tree.StartsWithAnyIn(source));
 	}
-	
+
 	[Fact]
 	public void KeywordsExist_SourceIsWhiteSpace_SeedIsTwo()
 	{
@@ -154,7 +154,7 @@ public class IndexTreeTests
 		Assert.False(tree.ContainsWithAnyIn(source));
 		Assert.False(tree.StartsWithAnyIn(source));
 	}
-	
+
 	[Fact]
 	public void KeywordsExist_SourceIsWhiteSpace_SeedIsThree()
 	{
@@ -164,44 +164,84 @@ public class IndexTreeTests
 		Assert.True(tree.ContainsWithAnyIn(source));
 		Assert.True(tree.StartsWithAnyIn(source));
 	}
-	
+
 	[Fact]
 	public void KeywordsExist_SourceExist_SeedIsZero()
 	{
 		var keywords = new[] { "abc" };
-		var abc      = "abc";
+		var source   = "abc";
 		var tree     = new IndexTree(keywords);
-		Assert.True(tree.ContainsWithAnyIn(abc));
-		Assert.True(tree.StartsWithAnyIn(abc));
+		Assert.True(tree.ContainsWithAnyIn(source));
+		Assert.True(tree.StartsWithAnyIn(source));
 	}
 
 	[Fact]
 	public void KeywordsExist_SourceExist_SeedIsOne()
 	{
 		var keywords = new[] { "abc" };
-		var abc      = "abc";
+		var source   = "abc";
 		var tree     = new IndexTree(keywords, 1);
-		Assert.True(tree.ContainsWithAnyIn(abc));
-		Assert.False(tree.StartsWithAnyIn(abc));
+		Assert.True(tree.ContainsWithAnyIn(source));
+		Assert.False(tree.StartsWithAnyIn(source));
 	}
 
 	[Fact]
 	public void KeywordsExist_SourceExist_SeedIsTwo()
 	{
 		var keywords = new[] { "abc" };
-		var abc      = "abc";
+		var source   = "abc";
 		var tree     = new IndexTree(keywords, 2);
-		Assert.True(tree.ContainsWithAnyIn(abc));
-		Assert.False(tree.StartsWithAnyIn(abc));
+		Assert.True(tree.ContainsWithAnyIn(source));
+		Assert.False(tree.StartsWithAnyIn(source));
 	}
 
 	[Fact]
 	public void KeywordsExist_SourceExist_SeedIsThree()
 	{
 		var keywords = new[] { "abc" };
-		var abc      = "abc";
+		var source   = "abc";
 		var tree     = new IndexTree(keywords, 3);
-		Assert.True(tree.ContainsWithAnyIn(abc));
-		Assert.True(tree.StartsWithAnyIn(abc));
+		Assert.True(tree.ContainsWithAnyIn(source));
+		Assert.True(tree.StartsWithAnyIn(source));
+	}
+
+	[Fact]
+	public void KeywordsExist_SourceSubset_SeedIsZero()
+	{
+		var keywords = new[] { "abc" };
+		var source   = "a";
+		var tree     = new IndexTree(keywords);
+		Assert.False(tree.ContainsWithAnyIn(source));
+		Assert.False(tree.StartsWithAnyIn(source));
+	}
+	
+	[Fact]
+	public void KeywordsExist_SourceSubset_SeedIsOne()
+	{
+		var keywords = new[] { "abc" };
+		var source   = "a";
+		var tree     = new IndexTree(keywords, 1);
+		Assert.False(tree.ContainsWithAnyIn(source));
+		Assert.False(tree.StartsWithAnyIn(source));
+	}
+	
+	[Fact]
+	public void KeywordsExist_SourceSubset_SeedIsTwo()
+	{
+		var keywords = new[] { "abc" };
+		var source   = "a";
+		var tree     = new IndexTree(keywords, 2);
+		Assert.False(tree.ContainsWithAnyIn(source));
+		Assert.False(tree.StartsWithAnyIn(source));
+	}
+	
+	[Fact]
+	public void KeywordsExist_SourceSubset_SeedIsThree()
+	{
+		var keywords = new[] { "abc" };
+		var source   = "a";
+		var tree     = new IndexTree(keywords, 3);
+		Assert.False(tree.ContainsWithAnyIn(source));
+		Assert.True(tree.StartsWithAnyIn(source));
 	}
 }
