@@ -241,7 +241,7 @@ public class IndexTreeTests
 		var keywords = new[] { "abc" };
 		var source   = "a";
 		var tree     = new IndexTree(keywords, 3);
-		Assert.False(tree.ContainsWithAnyIn(source));
+		Assert.True(tree.ContainsWithAnyIn(source));
 		Assert.True(tree.StartsWithAnyIn(source));
 	}
 }
