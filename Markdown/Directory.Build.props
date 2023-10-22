@@ -2,7 +2,7 @@
 	<Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
 
 	<PropertyGroup>
-		<VersionPrefix>2.3.0</VersionPrefix>
+		<VersionPrefix>2.4.0</VersionPrefix>
 		<Title>Wangkanai Markdown</Title>
 		<Description>Transform your ASP.NET Core development with `Markdown` View Engine, a tool that brings the simplicity of Markdown to your views. Say goodbye to complex HTML and Razor syntax and hello to minimalist, easy-to-write Markdown. Join the revolution and experience a new, streamlined approach to view management in ASP.NET Core.</Description>
 		<PackageTags>aspnetcore;markdown;pages</PackageTags>
