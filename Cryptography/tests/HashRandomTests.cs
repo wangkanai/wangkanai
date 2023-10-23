@@ -85,7 +85,6 @@ public class HashRandomTests
 	{
 		var hash = new HashRandom();
 		var next = hash.Next(10);
-		Assert.NotNull(next);
 		Assert.InRange(next, 0, 10);
 	}
 
@@ -94,7 +93,6 @@ public class HashRandomTests
 	{
 		var hash = new HashRandom();
 		var next = hash.Next(10, 20);
-		Assert.NotNull(next);
 		Assert.NotEqual(0, next);
 	}
 
@@ -136,7 +134,7 @@ public class HashRandomTests
 	public void NextBytes_Empty()
 	{
 		var hash = new HashRandom();
-		var bytes = new byte[0];
+		var bytes = Array.Empty<byte>();
 		hash.NextBytes(bytes);
 		Assert.NotNull(bytes);
 		Assert.Empty(bytes);
