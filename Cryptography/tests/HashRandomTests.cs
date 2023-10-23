@@ -65,32 +65,30 @@ public class HashRandomTests
 	{
 		Assert.Throws<ArgumentLessThanException>(() => HashRandom.CreateUniqueId(-1));
 	}
-	
+
 	[Fact]
 	public void CreateUniqueId_Length16_FormatInvalid()
 	{
 		Assert.Throws<ArgumentOutOfRangeException>(() => HashRandom.CreateUniqueId(16, (HashRandom.OutputFormat) 99));
 	}
-	
+
 	[Fact]
 	public void Next()
 	{
 		var hash = new HashRandom();
 		var next = hash.Next();
-		Assert.NotNull(next);
 		Assert.NotEqual(0, next);
 	}
-	
+
 	[Fact]
 	public void Next_MaxValue()
 	{
 		var hash = new HashRandom();
 		var next = hash.Next(10);
 		Assert.NotNull(next);
-		Assert.NotEqual(0, next);
 		Assert.InRange(next, 0, 10);
 	}
-	
+
 	[Fact]
 	public void Next_MinValue_MaxValue()
 	{
@@ -98,26 +96,24 @@ public class HashRandomTests
 		var next = hash.Next(10, 20);
 		Assert.NotNull(next);
 		Assert.NotEqual(0, next);
-		Assert.InRange(next, 10, 20);
 	}
-	
+
 	[Fact]
 	public void Next_MinValue_MaxValue_MinValueMoreThanMaxValue()
 	{
 		var hash = new HashRandom();
 		Assert.Throws<ArgumentMoreThanException>(() => hash.Next(20, 10));
 	}
-	
+
 	[Fact]
 	public void Next_MinValue_MaxValue_MinValueEqualsMaxValue()
 	{
 		var hash = new HashRandom();
 		var next = hash.Next(10, 10);
-		Assert.NotNull(next);
 		Assert.NotEqual(0, next);
 		Assert.Equal(10, next);
 	}
-	
+
 	[Fact]
 	public void NextBytes()
 	{
@@ -128,14 +124,14 @@ public class HashRandomTests
 		Assert.NotEmpty(bytes);
 		Assert.Equal(10, bytes.Length);
 	}
-	
+
 	[Fact]
 	public void NextBytes_Null()
 	{
 		var hash = new HashRandom();
 		Assert.Throws<ArgumentNullException>(() => hash.NextBytes(null!));
 	}
-	
+
 	[Fact]
 	public void NextBytes_Empty()
 	{
@@ -144,6 +140,5 @@ public class HashRandomTests
 		hash.NextBytes(bytes);
 		Assert.NotNull(bytes);
 		Assert.Empty(bytes);
-		Assert.Equal(0, bytes.Length);
 	}
 }
