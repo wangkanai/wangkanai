@@ -10,7 +10,6 @@ public class CommandLineApplicationTests
 	public void CommandNameCanBeMatched()
 	{
 		var called = false;
-
 		var app = new CommandLineApplication();
 		app.Command("test", c => {
 			c.OnExecute(() => {
@@ -158,8 +157,8 @@ public class CommandLineApplicationTests
 	[Fact]
 	public void OptionSwitchMayBeProvided()
 	{
-		CommandOption first  = null;
-		CommandOption second = null;
+		CommandOption first  = null!;
+		CommandOption second = null!;
 
 		var app = new CommandLineApplication();
 
@@ -178,7 +177,7 @@ public class CommandLineApplicationTests
 	[Fact]
 	public void OptionValueMustBeProvided()
 	{
-		CommandOption first = null;
+		CommandOption first = null!;
 
 		var app = new CommandLineApplication();
 
