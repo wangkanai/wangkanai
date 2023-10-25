@@ -11,13 +11,13 @@ public class CommandOptionTests
 	{
 		var    app          = new CommandLineApplication();
 		var    optionA      = app.Option("-a|--option-a", "", CommandOptionType.SingleValue, inherited: true);
-		string optionAValue = null;
+		string optionAValue = null!;
 
-		var optionB = app.Option("-b", "", CommandOptionType.SingleValue, inherited: false);
+		app.Option("-b", "", CommandOptionType.SingleValue, inherited: false);
 
 		var subcmd = app.Command("subcmd", c => {
 			c.OnExecute(() => {
-				optionAValue = optionA.Value();
+				optionAValue = optionA.Value()!;
 				return 0;
 			});
 		});
@@ -27,9 +27,7 @@ public class CommandOptionTests
 
 		app.Execute("-a", "A1", "subcmd");
 		Assert.Equal("A1", optionAValue);
-
 		Assert.Throws<CommandParsingException>(() => app.Execute("subcmd", "-b", "B"));
-
 		Assert.Contains("-a|--option-a", subcmd.GetHelpText());
 	}
 
@@ -48,7 +46,7 @@ public class CommandOptionTests
 	{
 		var           app    = new CommandLineApplication();
 		var           top    = app.Option("-a|--always", "Top-level", CommandOptionType.SingleValue, inherited: false);
-		CommandOption nested = null;
+		CommandOption nested = null!;
 		app.Command("subcmd", c => { nested = c.Option("-a|--ask", "Nested", CommandOptionType.SingleValue); });
 
 		app.Execute("-a", "top");
@@ -65,20 +63,23 @@ public class CommandOptionTests
 	[Fact]
 	public void NestedInheritedOptions()
 	{
-		string globalOptionValue = null, nest1OptionValue = null, nest2OptionValue = null;
+		string globalOptionValue = null!;
+		string nest1OptionValue  = null!;
+		string nest2OptionValue  = null!;
 
-		var                    app     = new CommandLineApplication();
-		CommandLineApplication subcmd2 = null;
-		var                    g       = app.Option("-g|--global", "Global option", CommandOptionType.SingleValue, inherited: true);
+		CommandLineApplication subcmd2 = null!;
+
+		var app = new CommandLineApplication();
+		var g   = app.Option("-g|--global", "Global option", CommandOptionType.SingleValue, inherited: true);
 		var subcmd1 = app.Command("lvl1", s1 => {
 			var n1 = s1.Option("--nest1", "Nested one level down", CommandOptionType.SingleValue, inherited: true);
 			subcmd2 = s1.Command("lvl2", s2 => {
 				var n2 = s2.Option("--nest2", "Nested one level down", CommandOptionType.SingleValue, inherited: true);
 				s2.HelpOption("-h|--help");
 				s2.OnExecute(() => {
-					globalOptionValue = g.Value();
-					nest1OptionValue  = n1.Value();
-					nest2OptionValue  = n2.Value();
+					globalOptionValue = g.Value()!;
+					nest1OptionValue  = n1.Value()!;
+					nest2OptionValue  = n2.Value()!;
 					return 0;
 				});
 			});
