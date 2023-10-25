@@ -12,4 +12,8 @@
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly"/>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <ProjectReference Include="..\..\..\src\Core\Wangkanai.Blazor.csproj" />
+	</ItemGroup>
+
 </Project>
