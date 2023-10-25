@@ -659,7 +659,7 @@ public class CommandLineApplicationTests
 	public void ThrowsExceptionOnUnexpectedOptionBeforeValidSubcommandByDefault()
 	{
 		var                    unexpectedOption = "--unexpected";
-		CommandLineApplication subCmd           = null;
+		CommandLineApplication subCmd           = null!;
 		var                    app              = new CommandLineApplication();
 
 		app.Command("k", c => {
