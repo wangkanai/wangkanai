@@ -3,7 +3,7 @@
 namespace Wangkanai;
 
 [MemoryDiagnoser]
-public class ForloopBenchmark
+public class ForLoopBenchmark
 {
 	[Benchmark]
 	public void ForEnumeratorList()

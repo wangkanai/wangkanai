@@ -10,5 +10,5 @@ BenchmarkRunner.Run<StringSpanVsSubstringBenchmark>();
 // BenchmarkRunner.Run<CheckStringBenchmark>();
 // BenchmarkRunner.Run<HashBenchmark>();
 // BenchmarkRunner.Run<MathBenchmark>();
-// BenchmarkRunner.Run<ForloopBenchmark>();
+// BenchmarkRunner.Run<ForLoopBenchmark>();
 // BenchmarkRunner.Run<StaticRandomTests>();

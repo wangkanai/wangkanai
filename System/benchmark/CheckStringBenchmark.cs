@@ -11,10 +11,10 @@ namespace Wangkanai;
 [MemoryDiagnoser]
 public class CheckStringBenchmark
 {
-	private char?   _char   = null;
-	private string? _string = null;
-	private string? _empty  = string.Empty;
-	private string? _space  = " ";
+	private readonly char?   _char   = null;
+	private readonly string? _string = null;
+	private readonly string? _empty  = string.Empty;
+	private readonly string? _space  = " ";
 
 	[Benchmark] public void Char()       => Assert.Throws<ArgumentNullException>(() => _char.ThrowIfNull());
 	[Benchmark] public void String()     => Assert.Throws<ArgumentNullException>(() => _string.ThrowIfNull());

@@ -8,9 +8,9 @@ public class MathBenchmark
 	[Benchmark]
 	public void Divider()
 	{
-		for (int i = 100; i < 10000; i++)
+		for (var i = 100; i < 10000; i++)
 		{
-			for (int j = 0; j < 10000; j++)
+			for (var j = 0; j < 10000; j++)
 				Math.Divider(i, j);
 		}
 	}
