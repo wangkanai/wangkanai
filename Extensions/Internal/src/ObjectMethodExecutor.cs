@@ -27,10 +27,7 @@ internal sealed class ObjectMethodExecutor
 	[RequiresUnreferencedCode("This method performs reflection on arbitrary types.")]
 	private ObjectMethodExecutor(MethodInfo methodInfo, TypeInfo targetTypeInfo, object?[]? parameterDefaultValues)
 	{
-		if (methodInfo == null)
-		{
-			throw new ArgumentNullException(nameof(methodInfo));
-		}
+		methodInfo.ThrowIfNull();
 
 		MethodInfo       = methodInfo;
 		MethodParameters = methodInfo.GetParameters();
@@ -48,9 +45,7 @@ internal sealed class ObjectMethodExecutor
 		_executor = GetExecutor(methodInfo, targetTypeInfo);
 
 		if (IsMethodAsync)
-		{
 			_executorAsync = GetExecutorAsync(methodInfo, targetTypeInfo, coercedAwaitableInfo);
-		}
 
 		_parameterDefaultValues = parameterDefaultValues;
 	}
@@ -76,18 +71,12 @@ internal sealed class ObjectMethodExecutor
 
 	[RequiresUnreferencedCode("This method performs reflection on arbitrary types.")]
 	public static ObjectMethodExecutor Create(MethodInfo methodInfo, TypeInfo targetTypeInfo)
-	{
-		return new ObjectMethodExecutor(methodInfo, targetTypeInfo, null);
-	}
+		=> new(methodInfo, targetTypeInfo, null);
 
 	[RequiresUnreferencedCode("This method performs reflection on arbitrary types.")]
 	public static ObjectMethodExecutor Create(MethodInfo methodInfo, TypeInfo targetTypeInfo, object?[] parameterDefaultValues)
 	{
-		if (parameterDefaultValues == null)
-		{
-			throw new ArgumentNullException(nameof(parameterDefaultValues));
-		}
-
+		parameterDefaultValues.ThrowIfNull();
 		return new ObjectMethodExecutor(methodInfo, targetTypeInfo, parameterDefaultValues);
 	}
 
@@ -158,7 +147,7 @@ internal sealed class ObjectMethodExecutor
 		// Build parameter list
 		var paramInfos = methodInfo.GetParameters();
 		var parameters = new List<Expression>(paramInfos.Length);
-		for (int i = 0; i < paramInfos.Length; i++)
+		for (var i = 0; i < paramInfos.Length; i++)
 		{
 			var paramInfo = paramInfos[i];
 			var valueObj  = Expression.ArrayIndex(parametersParameter, Expression.Constant(i));
@@ -190,12 +179,10 @@ internal sealed class ObjectMethodExecutor
 	}
 
 	private static MethodExecutor WrapVoidMethod(VoidMethodExecutor executor)
-	{
-		return delegate(object target, object?[]? parameters) {
+		=> delegate(object target, object?[]? parameters) {
 			executor(target, parameters);
 			return null;
 		};
-	}
 
 	private static MethodExecutorAsync GetExecutorAsync(
 		MethodInfo           methodInfo,
@@ -209,12 +196,12 @@ internal sealed class ObjectMethodExecutor
 		// Build parameter list
 		var paramInfos = methodInfo.GetParameters();
 		var parameters = new List<Expression>(paramInfos.Length);
-		for (int i = 0; i < paramInfos.Length; i++)
+		for (var i = 0; i < paramInfos.Length; i++)
 		{
 			var paramInfo = paramInfos[i];
 			var valueObj  = Expression.ArrayIndex(parametersParameter, Expression.Constant(i));
 			var valueCast = Expression.Convert(valueObj, paramInfo.ParameterType);
-			
+
 			parameters.Add(valueCast);
 		}
 
