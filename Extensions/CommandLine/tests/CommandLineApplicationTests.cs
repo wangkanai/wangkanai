@@ -194,8 +194,8 @@ public class CommandLineApplicationTests
 	[Fact]
 	public void ValuesMayBeAttachedToSwitch()
 	{
-		CommandOption first  = null;
-		CommandOption second = null;
+		CommandOption first  = null!;
+		CommandOption second = null!;
 
 		var app = new CommandLineApplication();
 
@@ -214,8 +214,8 @@ public class CommandLineApplicationTests
 	[Fact]
 	public void ShortNamesMayBeDefined()
 	{
-		CommandOption first  = null;
-		CommandOption second = null;
+		CommandOption first  = null!;
+		CommandOption second = null!;
 
 		var app = new CommandLineApplication();
 
