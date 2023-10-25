@@ -10,7 +10,7 @@ public class CommandLineApplicationTests
 	public void CommandNameCanBeMatched()
 	{
 		var called = false;
-		var app = new CommandLineApplication();
+		var app    = new CommandLineApplication();
 		app.Command("test", c => {
 			c.OnExecute(() => {
 				called = true;
@@ -658,9 +658,10 @@ public class CommandLineApplicationTests
 	[Fact]
 	public void ThrowsExceptionOnUnexpectedOptionBeforeValidSubcommandByDefault()
 	{
-		var                    unexpectedOption = "--unexpected";
-		CommandLineApplication subCmd           = null;
-		var                    app              = new CommandLineApplication();
+		CommandLineApplication subCmd = null!;
+
+		var unexpectedOption = "--unexpected";
+		var app              = new CommandLineApplication();
 
 		app.Command("k", c => {
 			subCmd = c.Command("run", _ => { });
@@ -674,10 +675,10 @@ public class CommandLineApplicationTests
 	[Fact]
 	public void AllowNoThrowBehaviorOnUnexpectedOptionBeforeSubcommand()
 	{
+		CommandLineApplication subCmd = null!;
+
 		var unexpectedOption = "--unexpected";
 		var app              = new CommandLineApplication();
-
-		CommandLineApplication subCmd = null;
 		var testCmd = app.Command("k", c => {
 				subCmd = c.Command("run", _ => { });
 				c.OnExecute(() => 0);
@@ -698,7 +699,7 @@ public class CommandLineApplicationTests
 		var unexpectedOption = "--unexpected";
 		var app              = new CommandLineApplication();
 
-		CommandLineApplication subCmd = null;
+		CommandLineApplication subCmd = null!;
 		var testCmd = app.Command("k", c => {
 			subCmd = c.Command("run", _ => { }, throwOnUnexpectedArg: false);
 			c.OnExecute(() => 0);

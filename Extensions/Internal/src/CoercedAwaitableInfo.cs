@@ -5,6 +5,8 @@ using System.Linq.Expressions;
 
 namespace Wangkanai.Extensions.Internal;
 
+#nullable disable
+
 internal readonly struct CoercedAwaitableInfo
 {
 	public AwaitableInfo AwaitableInfo     { get; }
@@ -12,14 +14,14 @@ internal readonly struct CoercedAwaitableInfo
 	public Type          CoercerResultType { get; }
 	public bool          RequiresCoercion  => CoercerExpression != null;
 
-	public CoercedAwaitableInfo(AwaitableInfo awaitableInfo)
+	internal CoercedAwaitableInfo(AwaitableInfo awaitableInfo)
 	{
 		AwaitableInfo     = awaitableInfo;
-		//CoercerExpression = null;
-		//CoercerResultType = null;
+		CoercerExpression = null;
+		CoercerResultType = null;
 	}
 
-	public CoercedAwaitableInfo(Expression coercerExpression, Type coercerResultType, AwaitableInfo coercedAwaitableInfo)
+	internal CoercedAwaitableInfo(Expression coercerExpression, Type coercerResultType, AwaitableInfo coercedAwaitableInfo)
 	{
 		CoercerExpression = coercerExpression;
 		CoercerResultType = coercerResultType;
@@ -39,19 +41,14 @@ internal readonly struct CoercedAwaitableInfo
 
 		// It's not directly awaitable, but maybe we can coerce it.
 		// Currently we support coercing FSharpAsync<T>.
-		if (ObjectMethodExecutorFSharpSupport.TryBuildCoercerFromFSharpAsyncToAwaitable(
-			    type,
-			    out var coercerExpression,
-			    out var coercerResultType))
-		{
+		if (ObjectMethodExecutorFSharpSupport.TryBuildCoercerFromFSharpAsyncToAwaitable(type, out var coercerExpression, out var coercerResultType))
 			if (AwaitableInfo.IsTypeAwaitable(coercerResultType, out var coercedAwaitableInfo))
 			{
 				info = new CoercedAwaitableInfo(coercerExpression, coercerResultType, coercedAwaitableInfo);
 				return true;
 			}
-		}
 
-		info = default(CoercedAwaitableInfo);
+		info = default;
 		return false;
 	}
 }
