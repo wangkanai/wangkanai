@@ -13,7 +13,6 @@
 
 	<ItemGroup>
 		<PackageReference Include="xunit" />
-
 	</ItemGroup>
 
 	<ItemGroup>
