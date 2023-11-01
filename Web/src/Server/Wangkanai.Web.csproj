@@ -20,6 +20,24 @@
 		<Content Include="wwwroot\lib\**" Watch="false"/>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <_ContentIncludedByDefault Remove="Components\Pages\About\IndexAbout.razor" />
+	  <_ContentIncludedByDefault Remove="Components\Pages\Architecture\IndexArchitecture.razor" />
+	  <_ContentIncludedByDefault Remove="Components\Pages\Blog\IndexBlog.razor" />
+	  <_ContentIncludedByDefault Remove="Components\Pages\Design\IndexDesign.razor" />
+	  <_ContentIncludedByDefault Remove="Components\Pages\Development\Analytics.razor" />
+	  <_ContentIncludedByDefault Remove="Components\Pages\Development\Blazor.razor" />
+	  <_ContentIncludedByDefault Remove="Components\Pages\Development\Detection.razor" />
+	  <_ContentIncludedByDefault Remove="Components\Pages\Development\Federation.razor" />
+	  <_ContentIncludedByDefault Remove="Components\Pages\Development\IndexDevelopment.razor" />
+	  <_ContentIncludedByDefault Remove="Components\Pages\Development\Responsive.razor" />
+	  <_ContentIncludedByDefault Remove="Components\Pages\Development\System.razor" />
+	  <_ContentIncludedByDefault Remove="Components\Pages\Development\Tabler.razor" />
+	  <_ContentIncludedByDefault Remove="Components\Pages\Engineering\IndexEngineering.razor" />
+	  <_ContentIncludedByDefault Remove="Components\Pages\Fonts\IndexFont.razor" />
+	  <_ContentIncludedByDefault Remove="Components\Pages\Fonts\Visawakom.razor" />
+	</ItemGroup>
+
 	<Target Name="NpmInstall" Inputs="package.json" Outputs="node_modules/.install-stamp">
 		<Exec Command="npm ci" Condition="$(RestorePackagesWithLockFile) == 'true'"/>
 		<Exec Command="npm install" Condition="$(RestorePackagesWithLockFile) != 'true'"/>
