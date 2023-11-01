@@ -456,8 +456,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Testing.Tests", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Testing.Benchmark", "Testing\benchmark\Wangkanai.Testing.Benchmark.csproj", "{F1F7675D-EBE7-4138-9E30-F4DFB0416B8C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Web", "Web\src\Wangkanai.Web.csproj", "{A64FBD4C-804F-456C-ABF6-B00B50DD6B9A}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Federation.AuthProxyBackend", "Federation\src\AuthProxyBackend\Wangkanai.Federation.AuthProxyBackend.csproj", "{CA3D9B31-DA0B-443F-B143-AC504CA57597}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Federation.Domain.Tests", "Federation\tests\Domain\Wangkanai.Federation.Domain.Tests.csproj", "{EC16E6D9-DEED-42B1-B510-EAB705D337A3}"
@@ -487,17 +485,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{EE8C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Host.Old", "Tabler\samples\Old\Host.Old.csproj", "{4835BB3E-D9DF-4B1D-8739-FF9385E91CB6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Host.Main.Client", "Tabler\samples\Client\Host.Main.Client.csproj", "{51A8DF11-2AA0-4440-AB61-0A6D0A8BBDE7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Host.Main.Client", "Tabler\samples\Client\Host.Main.Client.csproj", "{51A8DF11-2AA0-4440-AB61-0A6D0A8BBDE7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Host.Main", "Tabler\samples\Server\Host.Main.csproj", "{AE92E121-3D65-439B-B6D4-D80BC519846B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Host.Main", "Tabler\samples\Server\Host.Main.csproj", "{AE92E121-3D65-439B-B6D4-D80BC519846B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Host.BlazorServer", "Blazor\samples\server\Host.BlazorServer.csproj", "{5898AA0A-019F-4D5A-B9B8-870E82F2D99B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Host.BlazorServer", "Blazor\samples\server\Host.BlazorServer.csproj", "{5898AA0A-019F-4D5A-B9B8-870E82F2D99B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Host.BlazorAuto.Client", "Blazor\samples\blazor-auto\Host.BlazorAuto.Client\Host.BlazorAuto.Client.csproj", "{96BCD09B-A33B-4EE2-B3CB-6733FD206C1C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Host.BlazorAuto.Client", "Blazor\samples\blazor-auto\Host.BlazorAuto.Client\Host.BlazorAuto.Client.csproj", "{96BCD09B-A33B-4EE2-B3CB-6733FD206C1C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Host.BlazorAuto", "Blazor\samples\blazor-auto\Host.BlazorAuto\Host.BlazorAuto.csproj", "{9D8FA727-F51B-45F1-A82D-716D174265A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Host.BlazorAuto", "Blazor\samples\blazor-auto\Host.BlazorAuto\Host.BlazorAuto.csproj", "{9D8FA727-F51B-45F1-A82D-716D174265A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Host.BlazorWasm", "Blazor\samples\blazor-wasm\Host.BlazorWasm.csproj", "{FDC29A39-092E-42BF-B090-4B826D2E72CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Host.BlazorWasm", "Blazor\samples\blazor-wasm\Host.BlazorWasm.csproj", "{FDC29A39-092E-42BF-B090-4B826D2E72CD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Web.Tests", "Web\tests\Wangkanai.Web.Tests.csproj", "{28CCEDDF-0F60-4BC0-8CF2-FC7318DA8776}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Web.Client", "Web\src\Client\Wangkanai.Web.Client.csproj", "{6E0967BE-EC5A-4156-B57E-55E6E1272ABA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Web", "Web\src\Server\Wangkanai.Web.csproj", "{B56C7977-6939-4C11-9AB0-6F690EB3F5BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Web.Old", "Web\old\Wangkanai.Web.Old.csproj", "{9FB95FCA-6ED2-4F77-AB70-195D155E8A25}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -873,10 +879,6 @@ Global
 		{F1F7675D-EBE7-4138-9E30-F4DFB0416B8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1F7675D-EBE7-4138-9E30-F4DFB0416B8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F1F7675D-EBE7-4138-9E30-F4DFB0416B8C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A64FBD4C-804F-456C-ABF6-B00B50DD6B9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A64FBD4C-804F-456C-ABF6-B00B50DD6B9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A64FBD4C-804F-456C-ABF6-B00B50DD6B9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A64FBD4C-804F-456C-ABF6-B00B50DD6B9A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CA3D9B31-DA0B-443F-B143-AC504CA57597}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CA3D9B31-DA0B-443F-B143-AC504CA57597}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA3D9B31-DA0B-443F-B143-AC504CA57597}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -933,6 +935,22 @@ Global
 		{FDC29A39-092E-42BF-B090-4B826D2E72CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FDC29A39-092E-42BF-B090-4B826D2E72CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FDC29A39-092E-42BF-B090-4B826D2E72CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28CCEDDF-0F60-4BC0-8CF2-FC7318DA8776}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28CCEDDF-0F60-4BC0-8CF2-FC7318DA8776}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28CCEDDF-0F60-4BC0-8CF2-FC7318DA8776}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28CCEDDF-0F60-4BC0-8CF2-FC7318DA8776}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E0967BE-EC5A-4156-B57E-55E6E1272ABA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E0967BE-EC5A-4156-B57E-55E6E1272ABA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E0967BE-EC5A-4156-B57E-55E6E1272ABA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E0967BE-EC5A-4156-B57E-55E6E1272ABA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B56C7977-6939-4C11-9AB0-6F690EB3F5BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B56C7977-6939-4C11-9AB0-6F690EB3F5BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B56C7977-6939-4C11-9AB0-6F690EB3F5BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B56C7977-6939-4C11-9AB0-6F690EB3F5BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FB95FCA-6ED2-4F77-AB70-195D155E8A25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FB95FCA-6ED2-4F77-AB70-195D155E8A25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FB95FCA-6ED2-4F77-AB70-195D155E8A25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FB95FCA-6ED2-4F77-AB70-195D155E8A25}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1044,7 +1062,6 @@ Global
 		{48D78AC0-157A-4CCA-AAC7-BCBFB2D2BD96} = {2F4F2D83-797D-4F4F-8378-C1D2F6CC6A56}
 		{6C12A933-2BEC-49B8-8EB1-906171040E40} = {2F4F2D83-797D-4F4F-8378-C1D2F6CC6A56}
 		{F1F7675D-EBE7-4138-9E30-F4DFB0416B8C} = {2F4F2D83-797D-4F4F-8378-C1D2F6CC6A56}
-		{A64FBD4C-804F-456C-ABF6-B00B50DD6B9A} = {700EC70E-E161-4461-B84F-1FCF166D0486}
 		{CA3D9B31-DA0B-443F-B143-AC504CA57597} = {B67C6017-6D9F-457A-807A-69381475D2EF}
 		{EC16E6D9-DEED-42B1-B510-EAB705D337A3} = {718791D4-3866-4A7E-8242-32D6EC763738}
 		{8BEF7BDD-B13F-448B-8B7D-37A855A32422} = {6B7D8653-4ADC-45AD-8289-C933FCDA34B2}
@@ -1060,6 +1077,10 @@ Global
 		{96BCD09B-A33B-4EE2-B3CB-6733FD206C1C} = {6827EA37-E105-4411-ADC8-B12E6AA2BFDB}
 		{9D8FA727-F51B-45F1-A82D-716D174265A1} = {6827EA37-E105-4411-ADC8-B12E6AA2BFDB}
 		{FDC29A39-092E-42BF-B090-4B826D2E72CD} = {6827EA37-E105-4411-ADC8-B12E6AA2BFDB}
+		{28CCEDDF-0F60-4BC0-8CF2-FC7318DA8776} = {700EC70E-E161-4461-B84F-1FCF166D0486}
+		{6E0967BE-EC5A-4156-B57E-55E6E1272ABA} = {700EC70E-E161-4461-B84F-1FCF166D0486}
+		{B56C7977-6939-4C11-9AB0-6F690EB3F5BA} = {700EC70E-E161-4461-B84F-1FCF166D0486}
+		{9FB95FCA-6ED2-4F77-AB70-195D155E8A25} = {700EC70E-E161-4461-B84F-1FCF166D0486}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1BA0A192-D7BE-40A1-96AE-B3C8C6BC9B69}
