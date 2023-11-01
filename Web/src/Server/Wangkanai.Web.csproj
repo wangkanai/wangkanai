@@ -9,10 +9,6 @@
 	<ItemGroup>
 		<ProjectReference Include="..\Client\Wangkanai.Web.Client.csproj"/>
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server"/>
-
-		<PackageReference Include="Serilog"/>
-		<PackageReference Include="Serilog.AspNetCore"/>
-		<PackageReference Include="Serilog.Sinks.Console"/>
 	</ItemGroup>
 
 	<ItemGroup>

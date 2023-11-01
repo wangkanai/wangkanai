@@ -13,8 +13,5 @@
 		<PackageReference Include="Serilog.Sinks.Console"/>
 	</ItemGroup>
 
-	<ItemGroup>
-	  <ProjectReference Include="..\..\Detection\src\Wangkanai.Detection.csproj" />
-	</ItemGroup>
 
 </Project>
