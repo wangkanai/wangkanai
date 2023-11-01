@@ -5,11 +5,11 @@
 		"clean": "rimraf wwwroot/lib/",
 		"lib": "npm-run-all --parallel lib-*",
 		"lib-tabler": "cpy node_modules/@tabler/core/**/*.* wwwroot/lib/tabler/",
-		"lib-icons": "cpy node_modules/@tabler/icons/**/*.* wwwroot/lib/icons/"
+		"lib-icons": "cpy node_modules/@tabler/icons-webfont/**/*.* wwwroot/lib/icons/"
 	},
 	"dependencies": {
 		"@tabler/core": "1.0.0-beta20",
-		"@tabler/icons": "^2.39.0",
+		"@tabler/icons-webfont": "^2.40.0",
 		"apexcharts": "^3.44.0",
 		"rfs": "^10.0.0"
 	},
