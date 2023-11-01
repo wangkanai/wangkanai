@@ -6,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Host.UseSerilog();
 // Add services to the container.
+builder.Services.AddDetection();
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
 builder.Services.AddRazorComponents();
 
@@ -22,6 +23,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseStaticFiles();
+app.UseDetection();
 
 app.MapRazorComponents<App>();
 
