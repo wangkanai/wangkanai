@@ -8,11 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Client\Wangkanai.Web.Client.csproj" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.0-rc.2.23480.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <AdditionalFiles Include="Components\Layout\MainLayout.razor" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server"/>
   </ItemGroup>
 
 </Project>
