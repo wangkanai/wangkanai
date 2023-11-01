@@ -11,13 +11,13 @@
     <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Web</PackageProjectUrl>
   </PropertyGroup>
 
-  <PropertyGroup>
+  <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Web'">
     <PackageIcon>wangkanai-logo.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Include="..\..\assets\wangkanai-logo.png" Pack="true" PackagePath="\" />
-    <None Include="..\README.md" Pack="true" PackagePath="\" />
+  <ItemGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Web'">
+    <None Include="..\..\..\assets\wangkanai-logo.png" Pack="true" PackagePath="\" />
+    <None Include="..\..\README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 </Project>
