@@ -1,7 +1,7 @@
 <Project>
 	<Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
 	<PropertyGroup>
-		<VersionPrefix>0.7.0</VersionPrefix>
+		<VersionPrefix>0.8.0</VersionPrefix>
 		<Title>Wangkanai Testing</Title>
 		<PackageTags>aspnetcore;testing</PackageTags>
 		<Description>This project is to turbocharge your .NET unit tests code coverage. It is a collection of helper classes and extension methods to help you write unit tests faster and easier.</Description>
