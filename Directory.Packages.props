@@ -57,5 +57,6 @@
 		<PackageVersion Include="BenchmarkDotNet" Version="0.13.10"/>
 		<!--packages-->
 		<PackageVersion Include="JetBrains.Annotations" Version="2023.3.0"/>
+		<PackageVersion Include="HtmlAgilityPack" Version="1.11.54" />
 	</ItemGroup>
 </Project>
