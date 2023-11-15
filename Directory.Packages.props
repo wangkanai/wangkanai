@@ -12,6 +12,8 @@
 		<PackageVersion Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All"/>
 		<!--tools-->
 		<PackageVersion Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="$(FrameworkVersion)"/>
+		<!--system-->
+		<PackageVersion Include="System.ComponentModel.Annotations" Version="5.0.0"/>
 		<!--framework-->
 		<PackageVersion Include="Microsoft.AspNetCore.Authorization" Version="$(FrameworkVersion)"/>
 		<PackageVersion Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="$(FrameworkVersion)"/>
