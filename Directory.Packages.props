@@ -39,14 +39,14 @@
 		<PackageVersion Include="Microsoft.IdentityModel.Protocols" Version="$(IdentityModelVersion)"/>
 		<PackageVersion Include="Microsoft.IdentityModel.Protocols.OpenIdConnect" Version="$(IdentityModelVersion)"/>
 		<!--serilog-->
-		<PackageVersion Include="Serilog" Version="3.0.1"/>
+		<PackageVersion Include="Serilog" Version="3.1.1"/>
 		<PackageVersion Include="Serilog.AspNetCore" Version="7.0.0"/>
-		<PackageVersion Include="Serilog.Sinks.Console" Version="4.1.0"/>
+		<PackageVersion Include="Serilog.Sinks.Console" Version="5.0.0"/>
 		<!--tests -->
 		<PackageVersion Include="Microsoft.AspNetCore.TestHost" Version="$(FrameworkVersion)"/>
 		<PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.8.0"/>
 		<PackageVersion Include="Moq" Version="4.20.69"/>
-		<PackageVersion Include="xunit" Version="2.5.3"/>
+		<PackageVersion Include="xunit" Version="2.6.1"/>
 		<PackageVersion Include="xunit.runner.visualstudio" Version="2.5.3" PrivateAssets="all"/>
 		<PackageVersion Include="coverlet.collector" Version="6.0.0" PrivateAssets="all"/>
 		<PackageVersion Include="coverlet.msbuild" Version="6.0.0" PrivateAssets="all"/>
@@ -54,8 +54,8 @@
 		<PackageVersion Include="SpecFlow.Plus.LivingDocPlugin" Version="3.9.57"/>
 		<PackageVersion Include="SpecFlow.xUnit" Version="3.9.74"/>
 		<!--benchmark-->
-		<PackageVersion Include="BenchmarkDotNet" Version="0.13.9"/>
+		<PackageVersion Include="BenchmarkDotNet" Version="0.13.10"/>
 		<!--packages-->
-		<PackageVersion Include="JetBrains.Annotations" Version="2023.2.0"/>
+		<PackageVersion Include="JetBrains.Annotations" Version="2023.3.0"/>
 	</ItemGroup>
 </Project>
