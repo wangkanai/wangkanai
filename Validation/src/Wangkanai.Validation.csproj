@@ -1,16 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>$(DefaultNetCoreTargetFramework)</TargetFramework>
-        <Nullable>enable</Nullable>
         <IsTrimmable>true</IsTrimmable>
         <Optimize>true</Optimize>
         <NoWarn>8765</NoWarn>
     </PropertyGroup>
-
-    <ItemGroup>
-        <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0"/>
-    </ItemGroup>
 
     <ItemGroup>
         <ProjectReference Include="..\..\System\src\Wangkanai.System.csproj"/>

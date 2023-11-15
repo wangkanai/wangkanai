@@ -1,9 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-	<PropertyGroup>
-		<TargetFramework>$(DefaultNetCoreTargetFramework)</TargetFramework>
-	</PropertyGroup>
-
 	<ItemGroup>
 		<PackageReference Include="JetBrains.Annotations" />
 	</ItemGroup>

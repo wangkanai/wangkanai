@@ -13,14 +13,13 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
-		<DefaultNetCoreTargetFramework>net8.0</DefaultNetCoreTargetFramework>
-		<BaseNetCoreTargetFrameworks>net7.0;net8.0</BaseNetCoreTargetFrameworks>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<!--todo: enable again once all warnings are addressed-->
-		<!--<ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>-->
+		<SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 		<EmbedUntrackedSources>true</EmbedUntrackedSources>
 		<IncludeSymbols>true</IncludeSymbols>
@@ -28,38 +27,6 @@
 		<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
 	</PropertyGroup>
 
-	<!-- GitHub Source Link -->
-	<ItemGroup>
-		<PackageReference Include="Microsoft.SourceLink.GitHub" />
-	</ItemGroup>
-
-	<!-- xUnit Tests-->
-	<ItemGroup Condition="$(MSBuildProjectName.Contains('Tests'))">
-		<PackageReference Include="Microsoft.AspNetCore.TestHost" />
-		<PackageReference Include="Microsoft.NET.Test.Sdk" />
-		<PackageReference Include="Moq" />
-		<PackageReference Include="xunit" />
-		<PackageReference Include="xunit.runner.visualstudio" />
-		<PackageReference Include="coverlet.collector" />
-		<PackageReference Include="coverlet.msbuild" />
-	</ItemGroup>
-
-	<!-- SonarScanner for MSBuild -->
-	<PropertyGroup Condition="$(MSBuildProjectName.Contains('Benchmark'))">
-		<Optimize>true</Optimize>
-		<IsPackable>false</IsPackable>
-		<SonarQubeExclude>true</SonarQubeExclude>
-	</PropertyGroup>
-
-	<ItemGroup Condition="$(MSBuildProjectName.Contains('Benchmark'))">
-		<PackageReference Include="BenchmarkDotNet" />
-	</ItemGroup>
-
-	<PropertyGroup Condition="$(MSBuildProjectName.Contains('Tests'))">
-		<IsPackable>false</IsPackable>
-	</PropertyGroup>
-
-	<!-- Source code settings -->
 	<PropertyGroup>
 		<SharedSourceRoot>$(MSBuildThisFileDirectory)Shared\src\</SharedSourceRoot>
 	</PropertyGroup>

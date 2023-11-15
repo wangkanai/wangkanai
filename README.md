@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://github.com/wangkanai/wangkanai" alt="repository"><img alt="Files Logo" src="Assets/wangkanai-banner.svg?sanitize=true" width="100%" /></a>
+  <a href="https://github.com/wangkanai/wangkanai" alt="repository"><img alt="Files Logo" src="https://raw.githubusercontent.com/wangkanai/wangkanai/main/Assets/wangkanai-banner.svg?sanitize=true" width="100%" /></a>
 </p>
 
 [![Twitter](https://img.shields.io/badge/-LinkedIn-006BAD?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/sarinnawangkanai/)

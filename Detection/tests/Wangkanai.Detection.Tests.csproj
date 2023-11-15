@@ -1,7 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>$(DefaultNetCoreTargetFramework)</TargetFramework>
 		<RootNamespace>Wangkanai.Detection</RootNamespace>
     </PropertyGroup>
 
