@@ -10,15 +10,6 @@
 		<PackageProjectUrl>https://github.com/wangkanai/wangkanai</PackageProjectUrl>
 		<PackageLicense>https://github.com/wangkanai/wangkanai/blob/main/LICENSE</PackageLicense>
 		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-		<SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
-	</PropertyGroup>
-
-	<PropertyGroup>
-		<PublishRepositoryUrl>true</PublishRepositoryUrl>
-		<EmbedUntrackedSources>true</EmbedUntrackedSources>
-		<IncludeSymbols>true</IncludeSymbols>
-		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
-		<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
 	</PropertyGroup>
 
 	<PropertyGroup>
@@ -27,19 +18,13 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="$(MSBuildProjectName.Contains('Benchmark'))">
-		<Optimize>true</Optimize>
-		<IsPackable>false</IsPackable>
-		<SonarQubeExclude>true</SonarQubeExclude>
-	</PropertyGroup>
-
-	<ItemGroup Condition="$(MSBuildProjectName.Contains('Benchmark'))">
-		<PackageReference Include="BenchmarkDotNet" />
-	</ItemGroup>
-
-	<PropertyGroup Condition="$(MSBuildProjectName.Contains('Tests'))">
-		<IsPackable>false</IsPackable>
-		<IsTestProject>true</IsTestProject>
+	<PropertyGroup>
+		<SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
 	</PropertyGroup>
 
 	<PropertyGroup>
