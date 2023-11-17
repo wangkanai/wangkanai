@@ -10,7 +10,7 @@ new-item -Path artifacts -ItemType Directory -Force | out-null
 new-item -Path signed    -ItemType Directory -Force | out-null
 
 dotnet --version
-dotnet clean   Security.slnf
+dotnet clean   Security.slnf -c Release -tl
 dotnet restore Security.slnf
 dotnet build   Security.slnf -c Release -tl
 Get-ChildItem  .\src\ -Recurse Wangkanai.*.dll | where { $_.Name -like "*release*" } | foreach {

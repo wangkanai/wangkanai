@@ -10,7 +10,7 @@ new-item -Path artifacts -ItemType Directory -Force | out-null
 new-item -Path signed    -ItemType Directory -Force | out-null
 
 dotnet --version
-dotnet clean   .\src\ -c Release
+dotnet clean   .\src\ -c Release -tl
 dotnet restore .\src\
 dotnet build   .\src\ -c Release -tl
 Get-ChildItem  .\src\ -Recurse Wangkanai.*.dll | where { $_.Name -like "*release*" } | foreach {
@@ -19,8 +19,8 @@ Get-ChildItem  .\src\ -Recurse Wangkanai.*.dll | where { $_.Name -like "*release
 
 dotnet pack .\src\ -c Release -tl -o .\artifacts --include-symbols -p:SymbolPackageFormat=snupkg
 
-dotnet nuget sign .\artifacts\*.nupkg -v diag --timestamper http://timestamp.digicert.com --certificate-subject-name "Sarin Na Wangkanai" -o .\signed
-dotnet nuget sign .\artifacts\*.snupkg -v diag --timestamper http://timestamp.digicert.com --certificate-subject-name "Sarin Na Wangkanai" -o .\signed
+dotnet nuget sign .\artifacts\*.nupkg  -v normal --timestamper http://timestamp.digicert.com --certificate-subject-name "Sarin Na Wangkanai" -o .\signed
+dotnet nuget sign .\artifacts\*.snupkg -v normal --timestamper http://timestamp.digicert.com --certificate-subject-name "Sarin Na Wangkanai" -o .\signed
 
 if ($dryrun)
 {

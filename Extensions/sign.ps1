@@ -20,7 +20,7 @@ get-childitem .\ -directory | where { $_.Name -ne 'signed' } | foreach{
     new-item -Path signed    -ItemType Directory -Force | out-null
 
     dotnet --version
-    dotnet clean   .\src\
+    dotnet clean   .\src\ -c Release -tl
     dotnet restore .\src\
     dotnet build   .\src\ -c Release -tl
     Get-ChildItem  .\src\ -Recurse Wangkanai.*.dll | where { $_.Name -like "*release*" } | foreach {
