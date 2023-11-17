@@ -46,12 +46,6 @@ public class CheckNullTests
 		Assert.Throws<ArgumentNullException>(() => _short.ThrowIfNull());
 		Assert.Throws<ArgumentNullException>(() => _int.ThrowIfNull());
 		Assert.Throws<ArgumentNullException>(() => _long.ThrowIfNull());
-
-		Assert.Throws<ArgumentNullException>(() => Check.ThrowIfNull(_sbyte));
-		Assert.Throws<ArgumentNullException>(() => Check.ThrowIfNull(_byte));
-		Assert.Throws<ArgumentNullException>(() => Check.ThrowIfNull(_short));
-		Assert.Throws<ArgumentNullException>(() => Check.ThrowIfNull(_int));
-		Assert.Throws<ArgumentNullException>(() => Check.ThrowIfNull(_long));
 	}
 
 	[Fact]
@@ -68,12 +62,6 @@ public class CheckNullTests
 		Assert.Throws<CustomArgumentException>(() => _short.ThrowIfNull<CustomArgumentException>());
 		Assert.Throws<CustomArgumentException>(() => _int.ThrowIfNull<CustomArgumentException>());
 		Assert.Throws<CustomArgumentException>(() => _long.ThrowIfNull<CustomArgumentException>());
-
-		Assert.Throws<CustomArgumentException>(() => Check.ThrowIfNull<CustomArgumentException>(_sbyte));
-		Assert.Throws<CustomArgumentException>(() => Check.ThrowIfNull<CustomArgumentException>(_byte));
-		Assert.Throws<CustomArgumentException>(() => Check.ThrowIfNull<CustomArgumentException>(_short));
-		Assert.Throws<CustomArgumentException>(() => Check.ThrowIfNull<CustomArgumentException>(_int));
-		Assert.Throws<CustomArgumentException>(() => Check.ThrowIfNull<CustomArgumentException>(_long));
 	}
 
 	[Fact]
@@ -86,10 +74,6 @@ public class CheckNullTests
 		Assert.Throws<ArgumentNullException>(() => _ushort.ThrowIfNull());
 		Assert.Throws<ArgumentNullException>(() => _uint.ThrowIfNull());
 		Assert.Throws<ArgumentNullException>(() => _ulong.ThrowIfNull());
-
-		Assert.Throws<ArgumentNullException>(() => Check.ThrowIfNull(_ushort));
-		Assert.Throws<ArgumentNullException>(() => Check.ThrowIfNull(_uint));
-		Assert.Throws<ArgumentNullException>(() => Check.ThrowIfNull(_ulong));
 	}
 
 	[Fact]
@@ -114,10 +98,6 @@ public class CheckNullTests
 		Assert.Throws<CustomArgumentException>(() => _ushort.ThrowIfNull<CustomArgumentException>());
 		Assert.Throws<CustomArgumentException>(() => _uint.ThrowIfNull<CustomArgumentException>());
 		Assert.Throws<CustomArgumentException>(() => _ulong.ThrowIfNull<CustomArgumentException>());
-
-		Assert.Throws<CustomArgumentException>(() => Check.ThrowIfNull<CustomArgumentException>(_ushort));
-		Assert.Throws<CustomArgumentException>(() => Check.ThrowIfNull<CustomArgumentException>(_uint));
-		Assert.Throws<CustomArgumentException>(() => Check.ThrowIfNull<CustomArgumentException>(_ulong));
 	}
 
 
@@ -131,10 +111,6 @@ public class CheckNullTests
 		Assert.Throws<ArgumentNullException>(() => _float.ThrowIfNull());
 		Assert.Throws<ArgumentNullException>(() => _double.ThrowIfNull());
 		Assert.Throws<ArgumentNullException>(() => _decimal.ThrowIfNull());
-
-		Assert.Throws<ArgumentNullException>(() => Check.ThrowIfNull(_float));
-		Assert.Throws<ArgumentNullException>(() => Check.ThrowIfNull(_double));
-		Assert.Throws<ArgumentNullException>(() => Check.ThrowIfNull(_decimal));
 	}
 
 	[Fact]
@@ -147,10 +123,6 @@ public class CheckNullTests
 		Assert.Throws<CustomArgumentException>(() => _float.ThrowIfNull<CustomArgumentException>());
 		Assert.Throws<CustomArgumentException>(() => _double.ThrowIfNull<CustomArgumentException>());
 		Assert.Throws<CustomArgumentException>(() => _decimal.ThrowIfNull<CustomArgumentException>());
-
-		Assert.Throws<CustomArgumentException>(() => Check.ThrowIfNull<CustomArgumentException>(_float));
-		Assert.Throws<CustomArgumentException>(() => Check.ThrowIfNull<CustomArgumentException>(_double));
-		Assert.Throws<CustomArgumentException>(() => Check.ThrowIfNull<CustomArgumentException>(_decimal));
 	}
 
 	[Fact]
@@ -164,7 +136,7 @@ public class CheckNullTests
 
 		Assert.Throws<ArgumentNullException>(() => _null.ThrowIfNull("Null Exception"));
 		Assert.Throws<ArgumentNullException>(() => _null.ThrowIfNull<ArgumentNullException>("Null Exception"));
-		Assert.Throws<CustomArgumentException>(() => _null.ThrowIfNull<CustomArgumentException>("Null Exception"));    
+		Assert.Throws<CustomArgumentException>(() => _null.ThrowIfNull<CustomArgumentException>("Null Exception"));
 	}
 
 	[Fact]

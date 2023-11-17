@@ -17,10 +17,10 @@ public class CheckNumericTests
 		int?   int4   = null;
 		long?  long8  = null;
 
-		Assert.Throws<ArgumentNullException>(() => Check.ThrowIfNull(byte1));
-		Assert.Throws<ArgumentNullException>(() => Check.ThrowIfNull(short2));
-		Assert.Throws<ArgumentNullException>(() => Check.ThrowIfNull(int4));
-		Assert.Throws<ArgumentNullException>(() => Check.ThrowIfNull(long8));
+		Assert.Throws<ArgumentNullException>(() => byte1.ThrowIfNull());
+		Assert.Throws<ArgumentNullException>(() => short2.ThrowIfNull());
+		Assert.Throws<ArgumentNullException>(() => int4.ThrowIfNull());
+		Assert.Throws<ArgumentNullException>(() => long8.ThrowIfNull());
 	}
 
 	[Fact]
@@ -30,9 +30,9 @@ public class CheckNumericTests
 		double?  double32  = null;
 		decimal? decimal32 = null;
 
-		Assert.Throws<ArgumentNullException>(() => Check.ThrowIfNull(float16));
-		Assert.Throws<ArgumentNullException>(() => Check.ThrowIfNull(double32));
-		Assert.Throws<ArgumentNullException>(() => Check.ThrowIfNull(decimal32));
+		Assert.Throws<ArgumentNullException>(() => float16.ThrowIfNull());
+		Assert.Throws<ArgumentNullException>(() => double32.ThrowIfNull());
+		Assert.Throws<ArgumentNullException>(() => decimal32.ThrowIfNull());
 	}
 
 	[Fact]
