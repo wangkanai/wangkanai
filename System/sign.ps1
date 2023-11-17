@@ -27,6 +27,6 @@ if ($dryrun)
     write-host "Dryrun: System" -ForegroundColor Yellow;
     exit;
 }
-dotnet nuget push .\signed\*.nupkg -k $env:NUGET_API_KEY  -s https://api.nuget.org/v3/index.json --skip-duplicate
-dotnet nuget push .\signed\*.nupkg -k $env:GITHUB_API_PAT -s https://nuget.pkg.github.com/wangkanai/index.json --skip-duplicate
+dotnet nuget push .\signed\*.nupkg --skip-duplicate -k $env:NUGET_API_KEY  -s https://api.nuget.org/v3/index.json
+dotnet nuget push .\signed\*.nupkg --skip-duplicate -k $env:GITHUB_API_PAT -s https://nuget.pkg.github.com/wangkanai/index.json
 
