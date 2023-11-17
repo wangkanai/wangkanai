@@ -1,5 +1,5 @@
 param(
-	[parameter]
+    [Parameter(mandatory = $false)]
 	[switch]$dryrun = $false
 )
 

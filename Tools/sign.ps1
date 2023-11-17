@@ -1,8 +1,7 @@
 param(
-	[parameter]
-	[switch]$dryrun = $false
+    [Parameter(mandatory = $false)]
+    [switch]$dryrun = $false
 )
-
 
 Get-ChildItem .\ -Directory | foreach {
     Push-Location -Path $_.Name
