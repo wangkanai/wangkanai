@@ -23,7 +23,10 @@ $dirs = [ordered]@{
     22 = "Solver";
 }
 
-Set-Location -Path D:\Sources\Wangkanai\
+$e = [char]27
+$root = "D:\Sources\Wangkanai\"
+
+Set-Location -Path $root
 
 for ($i = 0; $i -lt $dirs.count; $i++) {
     $error.clear()
@@ -67,8 +70,6 @@ for ($i = 0; $i -lt $dirs.count; $i++) {
     Pop-Location;
 }
 
-$e = [char]27
-$root = "D:\Sources\Wangkanai\"
 $result = @()
 Set-Location -Path $root
 
