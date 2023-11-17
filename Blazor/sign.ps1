@@ -3,8 +3,11 @@ param(
 	[switch]$dryrun = $false
 )
 
-remove-item -path .\signed\*.*
-new-item -Path signed -ItemType Directory -Force
+remove-item -path .\signed\*.*    -Force
+remove-item -path .\artifacts\*.* -Force
+
+new-item -Path artifacts -ItemType Directory -Force | out-null
+new-item -Path signed    -ItemType Directory -Force | out-null
 
 dotnet --version
 dotnet clean .\src\Core\
@@ -13,8 +16,6 @@ dotnet build -c Release .\src\Core\
 Get-ChildItem .\src\Core\ -Recurse Wangkanai.*.dll | where { $_.Name -like "*release*" } | foreach {
 	signtool sign /fd SHA256 /n "Sarin Na Wangkanai" $_.FullName
 }
-
-Remove-Item .\artifacts\*.*
 
 dotnet pack .\src\Core\ -c Release -o .\artifacts --include-symbols -p:SymbolPackageFormat = snupkg
 

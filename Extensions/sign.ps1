@@ -3,16 +3,21 @@ param(
 	[switch]$dryrun = $false
 )
 
+remove-item -path .\signed\*.*    -Force
+remove-item -path .\artifacts\*.* -Force
 
-remove-item .\signed\*.*
-new-item -Path signed -ItemType Directory -Force
+new-item -Path artifacts -ItemType Directory -Force | out-null
+new-item -Path signed    -ItemType Directory -Force | out-null
 
 get-childitem .\ -directory | where { $_.Name -ne 'signed' } | foreach{
 
     push-location -path $_.Name
 
-    Remove-Item .\artifacts\*.*
-    Remove-Item .\signed\*.*
+	remove-item -path .\signed\*.*    -Force
+	remove-item -path .\artifacts\*.* -Force
+
+	new-item -Path artifacts -ItemType Directory -Force | out-null
+	new-item -Path signed    -ItemType Directory -Force | out-null
 
     dotnet --version
     dotnet clean .\src\

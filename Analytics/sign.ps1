@@ -3,8 +3,11 @@ param(
 	[switch]$dryrun = $false
 )
 
-remove-item -path .\signed\*.*
-remove-item -path .\artifacts\*.*
+remove-item -path .\signed\*.*    -Force
+remove-item -path .\artifacts\*.* -Force
+
+new-item -Path artifacts -ItemType Directory -Force | out-null
+new-item -Path signed    -ItemType Directory -Force | out-null
 
 dotnet --version
 dotnet clean .\src\
