@@ -17,7 +17,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".solutions", ".solutions", 
 		qodana.yaml = qodana.yaml
 		README.md = README.md
 		sign.ps1 = sign.ps1
-		version-up.ps1 = version-up.ps1
 		Directory.Packages.props = Directory.Packages.props
 	EndProjectSection
 EndProject
@@ -154,7 +153,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Html", "Html", "{DFCE57F8-C
 	ProjectSection(SolutionItems) = preProject
 		Extensions\Html\Directory.Build.props = Extensions\Html\Directory.Build.props
 		Extensions\Html\README.md = Extensions\Html\README.md
-		Extensions\Html\sign.ps1 = Extensions\Html\sign.ps1
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{C4E60FE9-2D5B-4510-854C-44C88209A236}"
@@ -399,7 +397,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Internal", "Internal", "{0A
 	ProjectSection(SolutionItems) = preProject
 		Extensions\Internal\Directory.Build.props = Extensions\Internal\Directory.Build.props
 		Extensions\Internal\README.md = Extensions\Internal\README.md
-		Extensions\Internal\sign.ps1 = Extensions\Internal\sign.ps1
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Extensions.Internal", "Extensions\Internal\src\Wangkanai.Extensions.Internal.csproj", "{DE1B420A-E7F3-446D-9FB6-77FA89AC17B6}"

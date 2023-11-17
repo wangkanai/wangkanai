@@ -115,8 +115,12 @@ max_line_length              =200
 ij_xml_space_inside_empty_tag=true
 
 [*.{ps1, psd1}]
-indent_size=4
-case_style =pascal_case
+indent_size                                     =4
+case_style                                      =pascal_case
+ij_powershell_spaces_around_assignment_operators=false
+ij_powershell_space_after_type_cast             =false
+ij_powershell_align_multiline_binary_operation  =true
+ij_powershell_align_multiline_chained_methods   =true
 
 [*.{cs, cpp, h, ps1, psd1}]
 indent_style=tab

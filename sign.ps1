@@ -1,3 +1,8 @@
+param(
+    [Parameter(mandatory = $false)]
+	[switch]$dryrun = $false
+)
+
 $dirs = [ordered]@{
     1  = "System";
     2  = "Validation";
@@ -23,7 +28,10 @@ $dirs = [ordered]@{
     22 = "Solver";
 }
 
-Set-Location -Path D:\Sources\Wangkanai\
+$e = [char]27
+$root = "D:\Sources\Wangkanai\"
+
+Set-Location -Path $root
 
 for ($i = 0; $i -lt $dirs.count; $i++) {
     $error.clear()
@@ -61,14 +69,17 @@ for ($i = 0; $i -lt $dirs.count; $i++) {
     }
     catch {
         Write-Host "New " $latest -ForegroundColor Blue;
-        .\sign.ps1
+        .\sign.ps1 -dryrun $dryrun
     }
 
     Pop-Location;
 }
 
-$e = [char]27
-$root = "D:\Sources\Wangkanai\"
+if($dryrun){
+	write-host "Dryrun skip version update" -ForegroundColor Yellow;
+	exit;
+}
+
 $result = @()
 Set-Location -Path $root
 
