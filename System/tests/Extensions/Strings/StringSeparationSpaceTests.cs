@@ -12,23 +12,9 @@ public class StringSeparationSpaceTests
 	string  _emptyString = string.Empty;
 	string  _spaceString = " ";
 
-	[Fact]
-	public void FromSpaceNull()
-	{
-		Assert.Throws<ArgumentNullException>(() => _nullString!.SeparateFromSpace());
-	}
-
-	[Fact]
-	public void FromSpaceEmpty()
-	{
-		Assert.Throws<ArgumentEmptyException>(() => _emptyString.SeparateFromSpace());
-	}
-
-	[Fact]
-	public void FromSpaceSpace()
-	{
-		Assert.Equal(new List<string>(), _spaceString.SeparateFromSpace());
-	}
+	[Fact] public void FromSpaceNull()  => Assert.Throws<ArgumentNullException>(() => _nullString!.SeparateFromSpace());
+	[Fact] public void FromSpaceEmpty() => Assert.Throws<ArgumentEmptyException>(() => _emptyString.SeparateFromSpace());
+	[Fact] public void FromSpaceSpace() => Assert.Equal(new List<string>(), _spaceString.SeparateFromSpace());
 
 	[Fact]
 	public void FromSpaceAlphabet()
@@ -51,5 +37,3 @@ public class StringSeparationSpaceTests
 		Assert.Equal(list, "a 1 b 2 c 3".SeparateFromSpace());
 	}
 }
-
-
