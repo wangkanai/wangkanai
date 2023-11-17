@@ -1,3 +1,8 @@
+param(
+	[parameter]
+	[switch]$dryrun = $false
+)
+
 remove-item -path .\signed\*.*
 new-item -Path signed -ItemType Directory -Force
 
@@ -15,5 +20,8 @@ dotnet pack .\src\Core\ -c Release -o .\artifacts --include-symbols -p:SymbolPac
 dotnet nuget sign .\artifacts\*.nupkg -v diag --timestamper http://timestamp.digicert.com --certificate-subject-name "Sarin Na Wangkanai" -o .\signed
 dotnet nuget sign .\artifacts\*.snupkg -v diag --timestamper http://timestamp.digicert.com --certificate-subject-name "Sarin Na Wangkanai" -o .\signed
 
-dotnet nuget push .\signed\*.nupkg -k $env:NUGET_API_KEY  -s https://api.nuget.org/v3/index.json --skip-duplicate
-dotnet nuget push .\signed\*.nupkg -k $env:GITHUB_API_PAT -s https://nuget.pkg.github.com/wangkanai/index.json --skip-duplicate
+if ($dryrun -eq $false)
+{
+	dotnet nuget push .\signed\*.nupkg -k $env:NUGET_API_KEY  -s https://api.nuget.org/v3/index.json --skip-duplicate
+	dotnet nuget push .\signed\*.nupkg -k $env:GITHUB_API_PAT -s https://nuget.pkg.github.com/wangkanai/index.json --skip-duplicate
+}

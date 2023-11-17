@@ -17,7 +17,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".solutions", ".solutions", 
 		qodana.yaml = qodana.yaml
 		README.md = README.md
 		sign.ps1 = sign.ps1
-		version-up.ps1 = version-up.ps1
 		Directory.Packages.props = Directory.Packages.props
 	EndProjectSection
 EndProject

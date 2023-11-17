@@ -1,3 +1,9 @@
+param(
+	[parameter]
+	[switch]$dryrun = $false
+)
+
+
 remove-item .\signed\*.*
 new-item -Path signed -ItemType Directory -Force
 
@@ -26,5 +32,8 @@ get-childitem .\ -directory | where { $_.Name -ne 'signed' } | foreach{
     pop-location
 }
 
-dotnet nuget push .\signed\*.nupkg -k $env:NUGET_API_KEY  -s https://api.nuget.org/v3/index.json --skip-duplicate
-dotnet nuget push .\signed\*.nupkg -k $env:GITHUB_API_PAT -s https://nuget.pkg.github.com/wangkanai/index.json --skip-duplicate
+if ($dryrun -eq $false)
+{
+	dotnet nuget push .\signed\*.nupkg -k $env:NUGET_API_KEY  -s https://api.nuget.org/v3/index.json --skip-duplicate
+	dotnet nuget push .\signed\*.nupkg -k $env:GITHUB_API_PAT -s https://nuget.pkg.github.com/wangkanai/index.json --skip-duplicate
+}

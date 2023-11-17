@@ -1,3 +1,8 @@
+param(
+	[parameter]
+	[switch]$dryrun = $false
+)
+
 $dirs = [ordered]@{
     1  = "System";
     2  = "Validation";
@@ -64,10 +69,15 @@ for ($i = 0; $i -lt $dirs.count; $i++) {
     }
     catch {
         Write-Host "New " $latest -ForegroundColor Blue;
-        .\sign.ps1
+        .\sign.ps1 -dryrun $dryrun
     }
 
     Pop-Location;
+}
+
+if($dryrun){
+	write-host "Dryrun skip version update" -ForegroundColor Yellow;
+	exit;
 }
 
 $result = @()
