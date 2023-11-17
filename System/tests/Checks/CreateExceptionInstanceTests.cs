@@ -10,7 +10,7 @@ public class CreateExceptionInstanceTests
 	public void CreateExceptionInstance()
 	{
 		var value     = 1;
-		var exception = Check.CreateGenericExceptionInstance<ArgumentNullException>(nameof(value));
+		var exception = ExceptionActivator.CreateGenericInstance<ArgumentNullException>(nameof(value));
 		Assert.Equal(1, value);
 		Assert.Equal(typeof(ArgumentNullException), exception.GetType());
 	}
@@ -19,7 +19,7 @@ public class CreateExceptionInstanceTests
 	public void CreateExceptionInstanceWithMessage()
 	{
 		var value     = 1;
-		var exception = Check.CreateGenericExceptionInstance<ArgumentNullException>(nameof(value), "message");
+		var exception = ExceptionActivator.CreateGenericInstance<ArgumentNullException>(nameof(value), "message");
 		Assert.Equal(1, value);
 		Assert.Equal(typeof(ArgumentNullException), exception.GetType());
 		Assert.Equal("message (Parameter 'value')", exception.Message);

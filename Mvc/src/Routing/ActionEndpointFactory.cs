@@ -83,14 +83,14 @@ internal sealed class ActionEndpointFactory
 		bool                                   createInertEndpoints,
 		RoutePattern?                          groupPrefix = null)
 	{
-		Check.ThrowIfNull(endpoints);
-		Check.ThrowIfNull(routeNames);
-		Check.ThrowIfNull(action);
-		Check.ThrowIfNull(routes);
-		Check.ThrowIfNull(conventions);
-		Check.ThrowIfNull(groupConventions);
-		Check.ThrowIfNull(finallyConventions);
-		Check.ThrowIfNull(groupFinallyConventions);
+		endpoints.ThrowIfNull();
+		routeNames.ThrowIfNull();
+		action.ThrowIfNull();
+		routes.ThrowIfNull();
+		conventions.ThrowIfNull();
+		groupConventions.ThrowIfNull();
+		finallyConventions.ThrowIfNull();
+		groupFinallyConventions.ThrowIfNull();
 
 		if (createInertEndpoints)
 		{
@@ -176,9 +176,9 @@ internal sealed class ActionEndpointFactory
 				// See: https://github.com/dotnet/aspnetcore/issues/14789
 				var formattedRouteKeys = string.Join(", ", resolvedRouteValues.Keys.Select(k => $"'{k}'"));
 				throw new InvalidOperationException(
-					$"Failed to update the route pattern '{resolvedRoutePattern.RawText}' with required route values. "             +
+					$"Failed to update the route pattern '{resolvedRoutePattern.RawText}' with required route values. " +
 					$"This can occur when the route pattern contains parameters with reserved names such as: {formattedRouteKeys} " +
-					$"and also uses route constraints such as '{{action:int}}'. "                                                   +
+					$"and also uses route constraints such as '{{action:int}}'. " +
 					"To fix this error, choose a different parameter name.");
 			}
 
@@ -207,54 +207,55 @@ internal sealed class ActionEndpointFactory
 		}
 	}
 
-	    private static (RoutePattern resolvedRoutePattern, IDictionary<string, string?> resolvedRequiredValues) ResolveDefaultsAndRequiredValues(ActionDescriptor action, RoutePattern attributeRoutePattern)
-    {
-        RouteValueDictionary? updatedDefaults = null;
-        IDictionary<string, string?>? resolvedRequiredValues = null;
+	private static (RoutePattern resolvedRoutePattern, IDictionary<string, string?> resolvedRequiredValues) ResolveDefaultsAndRequiredValues(ActionDescriptor action, RoutePattern attributeRoutePattern)
+	{
+		RouteValueDictionary?         updatedDefaults        = null;
+		IDictionary<string, string?>? resolvedRequiredValues = null;
 
-        foreach (var routeValue in action.RouteValues)
-        {
-            var parameter = attributeRoutePattern.GetParameter(routeValue.Key);
+		foreach (var routeValue in action.RouteValues)
+		{
+			var parameter = attributeRoutePattern.GetParameter(routeValue.Key);
 
-            if (!RouteValueEqualityComparer.Default.Equals(routeValue.Value, string.Empty))
-            {
-                if (parameter == null)
-                {
-                    // The attribute route has a required value with no matching parameter
-                    // Add the required values without a parameter as a default
-                    // e.g.
-                    //   Template: "Login/{action}"
-                    //   Required values: { controller = "Login", action = "Index" }
-                    //   Updated defaults: { controller = "Login" }
+			if (!RouteValueEqualityComparer.Default.Equals(routeValue.Value, string.Empty))
+			{
+				if (parameter == null)
+				{
+					// The attribute route has a required value with no matching parameter
+					// Add the required values without a parameter as a default
+					// e.g.
+					//   Template: "Login/{action}"
+					//   Required values: { controller = "Login", action = "Index" }
+					//   Updated defaults: { controller = "Login" }
 
-                    if (updatedDefaults == null)
-                    {
-                        updatedDefaults = new RouteValueDictionary(attributeRoutePattern.Defaults);
-                    }
+					if (updatedDefaults == null)
+					{
+						updatedDefaults = new RouteValueDictionary(attributeRoutePattern.Defaults);
+					}
 
-                    updatedDefaults[routeValue.Key] = routeValue.Value;
-                }
-            }
-            else
-            {
-                if (parameter != null)
-                {
-	                if (resolvedRequiredValues == null) 
-		                resolvedRequiredValues = new Dictionary<string, string?>(action.RouteValues);
+					updatedDefaults[routeValue.Key] = routeValue.Value;
+				}
+			}
+			else
+			{
+				if (parameter != null)
+				{
+					if (resolvedRequiredValues == null)
+						resolvedRequiredValues = new Dictionary<string, string?>(action.RouteValues);
 
-	                resolvedRequiredValues.Remove(parameter.Name);
-                }
-            }
-        }
-        if (updatedDefaults != null)
-        {
-            attributeRoutePattern = RoutePatternFactory.Parse(action.AttributeRouteInfo!.Template!, updatedDefaults, parameterPolicies: null);
-        }
+					resolvedRequiredValues.Remove(parameter.Name);
+				}
+			}
+		}
 
-        return (attributeRoutePattern, resolvedRequiredValues ?? action.RouteValues);
-    }
+		if (updatedDefaults != null)
+		{
+			attributeRoutePattern = RoutePatternFactory.Parse(action.AttributeRouteInfo!.Template!, updatedDefaults, parameterPolicies: null);
+		}
 
-	
+		return (attributeRoutePattern, resolvedRequiredValues ?? action.RouteValues);
+	}
+
+
 	private static void AddActionDataToBuilder(
 		EndpointBuilder                        builder,
 		HashSet<string>                        routeNames,
@@ -283,7 +284,7 @@ internal sealed class ActionEndpointFactory
 
 		// Add metadata inferred from the parameter and/or return type before action-specific metadata.
 		// MethodInfo *should* never be null given a ControllerActionDescriptor, but this is unenforced.
-		if (controllerActionDescriptor?.MethodInfo is not null) 
+		if (controllerActionDescriptor?.MethodInfo is not null)
 			EndpointMetadataPopulator.PopulateMetadata(controllerActionDescriptor.MethodInfo, builder);
 
 		// Add action-specific metadata early so it has a low precedence
@@ -293,8 +294,8 @@ internal sealed class ActionEndpointFactory
 
 		builder.Metadata.Add(action);
 
-		if (routeName != null         &&
-		    !suppressLinkGeneration   &&
+		if (routeName != null &&
+		    !suppressLinkGeneration &&
 		    routeNames.Add(routeName) &&
 		    builder.Metadata.OfType<IEndpointNameMetadata>().LastOrDefault()?.EndpointName == null)
 		{
@@ -386,10 +387,10 @@ internal sealed class ActionEndpointFactory
 		foreach (var groupFinallyConvention in groupFinallyConventions)
 			groupFinallyConvention(builder);
 	}
-	
+
 	private sealed class InertEndpointBuilder : EndpointBuilder
 	{
-		public override Endpoint Build() 
+		public override Endpoint Build()
 			=> new(RequestDelegate, new EndpointMetadataCollection(Metadata), DisplayName);
 	}
 }

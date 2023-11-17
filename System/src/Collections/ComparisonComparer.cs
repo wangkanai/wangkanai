@@ -3,21 +3,15 @@
 namespace Wangkanai.Collections;
 
 /// <summary>
-/// Delegate comparison implementing generic of <see cref="IComparer<T>"/> and method extensions to perform reverse operation.
+///	Delegate comparison implementing generic of <see cref="IComparer{T}"/> and method extensions to perform reverse operation.
 /// </summary>
-public sealed class ComparisonComparer<T> : IComparer<T>
+public sealed class ComparisonComparer<T>(Comparison<T> comparison) : IComparer<T>
 {
-	private readonly Comparison<T> _comparison;
+	private readonly Comparison<T> _comparison = ThrowIfNullObjectExtensions.ThrowIfNull<Comparison<T>>(comparison);
 
-	public ComparisonComparer(Comparison<T> comparison)
-		=> _comparison = comparison.ThrowIfNull();
-
-	public int Compare(T x, T y)
-		=> _comparison(x, y);
+	public int Compare(T? x, T? y)
+		=> _comparison(x!, y!);
 
 	public static Comparison<T> CreateComparison(IComparer<T> comparer)
-	{
-		comparer.ThrowIfNull();
-		return delegate(T x, T y) { return comparer.Compare(x, y); };
-	}
+		=> comparer.ThrowIfNull().Compare;
 }
