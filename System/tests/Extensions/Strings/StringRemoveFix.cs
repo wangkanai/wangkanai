@@ -9,9 +9,9 @@ namespace Wangkanai.Extensions.Strings;
 public class StringRemoveFix
 {
 	string? _null  = null;
-	string? _empty = string.Empty;
-	string? _space = " ";
-	string? abcde  = "abcde";
+	string _empty = string.Empty;
+	string _space = " ";
+	string abcde  = "abcde";
 
 	[Fact]
 	public void RemovePreFixTest()
@@ -22,7 +22,7 @@ public class StringRemoveFix
 	[Fact]
 	public void RemovePreFixNullTest()
 	{
-		Assert.Throws<ArgumentNullException>(() => _null.RemovePreFixes("ab"));
+		Assert.Throws<ArgumentNullException>(() => _null!.RemovePreFixes("ab"));
 	}
 
 	[Fact]
@@ -82,7 +82,7 @@ public class StringRemoveFix
 	[Fact]
 	public void RemovePreFixCultureNullTest()
 	{
-		Assert.Throws<ArgumentNullException>(() => _null.RemovePreFixes(true, CultureInfo.InvariantCulture, "AB"));
+		Assert.Throws<ArgumentNullException>(() => _null!.RemovePreFixes(true, CultureInfo.InvariantCulture, "AB"));
 	}
 
 	[Fact]
@@ -100,7 +100,7 @@ public class StringRemoveFix
 	[Fact]
 	public void RemovePreFixCultureNoMatchNullTest()
 	{
-		Assert.Throws<ArgumentNullException>(() => _null.RemovePreFixes(true, CultureInfo.InvariantCulture, "ABx"));
+		Assert.Throws<ArgumentNullException>(() => _null!.RemovePreFixes(true, CultureInfo.InvariantCulture, "ABx"));
 	}
 
 	[Fact]
@@ -118,7 +118,7 @@ public class StringRemoveFix
 	[Fact]
 	public void RemovePreFixCultureNoMatchIgnoreCaseNullTest()
 	{
-		Assert.Throws<ArgumentNullException>(() => _null.RemovePreFixes(true, CultureInfo.InvariantCulture, "ABx"));
+		Assert.Throws<ArgumentNullException>(() => _null!.RemovePreFixes(true, CultureInfo.InvariantCulture, "ABx"));
 	}
 
 	[Fact]
@@ -136,7 +136,7 @@ public class StringRemoveFix
 	[Fact]
 	public void RemovePreFixCultureIgnoreCaseNullTest()
 	{
-		Assert.Throws<ArgumentNullException>(() => _null.RemovePreFixes(true, CultureInfo.InvariantCulture, "AB"));
+		Assert.Throws<ArgumentNullException>(() => _null!.RemovePreFixes(true, CultureInfo.InvariantCulture, "AB"));
 	}
 
 	[Fact]
@@ -154,7 +154,7 @@ public class StringRemoveFix
 	[Fact]
 	public void RemovePreFixCultureIgnoreCaseNoMatchNullTest()
 	{
-		Assert.Throws<ArgumentNullException>(() => _null.RemovePreFixes(true, CultureInfo.InvariantCulture, "ABx"));
+		Assert.Throws<ArgumentNullException>(() => _null!.RemovePreFixes(true, CultureInfo.InvariantCulture, "ABx"));
 	}
 
 	[Fact]
@@ -184,7 +184,7 @@ public class StringRemoveFix
 	[Fact]
 	public void RemovePostFixNullTest()
 	{
-		Assert.Throws<ArgumentNullException>(() => _null.RemovePostFixes());
+		Assert.Throws<ArgumentNullException>(() => _null!.RemovePostFixes());
 	}
 
 	[Fact]
@@ -244,7 +244,7 @@ public class StringRemoveFix
 	[Fact]
 	public void RemovePostFixCultureNullTest()
 	{
-		Assert.Throws<ArgumentNullException>(() => _null.RemovePostFixes(true, CultureInfo.InvariantCulture, "DE"));
+		Assert.Throws<ArgumentNullException>(() => _null!.RemovePostFixes(true, CultureInfo.InvariantCulture, "DE"));
 	}
 
 	[Fact]
@@ -262,7 +262,7 @@ public class StringRemoveFix
 	[Fact]
 	public void RemovePostFixCultureNoMatchNullTest()
 	{
-		Assert.Throws<ArgumentNullException>(() => _null.RemovePostFixes(true, CultureInfo.InvariantCulture, "DEx"));
+		Assert.Throws<ArgumentNullException>(() => _null!.RemovePostFixes(true, CultureInfo.InvariantCulture, "DEx"));
 	}
 
 	[Fact]
@@ -280,7 +280,7 @@ public class StringRemoveFix
 	[Fact]
 	public void RemovePostFixCultureNoMatchIgnoreCaseNullTest()
 	{
-		Assert.Throws<ArgumentNullException>(() => _null.RemovePostFixes(true, CultureInfo.InvariantCulture, "DEx"));
+		Assert.Throws<ArgumentNullException>(() => _null!.RemovePostFixes(true, CultureInfo.InvariantCulture, "DEx"));
 	}
 
 	[Fact]
@@ -298,7 +298,7 @@ public class StringRemoveFix
 	[Fact]
 	public void RemovePostFixCultureIgnoreCaseNullTest()
 	{
-		Assert.Throws<ArgumentNullException>(() => _null.RemovePostFixes(true, CultureInfo.InvariantCulture, "DE"));
+		Assert.Throws<ArgumentNullException>(() => _null!.RemovePostFixes(true, CultureInfo.InvariantCulture, "DE"));
 	}
 
 	[Fact]
