@@ -16,7 +16,6 @@ dotnet build .\src\ -c Release
 Get-ChildItem .\src\ -Recurse Wangkanai.*.dll | where { $_.Name -like "*release*" } | foreach {
     signtool sign /fd SHA256 /n "Sarin Na Wangkanai" $_.FullName
 }
-
 dotnet pack .\src\ -c Release -o .\artifacts --include-symbols -p:SymbolPackageFormat=snupkg
 
 dotnet nuget sign .\artifacts\*.nupkg -v diag --timestamper http://timestamp.digicert.com --certificate-subject-name "Sarin Na Wangkanai" -o .\signed
