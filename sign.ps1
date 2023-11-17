@@ -4,7 +4,7 @@ param(
 )
 
 $dirs = [ordered]@{
-    1  = "System";
+#   1  = "System";
     2  = "Validation";
     3  = "Extensions";
     4  = "Testing";
