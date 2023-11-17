@@ -1,6 +1,6 @@
 $buildDir    = $env:AGENT_BUILDDIRECTORY
 $sourceDir   = $env:BUILD_SOURCESDIRECTORY
-$version     = 1.8
+$version     = 2.0
 
 # Get-ChildItem -Path Env:\ | Format-List
 
@@ -29,4 +29,4 @@ else
 
     Write-Host "PR Not:            "   $pullrequest
     Write-Host "sonar.branch.name: "   $base
-} 
+}
