@@ -14,14 +14,18 @@ namespace Wangkanai;
 public static class ThrowIfEmptyExtensions
 {
 	public static IEnumerable<T> ThrowIfEmpty<T>(this IEnumerable<T>? value)
-		=> !value.ThrowIfNull().Any()
-			   ? throw ExceptionActivator.CreateArgumentInstance<ArgumentEmptyException>(nameof(value))
-			   : value;
+	{
+		return !value.ThrowIfNull().Any()
+			       ? throw ExceptionActivator.CreateArgumentInstance<ArgumentEmptyException>(nameof(value))
+			       : value;
+	}
 
 	public static IEnumerable<T> ThrowIfEmpty<T>(this IEnumerable<T>? value, string message)
-		=> !value.ThrowIfNull().Any()
-			   ? throw ExceptionActivator.CreateArgumentInstance<ArgumentEmptyException>(nameof(value), message)
-			   : value;
+	{
+		return !value.ThrowIfNull().Any()
+			       ? throw ExceptionActivator.CreateArgumentInstance<ArgumentEmptyException>(nameof(value), message)
+			       : value;
+	}
 
 	public static IEnumerable<TType> ThrowIfEmpty<TException, TType>(this IEnumerable<TType>? value)
 		where TException : ArgumentException

@@ -11,7 +11,7 @@ insert_final_newline                                                  =true
 
 # Microsoft .NET properties
 csharp_new_line_before_members_in_object_initializers                 =false
-csharp_preferred_modifier_order                                       =public,private,protected,internal,new,abstract,virtual,sealed,override,static,readonly,extern,unsafe,volatile,async:suggestion
+csharp_preferred_modifier_order                                       =public, private, protected, internal, new, abstract, virtual, sealed, override, static, readonly, extern, unsafe, volatile, async:suggestion
 csharp_preserve_single_line_blocks                                    =true
 csharp_style_var_elsewhere                                            =true:suggestion
 csharp_style_var_for_built_in_types                                   =true:suggestion
@@ -34,7 +34,7 @@ resharper_csharp_wrap_before_first_type_parameter_constraint          =true
 resharper_csharp_anonymous_method_declaration_braces                  =end_of_line
 resharper_csharp_brace_style                                          =next_line
 resharper_csharp_braces_for_ifelse                                    =required_for_multiline
-resharper_no_indent_inside_elements                                   =html,thead,tbody,tfoot
+resharper_no_indent_inside_elements                                   =html, thead, tbody, tfoot
 resharper_autodetect_indent_settings                                  =true
 resharper_enforce_line_ending_style                                   =true
 resharper_int_align_assignments                                       =true
@@ -85,7 +85,7 @@ resharper_web_config_wrong_module_highlighting                        =warning
 ij_editorconfig_align_group_field_declarations    =true
 ij_editorconfig_spaces_around_assignment_operators=false
 ij_editorconfig_space_after_colon                 =false
-ij_editorconfig_space_after_comma                 =false
+ij_editorconfig_space_after_comma                 =true
 ij_editorconfig_space_before_colon                =false
 ij_editorconfig_space_before_comma                =false
 
@@ -99,7 +99,7 @@ dotnet_sort_system_directives_first    =true
 dotnet_separate_import_directive_groups=true
 
 [*.{cs, cpp, h}]
-file_header_template=Copyright (c) 2014-2024 Sarin Na Wangkanai,All Rights Reserved.Apache License,Version 2.0
+file_header_template=Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 [*.{html, cshtml}]
 indent_size                           =4
