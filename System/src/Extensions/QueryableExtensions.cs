@@ -7,18 +7,18 @@ using Wangkanai.Domain;
 
 namespace Wangkanai.Extensions;
 
-public static class IQueryableExtensions
+public static class QueryableExtensions
 {
 	[DebuggerStepThrough]
 	public static IOrderedQueryable<T> OrderBy<T>(this IQueryable<T> source, string property)
-		=> ApplyOrder(source, property, nameof(OrderBy));
+		=> source.ApplyOrder(property, nameof(OrderBy));
 
 	[DebuggerStepThrough]
-	public static IOrderedQueryable<T> ApplyOrder<T>(IQueryable<T> source, string property, string method)
+	public static IOrderedQueryable<T> ApplyOrder<T>(this IQueryable<T> source, string property, string method)
 	{
 		property.ThrowIfNull();
 
-		IOrderedQueryable<T> result = null;
+		IOrderedQueryable<T> result = null!;
 
 		var effectiveType = GetEffectiveType<T>();
 		var expression    = Expression.Parameter(typeof(T));
@@ -28,7 +28,7 @@ public static class IQueryableExtensions
 
 		var propertyExpression = GetPropertyExpression(property, expr);
 
-		if (propertyExpression == null)
+		if (propertyExpression.TrueIfNull())
 			return source.OrderBy(x => 1);
 
 		var propertyType = propertyExpression.Type;
@@ -42,7 +42,7 @@ public static class IQueryableExtensions
 		return result;
 	}
 
-	private static object InvokeGenericMethod(Type methodType, string methodName, Type[] genericTypeArguments, object[] methodArguments, object instance = null)
+	private static object InvokeGenericMethod(Type methodType, string methodName, Type[] genericTypeArguments, object[] methodArguments, object instance = null!)
 	{
 		try
 		{
@@ -50,43 +50,35 @@ public static class IQueryableExtensions
 			                 .Single(method => method.Name == methodName
 			                                   && method.IsGenericMethodDefinition
 			                                   && method.GetGenericArguments().Length == genericTypeArguments.Length
-			                                   && method.GetParameters().Length       == methodArguments.Length)
+			                                   && method.GetParameters().Length == methodArguments.Length)
 			                 .MakeGenericMethod(genericTypeArguments)
-			                 .Invoke(instance, methodArguments);
+			                 .Invoke(instance, methodArguments)!;
 		}
 		// This catch is needed to get unwrapped exception, like calling method without reflection. Otherwise it would be TargetInvocationException with meaningful inner exception
 		catch (TargetInvocationException ex)
 		{
-			ExceptionDispatchInfo.Capture(ex.InnerException).Throw();
+			ExceptionDispatchInfo.Capture(ex.InnerException!).Throw();
 			return null;
 		}
 	}
 
 	private static Type GetEffectiveType<T>()
 	{
-		Type result;
-		var  registeredTypes = AbstractTypeFactory<T>.AllTypeInfos.ToList();
-
-		// If only one registered type - return it
-		if (registeredTypes.Count == 1)
-			result = registeredTypes[0].Type;
-		else
-			result = typeof(T);
-
-		return result;
+		var registeredTypes = AbstractTypeFactory<T>.AllTypeInfos.ToList();
+		return registeredTypes.Count == 1 ? registeredTypes[0].Type : typeof(T);
 	}
 
-	private static Expression GetPropertyExpression(string porpertyString, Expression expression)
+	private static Expression GetPropertyExpression(string propertyString, Expression expression)
 	{
 		var result       = expression;
 		var propertyType = expression.Type;
-		var properties   = porpertyString.Split('.');
+		var properties   = propertyString.Split('.');
 
 		foreach (var property in properties)
 		{
 			// use reflection (not ComponentModel) to mirror LINQ
 			var propertyInfo = propertyType.GetProperty(property,
-			                                            BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
+				BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
 
 			if (propertyInfo != null)
 			{
@@ -100,6 +92,6 @@ public static class IQueryableExtensions
 			}
 		}
 
-		return result;
+		return result!;
 	}
 }
