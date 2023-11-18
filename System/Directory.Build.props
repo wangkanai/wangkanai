@@ -3,7 +3,7 @@
 
 	<PropertyGroup>
 		<VersionPrefix>4.0.0</VersionPrefix>
-		<VersionSuffix>preview2</VersionSuffix>
+		<VersionSuffix>preview3</VersionSuffix>
 		<Title>Wangkanai System</Title>
 		<PackageTags>aspnetcore;sytem;runtime;</PackageTags>
 		<Description>A powerful library of extensions that unlocks the full potential of your .NET runtime. Simplify your coding process, enhance application structure, and reduce boilerplate code. Join us in pushing the boundaries of .NET, writing clean and efficient code that is robust and maintainable. Elevate your development journey with Wangkanai System!</Description>
