@@ -1,7 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<!--<PublishAot>true</PublishAot>-->
+	</PropertyGroup>
 
 	<ItemGroup>
 		<PackageReference Include="JetBrains.Annotations" />
 	</ItemGroup>
-
 </Project>
