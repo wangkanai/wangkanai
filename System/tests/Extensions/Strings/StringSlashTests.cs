@@ -4,13 +4,11 @@ using Xunit;
 
 namespace Wangkanai.Extensions.Strings;
 
-#nullable enable
-
 public class StringSlashTests
 {
 	string? _null  = null;
-	string? _empty = string.Empty;
-	string? _space = " ";
+	string  _empty = string.Empty;
+	string  _space = " ";
 
 	string slash = "/";
 	string start = "start";

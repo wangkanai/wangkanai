@@ -60,7 +60,7 @@ public class ProjectionComparer<TSource, TKey> : IComparer<TSource>
 	/// </summary>
 	/// <param name="projection">Projection to use during comparisons</param>
 	/// <param name="comparer">The comparer to use on the keys. If null, then that case the default comparer will be used.</param>
-	public ProjectionComparer(Func<TSource, TKey> projection, IComparer<TKey> comparer = null)
+	public ProjectionComparer(Func<TSource, TKey> projection, IComparer<TKey> comparer = null!)
 	{
 		_projection = projection.ThrowIfNull();
 		_comparer   = comparer ?? Comparer<TKey>.Default;
@@ -76,7 +76,7 @@ public class ProjectionComparer<TSource, TKey> : IComparer<TSource>
 	/// if <see cref="y"/> is null then return 1;
 	/// Otherwise return the standard Compare value.
 	/// </returns>
-	public int Compare(TSource x, TSource y)
+	public int Compare(TSource? x, TSource? y)
 		=> (x, y) switch
 		   {
 			   (null, null) => 0,

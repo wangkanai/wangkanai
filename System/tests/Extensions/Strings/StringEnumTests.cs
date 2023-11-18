@@ -6,8 +6,6 @@ using Xunit;
 
 namespace Wangkanai.Extensions.Strings;
 
-#nullable enable
-
 public class StringEnumTests
 {
 	string? _null  = null;
@@ -17,69 +15,56 @@ public class StringEnumTests
 	[Fact]
 	public void ValueExistBasic()
 	{
-		var name = "sarin";
+		const string name = "sarin";
 		Assert.Equal(Names.Sarin, name.ToEnum<Names>());
 	}
 
 	[Fact]
 	public void ValueExistBasicIgnoreCase()
 	{
-		var name = "SARIN";
+		const string name = "SARIN";
 		Assert.Equal(Names.Sarin, name.ToEnum<Names>());
 	}
 
 	[Fact]
 	public void ValueExistCastNotIgnoreMatch()
 	{
-		var name = "Tanya";
+		const string name = "Tanya";
 		Assert.Equal(Names.Tanya, name.ToEnum<Names>(false));
 	}
 
 	[Fact]
 	public void ValueExistCaseNotIgnoreNoMatch()
 	{
-		var name = "james";
+		const string name = "james";
 		Assert.Throws<ArgumentException>(() => name.ToEnum<Names>(false));
 	}
 
 	[Fact]
 	public void ValueExistCaseNotIgnoreMatch()
 	{
-		var name = "james";
+		const string name = "james";
 		Assert.Equal(Names.James, name.ToEnum<Names>(true));
-	}
-
-	[Fact]
-	public void ValueNull()
-	{
-		Assert.Throws<ArgumentNullException>(() => _null!.ToEnum<Names>());
-	}
-
-	[Fact]
-	public void ValueEmpty()
-	{
-		Assert.Throws<ArgumentEmptyException>(() => _empty!.ToEnum<Names>());
-	}
-
-	[Fact]
-	public void ValueSpace()
-	{
-		Assert.Throws<ArgumentNullOrWhitespaceException>(() => _space!.ToEnum<Names>());
 	}
 
 	[Fact]
 	public void ValueNotExist()
 	{
-		var name = "Wang";
+		const string name = "Wang";
 		Assert.Throws<ArgumentException>(() => name.ToEnum<Names>());
 	}
 
 	[Fact]
 	public void ValueNotExistCastNotIgnoreMatch()
 	{
-		var name = "Wang";
+		const string name = "Wang";
 		Assert.Throws<ArgumentException>(() => name.ToEnum<Names>(false));
 	}
+
+	[Fact] public void ValueNull()  => Assert.Throws<ArgumentNullException>(() => _null!.ToEnum<Names>());
+	[Fact] public void ValueEmpty() => Assert.Throws<ArgumentEmptyException>(() => _empty!.ToEnum<Names>());
+	[Fact] public void ValueSpace() => Assert.Throws<ArgumentNullOrWhitespaceException>(() => _space!.ToEnum<Names>());
+
 
 	enum Names
 	{

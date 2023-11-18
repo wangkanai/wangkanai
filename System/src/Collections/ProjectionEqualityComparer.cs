@@ -39,7 +39,7 @@ public class ProjectionEqualityComparer<TSource, TKey> : IEqualityComparer<TSour
 	/// </summary>
 	/// <param name="projection">Projection to use during comparisons</param>
 	/// <param name="comparer">The comparer to use on the keys. If null, then that case the default comparer will be used.</param>
-	public ProjectionEqualityComparer(Func<TSource, TKey> projection, IEqualityComparer<TKey> comparer = null)
+	public ProjectionEqualityComparer(Func<TSource, TKey> projection, IEqualityComparer<TKey>? comparer = null)
 	{
 		_projection = projection.ThrowIfNull();
 		_comparer   = comparer ?? EqualityComparer<TKey>.Default;
@@ -53,7 +53,7 @@ public class ProjectionEqualityComparer<TSource, TKey> : IEqualityComparer<TSour
 	/// If only one of <see cref="x"/> and <see cref="y"/> is null then return False;
 	/// Otherwise return the standard Compare value.
 	/// </returns>
-	public bool Equals(TSource x, TSource y)
+	public bool Equals(TSource? x, TSource? y)
 		=> (x, y) switch
 		   {
 			   (null, null) => true,
@@ -65,6 +65,5 @@ public class ProjectionEqualityComparer<TSource, TKey> : IEqualityComparer<TSour
 	/// <summary>
 	/// Produces a hash code for the given value by projecting it and then asking the equality comparer for the hash code of the resulting key.
 	/// </summary>
-	public int GetHashCode(TSource obj)
-		=> _comparer.GetHashCode(_projection(obj.ThrowIfNull()));
+	public int GetHashCode(TSource obj) => _comparer.GetHashCode(_projection(obj.ThrowIfNull())!);
 }
