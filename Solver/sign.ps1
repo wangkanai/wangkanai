@@ -1,6 +1,6 @@
 param(
     [Parameter(mandatory=$false)]
-    [switch]$dryrun=$false
+    [bool]$dryrun=$false
 )
 
 remove-item -path .\signed\*.*    -Force
