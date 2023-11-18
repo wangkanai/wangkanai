@@ -12,7 +12,7 @@ public sealed class ClassNullOperator<T> : INullOperator<T>
 		if (value.TrueIfNull())
 			return false;
 
-		accumulator = accumulator == null ? value : Operator<T>.Add(accumulator, value);
+		accumulator = Operator<T>.Add(accumulator, value);
 		return true;
 	}
 }
