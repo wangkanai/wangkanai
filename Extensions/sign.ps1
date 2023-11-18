@@ -1,6 +1,6 @@
 param(
     [Parameter(mandatory=$false)]
-    [switch]$dryrun=$false
+    [bool]$dryrun=$false
 )
 
 remove-item -path .\signed\*.*    -Force
@@ -9,7 +9,7 @@ remove-item -path .\artifacts\*.* -Force
 new-item -Path artifacts -ItemType Directory -Force | out-null
 new-item -Path signed    -ItemType Directory -Force | out-null
 
-get-childitem .\ -directory | where { $_.Name -ne 'signed' } | foreach{
+get-childitem .\ -directory | where { $_.Name -ne 'signed' } | where { $_.Name -ne 'artifacts' } | foreach {
 
     push-location -path $_.Name
 
