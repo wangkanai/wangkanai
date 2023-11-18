@@ -9,32 +9,22 @@ namespace Wangkanai;
 public static class ThrowIfNullOrWhitespaceExtensions
 {
 	public static string ThrowIfNullOrWhitespace(this string? value)
-	{
-		return value.ThrowIfNullOrWhitespace<ArgumentNullOrWhitespaceException>();
-	}
+		=> value.ThrowIfNullOrWhitespace<ArgumentNullOrWhitespaceException>();
 
 	public static string ThrowIfNullOrWhitespace(this string? value, string message)
-	{
-		return value.ThrowIfNullOrWhitespace<ArgumentNullOrWhitespaceException>(message);
-	}
+		=> value.ThrowIfNullOrWhitespace<ArgumentNullOrWhitespaceException>(message);
 
 	public static string ThrowIfNullOrWhitespace<T>(this string? value)
 		where T : ArgumentException
-	{
-		return value.ThrowIfNullOrWhitespace<T>(nameof(value));
-	}
+		=> value.ThrowIfNullOrWhitespace<T>(nameof(value));
 
 	public static string ThrowIfNullOrWhitespace<T>(this string? value, string message)
 		where T : ArgumentException
-	{
-		return value.ThrowIfNullOrWhitespace<T>(message, nameof(value));
-	}
+		=> value.ThrowIfNullOrWhitespace<T>(message, nameof(value));
 
 	public static string ThrowIfNullOrWhitespace<T>(this string? value, string message, [InvokerParameterName] string paramName)
 		where T : ArgumentException
-	{
-		return value.IsNullOrWhiteSpace()
-			       ? throw ExceptionActivator.CreateArgumentInstance<T>(paramName, message)
-			       : value!;
-	}
+		=> value!.IsNullOrWhiteSpace()
+			   ? throw ExceptionActivator.CreateArgumentInstance<T>(paramName, message)
+			   : value!;
 }
