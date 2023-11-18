@@ -8,8 +8,8 @@ namespace Wangkanai.Extensions.Strings;
 
 public class StringSplitTests
 {
-	private const string _null  = null!;
-	private const string _empty = "";
+	string? _null  = null;
+	string  _empty = "";
 
 	[Fact]
 	public void SplitBySize()
@@ -29,33 +29,9 @@ public class StringSplitTests
 		Assert.Equal(expected, actual);
 	}
 
-	[Fact]
-	public void SplitBySizeWithEmpty()
-	{
-		Assert.Throws<ArgumentEmptyException>(() => _empty.Split(5));
-	}
-
-	[Fact]
-	public void SplitBySizeWithNull()
-	{
-		Assert.Throws<ArgumentNullException>(() => _null.Split(5));
-	}
-	
-	[Fact]
-	public void SplitBySizeWithZero()
-	{
-		Assert.Throws<DivideByZeroException>(() => "AAAAABBBBBCCCCC".Split(0));
-	}
-	
-	[Fact]
-	public void SplitBySizeWithNegative()
-	{
-		Assert.Throws<ArgumentOutOfRangeException>(() => "AAAAABBBBBCCCCC".Split(-1));
-	}
-	
-	[Fact]
-	public void SplitBySizeWithWhiteSpace()
-	{
-		Assert.Throws<ArgumentEmptyException>(() => " ".Split(5));
-	}
+	[Fact] public void SplitBySizeWithEmpty()      => Assert.Throws<ArgumentEmptyException>(() => _empty.Split(5));
+	[Fact] public void SplitBySizeWithNull()       => Assert.Throws<ArgumentNullException>(() => _null.Split(5));
+	[Fact] public void SplitBySizeWithZero()       => Assert.Throws<DivideByZeroException>(() => "AAAAABBBBBCCCCC".Split(0));
+	[Fact] public void SplitBySizeWithNegative()   => Assert.Throws<ArgumentOutOfRangeException>(() => "AAAAABBBBBCCCCC".Split(-1));
+	[Fact] public void SplitBySizeWithWhiteSpace() => Assert.Throws<ArgumentEmptyException>(() => " ".Split(5));
 }
