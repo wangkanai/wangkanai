@@ -12,31 +12,31 @@ public static class PropertyCopy<TTarget> where TTarget : class, new()
 
 	private static class PropertyCopier<TSource> where TSource : class
 	{
-		private static readonly Exception              intializationException;
-		private static readonly Func<TSource, TTarget> copier;
+		private static Exception              _intialization;
+		private static Func<TSource, TTarget> _copier;
 
 		static PropertyCopier()
 		{
 			try
 			{
-				copier                 = BuildCopier();
-				intializationException = null;
+				_copier        = BuildCopier();
+				_intialization = null!;
 			}
 			catch (Exception ex)
 			{
-				copier                 = null;
-				intializationException = ex;
+				_copier        = null!;
+				_intialization = ex;
 			}
 		}
 
 		internal static TTarget Copy(TSource source)
 		{
-			if (intializationException != null)
-				throw intializationException;
+			if (_intialization != null)
+				throw _intialization;
 
 			source.ThrowIfNull();
 
-			return copier(source);
+			return _copier(source);
 		}
 
 		private static Func<TSource, TTarget> BuildCopier()
