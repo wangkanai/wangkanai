@@ -9,11 +9,11 @@ namespace Wangkanai.Extensions.Strings;
 public class StringSlugTests
 {
 	string? _null  = null;
-	string? _empty = string.Empty;
-	string? _space = " ";
+	string  _empty = string.Empty;
+	string  _space = " ";
 
 	[Fact] public void Normal()          => Assert.Equal("hello-world", "hello world".GenerateSlug());
-	[Fact] public void Null()            => Assert.Throws<ArgumentNullException>(() => _null.GenerateSlug());
+	[Fact] public void Null()            => Assert.Throws<ArgumentNullException>(() => _null!.GenerateSlug());
 	[Fact] public void Empty()           => Assert.Throws<ArgumentEmptyException>(() => _empty.GenerateSlug());
 	[Fact] public void Space()           => Assert.Equal(_empty, _space.GenerateSlug());
 	[Fact] public void Special()         => Assert.Equal("hello-world", "hello world!@#$%^&*()_+{}|:\"<>?".GenerateSlug());
