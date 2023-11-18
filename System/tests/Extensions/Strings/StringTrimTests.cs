@@ -11,23 +11,23 @@ public class StringTrimTests
 	string? _null  = null;
 	string  _empty = string.Empty;
 	string  _space = " ";
-	string  text   = "abcde";
+	string  _text  = "abcde";
 
 	[Fact]
 	public void LeftExist()
 	{
-		Assert.Equal("", text.Left(0));
-		Assert.Equal("ab", text.Left(2));
-		Assert.Equal("abcde", text.Left(5));
+		Assert.Equal("", _text.Left(0));
+		Assert.Equal("ab", _text.Left(2));
+		Assert.Equal("abcde", _text.Left(5));
 	}
 
 	[Fact]
 	public void LeftNull()
 	{
-		Assert.Throws<ArgumentNullException>(() => _null.Left(-1));
-		Assert.Throws<ArgumentNullException>(() => _null.Left(0));
-		Assert.Throws<ArgumentNullException>(() => _null.Left(1));
-		Assert.Throws<ArgumentNullException>(() => _null.Left(2));
+		Assert.Throws<ArgumentNullException>(() => _null!.Left(-1));
+		Assert.Throws<ArgumentNullException>(() => _null!.Left(0));
+		Assert.Throws<ArgumentNullException>(() => _null!.Left(1));
+		Assert.Throws<ArgumentNullException>(() => _null!.Left(2));
 	}
 
 	[Fact]
@@ -51,18 +51,18 @@ public class StringTrimTests
 	[Fact]
 	public void RightExist()
 	{
-		Assert.Equal("", text.Right(0));
-		Assert.Equal("de", text.Right(2));
-		Assert.Equal("abcde", text.Right(5));
+		Assert.Equal("", _text.Right(0));
+		Assert.Equal("de", _text.Right(2));
+		Assert.Equal("abcde", _text.Right(5));
 	}
 
 	[Fact]
 	public void RightNull()
 	{
-		Assert.Throws<ArgumentNullException>(() => _null.Right(-1));
-		Assert.Throws<ArgumentNullException>(() => _null.Right(0));
-		Assert.Throws<ArgumentNullException>(() => _null.Right(1));
-		Assert.Throws<ArgumentNullException>(() => _null.Right(2));
+		Assert.Throws<ArgumentNullException>(() => _null!.Right(-1));
+		Assert.Throws<ArgumentNullException>(() => _null!.Right(0));
+		Assert.Throws<ArgumentNullException>(() => _null!.Right(1));
+		Assert.Throws<ArgumentNullException>(() => _null!.Right(2));
 	}
 
 	[Fact]
@@ -86,14 +86,14 @@ public class StringTrimTests
 	[Fact]
 	public void RemoveAllExist()
 	{
-		Assert.Empty(text.RemoveAll(text));
-		Assert.NotNull(text.RemoveAll(text));
+		Assert.Empty(_text.RemoveAll(_text));
+		Assert.NotNull(_text.RemoveAll(_text));
 	}
 
 	[Fact]
 	public void RemoveAllNothing()
 	{
-		Assert.Throws<ArgumentNullException>(() => _null.RemoveAll());
+		Assert.Throws<ArgumentNullException>(() => _null!.RemoveAll());
 		Assert.Empty(_empty.RemoveAll());
 		Assert.Equal(_space, _space.RemoveAll());
 	}
