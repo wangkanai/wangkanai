@@ -7,11 +7,9 @@ namespace Wangkanai.Collections;
 /// </summary>
 public sealed class ComparisonComparer<T>(Comparison<T> comparison) : IComparer<T>
 {
-	private readonly Comparison<T> _comparison = ThrowIfNullObjectExtensions.ThrowIfNull<Comparison<T>>(comparison);
+	private readonly Comparison<T> _comparison = comparison.ThrowIfNull();
 
-	public int Compare(T? x, T? y)
-		=> _comparison(x!, y!);
+	public int Compare(T? x, T? y) => _comparison(x!, y!);
 
-	public static Comparison<T> CreateComparison(IComparer<T> comparer)
-		=> comparer.ThrowIfNull().Compare;
+	public static Comparison<T> CreateComparison(IComparer<T> comparer) => comparer.ThrowIfNull().Compare;
 }

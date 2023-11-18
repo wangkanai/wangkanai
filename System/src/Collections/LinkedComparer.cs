@@ -15,15 +15,13 @@ internal class LinkedComparer<T> : IComparer<T>
 	/// </summary>
 	/// <param name="primary">The first comparison to use</param>
 	/// <param name="secondary">The next level of comparison if the primary return 0 (equivalent)</param>
-	public LinkedComparer(
-		IComparer<T> primary,
-		IComparer<T> secondary)
+	public LinkedComparer(IComparer<T> primary, IComparer<T> secondary)
 	{
 		_primary   = primary.ThrowIfNull();
 		_secondary = secondary.ThrowIfNull();
 	}
 
-	public int Compare(T x, T y)
+	public int Compare(T? x, T? y)
 	{
 		var result = _primary.Compare(x, y);
 		return result == 0
