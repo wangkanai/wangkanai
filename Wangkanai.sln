@@ -174,14 +174,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSBuild", "MSBuild", "{F32D
 	ProjectSection(SolutionItems) = preProject
 		Tools\MSBuild\Directory.Build.props = Tools\MSBuild\Directory.Build.props
 		Tools\MSBuild\README.md = Tools\MSBuild\README.md
-		Tools\MSBuild\sign.ps1 = Tools\MSBuild\sign.ps1
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Watcher", "Watcher", "{6B7D8653-4ADC-45AD-8289-C933FCDA34B2}"
 	ProjectSection(SolutionItems) = preProject
 		Tools\Watcher\Directory.Build.props = Tools\Watcher\Directory.Build.props
 		Tools\Watcher\README.md = Tools\Watcher\README.md
-		Tools\Watcher\sign.ps1 = Tools\Watcher\sign.ps1
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CommandLine", "CommandLine", "{C5C4D631-1DA0-40D1-9B62-D4D5D41E8859}"
