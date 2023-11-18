@@ -4,21 +4,14 @@ using Wangkanai.Extensions;
 
 namespace Wangkanai.Domain;
 
-public class GenericTypeInfo<TBaseType>
+public class GenericTypeInfo<TBaseType>(Type type)
 {
-	public ICollection<object> Services { get; set; } = new List<object>();
-
-	public Type              MappedType  { get; private set; } = typeof(Type);
-	public string            TypeName    { get; private set; }
-	public Type              Type        { get; private set; }
-	public Func<TBaseType>   Factory     { get; private set; }
-	public Action<TBaseType> SetupAction { get; private set; }
-
-	public GenericTypeInfo(Type type)
-	{
-		Type     = type;
-		TypeName = type.Name;
-	}
+	public ICollection<object> Services    { get; private set; } = new List<object>();
+	public Type                MappedType  { get; private set; } = typeof(Type);
+	public string              TypeName    { get; private set; } = type.Name;
+	public Type                Type        { get; private set; } = type;
+	public Func<TBaseType>?    Factory     { get; private set; }
+	public Action<TBaseType>?  SetupAction { get; private set; }
 
 	public GenericTypeInfo<TBaseType> WithTypeName(string name)
 	{
@@ -26,21 +19,22 @@ public class GenericTypeInfo<TBaseType>
 		return this;
 	}
 
-	public T GetService<T>()
+	public T? GetService<T>()
 		=> Services.OfType<T>().FirstOrDefault();
+
+	public IEnumerable<Type> GetAllSubclasses()
+		=> (Type[])Type.GetTypeInheritanceChainTo(typeof(TBaseType)).Clone();
 
 	public bool IsAssignableTo(string typeName)
 		=> Type.GetTypeInheritanceChainTo(typeof(TBaseType))
 		       .Concat(new[] { typeof(TBaseType) })
 		       .Any(t => typeName.EqualsInvariant(t.Name));
 
-	public IEnumerable<Type> GetAllSubclasses() 
-		=> (Type[])Type.GetTypeInheritanceChainTo(typeof(TBaseType)).Clone();
-
 	public GenericTypeInfo<TBaseType> WithService<T>(T service)
 	{
-		if (!Services.Contains(service))
-			Services.Add(service);
+		service.ThrowIfNull();
+		if (!Services.Contains(service!))
+			Services.Add(service!);
 
 		return this;
 	}
