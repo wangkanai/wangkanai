@@ -6,13 +6,12 @@ namespace Wangkanai.Domain;
 
 public class GenericTypeInfo<TBaseType>(Type type)
 {
-	public ICollection<object> Services { get; set; } = new List<object>();
-
-	public Type              MappedType  { get; private set; } = typeof(Type);
-	public string            TypeName    { get; private set; } = type.Name;
-	public Type              Type        { get; private set; } = type;
-	public Func<TBaseType>   Factory     { get; private set; }
-	public Action<TBaseType> SetupAction { get; private set; }
+	public ICollection<object> Services    { get; private set; } = new List<object>();
+	public Type                MappedType  { get; private set; } = typeof(Type);
+	public string              TypeName    { get; private set; } = type.Name;
+	public Type                Type        { get; private set; } = type;
+	public Func<TBaseType>?    Factory     { get; private set; }
+	public Action<TBaseType>?  SetupAction { get; private set; }
 
 	public GenericTypeInfo<TBaseType> WithTypeName(string name)
 	{
@@ -34,8 +33,8 @@ public class GenericTypeInfo<TBaseType>(Type type)
 	public GenericTypeInfo<TBaseType> WithService<T>(T service)
 	{
 		service.ThrowIfNull();
-		if (!Services.Contains(service))
-			Services.Add(service);
+		if (!Services.Contains(service!))
+			Services.Add(service!);
 
 		return this;
 	}
