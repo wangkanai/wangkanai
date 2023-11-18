@@ -13,16 +13,11 @@ public sealed class ReverseComparer<T> : IComparer<T>
 	/// Create a new reverse comparer
 	/// </summary>
 	/// <param name="original">The original comparer to use for comparisons</param>
-	public ReverseComparer(IComparer<T> original)
-	{
-		original.ThrowIfNull();
-
-		Original = original;
-	}
+	public ReverseComparer(IComparer<T> original) => Original = original.ThrowIfNull();
 
 	/// <summary>
 	/// Returns the result of comparing the specified values using the original comparer, but reversing the order of comparison
 	/// </summary>
 	/// <returns></returns>
-	public int Compare(T x, T y) => Original.Compare(y, x);
+	public int Compare(T? x, T? y) => Original.Compare(y, x);
 }
