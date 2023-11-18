@@ -6,14 +6,12 @@ using Xunit;
 
 namespace Wangkanai.Extensions.Strings;
 
-#nullable enable
-
 public class StringTrimTests
 {
 	string? _null  = null;
-	string? _empty = string.Empty;
-	string? _space = " ";
-	string? text   = "abcde";
+	string  _empty = string.Empty;
+	string  _space = " ";
+	string  text   = "abcde";
 
 	[Fact]
 	public void LeftExist()
