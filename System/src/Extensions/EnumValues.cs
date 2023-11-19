@@ -28,7 +28,7 @@ public static class EnumValues<T> where T : Enum
 
 	[DebuggerStepThrough]
 	public static bool TryGetSingleName(T value, out string result)
-		=> Names.TryGetValue(value, out result);
+		=> Names.TryGetValue(value, out result!);
 
 	[DebuggerStepThrough]
 	public static string GetName(T value)
