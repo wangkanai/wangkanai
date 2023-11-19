@@ -57,8 +57,8 @@ public static class TypeExtensions
 		var baseType = child.BaseType;
 		while (baseType != parent && baseType != typeof(object))
 		{
-			retVal.Add(baseType);
-			baseType = baseType.BaseType;
+			retVal.Add(baseType!);
+			baseType = baseType!.BaseType;
 		}
 
 		return retVal.ToArray();
@@ -69,7 +69,7 @@ public static class TypeExtensions
 	/// </summary>
 	/// <param name="type"></param>
 	/// <returns></returns>
-	private static bool IsPrimitive(this Type type) 
+	private static bool IsPrimitive(this Type type)
 		=> type == typeof(string) || type.IsValueType || type.IsPrimitive;
 
 	/// <summary>
@@ -77,7 +77,7 @@ public static class TypeExtensions
 	/// </summary>
 	/// <param name="obj"></param>
 	/// <returns></returns>
-	public static bool IsPrimitive(this object obj)
+	public static bool IsPrimitive(this object? obj)
 		=> obj == null || obj.GetType().IsPrimitive();
 
 	public static bool IsNullable(this Type type)
@@ -116,9 +116,9 @@ public static class TypeExtensions
 	public static IEnumerable<KeyValuePair<string, object>> TraverseObjectGraph(this object original)
 		=> original.TraverseObjectGraphRecursively(new List<object>(), original.GetType().Name);
 
-	private static IEnumerable<KeyValuePair<string, object>> TraverseObjectGraphRecursively(this object original, ICollection<object> visited, string memberPath)
+	private static IEnumerable<KeyValuePair<string, object>> TraverseObjectGraphRecursively(this object? original, ICollection<object> visited, string memberPath)
 	{
-		yield return new KeyValuePair<string, object>(memberPath, original);
+		yield return new KeyValuePair<string, object>(memberPath, original!);
 
 		if (original == null) yield break;
 
@@ -137,14 +137,17 @@ public static class TypeExtensions
 	}
 
 	private static IEnumerable<KeyValuePair<string, object>> YieldPropertyEnumerator(object original, ICollection<object> visited, string memberPath, Type typeOfOriginal)
-		=> typeOfOriginal.GetProperties(BindingFlags.Instance | BindingFlags.Public).SelectMany(propertyInfo => propertyInfo.GetValue(original).TraverseObjectGraphRecursively(visited, $@"{memberPath}.{propertyInfo.Name}"));
+		=> typeOfOriginal.GetProperties(BindingFlags.Instance | BindingFlags.Public)
+		                 .SelectMany(propertyInfo => propertyInfo.GetValue(original).TraverseObjectGraphRecursively(visited, $@"{memberPath}.{propertyInfo.Name}"));
 
 	private static IEnumerable<KeyValuePair<string, object>> YieldOriginalEnumerator(ICollection<object> visited, string memberPath, IEnumerable objEnum)
 	{
-		var originalEnumerator = objEnum.GetEnumerator();
-		var index              = 0;
-		while (originalEnumerator.MoveNext())
-			foreach (var result in originalEnumerator.Current.TraverseObjectGraphRecursively(visited, $@"{memberPath}[{index++}]"))
+		// ReSharper disable once NotDisposedResource
+		var enumerator = objEnum.GetEnumerator();
+		enumerator.ThrowIfNull();
+		var index      = 0;
+		while (enumerator.MoveNext())
+			foreach (var result in enumerator.Current.TraverseObjectGraphRecursively(visited, $@"{memberPath}[{index++}]"))
 				yield return result;
 	}
 }
