@@ -11,7 +11,7 @@ namespace Wangkanai.Extensions;
 public static class CollectionExtension
 {
 	[MemberNotNull]
-	public static bool IsNull<T>(this ICollection<T> list)
+	public static bool IsNull<T>(this ICollection<T>? list)
 		=> list is null;
 
 	[MemberNotNull]
@@ -42,7 +42,7 @@ public static class CollectionExtension
 	}
 
 	public static ICollection<T> AddDistinct<T>(this ICollection<T> list, params T[] items)
-		=> AddDistinct(list, null, items);
+		=> AddDistinct(list, null!, items);
 
 	public static ICollection<T> AddDistinct<T>(this ICollection<T> list, IEqualityComparer<T> comparer, params T[] items)
 	{
