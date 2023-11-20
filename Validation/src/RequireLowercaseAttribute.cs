@@ -8,7 +8,7 @@ public sealed class RequireLowercaseAttribute : ValidationAttribute
 	public RequireLowercaseAttribute()
 		: base(() => "Lowercase is required") { }
 
-	public override bool IsValid(object value)
+	public override bool IsValid(object? value)
 		=> value switch
 		   {
 			   null          => true, // Required duty

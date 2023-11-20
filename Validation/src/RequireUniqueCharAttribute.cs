@@ -13,7 +13,7 @@ public sealed class RequireUniqueCharAttribute : ValidationAttribute
 
 	public int Minimum { get; }
 
-	public override bool IsValid(object value)
+	public override bool IsValid(object? value)
 		=> value switch
 		   {
 			   null          => true,

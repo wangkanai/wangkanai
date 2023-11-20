@@ -8,7 +8,7 @@ public sealed class RequireNonAlphanumericAttribute : ValidationAttribute
 	public RequireNonAlphanumericAttribute()
 		: base(() => "Non Alphanumeric is required") { }
 
-	public override bool IsValid(object value)
+	public override bool IsValid(object? value)
 		=> value switch
 		   {
 			   null          => true,

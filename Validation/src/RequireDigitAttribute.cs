@@ -8,7 +8,7 @@ public sealed class RequireDigitAttribute : ValidationAttribute
 	public RequireDigitAttribute()
 		: base(() => "Digit is required") { }
 
-	public override bool IsValid(object value)
+	public override bool IsValid(object? value)
 		=> value switch
 		   {
 			   null          => true,
