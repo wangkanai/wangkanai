@@ -43,6 +43,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Responsive", "Responsive", 
 		Responsive\INSTALL.md = Responsive\INSTALL.md
 		Responsive\README.md = Responsive\README.md
 		Responsive\sign.ps1 = Responsive\sign.ps1
+		Responsive\build.ps1 = Responsive\build.ps1
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Validation", "Validation", "{7FB8FAE5-9EFC-42D3-AA14-F9E1A9B7AB26}"
@@ -50,6 +51,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Validation", "Validation", 
 		Validation\Directory.Build.props = Validation\Directory.Build.props
 		Validation\README.md = Validation\README.md
 		Validation\sign.ps1 = Validation\sign.ps1
+		Validation\build.ps1 = Validation\build.ps1
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "System", "System", "{3220F767-41DB-4C06-9952-619F50EB0567}"
@@ -58,7 +60,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "System", "System", "{3220F7
 		System\README.md = System\README.md
 		System\sign.ps1 = System\sign.ps1
 		build.ps1 = build.ps1
-		System\build.ps1 = System\build.ps1
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Responsive", "Responsive\src\Wangkanai.Responsive.csproj", "{0C42571F-C996-4C9C-BF66-979681BF395A}"
@@ -83,6 +84,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Webmaster", "Webmaster", "{
 		Webmaster\INSTALL.md = Webmaster\INSTALL.md
 		Webmaster\README.md = Webmaster\README.md
 		Webmaster\sign.ps1 = Webmaster\sign.ps1
+		Webmaster\build.ps1 = Webmaster\build.ps1
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Webmaster", "Webmaster\src\Wangkanai.Webmaster.csproj", "{40C64D52-CDFF-45DA-BC80-A5775C0EBBC0}"
@@ -109,6 +111,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Webserver", "Webserver", "{
 		Webserver\Directory.Build.props = Webserver\Directory.Build.props
 		Webserver\README.md = Webserver\README.md
 		Webserver\sign.ps1 = Webserver\sign.ps1
+		Webserver\build.ps1 = Webserver\build.ps1
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Webserver", "Webserver\src\Wangkanai.Webserver.csproj", "{717BA7DD-96E6-4661-A385-BF2923112C6E}"
@@ -121,6 +124,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Markdown", "Markdown", "{38
 		Markdown\INSTALL.md = Markdown\INSTALL.md
 		Markdown\README.md = Markdown\README.md
 		Markdown\sign.ps1 = Markdown\sign.ps1
+		Markdown\build.ps1 = Markdown\build.ps1
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Markdown", "Markdown\src\Wangkanai.Markdown.csproj", "{33B2A6FA-15BB-4071-A3D1-2644F0A35AAA}"
@@ -134,6 +138,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hosting", "Hosting", "{10D7
 		Hosting\Directory.Build.props = Hosting\Directory.Build.props
 		Hosting\README.md = Hosting\README.md
 		Hosting\sign.ps1 = Hosting\sign.ps1
+		Hosting\build.ps1 = Hosting\build.ps1
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Hosting", "Hosting\src\Wangkanai.Hosting.csproj", "{994F5DCC-4701-4897-91A9-2F3634F3EAEB}"
@@ -147,6 +152,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solver", "Solver", "{37D27D
 		Solver\Directory.Build.props = Solver\Directory.Build.props
 		Solver\README.md = Solver\README.md
 		Solver\sign.ps1 = Solver\sign.ps1
+		Solver\build.ps1 = Solver\build.ps1
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Solver", "Solver\src\Wangkanai.Solver.csproj", "{AC302302-E3A7-4FAA-AA41-7F7CC2077B57}"
@@ -170,6 +176,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tabler", "Tabler", "{89052A
 		Tabler\Directory.Build.props = Tabler\Directory.Build.props
 		Tabler\README.md = Tabler\README.md
 		Tabler\sign.ps1 = Tabler\sign.ps1
+		Tabler\build.ps1 = Tabler\build.ps1
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Tabler.Tests", "Tabler\tests\Wangkanai.Tabler.Tests.csproj", "{3BC55F8B-971B-4611-B012-CDABA944BE96}"
@@ -197,6 +204,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{084E5C3F
 		Tools\Directory.Build.props = Tools\Directory.Build.props
 		Tools\README.md = Tools\README.md
 		Tools\sign.ps1 = Tools\sign.ps1
+		Tools\build.ps1 = Tools\build.ps1
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.MSBuild", "Tools\MSBuild\src\Wangkanai.MSBuild.csproj", "{A80B6DAF-AA55-465E-9D99-6BFF7270DF36}"
@@ -251,6 +259,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extensions", "Extensions", 
 		Extensions\Directory.Build.props = Extensions\Directory.Build.props
 		Extensions\README.md = Extensions\README.md
 		Extensions\sign.ps1 = Extensions\sign.ps1
+		Extensions\build.ps1 = Extensions\build.ps1
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FileProviders", "FileProviders", "{EE1EF4E3-ADB8-460F-9793-2E87E6DAA2E6}"
@@ -301,6 +310,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Federation", "Federation", 
 		Federation\Federation.slnf = Federation\Federation.slnf
 		Federation\README.md = Federation\README.md
 		Federation\sign.ps1 = Federation\sign.ps1
+		Federation\build.ps1 = Federation\build.ps1
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Federation", "Federation\src\Federation\Wangkanai.Federation.csproj", "{C49B819D-2F40-4427-A152-5E1C1323AEBC}"
@@ -345,6 +355,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{15
 		Identity\Directory.Build.props = Identity\Directory.Build.props
 		Identity\README.md = Identity\README.md
 		Identity\sign.ps1 = Identity\sign.ps1
+		Identity\build.ps1 = Identity\build.ps1
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Identity", "Identity\src\Wangkanai.Identity.csproj", "{754AFFD1-0597-49C6-A651-D0B6BAE6BF86}"
@@ -363,6 +374,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Security", "Security", "{CE
 		Security\README.md = Security\README.md
 		Security\Security.slnf = Security\Security.slnf
 		Security\sign.ps1 = Security\sign.ps1
+		Security\build.ps1 = Security\build.ps1
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Security.Authentication", "Security\src\Authentication\Wangkanai.Security.Authentication.csproj", "{BF58B446-84AD-455B-A086-B2093B5BD404}"
@@ -391,6 +403,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mvc", "Mvc", "{047F1FC1-32F
 		Mvc\Directory.Build.props = Mvc\Directory.Build.props
 		Mvc\README.md = Mvc\README.md
 		Mvc\sign.ps1 = Mvc\sign.ps1
+		Mvc\build.ps1 = Mvc\build.ps1
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Mvc", "Mvc\src\Wangkanai.Mvc.csproj", "{87D8623E-9584-43D1-BC01-2988E5149C8D}"
@@ -449,6 +462,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{2F4F
 		Testing\Directory.Build.props = Testing\Directory.Build.props
 		Testing\README.md = Testing\README.md
 		Testing\sign.ps1 = Testing\sign.ps1
+		Testing\build.ps1 = Testing\build.ps1
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Testing", "Testing\src\Wangkanai.Testing.csproj", "{48D78AC0-157A-4CCA-AAC7-BCBFB2D2BD96}"
