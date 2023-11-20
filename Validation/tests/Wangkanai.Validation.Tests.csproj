@@ -1,7 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
     <ItemGroup>
         <ProjectReference Include="..\src\Wangkanai.Validation.csproj" />
     </ItemGroup>
-
 </Project>
