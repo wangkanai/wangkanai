@@ -26,7 +26,7 @@
 
     <ItemGroup>
         <Content Remove="package.json;package-lock.json" />
-        <None Include="package.json;package-lock.json">
+        <None Include="package.json">
             <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
             <CopyToOutputDirectory>Never</CopyToOutputDirectory>
         </None>

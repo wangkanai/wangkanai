@@ -8,16 +8,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".solutions", ".solutions", 
 		.editorconfig = .editorconfig
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
-		azure-pipelines.yml = azure-pipelines.yml
 		Directory.Build.props = Directory.Build.props
 		Directory.Build.targets = Directory.Build.targets
-		.github\FUNDING.yml = .github\FUNDING.yml
 		global.json = global.json
 		md-styles.css = md-styles.css
 		qodana.yaml = qodana.yaml
 		README.md = README.md
 		sign.ps1 = sign.ps1
 		Directory.Packages.props = Directory.Packages.props
+		build.ps1 = build.ps1
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{C26D86D6-4B4E-407E-9F1D-9CA1765768CE}"
@@ -29,6 +28,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Detection", "Detection", "{
 		Detection\NUGET.md = Detection\NUGET.md
 		Detection\README.md = Detection\README.md
 		Detection\sign.ps1 = Detection\sign.ps1
+		Detection\build.ps1 = Detection\build.ps1
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Detection", "Detection\src\Wangkanai.Detection.csproj", "{F03915B4-D898-4A10-A6C9-E35DC1E527F8}"
@@ -57,6 +57,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "System", "System", "{3220F7
 		System\Directory.Build.props = System\Directory.Build.props
 		System\README.md = System\README.md
 		System\sign.ps1 = System\sign.ps1
+		build.ps1 = build.ps1
+		System\build.ps1 = System\build.ps1
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Responsive", "Responsive\src\Wangkanai.Responsive.csproj", "{0C42571F-C996-4C9C-BF66-979681BF395A}"
@@ -68,6 +70,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Blazor", "Blazor", "{9D20D5
 		Blazor\Directory.Build.props = Blazor\Directory.Build.props
 		Blazor\README.md = Blazor\README.md
 		Blazor\sign.ps1 = Blazor\sign.ps1
+		Blazor\build.ps1 = Blazor\build.ps1
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Validation", "Validation\src\Wangkanai.Validation.csproj", "{973E7E37-27FD-404E-BBD2-D632470C67C9}"
@@ -92,6 +95,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Analytics", "Analytics", "{
 		Analytics\INSTALL.md = Analytics\INSTALL.md
 		Analytics\README.md = Analytics\README.md
 		Analytics\sign.ps1 = Analytics\sign.ps1
+		Analytics\build.ps1 = Analytics\build.ps1
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Analytics", "Analytics\src\Wangkanai.Analytics.csproj", "{3BF37E15-B706-409C-96F7-AF2D033F509E}"
@@ -274,6 +278,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{ACC970
 		Domain\Directory.Build.props = Domain\Directory.Build.props
 		Domain\README.md = Domain\README.md
 		Domain\sign.ps1 = Domain\sign.ps1
+		Domain\build.ps1 = Domain\build.ps1
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Domain", "Domain\src\Wangkanai.Domain.csproj", "{D8DD2FA3-55C6-4699-933B-77DE41C0EB82}"
@@ -315,6 +320,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EntityFramework", "EntityFr
 		EntityFramework\Directory.Build.props = EntityFramework\Directory.Build.props
 		EntityFramework\README.md = EntityFramework\README.md
 		EntityFramework\sign.ps1 = EntityFramework\sign.ps1
+		EntityFramework\build.ps1 = EntityFramework\build.ps1
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Federation.Benchmark", "Federation\benchmark\Wangkanai.Federation.Benchmark.csproj", "{ECD6586E-059A-4318-9A8A-A440D2972FA4}"
@@ -464,6 +470,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cryptography", "Cryptograph
 		Cryptography\Directory.Build.props = Cryptography\Directory.Build.props
 		Cryptography\README.md = Cryptography\README.md
 		Cryptography\sign.ps1 = Cryptography\sign.ps1
+		Cryptography\build.ps1 = Cryptography\build.ps1
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Cryptography", "Cryptography\src\Wangkanai.Cryptography.csproj", "{40A02C7A-7A10-41D6-BE3A-BC9D8ED5B985}"
