@@ -57,6 +57,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "System", "System", "{3220F7
 		System\Directory.Build.props = System\Directory.Build.props
 		System\README.md = System\README.md
 		System\sign.ps1 = System\sign.ps1
+		build.ps1 = build.ps1
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wangkanai.Responsive", "Responsive\src\Wangkanai.Responsive.csproj", "{0C42571F-C996-4C9C-BF66-979681BF395A}"
