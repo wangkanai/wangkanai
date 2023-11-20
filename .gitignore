@@ -3,6 +3,22 @@
 
 .obsidian/
 .notes/
+**/artifacts/
+**/signed/
+**/wwwroot/lib/
+**/wwwroot/dist/
+
+pnpm-lock.yaml
+package-lock.json
+*.DotSettings
+msbuild.binlog
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+
+*.ncrunchproject
+*.ncrunchprojectsolution
 
 # dotCover is a Code Coverage Tool
 dotCover.Output.xml
@@ -271,20 +287,7 @@ paket-files/
 # FAKE - F# Make
 .fake/
 
-# JetBrains Rider
-.idea/
-*.sln.iml
 
-*.ncrunchproject
-*.ncrunchprojectsolution
-
-**/artifacts/
-**/signed/
-**/wwwroot/lib/
-**/wwwroot/dist/
-**/package-lock.json
-*.DotSettings
-msbuild.binlog
 
 
 
