@@ -76,13 +76,11 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 		get
 		{
 			index.ThrowIfOutOfRange(0, _count);
-
 			return _buffer[(_start + index) % Capacity];
 		}
 		set
 		{
 			index.ThrowIfOutOfRange(0, _count);
-
 			_version++;
 			_buffer[(_start + index) % Capacity] = value;
 		}
@@ -131,7 +129,6 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 			{
 				if (this[i] is not null)
 					return false;
-
 				RemoveAt(i);
 			}
 
@@ -143,7 +140,6 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 		{
 			if (!comparer.Equals(this[i], item))
 				continue;
-
 			RemoveAt(i);
 			return true;
 		}
@@ -162,7 +158,6 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 			for (var i = 0; i < Count; i++)
 				if (this[i] is null)
 					return true;
-
 			return false;
 		}
 
@@ -170,7 +165,6 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 		for (var i = 0; i < Count; i++)
 			if (comparer.Equals(this[i], item))
 				return true;
-
 		return false;
 	}
 
@@ -202,10 +196,9 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 		array.ThrowIfNull();
 
 		var strong = array as T[];
-
-		strong.ThrowIfNull<ArgumentException>($"Cannot copy elements of type {typeof(T).Name} to an array of type {array.GetType().GetElementType().Name}");
-
-		CopyTo(strong, index);
+		var name   = array.GetType().GetElementType()!.Name;
+		strong.ThrowIfNull<ArgumentException>($"Cannot copy elements of type {typeof(T).Name} to an array of type {name}");
+		CopyTo(strong!, index);
 	}
 
 	/// <summary>
@@ -225,7 +218,8 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 	/// Adds an item to the end of the queue
 	/// </summary>
 	/// <param name="value">The item to add to the queue.</param>
-	public void Enqueue(T value) => Enqueue(value, _count);
+	public void Enqueue(T value)
+		=> Enqueue(value, _count);
 
 	/// <summary>
 	/// Adds an object at the specified index
@@ -261,7 +255,7 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 			throw new InvalidOperationException("Dequeue called from an empty queue");
 
 		var result = this[0];
-		this[0] = default;
+		this[0] = default!;
 
 		_start++;
 		if (_start == Capacity)
@@ -291,7 +285,7 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 			else
 			{
 				first  = _buffer.Length - _start;
-				second = _count         - first;
+				second = _count - first;
 			}
 
 			Array.Copy(_buffer, _start, newBuffer, 0, first);
@@ -335,7 +329,7 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 
 		if (index == _count - 1)
 		{
-			this[index] = default;
+			this[index] = default!;
 			_count--;
 			return result;
 		}
@@ -344,15 +338,15 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 		{
 			Array.Copy(
 				_buffer, _start + index - Capacity + 1,
-				_buffer, _start         + index    - Capacity,
-				_count                             - index - 1);
+				_buffer, _start + index - Capacity,
+				_count - index - 1);
 
-			_buffer[_start + _count - 1 - Capacity] = default;
+			_buffer[_start + _count - 1 - Capacity] = default!;
 		}
 		else
 		{
 			Array.Copy(_buffer, _start, _buffer, _start + 1, index);
-			_buffer[_start] = default;
+			_buffer[_start] = default!;
 			_start++;
 		}
 
@@ -395,7 +389,7 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 
 		return BinarySearch(test => {
 			var element = this[test];
-			return element is null ? 1 : comparable.CompareTo(element);
+			return element is null ? 1 : comparable!.CompareTo(element);
 		});
 	}
 

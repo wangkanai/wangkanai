@@ -13,7 +13,7 @@ public static class EnumExtensions
 
 	[DebuggerStepThrough]
 	public static bool Contains<T>(this string agent, T flags) where T : Enum
-		=> EnumValues<T>.TryGetSingleName(flags, out var value) && value != null
+		=> EnumValues<T>.TryGetSingleName(flags, out var value)
 			   ? agent.Contains(value, StringComparison.Ordinal)
 			   : flags.GetFlags()
 			          .Any(item => agent.Contains(ToStringInvariant(item), StringComparison.Ordinal));
@@ -32,9 +32,9 @@ public static class EnumExtensions
 			return value.ToString();
 
 		var attributes = member[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
-		if (attributes.IsEmpty()) 
+		if (attributes.IsEmpty())
 			return value.ToString();
-		
+
 		return attributes.OfType<DescriptionAttribute>()
 		                 .SingleOrDefault()
 		                 ?.Description ?? string.Empty;
@@ -50,9 +50,9 @@ public static class EnumExtensions
 			return string.Empty;
 
 		var attributes = field.GetCustomAttributes(typeof(EnumMemberAttribute), false);
-		if (attributes.IsEmpty()) 
+		if (attributes.IsEmpty())
 			return value.ToString();
-		
+
 		return attributes.OfType<EnumMemberAttribute>()
 		                 .SingleOrDefault()
 		                 ?.Value ?? string.Empty;

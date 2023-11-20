@@ -10,7 +10,7 @@ public static class EnumerableExtensions
 	/// <param name="list">The data to test.</param>
 	/// <returns>true if the array parameter is null or has a length of zero; otherwise, false.</returns>
 	[DebuggerStepThrough]
-	public static bool IsNullOrEmpty<T>(this IEnumerable<T> list)
+	public static bool IsNullOrEmpty<T>(this IEnumerable<T>? list)
 		=> list is null || !list.Any();
 
 	[DebuggerStepThrough]
@@ -69,20 +69,22 @@ public static class EnumerableExtensions
 	/// <param name="action">The action to be performed.</param>
 	/// <remarks>If an exception occurs, the action will not be performed on the remaining items.</remarks>
 	[DebuggerStepThrough]
-	public static void Apply(this IDictionary items, Action<object, object> action)
+	public static void Apply(this IDictionary? items, Action<object, object> action)
 	{
 		if (items is null)
 			return;
 
 		foreach (var key in items.Keys)
-			action(key, items[key]);
+			action(key, items[key]!);
 	}
 
 	[DebuggerStepThrough]
 	public static IDictionary<TKey, TValue> ToIDictionary<TKey, TValue>(this IEnumerable<TValue> source, Func<TValue, TKey> selector)
+		where TKey : notnull
 		=> source.ToDictionary(selector);
 
 	[DebuggerStepThrough]
 	public static IDictionary<TKey, TValue> ToIDictionary<TKey, TValue>(this IEnumerable<TValue> source, Func<TValue, TKey> selector, IEqualityComparer<TKey> comparer)
+		where TKey : notnull
 		=> source.ToDictionary(selector, comparer);
 }

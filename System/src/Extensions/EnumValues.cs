@@ -1,5 +1,7 @@
 // Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
+using System.Diagnostics.CodeAnalysis;
+
 namespace Wangkanai.Extensions;
 
 public static class EnumValues
@@ -28,7 +30,7 @@ public static class EnumValues<T> where T : Enum
 
 	[DebuggerStepThrough]
 	public static bool TryGetSingleName(T value, out string result)
-		=> Names.TryGetValue(value, out result);
+		=> Names.TryGetValue(value, out result!);
 
 	[DebuggerStepThrough]
 	public static string GetName(T value)
