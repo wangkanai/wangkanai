@@ -8,7 +8,7 @@ public sealed class RequireFalseAttribute : ValidationAttribute
 	public RequireFalseAttribute()
 		: base(() => "Unchecked is required") { }
 
-	public override bool IsValid(object value)
+	public override bool IsValid(object? value)
 		=> value switch
 		{
 			null        => true,

@@ -8,7 +8,7 @@ public sealed class RequireUppercaseAttribute : ValidationAttribute
 	public RequireUppercaseAttribute()
 		: base(() => "Uppercase is required") { }
 
-	public override bool IsValid(object value)
+	public override bool IsValid(object? value)
 		=> value switch
 		   {
 			   null          => true, // Required duty
