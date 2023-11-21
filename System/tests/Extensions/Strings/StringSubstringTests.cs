@@ -45,9 +45,9 @@ public class StringSubstringTests
 		Assert.Equal("", _text.SubstringSafe(5, 10));
 	}
 
-	[Fact] public void NullStartZero()            => Assert.Throws<ArgumentNullException>(() => _null.SubstringSafe());
-	[Fact] public void NullStartOne()             => Assert.Throws<ArgumentNullException>(() => _null.SubstringSafe(1));
-	[Fact] public void NullStartLength()          => Assert.Throws<ArgumentNullException>(() => _null.SubstringSafe(0, 1));
+	[Fact] public void NullStartZero()            => Assert.Throws<ArgumentNullException>(() => _null!.SubstringSafe());
+	[Fact] public void NullStartOne()             => Assert.Throws<ArgumentNullException>(() => _null!.SubstringSafe(1));
+	[Fact] public void NullStartLength()          => Assert.Throws<ArgumentNullException>(() => _null!.SubstringSafe(0, 1));
 	[Fact] public void EmptyStartZero()           => Assert.Throws<ArgumentEmptyException>(() => _empty.SubstringSafe());
 	[Fact] public void EmptyStartOne()            => Assert.Throws<ArgumentEmptyException>(() => _empty.SubstringSafe(1));
 	[Fact] public void EmptyStartLength()         => Assert.Throws<ArgumentEmptyException>(() => _empty.SubstringSafe(0, 1));
