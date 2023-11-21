@@ -14,7 +14,6 @@ public class RandomAccessQueueTests
 	public void ConstructorWithCapacity()
 	{
 		var queue = new StringQueue(StringQueue.DefaultCapacity + 5);
-
 		Assert.Equal(StringQueue.DefaultCapacity + 5, queue.Capacity);
 	}
 
@@ -22,7 +21,6 @@ public class RandomAccessQueueTests
 	public void ConstructorWithSmallerThanDefaultCapacity()
 	{
 		var queue = new StringQueue(StringQueue.DefaultCapacity - 1);
-
 		Assert.Equal(StringQueue.DefaultCapacity, queue.Capacity);
 	}
 
@@ -35,10 +33,8 @@ public class RandomAccessQueueTests
 		queue.Enqueue("1");
 		queue.Enqueue("2");
 		Assert.Equal(2, queue.Count);
-
 		Assert.Equal("1", queue.Dequeue());
 		Assert.Equal("2", queue.Dequeue());
-
 		Assert.Empty(queue);
 	}
 
@@ -75,9 +71,7 @@ public class RandomAccessQueueTests
 			queue.Enqueue(i.ToString());
 
 		Assert.NotEqual(queue.Capacity, queue.Count);
-
 		queue.TrimToSize();
-
 		Assert.Equal(queue.Capacity, queue.Count);
 
 		for (var i = 0; i < StringQueue.DefaultCapacity + 5; i++)
@@ -93,9 +87,7 @@ public class RandomAccessQueueTests
 			queue.Enqueue(i.ToString());
 
 		Assert.Equal(queue.Capacity, queue.Count);
-
 		queue.TrimToSize();
-
 		Assert.Equal(queue.Capacity, queue.Count);
 
 		for (var i = 0; i < StringQueue.DefaultCapacity; i++)
@@ -117,9 +109,7 @@ public class RandomAccessQueueTests
 			queue.Enqueue(i.ToString());
 
 		Assert.NotEqual(queue.Capacity, queue.Count);
-
 		queue.TrimToSize();
-
 		Assert.Equal(queue.Capacity, queue.Count);
 
 		for (var i = 0; i < StringQueue.DefaultCapacity + 2; i++)
@@ -130,7 +120,6 @@ public class RandomAccessQueueTests
 	public void DequeueOnEmptyIsInvalid()
 	{
 		var queue = new StringQueue();
-
 		Assert.Throws<InvalidOperationException>(() => queue.Dequeue());
 	}
 
@@ -138,21 +127,17 @@ public class RandomAccessQueueTests
 	public void StronglyTypedClone()
 	{
 		var queue = new RandomAccessQueue<object>();
-
 		var first  = new object();
 		var second = new object();
 		queue.Enqueue(first);
 		queue.Enqueue(second);
-
 		var clone = queue.Clone();
 
 		Assert.Equal(queue.Count, clone.Count);
-
 		Assert.Same(first, queue.Dequeue());
 		Assert.Same(first, clone.Dequeue());
 		Assert.Same(second, queue.Dequeue());
 		Assert.Same(second, clone.Dequeue());
-
 		Assert.NotSame(queue.SyncRoot, clone.SyncRoot);
 	}
 
@@ -160,23 +145,18 @@ public class RandomAccessQueueTests
 	public void CloneableClone()
 	{
 		var queue = new RandomAccessQueue<object>();
-
 		var first  = new object();
 		var second = new object();
-
 		queue.Enqueue(first);
 		queue.Enqueue(second);
-
 		ICloneable cloneable = queue;
 		var        clone     = (RandomAccessQueue<object>)cloneable.Clone();
 
 		Assert.Equal(queue.Count, clone.Count);
-
 		Assert.Same(first, queue.Dequeue());
 		Assert.Same(first, clone.Dequeue());
 		Assert.Same(second, queue.Dequeue());
 		Assert.Same(second, clone.Dequeue());
-
 		Assert.NotSame(queue.SyncRoot, clone.SyncRoot);
 	}
 
@@ -184,11 +164,9 @@ public class RandomAccessQueueTests
 	public void Clear()
 	{
 		var queue = new StringQueue();
-
 		queue.Enqueue("1");
 		queue.Enqueue("2");
 		queue.Clear();
-
 		Assert.Empty(queue);
 	}
 
@@ -196,11 +174,9 @@ public class RandomAccessQueueTests
 	public void EnqueueWithIndex()
 	{
 		var queue = new StringQueue();
-
 		queue.Enqueue("1");
 		queue.Enqueue("3");
 		queue.Enqueue("2", 1);
-
 		Assert.Equal("1", queue.Dequeue());
 		Assert.Equal("2", queue.Dequeue());
 		Assert.Equal("3", queue.Dequeue());
@@ -212,7 +188,6 @@ public class RandomAccessQueueTests
 		var queue = new StringQueue();
 		queue.Enqueue("1");
 		queue.Enqueue("3");
-
 		Assert.Throws<ArgumentOutOfRangeException>(() => queue.Enqueue("2", -1));
 	}
 
@@ -222,7 +197,6 @@ public class RandomAccessQueueTests
 		var queue = new StringQueue();
 		queue.Enqueue("1");
 		queue.Enqueue("3");
-
 		Assert.Throws<ArgumentOutOfRangeException>(() => queue.Enqueue("2", 3));
 	}
 
@@ -230,11 +204,9 @@ public class RandomAccessQueueTests
 	public void EnqueueWithIndexEqualToCount()
 	{
 		var queue = new StringQueue();
-
 		queue.Enqueue("1");
 		queue.Enqueue("3");
 		queue.Enqueue("2", 2);
-
 		Assert.Equal("1", queue.Dequeue());
 		Assert.Equal("3", queue.Dequeue());
 		Assert.Equal("2", queue.Dequeue());
@@ -244,7 +216,6 @@ public class RandomAccessQueueTests
 	public void StrongCopyTo()
 	{
 		var queue = new StringQueue();
-
 		queue.Enqueue("1");
 		queue.Enqueue("2");
 		queue.Enqueue("3");
@@ -262,11 +233,9 @@ public class RandomAccessQueueTests
 	public void StrongCopyToWithNullArray()
 	{
 		var queue = new StringQueue();
-
 		queue.Enqueue("1");
 		queue.Enqueue("2");
 		queue.Enqueue("3");
-
 		Assert.Throws<ArgumentNullException>(() => queue.CopyTo((string[])null, 1));
 	}
 
@@ -274,11 +243,9 @@ public class RandomAccessQueueTests
 	public void WeakCopyToNull()
 	{
 		var queue = new StringQueue();
-
 		queue.Enqueue("1");
 		queue.Enqueue("2");
 		queue.Enqueue("3");
-
 		Assert.Throws<ArgumentNullException>(() => queue.CopyTo((Array)null, 0));
 	}
 
@@ -286,11 +253,9 @@ public class RandomAccessQueueTests
 	public void CopyToWrongArrayType()
 	{
 		var queue = new StringQueue();
-
 		queue.Enqueue("1");
 		queue.Enqueue("2");
 		queue.Enqueue("3");
-
 		Assert.Throws<ArgumentException>(() => queue.CopyTo(new object[5], 0));
 	}
 
@@ -298,11 +263,9 @@ public class RandomAccessQueueTests
 	public void CopyToToShort()
 	{
 		var queue = new StringQueue();
-
 		queue.Enqueue("1");
 		queue.Enqueue("2");
 		queue.Enqueue("3");
-
 		Assert.Throws<ArgumentException>(() => queue.CopyTo(new string[5], 3));
 	}
 
@@ -310,11 +273,9 @@ public class RandomAccessQueueTests
 	public void CopyToNegativeIndex()
 	{
 		var queue = new StringQueue();
-
 		queue.Enqueue("1");
 		queue.Enqueue("2");
 		queue.Enqueue("3");
-
 		Assert.Throws<ArgumentOutOfRangeException>(() => queue.CopyTo(new string[5], -1));
 	}
 
@@ -322,16 +283,13 @@ public class RandomAccessQueueTests
 	public void WeakCopyTo()
 	{
 		var queue = new StringQueue();
-
 		queue.Enqueue("1");
 		queue.Enqueue("2");
 		queue.Enqueue("3");
 
 		var array = new string[5];
-
 		Array weak = array;
 		queue.CopyTo(weak, 1);
-
 		Assert.Null(array[0]);
 		Assert.Equal("1", array[1]);
 		Assert.Equal("2", array[2]);
@@ -353,10 +311,8 @@ public class RandomAccessQueueTests
 	public void RemovePresentItem()
 	{
 		var queue = new StringQueue();
-
 		queue.Enqueue("1");
 		queue.Enqueue("2");
-
 		Assert.True(queue.Remove("1"));
 		Assert.DoesNotContain("1", queue);
 		Assert.Single(queue);
@@ -366,9 +322,7 @@ public class RandomAccessQueueTests
 	public void RemoveMissingItem()
 	{
 		var queue = new StringQueue();
-
 		queue.Enqueue("1");
-
 		Assert.False(queue.Remove("2"));
 		Assert.Single(queue);
 	}
@@ -377,9 +331,7 @@ public class RandomAccessQueueTests
 	public void RemoveMissingNull()
 	{
 		var queue = new StringQueue();
-
 		queue.Enqueue("1");
-
 		Assert.False(queue.Remove(null));
 		Assert.Single(queue);
 	}
@@ -388,10 +340,8 @@ public class RandomAccessQueueTests
 	public void RemoveAtBeforeStart()
 	{
 		var queue = new StringQueue();
-
 		queue.Enqueue("1");
 		queue.Enqueue("2");
-
 		Assert.Throws<ArgumentOutOfRangeException>(() => queue.RemoveAt(-1));
 	}
 
@@ -399,10 +349,8 @@ public class RandomAccessQueueTests
 	public void RemoveAtAfterEnd()
 	{
 		var queue = new StringQueue();
-
 		queue.Enqueue("1");
 		queue.Enqueue("2");
-
 		Assert.Throws<ArgumentOutOfRangeException>(() => queue.RemoveAt(2));
 	}
 
@@ -410,12 +358,10 @@ public class RandomAccessQueueTests
 	public void RemoveAtStart()
 	{
 		var queue = new StringQueue();
-
 		queue.Enqueue("1");
 		queue.Enqueue("2");
 		queue.Enqueue("3");
 		queue.RemoveAt(0);
-
 		Assert.Equal(2, queue.Count);
 		Assert.Equal("2", queue[0]);
 		Assert.Equal("3", queue[1]);
@@ -425,12 +371,10 @@ public class RandomAccessQueueTests
 	public void RemoveAtEnd()
 	{
 		var queue = new StringQueue();
-
 		queue.Enqueue("1");
 		queue.Enqueue("2");
 		queue.Enqueue("3");
 		queue.RemoveAt(2);
-
 		Assert.Equal(2, queue.Count);
 		Assert.Equal("1", queue[0]);
 		Assert.Equal("2", queue[1]);
@@ -440,12 +384,10 @@ public class RandomAccessQueueTests
 	public void RemoveAtShuffleUp()
 	{
 		var queue = new StringQueue();
-
 		queue.Enqueue("1");
 		queue.Enqueue("2");
 		queue.Enqueue("3");
 		queue.RemoveAt(1);
-
 		Assert.Equal(2, queue.Count);
 		Assert.Equal("1", queue[0]);
 		Assert.Equal("3", queue[1]);
@@ -455,7 +397,6 @@ public class RandomAccessQueueTests
 	public void RemoveAtShuffleDown()
 	{
 		var queue = new StringQueue();
-
 
 		for (var i = 0; i < StringQueue.DefaultCapacity - 1; i++)
 			queue.Enqueue(null);
@@ -467,7 +408,6 @@ public class RandomAccessQueueTests
 		queue.Enqueue("2");
 		queue.Enqueue("3");
 		queue.RemoveAt(1);
-
 		Assert.Equal(2, queue.Count);
 		Assert.Equal("1", queue[0]);
 		Assert.Equal("3", queue[1]);
@@ -477,9 +417,7 @@ public class RandomAccessQueueTests
 	public void ContainMissingItem()
 	{
 		var queue = new StringQueue();
-
 		queue.Enqueue("1");
-
 		Assert.Contains("1", queue);
 	}
 
@@ -487,9 +425,7 @@ public class RandomAccessQueueTests
 	public void ContainPresentItem()
 	{
 		var queue = new StringQueue();
-
 		queue.Enqueue("1");
-
 		Assert.DoesNotContain("2", queue);
 	}
 
@@ -497,13 +433,11 @@ public class RandomAccessQueueTests
 	public void SimpleEnumeration()
 	{
 		var queue = new StringQueue();
-
 		queue.Enqueue("1");
 		queue.Enqueue("2");
 		queue.Enqueue("3");
 
 		var enumerator = queue.GetEnumerator();
-
 		Assert.True(enumerator.MoveNext());
 		Assert.Equal("1", enumerator.Current);
 		Assert.True(enumerator.MoveNext());
@@ -511,7 +445,6 @@ public class RandomAccessQueueTests
 		Assert.True(enumerator.MoveNext());
 		Assert.Equal("3", enumerator.Current);
 		Assert.False(enumerator.MoveNext());
-
 		enumerator.Dispose();
 	}
 
@@ -519,17 +452,13 @@ public class RandomAccessQueueTests
 	public void ChangeQueueDuringIterationThrowException()
 	{
 		var queue = new StringQueue();
-
 		queue.Enqueue("1");
 		queue.Enqueue("2");
 
 		var enumerator = queue.GetEnumerator();
 		Assert.True(enumerator.MoveNext());
-
 		queue.Enqueue("3");
-
 		Assert.Throws<InvalidOperationException>(() => enumerator.MoveNext());
-
 		enumerator.Dispose();
 	}
 
@@ -537,19 +466,15 @@ public class RandomAccessQueueTests
 	public void ChangeQueueDuringIterationRemovingRemainingElement()
 	{
 		var queue = new StringQueue();
-
 		queue.Enqueue("1");
 		queue.Enqueue("2");
 
 		var enumerator = queue.GetEnumerator();
 		Assert.True(enumerator.MoveNext());
 		Assert.True(enumerator.MoveNext());
-
 		queue.Dequeue();
 		queue.Dequeue();
-
 		Assert.Throws<InvalidOperationException>(() => enumerator.MoveNext());
-
 		enumerator.Dispose();
 	}
 
@@ -557,10 +482,8 @@ public class RandomAccessQueueTests
 	public void SyncRoot()
 	{
 		var queue = new StringQueue();
-
 		var syncRoot = queue.SyncRoot;
 		Assert.NotNull(syncRoot);
-
 		queue.Enqueue("hi");
 		Assert.Same(syncRoot, queue.SyncRoot);
 	}
@@ -569,12 +492,10 @@ public class RandomAccessQueueTests
 	public void Add()
 	{
 		var queue = new StringQueue();
-
 		Assert.Empty(queue);
 		queue.Add("1");
 		queue.Add("2");
 		Assert.Equal(2, queue.Count);
-
 		Assert.Equal("1", queue.Dequeue());
 		Assert.Equal("2", queue.Dequeue());
 	}
@@ -583,6 +504,7 @@ public class RandomAccessQueueTests
 	public void AlwaysWritable()
 	{
 		var queue = new StringQueue();
+		queue.ThrowIfNull();
 		Assert.False(queue.IsReadOnly);
 	}
 
@@ -590,6 +512,7 @@ public class RandomAccessQueueTests
 	public void NeverSynchronized()
 	{
 		var queue = new StringQueue();
+		queue.ThrowIfNull();
 		Assert.False(queue.IsSynchronized);
 	}
 
@@ -597,7 +520,6 @@ public class RandomAccessQueueTests
 	public void NonGenericGetEnumerator()
 	{
 		var queue = new StringQueue();
-
 		for (var i = 0; i < 5; i++)
 			queue.Add(i.ToString());
 
@@ -616,11 +538,9 @@ public class RandomAccessQueueTests
 	public void BinartySEarchComparableNull()
 	{
 		var queue = new StringQueue();
-
 		Assert.Equal(~0, queue.BinarySearch(null));
 		queue.Add("hi");
 		Assert.Equal(~0, queue.BinarySearch(null));
-
 		queue.Dequeue();
 		queue.Add(null);
 		Assert.Equal(0, queue.BinarySearch(null));
@@ -630,7 +550,6 @@ public class RandomAccessQueueTests
 	public void BinarySearchIncomparable()
 	{
 		var queue = new RandomAccessQueue<object>();
-
 		Assert.Throws<ArgumentException>(() => queue.BinarySearch(new object()));
 	}
 
@@ -638,7 +557,6 @@ public class RandomAccessQueueTests
 	public void BinarySearchComparableEmpty()
 	{
 		var queue = new StringQueue();
-
 		Assert.Equal(~0, queue.BinarySearch("1"));
 	}
 
@@ -646,7 +564,6 @@ public class RandomAccessQueueTests
 	public void BinarySearchNullComparison()
 	{
 		var queue = new StringQueue();
-
 		Assert.Throws<ArgumentNullException>(() => queue.BinarySearch("1", (Comparison<string>)null));
 	}
 
@@ -654,7 +571,6 @@ public class RandomAccessQueueTests
 	public void BinarySearchComparisonEmpty()
 	{
 		var queue = new StringQueue();
-
 		Assert.Equal(~0, queue.BinarySearch("1", (Comparison<string>)((x, y) => { throw new Exception("Don't expect to be called"); })));
 	}
 
@@ -663,14 +579,11 @@ public class RandomAccessQueueTests
 	{
 		var queue    = new StringQueue();
 		var comparer = Comparer<string>.Default;
-
 		Assert.Equal(~0, queue.BinarySearch(null, comparer));
-
 		queue.Add("hi");
 		Assert.Equal(~0, queue.BinarySearch(null, comparer));
 		queue.Dequeue();
 		queue.Add(null);
-
 		Assert.Equal(0, queue.BinarySearch(null, comparer));
 	}
 
@@ -678,7 +591,6 @@ public class RandomAccessQueueTests
 	public void BinarySearchNullComparer()
 	{
 		var queue = new StringQueue();
-
 		Assert.Throws<ArgumentNullException>(() => queue.BinarySearch("1", (IComparer<string>)null));
 	}
 
@@ -686,11 +598,9 @@ public class RandomAccessQueueTests
 	public void BinarySearchComparable()
 	{
 		var queue = new StringQueue();
-
 		queue.Enqueue("1");
 		queue.Enqueue("3");
 		queue.Enqueue("5");
-
 		Assert.Equal(0, queue.BinarySearch("1"));
 		Assert.Equal(~1, queue.BinarySearch("2"));
 		Assert.Equal(1, queue.BinarySearch("3"));
@@ -703,7 +613,6 @@ public class RandomAccessQueueTests
 	public void BinarySearchComparison()
 	{
 		var queue = new StringQueue();
-
 		queue.Enqueue("1");
 		queue.Enqueue("14");
 		queue.Enqueue("50");
