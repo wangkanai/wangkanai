@@ -21,34 +21,34 @@ public class DeprecateAttributeTests
 	public void ReplaceWithNewClass()
 	{
 		var attribute = typeof(OldClass).GetCustomAttribute<DeprecateAttribute<NewClass>>();
-		Assert.Equal(nameof(NewClass), attribute.Replacement);
+		Assert.Equal(nameof(NewClass), attribute!.Replacement);
 	}
 
 	[Fact]
 	public void ReplaceWithNewRecord()
 	{
 		var attribute = typeof(OldRecord).GetCustomAttribute<DeprecateAttribute<NewRecord>>();
-		Assert.Equal(nameof(NewRecord), attribute.Replacement);
+		Assert.Equal(nameof(NewRecord), attribute!.Replacement);
 	}
 
 	[Fact]
 	public void ReplaceWithNewInterface()
 	{
 		var attribute = typeof(IOldInterface).GetCustomAttribute<DeprecateAttribute<INewInterface>>();
-		Assert.Equal(nameof(INewInterface), attribute.Replacement);
+		Assert.Equal(nameof(INewInterface), attribute!.Replacement);
 	}
 
 	[Fact]
 	public void ReplaceWithNewStruct()
 	{
 		var attribute = typeof(OldStruct).GetCustomAttribute<DeprecateAttribute<NewStruct>>();
-		Assert.Equal(nameof(NewStruct), attribute.Replacement);
+		Assert.Equal(nameof(NewStruct), attribute!.Replacement);
 	}
 
 	[Fact]
 	public void ReplaceWithNewEnum()
 	{
 		var attribute = typeof(OldEnum).GetCustomAttribute<DeprecateAttribute<NewEnum>>();
-		Assert.Equal(nameof(NewEnum), attribute.Replacement);
+		Assert.Equal(nameof(NewEnum), attribute!.Replacement);
 	}
 }
