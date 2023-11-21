@@ -236,7 +236,7 @@ public class RandomAccessQueueTests
 		queue.Enqueue("1");
 		queue.Enqueue("2");
 		queue.Enqueue("3");
-		Assert.Throws<ArgumentNullException>(() => queue.CopyTo((string[])null, 1));
+		Assert.Throws<ArgumentNullException>(() => queue.CopyTo(null!, 1));
 	}
 
 	[Fact]
@@ -246,7 +246,7 @@ public class RandomAccessQueueTests
 		queue.Enqueue("1");
 		queue.Enqueue("2");
 		queue.Enqueue("3");
-		Assert.Throws<ArgumentNullException>(() => queue.CopyTo((Array)null, 0));
+		Assert.Throws<ArgumentNullException>(() => queue.CopyTo((Array)null!, 0));
 	}
 
 	[Fact]
@@ -564,7 +564,7 @@ public class RandomAccessQueueTests
 	public void BinarySearchNullComparison()
 	{
 		var queue = new StringQueue();
-		Assert.Throws<ArgumentNullException>(() => queue.BinarySearch("1", (Comparison<string>)null));
+		Assert.Throws<ArgumentNullException>(() => queue.BinarySearch("1", (Comparison<string>)null!));
 	}
 
 	[Fact]
@@ -591,7 +591,7 @@ public class RandomAccessQueueTests
 	public void BinarySearchNullComparer()
 	{
 		var queue = new StringQueue();
-		Assert.Throws<ArgumentNullException>(() => queue.BinarySearch("1", (IComparer<string>)null));
+		Assert.Throws<ArgumentNullException>(() => queue.BinarySearch("1", (IComparer<string>)null!));
 	}
 
 	[Fact]
