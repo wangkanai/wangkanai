@@ -28,7 +28,7 @@ public class RandomGenerator
 		obj.ThrowIfNull();
 		var other = obj as RandomGenerator;
 		for (var i = 0; i < _size; i++)
-			if (_numbers[i] != other!._numbers[i])
+			if (_numbers![i] != other!._numbers![i])
 				return false;
 
 		return true;
