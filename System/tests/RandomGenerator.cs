@@ -4,8 +4,8 @@ namespace Wangkanai;
 
 public class RandomGenerator
 {
-	private int[] _numbers;
-	private int   _size;
+	private int[]? _numbers;
+	private int    _size;
 
 	public RandomGenerator(int size, bool keep)
 	{
