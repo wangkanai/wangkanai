@@ -1,6 +1,5 @@
 ﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-#nullable enable
 using Xunit;
 
 namespace Wangkanai.Checks;
@@ -41,8 +40,8 @@ public class CheckBooleanTests
 		float?   _float   = 0;
 		double?  _double  = 0.0;
 		decimal? _decimal = 0;
-		char?    _char    = 'a';
-		string?  _string  = "xyz";
+		char     _char    = 'a';
+		string   _string  = "xyz";
 
 		Assert.False(_byte.TrueIfNull());
 		Assert.False(_short.TrueIfNull());
@@ -90,7 +89,7 @@ public class CheckBooleanTests
 		double?  _double  = 0.0;
 		decimal? _decimal = 0;
 		char?    _char    = 'a';
-		string?  _string  = "xyz";
+		string  _string  = "xyz";
 
 		Assert.True(_byte.FalseIfNull());
 		Assert.True(_short.FalseIfNull());
