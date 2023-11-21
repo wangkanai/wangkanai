@@ -6,12 +6,15 @@ namespace Wangkanai.Reflection;
 
 public class PropertyCopyTests
 {
+	[Fact] public void MissingProperty()              => Assert.Throws<ArgumentException>(() => PropertyCopy<Simple>.CopyFrom(new { Missing = "oh!" }));
+	[Fact] public void ReadOnlyTargetPropertyThrows() => Assert.Throws<ArgumentException>(() => PropertyCopy<ReadOnly>.CopyFrom(new { Value = "oh!" }));
+	[Fact] public void IncorrectTypeThrows()          => Assert.Throws<ArgumentException>(() => PropertyCopy<Simple>.CopyFrom(new { Value   = 10 }));
+
 	[Fact]
 	public void CopyToSameType()
 	{
 		var source = new Simple { Value = "test" };
 		var target = PropertyCopy<Simple>.CopyFrom(source);
-
 		Assert.Equal("test", target.Value);
 	}
 
@@ -20,7 +23,6 @@ public class PropertyCopyTests
 	{
 		var source = new Simple { Value = "test" };
 		var target = PropertyCopy<Other>.CopyFrom(source);
-
 		Assert.Equal("test", target.Value);
 	}
 
@@ -28,7 +30,6 @@ public class PropertyCopyTests
 	public void CopyAnonymousType()
 	{
 		var target = PropertyCopy<Simple>.CopyFrom(new { Value = "anonymous" });
-
 		Assert.Equal("anonymous", target.Value);
 	}
 
@@ -37,7 +38,6 @@ public class PropertyCopyTests
 	{
 		var source = new Generic<string> { Value = "generic" };
 		var target = PropertyCopy<Simple>.CopyFrom(source);
-
 		Assert.Equal("generic", target.Value);
 	}
 
@@ -46,42 +46,19 @@ public class PropertyCopyTests
 	{
 		var source = new Simple { Value = "generic" };
 		var target = PropertyCopy<Generic<string>>.CopyFrom(source);
-
 		Assert.Equal("generic", target.Value);
 	}
-
-	[Fact]
-	public void MissingProperty()
-	{
-		Assert.Throws<ArgumentException>(() => PropertyCopy<Simple>.CopyFrom(new { Missing = "oh!" }));
-	}
-
-	[Fact]
-	public void ReadOnlyTargetPropertyThrows()
-	{
-		Assert.Throws<ArgumentException>(() => PropertyCopy<ReadOnly>.CopyFrom(new { Value = "oh!" }));
-	}
-
 	[Fact]
 	public void WriteOnlyTargetPropertyIgnored()
 	{
 		var source = new WriteOnly { Value = "copied", Write = "ignored" };
 		var target = PropertyCopy<Simple>.CopyFrom(source);
-
 		Assert.Equal("copied", target.Value);
 	}
 
-	[Fact]
-	public void IncorrectTypeThrows()
-	{
-		Assert.Throws<ArgumentException>(() => PropertyCopy<Simple>.CopyFrom(new { Value = 10 }));
-	}
-
-	[Fact]
-	public void MultipleProperties()
+	[Fact] public void MultipleProperties()
 	{
 		var target = PropertyCopy<Three>.CopyFrom(new { Third = true, Second = 20, First = "multiple" });
-
 		Assert.Equal("multiple", target.First);
 		Assert.Equal(20, target.Second);
 		Assert.True(target.Third);
@@ -92,7 +69,6 @@ public class PropertyCopyTests
 	{
 		var source = new Generic<Derived>() { Value = new Derived() };
 		var target = PropertyCopy<Generic<Base>>.CopyFrom(source);
-
 		Assert.Same(source.Value, target.Value);
 	}
 
@@ -124,8 +100,8 @@ public class PropertyCopyTests
 
 	class WriteOnly
 	{
-		public string writeField;
-		public string Write { set { writeField = value; } }
+		public string WriteField;
+		public string Write { set { WriteField = value; } }
 		public string Value { get; set; }
 	}
 
