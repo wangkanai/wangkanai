@@ -191,29 +191,29 @@ public class CollectionExtensionsTests
 	[Fact]
 	public void ReplaceNullNull()
 	{
-		Assert.Throws<ArgumentNullException>(() => _nullStrings!.Replace(_nullStrings));
-		Assert.Throws<ArgumentNullException>(() => _nullInts!.Replace(_nullInts));
+		Assert.Throws<ArgumentNullException>(() => _nullStrings!.Replace(_nullStrings!));
+		Assert.Throws<ArgumentNullException>(() => _nullInts!.Replace(_nullInts!));
 	}
 
 	[Fact]
 	public void ReplaceEmptyNull()
 	{
-		Assert.Throws<ArgumentEmptyException>(() => _emptyStrings!.Replace(_nullStrings));
-		Assert.Throws<ArgumentEmptyException>(() => _emptyInts!.Replace(_nullInts));
+		Assert.Throws<ArgumentEmptyException>(() => _emptyStrings!.Replace(_nullStrings!));
+		Assert.Throws<ArgumentEmptyException>(() => _emptyInts!.Replace(_nullInts!));
 	}
 
 	[Fact]
 	public void ReplaceNullEmpty()
 	{
-		Assert.Throws<ArgumentNullException>(() => _nullStrings!.Replace(_emptyStrings));
-		Assert.Throws<ArgumentNullException>(() => _nullInts!.Replace(_emptyInts));
+		Assert.Throws<ArgumentNullException>(() => _nullStrings!.Replace(_emptyStrings!));
+		Assert.Throws<ArgumentNullException>(() => _nullInts!.Replace(_emptyInts!));
 	}
 
 	[Fact]
 	public void ReplaceEmptyEmpty()
 	{
-		Assert.Throws<ArgumentEmptyException>(() => _emptyStrings!.Replace(_emptyStrings));
-		Assert.Throws<ArgumentEmptyException>(() => _emptyInts!.Replace(_emptyInts));
+		Assert.Throws<ArgumentEmptyException>(() => _emptyStrings!.Replace(_emptyStrings!));
+		Assert.Throws<ArgumentEmptyException>(() => _emptyInts!.Replace(_emptyInts!));
 	}
 
 	[Fact]
