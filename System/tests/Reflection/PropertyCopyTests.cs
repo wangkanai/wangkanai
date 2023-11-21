@@ -48,6 +48,7 @@ public class PropertyCopyTests
 		var target = PropertyCopy<Generic<string>>.CopyFrom(source);
 		Assert.Equal("generic", target.Value);
 	}
+
 	[Fact]
 	public void WriteOnlyTargetPropertyIgnored()
 	{
@@ -85,35 +86,35 @@ public class PropertyCopyTests
 
 	class Simple
 	{
-		public string Value { get; set; }
+		public string? Value { get; set; }
 	}
 
 	class Other
 	{
-		public string Value { get; set; }
+		public string? Value { get; set; }
 	}
 
 	class ReadOnly
 	{
-		public string Value => "readonly";
+		public string? Value => "readonly";
 	}
 
 	class WriteOnly
 	{
-		public string WriteField;
-		public string Write { set { WriteField = value; } }
-		public string Value { get; set; }
+		public string? WriteField;
+		public string? Write { set { WriteField = value; } }
+		public string? Value { get; set; }
 	}
 
 	class Generic<T>
 	{
-		public T Value { get; set; }
+		public T? Value { get; set; }
 	}
 
 	class Three
 	{
-		public string First  { get; set; }
-		public int    Second { get; set; }
-		public bool   Third  { get; set; }
+		public string? First  { get; set; }
+		public int?    Second { get; set; }
+		public bool    Third  { get; set; }
 	}
 }
