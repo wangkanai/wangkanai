@@ -10,75 +10,75 @@ namespace Wangkanai.Extensions;
 
 public class CollectionExtensionsTests
 {
-	List<string>? nullStrings = null;
-	List<int>?    nullInts    = null;
+	List<string>? _nullStrings = null;
+	List<int>?    _nullInts    = null;
 
-	List<string>? emptyStrings = new();
-	List<int>?    emptyInts    = new();
+	List<string>? _emptyStrings = new();
+	List<int>?    _emptyInts    = new();
 
-	List<string>? existStrings = new() { "hello" };
-	List<int>?    existInts    = new() { int.MinValue, Int32.MinValue };
+	List<string>? _existStrings = new() { "hello" };
+	List<int>?    _existInts    = new() { int.MinValue, Int32.MinValue };
 
 	[Fact]
 	public void IsNull()
 	{
 		// Null
-		Assert.True(nullStrings.IsNull());
-		Assert.True(nullInts.IsNull());
+		Assert.True(_nullStrings.IsNull());
+		Assert.True(_nullInts.IsNull());
 
 		// Empty
-		Assert.False(emptyStrings.IsNull());
-		Assert.False(emptyInts.IsNull());
+		Assert.False(_emptyStrings.IsNull());
+		Assert.False(_emptyInts.IsNull());
 
 		// Exist
-		Assert.False(existStrings.IsNull());
-		Assert.False(existInts.IsNull());
+		Assert.False(_existStrings.IsNull());
+		Assert.False(_existInts.IsNull());
 	}
 
 	[Fact]
 	public void IsEmpty()
 	{
 		// Null
-		Assert.True(nullStrings.IsEmpty());
-		Assert.True(nullInts.IsEmpty());
+		Assert.True(_nullStrings!.IsEmpty());
+		Assert.True(_nullInts!.IsEmpty());
 
 		// Empty
-		Assert.True(emptyStrings.IsEmpty());
-		Assert.True(emptyInts.IsEmpty());
+		Assert.True(_emptyStrings!.IsEmpty());
+		Assert.True(_emptyInts!.IsEmpty());
 
 		// Exist
-		Assert.False(existStrings.IsEmpty());
-		Assert.False(existInts.IsEmpty());
+		Assert.False(_existStrings!.IsEmpty());
+		Assert.False(_existInts!.IsEmpty());
 	}
 
 	[Fact]
 	public void IsNullOrEmpty()
 	{
 		// Null
-		Assert.True(nullStrings.IsNullOrEmpty());
-		Assert.True(nullInts.IsNullOrEmpty());
+		Assert.True(_nullStrings!.IsNullOrEmpty());
+		Assert.True(_nullInts!.IsNullOrEmpty());
 
 		// Empty
-		Assert.True(emptyStrings.IsNullOrEmpty());
-		Assert.True(emptyInts.IsNullOrEmpty());
+		Assert.True(_emptyStrings!.IsNullOrEmpty());
+		Assert.True(_emptyInts!.IsNullOrEmpty());
 
 		// Exist
-		Assert.False(existStrings.IsNullOrEmpty());
-		Assert.False(existInts.IsNullOrEmpty());
+		Assert.False(_existStrings!.IsNullOrEmpty());
+		Assert.False(_existInts!.IsNullOrEmpty());
 	}
 
 	[Fact]
 	public void RangeNullNull()
 	{
-		Assert.Throws<ArgumentNullException>(() => nullStrings!.AddRangeSafe(null!));
-		Assert.Throws<ArgumentNullException>(() => nullInts!.AddRangeSafe(null!));
+		Assert.Throws<ArgumentNullException>(() => _nullStrings!.AddRangeSafe(null!));
+		Assert.Throws<ArgumentNullException>(() => _nullInts!.AddRangeSafe(null!));
 	}
 
 	[Fact]
 	public void RangeEmptyNull()
 	{
-		Assert.Throws<ArgumentNullException>(() => emptyStrings!.AddRangeSafe(null!));
-		Assert.Throws<ArgumentNullException>(() => emptyInts!.AddRangeSafe(null!));
+		Assert.Throws<ArgumentNullException>(() => _emptyStrings!.AddRangeSafe(null!));
+		Assert.Throws<ArgumentNullException>(() => _emptyInts!.AddRangeSafe(null!));
 	}
 
 	[Fact]
@@ -124,15 +124,15 @@ public class CollectionExtensionsTests
 	[Fact]
 	public void DistinctNullNull()
 	{
-		Assert.Throws<ArgumentNullException>(() => nullStrings!.AddDistinct());
-		Assert.Throws<ArgumentNullException>(() => nullInts!.AddDistinct());
+		Assert.Throws<ArgumentNullException>(() => _nullStrings!.AddDistinct());
+		Assert.Throws<ArgumentNullException>(() => _nullInts!.AddDistinct());
 	}
 
 	[Fact]
 	public void DistinctEmptyNull()
 	{
-		Assert.Throws<ArgumentEmptyException>(() => emptyStrings!.AddDistinct());
-		Assert.Throws<ArgumentEmptyException>(() => emptyInts!.AddDistinct());
+		Assert.Throws<ArgumentEmptyException>(() => _emptyStrings!.AddDistinct());
+		Assert.Throws<ArgumentEmptyException>(() => _emptyInts!.AddDistinct());
 	}
 
 	[Fact]
@@ -153,21 +153,21 @@ public class CollectionExtensionsTests
 		Assert.Equal(ints, ints.AddDistinct(1, 2));
 	}
 
-	EqualityComparer<string> comparerString = EqualityComparer<string>.Default;
-	EqualityComparer<int>    comparerInt    = EqualityComparer<int>.Default;
+	EqualityComparer<string> _comparerString = EqualityComparer<string>.Default;
+	EqualityComparer<int>    _comparerInt    = EqualityComparer<int>.Default;
 
 	[Fact]
 	public void DistinctComparerNullNull()
 	{
-		Assert.Throws<ArgumentNullException>(() => nullStrings!.AddDistinct(comparerString, null!));
-		Assert.Throws<ArgumentNullException>(() => nullInts!.AddDistinct(comparerInt, null!));
+		Assert.Throws<ArgumentNullException>(() => _nullStrings!.AddDistinct(_comparerString, null!));
+		Assert.Throws<ArgumentNullException>(() => _nullInts!.AddDistinct(_comparerInt, null!));
 	}
 
 	[Fact]
 	public void DistinctComparerEmptyNull()
 	{
-		Assert.Throws<ArgumentEmptyException>(() => emptyStrings!.AddDistinct(comparerString, null!));
-		Assert.Throws<ArgumentEmptyException>(() => emptyInts!.AddDistinct(comparerInt, null!));
+		Assert.Throws<ArgumentEmptyException>(() => _emptyStrings!.AddDistinct(_comparerString, null!));
+		Assert.Throws<ArgumentEmptyException>(() => _emptyInts!.AddDistinct(_comparerInt, null!));
 	}
 
 	[Fact]
@@ -175,8 +175,8 @@ public class CollectionExtensionsTests
 	{
 		var strings = new List<string> { "hello", "world" };
 
-		Assert.Equal(strings, strings.AddDistinct(comparerString, "hello"));
-		Assert.Equal(strings, strings.AddDistinct(comparerString, "hello", "world"));
+		Assert.Equal(strings, strings.AddDistinct(_comparerString, "hello"));
+		Assert.Equal(strings, strings.AddDistinct(_comparerString, "hello", "world"));
 	}
 
 	[Fact]
@@ -184,36 +184,36 @@ public class CollectionExtensionsTests
 	{
 		var ints = new List<int> { 1, 2 };
 
-		Assert.Equal(ints, ints.AddDistinct(comparerInt, 1));
-		Assert.Equal(ints, ints.AddDistinct(comparerInt, 1, 2));
+		Assert.Equal(ints, ints.AddDistinct(_comparerInt, 1));
+		Assert.Equal(ints, ints.AddDistinct(_comparerInt, 1, 2));
 	}
 
 	[Fact]
 	public void ReplaceNullNull()
 	{
-		Assert.Throws<ArgumentNullException>(() => nullStrings!.Replace(nullStrings));
-		Assert.Throws<ArgumentNullException>(() => nullInts!.Replace(nullInts));
+		Assert.Throws<ArgumentNullException>(() => _nullStrings!.Replace(_nullStrings));
+		Assert.Throws<ArgumentNullException>(() => _nullInts!.Replace(_nullInts));
 	}
 
 	[Fact]
 	public void ReplaceEmptyNull()
 	{
-		Assert.Throws<ArgumentEmptyException>(() => emptyStrings!.Replace(nullStrings));
-		Assert.Throws<ArgumentEmptyException>(() => emptyInts!.Replace(nullInts));
+		Assert.Throws<ArgumentEmptyException>(() => _emptyStrings!.Replace(_nullStrings));
+		Assert.Throws<ArgumentEmptyException>(() => _emptyInts!.Replace(_nullInts));
 	}
 
 	[Fact]
 	public void ReplaceNullEmpty()
 	{
-		Assert.Throws<ArgumentNullException>(() => nullStrings!.Replace(emptyStrings));
-		Assert.Throws<ArgumentNullException>(() => nullInts!.Replace(emptyInts));
+		Assert.Throws<ArgumentNullException>(() => _nullStrings!.Replace(_emptyStrings));
+		Assert.Throws<ArgumentNullException>(() => _nullInts!.Replace(_emptyInts));
 	}
 
 	[Fact]
 	public void ReplaceEmptyEmpty()
 	{
-		Assert.Throws<ArgumentEmptyException>(() => emptyStrings!.Replace(emptyStrings));
-		Assert.Throws<ArgumentEmptyException>(() => emptyInts!.Replace(emptyInts));
+		Assert.Throws<ArgumentEmptyException>(() => _emptyStrings!.Replace(_emptyStrings));
+		Assert.Throws<ArgumentEmptyException>(() => _emptyInts!.Replace(_emptyInts));
 	}
 
 	[Fact]
