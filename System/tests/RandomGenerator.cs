@@ -10,9 +10,7 @@ public class RandomGenerator
 	public RandomGenerator(int size, bool keep)
 	{
 		_size = size;
-
-		if (keep)
-			_numbers = new int[size];
+		if (keep) _numbers = new int[size];
 	}
 
 	public void Generate()
