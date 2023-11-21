@@ -4,8 +4,6 @@ using Wangkanai.Exceptions;
 
 using Xunit;
 
-#nullable enable
-
 namespace Wangkanai.Checks;
 
 public class CheckStringTests
@@ -27,7 +25,7 @@ public class CheckStringTests
 	public void StringIsEmpty()
 	{
 		string? _null  = null;
-		string? _empty = string.Empty;
+		string  _empty = string.Empty;
 
 		Assert.Throws<ArgumentNullException>(() => _null.ThrowIfEmpty());
 		Assert.Throws<ArgumentNullException>(() => _null.ThrowIfEmpty<ArgumentNullException>());
@@ -42,7 +40,7 @@ public class CheckStringTests
 	public void StringIsEmptyThrowException()
 	{
 		string? _null  = null;
-		string? _empty = string.Empty;
+		string  _empty = string.Empty;
 
 		Assert.Throws<ArgumentException>(() => _null.ThrowIfEmpty<ArgumentException>());
 		Assert.Throws<ArgumentException>(() => _null.ThrowIfEmpty<ArgumentException>("Empty Exception"));
@@ -72,7 +70,7 @@ public class CheckStringTests
 	public void StringIsNullOrEmptyThrowNull()
 	{
 		string? _null  = null;
-		string? _empty = string.Empty;
+		string  _empty = string.Empty;
 
 		Assert.Throws<ArgumentNullOrEmptyException>(() => _null.ThrowIfNullOrEmpty());
 		Assert.Throws<ArgumentNullOrEmptyException>(() => _null.ThrowIfNullOrEmpty<ArgumentNullOrEmptyException>());
@@ -87,7 +85,7 @@ public class CheckStringTests
 	public void StringIsNullOrEmptyThrowException()
 	{
 		string? _null  = null;
-		string? _empty = string.Empty;
+		string  _empty = string.Empty;
 
 		Assert.Throws<ArgumentException>(() => _null.ThrowIfNullOrEmpty<ArgumentException>());
 		Assert.Throws<ArgumentException>(() => _null.ThrowIfNullOrEmpty<ArgumentException>("Null Exception"));
@@ -118,8 +116,8 @@ public class CheckStringTests
 	public void StringIsNullOrWhiteSpaceThrowException()
 	{
 		string? _null  = null;
-		string? _empty = string.Empty;
-		string? _space = " ";
+		string  _empty = string.Empty;
+		string  _space = " ";
 
 
 		Assert.Throws<ArgumentNullOrWhitespaceException>(() => _null.ThrowIfNullOrWhitespace());
@@ -143,7 +141,7 @@ public class CheckStringTests
 	[Fact]
 	public void StringIsNotNullOrWhitespaceThenReturn()
 	{
-		string? _abc = "abc";
+		string _abc = "abc";
 
 		Assert.Equal(_abc, _abc.ThrowIfNullOrWhitespace());
 		Assert.Equal(_abc, _abc.ThrowIfNullOrWhitespace("Null Exception"));
@@ -158,8 +156,8 @@ public class CheckStringTests
 	[Fact]
 	public void StringIsWhitespaceThrowException()
 	{
-		string? _space     = " ";
-		string? _paragraph = new string(' ', 10);
+		string _space     = " ";
+		string _paragraph = new string(' ', 10);
 
 		Assert.Throws<ArgumentWhitespaceException>(() => _space.ThrowIfWhitespace());
 		Assert.Throws<ArgumentWhitespaceException>(() => _space.ThrowIfWhitespace("Whitespace Exception"));
@@ -179,7 +177,7 @@ public class CheckStringTests
 	[Fact]
 	public void StringIsNotWhitespaceThenReturn()
 	{
-		string? abc = "abc";
+		string abc = "abc";
 
 		Assert.Equal(abc, abc.ThrowIfWhitespace());
 		Assert.Equal(abc, abc.ThrowIfWhitespace("Whitespace Exception"));
