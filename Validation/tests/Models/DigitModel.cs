@@ -7,5 +7,5 @@ namespace Wangkanai.Validation.Models;
 public class DigitModel : BaseModel<DigitModel>, IPasswordModel
 {
 	[RequireDigit]
-	public string Password { get; set; }
+	public string Password { get; set; } = string.Empty;
 }

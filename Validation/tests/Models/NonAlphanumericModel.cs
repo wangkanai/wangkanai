@@ -8,5 +8,5 @@ public class NonAlphanumericModel : BaseModel<NonAlphanumericModel>, IPasswordMo
 {
 	[Required]
 	[RequireNonAlphanumeric]
-	public string Password { get; set; }
+	public string Password { get; set; } = string.Empty;
 }
