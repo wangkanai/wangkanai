@@ -7,23 +7,25 @@ namespace Wangkanai;
 [DebuggerStepThrough]
 public static class CheckThrowIfNullExtensions
 {
-	public static bool    ThrowIfNull(this bool?    value)                 => ThrowIfNull<ArgumentNullException>(value);
-	public static byte    ThrowIfNull(this byte?    value)                 => ThrowIfNull<ArgumentNullException>(value);
-	public static sbyte   ThrowIfNull(this sbyte?   value)                 => ThrowIfNull<ArgumentNullException>(value);
-	public static short   ThrowIfNull(this short?   value)                 => ThrowIfNull<ArgumentNullException>(value);
-	public static ushort  ThrowIfNull(this ushort?  value)                 => ThrowIfNull<ArgumentNullException>(value);
-	public static int     ThrowIfNull(this int?     value)                 => ThrowIfNull<ArgumentNullException>(value);
-	public static uint    ThrowIfNull(this uint?    value)                 => ThrowIfNull<ArgumentNullException>(value);
-	public static nint    ThrowIfNull(this nint?    value)                 => ThrowIfNull<ArgumentNullException>(value);
-	public static nuint   ThrowIfNull(this nuint?   value)                 => ThrowIfNull<ArgumentNullException>(value);
-	public static long    ThrowIfNull(this long?    value)                 => ThrowIfNull<ArgumentNullException>(value);
-	public static ulong   ThrowIfNull(this ulong?   value)                 => ThrowIfNull<ArgumentNullException>(value);
-	public static float   ThrowIfNull(this float?   value)                 => ThrowIfNull<ArgumentNullException>(value);
-	public static decimal ThrowIfNull(this decimal? value)                 => ThrowIfNull<ArgumentNullException>(value);
-	public static double  ThrowIfNull(this double?  value)                 => ThrowIfNull<ArgumentNullException>(value);
-	public static char    ThrowIfNull(this char?    value)                 => ThrowIfNull<ArgumentNullException>(value);
-	public static string  ThrowIfNull(this string?  value)                 => ThrowIfNull<ArgumentNullException>(value);
-	public static string  ThrowIfNull(this string?  value, string message) => ThrowIfNull<ArgumentNullException>(value, message);
+	public static bool    ThrowIfNull(this bool?    value) => ThrowIfNull<ArgumentNullException>(value);
+	public static byte    ThrowIfNull(this byte?    value) => ThrowIfNull<ArgumentNullException>(value);
+	public static sbyte   ThrowIfNull(this sbyte?   value) => ThrowIfNull<ArgumentNullException>(value);
+	public static short   ThrowIfNull(this short?   value) => ThrowIfNull<ArgumentNullException>(value);
+	public static ushort  ThrowIfNull(this ushort?  value) => ThrowIfNull<ArgumentNullException>(value);
+	public static int     ThrowIfNull(this int?     value) => ThrowIfNull<ArgumentNullException>(value);
+	public static uint    ThrowIfNull(this uint?    value) => ThrowIfNull<ArgumentNullException>(value);
+	public static nint    ThrowIfNull(this nint?    value) => ThrowIfNull<ArgumentNullException>(value);
+	public static nuint   ThrowIfNull(this nuint?   value) => ThrowIfNull<ArgumentNullException>(value);
+	public static long    ThrowIfNull(this long?    value) => ThrowIfNull<ArgumentNullException>(value);
+	public static ulong   ThrowIfNull(this ulong?   value) => ThrowIfNull<ArgumentNullException>(value);
+	public static float   ThrowIfNull(this float?   value) => ThrowIfNull<ArgumentNullException>(value);
+	public static decimal ThrowIfNull(this decimal? value) => ThrowIfNull<ArgumentNullException>(value);
+	public static double  ThrowIfNull(this double?  value) => ThrowIfNull<ArgumentNullException>(value);
+	public static char    ThrowIfNull(this char?    value) => ThrowIfNull<ArgumentNullException>(value);
+	public static string  ThrowIfNull(this string?  value) => ThrowIfNull<ArgumentNullException>(value);
+
+	public static string ThrowIfNull(this string? value, string message)
+		=> ThrowIfNull<ArgumentNullException>(value, message);
 
 	public static bool ThrowIfNull<T>(this bool? value)
 		where T : ArgumentException
@@ -89,10 +91,7 @@ public static class CheckThrowIfNullExtensions
 		where T : ArgumentException
 		=> value ?? throw ExceptionActivator.CreateArgumentInstance<T>(nameof(value));
 
-	[MemberNotNull]
 	public static string ThrowIfNull<T>(this string? value, string message)
 		where T : ArgumentException
-	{
-		return value ?? throw ExceptionActivator.CreateArgumentInstance<T>(nameof(value), message);
-	}
+		=> value ?? throw ExceptionActivator.CreateArgumentInstance<T>(nameof(value), message);
 }
