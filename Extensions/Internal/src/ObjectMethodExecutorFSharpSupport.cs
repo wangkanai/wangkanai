@@ -17,7 +17,7 @@ namespace Wangkanai.Extensions.Internal;
 /// </remarks>
 internal static class ObjectMethodExecutorFSharpSupport
 {
-	private static readonly object _fsharpValuesCacheLock = new();
+	private static readonly object FsharpValuesCacheLock = new();
 
 	private static Assembly?     _fsharpCoreAssembly;
 	private static MethodInfo?   _fsharpAsyncStartAsTaskGenericMethod;
@@ -34,7 +34,7 @@ internal static class ObjectMethodExecutorFSharpSupport
 			                              ? possibleFSharpAsyncType.GetGenericTypeDefinition()
 			                              : null;
 
-		if (!IsFSharpAsyncOpenGenericType(methodReturnGenericType))
+		if (!IsFSharpAsyncOpenGenericType(methodReturnGenericType!))
 		{
 			coerceToAwaitableExpression = null!;
 			awaitableType               = null!;
@@ -74,7 +74,7 @@ internal static class ObjectMethodExecutorFSharpSupport
 		if (!string.Equals(typeFullName, "Microsoft.FSharp.Control.FSharpAsync`1", StringComparison.Ordinal))
 			return false;
 
-		lock (_fsharpValuesCacheLock)
+		lock (FsharpValuesCacheLock)
 		{
 			return possibleFSharpAsyncGenericType?.Assembly == _fsharpCoreAssembly;
 		}
