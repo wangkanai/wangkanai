@@ -26,7 +26,7 @@ public static class Hash
 	#region Internal
 
 	private static byte[] GetAsciiBytes(this string value)
-		=> Encoding.ASCII.GetBytes(value);
+		=> Encoding.ASCII.GetBytes(value.ThrowIfNull().ThrowIfEmpty().ThrowIfWhitespace());
 
 	private static string HashDataToString(this IEnumerable<byte> data)
 	{
