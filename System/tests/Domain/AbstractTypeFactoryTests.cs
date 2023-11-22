@@ -67,7 +67,10 @@ public class AbstractTypeFactoryTests
 
 public class Parent
 {
-	public string Name { get; set; }
+	public string? Name { get; set; }
 }
 
-public class Child : Parent;
+public class Child : Parent
+{
+	public int Age { get; set; }
+}
