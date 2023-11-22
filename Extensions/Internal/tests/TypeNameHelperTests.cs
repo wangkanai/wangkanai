@@ -6,59 +6,59 @@ namespace Wangkanai.Extensions.Internal;
 
 public class TypeNameHelperTests
 {
-	//[Fact]
+	[Fact]
 	public void GetTypeDisplayName_ReturnsFriendlyName()
 	{
 		var type   = typeof(Room);
 		var result = type.GetTypeDisplayName();
-		Assert.Equal("DisplayNumeric", result);
+		Assert.Equal("Room", result);
 	}
 
-	//[Fact]
+	[Fact]
 	public void GetTypeDisplayName_ReturnsFriendlyName_WithFullName()
 	{
 		var type   = typeof(Room);
 		var result = type.GetTypeDisplayName(true);
-		Assert.Equal("Wangkanai.Extensions.Internal.DisplayNumeric", result);
+		Assert.Equal("Wangkanai.Extensions.Internal.Room", result);
 	}
 
-	//[Fact]
+	[Fact]
 	public void GetTypeDisplayName_ReturnsFriendlyName_WithFullName_WithGenericParameterNames()
 	{
 		var type   = typeof(Room);
 		var result = type.GetTypeDisplayName(true, true);
-		Assert.Equal("Wangkanai.Extensions.Internal.DisplayNumeric", result);
+		Assert.Equal("Wangkanai.Extensions.Internal.Room", result);
 	}
 
-	//[Fact]
+	[Fact]
 	public void GetTypeDisplayName_ReturnsFriendlyName_WithFullName_WithGenericParameterNames_WithGenericParameters()
 	{
 		var type   = typeof(Room);
 		var result = type.GetTypeDisplayName(true, true, true);
-		Assert.Equal("Wangkanai.Extensions.Internal.DisplayNumeric", result);
+		Assert.Equal("Wangkanai.Extensions.Internal.Room", result);
 	}
 
-	//[Fact]
+	[Fact]
 	public void GetTypeDisplayName_ReturnsFriendlyName_WithFullName_WithGenericParameterNames_WithGenericParameters_WithNestedTypeDelimiter()
 	{
 		var type   = typeof(Room);
 		var result = type.GetTypeDisplayName(true, true, true, '+');
-		Assert.Equal("Wangkanai.Extensions.Internal.DisplayNumeric", result);
+		Assert.Equal("Wangkanai.Extensions.Internal.Room", result);
 	}
 
-	//[Fact]
+	[Fact]
 	public void GetTypeDisplayName_ReturnsFriendlyName_WithFullName_WithGenericParameterNames_WithGenericParameters_WithNestedTypeDelimiter_WithNestedTypeDelimiter()
 	{
 		var type   = typeof(Room);
 		var result = type.GetTypeDisplayName(true, true, true, '+');
-		Assert.Equal("Wangkanai.Extensions.Internal.DisplayNumeric", result);
+		Assert.Equal("Wangkanai.Extensions.Internal.Room", result);
 	}
 
 	[Fact]
 	public void GetTypeDisplayName_ObjectIsNull()
 	{
 		Room _null  = null!;
-		var            result = _null.GetTypeDisplayName();
+		var  result = _null.GetTypeDisplayName();
 		Assert.Null(result);
 	}
 
@@ -66,82 +66,82 @@ public class TypeNameHelperTests
 	public void GetTypeDisplayName_ObjectIsNull_WithFullName()
 	{
 		Room _null  = null!;
-		var            result = _null.GetTypeDisplayName(true);
+		var  result = _null.GetTypeDisplayName(true);
 		Assert.Null(result);
 	}
 
-	//[Fact]
+	[Fact]
 	public void GetTypeDisplayName_ObjectIsInstance()
 	{
 		var instance = new Room();
 		var result   = instance.GetTypeDisplayName();
-		Assert.Equal("DisplayNumeric", result);
+		Assert.Equal("Room", result);
 	}
 
-	//[Fact]
+	[Fact]
 	public void GetTypeDisplayName_ObjectIsInstance_WithFullName()
 	{
 		var instance = new Room();
 		var result   = instance.GetTypeDisplayName(true);
-		Assert.Equal("Wangkanai.Extensions.Internal.DisplayNumeric", result);
+		Assert.Equal("Wangkanai.Extensions.Internal.Room", result);
 	}
 
-	//[Fact]
+	[Fact]
 	public void GetTypeDisplayName_ObjectIsInstance_WithShortName()
 	{
 		var instance = new Room();
 		var result   = instance.GetTypeDisplayName(false);
-		Assert.Equal("DisplayNumeric", result);
+		Assert.Equal("Room", result);
 	}
 
-	//[Fact]
+	[Fact]
 	public void Builder_ProcessType_IsGenericType()
 	{
 		var builder = new StringBuilder();
 		var type    = typeof(Room);
 		var option  = new TypeNameHelper.DisplayNameOptions();
 		builder.ProcessType(type, option);
-		Assert.Equal("DisplayNumeric", builder.ToString());
+		Assert.Equal("Room", builder.ToString());
 	}
 
-	//[Fact]
+	[Fact]
 	public void Builder_ProcessType_IsGenericType_WithFullName()
 	{
 		var builder = new StringBuilder();
 		var type    = typeof(Room);
 		var option  = new TypeNameHelper.DisplayNameOptions(true);
 		builder.ProcessType(type, option);
-		Assert.Equal("Wangkanai.Extensions.Internal.DisplayNumeric", builder.ToString());
+		Assert.Equal("Wangkanai.Extensions.Internal.Room", builder.ToString());
 	}
 
-	//[Fact]
+	[Fact]
 	public void Builder_ProcessType_IsGenericType_WithFullName_WithGenericParameterNames()
 	{
 		var builder = new StringBuilder();
 		var type    = typeof(Room);
 		var option  = new TypeNameHelper.DisplayNameOptions(true, true);
 		builder.ProcessType(type, option);
-		Assert.Equal("Wangkanai.Extensions.Internal.DisplayNumeric", builder.ToString());
+		Assert.Equal("Wangkanai.Extensions.Internal.Room", builder.ToString());
 	}
 
-	//[Fact]
+	[Fact]
 	public void Builder_ProcessType_IsGenericType_WithFullName_WithGenericParameterNames_WithGenericParameters()
 	{
 		var builder = new StringBuilder();
 		var type    = typeof(Room);
 		var option  = new TypeNameHelper.DisplayNameOptions(true, true, true);
 		builder.ProcessType(type, option);
-		Assert.Equal("Wangkanai.Extensions.Internal.DisplayNumeric", builder.ToString());
+		Assert.Equal("Wangkanai.Extensions.Internal.Room", builder.ToString());
 	}
 
-	//[Fact]
+	[Fact]
 	public void Builder_ProcessType_IsGenericType_WithFullName_WithGenericParameterNames_WithGenericParameters_WithNestedTypeDelimiter()
 	{
 		var builder = new StringBuilder();
 		var type    = typeof(Room);
 		var option  = new TypeNameHelper.DisplayNameOptions(true, true, true, '+');
 		builder.ProcessType(type, option);
-		Assert.Equal("Wangkanai.Extensions.Internal.DisplayNumeric", builder.ToString());
+		Assert.Equal("Wangkanai.Extensions.Internal.Room", builder.ToString());
 	}
 
 	[Fact]

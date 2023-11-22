@@ -43,7 +43,7 @@ internal static class TypeNameHelper
 		}
 		else if (type.IsArray)
 			builder.ProcessArrayType(type, options);
-		else if (_builtInTypeNames.TryGetValue(type, out var builtInName))
+		else if (BuiltInTypeNames.TryGetValue(type, out var builtInName))
 			builder.Append(builtInName);
 		else if (type.IsGenericParameter)
 		{
@@ -90,7 +90,7 @@ internal static class TypeNameHelper
 				builder.ProcessGenericType(type.DeclaringType!, genericArguments, offset, options);
 				builder.Append(options.NestedTypeDelimiter);
 			}
-			else if (!type.Namespace.IsNullOrEmpty())
+			else if (!type.Namespace!.IsNullOrEmpty())
 			{
 				builder.Append(type.Namespace);
 				builder.Append('.');
@@ -125,7 +125,7 @@ internal static class TypeNameHelper
 
 	private const char DefaultNestedTypeDelimiter = '+';
 
-	private static readonly Dictionary<Type, string> _builtInTypeNames = new()
+	private static readonly Dictionary<Type, string> BuiltInTypeNames = new()
 	{
 		{ typeof(void), "void" },
 		{ typeof(bool), "bool" },
@@ -146,9 +146,9 @@ internal static class TypeNameHelper
 	};
 
 	internal readonly struct DisplayNameOptions(
-		bool fullName = false, 
-		bool includeGenericParameterNames = false, 
-		bool includeGenericParameters = false, 
+		bool fullName = false,
+		bool includeGenericParameterNames = false,
+		bool includeGenericParameters = false,
 		char nestedTypeDelimiter = '.')
 	{
 		public bool FullName                     { get; } = fullName;
