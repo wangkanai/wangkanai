@@ -17,7 +17,6 @@ internal static class AssertionBuilderExtensions
 		builder.Services.AddHttpContextAccessor();
 		builder.Services.AddOptions();
 		builder.Services.TryAddSingleton(provider => provider.GetRequiredService<IOptions<AssertionOptions>>().Value);
-
 		return builder;
 	}
 

@@ -12,13 +12,11 @@ public static class AssertionCollectionExtensions
 	/// <param name="services">The services available in the application</param>
 	/// <returns>An <see cref="IAssertionBuilder" /> so that additional calls can be chained</returns>
 	public static IAssertionBuilder AddAssertion(this IServiceCollection services)
-	{
-		return services.AddAssertionBuilder()
-		               .AddRequiredService()
-		               .AddLifetimeService()
-		               .AddMockService()
-		               .AddMarkerService();
-	}
+		=> services.AddAssertionBuilder()
+		           .AddRequiredService()
+		           .AddLifetimeService()
+		           .AddMockService()
+		           .AddMarkerService();
 
 	/// <summary>Add Assertion service to the service container</summary>
 	/// <param name="services">The services available in the application</param>
@@ -28,14 +26,10 @@ public static class AssertionCollectionExtensions
 	/// </param>
 	/// <returns>An <see cref="IAssertionBuilder" /> so that additional calls can be chained</returns>
 	public static IAssertionBuilder AddAssertion(this IServiceCollection services, Action<AssertionOptions> configure)
-	{
-		return services.Configure(configure)
-		               .AddAssertionBuilder();
-	}
+		=> services.Configure(configure)
+	                                                                                                                              .AddAssertionBuilder();
 
 	// For internal unit tests
 	internal static IAssertionBuilder AddAssertionBuilder(this IServiceCollection services)
-	{
-		return new AssertionBuilder(services);
-	}
+		=> new AssertionBuilder(services);
 }

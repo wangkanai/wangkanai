@@ -2,4 +2,4 @@
 
 namespace Wangkanai.Testing;
 
-public class AssertionMarkerService { }
+public class AssertionMarkerService;

@@ -2,4 +2,4 @@
 
 namespace Wangkanai.Testing;
 
-public class AssertionService : IAssertionService { }
+public class AssertionService : IAssertionService;
