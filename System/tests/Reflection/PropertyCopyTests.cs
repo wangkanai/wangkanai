@@ -57,9 +57,11 @@ public class PropertyCopyTests
 		Assert.Equal("copied", target.Value);
 	}
 
-	[Fact] public void MultipleProperties()
+	[Fact]
+	public void MultipleProperties()
 	{
-		var target = PropertyCopy<Three>.CopyFrom(new { Third = true, Second = 20, First = "multiple" });
+		var source = new Three { Third = true, Second = 20, First = "multiple" };
+		var target = PropertyCopy<Three>.CopyFrom(source);
 		Assert.Equal("multiple", target.First);
 		Assert.Equal(20, target.Second);
 		Assert.True(target.Third);

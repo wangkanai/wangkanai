@@ -34,6 +34,7 @@
 
 
     <Target Name="NpmInstall" Inputs="package.json" Outputs="node_modules/.install-stamp">
+		<Message Text=" pnpm install" Importance="high" />
         <Exec Command="pnpm ci" Condition="$(RestorePackagesWithLockFile) == 'true'" />
         <Exec Command="pnpm install" Condition="$(RestorePackagesWithLockFile) != 'true'" />
         <Touch Files="node_modules/.install-stamp" AlwaysCreate="true" />
