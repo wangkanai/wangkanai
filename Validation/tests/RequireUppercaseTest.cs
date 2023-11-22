@@ -10,24 +10,16 @@ using Xunit.Abstractions;
 
 namespace Wangkanai.Validation;
 
-public class RequireUppercaseTest
+public class RequireUppercaseTest(ITestOutputHelper output)
 {
-	private readonly ITestOutputHelper _output;
-	private readonly PropertyInfo      _password = UppercaseModel.GetProperty(nameof(UppercaseModel.Password));
-
-	public RequireUppercaseTest(ITestOutputHelper output)
-	{
-		_output = output;
-	}
+	private readonly PropertyInfo _password = UppercaseModel.GetProperty(nameof(UppercaseModel.Password));
 
 	[Fact]
 	public void Uppercase()
 	{
-		var vm = new UppercaseModel { Password = "ABC" };
-
+		var vm          = new UppercaseModel { Password = "ABC" };
 		var validations = vm.Validate(vm.Password, _password);
-		validations.Print(_output);
-
+		validations.Print(output);
 		Assert.Empty(validations);
 	}
 
@@ -35,10 +27,8 @@ public class RequireUppercaseTest
 	public void Lowercase()
 	{
 		var vm = new UppercaseModel { Password = "abc" };
-
 		var validations = vm.Validate(vm.Password, _password);
-		validations.Print(_output);
-
+		validations.Print(output);
 		Assert.Collection(validations, v => v.ErrorMessage = "Uppercase is required");
 	}
 
@@ -46,10 +36,8 @@ public class RequireUppercaseTest
 	public void Mix()
 	{
 		var vm = new UppercaseModel { Password = "Abc" };
-
 		var validations = vm.Validate(vm.Password, _password);
-		validations.Print(_output);
-
+		validations.Print(output);
 		Assert.Empty(validations);
 	}
 }
