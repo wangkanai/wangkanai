@@ -3,8 +3,8 @@ param(
     [bool]$dryrun=$false
 )
 
-remove-item -path .\signed\*.*    -Force | out-null
-remove-item -path .\artifacts\*.* -Force | out-null
+remove-item -path .\signed\*.*    -Force -ErrorAction SilentlyContinue
+remove-item -path .\artifacts\*.* -Force -ErrorAction SilentlyContinue
 
 new-item -Path artifacts -ItemType Directory -Force | out-null
 new-item -Path signed    -ItemType Directory -Force | out-null
