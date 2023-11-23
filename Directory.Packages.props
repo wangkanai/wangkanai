@@ -9,7 +9,7 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<!--sourcelink-->
-		<PackageVersion Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All"/>
+		<PackageVersion Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All"/>
 		<!--tools-->
 		<PackageVersion Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="$(FrameworkVersion)"/>
 		<!--system-->
@@ -42,19 +42,19 @@
 		<PackageVersion Include="Microsoft.IdentityModel.Protocols.OpenIdConnect" Version="$(IdentityModelVersion)"/>
 		<!--serilog-->
 		<PackageVersion Include="Serilog" Version="3.1.1"/>
-		<PackageVersion Include="Serilog.AspNetCore" Version="7.0.0"/>
+		<PackageVersion Include="Serilog.AspNetCore" Version="8.0.0"/>
 		<PackageVersion Include="Serilog.Sinks.Console" Version="5.0.0"/>
 		<!--tests -->
 		<PackageVersion Include="Microsoft.AspNetCore.TestHost" Version="$(FrameworkVersion)"/>
 		<PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.8.0"/>
 		<PackageVersion Include="Moq" Version="4.20.69"/>
-		<PackageVersion Include="xunit" Version="2.6.1"/>
-		<PackageVersion Include="xunit.runner.visualstudio" Version="2.5.3" PrivateAssets="all"/>
+		<PackageVersion Include="xunit" Version="2.6.2"/>
+		<PackageVersion Include="xunit.runner.visualstudio" Version="2.5.4" PrivateAssets="all"/>
 		<PackageVersion Include="coverlet.collector" Version="6.0.0" PrivateAssets="all"/>
 		<PackageVersion Include="coverlet.msbuild" Version="6.0.0" PrivateAssets="all"/>
 		<PackageVersion Include="FluentAssertions" Version="6.12.0"/>
-		<PackageVersion Include="SpecFlow.Plus.LivingDocPlugin" Version="3.9.57"/>
 		<PackageVersion Include="SpecFlow.xUnit" Version="3.9.74"/>
+		<PackageVersion Include="SpecFlow.Plus.LivingDocPlugin" Version="3.9.57"/>
 		<!--benchmark-->
 		<PackageVersion Include="BenchmarkDotNet" Version="0.13.10"/>
 		<!--packages-->
