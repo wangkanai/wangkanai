@@ -1,6 +1,6 @@
 ﻿// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-#nullable enable
+// ReSharper disable InconsistentNaming
 namespace Wangkanai.Detection.Extensions;
 
 public class IndexTreeTests
@@ -18,9 +18,9 @@ public class IndexTreeTests
 	[Fact]
 	public void KeywordsIsEmpty()
 	{
-		var _empty = Array.Empty<string>();
+		var empty  = Array.Empty<string>();
 		var source = "abc";
-		var tree   = new IndexTree(_empty);
+		var tree   = new IndexTree(empty);
 		Assert.True(tree.ContainsWithAnyIn(source));
 		Assert.True(tree.StartsWithAnyIn(source));
 	}
@@ -38,9 +38,9 @@ public class IndexTreeTests
 	[Fact]
 	public void KeywordsIsEmpty_SourceExist_SeedIsOne()
 	{
-		var _empty = Array.Empty<string>();
+		var empty  = Array.Empty<string>();
 		var source = "abc";
-		var tree   = new IndexTree(_empty, 1);
+		var tree   = new IndexTree(empty, 1);
 		Assert.True(tree.ContainsWithAnyIn(source));
 		Assert.True(tree.StartsWithAnyIn(source));
 	}
@@ -48,9 +48,9 @@ public class IndexTreeTests
 	[Fact]
 	public void KeywordsExist_SourceIsNull_SeedIsZero()
 	{
-		var     keywords = new[] { "abc" };
-		string? source   = null!;
-		var     tree     = new IndexTree(keywords);
+		var    keywords = new[] { "abc" };
+		string source   = null!;
+		var    tree     = new IndexTree(keywords);
 		Assert.False(tree.ContainsWithAnyIn(source));
 		Assert.False(tree.StartsWithAnyIn(source));
 	}
@@ -58,9 +58,9 @@ public class IndexTreeTests
 	[Fact]
 	public void KeywordsExist_SourceIsNull_SeedIsOne()
 	{
-		var     keywords = new[] { "abc" };
-		string? source   = null!;
-		var     tree     = new IndexTree(keywords, 1);
+		var    keywords = new[] { "abc" };
+		string source   = null!;
+		var    tree     = new IndexTree(keywords, 1);
 		Assert.False(tree.ContainsWithAnyIn(source));
 		Assert.False(tree.StartsWithAnyIn(source));
 	}
@@ -69,7 +69,7 @@ public class IndexTreeTests
 	public void KeywordsExist_SourceIsNull_SeedIsTwo()
 	{
 		var     keywords = new[] { "abc" };
-		string? source   = null!;
+		string source   = null!;
 		var     tree     = new IndexTree(keywords, 2);
 		Assert.False(tree.ContainsWithAnyIn(source));
 		Assert.False(tree.StartsWithAnyIn(source));
@@ -79,7 +79,7 @@ public class IndexTreeTests
 	public void KeywordsExist_SourceIsNull_SeedIsThree()
 	{
 		var     keywords = new[] { "abc" };
-		string? source   = null!;
+		string source   = null!;
 		var     tree     = new IndexTree(keywords, 3);
 		Assert.False(tree.ContainsWithAnyIn(source));
 		Assert.True(tree.StartsWithAnyIn(source));
@@ -214,7 +214,7 @@ public class IndexTreeTests
 		Assert.False(tree.ContainsWithAnyIn(source));
 		Assert.False(tree.StartsWithAnyIn(source));
 	}
-	
+
 	[Fact]
 	public void KeywordsExist_SourceSubset_SeedIsOne()
 	{
@@ -224,7 +224,7 @@ public class IndexTreeTests
 		Assert.False(tree.ContainsWithAnyIn(source));
 		Assert.False(tree.StartsWithAnyIn(source));
 	}
-	
+
 	[Fact]
 	public void KeywordsExist_SourceSubset_SeedIsTwo()
 	{
@@ -234,7 +234,7 @@ public class IndexTreeTests
 		Assert.False(tree.ContainsWithAnyIn(source));
 		Assert.False(tree.StartsWithAnyIn(source));
 	}
-	
+
 	[Fact]
 	public void KeywordsExist_SourceSubset_SeedIsThree()
 	{
@@ -244,7 +244,7 @@ public class IndexTreeTests
 		Assert.True(tree.ContainsWithAnyIn(source));
 		Assert.True(tree.StartsWithAnyIn(source));
 	}
-	
+
 	[Fact]
 	public void KeywordsExist_SourceNotSub_SeedIsZero()
 	{
@@ -254,7 +254,7 @@ public class IndexTreeTests
 		Assert.False(tree.ContainsWithAnyIn(source));
 		Assert.False(tree.StartsWithAnyIn(source));
 	}
-	
+
 	[Fact]
 	public void KeywordsExist_SourceNotSub_SeedIsOne()
 	{
@@ -264,7 +264,7 @@ public class IndexTreeTests
 		Assert.False(tree.ContainsWithAnyIn(source));
 		Assert.False(tree.StartsWithAnyIn(source));
 	}
-	
+
 	[Fact]
 	public void KeywordsExist_SourceNotSub_SeedIsTwo()
 	{
@@ -274,7 +274,7 @@ public class IndexTreeTests
 		Assert.False(tree.ContainsWithAnyIn(source));
 		Assert.False(tree.StartsWithAnyIn(source));
 	}
-	
+
 	[Fact]
 	public void KeywordsExist_SourceNotSub_SeedIsThree()
 	{

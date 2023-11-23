@@ -5,15 +5,11 @@ namespace Wangkanai.Detection.Extensions;
 public class VersionExtensionsTests
 {
 	[Fact]
-	public void RemoveWritespaceTest()
+	public void RemoveWhitespaceTest()
 	{
-		// arrange
 		var temp = "1.0.0 ";
-		// act
 		var version = temp.ToVersion();
-
 		var result = version.ToString();
-		// asset
 		Assert.Equal("1.0.0", result);
 	}
 
@@ -24,7 +20,6 @@ public class VersionExtensionsTests
 	public void StringToVersion(string value)
 	{
 		var version = value.ToVersion();
-
 		Assert.Equal(value, version.ToString());
 	}
 
