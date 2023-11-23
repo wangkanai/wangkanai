@@ -3,6 +3,7 @@
 using Microsoft.AspNetCore.Builder;
 
 using Wangkanai;
+using Wangkanai.Hosting.Services;
 
 // ReSharper disable once CheckNamespace
 namespace Microsoft.Extensions.DependencyInjection;
@@ -16,7 +17,14 @@ public static class ApplicationBuilderExtensions
 		option.ThrowIfNull();
 	}
 
+	public static void VerifyMarkerIsRegistered(this IApplicationBuilder app)
+		=> app.VerifyServiceIsRegistered<MarkerService>();
+
 	public static void VerifyMarkerIsRegistered<T>(this IApplicationBuilder app)
+		where T : MarkerService
+		=> app.VerifyServiceIsRegistered<T>();
+
+	public static void VerifyServiceIsRegistered<T>(this IApplicationBuilder app)
 		where T : class
 	{
 		app.ThrowIfNull();
@@ -26,7 +34,7 @@ public static class ApplicationBuilderExtensions
 	}
 
 	public static void VerifyEndpointRoutingMiddlewareIsNotRegistered(this IApplicationBuilder app,
-		Func<IApplicationBuilder, IApplicationBuilder> middleware)
+		Func<IApplicationBuilder, IApplicationBuilder>                                         middleware)
 	{
 		middleware.ThrowIfNull();
 		const string endpointRouteBuilder = "__EndpointRouteBuilder";

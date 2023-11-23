@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Wangkanai.Hosting.DependencyInjection;
 using Wangkanai.Hosting.Services;
 
-namespace Wangkanai.Hosting.Tests;
+namespace Wangkanai.Hosting;
 
 public class CoreBuilderTests
 {
@@ -27,7 +27,7 @@ public class CoreBuilderTests
 		services.AddMarkerService<MarkerService>();
 		var provider = services.BuildServiceProvider();
 		var app = new ApplicationBuilder(provider);
-		app.VerifyMarkerIsRegistered<MarkerService>();
+		app.VerifyMarkerIsRegistered();
 		Assert.NotNull(services);
 		Assert.NotNull(provider);
 		Assert.NotNull(app);
@@ -39,7 +39,7 @@ public class CoreBuilderTests
 		var services = new ServiceCollection();
 		var provider = services.BuildServiceProvider();
 		var app = new ApplicationBuilder(provider);
-		var exception = Assert.Throws<InvalidOperationException>(() => app.VerifyMarkerIsRegistered<MarkerService>());
+		var exception = Assert.Throws<InvalidOperationException>(() => app.VerifyMarkerIsRegistered());
 		Assert.Equal("MarkerService is not added to ConfigureServices(...)", exception.Message);
 	}
 }
