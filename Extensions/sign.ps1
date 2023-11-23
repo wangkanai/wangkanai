@@ -3,8 +3,8 @@ param(
     [bool]$dryrun=$false
 )
 
-remove-item -path .\signed\*.*    -Force
-remove-item -path .\artifacts\*.* -Force
+remove-item -path .\signed\*.*    -Force -ErrorAction SilentlyContinue
+remove-item -path .\artifacts\*.* -Force -ErrorAction SilentlyContinue
 
 new-item -Path artifacts -ItemType Directory -Force | out-null
 new-item -Path signed    -ItemType Directory -Force | out-null
@@ -13,8 +13,8 @@ get-childitem .\ -directory | where { $_.Name -ne 'signed' } | where { $_.Name -
 
     push-location -path $_.Name
 
-    remove-item -path .\signed\*.*    -Force
-    remove-item -path .\artifacts\*.* -Force
+    remove-item -path .\signed\*.*    -Force -ErrorAction SilentlyContinue
+    remove-item -path .\artifacts\*.* -Force -ErrorAction SilentlyContinue
 
     new-item -Path artifacts -ItemType Directory -Force | out-null
     new-item -Path signed    -ItemType Directory -Force | out-null

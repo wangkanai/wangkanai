@@ -2,7 +2,7 @@
 	<Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
 
 	<PropertyGroup>
-		<VersionPrefix>3.8.0</VersionPrefix>
+		<VersionPrefix>3.10.0</VersionPrefix>
 		<Title>Wangkanai Blazor</Title>
 		<Description>Wangkanai Blazor: Empowering Web UIs with Interactive Components. This project hosts a collection of carefully crafted components designed to breathe life into your Blazor applications. Our components follow common interaction patterns and adhere to the highest standards of semantic specifications, offering you reliable building blocks for your web UI.</Description>
 		<PackageTags>aspnetcore;blazor;component;grid;</PackageTags>

@@ -1,7 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
     <ItemGroup>
         <ProjectReference Include="..\src\Wangkanai.Detection.csproj"/>
     </ItemGroup>
-
 </Project>
