@@ -9,7 +9,5 @@ public static class CoreBuilderExtensions
 {
 	public static void AddMarkerService<T>(this IServiceCollection services)
 		where T : class
-	{
-		services.TryAddSingleton<T>();
-	}
+		=> services.TryAddSingleton<T>();
 }
