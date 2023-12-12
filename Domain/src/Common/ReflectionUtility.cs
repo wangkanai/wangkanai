@@ -19,10 +19,8 @@ public static class ReflectionUtility
 
 	public static string GetPropertyName<T>(Expression<Func<T, object>>? propertyExpression)
 	{
-		string result = null!;
-
-		if (propertyExpression.TrueIfNull())
-			return result;
+		if (propertyExpression is null)
+			return null!;
 
 		var lambda = (LambdaExpression)propertyExpression;
 
@@ -30,9 +28,7 @@ public static class ReflectionUtility
 			                       ? (MemberExpression)unaryExpression.Operand
 			                       : (MemberExpression)lambda.Body;
 
-		result = memberExpression.Member.Name;
-
-		return result;
+		return memberExpression.Member.Name;
 	}
 
 	public static bool IsAssignableFromGenericList(this Type type)
@@ -40,7 +36,7 @@ public static class ReflectionUtility
 
 	private class ObjectReferenceComparer : IEqualityComparer<object>
 	{
-		public new bool Equals(object x, object y)
+		public new bool Equals(object? x, object? y)
 			=> ReferenceEquals(x, y);
 
 		public int GetHashCode(object obj)
