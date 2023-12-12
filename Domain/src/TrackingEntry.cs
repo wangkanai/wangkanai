@@ -4,9 +4,9 @@ namespace Wangkanai.Domain;
 
 public class TrackingEntry
 {
-	public   object     Entity       { get; set; }
-	public   EntryState EntryState   { get; set; }
-	internal bool       IsSubscribed { get; set; }
+	public required object     Entity       { get; set; }
+	public          EntryState EntryState   { get; set; }
+	internal        bool       IsSubscribed { get; set; }
 
 	public override string ToString() => $"{Entity ?? "null"} {EntryState}";
 }
