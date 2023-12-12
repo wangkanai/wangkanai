@@ -17,20 +17,20 @@ public static class ReflectionUtility
 		return result;
 	}
 
-	public static string GetPropertyName<T>(Expression<Func<T, object>> propertyExpression)
+	public static string GetPropertyName<T>(Expression<Func<T, object>>? propertyExpression)
 	{
-		string result = null;
-		if (propertyExpression != null)
-		{
-			var              lambda = (LambdaExpression)propertyExpression;
-			MemberExpression memberExpression;
-			if (lambda.Body is UnaryExpression unaryExpression)
-				memberExpression = (MemberExpression)unaryExpression.Operand;
-			else
-				memberExpression = (MemberExpression)lambda.Body;
+		string result = null!;
 
-			result = memberExpression.Member.Name;
-		}
+		if (propertyExpression.TrueIfNull())
+			return result;
+
+		var lambda = (LambdaExpression)propertyExpression;
+
+		var memberExpression = lambda.Body is UnaryExpression unaryExpression
+			                       ? (MemberExpression)unaryExpression.Operand
+			                       : (MemberExpression)lambda.Body;
+
+		result = memberExpression.Member.Name;
 
 		return result;
 	}

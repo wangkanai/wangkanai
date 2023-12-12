@@ -2,8 +2,4 @@
 	<PropertyGroup>
 		<!--<PublishAot>true</PublishAot>-->
 	</PropertyGroup>
-
-	<ItemGroup>
-		<PackageReference Include="JetBrains.Annotations" />
-	</ItemGroup>
 </Project>

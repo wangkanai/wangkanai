@@ -7,7 +7,7 @@ namespace Wangkanai;
 [DebuggerStepThrough]
 public static class ThrowIfOutOfRangeExtension
 {
-	public static T ThrowIfOutOfRange<T>(this T index, [NonNegativeValue] T lower, [NonNegativeValue] T upper)
+	public static T ThrowIfOutOfRange<T>(this T index, [PositiveInteger] T lower, [PositiveInteger] T upper)
 		where T : IBinaryInteger<T>
 		=> index < lower || index >= upper
 			   ? throw new ArgumentOutOfRangeException(nameof(index))

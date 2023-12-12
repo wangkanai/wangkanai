@@ -12,7 +12,7 @@ public static class ThrowIfNullOrEmptyExtensions
 		=> value.ThrowIfNullOrEmpty<ArgumentNullOrEmptyException>();
 	public static string ThrowIfNullOrEmpty(this string? value, string message)
 		=> value.ThrowIfNullOrEmpty<ArgumentNullOrEmptyException>(message);
-	public static string ThrowIfNullOrEmpty(this string? value, string message, [InvokerParameterName] string paramName)
+	public static string ThrowIfNullOrEmpty(this string? value, string message, string paramName)
 		=> value.ThrowIfNullOrEmpty<ArgumentNullOrEmptyException>(message, paramName);
 
 	public static string ThrowIfNullOrEmpty<T>(this string? value)
@@ -31,7 +31,7 @@ public static class ThrowIfNullOrEmptyExtensions
 		return value!;
 	}
 
-	public static string ThrowIfNullOrEmpty<T>(this string? value, string message, [InvokerParameterName] string paramName)
+	public static string ThrowIfNullOrEmpty<T>(this string? value, string message,  string paramName)
 		where T : ArgumentException
 	{
 		if (value!.IsNullOrEmpty())
