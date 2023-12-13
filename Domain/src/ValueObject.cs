@@ -5,8 +5,9 @@ using System.Collections.Concurrent;
 using System.Reflection;
 
 using Wangkanai.Domain.Caching;
+using Wangkanai.Domain.Common;
 
-namespace Wangkanai.Domain.Common;
+namespace Wangkanai.Domain;
 
 public abstract class ValueObject : IValueObject, ICacheKey, ICloneable
 {
@@ -34,6 +35,9 @@ public abstract class ValueObject : IValueObject, ICacheKey, ICloneable
 		}
 	}
 
+	public object Clone()
+		=> MemberwiseClone();
+
 	public static bool operator ==(ValueObject left, ValueObject right)
 		=> Equals(left, right);
 
@@ -43,6 +47,11 @@ public abstract class ValueObject : IValueObject, ICacheKey, ICloneable
 	public override string ToString()
 		=> $"{{{string.Join(", ", GetProperties().Select(f => $"{f.Name}: {f.GetValue(this)}"))}}}";
 
+	public virtual IEnumerable<PropertyInfo> GetProperties()
+		=> TypeProperties.GetOrAdd(GetType(), t => t.GetTypeInfo().GetProperties(BindingFlags.Instance | BindingFlags.Public))
+		                 .OrderBy(p => p.Name)
+		                 .ToList();
+
 	public virtual string GetCacheKey()
 	{
 		var keyValues = GetEqualityComponents()
@@ -51,13 +60,6 @@ public abstract class ValueObject : IValueObject, ICacheKey, ICloneable
 
 		return string.Join("|", keyValues);
 	}
-
-	public virtual IEnumerable<PropertyInfo> GetProperties()
-		=> TypeProperties.GetOrAdd(GetType(), t => t.GetTypeInfo().GetProperties(BindingFlags.Instance | BindingFlags.Public))
-		                 .OrderBy(p => p.Name)
-		                 .ToList();
-
-	public object Clone() => MemberwiseClone();
 
 	protected virtual IEnumerable<object> GetEqualityComponents()
 	{
