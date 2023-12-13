@@ -51,20 +51,11 @@ public class ValueObjectTests
 	}
 }
 
-public class Address : ValueObject
+public class Address(string street, string city, string state, string zip)
+	: ValueObject
 {
-	public Address() { }
-
-	public Address(string street, string city, string state, string zip) : this()
-	{
-		Street = street;
-		City   = city;
-		State  = state;
-		Zip    = zip;
-	}
-
-	public string Street { get; set; }
-	public string City   { get; set; }
-	public string State  { get; set; }
-	public string Zip    { get; set; }
+	public string? Street { get; set; } = street;
+	public string? City   { get; set; } = city;
+	public string? State  { get; set; } = state;
+	public string? Zip    { get; set; } = zip;
 }
