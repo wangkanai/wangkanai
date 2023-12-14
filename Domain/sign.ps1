@@ -15,7 +15,7 @@ dotnet restore .\src\
 dotnet build   .\src\ -c Release -tl
 Get-ChildItem  .\src\ -Recurse Wangkanai.*.dll | where { $_.FullName -like "*Release*" } | foreach {
 	write-host "Signing" $_.FullName -ForegroundColor Green;
-    signtool sign /fd sha256 /tr http://ts.ssl.com /td sha256 /n "Sarin Na Wangkanai" $_.FullName
+    signtool sign /fd SHA256 /tr http://ts.ssl.com /td sha256 /n "Sarin Na Wangkanai" $_.FullName
 	#signtool verify /pa $_.FullName
 }
 #dotnet pack .\src\ -c Release -tl -o .\artifacts --include-symbols -p:SymbolPackageFormat=snupkg
