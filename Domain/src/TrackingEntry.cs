@@ -4,7 +4,8 @@ namespace Wangkanai.Domain;
 
 public class TrackingEntry
 {
-	public   object     Entity       { get; set; }
+	public required object Entity { get; set; }
+
 	public   EntryState EntryState   { get; set; }
 	internal bool       IsSubscribed { get; set; }
 

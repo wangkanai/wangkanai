@@ -1,18 +1,27 @@
 // Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+
 namespace Wangkanai.Domain;
 
 public abstract class KeyByteEntity : Entity<byte>;
+
 public abstract class KeyIntEntity : Entity<int>;
+
 public abstract class KeyLongEntity : Entity<long>;
+
 public abstract class KeyGuidEntity : Entity<Guid>;
+
 public abstract class KeyStringEntity : Entity<string>;
 
-public abstract class Entity<T> : IEntity<T>  where T : IComparable<T>
+public abstract class Entity<T> : IEntity<T> where T : IComparable<T>
 {
 	public T Id { get; set; }
 
-	public bool IsTransient() => Id == null || Id.Equals(default(T));
+	public bool IsTransient() => Id.Equals(default(T));
+
+	public static bool operator ==(Entity<T> left, Entity<T> right) => Equals(left, right);
+	public static bool operator !=(Entity<T> left, Entity<T> right) => !Equals(left, right);
 
 	private static Type GetRealObjectType(object obj)
 	{
@@ -31,10 +40,7 @@ public abstract class Entity<T> : IEntity<T>  where T : IComparable<T>
 			   ? base.GetHashCode()
 			   : Id.GetHashCode();
 
-	public static bool operator ==(Entity<T> left, Entity<T> right) => Equals(left, right);
-	public static bool operator !=(Entity<T> left, Entity<T> right) => !Equals(left, right);
-
-	public override bool Equals(object obj)
+	public override bool Equals(object? obj)
 	{
 		if (ReferenceEquals(this, obj))
 			return true;
@@ -45,7 +51,7 @@ public abstract class Entity<T> : IEntity<T>  where T : IComparable<T>
 
 		var other = obj as Entity<T>;
 
-		return other != null && Operator.Equal(Id, other.Id);
+		return other is not null && Operator.Equal(Id, other.Id);
 	}
 
 	#endregion

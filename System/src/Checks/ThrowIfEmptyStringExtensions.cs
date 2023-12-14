@@ -26,7 +26,7 @@ public static class ThrowIfEmptyStringExtensions
 			   ? throw ExceptionActivator.CreateArgumentInstance<T>(nameof(value), message)
 			   : value!;
 
-	public static string ThrowIfEmpty<T>(this string? value, string message, [InvokerParameterName] string paramName)
+	public static string ThrowIfEmpty<T>(this string? value, string message, string paramName)
 		where T : ArgumentException
 		=> value.ThrowIfNull<T>().IsEmpty()
 			   ? throw ExceptionActivator.CreateArgumentInstance<T>(paramName, message)

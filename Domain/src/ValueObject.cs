@@ -5,14 +5,15 @@ using System.Collections.Concurrent;
 using System.Reflection;
 
 using Wangkanai.Domain.Caching;
+using Wangkanai.Domain.Common;
 
-namespace Wangkanai.Domain.Common;
+namespace Wangkanai.Domain;
 
 public abstract class ValueObject : IValueObject, ICacheKey, ICloneable
 {
 	private static readonly ConcurrentDictionary<Type, IReadOnlyCollection<PropertyInfo>> TypeProperties = new();
 
-	public override bool Equals(object obj)
+	public override bool Equals(object? obj)
 	{
 		if (ReferenceEquals(this, obj))
 			return true;
@@ -22,7 +23,7 @@ public abstract class ValueObject : IValueObject, ICacheKey, ICloneable
 			return false;
 
 		var other = obj as ValueObject;
-		return other != null && GetEqualityComponents().SequenceEqual(other.GetEqualityComponents());
+		return other is not null && GetEqualityComponents().SequenceEqual(other.GetEqualityComponents());
 	}
 
 	public override int GetHashCode()
@@ -34,6 +35,9 @@ public abstract class ValueObject : IValueObject, ICacheKey, ICloneable
 		}
 	}
 
+	public object Clone()
+		=> MemberwiseClone();
+
 	public static bool operator ==(ValueObject left, ValueObject right)
 		=> Equals(left, right);
 
@@ -43,6 +47,11 @@ public abstract class ValueObject : IValueObject, ICacheKey, ICloneable
 	public override string ToString()
 		=> $"{{{string.Join(", ", GetProperties().Select(f => $"{f.Name}: {f.GetValue(this)}"))}}}";
 
+	public virtual IEnumerable<PropertyInfo> GetProperties()
+		=> TypeProperties.GetOrAdd(GetType(), t => t.GetTypeInfo().GetProperties(BindingFlags.Instance | BindingFlags.Public))
+		                 .OrderBy(p => p.Name)
+		                 .ToList();
+
 	public virtual string GetCacheKey()
 	{
 		var keyValues = GetEqualityComponents()
@@ -51,22 +60,14 @@ public abstract class ValueObject : IValueObject, ICacheKey, ICloneable
 
 		return string.Join("|", keyValues);
 	}
-	
-	public virtual IEnumerable<PropertyInfo> GetProperties()
-		=> TypeProperties.GetOrAdd(GetType(), t => t.GetTypeInfo()
-		                                            .GetProperties(BindingFlags.Instance | BindingFlags.Public))
-		                 .OrderBy(p => p.Name)
-		                 .ToList();
-
-	public object Clone() => MemberwiseClone();
 
 	protected virtual IEnumerable<object> GetEqualityComponents()
 	{
 		foreach (var property in GetProperties())
 		{
 			var value = property.GetValue(this);
-			if (value == null)
-				yield return null;
+			if (value is null)
+				yield return null!;
 			else
 			{
 				var valueType = value.GetType();

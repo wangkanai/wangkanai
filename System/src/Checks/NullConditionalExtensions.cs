@@ -5,9 +5,11 @@ namespace Wangkanai;
 [DebuggerStepThrough]
 public static class NullConditionalExtensions
 {
-	public static bool TrueIfNull<T>(this T? value) 
+	[return: NotNull]
+	public static bool TrueIfNull<T>(this T? value)
 		=> value is null;
 
-	public static bool FalseIfNull<T>(this T? value) 
-		=> !value.TrueIfNull();
+	[return: NotNull]
+	public static bool FalseIfNull<T>(this T? value)
+		=> value is not null;
 }

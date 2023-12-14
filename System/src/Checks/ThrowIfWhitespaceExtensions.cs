@@ -22,7 +22,7 @@ public static class ThrowIfWhitespaceExtensions
 		where T : ArgumentException
 		=> value.ThrowIfWhitespace<T>(message, nameof(value));
 
-	public static string ThrowIfWhitespace<T>(this string? value, string message, [InvokerParameterName] string paramName)
+	public static string ThrowIfWhitespace<T>(this string? value, string message, string paramName)
 		where T : ArgumentException
 		=> value!.IsWhiteSpace()
 			   ? throw ExceptionActivator.CreateArgumentInstance<T>(paramName, message)
