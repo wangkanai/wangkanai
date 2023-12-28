@@ -15,11 +15,12 @@ dotnet restore .\src\
 dotnet build   .\src\ -c Release -tl
 Get-ChildItem  .\src\ -Recurse Wangkanai.*.dll | where { $_.FullName -like "*Release*" } | foreach {
 	write-host "Signing" $_.FullName -ForegroundColor Green;
-    scsigntool sign /fd SHA256 /tr http://ts.ssl.com /td sha256 /n "Sarin Na Wangkanai" $_.FullName
+    scsigntool -pin $env:YUBIKEY_PIN sign /fd SHA256 /tr http://ts.ssl.com /td sha256 /n "Sarin Na Wangkanai" $_.FullName
 	#signtool verify /pa $_.FullName
 }
-#dotnet pack .\src\ -c Release -tl -o .\artifacts --include-symbols -p:SymbolPackageFormat=snupkg
+dotnet pack .\src\ -c Release -tl -o .\artifacts --include-symbols -p:SymbolPackageFormat=snupkg
 
+#nuget sign .\artifacts\*.nupkg -Timestamper http://ts.ssl.com -CertificateSubjectName "Sarin Na Wangkanai" -OutputDirectory .\signed
 #dotnet nuget sign .\artifacts\*.nupkg  -v normal --timestamper http://ts.ssl.com --certificate-subject-name "Sarin Na Wangkanai" -o .\signed
 #dotnet nuget sign .\artifacts\*.snupkg -v normal --timestamper http://ts.ssl.com --certificate-subject-name "Sarin Na Wangkanai" -o .\signed
 
