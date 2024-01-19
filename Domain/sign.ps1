@@ -21,7 +21,7 @@ Get-ChildItem  .\src\ -Recurse Wangkanai.*.dll | where { $_.FullName -like "*Rel
 dotnet pack .\src\ -c Release -tl -o .\artifacts --include-symbols -p:SymbolPackageFormat=snupkg
 
 #nuget sign .\artifacts\*.nupkg -Timestamper http://ts.ssl.com -CertificateSubjectName "Sarin Na Wangkanai" -OutputDirectory .\signed
-#dotnet nuget sign .\artifacts\*.nupkg  -v normal --timestamper http://ts.ssl.com --certificate-subject-name "Sarin Na Wangkanai" -o .\signed
+dotnet nuget sign .\artifacts\*.nupkg  -v normal --timestamper http://ts.ssl.com --certificate-subject-name "Sarin Na Wangkanai" -o .\signed
 #dotnet nuget sign .\artifacts\*.snupkg -v normal --timestamper http://ts.ssl.com --certificate-subject-name "Sarin Na Wangkanai" -o .\signed
 
 if ($dryrun)
