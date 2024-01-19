@@ -1,4 +1,5 @@
 dotnet --version
+
 dotnet clean   .\src\Core -c Release -tl
 dotnet restore .\src\Core
 dotnet build   .\src\Core -c Release -tl
