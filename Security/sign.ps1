@@ -1,6 +1,8 @@
 param(
     [Parameter(mandatory=$false)]
-    [bool]$dryrun=$false
+    [bool]$dryrun=$false,
+    [Parameter(mandatory=$false)]
+    [string]$name="Sarin Na Wangkanai"
 )
 
 remove-item -path .\signed\*.*    -Force -ErrorAction SilentlyContinue
