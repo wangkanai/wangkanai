@@ -17,11 +17,12 @@ dotnet restore .\src\
 dotnet build   .\src\ -c Release -tl
 Get-ChildItem  .\src\ -Recurse Wangkanai.*.dll | where { $_.Name -like "*release*" } | foreach {
     signtool sign /fd SHA256 /n $name $_.FullName
+    #    codesign -s /n $name $_.FullName
 }
 dotnet pack .\src\ -c Release -tl -o .\artifacts --include-symbols -p:SymbolPackageFormat=snupkg
 
-dotnet nuget sign .\artifacts\*.nupkg  -v normal -tl --timestamper http://timestamp.digicert.com --certificate-subject-name $name -o .\signed
-dotnet nuget sign .\artifacts\*.snupkg -v normal -tl --timestamper http://timestamp.digicert.com --certificate-subject-name $name -o .\signed
+dotnet nuget sign .\artifacts\*.nupkg  -v normal --timestamper http://timestamp.digicert.com --certificate-subject-name $name -o .\signed
+dotnet nuget sign .\artifacts\*.snupkg -v normal --timestamper http://timestamp.digicert.com --certificate-subject-name $name -o .\signed
 
 if ($dryrun)
 {
