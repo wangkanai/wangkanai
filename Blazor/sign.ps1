@@ -16,13 +16,13 @@ dotnet clean   .\src\Core\ -c Release -tl
 dotnet restore .\src\Core\
 dotnet build   .\src\Core\ -c Release -tl
 Get-ChildItem  .\src\Core\ -Recurse Wangkanai.*.dll | where { $_.Name -like "*release*" } | foreach {
-    signtool sign /fd SHA256 /n "Sarin Na Wangkanai" $_.FullName
+    signtool sign /fd SHA256 /n $name $_.FullName
 }
 
 dotnet pack .\src\Core\ -c Release -tl -o .\artifacts --include-symbols -p:SymbolPackageFormat=snupkg
 
-dotnet nuget sign .\artifacts\*.nupkg  -v normal --timestamper http://timestamp.digicert.com --certificate-subject-name "Sarin Na Wangkanai" -o .\signed
-dotnet nuget sign .\artifacts\*.snupkg -v normal --timestamper http://timestamp.digicert.com --certificate-subject-name "Sarin Na Wangkanai" -o .\signed
+dotnet nuget sign .\artifacts\*.nupkg  -v normal --timestamper http://timestamp.digicert.com --certificate-subject-name $name -o .\signed
+dotnet nuget sign .\artifacts\*.snupkg -v normal --timestamper http://timestamp.digicert.com --certificate-subject-name $name -o .\signed
 
 if ($dryrun)
 {
