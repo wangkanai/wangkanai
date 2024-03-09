@@ -1,6 +1,8 @@
 param(
     [Parameter(mandatory=$false)]
-    [switch]$dryrun=$false
+    [switch]$dryrun=$false,
+    [Parameter(mandatory=$false)]
+    [string]$certicate="Open Source Developer, Sarin Na Wangkanai"
 )
 
 $dirs=[ordered]@{
@@ -29,7 +31,7 @@ $dirs=[ordered]@{
 }
 
 $e=[char]27
-$root="D:\Sources\Wangkanai\"
+$root="~/sources/wangkanai"
 
 Set-Location -Path $root
 
@@ -68,7 +70,7 @@ for ($i=0; $i -lt $dirs.count; $i++) {
         if ($latest -ne $version)
         {
             Write-Host $latest " < " $version " Update" -ForegroundColor Green;
-            .\sign.ps1 -dryrun $dryrun
+            .\sign.ps1 -dryrun $dryrun -name $certicate
         }
         else
         {
@@ -78,7 +80,7 @@ for ($i=0; $i -lt $dirs.count; $i++) {
     catch
     {
         Write-Host "New " $latest -ForegroundColor Blue;
-        .\sign.ps1 -dryrun $dryrun
+        .\sign.ps1 -dryrun $dryrun -name $certicate
     }
 
     Pop-Location;
