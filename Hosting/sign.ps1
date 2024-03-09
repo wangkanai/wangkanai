@@ -15,8 +15,8 @@ dotnet --version
 dotnet clean   .\src\ -c Release -tl
 dotnet restore .\src\
 dotnet build   .\src\ -c Release -tl
-Get-ChildItem  .\src\ -Recurse Wangkanai.*.dll | where { $_.Name -like "*release*" } | foreach {
-    signtool sign /fd SHA256 /n $name $_.FullName
+Get-ChildItem  .\src\ -Recurse Wangkanai.*.dll | where { $_.Directory -like "*release*" } | foreach {
+    signtool sign /fd SHA256 /t http://timestamp.digicert.com /n $name $_.FullName
 }
 
 dotnet pack .\src\ -c Release -tl -o .\artifacts --include-symbols -p:SymbolPackageFormat=snupkg

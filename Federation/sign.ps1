@@ -15,8 +15,8 @@ dotnet --version
 dotnet clean   Federation.slnf -c Release -tl
 dotnet restore Federation.slnf
 dotnet build   Federation.slnf -c Release -tl
-Get-ChildItem .\src\ -Recurse Wangkanai.*.dll | where { $_.Name -like "*release*" } | foreach {
-    signtool sign /fd SHA256 /n $name $_.FullName
+Get-ChildItem .\src\ -Recurse Wangkanai.*.dll | where { $_.Directory -like "*Release*" } | foreach {
+    signtool sign /fd SHA256 /t http://timestamp.digicert.com /n $name $_.FullName
 }
 
 dotnet pack Federation.slnf -c Release -tl -o .\artifacts --include-symbols -p:SymbolPackageFormat=snupkg
