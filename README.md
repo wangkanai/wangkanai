@@ -10,7 +10,7 @@
 Hello, fellow developers! 👋
 
 Welcome to my repository, where you'll find a vast collection of projects that I have been passionately developing and
-maintaining over the past 20 years. With over 6.5 million downloads on NuGet and a growing community of over 500
+maintaining over the past 20 years. With over 10 million downloads on NuGet and a growing community of over 500
 stargazers on GitHub, I am dedicated to creating and providing high-quality tools and resources for the community.
 
 I am a seasoned solution architect, mentor, trainer, and full-stack developer with a rich professional experience under
