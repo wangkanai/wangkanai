@@ -1,22 +1,22 @@
 <Project>
 	<Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
-	
+
 	<PropertyGroup>
-		<VersionPrefix>2.8.0</VersionPrefix>
+		<VersionPrefix>3.0.0</VersionPrefix>
 		<Title>Wangkanai Mvc</Title>
 		<Description>ASP.NET Core Mvc.</Description>
 		<PackageTags>aspnetcore;mvc;routing;infrastructure</PackageTags>
 		<PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Mvc</PackageProjectUrl>
 	</PropertyGroup>
-	
+
 	<PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Mvc'">
 		<PackageIcon>wangkanai-logo.png</PackageIcon>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
-	
+
 	<ItemGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Mvc'">
 		<None Include="..\..\assets\wangkanai-logo.png" Pack="true" PackagePath="\" />
 		<None Include="..\README.md" Pack="true" PackagePath="\" />
 	</ItemGroup>
-	
+
 </Project>
