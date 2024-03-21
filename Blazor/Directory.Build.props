@@ -2,17 +2,17 @@
 	<Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
 
 	<PropertyGroup>
-		<VersionPrefix>3.10.0</VersionPrefix>
+		<VersionPrefix>4.1.0</VersionPrefix>
 		<Title>Wangkanai Blazor</Title>
 		<Description>Wangkanai Blazor: Empowering Web UIs with Interactive Components. This project hosts a collection of carefully crafted components designed to breathe life into your Blazor applications. Our components follow common interaction patterns and adhere to the highest standards of semantic specifications, offering you reliable building blocks for your web UI.</Description>
 		<PackageTags>aspnetcore;blazor;component;grid;</PackageTags>
 		<PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Blazor</PackageProjectUrl>
 	</PropertyGroup>
-	
+
 	<PropertyGroup>
 		<TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
 	</PropertyGroup>
-	
+
 	<Target Name="CopyProjectReferencesToPackage" DependsOnTargets="BuildOnlySettings;ResolveReferences">
 		<ItemGroup>
 			<!-- Filter out unnecessary files -->
@@ -25,15 +25,15 @@
 			<BuildOutputInPackage Include="@(_ReferenceCopyLocalPaths)" TargetPath="%(_ReferenceCopyLocalPaths.DestinationSubDirectory)" />
 		</ItemGroup>
 	</Target>
-	
+
 	<PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Blazor'">
 		<PackageIcon>wangkanai-logo.png</PackageIcon>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
-	
+
 	<ItemGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Blazor'">
 		<None Include="..\..\..\assets\wangkanai-logo.png" Pack="true" PackagePath="\" />
 		<None Include="..\..\README.md" Pack="true" PackagePath="\" />
 	</ItemGroup>
-	
+
 </Project>

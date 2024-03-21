@@ -15,7 +15,7 @@ public class CommandArgumentTests
 	[InlineData(new[] { "-t", "val", "--", "a", "--", "b" }, new[] { "a", "--", "b" }, "val")]
 	[InlineData(new[] { "--", "--help" }, new[] { "--help" }, null)]
 	[InlineData(new[] { "--", "--version" }, new[] { "--version" }, null)]
-	public void ArgumentSeparator(string[] input, string[] expectedRemaining, string topLevelValue)
+	public void ArgumentSeparator(string[] input, string[] expectedRemaining, string? topLevelValue)
 	{
 		var app = new CommandLineApplication(throwOnUnexpectedArg: false);
 		app.AllowArgumentSeparator = true;
@@ -39,7 +39,7 @@ public class CommandArgumentTests
 	[InlineData(new[] { "-t", "val", "--", "a", "--", "b" }, new[] { "--", "a", "--", "b" }, "val", false)]
 	[InlineData(new[] { "--help", "--" }, new string[0], null, true)]
 	[InlineData(new[] { "--version", "--" }, new string[0], null, true)]
-	public void ArgumentSeparator_TreatedAsUnexpected(string[] input, string[] expectedRemaining, string topLevelValue, bool isShowingInformation)
+	public void ArgumentSeparator_TreatedAsUnexpected(string[] input, string[] expectedRemaining, string? topLevelValue, bool isShowingInformation)
 	{
 		var app        = new CommandLineApplication(throwOnUnexpectedArg: false);
 		var optHelp    = app.HelpOption("--help");
@@ -62,7 +62,7 @@ public class CommandArgumentTests
 	[InlineData(new[] { "--", "--help" }, new[] { "--", "--help" }, null, false)]
 	[InlineData(new[] { "--", "--version" }, new[] { "--", "--version" }, null, false)]
 	[InlineData(new[] { "unexpected", "--", "--version" }, new[] { "unexpected", "--", "--version" }, null, false)]
-	public void ArgumentSeparator_TreatedAsUnexpected_Default(string[] input, string[] expectedRemaining, string topLevelValue, bool isShowingInformation)
+	public void ArgumentSeparator_TreatedAsUnexpected_Default(string[] input, string[] expectedRemaining, string? topLevelValue, bool isShowingInformation)
 	{
 		var app        = new CommandLineApplication(throwOnUnexpectedArg: false);
 		var optHelp    = app.HelpOption("--help");
@@ -85,7 +85,7 @@ public class CommandArgumentTests
 	[InlineData(new[] { "--", "--help" }, new[] { "--" }, null, true)]
 	[InlineData(new[] { "--", "--version" }, new[] { "--" }, null, true)]
 	[InlineData(new[] { "unexpected", "--", "--version" }, new[] { "unexpected", "--" }, null, true)]
-	public void ArgumentSeparator_TreatedAsUnexpected_Continue(string[] input, string[] expectedRemaining, string topLevelValue, bool isShowingInformation)
+	public void ArgumentSeparator_TreatedAsUnexpected_Continue(string[] input, string[] expectedRemaining, string? topLevelValue, bool isShowingInformation)
 	{
 		var app        = new CommandLineApplication(throwOnUnexpectedArg: false, continueAfterUnexpectedArg: true);
 		var optHelp    = app.HelpOption("--help");

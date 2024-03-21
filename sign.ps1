@@ -31,7 +31,7 @@ $dirs=[ordered]@{
 }
 
 $e=[char]27
-$root="D:\Sources\wangkanai"
+$root="D:\Sources\wangkanai\"
 
 Set-Location -Path $root
 
