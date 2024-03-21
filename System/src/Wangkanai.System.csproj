@@ -1,5 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
+		<!--<IsTrimmable>true</IsTrimmable>-->
 		<!--<PublishAot>true</PublishAot>-->
 	</PropertyGroup>
 </Project>
