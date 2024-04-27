@@ -6,7 +6,7 @@ using Xunit;
 
 namespace Wangkanai;
 
-[SimpleJob(RuntimeMoniker.Net70, baseline: true)]
+[SimpleJob(RuntimeMoniker.Net80, baseline: true)]
 [RPlotExporter]
 [MemoryDiagnoser]
 public class CheckStringBenchmark
