@@ -6,28 +6,19 @@ using Wangkanai.Extensions;
 
 namespace Wangkanai.Detection.Services;
 
-public sealed class BrowserService : IBrowserService
+public sealed class BrowserService(IUserAgentService userAgentService, IEngineService engineService)
+	: IBrowserService
 {
-	private readonly IEngineService    _engineService;
-	private readonly IUserAgentService _userAgentService;
-
 	private Browser? _browser;
 	private Version? _version;
-
-	public BrowserService(IUserAgentService userAgentService,
-	                      IEngineService    engineService)
-	{
-		_userAgentService = userAgentService;
-		_engineService    = engineService;
-	}
 
 	public Browser Name    => _browser ??= GetBrowser();
 	public Version Version => _version ??= GetVersion();
 
 	private Browser GetBrowser()
 	{
-		var agent  = _userAgentService.UserAgent.ToLower();
-		var engine = _engineService.Name;
+		var agent  = userAgentService.UserAgent.ToLower();
+		var engine = engineService.Name;
 
 		if (string.IsNullOrEmpty(agent))
 			return Browser.Unknown;
@@ -35,22 +26,23 @@ public sealed class BrowserService : IBrowserService
 			return Browser.Edge;
 		if (IsOpera(agent))
 			return Browser.Opera;
-		if (agent.Contains(Browser.Chrome))
+		if (IsChrome(agent))
 			return Browser.Chrome;
 		if (IsInternetExplorer(agent, engine))
 			return Browser.InternetExplorer;
+		if (IsGoogleSearchApp(agent))
+			return Browser.GoogleSearchApp;
 		if (agent.Contains(Browser.Safari))
 			return Browser.Safari;
 		if (agent.Contains(Browser.Firefox))
 			return Browser.Firefox;
-
 
 		return Browser.Others;
 	}
 
 	private Version GetVersion()
 	{
-		var agent   = _userAgentService.UserAgent.ToLower();
+		var agent   = userAgentService.UserAgent.ToLower();
 		var browser = Name;
 
 		if (string.IsNullOrEmpty(agent))
@@ -58,6 +50,12 @@ public sealed class BrowserService : IBrowserService
 
 		if (browser == Browser.Edge && !agent.Contains("edge", StringComparison.Ordinal))
 			return GetVersionCommon(agent.Replace("edg", "edge", StringComparison.Ordinal), browser);
+
+		if (browser == Browser.GoogleSearchApp)
+			return GetVersionGoogleSearchApp(agent);
+
+		if (browser == Browser.Chrome && agent.Contains("crios", StringComparison.Ordinal))
+			return GetVersionChrome(agent);
 
 		if (browser == Browser.Safari && agent.Contains("version/", StringComparison.Ordinal))
 			return GetVersionSafari(agent);
@@ -72,7 +70,6 @@ public sealed class BrowserService : IBrowserService
 			return new Version(10, 0);
 		if (agent.Contains("msie 9", StringComparison.Ordinal))
 			return new Version(9, 0);
-
 
 		return GetVersionCommon(agent, browser);
 	}
@@ -92,9 +89,31 @@ public sealed class BrowserService : IBrowserService
 		return version.ToVersion();
 	}
 
+	private static Version GetVersionGoogleSearchApp(string agent)
+	{
+		var version      = agent.Substring(agent.IndexOf("gsa/", StringComparison.Ordinal) + "gsa/".Length);
+		var indexOfSpace = version.IndexOf(" ", StringComparison.Ordinal);
+
+		if (indexOfSpace != -1)
+			version = version.Substring(0, indexOfSpace);
+
+		return version.ToVersion();
+	}
+
 	private static Version GetVersionSafari(string agent)
 	{
 		var version      = agent.Substring(agent.IndexOf("version/", StringComparison.Ordinal) + "version/".Length);
+		var indexOfSpace = version.IndexOf(" ", StringComparison.Ordinal);
+
+		if (indexOfSpace != -1)
+			version = version.Substring(0, indexOfSpace);
+
+		return version.ToVersion();
+	}
+
+	private static Version GetVersionChrome(string agent)
+	{
+		var version      = agent.Substring(agent.IndexOf("crios/", StringComparison.Ordinal) + "crios/".Length);
 		var indexOfSpace = version.IndexOf(" ", StringComparison.Ordinal);
 
 		if (indexOfSpace != -1)
@@ -120,22 +139,23 @@ public sealed class BrowserService : IBrowserService
 
 
 	private static bool IsEdge(string agent)
-	{
-		return agent.Contains(Browser.Edge) ||
-		       agent.Contains("win64", StringComparison.Ordinal) &&
-		       agent.Contains("edg", StringComparison.Ordinal);
-	}
+		=> agent.Contains(Browser.Edge) ||
+		   agent.Contains("win64", StringComparison.Ordinal) &&
+		   agent.Contains("edg", StringComparison.Ordinal);
+
+	private static bool IsChrome(string agent)
+		=> agent.Contains(Browser.Chrome) ||
+		   agent.Contains("crios", StringComparison.Ordinal);
 
 	private static bool IsInternetExplorer(string agent, Engine engine)
-	{
-		return engine == Engine.Trident ||
-		       agent.Contains("msie", StringComparison.Ordinal) &&
-		       !agent.Contains(Browser.Opera);
-	}
+		=> engine == Engine.Trident ||
+		   agent.Contains("msie", StringComparison.Ordinal) &&
+		   !agent.Contains(Browser.Opera);
 
 	private static bool IsOpera(string agent)
-	{
-		return agent.Contains(Browser.Opera) ||
-		       agent.Contains("opr", StringComparison.Ordinal);
-	}
+		=> agent.Contains(Browser.Opera) ||
+		   agent.Contains("opr", StringComparison.Ordinal);
+
+	private static bool IsGoogleSearchApp(string agent)
+		=> agent.Contains("gsa", StringComparison.Ordinal);
 }
