@@ -56,17 +56,17 @@ public sealed class PlatformService : IPlatformService
 		var agent    = _userAgentService.UserAgent.ToLower();
 		var platform = Name;
 		return platform switch
-		       {
-			       Platform.Unknown => new Version(),
-			       Platform.Others  => new Version(),
-			       Platform.Windows => ParseOsVersion(agent, "windowsnt"),
-			       Platform.Android => ParseOsVersion(agent, "android"),
-			       Platform.Mac     => ParseOsVersion(agent, "intelmacosx"),
-			       Platform.iOS     => ParseOsVersion(agent, "cpuiphoneos"),
-			       Platform.iPadOS  => ParseOsVersion(agent, "cpuos"),
-			       Platform.Linux   => ParseOsVersion(agent, "rv:"),
-			       _                => new Version()
-		       };
+		{
+			Platform.Unknown => new Version(),
+			Platform.Others  => new Version(),
+			Platform.Windows => ParseOsVersion(agent, "windowsnt"),
+			Platform.Android => ParseOsVersion(agent, "android"),
+			Platform.Mac     => ParseOsVersion(agent, "intelmacosx"),
+			Platform.iOS     => ParseOsVersion(agent, "cpuiphoneos"),
+			Platform.iPadOS  => ParseOsVersion(agent, "cpuos"),
+			Platform.Linux   => ParseOsVersion(agent, "rv:"),
+			_                => new Version()
+		};
 	}
 
 	private Processor GetProcessor()
@@ -137,26 +137,19 @@ public sealed class PlatformService : IPlatformService
 	}
 
 	private static string ReplaceUnderscore(string value)
-	{
-		return value.Replace("_", ".");
-	}
+		=> value.Replace("_", ".");
 
 	private static string AgentSourceParse(string agent, string prefix)
-	{
-		return AgentSourceStart(agent, prefix) ?? string.Empty;
-	}
+		=> AgentSourceStart(agent, prefix) ?? string.Empty;
 
 	private static string AgentSourceStart(string agent, string prefix)
-	{
-		return _osStartRegex.RegexMatch(agent)
-		                    .Captures
-		                    .FirstOrDefault()
-		                    ?
-		                    .Value
-		                    .RemoveAll(" ", "(", ")")
-		                    .Split(';')
-		                    .FirstOrDefault(x => x.StartsWith(prefix, StringComparison.Ordinal));
-	}
+		=> _osStartRegex.RegexMatch(agent)
+		                .Captures
+		                .FirstOrDefault()?
+		                .Value
+		                .RemoveAll(" ", "(", ")")
+		                .Split(';')
+		                .FirstOrDefault(x => x.StartsWith(prefix, StringComparison.Ordinal));
 
 
 	private static readonly string[]  X86DeviceList     = { "i86", "i686", Processor.x86.ToStringInvariant() };
