@@ -6,11 +6,11 @@ namespace Wangkanai;
 [DebuggerStepThrough]
 public static class ThrowIfNullObjectExtensions
 {
-	public static object ThrowIfNull<T>(this object? value)
+	public static object ThrowIfNull<T>([NotNull] this object? value)
 		where T : Exception
 		=> value ?? throw ExceptionActivator.CreateGenericInstance<T>(nameof(value));
 
-	public static object ThrowIfNull<T>(this object? value, string message)
+	public static object ThrowIfNull<T>([NotNull] this object? value, string message)
 		where T : Exception
 		=> value ?? throw ExceptionActivator.CreateGenericInstance<T>(nameof(value), message);
 }

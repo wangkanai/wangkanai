@@ -3,4 +3,4 @@
 namespace Wangkanai;
 
 [AttributeUsage(AttributeTargets.Struct | AttributeTargets.Constructor | AttributeTargets.Parameter)]
-public class NegativeIntegerAttribute : Attribute { }
+public class PositiveIntegerAttribute : Attribute { }

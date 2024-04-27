@@ -7,17 +7,17 @@ namespace Wangkanai;
 [DebuggerStepThrough]
 public static class ThrowIfZeroExtensions
 {
-	public static int ThrowIfZero(this int value)
+	public static int ThrowIfZero([NotNull] this int value)
 	{
 		return value.ThrowIfZero<ArgumentZeroException>();
 	}
 
-	public static int ThrowIfZero(this int value, string message)
+	public static int ThrowIfZero([NotNull] this int value, string message)
 	{
 		return value.ThrowIfZero<ArgumentZeroException>(message);
 	}
 
-	public static int ThrowIfZero<T>(this int value)
+	public static int ThrowIfZero<T>([NotNull] this int value)
 		where T : ArgumentException
 	{
 		return value == 0
@@ -25,7 +25,7 @@ public static class ThrowIfZeroExtensions
 			       : value;
 	}
 
-	public static int ThrowIfZero<T>(this int value, string message)
+	public static int ThrowIfZero<T>([NotNull] this int value, string message)
 		where T : ArgumentException
 	{
 		return value == 0

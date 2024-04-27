@@ -6,25 +6,17 @@ internal static class ExceptionActivator
 {
 	internal static T CreateGenericInstance<T>(string paramName)
 		where T : Exception
-	{
-		return (Activator.CreateInstance(typeof(T), paramName) as T)!;
-	}
+		=> (Activator.CreateInstance(typeof(T), paramName) as T)!;
 
 	internal static T CreateGenericInstance<T>(string paramName, string message)
 		where T : Exception
-	{
-		return (Activator.CreateInstance(typeof(T), paramName, message) as T)!;
-	}
+		=> (Activator.CreateInstance(typeof(T), paramName, message) as T)!;
 
 	internal static T CreateArgumentInstance<T>(string paramName)
 		where T : ArgumentException
-	{
-		return (Activator.CreateInstance(typeof(T), paramName) as T)!;
-	}
+		=> (Activator.CreateInstance(typeof(T), paramName) as T)!;
 
 	internal static T CreateArgumentInstance<T>(string paramName, string message)
 		where T : ArgumentException
-	{
-		return (Activator.CreateInstance(typeof(T), paramName, message) as T)!;
-	}
+		=> (Activator.CreateInstance(typeof(T), paramName, message) as T)!;
 }

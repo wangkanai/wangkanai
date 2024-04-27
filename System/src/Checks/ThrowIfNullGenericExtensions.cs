@@ -5,9 +5,9 @@ namespace Wangkanai;
 [DebuggerStepThrough]
 public static class ThrowIfNullGenericExtensions
 {
-	public static T ThrowIfNull<T>(this T value)
+	public static T ThrowIfNull<T>([NotNull] this T value)
 		=> value ?? throw ExceptionActivator.CreateArgumentInstance<ArgumentNullException>(nameof(value));
 
-	public static T ThrowIfNull<T>(this T value, string message)
+	public static T ThrowIfNull<T>([NotNull] this T value, string message)
 		=> value ?? throw ExceptionActivator.CreateArgumentInstance<ArgumentNullException>(nameof(value), message);
 }
