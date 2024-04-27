@@ -2,6 +2,8 @@
 
 using System.Linq.Expressions;
 
+using ArgumentException = System.ArgumentException;
+
 namespace Wangkanai.Reflection;
 
 public static class PropertyCopy<TTarget> where TTarget : class, new()
@@ -12,8 +14,8 @@ public static class PropertyCopy<TTarget> where TTarget : class, new()
 
 	private static class PropertyCopier<TSource> where TSource : class
 	{
-		private static Exception              _intialization;
 		private static Func<TSource, TTarget> _copier;
+		private static Exception              _intialization;
 
 		static PropertyCopier()
 		{
@@ -31,7 +33,7 @@ public static class PropertyCopy<TTarget> where TTarget : class, new()
 
 		internal static TTarget Copy(TSource source)
 		{
-			if (_intialization != null)
+			if (_intialization is not null)
 				throw _intialization;
 
 			source.ThrowIfNull();
@@ -57,10 +59,12 @@ public static class PropertyCopy<TTarget> where TTarget : class, new()
 					throw new ArgumentException($"Property {sourceProperty.Name} is not writable in {typeof(TTarget).FullName}");
 				if (!targetProperty.PropertyType.IsAssignableFrom(sourceProperty.PropertyType))
 					throw new ArgumentException($"Property {sourceProperty.Name} is not assignable type in {targetProperty.PropertyType.FullName}");
+
 				bindings.Add(Expression.Bind(targetProperty, Expression.Property(sourceParameter, sourceProperty)));
 			}
 
 			var initializer = Expression.MemberInit(Expression.New(typeof(TTarget)), bindings);
+
 			return Expression.Lambda<Func<TSource, TTarget>>(initializer, sourceParameter).Compile();
 		}
 	}

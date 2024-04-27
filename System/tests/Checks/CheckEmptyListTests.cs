@@ -1,6 +1,6 @@
 ﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-#nullable enable
+#nullable disable
 
 using Wangkanai.Exceptions;
 
@@ -10,9 +10,9 @@ namespace Wangkanai.Checks;
 
 public class CheckEmptyListTests
 {
-	List<int>? _null  = null!;
-	List<int>? _empty = new();
-	List<int>? _list  = new() { 1, 2, 3 };
+	List<int> _null  = null!;
+	List<int> _empty = new();
+	List<int> _list  = new() { 1, 2, 3 };
 
 	[Fact]
 	public void BasicNull()

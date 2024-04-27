@@ -8,21 +8,15 @@ namespace Wangkanai;
 public static class ThrowIfEqualExtensions
 {
 	public static bool ThrowIfEqual([NotNull] this int value, int expected)
-	{
-		return value.ThrowIfEqual<ArgumentEqualException>(expected, nameof(value));
-	}
+		=> value.ThrowIfEqual<ArgumentEqualException>(expected, nameof(value));
 
 	public static bool ThrowIfEqual<T>([NotNull] this int value, int expected)
 		where T : ArgumentException
-	{
-		return value.ThrowIfEqual<T>(expected, nameof(value));
-	}
+		=> value.ThrowIfEqual<T>(expected, nameof(value));
 
 	public static bool ThrowIfEqual<T>([NotNull] this int value, int expected, string paramName)
 		where T : ArgumentException
-	{
-		return value == expected
-			       ? throw ExceptionActivator.CreateArgumentInstance<T>(paramName)
-			       : false;
-	}
+		=> value == expected
+			   ? throw ExceptionActivator.CreateArgumentInstance<T>(paramName)
+			   : false;
 }

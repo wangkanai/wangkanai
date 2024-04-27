@@ -3,6 +3,7 @@
 using Wangkanai.Exceptions;
 
 using Xunit;
+// ReSharper disable InconsistentNaming
 
 namespace Wangkanai.Checks;
 

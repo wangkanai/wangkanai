@@ -19,17 +19,17 @@ public static class ThrowIfNullOrEmptyExtensions
 		where T : ArgumentException
 		=> value!.IsNullOrEmpty()
 			   ? throw ExceptionActivator.CreateArgumentInstance<T>(nameof(value))
-			   : value!;
+			   : value;
 
 	public static string ThrowIfNullOrEmpty<T>([NotNull] this string? value, string message)
 		where T : ArgumentException
 		=> value!.IsNullOrEmpty()
 			   ? throw ExceptionActivator.CreateArgumentInstance<T>(nameof(value), message)
-			   : value!;
+			   : value;
 
 	public static string ThrowIfNullOrEmpty<T>([NotNull] this string? value, string message,  string paramName)
 		where T : ArgumentException
 		=> value!.IsNullOrEmpty()
 			   ? throw ExceptionActivator.CreateArgumentInstance<T>(paramName, message)
-			   : value!;
+			   : value;
 }

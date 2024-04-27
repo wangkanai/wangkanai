@@ -9,8 +9,8 @@ public class CreateExceptionInstanceTests
 	[Fact]
 	public void CreateExceptionInstance()
 	{
-		var value     = 1;
-		var exception = ExceptionActivator.CreateGenericInstance<ArgumentNullException>(nameof(value));
+		const int value     = 1;
+		var       exception = ExceptionActivator.CreateGenericInstance<ArgumentNullException>(nameof(value));
 		Assert.Equal(1, value);
 		Assert.Equal(typeof(ArgumentNullException), exception.GetType());
 	}
@@ -18,8 +18,8 @@ public class CreateExceptionInstanceTests
 	[Fact]
 	public void CreateExceptionInstanceWithMessage()
 	{
-		var value     = 1;
-		var exception = ExceptionActivator.CreateGenericInstance<ArgumentNullException>(nameof(value), "message");
+		const int value     = 1;
+		var       exception = ExceptionActivator.CreateGenericInstance<ArgumentNullException>(nameof(value), "message");
 		Assert.Equal(1, value);
 		Assert.Equal(typeof(ArgumentNullException), exception.GetType());
 		Assert.Equal("message (Parameter 'value')", exception.Message);

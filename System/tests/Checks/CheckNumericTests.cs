@@ -37,22 +37,22 @@ public class CheckNumericTests
 	[Fact]
 	public void ThrowIfNegative()
 	{
-		int postitive = 1;
-		int negative  = -1;
-		int zero      = 0;
+		const int positive = 1;
+		const int negative = -1;
+		const int zero     = 0;
 
 		Assert.Throws<ArgumentNegativeException>(() => negative.ThrowIfNegative());
 		Assert.Throws<ArgumentNegativeException>(() => negative.ThrowIfNegative("message"));
 		Assert.Equal(0, zero.ThrowIfNegative());
-		Assert.Equal(1, postitive.ThrowIfNegative());
+		Assert.Equal(1, positive.ThrowIfNegative());
 	}
 
 	[Fact]
 	public void ThrowIfZero()
 	{
-		int posittive = 1;
-		int negative  = -1;
-		int zero      = 0;
+		const int posittive = 1;
+		const int negative  = -1;
+		const int zero      = 0;
 
 		Assert.Throws<ArgumentZeroException>(() => zero.ThrowIfZero());
 		Assert.Throws<ArgumentZeroException>(() => zero.ThrowIfZero("message"));
@@ -63,12 +63,12 @@ public class CheckNumericTests
 	[Fact]
 	public void ThrowIfPositive()
 	{
-		int posittive = 1;
-		int negative  = -1;
-		int zero      = 0;
+		const int positive = 1;
+		const int negative = -1;
+		const int zero     = 0;
 
-		Assert.Throws<ArgumentPositiveException>(() => posittive.ThrowIfPositive());
-		Assert.Throws<ArgumentPositiveException>(() => posittive.ThrowIfPositive("message"));
+		Assert.Throws<ArgumentPositiveException>(() => positive.ThrowIfPositive());
+		Assert.Throws<ArgumentPositiveException>(() => positive.ThrowIfPositive("message"));
 		Assert.Equal(0, zero.ThrowIfPositive());
 		Assert.Equal(-1, negative.ThrowIfPositive());
 	}

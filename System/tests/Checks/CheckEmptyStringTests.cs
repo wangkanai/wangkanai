@@ -8,8 +8,8 @@ namespace Wangkanai.Checks;
 
 public class CheckEmptyStringTests
 {
-	string _null  = null!;
-	string _empty = string.Empty;
+	private readonly string _null  = null!;
+	private readonly string _empty = string.Empty;
 
 	[Fact]
 	public void BasicNull()

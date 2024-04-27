@@ -6,77 +6,79 @@ using System.Text.RegularExpressions;
 
 using Wangkanai.Exceptions;
 
+#nullable disable
+
 namespace Wangkanai.Extensions;
 
 [DebuggerStepThrough]
 public static class StringExtensions
 {
-	public static bool IsEmpty(this string value)
+	public static bool IsEmpty([NotNull] this string value)
 		=> value == string.Empty;
 
-	public static bool IsNullOrEmpty(this string value)
+	public static bool IsNullOrEmpty([NotNull] this string value)
 		=> string.IsNullOrEmpty(value);
 
-	public static bool IsNotNullOrEmpty(this string value)
+	public static bool IsNotNullOrEmpty([NotNull] this string value)
 		=> !string.IsNullOrEmpty(value);
 
-	public static bool IsNullOrWhiteSpace(this string value)
+	public static bool IsNullOrWhiteSpace([NotNull] this string value)
 		=> string.IsNullOrWhiteSpace(value);
 
-	public static bool IsWhiteSpace(this string value)
+	public static bool IsWhiteSpace([NotNull] this string value)
 		=> !value.IsNullOrEmpty() && value.All(char.IsWhiteSpace);
 
-	public static bool IsNotNullOrWhiteSpace(this string value)
+	public static bool IsNotNullOrWhiteSpace([NotNull] this string value)
 		=> !value.IsNullOrWhiteSpace();
 
-	public static bool IsExist(this string value)
+	public static bool IsExist([NotNull] this string value)
 		=> !value.IsNullOrWhiteSpace();
 
-	public static bool IsUnicode(this string value)
+	public static bool IsUnicode([NotNull] this string value)
 		=> Encoding.ASCII.GetByteCount(value) != Encoding.UTF8.GetByteCount(value);
 
-	public static string EnsureLeadingSlash(this string value)
+	public static string EnsureLeadingSlash([NotNull] this string value)
 		=> value.IsNotNullOrWhiteSpace() && !value.StartsWith('/')
 			   ? "/" + value
 			   : value;
 
-	public static string EnsureTrailingSlash(this string value)
+	public static string EnsureTrailingSlash([NotNull] this string value)
 		=> value.IsNotNullOrWhiteSpace() && !value.EndsWith('/')
 			   ? value + "/"
 			   : value;
 
-	public static string RemoveLeadingSlash(this string value)
+	public static string RemoveLeadingSlash([NotNull] this string value)
 		=> value.IsNotNullOrWhiteSpace() && value.StartsWith('/')
 			   ? value.Substring(1)
 			   : value;
 
-	public static string RemoveTrailingSlash(this string value)
+	public static string RemoveTrailingSlash([NotNull] this string value)
 		=> value.IsNotNullOrWhiteSpace() && value.EndsWith('/')
 			   ? value.Substring(0, value.Length - 1)
 			   : value;
 
-	public static string EnsureStartsWith(this string value, char c)
+	public static string EnsureStartsWith([NotNull] this string value, char c)
 		=> value.EnsureStartsWith(c, StringComparison.Ordinal);
 
-	public static string EnsureStartsWith(this string value, char c, StringComparison comparison)
+	public static string EnsureStartsWith([NotNull] this string value, char c, StringComparison comparison)
 		=> value.ThrowIfNull().StartsWith(c.ToString(), comparison)
 			   ? value
 			   : c + value;
 
-	public static string EnsureStartsWith(this string value, char c, bool ignoreCase, CultureInfo culture)
+	public static string EnsureStartsWith([NotNull] this string value, char c, bool ignoreCase, CultureInfo culture)
 		=> value.ThrowIfNull().StartsWith(c.ToString(culture), ignoreCase, culture)
 			   ? value
 			   : c + value;
 
-	public static string EnsureEndsWith(this string value, char c)
+	public static string EnsureEndsWith([NotNull] this string value, char c)
 		=> value.EnsureEndsWith(c, StringComparison.Ordinal);
 
-	public static string EnsureEndsWith(this string value, char c, StringComparison comparison)
+	public static string EnsureEndsWith([NotNull] this string value, char c, StringComparison comparison)
 		=> value.ThrowIfNull().EndsWith(c.ToString(), comparison)
 			   ? value
 			   : value + c;
 
-	public static string EnsureEndsWith(this string value, char c, bool ignoreCase, CultureInfo culture)
+	public static string EnsureEndsWith([NotNull] this string value, char c, bool ignoreCase, CultureInfo culture)
 		=> value.ThrowIfNull().EndsWith(c.ToString(culture), ignoreCase, culture)
 			   ? value
 			   : value + c;
@@ -90,7 +92,7 @@ public static class StringExtensions
 		return match.Success ? match : Match.Empty;
 	}
 
-	public static string Left(this string value, int length)
+	public static string Left([NotNull] this string value, int length)
 	{
 		value.ThrowIfNull();
 		value.Length.ThrowIfLessThan(length, nameof(length));
@@ -98,7 +100,7 @@ public static class StringExtensions
 		return value.Substring(0, length);
 	}
 
-	public static string Right(this string value, int length)
+	public static string Right([NotNull] this string value, int length)
 	{
 		value.ThrowIfNull();
 		value.Length.ThrowIfLessThan(length);
@@ -106,19 +108,19 @@ public static class StringExtensions
 		return value.Substring(value.Length - length, length);
 	}
 
-	public static string RemoveAll(this string source, params string[] strings)
+	public static string RemoveAll([NotNull] this string source, params string[] strings)
 		=> strings.ThrowIfNull().Aggregate(source.ThrowIfNull(), ReplaceOrdinal);
 
-	private static string ReplaceOrdinal(string current, string target)
+	private static string ReplaceOrdinal([NotNull] string current, string target)
 		=> current.ThrowIfNull().Replace(target.ThrowIfNull(), "", StringComparison.Ordinal);
 
-	public static string RemovePreFixes(this string value, params string[] prefixes)
+	public static string RemovePreFixes([NotNull] this string value, params string[] prefixes)
 		=> value.ThrowIfNull().RemovePreFixes(StringComparison.OrdinalIgnoreCase, prefixes);
 
-	public static string RemovePreFixes(this string value, StringComparison comparison, params string[] prefixes)
+	public static string RemovePreFixes([NotNull] this string value, StringComparison comparison, params string[] prefixes)
 		=> value.ThrowIfNull().RemovePreFixes(true, CultureInfo.InvariantCulture, prefixes);
 
-	public static string RemovePreFixes(this string value, bool ignoreCase, CultureInfo culture, params string[] prefixes)
+	public static string RemovePreFixes([NotNull] this string value, bool ignoreCase, CultureInfo culture, params string[] prefixes)
 	{
 		value.ThrowIfNull();
 
@@ -134,13 +136,13 @@ public static class StringExtensions
 		return value;
 	}
 
-	public static string RemovePostFixes(this string value, params string[] postfixes)
+	public static string RemovePostFixes([NotNull] this string value, params string[] postfixes)
 		=> value.RemovePostFixes(StringComparison.OrdinalIgnoreCase, postfixes);
 
-	public static string RemovePostFixes(this string value, StringComparison comparison, params string[] postfixes)
+	public static string RemovePostFixes([NotNull] this string value, StringComparison comparison, params string[] postfixes)
 		=> value.RemovePostFixes(true, CultureInfo.InvariantCulture, postfixes);
 
-	public static string RemovePostFixes(this string value, bool ignoreCase, CultureInfo culture, params string[] postfixes)
+	public static string RemovePostFixes([NotNull] this string value, bool ignoreCase, CultureInfo culture, params string[] postfixes)
 	{
 		value.ThrowIfNull();
 
@@ -156,13 +158,13 @@ public static class StringExtensions
 		return value;
 	}
 
-	public static IEnumerable<string> Split(this string value, int size)
+	public static IEnumerable<string> Split([NotNull] this string value, int size)
 	{
 		value.ThrowIfNull().ThrowIfEmpty().ThrowIfNullOrWhitespace<ArgumentEmptyException>();
 		return Enumerable.Range(0, value.Length / size).Select(index => value.Substring(index * size, size));
 	}
 
-	public static T ToEnum<T>(this string value, bool ignoreCase = true)
+	public static T ToEnum<T>([NotNull] this string value, bool ignoreCase = true)
 		where T : struct
 	{
 		value.ThrowIfNull();
@@ -172,7 +174,7 @@ public static class StringExtensions
 		return (T)Enum.Parse(typeof(T), value, ignoreCase);
 	}
 
-	public static string Truncate(this string value, int maxLength)
+	public static string Truncate([NotNull] this string value, int maxLength)
 	{
 		value.ThrowIfNull();
 		value.ThrowIfEmpty();
@@ -182,7 +184,7 @@ public static class StringExtensions
 		return value.Left(maxLength);
 	}
 
-	public static string TruncateWithPostfix(this string value, int maxLength, string postfix = "...")
+	public static string TruncateWithPostfix([NotNull] this string value, int maxLength, string postfix = "...")
 	{
 		value.ThrowIfNull();
 		value.ThrowIfEmpty();
@@ -194,7 +196,7 @@ public static class StringExtensions
 			       : value.Left(maxLength - postfix.Length) + postfix;
 	}
 
-	public static string SubstringSafe(this string value, int start = 0)
+	public static string SubstringSafe([NotNull] this string value, int start = 0)
 	{
 		value.ThrowIfNull();
 		value.ThrowIfEmpty();
@@ -203,7 +205,7 @@ public static class StringExtensions
 		return value.SubstringSafe(start, value.Length);
 	}
 
-	public static string SubstringSafe(this string value, int start, int length)
+	public static string SubstringSafe([NotNull] this string value, int start, int length)
 	{
 		value.ThrowIfNull();
 		value.ThrowIfEmpty();
@@ -215,7 +217,7 @@ public static class StringExtensions
 			       : value[start..];
 	}
 
-	public static string ToTitleCase(this string value)
+	public static string ToTitleCase([NotNull] this string value)
 	{
 		value.ThrowIfNull();
 		value.ThrowIfEmpty();
@@ -224,7 +226,7 @@ public static class StringExtensions
 		return string.Concat(value.AsSpan(0, 1).ToString().ToUpper(), value.AsSpan(1));
 	}
 
-	public static string EscapeSearch(this string value)
+	public static string EscapeSearch([NotNull] this string value)
 	{
 		value.ThrowIfNull();
 		value.ThrowIfEmpty();
@@ -246,7 +248,7 @@ public static class StringExtensions
 		return result.ToString().Trim();
 	}
 
-	public static string EscapeSelector(this string value)
+	public static string EscapeSelector([NotNull] this string value)
 	{
 		value.ThrowIfNull();
 		value.ThrowIfEmpty();
@@ -256,7 +258,7 @@ public static class StringExtensions
 		return Regex.Replace(value, pattern, replacement, RegexOptions.Compiled, Constants.RegexTimeout);
 	}
 
-	public static string RemoveAccent(this string value)
+	public static string RemoveAccent([NotNull] this string value)
 	{
 		value.ThrowIfNull();
 		value.ThrowIfEmpty();
@@ -267,7 +269,7 @@ public static class StringExtensions
 		return Encoding.ASCII.GetString(bytes);
 	}
 
-	public static string GenerateSlug(this string value)
+	public static string GenerateSlug([NotNull] this string value)
 	{
 		value.ThrowIfNull();
 		value.ThrowIfEmpty();
@@ -286,10 +288,10 @@ public static class StringExtensions
 		return str;
 	}
 
-	public static bool EqualsInvariant(this string str1, string str2)
+	public static bool EqualsInvariant([NotNull] this string str1, string str2)
 		=> string.Equals(str1, str2, StringComparison.OrdinalIgnoreCase);
 
-	public static string SeparateToSpace(this IEnumerable<string> list)
+	public static string SeparateToSpace([NotNull] this IEnumerable<string> list)
 	{
 		list.ThrowIfNull();
 		list.ThrowIfEmpty();
@@ -298,7 +300,7 @@ public static class StringExtensions
 			       : string.Join(' ', list);
 	}
 
-	public static IEnumerable<string> SeparateFromSpace(this string value)
+	public static IEnumerable<string> SeparateFromSpace([NotNull] this string value)
 		=> value.ThrowIfNull()
 		        .ThrowIfEmpty()
 		        .Trim()
