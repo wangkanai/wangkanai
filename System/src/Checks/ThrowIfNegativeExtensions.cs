@@ -7,17 +7,17 @@ namespace Wangkanai;
 [DebuggerStepThrough]
 public static class ThrowIfNegativeExtensions
 {
-	public static int ThrowIfNegative(this int value)
+	public static int ThrowIfNegative([NotNull] this int value)
 		=> value.ThrowIfNegative<ArgumentNegativeException>();
 
-	public static int ThrowIfNegative(this int value, string message)
+	public static int ThrowIfNegative([NotNull] this int value, string message)
 		=> value.ThrowIfNegative<ArgumentNegativeException>(message);
 
-	public static int ThrowIfNegative<T>(this int value)
+	public static int ThrowIfNegative<T>([NotNull] this int value)
 		where T : ArgumentException
 		=> value.ThrowIfNegative<T>(nameof(value));
 
-	public static int ThrowIfNegative<T>(this int value, string message)
+	public static int ThrowIfNegative<T>([NotNull] this int value, string message)
 		where T : ArgumentException
 		=> value < 0
 			   ? throw ExceptionActivator.CreateArgumentInstance<T>(nameof(value), message)

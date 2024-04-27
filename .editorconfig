@@ -108,7 +108,7 @@ indent_size                           =4
 ij_html_do_not_indent_children_of_tags=none
 
 [*.csproj]
-indent_size                  =4
+indent_size                  =2
 ij_xml_space_inside_empty_tag=true
 
 [*.{props, targets}]

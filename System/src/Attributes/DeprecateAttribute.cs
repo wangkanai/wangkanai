@@ -2,8 +2,7 @@
 
 namespace Wangkanai;
 
-[AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Enum | AttributeTargets.Interface | AttributeTargets.Constructor | AttributeTargets.Method | AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Event | AttributeTargets.Delegate,
-	Inherited = false)]
+[AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Enum | AttributeTargets.Interface | AttributeTargets.Constructor | AttributeTargets.Method | AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Event | AttributeTargets.Delegate, Inherited = false)]
 public sealed class DeprecateAttribute : Attribute
 {
 	public string? Message { get; }
@@ -18,16 +17,15 @@ public sealed class DeprecateAttribute : Attribute
 		=> IsError = error;
 }
 
-[AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Enum | AttributeTargets.Interface | AttributeTargets.Constructor | AttributeTargets.Method | AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Event | AttributeTargets.Delegate,
-	Inherited = false)]
-public class DeprecateAttribute<TNew> : Attribute
+[AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Enum | AttributeTargets.Interface | AttributeTargets.Constructor | AttributeTargets.Method | AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Event | AttributeTargets.Delegate, Inherited = false)]
+public sealed class DeprecateAttribute<T> : Attribute
 {
 	public string? Replacement { get; }
 	public string? Message     { get; }
 	public bool    IsError     { get; }
 
 	public DeprecateAttribute()
-		=> Replacement = typeof(TNew).Name;
+		=> Replacement = typeof(T).Name;
 
 	public DeprecateAttribute(string? message)
 		=> Message = message;

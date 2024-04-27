@@ -1,6 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<!--<IsTrimmable>true</IsTrimmable>-->
-		<!--<PublishAot>true</PublishAot>-->
+		<RootNamespace>Wangkanai</RootNamespace>
 	</PropertyGroup>
 </Project>

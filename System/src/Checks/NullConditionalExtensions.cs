@@ -6,10 +6,10 @@ namespace Wangkanai;
 public static class NullConditionalExtensions
 {
 	[return: NotNull]
-	public static bool TrueIfNull<T>(this T? value)
+	public static bool TrueIfNull<T>([NotNull] this T? value)
 		=> value is null;
 
 	[return: NotNull]
-	public static bool FalseIfNull<T>(this T? value)
+	public static bool FalseIfNull<T>([NotNull] this T? value)
 		=> value is not null;
 }
