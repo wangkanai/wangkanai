@@ -16,7 +16,7 @@ public class Decorator<TService, TImplementation> : Decorator<TService>
 	public Decorator(TImplementation instance) : base(instance) { }
 }
 
-public sealed class DisposableDecorator<TService> : Decorator<TService>, IDisposable
+public class DisposableDecorator<TService> : Decorator<TService>, IDisposable
 {
 	public DisposableDecorator(TService instance) : base(instance) { }
 
