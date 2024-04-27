@@ -8,12 +8,12 @@ namespace Wangkanai;
 [DebuggerStepThrough]
 public static class ThrowIfEmptyExtensions
 {
-	public static IEnumerable<T> ThrowIfEmpty<T>([NotNull] this IEnumerable<T>? value)
+	public static IEnumerable<T> ThrowIfEmpty<T>([NotNull] this IEnumerable<T> value)
 		=> !value.ThrowIfNull().Any()
 			   ? throw ExceptionActivator.CreateArgumentInstance<ArgumentEmptyException>(nameof(value))
 			   : value;
 
-	public static IEnumerable<T> ThrowIfEmpty<T>([NotNull] this IEnumerable<T>? value, string message)
+	public static IEnumerable<T> ThrowIfEmpty<T>([NotNull] this IEnumerable<T> value, string message)
 		=> !value.ThrowIfNull().Any()
 			   ? throw ExceptionActivator.CreateArgumentInstance<ArgumentEmptyException>(nameof(value), message)
 			   : value;
