@@ -18,7 +18,7 @@ public class CheckCompareTests
 	[Fact]
 	public void ThrowIfEqualExtension()
 	{
-		var test = "test";
+		const string test = "test";
 		Assert.False(test.Length.ThrowIfEqual(8));
 		Assert.Throws<ArgumentEqualException>(() => test.Length.ThrowIfEqual(4));
 		Assert.Throws<ArgumentEqualException>(() => test.Length.ThrowIfEqual<ArgumentEqualException>(4));
@@ -35,7 +35,7 @@ public class CheckCompareTests
 	[Fact]
 	public void ThrowIfNotEqualExtension()
 	{
-		var test = "test";
+		const string test = "test";
 		Assert.True(test.Length.ThrowIfNotEqual(4));
 		Assert.Throws<ArgumentNotEqualException>(() => test.Length.ThrowIfNotEqual(8));
 		Assert.Throws<ArgumentNotEqualException>(() => test.Length.ThrowIfNotEqual<ArgumentNotEqualException>(8));
@@ -83,7 +83,7 @@ public class CheckCompareTests
 	[Fact]
 	public void ThrowIfZeroPositive()
 	{
-		var positive = 1;
+		const int positive = 1;
 		Assert.Equal(1, positive.ThrowIfZero());
 		Assert.Equal(1, positive.ThrowIfZero<ArgumentZeroException>());
 		Assert.Equal(1, positive.ThrowIfZero<ArgumentZeroException>(nameof(ThrowIfZeroPositive)));
@@ -92,7 +92,7 @@ public class CheckCompareTests
 	[Fact]
 	public void ThrowIfZeroNegative()
 	{
-		var negative = -1;
+		const int negative = -1;
 		Assert.Equal(-1, negative.ThrowIfZero());
 		Assert.Equal(-1, negative.ThrowIfZero<ArgumentZeroException>());
 		Assert.Equal(-1, negative.ThrowIfZero<ArgumentZeroException>(nameof(ThrowIfZeroNegative)));
@@ -101,7 +101,7 @@ public class CheckCompareTests
 	[Fact]
 	public void ThrowIfZeroFail()
 	{
-		var zero = 0;
+		const int zero = 0;
 		Assert.Throws<ArgumentZeroException>(() => zero.ThrowIfZero());
 		Assert.Throws<ArgumentZeroException>(() => zero.ThrowIfZero<ArgumentZeroException>());
 		Assert.Throws<ArgumentZeroException>(() => zero.ThrowIfZero<ArgumentZeroException>(nameof(ThrowIfZeroFail)));

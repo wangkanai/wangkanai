@@ -2,6 +2,8 @@
 
 using Xunit;
 
+// ReSharper disable InconsistentNaming
+
 namespace Wangkanai.Checks;
 
 public class CheckNullTests

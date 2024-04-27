@@ -17,7 +17,7 @@ public class CheckIndexRangeTests
 	[Fact]
 	public void IndexIsOutOfRange()
 	{
-		// The index must be 1 less then the upper bound.
+		// The index must be 1 less than the upper bound.
 		Assert.Throws<ArgumentOutOfRangeException>(() => 10.ThrowIfOutOfRange(0, 10));
 		Assert.Throws<ArgumentOutOfRangeException>(() => 10.ThrowIfOutOfRange(0, 9));
 		Assert.Throws<ArgumentOutOfRangeException>(() => 10.ThrowIfOutOfRange(11, 15));
