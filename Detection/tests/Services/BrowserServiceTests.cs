@@ -29,6 +29,7 @@ public sealed class BrowserServiceTests
 	[InlineData("1.0.154.53", "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US) AppleWebKit/525.19 (KHTML, like Gecko) Chrome/1.0.154.53 Safari/525.19")]
 	[InlineData("75.0.3770.90", "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.90 Atom/4.0.0.141 Safari/537.36")]
 	[InlineData("8.0.552.237", "Mozilla/5.0 (X11; U; Linux x86_64; en-US) AppleWebKit/534.10 (KHTML, like Gecko) Ubuntu/10.10 Chromium/8.0.552.237 Chrome/8.0.552.237 Safari/534.10")]
+	[InlineData("124.0.6367.71","Mozilla/5.0 (iPhone; CPU iPhone OS 17_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/124.0.6367.71 Mobile/15E148 Safari/604.1")]
 	public void Chrome(string version, string agent)
 	{
 		var resolver = MockService.BrowserService(agent);
@@ -59,6 +60,16 @@ public sealed class BrowserServiceTests
 	{
 		var resolver = MockService.BrowserService(agent);
 		Assert.Equal(Browser.Safari, resolver.Name);
+		Assert.Equal(new Version(version), resolver.Version);
+	}
+
+	[Theory]
+	[InlineData("312.2.624279232", "Mozilla/5.0 (iPhone; CPU iPhone OS 17_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) GSA/312.2.624279232 Mobile/15E148 Safari/604.1")]
+
+	public void GoogleSearchApp(string version, string agent)
+	{
+		var resolver = MockService.BrowserService(agent);
+		Assert.Equal(Browser.GoogleSearchApp, resolver.Name);
 		Assert.Equal(new Version(version), resolver.Version);
 	}
 
