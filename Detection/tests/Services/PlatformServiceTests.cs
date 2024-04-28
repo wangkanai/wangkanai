@@ -58,6 +58,17 @@ public class PlatformServiceTests
 	}
 
 	[Theory]
+	[InlineData("10.0", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")]
+	[InlineData("10.0", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")]
+	public void WindowsVersion(string version, string agent)
+	{
+		var os       = Platform.Windows;
+		var resolver = MockService.PlatformService(agent);
+		Assert.Equal(os, resolver.Name);
+		Assert.Equal(new Version(version), resolver.Version);
+	}
+
+	[Theory]
 	[InlineData("Mozilla/5.0 (Android 4.4; Mobile; rv:41.0) Gecko/41.0 Firefox/41.0")]
 	[InlineData("Mozilla/5.0 (Linux; Android 7.0; SM-T585 Build/NRD90M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36")]
 	[InlineData("Mozilla/5.0 (Linux; Android 4.4.2); Nexus 5 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Mobile Safari/537.36 OPR/20.0.1396.72047")]
