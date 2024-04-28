@@ -8,8 +8,10 @@ public class EnumerableExtensionsTests
 	private readonly IEnumerable<int>    _nullInts     = null!;
 	private readonly IEnumerable<string> _emptyStrings = Enumerable.Empty<string>();
 	private readonly IEnumerable<int>    _emptyInts    = Enumerable.Empty<int>();
-	private readonly IEnumerable<string> _existStrings = new[] { "hello" };
-	private readonly IEnumerable<int>    _existInts    = new[] { int.MinValue, Int32.MinValue };
+	private readonly IEnumerable<string> _existString  = new[] { "hello" };
+	private readonly IEnumerable<int>    _existInt     = new[] { 0, int.MinValue };
+	private readonly IEnumerable<string> _existStrings = new[] { "hello", "world" };
+	private readonly IEnumerable<int>    _existInts    = new[] { int.MinValue, int.MinValue };
 
 	[Fact]
 	public void IsNull()
@@ -23,6 +25,10 @@ public class EnumerableExtensionsTests
 		Assert.False(_emptyInts.IsNull());
 
 		// Exist
+		Assert.False(_existString.IsNull());
+		Assert.False(_existInt.IsNull());
+
+		// Exist Multiple
 		Assert.False(_existStrings.IsNull());
 		Assert.False(_existInts.IsNull());
 	}
@@ -39,8 +45,12 @@ public class EnumerableExtensionsTests
 		Assert.True(_emptyInts.IsEmpty());
 
 		// Exist
-		Assert.False(_existStrings.IsEmpty());
-		Assert.False(_existInts.IsEmpty());
+		Assert.False(_existString.IsEmpty());
+		Assert.False(_existInt.IsEmpty());
+
+		// Exist Multiple
+		Assert.False(_existStrings.IsNull());
+		Assert.False(_existInts.IsNull());
 	}
 
 	[Fact]
@@ -55,8 +65,12 @@ public class EnumerableExtensionsTests
 		Assert.True(_emptyInts.IsNullOrEmpty());
 
 		// Exist
-		Assert.False(_existStrings.IsNullOrEmpty());
-		Assert.False(_existInts.IsNullOrEmpty());
+		Assert.False(_existString.IsNullOrEmpty());
+		Assert.False(_existInt.IsNullOrEmpty());
+
+		// Exist Multiple
+		Assert.False(_existStrings.IsNull());
+		Assert.False(_existInts.IsNull());
 	}
 
 	[Fact]
