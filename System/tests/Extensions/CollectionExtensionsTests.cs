@@ -1,7 +1,5 @@
 // Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-#nullable enable
-
 using Wangkanai.Exceptions;
 
 using Xunit;
@@ -10,14 +8,12 @@ namespace Wangkanai.Extensions;
 
 public class CollectionExtensionsTests
 {
-	List<string>? _nullStrings = null;
-	List<int>?    _nullInts    = null;
-
-	List<string>? _emptyStrings = new();
-	List<int>?    _emptyInts    = new();
-
-	List<string>? _existStrings = new() { "hello" };
-	List<int>?    _existInts    = new() { int.MinValue, Int32.MinValue };
+	private readonly List<string>? _nullStrings  = null;
+	private readonly List<int>?    _nullInts     = null;
+	private readonly List<string>? _emptyStrings = [];
+	private readonly List<int>?    _emptyInts    = [];
+	private readonly List<string>? _existStrings = ["hello"];
+	private readonly List<int>?    _existInts    = [int.MinValue, Int32.MinValue];
 
 	[Fact]
 	public void IsNull()
