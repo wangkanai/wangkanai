@@ -10,16 +10,13 @@ namespace Wangkanai.Extensions;
 [DebuggerStepThrough]
 public static class CollectionExtension
 {
-	[MemberNotNull]
 	public static bool IsNull<T>(this ICollection<T>? list)
 		=> list is null;
 
-	[MemberNotNull]
-	public static bool IsEmpty<T>(this ICollection<T> list)
+	public static bool IsEmpty<T>(this ICollection<T>? list)
 		=> list is null || list.Count <= 0;
 
-	[MemberNotNull]
-	public static bool IsNullOrEmpty<T>(this ICollection<T> list)
+	public static bool IsNullOrEmpty<T>(this ICollection<T>? list)
 		=> list is null || list.Count <= 0;
 
 	/// <summary>
@@ -30,10 +27,12 @@ public static class CollectionExtension
 	/// <typeparam name="T">the collection.</typeparam>
 	/// <returns>The collection.</returns>
 	/// <exception cref="System.ArgumentNullException">An <see cref="System.ArgumentNullException"/> is thrown if <paramref name="list"/> or <paramref name="items"/> is <see langword="null"/>.</exception>
-	public static ICollection<T> AddRangeSafe<T>(this ICollection<T> list, IEnumerable<T> items)
+	public static ICollection<T> AddRangeSafe<T>(this ICollection<T> list, ICollection<T> items)
 	{
-		list.ThrowIfNull();
-		items.ThrowIfNull();
+		list.ThrowIfNull()
+		    .ThrowIfEmpty();
+		items.ThrowIfNull()
+		     .ThrowIfEmpty();
 
 		foreach (var each in items)
 			list.Add(each);
@@ -48,8 +47,8 @@ public static class CollectionExtension
 	{
 		list.ThrowIfNull()
 		    .ThrowIfEmpty();
-
-		items.ThrowIfNull();
+		items.ThrowIfNull()
+		     .ThrowIfEmpty();
 
 		foreach (var item in items)
 		{
@@ -62,10 +61,11 @@ public static class CollectionExtension
 		return list;
 	}
 
-	public static ICollection<T> Replace<T>(this ICollection<T> list, IEnumerable<T> items)
+	public static ICollection<T> Replace<T>(this ICollection<T> list, ICollection<T> items)
 	{
-		list.ThrowIfNull()
-		    .ThrowIfEmpty();
+		//list.ThrowIfNull();
+
+		//items.ThrowIfNull();
 
 		list.Clear();
 		list.AddRangeSafe(items);
