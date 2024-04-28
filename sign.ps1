@@ -30,7 +30,7 @@ $dirs=[ordered]@{
 #    22="Solver";
 }
 
-$env:OneDriveConsumer+"\powershell-env.ps1"
+$env:OneDriveConsumer+"\powershell-env.ps1" | out-null
 
 $e=[char]27
 $root="D:\Sources\wangkanai\"
