@@ -2,7 +2,7 @@ param(
     [Parameter(mandatory=$false)]
     [bool]$dryrun=$false,
     [Parameter(mandatory=$false)]
-    [string]$name="Sarin Na Wangkanai"
+    [string]$name="Open Source Developer, Sarin Na Wangkanai"
 )
 
 remove-item -path .\signed\*.*    -Force -ErrorAction SilentlyContinue
@@ -15,7 +15,7 @@ dotnet --version
 dotnet clean   .\src\ -c Release -tl
 dotnet restore .\src\
 dotnet build   .\src\ -c Release -tl
-Get-ChildItem  .\src\ -Recurse Wangkanai.*.dll | where { $_.Directory -like "*release*" } | foreach {
+Get-ChildItem  .\src\ -Recurse Wangkanai.*.dll | where { $_.Directory -like "*Release*" } | foreach {
     signtool sign /fd SHA256 /t http://timestamp.digicert.com /n $name $_.FullName
 }
 dotnet pack .\src\ -c Release -tl -o .\artifacts --include-symbols -p:SymbolPackageFormat=snupkg
