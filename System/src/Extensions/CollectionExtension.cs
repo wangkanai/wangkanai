@@ -15,11 +15,11 @@ public static class CollectionExtension
 		=> list is null;
 
 	[MemberNotNull]
-	public static bool IsEmpty<T>(this ICollection<T> list)
+	public static bool IsEmpty<T>(this ICollection<T>? list)
 		=> list is null || list.Count <= 0;
 
 	[MemberNotNull]
-	public static bool IsNullOrEmpty<T>(this ICollection<T> list)
+	public static bool IsNullOrEmpty<T>(this ICollection<T>? list)
 		=> list is null || list.Count <= 0;
 
 	/// <summary>
@@ -30,7 +30,7 @@ public static class CollectionExtension
 	/// <typeparam name="T">the collection.</typeparam>
 	/// <returns>The collection.</returns>
 	/// <exception cref="System.ArgumentNullException">An <see cref="System.ArgumentNullException"/> is thrown if <paramref name="list"/> or <paramref name="items"/> is <see langword="null"/>.</exception>
-	public static ICollection<T> AddRangeSafe<T>(this ICollection<T> list, IEnumerable<T> items)
+	public static ICollection<T> AddRangeSafe<T>(this ICollection<T> list, ICollection<T> items)
 	{
 		list.ThrowIfNull();
 		items.ThrowIfNull();
@@ -62,7 +62,7 @@ public static class CollectionExtension
 		return list;
 	}
 
-	public static ICollection<T> Replace<T>(this ICollection<T> list, IEnumerable<T> items)
+	public static ICollection<T> Replace<T>(this ICollection<T> list, ICollection<T> items)
 	{
 		list.ThrowIfNull()
 		    .ThrowIfEmpty();
