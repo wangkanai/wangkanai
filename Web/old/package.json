@@ -1,4 +1,4 @@
-﻿{
+{
     "name": "wangkanai",
     "version": "1.0.0",
     "description": "Wangkanai Web Design Framework",
@@ -29,27 +29,25 @@
         "lib-jquery-validation-unobtrusive": "cpy node_modules/jquery-validation-unobtrusive/dist/**/*.* wwwroot/lib/jquery-validation-unobtrusive/dist"
     },
     "dependencies": {
-        "bootstrap": "^5.3.0",
-        "bootstrap-icons": "^1.10.5",
-        "jquery": "^3.6.4",
-        "jquery-validation": "^1.19.5",
+        "bootstrap": "^5.3.3",
+        "bootstrap-icons": "^1.11.3",
+        "jquery": "^3.7.1",
+        "jquery-validation": "^1.20.0",
         "jquery-validation-unobtrusive": "^4.0.0",
         "rfs": "^10.0.0"
     },
     "devDependencies": {
-        "autoprefixer": "^10.4.14",
-        "clean-css-cli": "^5.6.2",
+        "autoprefixer": "^10.4.19",
+        "clean-css-cli": "^5.6.3",
         "cpy-cli": "^4.2.0",
         "find-unused-sass-variables": "^5.0.0",
-        "node-sass": "^8.0.0",
-        "nodemon": "^2.0.22",
+        "nodemon": "^3.1.0",
         "npm-run-all": "^4.1.5",
-        "postcss": "^8.4.23",
-        "postcss-cli": "^10.1.0",
-        "sass": "^1.62.1",
-        "stylelint": "^15.6.1",
-        "stylelint-config-recommended-scss": "^11.0.0",
-        "stylelint-config-twbs-bootstrap": "^10.0.0",
-        "typescript": "^5.0.4"
+        "postcss-cli": "^11.0.0",
+        "sass": "^1.75.0",
+        "stylelint": "^16.4.0",
+        "stylelint-config-recommended-scss": "^14.0.0",
+        "stylelint-config-twbs-bootstrap": "^14.1.0",
+        "typescript": "^5.4.5"
     }
 }
