@@ -1,16 +1,21 @@
 // Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
+#pragma warning disable CS8777 // Parameter must have a non-null value when exiting.
+
 namespace Wangkanai.Extensions;
 
 public static class EnumerableExtensions
 {
-	/// <summary>
-	/// Indicates whether the specified collection is null or has a length of zero.
-	/// </summary>
-	/// <param name="list">The data to test.</param>
-	/// <returns>true if the array parameter is null or has a length of zero; otherwise, false.</returns>
 	[DebuggerStepThrough]
-	public static bool IsNullOrEmpty<T>(this IEnumerable<T>? list)
+	public static bool IsNull<T>([NotNull] this IEnumerable<T>? list)
+		=> list is null;
+
+	[DebuggerStepThrough]
+	public static bool IsEmpty<T>([NotNull] this IEnumerable<T>? list)
+		=> list is null || !list.Any();
+
+	[DebuggerStepThrough]
+	public static bool IsNullOrEmpty<T>([NotNull] this IEnumerable<T>? list)
 		=> list is null || !list.Any();
 
 	[DebuggerStepThrough]
