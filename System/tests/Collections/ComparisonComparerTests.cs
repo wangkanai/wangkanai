@@ -2,8 +2,6 @@
 
 using Moq;
 
-using Xunit;
-
 namespace Wangkanai.Collections;
 
 public class ComparisonComparerTests

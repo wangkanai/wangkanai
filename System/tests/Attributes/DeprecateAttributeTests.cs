@@ -4,8 +4,6 @@ using System.Reflection;
 
 using Wangkanai.Attributes;
 
-using Xunit;
-
 namespace Wangkanai;
 
 public class DeprecateAttributeTests

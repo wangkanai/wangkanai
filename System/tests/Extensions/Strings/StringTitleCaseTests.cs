@@ -2,8 +2,6 @@
 
 using Wangkanai.Exceptions;
 
-using Xunit;
-
 namespace Wangkanai.Extensions.Strings;
 
 public class StringTitleCaseTests

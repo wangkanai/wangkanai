@@ -4,8 +4,6 @@
 
 using Wangkanai.Exceptions;
 
-using Xunit;
-
 namespace Wangkanai.Checks;
 
 public class CheckEmptyListTests

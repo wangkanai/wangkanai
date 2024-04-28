@@ -2,7 +2,7 @@
 
 namespace Wangkanai.Extensions;
 
-public static class DictionaryExtension
+public static class DictionaryExtensions
 {
 	[DebuggerStepThrough]
 	public static TValue GetValueOrThrow<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key, string exceptionMessage)

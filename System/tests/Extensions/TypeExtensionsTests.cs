@@ -4,8 +4,6 @@
 
 using System.Numerics;
 
-using Xunit;
-
 namespace Wangkanai.Extensions;
 
 public class TypeExtensionsTests

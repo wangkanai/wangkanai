@@ -3,8 +3,6 @@
 using System.ComponentModel;
 using System.Runtime.Serialization;
 
-using Xunit;
-
 namespace Wangkanai.Extensions;
 
 public class EnumExtensionsTests

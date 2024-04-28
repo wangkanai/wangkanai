@@ -4,8 +4,6 @@ using System.Reflection;
 
 using FluentAssertions;
 
-using Xunit;
-
 namespace Wangkanai.Extensions;
 
 public class AssemblyExtensionsTests
