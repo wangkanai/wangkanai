@@ -1,7 +1,5 @@
 // Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-using System.Diagnostics.CodeAnalysis;
-
 namespace Wangkanai.Extensions;
 
 /// <summary>
@@ -10,15 +8,12 @@ namespace Wangkanai.Extensions;
 [DebuggerStepThrough]
 public static class CollectionExtension
 {
-	[MemberNotNull]
 	public static bool IsNull<T>(this ICollection<T>? list)
 		=> list is null;
 
-	[MemberNotNull]
 	public static bool IsEmpty<T>(this ICollection<T>? list)
 		=> list is null || list.Count <= 0;
 
-	[MemberNotNull]
 	public static bool IsNullOrEmpty<T>(this ICollection<T>? list)
 		=> list is null || list.Count <= 0;
 
