@@ -4,7 +4,7 @@ namespace Wangkanai.Extensions;
 
 public static class FormattingExtensions
 {
-	private static readonly string[] sizes = { "B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB" };
+	private static readonly string[] Sizes = { "B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB" };
 
 	[DebuggerStepThrough]
 	public static string ToHumanReadable(this int length)
@@ -13,26 +13,26 @@ public static class FormattingExtensions
 	[DebuggerStepThrough]
 	public static string ToHumanReadable(this long length)
 	{
-		int order = 0;
-		while (length >= 1024 && order + 1 < sizes.Length)
+		var order = 0;
+		while (length >= 1024 && order + 1 < Sizes.Length)
 		{
 			order++;
 			length /= 1024;
 		}
 
-		return $"{length:0.##} {sizes[order]}";
+		return $"{length:0.##} {Sizes[order]}";
 	}
 
 	[DebuggerStepThrough]
 	public static string ToHumanReadable(this ulong length)
 	{
 		int order = 0;
-		while (length >= 1024 && order + 1 < sizes.Length)
+		while (length >= 1024 && order + 1 < Sizes.Length)
 		{
 			order++;
 			length /= 1024;
 		}
 
-		return $"{length:0.##} {sizes[order]}";
+		return $"{length:0.##} {Sizes[order]}";
 	}
 }
