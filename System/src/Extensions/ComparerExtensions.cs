@@ -11,12 +11,9 @@ public static class ComparerExtensions
 	/// </summary>
 	[DebuggerStepThrough]
 	public static IComparer<T> Reverse<T>(this IComparer<T> original)
-	{
-		if (original is ReverseComparer<T> reverse)
-			return reverse.Original;
-
-		return new ReverseComparer<T>(original);
-	}
+		=> original is ReverseComparer<T> reverse
+			   ? reverse.Original
+			   : new ReverseComparer<T>(original);
 
 	/// <summary>
 	/// Combine a comparer with another comparer to implement a compound comparer.

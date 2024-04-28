@@ -1,7 +1,5 @@
 // Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-#nullable enable
-
 using Wangkanai.Exceptions;
 
 using Xunit;
@@ -10,14 +8,12 @@ namespace Wangkanai.Extensions;
 
 public class CollectionExtensionsTests
 {
-	List<string>? _nullStrings = null;
-	List<int>?    _nullInts    = null;
-
-	List<string>? _emptyStrings = new();
-	List<int>?    _emptyInts    = new();
-
-	List<string>? _existStrings = new() { "hello" };
-	List<int>?    _existInts    = new() { int.MinValue, Int32.MinValue };
+	private readonly List<string>? _nullStrings  = null;
+	private readonly List<int>?    _nullInts     = null;
+	private readonly List<string>? _emptyStrings = [];
+	private readonly List<int>?    _emptyInts    = [];
+	private readonly List<string>? _existStrings = ["hello"];
+	private readonly List<int>?    _existInts    = [int.MinValue, Int32.MinValue];
 
 	[Fact]
 	public void IsNull()
@@ -77,8 +73,8 @@ public class CollectionExtensionsTests
 	[Fact]
 	public void RangeEmptyNull()
 	{
-		Assert.Throws<ArgumentNullException>(() => _emptyStrings!.AddRangeSafe(null!));
-		Assert.Throws<ArgumentNullException>(() => _emptyInts!.AddRangeSafe(null!));
+		Assert.Throws<ArgumentEmptyException>(() => _emptyStrings!.AddRangeSafe(null!));
+		Assert.Throws<ArgumentEmptyException>(() => _emptyInts!.AddRangeSafe(null!));
 	}
 
 	[Fact]
@@ -222,8 +218,8 @@ public class CollectionExtensionsTests
 		var strings1 = new List<string> { "hello", "world" };
 		var strings2 = new List<string> { "bonjour", "monde" };
 		var expected = new List<string> { "bonjour", "monde" };
-
-		Assert.Equal(expected, strings1.Replace(strings2));
+		var replaced = strings1.Replace(strings2);
+		Assert.Equal(expected, replaced);
 	}
 
 	[Fact]
@@ -232,7 +228,8 @@ public class CollectionExtensionsTests
 		var ints1    = new List<int> { 1, 2 };
 		var ints2    = new List<int> { 3, 4 };
 		var expected = new List<int> { 3, 4 };
+		var replaced = ints1.Replace(ints2);
 
-		Assert.Equal(expected, ints1.Replace(ints2));
+		Assert.Equal(expected, replaced);
 	}
 }

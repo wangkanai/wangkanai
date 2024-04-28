@@ -11,8 +11,7 @@ public static class ExpressionFactory
 		var inp = Expression.Parameter(typeof(TArg1), "inp");
 		try
 		{
-			return Expression.Lambda<Func<TArg1, TResult>>(body(inp), inp)
-			                 .Compile();
+			return Expression.Lambda<Func<TArg1, TResult>>(body(inp), inp).Compile();
 		}
 		catch (Exception ex)
 		{
