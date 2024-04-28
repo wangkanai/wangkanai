@@ -1,4 +1,4 @@
-﻿{
+{
     "name": "wangkanai",
     "version": "1.0.0",
     "description": "Wangkanai Web Design Framework",
@@ -41,7 +41,7 @@
         "clean-css-cli": "^5.6.3",
         "cpy-cli": "^4.2.0",
         "find-unused-sass-variables": "^5.0.0",
-        "nodemon": "^2.0.22",
+        "nodemon": "^3.1.0",
         "npm-run-all": "^4.1.5",
         "postcss-cli": "^11.0.0",
         "sass": "^1.75.0",

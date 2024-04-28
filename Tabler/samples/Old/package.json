@@ -8,18 +8,18 @@
         "lib-icons": "cpy node_modules/@tabler/icons/**/*.* wwwroot/lib/icons/"
     },
     "dependencies": {
-        "@tabler/core": "^1.0.0-beta19",
+        "@tabler/core": "^1.0.0-beta20",
         "rfs": "^10.0.0"
     },
     "devDependencies": {
-        "@typescript-eslint/eslint-plugin": "^6.8.0",
-        "@typescript-eslint/parser": "^6.8.0",
+        "@typescript-eslint/eslint-plugin": "^7.7.1",
+        "@typescript-eslint/parser": "^7.7.1",
         "cpy-cli": "^5.0.0",
-        "eslint": "^8.51.0",
+        "eslint": "^9.1.1",
         "node-sass-package-importer": "^5.3.3",
-        "nodemon": "^3.0.1",
+        "nodemon": "^3.1.0",
         "npm-run-all": "^4.1.5",
-        "rimraf": "^5.0.1",
-        "sass": "^1.63.6"
+        "rimraf": "^5.0.5",
+        "sass": "^1.75.0"
     }
 }
