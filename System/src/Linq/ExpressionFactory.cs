@@ -6,10 +6,9 @@ namespace Wangkanai.Linq;
 
 public static class ExpressionFactory
 {
-	public static Func<TArg1, TResult> Create<TArg1, TResult>(
-		Func<Expression, UnaryExpression> body)
+	public static Func<TArg1, TResult> Create<TArg1, TResult>(Func<Expression, UnaryExpression> body)
 	{
-		ParameterExpression inp = Expression.Parameter(typeof(TArg1), "inp");
+		var inp = Expression.Parameter(typeof(TArg1), "inp");
 		try
 		{
 			return Expression.Lambda<Func<TArg1, TResult>>(body(inp), inp)
@@ -21,21 +20,18 @@ public static class ExpressionFactory
 		}
 	}
 
-	public static Func<TArg1, TArg2, TResult> Create<TArg1, TArg2, TResult>(
-		Func<Expression, Expression, BinaryExpression> body)
+	public static Func<TArg1, TArg2, TResult> Create<TArg1, TArg2, TResult>(Func<Expression, Expression, BinaryExpression> body)
 		=> Create<TArg1, TArg2, TResult>(body, false);
 
-	public static Func<TArg1, TArg2, TResult> Create<TArg1, TArg2, TResult>(
-		Func<Expression, Expression, BinaryExpression> body, bool castArgsToResultOnFailure)
+	public static Func<TArg1, TArg2, TResult> Create<TArg1, TArg2, TResult>(Func<Expression, Expression, BinaryExpression> body, bool castArgsToResultOnFailure)
 	{
-		ParameterExpression lhs = Expression.Parameter(typeof(TArg1), "lhs");
-		ParameterExpression rhs = Expression.Parameter(typeof(TArg2), "rhs");
+		var lhs = Expression.Parameter(typeof(TArg1), "lhs");
+		var rhs = Expression.Parameter(typeof(TArg2), "rhs");
 		try
 		{
 			try
 			{
-				return Expression.Lambda<Func<TArg1, TArg2, TResult>>(body(lhs, rhs), lhs, rhs)
-				                 .Compile();
+				return Expression.Lambda<Func<TArg1, TArg2, TResult>>(body(lhs, rhs), lhs, rhs).Compile();
 			}
 			catch (InvalidOperationException)
 			{
@@ -51,8 +47,7 @@ public static class ExpressionFactory
 						              ? (Expression)rhs
 						              : (Expression)Expression.Convert(rhs, typeof(TResult));
 
-					return Expression.Lambda<Func<TArg1, TArg2, TResult>>(body(castLhs, castRhs), lhs, rhs)
-					                 .Compile();
+					return Expression.Lambda<Func<TArg1, TArg2, TResult>>(body(castLhs, castRhs), lhs, rhs).Compile();
 				}
 
 				throw;
