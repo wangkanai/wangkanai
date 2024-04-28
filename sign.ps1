@@ -17,7 +17,7 @@ $dirs=[ordered]@{
 #    9="Mvc";
 #    10="Webserver";
 #    11="Webmaster";
-    12="Detection";
+#    12="Detection";
 #    13="Responsive";
     14="EntityFramework";
 #    15="Identity";
@@ -29,6 +29,8 @@ $dirs=[ordered]@{
 #    21="Tabler";
 #    22="Solver";
 }
+
+$env:OneDriveConsumer+"\powershell-env.ps1" | out-null
 
 $e=[char]27
 $root="D:\Sources\wangkanai\"
