@@ -80,7 +80,7 @@ public static class EnumerableExtensions
 	/// <param name="action">The action to be performed.</param>
 	/// <remarks>If an exception occurs, the action will not be performed on the remaining items.</remarks>
 	[DebuggerStepThrough]
-	public static void Apply(this IDictionary? items, Action<object, object> action)
+	public static void Apply<T1, T2>([NotNull] this IDictionary<T1, T2>? items, Action<T1, T2> action)
 	{
 		if (items is null)
 			return;
