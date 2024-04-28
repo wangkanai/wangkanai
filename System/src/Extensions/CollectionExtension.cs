@@ -27,10 +27,8 @@ public static class CollectionExtension
 	/// <exception cref="System.ArgumentNullException">An <see cref="System.ArgumentNullException"/> is thrown if <paramref name="list"/> or <paramref name="items"/> is <see langword="null"/>.</exception>
 	public static ICollection<T> AddRangeSafe<T>(this ICollection<T> list, IEnumerable<T> items)
 	{
-		list.ThrowIfNull()
-		    .ThrowIfEmpty();
-		items.ThrowIfNull()
-		     .ThrowIfEmpty();
+		list.ThrowIfNull();
+		items.ThrowIfNull();
 
 		foreach (var each in items)
 			list.Add(each);
@@ -60,9 +58,8 @@ public static class CollectionExtension
 
 	public static ICollection<T> Replace<T>(this ICollection<T> list, IEnumerable<T> items)
 	{
-		//list.ThrowIfNull();
-
-		//items.ThrowIfNull();
+		list.ThrowIfNull().ThrowIfEmpty();
+		items.ThrowIfNull().ThrowIfEmpty();
 
 		list.Clear();
 		list.AddRangeSafe(items);

@@ -71,8 +71,8 @@ public class CollectionExtensionsTests
 	[Fact]
 	public void RangeEmptyNull()
 	{
-		Assert.Throws<ArgumentEmptyException>(() => _emptyStrings!.AddRangeSafe(null!));
-		Assert.Throws<ArgumentEmptyException>(() => _emptyInts!.AddRangeSafe(null!));
+		Assert.Throws<ArgumentNullException>(() => _emptyStrings!.AddRangeSafe(null!));
+		Assert.Throws<ArgumentNullException>(() => _emptyInts!.AddRangeSafe(null!));
 	}
 
 	[Fact]
