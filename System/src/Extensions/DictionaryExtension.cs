@@ -22,9 +22,9 @@ public static class DictionaryExtension
 	/// </summary>
 	[DebuggerStepThrough]
 	public static TValue GetValueSafe<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key, TValue defaultValue)
-		=> key != null && dictionary.TryGetValue(key, out var value)
-			   ? value
-			   : defaultValue;
+		=> key == null || !dictionary.TryGetValue(key, out var value)
+			   ? defaultValue
+			   : value;
 
 	/// <summary>
 	/// Doesn't throw an exception when the key is null
