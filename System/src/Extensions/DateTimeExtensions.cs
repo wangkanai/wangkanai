@@ -5,7 +5,7 @@ namespace Wangkanai.Extensions;
 public static class DateTimeExtensions
 {
 	public static DateTime Truncate(this DateTime dateTime, TimeSpan timeSpan)
-		=> timeSpan == TimeSpan.Zero
-			   ? dateTime // Or could throw an ArgumentException
-			   : dateTime.AddTicks(-(dateTime.Ticks % timeSpan.Ticks));
+		=> timeSpan != TimeSpan.Zero
+			   ? dateTime.AddTicks(-(dateTime.Ticks % timeSpan.Ticks)) // Or could throw an ArgumentException
+			   : dateTime;
 }
