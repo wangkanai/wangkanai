@@ -2,8 +2,6 @@
 
 using System.Numerics;
 
-using Xunit;
-
 namespace Wangkanai;
 
 public class OperatorTests

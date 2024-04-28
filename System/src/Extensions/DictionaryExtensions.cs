@@ -2,7 +2,7 @@
 
 namespace Wangkanai.Extensions;
 
-public static class DictionaryExtension
+public static class DictionaryExtensions
 {
 	[DebuggerStepThrough]
 	public static TValue GetValueOrThrow<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key, string exceptionMessage)
@@ -22,9 +22,9 @@ public static class DictionaryExtension
 	/// </summary>
 	[DebuggerStepThrough]
 	public static TValue GetValueSafe<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key, TValue defaultValue)
-		=> key != null && dictionary.TryGetValue(key, out var value)
-			   ? value
-			   : defaultValue;
+		=> key == null || !dictionary.TryGetValue(key, out var value)
+			   ? defaultValue
+			   : value;
 
 	/// <summary>
 	/// Doesn't throw an exception when the key is null

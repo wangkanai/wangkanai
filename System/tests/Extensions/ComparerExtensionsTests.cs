@@ -2,8 +2,6 @@
 
 using Wangkanai.Collections;
 
-using Xunit;
-
 namespace Wangkanai.Extensions;
 
 public class ComparerExtensionsTests

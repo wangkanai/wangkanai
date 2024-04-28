@@ -2,8 +2,6 @@
 
 using System.Globalization;
 
-using Xunit;
-
 namespace Wangkanai.Extensions.Strings;
 
 public class StringEnsureStartTests

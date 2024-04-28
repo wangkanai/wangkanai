@@ -2,8 +2,6 @@
 
 using System.Collections;
 
-using Xunit;
-
 using StringQueue = Wangkanai.Collections.RandomAccessQueue<string>;
 
 namespace Wangkanai.Collections;

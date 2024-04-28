@@ -2,8 +2,6 @@
 
 using Wangkanai.Exceptions;
 
-using Xunit;
-
 namespace Wangkanai.Extensions;
 
 public class CollectionExtensionsTests
