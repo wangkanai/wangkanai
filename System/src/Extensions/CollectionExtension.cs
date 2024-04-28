@@ -25,7 +25,7 @@ public static class CollectionExtension
 	/// <typeparam name="T">the collection.</typeparam>
 	/// <returns>The collection.</returns>
 	/// <exception cref="System.ArgumentNullException">An <see cref="System.ArgumentNullException"/> is thrown if <paramref name="list"/> or <paramref name="items"/> is <see langword="null"/>.</exception>
-	public static ICollection<T> AddRangeSafe<T>(this ICollection<T> list, ICollection<T> items)
+	public static ICollection<T> AddRangeSafe<T>(this ICollection<T> list, IEnumerable<T> items)
 	{
 		list.ThrowIfNull()
 		    .ThrowIfEmpty();
@@ -51,15 +51,14 @@ public static class CollectionExtension
 		foreach (var item in items)
 		{
 			var contains = comparer != null ? list.Contains(item, comparer) : list.Contains(item);
-
-			if (!contains)
-				list.Add(item);
+			if (contains) continue;
+			list.Add(item);
 		}
 
 		return list;
 	}
 
-	public static ICollection<T> Replace<T>(this ICollection<T> list, ICollection<T> items)
+	public static ICollection<T> Replace<T>(this ICollection<T> list, IEnumerable<T> items)
 	{
 		//list.ThrowIfNull();
 
