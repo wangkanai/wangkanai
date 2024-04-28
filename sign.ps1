@@ -6,20 +6,20 @@ param(
 )
 
 $dirs=[ordered]@{
-#   1="System";
-#   2="Validation";
-#   3="Extensions";
-#   4="Testing";
-#   5="Cryptography";
-#   6="Hosting";
-#   7="Tools";
+#    1="System";
+#    2="Validation";
+#    3="Extensions";
+#    4="Testing";
+#    5="Cryptography";
+#    6="Hosting";
+#    7="Tools";
 #    8="Domain";
 #    9="Mvc";
 #    10="Webserver";
 #    11="Webmaster";
-    12="Detection";
+#    12="Detection";
 #    13="Responsive";
-    14="EntityFramework";
+#    14="EntityFramework";
 #    15="Identity";
 #    16="Security";
 #    17="Federation";
