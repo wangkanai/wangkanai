@@ -20,7 +20,13 @@ public static class EnumerableExtensions
 
 	[DebuggerStepThrough]
 	public static bool HasDuplicates<T, TProp>(this IEnumerable<T> list, Func<T, TProp> selector)
-		=> list.Any(t => !new HashSet<TProp>().Add(selector(t)));
+	{
+		var hash = new HashSet<TProp>();
+		foreach (var value in list)
+			hash.Add(selector(value));
+		var result = hash.Count != list.Count();
+		return result;
+	}
 
 	[DebuggerStepThrough]
 	public static IEnumerable<IEnumerable<T>> Paginate<T>(this IEnumerable<T> items, int pageSize)
