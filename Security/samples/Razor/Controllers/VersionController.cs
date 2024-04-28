@@ -13,6 +13,6 @@ public class VersionController : ControllerBase
     [HttpGet]
     public async Task<string> Get()
     {
-        return await Task.FromResult(typeof(Program).GetVersion());
+        return await Task.FromResult(typeof(Program).GetVersionString());
     }
 }
