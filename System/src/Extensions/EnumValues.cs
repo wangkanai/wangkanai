@@ -10,7 +10,7 @@ public static class EnumValues<T> where T : Enum
 
 	[DebuggerStepThrough]
 	public static Dictionary<T, string> GetNames()
-		=> NamesMistake;
+		=> NamesOriginal;
 
 	[DebuggerStepThrough]
 	public static bool TryGetSingleName(T value, out string result)

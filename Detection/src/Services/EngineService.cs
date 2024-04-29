@@ -44,13 +44,14 @@ public sealed class EngineService : IEngineService
 
 	private static bool IsBlink(string agent)
 	{
-		return agent.Contains(Browser.Chrome)
-		       && agent.Contains(Engine.WebKit);
+		return agent.Contains(Browser.Chrome) &&
+		       agent.Contains(Engine.WebKit);
 	}
 
 	private static bool IsEdge(string agent, Platform os)
 	{
-		return agent.Contains(Engine.Edge) || agent.Contains("edg", StringComparison.Ordinal)
-		       && Platform.Windows.HasFlag(os);
+		return agent.Contains(Engine.Edge) ||
+		       agent.Contains("edg", StringComparison.Ordinal) &&
+		       Platform.Windows.HasFlag(os);
 	}
 }
