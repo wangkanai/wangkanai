@@ -24,8 +24,8 @@ public static class EnumValues<T> where T : Enum
 	public static bool TryGetSingleName(T value, out string result)
 		=> Names.TryGetValue(value, out result!);
 
-	[DebuggerStepThrough]
-	public static string GetName(T value)
+	[Obsolete]
+	public static string GetNameMistake(T value)
 		=> Names.TryGetValue(value, out var result)
 			   ? result
 			   : string.Join(',', value.GetFlags().Select(x => Names[x]));
@@ -41,6 +41,13 @@ public static class EnumValues<T> where T : Enum
 
 	private static Dictionary<T, string> Names
 		=> Values.ToDictionary(value => value, value => value.ToString().ToLowerInvariant());
+
+	private static Dictionary<T, string> NamesLower
+		=> Values.ToDictionary(value => value, value => value.ToString().ToLowerInvariant());
+
+	private static Dictionary<T, string> NamesUpper
+		=> Values.ToDictionary(value => value, value => value.ToString().ToUpperInvariant());
+
 
 	private static Dictionary<T, string> NamesOriginal
 		=> Values.ToDictionary(value => value, value => value.ToString());

@@ -8,15 +8,23 @@ namespace Wangkanai.Extensions;
 public static class EnumExtensions
 {
 	[DebuggerStepThrough]
-	public static string ToStringInvariant<T>(this T value) where T : Enum
-		=> EnumValues<T>.GetName(value).ToLowerInvariant();
+	public static string ToStringMistake<T>(this T value) where T : Enum
+		=> EnumValues<T>.GetNameMistake(value).ToLowerInvariant();
+
+	[DebuggerStepThrough]
+	public static string ToLowerString<T>(this T value) where T : Enum
+		=> EnumValues<T>.GetNameOriginal(value).ToLowerInvariant();
+
+	[DebuggerStepThrough]
+	public static string ToUpperString<T>(this T value) where T : Enum
+		=> EnumValues<T>.GetNameOriginal(value).ToUpperInvariant();
 
 	[DebuggerStepThrough]
 	public static bool Contains<T>(this string agent, T flags) where T : Enum
 		=> EnumValues<T>.TryGetSingleName(flags, out var value)
 			   ? agent.Contains(value, StringComparison.Ordinal)
 			   : flags.GetFlags()
-			          .Any(item => agent.Contains(ToStringInvariant(item), StringComparison.Ordinal));
+			          .Any(item => agent.Contains(ToStringMistake(item), StringComparison.Ordinal));
 
 	[DebuggerStepThrough]
 	public static IEnumerable<T> GetFlags<T>(this T value) where T : Enum

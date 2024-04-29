@@ -80,7 +80,7 @@ public sealed class BrowserService(IUserAgentService userAgentService, IEngineSe
 		if (indexOfOpera != -1)
 			return agent.Substring(indexOfOpera + "opr/".Length).ToVersion();
 
-		var name           = browser.ToStringInvariant();
+		var name           = browser.ToStringMistake();
 		var first          = agent.IndexOf(name, StringComparison.Ordinal);
 		var cut            = agent.Length > first + name.Length + 1 ? agent.Substring(first + name.Length + 1) : agent.Substring(first + name.Length);
 		var text           = "version/";
@@ -124,7 +124,7 @@ public sealed class BrowserService(IUserAgentService userAgentService, IEngineSe
 
 	private static Version GetVersionCommon(string agent, Browser browser)
 	{
-		var name  = browser.ToStringInvariant();
+		var name  = browser.ToStringMistake();
 		var first = agent.IndexOf(name, StringComparison.Ordinal);
 
 		if (first < 0 || first + name.Length > agent.Length)

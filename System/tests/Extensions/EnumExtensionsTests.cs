@@ -24,15 +24,22 @@ public class EnumExtensionsTests
 	public void ToStringInvariant()
 	{
 		var one = Country.Thailand;
-		Assert.Equal("thailand", one.ToStringInvariant());
+		Assert.Equal("thailand", one.ToStringMistake());
 	}
 
-	// [Fact]
-	// public void ToStringInvariantFlag()
-	// {
-	// 	var flags = Country.Singapore;
-	// 	Assert.Equal("thailand,singapore", flags.ToStringInvariant());
-	// }
+	[Fact]
+	public void ToLowerString_FlagSingle()
+	{
+		var flags = Country.Singapore;
+		Assert.Equal("singapore", flags.ToStringMistake());
+	}
+
+	[Fact]
+	public void ToLowerString_FlagTwo()
+	{
+		var flags = Country.Thailand | Country.Singapore;
+		Assert.Equal("thailand,singapore", flags.ToStringMistake());
+	}
 
 	[Fact]
 	public void EnumItemDescription()
@@ -54,8 +61,8 @@ public class EnumExtensionsTests
 [Flags]
 public enum Country
 {
-	[Description("ประเทศไทย")] Thailand  = 0,
-	[EnumMember(Value = "jp")] Japan     = 1 << 0,
-	[EnumMember(Value = "sg")] Singapore = 1 << 1,
-	[EnumMember(Value = "au")] Australia = 1 << 2
+	[Description("ประเทศไทย")] Thailand  = 1 << 0,
+	[EnumMember(Value = "jp")] Japan     = 1 << 1,
+	[EnumMember(Value = "sg")] Singapore = 1 << 2,
+	[EnumMember(Value = "au")] Australia = 1 << 3
 }
