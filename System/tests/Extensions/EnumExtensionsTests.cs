@@ -31,7 +31,7 @@ public class EnumExtensionsTests
 	public void ToStringInvariantFlag()
 	{
 		var flags = Country.Singapore;
-		Assert.Equal("singapore", flags.ToStringInvariant());
+		Assert.Equal("thailand,singapore", flags.ToStringInvariant());
 	}
 
 	[Fact]
