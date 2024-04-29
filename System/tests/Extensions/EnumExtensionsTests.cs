@@ -77,6 +77,70 @@ public class EnumExtensionsTests
 		Assert.Equal("jp", japan);
 		Assert.NotEqual("Japan", japan);
 	}
+
+	[Fact]
+	public void ContainsOriginal_NameSingle_FlagSingle()
+	{
+		var name = "Japan";
+		var flags = Country.Japan;
+		Assert.True(name.ContainsOriginal(flags));
+	}
+
+	[Fact]
+	public void ContainsOriginal_NameSingle_FlagTwo()
+	{
+		var name = "Japan";
+		var flags = Country.Japan | Country.Singapore;
+		Assert.True(name.ContainsOriginal(flags));
+	}
+
+	[Fact]
+	public void ContainsOriginal_NameTwo_FlagSingle()
+	{
+		var name = "Thailand,Singapore";
+		var flags = Country.Singapore;
+		Assert.True(name.ContainsOriginal(flags));
+	}
+
+	[Fact]
+	public void ContainsOriginal_NameTwo_FlagTwo()
+	{
+		var name = "Thailand,Singapore";
+		var flags = Country.Thailand | Country.Singapore;
+		Assert.True(name.ContainsOriginal(flags));
+	}
+
+	[Fact]
+	public void ContainsOriginal_NameSingle_NotIn_FlagSingle()
+	{
+		var name = "Thailand";
+		var flags = Country.Singapore;
+		Assert.False(name.ContainsOriginal(flags));
+	}
+
+	[Fact]
+	public void ContainsOriginal_NameSingle_NotIn_FlagTwo()
+	{
+		var name = "Thailand";
+		var flags = Country.Japan | Country.Singapore;
+		Assert.False(name.ContainsOriginal(flags));
+	}
+
+	[Fact]
+	public void ContainsOriginal_NameTwo_NotIn_FlagSingle()
+	{
+		var name = "Thailand,Singapore";
+		var flags = Country.Japan;
+		Assert.False(name.ContainsOriginal(flags));
+	}
+
+	[Fact]
+	public void ContainsOriginal_NameTwo_NotIn_FlagTwo()
+	{
+		var name = "Thailand,Singapore";
+		var flags = Country.Australia | Country.Japan;
+		Assert.False(name.ContainsOriginal(flags));
+	}
 }
 
 [Flags]

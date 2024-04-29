@@ -7,30 +7,51 @@ namespace Wangkanai.Extensions;
 public static class EnumExtensions
 {
 	[Obsolete]
-	public static string ToStringMistake<T>(this T value) where T : Enum
+	public static string ToStringMistake<T>(this T value)
+		where T : Enum
 		=> EnumValues<T>.GetNameMistake(value).ToLowerInvariant();
 
 	[DebuggerStepThrough]
-	public static string ToOriginalString<T>(this T value) where T : Enum
+	public static string ToOriginalString<T>(this T value)
+		where T : Enum
 		=> EnumValues<T>.GetNameOriginal(value);
 
 	[DebuggerStepThrough]
-	public static string ToLowerString<T>(this T value) where T : Enum
+	public static string ToLowerString<T>(this T value)
+		where T : Enum
 		=> EnumValues<T>.GetNameOriginal(value).ToLowerInvariant();
 
 	[DebuggerStepThrough]
-	public static string ToUpperString<T>(this T value) where T : Enum
+	public static string ToUpperString<T>(this T value)
+		where T : Enum
 		=> EnumValues<T>.GetNameOriginal(value).ToUpperInvariant();
 
 	[DebuggerStepThrough]
-	public static bool Contains<T>(this string agent, T flags) where T : Enum
-		=> EnumValues<T>.TryGetSingleName(flags, out var value)
-			   ? agent.Contains(value, StringComparison.Ordinal)
-			   : flags.GetFlags()
-			          .Any(item => agent.Contains(ToStringMistake(item), StringComparison.Ordinal));
+	public static bool ContainsOriginal<T>(this string value, T flags)
+		where T : Enum
+		=> value.ContainSingle(flags) ||
+		   flags.GetFlags().Any(item => value.Contains(item.ToOriginalString(), StringComparison.Ordinal));
 
 	[DebuggerStepThrough]
-	public static IEnumerable<T> GetFlags<T>(this T value) where T : Enum
+	public static bool ContainsUpper<T>(this string value, T flags)
+		where T : Enum
+		=> value.ContainSingle(flags) ||
+		   flags.GetFlags().Any(item => value.Contains(item.ToUpperString(), StringComparison.Ordinal));
+
+	[DebuggerStepThrough]
+	public static bool ContainsLower<T>(this string value, T flags)
+		where T : Enum
+		=> value.ContainSingle(flags) ||
+		   flags.GetFlags().Any(item => value.Contains(item.ToLowerString(), StringComparison.Ordinal));
+
+	private static bool ContainSingle<T>(this string value, T flags)
+		where T : Enum
+		=> EnumValues<T>.TryGetSingleName(flags, out var name) &&
+		   value.Contains(name, StringComparison.Ordinal);
+
+	[DebuggerStepThrough]
+	public static IEnumerable<T> GetFlags<T>(this T value)
+		where T : Enum
 		=> EnumValues<T>.GetValues()
 		                .Where(item => value.HasFlag(item));
 
@@ -49,7 +70,6 @@ public static class EnumExtensions
 		return attributes.OfType<DescriptionAttribute>()
 		                 .SingleOrDefault()
 		                 ?.Description ?? string.Empty;
-
 	}
 
 	[DebuggerStepThrough]

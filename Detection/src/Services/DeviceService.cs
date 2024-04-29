@@ -30,13 +30,13 @@ public sealed class DeviceService : IDeviceService
 			return Device.Tv;
 		if (IsMobile(agent))
 			return Device.Mobile;
-		if (agent.Contains(Device.Watch))
+		if (agent.ContainsLower(Device.Watch))
 			return Device.Watch;
-		if (agent.Contains(Device.Console))
+		if (agent.ContainsLower(Device.Console))
 			return Device.Console;
-		if (agent.Contains(Device.Car))
+		if (agent.ContainsLower(Device.Car))
 			return Device.Car;
-		if (agent.Contains(Device.IoT))
+		if (agent.ContainsLower(Device.IoT))
 			return Device.IoT;
 
 		return Device.Desktop;
@@ -55,6 +55,6 @@ public sealed class DeviceService : IDeviceService
 
 	private static bool IsTV(string agent)
 	{
-		return agent.Contains(Device.Tv) || agent.Contains("bravia", StringComparison.Ordinal);
+		return agent.ContainsLower(Device.Tv) || agent.Contains("bravia", StringComparison.Ordinal);
 	}
 }
