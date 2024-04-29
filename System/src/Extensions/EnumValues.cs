@@ -2,13 +2,13 @@
 
 namespace Wangkanai.Extensions;
 
-public static class EnumValues
-{
-	[DebuggerStepThrough]
-	public static T[] GetValues<T>(this T value)
-		where T : Enum
-		=> Enum.GetValues(typeof(T)).Cast<T>().ToArray();
-}
+// public static class EnumValues
+// {
+// 	[DebuggerStepThrough]
+// 	public static T[] GetValues<T>(this T value)
+// 		where T : Enum
+// 		=> Enum.GetValues(typeof(T)).Cast<T>().ToArray();
+// }
 
 public static class EnumValues<T> where T : Enum
 {

@@ -21,24 +21,45 @@ public class EnumExtensionsTests
 	}
 
 	[Fact]
-	public void ToStringInvariant()
-	{
-		var one = Country.Thailand;
-		Assert.Equal("thailand", one.ToStringMistake());
-	}
-
-	[Fact]
 	public void ToLowerString_FlagSingle()
 	{
 		var flags = Country.Singapore;
-		Assert.Equal("singapore", flags.ToStringMistake());
+		Assert.Equal("singapore", flags.ToLowerString());
 	}
 
 	[Fact]
 	public void ToLowerString_FlagTwo()
 	{
 		var flags = Country.Thailand | Country.Singapore;
-		Assert.Equal("thailand,singapore", flags.ToStringMistake());
+		Assert.Equal("thailand,singapore", flags.ToLowerString());
+	}
+
+	[Fact]
+	public void ToUpperString_FlagSingle()
+	{
+		var flags = Country.Singapore;
+		Assert.Equal("SINGAPORE", flags.ToUpperString());
+	}
+
+	[Fact]
+	public void ToUpperString_FlagTwo()
+	{
+		var flags = Country.Thailand | Country.Singapore;
+		Assert.Equal("THAILAND,SINGAPORE", flags.ToUpperString());
+	}
+
+	[Fact]
+	public void ToOriginalString_FlagSingle()
+	{
+		var flags = Country.Singapore;
+		Assert.Equal("Singapore", flags.ToOriginalString());
+	}
+
+	[Fact]
+	public void ToOriginalString_FlagTwo()
+	{
+		var flags = Country.Thailand | Country.Singapore;
+		Assert.Equal("Thailand,Singapore", flags.ToOriginalString());
 	}
 
 	[Fact]

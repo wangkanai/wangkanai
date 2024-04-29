@@ -1,15 +1,18 @@
 // Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using System.ComponentModel;
-using System.Runtime.Serialization;
 
 namespace Wangkanai.Extensions;
 
 public static class EnumExtensions
 {
-	[DebuggerStepThrough]
+	[Obsolete]
 	public static string ToStringMistake<T>(this T value) where T : Enum
 		=> EnumValues<T>.GetNameMistake(value).ToLowerInvariant();
+
+	[DebuggerStepThrough]
+	public static string ToOriginalString<T>(this T value) where T : Enum
+		=> EnumValues<T>.GetNameOriginal(value);
 
 	[DebuggerStepThrough]
 	public static string ToLowerString<T>(this T value) where T : Enum
