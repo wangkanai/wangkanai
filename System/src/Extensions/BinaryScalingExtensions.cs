@@ -2,9 +2,9 @@
 
 namespace Wangkanai.Extensions;
 
-public static class FormattingExtensions
+public static class BinaryScalingExtensions
 {
-	private static readonly string[] Sizes = { "B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB" };
+	private static readonly string[] Sizes = ["B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
 
 	[DebuggerStepThrough]
 	public static string ToHumanReadable(this int length)
