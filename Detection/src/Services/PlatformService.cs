@@ -81,7 +81,7 @@ public sealed class PlatformService : IPlatformService
 		if (IsX86(agent))
 			return Processor.x86;
 		if (IsPowerPC(agent, os))
-			return Processor.x86;
+			return Processor.x64;
 
 		return Processor.Others;
 	}
@@ -131,8 +131,7 @@ public sealed class PlatformService : IPlatformService
 	private static string AgentSourceStart(string agent, string prefix)
 		=> _osStartRegex.RegexMatch(agent)
 		                .Captures
-		                .FirstOrDefault()
-		                ?
+		                .FirstOrDefault()?
 		                .Value
 		                .RemoveAll(" ", "(", ")")
 		                .Split(';')
