@@ -15,10 +15,10 @@ public static class SearchExtensions
 
 	private static bool SearchContains(this ReadOnlySpan<char> search, IndexTree tree)
 		=> tree.ContainsWithAnyIn(search);
-	
-	public static IndexTree BuildIndexTree(this string[] keywords) 
+
+	public static IndexTree BuildIndexTree(this string[] keywords)
 		=> new(keywords);
 
-	public static IndexTree BuildIndexTree(this IEnumerable<string> keywords) 
+	public static IndexTree BuildIndexTree(this IEnumerable<string> keywords)
 		=> new(keywords.Distinct().ToArray());
 }

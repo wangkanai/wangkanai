@@ -1,7 +1,5 @@
 // Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-using System.Diagnostics.CodeAnalysis;
-
 namespace Wangkanai.Extensions;
 
 public static class EnumValues
@@ -14,12 +12,6 @@ public static class EnumValues
 
 public static class EnumValues<T> where T : Enum
 {
-	private static T[] Values
-		=> (T[])Enum.GetValues(typeof(T));
-
-	private static Dictionary<T, string> Names
-		=> Values.ToDictionary(value => value, value => value.ToString().ToLowerInvariant());
-
 	[DebuggerStepThrough]
 	public static T[] GetValues()
 		=> Values;
@@ -37,4 +29,19 @@ public static class EnumValues<T> where T : Enum
 		=> Names.TryGetValue(value, out var result)
 			   ? result
 			   : string.Join(',', value.GetFlags().Select(x => Names[x]));
+
+	[DebuggerStepThrough]
+	public static string GetNameOriginal(T value)
+		=> value.GetFlags().Any()
+			   ? string.Join(',', value.GetFlags().Select(x => NamesOriginal[x]))
+			   : NamesOriginal[value];
+
+	private static T[] Values
+		=> (T[])Enum.GetValues(typeof(T));
+
+	private static Dictionary<T, string> Names
+		=> Values.ToDictionary(value => value, value => value.ToString().ToLowerInvariant());
+
+	private static Dictionary<T, string> NamesOriginal
+		=> Values.ToDictionary(value => value, value => value.ToString());
 }

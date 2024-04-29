@@ -19,10 +19,28 @@ public class EnumValuesTests
 	}
 
 	[Fact]
-	public void GetValesGeneric()
+	public void GetNames()
 	{
-		var values = Fruit.Apple.GetValues();
-		Assert.Equal(4, values.Length);
+		var names = EnumValues<Fruit>.GetNames();
+		Assert.Equal(4, names.Count);
+		names.ContainsValue(nameof(Fruit.Banana));
+		names.ContainsValue(nameof(Fruit.Apple));
+		names.ContainsValue(nameof(Fruit.Orange));
+		names.ContainsValue(nameof(Fruit.Pear));
+	}
+
+	[Fact]
+	public void GetName()
+	{
+		var name = EnumValues<Fruit>.GetNameOriginal(Fruit.Apple);
+		Assert.Equal(nameof(Fruit.Apple), name);
+	}
+
+	[Fact]
+	public void GetNameFlags()
+	{
+		var names = EnumValues<Fruit>.GetNameOriginal(Fruit.Apple | Fruit.Orange);
+		Assert.Equal($"{nameof(Fruit.Apple)},{nameof(Fruit.Orange)}", names);
 	}
 }
 

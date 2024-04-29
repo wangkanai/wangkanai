@@ -9,7 +9,7 @@ public static class EnumExtensions
 {
 	[DebuggerStepThrough]
 	public static string ToStringInvariant<T>(this T value) where T : Enum
-		=> EnumValues<T>.GetName(value);
+		=> EnumValues<T>.GetName(value).ToLowerInvariant();
 
 	[DebuggerStepThrough]
 	public static bool Contains<T>(this string agent, T flags) where T : Enum

@@ -87,42 +87,28 @@ public sealed class PlatformService : IPlatformService
 	}
 
 	private static bool IsX86(string agent)
-	{
-		return agent.SearchContains(X86DeviceIndex);
-	}
+		=> agent.SearchContains(X86DeviceIndex);
 
 	private static bool IsX64(string agent)
-	{
-		return agent.SearchContains(X64DeviceIndex);
-	}
+		=> agent.SearchContains(X64DeviceIndex);
 
 	private static bool IsiOS(string agent)
-	{
-		return agent.SearchContains(IosDeviceIndex) && agent.SearchContains(AppleWebKitIndex);
-	}
+		=> agent.SearchContains(IosDeviceIndex) && agent.SearchContains(AppleWebKitIndex);
 
 	private static bool IsiPadOS(string agent)
-	{
-		return agent.SearchContains(IPadosDeviceIndex) && agent.SearchContains(AppleWebKitIndex);
-	}
+		=> agent.SearchContains(IPadosDeviceIndex) && agent.SearchContains(AppleWebKitIndex);
 
 	private static bool IsChromeOS(string agent)
-	{
-		return agent.SearchContains(ChromeOSIndex);
-	}
+		=> agent.SearchContains(ChromeOSIndex);
 
 	private static bool IsArm(string agent, Platform os)
-	{
-		return agent.Contains(Processor.ARM)
-		       || agent.Contains(Platform.Android)
-		       || os is Platform.iOS or Platform.iPadOS;
-	}
+		=> agent.Contains(Processor.ARM)
+		   || agent.Contains(Platform.Android)
+		   || os is Platform.iOS or Platform.iPadOS;
 
 	private static bool IsPowerPC(string agent, Platform os)
-	{
-		return os == Platform.Mac
-		       && !agent.Contains("ppc", StringComparison.Ordinal);
-	}
+		=> os == Platform.Mac
+		   && !agent.Contains("ppc", StringComparison.Ordinal);
 
 	#region Internal
 
@@ -152,9 +138,9 @@ public sealed class PlatformService : IPlatformService
 		                .FirstOrDefault(x => x.StartsWith(prefix, StringComparison.Ordinal));
 
 
-	private static readonly string[]  X86DeviceList     = { "i86", "i686", Processor.x86.ToStringInvariant() };
+	private static readonly string[]  X86DeviceList     = { "i86", "i686", Processor.x86.ToString() };
 	private static readonly IndexTree X86DeviceIndex    = X86DeviceList.BuildIndexTree();
-	private static readonly string[]  X64DeviceList     = { "x86_64", "wow64", Processor.x64.ToStringInvariant() };
+	private static readonly string[]  X64DeviceList     = { "x86_64", "wow64", "win64", Processor.x64.ToStringInvariant() };
 	private static readonly IndexTree X64DeviceIndex    = X64DeviceList.BuildIndexTree();
 	private static readonly string[]  IosDeviceList     = { "iphone", "ipod", Platform.iOS.ToStringInvariant() };
 	private static readonly IndexTree IosDeviceIndex    = IosDeviceList.BuildIndexTree();
