@@ -32,9 +32,9 @@ public sealed class BrowserService(IUserAgentService userAgentService, IEngineSe
 			return Browser.InternetExplorer;
 		if (IsGoogleSearchApp(agent))
 			return Browser.GoogleSearchApp;
-		if (agent.ContainsLower(Browser.Safari))
+		if (agent.ContainsMistake(Browser.Safari))
 			return Browser.Safari;
-		if (agent.ContainsLower(Browser.Firefox))
+		if (agent.ContainsMistake(Browser.Firefox))
 			return Browser.Firefox;
 
 		return Browser.Others;
@@ -139,21 +139,21 @@ public sealed class BrowserService(IUserAgentService userAgentService, IEngineSe
 
 
 	private static bool IsEdge(string agent)
-		=> agent.ContainsLower(Browser.Edge) ||
+		=> agent.ContainsMistake(Browser.Edge) ||
 		   agent.Contains("win64", StringComparison.Ordinal) &&
 		   agent.Contains("edg", StringComparison.Ordinal);
 
 	private static bool IsChrome(string agent)
-		=> agent.ContainsLower(Browser.Chrome) ||
+		=> agent.ContainsMistake(Browser.Chrome) ||
 		   agent.Contains("crios", StringComparison.Ordinal);
 
 	private static bool IsInternetExplorer(string agent, Engine engine)
 		=> engine == Engine.Trident ||
 		   agent.Contains("msie", StringComparison.Ordinal) &&
-		   !agent.ContainsLower(Browser.Opera);
+		   !agent.ContainsMistake(Browser.Opera);
 
 	private static bool IsOpera(string agent)
-		=> agent.ContainsLower(Browser.Opera) ||
+		=> agent.ContainsMistake(Browser.Opera) ||
 		   agent.Contains("opr", StringComparison.Ordinal);
 
 	private static bool IsGoogleSearchApp(string agent)

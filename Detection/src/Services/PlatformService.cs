@@ -33,17 +33,17 @@ public sealed class PlatformService : IPlatformService
 		if (string.IsNullOrEmpty(agent))
 			return Platform.Unknown;
 
-		if (agent.ContainsLower(Platform.Android))
+		if (agent.ContainsMistake(Platform.Android))
 			return Platform.Android;
-		if (agent.ContainsLower(Platform.Windows))
+		if (agent.ContainsMistake(Platform.Windows))
 			return Platform.Windows;
 		if (IsiPadOS(agent))
 			return Platform.iPadOS;
 		if (IsiOS(agent))
 			return Platform.iOS;
-		if (agent.ContainsLower(Platform.Mac))
+		if (agent.ContainsMistake(Platform.Mac))
 			return Platform.Mac;
-		if (agent.ContainsLower(Platform.Linux))
+		if (agent.ContainsMistake(Platform.Linux))
 			return Platform.Linux;
 		if (IsChromeOS(agent))
 			return Platform.ChromeOS;
@@ -102,8 +102,8 @@ public sealed class PlatformService : IPlatformService
 		=> agent.SearchContains(ChromeOSIndex);
 
 	private static bool IsArm(string agent, Platform os)
-		=> agent.ContainsLower(Processor.ARM)
-		   || agent.ContainsLower(Platform.Android)
+		=> agent.ContainsMistake(Processor.ARM)
+		   || agent.ContainsMistake(Platform.Android)
 		   || os is Platform.iOS or Platform.iPadOS;
 
 	private static bool IsPowerPC(string agent, Platform os)
