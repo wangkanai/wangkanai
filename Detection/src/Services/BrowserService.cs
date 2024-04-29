@@ -32,9 +32,9 @@ public sealed class BrowserService(IUserAgentService userAgentService, IEngineSe
 			return Browser.InternetExplorer;
 		if (IsGoogleSearchApp(agent))
 			return Browser.GoogleSearchApp;
-		if (agent.Contains(Browser.Safari))
+		if (agent.ContainsMistake(Browser.Safari))
 			return Browser.Safari;
-		if (agent.Contains(Browser.Firefox))
+		if (agent.ContainsMistake(Browser.Firefox))
 			return Browser.Firefox;
 
 		return Browser.Others;
@@ -80,7 +80,7 @@ public sealed class BrowserService(IUserAgentService userAgentService, IEngineSe
 		if (indexOfOpera != -1)
 			return agent.Substring(indexOfOpera + "opr/".Length).ToVersion();
 
-		var name           = browser.ToStringInvariant();
+		var name           = browser.ToStringMistake();
 		var first          = agent.IndexOf(name, StringComparison.Ordinal);
 		var cut            = agent.Length > first + name.Length + 1 ? agent.Substring(first + name.Length + 1) : agent.Substring(first + name.Length);
 		var text           = "version/";
@@ -124,7 +124,7 @@ public sealed class BrowserService(IUserAgentService userAgentService, IEngineSe
 
 	private static Version GetVersionCommon(string agent, Browser browser)
 	{
-		var name  = browser.ToStringInvariant();
+		var name  = browser.ToStringMistake();
 		var first = agent.IndexOf(name, StringComparison.Ordinal);
 
 		if (first < 0 || first + name.Length > agent.Length)
@@ -139,21 +139,21 @@ public sealed class BrowserService(IUserAgentService userAgentService, IEngineSe
 
 
 	private static bool IsEdge(string agent)
-		=> agent.Contains(Browser.Edge) ||
+		=> agent.ContainsMistake(Browser.Edge) ||
 		   agent.Contains("win64", StringComparison.Ordinal) &&
 		   agent.Contains("edg", StringComparison.Ordinal);
 
 	private static bool IsChrome(string agent)
-		=> agent.Contains(Browser.Chrome) ||
+		=> agent.ContainsMistake(Browser.Chrome) ||
 		   agent.Contains("crios", StringComparison.Ordinal);
 
 	private static bool IsInternetExplorer(string agent, Engine engine)
 		=> engine == Engine.Trident ||
 		   agent.Contains("msie", StringComparison.Ordinal) &&
-		   !agent.Contains(Browser.Opera);
+		   !agent.ContainsMistake(Browser.Opera);
 
 	private static bool IsOpera(string agent)
-		=> agent.Contains(Browser.Opera) ||
+		=> agent.ContainsMistake(Browser.Opera) ||
 		   agent.Contains("opr", StringComparison.Ordinal);
 
 	private static bool IsGoogleSearchApp(string agent)

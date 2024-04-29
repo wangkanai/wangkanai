@@ -21,18 +21,46 @@ public class EnumExtensionsTests
 	}
 
 	[Fact]
-	public void ToStringInvariant()
+	public void ToLowerString_FlagSingle()
 	{
-		var one = Country.Thailand;
-		Assert.Equal("thailand", one.ToStringInvariant());
+		var flags = Country.Singapore;
+		Assert.Equal("singapore", flags.ToLowerString());
 	}
 
-	// [Fact]
-	// public void ToStringInvariantFlag()
-	// {
-	// 	var flags = Country.Singapore;
-	// 	Assert.Equal("thailand,singapore", flags.ToStringInvariant());
-	// }
+	[Fact]
+	public void ToLowerString_FlagTwo()
+	{
+		var flags = Country.Thailand | Country.Singapore;
+		Assert.Equal("thailand,singapore", flags.ToLowerString());
+	}
+
+	[Fact]
+	public void ToUpperString_FlagSingle()
+	{
+		var flags = Country.Singapore;
+		Assert.Equal("SINGAPORE", flags.ToUpperString());
+	}
+
+	[Fact]
+	public void ToUpperString_FlagTwo()
+	{
+		var flags = Country.Thailand | Country.Singapore;
+		Assert.Equal("THAILAND,SINGAPORE", flags.ToUpperString());
+	}
+
+	[Fact]
+	public void ToOriginalString_FlagSingle()
+	{
+		var flags = Country.Singapore;
+		Assert.Equal("Singapore", flags.ToOriginalString());
+	}
+
+	[Fact]
+	public void ToOriginalString_FlagTwo()
+	{
+		var flags = Country.Thailand | Country.Singapore;
+		Assert.Equal("Thailand,Singapore", flags.ToOriginalString());
+	}
 
 	[Fact]
 	public void EnumItemDescription()
@@ -49,13 +77,207 @@ public class EnumExtensionsTests
 		Assert.Equal("jp", japan);
 		Assert.NotEqual("Japan", japan);
 	}
+
+	[Fact]
+	public void ContainsOriginal_NameSingle_FlagSingle()
+	{
+		var name = "Japan";
+		var flags = Country.Japan;
+		Assert.True(name.ContainsOriginal(flags));
+	}
+
+	[Fact]
+	public void ContainsOriginal_NameSingle_FlagTwo()
+	{
+		var name = "Japan";
+		var flags = Country.Japan | Country.Singapore;
+		Assert.True(name.ContainsOriginal(flags));
+	}
+
+	[Fact]
+	public void ContainsOriginal_NameTwo_FlagSingle()
+	{
+		var name = "Thailand,Singapore";
+		var flags = Country.Singapore;
+		Assert.True(name.ContainsOriginal(flags));
+	}
+
+	[Fact]
+	public void ContainsOriginal_NameTwo_FlagTwo()
+	{
+		var name = "Thailand,Singapore";
+		var flags = Country.Thailand | Country.Singapore;
+		Assert.True(name.ContainsOriginal(flags));
+	}
+
+	[Fact]
+	public void ContainsOriginal_NameSingle_NotIn_FlagSingle()
+	{
+		var name = "Thailand";
+		var flags = Country.Singapore;
+		Assert.False(name.ContainsOriginal(flags));
+	}
+
+	[Fact]
+	public void ContainsOriginal_NameSingle_NotIn_FlagTwo()
+	{
+		var name = "Thailand";
+		var flags = Country.Japan | Country.Singapore;
+		Assert.False(name.ContainsOriginal(flags));
+	}
+
+	[Fact]
+	public void ContainsOriginal_NameTwo_NotIn_FlagSingle()
+	{
+		var name = "Thailand,Singapore";
+		var flags = Country.Japan;
+		Assert.False(name.ContainsOriginal(flags));
+	}
+
+	[Fact]
+	public void ContainsOriginal_NameTwo_NotIn_FlagTwo()
+	{
+		var name = "Thailand,Singapore";
+		var flags = Country.Australia | Country.Japan;
+		Assert.False(name.ContainsOriginal(flags));
+	}
+
+
+	[Fact]
+	public void ContainsUpper_NameSingle_FlagSingle()
+	{
+		var name = "JAPAN";
+		var flags = Country.Japan;
+		Assert.True(name.ContainsUpper(flags));
+	}
+
+	[Fact]
+	public void ContainsUpper_NameSingle_FlagTwo()
+	{
+		var name = "JAPAN";
+		var flags = Country.Japan | Country.Singapore;
+		Assert.True(name.ContainsUpper(flags));
+	}
+
+	[Fact]
+	public void ContainsUpper_NameTwo_FlagSingle()
+	{
+		var name = "THAILAND,SINGAPORE";
+		var flags = Country.Singapore;
+		Assert.True(name.ContainsUpper(flags));
+	}
+
+	[Fact]
+	public void ContainsUpper_NameTwo_FlagTwo()
+	{
+		var name = "THAILAND,SINGAPORE";
+		var flags = Country.Thailand | Country.Singapore;
+		Assert.True(name.ContainsUpper(flags));
+	}
+
+	[Fact]
+	public void ContainsUpper_NameSingle_NotIn_FlagSingle()
+	{
+		var name = "THAILAND";
+		var flags = Country.Singapore;
+		Assert.False(name.ContainsUpper(flags));
+	}
+
+	[Fact]
+	public void ContainsUpper_NameSingle_NotIn_FlagTwo()
+	{
+		var name = "THAILAND";
+		var flags = Country.Japan | Country.Singapore;
+		Assert.False(name.ContainsUpper(flags));
+	}
+
+	[Fact]
+	public void ContainsUpper_NameTwo_NotIn_FlagSingle()
+	{
+		var name = "THAILAND,SINGAPORE";
+		var flags = Country.Japan;
+		Assert.False(name.ContainsUpper(flags));
+	}
+
+	[Fact]
+	public void ContainsUpper_NameTwo_NotIn_FlagTwo()
+	{
+		var name = "THAILAND,SINGAPORE";
+		var flags = Country.Australia | Country.Japan;
+		Assert.False(name.ContainsUpper(flags));
+	}
+
+	[Fact]
+	public void ContainsLower_NameSingle_FlagSingle()
+	{
+		var name = "japan";
+		var flags = Country.Japan;
+		Assert.True(name.ContainsLower(flags));
+	}
+
+	[Fact]
+	public void ContainsLower_NameSingle_FlagTwo()
+	{
+		var name = "japan";
+		var flags = Country.Japan | Country.Singapore;
+		Assert.True(name.ContainsLower(flags));
+	}
+
+	[Fact]
+	public void ContainsLower_NameTwo_FlagSingle()
+	{
+		var name = "thailand,singapore";
+		var flags = Country.Singapore;
+		Assert.True(name.ContainsLower(flags));
+	}
+
+	[Fact]
+	public void ContainsLower_NameTwo_FlagTwo()
+	{
+		var name = "thailand,singapore";
+		var flags = Country.Thailand | Country.Singapore;
+		Assert.True(name.ContainsLower(flags));
+	}
+
+	[Fact]
+	public void ContainsLower_NameSingle_NotIn_FlagSingle()
+	{
+		var name = "thailand";
+		var flags = Country.Singapore;
+		Assert.False(name.ContainsLower(flags));
+	}
+
+	[Fact]
+	public void ContainsLower_NameSingle_NotIn_FlagTwo()
+	{
+		var name = "thailand";
+		var flags = Country.Japan | Country.Singapore;
+		Assert.False(name.ContainsLower(flags));
+	}
+
+	[Fact]
+	public void ContainsLower_NameTwo_NotIn_FlagSingle()
+	{
+		var name = "thailand,singapore";
+		var flags = Country.Japan;
+		Assert.False(name.ContainsLower(flags));
+	}
+
+	[Fact]
+	public void ContainsLower_NameTwo_NotIn_FlagTwo()
+	{
+		var name = "thailand,singapore";
+		var flags = Country.Australia | Country.Japan;
+		Assert.False(name.ContainsLower(flags));
+	}
+
 }
 
 [Flags]
 public enum Country
 {
-	[Description("ประเทศไทย")] Thailand  = 0,
-	[EnumMember(Value = "jp")] Japan     = 1 << 0,
-	[EnumMember(Value = "sg")] Singapore = 1 << 1,
-	[EnumMember(Value = "au")] Australia = 1 << 2
+	[Description("ประเทศไทย")] Thailand  = 1 << 0,
+	[EnumMember(Value = "jp")] Japan     = 1 << 1,
+	[EnumMember(Value = "sg")] Singapore = 1 << 2,
+	[EnumMember(Value = "au")] Australia = 1 << 3
 }

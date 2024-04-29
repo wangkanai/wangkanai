@@ -33,17 +33,17 @@ public sealed class PlatformService : IPlatformService
 		if (string.IsNullOrEmpty(agent))
 			return Platform.Unknown;
 
-		if (agent.Contains(Platform.Android))
+		if (agent.ContainsMistake(Platform.Android))
 			return Platform.Android;
-		if (agent.Contains(Platform.Windows))
+		if (agent.ContainsMistake(Platform.Windows))
 			return Platform.Windows;
 		if (IsiPadOS(agent))
 			return Platform.iPadOS;
 		if (IsiOS(agent))
 			return Platform.iOS;
-		if (agent.Contains(Platform.Mac))
+		if (agent.ContainsMistake(Platform.Mac))
 			return Platform.Mac;
-		if (agent.Contains(Platform.Linux))
+		if (agent.ContainsMistake(Platform.Linux))
 			return Platform.Linux;
 		if (IsChromeOS(agent))
 			return Platform.ChromeOS;
@@ -102,8 +102,8 @@ public sealed class PlatformService : IPlatformService
 		=> agent.SearchContains(ChromeOSIndex);
 
 	private static bool IsArm(string agent, Platform os)
-		=> agent.Contains(Processor.ARM)
-		   || agent.Contains(Platform.Android)
+		=> agent.ContainsMistake(Processor.ARM)
+		   || agent.ContainsMistake(Platform.Android)
 		   || os is Platform.iOS or Platform.iPadOS;
 
 	private static bool IsPowerPC(string agent, Platform os)
@@ -140,11 +140,11 @@ public sealed class PlatformService : IPlatformService
 
 	private static readonly string[]  X86DeviceList     = { "i86", "i686", Processor.x86.ToString() };
 	private static readonly IndexTree X86DeviceIndex    = X86DeviceList.BuildIndexTree();
-	private static readonly string[]  X64DeviceList     = { "x86_64", "wow64", "win64", Processor.x64.ToStringInvariant() };
+	private static readonly string[]  X64DeviceList     = { "x86_64", "wow64", "win64", Processor.x64.ToStringMistake() };
 	private static readonly IndexTree X64DeviceIndex    = X64DeviceList.BuildIndexTree();
-	private static readonly string[]  IosDeviceList     = { "iphone", "ipod", Platform.iOS.ToStringInvariant() };
+	private static readonly string[]  IosDeviceList     = { "iphone", "ipod", Platform.iOS.ToStringMistake() };
 	private static readonly IndexTree IosDeviceIndex    = IosDeviceList.BuildIndexTree();
-	private static readonly string[]  IPadosDeviceList  = { "ipad", Platform.iPadOS.ToStringInvariant() };
+	private static readonly string[]  IPadosDeviceList  = { "ipad", Platform.iPadOS.ToStringMistake() };
 	private static readonly IndexTree IPadosDeviceIndex = IPadosDeviceList.BuildIndexTree();
 	private static readonly string[]  ChromeOSList      = { "cros" };
 	private static readonly IndexTree ChromeOSIndex     = ChromeOSList.BuildIndexTree();

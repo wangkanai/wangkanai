@@ -79,6 +79,7 @@ resharper_suggest_var_or_type_simple_types_highlighting               =hint
 resharper_web_config_module_not_resolved_highlighting                 =warning
 resharper_web_config_type_not_resolved_highlighting                   =warning
 resharper_web_config_wrong_module_highlighting                        =warning
+resharper_convert_to_constant_local_highlighting                      =none
 
 # Code style settings
 [.editorconfig]

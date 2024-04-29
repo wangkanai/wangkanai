@@ -9,7 +9,7 @@ namespace Wangkanai.Detection.Services;
 public sealed class CrawlerService : ICrawlerService
 {
 	private static readonly (string, Crawler)[] Crawlers =
-		EnumValues<Crawler>.GetValues().Select(x => (x.ToStringInvariant(), x)).ToArray();
+		EnumValues<Crawler>.GetValues().Select(x => (x.ToStringMistake(), x)).ToArray();
 
 	private static readonly IndexTree         CrawlerIndex = Crawlers.Select(x => x.Item1).BuildIndexTree();
 	private readonly        DetectionOptions  _options;
