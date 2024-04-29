@@ -2,14 +2,6 @@
 
 namespace Wangkanai.Extensions;
 
-// public static class EnumValues
-// {
-// 	[DebuggerStepThrough]
-// 	public static T[] GetValues<T>(this T value)
-// 		where T : Enum
-// 		=> Enum.GetValues(typeof(T)).Cast<T>().ToArray();
-// }
-
 public static class EnumValues<T> where T : Enum
 {
 	[DebuggerStepThrough]
@@ -18,17 +10,17 @@ public static class EnumValues<T> where T : Enum
 
 	[DebuggerStepThrough]
 	public static Dictionary<T, string> GetNames()
-		=> Names;
+		=> NamesMistake;
 
 	[DebuggerStepThrough]
 	public static bool TryGetSingleName(T value, out string result)
-		=> Names.TryGetValue(value, out result!);
+		=> NamesMistake.TryGetValue(value, out result!);
 
 	[Obsolete]
 	public static string GetNameMistake(T value)
-		=> Names.TryGetValue(value, out var result)
+		=> NamesMistake.TryGetValue(value, out var result)
 			   ? result
-			   : string.Join(',', value.GetFlags().Select(x => Names[x]));
+			   : string.Join(',', value.GetFlags().Select(x => NamesMistake[x]));
 
 	[DebuggerStepThrough]
 	public static string GetNameOriginal(T value)
@@ -39,7 +31,7 @@ public static class EnumValues<T> where T : Enum
 	private static T[] Values
 		=> (T[])Enum.GetValues(typeof(T));
 
-	private static Dictionary<T, string> Names
+	private static Dictionary<T, string> NamesMistake
 		=> Values.ToDictionary(value => value, value => value.ToString().ToLowerInvariant());
 
 	private static Dictionary<T, string> NamesLower
@@ -47,7 +39,6 @@ public static class EnumValues<T> where T : Enum
 
 	private static Dictionary<T, string> NamesUpper
 		=> Values.ToDictionary(value => value, value => value.ToString().ToUpperInvariant());
-
 
 	private static Dictionary<T, string> NamesOriginal
 		=> Values.ToDictionary(value => value, value => value.ToString());
