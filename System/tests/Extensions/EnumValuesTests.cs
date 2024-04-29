@@ -32,14 +32,14 @@ public class EnumValuesTests
 	[Fact]
 	public void GetName()
 	{
-		var name = EnumValues<Fruit>.GetName(Fruit.Apple);
+		var name = EnumValues<Fruit>.GetNameOriginal(Fruit.Apple);
 		Assert.Equal(nameof(Fruit.Apple), name);
 	}
 
 	[Fact]
 	public void GetNameFlags()
 	{
-		var names = EnumValues<Fruit>.GetName(Fruit.Apple | Fruit.Orange);
+		var names = EnumValues<Fruit>.GetNameOriginal(Fruit.Apple | Fruit.Orange);
 		Assert.Equal($"{nameof(Fruit.Apple)},{nameof(Fruit.Orange)}", names);
 	}
 }

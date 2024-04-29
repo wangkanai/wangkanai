@@ -30,9 +30,18 @@ public static class EnumValues<T> where T : Enum
 			   ? result
 			   : string.Join(',', value.GetFlags().Select(x => Names[x]));
 
+	[DebuggerStepThrough]
+	public static string GetNameOriginal(T value)
+		=> value.GetFlags().Count()>1
+			   ? NamesOriginal.TryGetValue(value, out var result)
+			   : string.Join(',', value.GetFlags().Select(x => Names[x]));
+
 	private static T[] Values
 		=> (T[])Enum.GetValues(typeof(T));
 
 	private static Dictionary<T, string> Names
 		=> Values.ToDictionary(value => value, value => value.ToString().ToLowerInvariant());
+
+	private static Dictionary<T, string> NamesOriginal
+		=> Values.ToDictionary(value => value, value => value.ToString());
 }
