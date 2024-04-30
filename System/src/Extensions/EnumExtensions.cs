@@ -58,7 +58,7 @@ public static class EnumExtensions
 
 	private static bool ContainSingle<T>(this string value, T flags)
 		where T : Enum
-		=> EnumValues<T>.TryGetSingleNameMistake(flags, out var name) &&
+		=> EnumValues<T>.TryGetSingleName(flags, out var name) &&
 		   value.Contains(name, StringComparison.Ordinal);
 
 	[DebuggerStepThrough]

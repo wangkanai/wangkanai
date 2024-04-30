@@ -35,9 +35,8 @@ public sealed class CrawlerService : ICrawlerService
 		if (string.IsNullOrEmpty(agent))
 			return Crawler.Unknown;
 
-		foreach (var crawler in Crawlers)
-			if (agent.Contains(crawler.Key))
-				return crawler.Value;
+		foreach (var crawler in Crawlers.Where(crawler => agent.Contains(crawler.Key)))
+			return crawler.Value;
 
 		return HasOthers(agent, _options.Crawler.Others)
 			       ? Crawler.Others
