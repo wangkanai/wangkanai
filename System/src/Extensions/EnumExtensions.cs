@@ -6,10 +6,10 @@ namespace Wangkanai.Extensions;
 
 public static class EnumExtensions
 {
-	[Obsolete]
-	public static string ToStringMistake<T>(this T value)
-		where T : Enum
-		=> EnumValues<T>.GetNameMistake(value).ToLowerInvariant();
+	// [Obsolete]
+	// public static string ToStringMistake<T>(this T value)
+	// 	where T : Enum
+	// 	=> EnumValues<T>.GetNameMistake(value).ToLowerInvariant();
 
 	[DebuggerStepThrough]
 	public static string ToOriginalString<T>(this T value)

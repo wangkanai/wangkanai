@@ -140,11 +140,12 @@ public sealed class PlatformService : IPlatformService
 
 	private static readonly string[]  X86DeviceList     = { "i86", "i686", Processor.x86.ToString() };
 	private static readonly IndexTree X86DeviceIndex    = X86DeviceList.BuildIndexTree();
-	private static readonly string[]  X64DeviceList     = { "x86_64", "wow64", "win64", Processor.x64.ToStringMistake() };
+	private static readonly string[]  X64DeviceList     = { "x86_64", "wow64", "win64", Processor.x64.ToLowerString() };
 	private static readonly IndexTree X64DeviceIndex    = X64DeviceList.BuildIndexTree();
-	private static readonly string[]  IosDeviceList     = { "iphone", "ipod", Platform.iOS.ToStringMistake() };
+	private static readonly string[]  IosDeviceList     = { "iphone", "ipod", Platform.iOS.ToLowerString() };
 	private static readonly IndexTree IosDeviceIndex    = IosDeviceList.BuildIndexTree();
-	private static readonly string[]  IPadosDeviceList  = { "ipad", Platform.iPadOS.ToStringMistake() };
+	private static readonly string[]  IPadosDeviceList  = { "ipad", Platform.iPadOS.ToLowerString() };
+
 	private static readonly IndexTree IPadosDeviceIndex = IPadosDeviceList.BuildIndexTree();
 	private static readonly string[]  ChromeOSList      = { "cros" };
 	private static readonly IndexTree ChromeOSIndex     = ChromeOSList.BuildIndexTree();
