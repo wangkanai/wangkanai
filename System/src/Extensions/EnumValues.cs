@@ -20,11 +20,11 @@ public static class EnumValues<T> where T : Enum
 	public static bool TryGetSingleName(T value, out string result)
 		=> NamesOriginal.TryGetValue(value, out result!);
 
-	[Obsolete]
-	public static string GetNameMistake(T value)
-		=> NamesMistake.TryGetValue(value, out var result)
-			   ? result
-			   : string.Join(',', value.GetFlags().Select(x => NamesMistake[x]));
+	// [Obsolete]
+	// public static string GetNameMistake(T value)
+	// 	=> NamesMistake.TryGetValue(value, out var result)
+	// 		   ? result
+	// 		   : string.Join(',', value.GetFlags().Select(x => NamesMistake[x]));
 
 	[DebuggerStepThrough]
 	public static string GetNameOriginal(T value)
