@@ -10,14 +10,14 @@ public static class TreeExtensions
 		yield return node;
 
 		var childNodes = children(node);
-		if (children.TrueIfNull()) 
+		if (children.TrueIfNull())
 			yield break;
 		foreach (var child in childNodes.SelectMany(n => n.Traverse(children)))
 			yield return child;
 	}
 
 	[DebuggerStepThrough]
-	public static IEnumerable<T> GetAncestors<T>(T item, Func<T, T> getParentFunc)
+	public static IEnumerable<T> GetAncestors<T>(this T item, Func<T, T> getParentFunc)
 	{
 		getParentFunc.ThrowIfNull();
 
