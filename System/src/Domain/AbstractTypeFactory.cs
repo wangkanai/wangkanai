@@ -63,20 +63,11 @@ public static class AbstractTypeFactory<TBaseType>
 		where T : TBaseType
 		=> (T)TryCreateInstance(typeof(T).Name)!;
 
-	public static TBaseType TryCreateInstance(string typeName, TBaseType defaultObj)
-	{
-		TBaseType result   = defaultObj;
-		var       typeInfo = FindTypeInfoByName(typeName);
-		if (typeInfo.FalseIfNull())
-			result = TryCreateInstance(typeName);
-
-		return result;
-	}
 
 	public static TBaseType TryCreateInstance(string typeName)
 	{
-		TBaseType result;
-		var       typeInfo = FindTypeInfoByName(typeName);
+		TBaseType                  result;
+		GenericTypeInfo<TBaseType> typeInfo = FindTypeInfoByName(typeName);
 		if (typeInfo.FalseIfNull())
 		{
 			if (typeInfo.Factory != null)
@@ -98,12 +89,13 @@ public static class AbstractTypeFactory<TBaseType>
 		return result;
 	}
 
+
 	public static GenericTypeInfo<TBaseType> FindTypeInfoByName(string typeName)
 	{
 		// Try find first direct type match from registered types
 		var result = TypeInfos.Find(x => x.TypeName.EqualsInvariant(typeName));
 		// Then need to find in inheritance chain from registered types
-		if (result.TrueIfNull())
+		if (result != null)
 			result = TypeInfos.First(x => x.IsAssignableTo(typeName));
 
 		return result!;

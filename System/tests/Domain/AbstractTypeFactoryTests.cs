@@ -55,6 +55,73 @@ public class AbstractTypeFactoryTests
 		Assert.DoesNotContain(child.Type, parent.GetAllSubclasses());
 	}
 
+	[Fact]
+	public void OverrideType()
+	{
+		var parent = AbstractTypeFactory<Parent>.RegisterType<Parent>();
+		var child  = AbstractTypeFactory<Child>.RegisterType<Child>();
+		var result = AbstractTypeFactory<Parent>.OverrideType<Parent, Child>();
+		Assert.Equal(child.Type, result.Type);
+		Assert.Equal(child.TypeName, result.TypeName);
+	}
+
+	[Fact]
+	public void TryCreateInstance()
+	{
+		var parent = AbstractTypeFactory<Parent>.RegisterType<Parent>();
+		var child  = AbstractTypeFactory<Child>.RegisterType<Child>();
+		var result = AbstractTypeFactory<Parent>.TryCreateInstance();
+		Assert.NotNull(result);
+		Assert.IsType<Parent>(result);
+	}
+
+	[Fact]
+	public void TryCreateInstance_Generic()
+	{
+		var parent = AbstractTypeFactory<Parent>.RegisterType<Parent>();
+		var child  = AbstractTypeFactory<Child>.RegisterType<Child>();
+		var result = AbstractTypeFactory<Parent>.TryCreateInstance<Parent>();
+		Assert.NotNull(result);
+		Assert.IsType<Parent>(result);
+	}
+
+
+	[Fact]
+	public void TryCreateInstance_TypeName()
+	{
+		var parent = AbstractTypeFactory<Parent>.RegisterType<Parent>();
+		var child  = AbstractTypeFactory<Child>.RegisterType<Child>();
+		var result = AbstractTypeFactory<Parent>.TryCreateInstance("Parent");
+		Assert.NotNull(result);
+		Assert.IsType<Parent>(result);
+	}
+
+	[Fact]
+	public void FindTypeInfoByName_ShouldReturnTypeInfo_WhenTypeIsRegistered()
+	{
+		// Arrange
+		AbstractTypeFactory<object>.RegisterType<string>();
+
+		// Act
+		var result = AbstractTypeFactory<object>.FindTypeInfoByName("String");
+
+		// Assert
+		Assert.Equal(typeof(string), result.Type);
+	}
+
+	[Fact]
+	public void FindTypeInfoByName_ShouldReturnNull_WhenTypeIsNotRegistered()
+	{
+		// Arrange
+		AbstractTypeFactory<object>.RegisterType<string>();
+
+		// Act
+		var result = AbstractTypeFactory<object>.FindTypeInfoByName("Int");
+
+		// Assert
+		Assert.Null(result);
+	}
+
 	private void RegisterType<T>(GenericTypeInfo<T> expected, GenericTypeInfo<T> actual)
 	{
 		Assert.Equal(expected.Type, actual.Type);
