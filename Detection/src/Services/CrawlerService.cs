@@ -8,10 +8,12 @@ namespace Wangkanai.Detection.Services;
 
 public sealed class CrawlerService : ICrawlerService
 {
-	private static readonly (string, Crawler)[] Crawlers     = EnumValues<Crawler>.GetValues().Select(x => (x.ToLowerString(), x)).ToArray();
-	private static readonly IndexTree           CrawlerIndex = Crawlers.Select(x => x.Item1).BuildIndexTree();
-	private readonly        DetectionOptions    _options;
-	private readonly        IUserAgentService   _useragent;
+	private static readonly Dictionary<string, Crawler> Crawlers     = EnumValues<Crawler>.GetValues()
+	                                                                                      .Select(x => (x.ToLowerString(), x))
+	                                                                                      .ToDictionary(x => x.Item1, x => x.Item2);
+	private static readonly IndexTree                   CrawlerIndex = Crawlers.Select(x => x.Key).BuildIndexTree();
+	private readonly        DetectionOptions            _options;
+	private readonly        IUserAgentService           _useragent;
 
 	private Crawler? _name;
 	private Version? _version;
@@ -34,8 +36,8 @@ public sealed class CrawlerService : ICrawlerService
 			return Crawler.Unknown;
 
 		foreach (var crawler in Crawlers)
-			if (agent.Contains(crawler.Item1))
-				return crawler.Item2;
+			if (agent.Contains(crawler.Key))
+				return crawler.Value;
 
 		return HasOthers(agent, _options.Crawler.Others)
 			       ? Crawler.Others

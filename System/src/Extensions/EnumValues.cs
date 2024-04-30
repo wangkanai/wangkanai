@@ -28,9 +28,9 @@ public static class EnumValues<T> where T : Enum
 
 	[DebuggerStepThrough]
 	public static string GetNameOriginal(T value)
-		=> value.GetFlags().Any()
-			   ? string.Join(',', value.GetFlags().Select(x => NamesOriginal[x]))
-			   : NamesOriginal[value];
+		=> NamesOriginal.TryGetValue(value, out var result)
+			   ? result
+			   : string.Join(',', value.GetFlags().Select(x => NamesOriginal[x]));
 
 	private static T[] Values
 		=> (T[])Enum.GetValues(typeof(T));
