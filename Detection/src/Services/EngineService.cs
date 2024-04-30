@@ -31,26 +31,26 @@ public sealed class EngineService : IEngineService
 			return Engine.Edge;
 		if (IsBlink(agent))
 			return Engine.Blink;
-		if (agent.ContainsMistake(Engine.WebKit))
+		if (agent.ContainsLower(Engine.WebKit))
 			return Engine.WebKit;
-		if (agent.ContainsMistake(Engine.Trident))
+		if (agent.ContainsLower(Engine.Trident))
 			return Engine.Trident;
-		if (agent.ContainsMistake(Engine.Gecko))
+		if (agent.ContainsLower(Engine.Gecko))
 			return Engine.Gecko;
-		if (agent.ContainsMistake(Engine.Servo))
+		if (agent.ContainsLower(Engine.Servo))
 			return Engine.Servo;
 		return Engine.Others;
 	}
 
 	private static bool IsBlink(string agent)
 	{
-		return agent.ContainsMistake(Browser.Chrome) &&
-		       agent.ContainsMistake(Engine.WebKit);
+		return agent.ContainsLower(Browser.Chrome) &&
+		       agent.ContainsLower(Engine.WebKit);
 	}
 
 	private static bool IsEdge(string agent, Platform os)
 	{
-		return agent.ContainsMistake(Engine.Edge) ||
+		return agent.ContainsLower(Engine.Edge) ||
 		       agent.Contains("edg", StringComparison.Ordinal) &&
 		       Platform.Windows.HasFlag(os);
 	}
