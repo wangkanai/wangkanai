@@ -45,35 +45,23 @@ public sealed class BrowserService(IUserAgentService userAgentService, IEngineSe
 		var agent   = userAgentService.UserAgent.ToLower();
 		var browser = Name;
 
-		if (string.IsNullOrEmpty(agent))
-			return new Version();
-
 		if (browser == Browser.Edge && !agent.Contains("edge", StringComparison.Ordinal))
 			return GetVersionOf(agent, "edg");
-
 		if (browser == Browser.Edge)
 			return GetVersionEdge(agent);
-
 		if (browser == Browser.GoogleSearchApp)
 			return GetVersionGoogleSearchApp(agent);
-
 		if (browser == Browser.Chrome && agent.Contains("crios", StringComparison.Ordinal))
 			return GetVersionChromeOs(agent);
-
 		if (browser == Browser.Chrome)
 			return GetVersionChrome(agent);
-
 		if (browser == Browser.Safari && agent.Contains("version", StringComparison.Ordinal))
 			return GetVersionSafariVersion(agent);
-
 		if (browser == Browser.Safari)
 			return GetVersionSafariSafari(agent);
-
 		if (browser == Browser.Opera)
 			return GetVersionOpera(agent, browser);
-
-		if (agent.Contains("rv:11.0", StringComparison.Ordinal) ||
-		    agent.Contains("ie 11.0", StringComparison.Ordinal))
+		if (agent.Contains("rv:11.0", StringComparison.Ordinal) || agent.Contains("ie 11.0", StringComparison.Ordinal))
 			return new Version(11, 0);
 		if (agent.Contains("msie 10", StringComparison.Ordinal))
 			return new Version(10, 0);
