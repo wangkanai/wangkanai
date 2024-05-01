@@ -3,7 +3,7 @@
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
     <FrameworkVersion>8.0.4</FrameworkVersion>
     <AspNetCoreVersion>8.0.0</AspNetCoreVersion>
-    <ExtensionsVersion>8.0.1</ExtensionsVersion>
+    <ExtensionsVersion>8.0.0</ExtensionsVersion>
     <EntityFrameworkVersion>8.0.4</EntityFrameworkVersion>
     <IdentityModelVersion>7.5.1</IdentityModelVersion>
   </PropertyGroup>
