@@ -91,7 +91,7 @@ public sealed class BrowserServiceTests
 	[InlineData("79.0.309.43", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.74 Safari/537.36 Edg/79.0.309.43")]
 	[InlineData("85.0.564.51", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36 Edg/85.0.564.51")]
 	[InlineData("96.0.1054.53", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, likeGecko) Chrome/96.0.4664.93 Safari/537.36 Edg/96.0.1054.53")]
-	[InlineData("120.0.0","Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36 EdgA/120.0.0.0")]
+	[InlineData("120.0.0.0","Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36 EdgA/120.0.0.0")]
 	public void Edge(string version, string agent)
 	{
 		var resolver = MockService.BrowserService(agent);
