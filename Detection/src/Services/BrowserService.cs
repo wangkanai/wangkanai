@@ -93,7 +93,7 @@ public sealed class BrowserService(IUserAgentService userAgentService, IEngineSe
 	private static Version GetVersionOf(string agent, string value)
 	{
 		var version      = agent.Substring(agent.IndexOf($"{value}/", StringComparison.Ordinal) + $"{value}/".Length);
-		var indexOfSpace = version.IndexOf(" ", StringComparison.Ordinal);
+		var indexOfSpace = version.IndexOf(' ');
 
 		if (indexOfSpace != -1)
 			version = version.Substring(0, indexOfSpace);
@@ -104,7 +104,7 @@ public sealed class BrowserService(IUserAgentService userAgentService, IEngineSe
 	private static Version GetVersionEdge(string agent)
 	{
 		var version      = agent.Substring(agent.IndexOf("edge/", StringComparison.Ordinal) + "edge/".Length);
-		var indexOfSpace = version.IndexOf(" ", StringComparison.Ordinal);
+		var indexOfSpace = version.IndexOf(' ');
 
 		if (indexOfSpace != -1)
 			version = version.Substring(0, indexOfSpace);
@@ -115,7 +115,7 @@ public sealed class BrowserService(IUserAgentService userAgentService, IEngineSe
 	private static Version GetVersionGoogleSearchApp(string agent)
 	{
 		var version      = agent.Substring(agent.IndexOf("gsa/", StringComparison.Ordinal) + "gsa/".Length);
-		var indexOfSpace = version.IndexOf(" ", StringComparison.Ordinal);
+		var indexOfSpace = version.IndexOf(' ');
 
 		if (indexOfSpace != -1)
 			version = version.Substring(0, indexOfSpace);
@@ -126,7 +126,7 @@ public sealed class BrowserService(IUserAgentService userAgentService, IEngineSe
 	private static Version GetVersionSafariVersion(string agent)
 	{
 		var version      = agent.Substring(agent.IndexOf("version/", StringComparison.Ordinal) + "version/".Length);
-		var indexOfSpace = version.IndexOf(" ", StringComparison.Ordinal);
+		var indexOfSpace = version.IndexOf(' ');
 		if (indexOfSpace != -1)
 			version = version.Substring(0, indexOfSpace);
 
@@ -148,7 +148,7 @@ public sealed class BrowserService(IUserAgentService userAgentService, IEngineSe
 	private static Version GetVersionChromeOs(string agent)
 	{
 		var version      = agent.Substring(agent.IndexOf("crios/", StringComparison.Ordinal) + "crios/".Length);
-		var indexOfSpace = version.IndexOf(" ", StringComparison.Ordinal);
+		var indexOfSpace = version.IndexOf(' ');
 
 		if (indexOfSpace != -1)
 			version = version.Substring(0, indexOfSpace);
@@ -159,7 +159,7 @@ public sealed class BrowserService(IUserAgentService userAgentService, IEngineSe
 	private static Version GetVersionChrome(string agent)
 	{
 		var version      = agent.Substring(agent.IndexOf("chrome/", StringComparison.Ordinal) + "chrome/".Length);
-		var indexOfSpace = version.IndexOf(" ", StringComparison.Ordinal);
+		var indexOfSpace = version.IndexOf(' ');
 
 		if (indexOfSpace != -1)
 			version = version.Substring(0, indexOfSpace);
@@ -177,7 +177,7 @@ public sealed class BrowserService(IUserAgentService userAgentService, IEngineSe
 
 		var cut = agent.Length > first + name.Length + 1 ? agent.Substring(first + name.Length + 1) : agent.Substring(first + name.Length);
 
-		var indexOfSpace = cut.IndexOf(' ', StringComparison.Ordinal);
+		var indexOfSpace = cut.IndexOf(' ');
 		var version      = indexOfSpace != -1 ? cut.Substring(0, indexOfSpace) : cut;
 		return version.ToVersion();
 	}
