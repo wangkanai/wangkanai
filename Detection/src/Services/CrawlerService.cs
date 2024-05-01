@@ -8,13 +8,8 @@ namespace Wangkanai.Detection.Services;
 
 public sealed class CrawlerService : ICrawlerService
 {
-	private static readonly Dictionary<string, Crawler> Crawlers = EnumValues<Crawler>.GetValues()
-	                                                                                  .Select(x => (x.ToLowerString(), x))
-	                                                                                  .ToDictionary(x => x.Item1, x => x.Item2);
-
-	private static readonly IndexTree         CrawlerIndex = Crawlers.Select(x => x.Key).BuildIndexTree();
-	private readonly        DetectionOptions  _options;
-	private readonly        IUserAgentService _useragent;
+	private readonly DetectionOptions  _options;
+	private readonly IUserAgentService _useragent;
 
 	private Crawler? _name;
 	private Version? _version;
@@ -28,6 +23,8 @@ public sealed class CrawlerService : ICrawlerService
 	public bool    IsCrawler => Name != Crawler.Unknown;
 	public Crawler Name      => _name ??= GetCrawler();
 	public Version Version   => _version ??= GetVersion();
+
+
 
 	private Crawler GetCrawler()
 	{
@@ -63,11 +60,17 @@ public sealed class CrawlerService : ICrawlerService
 		return version.ToVersion();
 	}
 
-	private static bool HasOthers(string agent, IEnumerable<string> others)
+	private  Dictionary<string, Crawler> Crawlers
+		=> EnumValues<Crawler>.GetValues().Select(x => (x.ToLowerString(), x)).ToDictionary(x => x.Item1, x => x.Item2);
+
+	private IndexTree CrawlerIndex
+		=> Crawlers.Select(x => x.Key).BuildIndexTree();
+
+	private bool HasOthers(string agent, IEnumerable<string> others)
 		=> agent.Contains("bot", StringComparison.Ordinal) ||
 		   others.Any(x => agent.Contains(x, StringComparison.Ordinal));
 
-	private static string FindBot(string agent)
+	private string FindBot(string agent)
 		=> agent.Split(' ')
 		        .FirstOrDefault(x => x.SearchContains(CrawlerIndex)) ?? string.Empty;
 }
