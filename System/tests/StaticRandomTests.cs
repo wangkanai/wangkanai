@@ -16,10 +16,8 @@ public class StaticRandomTests
 
 		Parallel.ForEach(grabbers, (grabber, state, index) => {
 			for (var local = index + 1; local < grabbers.Length; local++)
-			{
 				if (grabbers[index].Equals(grabbers[local]))
 					Assert.Fail("Random number generator is not random");
-			}
 		});
 	}
 
@@ -29,10 +27,73 @@ public class StaticRandomTests
 		for (var i = 0; i < 10; i++)
 		{
 			var d = StaticRandom.NextDouble();
-			if ((int)d != d)
+			if (System.Math.Abs((int)d - d) > 0)
 				return;
 		}
 
 		Assert.Fail("NextDouble shouldn't return integer");
+	}
+
+	[Fact]
+	public void NextShouldReturnDifferentValues()
+	{
+		var values = new int[100];
+		for (var i = 0; i < values.Length; i++)
+			values[i] = StaticRandom.Next();
+
+		for (var i = 0; i < values.Length; i++)
+		for (var j = i + 1; j < values.Length; j++)
+				if (values[i] == values[j])
+					Assert.Fail("Next should return different values");
+	}
+
+	[Fact]
+	public void NextBytesShouldReturnDifferentValues()
+	{
+		var values = new byte[10];
+		for (var i = 0; i < values.Length; i++)
+			values[i] = (byte)StaticRandom.Next(0, 255);
+
+		for (var i = 0; i < values.Length; i++)
+		for (var j = i + 1; j < values.Length; j++)
+			if (values[i] == values[j])
+				Assert.Fail("NextBytes should return different values");
+	}
+
+	[Fact]
+	public void NextBytesSpanShouldReturnDifferentValues()
+	{
+		var values = new byte[10];
+		for (var i = 0; i < values.Length; i++)
+			values[i] = (byte)StaticRandom.Next(0, 255);
+
+		for (var i = 0; i < values.Length; i++)
+		for (var j = i + 1; j < values.Length; j++)
+			if (values[i] == values[j])
+				Assert.Fail("NextBytes should return different values");
+	}
+
+	[Fact]
+	public void NextBytesShouldReturnDifferentValuesWithBuffer()
+	{
+		var values = new byte[10];
+		StaticRandom.NextBytes(values);
+
+		for (var i = 0; i < values.Length; i++)
+		for (var j = i + 1; j < values.Length; j++)
+			if (values[i] == values[j])
+				Assert.Fail("NextBytes should return different values");
+	}
+
+	[Fact]
+	public void NextBytesSpanShouldReturnDifferentValuesWithBuffer()
+	{
+		var values = new byte[10];
+		StaticRandom.NextBytes(values.AsSpan());
+
+		for (var i = 0; i < values.Length; i++)
+		for (var j = i + 1; j < values.Length; j++)
+			if (values[i] == values[j])
+				Assert.Fail("NextBytes should return different values");
 	}
 }
