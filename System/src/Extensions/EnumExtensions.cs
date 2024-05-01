@@ -6,10 +6,10 @@ namespace Wangkanai.Extensions;
 
 public static class EnumExtensions
 {
-	[Obsolete]
-	public static string ToStringMistake<T>(this T value)
-		where T : Enum
-		=> EnumValues<T>.GetNameMistake(value).ToLowerInvariant();
+	// [Obsolete]
+	// public static string ToStringMistake<T>(this T value)
+	// 	where T : Enum
+	// 	=> EnumValues<T>.GetNameMistake(value).ToLowerInvariant();
 
 	[DebuggerStepThrough]
 	public static string ToOriginalString<T>(this T value)
@@ -44,21 +44,21 @@ public static class EnumExtensions
 		=> value.ContainSingle(flags) ||
 		   flags.GetFlags().Any(item => value.Contains(item.ToLowerString(), StringComparison.Ordinal));
 
-	[Obsolete]
-	public static bool ContainsMistake<T>(this string value, T flags)
-		where T : Enum
-		=> value.ContainSingleMistake(flags) ||
-		   flags.GetFlags().Any(item => value.Contains(item.ToLowerString(), StringComparison.Ordinal));
+	// [Obsolete]
+	// public static bool ContainsMistake<T>(this string value, T flags)
+	// 	where T : Enum
+	// 	=> value.ContainSingleMistake(flags) ||
+	// 	   flags.GetFlags().Any(item => value.Contains(item.ToLowerString(), StringComparison.Ordinal));
 
-	[Obsolete]
-	private static bool ContainSingleMistake<T>(this string value, T flags)
-		where T : Enum
-		=> EnumValues<T>.TryGetSingleNameMistake(flags, out var name) &&
-		   value.Contains(name, StringComparison.Ordinal);
+	// [Obsolete]
+	// private static bool ContainSingleMistake<T>(this string value, T flags)
+	// 	where T : Enum
+	// 	=> EnumValues<T>.TryGetSingleNameMistake(flags, out var name) &&
+	// 	   value.Contains(name, StringComparison.Ordinal);
 
 	private static bool ContainSingle<T>(this string value, T flags)
 		where T : Enum
-		=> EnumValues<T>.TryGetSingleNameMistake(flags, out var name) &&
+		=> EnumValues<T>.TryGetSingleName(flags, out var name) &&
 		   value.Contains(name, StringComparison.Ordinal);
 
 	[DebuggerStepThrough]

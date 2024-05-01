@@ -13,18 +13,8 @@ public static class EnumValues<T> where T : Enum
 		=> NamesOriginal;
 
 	[DebuggerStepThrough]
-	public static bool TryGetSingleNameMistake(T value, out string result)
-		=> NamesMistake.TryGetValue(value, out result!);
-
-	[DebuggerStepThrough]
 	public static bool TryGetSingleName(T value, out string result)
 		=> NamesOriginal.TryGetValue(value, out result!);
-
-	[Obsolete]
-	public static string GetNameMistake(T value)
-		=> NamesMistake.TryGetValue(value, out var result)
-			   ? result
-			   : string.Join(',', value.GetFlags().Select(x => NamesMistake[x]));
 
 	[DebuggerStepThrough]
 	public static string GetNameOriginal(T value)

@@ -8,12 +8,8 @@ namespace Wangkanai.Detection.Services;
 
 public sealed class CrawlerService : ICrawlerService
 {
-	private static readonly (string, Crawler)[] Crawlers =
-		EnumValues<Crawler>.GetValues().Select(x => (x.ToStringMistake(), x)).ToArray();
-
-	private static readonly IndexTree         CrawlerIndex = Crawlers.Select(x => x.Item1).BuildIndexTree();
-	private readonly        DetectionOptions  _options;
-	private readonly        IUserAgentService _useragent;
+	private readonly DetectionOptions  _options;
+	private readonly IUserAgentService _useragent;
 
 	private Crawler? _name;
 	private Version? _version;
@@ -28,6 +24,8 @@ public sealed class CrawlerService : ICrawlerService
 	public Crawler Name      => _name ??= GetCrawler();
 	public Version Version   => _version ??= GetVersion();
 
+
+
 	private Crawler GetCrawler()
 	{
 		var agent = _useragent.UserAgent.ToLower();
@@ -36,8 +34,8 @@ public sealed class CrawlerService : ICrawlerService
 			return Crawler.Unknown;
 
 		foreach (var crawler in Crawlers)
-			if (agent.Contains(crawler.Item1))
-				return crawler.Item2;
+			if (agent.Contains(crawler.Key))
+				return crawler.Value;
 
 		return HasOthers(agent, _options.Crawler.Others)
 			       ? Crawler.Others
@@ -62,15 +60,17 @@ public sealed class CrawlerService : ICrawlerService
 		return version.ToVersion();
 	}
 
-	private static bool HasOthers(string agent, IEnumerable<string> others)
-	{
-		return agent.Contains("bot", StringComparison.Ordinal)
-		       || others.Any(x => agent.Contains(x, StringComparison.Ordinal));
-	}
+	private  Dictionary<string, Crawler> Crawlers
+		=> EnumValues<Crawler>.GetValues().Select(x => (x.ToLowerString(), x)).ToDictionary(x => x.Item1, x => x.Item2);
 
-	private static string FindBot(string agent)
-	{
-		return agent.Split(' ')
-		            .FirstOrDefault(x => x.SearchContains(CrawlerIndex)) ?? string.Empty;
-	}
+	private IndexTree CrawlerIndex
+		=> Crawlers.Select(x => x.Key).BuildIndexTree();
+
+	private bool HasOthers(string agent, IEnumerable<string> others)
+		=> agent.Contains("bot", StringComparison.Ordinal) ||
+		   others.Any(x => agent.Contains(x, StringComparison.Ordinal));
+
+	private string FindBot(string agent)
+		=> agent.Split(' ')
+		        .FirstOrDefault(x => x.SearchContains(CrawlerIndex)) ?? string.Empty;
 }
