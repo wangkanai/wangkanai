@@ -3,4 +3,13 @@
 namespace Wangkanai;
 
 [AttributeUsage(AttributeTargets.Struct | AttributeTargets.Constructor | AttributeTargets.Parameter)]
-public sealed class NegativeIntegerAttribute : Attribute { }
+public sealed class NegativeIntegerAttribute(string message) : Attribute
+{
+	public string Message { get; init; } = message;
+	public bool   IsError { get; init; }
+
+	public NegativeIntegerAttribute()
+		: this("The value must be negative integer.") { }
+	public NegativeIntegerAttribute(string message, bool error)
+		: this(message) => IsError = error;
+}

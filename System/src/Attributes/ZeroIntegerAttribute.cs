@@ -3,13 +3,13 @@
 namespace Wangkanai;
 
 [AttributeUsage(AttributeTargets.Struct | AttributeTargets.Constructor | AttributeTargets.Parameter)]
-public sealed class PositiveIntegerAttribute(string message) : Attribute
+public sealed class ZeroIntegerAttribute(string message) : Attribute
 {
 	public string Message { get; init; } = message;
 	public bool   IsError { get; init; }
 
-	public PositiveIntegerAttribute()
-		: this("The value must be positive integer.") { }
-	public PositiveIntegerAttribute(string message, bool error)
+	public ZeroIntegerAttribute()
+		: this("The value must be zero integer.") { }
+	public ZeroIntegerAttribute(string message, bool error)
 		: this(message) => IsError = error;
 }
