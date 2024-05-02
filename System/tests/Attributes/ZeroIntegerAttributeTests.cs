@@ -38,4 +38,27 @@ public class ZeroIntegerAttributeTests
 		Assert.Equal(expected, attribute!.Message);
 		Assert.True(attribute.IsError);
 	}
+
+	[Fact]
+	public void Constructor_Attribute_Exist()
+	{
+		var type      = typeof(ZeroIntegerConstructorExist);
+		var ctor      = type.GetConstructors();
+		var attribute = ctor[0].GetCustomAttribute<ZeroIntegerAttribute>();
+		var expected  = "The value must be zero integer.";
+		Assert.NotNull(attribute);
+		Assert.Equal(expected, attribute!.Message);
+	}
+
+	[Fact]
+	public void Constructor_Attribute_Error()
+	{
+		var type      = typeof(ZeroIntegerConstructorError);
+		var ctor      = type.GetConstructors();
+		var attribute = ctor[0].GetCustomAttribute<ZeroIntegerAttribute>();
+		var expected  = "error";
+		Assert.NotNull(attribute);
+		Assert.Equal(expected, attribute!.Message);
+		Assert.True(attribute.IsError);
+	}
 }

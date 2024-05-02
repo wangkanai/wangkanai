@@ -38,4 +38,36 @@ public class PositiveIntegerAttributeTests
 		Assert.Equal(expected, attribute!.Message);
 		Assert.True(attribute.IsError);
 	}
+
+	[Fact]
+	public void Constructor_Default_WithNoAttribute()
+	{
+		var type      = typeof(IntegerConstructorDefault);
+		var ctor      = type.GetConstructors();
+		var attribute = ctor[0].GetCustomAttribute<PositiveIntegerAttribute>();
+		Assert.Null(attribute);
+	}
+
+	[Fact]
+	public void Constructor_Attribute_Exist()
+	{
+		var type      = typeof(PositiveIntegerConstructorExist);
+		var ctor      = type.GetConstructors();
+		var attribute = ctor[0].GetCustomAttribute<PositiveIntegerAttribute>();
+		var expected  = "The value must be positive integer.";
+		Assert.NotNull(attribute);
+		Assert.Equal(expected, attribute!.Message);
+	}
+
+	[Fact]
+	public void Constructor_Attribute_Error()
+	{
+		var type      = typeof(PositiveIntegerConstructorError);
+		var ctor      = type.GetConstructors();
+		var attribute = ctor[0].GetCustomAttribute<PositiveIntegerAttribute>();
+		var expected  = "error";
+		Assert.NotNull(attribute);
+		Assert.Equal(expected, attribute!.Message);
+		Assert.True(attribute.IsError);
+	}
 }
