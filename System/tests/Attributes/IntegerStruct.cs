@@ -2,6 +2,18 @@
 
 namespace Wangkanai.Attributes;
 
+// Positive
+
+struct PositiveIntegerStructDefault { }
+
+[PositiveInteger]
+struct PositiveIntegerStructExist { }
+
+[PositiveInteger("error", true)]
+struct PositiveIntegerStructError { }
+
+// Negative
+
 struct NegativeIntegerStructDefault { }
 
 [NegativeInteger]
@@ -10,5 +22,12 @@ struct NegativeIntegerStructExist { }
 [NegativeInteger("error", true)]
 struct NegativeIntegerStructError { }
 
-[PositiveInteger]
-struct PositiveIntegerStructExist { }
+// Zero
+
+struct ZeroIntegerStructDefault { }
+
+[ZeroInteger]
+struct ZeroIntegerStructExist { }
+
+[ZeroInteger("error", true)]
+struct ZeroIntegerStructError { }
