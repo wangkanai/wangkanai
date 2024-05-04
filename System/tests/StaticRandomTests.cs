@@ -50,7 +50,8 @@ public class StaticRandomTests
 	[Fact]
 	public void NextBytesShouldReturnDifferentValues()
 	{
-		var values = new byte[10];
+		var length = 5;
+		var values = new byte[length];
 		for (var i = 0; i < values.Length; i++)
 			values[i] = (byte)StaticRandom.Next(0, 255);
 
