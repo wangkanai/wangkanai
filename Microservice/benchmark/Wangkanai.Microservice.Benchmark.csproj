@@ -7,4 +7,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\src\Wangkanai.Microservice.csproj" />
+  </ItemGroup>
+
 </Project>
