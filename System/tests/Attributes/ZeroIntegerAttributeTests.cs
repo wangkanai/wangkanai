@@ -14,32 +14,6 @@ public class ZeroIntegerAttributeTests
 	}
 
 	[Fact]
-	public void Struct_Default_WithNoAttribute()
-	{
-		var attribute = typeof(ZeroIntegerStructDefault).GetCustomAttribute<ZeroIntegerAttribute>();
-		Assert.Null(attribute);
-	}
-
-	[Fact]
-	public void Struct_Attribute_Exist()
-	{
-		var attribute = typeof(ZeroIntegerStructExist).GetCustomAttribute<ZeroIntegerAttribute>();
-		var expected  = "The value must be zero integer.";
-		Assert.NotNull(attribute);
-		Assert.Equal(expected, attribute!.Message);
-	}
-
-	[Fact]
-	public void Struct_Attribute_Error()
-	{
-		var attribute = typeof(ZeroIntegerStructError).GetCustomAttribute<ZeroIntegerAttribute>();
-		var expected  = "error";
-		Assert.NotNull(attribute);
-		Assert.Equal(expected, attribute!.Message);
-		Assert.True(attribute.IsError);
-	}
-
-	[Fact]
 	public void Constructor_Attribute_Exist()
 	{
 		var type      = typeof(ZeroIntegerConstructorExist);

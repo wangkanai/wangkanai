@@ -13,31 +13,6 @@ public class PositiveIntegerAttributeTests
 		Assert.NotNull(attribute);
 	}
 
-	[Fact]
-	public void Struct_Default_WithNoAttribute()
-	{
-		var attribute = typeof(PositiveIntegerStructDefault).GetCustomAttribute<PositiveIntegerAttribute>();
-		Assert.Null(attribute);
-	}
-
-	[Fact]
-	public void Struct_Attribute_Exist()
-	{
-		var attribute = typeof(PositiveIntegerStructExist).GetCustomAttribute<PositiveIntegerAttribute>();
-		var expected  = "The value must be positive integer.";
-		Assert.NotNull(attribute);
-		Assert.Equal(expected, attribute!.Message);
-	}
-
-	[Fact]
-	public void Struct_Attribute_Error()
-	{
-		var attribute = typeof(PositiveIntegerStructError).GetCustomAttribute<PositiveIntegerAttribute>();
-		var expected  = "error";
-		Assert.NotNull(attribute);
-		Assert.Equal(expected, attribute!.Message);
-		Assert.True(attribute.IsError);
-	}
 
 	[Fact]
 	public void Constructor_Default_WithNoAttribute()

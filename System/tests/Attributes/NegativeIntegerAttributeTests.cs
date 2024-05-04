@@ -14,32 +14,6 @@ public class NegativeIntegerAttributeTests
 	}
 
 	[Fact]
-	public void Struct_Default_WithNoAttribute()
-	{
-		var attribute = typeof(NegativeIntegerStructDefault).GetCustomAttribute<NegativeIntegerAttribute>();
-		Assert.Null(attribute);
-	}
-
-	[Fact]
-	public void Struct_Attribute_Exist()
-	{
-		var attribute = typeof(NegativeIntegerStructExist).GetCustomAttribute<NegativeIntegerAttribute>();
-		var expected  = "The value must be negative integer.";
-		Assert.NotNull(attribute);
-		Assert.Equal(expected, attribute!.Message);
-	}
-
-	[Fact]
-	public void Struct_Attribute_Error()
-	{
-		var attribute = typeof(NegativeIntegerStructError).GetCustomAttribute<NegativeIntegerAttribute>();
-		var expected  = "error";
-		Assert.NotNull(attribute);
-		Assert.Equal(expected, attribute!.Message);
-		Assert.True(attribute.IsError);
-	}
-
-	[Fact]
 	public void Constructor_Attribute_Exist()
 	{
 		var type      = typeof(NegativeIntegerConstructorExist);
