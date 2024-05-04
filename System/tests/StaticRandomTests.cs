@@ -22,6 +22,65 @@ public class StaticRandomTests
 	}
 
 	[Fact]
+	public void NextShouldReturnDifferentValues()
+	{
+		var length = 100;
+		var values = new int[length];
+		for (var i = 0; i < values.Length; i++)
+			values[i] = StaticRandom.Next();
+
+		for (var i = 0; i < values.Length; i++)
+		for (var j = i + 1; j < values.Length; j++)
+			if (values[i] == values[j])
+				Assert.Fail("Next should return different values");
+	}
+
+	[Fact]
+	public void NextIntShouldReturnDifferentValues()
+	{
+		var length = 1000;
+		var values = new int[length];
+		for (var i = 0; i < values.Length; i++)
+			values[i] = StaticRandom.Next();
+
+		for (var i = 0; i < values.Length; i++)
+		for (var j = i + 1; j < values.Length; j++)
+			if (values[i] == values[j])
+				Assert.Fail("Next should return different values");
+	}
+
+	[Fact]
+	public void NextIntMaxShouldReturnDifferentValues()
+	{
+		var length = 1000;
+		var max    = 1_000_000;
+		var values = new int[length];
+		for (var i = 0; i < values.Length; i++)
+			values[i] = StaticRandom.Next(max);
+
+		for (var i = 0; i < values.Length; i++)
+		for (var j = i + 1; j < values.Length; j++)
+			if (values[i] == values[j])
+				Assert.Fail("Next should return different values");
+	}
+
+	[Fact]
+	public void NextIntMinMaxShouldReturnDifferentValues()
+	{
+		var length = 100;
+		var min    = 1_000;
+		var max    = 1_000_000;
+		var values = new int[length];
+		for (var i = 0; i < values.Length; i++)
+			values[i] = StaticRandom.Next(min, max);
+
+		for (var i = 0; i < values.Length; i++)
+		for (var j = i + 1; j < values.Length; j++)
+			if (values[i] == values[j])
+				Assert.Fail("Next should return different values");
+	}
+
+	[Fact]
 	public void NextDoubleShouldNotAlwaysReturnInts()
 	{
 		for (var i = 0; i < 10; i++)
@@ -34,49 +93,12 @@ public class StaticRandomTests
 		Assert.Fail("NextDouble shouldn't return integer");
 	}
 
-	[Fact]
-	public void NextShouldReturnDifferentValues()
-	{
-		var values = new int[100];
-		for (var i = 0; i < values.Length; i++)
-			values[i] = StaticRandom.Next();
-
-		for (var i = 0; i < values.Length; i++)
-		for (var j = i + 1; j < values.Length; j++)
-				if (values[i] == values[j])
-					Assert.Fail("Next should return different values");
-	}
 
 	[Fact]
-	public void NextBytesShouldReturnDifferentValues()
+	public void NextBytesShouldReturnDiffValueAsArray()
 	{
-		var values = new byte[10];
-		for (var i = 0; i < values.Length; i++)
-			values[i] = (byte)StaticRandom.Next(0, 255);
-
-		for (var i = 0; i < values.Length; i++)
-		for (var j = i + 1; j < values.Length; j++)
-			if (values[i] == values[j])
-				Assert.Fail("NextBytes should return different values");
-	}
-
-	[Fact]
-	public void NextBytesSpanShouldReturnDifferentValues()
-	{
-		var values = new byte[10];
-		for (var i = 0; i < values.Length; i++)
-			values[i] = (byte)StaticRandom.Next(0, 255);
-
-		for (var i = 0; i < values.Length; i++)
-		for (var j = i + 1; j < values.Length; j++)
-			if (values[i] == values[j])
-				Assert.Fail("NextBytes should return different values");
-	}
-
-	[Fact]
-	public void NextBytesShouldReturnDifferentValuesWithBuffer()
-	{
-		var values = new byte[10];
+		var length = 10;
+		var values = new byte[length];
 		StaticRandom.NextBytes(values);
 
 		for (var i = 0; i < values.Length; i++)
@@ -86,10 +108,24 @@ public class StaticRandomTests
 	}
 
 	[Fact]
-	public void NextBytesSpanShouldReturnDifferentValuesWithBuffer()
+	public void NextBytesShouldReturnDiffValueAsSpan()
 	{
-		var values = new byte[10];
+		var length = 10;
+		var values = new byte[length];
 		StaticRandom.NextBytes(values.AsSpan());
+
+		for (var i = 0; i < values.Length; i++)
+		for (var j = i + 1; j < values.Length; j++)
+			if (values[i] == values[j])
+				Assert.Fail("NextBytes should return different values");
+	}
+
+	[Fact]
+	public void NextBytesShouldReturnDiffValueAsMemory()
+	{
+		var length = 10;
+		var values = new byte[length];
+		StaticRandom.NextBytes(values.AsMemory());
 
 		for (var i = 0; i < values.Length; i++)
 		for (var j = i + 1; j < values.Length; j++)
