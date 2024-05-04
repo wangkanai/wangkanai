@@ -3,13 +3,7 @@
 namespace Wangkanai;
 
 [AttributeUsage( AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter)]
-public sealed class ZeroIntegerAttribute(string message) : Attribute
+public sealed class ZeroIntegerAttribute : Attribute
 {
-	public string Message { get; init; } = message;
-	public bool   IsError { get; init; }
-
-	public ZeroIntegerAttribute()
-		: this("The value must be zero integer.") { }
-	public ZeroIntegerAttribute(string message, bool error)
-		: this(message) => IsError = error;
+	public ZeroIntegerAttribute() { }
 }
