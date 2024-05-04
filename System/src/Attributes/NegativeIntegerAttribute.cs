@@ -2,10 +2,6 @@
 
 namespace Wangkanai;
 
-/// <summary>
-/// Specifies that a data field value must be a negative integer.
-/// </summary>
-/// <param name="message"></param>
 [AttributeUsage( AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter)]
 public sealed class NegativeIntegerAttribute(string message) : Attribute
 {
