@@ -43,34 +43,8 @@ public class StaticRandomTests
 
 		for (var i = 0; i < values.Length; i++)
 		for (var j = i + 1; j < values.Length; j++)
-				if (values[i] == values[j])
-					Assert.Fail("Next should return different values");
-	}
-
-	[Fact]
-	public void NextBytesShouldReturnDifferentValues()
-	{
-		var values = new byte[10];
-		for (var i = 0; i < values.Length; i++)
-			values[i] = (byte)StaticRandom.Next(0, 255);
-
-		for (var i = 0; i < values.Length; i++)
-		for (var j = i + 1; j < values.Length; j++)
 			if (values[i] == values[j])
-				Assert.Fail("NextBytes should return different values");
-	}
-
-	[Fact]
-	public void NextBytesSpanShouldReturnDifferentValues()
-	{
-		var values = new byte[10];
-		for (var i = 0; i < values.Length; i++)
-			values[i] = (byte)StaticRandom.Next(0, 255);
-
-		for (var i = 0; i < values.Length; i++)
-		for (var j = i + 1; j < values.Length; j++)
-			if (values[i] == values[j])
-				Assert.Fail("NextBytes should return different values");
+				Assert.Fail("Next should return different values");
 	}
 
 	[Fact]
