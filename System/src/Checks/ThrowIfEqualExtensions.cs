@@ -24,6 +24,7 @@ public static class ThrowIfEqualExtensions
 	/// </summary>
 	/// <param name="value">The value to compare.</param>
 	/// <param name="expected">The expected value.</param>
+	/// <typeparam name="T">The generic instance.</typeparam>
 	/// <returns>Returns false if the value is not equal to the expected value. Otherwise, throws an exception.</returns>
 	public static bool ThrowIfEqual<T>([NotNull] this int value, int expected)
 		where T : ArgumentException
@@ -34,6 +35,7 @@ public static class ThrowIfEqualExtensions
 	/// </summary>
 	/// <param name="value">The value to compare.</param>
 	/// <param name="expected">The expected value.</param>
+	/// <param name="paramName">The parameter name.</param>
 	/// <typeparam name="T">The generic instance.</typeparam>
 	/// <returns>Returns false if the value is not equal to the expected value. Otherwise, throws an exception.</returns>
 	public static bool ThrowIfEqual<T>([NotNull] this int value, int expected, string paramName)
