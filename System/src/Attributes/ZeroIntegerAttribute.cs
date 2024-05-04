@@ -2,7 +2,7 @@
 
 namespace Wangkanai;
 
-[AttributeUsage( AttributeTargets.Constructor | AttributeTargets.Parameter)]
+[AttributeUsage( AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter)]
 public sealed class ZeroIntegerAttribute(string message) : Attribute
 {
 	public string Message { get; init; } = message;

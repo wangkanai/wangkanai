@@ -14,29 +14,6 @@ public class NegativeIntegerAttributeTests
 	}
 
 	[Fact]
-	public void Constructor_Attribute_Exist()
-	{
-		var type      = typeof(NegativeIntegerConstructorExist);
-		var ctor      = type.GetConstructors();
-		var attribute = ctor[0].GetCustomAttribute<NegativeIntegerAttribute>();
-		var expected  = "The value must be negative integer.";
-		Assert.NotNull(attribute);
-		Assert.Equal(expected, attribute!.Message);
-	}
-
-	[Fact]
-	public void Constructor_Attribute_Error()
-	{
-		var type      = typeof(NegativeIntegerConstructorError);
-		var ctor      = type.GetConstructors();
-		var attribute = ctor[0].GetCustomAttribute<NegativeIntegerAttribute>();
-		var expected  = "error";
-		Assert.NotNull(attribute);
-		Assert.Equal(expected, attribute!.Message);
-		Assert.True(attribute.IsError);
-	}
-
-	[Fact]
 	public void Parameter_Attribute_Exist()
 	{
 		var method    = typeof(IntegerParameter).GetMethod(nameof(IntegerParameter.NegativeExist));

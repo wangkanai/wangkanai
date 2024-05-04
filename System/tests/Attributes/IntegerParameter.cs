@@ -6,10 +6,11 @@ public class IntegerParameter
 {
 	public void Default() { }
 
-	public void PositiveExist([PositiveInteger]                int value) { }
+	public void PositiveExist([PositiveInteger] int value) { }
+	public void ZeroExit([ZeroInteger]          int value) { }
+	public void NegativeExist([NegativeInteger] int value) { }
+
 	public void PositiveError([PositiveInteger("error", true)] int value) { }
-	public void ZeroExit([ZeroInteger]                         int value) { }
 	public void ZeroError([ZeroInteger("error", true)]         int value) { }
-	public void NegativeExist([NegativeInteger]                int value) { }
 	public void NegativeError([NegativeInteger("error", true)] int value) { }
 }
