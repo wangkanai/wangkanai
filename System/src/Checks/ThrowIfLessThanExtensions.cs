@@ -35,6 +35,7 @@ public static class ThrowIfLessThanExtensions
 	/// </summary>
 	/// <param name="value">The value to check.</param>
 	/// <param name="expected">The expected value.</param>
+	/// <typeparam name="T">The generic instance.</typeparam>
 	/// <exception cref="ArgumentException">Thrown when the value is less than the expected value.</exception>
 	/// <returns>Returns true if the value is greater than or equal to the expected value, otherwise throws an exception.</returns>
 	public static bool ThrowIfLessThan<T>([NotNull] this int value, int expected)
@@ -47,6 +48,7 @@ public static class ThrowIfLessThanExtensions
 	/// <param name="value">The value to check.</param>
 	/// <param name="expected">The expected value.</param>
 	/// <param name="message">The exception error message.</param>
+	/// <typeparam name="T">The generic instance.</typeparam>
 	/// <exception cref="ArgumentLessThanException">Thrown when the value is less than the expected value.</exception>
 	/// <returns>Returns true if the value is greater than or equal to the expected value, otherwise throws an exception.</returns>
 	public static bool ThrowIfLessThan<T>([NotNull] this int value, int expected, string message)
