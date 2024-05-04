@@ -34,6 +34,17 @@ public class ZeroIntegerAttributeTests
 	}
 
 	[Fact]
+	public void Parameter_Attribute_Message()
+	{
+		var method    = typeof(ZeroInteger).GetMethod(nameof(ZeroInteger.ParameterMessage));
+		var argument  = method!.GetParameters()[0];
+		var attribute = argument!.GetCustomAttribute<ZeroIntegerAttribute>();
+		var expected  = "message";
+		Assert.NotNull(attribute);
+		Assert.Equal(expected, attribute!.Message);
+	}
+
+	[Fact]
 	public void Parameter_Attribute_Error()
 	{
 		var method    = typeof(ZeroInteger).GetMethod(nameof(ZeroInteger.ParameterError));
@@ -50,5 +61,6 @@ public class ZeroInteger
 {
 	public void ParameterDefault(int                            value) { }
 	public void ParameterExit([ZeroInteger]                 int value) { }
+	public void ParameterMessage([ZeroInteger("message")] int value) { }
 	public void ParameterError([ZeroInteger("error", true)] int value) { }
 }

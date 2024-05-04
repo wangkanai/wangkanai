@@ -34,6 +34,17 @@ public class NegativeIntegerAttributeTests
 	}
 
 	[Fact]
+	public void Parameter_Attribute_Message()
+	{
+		var method    = typeof(NegativeInteger).GetMethod(nameof(NegativeInteger.ParameterMessage));
+		var argument  = method!.GetParameters()[0];
+		var attribute = argument!.GetCustomAttribute<NegativeIntegerAttribute>();
+		var expected  = "message";
+		Assert.NotNull(attribute);
+		Assert.Equal(expected, attribute!.Message);
+	}
+
+	[Fact]
 	public void Parameter_Attribute_Error()
 	{
 		var method    = typeof(NegativeInteger).GetMethod(nameof(NegativeInteger.ParameterError));
@@ -50,5 +61,6 @@ public class NegativeInteger
 {
 	public void ParameterDefault(int                                value) { }
 	public void ParameterExist([NegativeInteger]                int value) { }
+	public void ParameterMessage([NegativeInteger("message")]    int value) { }
 	public void ParameterError([NegativeInteger("error", true)] int value) { }
 }
