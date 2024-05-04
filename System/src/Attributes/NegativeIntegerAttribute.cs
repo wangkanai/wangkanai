@@ -2,7 +2,11 @@
 
 namespace Wangkanai;
 
-[AttributeUsage(AttributeTargets.Struct | AttributeTargets.Constructor | AttributeTargets.Parameter)]
+/// <summary>
+/// Specifies that a data field value must be a negative integer.
+/// </summary>
+/// <param name="message"></param>
+[AttributeUsage( AttributeTargets.Constructor | AttributeTargets.Parameter)]
 public sealed class NegativeIntegerAttribute(string message) : Attribute
 {
 	public string Message { get; init; } = message;
