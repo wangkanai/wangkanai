@@ -535,6 +535,20 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Microservice.Test
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Microservice.Benchmark", "Microservice\benchmark\Wangkanai.Microservice.Benchmark.csproj", "{658BABA6-328A-422C-8899-366F34D003A5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Annotations", "Annotations", "{EAB36830-4B59-4906-A549-C670EA3E4698}"
+	ProjectSection(SolutionItems) = preProject
+		Annotations\build.ps1 = Annotations\build.ps1
+		Annotations\Directory.Build.props = Annotations\Directory.Build.props
+		Annotations\README.md = Annotations\README.md
+		Annotations\sign.ps1 = Annotations\sign.ps1
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Annotations", "Annotations\src\Wangkanai.Annotations.csproj", "{49F1129F-84F6-4953-A7C5-5FF9C46642BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Annotations.Benchmark", "Annotations\benchamrk\Wangkanai.Annotations.Benchmark.csproj", "{DA6EA172-3176-462A-BB63-89417E8F3C62}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Annotations.Tests", "Annotations\tests\Wangkanai.Annotations.Tests.csproj", "{61AF6525-6F71-4610-A848-F47A5ADF670B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -993,6 +1007,18 @@ Global
 		{658BABA6-328A-422C-8899-366F34D003A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{658BABA6-328A-422C-8899-366F34D003A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{658BABA6-328A-422C-8899-366F34D003A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49F1129F-84F6-4953-A7C5-5FF9C46642BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49F1129F-84F6-4953-A7C5-5FF9C46642BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49F1129F-84F6-4953-A7C5-5FF9C46642BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49F1129F-84F6-4953-A7C5-5FF9C46642BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA6EA172-3176-462A-BB63-89417E8F3C62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA6EA172-3176-462A-BB63-89417E8F3C62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA6EA172-3176-462A-BB63-89417E8F3C62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA6EA172-3176-462A-BB63-89417E8F3C62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61AF6525-6F71-4610-A848-F47A5ADF670B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61AF6525-6F71-4610-A848-F47A5ADF670B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61AF6525-6F71-4610-A848-F47A5ADF670B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61AF6525-6F71-4610-A848-F47A5ADF670B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1126,6 +1152,9 @@ Global
 		{C84BD967-E5AF-49F4-8027-F8236767AE0E} = {DF37F163-6540-4711-99FD-B2D81D0F11BD}
 		{EC311164-15D6-4145-88DB-A200893E0DAD} = {DF37F163-6540-4711-99FD-B2D81D0F11BD}
 		{658BABA6-328A-422C-8899-366F34D003A5} = {DF37F163-6540-4711-99FD-B2D81D0F11BD}
+		{49F1129F-84F6-4953-A7C5-5FF9C46642BA} = {EAB36830-4B59-4906-A549-C670EA3E4698}
+		{DA6EA172-3176-462A-BB63-89417E8F3C62} = {EAB36830-4B59-4906-A549-C670EA3E4698}
+		{61AF6525-6F71-4610-A848-F47A5ADF670B} = {EAB36830-4B59-4906-A549-C670EA3E4698}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1BA0A192-D7BE-40A1-96AE-B3C8C6BC9B69}
