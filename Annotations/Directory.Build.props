@@ -1,0 +1,21 @@
+<Project>
+	<Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
+
+	<PropertyGroup>
+		<VersionPrefix>0.1.0</VersionPrefix>
+		<Title>Wangkanai Annotations</Title>
+		<PackageTags>aspnetcore;annotations;attribute;</PackageTags>
+		<Description></Description>
+		<PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Annotations</PackageProjectUrl>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<PackageIcon>wangkanai-logo.png</PackageIcon>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="..\..\assets\wangkanai-logo.png" Pack="true" PackagePath="\" />
+		<None Include="..\README.md" Pack="true" PackagePath="\" />
+	</ItemGroup>
+</Project>
