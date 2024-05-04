@@ -47,7 +47,7 @@ public static class ThrowIfEmptyStringExtensions
 	/// <param name="message">The exception error message.</param>
 	/// <returns>The input string if it is not empty.</returns>
 	/// <typeparam name="T">The type of the exception to throw.</typeparam>
-	/// <exception cref="T">The string is empty.</exception>
+	/// <exception cref="ArgumentException">The string is empty.</exception>
 	public static string ThrowIfEmpty<T>([NotNull] this string? value, string message)
 		where T : ArgumentException
 		=> value.ThrowIfNull<T>().IsEmpty()
@@ -61,7 +61,7 @@ public static class ThrowIfEmptyStringExtensions
 	/// <param name="message">The exception error meesage</param>
 	/// <param name="paramName">The name of the parameter.</param>
 	/// <returns>The input string if it is not empty.</returns>
-	/// <exception cref="T">The string is empty.</exception>
+	/// <exception cref="ArgumentException">The string is empty.</exception>
 	public static string ThrowIfEmpty<T>([NotNull] this string? value, string message, string paramName)
 		where T : ArgumentException
 		=> value.ThrowIfNull<T>().IsEmpty()
