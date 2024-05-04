@@ -14,61 +14,32 @@ public class ZeroIntegerAttributeTests
 	}
 
 	[Fact]
-	public void Struct_Default_WithNoAttribute()
+	public void Parameter_Attribute_Default()
 	{
-		var attribute = typeof(ZeroIntegerStructDefault).GetCustomAttribute<ZeroIntegerAttribute>();
+		var method    = typeof(ZeroInteger).GetMethod(nameof(ZeroInteger.ParameterDefault));
+		var argument  = method!.GetParameters()[0];
+		var attribute = argument!.GetCustomAttribute<ZeroIntegerAttribute>();
 		Assert.Null(attribute);
-	}
-
-	[Fact]
-	public void Struct_Attribute_Exist()
-	{
-		var attribute = typeof(ZeroIntegerStructExist).GetCustomAttribute<ZeroIntegerAttribute>();
-		var expected  = "The value must be zero integer.";
-		Assert.NotNull(attribute);
-		Assert.Equal(expected, attribute!.Message);
-	}
-
-	[Fact]
-	public void Struct_Attribute_Error()
-	{
-		var attribute = typeof(ZeroIntegerStructError).GetCustomAttribute<ZeroIntegerAttribute>();
-		var expected  = "error";
-		Assert.NotNull(attribute);
-		Assert.Equal(expected, attribute!.Message);
-		Assert.True(attribute.IsError);
-	}
-
-	[Fact]
-	public void Constructor_Attribute_Exist()
-	{
-		var type      = typeof(ZeroIntegerConstructorExist);
-		var ctor      = type.GetConstructors();
-		var attribute = ctor[0].GetCustomAttribute<ZeroIntegerAttribute>();
-		var expected  = "The value must be zero integer.";
-		Assert.NotNull(attribute);
-		Assert.Equal(expected, attribute!.Message);
-	}
-
-	[Fact]
-	public void Constructor_Attribute_Error()
-	{
-		var type      = typeof(ZeroIntegerConstructorError);
-		var ctor      = type.GetConstructors();
-		var attribute = ctor[0].GetCustomAttribute<ZeroIntegerAttribute>();
-		var expected  = "error";
-		Assert.NotNull(attribute);
-		Assert.Equal(expected, attribute!.Message);
-		Assert.True(attribute.IsError);
 	}
 
 	[Fact]
 	public void Parameter_Attribute_Exist()
 	{
-		var method    = typeof(IntegerParameter).GetMethod(nameof(IntegerParameter.ZeroExit));
+		var method    = typeof(ZeroInteger).GetMethod(nameof(ZeroInteger.ParameterExit));
 		var argument  = method!.GetParameters()[0];
 		var attribute = argument!.GetCustomAttribute<ZeroIntegerAttribute>();
 		var expected  = "The value must be zero integer.";
+		Assert.NotNull(attribute);
+		Assert.Equal(expected, attribute!.Message);
+	}
+
+	[Fact]
+	public void Parameter_Attribute_Message()
+	{
+		var method    = typeof(ZeroInteger).GetMethod(nameof(ZeroInteger.ParameterMessage));
+		var argument  = method!.GetParameters()[0];
+		var attribute = argument!.GetCustomAttribute<ZeroIntegerAttribute>();
+		var expected  = "message";
 		Assert.NotNull(attribute);
 		Assert.Equal(expected, attribute!.Message);
 	}
@@ -76,7 +47,7 @@ public class ZeroIntegerAttributeTests
 	[Fact]
 	public void Parameter_Attribute_Error()
 	{
-		var method    = typeof(IntegerParameter).GetMethod(nameof(IntegerParameter.ZeroError));
+		var method    = typeof(ZeroInteger).GetMethod(nameof(ZeroInteger.ParameterError));
 		var argument  = method!.GetParameters()[0];
 		var attribute = argument!.GetCustomAttribute<ZeroIntegerAttribute>();
 		var expected  = "error";
@@ -84,4 +55,12 @@ public class ZeroIntegerAttributeTests
 		Assert.Equal(expected, attribute!.Message);
 		Assert.True(attribute.IsError);
 	}
+}
+
+public class ZeroInteger
+{
+	public void ParameterDefault(int                            value) { }
+	public void ParameterExit([ZeroInteger]                 int value) { }
+	public void ParameterMessage([ZeroInteger("message")] int value) { }
+	public void ParameterError([ZeroInteger("error", true)] int value) { }
 }

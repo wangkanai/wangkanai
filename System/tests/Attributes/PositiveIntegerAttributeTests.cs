@@ -14,67 +14,9 @@ public class PositiveIntegerAttributeTests
 	}
 
 	[Fact]
-	public void Struct_Default_WithNoAttribute()
+	public void Parameter_Attribute_Default()
 	{
-		var attribute = typeof(PositiveIntegerStructDefault).GetCustomAttribute<PositiveIntegerAttribute>();
-		Assert.Null(attribute);
-	}
-
-	[Fact]
-	public void Struct_Attribute_Exist()
-	{
-		var attribute = typeof(PositiveIntegerStructExist).GetCustomAttribute<PositiveIntegerAttribute>();
-		var expected  = "The value must be positive integer.";
-		Assert.NotNull(attribute);
-		Assert.Equal(expected, attribute!.Message);
-	}
-
-	[Fact]
-	public void Struct_Attribute_Error()
-	{
-		var attribute = typeof(PositiveIntegerStructError).GetCustomAttribute<PositiveIntegerAttribute>();
-		var expected  = "error";
-		Assert.NotNull(attribute);
-		Assert.Equal(expected, attribute!.Message);
-		Assert.True(attribute.IsError);
-	}
-
-	[Fact]
-	public void Constructor_Default_WithNoAttribute()
-	{
-		var type      = typeof(IntegerConstructorDefault);
-		var ctor      = type.GetConstructors();
-		var attribute = ctor[0].GetCustomAttribute<PositiveIntegerAttribute>();
-		Assert.Null(attribute);
-	}
-
-	[Fact]
-	public void Constructor_Attribute_Exist()
-	{
-		var type      = typeof(PositiveIntegerConstructorExist);
-		var ctor      = type.GetConstructors();
-		var attribute = ctor[0].GetCustomAttribute<PositiveIntegerAttribute>();
-		var expected  = "The value must be positive integer.";
-		Assert.NotNull(attribute);
-		Assert.Equal(expected, attribute!.Message);
-	}
-
-	[Fact]
-	public void Constructor_Attribute_Error()
-	{
-		var type      = typeof(PositiveIntegerConstructorError);
-		var ctor      = type.GetConstructors();
-		var attribute = ctor[0].GetCustomAttribute<PositiveIntegerAttribute>();
-		var expected  = "error";
-		Assert.NotNull(attribute);
-		Assert.Equal(expected, attribute!.Message);
-		Assert.True(attribute.IsError);
-	}
-
-	[Fact]
-	public void Method_Default_WithNoAttribute()
-	{
-		var method    = typeof(IntegerParameter).GetMethod(nameof(IntegerParameter.Default));
+		var method    = typeof(PositiveInteger).GetMethod(nameof(PositiveInteger.ParameterDefault));
 		var attribute = method!.GetCustomAttribute<PositiveIntegerAttribute>();
 		Assert.Null(attribute);
 	}
@@ -82,7 +24,7 @@ public class PositiveIntegerAttributeTests
 	[Fact]
 	public void Parameter_Attribute_Exist()
 	{
-		var method    = typeof(IntegerParameter).GetMethod(nameof(IntegerParameter.PositiveExist));
+		var method    = typeof(PositiveInteger).GetMethod(nameof(PositiveInteger.ParameterExist));
 		var argument  = method!.GetParameters()[0];
 		var attribute = argument!.GetCustomAttribute<PositiveIntegerAttribute>();
 		var expected  = "The value must be positive integer.";
@@ -91,9 +33,20 @@ public class PositiveIntegerAttributeTests
 	}
 
 	[Fact]
+	public void Parameter_Attribute_Message()
+	{
+		var method    = typeof(PositiveInteger).GetMethod(nameof(PositiveInteger.ParameterMessage));
+		var argument  = method!.GetParameters()[0];
+		var attribute = argument!.GetCustomAttribute<PositiveIntegerAttribute>();
+		var expected  = "message";
+		Assert.NotNull(attribute);
+		Assert.Equal(expected, attribute!.Message);
+	}
+
+	[Fact]
 	public void Parameter_Attribute_Error()
 	{
-		var method    = typeof(IntegerParameter).GetMethod(nameof(IntegerParameter.PositiveError));
+		var method    = typeof(PositiveInteger).GetMethod(nameof(PositiveInteger.ParameterError));
 		var argument  = method!.GetParameters()[0];
 		var attribute = argument!.GetCustomAttribute<PositiveIntegerAttribute>();
 		var expected  = "error";
@@ -101,4 +54,12 @@ public class PositiveIntegerAttributeTests
 		Assert.Equal(expected, attribute!.Message);
 		Assert.True(attribute.IsError);
 	}
+}
+
+public class PositiveInteger
+{
+	public void ParameterDefault(int                                value) { }
+	public void ParameterExist([PositiveInteger]                int value) { }
+	public void ParameterMessage([PositiveInteger("message")]   int value) { }
+	public void ParameterError([PositiveInteger("error", true)] int value) { }
 }

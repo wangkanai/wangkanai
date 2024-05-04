@@ -14,61 +14,32 @@ public class NegativeIntegerAttributeTests
 	}
 
 	[Fact]
-	public void Struct_Default_WithNoAttribute()
+	public void Parameter_Attribute_Default()
 	{
-		var attribute = typeof(NegativeIntegerStructDefault).GetCustomAttribute<NegativeIntegerAttribute>();
+		var method    = typeof(NegativeInteger).GetMethod(nameof(NegativeInteger.ParameterDefault));
+		var argument  = method!.GetParameters()[0];
+		var attribute = argument!.GetCustomAttribute<NegativeIntegerAttribute>();
 		Assert.Null(attribute);
-	}
-
-	[Fact]
-	public void Struct_Attribute_Exist()
-	{
-		var attribute = typeof(NegativeIntegerStructExist).GetCustomAttribute<NegativeIntegerAttribute>();
-		var expected  = "The value must be negative integer.";
-		Assert.NotNull(attribute);
-		Assert.Equal(expected, attribute!.Message);
-	}
-
-	[Fact]
-	public void Struct_Attribute_Error()
-	{
-		var attribute = typeof(NegativeIntegerStructError).GetCustomAttribute<NegativeIntegerAttribute>();
-		var expected  = "error";
-		Assert.NotNull(attribute);
-		Assert.Equal(expected, attribute!.Message);
-		Assert.True(attribute.IsError);
-	}
-
-	[Fact]
-	public void Constructor_Attribute_Exist()
-	{
-		var type      = typeof(NegativeIntegerConstructorExist);
-		var ctor      = type.GetConstructors();
-		var attribute = ctor[0].GetCustomAttribute<NegativeIntegerAttribute>();
-		var expected  = "The value must be negative integer.";
-		Assert.NotNull(attribute);
-		Assert.Equal(expected, attribute!.Message);
-	}
-
-	[Fact]
-	public void Constructor_Attribute_Error()
-	{
-		var type      = typeof(NegativeIntegerConstructorError);
-		var ctor      = type.GetConstructors();
-		var attribute = ctor[0].GetCustomAttribute<NegativeIntegerAttribute>();
-		var expected  = "error";
-		Assert.NotNull(attribute);
-		Assert.Equal(expected, attribute!.Message);
-		Assert.True(attribute.IsError);
 	}
 
 	[Fact]
 	public void Parameter_Attribute_Exist()
 	{
-		var method    = typeof(IntegerParameter).GetMethod(nameof(IntegerParameter.NegativeExist));
+		var method    = typeof(NegativeInteger).GetMethod(nameof(NegativeInteger.ParameterExist));
 		var argument  = method!.GetParameters()[0];
 		var attribute = argument!.GetCustomAttribute<NegativeIntegerAttribute>();
 		var expected  = "The value must be negative integer.";
+		Assert.NotNull(attribute);
+		Assert.Equal(expected, attribute!.Message);
+	}
+
+	[Fact]
+	public void Parameter_Attribute_Message()
+	{
+		var method    = typeof(NegativeInteger).GetMethod(nameof(NegativeInteger.ParameterMessage));
+		var argument  = method!.GetParameters()[0];
+		var attribute = argument!.GetCustomAttribute<NegativeIntegerAttribute>();
+		var expected  = "message";
 		Assert.NotNull(attribute);
 		Assert.Equal(expected, attribute!.Message);
 	}
@@ -76,7 +47,7 @@ public class NegativeIntegerAttributeTests
 	[Fact]
 	public void Parameter_Attribute_Error()
 	{
-		var method    = typeof(IntegerParameter).GetMethod(nameof(IntegerParameter.NegativeError));
+		var method    = typeof(NegativeInteger).GetMethod(nameof(NegativeInteger.ParameterError));
 		var argument  = method!.GetParameters()[0];
 		var attribute = argument!.GetCustomAttribute<NegativeIntegerAttribute>();
 		var expected  = "error";
@@ -84,4 +55,12 @@ public class NegativeIntegerAttributeTests
 		Assert.Equal(expected, attribute!.Message);
 		Assert.True(attribute.IsError);
 	}
+}
+
+public class NegativeInteger
+{
+	public void ParameterDefault(int                                value) { }
+	public void ParameterExist([NegativeInteger]                int value) { }
+	public void ParameterMessage([NegativeInteger("message")]    int value) { }
+	public void ParameterError([NegativeInteger("error", true)] int value) { }
 }
