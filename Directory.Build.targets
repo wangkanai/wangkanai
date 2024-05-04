@@ -15,6 +15,10 @@
 		<IsTestProject>true</IsTestProject>
 	</PropertyGroup>
 
+	<ItemGroup Condition="$(MSBuildProjectName.Contains('Tests'))">
+		<Using Include="Xunit" />
+	</ItemGroup>
+
 	<!-- GitHub Source Link -->
 	<ItemGroup>
 		<PackageReference Include="Microsoft.SourceLink.GitHub"/>
