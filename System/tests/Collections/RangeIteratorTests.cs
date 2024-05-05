@@ -4,69 +4,69 @@ namespace Wangkanai.Collections;
 
 public class RangeIteratorTests
 {
-	private static readonly int[] ZeroFour = [0, 1, 2, 3, 4];
-	private static readonly int[] ZeroFive = [0, 1, 2, 3, 4, 5];
-	private static readonly int[] OneFour  = [1, 2, 3, 4];
-	private static readonly int[] OneFive  = [1, 2, 3, 4, 5];
-	private static readonly int[] FiveOne  = [5, 4, 3, 2, 1];
-	private static readonly int[] FiveZero = [5, 4, 3, 2, 1, 0];
-	private static readonly int[] FourOne  = [4, 3, 2, 1];
-	private static readonly int[] FourZero = [4, 3, 2, 1, 0];
+	private static readonly int[] ArrayZeroFour = [0, 1, 2, 3, 4];
+	private static readonly int[] ArrayZeroFive = [0, 1, 2, 3, 4, 5];
+	private static readonly int[] ArrayOneFour  = [1, 2, 3, 4];
+	private static readonly int[] ArrayOneFive  = [1, 2, 3, 4, 5];
+	private static readonly int[] ArrayFiveOne  = [5, 4, 3, 2, 1];
+	private static readonly int[] ArrayFiveZero = [5, 4, 3, 2, 1, 0];
+	private static readonly int[] ArrayFourOne  = [4, 3, 2, 1];
+	private static readonly int[] ArrayFourZero = [4, 3, 2, 1, 0];
 
 	[Fact]
 	public void InclusiveRange()
 	{
 		var subject = new RangeIterator<int>(new Range<int>(0, 5), x => x + 1);
-		Assert.True(subject.SequenceEqual(ZeroFive));
+		Assert.True(subject.SequenceEqual(ArrayZeroFive));
 	}
 
 	[Fact]
 	public void RangeExcludingStart()
 	{
 		var subject = new RangeIterator<int>(new Range<int>(0, 5).ExcludeStart(), x => x + 1);
-		Assert.True(subject.SequenceEqual(OneFive));
+		Assert.True(subject.SequenceEqual(ArrayOneFive));
 	}
 
 	[Fact]
 	public void RangeExcludingEnd()
 	{
 		var subject = new RangeIterator<int>(new Range<int>(0, 5).ExcludeEnd(), x => x + 1);
-		Assert.True(subject.SequenceEqual(ZeroFour));
+		Assert.True(subject.SequenceEqual(ArrayZeroFour));
 	}
 
 	[Fact]
 	public void RangeExcludingBoth()
 	{
 		var subject = new RangeIterator<int>(new Range<int>(0, 5).ExcludeStart().ExcludeEnd(), x => x + 1);
-		Assert.True(subject.SequenceEqual(OneFour));
+		Assert.True(subject.SequenceEqual(ArrayOneFour));
 	}
 
 	[Fact]
 	public void DescendingInclusiveRange()
 	{
 		var subject = new RangeIterator<int>(new Range<int>(0, 5), x => x - 1, false);
-		Assert.True(subject.SequenceEqual(FiveZero));
+		Assert.True(subject.SequenceEqual(ArrayFiveZero));
 	}
 
 	[Fact]
 	public void DescendingRangeExcludingStart()
 	{
 		var subject = new RangeIterator<int>(new Range<int>(0, 5).ExcludeStart(), x => x - 1, false);
-		Assert.True(subject.SequenceEqual(FiveOne));
+		Assert.True(subject.SequenceEqual(ArrayFiveOne));
 	}
 
 	[Fact]
 	public void DescendingRangeExcludingEnd()
 	{
 		var subject = new RangeIterator<int>(new Range<int>(0, 5).ExcludeEnd(), x => x - 1, false);
-		Assert.True(subject.SequenceEqual(FourZero));
+		Assert.True(subject.SequenceEqual(ArrayFourZero));
 	}
 
 	[Fact]
 	public void DescendingRangeExcludingBoth()
 	{
 		var subject = new RangeIterator<int>(new Range<int>(0, 5).ExcludeStart().ExcludeEnd(), x => x - 1, false);
-		Assert.True(subject.SequenceEqual(FourOne));
+		Assert.True(subject.SequenceEqual(ArrayFourOne));
 	}
 
 	[Fact]
