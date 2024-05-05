@@ -4,16 +4,41 @@ using Wangkanai.Exceptions;
 
 namespace Wangkanai;
 
-[SuppressMessage("ReSharper", "PossibleMultipleEnumeration")]
+/// <summary>
+/// Provides extension methods to throw an exception if an enumerable collection is empty.
+/// </summary>
 [DebuggerStepThrough]
+[SuppressMessage("ReSharper", "PossibleMultipleEnumeration")]
 public static class ThrowIfEmptyExtensions
 {
+	/// <summary>
+	/// Throws an ArgumentEmptyException if the enumerable collection is empty.
+	/// </summary>
+	/// <typeparam name="T">The type of items in the collection</typeparam>
+	/// <param name="value">The enumerable collection</param>
+	/// <returns>The input enumerable collection if it is not empty</returns>
+	/// <exception cref="ArgumentEmptyException">Thrown when the input enumerable collection is empty</exception>
 	public static IEnumerable<T> ThrowIfEmpty<T>([NotNull] this IEnumerable<T> value)
 		=> value.Any() ? value : throw new ArgumentEmptyException(nameof(value));
 
+	/// <summary>
+	/// Throws an ArgumentEmptyException if the enumerable collection is empty.
+	/// </summary>
+	/// <typeparam name="T">The type of items in the collection.</typeparam>
+	/// <param name="value">The enumerable collection.</param>
+	/// <returns>The input enumerable collection if it is not empty.</returns>
+	/// <exception cref="ArgumentEmptyException">Thrown when the input enumerable collection is empty</exception>
 	public static IEnumerable<T> ThrowIfEmpty<T>([NotNull] this IEnumerable<T> value, string message)
 		=> value.Any() ? value : throw new ArgumentEmptyException(nameof(value), message);
 
+	/// <summary>
+	/// Throws an ArgumentEmptyException if the enumerable collection is empty.
+	/// </summary>
+	/// <typeparam name="TException">The type of exception raisen.</typeparam>
+	/// <typeparam name="TType">The type of items in the collection.</typeparam>
+	/// <param name="value">The enumerable collection.</param>
+	/// <returns>The input enumerable collection if it is not empty.</returns>
+	/// <exception cref="ArgumentEmptyException">Thrown when the input enumerable collection is empty</exception>
 	public static IEnumerable<TType> ThrowIfEmpty<TException, TType>([NotNull] this IEnumerable<TType>? value)
 		where TException : ArgumentException
 	{
@@ -23,6 +48,14 @@ public static class ThrowIfEmptyExtensions
 			       : value;
 	}
 
+	/// <summary>
+	/// Throws an ArgumentEmptyException if the enumerable collection is empty.
+	/// </summary>
+	/// <typeparam name="TException">The type of exception raisen.</typeparam>
+	/// <typeparam name="TType">The type of items in the collection.</typeparam>
+	/// <param name="value">The enumerable collection</param>
+	/// <returns>The input enumerable collection if it is not empty</returns>
+	/// <exception cref="ArgumentEmptyException">Thrown when the input enumerable collection is empty</exception>
 	public static IEnumerable<TType> ThrowIfEmpty<TException, TType>([NotNull] this IEnumerable<TType>? value, string message)
 		where TException : ArgumentException
 	{

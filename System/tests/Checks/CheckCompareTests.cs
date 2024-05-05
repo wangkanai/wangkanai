@@ -55,7 +55,9 @@ public class CheckCompareTests
 	public void LessThanExpectedThrow()
 	{
 		Assert.Throws<ArgumentLessThanException>(() => 0.ThrowIfLessThan(1));
+		Assert.Throws<ArgumentLessThanException>(() => 0.ThrowIfLessThan(1, nameof(LessThanExpectedThrow)));
 		Assert.Throws<ArgumentLessThanException>(() => 0.ThrowIfLessThan<ArgumentLessThanException>(1));
+		Assert.Throws<ArgumentLessThanException>(() => 0.ThrowIfLessThan<ArgumentLessThanException>(1, nameof(LessThanExpectedThrow)));
 	}
 
 	[Fact]

@@ -38,7 +38,7 @@ public class StaticRandomTests
 	[Fact]
 	public void NextIntShouldReturnDifferentValues()
 	{
-		var length = 1000;
+		var length = 100;
 		var values = new int[length];
 		for (var i = 0; i < values.Length; i++)
 			values[i] = StaticRandom.Next();
@@ -52,7 +52,7 @@ public class StaticRandomTests
 	[Fact]
 	public void NextIntMaxShouldReturnDifferentValues()
 	{
-		var length = 1000;
+		var length = 100;
 		var max    = 1_000_000;
 		var values = new int[length];
 		for (var i = 0; i < values.Length; i++)

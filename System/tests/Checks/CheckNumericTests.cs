@@ -39,10 +39,12 @@ public class CheckNumericTests
 		const int negative = -1;
 		const int zero     = 0;
 
-		Assert.Throws<ArgumentNegativeException>(() => negative.ThrowIfNegative());
-		Assert.Throws<ArgumentNegativeException>(() => negative.ThrowIfNegative("message"));
 		Assert.Equal(0, zero.ThrowIfNegative());
 		Assert.Equal(1, positive.ThrowIfNegative());
+		Assert.Throws<ArgumentNegativeException>(() => negative.ThrowIfNegative());
+		Assert.Throws<ArgumentNegativeException>(() => negative.ThrowIfNegative("message"));
+		Assert.Throws<ArgumentNegativeException>(() => negative.ThrowIfNegative<ArgumentNegativeException>());
+		Assert.Throws<ArgumentNegativeException>(() => negative.ThrowIfNegative<ArgumentNegativeException>("meesage"));
 	}
 
 	[Fact]
