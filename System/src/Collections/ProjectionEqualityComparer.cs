@@ -7,10 +7,25 @@ namespace Wangkanai.Collections;
 /// </summary>
 public static class ProjectionEqualityComparer
 {
+	/// <summary>
+	/// Creates an instance of the <see cref="ProjectionEqualityComparer{TSource,TKey}"/> using the given specified projection, which must not be null.
+	/// </summary>
+	/// <typeparam name="TSource">Type parameter for the elements to be compared</typeparam>
+	/// <typeparam name="TKey">Type parameter for the keys to be compared, after being projected from the elements</typeparam>
+	/// <param name="projection">The projection to use during comparisons</param>
+	/// <returns>An instance of the <see cref="ProjectionEqualityComparer{TSource,TKey}"/></returns>
 	public static ProjectionEqualityComparer<TSource, TKey> Create<TSource, TKey>(Func<TSource, TKey> projection)
 		=> new(projection);
 
-	public static ProjectionEqualityComparer<TSource, TKey> Create<TSource, TKey>(TSource ignored, Func<TSource, TKey> projection)
+	/// <summary>
+	/// Creates an instance of the <see cref="ProjectionEqualityComparer{TSource,TKey}"/> using the given specified projection, which must not be null.
+	/// </summary>
+	/// <typeparam name="TSource">Type parameter for the elements to be compared</typeparam>
+	/// <typeparam name="TKey">Type parameter for the keys to be compared, after being projected from the elements</typeparam>
+	/// <param name="projection">The projection to use during comparisons</param>
+	/// <param name="ignored">The type to be ignored</param>
+	/// <returns>An instance of the <see cref="ProjectionEqualityComparer{TSource,TKey}"/></returns>
+	public static ProjectionEqualityComparer<TSource, TKey> Create<TSource, TKey>(Func<TSource, TKey> projection, TSource ignored)
 		=> new(projection);
 }
 
@@ -55,15 +70,18 @@ public class ProjectionEqualityComparer<TSource, TKey> : IEqualityComparer<TSour
 	/// </returns>
 	public bool Equals(TSource? x, TSource? y)
 		=> (x, y) switch
-		   {
-			   (null, null) => true,
-			   (null, _)    => false,
-			   (_, null)    => false,
-			   _            => _comparer.Equals(_projection(x), _projection(y))
-		   };
+		{
+			(null, null) => true,
+			(null, _)    => false,
+			(_, null)    => false,
+			_            => _comparer.Equals(_projection(x), _projection(y))
+		};
 
 	/// <summary>
-	/// Produces a hash code for the given value by projecting it and then asking the equality comparer for the hash code of the resulting key.
+	/// Computes the hash code for the specified object using the default hash function.
 	/// </summary>
-	public int GetHashCode(TSource obj) => _comparer.GetHashCode(_projection(obj.ThrowIfNull())!);
+	/// <param name="obj">The object for which to compute the hash code.</param>
+	/// <returns>The computed hash code for the object.</returns>
+	public int GetHashCode(TSource obj)
+		=> _comparer.GetHashCode(_projection(obj.ThrowIfNull())!);
 }

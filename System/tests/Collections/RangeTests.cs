@@ -51,6 +51,56 @@ public class RangeTests
 	}
 
 	[Fact]
+	public void DefaultComparerComparerDefault()
+	{
+		var subject = new Range<int>(0, 5, Comparer<int>.Default);
+
+		Assert.True(subject.IncludesStart);
+		Assert.True(subject.IncludesEnd);
+		Assert.True(subject.Contains(0));
+		Assert.True(subject.Contains(1));
+		Assert.True(subject.Contains(5));
+		Assert.False(subject.Contains(-1));
+		Assert.False(subject.Contains(6));
+	}
+
+	[Fact]
+	public void DefaultComparerComparerDefaultExcludingEnd()
+	{
+		var subject = new Range<int>(0, 5, Comparer<int>.Default, true, false);
+
+		Assert.True(subject.IncludesStart);
+		Assert.False(subject.IncludesEnd);
+		Assert.True(subject.Contains(0));
+		Assert.True(subject.Contains(1));
+		Assert.False(subject.Contains(5));
+	}
+
+	[Fact]
+	public void DefaultComparerComparerDefaultExcludingStart()
+	{
+		var subject = new Range<int>(0, 5, Comparer<int>.Default, false, true);
+
+		Assert.False(subject.IncludesStart);
+		Assert.True(subject.IncludesEnd);
+		Assert.False(subject.Contains(0));
+		Assert.True(subject.Contains(1));
+		Assert.True(subject.Contains(5));
+	}
+
+	[Fact]
+	public void DefaultComparerComparerDefaultBothEnds()
+	{
+		var subject = new Range<int>(0, 5, Comparer<int>.Default, false, false);
+
+		Assert.False(subject.IncludesStart);
+		Assert.False(subject.IncludesEnd);
+		Assert.False(subject.Contains(0));
+		Assert.True(subject.Contains(1));
+		Assert.False(subject.Contains(5));
+	}
+
+	[Fact]
 	public void DefaultComparerExcludingEnd()
 	{
 		var subject = new Range<int>(0, 5).ExcludeEnd();
@@ -181,5 +231,11 @@ public class RangeTests
 	{
 		var subject = new Range<int>(0, 5).Step(x => x - 1);
 		Assert.True(subject.SequenceEqual(five_zero));
+	}
+
+	[Fact]
+	public void a()
+	{
+
 	}
 }

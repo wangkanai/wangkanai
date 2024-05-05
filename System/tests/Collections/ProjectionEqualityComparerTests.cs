@@ -10,53 +10,45 @@ public class ProjectionEqualityComparerTests
 	private static NameAndNumber B15 => ProjectionEqualityComparerExtensions.B15;
 
 	[Fact]
-	public void ProjectionToStringWithIgnoredParameter()
+	public void ProjectionToStringWithExplicitType()
 	{
-		ProjectionEqualityComparer.Create(A10, x => x.Name)
-		                          .AssertNameComparison();
+		ProjectionEqualityComparer.Create((NameAndNumber x) => x.Name).AssertNameComparison();
 	}
 
 	[Fact]
-	public void ProjectionToStringWithExplicitType()
+	public void ProjectionToNumberWithExplicitType()
 	{
-		ProjectionEqualityComparer.Create((NameAndNumber x) => x.Name)
-		                          .AssertNameComparison();
+		ProjectionEqualityComparer.Create((NameAndNumber x) => x.Number).AssertNumberComparison();
+	}
+
+	[Fact]
+	public void ProjectionToStringWithIgnored()
+	{
+		ProjectionEqualityComparer.Create(x => x.Name, A10).AssertNameComparison();
+	}
+
+	[Fact]
+	public void ProjectionToNumberWithIgnored()
+	{
+		ProjectionEqualityComparer.Create(x => x.Number, A10).AssertNumberComparison();
 	}
 
 	[Fact]
 	public void ProjectionToStringWithGenericType()
 	{
-		ProjectionEqualityComparer<NameAndNumber>.Create(x => x.Name)
-		                                         .AssertNameComparison();
+		ProjectionEqualityComparer<NameAndNumber>.Create(x => x.Name).AssertNameComparison();
 	}
 
 	[Fact]
-	public void ProjectToNumberWithIgnoredParameter()
+	public void ProjectionToNumberWithGenericType()
 	{
-		ProjectionEqualityComparer.Create(A10, x => x.Number)
-		                          .AssertNumberComparison();
-	}
-
-	[Fact]
-	public void ProjectToNumberWithExplicitType()
-	{
-		ProjectionEqualityComparer.Create((NameAndNumber x) => x.Number)
-		                          .AssertNumberComparison();
-	}
-
-	[Fact]
-	public void ProjectToNumberWithGenericType()
-	{
-		ProjectionEqualityComparer<NameAndNumber>.Create(x => x.Number)
-		                                         .AssertNumberComparison();
+		ProjectionEqualityComparer<NameAndNumber>.Create(x => x.Number).AssertNumberComparison();
 	}
 
 	[Fact]
 	public void NullProjection()
 	{
-		Assert.Throws<ArgumentNullException>(
-			() => new ProjectionEqualityComparer<NameAndNumber, string>(null)
-		);
+		Assert.Throws<ArgumentNullException>(() => new ProjectionEqualityComparer<NameAndNumber, string>(null));
 	}
 
 	[Fact]
