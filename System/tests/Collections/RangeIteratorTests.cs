@@ -1,5 +1,7 @@
 ﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
+using FluentAssertions;
+
 namespace Wangkanai.Collections;
 
 public class RangeIteratorTests
@@ -16,29 +18,45 @@ public class RangeIteratorTests
 	[Fact]
 	public void InclusiveRange()
 	{
-		var subject = new RangeIterator<int>(new Range<int>(0, 5), x => x + 1);
+		var range   = new Range<int>(0, 5);
+		var subject = new RangeIterator<int>(range, x => x + 1);
 		Assert.True(subject.SequenceEqual(ArrayZeroFive));
+		subject.Range.Should().Be(range);
+		subject.Step.Should().NotBeNull();
+		subject.Ascending.Should().BeTrue();
 	}
 
 	[Fact]
 	public void RangeExcludingStart()
 	{
-		var subject = new RangeIterator<int>(new Range<int>(0, 5).ExcludeStart(), x => x + 1);
+		var range   = new Range<int>(0, 5).ExcludeStart();
+		var subject = new RangeIterator<int>(range, x => x + 1);
 		Assert.True(subject.SequenceEqual(ArrayOneFive));
+		subject.Range.Should().Be(range);
+		subject.Step.Should().NotBeNull();
+		subject.Ascending.Should().BeTrue();
 	}
 
 	[Fact]
 	public void RangeExcludingEnd()
 	{
-		var subject = new RangeIterator<int>(new Range<int>(0, 5).ExcludeEnd(), x => x + 1);
+		var range   = new Range<int>(0, 5).ExcludeEnd();
+		var subject = new RangeIterator<int>(range, x => x + 1);
 		Assert.True(subject.SequenceEqual(ArrayZeroFour));
+		subject.Range.Should().Be(range);
+		subject.Step.Should().NotBeNull();
+		subject.Ascending.Should().BeTrue();
 	}
 
 	[Fact]
 	public void RangeExcludingBoth()
 	{
-		var subject = new RangeIterator<int>(new Range<int>(0, 5).ExcludeStart().ExcludeEnd(), x => x + 1);
+		var range   = new Range<int>(0, 5).ExcludeStart().ExcludeEnd();
+		var subject = new RangeIterator<int>(range, x => x + 1);
 		Assert.True(subject.SequenceEqual(ArrayOneFour));
+		subject.Range.Should().Be(range);
+		subject.Step.Should().NotBeNull();
+		subject.Ascending.Should().BeTrue();
 	}
 
 	[Fact]
