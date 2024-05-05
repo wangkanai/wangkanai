@@ -25,7 +25,7 @@ public sealed class RangeIterator<T> : IEnumerable<T>
 	public bool Ascending { get; }
 
 	/// <summary>
-	/// Create a ascending iterator iver the given range with the given step function, with the specified direction (optional)
+	/// Create an ascending iterator iver the given range with the given step function, with the specified direction (optional)
 	/// </summary>
 	public RangeIterator(Range<T> range, Func<T, T> step, bool ascending = true)
 	{
@@ -41,7 +41,7 @@ public sealed class RangeIterator<T> : IEnumerable<T>
 	}
 
 	/// <summary>
-	/// Returns an <see cref="IEnumerator{T}"/> running over the range.
+	/// Returns a <see cref="IEnumerator{T}"/> running over the range.
 	/// </summary>
 	public IEnumerator<T> GetEnumerator()
 	{
