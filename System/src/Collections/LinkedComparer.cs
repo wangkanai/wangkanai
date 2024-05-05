@@ -3,7 +3,7 @@
 namespace Wangkanai.Collections;
 
 /// <summary>
-/// Comparer to daisy chain multiple comparers and apply them in order.
+/// Comparer to daisy-chain multiple comparers and apply them in order.
 /// </summary>
 internal class LinkedComparer<T> : IComparer<T>
 {
@@ -21,6 +21,10 @@ internal class LinkedComparer<T> : IComparer<T>
 		_secondary = secondary.ThrowIfNull();
 	}
 
+	/// <summary>
+	/// Comparer to daisy chain multiple comparers and apply them in order.
+	/// </summary>
+	/// <typeparam name="T">The type of objects being compared.</typeparam>
 	public int Compare(T? x, T? y)
 	{
 		var result = _primary.Compare(x, y);

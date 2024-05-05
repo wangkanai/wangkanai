@@ -78,10 +78,10 @@ public class ProjectionComparer<TSource, TKey> : IComparer<TSource>
 	/// </returns>
 	public int Compare(TSource? x, TSource? y)
 		=> (x, y) switch
-		   {
-			   (null, null) => 0,
-			   (null, _)    => -1,
-			   (_, null)    => 1,
-			   _            => _comparer.Compare(_projection(x), _projection(y))
-		   };
+		{
+			(null, null) =>  0,
+			(null, _)      => -1,
+			(_, null)      =>  1,
+			_                => _comparer.Compare(_projection(x), _projection(y))
+		};
 }

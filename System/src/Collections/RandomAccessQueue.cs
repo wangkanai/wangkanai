@@ -6,9 +6,7 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 {
 	public const int DefaultCapacity = 16;
 
-
-	private int _version = 0;
-
+	private int _version;
 	private T[] _buffer;
 	private int _count;
 	private int _start;
@@ -148,7 +146,7 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 	}
 
 	/// <summary>
-	/// Returns whether or not the queue contains the given item,
+	/// Returns whether the queue contains the given item,
 	/// using the default equality comparer for the item to find is non-null.
 	/// </summary>
 	public bool Contains(T item)
