@@ -46,6 +46,11 @@ internal sealed class StringArrayComparer : IEqualityComparer<string[]>
 		return true;
 	}
 
+	/// <summary>
+	/// Calculates the hash code for a string array based on its elements using the provided comparer.
+	/// </summary>
+	/// <param name="obj">The string array to calculate the hash code for.</param>
+	/// <returns>The hash code for the input string array.</returns>
 	public int GetHashCode(string[] obj)
 	{
 		if (obj == null)
