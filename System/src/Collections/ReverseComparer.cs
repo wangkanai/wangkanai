@@ -2,6 +2,10 @@
 
 namespace Wangkanai.Collections;
 
+/// <summary>
+/// Represents a reverse comparer that reverses the ordering of a given comparer.
+/// </summary>
+/// <typeparam name="T">The type of objects to compare.</typeparam>
 public sealed class ReverseComparer<T> : IComparer<T>
 {
 	/// <summary>
@@ -16,8 +20,17 @@ public sealed class ReverseComparer<T> : IComparer<T>
 	public ReverseComparer(IComparer<T> original) => Original = original.ThrowIfNull();
 
 	/// <summary>
-	/// Returns the result of comparing the specified values using the original comparer, but reversing the order of comparison
+	/// Compares two objects of type T in reverse order using the original comparer.
 	/// </summary>
-	/// <returns></returns>
+	/// <param name="x">The first object to compare.</param>
+	/// <param name="y">The second object to compare.</param>
+	/// <typeparam name="T">The type of the objects to compare.</typeparam>
+	/// <returns>
+	/// A value that indicates the relative order of the objects being compared.
+	/// The return value has the following meanings:
+	/// - Less than zero: x is less than y.
+	/// - Zero: x equals y.
+	/// - Greater than zero: x is greater than y.
+	/// </returns>
 	public int Compare(T? x, T? y) => Original.Compare(y, x);
 }

@@ -1,16 +1,20 @@
 ﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-#nullable enable
-
 namespace Wangkanai.Collections;
 
+/// <summary>
+/// Provides a string array comparer for comparing string arrays for equality.
+/// </summary>
 internal sealed class StringArrayComparer : IEqualityComparer<string[]>
 {
-	public static readonly StringArrayComparer Ordinal           = new StringArrayComparer(StringComparer.Ordinal);
-	public static readonly StringArrayComparer OrdinalIgnoreCase = new StringArrayComparer(StringComparer.OrdinalIgnoreCase);
+	public static readonly StringArrayComparer Ordinal           = new(StringComparer.Ordinal);
+	public static readonly StringArrayComparer OrdinalIgnoreCase = new(StringComparer.OrdinalIgnoreCase);
 
 	private readonly StringComparer _valueComparer;
 
+	/// <summary>
+	/// Provides a string array comparer for comparing string arrays for equality.
+	/// </summary>
 	public StringArrayComparer(StringComparer valueComparer)
 	{
 		_valueComparer = valueComparer;
@@ -42,6 +46,11 @@ internal sealed class StringArrayComparer : IEqualityComparer<string[]>
 		return true;
 	}
 
+	/// <summary>
+	/// Calculates the hash code for a string array based on its elements using the provided comparer.
+	/// </summary>
+	/// <param name="obj">The string array to calculate the hash code for.</param>
+	/// <returns>The hash code for the input string array.</returns>
 	public int GetHashCode(string[] obj)
 	{
 		if (obj == null)
