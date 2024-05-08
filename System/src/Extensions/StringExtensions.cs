@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using System.Globalization;
 using System.Text;
@@ -10,79 +10,198 @@ using Wangkanai.Exceptions;
 
 namespace Wangkanai.Extensions;
 
+/// <summary>
+/// Contains extension methods for the <see cref="string"/> class.
+/// </summary>
 [DebuggerStepThrough]
 public static class StringExtensions
 {
+	/// <summary>
+	/// Determines whether the given string is empty.
+	/// </summary>
+	/// <param name="value">The string to check.</param>
+	/// <returns>True if the string is empty; otherwise, false.</returns>
 	public static bool IsEmpty([NotNull] this string value)
 		=> value == string.Empty;
 
+	/// <summary>
+	/// Determines whether the given string is null or empty.
+	/// </summary>
+	/// <param name="value">The string to check.</param>
+	/// <returns>True if the string is null or empty; otherwise, false.</returns>
 	public static bool IsNullOrEmpty([NotNull] this string value)
 		=> string.IsNullOrEmpty(value);
 
+	/// <summary>
+	/// Determines whether the given string is not null or empty.
+	/// </summary>
+	/// <param name="value">The string to check.</param>
+	/// <returns>True if the string is not null or empty; otherwise, false.</returns>
 	public static bool IsNotNullOrEmpty([NotNull] this string value)
 		=> !string.IsNullOrEmpty(value);
 
+	/// <summary>
+	/// Determines whether the given string is null, empty, or consists only of white space characters.
+	/// </summary>
+	/// <param name="value">The string to check.</param>
+	/// <returns>True if the string is null, empty, or consists only of white space characters; otherwise, false.</returns>
 	public static bool IsNullOrWhiteSpace([NotNull] this string value)
 		=> string.IsNullOrWhiteSpace(value);
 
+	/// <summary>
+	/// Determines whether the given string consists of only white space characters.
+	/// </summary>
+	/// <param name="value">The string to check.</param>
+	/// <returns>True if the string consists of only white space characters; otherwise, false.</returns>
 	public static bool IsWhiteSpace([NotNull] this string value)
 		=> !value.IsNullOrEmpty() && value.All(char.IsWhiteSpace);
 
+	/// <summary>
+	/// Determines whether the given string is not null or consists of only white spaces.
+	/// </summary>
+	/// <param name="value">The string to check.</param>
+	/// <returns>True if the string is not null or consists of only white spaces; otherwise, false.</returns>
 	public static bool IsNotNullOrWhiteSpace([NotNull] this string value)
 		=> !value.IsNullOrWhiteSpace();
 
+	/// <summary>
+	/// Determines whether the given string is not null or whitespace.
+	/// </summary>
+	/// <param name="value">The string to check.</param>
+	/// <returns>True if the string is not null or whitespace; otherwise, false.</returns>
 	public static bool IsExist([NotNull] this string value)
 		=> !value.IsNullOrWhiteSpace();
 
+	/// <summary>
+	/// Determines whether the given string contains Unicode characters.
+	/// </summary>
+	/// <param name="value">The string to check.</param>
+	/// <returns>True if the string contains Unicode characters; otherwise, false.</returns>
 	public static bool IsUnicode([NotNull] this string value)
 		=> Encoding.ASCII.GetByteCount(value) != Encoding.UTF8.GetByteCount(value);
 
+	/// <summary>
+	/// Ensures that the given string starts with a leading slash.
+	/// </summary>
+	/// <param name="value">The string to ensure leading slash for.</param>
+	/// <returns>The string with a leading slash, or the original string if it already starts with a slash.</returns>
 	public static string EnsureLeadingSlash([NotNull] this string value)
 		=> value.IsNotNullOrWhiteSpace() && !value.StartsWith('/')
 			   ? "/" + value
 			   : value;
 
+	/// <summary>
+	/// Ensures that the given string has a trailing slash.
+	/// </summary>
+	/// <param name="value">The string to check.</param>
+	/// <returns>The string with a trailing slash if it doesn't have one already; otherwise, the original string.</returns>
 	public static string EnsureTrailingSlash([NotNull] this string value)
 		=> value.IsNotNullOrWhiteSpace() && !value.EndsWith('/')
 			   ? value + "/"
 			   : value;
 
+	/// <summary>
+	/// Removes the leading slash from the given string.
+	/// </summary>
+	/// <param name="value">The string to remove the leading slash from.</param>
+	/// <returns>The string without the leading slash.</returns>
 	public static string RemoveLeadingSlash([NotNull] this string value)
 		=> value.IsNotNullOrWhiteSpace() && value.StartsWith('/')
 			   ? value.Substring(1)
 			   : value;
 
+	/// <summary>
+	/// Removes the trailing slash from the given string.
+	/// </summary>
+	/// <param name="value">The string to remove the trailing slash from.</param>
+	/// <returns>The string without the trailing slash.</returns>
 	public static string RemoveTrailingSlash([NotNull] this string value)
 		=> value.IsNotNullOrWhiteSpace() && value.EndsWith('/')
 			   ? value.Substring(0, value.Length - 1)
 			   : value;
 
+	/// <summary>
+	/// Ensures that the given string starts with the specified character.
+	/// </summary>
+	/// <param name="value">The string to ensure the start with.</param>
+	/// <param name="c">The character to check.</param>
+	/// <returns>The string with the specified character at the beginning, if it is not already there; otherwise, the original string.</returns>
 	public static string EnsureStartsWith([NotNull] this string value, char c)
 		=> value.EnsureStartsWith(c, StringComparison.Ordinal);
 
+	/// <summary>
+	/// Ensures that the given string starts with the specified character.
+	/// </summary>
+	/// <param name="value">The string to ensure the start with character.</param>
+	/// <param name="c">The character to ensure at the start of the string.</param>
+	/// <param name="comparison">The type of string comparison to use.</param>
+	/// <returns>
+	/// The original string if it already starts with the specified character,
+	/// otherwise a new string with the specified character added at the start.
+	/// </returns>
 	public static string EnsureStartsWith([NotNull] this string value, char c, StringComparison comparison)
 		=> value.ThrowIfNull().StartsWith(c.ToString(), comparison)
 			   ? value
 			   : c + value;
 
+	/// <summary>
+	/// Ensures that the given string starts with the specified character.
+	/// </summary>
+	/// <param name="value">The string to check.</param>
+	/// <param name="c">The character to ensure the string starts with.</param>
+	/// <param name="ignoreCase">True to ignore case; otherwise, false.</param>
+	/// <param name="culture">The culture to use for the string comparison.</param>
+	/// <returns>The original string if it already starts with the character; otherwise, a new string with the character prepended.</returns>
 	public static string EnsureStartsWith([NotNull] this string value, char c, bool ignoreCase, CultureInfo culture)
 		=> value.ThrowIfNull().StartsWith(c.ToString(culture), ignoreCase, culture)
 			   ? value
 			   : c + value;
 
+	/// <summary>
+	/// Ensures that the given string ends with the specified character.
+	/// </summary>
+	/// <param name="value">The string to check and modify.</param>
+	/// <param name="c">The character to ensure at the end of the string.</param>
+	/// <returns>
+	/// The modified string with the character ensured at the end.
+	/// If the string already ends with the character, the original string is returned.
+	/// </returns>
 	public static string EnsureEndsWith([NotNull] this string value, char c)
 		=> value.EnsureEndsWith(c, StringComparison.Ordinal);
 
+	/// <summary>
+	/// Ensures that the given string ends with the specified character.
+	/// </summary>
+	/// <param name="value">The string to ensure the end with.</param>
+	/// <param name="c">The character to ensure the string ends with.</param>
+	/// <param name="comparison">The type of string comparison to use.</param>
+	/// <returns>The original string if it already ends with the specified character; otherwise, a new string with the specified character appended at the end.</returns>
 	public static string EnsureEndsWith([NotNull] this string value, char c, StringComparison comparison)
 		=> value.ThrowIfNull().EndsWith(c.ToString(), comparison)
 			   ? value
 			   : value + c;
 
+	/// <summary>
+	/// Ensures that the given string ends with the specified character.
+	/// If the string already ends with the character, it returns the original string.
+	/// Otherwise, it appends the character to the end of the string.
+	/// </summary>
+	/// <param name="value">The string to ensure the ending character.</param>
+	/// <param name="c">The character to be ensured at the end of the string.</param>
+	/// <param name="ignoreCase">True to ignore case; otherwise, false.</param>
+	/// <param name="culture">The culture to use for the string comparison.</param>
+	/// <returns>The original string if it already ends with the specified character; otherwise, a new string with the specified character appended at the end.</returns>
 	public static string EnsureEndsWith([NotNull] this string value, char c, bool ignoreCase, CultureInfo culture)
 		=> value.ThrowIfNull().EndsWith(c.ToString(culture), ignoreCase, culture)
 			   ? value
 			   : value + c;
 
+	/// <summary>
+	/// Matches a regular expression pattern against the specified input string.
+	/// </summary>
+	/// <param name="regex">The regular expression pattern to match.</param>
+	/// <param name="source">The input string to match against the regular expression pattern.</param>
+	/// <returns>The first occurrence of a regular expression matches in the input string if it exists; otherwise, an empty <see cref="Match"/>.</returns>
 	public static Match RegexMatch(this Regex regex, string source)
 	{
 		regex.ThrowIfNull();
@@ -92,14 +211,28 @@ public static class StringExtensions
 		return match.Success ? match : Match.Empty;
 	}
 
+	/// <summary>
+	/// Retrieves a specified number of characters from the left side of a string.
+	/// </summary>
+	/// <param name="value">The string from which to retrieve the characters.</param>
+	/// <param name="length">The number of characters to retrieve.</param>
+	/// <returns>A string that contains the specified number of characters from the left side of the input string.</returns>
 	public static string Left([NotNull] this string value, int length)
 	{
 		value.ThrowIfNull();
 		value.Length.ThrowIfLessThan(length, nameof(length));
 
-		return value.Substring(0, length);
+		return value[..length];
 	}
 
+	/// <summary>
+	/// Retrieves a substring from the given string starting from the rightmost position.
+	/// </summary>
+	/// <param name="value">The string to extract the substring from.</param>
+	/// <param name="length">The length of the substring to retrieve.</param>
+	/// <returns>The substring extracted from the rightmost position.</returns>
+	/// <exception cref="ArgumentNullException">Thrown when the <paramref name="value"/> is null.</exception>
+	/// <exception cref="ArgumentLessThanException">Thrown when the length is greater than the length of the string.</exception>
 	public static string Right([NotNull] this string value, int length)
 	{
 		value.ThrowIfNull();
@@ -108,18 +241,64 @@ public static class StringExtensions
 		return value.Substring(value.Length - length, length);
 	}
 
+	/// <summary>
+	/// Removes all occurrences of specified strings from the source string.
+	/// </summary>
+	/// <param name="source">The source string.</param>
+	/// <param name="strings">The strings to be removed.</param>
+	/// <returns>A new string with all occurrences of the specified strings removed.</returns>
 	public static string RemoveAll([NotNull] this string source, params string[] strings)
 		=> strings.ThrowIfNull().Aggregate(source.ThrowIfNull(), ReplaceOrdinal);
 
-	private static string ReplaceOrdinal([NotNull] string current, string target)
+	/// <summary>
+	/// Replaces all occurrences of a target string with an empty string in the specified string using ordinal comparison.
+	/// </summary>
+	/// <param name="current">The string to perform the replacement on.</param>
+	/// <param name="target">The target string to be replaced.</param>
+	/// <returns>The string after the replacement.</returns>
+	public static string ReplaceOrdinal([NotNull] this string current, string target)
 		=> current.ThrowIfNull().Replace(target.ThrowIfNull(), "", StringComparison.Ordinal);
 
+	/// <summary>
+	/// Removes the specified prefixes from the given string.
+	/// </summary>
+	/// <param name="value">The string from which to remove the prefixes.</param>
+	/// <param name="prefixes">The prefixes to remove.</param>
+	/// <returns>The string with the specified prefixes removed.</returns>
 	public static string RemovePreFixes([NotNull] this string value, params string[] prefixes)
-		=> value.ThrowIfNull().RemovePreFixes(StringComparison.OrdinalIgnoreCase, prefixes);
-
-	public static string RemovePreFixes([NotNull] this string value, StringComparison comparison, params string[] prefixes)
 		=> value.ThrowIfNull().RemovePreFixes(true, CultureInfo.InvariantCulture, prefixes);
 
+	/// <summary>
+	/// Removes the specified prefixes from the given string based on the provided comparison type.
+	/// </summary>
+	/// <param name="value">The string from which to remove the prefixes.</param>
+	/// <param name="comparison">The type of string comparison to use.</param>
+	/// <param name="prefixes">The prefixes to remove.</param>
+	/// <returns>The resulting string after removing the prefixes.</returns>
+	public static string RemovePreFixes([NotNull] this string value, StringComparison comparison, params string[] prefixes)
+	{
+		value.ThrowIfNull();
+
+		if (value.IsNullOrEmpty())
+			return string.Empty;
+		if (prefixes.IsNullOrEmpty())
+			return value;
+
+		foreach (var prefix in prefixes)
+			if (value.StartsWith(prefix, comparison))
+				return value.Right(value.Length - prefix.Length);
+
+		return value;
+	}
+
+	/// <summary>
+	/// Removes the specified prefixes from the given string, optionally ignoring case and considering culture.
+	/// </summary>
+	/// <param name="value">The string from which to remove the prefixes.</param>
+	/// <param name="ignoreCase">A boolean value indicating whether to ignore case when comparing the prefixes. Default is true.</param>
+	/// <param name="culture">The culture to use when comparing strings. Default is null.</param>
+	/// <param name="prefixes">The prefixes to remove.</param>
+	/// <returns>The modified string after removing the prefixes.</returns>
 	public static string RemovePreFixes([NotNull] this string value, bool ignoreCase, CultureInfo culture, params string[] prefixes)
 	{
 		value.ThrowIfNull();
@@ -136,12 +315,46 @@ public static class StringExtensions
 		return value;
 	}
 
+	/// <summary>
+	/// Removes specified postfixes from the given string.
+	/// </summary>
+	/// <param name="value">The string to remove postfixes from.</param>
+	/// <param name="postfixes">The postfixes to remove.</param>
+	/// <returns>The string with postfixes removed.</returns>
 	public static string RemovePostFixes([NotNull] this string value, params string[] postfixes)
-		=> value.RemovePostFixes(StringComparison.OrdinalIgnoreCase, postfixes);
-
-	public static string RemovePostFixes([NotNull] this string value, StringComparison comparison, params string[] postfixes)
 		=> value.RemovePostFixes(true, CultureInfo.InvariantCulture, postfixes);
 
+	/// <summary>
+	/// Removes the specified postfixes from the given string using the specified string comparison.
+	/// </summary>
+	/// <param name="value">The string from which to remove the postfixes.</param>
+	/// <param name="comparison">The type of string comparison to use. </param>
+	/// <param name="postfixes">The postfixes to remove.</param>
+	/// <returns>The modified string with the postfixes removed.</returns>
+	public static string RemovePostFixes([NotNull] this string value, StringComparison comparison, params string[] postfixes)
+	{
+		value.ThrowIfNull();
+
+		if (value.IsNullOrEmpty())
+			return string.Empty;
+		if (postfixes.IsNullOrEmpty())
+			return value;
+
+		foreach (var postfix in postfixes)
+			if (value.EndsWith(postfix, comparison))
+				return value.Left(value.Length - postfix.Length);
+
+		return value;
+	}
+
+	/// <summary>
+	/// Removes specified postfixes from the given string.
+	/// </summary>
+	/// <param name="value">The string to remove postfixes from.</param>
+	/// <param name="ignoreCase">A boolean value indicating whether to ignore the case when comparing postfixes.</param>
+	/// <param name="culture">The culture used for string comparison.</param>
+	/// <param name="postfixes">The postfixes to remove.</param>
+	/// <returns>The modified string with the postfixes removed.</returns>
 	public static string RemovePostFixes([NotNull] this string value, bool ignoreCase, CultureInfo culture, params string[] postfixes)
 	{
 		value.ThrowIfNull();
@@ -158,12 +371,25 @@ public static class StringExtensions
 		return value;
 	}
 
+	/// <summary>
+	/// Splits the given string into substrings of the specified size.
+	/// </summary>
+	/// <param name="value">The string to split.</param>
+	/// <param name="size">The size of each substring.</param>
+	/// <returns>An enumerable collection of substrings.</returns>
 	public static IEnumerable<string> Split([NotNull] this string value, int size)
 	{
 		value.ThrowIfNull().ThrowIfEmpty().ThrowIfNullOrWhitespace<ArgumentEmptyException>();
 		return Enumerable.Range(0, value.Length / size).Select(index => value.Substring(index * size, size));
 	}
 
+	/// <summary>
+	/// Converts the specified string representation of the name or numeric value of one or more enumerated constants to an equivalent enumerated object.
+	/// </summary>
+	/// <typeparam name="T">The enumeration type.</typeparam>
+	/// <param name="value">A string containing the name or value to convert.</param>
+	/// <param name="ignoreCase">A Boolean value that indicates whether to ignore case during the conversion. The default is true.</param>
+	/// <returns>An object of type T whose value is represented by value.</returns>
 	public static T ToEnum<T>([NotNull] this string value, bool ignoreCase = true)
 		where T : struct
 	{
@@ -174,6 +400,12 @@ public static class StringExtensions
 		return (T)Enum.Parse(typeof(T), value, ignoreCase);
 	}
 
+	/// <summary>
+	/// Truncates the given string to a specified maximum length.
+	/// </summary>
+	/// <param name="value">The string to truncate.</param>
+	/// <param name="maxLength">The maximum length of the truncated string.</param>
+	/// <returns>The truncated string.</returns>
 	public static string Truncate([NotNull] this string value, int maxLength)
 	{
 		value.ThrowIfNull();
@@ -184,6 +416,13 @@ public static class StringExtensions
 		return value.Left(maxLength);
 	}
 
+	/// <summary>
+	/// Truncates the given string if it exceeds the maximum length, appending a postfix.
+	/// </summary>
+	/// <param name="value">The string to truncate.</param>
+	/// <param name="maxLength">The maximum length of the truncated string.</param>
+	/// <param name="postfix">The postfix to append to the truncated string. Default is "..."</param>
+	/// <returns>The truncated string with the postfix.</returns>
 	public static string TruncateWithPostfix([NotNull] this string value, int maxLength, string postfix = "...")
 	{
 		value.ThrowIfNull();
@@ -196,6 +435,12 @@ public static class StringExtensions
 			       : value.Left(maxLength - postfix.Length) + postfix;
 	}
 
+	/// <summary>
+	/// Safely retrieves a substring from the given string starting from the specified index.
+	/// </summary>
+	/// <param name="value">The string from which to retrieve the substring.</param>
+	/// <param name="start">The starting index of the substring. Defaults to 0.</param>
+	/// <returns>The substring starting from the specified index.</returns>
 	public static string SubstringSafe([NotNull] this string value, int start = 0)
 	{
 		value.ThrowIfNull();
@@ -205,6 +450,13 @@ public static class StringExtensions
 		return value.SubstringSafe(start, value.Length);
 	}
 
+	/// Safely returns a substring of the given string, starting from the specified index and with the specified length.
+	/// If the length exceeds the remaining characters from the start index, the method will return the remaining characters.
+	/// </summary>
+	/// <param name="value">The string to extract the substring from.</param>
+	/// <param name="start">The starting index of the substring.</param>
+	/// <param name="length">The length of the substring.</param>
+	/// <returns>The substring of the given string starting from the specified index and with the specified length.</returns>
 	public static string SubstringSafe([NotNull] this string value, int start, int length)
 	{
 		value.ThrowIfNull();
@@ -217,6 +469,11 @@ public static class StringExtensions
 			       : value[start..];
 	}
 
+	/// <summary>
+	/// Converts the given string to title case.
+	/// </summary>
+	/// <param name="value">The string to convert.</param>
+	/// <returns>The converted string in title case.</returns>
 	public static string ToTitleCase([NotNull] this string value)
 	{
 		value.ThrowIfNull();
@@ -226,6 +483,11 @@ public static class StringExtensions
 		return string.Concat(value.AsSpan(0, 1).ToString().ToUpper(), value.AsSpan(1));
 	}
 
+	/// <summary>
+	/// Escapes special characters in a search string.
+	/// </summary>
+	/// <param name="value">The search string to escape.</param>
+	/// <returns>The escaped search string.</returns>
 	public static string EscapeSearch([NotNull] this string value)
 	{
 		value.ThrowIfNull();
@@ -248,6 +510,11 @@ public static class StringExtensions
 		return result.ToString().Trim();
 	}
 
+	/// <summary>
+	/// Escapes special characters in a string to be used as a selector in regular expressions.
+	/// </summary>
+	/// <param name="value">The string to escape.</param>
+	/// <returns>The escaped string.</returns>
 	public static string EscapeSelector([NotNull] this string value)
 	{
 		value.ThrowIfNull();
@@ -258,6 +525,11 @@ public static class StringExtensions
 		return Regex.Replace(value, pattern, replacement, RegexOptions.Compiled, Constants.RegexTimeout);
 	}
 
+	/// <summary>
+	/// Removes accents from the given string.
+	/// </summary>
+	/// <param name="value">The string to remove accents from.</param>
+	/// <returns>The string without accents.</returns>
 	public static string RemoveAccent([NotNull] this string value)
 	{
 		value.ThrowIfNull();
@@ -269,6 +541,11 @@ public static class StringExtensions
 		return Encoding.ASCII.GetString(bytes);
 	}
 
+	/// <summary>
+	/// Generates a slug from the given string value.
+	/// </summary>
+	/// <param name="value">The string value to generate the slug from.</param>
+	/// <returns>The generated slug.</returns>
 	public static string GenerateSlug([NotNull] this string value)
 	{
 		value.ThrowIfNull();
@@ -288,9 +565,22 @@ public static class StringExtensions
 		return str;
 	}
 
+	/// <summary>
+	/// Determines whether two strings are equal ignoring case.
+	/// </summary>
+	/// <param name="str1">The first string to compare.</param>
+	/// <param name="str2">The second string to compare.</param>
+	/// <returns>True if the strings are equal ignoring case; otherwise, false.</returns>
 	public static bool EqualsInvariant([NotNull] this string str1, string str2)
 		=> string.Equals(str1, str2, StringComparison.OrdinalIgnoreCase);
 
+	/// <summary>
+	/// Joins a collection of strings into a single string, with each element separated by a space character.
+	/// </summary>
+	/// <param name="list">The collection of strings to join.</param>
+	/// <returns>The joined string with elements separated by space.</returns>
+	/// <exception cref="ArgumentNullException">Thrown when the input collection is null.</exception>
+	/// <exception cref="ArgumentEmptyException">Thrown when the input collection is empty.</exception>
 	public static string SeparateToSpace([NotNull] this IEnumerable<string> list)
 	{
 		list.ThrowIfNull();
@@ -300,11 +590,16 @@ public static class StringExtensions
 			       : string.Join(' ', list);
 	}
 
+	/// <summary>
+	/// Separates the given string into individual substrings based on space delimiter and returns them as a list.
+	/// </summary>
+	/// <param name="value">The string to be separated.</param>
+	/// <returns>A list of individual substrings after separating the input string based on space delimiter.</returns>
 	public static IEnumerable<string> SeparateFromSpace([NotNull] this string value)
 		=> value.ThrowIfNull()
 		        .ThrowIfEmpty()
 		        .Trim()
 		        .Split(Separator, StringSplitOptions.RemoveEmptyEntries);
 
-	private static readonly char[] Separator = { ' ' };
+	private static readonly char[] Separator = [' '];
 }
