@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Hosting\src\Wangkanai.Hosting.csproj" />
+  </ItemGroup>
+
 </Project>
