@@ -5,7 +5,7 @@ namespace Wangkanai.Collections;
 /// <summary>
 /// Types mapping to instance of those types.
 /// </summary>
-public class DictionaryByType
+public sealed class DictionaryByType
 {
 	private readonly Dictionary<Type, object> _dictionary = new();
 

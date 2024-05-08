@@ -6,7 +6,7 @@ namespace Wangkanai.Collections;
 /// Represents a reverse comparer that reverses the ordering of a given comparer.
 /// </summary>
 /// <typeparam name="T">The type of objects to compare.</typeparam>
-public sealed class ReverseComparer<T> : IComparer<T>
+public class ReverseComparer<T> : IComparer<T>
 {
 	/// <summary>
 	/// Returns the original comparer; this can be useful to avoid multiple reversals.
