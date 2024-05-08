@@ -2,9 +2,9 @@
 
 namespace Wangkanai.Extensions;
 
+[DebuggerStepThrough]
 public static class StreamExtensions
 {
-	[DebuggerStepThrough]
 	public static void CopyTo(this Stream fromStream, Stream toStream)
 	{
 		fromStream.ThrowIfNull();
@@ -16,7 +16,6 @@ public static class StreamExtensions
 			toStream.Write(bytes, 0, dataRead);
 	}
 
-	[DebuggerStepThrough]
 	public static byte[] ReadFully(this Stream stream)
 	{
 		stream.ThrowIfNull();
@@ -30,7 +29,6 @@ public static class StreamExtensions
 		return ms.ToArray();
 	}
 
-	[DebuggerStepThrough]
 	public static string ReadToString(this Stream stream)
 	{
 		stream.ThrowIfNull();
