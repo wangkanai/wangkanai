@@ -1,9 +1,13 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using System.Xml.Serialization;
 
 namespace Wangkanai.Extensions;
 
+/// <summary>
+/// Provides extension methods for object serialization and deserialization.
+/// </summary>
+[DebuggerStepThrough]
 public static class SerializationExtensions
 {
 	/// <summary>
@@ -12,7 +16,7 @@ public static class SerializationExtensions
 	/// <typeparam name="T">The type of the object to be serialized.</typeparam>
 	/// <param name="source">The object to be serialized.</param>
 	/// <returns>A string that represents the serialized XML.</returns>
-	[DebuggerStepThrough]
+
 	public static string SerializeXml<T>(this T source)
 		where T : class, new()
 	{
@@ -30,7 +34,6 @@ public static class SerializationExtensions
 	/// <typeparam name="T">The type which to be deserialized to.</typeparam>
 	/// <param name="xml">The source string</param>
 	/// <returns>The deserialized object, or null if unsuccessful.</returns>
-	[DebuggerStepThrough]
 	public static T DeserializeXml<T>(this string xml)
 		where T : class, new()
 	{

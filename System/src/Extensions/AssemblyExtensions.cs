@@ -2,9 +2,17 @@
 
 namespace Wangkanai.Extensions;
 
+/// <summary>
+/// Extensions for working with assemblies.
+/// </summary>
+[DebuggerStepThrough]
 public static class AssemblyExtensions
 {
-	[DebuggerStepThrough]
+	/// <summary>
+	/// Gets the version of the assembly.
+	/// </summary>
+	/// <param name="assembly">The assembly.</param>
+	/// <returns>The version of the assembly.</returns>
 	public static Version? GetVersion(this Assembly assembly)
 	{
 		assembly.ThrowIfNull();
@@ -12,15 +20,11 @@ public static class AssemblyExtensions
 		return name.Version;
 	}
 
-	[DebuggerStepThrough]
-	public static string GetVersionString(this Assembly assembly)
-	{
-		var version = assembly.GetVersion();
-		version.ThrowIfNull();
-		return version.ToString();
-	}
-
-	[DebuggerStepThrough]
+	/// <summary>
+	/// Gets the version of the assembly.
+	/// </summary>
+	/// <param name="type">The assembly type.</param>
+	/// <returns>The version of the assembly.</returns>
 	public static Version? GetVersion(this Type type)
 	{
 		type.ThrowIfNull();
@@ -28,7 +32,11 @@ public static class AssemblyExtensions
 		return assembly.GetVersion();
 	}
 
-	[DebuggerStepThrough]
+	/// <summary>
+	/// Gets the version of the assembly as a string.
+	/// </summary>
+	/// <param name="type">The assembly type.</param>
+	/// <returns>The version of the assembly as a string.</returns>
 	public static string GetVersionString(this Type type)
 	{
 		var version = type.GetVersion();
@@ -36,7 +44,23 @@ public static class AssemblyExtensions
 		return version.ToString();
 	}
 
-	[DebuggerStepThrough]
+	/// <summary>
+	/// Gets the version of the assembly as a string.
+	/// </summary>
+	/// <param name="assembly">The assembly.</param>
+	/// <returns>The version of the assembly as a string.</returns>
+	public static string GetVersionString(this Assembly assembly)
+	{
+		var version = assembly.GetVersion();
+		version.ThrowIfNull();
+		return version.ToString();
+	}
+
+	/// <summary>
+	/// Gets the informational version of the assembly.
+	/// </summary>
+	/// <param name="assembly">The assembly.</param>
+	/// <returns>The informational version of the assembly.</returns>
 	public static string GetInformationalVersion(this Assembly assembly)
 	{
 		assembly.ThrowIfNull();
@@ -45,7 +69,11 @@ public static class AssemblyExtensions
 		return version;
 	}
 
-	[DebuggerStepThrough]
+	/// <summary>
+	/// Gets the file version of the assembly.
+	/// </summary>
+	/// <param name="assembly">The assembly.</param>
+	/// <returns>The file version of the assembly as a string.</returns>
 	public static string GetFileVersion(this Assembly assembly)
 	{
 		assembly.ThrowIfNull();

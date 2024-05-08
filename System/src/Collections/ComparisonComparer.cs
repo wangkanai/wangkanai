@@ -5,7 +5,7 @@ namespace Wangkanai.Collections;
 /// <summary>
 ///	Delegate comparison implementing generic of <see cref="IComparer{T}"/> and method extensions to perform reverse operation.
 /// </summary>
-public sealed class ComparisonComparer<T>(Comparison<T> comparison) : IComparer<T>
+public class ComparisonComparer<T>(Comparison<T> comparison) : IComparer<T>
 {
 	private readonly Comparison<T> _comparison = comparison.ThrowIfNull();
 

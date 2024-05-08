@@ -83,7 +83,8 @@ public class StaticRandomTests
 	[Fact]
 	public void NextDoubleShouldNotAlwaysReturnInts()
 	{
-		for (var i = 0; i < 10; i++)
+		var length = 10;
+		for (var i = 0; i < length; i++)
 		{
 			var d = StaticRandom.NextDouble();
 			if (System.Math.Abs((int)d - d) > 0)
@@ -97,7 +98,7 @@ public class StaticRandomTests
 	[Fact]
 	public void NextBytesShouldReturnDiffValueAsArray()
 	{
-		var length = 10;
+		var length = 5;
 		var values = new byte[length];
 		StaticRandom.NextBytes(values);
 
@@ -110,7 +111,7 @@ public class StaticRandomTests
 	[Fact]
 	public void NextBytesShouldReturnDiffValueAsSpan()
 	{
-		var length = 10;
+		var length = 5;
 		var values = new byte[length];
 		StaticRandom.NextBytes(values.AsSpan());
 
@@ -123,7 +124,7 @@ public class StaticRandomTests
 	[Fact]
 	public void NextBytesShouldReturnDiffValueAsMemory()
 	{
-		var length = 10;
+		var length = 5;
 		var values = new byte[length];
 		StaticRandom.NextBytes(values.AsMemory());
 

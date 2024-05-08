@@ -2,9 +2,14 @@
 
 namespace Wangkanai.Extensions;
 
+[DebuggerStepThrough]
 public static class StreamExtensions
 {
-	[DebuggerStepThrough]
+	/// <summary>
+	/// Copies the content of one stream to another stream.
+	/// </summary>
+	/// <param name="fromStream">The stream from which to read the content.</param>
+	/// <param name="toStream">The stream to which the content will be copied.</param>
 	public static void CopyTo(this Stream fromStream, Stream toStream)
 	{
 		fromStream.ThrowIfNull();
@@ -16,7 +21,11 @@ public static class StreamExtensions
 			toStream.Write(bytes, 0, dataRead);
 	}
 
-	[DebuggerStepThrough]
+	/// <summary>
+	/// Reads the entire content of a stream and returns it as a byte array.
+	/// </summary>
+	/// <param name="stream">The stream from which to read the content.</param>
+	/// <returns>The content of the stream as a byte array.</returns>
 	public static byte[] ReadFully(this Stream stream)
 	{
 		stream.ThrowIfNull();
@@ -30,7 +39,11 @@ public static class StreamExtensions
 		return ms.ToArray();
 	}
 
-	[DebuggerStepThrough]
+	/// <summary>
+	/// Reads the content of a stream and returns it as a string.
+	/// </summary>
+	/// <param name="stream">The stream from which to read the content.</param>
+	/// <returns>The content of the stream as a string.</returns>
 	public static string ReadToString(this Stream stream)
 	{
 		stream.ThrowIfNull();

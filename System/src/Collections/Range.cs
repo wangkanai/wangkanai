@@ -6,7 +6,7 @@ namespace Wangkanai.Collections;
 /// Represents a range of values, an <see cref="IComparer{T}"/> is used to compare specific values with a start and end point.
 /// A range may be included or exclude each end individually.
 /// </summary>
-public sealed class Range<T>
+public class Range<T>
 {
 	/// <summary>
 	/// The start of the range

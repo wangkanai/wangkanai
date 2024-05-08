@@ -5,7 +5,7 @@ namespace Wangkanai.Collections;
 /// <summary>
 /// Comparer to daisy-chain multiple comparers and apply them in order.
 /// </summary>
-internal class LinkedComparer<T> : IComparer<T>
+public class LinkedComparer<T> : IComparer<T>
 {
 	private readonly IComparer<T> _primary;
 	private readonly IComparer<T> _secondary;

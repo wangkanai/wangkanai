@@ -7,7 +7,7 @@ namespace Wangkanai.Collections;
 /// <summary>
 /// Iterates over a range of values that <see cref="IEnumerable{T}"/>
 ///  </summary>
-public sealed class RangeIterator<T> : IEnumerable<T>
+public class RangeIterator<T> : IEnumerable<T>
 {
 	/// <summary>
 	/// Returns the range this object iterates over.
