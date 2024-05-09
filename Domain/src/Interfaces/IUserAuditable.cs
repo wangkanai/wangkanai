@@ -2,8 +2,8 @@
 
 namespace Wangkanai.Domain;
 
-public interface IUserAuditable: ICreatedEntity, IUpdatedEntity
+public interface IUserAuditable : ICreatedEntity, IUpdatedEntity
 {
 	string? CreatedBy { get; set; }
-	string?   UpdatedBy { get; set; }
+	string? UpdatedBy { get; set; }
 }
