@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2023 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 namespace Wangkanai.Domain;
 
@@ -7,8 +7,8 @@ public abstract class UserAuditableEntity<T> : Entity<T>, IUserAuditable
 {
 	#region IUserAuditable Members
 
-	public DateTime Created { get; set; }
-	public DateTime Updated { get; set; }
+	public DateTime? Created { get; set; }
+	public DateTime? Updated { get; set; }
 
 	[StringLength(128)]
 	public string? CreatedBy { get; set; }
