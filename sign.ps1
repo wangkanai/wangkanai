@@ -1,6 +1,6 @@
 param(
     [Parameter(mandatory=$false)]
-    [switch]$dryrun=$false,
+    [bool]$dryrun=$false,
     [Parameter(mandatory=$false)]
     [string]$certicate="Open Source Developer, Sarin Na Wangkanai"
 )
@@ -14,7 +14,7 @@ $dirs=[ordered]@{
 #    6="Cryptography";
 #    7="Hosting";
 #    8="Tools";
-#    9="Domain";
+    9="Domain";
 #    10="Mvc";
 #    11="Webserver";
 #    12="Webmaster";
@@ -33,6 +33,8 @@ $dirs=[ordered]@{
 }
 
 $env:OneDriveConsumer+"\powershell-env.ps1" | out-null
+
+Write-Host "NuGet Certificate: $certicate"  -ForegroundColor Magenta
 
 $e=[char]27
 $root="D:\Sources\wangkanai\"
