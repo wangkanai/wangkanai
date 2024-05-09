@@ -4,5 +4,5 @@ namespace Wangkanai.Domain;
 
 public interface IUpdatedEntity
 {
-	DateTime Updated { get; set; }
+	DateTime? Updated { get; set; }
 }

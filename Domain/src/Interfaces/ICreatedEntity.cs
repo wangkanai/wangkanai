@@ -4,5 +4,5 @@ namespace Wangkanai.Domain;
 
 public interface ICreatedEntity
 {
-	DateTime Created { get; set; }
+	DateTime? Created { get; set; }
 }
