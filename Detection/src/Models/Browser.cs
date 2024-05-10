@@ -13,5 +13,6 @@ public enum Browser
 	Edge             = 1 << 5, // Microsoft Edge
 	Opera            = 1 << 6, // Opera
 	GoogleSearchApp  = 1 << 7, // Google Search App
-	Others           = 1 << 8  // Others
+	Samsung          = 1 << 8, // Samsung Internet Browser
+	Others           = 1 << 9  // Others
 }

@@ -26,6 +26,8 @@ public sealed class BrowserService(IUserAgentService userAgentService, IEngineSe
 			return Browser.Edge;
 		if (IsOpera(agent))
 			return Browser.Opera;
+		if (IsSamsungInternetBrowser(agent))
+			return Browser.Samsung;
 		if (IsChrome(agent))
 			return Browser.Chrome;
 		if (IsInternetExplorer(agent, engine))
@@ -53,6 +55,8 @@ public sealed class BrowserService(IUserAgentService userAgentService, IEngineSe
 			return GetVersionEdge(agent);
 		if (browser == Browser.GoogleSearchApp)
 			return GetVersionGoogleSearchApp(agent);
+		if (browser == Browser.Samsung)
+			return GetVersionSamsungInternetBrowser(agent);
 		if (browser == Browser.Chrome && agent.Contains("crios", StringComparison.Ordinal))
 			return GetVersionChromeOs(agent);
 		if (browser == Browser.Chrome)
@@ -117,6 +121,17 @@ public sealed class BrowserService(IUserAgentService userAgentService, IEngineSe
 	private static Version GetVersionGoogleSearchApp(string agent)
 	{
 		var version      = agent.Substring(agent.IndexOf("gsa/", StringComparison.Ordinal) + "gsa/".Length);
+		var indexOfSpace = version.IndexOf(' ');
+
+		if (indexOfSpace != -1)
+			version = version.Substring(0, indexOfSpace);
+
+		return version.ToVersion();
+	}
+
+	private static Version GetVersionSamsungInternetBrowser(string agent)
+	{
+		var version      = agent.Substring(agent.IndexOf("SamsungBrowser/", StringComparison.OrdinalIgnoreCase) + "SamsungBrowser/".Length);
 		var indexOfSpace = version.IndexOf(' ');
 
 		if (indexOfSpace != -1)
@@ -206,4 +221,7 @@ public sealed class BrowserService(IUserAgentService userAgentService, IEngineSe
 
 	private static bool IsGoogleSearchApp(string agent)
 		=> agent.Contains("gsa", StringComparison.Ordinal);
+
+	private static bool IsSamsungInternetBrowser(string agent)
+		=> agent.Contains("SamsungBrowser", StringComparison.OrdinalIgnoreCase);
 }
