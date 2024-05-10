@@ -33,7 +33,7 @@ public class IdentityClient<TKey> : IAuditable where TKey : IEquatable<TKey>
 	public virtual string    ProtocolType     { get; set; } = FederationConstants.ProtocolTypes.OpenIdConnect;
 	public virtual DateTime? Created          { get; set; } = DateTime.UtcNow;
 	public virtual DateTime? Updated          { get; set; }
-	public virtual DateTime LastAccessed     { get; set; }
+	public virtual DateTime  LastAccessed     { get; set; }
 	public virtual string    ConcurrencyStamp { get; set; } = Guid.NewGuid().ToString();
 
 	public virtual List<IdentityClientOrigin>      Origins      { get; set; } = new();
