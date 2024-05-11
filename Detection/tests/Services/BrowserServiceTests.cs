@@ -74,6 +74,18 @@ public sealed class BrowserServiceTests
 	}
 
 	[Theory]
+	[InlineData("1.0", "Mozilla/5.0 (Linux; Tizen 2.3; SAMSUNG SM-Z130H) AppleWebKit/537.3 (KHTML, like Gecko) SamsungBrowser/1.0 Mobile Safari/537.3")]
+	[InlineData("21.0", "Mozilla/5.0 (Linux; Android 13; SAMSUNG SM-A528B) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/21.0 Chrome/110.0.5481.154 Mobile Safari/537.36")]
+	[InlineData("23.0", "Mozilla/5.0 (Linux; Android 13; SAMSUNG SM-S918B) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/23.0 Chrome/115.0.0.0 Mobile Safari/537.36")]
+
+	public void SamsungInternetBrowser(string version, string agent)
+	{
+		var resolver = MockService.BrowserService(agent);
+		Assert.Equal(Browser.Samsung, resolver.Name);
+		Assert.Equal(new Version(version), resolver.Version);
+	}
+
+	[Theory]
 	[InlineData("Mozilla/5.0 (Windows NT x.y; rv:10.0) Gecko/20100101 Firefox/10.0")]
 	[InlineData("Mozilla/5.0 (Windows NT 5.1; rv:11.0) Gecko Firefox/11.0 (via ggpht.com GoogleImageProxy)")]
 	[InlineData("Mozilla/5.0 (Linux arm) Gecko/20110318 Firefox/4.0b13pre Fennec/4.0")]
