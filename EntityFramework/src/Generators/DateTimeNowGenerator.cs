@@ -3,7 +3,7 @@
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.ValueGeneration;
 
-namespace Wangkanai.EntityFramework.Generators;
+namespace Wangkanai.EntityFramework;
 
 public sealed class DateTimeNowGenerator : ValueGenerator<DateTime>
 {
