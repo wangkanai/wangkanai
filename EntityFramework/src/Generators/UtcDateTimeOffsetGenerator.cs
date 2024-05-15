@@ -5,13 +5,13 @@ using Microsoft.EntityFrameworkCore.ValueGeneration;
 
 namespace Wangkanai.EntityFramework;
 
-public sealed class DateTimeOffsetNowGenerator : ValueGenerator<DateTimeOffset>
+public sealed class UtcDateTimeOffsetGenerator : ValueGenerator<DateTimeOffset>
 {
 	public override bool GeneratesTemporaryValues => false;
 
 	public override DateTimeOffset Next(EntityEntry entry)
 	{
 		entry.ThrowIfNull();
-		return DateTimeOffset.Now;
+		return DateTimeOffset.UtcNow;
 	}
 }

@@ -4,8 +4,4 @@
         <ProjectReference Include="..\src\Wangkanai.EntityFramework.csproj"/>
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Generators\" />
-    </ItemGroup>
-
 </Project>
