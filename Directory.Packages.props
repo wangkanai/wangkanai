@@ -12,8 +12,9 @@
     <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
     <!--tools-->
     <PackageVersion Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="$(FrameworkVersion)" />
-    <!--system-->
+    <!--annotation-->
     <PackageVersion Include="System.ComponentModel.Annotations" Version="5.0.0" />
+		<PackageVersion Include="JetBrains.Annotations" Version="2023.3.0" />
     <!--framework-->
     <PackageVersion Include="Microsoft.AspNetCore.Authorization" Version="$(FrameworkVersion)" />
     <PackageVersion Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="$(FrameworkVersion)" />
@@ -62,7 +63,6 @@
     <!--benchmark-->
     <PackageVersion Include="BenchmarkDotNet" Version="0.13.12" />
     <!--packages-->
-    <PackageVersion Include="JetBrains.Annotations" Version="2023.3.0" />
     <PackageVersion Include="HtmlAgilityPack" Version="1.11.61" />
   </ItemGroup>
 </Project>
