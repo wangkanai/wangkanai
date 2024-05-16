@@ -1,7 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<ItemGroup>
-		<PackageReference Include="JetBrains.Annotations" />
 		<ProjectReference Include="..\src\Wangkanai.EntityFramework.csproj" />
 	</ItemGroup>
 
