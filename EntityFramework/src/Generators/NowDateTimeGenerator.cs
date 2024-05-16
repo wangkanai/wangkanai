@@ -10,8 +10,8 @@ public sealed class NowDateTimeGenerator : ValueGenerator<DateTime>
 	public override bool GeneratesTemporaryValues => false;
 
 	public override DateTime Next(EntityEntry entry)
-	{
-		entry.ThrowIfNull();
-		return DateTime.Now;
-	}
+		=> DateTime.Now;
+
+	public override ValueTask<DateTime> NextAsync(EntityEntry entry, CancellationToken cancellationToken = new CancellationToken())
+		=> ValueTask.FromResult(DateTime.Now);
 }
