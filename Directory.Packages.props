@@ -15,45 +15,45 @@
     <!--system-->
     <PackageVersion Include="System.ComponentModel.Annotations" Version="5.0.0" />
     <!--framework-->
-    <PackageVersion Include="Microsoft.AspNetCore.Authorization" Version="$(FrameworkVersion)" />
-    <PackageVersion Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="$(FrameworkVersion)" />
-    <PackageVersion Include="Microsoft.AspNetCore.Components" Version="$(FrameworkVersion)" />
-    <PackageVersion Include="Microsoft.AspNetCore.Components.Web" Version="$(FrameworkVersion)" />
-    <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly" Version="$(FrameworkVersion)" />
-    <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="$(FrameworkVersion)" />
+    <PackageVersion Include="Microsoft.AspNetCore.Authorization" Version="8.0.5" />
+    <PackageVersion Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="8.0.5" />
+    <PackageVersion Include="Microsoft.AspNetCore.Components" Version="8.0.5" />
+    <PackageVersion Include="Microsoft.AspNetCore.Components.Web" Version="8.0.5" />
+    <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.5" />
+    <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.5" />
     <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="$(FrameworkVersion)" />
-    <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="$(FrameworkVersion)" PrivateAssets="all" />
+    <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.5" PrivateAssets="all" />
     <PackageVersion Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="$(FrameworkVersion)" />
-    <PackageVersion Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="$(FrameworkVersion)" />
+    <PackageVersion Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.5" />
     <!--extensions-->
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="$(ExtensionsVersion)" />
-    <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="$(ExtensionsVersion)" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.1" />
     <PackageVersion Include="Microsoft.Extensions.FileProviders.Abstractions" Version="$(ExtensionsVersion)" />
     <!--entityframework-->
-    <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="$(EntityFrameworkVersion)" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="$(EntityFrameworkVersion)" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.Relational" Version="$(EntityFrameworkVersion)" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.Tools" Version="$(EntityFrameworkVersion)" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.InMemory" Version="$(EntityFrameworkVersion)" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="8.0.5" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.5" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Relational" Version="8.0.5" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.5" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.5" />
     <!--identity-->
     <PackageVersion Include="Microsoft.IdentityModel.Abstractions" Version="$(IdentityModelVersion)" />
-    <PackageVersion Include="Microsoft.IdentityModel.Tokens" Version="$(IdentityModelVersion)" />
-		<PackageVersion Include="Microsoft.IdentityModel.JsonWebTokens" Version="$(IdentityModelVersion)" />
-		<PackageVersion Include="Microsoft.IdentityModel.Logging" Version="$(IdentityModelVersion)" />
+    <PackageVersion Include="Microsoft.IdentityModel.Tokens" Version="7.5.2" />
+    <PackageVersion Include="Microsoft.IdentityModel.JsonWebTokens" Version="$(IdentityModelVersion)" />
+    <PackageVersion Include="Microsoft.IdentityModel.Logging" Version="$(IdentityModelVersion)" />
     <PackageVersion Include="Microsoft.IdentityModel.Protocols" Version="$(IdentityModelVersion)" />
     <PackageVersion Include="Microsoft.IdentityModel.Protocols.OpenIdConnect" Version="$(IdentityModelVersion)" />
-		<PackageVersion Include="Microsoft.IdentityModel.Protocols.WsFederation" Version="$(IdentityModelVersion)" />
-		<PackageVersion Include="Microsoft.IdentityModel.Protocols.SignedHttpRequest" Version="$(IdentityModelVersion)" />
+    <PackageVersion Include="Microsoft.IdentityModel.Protocols.WsFederation" Version="$(IdentityModelVersion)" />
+    <PackageVersion Include="Microsoft.IdentityModel.Protocols.SignedHttpRequest" Version="$(IdentityModelVersion)" />
     <!--serilog-->
     <PackageVersion Include="Serilog" Version="3.1.1" />
     <PackageVersion Include="Serilog.AspNetCore" Version="8.0.1" />
     <PackageVersion Include="Serilog.Sinks.Console" Version="5.0.1" />
     <!--tests -->
-    <PackageVersion Include="Microsoft.AspNetCore.TestHost" Version="8.0.4" />
-    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.9.0" />
+    <PackageVersion Include="Microsoft.AspNetCore.TestHost" Version="8.0.5" />
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.10.0" />
     <PackageVersion Include="Moq" Version="4.20.70" />
-    <PackageVersion Include="xunit" Version="2.8.0" />
-    <PackageVersion Include="xunit.runner.visualstudio" Version="2.8.0" PrivateAssets="all"/>
+    <PackageVersion Include="xunit" Version="2.8.1" />
+    <PackageVersion Include="xunit.runner.visualstudio" Version="2.8.1" PrivateAssets="all" />
     <PackageVersion Include="coverlet.collector" Version="6.0.2" PrivateAssets="all" />
     <PackageVersion Include="coverlet.msbuild" Version="6.0.2" PrivateAssets="all" />
     <PackageVersion Include="FluentAssertions" Version="6.12.0" />
