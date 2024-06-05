@@ -16,13 +16,13 @@
 
 	<Target Name="NpmInstall" Inputs="package.json" Outputs="node_modules/.install-stamp">
 		<Message Text=" pnpm install" Importance="high" />
-		<Exec Command="pnpm ci" Condition="$(RestorePackagesWithLockFile) == 'true'"/>
-		<Exec Command="pnpm install" Condition="$(RestorePackagesWithLockFile) != 'true'"/>
+		<Exec Command="npm ci" Condition="$(RestorePackagesWithLockFile) == 'true'"/>
+		<Exec Command="npm install" Condition="$(RestorePackagesWithLockFile) != 'true'"/>
 		<Touch Files="node_modules/.install-stamp" AlwaysCreate="true"/>
 	</Target>
 	<Target Name="NpmRunBuild" DependsOnTargets="NpmInstall" BeforeTargets="BeforeBuild">
-		<Exec Command="pnpm run --silent lib" Condition="$(Configuration) != 'DEBUG'"/>
-		<Exec Command="pnpm run --silent scss" Condition="$(Configuration) != 'DEBUG'"/>
+		<Exec Command="npm run --silent lib" Condition="$(Configuration) != 'DEBUG'"/>
+		<Exec Command="npm run --silent scss" Condition="$(Configuration) != 'DEBUG'"/>
 	</Target>
 
 </Project>
