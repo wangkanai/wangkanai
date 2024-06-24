@@ -58,10 +58,10 @@ public class StreamExtensionsTests
 	public void ReadToString_Null()
 	{
 		// Arrange
-		Stream stream = null;
+		Stream? stream = null;
 
 		// Assert
-		Assert.Throws<ArgumentNullException>(() => stream.ReadToString());
+		Assert.Throws<ArgumentNullException>(() => stream!.ReadToString());
 	}
 
 	[Fact]
