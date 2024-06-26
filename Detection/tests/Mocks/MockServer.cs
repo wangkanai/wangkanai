@@ -13,24 +13,14 @@ internal static class MockServer
 	private static RequestDelegate ContextHandler
 		=> context => context.Response.WriteAsync("DetectionMvc:");
 
-	#region WebApplicationBuilder
-
 	internal static WebApplicationBuilder WebApplicationBuilder()
 		=> WebApplication.CreateBuilder();
-
-	#endregion
-
-	#region Server
 
 	internal static TestServer Server(IWebHostBuilder builder)
 		=> new(builder);
 
 	internal static TestServer Server(Action<DetectionOptions> options)
 		=> Server(WebHostBuilderDetection(options));
-
-	#endregion
-
-	#region WebHostBuilder
 
 	internal static IWebHostBuilder WebHostBuilder()
 		=> WebHostBuilder(ContextHandler);
@@ -62,6 +52,4 @@ internal static class MockServer
 			   app.UseDetection();
 			   app.Run(contextHandler);
 		   });
-
-	#endregion
 }
