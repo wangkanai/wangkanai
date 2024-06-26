@@ -16,75 +16,52 @@ internal static class MockServer
 	#region WebApplicationBuilder
 
 	internal static WebApplicationBuilder WebApplicationBuilder()
-	{
-		return WebApplication.CreateBuilder();
-	}
+		=> WebApplication.CreateBuilder();
 
 	#endregion
 
 	#region Server
 
-	internal static TestServer Server()
-	{
-		return Server();
-	}
-
 	internal static TestServer Server(IWebHostBuilder builder)
-	{
-		return new TestServer(builder);
-	}
+		=> new(builder);
 
 	internal static TestServer Server(Action<DetectionOptions> options)
-	{
-		return Server(WebHostBuilderDetection(options));
-	}
+		=> Server(WebHostBuilderDetection(options));
 
 	#endregion
 
 	#region WebHostBuilder
 
 	internal static IWebHostBuilder WebHostBuilder()
-	{
-		return WebHostBuilder(ContextHandler);
-	}
+		=> WebHostBuilder(ContextHandler);
 
 	internal static IWebHostBuilder WebHostBuilder(RequestDelegate contextHandler)
-	{
-		return new WebHostBuilder()
-		       .ConfigureServices(services => { })
-		       .Configure(app => { app.Run(contextHandler); });
-	}
+		=> new WebHostBuilder()
+		   .ConfigureServices(services => { })
+		   .Configure(app => { app.Run(contextHandler); });
 
 	internal static IWebHostBuilder WebHostBuilderDetection()
-	{
-		return WebHostBuilderDetection(options => { });
-	}
+		=> WebHostBuilderDetection(options => { });
 
 	internal static IWebHostBuilder WebHostBuilderDetection(Action<DetectionOptions> options)
-	{
-		return WebHostBuilderDetection(ContextHandler, options);
-	}
+		=> WebHostBuilderDetection(ContextHandler, options);
 
 	internal static IWebHostBuilder WebHostBuilderDetection(RequestDelegate contextHandler)
-	{
-		return WebHostBuilderDetection(contextHandler, options => { });
-	}
+		=> WebHostBuilderDetection(contextHandler, options => { });
 
 	private static IWebHostBuilder WebHostBuilderDetection(RequestDelegate contextHandler, Action<DetectionOptions> options)
-	{
-		return new WebHostBuilder()
-		       .ConfigureServices(services => {
-			       // var accessor = MockService.MockHttpContextAccessor(agent);
-			       // services.TryAddSingleton<IHttpContextAccessor, accessor>();
-			       services.AddScoped(sp => sp.GetService<IHttpContextAccessor>().HttpContext.Session);
-			       services.AddDetection(options);
-		       })
-		       .Configure(app => {
-			       app.UseSession();
-			       app.UseDetection();
-			       app.Run(contextHandler);
-		       });
-	}
+		=> new WebHostBuilder()
+		   .ConfigureServices(services => {
+			   // var accessor = MockService.MockHttpContextAccessor(agent);
+			   // services.TryAddSingleton<IHttpContextAccessor, accessor>();
+			   services.AddScoped(sp => sp.GetService<IHttpContextAccessor>().HttpContext.Session);
+			   services.AddDetection(options);
+		   })
+		   .Configure(app => {
+			   app.UseSession();
+			   app.UseDetection();
+			   app.Run(contextHandler);
+		   });
 
 	#endregion
 }
