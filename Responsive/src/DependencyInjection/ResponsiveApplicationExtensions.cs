@@ -36,7 +36,7 @@ public static class ResponsiveApplicationExtensions
 
 	private static void ValidateOptions(ResponsiveOptions options)
 	{
-		if (options.Disable && options.IncludeWebApi)
+		if (options is { Disable: true, IncludeWebApi: true })
 			throw new InvalidOperationException("IncludeWebApi is not needed if already Disable");
 	}
 }
