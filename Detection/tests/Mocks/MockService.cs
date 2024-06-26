@@ -116,7 +116,7 @@ public static class MockService
 	private static HttpContext CreateHttpContext(string value)
 	{
 		var context = new DefaultHttpContext();
-		context.Request.Headers.Add("User-Agent", new[] { value });
+		context.Request.Headers.Append("User-Agent", new[] { value });
 		return context;
 	}
 
