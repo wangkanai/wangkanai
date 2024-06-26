@@ -18,7 +18,7 @@ internal class MockPageRouteModel
 
 	public MockPageRouteModel(RazorPagesOptions options)
 	{
-		_options = options ?? throw new ArgumentNullException(nameof(options));
+		_options = options.ThrowIfNull();
 
 		_normalizedRootDirectory     = NormalizeDirectory(options.RootDirectory);
 		_normalizedAreaRootDirectory = "/Areas/";
@@ -56,7 +56,8 @@ internal class MockPageRouteModel
 		model.Selectors.Add(selectorModel);
 
 		var fileName = Path.GetFileName(model.RelativePath);
-		if (AttributeRouteModel.IsOverridePattern(routeTemplate) && string.Equals(IndexFileName, fileName, StringComparison.OrdinalIgnoreCase))
+		if (AttributeRouteModel.IsOverridePattern(routeTemplate) &&
+		    string.Equals(IndexFileName, fileName, StringComparison.OrdinalIgnoreCase))
 		{
 			// For pages without on override route, and ending in /Index.cshtml
 			// I want ot allow incoming routing, but force outgoing routes to match to the path sans /Index.
@@ -69,16 +70,14 @@ internal class MockPageRouteModel
 	}
 
 	private static SelectorModel CreateSelectorModel(string prefix, string routeTemplate)
-	{
-		return new SelectorModel
-		{
-			AttributeRouteModel = new AttributeRouteModel
-			{
-				Template = AttributeRouteModel.CombineTemplates(prefix, routeTemplate)
-			},
-			EndpointMetadata = { new PageRouteMetadata(prefix, routeTemplate) }
-		};
-	}
+		=> new()
+		   {
+			   AttributeRouteModel = new AttributeRouteModel
+			                         {
+				                         Template = AttributeRouteModel.CombineTemplates(prefix, routeTemplate)
+			                         },
+			   EndpointMetadata = { new PageRouteMetadata(prefix, routeTemplate) }
+		   };
 
 	private bool TryParseAreaPath(string relativePath, out (string areaName, string viewEnginePath) result)
 	{
@@ -89,12 +88,15 @@ internal class MockPageRouteModel
 		result = default;
 		// Parse the area root directory
 		var areaRootEndIndex = relativePath.IndexOf('/', 1);
-		if (areaRootEndIndex == -1 || areaRootEndIndex >= relativePath.Length - 1 || !relativePath.StartsWith(_normalizedAreaRootDirectory, StringComparison.OrdinalIgnoreCase))
+		if (areaRootEndIndex == -1 ||
+		    areaRootEndIndex >= relativePath.Length - 1 ||
+		    !relativePath.StartsWith(_normalizedAreaRootDirectory, StringComparison.OrdinalIgnoreCase))
 			return false;
 
 		// The first directory that follows the area root is the area name
 		var areaEndIndex = relativePath.IndexOf('/', areaRootEndIndex + 1);
-		if (areaEndIndex == -1 || areaEndIndex == relativePath.Length)
+		if (areaEndIndex == -1 ||
+		    areaEndIndex == relativePath.Length)
 			return false;
 
 		// Ensire the next token is the "Pages" directory
@@ -112,20 +114,17 @@ internal class MockPageRouteModel
 
 	private string GetViewEnginePath(string rootDirectory, string path)
 	{
-		if (rootDirectory is null)
-			throw new ArgumentNullException(nameof(rootDirectory));
-		if (path is null)
-			throw new ArgumentNullException(nameof(path));
+		rootDirectory.ThrowIfNull();
+		path.ThrowIfNull();
 
 		var start = rootDirectory.Length - 1;
-		var end   = path.Length          - RazorViewEngine.ViewExtension.Length;
+		var end   = path.Length - RazorViewEngine.ViewExtension.Length;
 
 		return path.Substring(start, end - start);
 	}
 
 	private static string CreateAreaRoute(string areaName, string viewEnginePath)
-	{
-		return string.Create(1 + areaName.Length + viewEnginePath.Length, (areaName, viewEnginePath), (span, tuple) => {
+		=> string.Create(1 + areaName.Length + viewEnginePath.Length, (areaName, viewEnginePath), (span, tuple) => {
 			var (areaNameValue, viewEnginePathValue) = tuple;
 
 			span[0] = '/';
@@ -136,13 +135,10 @@ internal class MockPageRouteModel
 
 			viewEnginePathValue.AsSpan().CopyTo(span);
 		});
-	}
 
 	private static string NormalizeDirectory(string directory)
-	{
-		return directory.Length > 1
-		       && !directory.EndsWith("/", StringComparison.Ordinal)
-			       ? directory + "/"
-			       : directory;
-	}
+		=> directory.Length > 1 &&
+		   !directory.EndsWith('/')
+			   ? directory + "/"
+			   : directory;
 }
