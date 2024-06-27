@@ -5,14 +5,10 @@ using Microsoft.AspNetCore.Mvc.Filters;
 namespace Wangkanai.Webmaster.Core;
 
 [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
-public sealed class MetaKeywordsAttribute : Attribute
+public sealed class MetaKeywordsAttribute(params string[] keywords)
+	: Attribute
 {
-	private readonly List<string> _keywords;
-
-	public MetaKeywordsAttribute(params string[] keywords)
-	{
-		_keywords = new List<string>(keywords);
-	}
+	private readonly List<string> _keywords = new List<string>(keywords);
 }
 
 public abstract class MetaAttribute : ActionFilterAttribute

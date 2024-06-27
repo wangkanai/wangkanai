@@ -4,12 +4,9 @@ using Microsoft.AspNetCore.Http;
 
 namespace Wangkanai.Webmaster;
 
-public sealed class WebmasterMiddleware
+public sealed class WebmasterMiddleware(RequestDelegate next)
 {
-	private readonly RequestDelegate _next;
-
-	public WebmasterMiddleware(RequestDelegate next)
-		=> _next = next.ThrowIfNull();
+	private readonly RequestDelegate _next = next.ThrowIfNull();
 
 	public async Task InvokeAsync(HttpContext context)
 	{
