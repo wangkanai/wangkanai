@@ -17,7 +17,7 @@ public class FederationScope : FederationResource
 	public FederationScope() { }
 
 	public FederationScope(string name)
-		: this(name, name, null) { }
+		: this(name, name, null!) { }
 
 	public FederationScope(string name, IEnumerable<string> claims)
 		: this(name, name, claims) { }

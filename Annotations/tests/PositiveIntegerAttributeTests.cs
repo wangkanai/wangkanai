@@ -29,7 +29,7 @@ public class PositiveIntegerAttributeTests
 		var attribute = argument!.GetCustomAttribute<PositiveIntegerAttribute>();
 		var expected  = "The value must be positive integer.";
 		Assert.NotNull(attribute);
-		//Assert.Equal(expected, attribute!.Message);
+		//Assert.Equal(expected, attribute!);
 	}
 
 	[Fact]

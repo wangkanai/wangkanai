@@ -7,7 +7,7 @@ using Wangkanai.Federation.Validations;
 namespace Wangkanai.Federation.Models;
 
 [DebuggerDisplay("{DebuggerDisplay,nq}")]
-public class FederationClient
+public sealed class FederationClient
 {
 	private ICollection<string> _allowedGrantTypes;
 	private string              DebuggerDisplay => ClientId ?? $"{{{typeof(FederationClient)}}}";

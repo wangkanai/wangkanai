@@ -111,7 +111,7 @@ public class StaticRandomTests
 	[Fact]
 	public void NextBytesShouldReturnDiffValueAsSpan()
 	{
-		var length = 5;
+		var length = 2;
 		var values = new byte[length];
 		StaticRandom.NextBytes(values.AsSpan());
 

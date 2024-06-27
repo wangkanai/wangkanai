@@ -2,7 +2,7 @@
 
 namespace Wangkanai.Federation;
 
-public class FederationClock : IClock
+public sealed class FederationClock : IClock
 {
 	public DateTimeOffset UtcNow => _timeProvider.GetUtcNow();
 
