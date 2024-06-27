@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using Wangkanai.Solver.Abstractions;
 
@@ -10,27 +10,17 @@ public class Variable : IVariable
 	public double Value { get; set; }
 
 	public static LinearExpression operator +(Variable left, double right)
-	{
-		return new VariableWrapper(left) + right;
-	}
+		=> new VariableWrapper(left) + right;
 
 	public static LinearExpression operator +(double left, Variable right)
-	{
-		return right + left;
-	}
+		=> right + left;
 
 	public static LinearExpression operator +(Variable left, LinearExpression right)
-	{
-		return new VariableWrapper(left) + right;
-	}
+		=> new VariableWrapper(left) + right;
 
 	public static LinearExpression operator +(Variable left, Variable right)
-	{
-		return new VariableWrapper(left) + new VariableWrapper(right);
-	}
+		=> new VariableWrapper(left) + new VariableWrapper(right);
 
 	public static LinearExpression operator +(LinearExpression left, Variable right)
-	{
-		return left + new VariableWrapper(right);
-	}
+		=> left + new VariableWrapper(right);
 }
