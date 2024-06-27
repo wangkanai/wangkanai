@@ -15,7 +15,7 @@ public static class HttpResponseExtensions
 		else if (maxAge > 0)
 		{
 			if (!response.Headers.ContainsKey(WebserverConstants.CacheControl.ControlKey))
-				response.Headers.Add(WebserverConstants.CacheControl.ControlKey, WebserverConstants.CacheControl.ControlMaxAge(maxAge));
+				response.Headers.Append(WebserverConstants.CacheControl.ControlKey, WebserverConstants.CacheControl.ControlMaxAge(maxAge));
 
 			if (varys?.Any() != true)
 				return;
@@ -31,11 +31,11 @@ public static class HttpResponseExtensions
 	public static void SetNoCache(this HttpResponse response)
 	{
 		if (!response.Headers.ContainsKey(WebserverConstants.CacheControl.ControlKey))
-			response.Headers.Add(WebserverConstants.CacheControl.ControlKey, WebserverConstants.CacheControl.ControlValue);
+			response.Headers.Append(WebserverConstants.CacheControl.ControlKey, WebserverConstants.CacheControl.ControlValue);
 		else
 			response.Headers[WebserverConstants.CacheControl.ControlKey] = WebserverConstants.CacheControl.ControlValue;
 
 		if (!response.Headers.ContainsKey(WebserverConstants.CacheControl.PragmaKey))
-			response.Headers.Add(WebserverConstants.CacheControl.PragmaKey, WebserverConstants.CacheControl.PragmaValue);
+			response.Headers.Append(WebserverConstants.CacheControl.PragmaKey, WebserverConstants.CacheControl.PragmaValue);
 	}
 }
