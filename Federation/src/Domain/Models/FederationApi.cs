@@ -7,7 +7,7 @@ using Wangkanai.Extensions;
 namespace Wangkanai.Federation.Models;
 
 [DebuggerDisplay("{DebuggerDisplay,nq}")]
-public class FederationApi : FederationResource
+public sealed class FederationApi : FederationResource
 {
 	private string DebuggerDisplay => Name ?? $"{{{typeof(FederationApi)}}}";
 

@@ -6,4 +6,5 @@ namespace Wangkanai;
 public sealed class PositiveIntegerAttribute : Attribute
 {
 	public PositiveIntegerAttribute() { }
+
 }
