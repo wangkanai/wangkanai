@@ -17,5 +17,15 @@ public class FederationResource : AbstractResource
 	public FederationResource(string name, IEnumerable<string> claims)
 		: this(name, name, claims) { }
 
-	public FederationResource(string name, string displayName, IEnumerable<string> claims) { }
+	public FederationResource(string name, string displayName, IEnumerable<string> claims)
+	{
+		name.ThrowIfNull();
+		claims.ThrowIfEmpty("Must provide at least one claim type");
+
+		Name        = name;
+		DisplayName = displayName;
+
+		foreach (var claim in claims)
+			Claims.Add(claim);
+	}
 }
