@@ -5,9 +5,9 @@ using System.Diagnostics;
 namespace Wangkanai.Federation.Models;
 
 [DebuggerDisplay("{DebuggerDisplay,nq}")]
-public abstract class FederationResource
+public abstract class Resource
 {
-	private string DebuggerDisplay => Name ?? $"{{{typeof(FederationResource)}}}";
+	private string DebuggerDisplay => Name ?? $"{{{typeof(Resource)}}}";
 
 	public bool   Enable          { get; set; } = true;
 	public string Name            { get; set; }
