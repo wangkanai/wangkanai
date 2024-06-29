@@ -23,7 +23,7 @@ public abstract class AbstractResource
 	public string Name { get; set; } = default!;
 
 	/// <summary>
-	/// Display name of the resource.
+	/// Display the name of the resource.
 	/// </summary>
 	public string? DisplayName { get; set; }
 
