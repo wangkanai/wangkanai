@@ -8,9 +8,9 @@ namespace Wangkanai.Federation.Models;
 /// Models the common data Api and identity resources.
 /// </summary>
 [DebuggerDisplay("{DebuggerDisplay,nq}")]
-public abstract class Resource
+public abstract class AbstractResource
 {
-	private string DebuggerDisplay => Name ?? $"{{{typeof(Resource)}}}";
+	private string DebuggerDisplay => Name ?? $"{{{typeof(AbstractResource)}}}";
 
 	/// <summary>
 	/// Indicates if this resource is enabled. Defaults to true.
