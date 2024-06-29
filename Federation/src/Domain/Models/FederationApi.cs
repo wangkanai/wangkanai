@@ -33,6 +33,6 @@ public sealed class FederationApi : FederationResource
 			return;
 
 		foreach (var claim in claims)
-			UserClaims.Add(claim);
+			Claims.Add(claim);
 	}
 }
