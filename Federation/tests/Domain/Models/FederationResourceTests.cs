@@ -9,7 +9,16 @@ public class FederationResourceTests
 	{
 		var resource = new FederationResource();
 		Assert.NotNull(resource);
+		Assert.Null(resource.Name);
+		Assert.Null(resource.DisplayName);
+		Assert.Null(resource.Description);
+
+		Assert.True(resource.Enable);
+		Assert.False(resource.Required);
 		Assert.False(resource.Emphasize);
+		Assert.True(resource.ShowInDiscoveryDocument);
+
 		Assert.NotNull(resource.Claims);
+		Assert.NotNull(resource.Properties);
 	}
 }
