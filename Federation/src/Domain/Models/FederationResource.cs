@@ -8,7 +8,7 @@ namespace Wangkanai.Federation.Models;
 /// Models a user federation resource.
 /// </summary>
 [DebuggerDisplay("{" + nameof(DebuggerDisplay) + ",nq}")]
-public class FederationResource : AbstractResource
+public class FederationResource : BaseResource
 {
 	private string DebuggerDisplay => Name ?? $"{{{typeof(FederationResource)}}}";
 

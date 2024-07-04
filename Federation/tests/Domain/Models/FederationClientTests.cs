@@ -4,5 +4,5 @@ namespace Wangkanai.Federation.Models;
 
 public class FederationClientTests
 {
-	
+
 }
