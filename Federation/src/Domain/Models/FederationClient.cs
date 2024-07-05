@@ -26,8 +26,8 @@ public sealed class FederationClient
 	public bool   RequireDPoP          { get; set; }
 
 
-	public  ICollection<FederationSecret> ClientSecrets    { get; set; } = new HashSet<FederationSecret>();
-	private ICollection<string>           _allowGrantTypes { get; set; } = new GrantTypeValidationHashSet();
+	public  ICollection<FederationSecret> ClientSecrets   { get; set; } = new HashSet<FederationSecret>();
+	private ICollection<string>           AllowGrantTypes { get; set; } = new GrantTypeValidationHashSet();
 
 	public ICollection<string> AllowedGrantTypes
 	{
