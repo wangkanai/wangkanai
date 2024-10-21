@@ -2,4 +2,4 @@
 
 namespace Wangkanai.Domain;
 
-public interface IFactory { }
+public interface IFactory;
