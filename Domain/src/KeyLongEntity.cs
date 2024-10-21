@@ -2,8 +2,4 @@
 
 namespace Wangkanai.Domain;
 
-public interface IEntity<T> where T : IComparable<T>, IEquatable<T>
-{
-	T    Id { get; set; }
-	bool IsTransient();
-}
+public abstract class KeyLongEntity : Entity<long>;

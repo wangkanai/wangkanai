@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Wangkanai.Domain;
 
-public interface IRepository<in T> : IDisposable 
+public interface IRepository<in T> : IDisposable
 	where T : class
 {
 	IUnitOfWork UnitOfWork { get; }
@@ -15,10 +15,10 @@ public interface IRepository<in T> : IDisposable
 	void Delete(T item);
 }
 
-public interface IAsyncRepository<T> : IAsyncDisposable 
+public interface IAsyncRepository<T> : IAsyncDisposable
 	where T : class
 {
-	IAsyncUnitOfWork UnitOfWork { get; }
+	IUnitOfWorkAsync UnitOfWork { get; }
 
 	Task<T> AttachAsync(T item);
 	Task<T> AddAsync(T    item);

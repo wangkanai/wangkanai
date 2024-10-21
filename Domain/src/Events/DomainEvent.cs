@@ -4,11 +4,6 @@ namespace Wangkanai.Domain.Events;
 
 public class DomainEvent : DomainEvent<int>;
 
-public class DomainGuidEvent : DomainEvent<Guid>
-{
-	public DomainGuidEvent() => Id = Guid.NewGuid();
-}
-
 public class DomainEvent<T> : Entity<T>, IDomainEvent<T>
 	where T : IComparable<T>, IEquatable<T>
 {
