@@ -1,20 +1,10 @@
 // Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+//#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 
 namespace Wangkanai.Domain;
 
-public abstract class KeyByteEntity : Entity<byte>;
-
-public abstract class KeyIntEntity : Entity<int>;
-
-public abstract class KeyLongEntity : Entity<long>;
-
-public abstract class KeyGuidEntity : Entity<Guid>;
-
-public abstract class KeyStringEntity : Entity<string>;
-
-public abstract class Entity<T> : IEntity<T> where T : IComparable<T>
+public abstract class Entity<T> : IEntity<T> where T : IComparable<T>, IEquatable<T>
 {
 	public T Id { get; set; }
 

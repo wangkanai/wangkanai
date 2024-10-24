@@ -2,4 +2,6 @@
 
 namespace Wangkanai.Domain;
 
-public interface IValueObject { }
+public interface IValueObject;
+
+public interface IValueObject<T> where T : class;

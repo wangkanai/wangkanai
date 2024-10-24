@@ -3,18 +3,14 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-using Wangkanai.Domain.Messages;
+namespace Wangkanai.Domain.Messages;
 
-namespace Wangkanai.Domain.Events;
-
-public interface ICancellableEventHandler<in T>
-	where T : IMessage
+public interface ICancellableDomainHandler<in T> where T : IDomainMessage
 {
 	Task Handle(T message, CancellationToken token = default);
 }
 
-public interface ICancellableEventHandlerAsync<in T>
-	where T : IMessage
+public interface ICancellableDomainHandlerAsync<in T> where T : IDomainMessage
 {
 	Task HandleAsync(T message, CancellationToken token = default);
 }

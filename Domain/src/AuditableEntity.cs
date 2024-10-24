@@ -3,7 +3,7 @@
 namespace Wangkanai.Domain;
 
 public abstract class AuditableEntity<T> : Entity<T>, IAuditable
-	where T : IComparable<T>
+	where T : IComparable<T>, IEquatable<T>
 {
 	#region IAuditable Members
 
