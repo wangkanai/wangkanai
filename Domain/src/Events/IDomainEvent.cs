@@ -4,11 +4,10 @@ using Wangkanai.Domain.Messages;
 
 namespace Wangkanai.Domain.Events;
 
-public interface IEvent : IKeyIntEntity, IEvent<int>;
+public interface IDomainEvent : IKeyIntEntity, IDomainEvent<int>;
 
-public interface IGuidEvent : IKeyGuidEntity, IEvent<Guid>;
-
-public interface IEvent<T> : IEntity<T>, IMessage
+public interface IDomainEvent<T> : IEntity<T>, IDomainMessage
+	where T : IComparable<T>, IEquatable<T>
 {
 	int            Version   { get; set; }
 	DateTimeOffset TimeStamp { get; set; }

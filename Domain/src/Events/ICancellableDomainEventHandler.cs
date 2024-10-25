@@ -1,16 +1,17 @@
 // Copyright (c) 2014-2023 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-using System.Threading;
-using System.Threading.Tasks;
+using Wangkanai.Domain.Messages;
 
-namespace Wangkanai.Domain.Messages;
+namespace Wangkanai.Domain.Events;
 
-public interface ICancellableHandler<in T> where T : IMessage
+public interface ICancellableEventHandler<in T>
+	where T : IDomainMessage
 {
 	Task Handle(T message, CancellationToken token = default);
 }
 
-public interface ICancellableHandlerAsync<in T> where T : IMessage
+public interface ICancellableDomainEventHandlerAsync<in T>
+	where T : IDomainMessage
 {
 	Task HandleAsync(T message, CancellationToken token = default);
 }

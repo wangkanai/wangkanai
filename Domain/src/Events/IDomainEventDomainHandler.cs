@@ -4,5 +4,6 @@ using Wangkanai.Domain.Messages;
 
 namespace Wangkanai.Domain.Events;
 
-public interface IEventHandler<in T> : IHandler<T> 
-	where T : IGuidEvent { }
+public interface IDomainEventDomainHandler<in T>
+	: IDomainHandler<T>
+	where T : IGuidDomainEvent { }
