@@ -4,6 +4,6 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\Testing\src\Wangkanai.Testing.csproj" />
-		<ProjectReference Include="..\src\Wangkanai.Country.csproj" />
+		<ProjectReference Include="..\src\Wangkanai.Nation.csproj" />
 	</ItemGroup>
 </Project>

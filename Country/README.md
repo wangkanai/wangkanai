@@ -1,4 +1,4 @@
-## Country: Seed your dataset with actual country data
+## Nation: Seed your dataset with actual country data
 
 
 [![NuGet Badge](https://buildstats.info/nuget/wangkanai.country)](https://www.nuget.org/packages/wangkanai.country)

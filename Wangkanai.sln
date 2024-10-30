@@ -549,7 +549,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Annotations.Bench
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Annotations.Tests", "Annotations\tests\Wangkanai.Annotations.Tests.csproj", "{61AF6525-6F71-4610-A848-F47A5ADF670B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Country", "Country", "{8B6C4271-92F7-4F30-B6F6-704BC686742B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nation", "Nation", "{8B6C4271-92F7-4F30-B6F6-704BC686742B}"
 	ProjectSection(SolutionItems) = preProject
 		Country\build.ps1 = Country\build.ps1
 		Country\Directory.Build.props = Country\Directory.Build.props
@@ -557,11 +557,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Country", "Country", "{8B6C
 		Country\sign.ps1 = Country\sign.ps1
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Country", "Country\src\Wangkanai.Country.csproj", "{10DF54E8-FB4A-444F-A274-FE60DE8D4069}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Nation", "Country\src\Wangkanai.Nation.csproj", "{10DF54E8-FB4A-444F-A274-FE60DE8D4069}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Country.Tests", "Country\test\Wangkanai.Country.Tests.csproj", "{18BCDBEF-C9E1-423D-8A12-358DE52628A5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Nation.Tests", "Country\test\Wangkanai.Nation.Tests.csproj", "{18BCDBEF-C9E1-423D-8A12-358DE52628A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Country.Benchmark", "Country\benchmark\Wangkanai.Country.Benchmark.csproj", "{20E16E55-2F10-4CBF-9EAB-B51BC2B985C3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Nation.Benchmark", "Country\benchmark\Wangkanai.Nation.Benchmark.csproj", "{20E16E55-2F10-4CBF-9EAB-B51BC2B985C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
