@@ -1,17 +1,17 @@
 <Project>
 	<Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
 	<PropertyGroup>
-		<VersionPrefix>4.5.0</VersionPrefix>
-		<Title>Wangkanai Domain</Title>
-		<PackageTags>aspnetcore;entity;domain;ddd;</PackageTags>
-		<Description>Unleash the power of Domain-Driven Design (DDD) in your .NET applications with `Domain`! This library simplifies DDD, enabling you to focus on crafting robust business logic. Whether you're an experienced DDD practitioner or a beginner, `Domain` makes DDD more accessible, helping you write better software, faster. Join our growing community, discover the extraordinary, and let's build amazing software together with `Domain`.</Description>
-		<PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Domain</PackageProjectUrl>
+		<VersionPrefix>0.0.0</VersionPrefix>
+		<Title>Wangkanai Country</Title>
+		<PackageTags>country;entity;domain;ddd;</PackageTags>
+		<Description>Country: Seed your dataset with actual country data</Description>
+		<PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Country</PackageProjectUrl>
 	</PropertyGroup>
-	<PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Domain'">
+	<PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Country'">
 		<PackageIcon>wangkanai-logo.png</PackageIcon>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
-	<ItemGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Domain'">
+	<ItemGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Country'">
 		<None Include="..\..\assets\wangkanai-logo.png" Pack="true" PackagePath="\" />
 		<None Include="..\README.md" Pack="true" PackagePath="\" />
 	</ItemGroup>

@@ -550,6 +550,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Annotations.Tests", "Annotations\tests\Wangkanai.Annotations.Tests.csproj", "{61AF6525-6F71-4610-A848-F47A5ADF670B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Country", "Country", "{8B6C4271-92F7-4F30-B6F6-704BC686742B}"
+	ProjectSection(SolutionItems) = preProject
+		Country\build.ps1 = Country\build.ps1
+		Country\Directory.Build.props = Country\Directory.Build.props
+		Country\README.md = Country\README.md
+		Country\sign.ps1 = Country\sign.ps1
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wangkanai.Country", "Country\src\Wangkanai.Country.csproj", "{10DF54E8-FB4A-444F-A274-FE60DE8D4069}"
 EndProject
