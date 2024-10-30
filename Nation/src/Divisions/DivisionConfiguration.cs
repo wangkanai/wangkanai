@@ -3,11 +3,11 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Wangkanai.Nation.Configurations;
+namespace Wangkanai.Nation.Models;
 
-public class CountryConfiguration : IEntityTypeConfiguration<Models.Country>
+public sealed class DivisionConfiguration : IEntityTypeConfiguration<Division>
 {
-	public void Configure(EntityTypeBuilder<Models.Country> builder)
+	public void Configure(EntityTypeBuilder<Division> builder)
 	{
 		builder.Property(x => x.Iso)
 		       .HasMaxLength(2)
@@ -22,6 +22,6 @@ public class CountryConfiguration : IEntityTypeConfiguration<Models.Country>
 		       .IsUnicode()
 		       .IsRequired();
 
-		builder.Property(x => x.Population);
+		builder.HasDiscriminator<string>("type");
 	}
 }
