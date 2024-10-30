@@ -2,4 +2,10 @@
 
 namespace Wangkanai.Nation.Models;
 
-public class Province : Division;
+public sealed class Province : Division
+{
+	public Province() { }
+
+	public Province(int id, int code, string iso, string name, string native, int population)
+		: base(id, code, iso, name, native, population) { }
+};

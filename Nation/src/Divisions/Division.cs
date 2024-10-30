@@ -6,19 +6,24 @@ namespace Wangkanai.Nation.Models;
 
 public abstract class Division : Entity<int>
 {
-	public int    CountryId { get; set; }
-	public string Iso       { get; set; }
-	public string Name      { get; set; }
-	public string Native    { get; set; }
+	public int    CountryId  { get; set; }
+	public string Iso        { get; set; }
+	public string Name       { get; set; }
+	public string Native     { get; set; }
+	public int    Population { get; set; }
+
+	public Division() { }
+
+	public Division(int id, int countryId, string iso, string name, string native, int population = 0)
+	{
+		Id         = id;
+		CountryId  = countryId;
+		Iso        = iso;
+		Name       = name;
+		Native     = native;
+		Population = population;
+	}
 }
-
-public class Parish : Division;
-
-public class Banat : Division;
-
-public class Canton : Division;
-
-public class Community : Division;
 
 public class Municipality : Division;
 

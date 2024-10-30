@@ -3,6 +3,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
+using Wangkanai.Nation.Seeds;
+
 namespace Wangkanai.Nation.Configurations;
 
 public sealed class CountryConfiguration : IEntityTypeConfiguration<Models.Country>
@@ -23,5 +25,7 @@ public sealed class CountryConfiguration : IEntityTypeConfiguration<Models.Count
 		       .IsRequired();
 
 		builder.Property(x => x.Population);
+
+		builder.HasData(CountrySeed.Dataset);
 	}
 }
