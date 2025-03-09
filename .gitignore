@@ -11,6 +11,7 @@
 pnpm-lock.yaml
 package-lock.json
 *.DotSettings
+*.DS_Store
 msbuild.binlog
 
 # JetBrains Rider
