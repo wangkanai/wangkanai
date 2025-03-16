@@ -63,8 +63,8 @@ public sealed class CrawlerService : ICrawlerService
 	private  Dictionary<string, Crawler> Crawlers
 		=> EnumValues<Crawler>.GetValues().Select(x => (x.ToLowerString(), x)).ToDictionary(x => x.Item1, x => x.Item2);
 
-	private IndexTree CrawlerIndex
-		=> Crawlers.Select(x => x.Key).BuildIndexTree();
+	private IPrefixTrie CrawlerTrie
+		=> Crawlers.Select(x => x.Key).BuildSearchTrie();
 
 	private bool HasOthers(string agent, IEnumerable<string> others)
 		=> agent.Contains("bot", StringComparison.Ordinal) ||
@@ -72,5 +72,5 @@ public sealed class CrawlerService : ICrawlerService
 
 	private string FindBot(string agent)
 		=> agent.Split(' ')
-		        .FirstOrDefault(x => x.SearchContains(CrawlerIndex)) ?? string.Empty;
+		        .FirstOrDefault(x => x.SearchContains(CrawlerTrie)) ?? string.Empty;
 }

@@ -39,7 +39,7 @@ internal static class MobileCollection
 	};
 
 
-	public static readonly IndexTree KeywordsSearchTree = Keywords.BuildIndexTree();
+	public static readonly IPrefixTrie KeywordsSearchTrie = Keywords.BuildSearchTrie();
 
 	// reference 4 character from http://www.webcab.de/wapua.htm
 	private static readonly string[] Prefixes =
@@ -134,5 +134,5 @@ internal static class MobileCollection
 		"xda-"
 	};
 
-	public static readonly IndexTree PrefixesSearchTree = Prefixes.BuildIndexTree();
+	public static readonly IPrefixTrie PrefixesSearchTrie = Prefixes.BuildSearchTrie();
 }

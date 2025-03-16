@@ -36,6 +36,15 @@ public static class CollectionExtension
 		=> list is null || list.Count <= 0;
 
 	/// <summary>
+	/// Determines whether the given collection is null or empty.
+	/// </summary>
+	/// <typeparam name="T">The type of item in collection.</typeparam>
+	/// <param name="list">The collection to check.</param>
+	/// <returns>True if the collection is null or empty; otherwise, false.</returns>
+	public static bool IsNullOrEmpty<T>([NotNull] this T[]? list)
+		=> list is null || list.Length == 0;
+
+	/// <summary>
 	/// Add a range of items to a collection.
 	/// </summary>
 	/// <param name="list">Type of objects within the collection.</param>

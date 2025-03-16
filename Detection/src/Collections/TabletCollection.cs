@@ -17,5 +17,5 @@ internal static class TabletCollection
 		"kfauwi"
 	};
 
-	public static readonly IndexTree KeywordsSearchTree = Keywords.BuildIndexTree();
+	public static readonly IPrefixTrie KeywordsSearchTrie = Keywords.BuildSearchTrie();
 }
