@@ -20,7 +20,7 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.x
-    - name: Install pnpm
+    - name: Install npm
       run: |
         npm install -g rimraf
       shell: bash
@@ -29,4 +29,4 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet coverage collect "dotnet test" -f xml -o "coverage.xml"
