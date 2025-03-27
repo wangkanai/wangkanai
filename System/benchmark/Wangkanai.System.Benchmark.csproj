@@ -6,6 +6,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="xunit" />
+		<PackageReference Include="xunit.abstractions" />
 		<PackageReference Include="xunit.runner.visualstudio" />
 	</ItemGroup>
 

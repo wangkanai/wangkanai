@@ -53,6 +53,7 @@
     <PackageVersion Include="Microsoft.AspNetCore.TestHost" Version="8.0.5" />
     <PackageVersion Include="Moq" Version="4.20.72" />
     <PackageVersion Include="xunit" Version="2.9.3" />
+		<PackageVersion Include="xunit.asbtractions" Version="2.9.3" />
     <PackageVersion Include="xunit.runner.visualstudio" Version="3.0.2" PrivateAssets="all" />
     <PackageVersion Include="coverlet.collector" Version="6.0.2" PrivateAssets="all" />
     <PackageVersion Include="coverlet.msbuild" Version="6.0.2" PrivateAssets="all" />
