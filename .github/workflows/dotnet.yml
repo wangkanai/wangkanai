@@ -19,10 +19,9 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 8.0.x
+        dotnet-version: 8.x
     - name: Install pnpm
       run: |
-        brew install pnpm
         npm install -g rimraf
       shell: bash
     - name: Restore dependencies
