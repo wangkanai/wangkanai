@@ -26,12 +26,6 @@ jobs:
       run: |
         npm install -g rimraf
       shell: bash
-
-    - name: Install dotnet-coverage tool
-      run: dotnet tool install --global dotnet-coverage
-
-    - name: Add .NET tools to PATH
-      run: echo "::add-path::$(echo $HOME/.dotnet/tools)"      
       
     - name: Restore dependencies
       run: dotnet restore
@@ -40,4 +34,4 @@ jobs:
       run: dotnet build --no-restore
       
     - name: Test
-      run: dotnet coverage collect "dotnet test" -f xml -o "coverage.xml"
+      run: dotnet test --no-build --verbosity normal
