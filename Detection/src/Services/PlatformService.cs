@@ -87,19 +87,19 @@ public sealed class PlatformService : IPlatformService
 	}
 
 	private static bool IsX86(string agent)
-		=> agent.SearchContains(X86DeviceIndex);
+		=> agent.SearchContains(X86DeviceTrie);
 
 	private static bool IsX64(string agent)
-		=> agent.SearchContains(X64DeviceIndex);
+		=> agent.SearchContains(X64DeviceTrie);
 
 	private static bool IsiOS(string agent)
-		=> agent.SearchContains(IosDeviceIndex) && agent.SearchContains(AppleWebKitIndex);
+		=> agent.SearchContains(IosDeviceTrie) && agent.SearchContains(AppleWebKitTrie);
 
 	private static bool IsiPadOS(string agent)
-		=> agent.SearchContains(IPadosDeviceIndex) && agent.SearchContains(AppleWebKitIndex);
+		=> agent.SearchContains(PadosDeviceTrie) && agent.SearchContains(AppleWebKitTrie);
 
 	private static bool IsChromeOS(string agent)
-		=> agent.SearchContains(ChromeOSIndex);
+		=> agent.SearchContains(ChromeOsTrie);
 
 	private static bool IsArm(string agent, Platform os)
 		=> agent.ContainsLower(Processor.ARM) ||
@@ -138,19 +138,19 @@ public sealed class PlatformService : IPlatformService
 		                .FirstOrDefault(x => x.StartsWith(prefix, StringComparison.Ordinal));
 
 
-	private static readonly string[]  X86DeviceList     = { "i86", "i686", Processor.x86.ToString() };
-	private static readonly IndexTree X86DeviceIndex    = X86DeviceList.BuildIndexTree();
-	private static readonly string[]  X64DeviceList     = { "x86_64", "wow64", "win64", Processor.x64.ToLowerString() };
-	private static readonly IndexTree X64DeviceIndex    = X64DeviceList.BuildIndexTree();
-	private static readonly string[]  IosDeviceList     = { "iphone", "ipod", Platform.iOS.ToLowerString() };
-	private static readonly IndexTree IosDeviceIndex    = IosDeviceList.BuildIndexTree();
-	private static readonly string[]  IPadosDeviceList  = { "ipad", Platform.iPadOS.ToLowerString() };
+	private static readonly string[]   X86DeviceList    = { "i86", "i686", Processor.x86.ToString() };
+	private static readonly IPrefixTrie X86DeviceTrie   = X86DeviceList.BuildSearchTrie();
+	private static readonly string[]   X64DeviceList    = { "x86_64", "wow64", "win64", Processor.x64.ToLowerString() };
+	private static readonly IPrefixTrie X64DeviceTrie   = X64DeviceList.BuildSearchTrie();
+	private static readonly string[]   IosDeviceList    = { "iphone", "ipod", Platform.iOS.ToLowerString() };
+	private static readonly IPrefixTrie IosDeviceTrie   = IosDeviceList.BuildSearchTrie();
+	private static readonly string[]   IPadosDeviceList = { "ipad", Platform.iPadOS.ToLowerString() };
 
-	private static readonly IndexTree IPadosDeviceIndex = IPadosDeviceList.BuildIndexTree();
-	private static readonly string[]  ChromeOSList      = { "cros" };
-	private static readonly IndexTree ChromeOSIndex     = ChromeOSList.BuildIndexTree();
-	private static readonly string[]  AppleWebKitList   = { "applewebkit", "webkit" };
-	private static readonly IndexTree AppleWebKitIndex  = AppleWebKitList.BuildIndexTree();
+	private static readonly IPrefixTrie PadosDeviceTrie = IPadosDeviceList.BuildSearchTrie();
+	private static readonly string[]   ChromeOSList      = { "cros" };
+	private static readonly IPrefixTrie ChromeOsTrie     = ChromeOSList.BuildSearchTrie();
+	private static readonly string[]   AppleWebKitList   = { "applewebkit", "webkit" };
+	private static readonly IPrefixTrie AppleWebKitTrie  = AppleWebKitList.BuildSearchTrie();
 
 	#endregion
 }
