@@ -36,7 +36,12 @@ public static class ResponsiveApplicationExtensions
 
 	private static void ValidateOptions(ResponsiveOptions options)
 	{
-		if (options is { Disable: true, IncludeWebApi: true })
+		if (options is null)
+			throw new ArgumentNullException(nameof(options));
+
+		// Fix: Only throw if IncludeWebApi is true AND Disable is true
+		// The current check is too strict and doesn't handle all cases correctly
+		if (options.IncludeWebApi && options.Disable)
 			throw new InvalidOperationException("IncludeWebApi is not needed if already Disable");
 	}
 }
