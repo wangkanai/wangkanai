@@ -35,8 +35,7 @@ public class KmpPrefixTrie : IPrefixTrie
 		if (pos > 0)
 			keywords = keywords?.Where(k => k.Length > pos).ToArray();
 
-		_variants = [];
-
+		_variants = new List<char>();
 		if (keywords.IsNullOrEmpty()) {
 			_lookup = null;
 			_offset = 0;
