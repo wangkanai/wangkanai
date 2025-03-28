@@ -8,3 +8,4 @@ global using BenchmarkDotNet.Attributes;
 using Wangkanai.Detection;
 
 BenchmarkRunner.Run<DetectionBenchmark>();
+//BenchmarkRunner.Run<TrieBenchmark>();
