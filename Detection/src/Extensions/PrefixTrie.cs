@@ -14,7 +14,7 @@ public readonly struct PrefixTrie : IPrefixTrie
 	/// <see href="https://en.wikipedia.org/wiki/Trie"/>
 	/// </summary>
 	/// <param name="keywords">Collection of static keywords</param>
-	public PrefixTrie(string[]? keywords): this(keywords, 0) { }
+	public PrefixTrie(string[]? keywords) : this(keywords, 0) { }
 
 	/// <summary>
 	/// Creates optimized search Trie using static keyword list, uses prefix search Trie as base algorithm
@@ -25,7 +25,8 @@ public readonly struct PrefixTrie : IPrefixTrie
 	private PrefixTrie(string[]? keywords, int pos)
 	{
 		if (pos > 0)
-			keywords = keywords?.Where(k => k.Length > pos).ToArray();
+			keywords = keywords?.Where(k => k.Length > pos)
+			                   .ToArray();
 
 		if (keywords.IsNullOrEmpty())
 		{

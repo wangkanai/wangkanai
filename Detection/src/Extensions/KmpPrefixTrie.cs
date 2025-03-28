@@ -9,9 +9,9 @@ namespace Wangkanai.Detection.Extensions;
 public class KmpPrefixTrie : IPrefixTrie
 {
 	private readonly KmpPrefixTrie?[]? _lookup;
-	private readonly int              _offset;
+	private readonly int               _offset;
 	private          KmpPrefixTrie?    _fallback;
-	private readonly List<char>       _variants;
+	private readonly List<char>        _variants;
 
 	/// <summary>
 	/// Creates optimized prefix Trie using static keyword list,
@@ -20,7 +20,7 @@ public class KmpPrefixTrie : IPrefixTrie
 	/// <see href="https://en.wikipedia.org/wiki/Trie"/>
 	/// </summary>
 	/// <param name="keywords">Collection of static keywords</param>
-	public KmpPrefixTrie(string[]? keywords): this(keywords, 0) { }
+	public KmpPrefixTrie(string[]? keywords) : this(keywords, 0) { }
 
 	/// <summary>
 	/// Creates optimized prefix Trie using static keyword list,
@@ -33,10 +33,12 @@ public class KmpPrefixTrie : IPrefixTrie
 	private KmpPrefixTrie(string[]? keywords, int pos)
 	{
 		if (pos > 0)
-			keywords = keywords?.Where(k => k.Length > pos).ToArray();
+			keywords = keywords?.Where(k => k.Length > pos)
+			                   .ToArray();
 
 		_variants = [];
-		if (keywords.IsNullOrEmpty()) {
+		if (keywords.IsNullOrEmpty())
+		{
 			_lookup = null;
 			_offset = 0;
 			return;
@@ -49,7 +51,7 @@ public class KmpPrefixTrie : IPrefixTrie
 		_lookup = new KmpPrefixTrie[upperBound - lowerBound + 1];
 
 		foreach (var (key, group) in keywords.GroupBy(k => k[pos])
-		                                    .Select(x => (x.Key, x)))
+		                                     .Select(x => (x.Key, x)))
 		{
 			_variants.Add(key);
 			var newKeys = group.ToArray();
@@ -75,7 +77,7 @@ public class KmpPrefixTrie : IPrefixTrie
 
 		while (length - seed > 0)
 		{
-			var           c = source[seed];
+			var            c = source[seed];
 			KmpPrefixTrie? next;
 			if (current._lookup != null && c - current._offset >= 0 && c - current._offset < current._lookup.Length)
 				next = current._lookup[c - current._offset];
@@ -115,7 +117,7 @@ public class KmpPrefixTrie : IPrefixTrie
 
 			if (current.TrueIfNull())
 				return false;
-			if (current is {_lookup: null})
+			if (current is { _lookup: null })
 				return true;
 
 			seed++;
@@ -150,7 +152,7 @@ public class KmpPrefixTrie : IPrefixTrie
 		return _lookup[c - _offset]?._lookup != null;
 	}
 
-	private static void BuildKmpTable(KmpPrefixTrie start, KmpPrefixTrie? nextPos = null, KmpPrefixTrie?                              currentCnd = null)
+	private static void BuildKmpTable(KmpPrefixTrie start, KmpPrefixTrie? nextPos = null, KmpPrefixTrie? currentCnd = null)
 	{
 		if (nextPos.TrueIfNull())
 			return;
