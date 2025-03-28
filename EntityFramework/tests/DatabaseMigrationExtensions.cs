@@ -11,7 +11,7 @@ public class DatabaseMigrationExtensions
     // {
     //     var services = new ServiceCollection();
     //     services.AddDbContext<FooDbContext>();
-    //     
+    //
     //     var scope = new Mock<IServiceScope>();
     //     scope.Setup(x => x.ServiceProvider)
     //          .Returns(services.BuildServiceProvider());
@@ -21,7 +21,7 @@ public class DatabaseMigrationExtensions
     //     var mock = new Mock<IApplicationBuilder>();
     //     mock.Setup(x => x.ApplicationServices)
     //         .Returns(provider.Object);
-    //     
+    //
     //     var app = mock.Object;
     //     app.MigrateDatabase<FooDbContext>();
     // }
@@ -32,8 +32,4 @@ public class DatabaseMigrationExtensions
         Assert.True(typeof(FooDbContext).IsSubclassOf(typeof(DbContext)));
         Assert.False(typeof(string).IsSubclassOf(typeof(DbContext)));
     }
-}
-
-public class FooDbContext : DbContext
-{
 }
