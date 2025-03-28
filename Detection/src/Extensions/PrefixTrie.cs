@@ -29,7 +29,7 @@ public readonly struct PrefixTrie : IPrefixTrie
 
 		if (keywords.IsNullOrEmpty())
 		{
-			_lookup = Array.Empty<PrefixTrie>();
+			_lookup = [];
 			_offset = 0;
 			return;
 		}

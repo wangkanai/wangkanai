@@ -35,7 +35,7 @@ public class KmpPrefixTrie : IPrefixTrie
 		if (pos > 0)
 			keywords = keywords?.Where(k => k.Length > pos).ToArray();
 
-		_variants = new List<char>();
+		_variants = [];
 		if (keywords.IsNullOrEmpty()) {
 			_lookup = null;
 			_offset = 0;
@@ -86,13 +86,13 @@ public class KmpPrefixTrie : IPrefixTrie
 			{
 				seed++;
 				current = next;
-				if (next._lookup == null)
+				if (next._lookup.TrueIfNull())
 					return true;
 			}
 			else
 			{
 				current = current._fallback;
-				if (current == null)
+				if (current.TrueIfNull())
 				{
 					seed++;
 					current = this;
@@ -113,11 +113,10 @@ public class KmpPrefixTrie : IPrefixTrie
 		{
 			current = current.GetNext(source[seed]);
 
+			if (current.TrueIfNull())
+				return false;
 			if (current is {_lookup: null})
 				return true;
-
-			if (current == null)
-				return false;
 
 			seed++;
 		}
@@ -130,7 +129,7 @@ public class KmpPrefixTrie : IPrefixTrie
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	private KmpPrefixTrie? GetNext(char c)
 	{
-		if (_lookup == null)
+		if (_lookup.TrueIfNull())
 			return null;
 
 		if (c - _offset < 0 || c - _offset >= _lookup.Length)
@@ -142,7 +141,7 @@ public class KmpPrefixTrie : IPrefixTrie
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	private bool HasNext(char c)
 	{
-		if (_lookup == null)
+		if (_lookup.TrueIfNull())
 			return false;
 
 		if (c - _offset < 0 || c - _offset >= _lookup.Length)
@@ -151,14 +150,12 @@ public class KmpPrefixTrie : IPrefixTrie
 		return _lookup[c - _offset]?._lookup != null;
 	}
 
-	private static void BuildKmpTable(
-		KmpPrefixTrie  start, KmpPrefixTrie? nextPos = null,
-		KmpPrefixTrie? currentCnd = null)
+	private static void BuildKmpTable(KmpPrefixTrie start, KmpPrefixTrie? nextPos = null, KmpPrefixTrie?                              currentCnd = null)
 	{
-		if (nextPos == null)
+		if (nextPos.TrueIfNull())
 			return;
 
-		if (currentCnd == null)
+		if (currentCnd.TrueIfNull())
 		{
 			nextPos._fallback = null;
 			return;
@@ -172,9 +169,7 @@ public class KmpPrefixTrie : IPrefixTrie
 			var pos = nextPos;
 			var cnd = currentCnd;
 			if (cnd.HasNext(variant))
-			{
 				pos._fallback = cnd._fallback;
-			}
 			else
 			{
 				pos._fallback = cnd;
