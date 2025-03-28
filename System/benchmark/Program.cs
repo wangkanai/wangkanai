@@ -7,8 +7,7 @@ global using Wangkanai;
 
 // BenchmarkRunner.Run<StringSpanVsSubstringBenchmark>();
 // BenchmarkRunner.Run<CheckNumericBenchmark>();
-BenchmarkRunner.Run<CheckStringBenchmark>();
 // BenchmarkRunner.Run<HashBenchmark>();
-// BenchmarkRunner.Run<MathBenchmark>();
+BenchmarkRunner.Run<MathBenchmark>();
 // BenchmarkRunner.Run<ForLoopBenchmark>();
 // BenchmarkRunner.Run<StaticRandomTests>();
