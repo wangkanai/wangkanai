@@ -6,9 +6,9 @@ param(
 )
 
 $dirs=[ordered]@{
-    1="System";
-    2="Validation";
-    3="Annotations";
+#    1="System";
+#    2="Validation";
+#    3="Annotations";
 #    4="Extensions";
 #    5="Testing";
 #    6="Cryptography";
