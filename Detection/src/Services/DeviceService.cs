@@ -44,13 +44,13 @@ public sealed class DeviceService : IDeviceService
 
 	private static bool IsTablet(string agent)
 	{
-		return agent.SearchContains(TabletCollection.KeywordsSearchTree);
+		return agent.SearchContains(TabletCollection.KeywordsSearchTrie);
 	}
 
 	private static bool IsMobile(string agent)
 	{
-		return agent.Length >= 4 && agent.SearchStartsWith(MobileCollection.PrefixesSearchTree) ||
-		       agent.SearchContains(MobileCollection.KeywordsSearchTree);
+		return agent.Length >= 4 && agent.SearchStartsWith(MobileCollection.PrefixesSearchTrie) ||
+		       agent.SearchContains(MobileCollection.KeywordsSearchTrie);
 	}
 
 	private static bool IsTV(string agent)

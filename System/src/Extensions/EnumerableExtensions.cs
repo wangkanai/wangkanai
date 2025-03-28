@@ -47,12 +47,16 @@ public static class EnumerableExtensions
 	/// <returns>True if the enumerable has duplicates; otherwise, false.</returns>
 	public static bool HasDuplicates<T, TProp>(this IEnumerable<T> list, Func<T, TProp> selector)
 	{
-		var hash       = new HashSet<TProp>();
-		var enumerable = list as T[] ?? list.ToArray();
-		foreach (var value in enumerable)
-			hash.Add(selector(value));
-		var result = hash.Count != enumerable.Length;
-		return result;
+		var hash = new HashSet<TProp>();
+		foreach (var value in list)
+		{
+			if (!hash.Add(selector(value)))
+			{
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	/// <summary>
@@ -62,11 +66,11 @@ public static class EnumerableExtensions
 	/// <param name="items">The enumerable to be paginated.</param>
 	/// <param name="pageSize">The maximum number of elements in each page.</param>
 	/// <returns>An enumerable of enumerable representing the paginated results.</returns>
-	public static IEnumerable<IEnumerable<T>> Paginate<T>(this IEnumerable<T>? items, int pageSize)
+	public static IEnumerable<List<T>> Paginate<T>(this IEnumerable<T>? items, int pageSize)
 	{
 		var page = new List<T>();
 
-		foreach (var item in items ?? Enumerable.Empty<T>())
+		foreach (var item in items ?? [])
 		{
 			page.Add(item);
 			if (page.Count >= pageSize)
