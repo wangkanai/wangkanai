@@ -6,3 +6,4 @@ dotnet build   .\src\ -c Release -tl
 dotnet clean   .\tests\ -c Release -tl
 dotnet restore .\tests\
 dotnet build   .\tests\ -c Release -tl
+dotnet test    .\tests\ --no-build --verbosity normal
