@@ -12,11 +12,11 @@ namespace Wangkanai.Extensions;
 [DebuggerStepThrough]
 public static class EnumValues<T> where T : Enum
 {
-	private static T[] Values => (T[])Enum.GetValues(typeof(T));
+	private static readonly T[] Values = (T[])Enum.GetValues(typeof(T));
 
-	private static Dictionary<T, string> NamesOriginal => Values.ToDictionary(value => value, value => value.ToString());
-	private static Dictionary<T, string> NamesLower    => Values.ToDictionary(value => value, value => value.ToString().ToLowerInvariant());
-	private static Dictionary<T, string> NamesUpper    => Values.ToDictionary(value => value, value => value.ToString().ToUpperInvariant());
+	private static readonly Dictionary<T, string> NamesOriginal = Values.ToDictionary(value => value, value => value.ToString());
+	private static readonly Dictionary<T, string> NamesLower = Values.ToDictionary(value => value, value => value.ToString().ToLowerInvariant());
+	private static readonly Dictionary<T, string> NamesUpper = Values.ToDictionary(value => value, value => value.ToString().ToUpperInvariant());
 
 	/// <summary>
 	/// Retrieves an array of all values of the specified enum type.

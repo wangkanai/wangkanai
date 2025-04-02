@@ -60,11 +60,11 @@ public sealed class CrawlerService : ICrawlerService
 		return version.ToVersion();
 	}
 
-	private  Dictionary<string, Crawler> Crawlers
-		=> EnumValues<Crawler>.GetValues().Select(x => (x.ToLowerString(), x)).ToDictionary(x => x.Item1, x => x.Item2);
+	private static readonly Dictionary<string, Crawler> Crawlers
+		= EnumValues<Crawler>.GetValues().Select(x => (x.ToLowerString(), x)).ToDictionary(x => x.Item1, x => x.Item2);
 
-	private IPrefixTrie CrawlerTrie
-		=> Crawlers.Select(x => x.Key).BuildSearchTrie();
+	private static readonly IPrefixTrie CrawlerTrie
+		= Crawlers.Select(x => x.Key).BuildSearchTrie();
 
 	private bool HasOthers(string agent, IEnumerable<string> others)
 		=> agent.Contains("bot", StringComparison.Ordinal) ||

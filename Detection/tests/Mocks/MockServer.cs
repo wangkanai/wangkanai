@@ -10,8 +10,8 @@ namespace Wangkanai.Detection.Mocks;
 
 internal static class MockServer
 {
-	private static RequestDelegate ContextHandler
-		=> context => context.Response.WriteAsync("DetectionMvc:");
+	private static readonly RequestDelegate ContextHandler
+		= context => context.Response.WriteAsync("DetectionMvc:");
 
 	internal static WebApplicationBuilder WebApplicationBuilder()
 		=> WebApplication.CreateBuilder();

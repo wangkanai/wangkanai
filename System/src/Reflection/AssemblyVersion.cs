@@ -4,11 +4,11 @@ namespace Wangkanai.Reflection;
 
 public static class AssemblyVersion
 {
-	public static string Version
-		=> AssemblyInformationVersion<AssemblyInformationalVersionAttribute>().InformationalVersion;
+	public static readonly string Version
+		= AssemblyInformationVersion<AssemblyInformationalVersionAttribute>().InformationalVersion;
 
-	private static Assembly EntryAssembly
-		=> Assembly.GetEntryAssembly().ThrowIfNull()!;
+	private static readonly Assembly EntryAssembly
+		= Assembly.GetEntryAssembly().ThrowIfNull()!;
 
 	private static T AssemblyInformationVersion<T>()
 		where T : Attribute

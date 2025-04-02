@@ -6,10 +6,10 @@ public class SerializationExtensionsTests
 {
 	private readonly TestObject _source = new() { Name = "Test", Value = 1 };
 
-	private readonly string _xml = "<?xml version=\"1.0\" encoding=\"utf-16\"?>\n" +
-	                               "<TestObject xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\n" +
-	                               "  <Name>Test</Name>\n" +
-	                               "  <Value>1</Value>\n" +
+	private readonly string _xml = $"<?xml version=\"1.0\" encoding=\"utf-16\"?>{Environment.NewLine}" +
+	                               $"<TestObject xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">{Environment.NewLine}" +
+	                               $"  <Name>Test</Name>{Environment.NewLine}" +
+	                               $"  <Value>1</Value>{Environment.NewLine}" +
 	                               "</TestObject>";
 
 	[Fact]
