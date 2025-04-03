@@ -14,53 +14,15 @@ namespace Wangkanai.Extensions;
 [DebuggerStepThrough]
 public static class EnumValues<T> where T : Enum
 {
+	private static readonly T[] Values = (T[])Enum.GetValues(typeof(T));
+
 	private static readonly ConcurrentDictionary<T, IReadOnlySet<T>> MultiValueFlagsCache = new();
 	private static readonly ConcurrentDictionary<T, EnumValueName>   MultiValueCache      = new();
 
-	private static readonly T[]                            Values    = (T[])Enum.GetValues(typeof(T));
-	private static readonly Dictionary<T, IReadOnlySet<T>> EnumFlags = Values.ToDictionary(v => v, v => (IReadOnlySet<T>)Values.Where(item => v.HasFlag(item)).ToHashSet());
-
-	private static readonly Dictionary<string, T> ValuesOriginal   = Values.ToDictionary(value => value.ToString(), value => value, StringComparer.Ordinal);
-	private static readonly Dictionary<string, T> ValuesIgnoreCase = Values.ToDictionary(value => value.ToString(), value => value, StringComparer.OrdinalIgnoreCase);
-
-	private static readonly Dictionary<T, string> PlainNames = Values.ToDictionary(value => value, value => value.ToString());
-
-	private static string GetNameWithFlags(T value)
-	{
-		return value.GetFlags().Any()
-			       ? string.Join(',', value.GetFlags().Select(x => x.ToString()))
-			       : value.ToString();
-	}
-
-	private static string GetNameWithFlagsCached(T value, bool returnAllFlags, ValueKind kind)
-	{
-		var names = MultiValueCache.GetOrAdd(value,
-			v => new EnumValueName
-			     {
-				     Name               = v.ToString(),
-				     NameWithFlags      = GetNameWithFlags(v),
-				     NameLower          = v.ToString().ToLowerInvariant(),
-				     NameLowerWithFlags = GetNameWithFlags(v).ToLowerInvariant(),
-				     NameUpper          = v.ToString().ToUpperInvariant(),
-				     NameUpperWithFlags = GetNameWithFlags(v).ToUpperInvariant()
-			     });
-		if (returnAllFlags)
-			return kind switch
-			{
-				ValueKind.Normal => names.NameWithFlags,
-				ValueKind.Lower  => names.NameLowerWithFlags,
-				ValueKind.Upper  => names.NameUpperWithFlags,
-				_                => throw new ArgumentOutOfRangeException(nameof(kind), kind, null)
-			};
-
-		return kind switch
-		{
-			ValueKind.Normal => names.Name,
-			ValueKind.Lower  => names.NameLower,
-			ValueKind.Upper  => names.NameUpper,
-			_                => throw new ArgumentOutOfRangeException(nameof(kind), kind, null)
-		};
-	}
+	private static readonly Dictionary<T, string>          PlainNames       = Values.ToDictionary(value => value, value => value.ToString());
+	private static readonly Dictionary<T, IReadOnlySet<T>> EnumFlags        = Values.ToDictionary(v => v, v => (IReadOnlySet<T>)Values.Where(item => v.HasFlag(item)).ToHashSet());
+	private static readonly Dictionary<string, T>          ValuesOriginal   = Values.ToDictionary(value => value.ToString(), value => value, StringComparer.Ordinal);
+	private static readonly Dictionary<string, T>          ValuesIgnoreCase = Values.ToDictionary(value => value.ToString(), value => value, StringComparer.OrdinalIgnoreCase);
 
 	/// <summary>
 	/// Retrieves an array of all values of the specified enum type.
@@ -70,12 +32,15 @@ public static class EnumValues<T> where T : Enum
 	public static T[] GetValues()
 		=> Values;
 
+	/// <summary>
+	/// Retrieves the individual flags that are set for the specified enum value.
+	/// </summary>
+	/// <param name="value">The enumeration value to extract the flags from.</param>
+	/// <returns>A read-only set containing the flags that are part of the specified enumeration value.</returns>
 	public static IReadOnlySet<T> GetFlags(T value)
-	{
-		return EnumFlags.TryGetValue(value, out var flags)
-			       ? flags
-			       : MultiValueFlagsCache.GetOrAdd(value, v => Values.Where(item => v.HasFlag(item)).ToHashSet());
-	}
+		=> EnumFlags.TryGetValue(value, out var flags)
+			   ? flags
+			   : MultiValueFlagsCache.GetOrAdd(value, v => Values.Where(item => v.HasFlag(item)).ToHashSet());
 
 	/// <summary>
 	/// Retrieves all names corresponding to the values of the specified enum type.
@@ -135,16 +100,50 @@ public static class EnumValues<T> where T : Enum
 		{
 			if (ValuesIgnoreCase.TryGetValue(valueName, out var result))
 				return result;
-
-			throw new ArgumentException($"The value '{valueName}' is not recognized.");
 		}
 		else
 		{
 			if (ValuesOriginal.TryGetValue(valueName, out var result))
 				return result;
-
-			throw new ArgumentException($"The value '{valueName}' is not recognized.");
 		}
+
+		throw new ArgumentException($"The value '{valueName}' is not recognized.");
+	}
+
+	private static string GetNameWithFlags(T value)
+		=> value.GetFlags().Any()
+			   ? string.Join(',', value.GetFlags().Select(x => x.ToString()))
+			   : value.ToString();
+
+	private static string GetNameWithFlagsCached(T value, bool returnAllFlags, ValueKind kind)
+	{
+		var names = MultiValueCache
+			.GetOrAdd(value, v => new EnumValueName
+			                      {
+				                      Name               = v.ToString(),
+				                      NameWithFlags      = GetNameWithFlags(v),
+				                      NameLower          = v.ToString().ToLowerInvariant(),
+				                      NameLowerWithFlags = GetNameWithFlags(v).ToLowerInvariant(),
+				                      NameUpper          = v.ToString().ToUpperInvariant(),
+				                      NameUpperWithFlags = GetNameWithFlags(v).ToUpperInvariant()
+			                      });
+
+		if (returnAllFlags)
+			return kind switch
+			{
+				ValueKind.Normal => names.NameWithFlags,
+				ValueKind.Lower  => names.NameLowerWithFlags,
+				ValueKind.Upper  => names.NameUpperWithFlags,
+				_                => throw new ArgumentOutOfRangeException(nameof(kind), kind, null)
+			};
+
+		return kind switch
+		{
+			ValueKind.Normal => names.Name,
+			ValueKind.Lower  => names.NameLower,
+			ValueKind.Upper  => names.NameUpper,
+			_                => throw new ArgumentOutOfRangeException(nameof(kind), kind, null)
+		};
 	}
 
 	private enum ValueKind
