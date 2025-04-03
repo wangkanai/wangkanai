@@ -17,26 +17,19 @@ public static class EnumValues<T> where T : Enum
 	private static readonly ConcurrentDictionary<T, IReadOnlySet<T>> MultiValueFlagsCache = new();
 	private static readonly ConcurrentDictionary<T, EnumValueName>   MultiValueCache      = new();
 
-	private static readonly T[]                Values    = (T[]) Enum.GetValues(typeof(T));
+	private static readonly T[]                            Values    = (T[])Enum.GetValues(typeof(T));
 	private static readonly Dictionary<T, IReadOnlySet<T>> EnumFlags = Values.ToDictionary(v => v, v => (IReadOnlySet<T>)Values.Where(item => v.HasFlag(item)).ToHashSet());
 
 	private static readonly Dictionary<string, T> ValuesOriginal   = Values.ToDictionary(value => value.ToString(), value => value, StringComparer.Ordinal);
 	private static readonly Dictionary<string, T> ValuesIgnoreCase = Values.ToDictionary(value => value.ToString(), value => value, StringComparer.OrdinalIgnoreCase);
 
-	private static readonly Dictionary<T, string>                  PlainNames      = Values.ToDictionary(value => value, value => value.ToString());
+	private static readonly Dictionary<T, string> PlainNames = Values.ToDictionary(value => value, value => value.ToString());
 
 	private static string GetNameWithFlags(T value)
 	{
 		return value.GetFlags().Any()
 			       ? string.Join(',', value.GetFlags().Select(x => x.ToString()))
 			       : value.ToString();
-	}
-
-	private enum ValueKind
-	{
-		Normal = 0,
-		Lower  = 1,
-		Upper  = 2,
 	}
 
 	private static string GetNameWithFlagsCached(T value, bool returnAllFlags, ValueKind kind)
@@ -52,33 +45,21 @@ public static class EnumValues<T> where T : Enum
 				     NameUpperWithFlags = GetNameWithFlags(v).ToUpperInvariant()
 			     });
 		if (returnAllFlags)
-		{
-			switch (kind)
+			return kind switch
 			{
-				case ValueKind.Normal:
-					return names.NameWithFlags;
-				case ValueKind.Lower:
-					return names.NameLowerWithFlags;
-				case ValueKind.Upper:
-					return names.NameUpperWithFlags;
-				default:
-					throw new ArgumentOutOfRangeException(nameof(kind), kind, null);
-			}
-		}
-		else
+				ValueKind.Normal => names.NameWithFlags,
+				ValueKind.Lower  => names.NameLowerWithFlags,
+				ValueKind.Upper  => names.NameUpperWithFlags,
+				_                => throw new ArgumentOutOfRangeException(nameof(kind), kind, null)
+			};
+
+		return kind switch
 		{
-			switch (kind)
-			{
-				case ValueKind.Normal:
-					return names.Name;
-				case ValueKind.Lower:
-					return names.NameLower;
-				case ValueKind.Upper:
-					return names.NameUpper;
-				default:
-					throw new ArgumentOutOfRangeException(nameof(kind), kind, null);
-			}
-		}
+			ValueKind.Normal => names.Name,
+			ValueKind.Lower  => names.NameLower,
+			ValueKind.Upper  => names.NameUpper,
+			_                => throw new ArgumentOutOfRangeException(nameof(kind), kind, null)
+		};
 	}
 
 	/// <summary>
@@ -91,12 +72,9 @@ public static class EnumValues<T> where T : Enum
 
 	public static IReadOnlySet<T> GetFlags(T value)
 	{
-		if (EnumFlags.TryGetValue(value, out var flags))
-		{
-			return flags;
-		}
-
-		return MultiValueFlagsCache.GetOrAdd(value, v => Values.Where(item => v.HasFlag(item)).ToHashSet());
+		return EnumFlags.TryGetValue(value, out var flags)
+			       ? flags
+			       : MultiValueFlagsCache.GetOrAdd(value, v => Values.Where(item => v.HasFlag(item)).ToHashSet());
 	}
 
 	/// <summary>
@@ -114,7 +92,8 @@ public static class EnumValues<T> where T : Enum
 	/// <param name="value">The enumeration value to get the name of.</param>
 	/// <param name="result">When this method returns, contains the single name associated with the specified enumeration value, if the retrieval succeeds; otherwise, an empty string. This parameter is passed uninitialized.</param>
 	/// <returns><see langword="true"/> if the single name of the specified enumeration value is successfully retrieved; otherwise <see langword="false"/>.</returns>
-	public static bool TryGetSingleName(T value, [MaybeNullWhen(false)] out string result) => PlainNames.TryGetValue(value, out result);
+	public static bool TryGetSingleName(T value, [MaybeNullWhen(false)] out string result)
+		=> PlainNames.TryGetValue(value, out result);
 
 	/// <summary>
 	/// Retrieves the original name(s) of the specified enum value.
@@ -155,25 +134,24 @@ public static class EnumValues<T> where T : Enum
 		if (ignoreCase)
 		{
 			if (ValuesIgnoreCase.TryGetValue(valueName, out var result))
-			{
 				return result;
-			}
-			else
-			{
-				throw new ArgumentException($"The value '{valueName}' is not recognized.");
-			}
+
+			throw new ArgumentException($"The value '{valueName}' is not recognized.");
 		}
 		else
 		{
 			if (ValuesOriginal.TryGetValue(valueName, out var result))
-			{
 				return result;
-			}
-			else
-			{
-				throw new ArgumentException($"The value '{valueName}' is not recognized.");
-			}
+
+			throw new ArgumentException($"The value '{valueName}' is not recognized.");
 		}
+	}
+
+	private enum ValueKind
+	{
+		Normal = 0,
+		Lower  = 1,
+		Upper  = 2,
 	}
 
 	private readonly struct EnumValueName
