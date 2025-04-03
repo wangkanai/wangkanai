@@ -391,13 +391,13 @@ public static class StringExtensions
 	/// <param name="ignoreCase">A Boolean value that indicates whether to ignore case during the conversion. The default is true.</param>
 	/// <returns>An object of type T whose value is represented by value.</returns>
 	public static T ToEnum<T>([NotNull] this string value, bool ignoreCase = true)
-		where T : struct
+		where T : Enum
 	{
 		value.ThrowIfNull();
 		value.ThrowIfEmpty();
 		value.ThrowIfNullOrWhitespace();
 
-		return (T)Enum.Parse(typeof(T), value, ignoreCase);
+		return EnumValues<T>.Parse(value, ignoreCase);
 	}
 
 	/// <summary>

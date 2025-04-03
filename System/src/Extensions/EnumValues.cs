@@ -14,9 +14,35 @@ public static class EnumValues<T> where T : Enum
 {
 	private static readonly T[] Values = (T[])Enum.GetValues(typeof(T));
 
-	private static readonly Dictionary<T, string> NamesOriginal = Values.ToDictionary(value => value, value => value.ToString());
-	private static readonly Dictionary<T, string> NamesLower = Values.ToDictionary(value => value, value => value.ToString().ToLowerInvariant());
-	private static readonly Dictionary<T, string> NamesUpper = Values.ToDictionary(value => value, value => value.ToString().ToUpperInvariant());
+	private static readonly Dictionary<string, T>    ValuesOriginal   = Values.ToDictionary(value => value.ToString(), value => value, StringComparer.Ordinal);
+	private static readonly Dictionary<string, T>    ValuesIgnoreCase = Values.ToDictionary(value => value.ToString(), value => value, StringComparer.OrdinalIgnoreCase);
+
+	private static readonly Dictionary<T, EnumValueName> NamesOriginal
+		= Values.ToDictionary(value => value, value => new EnumValueName
+		                                               {
+			                                               Name          = value.ToString(),
+			                                               NameWithFlags = GetNameWithFlags(value)
+		                                               });
+	private static readonly Dictionary<T, EnumValueName> NamesLower
+		= Values.ToDictionary(value => value, value => new EnumValueName
+		                                               {
+			                                               Name          = value.ToString().ToLowerInvariant(),
+			                                               NameWithFlags = GetNameWithFlags(value).ToLowerInvariant()
+		                                               });
+
+	private static readonly Dictionary<T, EnumValueName> NamesUpper
+		= Values.ToDictionary(value => value, value => new EnumValueName
+		                                               {
+			                                               Name          = value.ToString().ToUpperInvariant(),
+			                                               NameWithFlags = GetNameWithFlags(value).ToUpperInvariant()
+		                                               });
+
+	private static string GetNameWithFlags(T value)
+	{
+		return value.GetFlags().Any()
+			       ? string.Join(',', value.GetFlags().Select(x => x.ToString()))
+			       : value.ToString();
+	}
 
 	/// <summary>
 	/// Retrieves an array of all values of the specified enum type.
@@ -31,7 +57,7 @@ public static class EnumValues<T> where T : Enum
 	/// </summary>
 	/// <typeparam name="T">The type of the enum.</typeparam>
 	/// <returns>A dictionary of all names corresponding to the values of the specified enum type.</returns>
-	public static Dictionary<T, string> GetNames()
+	public static Dictionary<T, EnumValueName> GetNames()
 		=> NamesOriginal;
 
 	/// <summary>
@@ -41,8 +67,18 @@ public static class EnumValues<T> where T : Enum
 	/// <param name="value">The enumeration value to get the name of.</param>
 	/// <param name="result">When this method returns, contains the single name associated with the specified enumeration value, if the retrieval succeeds; otherwise, an empty string. This parameter is passed uninitialized.</param>
 	/// <returns><see langword="true"/> if the single name of the specified enumeration value is successfully retrieved; otherwise <see langword="false"/>.</returns>
-	public static bool TryGetSingleName(T value, out string result)
-		=> NamesOriginal.TryGetValue(value, out result!);
+	public static bool TryGetSingleName(T value, [MaybeNullWhen(false)] out string result)
+	{
+		var exist = NamesOriginal.TryGetValue(value, out var names);
+		if (exist)
+		{
+			result = names.Name;
+			return true;
+		}
+
+		result = null;
+		return false;
+	}
 
 	/// <summary>
 	/// Retrieves the original name(s) of the specified enum value.
@@ -50,10 +86,7 @@ public static class EnumValues<T> where T : Enum
 	/// <typeparam name="T">The type of the enum.</typeparam>
 	/// <param name="value">The enum value to retrieve the original name(s) for.</param>
 	/// <returns>The original name(s) of the specified enum value.</returns>
-	public static string GetNameOriginal(T value)
-		=> value.GetFlags().Any()
-			   ? string.Join(',', value.GetFlags().Select(x => NamesOriginal[x]))
-			   : NamesOriginal[value];
+	public static string GetNameOriginal(T value) => NamesOriginal[value].NameWithFlags;
 
 	/// <summary>
 	/// Retrieves the lowercased name of the specified enum value.
@@ -62,9 +95,7 @@ public static class EnumValues<T> where T : Enum
 	/// <param name="value">The enum value.</param>
 	/// <returns>The lowercased name of the enum value.</returns>
 	public static string GetNameLower(T value)
-		=> value.GetFlags().Any()
-			   ? string.Join(',', value.GetFlags().Select(x => NamesLower[x]))
-			   : NamesLower[value];
+		=> NamesLower[value].NameWithFlags;
 
 	/// <summary>
 	/// Retrieves the uppercased name of the specified enum value.
@@ -73,7 +104,23 @@ public static class EnumValues<T> where T : Enum
 	/// <param name="value">The enum value.</param>
 	/// <returns>The uppercased name of the specified enum value.</returns>
 	public static string GetNameUpper(T value)
-		=> value.GetFlags().Any()
-			   ? string.Join(',', value.GetFlags().Select(x => NamesUpper[x]))
-			   : NamesUpper[value];
+		=> NamesUpper[value].NameWithFlags;
+
+	public static T Parse(string valueName, bool ignoreCase)
+	{
+		if (ignoreCase)
+		{
+			return ValuesIgnoreCase[valueName];
+		}
+		else
+		{
+			return ValuesOriginal[valueName];
+		}
+	}
+}
+
+public readonly struct EnumValueName
+{
+	public string Name          { get; init; }
+	public string NameWithFlags { get; init; }
 }

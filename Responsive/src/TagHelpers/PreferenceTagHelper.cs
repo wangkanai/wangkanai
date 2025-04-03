@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 
 using Wangkanai.Detection.Models;
 using Wangkanai.Detection.Services;
+using Wangkanai.Extensions;
 using Wangkanai.Responsive.Services;
 
 namespace Microsoft.AspNetCore.Mvc.TagHelpers;
@@ -31,7 +32,7 @@ public class PreferenceTagHelper : TagHelper
 
 	private bool DisplayOnlyDevice => _device.Type == OnlyDevice;
 
-	private Device OnlyDevice => Enum.Parse<Device>(Only ?? "desktop", true);
+	private Device OnlyDevice => EnumValues<Device>.Parse(Only ?? "desktop", true);
 
 	public override void Process(TagHelperContext context, TagHelperOutput output)
 	{

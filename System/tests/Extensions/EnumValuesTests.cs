@@ -23,10 +23,10 @@ public class EnumValuesTests
 	{
 		var names = EnumValues<Fruit>.GetNames();
 		Assert.Equal(4, names.Count);
-		names.ContainsValue(nameof(Fruit.Banana));
-		names.ContainsValue(nameof(Fruit.Apple));
-		names.ContainsValue(nameof(Fruit.Orange));
-		names.ContainsValue(nameof(Fruit.Pear));
+		Assert.Contains(names.Values, v => v.Name == nameof(Fruit.Banana));
+		Assert.Contains(names.Values, v => v.Name == nameof(Fruit.Apple));
+		Assert.Contains(names.Values, v => v.Name == nameof(Fruit.Orange));
+		Assert.Contains(names.Values, v => v.Name == nameof(Fruit.Pear));
 	}
 
 	[Fact]
