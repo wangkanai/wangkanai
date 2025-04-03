@@ -12,7 +12,8 @@ namespace Wangkanai.Extensions;
 [DebuggerStepThrough]
 public static class EnumValues<T> where T : Enum
 {
-	private static readonly T[] Values = (T[])Enum.GetValues(typeof(T));
+	private static readonly T[]                Values    = (T[])Enum.GetValues(typeof(T));
+	private static readonly Dictionary<T, T[]> EnumFlags = Values.ToDictionary(v => v, v => Values.Where(item => v.HasFlag(item)).ToArray());
 
 	private static readonly Dictionary<string, T>    ValuesOriginal   = Values.ToDictionary(value => value.ToString(), value => value, StringComparer.Ordinal);
 	private static readonly Dictionary<string, T>    ValuesIgnoreCase = Values.ToDictionary(value => value.ToString(), value => value, StringComparer.OrdinalIgnoreCase);
@@ -51,6 +52,11 @@ public static class EnumValues<T> where T : Enum
 	/// <returns>An array of all values of the specified enum type.</returns>
 	public static T[] GetValues()
 		=> Values;
+
+	public static T[] GetFlags(T value)
+	{
+		return EnumFlags[value];
+	}
 
 	/// <summary>
 	/// Retrieves a dictionary of all names corresponding to the values of the specified enum type.

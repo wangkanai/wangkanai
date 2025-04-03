@@ -96,7 +96,7 @@ public static class EnumExtensions
 	/// <returns>An enumerable collection of the individual flags of the enumeration value.</returns>
 	public static IEnumerable<T> GetFlags<T>(this T value)
 		where T : Enum
-		=> EnumValues<T>.GetValues().Where(item => value.HasFlag(item));
+		=> EnumValues<T>.GetFlags(value);
 
 	/// <summary>
 	/// Gets the description attributed to an enumeration value.
