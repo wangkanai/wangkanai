@@ -25,7 +25,6 @@ public sealed class CrawlerService : ICrawlerService
 	public Version Version   => _version ??= GetVersion();
 
 
-
 	private Crawler GetCrawler()
 	{
 		var agent = _useragent.UserAgent.ToLower();
