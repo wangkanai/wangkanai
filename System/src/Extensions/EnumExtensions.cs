@@ -94,9 +94,9 @@ public static class EnumExtensions
 	/// <typeparam name="T">The type of the enumeration.</typeparam>
 	/// <param name="value">The enumeration value to retrieve the flags from.</param>
 	/// <returns>An enumerable collection of the individual flags of the enumeration value.</returns>
-	public static IEnumerable<T> GetFlags<T>(this T value)
+	public static IReadOnlySet<T> GetFlags<T>(this T value)
 		where T : Enum
-		=> EnumValues<T>.GetValues().Where(item => value.HasFlag(item));
+		=> EnumValues<T>.GetFlags(value);
 
 	/// <summary>
 	/// Gets the description attributed to an enumeration value.

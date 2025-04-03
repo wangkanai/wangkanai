@@ -21,12 +21,12 @@ public class EnumValuesTests
 	[Fact]
 	public void GetNames()
 	{
-		var names = EnumValues<Fruit>.GetNames();
+		var names = EnumValues<Fruit>.GetNames().ToList();
 		Assert.Equal(4, names.Count);
-		names.ContainsValue(nameof(Fruit.Banana));
-		names.ContainsValue(nameof(Fruit.Apple));
-		names.ContainsValue(nameof(Fruit.Orange));
-		names.ContainsValue(nameof(Fruit.Pear));
+		Assert.Contains(names, v => v == nameof(Fruit.Banana));
+		Assert.Contains(names, v => v == nameof(Fruit.Apple));
+		Assert.Contains(names, v => v == nameof(Fruit.Orange));
+		Assert.Contains(names, v => v == nameof(Fruit.Pear));
 	}
 
 	[Fact]

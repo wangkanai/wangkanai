@@ -16,8 +16,8 @@ namespace Wangkanai.Responsive.Mocks;
 
 internal static class MockServer
 {
-	private static RequestDelegate ContextHandler
-		=> context => context.GetDevice() switch
+	private static readonly RequestDelegate ContextHandler
+		= context => context.GetDevice() switch
 		{
 			Device.Desktop => context.Response.WriteAsync("desktop"),
 			Device.Tablet  => context.Response.WriteAsync("tablet"),

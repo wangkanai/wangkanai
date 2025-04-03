@@ -13,7 +13,7 @@ internal static class UserAgentExtensions
 	public static bool Contains(this UserAgent agent, string word)
 		=> !agent.IsNullOrEmpty()
 		   && !word.IsNullOrEmpty()
-		   && agent.ToLower().Contains(word, StringComparison.CurrentCultureIgnoreCase);
+		   && agent.ToString().Contains(word, StringComparison.OrdinalIgnoreCase);
 
 	public static bool Contains(this UserAgent agent, string[] array)
 		=> !agent.IsNullOrEmpty()
@@ -22,10 +22,7 @@ internal static class UserAgentExtensions
 
 	public static bool Contains<T>(this UserAgent agent, T flags) where T : Enum
 	{
-		var strFlags = flags.ToString();
-		return strFlags.Contains(',')
-			       ? flags.GetFlags().Any(agent.Contains)
-			       : agent.Contains(strFlags);
+		return flags.GetFlags().Any(f => agent.Contains(f.ToString()));
 	}
 
 	public static bool Contains(this UserAgent agent, IEnumerable<string> list)
