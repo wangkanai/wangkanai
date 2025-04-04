@@ -59,7 +59,7 @@ public class PlatformServiceTests
 
 	[Theory]
 	[InlineData("10.0", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")]
-	[InlineData("10.0", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")]
+	[InlineData("6.1", "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.106 Safari/537.36")]
 	public void WindowsVersion(string version, string agent)
 	{
 		var os       = Platform.Windows;
