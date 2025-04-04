@@ -1,6 +1,7 @@
 ## Wangkanai Annotations
 
-:: Todo ::
+Minimize false positive warnings, clearly specify purity and nullability in your code,
+handle implicit member usages, support unique API semantics in .NET, and enhance the precision of code inspections.
 
 [![NuGet Badge](https://buildstats.info/nuget/wangkanai.solver)](https://www.nuget.org/packages/wangkanai.annotations)
 [![NuGet Badge](https://buildstats.info/nuget/wangkanai.solver?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.annotations)
