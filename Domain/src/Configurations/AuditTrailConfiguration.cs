@@ -40,5 +40,12 @@ public class AuditTrailConfiguration<TKey, TUserKey, TUserType>
 		builder.Property(x => x.NewValues)
 		       .HasColumnType("jsonb");
 
+		builder.Property(x => x.UserId);
+		builder.HasOne(x => x.User)
+		       .WithMany()
+		       .HasForeignKey(x => x.UserId)
+		       .IsRequired(false)
+		       .OnDelete(DeleteBehavior.SetNull);
+
 	}
 }
