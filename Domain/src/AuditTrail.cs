@@ -13,4 +13,12 @@ public class AuditTrail<TKey, TUserType, TUserKey> : Entity<TKey>
 	public TUserKey?  UserId { get; set; }
 	public TUserType? User   { get; set; }
 
+	public DateTime Timestamp  { get; set; }
+	public string?  PrimaryKey { get; set; }
+
+	public required string EntityName { get; set; }
+
+	public List<string>               ChangedColumns { get; set; } = [];
+	public Dictionary<string, object> OldValues      { get; set; } = [];
+	public Dictionary<string, object> NewValues      { get; set; } = [];
 }

@@ -2,7 +2,7 @@
 
 namespace Wangkanai.Domain;
 
-public enum TrailType
+public enum TrailType : byte
 {
 	None   = 0,
 	Create = 1,
