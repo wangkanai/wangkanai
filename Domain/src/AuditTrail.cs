@@ -9,15 +9,14 @@ public class AuditTrail<TKey, TUserType, TUserKey> : Entity<TKey>
 	where TUserType : IdentityUser<TUserKey>
 	where TUserKey : IEquatable<TUserKey>, IComparable<TUserKey>
 {
-	public TrailType  Type   { get; set; }
-	public TUserKey?  UserId { get; set; }
-	public TUserType? User   { get; set; }
+	public TrailType    TrailType      { get; set; }
+	public TUserKey?    UserId         { get; set; }
+	public TUserType?   User           { get; set; }
+	public DateTime     Timestamp      { get; set; }
+	public string?      PrimaryKey     { get; set; }
+	public string       EntityName     { get; set; }
+	public List<string> ChangedColumns { get; set; } = [];
 
-	public DateTime Timestamp  { get; set; }
-	public string?  PrimaryKey { get; set; }
-	public string   EntityName { get; set; }
-
-	public Dictionary<string, object> OldValues      { get; set; } = [];
-	public Dictionary<string, object> NewValues      { get; set; } = [];
-	public List<string>               ChangedColumns { get; set; } = [];
+	public Dictionary<string, object> OldValues { get; set; } = [];
+	public Dictionary<string, object> NewValues { get; set; } = [];
 }

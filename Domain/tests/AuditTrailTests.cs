@@ -28,7 +28,7 @@ public class AuditTrailTests
         // Arrange
         var auditTrail = new AuditTrail<int, IdentityUser<int>, int>
         {
-            Type           = TrailType.Create,
+            TrailType           = TrailType.Create,
             UserId         = 1,
             User           = new IdentityUser<int> { Id = 1, UserName = "TestUser" },
             Timestamp      = DateTime.UtcNow,
@@ -40,7 +40,7 @@ public class AuditTrailTests
         };
 
         // Act & Assert
-        Assert.Equal(TrailType.Create, auditTrail.Type);
+        Assert.Equal(TrailType.Create, auditTrail.TrailType);
         Assert.Equal(1, auditTrail.UserId);
         Assert.NotNull(auditTrail.User);
         Assert.Equal("TestUser", auditTrail.User.UserName);
