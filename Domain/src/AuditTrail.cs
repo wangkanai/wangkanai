@@ -15,10 +15,9 @@ public class AuditTrail<TKey, TUserType, TUserKey> : Entity<TKey>
 
 	public DateTime Timestamp  { get; set; }
 	public string?  PrimaryKey { get; set; }
+	public string   EntityName { get; set; }
 
-	public required string EntityName { get; set; }
-
-	public List<string>               ChangedColumns { get; set; } = [];
 	public Dictionary<string, object> OldValues      { get; set; } = [];
 	public Dictionary<string, object> NewValues      { get; set; } = [];
+	public List<string>               ChangedColumns { get; set; } = [];
 }
