@@ -1,12 +1,12 @@
-// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 //#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 
 namespace Wangkanai.Domain;
 
-public abstract class Entity<T> : IEntity<T> where T : IComparable<T>, IEquatable<T>
+public abstract class Entity<T> : IEntity<T> where T : IEquatable<T>, IComparable<T>
 {
-	public T Id { get; set; }
+	public required T Id { get; set; }
 
 	public bool IsTransient() => Id.Equals(default(T));
 
