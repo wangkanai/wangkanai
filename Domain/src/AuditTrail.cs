@@ -2,7 +2,7 @@
 
 namespace Wangkanai.Domain;
 
-public class AuditTrail
+public class AuditTrail : Entity<Guid>
 {
 	public TrailType Type { get; set; }
 }
