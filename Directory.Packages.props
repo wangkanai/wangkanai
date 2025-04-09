@@ -25,6 +25,7 @@
     <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="$(FrameworkVersion)" PrivateAssets="all" />
     <PackageVersion Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="$(FrameworkVersion)" />
     <PackageVersion Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="$(FrameworkVersion)" />
+		<PackageVersion Include="Microsoft.Extensions.Identity.Stores" Version="$(FrameworkVersion)" />
     <!--extensions-->
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="$(ExtensionsVersion)" />
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.1" />
