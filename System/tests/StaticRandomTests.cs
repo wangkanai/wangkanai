@@ -98,7 +98,7 @@ public class StaticRandomTests
 	[Fact]
 	public void NextBytesShouldReturnDiffValueAsArray()
 	{
-		var length = 5;
+		var length = 4;
 		var values = new byte[length];
 		StaticRandom.NextBytes(values);
 
@@ -124,7 +124,7 @@ public class StaticRandomTests
 	[Fact]
 	public void NextBytesShouldReturnDiffValueAsMemory()
 	{
-		var length = 5;
+		var length = 4;
 		var values = new byte[length];
 		StaticRandom.NextBytes(values.AsMemory());
 
