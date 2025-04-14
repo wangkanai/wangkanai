@@ -48,14 +48,6 @@ world of technology. Here's a quick snapshot of what you can expect to find:
 
 And much more! Feel free to explore, use, and contribute to these projects.
 
-### What is our progress?
-
-| Types    | Status                                                                                                                                                                                                                                                                                                                                    |
-|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Epics    | [![Board Status](https://dev.azure.com/wangkanai/e03e9c5f-ef72-4783-b288-5a5383d5511f/96a4bfff-be89-445a-ad0d-b66ba56be0eb/_apis/work/boardbadge/fd405717-969d-4eca-bd9e-ab2b0d6db573?columnOptions=1)](https://dev.azure.com/wangkanai/e03e9c5f-ef72-4783-b288-5a5383d5511f/_boards/board/t/96a4bfff-be89-445a-ad0d-b66ba56be0eb/Epics/) |
-| Features | [![Board Status](https://dev.azure.com/wangkanai/e03e9c5f-ef72-4783-b288-5a5383d5511f/96a4bfff-be89-445a-ad0d-b66ba56be0eb/_apis/work/boardbadge/71ec7ed0-e2fc-4402-ba7a-bd3886f70f46?columnOptions=1)](https://dev.azure.com/wangkanai/e03e9c5f-ef72-4783-b288-5a5383d5511f/_boards/board/t/96a4bfff-be89-445a-ad0d-b66ba56be0eb/Features/) |
-| Stories  | [![Board Status](https://dev.azure.com/wangkanai/e03e9c5f-ef72-4783-b288-5a5383d5511f/96a4bfff-be89-445a-ad0d-b66ba56be0eb/_apis/work/boardbadge/0686aed2-48ec-4d5c-beb7-43377097680f?columnOptions=1)](https://dev.azure.com/wangkanai/e03e9c5f-ef72-4783-b288-5a5383d5511f/_boards/board/t/96a4bfff-be89-445a-ad0d-b66ba56be0eb/Stories/) |
-
 ### Let's Connect!
 
 I appreciate every star ⭐ that my projects receive, and your support means a lot to me! If you find my projects useful
