@@ -1,17 +1,15 @@
 <Project>
   <PropertyGroup>
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
-    <FrameworkVersion>8.0.6</FrameworkVersion>
+    <FrameworkVersion>8.0.0</FrameworkVersion>
     <AspNetCoreVersion>8.0.0</AspNetCoreVersion>
     <ExtensionsVersion>8.0.0</ExtensionsVersion>
-    <EntityFrameworkVersion>8.0.6</EntityFrameworkVersion>
-    <IdentityModelVersion>7.5.1</IdentityModelVersion>
+    <EntityFrameworkVersion>8.0.0</EntityFrameworkVersion>
+    <IdentityModelVersion>8.8.0</IdentityModelVersion>
   </PropertyGroup>
   <ItemGroup>
     <!--sourcelink-->
     <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
-    <!--tools-->
-    <PackageVersion Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="$(FrameworkVersion)" />
     <!--system-->
     <PackageVersion Include="System.ComponentModel.Annotations" Version="5.0.0" />
     <!--framework-->
@@ -28,41 +26,43 @@
 		<PackageVersion Include="Microsoft.Extensions.Identity.Stores" Version="$(FrameworkVersion)" />
     <!--extensions-->
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="$(ExtensionsVersion)" />
-    <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.1" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
     <PackageVersion Include="Microsoft.Extensions.FileProviders.Abstractions" Version="$(ExtensionsVersion)" />
     <!--entityframework-->
-    <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="8.0.6" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.6" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.Relational" Version="8.0.6" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.6" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.6" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="$(EntityFrameworkVersion)" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="$(EntityFrameworkVersion)" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Relational" Version="$(EntityFrameworkVersion)" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Tools" Version="$(EntityFrameworkVersion)" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.InMemory" Version="$(EntityFrameworkVersion)" />
     <!--identity-->
+    <PackageVersion Include="Microsoft.IdentityModel.Tokens" Version="$(IdentityModelVersion)" />
     <PackageVersion Include="Microsoft.IdentityModel.Abstractions" Version="$(IdentityModelVersion)" />
-    <PackageVersion Include="Microsoft.IdentityModel.Tokens" Version="7.6.0" />
     <PackageVersion Include="Microsoft.IdentityModel.JsonWebTokens" Version="$(IdentityModelVersion)" />
     <PackageVersion Include="Microsoft.IdentityModel.Logging" Version="$(IdentityModelVersion)" />
     <PackageVersion Include="Microsoft.IdentityModel.Protocols" Version="$(IdentityModelVersion)" />
     <PackageVersion Include="Microsoft.IdentityModel.Protocols.OpenIdConnect" Version="$(IdentityModelVersion)" />
     <PackageVersion Include="Microsoft.IdentityModel.Protocols.WsFederation" Version="$(IdentityModelVersion)" />
     <PackageVersion Include="Microsoft.IdentityModel.Protocols.SignedHttpRequest" Version="$(IdentityModelVersion)" />
+		<!--tools-->
+		<PackageVersion Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="$(FrameworkVersion)" />
     <!--serilog-->
-    <PackageVersion Include="Serilog" Version="4.0.0" />
-    <PackageVersion Include="Serilog.AspNetCore" Version="8.0.1" />
-    <PackageVersion Include="Serilog.Sinks.Console" Version="5.0.1" />
+    <PackageVersion Include="Serilog" Version="4.2.0" />
+    <PackageVersion Include="Serilog.AspNetCore" Version="9.0.0" />
+    <PackageVersion Include="Serilog.Sinks.Console" Version="6.0.0" />
     <!--tests -->
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.13.0" />
-    <PackageVersion Include="Microsoft.AspNetCore.TestHost" Version="8.0.5" />
+    <PackageVersion Include="Microsoft.AspNetCore.TestHost" Version="8.0.0" />
     <PackageVersion Include="Moq" Version="4.20.72" />
     <PackageVersion Include="xunit" Version="2.9.3" />
     <PackageVersion Include="xunit.runner.visualstudio" Version="3.0.2" PrivateAssets="all" />
-    <PackageVersion Include="coverlet.collector" Version="6.0.2" PrivateAssets="all" />
-    <PackageVersion Include="coverlet.msbuild" Version="6.0.2" PrivateAssets="all" />
-    <PackageVersion Include="FluentAssertions" Version="6.12.0" />
+    <PackageVersion Include="coverlet.collector" Version="6.0.4" PrivateAssets="all" />
+    <PackageVersion Include="coverlet.msbuild" Version="6.0.4" PrivateAssets="all" />
+    <PackageVersion Include="FluentAssertions" Version="8.2.0" />
     <!--benchmark-->
-    <PackageVersion Include="BenchmarkDotNet" Version="0.13.12" />
+    <PackageVersion Include="BenchmarkDotNet" Version="0.14.0" />
     <!--packages-->
     <PackageVersion Include="JetBrains.Annotations" Version="2024.3.0" />
-    <PackageVersion Include="HtmlAgilityPack" Version="1.11.61" />
+    <PackageVersion Include="HtmlAgilityPack" Version="1.12.0" />
     <PackageVersion Include="Newtonsoft.Json" Version="13.0.4" />
   </ItemGroup>
 </Project>
