@@ -19,7 +19,7 @@ my belt. I am currently employed at Wangkanai Sugar, where I specialize in build
 well-defined, and thoroughly tested solutions.
 
 [![NuGet](https://raw.githubusercontent.com/wangkanai/wangkanai/main/Assets/wangkanai-badge-nuget.svg?sanitize=true)](https://www.nuget.org/profiles/wangkanai)
-[![Build status](https://dev.azure.com/wangkanai/GitHub/_apis/build/status/wangkanai)](https://dev.azure.com/wangkanai/GitHub/_build/latest?definitionId=22)
+[![.NET](https://github.com/wangkanai/wangkanai/actions/workflows/dotnet.yml/badge.svg)](https://github.com/wangkanai/wangkanai/actions/workflows/dotnet.yml)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=wangkanai_wangkanai&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=wangkanai_wangkanai)
 
 [![Open Collective](https://img.shields.io/badge/open%20collective-support%20me-3385FF.svg)](https://opencollective.com/wangkanai)
@@ -48,14 +48,6 @@ world of technology. Here's a quick snapshot of what you can expect to find:
 
 And much more! Feel free to explore, use, and contribute to these projects.
 
-### What is our progress?
-
-| Types    | Status                                                                                                                                                                                                                                                                                                                                    |
-|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Epics    | [![Board Status](https://dev.azure.com/wangkanai/e03e9c5f-ef72-4783-b288-5a5383d5511f/96a4bfff-be89-445a-ad0d-b66ba56be0eb/_apis/work/boardbadge/fd405717-969d-4eca-bd9e-ab2b0d6db573?columnOptions=1)](https://dev.azure.com/wangkanai/e03e9c5f-ef72-4783-b288-5a5383d5511f/_boards/board/t/96a4bfff-be89-445a-ad0d-b66ba56be0eb/Epics/) |
-| Features | [![Board Status](https://dev.azure.com/wangkanai/e03e9c5f-ef72-4783-b288-5a5383d5511f/96a4bfff-be89-445a-ad0d-b66ba56be0eb/_apis/work/boardbadge/71ec7ed0-e2fc-4402-ba7a-bd3886f70f46?columnOptions=1)](https://dev.azure.com/wangkanai/e03e9c5f-ef72-4783-b288-5a5383d5511f/_boards/board/t/96a4bfff-be89-445a-ad0d-b66ba56be0eb/Features/) |
-| Stories  | [![Board Status](https://dev.azure.com/wangkanai/e03e9c5f-ef72-4783-b288-5a5383d5511f/96a4bfff-be89-445a-ad0d-b66ba56be0eb/_apis/work/boardbadge/0686aed2-48ec-4d5c-beb7-43377097680f?columnOptions=1)](https://dev.azure.com/wangkanai/e03e9c5f-ef72-4783-b288-5a5383d5511f/_boards/board/t/96a4bfff-be89-445a-ad0d-b66ba56be0eb/Stories/) |
-
 ### Let's Connect!
 
 I appreciate every star ⭐ that my projects receive, and your support means a lot to me! If you find my projects useful
@@ -65,10 +57,3 @@ For inquiries, suggestions, or contributions, feel free to open an issue or a pu
 directly via [LinkedIn](https://www.linkedin.com/in/sarinnawangkanai/).
 
 Thank you for your interest in my work, and happy coding!
-
-<a href="https://github.com/wangkanai">
-    <img height="173em" src="https://github-readme-stats-git-masterrstaa-rickstaa.vercel.app/api?username=wangkanai&show_icons=true&theme=github_dark" alt="Wangkanai's GitHub Stats"/>
-    <img height="173em" src="https://github-readme-stats-git-masterrstaa-rickstaa.vercel.app/api/top-langs/?username=wangkanai&theme=github_dark&layout=compact" alt="Wangkanai's Top Languages"/>
-</a>
-
-![Alt](https://repobeats.axiom.co/api/embed/b44b68c1dfa4a600b48939bdde84d8784dc3c06c.svg "Repobeats analytics image")
