@@ -1,0 +1,359 @@
+﻿<Solution>
+  <Folder Name="/.github/">
+    <File Path=".github\FUNDING.yml" />
+    <File Path=".github\RELEASE.yml" />
+    <File Path=".github\copilot-instructions.md" />
+    <File Path=".github\workflows\dotnet.yml" />
+  </Folder>
+  <Folder Name="/.github/ISSUE_TEMPLATE/">
+    <File Path=".github\ISSUE_TEMPLATE\bug_report.md" />
+    <File Path=".github\ISSUE_TEMPLATE\design_note.md" />
+    <File Path=".github\ISSUE_TEMPLATE\feature_request.md" />
+  </Folder>
+  <Folder Name="/.solutions/">
+    <File Path=".editorconfig" />
+    <File Path=".gitattributes" />
+    <File Path=".gitignore" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Build.targets" />
+    <File Path="global.json" />
+    <File Path="md-styles.css" />
+    <File Path="qodana.yaml" />
+    <File Path="README.md" />
+    <File Path="sign.ps1" />
+    <File Path="Directory.Packages.props" />
+    <File Path="build.ps1" />
+    <File Path="LICENSE" />
+  </Folder>
+  <Folder Name="/.sonar/">
+    <File Path="dotnet-sonar.ps1" />
+    <File Path="sonar-begin.ps1" />
+    <File Path="sonar-prep.ps1" />
+    <File Path="SonarQube.Analysis.xml" />
+  </Folder>
+  <Folder Name="/Analytics/">
+    <Project Path="Analytics\benchmark\Wangkanai.Analytics.Benchmark.csproj" />
+    <Project Path="Analytics\src\Wangkanai.Analytics.csproj" />
+    <Project Path="Analytics\tests\Wangkanai.Analytics.Tests.csproj" />
+    <File Path="Analytics\Directory.Build.props" />
+    <File Path="Analytics\INSTALL.md" />
+    <File Path="Analytics\README.md" />
+    <File Path="Analytics\sign.ps1" />
+    <File Path="Analytics\build.ps1" />
+  </Folder>
+  <Folder Name="/Annotations/">
+    <Project Path="Annotations\benchamrk\Wangkanai.Annotations.Benchmark.csproj" Type="Classic C#" />
+    <Project Path="Annotations\src\Wangkanai.Annotations.csproj" Type="Classic C#" />
+    <Project Path="Annotations\tests\Wangkanai.Annotations.Tests.csproj" Type="Classic C#" />
+    <File Path="Annotations\build.ps1" />
+    <File Path="Annotations\Directory.Build.props" />
+    <File Path="Annotations\README.md" />
+    <File Path="Annotations\sign.ps1" />
+  </Folder>
+  <Folder Name="/Blazor/">
+    <Project Path="Blazor\benchmark\Wangkanai.Blazor.Benchmark.csproj" />
+    <Project Path="Blazor\src\Components\Wangkanai.Blazor.Components.csproj" />
+    <Project Path="Blazor\src\Core\Wangkanai.Blazor.csproj" />
+    <Project Path="Blazor\src\Web\Wangkanai.Blazor.Components.Web.csproj" />
+    <Project Path="Blazor\tests\Wangkanai.Blazor.Tests.csproj" />
+    <File Path="Blazor\Directory.Build.props" />
+    <File Path="Blazor\README.md" />
+    <File Path="Blazor\sign.ps1" />
+    <File Path="Blazor\build.ps1" />
+  </Folder>
+  <Folder Name="/Blazor/samples/">
+    <Project Path="Blazor\samples\blazor-auto\Host.BlazorAuto.Client\Host.BlazorAuto.Client.csproj" />
+    <Project Path="Blazor\samples\blazor-auto\Host.BlazorAuto\Host.BlazorAuto.csproj" />
+    <Project Path="Blazor\samples\blazor-wasm\Host.BlazorWasm.csproj" />
+    <Project Path="Blazor\samples\server\Host.BlazorServer.csproj" />
+    <File Path="Blazor\samples\README.md" />
+  </Folder>
+  <Folder Name="/Cryptography/">
+    <Project Path="Cryptography\benchmark\Wangkanai.Cryptography.Benchmark.csproj" />
+    <Project Path="Cryptography\src\Wangkanai.Cryptography.csproj" />
+    <Project Path="Cryptography\tests\Wangkanai.Cryptography.Tests.csproj" />
+    <File Path="Cryptography\Directory.Build.props" />
+    <File Path="Cryptography\README.md" />
+    <File Path="Cryptography\sign.ps1" />
+    <File Path="Cryptography\build.ps1" />
+  </Folder>
+  <Folder Name="/Detection/">
+    <Project Path="Detection\benchmark\Wangkanai.Detection.Benchmark.csproj" />
+    <Project Path="Detection\src\Wangkanai.Detection.csproj" />
+    <Project Path="Detection\tests\Wangkanai.Detection.Tests.csproj" />
+    <File Path="Detection\Directory.Build.props" />
+    <File Path="Detection\INSTALL.md" />
+    <File Path="Detection\NUGET.md" />
+    <File Path="Detection\README.md" />
+    <File Path="Detection\sign.ps1" />
+    <File Path="Detection\build.ps1" />
+  </Folder>
+  <Folder Name="/Detection/samples/">
+    <Project Path="Detection\samples\Main\Host.Main.csproj" />
+  </Folder>
+  <Folder Name="/Domain/">
+    <Project Path="Domain\benchmark\Wangkanai.Domain.Benchmark.csproj" />
+    <Project Path="Domain\src\Wangkanai.Domain.csproj" />
+    <Project Path="Domain\tests\Wangkanai.Domain.Tests.csproj" />
+    <File Path="Domain\Directory.Build.props" />
+    <File Path="Domain\README.md" />
+    <File Path="Domain\sign.ps1" />
+    <File Path="Domain\build.ps1" />
+  </Folder>
+  <Folder Name="/EntityFramework/">
+    <Project Path="EntityFramework\benchmark\Wangkanai.EntityFramework.Benchmark.csproj" />
+    <Project Path="EntityFramework\src\Wangkanai.EntityFramework.csproj" />
+    <Project Path="EntityFramework\tests\Wangkanai.EntityFramework.Tests.csproj" />
+    <File Path="EntityFramework\Directory.Build.props" />
+    <File Path="EntityFramework\README.md" />
+    <File Path="EntityFramework\sign.ps1" />
+    <File Path="EntityFramework\build.ps1" />
+  </Folder>
+  <Folder Name="/Extensions/">
+    <File Path="Extensions\Directory.Build.props" />
+    <File Path="Extensions\README.md" />
+    <File Path="Extensions\sign.ps1" />
+    <File Path="Extensions\build.ps1" />
+  </Folder>
+  <Folder Name="/Extensions/FileProviders/">
+    <Project Path="Extensions\FileProviders\benchmark\Wangkanai.Extensions.FileProviders.Benchmark.csproj" />
+    <Project Path="Extensions\FileProviders\src\Wangkanai.Extensions.FileProviders.csproj" />
+    <Project Path="Extensions\FileProviders\tests\Wangkanai.Extensions.FileProviders.Tests.csproj" />
+    <File Path="Extensions\FileProviders\Directory.Build.props" />
+    <File Path="Extensions\FileProviders\README.md" />
+  </Folder>
+  <Folder Name="/Extensions/Html/">
+    <Project Path="Extensions\Html\benchmark\Wangkanai.Extensions.Html.Benchmark.csproj" />
+    <Project Path="Extensions\Html\src\Wangkanai.Extensions.Html.csproj" />
+    <Project Path="Extensions\Html\tests\Wangkanai.Extensions.Html.Tests.csproj" />
+    <File Path="Extensions\Html\Directory.Build.props" />
+    <File Path="Extensions\Html\README.md" />
+  </Folder>
+  <Folder Name="/Extensions/Internal/">
+    <Project Path="Extensions\Internal\benchmark\Wangkanai.Extensions.Internal.Benchmark.csproj" />
+    <Project Path="Extensions\Internal\src\Wangkanai.Extensions.Internal.csproj" />
+    <Project Path="Extensions\Internal\tests\Wangkanai.Extensions.Internal.Tests.csproj" />
+    <File Path="Extensions\Internal\Directory.Build.props" />
+    <File Path="Extensions\Internal\README.md" />
+  </Folder>
+  <Folder Name="/Federation/">
+    <Project Path="Federation\benchmark\Wangkanai.Federation.Benchmark.csproj" />
+    <Project Path="Federation\src\AspNetIdentity\Wangkanai.Federation.AspNetIdentity.csproj" />
+    <Project Path="Federation\src\AuthProxyBackend\Wangkanai.Federation.AuthProxyBackend.csproj" />
+    <Project Path="Federation\src\Domain\Wangkanai.Federation.Domain.csproj" />
+    <Project Path="Federation\src\EntityFramework\Wangkanai.Federation.EntityFramework.csproj" />
+    <Project Path="Federation\src\Federation\Wangkanai.Federation.csproj" />
+    <File Path="Federation\Directory.Build.props" />
+    <File Path="Federation\Federation.slnf" />
+    <File Path="Federation\README.md" />
+    <File Path="Federation\sign.ps1" />
+    <File Path="Federation\build.ps1" />
+  </Folder>
+  <Folder Name="/Federation/hosts/">
+    <Project Path="Federation\hosts\AspNetIdentity\Host.AspNetIdentity.csproj" />
+    <Project Path="Federation\hosts\EntityFramework\Host.EntityFramework.csproj" />
+    <Project Path="Federation\hosts\Main\Host.Main.csproj" />
+    <File Path="Federation\hosts\.gitignore" />
+    <File Path="Federation\hosts\Directory.Build.props" />
+  </Folder>
+  <Folder Name="/Federation/tests/">
+    <Project Path="Federation\tests\Domain\Wangkanai.Federation.Domain.Tests.csproj" />
+    <Project Path="Federation\tests\Federation\Wangkanai.Federation.Tests.csproj" />
+  </Folder>
+  <Folder Name="/Hosting/">
+    <Project Path="Hosting\benchmark\Wangkanai.Hosting.Benchmark.csproj" />
+    <Project Path="Hosting\src\Wangkanai.Hosting.csproj" />
+    <Project Path="Hosting\tests\Wangkanai.Hosting.Tests.csproj" />
+    <File Path="Hosting\Directory.Build.props" />
+    <File Path="Hosting\README.md" />
+    <File Path="Hosting\sign.ps1" />
+    <File Path="Hosting\build.ps1" />
+  </Folder>
+  <Folder Name="/Identity/">
+    <Project Path="Identity\benchmark\Wangkanai.Identity.Benchmark.csproj" />
+    <Project Path="Identity\src\Wangkanai.Identity.csproj" />
+    <Project Path="Identity\tests\Wangkanai.Identity.Tests.csproj" />
+    <File Path="Identity\.editorconfig" />
+    <File Path="Identity\Directory.Build.props" />
+    <File Path="Identity\README.md" />
+    <File Path="Identity\sign.ps1" />
+    <File Path="Identity\build.ps1" />
+  </Folder>
+  <Folder Name="/Markdown/">
+    <Project Path="Markdown\benchmark\Wangkanai.Markdown.Benchmark.csproj" />
+    <Project Path="Markdown\src\Wangkanai.Markdown.csproj" />
+    <Project Path="Markdown\tests\Wangkanai.Markdown.Tests.csproj" />
+    <File Path="Markdown\Directory.Build.props" />
+    <File Path="Markdown\INSTALL.md" />
+    <File Path="Markdown\README.md" />
+    <File Path="Markdown\sign.ps1" />
+    <File Path="Markdown\build.ps1" />
+  </Folder>
+  <Folder Name="/Markdown/samples/">
+    <Project Path="Markdown\samples\Markdown\Markdown.csproj" />
+  </Folder>
+  <Folder Name="/Microservice/">
+    <Project Path="Microservice\benchmark\Wangkanai.Microservice.Benchmark.csproj" Type="Classic C#" />
+    <Project Path="Microservice\src\Wangkanai.Microservice.csproj" Type="Classic C#" />
+    <Project Path="Microservice\tests\Wangkanai.Microservice.Tests.csproj" Type="Classic C#" />
+    <File Path="Microservice\build.ps1" />
+    <File Path="Microservice\Directory.Build.props" />
+    <File Path="Microservice\README.md" />
+    <File Path="Microservice\sign.ps1" />
+  </Folder>
+  <Folder Name="/Mvc/">
+    <Project Path="Mvc\benchmark\Wangkanai.Mvc.Benchmark.csproj" />
+    <Project Path="Mvc\src\Wangkanai.Mvc.csproj" />
+    <Project Path="Mvc\tests\Wangkanai.Mvc.Tests.csproj" />
+    <File Path="Mvc\Directory.Build.props" />
+    <File Path="Mvc\README.md" />
+    <File Path="Mvc\sign.ps1" />
+    <File Path="Mvc\build.ps1" />
+  </Folder>
+  <Folder Name="/Nation/">
+    <Project Path="Nation\benchmark\Wangkanai.Nation.Benchmark.csproj" Type="Classic C#" />
+    <Project Path="Nation\src\Wangkanai.Nation.csproj" Type="Classic C#" />
+    <Project Path="Nation\test\Wangkanai.Nation.Tests.csproj" Type="Classic C#" />
+    <File Path="Nation\sign.ps1" />
+    <File Path="Nation\build.ps1" />
+    <File Path="Nation\README.md" />
+    <File Path="Nation\Directory.Build.props" />
+  </Folder>
+  <Folder Name="/Responsive/">
+    <Project Path="Responsive\benchmark\Wangkanai.Responsive.Benchmark.csproj" />
+    <Project Path="Responsive\src\Wangkanai.Responsive.csproj" />
+    <Project Path="Responsive\tests\Wangkanai.Responsive.Tests.csproj" />
+    <File Path="Responsive\Directory.Build.props" />
+    <File Path="Responsive\INSTALL.md" />
+    <File Path="Responsive\README.md" />
+    <File Path="Responsive\sign.ps1" />
+    <File Path="Responsive\build.ps1" />
+  </Folder>
+  <Folder Name="/Responsive/samples/">
+    <Project Path="Responsive\samples\Main\Host.Main.csproj" />
+  </Folder>
+  <Folder Name="/Security/">
+    <Project Path="Security\benchmark\Wangkanai.Security.Benchmark.csproj" />
+    <Project Path="Security\src\Authentication\Wangkanai.Security.Authentication.csproj" />
+    <Project Path="Security\src\Authorization\Wangkanai.Security.Authorization.csproj" />
+    <Project Path="Security\src\Core\Wangkanai.Security.Core.csproj" />
+    <Project Path="Security\tests\Security\Wangkanai.Security.Tests.csproj" />
+    <File Path="Security\Directory.Build.props" />
+    <File Path="Security\README.md" />
+    <File Path="Security\Security.slnf" />
+    <File Path="Security\sign.ps1" />
+    <File Path="Security\build.ps1" />
+  </Folder>
+  <Folder Name="/Security/samples/">
+    <Project Path="Security\samples\Razor\Wangkanai.Security.RazorApp.csproj" />
+  </Folder>
+  <Folder Name="/Shared/">
+    <Project Path="Shared\benchmark\Wangkanai.Shared.Benchmark.csproj" />
+    <Project Path="Shared\src\Wangkanai.Shared.csproj" />
+    <Project Path="Shared\tests\Wangkanai.Shared.Tests.csproj" />
+    <File Path="Shared\README.md" />
+  </Folder>
+  <Folder Name="/Solver/">
+    <Project Path="Solver\benchmark\Wangkanai.Solver.Benchmark.csproj" />
+    <Project Path="Solver\src\Wangkanai.Solver.csproj" />
+    <Project Path="Solver\tests\Wangkanai.Solver.Tests.csproj" />
+    <File Path="Solver\Directory.Build.props" />
+    <File Path="Solver\README.md" />
+    <File Path="Solver\sign.ps1" />
+    <File Path="Solver\build.ps1" />
+  </Folder>
+  <Folder Name="/System/">
+    <Project Path="System\benchmark\Wangkanai.System.Benchmark.csproj" />
+    <Project Path="System\src\Wangkanai.System.csproj" />
+    <Project Path="System\tests\Wangkanai.System.Tests.csproj" />
+    <File Path="System\Directory.Build.props" />
+    <File Path="System\README.md" />
+    <File Path="System\sign.ps1" />
+    <File Path="build.ps1" />
+  </Folder>
+  <Folder Name="/Tabler/">
+    <Project Path="Tabler\benchmark\Wangkanai.Tabler.Benchmark.csproj" />
+    <Project Path="Tabler\src\Components\Wangkanai.Tabler.Components.csproj" />
+    <Project Path="Tabler\src\Core\Wangkanai.Tabler.csproj" />
+    <Project Path="Tabler\src\Web\Wangkanai.Tabler.Components.Web.csproj" />
+    <Project Path="Tabler\tests\Wangkanai.Tabler.Tests.csproj" />
+    <File Path="Tabler\Directory.Build.props" />
+    <File Path="Tabler\README.md" />
+    <File Path="Tabler\sign.ps1" />
+    <File Path="Tabler\build.ps1" />
+  </Folder>
+  <Folder Name="/Tabler/samples/">
+    <Project Path="Tabler\samples\Client\Host.Main.Client.csproj" />
+    <Project Path="Tabler\samples\Old\Host.Old.csproj" />
+    <Project Path="Tabler\samples\Server\Host.Main.csproj" />
+    <File Path="Tabler\samples\.editorconfig" />
+    <File Path="Tabler\samples\README.md" />
+  </Folder>
+  <Folder Name="/Testing/">
+    <Project Path="Testing\benchmark\Wangkanai.Testing.Benchmark.csproj" />
+    <Project Path="Testing\src\Wangkanai.Testing.csproj" />
+    <Project Path="Testing\tests\Wangkanai.Testing.Tests.csproj" />
+    <File Path="Testing\Directory.Build.props" />
+    <File Path="Testing\README.md" />
+    <File Path="Testing\sign.ps1" />
+    <File Path="Testing\build.ps1" />
+  </Folder>
+  <Folder Name="/Tools/">
+    <File Path="Tools\Directory.Build.props" />
+    <File Path="Tools\README.md" />
+    <File Path="Tools\sign.ps1" />
+    <File Path="Tools\build.ps1" />
+  </Folder>
+  <Folder Name="/Tools/MSBuild/">
+    <Project Path="Tools\MSBuild\src\Wangkanai.MSBuild.csproj" />
+    <Project Path="Tools\MSBuild\tests\Wangkanai.MSBuild.Tests.csproj" />
+    <File Path="Tools\MSBuild\Directory.Build.props" />
+    <File Path="Tools\MSBuild\README.md" />
+  </Folder>
+  <Folder Name="/Tools/Watcher/">
+    <Project Path="Tools\Watcher\src\Wangkanai.Watcher.csproj" />
+    <Project Path="Tools\Watcher\tests\Wangkanai.Watcher.Tests.csproj" />
+    <File Path="Tools\Watcher\Directory.Build.props" />
+    <File Path="Tools\Watcher\README.md" />
+  </Folder>
+  <Folder Name="/Validation/">
+    <Project Path="Validation\benchmark\Wangkanai.Validation.Benchmark.csproj" />
+    <Project Path="Validation\src\Wangkanai.Validation.csproj" />
+    <Project Path="Validation\tests\Wangkanai.Validation.Tests.csproj" />
+    <File Path="Validation\Directory.Build.props" />
+    <File Path="Validation\README.md" />
+    <File Path="Validation\sign.ps1" />
+    <File Path="Validation\build.ps1" />
+  </Folder>
+  <Folder Name="/Web/">
+    <Project Path="Web\old\Wangkanai.Web.Old.csproj" Type="Classic C#" />
+    <Project Path="Web\src\Client\Wangkanai.Web.Client.csproj" Type="Classic C#" />
+    <Project Path="Web\src\Server\Wangkanai.Web.csproj" Type="Classic C#" />
+    <Project Path="Web\tests\Wangkanai.Web.Tests.csproj" />
+    <File Path="Web\Directory.Build.props" />
+    <File Path="Web\README.md" />
+  </Folder>
+  <Folder Name="/Webmaster/">
+    <Project Path="Webmaster\benchmark\Wangkanai.Webmaster.Benchmark.csproj" />
+    <Project Path="Webmaster\src\Wangkanai.Webmaster.csproj" />
+    <Project Path="Webmaster\tests\Wangkanai.Webmaster.Tests.csproj" />
+    <File Path="Webmaster\Directory.Build.props" />
+    <File Path="Webmaster\INSTALL.md" />
+    <File Path="Webmaster\README.md" />
+    <File Path="Webmaster\sign.ps1" />
+    <File Path="Webmaster\build.ps1" />
+  </Folder>
+  <Folder Name="/Webmaster/samples/">
+    <Project Path="Webmaster\samples\Main\Host.Main.csproj" />
+  </Folder>
+  <Folder Name="/Webserver/">
+    <Project Path="Webserver\benchmark\Wangkanai.WebServer.Benchmark.csproj" />
+    <Project Path="Webserver\src\Wangkanai.Webserver.csproj" />
+    <Project Path="Webserver\tests\Wangkanai.Webserver.Tests.csproj" />
+    <File Path="Webserver\Directory.Build.props" />
+    <File Path="Webserver\README.md" />
+    <File Path="Webserver\sign.ps1" />
+    <File Path="Webserver\build.ps1" />
+  </Folder>
+  <Project Path="Assets\Assets.csproj" />
+</Solution>
