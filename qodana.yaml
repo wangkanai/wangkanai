@@ -6,3 +6,7 @@ include:
   - name: CheckDependencyLicenses
 dotnet:
     solution: Wangkanai.slnx
+exclude:
+  - name: All
+    paths:
+      - Web/old/wwwroot/css/bootstrap-icons
