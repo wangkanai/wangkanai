@@ -5,4 +5,4 @@ profile:
 include:
   - name: CheckDependencyLicenses
 dotnet:
-    solution: ./
+    solution: ./Wangkanai.sln
