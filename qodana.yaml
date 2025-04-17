@@ -9,4 +9,5 @@ dotnet:
 exclude:
   - name: All
     paths:
-      - Web/old/wwwroot/css/bootstrap-icons
+      - Web/old/wwwroot/
+      - Tabler/samples/
