@@ -34,7 +34,7 @@ jobs:
         with:
           sarif_file: ${{ runner.temp }}/qodana/results/qodana.sarif.json
       - name: Archive coverage data # Archive data for use by Qodana
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
-          name: jest-coverage-data
+          name: dotnet-coverage-data
           path: .qodana/code-coverage
