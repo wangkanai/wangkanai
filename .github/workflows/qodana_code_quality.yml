@@ -9,7 +9,7 @@ on:
 
 jobs:
   qodana:
-    runs-on: [self-hosted, linux, x64] # ubuntu-latest
+    runs-on: [self-hosted, X64] # ubuntu-latest
     permissions:
       contents: write
       pull-requests: write
