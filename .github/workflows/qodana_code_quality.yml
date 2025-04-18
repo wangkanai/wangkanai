@@ -24,7 +24,7 @@ jobs:
         with:
           args: --diff-start,<GIT_START_HASH>,--diff-end,<GIT_END_HASH>,--apply-fixes,--save-report,--baseline,qodana.sarif.json
           push-fixes: pull-request
-          pr-mode: false
+          pr-mode: true
           cache-default-branch-only: false
         env:
           QODANA_TOKEN: ${{ secrets.QODANA_TOKEN_1880801860 }}
