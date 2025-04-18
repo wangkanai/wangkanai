@@ -25,12 +25,6 @@
     <File Path="build.ps1" />
     <File Path="LICENSE" />
   </Folder>
-  <Folder Name="/.sonar/">
-    <File Path="dotnet-sonar.ps1" />
-    <File Path="sonar-begin.ps1" />
-    <File Path="sonar-prep.ps1" />
-    <File Path="SonarQube.Analysis.xml" />
-  </Folder>
   <Folder Name="/Analytics/">
     <Project Path="Analytics\benchmark\Wangkanai.Analytics.Benchmark.csproj" />
     <Project Path="Analytics\src\Wangkanai.Analytics.csproj" />
