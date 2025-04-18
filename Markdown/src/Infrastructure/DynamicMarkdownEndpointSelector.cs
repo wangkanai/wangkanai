@@ -10,10 +10,10 @@ namespace Wangkanai.Markdown.Infrastructure;
 
 internal sealed class DynamicMarkdownEndpointSelector : IDisposable
 {
-	public EndpointDataSource DataSource { get; }
+	public EndpointDataSource DataSource => _dataSource;
 
-	private readonly EndpointDataSource                                       _dataSource;
 	private readonly DataSourceDependentCache<ActionSelectionTable<Endpoint>> _cache;
+	private readonly EndpointDataSource                                       _dataSource;
 
 	public DynamicMarkdownEndpointSelector(EndpointDataSource dataSource)
 	{
