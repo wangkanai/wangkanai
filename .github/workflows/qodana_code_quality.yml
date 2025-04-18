@@ -22,9 +22,9 @@ jobs:
       - name: 'Qodana Scan'
         uses: JetBrains/qodana-action@v2024.3
         with:
-          pr-mode: false
-          args: --diff-start,<GIT_START_HASH>,--diff-end,<GIT_END_HASH> --apply-fixes
+          args: --diff-start,<GIT_START_HASH>,--diff-end,<GIT_END_HASH>,--apply-fixes,--save-report,--baseline,baseline/qodana.sarif.json
           push-fixes: pull-request
+          pr-mode: false
         env:
           QODANA_TOKEN: ${{ secrets.QODANA_TOKEN_1880801860 }}
           QODANA_ENDPOINT: 'https://qodana.cloud'
