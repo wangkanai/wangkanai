@@ -1,4 +1,4 @@
-name: Qodana
+name: qodana
 on:
   workflow_dispatch:
   pull_request:
@@ -9,7 +9,7 @@ on:
 
 jobs:
   qodana:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest # [self-hosted, linux, x64]
     permissions:
       contents: write
       pull-requests: write
@@ -37,4 +37,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: dotnet-coverage-data
-          path: '**/.qodana/code-coverage'
+          path: ~/**/.qodana/code-coverage
