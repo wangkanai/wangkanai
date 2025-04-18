@@ -22,7 +22,7 @@ jobs:
       - name: 'Qodana Scan'
         uses: JetBrains/qodana-action@v2024.3
         with:
-          args: --diff-start,<GIT_START_HASH>,--diff-end,<GIT_END_HASH>,--apply-fixes,--save-report,--baseline,qodana.sarif.json
+          args: --diff-start,<GIT_START_HASH>,--diff-end,<GIT_END_HASH>
           push-fixes: pull-request
           pr-mode: true
           cache-default-branch-only: false
