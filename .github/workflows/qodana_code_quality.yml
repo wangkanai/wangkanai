@@ -22,12 +22,19 @@ jobs:
       - name: 'Qodana Scan'
         uses: JetBrains/qodana-action@v2024.3
         with:
-          args: --diff-start,<GIT_START_HASH>,--diff-end,<GIT_END_HASH>,--apply-fixes,--save-report,--baseline,baseline/qodana.sarif.json
+          args:  --apply-fixes,--save-report,--baseline,qodana.sarif.json, #--ide,QDNET,--diff-start,<GIT_START_HASH>,--diff-end,<GIT_END_HASH>
           push-fixes: pull-request
-          pr-mode: false
+          pr-mode: true
+          cache-default-branch-only: false
         env:
           QODANA_TOKEN: ${{ secrets.QODANA_TOKEN_1880801860 }}
           QODANA_ENDPOINT: 'https://qodana.cloud'
-      - uses: github/codeql-action/upload-sarif@v2
+      - name: Upload SARIF
+        uses: github/codeql-action/upload-sarif@v3
         with:
-            sarif_file: ${{ runner.temp }}/qodana/results/qodana.sarif.json
+          sarif_file: ${{ runner.temp }}/qodana/results/qodana.sarif.json
+      - name: Archive coverage data # Archive data for use by Qodana
+        uses: actions/upload-artifact@v4
+        with:
+          name: dotnet-coverage-data
+          path: '**/.qodana/code-coverage'
