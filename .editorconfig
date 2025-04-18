@@ -102,7 +102,7 @@ resharper_sort_system_directives_first             =true
 ij_any_align_multiline_array_initializer_expression=true
 
 [*.{cs, cpp, h}]
-file_header_template=Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
+file_header_template=Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 [*.{html, cshtml}]
 indent_size                           =4
@@ -138,7 +138,7 @@ indent_size=2
 max_line_length=200
 
 [*.{yml, yaml}]
-indent_size=4
+indent_size=2
 
 [*.{eslintrc, stylelintrc, jest.config, babelrc, bowerrc, jsb3, jsb2, json}]
 indent_size                   =4
