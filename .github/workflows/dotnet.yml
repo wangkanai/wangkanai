@@ -9,7 +9,7 @@ on:
 jobs:
   build:
 
-    runs-on: [self-hosted, linux, x64] # ubuntu-latest
+    runs-on: ubuntu-latest # [self-hosted, linux, x64]
 
     env:
         NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
