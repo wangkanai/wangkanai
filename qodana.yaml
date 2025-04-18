@@ -6,6 +6,8 @@ include:
   - name: CheckDependencyLicenses
 dotnet:
     solution: Wangkanai.slnx
+fixesStrategy: apply
+push-fixes: pull-request
 exclude:
   - name: All
     paths:
