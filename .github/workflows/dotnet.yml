@@ -13,7 +13,7 @@ jobs:
 
     env:
         NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
-
+        DOTNET_ROOT: ${{ github.workspace }}/dotnet  # Define a writable directory for .NET
     steps:
     - uses: actions/checkout@v4
 
