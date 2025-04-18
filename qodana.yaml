@@ -1,5 +1,4 @@
 version: "1.0"
-ide: QDNET
 linter: jetbrains/qodana-dotnet:2024.3
 profile:
   name: qodana.recommended
