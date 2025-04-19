@@ -1,6 +1,4 @@
 version: "1.0"
-#bootstrap: curl -fsSL https://dot.net/v1/dotnet-install.sh |
-#    bash -s -- --jsonfile ./global.json -i /usr/share/dotnet
 linter: jetbrains/qodana-dotnet:2024.3
 profile:
   name: qodana.recommended
