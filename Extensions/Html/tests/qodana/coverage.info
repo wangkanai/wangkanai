@@ -1,0 +1,84 @@
+SF:/home/runner/work/wangkanai/wangkanai/Extensions/Html/src/HtmlConversionExtensions.cs
+FN:12,System.String Wangkanai.Extensions.Html.HtmlConversionExtensions::ConvertToPlainText(System.String)
+FNDA:0,System.String Wangkanai.Extensions.Html.HtmlConversionExtensions::ConvertToPlainText(System.String)
+DA:13,0
+DA:14,0
+DA:15,0
+DA:17,0
+DA:18,0
+DA:19,0
+DA:20,0
+DA:21,0
+FN:30,System.Int32 Wangkanai.Extensions.Html.HtmlConversionExtensions::CountWords(System.String)
+FNDA:0,System.Int32 Wangkanai.Extensions.Html.HtmlConversionExtensions::CountWords(System.String)
+DA:31,0
+BRDA:31,6,0,0
+BRDA:31,6,1,0
+FN:34,System.String Wangkanai.Extensions.Html.HtmlConversionExtensions::Cut(System.String,System.Int32)
+FNDA:0,System.String Wangkanai.Extensions.Html.HtmlConversionExtensions::Cut(System.String,System.Int32)
+DA:35,0
+DA:36,0
+DA:37,0
+DA:39,0
+DA:40,0
+BRDA:36,7,0,0
+BRDA:36,7,1,0
+BRDA:36,23,0,0
+BRDA:36,23,1,0
+FN:43,System.Void Wangkanai.Extensions.Html.HtmlConversionExtensions::ConvertContentTo(HtmlAgilityPack.HtmlNode,System.IO.TextWriter)
+FNDA:0,System.Void Wangkanai.Extensions.Html.HtmlConversionExtensions::ConvertContentTo(HtmlAgilityPack.HtmlNode,System.IO.TextWriter)
+DA:44,0
+DA:45,0
+DA:46,0
+DA:47,0
+BRDA:45,37,1,0
+BRDA:45,37,0,0
+FN:50,System.Void Wangkanai.Extensions.Html.HtmlConversionExtensions::ConvertTo(HtmlAgilityPack.HtmlNode,System.IO.TextWriter)
+FNDA:0,System.Void Wangkanai.Extensions.Html.HtmlConversionExtensions::ConvertTo(HtmlAgilityPack.HtmlNode,System.IO.TextWriter)
+DA:51,0
+DA:53,0
+DA:57,0
+DA:60,0
+DA:61,0
+DA:65,0
+DA:66,0
+DA:67,0
+DA:70,0
+DA:73,0
+DA:74,0
+DA:77,0
+DA:79,0
+DA:82,0
+DA:86,0
+DA:87,0
+DA:89,0
+DA:90,0
+DA:93,0
+DA:95,0
+DA:97,0
+BRDA:53,11,1,0
+BRDA:53,11,4,0
+BRDA:66,78,0,0
+BRDA:66,78,1,0
+BRDA:66,98,1,0
+BRDA:73,127,1,0
+BRDA:77,149,0,0
+BRDA:53,11,2,0
+BRDA:82,190,0,0
+BRDA:82,190,1,0
+BRDA:82,204,1,0
+BRDA:82,204,0,0
+BRDA:93,246,0,0
+BRDA:53,11,0,0
+BRDA:53,11,3,0
+BRDA:66,98,0,0
+BRDA:73,127,0,0
+BRDA:77,149,1,0
+BRDA:93,246,1,0
+LF:39
+LH:0
+BRF:27
+BRH:0
+FNF:5
+FNH:0
+end_of_record
