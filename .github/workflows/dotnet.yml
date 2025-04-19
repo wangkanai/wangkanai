@@ -1,4 +1,4 @@
-name: wangkanai-ci
+name: dotnet
 
 on:
   push:
