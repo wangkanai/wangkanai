@@ -19,6 +19,21 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}  # to check out the actual pull request commit, not the merge commit
           fetch-depth: 0  # a full history is required for pull request analysis
+      - name: Setup .NET 9.0
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 9.0.x
+      - name: Restore dependencies
+        run: dotnet restore
+      - name: Build
+        run: dotnet build --no-restore
+      - name: Coverage
+        run: dotnet test --no-build --verbosity normal /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:CoverletOutput=./.qodana/code-coverage
+      - name: Archive coverage data # Archive data for use by Qodana
+        uses: actions/upload-artifact@v4
+        with:
+          name: dotnet-coverage-data
+          path: ${{ runner.temp }}/**/.qodana/code-coverage
       - name: 'Qodana Scan'
         uses: JetBrains/qodana-action@v2024.3
         with:
@@ -33,8 +48,4 @@ jobs:
         uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: ${{ runner.temp }}/qodana/results/qodana.sarif.json
-      - name: Archive coverage data # Archive data for use by Qodana
-        uses: actions/upload-artifact@v4
-        with:
-          name: dotnet-coverage-data
-          path: ${{ runner.temp }}/**/.qodana/code-coverage
+
