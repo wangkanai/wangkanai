@@ -1,4 +1,4 @@
-name: wangkanai-ci
+name: dotnet
 
 on:
   push:
@@ -39,4 +39,4 @@ jobs:
       run: dotnet build --no-restore
 
     - name: Test
-      run: dotnet test  --no-build --verbosity normal /p:CollectCoverage=true /p:CoverletOutput=./.qodana/code-coverage /p:CoverletOutputFormat=lcov
+      run: dotnet test  --no-build --verbosity normal
