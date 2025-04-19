@@ -36,12 +36,12 @@ jobs:
       - name: Build
         run: dotnet build --no-restore --verbosity minimal --tl
       - name: Coverage
-        run: dotnet test --no-build --verbosity minimal --collect "Code Coverage" /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:CoverletOutput=./qodana/
+        run: dotnet test --no-build --verbosity minimal /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:CoverletOutput=./qodana/
       - name: Archive coverage data
         uses: actions/upload-artifact@v4
         with:
           name: dotnet-coverage-data
-          path: ${{ runner.temp }}/qodana/
+          path: ${{ runner.temp }}/**/qodana/
       - name: 'Qodana Scan'
         uses: JetBrains/qodana-action@v2024.3
         env:
