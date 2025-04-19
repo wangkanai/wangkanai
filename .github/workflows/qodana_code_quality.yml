@@ -27,6 +27,10 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 9.0.x
+      - name: Install npm
+        run: |
+          npm install -g rimraf
+        shell: bash
       - name: Restore dependencies
         run: dotnet restore
       - name: Build
