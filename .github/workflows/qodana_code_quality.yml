@@ -37,4 +37,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: dotnet-coverage-data
-          path: ~/**/.qodana/code-coverage
+          path: ${{ runner.temp }}/**/.qodana/code-coverage
