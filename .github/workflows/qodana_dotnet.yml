@@ -48,7 +48,7 @@ jobs:
           QODANA_TOKEN: ${{ secrets.QODANA_TOKEN_1880801860 }}
           QODANA_ENDPOINT: 'https://qodana.cloud'
         with:
-          args: --linter,jetbrains/qodana-dotnet:2024.3,--baseline,qodana.sarif.json
+          args: --baseline,qodana.sarif.json
           pr-mode: false
           push-fixes: pull-request
           cache-default-branch-only: false
