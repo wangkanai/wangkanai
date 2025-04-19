@@ -41,7 +41,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: dotnet-coverage-data
-          path: ${{ runner.temp }}/*/.qodana/
+          path: ${{ runner.temp }}/*/.qodana/*
       - name: 'Qodana Scan'
         uses: JetBrains/qodana-action@v2024.3
         with:

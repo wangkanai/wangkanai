@@ -4,7 +4,7 @@
     <File Path=".github\RELEASE.yml" />
     <File Path=".github\copilot-instructions.md" />
     <File Path=".github\workflows\dotnet.yml" />
-    <File Path=".github\workflows\qodana_code_quality.yml" />
+    <File Path=".github\workflows\qodana_dotnet.yml" />
   </Folder>
   <Folder Name="/.github/ISSUE_TEMPLATE/">
     <File Path=".github\ISSUE_TEMPLATE\bug_report.md" />
