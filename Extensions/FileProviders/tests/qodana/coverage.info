@@ -1,0 +1,44 @@
+SF:/home/runner/work/wangkanai/wangkanai/Extensions/FileProviders/src/FileInfoExtensions.cs
+FN:9,System.String Wangkanai.Extensions.FileProviders.FileInfoExtensions::ContentType(Microsoft.Extensions.FileProviders.IFileInfo)
+FNDA:3,System.String Wangkanai.Extensions.FileProviders.FileInfoExtensions::ContentType(Microsoft.Extensions.FileProviders.IFileInfo)
+DA:10,3
+DA:11,3
+DA:12,0
+DA:13,0
+DA:14,1
+DA:15,1
+DA:16,1
+DA:17,3
+BRDA:10,14,1,0
+BRDA:10,14,2,0
+BRDA:10,14,3,1
+BRDA:10,14,4,1
+BRDA:10,14,0,1
+FN:19,Wangkanai.Extensions.ImageExtension Wangkanai.Extensions.FileProviders.FileInfoExtensions::GetImageExtension(Microsoft.Extensions.FileProviders.IFileInfo)
+FNDA:6,Wangkanai.Extensions.ImageExtension Wangkanai.Extensions.FileProviders.FileInfoExtensions::GetImageExtension(Microsoft.Extensions.FileProviders.IFileInfo)
+DA:20,6
+DA:21,6
+DA:22,0
+DA:23,0
+DA:24,2
+DA:25,2
+DA:26,2
+DA:27,6
+BRDA:20,22,0,6
+BRDA:20,35,0,6
+BRDA:20,48,0,4
+BRDA:20,22,1,0
+BRDA:20,35,1,0
+BRDA:20,48,1,2
+BRDA:20,61,1,2
+BRDA:20,61,0,2
+FN:29,System.String Wangkanai.Extensions.FileProviders.FileInfoExtensions::Extension(Microsoft.Extensions.FileProviders.IFileInfo)
+FNDA:10,System.String Wangkanai.Extensions.FileProviders.FileInfoExtensions::Extension(Microsoft.Extensions.FileProviders.IFileInfo)
+DA:30,10
+LF:17
+LH:13
+BRF:13
+BRH:9
+FNF:3
+FNH:3
+end_of_record
