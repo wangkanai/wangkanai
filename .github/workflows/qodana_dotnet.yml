@@ -45,7 +45,7 @@ jobs:
       - name: 'Qodana Scan'
         uses: JetBrains/qodana-action@v2024.3
         with:
-          args: --apply-fixes,--baseline,qodana.sarif.json
+          args: --baseline,qodana.sarif.json
           push-fixes: pull-request
           pr-mode: true
           cache-default-branch-only: false
