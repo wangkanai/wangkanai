@@ -36,7 +36,7 @@ jobs:
       - name: Build
         run: dotnet build --no-restore --tl
       - name: Coverage
-        run: dotnet test --no-build --verbosity normal /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:CoverletOutput=/.qodana/
+        run: dotnet test --no-build --verbosity normal /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:CoverletOutput=./.qodana/
       - name: Archive coverage data # Archive data for use by Qodana
         uses: actions/upload-artifact@v4
         with:
