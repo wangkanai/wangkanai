@@ -36,22 +36,22 @@ jobs:
       - name: Build
         run: dotnet build --no-restore --tl
       - name: Coverage
-        run: dotnet test --no-build --verbosity normal /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:CoverletOutput=${{ runner.temp }}/qodana/ /p:MergeWith=${{ runner.temp }}/qodana/
-      - name: Archive coverage data # Archive data for use by Qodana
+        run: dotnet test --no-build --verbosity normal /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:CoverletOutput=${{ runner.temp }}/qodana/
+      - name: Archive coverage data
         uses: actions/upload-artifact@v4
         with:
           name: dotnet-coverage-data
           path: ${{ runner.temp }}/qodana/
       - name: 'Qodana Scan'
         uses: JetBrains/qodana-action@v2024.3
-        with:
-          args: --baseline,qodana.sarif.json,--linter,jetbrains/qodana-dotnet:2024.3
-          push-fixes: pull-request
-          pr-mode: true
-          cache-default-branch-only: false
         env:
           QODANA_TOKEN: ${{ secrets.QODANA_TOKEN_1880801860 }}
           QODANA_ENDPOINT: 'https://qodana.cloud'
+        with:
+          args: --linter,jetbrains/qodana-dotnet:2024.3,--baseline,qodana.sarif.json
+          pr-mode: false
+          push-fixes: pull-request
+          cache-default-branch-only: false
       - name: Upload SARIF
         uses: github/codeql-action/upload-sarif@v3
         with:
