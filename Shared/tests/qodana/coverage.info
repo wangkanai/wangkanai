@@ -1,0 +1,216 @@
+SF:/home/runner/work/wangkanai/wangkanai/Shared/src/QueryStringEnumerable.cs
+FN:22,Wangkanai.Internal.QueryStringEnumerable/Enumerator Wangkanai.Internal.QueryStringEnumerable::GetEnumerator()
+FNDA:0,Wangkanai.Internal.QueryStringEnumerable/Enumerator Wangkanai.Internal.QueryStringEnumerable::GetEnumerator()
+DA:23,0
+DA:24,0
+DA:25,0
+FN:14,System.Void Wangkanai.Internal.QueryStringEnumerable::.ctor(System.String)
+FNDA:0,System.Void Wangkanai.Internal.QueryStringEnumerable::.ctor(System.String)
+DA:15,0
+FN:17,System.Void Wangkanai.Internal.QueryStringEnumerable::.ctor(System.ReadOnlyMemory`1<System.Char>)
+FNDA:0,System.Void Wangkanai.Internal.QueryStringEnumerable::.ctor(System.ReadOnlyMemory`1<System.Char>)
+DA:18,0
+DA:19,0
+DA:20,0
+FN:28,System.ReadOnlyMemory`1<System.Char> Wangkanai.Internal.QueryStringEnumerable/EncodedNameValuePair::get_EncodedName()
+FNDA:0,System.ReadOnlyMemory`1<System.Char> Wangkanai.Internal.QueryStringEnumerable/EncodedNameValuePair::get_EncodedName()
+DA:29,0
+FN:29,System.ReadOnlyMemory`1<System.Char> Wangkanai.Internal.QueryStringEnumerable/EncodedNameValuePair::get_EncodedValue()
+FNDA:0,System.ReadOnlyMemory`1<System.Char> Wangkanai.Internal.QueryStringEnumerable/EncodedNameValuePair::get_EncodedValue()
+DA:30,0
+FN:38,System.ReadOnlyMemory`1<System.Char> Wangkanai.Internal.QueryStringEnumerable/EncodedNameValuePair::DecodeName()
+FNDA:0,System.ReadOnlyMemory`1<System.Char> Wangkanai.Internal.QueryStringEnumerable/EncodedNameValuePair::DecodeName()
+DA:39,0
+DA:40,0
+DA:41,0
+FN:43,System.ReadOnlyMemory`1<System.Char> Wangkanai.Internal.QueryStringEnumerable/EncodedNameValuePair::DecodeValue()
+FNDA:0,System.ReadOnlyMemory`1<System.Char> Wangkanai.Internal.QueryStringEnumerable/EncodedNameValuePair::DecodeValue()
+DA:44,0
+DA:45,0
+DA:46,0
+FN:48,System.ReadOnlyMemory`1<System.Char> Wangkanai.Internal.QueryStringEnumerable/EncodedNameValuePair::Decode(System.ReadOnlyMemory`1<System.Char>)
+FNDA:0,System.ReadOnlyMemory`1<System.Char> Wangkanai.Internal.QueryStringEnumerable/EncodedNameValuePair::Decode(System.ReadOnlyMemory`1<System.Char>)
+DA:49,0
+DA:50,0
+DA:51,0
+DA:52,0
+DA:53,0
+BRDA:50,10,0,0
+BRDA:50,10,1,0
+BRDA:50,29,0,0
+BRDA:50,29,1,0
+FN:32,System.Void Wangkanai.Internal.QueryStringEnumerable/EncodedNameValuePair::.ctor(System.ReadOnlyMemory`1<System.Char>,System.ReadOnlyMemory`1<System.Char>)
+FNDA:0,System.Void Wangkanai.Internal.QueryStringEnumerable/EncodedNameValuePair::.ctor(System.ReadOnlyMemory`1<System.Char>,System.ReadOnlyMemory`1<System.Char>)
+DA:33,0
+DA:34,0
+DA:35,0
+DA:36,0
+FN:67,Wangkanai.Internal.QueryStringEnumerable/EncodedNameValuePair Wangkanai.Internal.QueryStringEnumerable/Enumerator::get_Current()
+FNDA:0,Wangkanai.Internal.QueryStringEnumerable/EncodedNameValuePair Wangkanai.Internal.QueryStringEnumerable/Enumerator::get_Current()
+DA:68,0
+FN:70,System.Boolean Wangkanai.Internal.QueryStringEnumerable/Enumerator::MoveNext()
+FNDA:0,System.Boolean Wangkanai.Internal.QueryStringEnumerable/Enumerator::MoveNext()
+DA:71,0
+DA:72,0
+DA:73,0
+DA:76,0
+DA:77,0
+DA:78,0
+DA:79,0
+DA:80,0
+DA:81,0
+DA:83,0
+DA:84,0
+DA:85,0
+DA:86,0
+DA:89,0
+DA:90,0
+DA:91,0
+DA:92,0
+DA:93,0
+DA:94,0
+DA:95,0
+DA:98,0
+DA:99,0
+DA:100,0
+DA:101,0
+DA:103,0
+DA:105,0
+DA:106,0
+DA:107,0
+BRDA:72,225,1,0
+BRDA:77,35,0,0
+BRDA:77,35,1,0
+BRDA:90,122,0,0
+BRDA:90,122,1,0
+BRDA:98,175,0,0
+BRDA:98,175,1,0
+BRDA:72,225,0,0
+FN:60,System.Void Wangkanai.Internal.QueryStringEnumerable/Enumerator::.ctor(System.ReadOnlyMemory`1<System.Char>)
+FNDA:0,System.Void Wangkanai.Internal.QueryStringEnumerable/Enumerator::.ctor(System.ReadOnlyMemory`1<System.Char>)
+DA:61,0
+DA:62,0
+DA:63,0
+DA:64,0
+DA:65,0
+DA:66,0
+BRDA:63,25,0,0
+BRDA:63,46,0,0
+BRDA:63,25,1,0
+BRDA:63,46,1,0
+FN:115,System.String Wangkanai.Internal.QueryStringEnumerable/SpanHelper::ReplacePlusWithSpace(System.ReadOnlySpan`1<System.Char>)
+FNDA:0,System.String Wangkanai.Internal.QueryStringEnumerable/SpanHelper::ReplacePlusWithSpace(System.ReadOnlySpan`1<System.Char>)
+DA:116,0
+DA:117,0
+DA:118,0
+DA:119,0
+DA:121,0
+FN:123,System.Void Wangkanai.Internal.QueryStringEnumerable/SpanHelper::ReplacePlusWithSpaceCore(System.Span`1<System.Char>,System.IntPtr)
+FNDA:0,System.Void Wangkanai.Internal.QueryStringEnumerable/SpanHelper::ReplacePlusWithSpaceCore(System.Span`1<System.Char>,System.IntPtr)
+DA:124,0
+DA:125,0
+DA:126,0
+DA:127,0
+DA:128,0
+DA:130,0
+DA:131,0
+DA:133,0
+DA:134,0
+DA:135,0
+DA:136,0
+DA:139,0
+DA:140,0
+DA:141,0
+DA:142,0
+DA:143,0
+DA:144,0
+DA:145,0
+DA:146,0
+DA:148,0
+DA:149,0
+DA:150,0
+DA:151,0
+DA:154,0
+DA:155,0
+DA:156,0
+DA:157,0
+DA:158,0
+DA:159,0
+DA:160,0
+DA:161,0
+DA:163,0
+DA:164,0
+DA:165,0
+DA:167,0
+DA:168,0
+DA:169,0
+BRDA:133,41,0,0
+BRDA:133,41,1,0
+BRDA:133,63,0,0
+BRDA:145,174,1,0
+BRDA:145,174,0,0
+BRDA:133,63,1,0
+BRDA:148,182,0,0
+BRDA:148,182,1,0
+BRDA:148,207,0,0
+BRDA:160,318,1,0
+BRDA:160,318,0,0
+BRDA:163,396,1,0
+BRDA:164,344,0,0
+BRDA:164,344,1,0
+BRDA:148,207,1,0
+BRDA:163,396,0,0
+FN:111,System.Void Wangkanai.Internal.QueryStringEnumerable/SpanHelper::.cctor()
+FNDA:0,System.Void Wangkanai.Internal.QueryStringEnumerable/SpanHelper::.cctor()
+DA:112,0
+LF:102
+LH:0
+BRF:32
+BRH:0
+FNF:15
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/Shared/src/Tracing.cs
+FN:13,System.String Wangkanai.Internal.Tracing::get_ServiceVersion()
+FNDA:0,System.String Wangkanai.Internal.Tracing::get_ServiceVersion()
+DA:14,0
+FN:18,System.Diagnostics.ActivitySource Wangkanai.Internal.Tracing::get_BasicActivitySource()
+FNDA:0,System.Diagnostics.ActivitySource Wangkanai.Internal.Tracing::get_BasicActivitySource()
+DA:19,0
+FN:23,System.Diagnostics.ActivitySource Wangkanai.Internal.Tracing::get_StoreActivitySource()
+FNDA:0,System.Diagnostics.ActivitySource Wangkanai.Internal.Tracing::get_StoreActivitySource()
+DA:24,0
+FN:28,System.Diagnostics.ActivitySource Wangkanai.Internal.Tracing::get_CacheActivitySource()
+FNDA:0,System.Diagnostics.ActivitySource Wangkanai.Internal.Tracing::get_CacheActivitySource()
+DA:29,0
+FN:33,System.Diagnostics.ActivitySource Wangkanai.Internal.Tracing::get_ServiceActivitySource()
+FNDA:0,System.Diagnostics.ActivitySource Wangkanai.Internal.Tracing::get_ServiceActivitySource()
+DA:34,0
+FN:38,System.Diagnostics.ActivitySource Wangkanai.Internal.Tracing::get_ValidationActivitySource()
+FNDA:0,System.Diagnostics.ActivitySource Wangkanai.Internal.Tracing::get_ValidationActivitySource()
+DA:39,0
+FN:8,System.Void Wangkanai.Internal.Tracing::.cctor()
+FNDA:0,System.Void Wangkanai.Internal.Tracing::.cctor()
+DA:9,0
+FN:42,System.String Wangkanai.Internal.Tracing/TraceNames::get_Basic()
+FNDA:0,System.String Wangkanai.Internal.Tracing/TraceNames::get_Basic()
+DA:43,0
+FN:43,System.String Wangkanai.Internal.Tracing/TraceNames::get_Store()
+FNDA:0,System.String Wangkanai.Internal.Tracing/TraceNames::get_Store()
+DA:44,0
+FN:44,System.String Wangkanai.Internal.Tracing/TraceNames::get_Cache()
+FNDA:0,System.String Wangkanai.Internal.Tracing/TraceNames::get_Cache()
+DA:45,0
+FN:45,System.String Wangkanai.Internal.Tracing/TraceNames::get_Service()
+FNDA:0,System.String Wangkanai.Internal.Tracing/TraceNames::get_Service()
+DA:46,0
+FN:46,System.String Wangkanai.Internal.Tracing/TraceNames::get_Validation()
+FNDA:0,System.String Wangkanai.Internal.Tracing/TraceNames::get_Validation()
+DA:47,0
+LF:12
+LH:0
+BRF:0
+BRH:0
+FNF:12
+FNH:0
+end_of_record

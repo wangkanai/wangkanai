@@ -1,0 +1,3913 @@
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Checks/ExceptionActivator.cs
+FN:8,T Wangkanai.ExceptionActivator::CreateGenericInstance(System.String)
+FNDA:0,T Wangkanai.ExceptionActivator::CreateGenericInstance(System.String)
+DA:9,0
+FN:12,T Wangkanai.ExceptionActivator::CreateGenericInstance(System.String,System.String)
+FNDA:0,T Wangkanai.ExceptionActivator::CreateGenericInstance(System.String,System.String)
+DA:13,0
+FN:16,T Wangkanai.ExceptionActivator::CreateArgumentInstance(System.String)
+FNDA:0,T Wangkanai.ExceptionActivator::CreateArgumentInstance(System.String)
+DA:17,0
+FN:20,T Wangkanai.ExceptionActivator::CreateArgumentInstance(System.String,System.String)
+FNDA:0,T Wangkanai.ExceptionActivator::CreateArgumentInstance(System.String,System.String)
+DA:21,0
+LF:4
+LH:0
+BRF:0
+BRH:0
+FNF:4
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Checks/NullConditionalExtensions.cs
+FN:19,System.Boolean Wangkanai.NullConditionalExtensions::TrueIfNull(T)
+FNDA:0,System.Boolean Wangkanai.NullConditionalExtensions::TrueIfNull(T)
+DA:20,0
+FN:28,System.Boolean Wangkanai.NullConditionalExtensions::FalseIfNull(T)
+FNDA:0,System.Boolean Wangkanai.NullConditionalExtensions::FalseIfNull(T)
+DA:29,0
+LF:2
+LH:0
+BRF:0
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Checks/ThrowIfEmptyEnumerableExtensions.cs
+FN:21,System.Collections.Generic.IEnumerable`1<T> Wangkanai.ThrowIfEmptyExtensions::ThrowIfEmpty(System.Collections.Generic.IEnumerable`1<T>)
+FNDA:0,System.Collections.Generic.IEnumerable`1<T> Wangkanai.ThrowIfEmptyExtensions::ThrowIfEmpty(System.Collections.Generic.IEnumerable`1<T>)
+DA:22,0
+BRDA:22,6,0,0
+BRDA:22,6,1,0
+FN:31,System.Collections.Generic.IEnumerable`1<T> Wangkanai.ThrowIfEmptyExtensions::ThrowIfEmpty(System.Collections.Generic.IEnumerable`1<T>,System.String)
+FNDA:0,System.Collections.Generic.IEnumerable`1<T> Wangkanai.ThrowIfEmptyExtensions::ThrowIfEmpty(System.Collections.Generic.IEnumerable`1<T>,System.String)
+DA:32,0
+BRDA:32,6,0,0
+BRDA:32,6,1,0
+FN:43,System.Collections.Generic.IEnumerable`1<TType> Wangkanai.ThrowIfEmptyExtensions::ThrowIfEmpty(System.Collections.Generic.IEnumerable`1<TType>)
+FNDA:0,System.Collections.Generic.IEnumerable`1<TType> Wangkanai.ThrowIfEmptyExtensions::ThrowIfEmpty(System.Collections.Generic.IEnumerable`1<TType>)
+DA:44,0
+DA:45,0
+DA:46,0
+DA:47,0
+DA:48,0
+DA:49,0
+BRDA:46,14,0,0
+BRDA:46,14,1,0
+FN:60,System.Collections.Generic.IEnumerable`1<TType> Wangkanai.ThrowIfEmptyExtensions::ThrowIfEmpty(System.Collections.Generic.IEnumerable`1<TType>,System.String)
+FNDA:0,System.Collections.Generic.IEnumerable`1<TType> Wangkanai.ThrowIfEmptyExtensions::ThrowIfEmpty(System.Collections.Generic.IEnumerable`1<TType>,System.String)
+DA:61,0
+DA:62,0
+DA:63,0
+DA:64,0
+DA:65,0
+DA:66,0
+BRDA:63,14,0,0
+BRDA:63,14,1,0
+LF:14
+LH:0
+BRF:8
+BRH:0
+FNF:4
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Checks/ThrowIfEmptyStringExtensions.cs
+FN:19,System.String Wangkanai.ThrowIfEmptyStringExtensions::ThrowIfEmpty(System.String)
+FNDA:0,System.String Wangkanai.ThrowIfEmptyStringExtensions::ThrowIfEmpty(System.String)
+DA:20,0
+DA:39,0
+DA:40,0
+DA:41,0
+BRDA:39,11,0,0
+BRDA:39,11,1,0
+FN:29,System.String Wangkanai.ThrowIfEmptyStringExtensions::ThrowIfEmpty(System.String,System.String)
+FNDA:0,System.String Wangkanai.ThrowIfEmptyStringExtensions::ThrowIfEmpty(System.String,System.String)
+DA:30,0
+DA:53,0
+DA:54,0
+DA:55,0
+BRDA:53,11,0,0
+BRDA:53,11,1,0
+FN:66,System.String Wangkanai.ThrowIfEmptyStringExtensions::ThrowIfEmpty(System.String,System.String,System.String)
+FNDA:0,System.String Wangkanai.ThrowIfEmptyStringExtensions::ThrowIfEmpty(System.String,System.String,System.String)
+DA:67,0
+DA:68,0
+DA:69,0
+BRDA:67,11,0,0
+BRDA:67,11,1,0
+LF:11
+LH:0
+BRF:6
+BRH:0
+FNF:3
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Checks/ThrowIfEqualExtensions.cs
+FN:19,System.Boolean Wangkanai.ThrowIfEqualExtensions::ThrowIfEqual(System.Int32,System.Int32)
+FNDA:0,System.Boolean Wangkanai.ThrowIfEqualExtensions::ThrowIfEqual(System.Int32,System.Int32)
+DA:20,0
+DA:31,0
+FN:42,System.Boolean Wangkanai.ThrowIfEqualExtensions::ThrowIfEqual(System.Int32,System.Int32,System.String)
+FNDA:0,System.Boolean Wangkanai.ThrowIfEqualExtensions::ThrowIfEqual(System.Int32,System.Int32,System.String)
+DA:43,0
+DA:44,0
+DA:45,0
+BRDA:43,2,0,0
+BRDA:43,2,1,0
+LF:5
+LH:0
+BRF:2
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Checks/ThrowIfLessThanExtensions.cs
+FN:19,System.Boolean Wangkanai.ThrowIfLessThanExtensions::ThrowIfLessThan(System.Int32,System.Int32)
+FNDA:0,System.Boolean Wangkanai.ThrowIfLessThanExtensions::ThrowIfLessThan(System.Int32,System.Int32)
+DA:20,0
+DA:43,0
+FN:30,System.Boolean Wangkanai.ThrowIfLessThanExtensions::ThrowIfLessThan(System.Int32,System.Int32,System.String)
+FNDA:0,System.Boolean Wangkanai.ThrowIfLessThanExtensions::ThrowIfLessThan(System.Int32,System.Int32,System.String)
+DA:31,0
+DA:56,0
+DA:57,0
+DA:58,0
+BRDA:56,2,0,0
+BRDA:56,2,1,0
+LF:6
+LH:0
+BRF:2
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Checks/ThrowIfMoreThanExtensions.cs
+FN:20,System.Boolean Wangkanai.ThrowIfMoreThanExtensions::ThrowIfMoreThan(System.Int32,System.Int32)
+FNDA:0,System.Boolean Wangkanai.ThrowIfMoreThanExtensions::ThrowIfMoreThan(System.Int32,System.Int32)
+DA:21,0
+DA:44,0
+FN:31,System.Boolean Wangkanai.ThrowIfMoreThanExtensions::ThrowIfMoreThan(System.Int32,System.Int32,System.String)
+FNDA:0,System.Boolean Wangkanai.ThrowIfMoreThanExtensions::ThrowIfMoreThan(System.Int32,System.Int32,System.String)
+DA:32,0
+DA:57,0
+DA:58,0
+DA:59,0
+BRDA:57,2,0,0
+BRDA:57,2,1,0
+LF:6
+LH:0
+BRF:2
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Checks/ThrowIfNegativeExtensions.cs
+FN:18,System.Int32 Wangkanai.ThrowIfNegativeExtensions::ThrowIfNegative(System.Int32)
+FNDA:0,System.Int32 Wangkanai.ThrowIfNegativeExtensions::ThrowIfNegative(System.Int32)
+DA:19,0
+DA:38,0
+FN:27,System.Int32 Wangkanai.ThrowIfNegativeExtensions::ThrowIfNegative(System.Int32,System.String)
+FNDA:0,System.Int32 Wangkanai.ThrowIfNegativeExtensions::ThrowIfNegative(System.Int32,System.String)
+DA:28,0
+DA:49,0
+DA:50,0
+DA:51,0
+BRDA:49,2,0,0
+BRDA:49,2,1,0
+LF:6
+LH:0
+BRF:2
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Checks/ThrowIfNotEqualExtensions.cs
+FN:20,System.Boolean Wangkanai.ThrowIfNotEqualExtensions::ThrowIfNotEqual(System.Int32,System.Int32)
+FNDA:0,System.Boolean Wangkanai.ThrowIfNotEqualExtensions::ThrowIfNotEqual(System.Int32,System.Int32)
+DA:21,0
+DA:33,0
+FN:45,System.Boolean Wangkanai.ThrowIfNotEqualExtensions::ThrowIfNotEqual(System.Int32,System.Int32,System.String)
+FNDA:0,System.Boolean Wangkanai.ThrowIfNotEqualExtensions::ThrowIfNotEqual(System.Int32,System.Int32,System.String)
+DA:46,0
+DA:47,0
+DA:48,0
+BRDA:46,2,0,0
+BRDA:46,2,1,0
+LF:5
+LH:0
+BRF:2
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Checks/ThrowIfNullExtensions.cs
+FN:17,System.Boolean Wangkanai.CheckThrowIfNullExtensions::ThrowIfNull(System.Nullable`1<System.Boolean>)
+FNDA:0,System.Boolean Wangkanai.CheckThrowIfNullExtensions::ThrowIfNull(System.Nullable`1<System.Boolean>)
+DA:18,0
+DA:174,0
+BRDA:174,9,0,0
+BRDA:174,9,1,0
+FN:26,System.Byte Wangkanai.CheckThrowIfNullExtensions::ThrowIfNull(System.Nullable`1<System.Byte>)
+FNDA:0,System.Byte Wangkanai.CheckThrowIfNullExtensions::ThrowIfNull(System.Nullable`1<System.Byte>)
+DA:27,0
+DA:196,0
+BRDA:196,9,0,0
+BRDA:196,9,1,0
+FN:35,System.SByte Wangkanai.CheckThrowIfNullExtensions::ThrowIfNull(System.Nullable`1<System.SByte>)
+FNDA:0,System.SByte Wangkanai.CheckThrowIfNullExtensions::ThrowIfNull(System.Nullable`1<System.SByte>)
+DA:36,0
+DA:185,0
+BRDA:185,9,0,0
+BRDA:185,9,1,0
+FN:44,System.Int16 Wangkanai.CheckThrowIfNullExtensions::ThrowIfNull(System.Nullable`1<System.Int16>)
+FNDA:0,System.Int16 Wangkanai.CheckThrowIfNullExtensions::ThrowIfNull(System.Nullable`1<System.Int16>)
+DA:45,0
+DA:207,0
+BRDA:207,9,0,0
+BRDA:207,9,1,0
+FN:53,System.UInt16 Wangkanai.CheckThrowIfNullExtensions::ThrowIfNull(System.Nullable`1<System.UInt16>)
+FNDA:0,System.UInt16 Wangkanai.CheckThrowIfNullExtensions::ThrowIfNull(System.Nullable`1<System.UInt16>)
+DA:54,0
+DA:218,0
+BRDA:218,9,0,0
+BRDA:218,9,1,0
+FN:62,System.Int32 Wangkanai.CheckThrowIfNullExtensions::ThrowIfNull(System.Nullable`1<System.Int32>)
+FNDA:0,System.Int32 Wangkanai.CheckThrowIfNullExtensions::ThrowIfNull(System.Nullable`1<System.Int32>)
+DA:63,0
+DA:229,0
+BRDA:229,9,0,0
+BRDA:229,9,1,0
+FN:71,System.UInt32 Wangkanai.CheckThrowIfNullExtensions::ThrowIfNull(System.Nullable`1<System.UInt32>)
+FNDA:0,System.UInt32 Wangkanai.CheckThrowIfNullExtensions::ThrowIfNull(System.Nullable`1<System.UInt32>)
+DA:72,0
+DA:240,0
+BRDA:240,9,0,0
+BRDA:240,9,1,0
+FN:80,System.IntPtr Wangkanai.CheckThrowIfNullExtensions::ThrowIfNull(System.Nullable`1<System.IntPtr>)
+FNDA:0,System.IntPtr Wangkanai.CheckThrowIfNullExtensions::ThrowIfNull(System.Nullable`1<System.IntPtr>)
+DA:81,0
+DA:251,0
+BRDA:251,9,0,0
+BRDA:251,9,1,0
+FN:89,System.UIntPtr Wangkanai.CheckThrowIfNullExtensions::ThrowIfNull(System.Nullable`1<System.UIntPtr>)
+FNDA:0,System.UIntPtr Wangkanai.CheckThrowIfNullExtensions::ThrowIfNull(System.Nullable`1<System.UIntPtr>)
+DA:90,0
+DA:262,0
+BRDA:262,9,0,0
+BRDA:262,9,1,0
+FN:98,System.Int64 Wangkanai.CheckThrowIfNullExtensions::ThrowIfNull(System.Nullable`1<System.Int64>)
+FNDA:0,System.Int64 Wangkanai.CheckThrowIfNullExtensions::ThrowIfNull(System.Nullable`1<System.Int64>)
+DA:99,0
+DA:273,0
+BRDA:273,9,0,0
+BRDA:273,9,1,0
+FN:107,System.UInt64 Wangkanai.CheckThrowIfNullExtensions::ThrowIfNull(System.Nullable`1<System.UInt64>)
+FNDA:0,System.UInt64 Wangkanai.CheckThrowIfNullExtensions::ThrowIfNull(System.Nullable`1<System.UInt64>)
+DA:108,0
+DA:284,0
+BRDA:284,9,0,0
+BRDA:284,9,1,0
+FN:116,System.Single Wangkanai.CheckThrowIfNullExtensions::ThrowIfNull(System.Nullable`1<System.Single>)
+FNDA:0,System.Single Wangkanai.CheckThrowIfNullExtensions::ThrowIfNull(System.Nullable`1<System.Single>)
+DA:117,0
+DA:295,0
+BRDA:295,9,0,0
+BRDA:295,9,1,0
+FN:125,System.Decimal Wangkanai.CheckThrowIfNullExtensions::ThrowIfNull(System.Nullable`1<System.Decimal>)
+FNDA:0,System.Decimal Wangkanai.CheckThrowIfNullExtensions::ThrowIfNull(System.Nullable`1<System.Decimal>)
+DA:126,0
+DA:317,0
+BRDA:317,9,0,0
+BRDA:317,9,1,0
+FN:134,System.Double Wangkanai.CheckThrowIfNullExtensions::ThrowIfNull(System.Nullable`1<System.Double>)
+FNDA:0,System.Double Wangkanai.CheckThrowIfNullExtensions::ThrowIfNull(System.Nullable`1<System.Double>)
+DA:135,0
+DA:306,0
+BRDA:306,9,0,0
+BRDA:306,9,1,0
+FN:143,System.Char Wangkanai.CheckThrowIfNullExtensions::ThrowIfNull(System.Nullable`1<System.Char>)
+FNDA:0,System.Char Wangkanai.CheckThrowIfNullExtensions::ThrowIfNull(System.Nullable`1<System.Char>)
+DA:144,0
+DA:328,0
+BRDA:328,9,0,0
+BRDA:328,9,1,0
+FN:152,System.String Wangkanai.CheckThrowIfNullExtensions::ThrowIfNull(System.String)
+FNDA:0,System.String Wangkanai.CheckThrowIfNullExtensions::ThrowIfNull(System.String)
+DA:153,0
+DA:339,0
+BRDA:339,2,0,0
+BRDA:339,2,1,0
+FN:162,System.String Wangkanai.CheckThrowIfNullExtensions::ThrowIfNull(System.String,System.String)
+FNDA:0,System.String Wangkanai.CheckThrowIfNullExtensions::ThrowIfNull(System.String,System.String)
+DA:163,0
+DA:351,0
+BRDA:351,2,0,0
+BRDA:351,2,1,0
+LF:34
+LH:0
+BRF:34
+BRH:0
+FNF:17
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Checks/ThrowIfNullGenericExtensions.cs
+FN:18,T Wangkanai.ThrowIfNullGenericExtensions::ThrowIfNull(T)
+FNDA:0,T Wangkanai.ThrowIfNullGenericExtensions::ThrowIfNull(T)
+DA:19,0
+BRDA:19,8,0,0
+BRDA:19,8,1,0
+FN:29,T Wangkanai.ThrowIfNullGenericExtensions::ThrowIfNull(T,System.String)
+FNDA:0,T Wangkanai.ThrowIfNullGenericExtensions::ThrowIfNull(T,System.String)
+DA:30,0
+BRDA:30,8,0,0
+BRDA:30,8,1,0
+LF:2
+LH:0
+BRF:4
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Checks/ThrowIfNullObjectExtensions.cs
+FN:19,System.Object Wangkanai.ThrowIfNullObjectExtensions::ThrowIfNull(System.Object)
+FNDA:0,System.Object Wangkanai.ThrowIfNullObjectExtensions::ThrowIfNull(System.Object)
+DA:20,0
+BRDA:20,2,0,0
+BRDA:20,2,1,0
+FN:31,System.Object Wangkanai.ThrowIfNullObjectExtensions::ThrowIfNull(System.Object,System.String)
+FNDA:0,System.Object Wangkanai.ThrowIfNullObjectExtensions::ThrowIfNull(System.Object,System.String)
+DA:32,0
+BRDA:32,2,0,0
+BRDA:32,2,1,0
+LF:2
+LH:0
+BRF:4
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Checks/ThrowIfNullOrEmptyExtensions.cs
+FN:19,System.String Wangkanai.ThrowIfNullOrEmptyExtensions::ThrowIfNullOrEmpty(System.String)
+FNDA:0,System.String Wangkanai.ThrowIfNullOrEmptyExtensions::ThrowIfNullOrEmpty(System.String)
+DA:20,0
+DA:49,0
+DA:50,0
+DA:51,0
+BRDA:49,6,0,0
+BRDA:49,6,1,0
+FN:28,System.String Wangkanai.ThrowIfNullOrEmptyExtensions::ThrowIfNullOrEmpty(System.String,System.String)
+FNDA:0,System.String Wangkanai.ThrowIfNullOrEmptyExtensions::ThrowIfNullOrEmpty(System.String,System.String)
+DA:29,0
+DA:62,0
+DA:63,0
+DA:64,0
+BRDA:62,6,0,0
+BRDA:62,6,1,0
+FN:38,System.String Wangkanai.ThrowIfNullOrEmptyExtensions::ThrowIfNullOrEmpty(System.String,System.String,System.String)
+FNDA:0,System.String Wangkanai.ThrowIfNullOrEmptyExtensions::ThrowIfNullOrEmpty(System.String,System.String,System.String)
+DA:39,0
+DA:76,0
+DA:77,0
+DA:78,0
+BRDA:76,6,0,0
+BRDA:76,6,1,0
+LF:12
+LH:0
+BRF:6
+BRH:0
+FNF:3
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Checks/ThrowIfNullOrWhitespaceExtensions.cs
+FN:19,System.String Wangkanai.ThrowIfNullOrWhitespaceExtensions::ThrowIfNullOrWhitespace(System.String)
+FNDA:0,System.String Wangkanai.ThrowIfNullOrWhitespaceExtensions::ThrowIfNullOrWhitespace(System.String)
+DA:20,0
+DA:39,0
+FN:28,System.String Wangkanai.ThrowIfNullOrWhitespaceExtensions::ThrowIfNullOrWhitespace(System.String,System.String)
+FNDA:0,System.String Wangkanai.ThrowIfNullOrWhitespaceExtensions::ThrowIfNullOrWhitespace(System.String,System.String)
+DA:29,0
+DA:50,0
+FN:61,System.String Wangkanai.ThrowIfNullOrWhitespaceExtensions::ThrowIfNullOrWhitespace(System.String,System.String,System.String)
+FNDA:0,System.String Wangkanai.ThrowIfNullOrWhitespaceExtensions::ThrowIfNullOrWhitespace(System.String,System.String,System.String)
+DA:62,0
+DA:63,0
+DA:64,0
+BRDA:62,6,0,0
+BRDA:62,6,1,0
+LF:7
+LH:0
+BRF:2
+BRH:0
+FNF:3
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Checks/ThrowIfOutOfRangeExtension.cs
+FN:23,T Wangkanai.ThrowIfOutOfRangeExtension::ThrowIfOutOfRange(T,T,T)
+FNDA:0,T Wangkanai.ThrowIfOutOfRangeExtension::ThrowIfOutOfRange(T,T,T)
+DA:24,0
+DA:25,0
+DA:26,0
+BRDA:24,13,0,0
+BRDA:24,28,0,0
+BRDA:24,13,1,0
+BRDA:24,28,1,0
+LF:3
+LH:0
+BRF:4
+BRH:0
+FNF:1
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Checks/ThrowIfPositiveExtensions.cs
+FN:18,System.Int32 Wangkanai.ThrowIfPositiveExtensions::ThrowIfPositive(System.Int32)
+FNDA:0,System.Int32 Wangkanai.ThrowIfPositiveExtensions::ThrowIfPositive(System.Int32)
+DA:19,0
+DA:38,0
+FN:27,System.Int32 Wangkanai.ThrowIfPositiveExtensions::ThrowIfPositive(System.Int32,System.String)
+FNDA:0,System.Int32 Wangkanai.ThrowIfPositiveExtensions::ThrowIfPositive(System.Int32,System.String)
+DA:28,0
+DA:49,0
+DA:50,0
+DA:51,0
+BRDA:49,2,0,0
+BRDA:49,2,1,0
+LF:6
+LH:0
+BRF:2
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Checks/ThrowIfWhitespaceExtensions.cs
+FN:19,System.String Wangkanai.ThrowIfWhitespaceExtensions::ThrowIfWhitespace(System.String)
+FNDA:0,System.String Wangkanai.ThrowIfWhitespaceExtensions::ThrowIfWhitespace(System.String)
+DA:20,0
+DA:39,0
+FN:28,System.String Wangkanai.ThrowIfWhitespaceExtensions::ThrowIfWhitespace(System.String,System.String)
+FNDA:0,System.String Wangkanai.ThrowIfWhitespaceExtensions::ThrowIfWhitespace(System.String,System.String)
+DA:29,0
+DA:50,0
+FN:61,System.String Wangkanai.ThrowIfWhitespaceExtensions::ThrowIfWhitespace(System.String,System.String,System.String)
+FNDA:0,System.String Wangkanai.ThrowIfWhitespaceExtensions::ThrowIfWhitespace(System.String,System.String,System.String)
+DA:62,0
+DA:63,0
+DA:64,0
+BRDA:62,6,0,0
+BRDA:62,6,1,0
+LF:7
+LH:0
+BRF:2
+BRH:0
+FNF:3
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Checks/ThrowIfZeroExtensions.cs
+FN:19,System.Int32 Wangkanai.ThrowIfZeroExtensions::ThrowIfZero(System.Int32)
+FNDA:0,System.Int32 Wangkanai.ThrowIfZeroExtensions::ThrowIfZero(System.Int32)
+DA:20,0
+DA:41,0
+DA:42,0
+DA:43,0
+BRDA:41,1,0,0
+BRDA:41,1,1,0
+FN:29,System.Int32 Wangkanai.ThrowIfZeroExtensions::ThrowIfZero(System.Int32,System.String)
+FNDA:0,System.Int32 Wangkanai.ThrowIfZeroExtensions::ThrowIfZero(System.Int32,System.String)
+DA:30,0
+DA:55,0
+DA:56,0
+DA:57,0
+BRDA:55,1,0,0
+BRDA:55,1,1,0
+LF:8
+LH:0
+BRF:4
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Constants.cs
+FN:6,System.Void Wangkanai.Constants::.cctor()
+FNDA:0,System.Void Wangkanai.Constants::.cctor()
+DA:7,0
+LF:1
+LH:0
+BRF:0
+BRH:0
+FNF:1
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Decorator.cs
+FN:11,TService Wangkanai.Decorator`1::get_Instance()
+FNDA:0,TService Wangkanai.Decorator`1::get_Instance()
+DA:12,0
+FN:9,System.Void Wangkanai.Decorator`1::.ctor(TService)
+FNDA:0,System.Void Wangkanai.Decorator`1::.ctor(TService)
+DA:10,0
+FN:20,System.Void Wangkanai.Decorator`2::.ctor(TImplementation)
+FNDA:0,System.Void Wangkanai.Decorator`2::.ctor(TImplementation)
+DA:21,0
+FN:34,System.Void Wangkanai.DisposableDecorator`1::Dispose()
+FNDA:0,System.Void Wangkanai.DisposableDecorator`1::Dispose()
+DA:35,0
+DA:36,0
+DA:37,0
+DA:38,0
+BRDA:36,18,0,0
+BRDA:36,18,1,0
+FN:28,System.Void Wangkanai.DisposableDecorator`1::.ctor(TService)
+FNDA:0,System.Void Wangkanai.DisposableDecorator`1::.ctor(TService)
+DA:29,0
+LF:8
+LH:0
+BRF:2
+BRH:0
+FNF:5
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Math.cs
+FN:16,System.Byte Wangkanai.Math::Divider(System.Byte,System.Byte)
+FNDA:0,System.Byte Wangkanai.Math::Divider(System.Byte,System.Byte)
+DA:17,0
+BRDA:17,1,0,0
+BRDA:17,1,1,0
+FN:25,System.SByte Wangkanai.Math::Divider(System.SByte,System.SByte)
+FNDA:0,System.SByte Wangkanai.Math::Divider(System.SByte,System.SByte)
+DA:26,0
+BRDA:26,1,0,0
+BRDA:26,1,1,0
+FN:34,System.Int16 Wangkanai.Math::Divider(System.Int16,System.Int16)
+FNDA:0,System.Int16 Wangkanai.Math::Divider(System.Int16,System.Int16)
+DA:35,0
+BRDA:35,1,0,0
+BRDA:35,1,1,0
+FN:43,System.Int32 Wangkanai.Math::Divider(System.Int32,System.Int32)
+FNDA:0,System.Int32 Wangkanai.Math::Divider(System.Int32,System.Int32)
+DA:44,0
+BRDA:44,1,0,0
+BRDA:44,1,1,0
+FN:52,System.UInt32 Wangkanai.Math::Divider(System.UInt32,System.UInt32)
+FNDA:0,System.UInt32 Wangkanai.Math::Divider(System.UInt32,System.UInt32)
+DA:53,0
+BRDA:53,1,0,0
+BRDA:53,1,1,0
+FN:61,System.Int64 Wangkanai.Math::Divider(System.Int64,System.Int64)
+FNDA:0,System.Int64 Wangkanai.Math::Divider(System.Int64,System.Int64)
+DA:62,0
+BRDA:62,1,0,0
+BRDA:62,1,1,0
+FN:70,System.UInt64 Wangkanai.Math::Divider(System.UInt64,System.UInt64)
+FNDA:0,System.UInt64 Wangkanai.Math::Divider(System.UInt64,System.UInt64)
+DA:71,0
+BRDA:71,1,0,0
+BRDA:71,1,1,0
+FN:79,System.Single Wangkanai.Math::Divider(System.Single,System.Single)
+FNDA:0,System.Single Wangkanai.Math::Divider(System.Single,System.Single)
+DA:80,0
+BRDA:80,6,0,0
+BRDA:80,6,1,0
+FN:88,System.Double Wangkanai.Math::Divider(System.Double,System.Double)
+FNDA:0,System.Double Wangkanai.Math::Divider(System.Double,System.Double)
+DA:89,0
+BRDA:89,10,0,0
+BRDA:89,10,1,0
+FN:97,System.Decimal Wangkanai.Math::Divider(System.Decimal,System.Decimal)
+FNDA:0,System.Decimal Wangkanai.Math::Divider(System.Decimal,System.Decimal)
+DA:98,0
+BRDA:98,11,0,0
+BRDA:98,11,1,0
+LF:10
+LH:0
+BRF:20
+BRH:0
+FNF:10
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Operators/Operator.cs
+FN:11,System.Boolean Wangkanai.Operator::HasValue(T)
+FNDA:0,System.Boolean Wangkanai.Operator::HasValue(T)
+DA:12,0
+FN:13,System.Boolean Wangkanai.Operator::AddIfNotNull(T&,T)
+FNDA:0,System.Boolean Wangkanai.Operator::AddIfNotNull(T&,T)
+DA:14,0
+FN:15,T Wangkanai.Operator::Negate(T)
+FNDA:0,T Wangkanai.Operator::Negate(T)
+DA:16,0
+FN:16,T Wangkanai.Operator::Not(T)
+FNDA:0,T Wangkanai.Operator::Not(T)
+DA:17,0
+FN:17,T Wangkanai.Operator::Or(T,T)
+FNDA:0,T Wangkanai.Operator::Or(T,T)
+DA:18,0
+FN:18,T Wangkanai.Operator::And(T,T)
+FNDA:0,T Wangkanai.Operator::And(T,T)
+DA:19,0
+FN:19,T Wangkanai.Operator::Xor(T,T)
+FNDA:0,T Wangkanai.Operator::Xor(T,T)
+DA:20,0
+FN:22,System.Boolean Wangkanai.Operator::Equal(T,T)
+FNDA:0,System.Boolean Wangkanai.Operator::Equal(T,T)
+DA:23,0
+FN:23,System.Boolean Wangkanai.Operator::NotEqual(T,T)
+FNDA:0,System.Boolean Wangkanai.Operator::NotEqual(T,T)
+DA:24,0
+FN:24,System.Boolean Wangkanai.Operator::GreaterThan(T,T)
+FNDA:0,System.Boolean Wangkanai.Operator::GreaterThan(T,T)
+DA:25,0
+FN:25,System.Boolean Wangkanai.Operator::GreaterThanOrEqual(T,T)
+FNDA:0,System.Boolean Wangkanai.Operator::GreaterThanOrEqual(T,T)
+DA:26,0
+FN:26,System.Boolean Wangkanai.Operator::LessThan(T,T)
+FNDA:0,System.Boolean Wangkanai.Operator::LessThan(T,T)
+DA:27,0
+FN:27,System.Boolean Wangkanai.Operator::LessThanOrEqual(T,T)
+FNDA:0,System.Boolean Wangkanai.Operator::LessThanOrEqual(T,T)
+DA:28,0
+FN:29,TTo Wangkanai.Operator::Convert(TFrom)
+FNDA:0,TTo Wangkanai.Operator::Convert(TFrom)
+DA:30,0
+FN:31,T Wangkanai.Operator::Add(T,T)
+FNDA:0,T Wangkanai.Operator::Add(T,T)
+DA:32,0
+FN:32,TArg1 Wangkanai.Operator::AddAlternative(TArg1,TArg2)
+FNDA:0,TArg1 Wangkanai.Operator::AddAlternative(TArg1,TArg2)
+DA:33,0
+FN:33,T Wangkanai.Operator::Subtract(T,T)
+FNDA:0,T Wangkanai.Operator::Subtract(T,T)
+DA:34,0
+FN:34,TArg1 Wangkanai.Operator::SubtractAlternative(TArg1,TArg2)
+FNDA:0,TArg1 Wangkanai.Operator::SubtractAlternative(TArg1,TArg2)
+DA:35,0
+FN:35,T Wangkanai.Operator::Multiply(T,T)
+FNDA:0,T Wangkanai.Operator::Multiply(T,T)
+DA:36,0
+FN:36,TArg1 Wangkanai.Operator::MultiplyAlternative(TArg1,TArg2)
+FNDA:0,TArg1 Wangkanai.Operator::MultiplyAlternative(TArg1,TArg2)
+DA:37,0
+FN:37,T Wangkanai.Operator::Divide(T,T)
+FNDA:0,T Wangkanai.Operator::Divide(T,T)
+DA:38,0
+FN:38,T Wangkanai.Operator::DivideInt32(T,System.Int32)
+FNDA:0,T Wangkanai.Operator::DivideInt32(T,System.Int32)
+DA:39,0
+FN:39,TArg1 Wangkanai.Operator::DivideAlternative(TArg1,TArg2)
+FNDA:0,TArg1 Wangkanai.Operator::DivideAlternative(TArg1,TArg2)
+DA:40,0
+FN:44,Wangkanai.Operators.INullOperator`1<T> Wangkanai.Operator`1::get_NullOperator()
+FNDA:0,Wangkanai.Operators.INullOperator`1<T> Wangkanai.Operator`1::get_NullOperator()
+DA:45,0
+FN:46,T Wangkanai.Operator`1::get_Zero()
+FNDA:0,T Wangkanai.Operator`1::get_Zero()
+DA:47,0
+FN:49,System.Func`3<T,T,T> Wangkanai.Operator`1::get_Add()
+FNDA:0,System.Func`3<T,T,T> Wangkanai.Operator`1::get_Add()
+DA:50,0
+FN:50,System.Func`3<T,T,T> Wangkanai.Operator`1::get_Subtract()
+FNDA:0,System.Func`3<T,T,T> Wangkanai.Operator`1::get_Subtract()
+DA:51,0
+FN:51,System.Func`3<T,T,T> Wangkanai.Operator`1::get_Multiply()
+FNDA:0,System.Func`3<T,T,T> Wangkanai.Operator`1::get_Multiply()
+DA:52,0
+FN:53,System.Func`3<T,T,T> Wangkanai.Operator`1::get_Divide()
+FNDA:0,System.Func`3<T,T,T> Wangkanai.Operator`1::get_Divide()
+DA:54,0
+FN:56,System.Func`3<T,T,System.Boolean> Wangkanai.Operator`1::get_Equal()
+FNDA:0,System.Func`3<T,T,System.Boolean> Wangkanai.Operator`1::get_Equal()
+DA:57,0
+FN:57,System.Func`3<T,T,System.Boolean> Wangkanai.Operator`1::get_NotEqual()
+FNDA:0,System.Func`3<T,T,System.Boolean> Wangkanai.Operator`1::get_NotEqual()
+DA:58,0
+FN:58,System.Func`3<T,T,System.Boolean> Wangkanai.Operator`1::get_GreaterThan()
+FNDA:0,System.Func`3<T,T,System.Boolean> Wangkanai.Operator`1::get_GreaterThan()
+DA:59,0
+FN:59,System.Func`3<T,T,System.Boolean> Wangkanai.Operator`1::get_GreaterThanOrEqual()
+FNDA:0,System.Func`3<T,T,System.Boolean> Wangkanai.Operator`1::get_GreaterThanOrEqual()
+DA:60,0
+FN:60,System.Func`3<T,T,System.Boolean> Wangkanai.Operator`1::get_LessThan()
+FNDA:0,System.Func`3<T,T,System.Boolean> Wangkanai.Operator`1::get_LessThan()
+DA:61,0
+FN:61,System.Func`3<T,T,System.Boolean> Wangkanai.Operator`1::get_LessThanOrEqual()
+FNDA:0,System.Func`3<T,T,System.Boolean> Wangkanai.Operator`1::get_LessThanOrEqual()
+DA:62,0
+FN:64,System.Func`2<T,T> Wangkanai.Operator`1::get_Negate()
+FNDA:0,System.Func`2<T,T> Wangkanai.Operator`1::get_Negate()
+DA:65,0
+FN:65,System.Func`2<T,T> Wangkanai.Operator`1::get_Not()
+FNDA:0,System.Func`2<T,T> Wangkanai.Operator`1::get_Not()
+DA:66,0
+FN:66,System.Func`3<T,T,T> Wangkanai.Operator`1::get_Or()
+FNDA:0,System.Func`3<T,T,T> Wangkanai.Operator`1::get_Or()
+DA:67,0
+FN:67,System.Func`3<T,T,T> Wangkanai.Operator`1::get_And()
+FNDA:0,System.Func`3<T,T,T> Wangkanai.Operator`1::get_And()
+DA:68,0
+FN:68,System.Func`3<T,T,T> Wangkanai.Operator`1::get_Xor()
+FNDA:0,System.Func`3<T,T,T> Wangkanai.Operator`1::get_Xor()
+DA:69,0
+FN:71,System.Void Wangkanai.Operator`1::.cctor()
+FNDA:0,System.Void Wangkanai.Operator`1::.cctor()
+DA:72,0
+DA:73,0
+DA:74,0
+DA:75,0
+DA:76,0
+DA:78,0
+DA:79,0
+DA:80,0
+DA:81,0
+DA:82,0
+DA:83,0
+DA:85,0
+DA:86,0
+DA:87,0
+DA:88,0
+DA:89,0
+DA:91,0
+DA:92,0
+DA:93,0
+DA:94,0
+DA:95,0
+DA:96,0
+DA:97,0
+DA:99,0
+DA:100,0
+DA:101,0
+DA:102,0
+DA:103,0
+DA:104,0
+DA:105,0
+BRDA:92,343,0,0
+BRDA:92,351,0,0
+BRDA:92,359,0,0
+BRDA:92,343,1,0
+BRDA:92,351,1,0
+BRDA:92,359,1,0
+BRDA:92,387,0,0
+BRDA:92,387,1,0
+BRDA:101,476,0,0
+BRDA:101,476,1,0
+FN:109,System.Func`2<TValue,TResult> Wangkanai.Operator`2::get_Convert()
+FNDA:0,System.Func`2<TValue,TResult> Wangkanai.Operator`2::get_Convert()
+DA:110,0
+FN:110,System.Func`3<TResult,TValue,TResult> Wangkanai.Operator`2::get_Add()
+FNDA:0,System.Func`3<TResult,TValue,TResult> Wangkanai.Operator`2::get_Add()
+DA:111,0
+FN:111,System.Func`3<TResult,TValue,TResult> Wangkanai.Operator`2::get_Subtract()
+FNDA:0,System.Func`3<TResult,TValue,TResult> Wangkanai.Operator`2::get_Subtract()
+DA:112,0
+FN:112,System.Func`3<TResult,TValue,TResult> Wangkanai.Operator`2::get_Multiply()
+FNDA:0,System.Func`3<TResult,TValue,TResult> Wangkanai.Operator`2::get_Multiply()
+DA:113,0
+FN:113,System.Func`3<TResult,TValue,TResult> Wangkanai.Operator`2::get_Divide()
+FNDA:0,System.Func`3<TResult,TValue,TResult> Wangkanai.Operator`2::get_Divide()
+DA:114,0
+FN:116,System.Void Wangkanai.Operator`2::.cctor()
+FNDA:0,System.Void Wangkanai.Operator`2::.cctor()
+DA:117,0
+DA:118,0
+DA:119,0
+DA:120,0
+DA:121,0
+DA:122,0
+DA:123,0
+LF:82
+LH:0
+BRF:10
+BRH:0
+FNF:47
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/StaticRandom.cs
+FN:17,System.Int32 Wangkanai.StaticRandom::Next()
+FNDA:0,System.Int32 Wangkanai.StaticRandom::Next()
+DA:18,0
+DA:19,0
+DA:20,0
+FN:26,System.Int32 Wangkanai.StaticRandom::Next(System.Int32)
+FNDA:0,System.Int32 Wangkanai.StaticRandom::Next(System.Int32)
+DA:27,0
+DA:28,0
+DA:29,0
+FN:35,System.Int32 Wangkanai.StaticRandom::Next(System.Int32,System.Int32)
+FNDA:0,System.Int32 Wangkanai.StaticRandom::Next(System.Int32,System.Int32)
+DA:36,0
+DA:37,0
+DA:38,0
+FN:44,System.Double Wangkanai.StaticRandom::NextDouble()
+FNDA:0,System.Double Wangkanai.StaticRandom::NextDouble()
+DA:45,0
+DA:46,0
+DA:47,0
+FN:53,System.Void Wangkanai.StaticRandom::NextBytes(System.Byte[])
+FNDA:0,System.Void Wangkanai.StaticRandom::NextBytes(System.Byte[])
+DA:54,0
+DA:55,0
+DA:56,0
+FN:62,System.Void Wangkanai.StaticRandom::NextBytes(System.Span`1<System.Byte>)
+FNDA:0,System.Void Wangkanai.StaticRandom::NextBytes(System.Span`1<System.Byte>)
+DA:63,0
+DA:64,0
+DA:65,0
+FN:71,System.Void Wangkanai.StaticRandom::NextBytes(System.Memory`1<System.Byte>)
+FNDA:0,System.Void Wangkanai.StaticRandom::NextBytes(System.Memory`1<System.Byte>)
+DA:72,0
+DA:73,0
+DA:74,0
+FN:9,System.Void Wangkanai.StaticRandom::.cctor()
+FNDA:0,System.Void Wangkanai.StaticRandom::.cctor()
+DA:10,0
+DA:11,0
+LF:23
+LH:0
+BRF:0
+BRH:0
+FNF:8
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Resources/SystemResources.cs
+FN:6,System.String Wangkanai.Resources.SystemResources::get_ArgumentEmptyGeneric()
+FNDA:0,System.String Wangkanai.Resources.SystemResources::get_ArgumentEmptyGeneric()
+DA:7,0
+FN:7,System.String Wangkanai.Resources.SystemResources::get_ArgumentNullOrEmptyGeneric()
+FNDA:0,System.String Wangkanai.Resources.SystemResources::get_ArgumentNullOrEmptyGeneric()
+DA:8,0
+FN:8,System.String Wangkanai.Resources.SystemResources::get_ArgumentEqualGeneric()
+FNDA:0,System.String Wangkanai.Resources.SystemResources::get_ArgumentEqualGeneric()
+DA:9,0
+FN:9,System.String Wangkanai.Resources.SystemResources::get_ArgumentNotEqualGeneric()
+FNDA:0,System.String Wangkanai.Resources.SystemResources::get_ArgumentNotEqualGeneric()
+DA:10,0
+FN:10,System.String Wangkanai.Resources.SystemResources::get_ArgumentLessThanGeneric()
+FNDA:0,System.String Wangkanai.Resources.SystemResources::get_ArgumentLessThanGeneric()
+DA:11,0
+FN:11,System.String Wangkanai.Resources.SystemResources::get_ArgumentMoreThanGeneric()
+FNDA:0,System.String Wangkanai.Resources.SystemResources::get_ArgumentMoreThanGeneric()
+DA:12,0
+FN:12,System.String Wangkanai.Resources.SystemResources::get_ArgumentZeroGeneric()
+FNDA:0,System.String Wangkanai.Resources.SystemResources::get_ArgumentZeroGeneric()
+DA:13,0
+FN:13,System.String Wangkanai.Resources.SystemResources::get_ArgumentPositiveGeneric()
+FNDA:0,System.String Wangkanai.Resources.SystemResources::get_ArgumentPositiveGeneric()
+DA:14,0
+FN:14,System.String Wangkanai.Resources.SystemResources::get_ArgumentNegativeGeneric()
+FNDA:0,System.String Wangkanai.Resources.SystemResources::get_ArgumentNegativeGeneric()
+DA:15,0
+LF:9
+LH:0
+BRF:0
+BRH:0
+FNF:9
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Reflection/AssemblyVersion.cs
+FN:10,T Wangkanai.Reflection.AssemblyVersion::AssemblyInformationVersion()
+FNDA:0,T Wangkanai.Reflection.AssemblyVersion::AssemblyInformationVersion()
+DA:11,0
+FN:12,System.Void Wangkanai.Reflection.AssemblyVersion::.cctor()
+FNDA:0,System.Void Wangkanai.Reflection.AssemblyVersion::.cctor()
+DA:13,0
+DA:22,0
+LF:3
+LH:0
+BRF:0
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Reflection/PropertyCopy.cs
+FN:12,TTarget Wangkanai.Reflection.PropertyCopy`1::CopyFrom(TSource)
+FNDA:0,TTarget Wangkanai.Reflection.PropertyCopy`1::CopyFrom(TSource)
+DA:13,0
+FN:34,TTarget Wangkanai.Reflection.PropertyCopy`1/PropertyCopier`1::Copy(TSource)
+FNDA:0,TTarget Wangkanai.Reflection.PropertyCopy`1/PropertyCopier`1::Copy(TSource)
+DA:35,0
+DA:36,0
+DA:37,0
+DA:39,0
+DA:41,0
+DA:42,0
+BRDA:36,14,0,0
+BRDA:36,14,1,0
+FN:44,System.Func`2<TSource,TTarget> Wangkanai.Reflection.PropertyCopy`1/PropertyCopier`1::BuildCopier()
+FNDA:0,System.Func`2<TSource,TTarget> Wangkanai.Reflection.PropertyCopy`1/PropertyCopier`1::BuildCopier()
+DA:45,0
+DA:46,0
+DA:47,0
+DA:49,0
+DA:50,0
+DA:51,0
+DA:52,0
+DA:54,0
+DA:56,0
+DA:57,0
+DA:58,0
+DA:59,0
+DA:60,0
+DA:61,0
+DA:63,0
+DA:64,0
+DA:66,0
+DA:68,0
+DA:69,0
+BRDA:49,320,1,0
+BRDA:51,74,1,0
+BRDA:56,114,0,0
+BRDA:56,114,1,0
+BRDA:58,173,0,0
+BRDA:58,173,1,0
+BRDA:60,244,0,0
+BRDA:60,244,1,0
+BRDA:51,74,0,0
+BRDA:49,320,0,0
+FN:20,System.Void Wangkanai.Reflection.PropertyCopy`1/PropertyCopier`1::.cctor()
+FNDA:0,System.Void Wangkanai.Reflection.PropertyCopy`1/PropertyCopier`1::.cctor()
+DA:21,0
+DA:23,0
+DA:24,0
+DA:25,0
+DA:26,0
+DA:27,0
+DA:28,0
+DA:29,0
+DA:30,0
+DA:31,0
+DA:32,0
+LF:37
+LH:0
+BRF:12
+BRH:0
+FNF:4
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Operators/ClassNullOperator.cs
+FN:7,System.Boolean Wangkanai.Operators.ClassNullOperator`1::HasValue(T)
+FNDA:0,System.Boolean Wangkanai.Operators.ClassNullOperator`1::HasValue(T)
+DA:8,0
+FN:10,System.Boolean Wangkanai.Operators.ClassNullOperator`1::AddIfNotNull(T&,T)
+FNDA:0,System.Boolean Wangkanai.Operators.ClassNullOperator`1::AddIfNotNull(T&,T)
+DA:11,0
+DA:12,0
+DA:13,0
+DA:15,0
+DA:16,0
+DA:17,0
+BRDA:12,9,0,0
+BRDA:12,9,1,0
+LF:7
+LH:0
+BRF:2
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Operators/StructNullOperator.cs
+FN:7,System.Boolean Wangkanai.Operators.StructNullOperator`1::HasValue(T)
+FNDA:0,System.Boolean Wangkanai.Operators.StructNullOperator`1::HasValue(T)
+DA:8,0
+FN:10,System.Boolean Wangkanai.Operators.StructNullOperator`1::AddIfNotNull(T&,T)
+FNDA:0,System.Boolean Wangkanai.Operators.StructNullOperator`1::AddIfNotNull(T&,T)
+DA:11,0
+DA:12,0
+DA:13,0
+DA:14,0
+LF:5
+LH:0
+BRF:0
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Linq/ExpressionFactory.cs
+FN:9,System.Func`2<TArg1,TResult> Wangkanai.Linq.ExpressionFactory::Create(System.Func`2<System.Linq.Expressions.Expression,System.Linq.Expressions.UnaryExpression>)
+FNDA:0,System.Func`2<TArg1,TResult> Wangkanai.Linq.ExpressionFactory::Create(System.Func`2<System.Linq.Expressions.Expression,System.Linq.Expressions.UnaryExpression>)
+DA:10,0
+DA:11,0
+DA:13,0
+DA:14,0
+DA:16,0
+DA:17,0
+DA:18,0
+DA:20,0
+FN:22,System.Func`3<TArg1,TArg2,TResult> Wangkanai.Linq.ExpressionFactory::Create(System.Func`3<System.Linq.Expressions.Expression,System.Linq.Expressions.Expression,System.Linq.Expressions.BinaryExpression>)
+FNDA:0,System.Func`3<TArg1,TArg2,TResult> Wangkanai.Linq.ExpressionFactory::Create(System.Func`3<System.Linq.Expressions.Expression,System.Linq.Expressions.Expression,System.Linq.Expressions.BinaryExpression>)
+DA:23,0
+FN:25,System.Func`3<TArg1,TArg2,TResult> Wangkanai.Linq.ExpressionFactory::Create(System.Func`3<System.Linq.Expressions.Expression,System.Linq.Expressions.Expression,System.Linq.Expressions.BinaryExpression>,System.Boolean)
+FNDA:0,System.Func`3<TArg1,TArg2,TResult> Wangkanai.Linq.ExpressionFactory::Create(System.Func`3<System.Linq.Expressions.Expression,System.Linq.Expressions.Expression,System.Linq.Expressions.BinaryExpression>,System.Boolean)
+DA:26,0
+DA:27,0
+DA:28,0
+DA:30,0
+DA:32,0
+DA:33,0
+DA:35,0
+DA:36,0
+DA:37,0
+DA:38,0
+DA:39,0
+DA:40,0
+DA:42,0
+DA:43,0
+DA:44,0
+DA:45,0
+DA:46,0
+DA:47,0
+DA:49,0
+DA:52,0
+DA:55,0
+DA:56,0
+DA:57,0
+DA:59,0
+BRDA:37,86,0,0
+BRDA:37,113,0,0
+BRDA:37,86,1,0
+BRDA:37,113,1,0
+BRDA:37,145,0,0
+BRDA:42,176,0,0
+BRDA:42,176,1,0
+BRDA:45,224,0,0
+BRDA:45,224,1,0
+BRDA:37,145,1,0
+LF:33
+LH:0
+BRF:10
+BRH:0
+FNF:3
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Extensions/AssemblyExtensions.cs
+FN:16,System.Version Wangkanai.Extensions.AssemblyExtensions::GetVersion(System.Reflection.Assembly)
+FNDA:0,System.Version Wangkanai.Extensions.AssemblyExtensions::GetVersion(System.Reflection.Assembly)
+DA:17,0
+DA:18,0
+DA:19,0
+DA:20,0
+DA:21,0
+FN:28,System.Version Wangkanai.Extensions.AssemblyExtensions::GetVersion(System.Type)
+FNDA:0,System.Version Wangkanai.Extensions.AssemblyExtensions::GetVersion(System.Type)
+DA:29,0
+DA:30,0
+DA:31,0
+DA:32,0
+DA:33,0
+FN:40,System.String Wangkanai.Extensions.AssemblyExtensions::GetVersionString(System.Type)
+FNDA:0,System.String Wangkanai.Extensions.AssemblyExtensions::GetVersionString(System.Type)
+DA:41,0
+DA:42,0
+DA:43,0
+DA:44,0
+DA:45,0
+FN:52,System.String Wangkanai.Extensions.AssemblyExtensions::GetVersionString(System.Reflection.Assembly)
+FNDA:0,System.String Wangkanai.Extensions.AssemblyExtensions::GetVersionString(System.Reflection.Assembly)
+DA:53,0
+DA:54,0
+DA:55,0
+DA:56,0
+DA:57,0
+FN:64,System.String Wangkanai.Extensions.AssemblyExtensions::GetInformationalVersion(System.Reflection.Assembly)
+FNDA:0,System.String Wangkanai.Extensions.AssemblyExtensions::GetInformationalVersion(System.Reflection.Assembly)
+DA:65,0
+DA:66,0
+DA:67,0
+DA:68,0
+DA:69,0
+DA:70,0
+FN:77,System.String Wangkanai.Extensions.AssemblyExtensions::GetFileVersion(System.Reflection.Assembly)
+FNDA:0,System.String Wangkanai.Extensions.AssemblyExtensions::GetFileVersion(System.Reflection.Assembly)
+DA:78,0
+DA:79,0
+DA:80,0
+DA:81,0
+DA:82,0
+DA:83,0
+LF:32
+LH:0
+BRF:0
+BRH:0
+FNF:6
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Extensions/AttributeExtensions.cs
+FN:19,System.String[] Wangkanai.Extensions.AttributeExtensions::SplitString(System.Attribute,System.String,System.Char)
+FNDA:0,System.String[] Wangkanai.Extensions.AttributeExtensions::SplitString(System.Attribute,System.String,System.Char)
+DA:20,0
+DA:21,0
+DA:22,0
+DA:23,0
+DA:24,0
+DA:25,0
+BRDA:20,6,0,0
+BRDA:20,6,1,0
+LF:6
+LH:0
+BRF:2
+BRH:0
+FNF:1
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Extensions/BinaryScalingExtensions.cs
+FN:18,System.String Wangkanai.Extensions.BinaryScalingExtensions::ToHumanReadable(System.Int16)
+FNDA:0,System.String Wangkanai.Extensions.BinaryScalingExtensions::ToHumanReadable(System.Int16)
+DA:19,0
+FN:26,System.String Wangkanai.Extensions.BinaryScalingExtensions::ToHumanReadable(System.Int32)
+FNDA:0,System.String Wangkanai.Extensions.BinaryScalingExtensions::ToHumanReadable(System.Int32)
+DA:27,0
+FN:34,System.String Wangkanai.Extensions.BinaryScalingExtensions::ToHumanReadable(System.Int64)
+FNDA:0,System.String Wangkanai.Extensions.BinaryScalingExtensions::ToHumanReadable(System.Int64)
+DA:35,0
+DA:36,0
+DA:38,0
+DA:39,0
+DA:40,0
+DA:41,0
+DA:42,0
+DA:43,0
+DA:46,0
+DA:47,0
+DA:48,0
+DA:49,0
+DA:50,0
+DA:51,0
+DA:53,0
+DA:54,0
+BRDA:39,59,1,0
+BRDA:38,13,0,0
+BRDA:39,40,0,0
+BRDA:39,40,1,0
+BRDA:38,13,1,0
+BRDA:39,59,0,0
+BRDA:47,116,1,0
+BRDA:46,68,0,0
+BRDA:47,95,0,0
+BRDA:47,95,1,0
+BRDA:46,68,1,0
+BRDA:47,116,0,0
+FN:61,System.String Wangkanai.Extensions.BinaryScalingExtensions::ToHumanReadable(System.UInt64)
+FNDA:0,System.String Wangkanai.Extensions.BinaryScalingExtensions::ToHumanReadable(System.UInt64)
+DA:62,0
+DA:63,0
+DA:64,0
+DA:65,0
+DA:66,0
+DA:67,0
+DA:68,0
+DA:70,0
+DA:71,0
+BRDA:64,47,1,0
+BRDA:64,28,0,0
+BRDA:64,28,1,0
+BRDA:64,47,0,0
+FN:10,System.Void Wangkanai.Extensions.BinaryScalingExtensions::.cctor()
+FNDA:0,System.Void Wangkanai.Extensions.BinaryScalingExtensions::.cctor()
+DA:11,0
+LF:28
+LH:0
+BRF:16
+BRH:0
+FNF:5
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Extensions/CollectionExtension.cs
+FN:17,System.Boolean Wangkanai.Extensions.CollectionExtension::IsNull(System.Collections.Generic.ICollection`1<T>)
+FNDA:0,System.Boolean Wangkanai.Extensions.CollectionExtension::IsNull(System.Collections.Generic.ICollection`1<T>)
+DA:18,0
+FN:26,System.Boolean Wangkanai.Extensions.CollectionExtension::IsEmpty(System.Collections.Generic.ICollection`1<T>)
+FNDA:0,System.Boolean Wangkanai.Extensions.CollectionExtension::IsEmpty(System.Collections.Generic.ICollection`1<T>)
+DA:27,0
+BRDA:27,1,0,0
+BRDA:27,1,1,0
+FN:35,System.Boolean Wangkanai.Extensions.CollectionExtension::IsNullOrEmpty(System.Collections.Generic.ICollection`1<T>)
+FNDA:0,System.Boolean Wangkanai.Extensions.CollectionExtension::IsNullOrEmpty(System.Collections.Generic.ICollection`1<T>)
+DA:36,0
+BRDA:36,1,0,0
+BRDA:36,1,1,0
+FN:44,System.Boolean Wangkanai.Extensions.CollectionExtension::IsNullOrEmpty(T[])
+FNDA:0,System.Boolean Wangkanai.Extensions.CollectionExtension::IsNullOrEmpty(T[])
+DA:45,0
+BRDA:45,1,0,0
+BRDA:45,1,1,0
+FN:55,System.Collections.Generic.ICollection`1<T> Wangkanai.Extensions.CollectionExtension::AddRangeSafe(System.Collections.Generic.ICollection`1<T>,System.Collections.Generic.IEnumerable`1<T>)
+FNDA:0,System.Collections.Generic.ICollection`1<T> Wangkanai.Extensions.CollectionExtension::AddRangeSafe(System.Collections.Generic.ICollection`1<T>,System.Collections.Generic.IEnumerable`1<T>)
+DA:56,0
+DA:57,0
+DA:58,0
+DA:60,0
+DA:61,0
+DA:63,0
+DA:64,0
+BRDA:60,46,1,0
+BRDA:60,46,0,0
+FN:74,System.Collections.Generic.ICollection`1<T> Wangkanai.Extensions.CollectionExtension::AddDistinct(System.Collections.Generic.ICollection`1<T>,T[])
+FNDA:0,System.Collections.Generic.ICollection`1<T> Wangkanai.Extensions.CollectionExtension::AddDistinct(System.Collections.Generic.ICollection`1<T>,T[])
+DA:75,0
+FN:85,System.Collections.Generic.ICollection`1<T> Wangkanai.Extensions.CollectionExtension::AddDistinct(System.Collections.Generic.ICollection`1<T>,System.Collections.Generic.IEqualityComparer`1<T>,T[])
+FNDA:0,System.Collections.Generic.ICollection`1<T> Wangkanai.Extensions.CollectionExtension::AddDistinct(System.Collections.Generic.ICollection`1<T>,System.Collections.Generic.IEqualityComparer`1<T>,T[])
+DA:86,0
+DA:87,0
+DA:88,0
+DA:89,0
+DA:90,0
+DA:92,0
+DA:93,0
+DA:94,0
+DA:95,0
+DA:96,0
+DA:97,0
+DA:99,0
+DA:100,0
+BRDA:92,88,1,0
+BRDA:94,42,0,0
+BRDA:94,42,1,0
+BRDA:95,67,1,0
+BRDA:95,67,0,0
+BRDA:92,88,0,0
+FN:109,System.Collections.Generic.ICollection`1<T> Wangkanai.Extensions.CollectionExtension::Replace(System.Collections.Generic.ICollection`1<T>,System.Collections.Generic.IEnumerable`1<T>)
+FNDA:0,System.Collections.Generic.ICollection`1<T> Wangkanai.Extensions.CollectionExtension::Replace(System.Collections.Generic.ICollection`1<T>,System.Collections.Generic.IEnumerable`1<T>)
+DA:110,0
+DA:111,0
+DA:112,0
+DA:114,0
+DA:115,0
+DA:117,0
+DA:118,0
+LF:32
+LH:0
+BRF:14
+BRH:0
+FNF:8
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Extensions/ComparerExtensions.cs
+FN:13,System.Collections.Generic.IComparer`1<T> Wangkanai.Extensions.ComparerExtensions::Reverse(System.Collections.Generic.IComparer`1<T>)
+FNDA:0,System.Collections.Generic.IComparer`1<T> Wangkanai.Extensions.ComparerExtensions::Reverse(System.Collections.Generic.IComparer`1<T>)
+DA:14,0
+DA:15,0
+DA:16,0
+BRDA:14,8,0,0
+BRDA:14,8,1,0
+FN:21,System.Collections.Generic.IComparer`1<T> Wangkanai.Extensions.ComparerExtensions::ThenBy(System.Collections.Generic.IComparer`1<T>,System.Collections.Generic.IComparer`1<T>)
+FNDA:0,System.Collections.Generic.IComparer`1<T> Wangkanai.Extensions.ComparerExtensions::ThenBy(System.Collections.Generic.IComparer`1<T>,System.Collections.Generic.IComparer`1<T>)
+DA:22,0
+FN:27,System.Collections.Generic.IComparer`1<T> Wangkanai.Extensions.ComparerExtensions::ThenBy(System.Collections.Generic.IComparer`1<T>,System.Func`2<T,TKey>)
+FNDA:0,System.Collections.Generic.IComparer`1<T> Wangkanai.Extensions.ComparerExtensions::ThenBy(System.Collections.Generic.IComparer`1<T>,System.Func`2<T,TKey>)
+DA:28,0
+LF:5
+LH:0
+BRF:2
+BRH:0
+FNF:3
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Extensions/DateTimeExtensions.cs
+FN:17,System.DateTime Wangkanai.Extensions.DateTimeExtensions::Truncate(System.DateTime,System.TimeSpan)
+FNDA:0,System.DateTime Wangkanai.Extensions.DateTimeExtensions::Truncate(System.DateTime,System.TimeSpan)
+DA:18,0
+DA:19,0
+DA:20,0
+BRDA:18,11,0,0
+BRDA:18,11,1,0
+LF:3
+LH:0
+BRF:2
+BRH:0
+FNF:1
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Extensions/DictionaryExtensions.cs
+FN:21,TValue Wangkanai.Extensions.DictionaryExtensions::GetValueOrThrow(System.Collections.Generic.IDictionary`2<TKey,TValue>,TKey,System.String)
+FNDA:0,TValue Wangkanai.Extensions.DictionaryExtensions::GetValueOrThrow(System.Collections.Generic.IDictionary`2<TKey,TValue>,TKey,System.String)
+DA:22,0
+DA:23,0
+DA:24,0
+BRDA:22,9,0,0
+BRDA:22,9,1,0
+FN:35,TValue Wangkanai.Extensions.DictionaryExtensions::GetValueSafe(System.Collections.Generic.IDictionary`2<TKey,TValue>,TKey)
+FNDA:0,TValue Wangkanai.Extensions.DictionaryExtensions::GetValueSafe(System.Collections.Generic.IDictionary`2<TKey,TValue>,TKey)
+DA:36,0
+FN:47,TValue Wangkanai.Extensions.DictionaryExtensions::GetValueSafe(System.Collections.Generic.IDictionary`2<TKey,TValue>,TKey,TValue)
+FNDA:0,TValue Wangkanai.Extensions.DictionaryExtensions::GetValueSafe(System.Collections.Generic.IDictionary`2<TKey,TValue>,TKey,TValue)
+DA:48,0
+DA:49,0
+DA:50,0
+BRDA:48,6,0,0
+BRDA:48,17,0,0
+BRDA:48,6,1,0
+BRDA:48,17,1,0
+FN:61,System.Boolean Wangkanai.Extensions.DictionaryExtensions::TryGetValueSafe(System.Collections.Generic.IDictionary`2<TKey,TValue>,TKey,TValue&)
+FNDA:0,System.Boolean Wangkanai.Extensions.DictionaryExtensions::TryGetValueSafe(System.Collections.Generic.IDictionary`2<TKey,TValue>,TKey,TValue&)
+DA:62,0
+DA:63,0
+DA:64,0
+DA:65,0
+DA:66,0
+DA:67,0
+BRDA:63,12,0,0
+BRDA:63,12,1,0
+LF:13
+LH:0
+BRF:8
+BRH:0
+FNF:4
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Extensions/EnumerableExtensions.cs
+FN:19,System.Boolean Wangkanai.Extensions.EnumerableExtensions::IsNull(System.Collections.Generic.IEnumerable`1<T>)
+FNDA:0,System.Boolean Wangkanai.Extensions.EnumerableExtensions::IsNull(System.Collections.Generic.IEnumerable`1<T>)
+DA:20,0
+FN:28,System.Boolean Wangkanai.Extensions.EnumerableExtensions::IsEmpty(System.Collections.Generic.IEnumerable`1<T>)
+FNDA:0,System.Boolean Wangkanai.Extensions.EnumerableExtensions::IsEmpty(System.Collections.Generic.IEnumerable`1<T>)
+DA:29,0
+BRDA:29,1,0,0
+BRDA:29,1,1,0
+FN:37,System.Boolean Wangkanai.Extensions.EnumerableExtensions::IsNullOrEmpty(System.Collections.Generic.IEnumerable`1<T>)
+FNDA:0,System.Boolean Wangkanai.Extensions.EnumerableExtensions::IsNullOrEmpty(System.Collections.Generic.IEnumerable`1<T>)
+DA:38,0
+BRDA:38,1,0,0
+BRDA:38,1,1,0
+FN:48,System.Boolean Wangkanai.Extensions.EnumerableExtensions::HasDuplicates(System.Collections.Generic.IEnumerable`1<T>,System.Func`2<T,TProp>)
+FNDA:0,System.Boolean Wangkanai.Extensions.EnumerableExtensions::HasDuplicates(System.Collections.Generic.IEnumerable`1<T>,System.Func`2<T,TProp>)
+DA:49,0
+DA:50,0
+DA:51,0
+DA:52,0
+DA:53,0
+DA:54,0
+DA:55,0
+DA:57,0
+DA:59,0
+DA:60,0
+BRDA:51,58,1,0
+BRDA:53,43,0,0
+BRDA:53,43,1,0
+BRDA:51,58,0,0
+FN:93,System.Void Wangkanai.Extensions.EnumerableExtensions::Apply(System.Collections.Generic.IEnumerable`1<T>,System.Action`1<T>)
+FNDA:0,System.Void Wangkanai.Extensions.EnumerableExtensions::Apply(System.Collections.Generic.IEnumerable`1<T>,System.Action`1<T>)
+DA:94,0
+DA:95,0
+DA:96,0
+DA:97,0
+BRDA:95,4,0,0
+BRDA:95,4,1,0
+BRDA:95,41,1,0
+BRDA:95,41,0,0
+FN:105,System.Void Wangkanai.Extensions.EnumerableExtensions::Apply(System.Collections.Generic.List`1<T>,System.Action`1<T>)
+FNDA:0,System.Void Wangkanai.Extensions.EnumerableExtensions::Apply(System.Collections.Generic.List`1<T>,System.Action`1<T>)
+DA:106,0
+DA:107,0
+DA:108,0
+DA:109,0
+BRDA:107,6,0,0
+BRDA:107,6,1,0
+BRDA:107,43,1,0
+BRDA:107,43,0,0
+FN:117,System.Void Wangkanai.Extensions.EnumerableExtensions::Apply(System.Collections.Generic.IDictionary`2<T1,T2>,System.Action`2<T1,T2>)
+FNDA:0,System.Void Wangkanai.Extensions.EnumerableExtensions::Apply(System.Collections.Generic.IDictionary`2<T1,T2>,System.Action`2<T1,T2>)
+DA:118,0
+DA:119,0
+DA:120,0
+DA:122,0
+DA:123,0
+DA:124,0
+BRDA:119,7,1,0
+BRDA:122,54,1,0
+BRDA:122,54,0,0
+BRDA:119,7,0,0
+FN:135,System.Collections.Generic.IDictionary`2<TKey,TValue> Wangkanai.Extensions.EnumerableExtensions::ToIDictionary(System.Collections.Generic.IEnumerable`1<TValue>,System.Func`2<TValue,TKey>)
+FNDA:0,System.Collections.Generic.IDictionary`2<TKey,TValue> Wangkanai.Extensions.EnumerableExtensions::ToIDictionary(System.Collections.Generic.IEnumerable`1<TValue>,System.Func`2<TValue,TKey>)
+DA:136,0
+FN:148,System.Collections.Generic.IDictionary`2<TKey,TValue> Wangkanai.Extensions.EnumerableExtensions::ToIDictionary(System.Collections.Generic.IEnumerable`1<TValue>,System.Func`2<TValue,TKey>,System.Collections.Generic.IEqualityComparer`1<TKey>)
+FNDA:0,System.Collections.Generic.IDictionary`2<TKey,TValue> Wangkanai.Extensions.EnumerableExtensions::ToIDictionary(System.Collections.Generic.IEnumerable`1<TValue>,System.Func`2<TValue,TKey>,System.Collections.Generic.IEqualityComparer`1<TKey>)
+DA:149,0
+FN:69,System.Boolean Wangkanai.Extensions.EnumerableExtensions/<Paginate>d__4`1::MoveNext()
+FNDA:0,System.Boolean Wangkanai.Extensions.EnumerableExtensions/<Paginate>d__4`1::MoveNext()
+DA:70,0
+DA:71,0
+DA:73,0
+DA:74,0
+DA:75,0
+DA:76,0
+DA:77,0
+DA:78,0
+DA:79,0
+DA:80,0
+DA:81,0
+DA:83,0
+DA:84,0
+DA:85,0
+BRDA:73,74,0,0
+BRDA:73,74,1,0
+BRDA:73,232,1,0
+BRDA:76,162,0,0
+BRDA:76,162,1,0
+BRDA:73,232,0,0
+BRDA:83,267,0,0
+BRDA:83,267,1,0
+LF:43
+LH:0
+BRF:28
+BRH:0
+FNF:10
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Extensions/EnumExtensions.cs
+FN:20,System.String Wangkanai.Extensions.EnumExtensions::ToOriginalString(T)
+FNDA:0,System.String Wangkanai.Extensions.EnumExtensions::ToOriginalString(T)
+DA:21,0
+FN:30,System.String Wangkanai.Extensions.EnumExtensions::ToLowerString(T)
+FNDA:0,System.String Wangkanai.Extensions.EnumExtensions::ToLowerString(T)
+DA:31,0
+FN:40,System.String Wangkanai.Extensions.EnumExtensions::ToUpperString(T)
+FNDA:0,System.String Wangkanai.Extensions.EnumExtensions::ToUpperString(T)
+DA:41,0
+FN:51,System.Boolean Wangkanai.Extensions.EnumExtensions::ContainsOriginal(System.String,T)
+FNDA:0,System.Boolean Wangkanai.Extensions.EnumExtensions::ContainsOriginal(System.String,T)
+DA:52,0
+DA:53,0
+BRDA:52,25,0,0
+BRDA:52,25,1,0
+FN:63,System.Boolean Wangkanai.Extensions.EnumExtensions::ContainsUpper(System.String,T)
+FNDA:0,System.Boolean Wangkanai.Extensions.EnumExtensions::ContainsUpper(System.String,T)
+DA:64,0
+DA:65,0
+BRDA:64,25,0,0
+BRDA:64,25,1,0
+FN:75,System.Boolean Wangkanai.Extensions.EnumExtensions::ContainsLower(System.String,T)
+FNDA:0,System.Boolean Wangkanai.Extensions.EnumExtensions::ContainsLower(System.String,T)
+DA:76,0
+DA:77,0
+BRDA:76,25,0,0
+BRDA:76,25,1,0
+FN:87,System.Boolean Wangkanai.Extensions.EnumExtensions::ContainSingle(System.String,T)
+FNDA:0,System.Boolean Wangkanai.Extensions.EnumExtensions::ContainSingle(System.String,T)
+DA:88,0
+DA:89,0
+BRDA:88,8,0,0
+BRDA:88,8,1,0
+FN:98,System.Collections.Generic.IReadOnlySet`1<T> Wangkanai.Extensions.EnumExtensions::GetFlags(T)
+FNDA:0,System.Collections.Generic.IReadOnlySet`1<T> Wangkanai.Extensions.EnumExtensions::GetFlags(T)
+DA:99,0
+FN:106,System.String Wangkanai.Extensions.EnumExtensions::GetDescription(System.Enum)
+FNDA:0,System.String Wangkanai.Extensions.EnumExtensions::GetDescription(System.Enum)
+DA:107,0
+DA:108,0
+DA:109,0
+DA:110,0
+DA:111,0
+DA:113,0
+DA:114,0
+DA:115,0
+DA:117,0
+DA:118,0
+DA:119,0
+DA:120,0
+BRDA:110,28,0,0
+BRDA:110,28,1,0
+BRDA:114,70,0,0
+BRDA:114,70,1,0
+BRDA:117,94,0,0
+BRDA:117,94,1,0
+BRDA:117,106,0,0
+BRDA:117,106,1,0
+FN:127,System.String Wangkanai.Extensions.EnumExtensions::GetMemberValue(System.Enum)
+FNDA:0,System.String Wangkanai.Extensions.EnumExtensions::GetMemberValue(System.Enum)
+DA:128,0
+DA:129,0
+DA:131,0
+DA:132,0
+DA:134,0
+DA:135,0
+DA:136,0
+DA:138,0
+DA:139,0
+BRDA:131,25,0,0
+BRDA:131,25,1,0
+BRDA:135,63,0,0
+BRDA:135,63,1,0
+BRDA:138,86,0,0
+BRDA:138,86,1,0
+BRDA:138,98,0,0
+BRDA:138,98,1,0
+LF:33
+LH:0
+BRF:24
+BRH:0
+FNF:10
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Extensions/EnumValues.cs
+FN:32,T[] Wangkanai.Extensions.EnumValues`1::GetValues()
+FNDA:0,T[] Wangkanai.Extensions.EnumValues`1::GetValues()
+DA:33,0
+FN:40,System.Collections.Generic.IReadOnlySet`1<T> Wangkanai.Extensions.EnumValues`1::GetFlags(T)
+FNDA:0,System.Collections.Generic.IReadOnlySet`1<T> Wangkanai.Extensions.EnumValues`1::GetFlags(T)
+DA:41,0
+DA:42,0
+DA:43,0
+BRDA:41,13,0,0
+BRDA:41,27,0,0
+BRDA:41,27,1,0
+BRDA:41,13,1,0
+FN:50,System.Collections.Generic.IEnumerable`1<System.String> Wangkanai.Extensions.EnumValues`1::GetNames()
+FNDA:0,System.Collections.Generic.IEnumerable`1<System.String> Wangkanai.Extensions.EnumValues`1::GetNames()
+DA:51,0
+BRDA:51,11,0,0
+BRDA:51,11,1,0
+FN:60,System.Boolean Wangkanai.Extensions.EnumValues`1::TryGetSingleName(T,System.String&)
+FNDA:0,System.Boolean Wangkanai.Extensions.EnumValues`1::TryGetSingleName(T,System.String&)
+DA:61,0
+FN:69,System.String Wangkanai.Extensions.EnumValues`1::GetNameOriginal(T)
+FNDA:0,System.String Wangkanai.Extensions.EnumValues`1::GetNameOriginal(T)
+DA:70,0
+FN:78,System.String Wangkanai.Extensions.EnumValues`1::GetNameLower(T)
+FNDA:0,System.String Wangkanai.Extensions.EnumValues`1::GetNameLower(T)
+DA:79,0
+FN:87,System.String Wangkanai.Extensions.EnumValues`1::GetNameUpper(T)
+FNDA:0,System.String Wangkanai.Extensions.EnumValues`1::GetNameUpper(T)
+DA:88,0
+FN:97,T Wangkanai.Extensions.EnumValues`1::Parse(System.String,System.Boolean)
+FNDA:0,T Wangkanai.Extensions.EnumValues`1::Parse(System.String,System.Boolean)
+DA:98,0
+DA:99,0
+DA:100,0
+DA:101,0
+DA:102,0
+DA:103,0
+DA:105,0
+DA:106,0
+DA:107,0
+DA:108,0
+DA:110,0
+DA:111,0
+BRDA:99,4,0,0
+BRDA:101,22,0,0
+BRDA:101,22,1,0
+BRDA:99,4,1,0
+BRDA:106,49,0,0
+BRDA:106,49,1,0
+FN:113,System.String Wangkanai.Extensions.EnumValues`1::GetNameWithFlags(T)
+FNDA:0,System.String Wangkanai.Extensions.EnumValues`1::GetNameWithFlags(T)
+DA:114,0
+DA:115,0
+DA:116,0
+BRDA:114,11,0,0
+BRDA:114,11,1,0
+BRDA:114,42,0,0
+BRDA:114,42,1,0
+FN:118,System.String Wangkanai.Extensions.EnumValues`1::GetNameWithFlagsCached(T,System.Boolean,Wangkanai.Extensions.EnumValues`1/ValueKind<T>)
+FNDA:0,System.String Wangkanai.Extensions.EnumValues`1::GetNameWithFlagsCached(T,System.Boolean,Wangkanai.Extensions.EnumValues`1/ValueKind<T>)
+DA:119,0
+DA:120,0
+DA:121,0
+DA:122,0
+DA:123,0
+DA:124,0
+DA:125,0
+DA:126,0
+DA:127,0
+DA:128,0
+DA:129,0
+DA:131,0
+DA:132,0
+DA:133,0
+DA:134,0
+DA:135,0
+DA:136,0
+DA:137,0
+DA:138,0
+DA:140,0
+DA:141,0
+DA:142,0
+DA:143,0
+DA:144,0
+DA:145,0
+DA:146,0
+DA:147,0
+BRDA:120,13,0,0
+BRDA:120,13,1,0
+BRDA:131,47,0,0
+BRDA:132,54,1,0
+BRDA:132,54,2,0
+BRDA:132,54,3,0
+BRDA:132,54,0,0
+BRDA:131,47,1,0
+BRDA:140,134,1,0
+BRDA:140,134,2,0
+BRDA:140,134,3,0
+BRDA:140,134,0,0
+FN:16,System.Void Wangkanai.Extensions.EnumValues`1::.cctor()
+FNDA:0,System.Void Wangkanai.Extensions.EnumValues`1::.cctor()
+DA:17,0
+DA:19,0
+DA:20,0
+DA:22,0
+DA:23,0
+DA:24,0
+DA:25,0
+FN:157,System.String Wangkanai.Extensions.EnumValues`1/EnumValueName::get_Name()
+FNDA:0,System.String Wangkanai.Extensions.EnumValues`1/EnumValueName::get_Name()
+DA:158,0
+FN:158,System.String Wangkanai.Extensions.EnumValues`1/EnumValueName::get_NameWithFlags()
+FNDA:0,System.String Wangkanai.Extensions.EnumValues`1/EnumValueName::get_NameWithFlags()
+DA:159,0
+FN:159,System.String Wangkanai.Extensions.EnumValues`1/EnumValueName::get_NameLower()
+FNDA:0,System.String Wangkanai.Extensions.EnumValues`1/EnumValueName::get_NameLower()
+DA:160,0
+FN:160,System.String Wangkanai.Extensions.EnumValues`1/EnumValueName::get_NameLowerWithFlags()
+FNDA:0,System.String Wangkanai.Extensions.EnumValues`1/EnumValueName::get_NameLowerWithFlags()
+DA:161,0
+FN:161,System.String Wangkanai.Extensions.EnumValues`1/EnumValueName::get_NameUpper()
+FNDA:0,System.String Wangkanai.Extensions.EnumValues`1/EnumValueName::get_NameUpper()
+DA:162,0
+FN:162,System.String Wangkanai.Extensions.EnumValues`1/EnumValueName::get_NameUpperWithFlags()
+FNDA:0,System.String Wangkanai.Extensions.EnumValues`1/EnumValueName::get_NameUpperWithFlags()
+DA:163,0
+LF:64
+LH:0
+BRF:28
+BRH:0
+FNF:17
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Extensions/KeyValuePairExtensions.cs
+FN:16,System.Collections.Generic.KeyValuePair`2<TKey,TValue> Wangkanai.Extensions.KeyValuePairExtensions::WithKey(System.Collections.Generic.KeyValuePair`2<TKey,TValue>,TKey)
+FNDA:0,System.Collections.Generic.KeyValuePair`2<TKey,TValue> Wangkanai.Extensions.KeyValuePairExtensions::WithKey(System.Collections.Generic.KeyValuePair`2<TKey,TValue>,TKey)
+DA:17,0
+FN:28,System.Collections.Generic.KeyValuePair`2<TKey,TValue> Wangkanai.Extensions.KeyValuePairExtensions::WithValue(System.Collections.Generic.KeyValuePair`2<TKey,TValue>,TValue)
+FNDA:0,System.Collections.Generic.KeyValuePair`2<TKey,TValue> Wangkanai.Extensions.KeyValuePairExtensions::WithValue(System.Collections.Generic.KeyValuePair`2<TKey,TValue>,TValue)
+DA:29,0
+LF:2
+LH:0
+BRF:0
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Extensions/ObservableCollectionExtensions.cs
+FN:21,System.Void Wangkanai.Extensions.ObservableCollectionExtensions::Observe(System.Collections.ObjectModel.ObservableCollection`1<T>,System.Action`1<T>,System.Action`1<T>)
+FNDA:0,System.Void Wangkanai.Extensions.ObservableCollectionExtensions::Observe(System.Collections.ObjectModel.ObservableCollection`1<T>,System.Action`1<T>,System.Action`1<T>)
+DA:22,0
+DA:23,0
+DA:24,0
+DA:25,0
+DA:26,0
+DA:27,0
+DA:28,0
+DA:29,0
+DA:30,0
+DA:31,0
+DA:32,0
+BRDA:24,12,0,0
+BRDA:25,60,1,0
+BRDA:25,60,0,0
+BRDA:24,12,1,0
+BRDA:28,95,0,0
+BRDA:29,148,1,0
+BRDA:29,148,0,0
+BRDA:28,95,1,0
+LF:11
+LH:0
+BRF:8
+BRH:0
+FNF:1
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Extensions/QueryableExtensions.cs
+FN:20,System.Linq.IOrderedQueryable`1<T> Wangkanai.Extensions.QueryableExtensions::OrderBy(System.Linq.IQueryable`1<T>,System.String)
+FNDA:0,System.Linq.IOrderedQueryable`1<T> Wangkanai.Extensions.QueryableExtensions::OrderBy(System.Linq.IQueryable`1<T>,System.String)
+DA:21,0
+FN:31,System.Linq.IOrderedQueryable`1<T> Wangkanai.Extensions.QueryableExtensions::ApplyOrder(System.Linq.IQueryable`1<T>,System.String,System.String)
+FNDA:0,System.Linq.IOrderedQueryable`1<T> Wangkanai.Extensions.QueryableExtensions::ApplyOrder(System.Linq.IQueryable`1<T>,System.String,System.String)
+DA:32,0
+DA:33,0
+DA:35,0
+DA:37,0
+DA:38,0
+DA:39,0
+DA:40,0
+DA:41,0
+DA:43,0
+DA:45,0
+DA:46,0
+DA:48,0
+DA:49,0
+DA:51,0
+DA:54,0
+DA:56,0
+DA:57,0
+BRDA:39,48,0,0
+BRDA:39,48,1,0
+BRDA:45,81,0,0
+BRDA:45,81,1,0
+FN:59,System.Object Wangkanai.Extensions.QueryableExtensions::InvokeGenericMethod(System.Type,System.String,System.Type[],System.Object[],System.Object)
+FNDA:0,System.Object Wangkanai.Extensions.QueryableExtensions::InvokeGenericMethod(System.Type,System.String,System.Type[],System.Object[],System.Object)
+DA:60,0
+DA:62,0
+DA:63,0
+DA:64,0
+DA:65,0
+DA:66,0
+DA:69,0
+DA:70,0
+DA:71,0
+DA:72,0
+DA:79,0
+FN:82,System.Type Wangkanai.Extensions.QueryableExtensions::GetEffectiveType()
+FNDA:0,System.Type Wangkanai.Extensions.QueryableExtensions::GetEffectiveType()
+DA:83,0
+DA:84,0
+DA:85,0
+DA:86,0
+BRDA:85,19,0,0
+BRDA:85,19,1,0
+FN:88,System.Linq.Expressions.Expression Wangkanai.Extensions.QueryableExtensions::GetPropertyExpression(System.String,System.Linq.Expressions.Expression)
+FNDA:0,System.Linq.Expressions.Expression Wangkanai.Extensions.QueryableExtensions::GetPropertyExpression(System.String,System.Linq.Expressions.Expression)
+DA:89,0
+DA:90,0
+DA:91,0
+DA:92,0
+DA:94,0
+DA:95,0
+DA:97,0
+DA:99,0
+DA:100,0
+DA:101,0
+DA:102,0
+DA:103,0
+DA:105,0
+DA:106,0
+DA:107,0
+DA:109,0
+DA:111,0
+DA:112,0
+BRDA:94,99,1,0
+BRDA:99,59,0,0
+BRDA:99,59,1,0
+BRDA:94,99,0,0
+FN:74,System.Boolean Wangkanai.Extensions.QueryableExtensions/<>c__DisplayClass2_0::<InvokeGenericMethod>g__PredicateGenericMethod|0(System.Reflection.MethodInfo)
+FNDA:0,System.Boolean Wangkanai.Extensions.QueryableExtensions/<>c__DisplayClass2_0::<InvokeGenericMethod>g__PredicateGenericMethod|0(System.Reflection.MethodInfo)
+DA:75,0
+DA:76,0
+DA:77,0
+DA:78,0
+BRDA:75,17,0,0
+BRDA:75,25,0,0
+BRDA:75,43,0,0
+BRDA:75,17,1,0
+BRDA:75,25,1,0
+BRDA:75,43,1,0
+LF:55
+LH:0
+BRF:16
+BRH:0
+FNF:6
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Extensions/SerializationExtensions.cs
+FN:21,System.String Wangkanai.Extensions.SerializationExtensions::SerializeXml(T)
+FNDA:0,System.String Wangkanai.Extensions.SerializationExtensions::SerializeXml(T)
+DA:22,0
+DA:23,0
+DA:25,0
+DA:26,0
+DA:27,0
+DA:28,0
+DA:29,0
+FN:38,T Wangkanai.Extensions.SerializationExtensions::DeserializeXml(System.String)
+FNDA:0,T Wangkanai.Extensions.SerializationExtensions::DeserializeXml(System.String)
+DA:39,0
+DA:40,0
+DA:42,0
+DA:43,0
+DA:44,0
+DA:45,0
+LF:13
+LH:0
+BRF:0
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Extensions/SpanExtensions.cs
+FN:17,System.Boolean Wangkanai.Extensions.SpanExtensions::IsNull(System.Span`1<T>)
+FNDA:0,System.Boolean Wangkanai.Extensions.SpanExtensions::IsNull(System.Span`1<T>)
+DA:18,0
+FN:26,System.Boolean Wangkanai.Extensions.SpanExtensions::IsEmpty(System.Span`1<T>)
+FNDA:0,System.Boolean Wangkanai.Extensions.SpanExtensions::IsEmpty(System.Span`1<T>)
+DA:27,0
+FN:35,System.Boolean Wangkanai.Extensions.SpanExtensions::IsNullOrEmpty(System.Span`1<T>)
+FNDA:0,System.Boolean Wangkanai.Extensions.SpanExtensions::IsNullOrEmpty(System.Span`1<T>)
+DA:36,0
+BRDA:36,12,0,0
+BRDA:36,12,1,0
+LF:3
+LH:0
+BRF:2
+BRH:0
+FNF:3
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Extensions/StreamExtensions.cs
+FN:13,System.Void Wangkanai.Extensions.StreamExtensions::CopyTo(System.IO.Stream,System.IO.Stream)
+FNDA:0,System.Void Wangkanai.Extensions.StreamExtensions::CopyTo(System.IO.Stream,System.IO.Stream)
+DA:14,0
+DA:15,0
+DA:16,0
+DA:18,0
+DA:20,0
+DA:21,0
+DA:22,0
+BRDA:20,56,1,0
+BRDA:20,56,0,0
+FN:29,System.Byte[] Wangkanai.Extensions.StreamExtensions::ReadFully(System.IO.Stream)
+FNDA:0,System.Byte[] Wangkanai.Extensions.StreamExtensions::ReadFully(System.IO.Stream)
+DA:30,0
+DA:31,0
+DA:33,0
+DA:34,0
+DA:36,0
+DA:37,0
+DA:39,0
+DA:40,0
+BRDA:36,55,1,0
+BRDA:36,55,0,0
+FN:47,System.String Wangkanai.Extensions.StreamExtensions::ReadToString(System.IO.Stream)
+FNDA:0,System.String Wangkanai.Extensions.StreamExtensions::ReadToString(System.IO.Stream)
+DA:48,0
+DA:49,0
+DA:51,0
+DA:52,0
+DA:53,0
+LF:20
+LH:0
+BRF:4
+BRH:0
+FNF:3
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Extensions/StringExtensions.cs
+FN:24,System.Boolean Wangkanai.Extensions.StringExtensions::IsEmpty(System.String)
+FNDA:0,System.Boolean Wangkanai.Extensions.StringExtensions::IsEmpty(System.String)
+DA:25,0
+FN:32,System.Boolean Wangkanai.Extensions.StringExtensions::IsNullOrEmpty(System.String)
+FNDA:0,System.Boolean Wangkanai.Extensions.StringExtensions::IsNullOrEmpty(System.String)
+DA:33,0
+FN:40,System.Boolean Wangkanai.Extensions.StringExtensions::IsNotNullOrEmpty(System.String)
+FNDA:0,System.Boolean Wangkanai.Extensions.StringExtensions::IsNotNullOrEmpty(System.String)
+DA:41,0
+FN:48,System.Boolean Wangkanai.Extensions.StringExtensions::IsNullOrWhiteSpace(System.String)
+FNDA:0,System.Boolean Wangkanai.Extensions.StringExtensions::IsNullOrWhiteSpace(System.String)
+DA:49,0
+FN:56,System.Boolean Wangkanai.Extensions.StringExtensions::IsWhiteSpace(System.String)
+FNDA:0,System.Boolean Wangkanai.Extensions.StringExtensions::IsWhiteSpace(System.String)
+DA:57,0
+BRDA:57,6,0,0
+BRDA:57,6,1,0
+FN:64,System.Boolean Wangkanai.Extensions.StringExtensions::IsNotNullOrWhiteSpace(System.String)
+FNDA:0,System.Boolean Wangkanai.Extensions.StringExtensions::IsNotNullOrWhiteSpace(System.String)
+DA:65,0
+FN:72,System.Boolean Wangkanai.Extensions.StringExtensions::IsExist(System.String)
+FNDA:0,System.Boolean Wangkanai.Extensions.StringExtensions::IsExist(System.String)
+DA:73,0
+FN:80,System.Boolean Wangkanai.Extensions.StringExtensions::IsUnicode(System.String)
+FNDA:48,System.Boolean Wangkanai.Extensions.StringExtensions::IsUnicode(System.String)
+DA:81,48
+FN:88,System.String Wangkanai.Extensions.StringExtensions::EnsureLeadingSlash(System.String)
+FNDA:0,System.String Wangkanai.Extensions.StringExtensions::EnsureLeadingSlash(System.String)
+DA:89,0
+DA:90,0
+DA:91,0
+BRDA:89,6,0,0
+BRDA:89,6,1,0
+BRDA:89,16,0,0
+BRDA:89,16,1,0
+FN:98,System.String Wangkanai.Extensions.StringExtensions::EnsureTrailingSlash(System.String)
+FNDA:0,System.String Wangkanai.Extensions.StringExtensions::EnsureTrailingSlash(System.String)
+DA:99,0
+DA:100,0
+DA:101,0
+BRDA:99,6,0,0
+BRDA:99,6,1,0
+BRDA:99,16,0,0
+BRDA:99,16,1,0
+FN:108,System.String Wangkanai.Extensions.StringExtensions::RemoveLeadingSlash(System.String)
+FNDA:0,System.String Wangkanai.Extensions.StringExtensions::RemoveLeadingSlash(System.String)
+DA:109,0
+DA:110,0
+DA:111,0
+BRDA:109,6,0,0
+BRDA:109,6,1,0
+BRDA:109,16,0,0
+BRDA:109,16,1,0
+FN:118,System.String Wangkanai.Extensions.StringExtensions::RemoveTrailingSlash(System.String)
+FNDA:0,System.String Wangkanai.Extensions.StringExtensions::RemoveTrailingSlash(System.String)
+DA:119,0
+DA:120,0
+DA:121,0
+BRDA:119,6,0,0
+BRDA:119,6,1,0
+BRDA:119,16,0,0
+BRDA:119,16,1,0
+FN:129,System.String Wangkanai.Extensions.StringExtensions::EnsureStartsWith(System.String,System.Char)
+FNDA:0,System.String Wangkanai.Extensions.StringExtensions::EnsureStartsWith(System.String,System.Char)
+DA:130,0
+FN:142,System.String Wangkanai.Extensions.StringExtensions::EnsureStartsWith(System.String,System.Char,System.StringComparison)
+FNDA:0,System.String Wangkanai.Extensions.StringExtensions::EnsureStartsWith(System.String,System.Char,System.StringComparison)
+DA:143,0
+DA:144,0
+DA:145,0
+BRDA:143,19,0,0
+BRDA:143,19,1,0
+FN:155,System.String Wangkanai.Extensions.StringExtensions::EnsureStartsWith(System.String,System.Char,System.Boolean,System.Globalization.CultureInfo)
+FNDA:0,System.String Wangkanai.Extensions.StringExtensions::EnsureStartsWith(System.String,System.Char,System.Boolean,System.Globalization.CultureInfo)
+DA:156,0
+DA:157,0
+DA:158,0
+BRDA:156,21,0,0
+BRDA:156,21,1,0
+FN:169,System.String Wangkanai.Extensions.StringExtensions::EnsureEndsWith(System.String,System.Char)
+FNDA:0,System.String Wangkanai.Extensions.StringExtensions::EnsureEndsWith(System.String,System.Char)
+DA:170,0
+FN:179,System.String Wangkanai.Extensions.StringExtensions::EnsureEndsWith(System.String,System.Char,System.StringComparison)
+FNDA:0,System.String Wangkanai.Extensions.StringExtensions::EnsureEndsWith(System.String,System.Char,System.StringComparison)
+DA:180,0
+DA:181,0
+DA:182,0
+BRDA:180,19,0,0
+BRDA:180,19,1,0
+FN:194,System.String Wangkanai.Extensions.StringExtensions::EnsureEndsWith(System.String,System.Char,System.Boolean,System.Globalization.CultureInfo)
+FNDA:0,System.String Wangkanai.Extensions.StringExtensions::EnsureEndsWith(System.String,System.Char,System.Boolean,System.Globalization.CultureInfo)
+DA:195,0
+DA:196,0
+DA:197,0
+BRDA:195,21,0,0
+BRDA:195,21,1,0
+FN:205,System.Text.RegularExpressions.Match Wangkanai.Extensions.StringExtensions::RegexMatch(System.Text.RegularExpressions.Regex,System.String)
+FNDA:0,System.Text.RegularExpressions.Match Wangkanai.Extensions.StringExtensions::RegexMatch(System.Text.RegularExpressions.Regex,System.String)
+DA:206,0
+DA:207,0
+DA:208,0
+DA:210,0
+DA:211,0
+DA:212,0
+BRDA:211,29,0,0
+BRDA:211,29,1,0
+FN:220,System.String Wangkanai.Extensions.StringExtensions::Left(System.String,System.Int32)
+FNDA:0,System.String Wangkanai.Extensions.StringExtensions::Left(System.String,System.Int32)
+DA:221,0
+DA:222,0
+DA:223,0
+DA:225,0
+DA:226,0
+FN:236,System.String Wangkanai.Extensions.StringExtensions::Right(System.String,System.Int32)
+FNDA:0,System.String Wangkanai.Extensions.StringExtensions::Right(System.String,System.Int32)
+DA:237,0
+DA:238,0
+DA:239,0
+DA:241,0
+DA:242,0
+FN:250,System.String Wangkanai.Extensions.StringExtensions::RemoveAll(System.String,System.String[])
+FNDA:0,System.String Wangkanai.Extensions.StringExtensions::RemoveAll(System.String,System.String[])
+DA:251,0
+FN:259,System.String Wangkanai.Extensions.StringExtensions::ReplaceOrdinal(System.String,System.String)
+FNDA:0,System.String Wangkanai.Extensions.StringExtensions::ReplaceOrdinal(System.String,System.String)
+DA:260,0
+FN:268,System.String Wangkanai.Extensions.StringExtensions::RemovePreFixes(System.String,System.String[])
+FNDA:0,System.String Wangkanai.Extensions.StringExtensions::RemovePreFixes(System.String,System.String[])
+DA:269,0
+FN:278,System.String Wangkanai.Extensions.StringExtensions::RemovePreFixes(System.String,System.StringComparison,System.String[])
+FNDA:0,System.String Wangkanai.Extensions.StringExtensions::RemovePreFixes(System.String,System.StringComparison,System.String[])
+DA:279,0
+DA:280,0
+DA:282,0
+DA:283,0
+DA:284,0
+DA:285,0
+DA:287,0
+DA:288,0
+DA:289,0
+DA:291,0
+DA:292,0
+BRDA:282,16,0,0
+BRDA:282,16,1,0
+BRDA:284,34,0,0
+BRDA:284,34,1,0
+BRDA:287,103,1,0
+BRDA:288,67,0,0
+BRDA:288,67,1,0
+BRDA:287,103,0,0
+FN:302,System.String Wangkanai.Extensions.StringExtensions::RemovePreFixes(System.String,System.Boolean,System.Globalization.CultureInfo,System.String[])
+FNDA:0,System.String Wangkanai.Extensions.StringExtensions::RemovePreFixes(System.String,System.Boolean,System.Globalization.CultureInfo,System.String[])
+DA:303,0
+DA:304,0
+DA:306,0
+DA:307,0
+DA:308,0
+DA:309,0
+DA:311,0
+DA:312,0
+DA:313,0
+DA:315,0
+DA:316,0
+BRDA:306,16,0,0
+BRDA:306,16,1,0
+BRDA:308,34,0,0
+BRDA:308,34,1,0
+BRDA:311,104,1,0
+BRDA:312,68,0,0
+BRDA:312,68,1,0
+BRDA:311,104,0,0
+FN:324,System.String Wangkanai.Extensions.StringExtensions::RemovePostFixes(System.String,System.String[])
+FNDA:0,System.String Wangkanai.Extensions.StringExtensions::RemovePostFixes(System.String,System.String[])
+DA:325,0
+FN:334,System.String Wangkanai.Extensions.StringExtensions::RemovePostFixes(System.String,System.StringComparison,System.String[])
+FNDA:0,System.String Wangkanai.Extensions.StringExtensions::RemovePostFixes(System.String,System.StringComparison,System.String[])
+DA:335,0
+DA:336,0
+DA:338,0
+DA:339,0
+DA:340,0
+DA:341,0
+DA:343,0
+DA:344,0
+DA:345,0
+DA:347,0
+DA:348,0
+BRDA:338,16,0,0
+BRDA:338,16,1,0
+BRDA:340,34,0,0
+BRDA:340,34,1,0
+BRDA:343,103,1,0
+BRDA:344,67,0,0
+BRDA:344,67,1,0
+BRDA:343,103,0,0
+FN:358,System.String Wangkanai.Extensions.StringExtensions::RemovePostFixes(System.String,System.Boolean,System.Globalization.CultureInfo,System.String[])
+FNDA:0,System.String Wangkanai.Extensions.StringExtensions::RemovePostFixes(System.String,System.Boolean,System.Globalization.CultureInfo,System.String[])
+DA:359,0
+DA:360,0
+DA:362,0
+DA:363,0
+DA:364,0
+DA:365,0
+DA:367,0
+DA:368,0
+DA:369,0
+DA:371,0
+DA:372,0
+BRDA:362,16,0,0
+BRDA:362,16,1,0
+BRDA:364,34,0,0
+BRDA:364,34,1,0
+BRDA:367,104,1,0
+BRDA:368,68,0,0
+BRDA:368,68,1,0
+BRDA:367,104,0,0
+FN:380,System.Collections.Generic.IEnumerable`1<System.String> Wangkanai.Extensions.StringExtensions::Split(System.String,System.Int32)
+FNDA:0,System.Collections.Generic.IEnumerable`1<System.String> Wangkanai.Extensions.StringExtensions::Split(System.String,System.Int32)
+DA:381,0
+DA:382,0
+DA:383,0
+DA:384,0
+FN:394,T Wangkanai.Extensions.StringExtensions::ToEnum(System.String,System.Boolean)
+FNDA:0,T Wangkanai.Extensions.StringExtensions::ToEnum(System.String,System.Boolean)
+DA:395,0
+DA:396,0
+DA:397,0
+DA:398,0
+DA:400,0
+DA:401,0
+FN:409,System.String Wangkanai.Extensions.StringExtensions::Truncate(System.String,System.Int32)
+FNDA:0,System.String Wangkanai.Extensions.StringExtensions::Truncate(System.String,System.Int32)
+DA:410,0
+DA:411,0
+DA:412,0
+DA:413,0
+DA:414,0
+DA:416,0
+DA:417,0
+FN:426,System.String Wangkanai.Extensions.StringExtensions::TruncateWithPostfix(System.String,System.Int32,System.String)
+FNDA:0,System.String Wangkanai.Extensions.StringExtensions::TruncateWithPostfix(System.String,System.Int32,System.String)
+DA:427,0
+DA:428,0
+DA:429,0
+DA:430,0
+DA:431,0
+DA:433,0
+DA:434,0
+DA:435,0
+DA:436,0
+BRDA:433,43,0,0
+BRDA:433,43,1,0
+FN:444,System.String Wangkanai.Extensions.StringExtensions::SubstringSafe(System.String,System.Int32)
+FNDA:0,System.String Wangkanai.Extensions.StringExtensions::SubstringSafe(System.String,System.Int32)
+DA:445,0
+DA:446,0
+DA:447,0
+DA:448,0
+DA:450,0
+DA:451,0
+FN:460,System.String Wangkanai.Extensions.StringExtensions::SubstringSafe(System.String,System.Int32,System.Int32)
+FNDA:0,System.String Wangkanai.Extensions.StringExtensions::SubstringSafe(System.String,System.Int32,System.Int32)
+DA:461,0
+DA:462,0
+DA:463,0
+DA:464,0
+DA:465,0
+DA:467,0
+DA:468,0
+DA:469,0
+DA:470,0
+BRDA:467,40,0,0
+BRDA:467,40,1,0
+FN:477,System.String Wangkanai.Extensions.StringExtensions::ToTitleCase(System.String)
+FNDA:0,System.String Wangkanai.Extensions.StringExtensions::ToTitleCase(System.String)
+DA:478,0
+DA:479,0
+DA:480,0
+DA:481,0
+DA:483,0
+DA:484,0
+FN:491,System.String Wangkanai.Extensions.StringExtensions::EscapeSearch(System.String)
+FNDA:0,System.String Wangkanai.Extensions.StringExtensions::EscapeSearch(System.String)
+DA:492,0
+DA:493,0
+DA:494,0
+DA:496,0
+DA:497,0
+DA:499,0
+DA:500,0
+DA:501,0
+DA:502,0
+DA:504,0
+DA:505,0
+DA:507,0
+DA:508,0
+DA:510,0
+DA:511,0
+BRDA:499,134,1,0
+BRDA:501,97,0,0
+BRDA:501,97,1,0
+BRDA:499,134,0,0
+FN:518,System.String Wangkanai.Extensions.StringExtensions::EscapeSelector(System.String)
+FNDA:0,System.String Wangkanai.Extensions.StringExtensions::EscapeSelector(System.String)
+DA:519,0
+DA:520,0
+DA:521,0
+DA:523,0
+DA:524,0
+DA:525,0
+DA:526,0
+FN:533,System.String Wangkanai.Extensions.StringExtensions::RemoveAccent(System.String)
+FNDA:0,System.String Wangkanai.Extensions.StringExtensions::RemoveAccent(System.String)
+DA:534,0
+DA:535,0
+DA:536,0
+DA:538,0
+DA:539,0
+DA:540,0
+DA:541,0
+DA:542,0
+FN:549,System.String Wangkanai.Extensions.StringExtensions::GenerateSlug(System.String)
+FNDA:0,System.String Wangkanai.Extensions.StringExtensions::GenerateSlug(System.String)
+DA:550,0
+DA:551,0
+DA:552,0
+DA:554,0
+DA:557,0
+DA:559,0
+DA:561,0
+DA:563,0
+DA:565,0
+DA:566,0
+BRDA:561,91,0,0
+BRDA:561,91,1,0
+FN:574,System.Boolean Wangkanai.Extensions.StringExtensions::EqualsInvariant(System.String,System.String)
+FNDA:0,System.Boolean Wangkanai.Extensions.StringExtensions::EqualsInvariant(System.String,System.String)
+DA:575,0
+FN:584,System.String Wangkanai.Extensions.StringExtensions::SeparateToSpace(System.Collections.Generic.IEnumerable`1<System.String>)
+FNDA:0,System.String Wangkanai.Extensions.StringExtensions::SeparateToSpace(System.Collections.Generic.IEnumerable`1<System.String>)
+DA:585,0
+DA:586,0
+DA:587,0
+DA:588,0
+DA:589,0
+DA:590,0
+DA:591,0
+BRDA:588,21,0,0
+BRDA:588,21,1,0
+FN:598,System.Collections.Generic.IEnumerable`1<System.String> Wangkanai.Extensions.StringExtensions::SeparateFromSpace(System.String)
+FNDA:0,System.Collections.Generic.IEnumerable`1<System.String> Wangkanai.Extensions.StringExtensions::SeparateFromSpace(System.String)
+DA:599,0
+DA:600,0
+DA:601,0
+DA:602,0
+FN:603,System.Void Wangkanai.Extensions.StringExtensions::.cctor()
+FNDA:0,System.Void Wangkanai.Extensions.StringExtensions::.cctor()
+DA:604,0
+LF:198
+LH:1
+BRF:72
+BRH:0
+FNF:44
+FNH:1
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Extensions/TreeExtensions.cs
+FN:24,System.Collections.Generic.IEnumerable`1<T> Wangkanai.Extensions.TreeExtensions/<>c__DisplayClass0_0`1::<Traverse>b__0(T)
+FNDA:0,System.Collections.Generic.IEnumerable`1<T> Wangkanai.Extensions.TreeExtensions/<>c__DisplayClass0_0`1::<Traverse>b__0(T)
+DA:25,0
+FN:36,System.Boolean Wangkanai.Extensions.TreeExtensions/<GetAncestors>d__1`1::MoveNext()
+FNDA:0,System.Boolean Wangkanai.Extensions.TreeExtensions/<GetAncestors>d__1`1::MoveNext()
+DA:37,0
+DA:38,0
+DA:40,0
+DA:41,0
+DA:43,0
+DA:44,0
+DA:45,0
+BRDA:40,60,0,0
+BRDA:40,60,1,0
+BRDA:43,156,1,0
+BRDA:43,156,0,0
+FN:18,System.Boolean Wangkanai.Extensions.TreeExtensions/<Traverse>d__0`1::MoveNext()
+FNDA:0,System.Boolean Wangkanai.Extensions.TreeExtensions/<Traverse>d__0`1::MoveNext()
+DA:19,0
+DA:20,0
+DA:22,0
+DA:23,0
+DA:24,0
+DA:26,0
+DA:27,0
+BRDA:23,158,0,0
+BRDA:23,158,1,0
+BRDA:25,187,0,0
+BRDA:25,187,1,0
+BRDA:25,317,1,0
+BRDA:25,317,0,0
+LF:15
+LH:0
+BRF:10
+BRH:0
+FNF:3
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Extensions/TypeExtensions.cs
+FN:21,System.String Wangkanai.Extensions.TypeExtensions::GetCacheKey(System.Type)
+FNDA:0,System.String Wangkanai.Extensions.TypeExtensions::GetCacheKey(System.Type)
+DA:22,0
+BRDA:22,7,0,0
+BRDA:22,7,1,0
+FN:29,System.String Wangkanai.Extensions.TypeExtensions::PrettyPrint(System.Type)
+FNDA:0,System.String Wangkanai.Extensions.TypeExtensions::PrettyPrint(System.Type)
+DA:30,0
+DA:31,0
+DA:32,0
+DA:33,0
+DA:34,0
+DA:35,0
+DA:36,0
+DA:37,0
+DA:38,0
+DA:39,0
+FN:47,System.String Wangkanai.Extensions.TypeExtensions::PrettyPrint(System.Type,System.Int32)
+FNDA:0,System.String Wangkanai.Extensions.TypeExtensions::PrettyPrint(System.Type,System.Int32)
+DA:48,0
+DA:49,0
+DA:50,0
+DA:51,0
+DA:52,0
+DA:53,0
+DA:54,0
+DA:55,0
+DA:56,0
+DA:57,0
+FN:65,System.String Wangkanai.Extensions.TypeExtensions::PrettyPrintRecursive(System.Type,System.Int32)
+FNDA:0,System.String Wangkanai.Extensions.TypeExtensions::PrettyPrintRecursive(System.Type,System.Int32)
+DA:66,0
+DA:67,0
+DA:69,0
+DA:70,0
+DA:71,0
+DA:73,0
+DA:74,0
+DA:75,0
+DA:76,0
+DA:77,0
+BRDA:67,25,0,0
+BRDA:67,25,1,0
+BRDA:70,65,0,0
+BRDA:70,65,1,0
+BRDA:74,92,0,0
+BRDA:74,92,1,0
+FN:85,System.Type[] Wangkanai.Extensions.TypeExtensions::GetTypeInheritanceChainTo(System.Type,System.Type)
+FNDA:0,System.Type[] Wangkanai.Extensions.TypeExtensions::GetTypeInheritanceChainTo(System.Type,System.Type)
+DA:86,0
+DA:87,0
+DA:88,0
+DA:89,0
+DA:90,0
+DA:91,0
+DA:92,0
+DA:93,0
+DA:95,0
+DA:96,0
+BRDA:89,71,1,0
+BRDA:89,48,0,0
+BRDA:89,48,1,0
+BRDA:89,71,0,0
+FN:103,System.Boolean Wangkanai.Extensions.TypeExtensions::IsPrimitive(System.Type)
+FNDA:0,System.Boolean Wangkanai.Extensions.TypeExtensions::IsPrimitive(System.Type)
+DA:104,0
+BRDA:104,16,0,0
+BRDA:104,24,0,0
+BRDA:104,16,1,0
+BRDA:104,24,1,0
+FN:111,System.Boolean Wangkanai.Extensions.TypeExtensions::IsPrimitive(System.Object)
+FNDA:0,System.Boolean Wangkanai.Extensions.TypeExtensions::IsPrimitive(System.Object)
+DA:112,0
+BRDA:112,1,0,0
+BRDA:112,1,1,0
+FN:119,System.Boolean Wangkanai.Extensions.TypeExtensions::IsNullable(System.Type)
+FNDA:0,System.Boolean Wangkanai.Extensions.TypeExtensions::IsNullable(System.Type)
+DA:120,0
+DA:121,0
+DA:123,0
+DA:124,0
+DA:125,0
+DA:126,0
+BRDA:123,14,0,0
+BRDA:123,22,0,0
+BRDA:123,22,1,0
+BRDA:123,14,1,0
+FN:134,System.Type Wangkanai.Extensions.TypeExtensions::MakeNullable(System.Type,System.Boolean)
+FNDA:0,System.Type Wangkanai.Extensions.TypeExtensions::MakeNullable(System.Type,System.Boolean)
+DA:135,0
+DA:136,0
+DA:137,0
+DA:139,0
+DA:140,0
+DA:141,0
+DA:142,0
+BRDA:136,12,0,0
+BRDA:136,12,1,0
+BRDA:139,19,0,0
+BRDA:139,19,1,0
+FN:149,System.Type Wangkanai.Extensions.TypeExtensions::UnwrapNullable(System.Type)
+FNDA:0,System.Type Wangkanai.Extensions.TypeExtensions::UnwrapNullable(System.Type)
+DA:150,0
+BRDA:150,7,0,0
+BRDA:150,7,1,0
+FN:157,System.Type Wangkanai.Extensions.TypeExtensions::UnwrapEnum(System.Type)
+FNDA:0,System.Type Wangkanai.Extensions.TypeExtensions::UnwrapEnum(System.Type)
+DA:158,0
+DA:159,0
+DA:160,0
+DA:161,0
+DA:162,0
+DA:164,0
+DA:165,0
+DA:166,0
+BRDA:160,9,0,0
+BRDA:160,9,1,0
+BRDA:161,37,0,0
+BRDA:161,37,1,0
+BRDA:165,52,0,0
+BRDA:165,52,1,0
+FN:173,System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.String,System.Object>> Wangkanai.Extensions.TypeExtensions::TraverseObjectGraph(System.Object)
+FNDA:0,System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.String,System.Object>> Wangkanai.Extensions.TypeExtensions::TraverseObjectGraph(System.Object)
+DA:174,0
+FN:196,System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.String,System.Object>> Wangkanai.Extensions.TypeExtensions::YieldPropertyEnumerator(System.Object,System.Collections.Generic.ICollection`1<System.Object>,System.String,System.Type)
+FNDA:0,System.Collections.Generic.IEnumerable`1<System.Collections.Generic.KeyValuePair`2<System.String,System.Object>> Wangkanai.Extensions.TypeExtensions::YieldPropertyEnumerator(System.Object,System.Collections.Generic.ICollection`1<System.Object>,System.String,System.Type)
+DA:197,0
+DA:198,0
+FN:12,System.Void Wangkanai.Extensions.TypeExtensions::.cctor()
+FNDA:0,System.Void Wangkanai.Extensions.TypeExtensions::.cctor()
+DA:13,0
+DA:14,0
+FN:183,System.Boolean Wangkanai.Extensions.TypeExtensions/<>c__DisplayClass14_0::<TraverseObjectGraphRecursively>b__0(System.Object)
+FNDA:0,System.Boolean Wangkanai.Extensions.TypeExtensions/<>c__DisplayClass14_0::<TraverseObjectGraphRecursively>b__0(System.Object)
+DA:184,0
+FN:176,System.Boolean Wangkanai.Extensions.TypeExtensions/<TraverseObjectGraphRecursively>d__14::MoveNext()
+FNDA:0,System.Boolean Wangkanai.Extensions.TypeExtensions/<TraverseObjectGraphRecursively>d__14::MoveNext()
+DA:177,0
+DA:178,0
+DA:180,0
+DA:182,0
+DA:185,0
+DA:186,0
+DA:188,0
+DA:189,0
+DA:190,0
+DA:192,0
+DA:193,0
+DA:194,0
+BRDA:180,153,0,0
+BRDA:180,153,1,0
+BRDA:184,195,0,0
+BRDA:184,195,1,0
+BRDA:184,230,0,0
+BRDA:184,230,1,0
+BRDA:188,297,0,0
+BRDA:189,421,1,0
+BRDA:189,421,0,0
+BRDA:188,297,1,0
+BRDA:192,569,1,0
+BRDA:192,569,0,0
+FN:200,System.Boolean Wangkanai.Extensions.TypeExtensions/<YieldOriginalEnumerator>d__16::MoveNext()
+FNDA:0,System.Boolean Wangkanai.Extensions.TypeExtensions/<YieldOriginalEnumerator>d__16::MoveNext()
+DA:201,0
+DA:203,0
+DA:204,0
+DA:205,0
+DA:206,0
+DA:207,0
+DA:208,0
+DA:209,0
+BRDA:206,307,1,0
+BRDA:207,276,1,0
+BRDA:207,276,0,0
+BRDA:206,307,0,0
+LF:91
+LH:0
+BRF:50
+BRH:0
+FNF:17
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Extensions/DateTimeFactory/DateTimeFactoryExtensions.cs
+FN:6,System.DateTime Wangkanai.Extensions.DateTimeFactory.DateTimeFactoryExtensions::January(System.Int32,System.Int32)
+FNDA:0,System.DateTime Wangkanai.Extensions.DateTimeFactory.DateTimeFactoryExtensions::January(System.Int32,System.Int32)
+DA:7,0
+FN:7,System.DateTime Wangkanai.Extensions.DateTimeFactory.DateTimeFactoryExtensions::February(System.Int32,System.Int32)
+FNDA:0,System.DateTime Wangkanai.Extensions.DateTimeFactory.DateTimeFactoryExtensions::February(System.Int32,System.Int32)
+DA:8,0
+FN:8,System.DateTime Wangkanai.Extensions.DateTimeFactory.DateTimeFactoryExtensions::March(System.Int32,System.Int32)
+FNDA:0,System.DateTime Wangkanai.Extensions.DateTimeFactory.DateTimeFactoryExtensions::March(System.Int32,System.Int32)
+DA:9,0
+FN:9,System.DateTime Wangkanai.Extensions.DateTimeFactory.DateTimeFactoryExtensions::April(System.Int32,System.Int32)
+FNDA:0,System.DateTime Wangkanai.Extensions.DateTimeFactory.DateTimeFactoryExtensions::April(System.Int32,System.Int32)
+DA:10,0
+FN:10,System.DateTime Wangkanai.Extensions.DateTimeFactory.DateTimeFactoryExtensions::May(System.Int32,System.Int32)
+FNDA:0,System.DateTime Wangkanai.Extensions.DateTimeFactory.DateTimeFactoryExtensions::May(System.Int32,System.Int32)
+DA:11,0
+FN:11,System.DateTime Wangkanai.Extensions.DateTimeFactory.DateTimeFactoryExtensions::June(System.Int32,System.Int32)
+FNDA:0,System.DateTime Wangkanai.Extensions.DateTimeFactory.DateTimeFactoryExtensions::June(System.Int32,System.Int32)
+DA:12,0
+FN:12,System.DateTime Wangkanai.Extensions.DateTimeFactory.DateTimeFactoryExtensions::July(System.Int32,System.Int32)
+FNDA:0,System.DateTime Wangkanai.Extensions.DateTimeFactory.DateTimeFactoryExtensions::July(System.Int32,System.Int32)
+DA:13,0
+FN:13,System.DateTime Wangkanai.Extensions.DateTimeFactory.DateTimeFactoryExtensions::August(System.Int32,System.Int32)
+FNDA:0,System.DateTime Wangkanai.Extensions.DateTimeFactory.DateTimeFactoryExtensions::August(System.Int32,System.Int32)
+DA:14,0
+FN:14,System.DateTime Wangkanai.Extensions.DateTimeFactory.DateTimeFactoryExtensions::September(System.Int32,System.Int32)
+FNDA:0,System.DateTime Wangkanai.Extensions.DateTimeFactory.DateTimeFactoryExtensions::September(System.Int32,System.Int32)
+DA:15,0
+FN:15,System.DateTime Wangkanai.Extensions.DateTimeFactory.DateTimeFactoryExtensions::October(System.Int32,System.Int32)
+FNDA:0,System.DateTime Wangkanai.Extensions.DateTimeFactory.DateTimeFactoryExtensions::October(System.Int32,System.Int32)
+DA:16,0
+FN:16,System.DateTime Wangkanai.Extensions.DateTimeFactory.DateTimeFactoryExtensions::November(System.Int32,System.Int32)
+FNDA:0,System.DateTime Wangkanai.Extensions.DateTimeFactory.DateTimeFactoryExtensions::November(System.Int32,System.Int32)
+DA:17,0
+FN:17,System.DateTime Wangkanai.Extensions.DateTimeFactory.DateTimeFactoryExtensions::December(System.Int32,System.Int32)
+FNDA:0,System.DateTime Wangkanai.Extensions.DateTimeFactory.DateTimeFactoryExtensions::December(System.Int32,System.Int32)
+DA:18,0
+LF:12
+LH:0
+BRF:0
+BRH:0
+FNF:12
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Extensions/DateTimeFactory/TimeSpanFactoryExtensions.cs
+FN:7,System.TimeSpan Wangkanai.Extensions.DateTimeFactory.TimeSpanFactoryExtensions::Ticks(System.Int32)
+FNDA:0,System.TimeSpan Wangkanai.Extensions.DateTimeFactory.TimeSpanFactoryExtensions::Ticks(System.Int32)
+DA:8,0
+FN:10,System.TimeSpan Wangkanai.Extensions.DateTimeFactory.TimeSpanFactoryExtensions::Milliseconds(System.Int32)
+FNDA:0,System.TimeSpan Wangkanai.Extensions.DateTimeFactory.TimeSpanFactoryExtensions::Milliseconds(System.Int32)
+DA:11,0
+FN:13,System.TimeSpan Wangkanai.Extensions.DateTimeFactory.TimeSpanFactoryExtensions::Seconds(System.Int32)
+FNDA:0,System.TimeSpan Wangkanai.Extensions.DateTimeFactory.TimeSpanFactoryExtensions::Seconds(System.Int32)
+DA:14,0
+FN:16,System.TimeSpan Wangkanai.Extensions.DateTimeFactory.TimeSpanFactoryExtensions::Minutes(System.Int32)
+FNDA:0,System.TimeSpan Wangkanai.Extensions.DateTimeFactory.TimeSpanFactoryExtensions::Minutes(System.Int32)
+DA:17,0
+FN:19,System.TimeSpan Wangkanai.Extensions.DateTimeFactory.TimeSpanFactoryExtensions::Hours(System.Int32)
+FNDA:0,System.TimeSpan Wangkanai.Extensions.DateTimeFactory.TimeSpanFactoryExtensions::Hours(System.Int32)
+DA:20,0
+FN:22,System.TimeSpan Wangkanai.Extensions.DateTimeFactory.TimeSpanFactoryExtensions::Days(System.Int32)
+FNDA:0,System.TimeSpan Wangkanai.Extensions.DateTimeFactory.TimeSpanFactoryExtensions::Days(System.Int32)
+DA:23,0
+LF:6
+LH:0
+BRF:0
+BRH:0
+FNF:6
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Exceptions/ArgumentEmptyException.cs
+FN:9,System.Void Wangkanai.Exceptions.ArgumentEmptyException::.ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentEmptyException::.ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+DA:10,0
+FN:10,System.Void Wangkanai.Exceptions.ArgumentEmptyException::.ctor()
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentEmptyException::.ctor()
+DA:11,0
+FN:11,System.Void Wangkanai.Exceptions.ArgumentEmptyException::.ctor(System.String)
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentEmptyException::.ctor(System.String)
+DA:12,0
+FN:12,System.Void Wangkanai.Exceptions.ArgumentEmptyException::.ctor(System.String,System.Exception)
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentEmptyException::.ctor(System.String,System.Exception)
+DA:13,0
+FN:13,System.Void Wangkanai.Exceptions.ArgumentEmptyException::.ctor(System.String,System.String)
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentEmptyException::.ctor(System.String,System.String)
+DA:14,0
+LF:5
+LH:0
+BRF:0
+BRH:0
+FNF:5
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Exceptions/ArgumentEqualException.cs
+FN:9,System.Void Wangkanai.Exceptions.ArgumentEqualException::.ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentEqualException::.ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+DA:10,0
+FN:10,System.Void Wangkanai.Exceptions.ArgumentEqualException::.ctor()
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentEqualException::.ctor()
+DA:11,0
+FN:11,System.Void Wangkanai.Exceptions.ArgumentEqualException::.ctor(System.String)
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentEqualException::.ctor(System.String)
+DA:12,0
+FN:12,System.Void Wangkanai.Exceptions.ArgumentEqualException::.ctor(System.String,System.Exception)
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentEqualException::.ctor(System.String,System.Exception)
+DA:13,0
+FN:13,System.Void Wangkanai.Exceptions.ArgumentEqualException::.ctor(System.String,System.String,System.Exception)
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentEqualException::.ctor(System.String,System.String,System.Exception)
+DA:14,0
+FN:14,System.Void Wangkanai.Exceptions.ArgumentEqualException::.ctor(System.String,System.String)
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentEqualException::.ctor(System.String,System.String)
+DA:15,0
+LF:6
+LH:0
+BRF:0
+BRH:0
+FNF:6
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Exceptions/ArgumentLessThanException.cs
+FN:9,System.Void Wangkanai.Exceptions.ArgumentLessThanException::.ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentLessThanException::.ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+DA:10,0
+FN:10,System.Void Wangkanai.Exceptions.ArgumentLessThanException::.ctor()
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentLessThanException::.ctor()
+DA:11,0
+FN:11,System.Void Wangkanai.Exceptions.ArgumentLessThanException::.ctor(System.String)
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentLessThanException::.ctor(System.String)
+DA:12,0
+FN:12,System.Void Wangkanai.Exceptions.ArgumentLessThanException::.ctor(System.String,System.Exception)
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentLessThanException::.ctor(System.String,System.Exception)
+DA:13,0
+FN:13,System.Void Wangkanai.Exceptions.ArgumentLessThanException::.ctor(System.String,System.String)
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentLessThanException::.ctor(System.String,System.String)
+DA:14,0
+LF:5
+LH:0
+BRF:0
+BRH:0
+FNF:5
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Exceptions/ArgumentMoreThanException.cs
+FN:9,System.Void Wangkanai.Exceptions.ArgumentMoreThanException::.ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentMoreThanException::.ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+DA:10,0
+FN:10,System.Void Wangkanai.Exceptions.ArgumentMoreThanException::.ctor()
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentMoreThanException::.ctor()
+DA:11,0
+FN:11,System.Void Wangkanai.Exceptions.ArgumentMoreThanException::.ctor(System.String)
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentMoreThanException::.ctor(System.String)
+DA:12,0
+FN:12,System.Void Wangkanai.Exceptions.ArgumentMoreThanException::.ctor(System.String,System.Exception)
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentMoreThanException::.ctor(System.String,System.Exception)
+DA:13,0
+FN:13,System.Void Wangkanai.Exceptions.ArgumentMoreThanException::.ctor(System.String,System.String)
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentMoreThanException::.ctor(System.String,System.String)
+DA:14,0
+LF:5
+LH:0
+BRF:0
+BRH:0
+FNF:5
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Exceptions/ArgumentNegativeException.cs
+FN:9,System.Void Wangkanai.Exceptions.ArgumentNegativeException::.ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentNegativeException::.ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+DA:10,0
+FN:10,System.Void Wangkanai.Exceptions.ArgumentNegativeException::.ctor()
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentNegativeException::.ctor()
+DA:11,0
+FN:11,System.Void Wangkanai.Exceptions.ArgumentNegativeException::.ctor(System.String)
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentNegativeException::.ctor(System.String)
+DA:12,0
+FN:12,System.Void Wangkanai.Exceptions.ArgumentNegativeException::.ctor(System.String,System.Exception)
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentNegativeException::.ctor(System.String,System.Exception)
+DA:13,0
+FN:13,System.Void Wangkanai.Exceptions.ArgumentNegativeException::.ctor(System.String,System.String)
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentNegativeException::.ctor(System.String,System.String)
+DA:14,0
+LF:5
+LH:0
+BRF:0
+BRH:0
+FNF:5
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Exceptions/ArgumentNotEqualException.cs
+FN:9,System.Void Wangkanai.Exceptions.ArgumentNotEqualException::.ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentNotEqualException::.ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+DA:10,0
+FN:10,System.Void Wangkanai.Exceptions.ArgumentNotEqualException::.ctor()
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentNotEqualException::.ctor()
+DA:11,0
+FN:11,System.Void Wangkanai.Exceptions.ArgumentNotEqualException::.ctor(System.String)
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentNotEqualException::.ctor(System.String)
+DA:12,0
+FN:12,System.Void Wangkanai.Exceptions.ArgumentNotEqualException::.ctor(System.String,System.Exception)
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentNotEqualException::.ctor(System.String,System.Exception)
+DA:13,0
+FN:13,System.Void Wangkanai.Exceptions.ArgumentNotEqualException::.ctor(System.String,System.String,System.Exception)
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentNotEqualException::.ctor(System.String,System.String,System.Exception)
+DA:14,0
+FN:14,System.Void Wangkanai.Exceptions.ArgumentNotEqualException::.ctor(System.String,System.String)
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentNotEqualException::.ctor(System.String,System.String)
+DA:15,0
+LF:6
+LH:0
+BRF:0
+BRH:0
+FNF:6
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Exceptions/ArgumentNullOrEmptyException.cs
+FN:9,System.Void Wangkanai.Exceptions.ArgumentNullOrEmptyException::.ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentNullOrEmptyException::.ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+DA:10,0
+FN:10,System.Void Wangkanai.Exceptions.ArgumentNullOrEmptyException::.ctor()
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentNullOrEmptyException::.ctor()
+DA:11,0
+FN:11,System.Void Wangkanai.Exceptions.ArgumentNullOrEmptyException::.ctor(System.String)
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentNullOrEmptyException::.ctor(System.String)
+DA:12,0
+FN:12,System.Void Wangkanai.Exceptions.ArgumentNullOrEmptyException::.ctor(System.String,System.String)
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentNullOrEmptyException::.ctor(System.String,System.String)
+DA:13,0
+FN:13,System.Void Wangkanai.Exceptions.ArgumentNullOrEmptyException::.ctor(System.String,System.Exception)
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentNullOrEmptyException::.ctor(System.String,System.Exception)
+DA:14,0
+LF:5
+LH:0
+BRF:0
+BRH:0
+FNF:5
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Exceptions/ArgumentNullOrWhitespaceException.cs
+FN:9,System.Void Wangkanai.Exceptions.ArgumentNullOrWhitespaceException::.ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentNullOrWhitespaceException::.ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+DA:10,0
+FN:10,System.Void Wangkanai.Exceptions.ArgumentNullOrWhitespaceException::.ctor()
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentNullOrWhitespaceException::.ctor()
+DA:11,0
+FN:11,System.Void Wangkanai.Exceptions.ArgumentNullOrWhitespaceException::.ctor(System.String)
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentNullOrWhitespaceException::.ctor(System.String)
+DA:12,0
+FN:12,System.Void Wangkanai.Exceptions.ArgumentNullOrWhitespaceException::.ctor(System.String,System.String)
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentNullOrWhitespaceException::.ctor(System.String,System.String)
+DA:13,0
+FN:13,System.Void Wangkanai.Exceptions.ArgumentNullOrWhitespaceException::.ctor(System.String,System.Exception)
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentNullOrWhitespaceException::.ctor(System.String,System.Exception)
+DA:14,0
+LF:5
+LH:0
+BRF:0
+BRH:0
+FNF:5
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Exceptions/ArgumentPositiveException.cs
+FN:9,System.Void Wangkanai.Exceptions.ArgumentPositiveException::.ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentPositiveException::.ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+DA:10,0
+FN:10,System.Void Wangkanai.Exceptions.ArgumentPositiveException::.ctor()
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentPositiveException::.ctor()
+DA:11,0
+FN:11,System.Void Wangkanai.Exceptions.ArgumentPositiveException::.ctor(System.String)
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentPositiveException::.ctor(System.String)
+DA:12,0
+FN:12,System.Void Wangkanai.Exceptions.ArgumentPositiveException::.ctor(System.String,System.Exception)
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentPositiveException::.ctor(System.String,System.Exception)
+DA:13,0
+FN:13,System.Void Wangkanai.Exceptions.ArgumentPositiveException::.ctor(System.String,System.String)
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentPositiveException::.ctor(System.String,System.String)
+DA:14,0
+LF:5
+LH:0
+BRF:0
+BRH:0
+FNF:5
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Exceptions/ArgumentWhitespaceException.cs
+FN:9,System.Void Wangkanai.Exceptions.ArgumentWhitespaceException::.ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentWhitespaceException::.ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+DA:10,0
+FN:10,System.Void Wangkanai.Exceptions.ArgumentWhitespaceException::.ctor()
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentWhitespaceException::.ctor()
+DA:11,0
+FN:11,System.Void Wangkanai.Exceptions.ArgumentWhitespaceException::.ctor(System.String)
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentWhitespaceException::.ctor(System.String)
+DA:12,0
+FN:12,System.Void Wangkanai.Exceptions.ArgumentWhitespaceException::.ctor(System.String,System.Exception)
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentWhitespaceException::.ctor(System.String,System.Exception)
+DA:13,0
+FN:13,System.Void Wangkanai.Exceptions.ArgumentWhitespaceException::.ctor(System.String,System.String)
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentWhitespaceException::.ctor(System.String,System.String)
+DA:14,0
+LF:5
+LH:0
+BRF:0
+BRH:0
+FNF:5
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Exceptions/ArgumentZeroException.cs
+FN:9,System.Void Wangkanai.Exceptions.ArgumentZeroException::.ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentZeroException::.ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+DA:10,0
+FN:10,System.Void Wangkanai.Exceptions.ArgumentZeroException::.ctor()
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentZeroException::.ctor()
+DA:11,0
+FN:11,System.Void Wangkanai.Exceptions.ArgumentZeroException::.ctor(System.String)
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentZeroException::.ctor(System.String)
+DA:12,0
+FN:12,System.Void Wangkanai.Exceptions.ArgumentZeroException::.ctor(System.String,System.Exception)
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentZeroException::.ctor(System.String,System.Exception)
+DA:13,0
+FN:13,System.Void Wangkanai.Exceptions.ArgumentZeroException::.ctor(System.String,System.String)
+FNDA:0,System.Void Wangkanai.Exceptions.ArgumentZeroException::.ctor(System.String,System.String)
+DA:14,0
+LF:5
+LH:0
+BRF:0
+BRH:0
+FNF:5
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Domain/AbstractTypeFactory.cs
+FN:20,System.Collections.Generic.IEnumerable`1<Wangkanai.Domain.GenericTypeInfo`1<TBaseType>> Wangkanai.Domain.AbstractTypeFactory`1::get_AllTypeInfos()
+FNDA:0,System.Collections.Generic.IEnumerable`1<Wangkanai.Domain.GenericTypeInfo`1<TBaseType>> Wangkanai.Domain.AbstractTypeFactory`1::get_AllTypeInfos()
+DA:21,0
+FN:28,System.Boolean Wangkanai.Domain.AbstractTypeFactory`1::get_HasOverrides()
+FNDA:0,System.Boolean Wangkanai.Domain.AbstractTypeFactory`1::get_HasOverrides()
+DA:29,0
+FN:37,Wangkanai.Domain.GenericTypeInfo`1<TBaseType> Wangkanai.Domain.AbstractTypeFactory`1::RegisterType()
+FNDA:0,Wangkanai.Domain.GenericTypeInfo`1<TBaseType> Wangkanai.Domain.AbstractTypeFactory`1::RegisterType()
+DA:38,0
+FN:45,Wangkanai.Domain.GenericTypeInfo`1<TBaseType> Wangkanai.Domain.AbstractTypeFactory`1::RegisterType(System.Type)
+FNDA:0,Wangkanai.Domain.GenericTypeInfo`1<TBaseType> Wangkanai.Domain.AbstractTypeFactory`1::RegisterType(System.Type)
+DA:46,0
+DA:47,0
+DA:49,0
+DA:50,0
+DA:51,0
+DA:53,0
+DA:54,0
+DA:56,0
+DA:57,0
+BRDA:50,55,0,0
+BRDA:50,55,1,0
+FN:64,Wangkanai.Domain.GenericTypeInfo`1<TBaseType> Wangkanai.Domain.AbstractTypeFactory`1::OverrideType()
+FNDA:0,Wangkanai.Domain.GenericTypeInfo`1<TBaseType> Wangkanai.Domain.AbstractTypeFactory`1::OverrideType()
+DA:65,0
+DA:66,0
+DA:67,0
+DA:68,0
+DA:69,0
+DA:70,0
+DA:71,0
+DA:73,0
+DA:74,0
+DA:75,0
+BRDA:70,72,0,0
+BRDA:70,72,1,0
+FN:80,TBaseType Wangkanai.Domain.AbstractTypeFactory`1::TryCreateInstance()
+FNDA:0,TBaseType Wangkanai.Domain.AbstractTypeFactory`1::TryCreateInstance()
+DA:81,0
+FN:87,T Wangkanai.Domain.AbstractTypeFactory`1::TryCreateInstance()
+FNDA:0,T Wangkanai.Domain.AbstractTypeFactory`1::TryCreateInstance()
+DA:88,0
+FN:95,TBaseType Wangkanai.Domain.AbstractTypeFactory`1::TryCreateInstance(System.String)
+FNDA:0,TBaseType Wangkanai.Domain.AbstractTypeFactory`1::TryCreateInstance(System.String)
+DA:96,0
+DA:98,0
+DA:99,0
+DA:100,0
+DA:101,0
+DA:102,0
+DA:104,0
+DA:106,0
+DA:107,0
+DA:109,0
+DA:110,0
+DA:111,0
+DA:112,0
+DA:114,0
+DA:115,0
+DA:117,0
+DA:118,0
+BRDA:99,16,0,0
+BRDA:101,30,0,0
+BRDA:101,30,1,0
+BRDA:106,70,0,0
+BRDA:106,70,1,0
+BRDA:99,16,1,0
+BRDA:111,112,0,0
+BRDA:111,112,1,0
+FN:126,Wangkanai.Domain.GenericTypeInfo`1<TBaseType> Wangkanai.Domain.AbstractTypeFactory`1::FindTypeInfoByName(System.String)
+FNDA:0,Wangkanai.Domain.GenericTypeInfo`1<TBaseType> Wangkanai.Domain.AbstractTypeFactory`1::FindTypeInfoByName(System.String)
+DA:127,0
+DA:129,0
+DA:131,0
+DA:132,0
+DA:134,0
+DA:135,0
+BRDA:131,43,0,0
+BRDA:131,43,1,0
+FN:12,System.Void Wangkanai.Domain.AbstractTypeFactory`1::.cctor()
+FNDA:0,System.Void Wangkanai.Domain.AbstractTypeFactory`1::.cctor()
+DA:13,0
+LF:48
+LH:0
+BRF:14
+BRH:0
+FNF:10
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Domain/GenericTypeInfo.cs
+FN:12,System.Collections.Generic.ICollection`1<System.Object> Wangkanai.Domain.GenericTypeInfo`1::get_Services()
+FNDA:0,System.Collections.Generic.ICollection`1<System.Object> Wangkanai.Domain.GenericTypeInfo`1::get_Services()
+DA:13,0
+FN:13,System.Type Wangkanai.Domain.GenericTypeInfo`1::get_MappedType()
+FNDA:0,System.Type Wangkanai.Domain.GenericTypeInfo`1::get_MappedType()
+DA:14,0
+FN:14,System.String Wangkanai.Domain.GenericTypeInfo`1::get_TypeName()
+FNDA:0,System.String Wangkanai.Domain.GenericTypeInfo`1::get_TypeName()
+DA:15,0
+FN:15,System.Type Wangkanai.Domain.GenericTypeInfo`1::get_Type()
+FNDA:0,System.Type Wangkanai.Domain.GenericTypeInfo`1::get_Type()
+DA:16,0
+FN:16,System.Func`1<TBaseType> Wangkanai.Domain.GenericTypeInfo`1::get_Factory()
+FNDA:0,System.Func`1<TBaseType> Wangkanai.Domain.GenericTypeInfo`1::get_Factory()
+DA:17,0
+FN:17,System.Action`1<TBaseType> Wangkanai.Domain.GenericTypeInfo`1::get_SetupAction()
+FNDA:0,System.Action`1<TBaseType> Wangkanai.Domain.GenericTypeInfo`1::get_SetupAction()
+DA:18,0
+FN:25,Wangkanai.Domain.GenericTypeInfo`1<TBaseType> Wangkanai.Domain.GenericTypeInfo`1::WithTypeName(System.String)
+FNDA:0,Wangkanai.Domain.GenericTypeInfo`1<TBaseType> Wangkanai.Domain.GenericTypeInfo`1::WithTypeName(System.String)
+DA:26,0
+DA:27,0
+DA:28,0
+DA:29,0
+FN:36,T Wangkanai.Domain.GenericTypeInfo`1::GetService()
+FNDA:0,T Wangkanai.Domain.GenericTypeInfo`1::GetService()
+DA:37,0
+FN:44,System.Collections.Generic.IEnumerable`1<System.Type> Wangkanai.Domain.GenericTypeInfo`1::GetAllSubclasses()
+FNDA:0,System.Collections.Generic.IEnumerable`1<System.Type> Wangkanai.Domain.GenericTypeInfo`1::GetAllSubclasses()
+DA:45,0
+FN:52,System.Boolean Wangkanai.Domain.GenericTypeInfo`1::IsAssignableTo(System.String)
+FNDA:0,System.Boolean Wangkanai.Domain.GenericTypeInfo`1::IsAssignableTo(System.String)
+DA:53,0
+DA:54,0
+DA:55,0
+FN:63,Wangkanai.Domain.GenericTypeInfo`1<TBaseType> Wangkanai.Domain.GenericTypeInfo`1::WithService(T)
+FNDA:0,Wangkanai.Domain.GenericTypeInfo`1<TBaseType> Wangkanai.Domain.GenericTypeInfo`1::WithService(T)
+DA:64,0
+DA:65,0
+DA:66,0
+DA:67,0
+DA:68,0
+DA:69,0
+BRDA:66,30,0,0
+BRDA:66,30,1,0
+FN:76,Wangkanai.Domain.GenericTypeInfo`1<TBaseType> Wangkanai.Domain.GenericTypeInfo`1::MapToType()
+FNDA:0,Wangkanai.Domain.GenericTypeInfo`1<TBaseType> Wangkanai.Domain.GenericTypeInfo`1::MapToType()
+DA:77,0
+DA:78,0
+DA:79,0
+DA:80,0
+FN:87,Wangkanai.Domain.GenericTypeInfo`1<TBaseType> Wangkanai.Domain.GenericTypeInfo`1::WithFactory(System.Func`1<TBaseType>)
+FNDA:0,Wangkanai.Domain.GenericTypeInfo`1<TBaseType> Wangkanai.Domain.GenericTypeInfo`1::WithFactory(System.Func`1<TBaseType>)
+DA:88,0
+DA:89,0
+DA:90,0
+DA:91,0
+FN:98,Wangkanai.Domain.GenericTypeInfo`1<TBaseType> Wangkanai.Domain.GenericTypeInfo`1::WithSetupAction(System.Action`1<TBaseType>)
+FNDA:0,Wangkanai.Domain.GenericTypeInfo`1<TBaseType> Wangkanai.Domain.GenericTypeInfo`1::WithSetupAction(System.Action`1<TBaseType>)
+DA:99,0
+DA:100,0
+DA:101,0
+DA:102,0
+FN:10,System.Void Wangkanai.Domain.GenericTypeInfo`1::.ctor(System.Type)
+FNDA:0,System.Void Wangkanai.Domain.GenericTypeInfo`1::.ctor(System.Type)
+DA:11,0
+LF:34
+LH:0
+BRF:2
+BRH:0
+FNF:15
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Collections/ComparisonComparer.cs
+FN:23,System.Int32 Wangkanai.Collections.ComparisonComparer`1::Compare(T,T)
+FNDA:0,System.Int32 Wangkanai.Collections.ComparisonComparer`1::Compare(T,T)
+DA:24,0
+FN:31,System.Comparison`1<T> Wangkanai.Collections.ComparisonComparer`1::CreateComparison(System.Collections.Generic.IComparer`1<T>)
+FNDA:0,System.Comparison`1<T> Wangkanai.Collections.ComparisonComparer`1::CreateComparison(System.Collections.Generic.IComparer`1<T>)
+DA:32,0
+FN:7,System.Void Wangkanai.Collections.ComparisonComparer`1::.ctor(System.Comparison`1<T>)
+FNDA:0,System.Void Wangkanai.Collections.ComparisonComparer`1::.ctor(System.Comparison`1<T>)
+DA:8,0
+DA:10,0
+LF:4
+LH:0
+BRF:0
+BRH:0
+FNF:3
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Collections/DictionaryByType.cs
+FN:16,System.Void Wangkanai.Collections.DictionaryByType::Add(T)
+FNDA:0,System.Void Wangkanai.Collections.DictionaryByType::Add(T)
+DA:17,0
+FN:23,System.Void Wangkanai.Collections.DictionaryByType::Put(T)
+FNDA:0,System.Void Wangkanai.Collections.DictionaryByType::Put(T)
+DA:24,0
+FN:30,T Wangkanai.Collections.DictionaryByType::Get()
+FNDA:0,T Wangkanai.Collections.DictionaryByType::Get()
+DA:31,0
+FN:37,System.Boolean Wangkanai.Collections.DictionaryByType::TryGet(T&)
+FNDA:0,System.Boolean Wangkanai.Collections.DictionaryByType::TryGet(T&)
+DA:38,0
+DA:39,0
+DA:40,0
+DA:41,0
+DA:42,0
+DA:45,0
+DA:46,0
+DA:47,0
+BRDA:39,26,0,0
+BRDA:39,26,1,0
+FN:9,System.Void Wangkanai.Collections.DictionaryByType::.ctor()
+FNDA:0,System.Void Wangkanai.Collections.DictionaryByType::.ctor()
+DA:10,0
+LF:12
+LH:0
+BRF:2
+BRH:0
+FNF:5
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Collections/LinkedComparer.cs
+FN:28,System.Int32 Wangkanai.Collections.LinkedComparer`1::Compare(T,T)
+FNDA:0,System.Int32 Wangkanai.Collections.LinkedComparer`1::Compare(T,T)
+DA:29,0
+DA:30,0
+DA:31,0
+DA:32,0
+DA:33,0
+DA:34,0
+BRDA:31,16,0,0
+BRDA:31,16,1,0
+FN:17,System.Void Wangkanai.Collections.LinkedComparer`1::.ctor(System.Collections.Generic.IComparer`1<T>,System.Collections.Generic.IComparer`1<T>)
+FNDA:0,System.Void Wangkanai.Collections.LinkedComparer`1::.ctor(System.Collections.Generic.IComparer`1<T>,System.Collections.Generic.IComparer`1<T>)
+DA:18,0
+DA:19,0
+DA:20,0
+DA:21,0
+DA:22,0
+LF:11
+LH:0
+BRF:2
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Collections/ProjectionComparer.cs
+FN:17,Wangkanai.Collections.ProjectionComparer`2<TSource,TKey> Wangkanai.Collections.ProjectionComparer::Create(System.Func`2<TSource,TKey>)
+FNDA:0,Wangkanai.Collections.ProjectionComparer`2<TSource,TKey> Wangkanai.Collections.ProjectionComparer::Create(System.Func`2<TSource,TKey>)
+DA:18,0
+FN:28,Wangkanai.Collections.ProjectionComparer`2<TSource,TKey> Wangkanai.Collections.ProjectionComparer::Create(TSource,System.Func`2<TSource,TKey>)
+FNDA:0,Wangkanai.Collections.ProjectionComparer`2<TSource,TKey> Wangkanai.Collections.ProjectionComparer::Create(TSource,System.Func`2<TSource,TKey>)
+DA:29,0
+FN:44,Wangkanai.Collections.ProjectionComparer`2<TSource,TKey> Wangkanai.Collections.ProjectionComparer`1::Create(System.Func`2<TSource,TKey>)
+FNDA:0,Wangkanai.Collections.ProjectionComparer`2<TSource,TKey> Wangkanai.Collections.ProjectionComparer`1::Create(System.Func`2<TSource,TKey>)
+DA:45,0
+FN:79,System.Int32 Wangkanai.Collections.ProjectionComparer`2::Compare(TSource,TSource)
+FNDA:0,System.Int32 Wangkanai.Collections.ProjectionComparer`2::Compare(TSource,TSource)
+DA:80,0
+DA:81,0
+DA:82,0
+DA:83,0
+DA:84,0
+DA:85,0
+DA:86,0
+BRDA:80,10,0,0
+BRDA:80,10,1,0
+BRDA:80,18,1,0
+BRDA:80,18,0,0
+BRDA:80,28,1,0
+BRDA:80,28,0,0
+FN:62,System.Void Wangkanai.Collections.ProjectionComparer`2::.ctor(System.Func`2<TSource,TKey>,System.Collections.Generic.IComparer`1<TKey>)
+FNDA:0,System.Void Wangkanai.Collections.ProjectionComparer`2::.ctor(System.Func`2<TSource,TKey>,System.Collections.Generic.IComparer`1<TKey>)
+DA:63,0
+DA:64,0
+DA:65,0
+DA:66,0
+DA:67,0
+BRDA:66,23,0,0
+BRDA:66,23,1,0
+LF:15
+LH:0
+BRF:8
+BRH:0
+FNF:5
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Collections/ProjectionEqualityComparer.cs
+FN:17,Wangkanai.Collections.ProjectionEqualityComparer`2<TSource,TKey> Wangkanai.Collections.ProjectionEqualityComparer::Create(System.Func`2<TSource,TKey>)
+FNDA:0,Wangkanai.Collections.ProjectionEqualityComparer`2<TSource,TKey> Wangkanai.Collections.ProjectionEqualityComparer::Create(System.Func`2<TSource,TKey>)
+DA:18,0
+FN:28,Wangkanai.Collections.ProjectionEqualityComparer`2<TSource,TKey> Wangkanai.Collections.ProjectionEqualityComparer::Create(System.Func`2<TSource,TKey>,TSource)
+FNDA:0,Wangkanai.Collections.ProjectionEqualityComparer`2<TSource,TKey> Wangkanai.Collections.ProjectionEqualityComparer::Create(System.Func`2<TSource,TKey>,TSource)
+DA:29,0
+FN:38,Wangkanai.Collections.ProjectionEqualityComparer`2<TSource,TKey> Wangkanai.Collections.ProjectionEqualityComparer`1::Create(System.Func`2<TSource,TKey>)
+FNDA:0,Wangkanai.Collections.ProjectionEqualityComparer`2<TSource,TKey> Wangkanai.Collections.ProjectionEqualityComparer`1::Create(System.Func`2<TSource,TKey>)
+DA:39,0
+FN:71,System.Boolean Wangkanai.Collections.ProjectionEqualityComparer`2::Equals(TSource,TSource)
+FNDA:0,System.Boolean Wangkanai.Collections.ProjectionEqualityComparer`2::Equals(TSource,TSource)
+DA:72,0
+DA:73,0
+DA:74,0
+DA:75,0
+DA:76,0
+DA:77,0
+DA:78,0
+BRDA:72,10,0,0
+BRDA:72,10,1,0
+BRDA:72,18,1,0
+BRDA:72,18,0,0
+BRDA:72,28,1,0
+BRDA:72,28,0,0
+FN:85,System.Int32 Wangkanai.Collections.ProjectionEqualityComparer`2::GetHashCode(TSource)
+FNDA:0,System.Int32 Wangkanai.Collections.ProjectionEqualityComparer`2::GetHashCode(TSource)
+DA:86,0
+FN:56,System.Void Wangkanai.Collections.ProjectionEqualityComparer`2::.ctor(System.Func`2<TSource,TKey>,System.Collections.Generic.IEqualityComparer`1<TKey>)
+FNDA:0,System.Void Wangkanai.Collections.ProjectionEqualityComparer`2::.ctor(System.Func`2<TSource,TKey>,System.Collections.Generic.IEqualityComparer`1<TKey>)
+DA:57,0
+DA:58,0
+DA:59,0
+DA:60,0
+DA:61,0
+BRDA:60,23,0,0
+BRDA:60,23,1,0
+LF:16
+LH:0
+BRF:8
+BRH:0
+FNF:6
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Collections/RandomAccessQueue.cs
+FN:16,System.Int32 Wangkanai.Collections.RandomAccessQueue`1::get_Count()
+FNDA:0,System.Int32 Wangkanai.Collections.RandomAccessQueue`1::get_Count()
+DA:17,0
+FN:21,System.Int32 Wangkanai.Collections.RandomAccessQueue`1::get_Capacity()
+FNDA:0,System.Int32 Wangkanai.Collections.RandomAccessQueue`1::get_Capacity()
+DA:22,0
+FN:26,System.Boolean Wangkanai.Collections.RandomAccessQueue`1::get_IsReadOnly()
+FNDA:0,System.Boolean Wangkanai.Collections.RandomAccessQueue`1::get_IsReadOnly()
+DA:27,0
+FN:31,System.Boolean Wangkanai.Collections.RandomAccessQueue`1::get_IsSynchronized()
+FNDA:0,System.Boolean Wangkanai.Collections.RandomAccessQueue`1::get_IsSynchronized()
+DA:32,0
+FN:38,System.Object Wangkanai.Collections.RandomAccessQueue`1::get_SyncRoot()
+FNDA:0,System.Object Wangkanai.Collections.RandomAccessQueue`1::get_SyncRoot()
+DA:39,0
+FN:74,T Wangkanai.Collections.RandomAccessQueue`1::get_Item(System.Int32)
+FNDA:0,T Wangkanai.Collections.RandomAccessQueue`1::get_Item(System.Int32)
+DA:75,0
+DA:76,0
+DA:77,0
+DA:78,0
+FN:79,System.Void Wangkanai.Collections.RandomAccessQueue`1::set_Item(System.Int32,T)
+FNDA:0,System.Void Wangkanai.Collections.RandomAccessQueue`1::set_Item(System.Int32,T)
+DA:80,0
+DA:81,0
+DA:82,0
+DA:83,0
+DA:84,0
+FN:90,System.Void Wangkanai.Collections.RandomAccessQueue`1::Clear()
+FNDA:0,System.Void Wangkanai.Collections.RandomAccessQueue`1::Clear()
+DA:91,0
+DA:92,0
+DA:93,0
+DA:94,0
+DA:95,0
+FN:101,System.Object Wangkanai.Collections.RandomAccessQueue`1::System.ICloneable.Clone()
+FNDA:0,System.Object Wangkanai.Collections.RandomAccessQueue`1::System.ICloneable.Clone()
+DA:102,0
+FN:108,Wangkanai.Collections.RandomAccessQueue`1<T> Wangkanai.Collections.RandomAccessQueue`1::Clone()
+FNDA:0,Wangkanai.Collections.RandomAccessQueue`1<T> Wangkanai.Collections.RandomAccessQueue`1::Clone()
+DA:109,0
+FN:115,System.Void Wangkanai.Collections.RandomAccessQueue`1::Add(T)
+FNDA:0,System.Void Wangkanai.Collections.RandomAccessQueue`1::Add(T)
+DA:116,0
+FN:122,System.Boolean Wangkanai.Collections.RandomAccessQueue`1::Remove(T)
+FNDA:0,System.Boolean Wangkanai.Collections.RandomAccessQueue`1::Remove(T)
+DA:123,0
+DA:124,0
+DA:125,0
+DA:126,0
+DA:127,0
+DA:128,0
+DA:129,0
+DA:130,0
+DA:131,0
+DA:133,0
+DA:136,0
+DA:137,0
+DA:138,0
+DA:139,0
+DA:140,0
+DA:141,0
+DA:142,0
+DA:145,0
+DA:146,0
+BRDA:124,9,0,0
+BRDA:126,70,1,0
+BRDA:128,37,0,0
+BRDA:128,37,1,0
+BRDA:126,70,0,0
+BRDA:124,9,1,0
+BRDA:137,149,1,0
+BRDA:139,111,1,0
+BRDA:139,111,0,0
+BRDA:137,149,0,0
+FN:152,System.Boolean Wangkanai.Collections.RandomAccessQueue`1::Contains(T)
+FNDA:0,System.Boolean Wangkanai.Collections.RandomAccessQueue`1::Contains(T)
+DA:153,0
+DA:154,0
+DA:155,0
+DA:156,0
+DA:157,0
+DA:158,0
+DA:159,0
+DA:162,0
+DA:163,0
+DA:164,0
+DA:165,0
+DA:166,0
+DA:167,0
+BRDA:154,12,0,0
+BRDA:156,60,1,0
+BRDA:157,36,0,0
+BRDA:157,36,1,0
+BRDA:156,60,0,0
+BRDA:154,12,1,0
+BRDA:163,124,1,0
+BRDA:164,97,0,0
+BRDA:164,97,1,0
+BRDA:163,124,0,0
+FN:175,System.Void Wangkanai.Collections.RandomAccessQueue`1::CopyTo(T[],System.Int32)
+FNDA:0,System.Void Wangkanai.Collections.RandomAccessQueue`1::CopyTo(T[],System.Int32)
+DA:176,0
+DA:177,0
+DA:178,0
+DA:180,0
+DA:181,0
+DA:183,0
+DA:184,0
+DA:185,0
+BRDA:180,34,0,0
+BRDA:180,34,1,0
+BRDA:183,87,1,0
+BRDA:183,87,0,0
+FN:192,System.Void Wangkanai.Collections.RandomAccessQueue`1::CopyTo(System.Array,System.Int32)
+FNDA:0,System.Void Wangkanai.Collections.RandomAccessQueue`1::CopyTo(System.Array,System.Int32)
+DA:193,0
+DA:194,0
+DA:196,0
+DA:197,0
+DA:198,0
+DA:199,0
+DA:200,0
+FN:206,System.Void Wangkanai.Collections.RandomAccessQueue`1::TrimToSize()
+FNDA:0,System.Void Wangkanai.Collections.RandomAccessQueue`1::TrimToSize()
+DA:207,0
+DA:208,0
+DA:209,0
+DA:210,0
+DA:212,0
+DA:213,0
+BRDA:209,26,1,0
+BRDA:209,26,0,0
+FN:219,System.Void Wangkanai.Collections.RandomAccessQueue`1::Enqueue(T)
+FNDA:0,System.Void Wangkanai.Collections.RandomAccessQueue`1::Enqueue(T)
+DA:220,0
+FN:227,System.Void Wangkanai.Collections.RandomAccessQueue`1::Enqueue(T,System.Int32)
+FNDA:0,System.Void Wangkanai.Collections.RandomAccessQueue`1::Enqueue(T,System.Int32)
+DA:228,0
+DA:229,0
+DA:230,0
+DA:231,0
+DA:232,0
+DA:233,0
+DA:235,0
+DA:236,0
+DA:238,0
+DA:239,0
+DA:240,0
+DA:242,0
+DA:243,0
+BRDA:229,17,0,0
+BRDA:229,17,1,0
+BRDA:238,109,1,0
+BRDA:238,109,0,0
+FN:250,T Wangkanai.Collections.RandomAccessQueue`1::Dequeue()
+FNDA:0,T Wangkanai.Collections.RandomAccessQueue`1::Dequeue()
+DA:251,0
+DA:252,0
+DA:253,0
+DA:255,0
+DA:256,0
+DA:258,0
+DA:259,0
+DA:260,0
+DA:262,0
+DA:263,0
+DA:264,0
+BRDA:252,12,0,0
+BRDA:252,12,1,0
+BRDA:259,80,0,0
+BRDA:259,80,1,0
+FN:271,System.Void Wangkanai.Collections.RandomAccessQueue`1::Resize(System.Int32,System.Int32)
+FNDA:0,System.Void Wangkanai.Collections.RandomAccessQueue`1::Resize(System.Int32,System.Int32)
+DA:272,0
+DA:273,0
+DA:274,0
+DA:275,0
+DA:278,0
+DA:279,0
+DA:280,0
+DA:281,0
+DA:282,0
+DA:284,0
+DA:285,0
+DA:286,0
+DA:287,0
+DA:289,0
+DA:290,0
+DA:291,0
+DA:293,0
+DA:294,0
+DA:295,0
+DA:297,0
+DA:298,0
+DA:299,0
+DA:300,0
+DA:302,0
+DA:303,0
+DA:304,0
+DA:305,0
+DA:306,0
+DA:307,0
+DA:308,0
+DA:310,0
+DA:311,0
+DA:312,0
+BRDA:274,14,0,0
+BRDA:278,47,0,0
+BRDA:278,47,1,0
+BRDA:274,14,1,0
+BRDA:297,239,1,0
+BRDA:299,156,0,0
+BRDA:299,156,1,0
+BRDA:305,213,0,0
+BRDA:305,213,1,0
+BRDA:297,239,0,0
+FN:319,T Wangkanai.Collections.RandomAccessQueue`1::RemoveAt(System.Int32)
+FNDA:0,T Wangkanai.Collections.RandomAccessQueue`1::RemoveAt(System.Int32)
+DA:320,0
+DA:321,0
+DA:323,0
+DA:324,0
+DA:326,0
+DA:328,0
+DA:329,0
+DA:330,0
+DA:331,0
+DA:332,0
+DA:335,0
+DA:336,0
+DA:337,0
+DA:338,0
+DA:339,0
+DA:340,0
+DA:342,0
+DA:343,0
+DA:345,0
+DA:346,0
+DA:347,0
+DA:348,0
+DA:349,0
+DA:351,0
+DA:352,0
+DA:353,0
+DA:354,0
+BRDA:323,21,0,0
+BRDA:323,21,1,0
+BRDA:328,56,0,0
+BRDA:328,56,1,0
+BRDA:335,121,0,0
+BRDA:335,121,1,0
+FN:356,System.Collections.IEnumerator Wangkanai.Collections.RandomAccessQueue`1::System.Collections.IEnumerable.GetEnumerator()
+FNDA:0,System.Collections.IEnumerator Wangkanai.Collections.RandomAccessQueue`1::System.Collections.IEnumerable.GetEnumerator()
+DA:357,0
+FN:374,System.Int32 Wangkanai.Collections.RandomAccessQueue`1::BinarySearch(T)
+FNDA:0,System.Int32 Wangkanai.Collections.RandomAccessQueue`1::BinarySearch(T)
+DA:375,0
+DA:376,0
+DA:377,0
+DA:378,0
+DA:380,0
+DA:382,0
+DA:383,0
+DA:385,0
+DA:386,0
+DA:388,0
+DA:389,0
+DA:390,0
+DA:391,0
+DA:392,0
+BRDA:376,25,0,0
+BRDA:377,33,0,0
+BRDA:377,33,1,0
+BRDA:377,65,0,0
+BRDA:377,65,1,0
+BRDA:376,25,1,0
+BRDA:385,122,0,0
+BRDA:385,122,1,0
+BRDA:390,20,0,0
+BRDA:390,20,1,0
+FN:394,System.Int32 Wangkanai.Collections.RandomAccessQueue`1::BinarySearch(T,System.Comparison`1<T>)
+FNDA:0,System.Int32 Wangkanai.Collections.RandomAccessQueue`1::BinarySearch(T,System.Comparison`1<T>)
+DA:395,0
+FN:397,System.Int32 Wangkanai.Collections.RandomAccessQueue`1::BinarySearch(T,System.Func`3<T,T,System.Int32>)
+FNDA:0,System.Int32 Wangkanai.Collections.RandomAccessQueue`1::BinarySearch(T,System.Func`3<T,T,System.Int32>)
+DA:398,0
+FN:400,System.Int32 Wangkanai.Collections.RandomAccessQueue`1::BinarySearch(T,System.Collections.Generic.IComparer`1<T>)
+FNDA:0,System.Int32 Wangkanai.Collections.RandomAccessQueue`1::BinarySearch(T,System.Collections.Generic.IComparer`1<T>)
+DA:401,0
+DA:402,0
+DA:404,0
+DA:405,0
+DA:407,0
+DA:408,0
+BRDA:404,51,0,0
+BRDA:404,51,1,0
+FN:410,System.Int32 Wangkanai.Collections.RandomAccessQueue`1::BinarySearch(System.Func`2<System.Int32,System.Int32>)
+FNDA:0,System.Int32 Wangkanai.Collections.RandomAccessQueue`1::BinarySearch(System.Func`2<System.Int32,System.Int32>)
+DA:411,0
+DA:412,0
+DA:413,0
+DA:415,0
+DA:416,0
+DA:417,0
+DA:418,0
+DA:420,0
+DA:421,0
+DA:422,0
+DA:423,0
+DA:424,0
+DA:425,0
+DA:426,0
+DA:428,0
+DA:429,0
+BRDA:415,84,1,0
+BRDA:420,37,0,0
+BRDA:420,37,1,0
+BRDA:422,52,0,0
+BRDA:422,52,1,0
+BRDA:424,66,0,0
+BRDA:424,66,1,0
+BRDA:415,84,0,0
+FN:45,System.Void Wangkanai.Collections.RandomAccessQueue`1::.ctor()
+FNDA:0,System.Void Wangkanai.Collections.RandomAccessQueue`1::.ctor()
+DA:46,0
+FN:40,System.Void Wangkanai.Collections.RandomAccessQueue`1::.ctor(System.Int32)
+FNDA:0,System.Void Wangkanai.Collections.RandomAccessQueue`1::.ctor(System.Int32)
+DA:41,0
+DA:52,0
+DA:53,0
+FN:60,System.Void Wangkanai.Collections.RandomAccessQueue`1::.ctor(T[],System.Int32,System.Int32)
+FNDA:0,System.Void Wangkanai.Collections.RandomAccessQueue`1::.ctor(T[],System.Int32,System.Int32)
+DA:61,0
+DA:62,0
+DA:63,0
+DA:64,0
+DA:65,0
+DA:66,0
+FN:359,System.Boolean Wangkanai.Collections.RandomAccessQueue`1/<GetEnumerator>d__37::MoveNext()
+FNDA:0,System.Boolean Wangkanai.Collections.RandomAccessQueue`1/<GetEnumerator>d__37::MoveNext()
+DA:360,0
+DA:361,0
+DA:363,0
+DA:364,0
+DA:365,0
+DA:367,0
+DA:368,0
+DA:369,0
+DA:370,0
+BRDA:363,173,1,0
+BRDA:367,122,0,0
+BRDA:367,122,1,0
+BRDA:363,173,0,0
+LF:218
+LH:0
+BRF:74
+BRH:0
+FNF:31
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Collections/Range.cs
+FN:13,T Wangkanai.Collections.Range`1::get_Start()
+FNDA:0,T Wangkanai.Collections.Range`1::get_Start()
+DA:14,0
+FN:18,T Wangkanai.Collections.Range`1::get_End()
+FNDA:0,T Wangkanai.Collections.Range`1::get_End()
+DA:19,0
+FN:23,System.Collections.Generic.IComparer`1<T> Wangkanai.Collections.Range`1::get_Comparer()
+FNDA:0,System.Collections.Generic.IComparer`1<T> Wangkanai.Collections.Range`1::get_Comparer()
+DA:24,0
+FN:28,System.Boolean Wangkanai.Collections.Range`1::get_IncludesStart()
+FNDA:0,System.Boolean Wangkanai.Collections.Range`1::get_IncludesStart()
+DA:29,0
+FN:33,System.Boolean Wangkanai.Collections.Range`1::get_IncludesEnd()
+FNDA:0,System.Boolean Wangkanai.Collections.Range`1::get_IncludesEnd()
+DA:34,0
+FN:61,Wangkanai.Collections.Range`1<T> Wangkanai.Collections.Range`1::ExcludeEnd()
+FNDA:0,Wangkanai.Collections.Range`1<T> Wangkanai.Collections.Range`1::ExcludeEnd()
+DA:62,0
+DA:63,0
+DA:64,0
+BRDA:62,6,0,0
+BRDA:62,6,1,0
+FN:70,Wangkanai.Collections.Range`1<T> Wangkanai.Collections.Range`1::ExcludeStart()
+FNDA:0,Wangkanai.Collections.Range`1<T> Wangkanai.Collections.Range`1::ExcludeStart()
+DA:71,0
+DA:72,0
+DA:73,0
+BRDA:71,6,0,0
+BRDA:71,6,1,0
+FN:79,Wangkanai.Collections.Range`1<T> Wangkanai.Collections.Range`1::IncludeEnd()
+FNDA:0,Wangkanai.Collections.Range`1<T> Wangkanai.Collections.Range`1::IncludeEnd()
+DA:80,0
+DA:81,0
+DA:82,0
+BRDA:80,6,0,0
+BRDA:80,6,1,0
+FN:88,Wangkanai.Collections.Range`1<T> Wangkanai.Collections.Range`1::IncludeStart()
+FNDA:0,Wangkanai.Collections.Range`1<T> Wangkanai.Collections.Range`1::IncludeStart()
+DA:89,0
+DA:90,0
+DA:91,0
+BRDA:89,6,0,0
+BRDA:89,6,1,0
+FN:96,System.Boolean Wangkanai.Collections.Range`1::Contains(T)
+FNDA:0,System.Boolean Wangkanai.Collections.Range`1::Contains(T)
+DA:97,0
+DA:98,0
+DA:99,0
+DA:100,0
+DA:102,0
+DA:104,0
+DA:105,0
+DA:107,0
+DA:108,0
+BRDA:99,22,0,0
+BRDA:99,25,0,0
+BRDA:99,25,1,0
+BRDA:99,22,1,0
+BRDA:99,44,0,0
+BRDA:99,44,1,0
+BRDA:104,71,0,0
+BRDA:104,74,0,0
+BRDA:104,74,1,0
+BRDA:104,71,1,0
+BRDA:104,92,0,0
+BRDA:104,92,1,0
+FN:115,Wangkanai.Collections.RangeIterator`1<T> Wangkanai.Collections.Range`1::FromStart(System.Func`2<T,T>)
+FNDA:0,Wangkanai.Collections.RangeIterator`1<T> Wangkanai.Collections.Range`1::FromStart(System.Func`2<T,T>)
+DA:116,0
+FN:123,Wangkanai.Collections.RangeIterator`1<T> Wangkanai.Collections.Range`1::FromEnd(System.Func`2<T,T>)
+FNDA:0,Wangkanai.Collections.RangeIterator`1<T> Wangkanai.Collections.Range`1::FromEnd(System.Func`2<T,T>)
+DA:124,0
+FN:133,Wangkanai.Collections.RangeIterator`1<T> Wangkanai.Collections.Range`1::Step(System.Func`2<T,T>)
+FNDA:0,Wangkanai.Collections.RangeIterator`1<T> Wangkanai.Collections.Range`1::Step(System.Func`2<T,T>)
+DA:134,0
+DA:135,0
+DA:137,0
+DA:139,0
+DA:140,0
+BRDA:139,42,0,0
+BRDA:139,42,1,0
+FN:39,System.Void Wangkanai.Collections.Range`1::.ctor(T,T)
+FNDA:0,System.Void Wangkanai.Collections.Range`1::.ctor(T,T)
+DA:40,0
+FN:44,System.Void Wangkanai.Collections.Range`1::.ctor(T,T,System.Collections.Generic.IComparer`1<T>,System.Boolean,System.Boolean)
+FNDA:0,System.Void Wangkanai.Collections.Range`1::.ctor(T,T,System.Collections.Generic.IComparer`1<T>,System.Boolean,System.Boolean)
+DA:45,0
+DA:46,0
+DA:47,0
+DA:48,0
+DA:50,0
+DA:51,0
+DA:52,0
+DA:53,0
+DA:54,0
+DA:55,0
+BRDA:47,21,0,0
+BRDA:47,21,1,0
+LF:44
+LH:0
+BRF:24
+BRH:0
+FNF:15
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Collections/RangeIterator.cs
+FN:14,Wangkanai.Collections.Range`1<T> Wangkanai.Collections.RangeIterator`1::get_Range()
+FNDA:0,Wangkanai.Collections.Range`1<T> Wangkanai.Collections.RangeIterator`1::get_Range()
+DA:15,0
+FN:19,System.Func`2<T,T> Wangkanai.Collections.RangeIterator`1::get_Step()
+FNDA:0,System.Func`2<T,T> Wangkanai.Collections.RangeIterator`1::get_Step()
+DA:20,0
+FN:24,System.Boolean Wangkanai.Collections.RangeIterator`1::get_Ascending()
+FNDA:0,System.Boolean Wangkanai.Collections.RangeIterator`1::get_Ascending()
+DA:25,0
+FN:74,System.Collections.IEnumerator Wangkanai.Collections.RangeIterator`1::System.Collections.IEnumerable.GetEnumerator()
+FNDA:0,System.Collections.IEnumerator Wangkanai.Collections.RangeIterator`1::System.Collections.IEnumerable.GetEnumerator()
+DA:75,0
+FN:29,System.Void Wangkanai.Collections.RangeIterator`1::.ctor(Wangkanai.Collections.Range`1<T>,System.Func`2<T,T>,System.Boolean)
+FNDA:0,System.Void Wangkanai.Collections.RangeIterator`1::.ctor(Wangkanai.Collections.Range`1<T>,System.Func`2<T,T>,System.Boolean)
+DA:30,0
+DA:31,0
+DA:32,0
+DA:34,0
+DA:35,0
+DA:36,0
+DA:38,0
+DA:39,0
+DA:40,0
+DA:41,0
+BRDA:34,16,0,0
+BRDA:34,16,1,0
+BRDA:34,48,0,0
+BRDA:34,51,0,0
+BRDA:34,51,1,0
+BRDA:34,48,1,0
+BRDA:34,96,0,0
+BRDA:34,96,1,0
+FN:46,System.Boolean Wangkanai.Collections.RangeIterator`1/<GetEnumerator>d__10::MoveNext()
+FNDA:0,System.Boolean Wangkanai.Collections.RangeIterator`1/<GetEnumerator>d__10::MoveNext()
+DA:47,0
+DA:48,0
+DA:49,0
+DA:51,0
+DA:52,0
+DA:53,0
+DA:55,0
+DA:57,0
+DA:58,0
+DA:60,0
+DA:62,0
+DA:63,0
+DA:64,0
+DA:65,0
+DA:66,0
+DA:68,0
+DA:69,0
+DA:70,0
+BRDA:48,70,0,0
+BRDA:48,70,1,0
+BRDA:49,123,0,0
+BRDA:49,123,1,0
+BRDA:51,176,0,0
+BRDA:51,176,1,0
+BRDA:52,229,0,0
+BRDA:52,229,1,0
+BRDA:53,282,0,0
+BRDA:53,282,1,0
+BRDA:57,348,0,0
+BRDA:57,356,0,0
+BRDA:57,356,1,0
+BRDA:57,348,1,0
+BRDA:57,392,0,0
+BRDA:57,392,1,0
+BRDA:62,538,1,0
+BRDA:62,538,0,0
+BRDA:68,546,0,0
+BRDA:68,546,1,0
+BRDA:68,581,0,0
+BRDA:68,581,1,0
+LF:32
+LH:0
+BRF:30
+BRH:0
+FNF:6
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Collections/ReverseComparer.cs
+FN:13,System.Collections.Generic.IComparer`1<T> Wangkanai.Collections.ReverseComparer`1::get_Original()
+FNDA:0,System.Collections.Generic.IComparer`1<T> Wangkanai.Collections.ReverseComparer`1::get_Original()
+DA:14,0
+FN:34,System.Int32 Wangkanai.Collections.ReverseComparer`1::Compare(T,T)
+FNDA:0,System.Int32 Wangkanai.Collections.ReverseComparer`1::Compare(T,T)
+DA:35,0
+FN:19,System.Void Wangkanai.Collections.ReverseComparer`1::.ctor(System.Collections.Generic.IComparer`1<T>)
+FNDA:0,System.Void Wangkanai.Collections.ReverseComparer`1::.ctor(System.Collections.Generic.IComparer`1<T>)
+DA:20,0
+LF:3
+LH:0
+BRF:0
+BRH:0
+FNF:3
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/System/src/Collections/StringArrayComparer.cs
+FN:23,System.Boolean Wangkanai.Collections.StringArrayComparer::Equals(System.String[],System.String[])
+FNDA:0,System.Boolean Wangkanai.Collections.StringArrayComparer::Equals(System.String[],System.String[])
+DA:24,0
+DA:25,0
+DA:26,0
+DA:28,0
+DA:29,0
+DA:31,0
+DA:32,0
+DA:34,0
+DA:35,0
+DA:37,0
+DA:38,0
+DA:39,0
+DA:40,0
+DA:42,0
+DA:43,0
+DA:44,0
+DA:46,0
+DA:47,0
+BRDA:25,7,0,0
+BRDA:25,7,1,0
+BRDA:28,17,0,0
+BRDA:28,17,1,0
+BRDA:28,28,0,0
+BRDA:28,28,1,0
+BRDA:31,38,0,0
+BRDA:31,38,1,0
+BRDA:31,49,0,0
+BRDA:31,49,1,0
+BRDA:34,70,0,0
+BRDA:34,70,1,0
+BRDA:37,163,1,0
+BRDA:39,91,0,0
+BRDA:39,91,1,0
+BRDA:39,109,1,0
+BRDA:42,139,0,0
+BRDA:42,139,1,0
+BRDA:39,109,0,0
+BRDA:37,163,0,0
+FN:54,System.Int32 Wangkanai.Collections.StringArrayComparer::GetHashCode(System.String[])
+FNDA:0,System.Int32 Wangkanai.Collections.StringArrayComparer::GetHashCode(System.String[])
+DA:55,0
+DA:56,0
+DA:57,0
+DA:59,0
+DA:60,0
+DA:61,0
+DA:63,0
+DA:64,0
+BRDA:56,7,0,0
+BRDA:56,7,1,0
+BRDA:60,65,1,0
+BRDA:61,31,0,0
+BRDA:61,31,1,0
+BRDA:60,65,0,0
+FN:17,System.Void Wangkanai.Collections.StringArrayComparer::.ctor(System.StringComparer)
+FNDA:0,System.Void Wangkanai.Collections.StringArrayComparer::.ctor(System.StringComparer)
+DA:18,0
+DA:19,0
+DA:20,0
+DA:21,0
+FN:9,System.Void Wangkanai.Collections.StringArrayComparer::.cctor()
+FNDA:0,System.Void Wangkanai.Collections.StringArrayComparer::.cctor()
+DA:10,0
+DA:11,0
+LF:32
+LH:0
+BRF:26
+BRH:0
+FNF:4
+FNH:0
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/Validation/src/RequireDigitAttribute.cs
+FN:11,System.Boolean System.ComponentModel.DataAnnotations.RequireDigitAttribute::IsValid(System.Object)
+FNDA:7,System.Boolean System.ComponentModel.DataAnnotations.RequireDigitAttribute::IsValid(System.Object)
+DA:12,7
+DA:13,7
+DA:14,0
+DA:15,7
+DA:16,0
+DA:17,7
+BRDA:12,1,0,7
+BRDA:12,1,1,0
+BRDA:12,11,1,7
+BRDA:12,11,0,0
+FN:8,System.Void System.ComponentModel.DataAnnotations.RequireDigitAttribute::.ctor()
+FNDA:5,System.Void System.ComponentModel.DataAnnotations.RequireDigitAttribute::.ctor()
+DA:9,5
+LF:7
+LH:5
+BRF:4
+BRH:2
+FNF:2
+FNH:2
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/Validation/src/RequireFalseAttribute.cs
+FN:11,System.Boolean System.ComponentModel.DataAnnotations.RequireFalseAttribute::IsValid(System.Object)
+FNDA:2,System.Boolean System.ComponentModel.DataAnnotations.RequireFalseAttribute::IsValid(System.Object)
+DA:12,2
+DA:13,2
+DA:14,0
+DA:15,1
+DA:16,1
+DA:17,0
+DA:18,2
+BRDA:12,1,0,2
+BRDA:12,9,0,2
+BRDA:12,1,1,0
+BRDA:12,19,1,1
+BRDA:12,19,0,1
+BRDA:12,9,1,0
+FN:8,System.Void System.ComponentModel.DataAnnotations.RequireFalseAttribute::.ctor()
+FNDA:5,System.Void System.ComponentModel.DataAnnotations.RequireFalseAttribute::.ctor()
+DA:9,5
+LF:8
+LH:6
+BRF:6
+BRH:4
+FNF:2
+FNH:2
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/Validation/src/RequireLowercaseAttribute.cs
+FN:11,System.Boolean System.ComponentModel.DataAnnotations.RequireLowercaseAttribute::IsValid(System.Object)
+FNDA:5,System.Boolean System.ComponentModel.DataAnnotations.RequireLowercaseAttribute::IsValid(System.Object)
+DA:12,5
+DA:13,5
+DA:14,1
+DA:15,4
+DA:16,0
+DA:17,5
+BRDA:12,1,0,4
+BRDA:12,1,1,1
+BRDA:12,11,1,4
+BRDA:12,11,0,0
+FN:8,System.Void System.ComponentModel.DataAnnotations.RequireLowercaseAttribute::.ctor()
+FNDA:3,System.Void System.ComponentModel.DataAnnotations.RequireLowercaseAttribute::.ctor()
+DA:9,3
+LF:7
+LH:6
+BRF:4
+BRH:3
+FNF:2
+FNH:2
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/Validation/src/RequireNonAlphanumericAttribute.cs
+FN:11,System.Boolean System.ComponentModel.DataAnnotations.RequireNonAlphanumericAttribute::IsValid(System.Object)
+FNDA:5,System.Boolean System.ComponentModel.DataAnnotations.RequireNonAlphanumericAttribute::IsValid(System.Object)
+DA:12,5
+DA:13,5
+DA:14,0
+DA:15,5
+DA:16,0
+DA:17,5
+BRDA:12,1,0,5
+BRDA:12,1,1,0
+BRDA:12,11,1,5
+BRDA:12,11,0,0
+FN:8,System.Void System.ComponentModel.DataAnnotations.RequireNonAlphanumericAttribute::.ctor()
+FNDA:5,System.Void System.ComponentModel.DataAnnotations.RequireNonAlphanumericAttribute::.ctor()
+DA:9,5
+LF:7
+LH:5
+BRF:4
+BRH:2
+FNF:2
+FNH:2
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/Validation/src/RequireTrueAttribute.cs
+FN:11,System.Boolean System.ComponentModel.DataAnnotations.RequireTrueAttribute::IsValid(System.Object)
+FNDA:2,System.Boolean System.ComponentModel.DataAnnotations.RequireTrueAttribute::IsValid(System.Object)
+DA:12,2
+DA:13,2
+DA:14,0
+DA:15,2
+DA:16,0
+DA:17,2
+BRDA:12,1,0,2
+BRDA:12,9,0,2
+BRDA:12,1,1,0
+BRDA:12,9,1,0
+FN:8,System.Void System.ComponentModel.DataAnnotations.RequireTrueAttribute::.ctor()
+FNDA:5,System.Void System.ComponentModel.DataAnnotations.RequireTrueAttribute::.ctor()
+DA:9,5
+LF:7
+LH:5
+BRF:4
+BRH:2
+FNF:2
+FNH:2
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/Validation/src/RequireUniqueCharAttribute.cs
+FN:13,System.Int32 System.ComponentModel.DataAnnotations.RequireUniqueCharAttribute::get_Minimum()
+FNDA:48,System.Int32 System.ComponentModel.DataAnnotations.RequireUniqueCharAttribute::get_Minimum()
+DA:14,48
+FN:16,System.Boolean System.ComponentModel.DataAnnotations.RequireUniqueCharAttribute::IsValid(System.Object)
+FNDA:48,System.Boolean System.ComponentModel.DataAnnotations.RequireUniqueCharAttribute::IsValid(System.Object)
+DA:17,48
+DA:18,48
+DA:19,0
+DA:20,48
+DA:21,0
+DA:22,48
+BRDA:17,1,0,48
+BRDA:17,1,1,0
+BRDA:17,11,1,48
+BRDA:17,11,0,0
+FN:25,System.Collections.Generic.Dictionary`2<System.Char,System.Int32> System.ComponentModel.DataAnnotations.RequireUniqueCharAttribute::Unique(System.String)
+FNDA:48,System.Collections.Generic.Dictionary`2<System.Char,System.Int32> System.ComponentModel.DataAnnotations.RequireUniqueCharAttribute::Unique(System.String)
+DA:26,48
+DA:27,48
+DA:28,672
+DA:29,288
+DA:31,48
+DA:33,24576
+DA:34,12240
+DA:35,144
+DA:37,48
+BRDA:26,6,0,48
+BRDA:26,6,1,0
+BRDA:28,73,1,288
+BRDA:28,73,0,48
+BRDA:33,117,1,12240
+BRDA:34,91,0,144
+BRDA:34,91,1,12240
+BRDA:33,117,0,48
+FN:8,System.Void System.ComponentModel.DataAnnotations.RequireUniqueCharAttribute::.ctor(System.Int32)
+FNDA:21,System.Void System.ComponentModel.DataAnnotations.RequireUniqueCharAttribute::.ctor(System.Int32)
+DA:9,21
+DA:11,4
+DA:12,4
+LF:19
+LH:17
+BRF:12
+BRH:9
+FNF:4
+FNH:4
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/Validation/src/RequireUppercaseAttribute.cs
+FN:11,System.Boolean System.ComponentModel.DataAnnotations.RequireUppercaseAttribute::IsValid(System.Object)
+FNDA:3,System.Boolean System.ComponentModel.DataAnnotations.RequireUppercaseAttribute::IsValid(System.Object)
+DA:12,3
+DA:13,3
+DA:14,0
+DA:15,3
+DA:16,0
+DA:17,3
+BRDA:12,1,0,3
+BRDA:12,1,1,0
+BRDA:12,11,1,3
+BRDA:12,11,0,0
+FN:8,System.Void System.ComponentModel.DataAnnotations.RequireUppercaseAttribute::.ctor()
+FNDA:3,System.Void System.ComponentModel.DataAnnotations.RequireUppercaseAttribute::.ctor()
+DA:9,3
+LF:7
+LH:5
+BRF:4
+BRH:2
+FNF:2
+FNH:2
+end_of_record

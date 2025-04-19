@@ -1,0 +1,33 @@
+SF:/home/runner/work/wangkanai/wangkanai/Annotations/src/NegativeIntegerAttribute.cs
+FN:7,System.Void Wangkanai.NegativeIntegerAttribute::.ctor()
+FNDA:6,System.Void Wangkanai.NegativeIntegerAttribute::.ctor()
+DA:8,6
+LF:1
+LH:1
+BRF:0
+BRH:0
+FNF:1
+FNH:1
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/Annotations/src/PositiveIntegerAttribute.cs
+FN:7,System.Void Wangkanai.PositiveIntegerAttribute::.ctor()
+FNDA:6,System.Void Wangkanai.PositiveIntegerAttribute::.ctor()
+DA:8,6
+LF:1
+LH:1
+BRF:0
+BRH:0
+FNF:1
+FNH:1
+end_of_record
+SF:/home/runner/work/wangkanai/wangkanai/Annotations/src/ZeroIntegerAttribute.cs
+FN:7,System.Void Wangkanai.ZeroIntegerAttribute::.ctor()
+FNDA:3,System.Void Wangkanai.ZeroIntegerAttribute::.ctor()
+DA:8,3
+LF:1
+LH:1
+BRF:0
+BRH:0
+FNF:1
+FNH:1
+end_of_record
