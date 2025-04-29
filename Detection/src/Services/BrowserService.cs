@@ -49,6 +49,8 @@ public sealed class BrowserService(IUserAgentService userAgentService, IEngineSe
 
 		if (browser == Browser.Edge && agent.Contains("EdgA", StringComparison.OrdinalIgnoreCase))
 			return GetVersionOf(agent, "edgA".ToLowerInvariant());
+		if (browser == Browser.Edge && agent.Contains("EdgiOS", StringComparison.OrdinalIgnoreCase))
+			return GetVersionOf(agent, "EdgiOS".ToLowerInvariant());
 		if (browser == Browser.Edge && !agent.Contains("edge", StringComparison.Ordinal))
 			return GetVersionOf(agent, "edg");
 		if (browser == Browser.Edge)
@@ -203,6 +205,7 @@ public sealed class BrowserService(IUserAgentService userAgentService, IEngineSe
 	private static bool IsEdge(string agent)
 		=> agent.ContainsLower(Browser.Edge) ||
 		   agent.Contains("edgA", StringComparison.OrdinalIgnoreCase) ||
+		   agent.Contains("EdgiOS", StringComparison.OrdinalIgnoreCase) ||
 		   agent.Contains("win64", StringComparison.Ordinal) &&
 		   agent.Contains("edg", StringComparison.Ordinal);
 
