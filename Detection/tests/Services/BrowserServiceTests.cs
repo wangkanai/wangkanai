@@ -89,6 +89,7 @@ public sealed class BrowserServiceTests
 	[InlineData("Mozilla/5.0 (Windows NT x.y; rv:10.0) Gecko/20100101 Firefox/10.0")]
 	[InlineData("Mozilla/5.0 (Windows NT 5.1; rv:11.0) Gecko Firefox/11.0 (via ggpht.com GoogleImageProxy)")]
 	[InlineData("Mozilla/5.0 (Linux arm) Gecko/20110318 Firefox/4.0b13pre Fennec/4.0")]
+	[InlineData("Mozilla/5.0 (iPhone; CPU iPhone OS 18_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) FxiOS/138.0  Mobile/15E148 Safari/605.1.15")]
 	public void Firefox(string agent)
 	{
 		var resolver = MockService.BrowserService(agent);
@@ -104,6 +105,7 @@ public sealed class BrowserServiceTests
 	[InlineData("85.0.564.51", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36 Edg/85.0.564.51")]
 	[InlineData("96.0.1054.53", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, likeGecko) Chrome/96.0.4664.93 Safari/537.36 Edg/96.0.1054.53")]
 	[InlineData("120.0.0.0","Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36 EdgA/120.0.0.0")]
+	[InlineData("135.0.3179.98", "Mozilla/5.0 (iPhone; CPU iPhone OS 18_3_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) EdgiOS/135.0.3179.98 Version/18.0 Mobile/15E148 Safari/604.1")]
 	public void Edge(string version, string agent)
 	{
 		var resolver = MockService.BrowserService(agent);
