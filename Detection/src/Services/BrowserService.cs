@@ -34,10 +34,10 @@ public sealed class BrowserService(IUserAgentService userAgentService, IEngineSe
 			return Browser.InternetExplorer;
 		if (IsGoogleSearchApp(agent))
 			return Browser.GoogleSearchApp;
+		if (IsFirefox(agent))
+			return Browser.Firefox;
 		if (agent.ContainsLower(Browser.Safari))
 			return Browser.Safari;
-		if (agent.ContainsLower(Browser.Firefox))
-			return Browser.Firefox;
 
 		return Browser.Others;
 	}
@@ -224,4 +224,8 @@ public sealed class BrowserService(IUserAgentService userAgentService, IEngineSe
 
 	private static bool IsSamsungInternetBrowser(string agent)
 		=> agent.Contains("SamsungBrowser", StringComparison.OrdinalIgnoreCase);
+
+	private static bool IsFirefox(string agent)
+		=> agent.ContainsLower(Browser.Firefox) ||
+		   agent.Contains("FxiOS", StringComparison.OrdinalIgnoreCase);
 }
