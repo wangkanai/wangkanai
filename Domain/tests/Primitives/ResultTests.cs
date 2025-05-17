@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
 
 using Wangkanai.Domain.Primitives;
 
@@ -6,6 +6,9 @@ namespace Wangkanai.Domain.Tests.Primitives;
 
 public class ResultTests
 {
+	// Helper class to test protected constructor
+	private class TestResult(bool isSuccess, Error error) : Result(isSuccess, error);
+
 	#region Result Base Class Tests
 
 	[Fact]
@@ -191,7 +194,4 @@ public class ResultTests
 	}
 
 	#endregion
-
-	// Helper class to test protected constructor
-	private class TestResult(bool isSuccess, Error error) : Result(isSuccess, error);
 }
