@@ -81,22 +81,21 @@ public class Result
 /// <summary>
 /// Represents the result of some operation, with status information and possibly a value and an error.
 /// </summary>
-/// <typeparam name="TValue">The result value type.</typeparam>
+/// <typeparam name="T">The result value type.</typeparam>
 /// <param name="value">The result value.</param>
 /// <param name="isSuccess">The flag indicating if the result is successful.</param>
 /// <param name="error"></param>
-public class Result<TValue>(TValue value, bool isSuccess, Error error)
-	: Result(isSuccess, error)
+public class Result<T>(T value, bool isSuccess, Error error) : Result(isSuccess, error)
 {
-	/// <summary>
-	/// Gets the result value if the result is successful, otherwise throws an exception.
-	/// </summary>
+	/// <summary>Gets the result value if the result is successful, otherwise throws an exception.</summary>
 	/// <returns>The result value if the result is successful.</returns>
 	/// <exception cref="InvalidOperationException"> when <see cref="Result.IsFailure"/> is true.</exception>
-	public TValue Value => IsSuccess
-		                       ? value
-		                       : throw new InvalidOperationException("The value of a failure result can not be accessed.");
+	public T Value
+		=> IsSuccess ? value : throw new InvalidOperationException("The value of a failure result cannot be accessed.");
 
-	public static implicit operator Result<TValue>(TValue value)
+	/// <summary>Defines a custom operator for this class or struct.</summary>
+	/// <param name="value">The value comparing the result</param>
+	/// <returns>The result of applying the operator to the specified operand.</returns>
+	public static implicit operator Result<T>(T value)
 		=> Success(value);
 }
