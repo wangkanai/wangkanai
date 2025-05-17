@@ -15,6 +15,8 @@ public sealed class Error(string code, string message) : ValueObject
 	/// <summary>Gets the error message.</summary>
 	public string Message { get; } = message;
 
+	/// <summary>Implicitly converts an <see cref="Error"/> to a string.</summary>
+	/// <param name="error"></param>
 	public static implicit operator string(Error error)
 		=> error?.Code ?? string.Empty;
 
