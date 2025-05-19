@@ -5,8 +5,8 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\Extensions\Internal\src\Wangkanai.Extensions.Internal.csproj" />
-        <ProjectReference Include="..\..\System\src\Wangkanai.System.csproj" />
+        <ProjectReference Include="$(RepoRoot)\Extensions\Internal\src\Wangkanai.Extensions.Internal.csproj" />
+        <ProjectReference Include="$(RepoRoot)\System\src\Wangkanai.System.csproj" />
     </ItemGroup>
 
     <ItemGroup>
