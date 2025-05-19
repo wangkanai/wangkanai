@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <ItemGroup>
-        <ProjectReference Include="..\..\Testing\src\Wangkanai.Testing.csproj" />
+        <ProjectReference Include="$(RepoRoot)\Testing\src\Wangkanai.Testing.csproj" />
         <ProjectReference Include="..\src\Wangkanai.Webmaster.csproj" />
     </ItemGroup>
 

@@ -15,9 +15,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\..\Cryptography\src\Wangkanai.Cryptography.csproj" />
-		<ProjectReference Include="..\..\..\System\src\Wangkanai.System.csproj" />
-		<ProjectReference Include="..\..\..\Webserver\src\Wangkanai.Webserver.csproj" />
+		<ProjectReference Include="$(RepoRoot)\Cryptography\src\Wangkanai.Cryptography.csproj" />
+		<ProjectReference Include="$(RepoRoot)\System\src\Wangkanai.System.csproj" />
+		<ProjectReference Include="$(RepoRoot)\Webserver\src\Wangkanai.Webserver.csproj" />
 		<ProjectReference Include="..\Domain\Wangkanai.Federation.Domain.csproj" />
 	</ItemGroup>
 

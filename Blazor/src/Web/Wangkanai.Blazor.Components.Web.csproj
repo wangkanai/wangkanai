@@ -1,34 +1,34 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
 
-    <PropertyGroup>
-        <IsPackable>false</IsPackable>
+	<PropertyGroup>
+		<IsPackable>false</IsPackable>
 		<RootNamespace>Wangkanai.Blazor</RootNamespace>
-    </PropertyGroup>
+	</PropertyGroup>
 
-    <ItemGroup>
-        <SupportedPlatform Include="browser"/>
-    </ItemGroup>
+	<ItemGroup>
+		<SupportedPlatform Include="browser" />
+	</ItemGroup>
 
-    <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.Components.Web" />
-    </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" />
+	</ItemGroup>
 
-    <ItemGroup>
-        <ProjectReference Include="..\..\..\Validation\src\Wangkanai.Validation.csproj"/>
-        <ProjectReference Include="..\Components\Wangkanai.Blazor.Components.csproj" PrivateAssets="all"/>
-    </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="$(RepoRoot)\Validation\src\Wangkanai.Validation.csproj" />
+		<ProjectReference Include="..\Components\Wangkanai.Blazor.Components.csproj" PrivateAssets="all" />
+	</ItemGroup>
 
-    <ItemGroup>
-        <Content Remove="wwwroot\**"/>
-        <Content Include="wwwroot\**"/>
-    </ItemGroup>
+	<ItemGroup>
+		<Content Remove="wwwroot\**" />
+		<Content Include="wwwroot\**" />
+	</ItemGroup>
 
-    <ItemGroup>
-        <Content Remove="package.json;package-lock.json"/>
-        <None Include="package.json">
-            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-            <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-        </None>
-    </ItemGroup>
+	<ItemGroup>
+		<Content Remove="package.json;package-lock.json" />
+		<None Include="package.json">
+			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
 
 </Project>

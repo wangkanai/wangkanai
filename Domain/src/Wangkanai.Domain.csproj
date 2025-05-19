@@ -6,6 +6,6 @@
 		<PackageReference Include="Microsoft.Extensions.Identity.Stores" />
 	</ItemGroup>
 	<ItemGroup>
-		<ProjectReference Include="..\..\System\src\Wangkanai.System.csproj" />
+		<ProjectReference Include="$(RepoRoot)\System\src\Wangkanai.System.csproj" />
 	</ItemGroup>
 </Project>

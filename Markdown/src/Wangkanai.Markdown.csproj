@@ -5,8 +5,8 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\Detection\src\Wangkanai.Detection.csproj" />
-        <ProjectReference Include="..\..\Mvc\src\Wangkanai.Mvc.csproj" />
+        <ProjectReference Include="$(RepoRoot)\Detection\src\Wangkanai.Detection.csproj" />
+        <ProjectReference Include="$(RepoRoot)\Mvc\src\Wangkanai.Mvc.csproj" />
     </ItemGroup>
 
     <ItemGroup>

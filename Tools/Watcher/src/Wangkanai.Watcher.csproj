@@ -1,5 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
 	<ItemGroup>
-		<ProjectReference Include="..\..\..\System\src\Wangkanai.System.csproj" />
+		<ProjectReference Include="$(RepoRoot)\System\src\Wangkanai.System.csproj" />
 	</ItemGroup>
 </Project>

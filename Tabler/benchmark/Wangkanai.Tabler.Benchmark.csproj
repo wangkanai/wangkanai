@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <ItemGroup>
-        <ProjectReference Include="..\..\Blazor\src\Components\Wangkanai.Blazor.Components.csproj" />
+        <ProjectReference Include="$(RepoRoot)\Blazor\src\Components\Wangkanai.Blazor.Components.csproj" />
         <ProjectReference Include="..\src\Core\Wangkanai.Tabler.csproj" />
     </ItemGroup>
 

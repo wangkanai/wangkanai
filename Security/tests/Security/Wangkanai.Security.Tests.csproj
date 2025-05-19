@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <ItemGroup>
-        <ProjectReference Include="..\..\src\Authentication\Wangkanai.Security.Authentication.csproj"/>
-        <ProjectReference Include="..\..\src\Authorization\Wangkanai.Security.Authorization.csproj"/>
+        <ProjectReference Include="$(RepoRoot)\src\Authentication\Wangkanai.Security.Authentication.csproj"/>
+        <ProjectReference Include="$(RepoRoot)\src\Authorization\Wangkanai.Security.Authorization.csproj"/>
     </ItemGroup>
 </Project>

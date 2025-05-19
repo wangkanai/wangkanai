@@ -3,7 +3,7 @@
 		<FrameworkReference Include="Microsoft.AspNetCore.App" />
 	</ItemGroup>
 	<ItemGroup>
-		<ProjectReference Include="..\..\Hosting\src\Wangkanai.Hosting.csproj" />
-		<ProjectReference Include="..\..\System\src\Wangkanai.System.csproj" />
+		<ProjectReference Include="$(RepoRoot)\Hosting\src\Wangkanai.Hosting.csproj" />
+		<ProjectReference Include="$(RepoRoot)\System\src\Wangkanai.System.csproj" />
 	</ItemGroup>
 </Project>

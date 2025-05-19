@@ -1,20 +1,20 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
+	<PropertyGroup>
 		<RootNamespace>Wangkanai.Blazor</RootNamespace>
-        <IsTrimmable>true</IsTrimmable>
-        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-        <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
-        <IsPackable>false</IsPackable>
-    </PropertyGroup>
+		<IsTrimmable>true</IsTrimmable>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+		<IsPackable>false</IsPackable>
+	</PropertyGroup>
 
-    <ItemGroup>
-        <Compile Include="$(SharedSourceRoot)QueryStringEnumerable.cs" LinkBase="Shared" />
-        <Compile Include="$(SharedSourceRoot)LinkerFlags.cs" LinkBase="Shared" />
-    </ItemGroup>
+	<ItemGroup>
+		<Compile Include="$(SharedSourceRoot)QueryStringEnumerable.cs" LinkBase="Shared" />
+		<Compile Include="$(SharedSourceRoot)LinkerFlags.cs" LinkBase="Shared" />
+	</ItemGroup>
 
-    <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.Components" />
-    </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Components" />
+	</ItemGroup>
 
 </Project>
