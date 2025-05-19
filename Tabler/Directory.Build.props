@@ -2,7 +2,7 @@
 	<Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
 
 	<PropertyGroup>
-		<VersionPrefix>4.1.0</VersionPrefix>
+		<VersionPrefix>4.2.0</VersionPrefix>
 		<Title>Wangkanai Tabler</Title>
 		<PackageTags>aspnetcore;blazor;tabler;</PackageTags>
 		<Description>A robust integration of the Tabler CSS framework into Blazor. Crafted for developing responsive, mobile-first, and desktop-first web applications. Enhance productivity, reduce development time, and ensure your applications look stunning on any device. Power up your Blazor projects with Tabler</Description>
