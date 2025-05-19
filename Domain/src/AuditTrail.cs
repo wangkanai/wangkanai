@@ -4,9 +4,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Wangkanai.Domain;
 
-/// <summary>
-/// Represents an audit trail record for tracking entity changes in the system.
-/// </summary>
+/// <summary>Represents an audit trail record for tracking entity changes in the system.</summary>
 /// <typeparam name="TKey">The type of the unique identifier for the audit trail.</typeparam>
 /// <typeparam name="TUserType">The type of the user associated with the audit action.</typeparam>
 /// <typeparam name="TUserKey">The type of the user's unique identifier.</typeparam>
