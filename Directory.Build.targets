@@ -20,8 +20,8 @@
 	</ItemGroup>
 
 	<!-- GitHub Source Link -->
-	<ItemGroup Condition="$(Configuration) == 'DEBUG'">
-		<PackageReference Include="Microsoft.SourceLink.GitHub"/>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="all"/>
 	</ItemGroup>
 	<!-- xUnit Tests-->
 	<ItemGroup Condition="$(MSBuildProjectName.Contains('Tests'))">
