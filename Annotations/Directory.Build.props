@@ -2,7 +2,7 @@
 	<Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
 
 	<PropertyGroup>
-		<VersionPrefix>0.3.0</VersionPrefix>
+		<VersionPrefix>0.4.0</VersionPrefix>
 		<Title>Wangkanai Annotations</Title>
 		<PackageTags>csharp;annotations;attribute;</PackageTags>
 		<Description>Minimize false positive warnings, clearly specify purity and nullability in your code, handle implicit member usages, support unique API semantics in .NET, and enhance the precision of code inspections.</Description>
