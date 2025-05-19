@@ -1,6 +1,6 @@
 param(
     [Parameter(mandatory=$false)]
-    [bool]$dryrun=$false,
+    [bool]$update=$false,
     [Parameter(mandatory=$false)]
     [string]$certicate="Open Source Developer, Sarin Na Wangkanai"
 )
@@ -30,6 +30,7 @@ $dirs=[ordered]@{
 #    22="Tabler";
 #    23="Solver";
 #    24="Microservice";
+#    25="Nation";
 }
 
 $env:OneDriveConsumer+"\powershell-env.ps1" | out-null
@@ -92,9 +93,9 @@ for ($i=0; $i -lt $dirs.count; $i++) {
     Pop-Location;
 }
 
-if ($dryrun)
+if ($update)
 {
-    write-host "Dryrun skip version update" -ForegroundColor Yellow;
+    write-host "Skip version update" -ForegroundColor Yellow;
     exit;
 }
 
