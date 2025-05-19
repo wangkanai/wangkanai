@@ -1,7 +1,5 @@
 // Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
 
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 
 using Wangkanai.Domain.Primitives;
 
@@ -45,7 +43,7 @@ public class AuditTrailStore<TContext, TKey, TUserType, TUserKey>(TContext conte
 		}
 		catch (DbUpdateConcurrencyException ex)
 		{
-			var error = new Error("ConcurrencyError", ex.Message);
+			var error = new Error(ErrorCodes.Concurrency, ex.Message);
 			return new Result<AuditTrail<TKey, TUserType, TUserKey>>(auditTrail, false, error);
 		}
 
