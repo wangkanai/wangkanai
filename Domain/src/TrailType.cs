@@ -2,7 +2,7 @@
 
 namespace Wangkanai.Domain;
 
-/// <summary> Specifies the type of operation recorded in an audit trail.</summary>
+/// <summary>Specifies the type of operation recorded in an audit trail.</summary>
 public enum TrailType : byte
 {
 	None   = 0,
