@@ -34,10 +34,10 @@ public sealed class BrowserService(IUserAgentService userAgentService, IEngineSe
 			return Browser.InternetExplorer;
 		if (IsGoogleSearchApp(agent))
 			return Browser.GoogleSearchApp;
+		if (IsFirefox(agent))
+			return Browser.Firefox;
 		if (agent.ContainsLower(Browser.Safari))
 			return Browser.Safari;
-		if (agent.ContainsLower(Browser.Firefox))
-			return Browser.Firefox;
 
 		return Browser.Others;
 	}
@@ -49,6 +49,8 @@ public sealed class BrowserService(IUserAgentService userAgentService, IEngineSe
 
 		if (browser == Browser.Edge && agent.Contains("EdgA", StringComparison.OrdinalIgnoreCase))
 			return GetVersionOf(agent, "edgA".ToLowerInvariant());
+		if (browser == Browser.Edge && agent.Contains("EdgiOS", StringComparison.OrdinalIgnoreCase))
+			return GetVersionOf(agent, "EdgiOS".ToLowerInvariant());
 		if (browser == Browser.Edge && !agent.Contains("edge", StringComparison.Ordinal))
 			return GetVersionOf(agent, "edg");
 		if (browser == Browser.Edge)
@@ -203,6 +205,7 @@ public sealed class BrowserService(IUserAgentService userAgentService, IEngineSe
 	private static bool IsEdge(string agent)
 		=> agent.ContainsLower(Browser.Edge) ||
 		   agent.Contains("edgA", StringComparison.OrdinalIgnoreCase) ||
+		   agent.Contains("EdgiOS", StringComparison.OrdinalIgnoreCase) ||
 		   agent.Contains("win64", StringComparison.Ordinal) &&
 		   agent.Contains("edg", StringComparison.Ordinal);
 
@@ -224,4 +227,8 @@ public sealed class BrowserService(IUserAgentService userAgentService, IEngineSe
 
 	private static bool IsSamsungInternetBrowser(string agent)
 		=> agent.Contains("SamsungBrowser", StringComparison.OrdinalIgnoreCase);
+
+	private static bool IsFirefox(string agent)
+		=> agent.ContainsLower(Browser.Firefox) ||
+		   agent.Contains("FxiOS", StringComparison.OrdinalIgnoreCase);
 }
