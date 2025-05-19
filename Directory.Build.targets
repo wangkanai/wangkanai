@@ -20,7 +20,7 @@
 	</ItemGroup>
 
 	<!-- GitHub Source Link -->
-	<ItemGroup>
+	<ItemGroup Condition="$(Configuration) == 'DEBUG'">
 		<PackageReference Include="Microsoft.SourceLink.GitHub"/>
 	</ItemGroup>
 	<!-- xUnit Tests-->
