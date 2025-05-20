@@ -1,6 +1,6 @@
 param(
     [Parameter(mandatory=$false)]
-    [bool]$update=$false,
+    [bool]$publish=$false,
     [Parameter(mandatory=$false)]
     [string]$name="Open Source Developer, Sarin Na Wangkanai"
 )
@@ -39,7 +39,7 @@ get-childitem .\ -directory | where { $_.Name -ne 'signed' } | where { $_.Name -
     pop-location
 }
 
-if (!$update)
+if (!$publish)
 {
     write-host "Skip update: Extensions" -ForegroundColor Yellow;
     exit;
