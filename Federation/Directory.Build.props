@@ -22,7 +22,7 @@
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(MSBuildProjectName)' != 'Wangkanai.Federation.Benchmark'">
-		<Compile Include="..\..\..\Shared\src\Tracing.cs">
+		<Compile Include="$(RepoRoot)\Shared\src\Tracing.cs">
 			<Link>Tracing.cs</Link>
 		</Compile>
 	</ItemGroup>
