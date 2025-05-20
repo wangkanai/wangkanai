@@ -26,7 +26,7 @@ dotnet nuget sign .\artifacts\*.snupkg -v normal --timestamper http://timestamp.
 
 if (!$update)
 {
-    write-host "Dryrun: Blazor" -ForegroundColor Yellow;
+    write-host "Skip update: Blazor" -ForegroundColor Yellow;
     exit;
 }
 dotnet nuget push .\signed\*.nupkg --skip-duplicate -k $env:NUGET_API_KEY  -s https://api.nuget.org/v3/index.json

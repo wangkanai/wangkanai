@@ -25,7 +25,7 @@ dotnet nuget sign .\artifacts\*.snupkg -v normal --timestamper http://timestamp.
 
 if (!$update)
 {
-    write-host "Dryrun: Detection" -ForegroundColor Yellow;
+    write-host "Skip update: Detection" -ForegroundColor Yellow;
     exit;
 }
 dotnet nuget push .\signed\*.nupkg --skip-duplicate -k $env:NUGET_API_KEY  -s https://api.nuget.org/v3/index.json
