@@ -2,6 +2,8 @@ param(
     [Parameter(mandatory=$false)]
     [bool]$update=$false,
     [Parameter(mandatory=$false)]
+    [bool]$skip=$false,
+    [Parameter(mandatory=$false)]
     [string]$certicate="Open Source Developer, Sarin Na Wangkanai"
 )
 
@@ -93,7 +95,7 @@ for ($i=0; $i -lt $dirs.count; $i++) {
     Pop-Location;
 }
 
-if (!$update)
+if ($skip)
 {
     write-host "Skip version update" -ForegroundColor Yellow;
     exit;
