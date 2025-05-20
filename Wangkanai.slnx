@@ -76,9 +76,6 @@
     <File Path="Detection\sign.ps1" />
     <File Path="Detection\build.ps1" />
   </Folder>
-  <Folder Name="/Detection/samples/">
-    <Project Path="Detection\samples\Main\Host.Main.csproj" />
-  </Folder>
   <Folder Name="/Domain/">
     <Project Path="Domain\benchmark\Wangkanai.Domain.Benchmark.csproj" />
     <Project Path="Domain\src\Wangkanai.Domain.csproj" />
@@ -170,9 +167,6 @@
     <File Path="Markdown\sign.ps1" />
     <File Path="Markdown\build.ps1" />
   </Folder>
-  <Folder Name="/Markdown/samples/">
-    <Project Path="Markdown\samples\Markdown\Markdown.csproj" />
-  </Folder>
   <Folder Name="/Microservice/">
     <Project Path="Microservice\benchmark\Wangkanai.Microservice.Benchmark.csproj" Type="Classic C#" />
     <Project Path="Microservice\src\Wangkanai.Microservice.csproj" Type="Classic C#" />
@@ -209,9 +203,6 @@
     <File Path="Responsive\README.md" />
     <File Path="Responsive\sign.ps1" />
     <File Path="Responsive\build.ps1" />
-  </Folder>
-  <Folder Name="/Responsive/samples/">
-    <Project Path="Responsive\samples\Main\Host.Main.csproj" />
   </Folder>
   <Folder Name="/Security/">
     <Project Path="Security\benchmark\Wangkanai.Security.Benchmark.csproj" />
@@ -297,10 +288,6 @@
     <File Path="Validation\build.ps1" />
   </Folder>
   <Folder Name="/Web/">
-    <Project Path="Web\old\Wangkanai.Web.Old.csproj" Type="Classic C#" />
-    <Project Path="Web\src\Client\Wangkanai.Web.Client.csproj" Type="Classic C#" />
-    <Project Path="Web\src\Server\Wangkanai.Web.csproj" Type="Classic C#" />
-    <Project Path="Web\tests\Wangkanai.Web.Tests.csproj" />
     <File Path="Web\Directory.Build.props" />
     <File Path="Web\README.md" />
   </Folder>
@@ -313,9 +300,6 @@
     <File Path="Webmaster\README.md" />
     <File Path="Webmaster\sign.ps1" />
     <File Path="Webmaster\build.ps1" />
-  </Folder>
-  <Folder Name="/Webmaster/samples/">
-    <Project Path="Webmaster\samples\Main\Host.Main.csproj" />
   </Folder>
   <Folder Name="/Webserver/">
     <Project Path="Webserver\benchmark\Wangkanai.WebServer.Benchmark.csproj" />
