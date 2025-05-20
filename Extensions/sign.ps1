@@ -1,6 +1,6 @@
 param(
     [Parameter(mandatory=$false)]
-    [bool]$dryrun=$false,
+    [bool]$update=$false,
     [Parameter(mandatory=$false)]
     [string]$name="Open Source Developer, Sarin Na Wangkanai"
 )
@@ -39,9 +39,9 @@ get-childitem .\ -directory | where { $_.Name -ne 'signed' } | where { $_.Name -
     pop-location
 }
 
-if ($dryrun)
+if (!$update)
 {
-    write-host "Dryrun: Extensions" -ForegroundColor Yellow;
+    write-host "Skip update: Extensions" -ForegroundColor Yellow;
     exit;
 }
 dotnet nuget push .\signed\*.nupkg --skip-duplicate -k $env:NUGET_API_KEY  -s https://api.nuget.org/v3/index.json
