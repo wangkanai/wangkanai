@@ -1,8 +1,0 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
-
-	<ItemGroup>
-		<ProjectReference Include="..\Host.BlazorAuto.Client\Host.BlazorAuto.Client.csproj"/>
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server"/>
-	</ItemGroup>
-
-</Project>

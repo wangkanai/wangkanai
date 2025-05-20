@@ -77,7 +77,7 @@ for ($i=0; $i -lt $dirs.count; $i++) {
         if ($latest -ne $version)
         {
             Write-Host $latest " < " $version " Update" -ForegroundColor Green;
-            .\sign.ps1 -dryrun $dryrun -name $certicate
+            .\sign.ps1 -update $update -name $certicate
         }
         else
         {
@@ -87,13 +87,13 @@ for ($i=0; $i -lt $dirs.count; $i++) {
     catch
     {
         Write-Host "New " $latest -ForegroundColor Blue;
-        .\sign.ps1 -dryrun $dryrun -name $certicate
+        .\sign.ps1 -update $update -name $certicate
     }
 
     Pop-Location;
 }
 
-if ($update)
+if (!$update)
 {
     write-host "Skip version update" -ForegroundColor Yellow;
     exit;

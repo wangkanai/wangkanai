@@ -56,13 +56,6 @@
     <File Path="Blazor\sign.ps1" />
     <File Path="Blazor\build.ps1" />
   </Folder>
-  <Folder Name="/Blazor/samples/">
-    <Project Path="Blazor\samples\blazor-auto\Host.BlazorAuto.Client\Host.BlazorAuto.Client.csproj" />
-    <Project Path="Blazor\samples\blazor-auto\Host.BlazorAuto\Host.BlazorAuto.csproj" />
-    <Project Path="Blazor\samples\blazor-wasm\Host.BlazorWasm.csproj" />
-    <Project Path="Blazor\samples\server\Host.BlazorServer.csproj" />
-    <File Path="Blazor\samples\README.md" />
-  </Folder>
   <Folder Name="/Cryptography/">
     <Project Path="Cryptography\benchmark\Wangkanai.Cryptography.Benchmark.csproj" />
     <Project Path="Cryptography\src\Wangkanai.Cryptography.csproj" />
@@ -82,9 +75,6 @@
     <File Path="Detection\README.md" />
     <File Path="Detection\sign.ps1" />
     <File Path="Detection\build.ps1" />
-  </Folder>
-  <Folder Name="/Detection/samples/">
-    <Project Path="Detection\samples\Main\Host.Main.csproj" />
   </Folder>
   <Folder Name="/Domain/">
     <Project Path="Domain\benchmark\Wangkanai.Domain.Benchmark.csproj" />
@@ -144,13 +134,6 @@
     <File Path="Federation\sign.ps1" />
     <File Path="Federation\build.ps1" />
   </Folder>
-  <Folder Name="/Federation/hosts/">
-    <Project Path="Federation\hosts\AspNetIdentity\Host.AspNetIdentity.csproj" />
-    <Project Path="Federation\hosts\EntityFramework\Host.EntityFramework.csproj" />
-    <Project Path="Federation\hosts\Main\Host.Main.csproj" />
-    <File Path="Federation\hosts\.gitignore" />
-    <File Path="Federation\hosts\Directory.Build.props" />
-  </Folder>
   <Folder Name="/Federation/tests/">
     <Project Path="Federation\tests\Domain\Wangkanai.Federation.Domain.Tests.csproj" />
     <Project Path="Federation\tests\Federation\Wangkanai.Federation.Tests.csproj" />
@@ -183,9 +166,6 @@
     <File Path="Markdown\README.md" />
     <File Path="Markdown\sign.ps1" />
     <File Path="Markdown\build.ps1" />
-  </Folder>
-  <Folder Name="/Markdown/samples/">
-    <Project Path="Markdown\samples\Markdown\Markdown.csproj" />
   </Folder>
   <Folder Name="/Microservice/">
     <Project Path="Microservice\benchmark\Wangkanai.Microservice.Benchmark.csproj" Type="Classic C#" />
@@ -224,9 +204,6 @@
     <File Path="Responsive\sign.ps1" />
     <File Path="Responsive\build.ps1" />
   </Folder>
-  <Folder Name="/Responsive/samples/">
-    <Project Path="Responsive\samples\Main\Host.Main.csproj" />
-  </Folder>
   <Folder Name="/Security/">
     <Project Path="Security\benchmark\Wangkanai.Security.Benchmark.csproj" />
     <Project Path="Security\src\Authentication\Wangkanai.Security.Authentication.csproj" />
@@ -238,9 +215,6 @@
     <File Path="Security\Security.slnf" />
     <File Path="Security\sign.ps1" />
     <File Path="Security\build.ps1" />
-  </Folder>
-  <Folder Name="/Security/samples/">
-    <Project Path="Security\samples\Razor\Wangkanai.Security.RazorApp.csproj" />
   </Folder>
   <Folder Name="/Shared/">
     <Project Path="Shared\benchmark\Wangkanai.Shared.Benchmark.csproj" />
@@ -276,13 +250,6 @@
     <File Path="Tabler\README.md" />
     <File Path="Tabler\sign.ps1" />
     <File Path="Tabler\build.ps1" />
-  </Folder>
-  <Folder Name="/Tabler/samples/">
-    <Project Path="Tabler\samples\Client\Host.Main.Client.csproj" />
-    <Project Path="Tabler\samples\Old\Host.Old.csproj" />
-    <Project Path="Tabler\samples\Server\Host.Main.csproj" />
-    <File Path="Tabler\samples\.editorconfig" />
-    <File Path="Tabler\samples\README.md" />
   </Folder>
   <Folder Name="/Testing/">
     <Project Path="Testing\benchmark\Wangkanai.Testing.Benchmark.csproj" />
@@ -321,10 +288,6 @@
     <File Path="Validation\build.ps1" />
   </Folder>
   <Folder Name="/Web/">
-    <Project Path="Web\old\Wangkanai.Web.Old.csproj" Type="Classic C#" />
-    <Project Path="Web\src\Client\Wangkanai.Web.Client.csproj" Type="Classic C#" />
-    <Project Path="Web\src\Server\Wangkanai.Web.csproj" Type="Classic C#" />
-    <Project Path="Web\tests\Wangkanai.Web.Tests.csproj" />
     <File Path="Web\Directory.Build.props" />
     <File Path="Web\README.md" />
   </Folder>
@@ -337,9 +300,6 @@
     <File Path="Webmaster\README.md" />
     <File Path="Webmaster\sign.ps1" />
     <File Path="Webmaster\build.ps1" />
-  </Folder>
-  <Folder Name="/Webmaster/samples/">
-    <Project Path="Webmaster\samples\Main\Host.Main.csproj" />
   </Folder>
   <Folder Name="/Webserver/">
     <Project Path="Webserver\benchmark\Wangkanai.WebServer.Benchmark.csproj" />

@@ -1,6 +1,6 @@
 param(
     [Parameter(mandatory=$false)]
-    [bool]$dryrun=$false,
+    [bool]$update=$false,
     [Parameter(mandatory=$false)]
     [string]$name="Open Source Developer, Sarin Na Wangkanai"
 )
@@ -23,9 +23,9 @@ dotnet pack .\src\ -c Release -tl -o .\artifacts --include-symbols -p:SymbolPack
 dotnet nuget sign .\artifacts\*.nupkg  -v normal --timestamper http://timestamp.digicert.com --certificate-subject-name $name -o .\signed
 dotnet nuget sign .\artifacts\*.snupkg -v normal --timestamper http://timestamp.digicert.com --certificate-subject-name $name -o .\signed
 
-if ($dryrun)
+if (!$update)
 {
-    write-host "Dryrun: Validation" -ForegroundColor Yellow;
+    write-host "Skip update: Validation" -ForegroundColor Yellow;
     exit;
 }
 dotnet nuget push .\signed\*.nupkg --skip-duplicate -k $env:NUGET_API_KEY  -s https://api.nuget.org/v3/index.json
