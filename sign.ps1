@@ -1,6 +1,6 @@
 param(
     [Parameter(mandatory=$false)]
-    [bool]$update=$false,
+    [bool]$publish=$true,
     [Parameter(mandatory=$false)]
     [bool]$skip=$false,
     [Parameter(mandatory=$false)]
@@ -79,7 +79,7 @@ for ($i=0; $i -lt $dirs.count; $i++) {
         if ($latest -ne $version)
         {
             Write-Host $latest " < " $version " Update" -ForegroundColor Green;
-            .\sign.ps1 -update $update -name $certicate
+            .\sign.ps1 -publish $publish -name $certicate
         }
         else
         {
@@ -89,7 +89,7 @@ for ($i=0; $i -lt $dirs.count; $i++) {
     catch
     {
         Write-Host "New " $latest -ForegroundColor Blue;
-        .\sign.ps1 -update $update -name $certicate
+        .\sign.ps1 -publish $publish -name $certicate
     }
 
     Pop-Location;
