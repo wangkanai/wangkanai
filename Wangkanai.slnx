@@ -56,13 +56,6 @@
     <File Path="Blazor\sign.ps1" />
     <File Path="Blazor\build.ps1" />
   </Folder>
-  <Folder Name="/Blazor/samples/">
-    <Project Path="Blazor\samples\blazor-auto\Host.BlazorAuto.Client\Host.BlazorAuto.Client.csproj" />
-    <Project Path="Blazor\samples\blazor-auto\Host.BlazorAuto\Host.BlazorAuto.csproj" />
-    <Project Path="Blazor\samples\blazor-wasm\Host.BlazorWasm.csproj" />
-    <Project Path="Blazor\samples\server\Host.BlazorServer.csproj" />
-    <File Path="Blazor\samples\README.md" />
-  </Folder>
   <Folder Name="/Cryptography/">
     <Project Path="Cryptography\benchmark\Wangkanai.Cryptography.Benchmark.csproj" />
     <Project Path="Cryptography\src\Wangkanai.Cryptography.csproj" />
@@ -143,13 +136,6 @@
     <File Path="Federation\README.md" />
     <File Path="Federation\sign.ps1" />
     <File Path="Federation\build.ps1" />
-  </Folder>
-  <Folder Name="/Federation/hosts/">
-    <Project Path="Federation\hosts\AspNetIdentity\Host.AspNetIdentity.csproj" />
-    <Project Path="Federation\hosts\EntityFramework\Host.EntityFramework.csproj" />
-    <Project Path="Federation\hosts\Main\Host.Main.csproj" />
-    <File Path="Federation\hosts\.gitignore" />
-    <File Path="Federation\hosts\Directory.Build.props" />
   </Folder>
   <Folder Name="/Federation/tests/">
     <Project Path="Federation\tests\Domain\Wangkanai.Federation.Domain.Tests.csproj" />
@@ -239,9 +225,6 @@
     <File Path="Security\sign.ps1" />
     <File Path="Security\build.ps1" />
   </Folder>
-  <Folder Name="/Security/samples/">
-    <Project Path="Security\samples\Razor\Wangkanai.Security.RazorApp.csproj" />
-  </Folder>
   <Folder Name="/Shared/">
     <Project Path="Shared\benchmark\Wangkanai.Shared.Benchmark.csproj" />
     <Project Path="Shared\src\Wangkanai.Shared.csproj" />
@@ -276,13 +259,6 @@
     <File Path="Tabler\README.md" />
     <File Path="Tabler\sign.ps1" />
     <File Path="Tabler\build.ps1" />
-  </Folder>
-  <Folder Name="/Tabler/samples/">
-    <Project Path="Tabler\samples\Client\Host.Main.Client.csproj" />
-    <Project Path="Tabler\samples\Old\Host.Old.csproj" />
-    <Project Path="Tabler\samples\Server\Host.Main.csproj" />
-    <File Path="Tabler\samples\.editorconfig" />
-    <File Path="Tabler\samples\README.md" />
   </Folder>
   <Folder Name="/Testing/">
     <Project Path="Testing\benchmark\Wangkanai.Testing.Benchmark.csproj" />
