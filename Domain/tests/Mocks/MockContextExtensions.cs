@@ -12,11 +12,11 @@ public static class MockExtensions
 		where TEntity : class
 		where TConfiguration : IEntityTypeConfiguration<TEntity>, new()
 	{
-		var options = new DbContextOptionsBuilder<MockDbContext>()
+		var options = new DbContextOptionsBuilder<MockContext>()
 		              .UseInMemoryDatabase("test")
 		              .Options;
 
-		var context       = new MockDbContext(options);
+		var context       = new MockContext(options);
 		var convention    = ConventionSet.CreateConventionSet(context);
 		var modelBuilder  = new ModelBuilder(convention);
 		var entityBuilder = modelBuilder.Entity<TEntity>();

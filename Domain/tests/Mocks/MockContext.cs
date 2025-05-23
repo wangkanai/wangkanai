@@ -6,14 +6,11 @@ using Wangkanai.Domain.Models;
 
 namespace Wangkanai.Domain;
 
-public class MockDbContext : DbContext
+public class MockContext(DbContextOptions<MockContext> options) : DbContext(options)
 {
 	public DbSet<GuidEntity> Guids { get; set; }
 	public DbSet<IntEntity>  Ints  { get; set; }
 
-	public MockDbContext(DbContextOptions<MockDbContext> options)
-		: base(options) { }
-
-	protected override void OnModelCreating(ModelBuilder builder) 
+	protected override void OnModelCreating(ModelBuilder builder)
 		=> base.OnModelCreating(builder);
 }
