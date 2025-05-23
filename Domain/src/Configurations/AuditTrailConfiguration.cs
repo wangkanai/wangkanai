@@ -25,7 +25,7 @@ public class AuditTrailConfiguration<TKey, TUserKey, TUserType>
 
 		builder.Property(x => x.Timestamp)
 		       .IsRequired()
-		       .HasConversion(to => to, value => DateTime.SpecifyKind(value, DateTimeKind.Utc));
+		       .HasConversion(to => DateTime.SpecifyKind(to, DateTimeKind.Utc), value => DateTime.SpecifyKind(value, DateTimeKind.Utc));
 
 		builder.Property(x => x.TrailType)
 		       .HasConversion<string>();
