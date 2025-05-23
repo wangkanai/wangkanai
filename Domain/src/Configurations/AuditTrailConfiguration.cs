@@ -1,7 +1,5 @@
 // Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
 
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Wangkanai.Domain.Configurations;
@@ -26,10 +24,14 @@ public class AuditTrailConfiguration<TKey, TUserKey, TUserType>
 		       .HasMaxLength(100);
 
 		builder.Property(x => x.Timestamp)
-		       .IsRequired();
+		       .IsRequired()
+		       .HasConversion(to => to, value => DateTime.SpecifyKind(value, DateTimeKind.Utc));
 
-		builder.Property(x=>x.TrailType)
+		builder.Property(x => x.TrailType)
 		       .HasConversion<string>();
+
+		builder.Property(x => x.EntityName)
+		       .IsRequired();
 
 		builder.Property(x => x.ChangedColumns)
 		       .HasColumnType("jsonb");
@@ -46,6 +48,5 @@ public class AuditTrailConfiguration<TKey, TUserKey, TUserType>
 		       .HasForeignKey(x => x.UserId)
 		       .IsRequired(false)
 		       .OnDelete(DeleteBehavior.SetNull);
-
 	}
 }
