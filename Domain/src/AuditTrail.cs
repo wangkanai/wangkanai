@@ -1,7 +1,5 @@
 // Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
 
-using Microsoft.AspNetCore.Identity;
-
 namespace Wangkanai.Domain;
 
 /// <summary>Represents an audit trail record for tracking entity changes in the system.</summary>
