@@ -5,6 +5,8 @@ param(
     [string]$name="Open Source Developer, Sarin Na Wangkanai"
 )
 
+Write-Host "Hosting Certificate: $name" -ForegroundColor Blue
+
 remove-item -path .\signed\*.*    -Force -ErrorAction SilentlyContinue
 remove-item -path .\artifacts\*.* -Force -ErrorAction SilentlyContinue
 

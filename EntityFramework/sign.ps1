@@ -4,6 +4,7 @@ param(
     [Parameter(mandatory=$false)]
     [string]$name="Open Source Developer, Sarin Na Wangkanai"
 )
+Write-Host "EntityFramework Certificate: $name" -ForegroundColor Blue
 
 remove-item -path .\signed\*.*    -Force -ErrorAction SilentlyContinue
 remove-item -path .\artifacts\*.* -Force -ErrorAction SilentlyContinue
