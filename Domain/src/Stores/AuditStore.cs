@@ -63,7 +63,6 @@ public class AuditStore<TContext, TKey, TUserType, TUserKey>(TContext context) :
 	{
 		_context.Attach(audit);
 		_context.Update(audit);
-		_context.Entry(audit).State = EntityState.Modified;
 
 		try
 		{

@@ -147,10 +147,7 @@ public class AuditStoreTests
 	{
 		// Arrange
 		var mockContext = new Mock<TestAuditDbContext>(CreateNewContextOptions());
-		var mockEntry = new Mock<EntityEntry<Audit<Guid, IdentityUser<Guid>, Guid>>>();
 
-		mockContext.Setup(c => c.Attach(It.IsAny<Audit<Guid, IdentityUser<Guid>, Guid>>()))
-		           .Returns(mockEntry.Object);
 		mockContext.Setup(c => c.Update(It.IsAny<Audit<Guid, IdentityUser<Guid>, Guid>>()));
 		mockContext.Setup(c => c.SaveChangesAsync(It.IsAny<CancellationToken>()))
 		           .ThrowsAsync(new DbUpdateConcurrencyException());
