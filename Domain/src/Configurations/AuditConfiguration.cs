@@ -35,12 +35,26 @@ public class AuditConfiguration<TKey, TUserType, TUserKey>
 		builder.Property(x => x.EntityName)
 		       .IsRequired();
 
+		builder.Ignore(x => x.ChangedColumns)
+		       .UsePropertyAccessMode(PropertyAccessMode.Field);
 		builder.Property(x => x.ChangedColumns)
-		       .HasColumnType("jsonb");
+		       .HasColumnType("jsonb")
+		       .HasConversion(
+			       c => JsonSerializer.Serialize(c, (JsonSerializerOptions?)null),
+			       c => JsonSerializer.Deserialize<List<string>>(c, (JsonSerializerOptions?)null)
+		       );
 
+		builder.Ignore(x => x.OldValues)
+		       .UsePropertyAccessMode(PropertyAccessMode.Field);
 		builder.Property(x => x.OldValues)
-		       .HasColumnType("jsonb");
+		       .HasColumnType("jsonb")
+		       .HasConversion(
+			       c => JsonSerializer.Serialize(c, (JsonSerializerOptions?)null),
+			       c => JsonSerializer.Deserialize<Dictionary<string, object?>>(c, (JsonSerializerOptions?)null)
+		       );
 
+		builder.Ignore(x => x.NewValues)
+		       .UsePropertyAccessMode(PropertyAccessMode.Field);
 		builder.Property(x => x.NewValues)
 		       .HasColumnType("jsonb")
 		       .HasConversion(

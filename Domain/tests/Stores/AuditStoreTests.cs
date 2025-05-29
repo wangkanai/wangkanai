@@ -21,7 +21,7 @@ public class AuditStoreTests
 		protected override void OnModelCreating(ModelBuilder builder)
 		{
 			base.OnModelCreating(builder);
-			builder.ApplyAuditConfiguration<int, IdentityUser<int>, int>();
+			builder.ApplyAuditConfiguration<Guid, IdentityUser<Guid>, Guid>();
 		}
 	}
 
