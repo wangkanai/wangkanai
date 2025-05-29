@@ -22,10 +22,10 @@ public class AuditContextExtensionsTests
 		           .Verifiable();
 
 		// Act
-		mockBuilder.Object.ApplyAuditConfiguration<Guid, Guid, IdentityUser<Guid>>();
+		mockBuilder.Object.ApplyAuditConfiguration<Guid, IdentityUser<Guid>, Guid>();
 
 		// Assert
-		mockBuilder.Verify(x => x.ApplyConfiguration(It.IsAny<AuditConfiguration<Guid, Guid, IdentityUser<Guid>>>()), Times.Once);
+		mockBuilder.Verify(x => x.ApplyConfiguration(It.IsAny<AuditConfiguration<Guid, IdentityUser<Guid>, Guid>>()), Times.Once);
 	}
 
 	[Fact]
@@ -38,10 +38,10 @@ public class AuditContextExtensionsTests
 		           .Verifiable();
 
 		// Act
-		mockBuilder.Object.ApplyAuditConfiguration<int, int, IdentityUser<int>>();
+		mockBuilder.Object.ApplyAuditConfiguration<int, IdentityUser<int>, int>();
 
 		// Assert
-		mockBuilder.Verify(x => x.ApplyConfiguration(It.IsAny<AuditConfiguration<int, int, IdentityUser<int>>>()), Times.Once);
+		mockBuilder.Verify(x => x.ApplyConfiguration(It.IsAny<AuditConfiguration<int, IdentityUser<int>, int>>()), Times.Once);
 	}
 
 	[Fact]
@@ -54,9 +54,9 @@ public class AuditContextExtensionsTests
 		           .Verifiable();
 
 		// Act
-		mockBuilder.Object.ApplyAuditConfiguration<Guid, string, IdentityUser<string>>();
+		mockBuilder.Object.ApplyAuditConfiguration<Guid, IdentityUser<string>, string>();
 
 		// Assert
-		mockBuilder.Verify(x => x.ApplyConfiguration(It.IsAny<AuditConfiguration<Guid, string, IdentityUser<string>>>()), Times.Once);
+		mockBuilder.Verify(x => x.ApplyConfiguration(It.IsAny<AuditConfiguration<Guid, IdentityUser<string>, string>>()), Times.Once);
 	}
 }

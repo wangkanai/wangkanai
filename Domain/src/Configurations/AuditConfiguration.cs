@@ -1,10 +1,12 @@
 // Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
 
+using System.Text.Json;
+
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Wangkanai.Domain.Configurations;
 
-public class AuditConfiguration<TKey, TUserKey, TUserType>
+public class AuditConfiguration<TKey, TUserType, TUserKey>
 	: IEntityTypeConfiguration<Audit<TKey, TUserType, TUserKey>>
 	where TKey : IEquatable<TKey>, IComparable<TKey>
 	where TUserType : IdentityUser<TUserKey>
@@ -33,14 +35,32 @@ public class AuditConfiguration<TKey, TUserKey, TUserType>
 		builder.Property(x => x.EntityName)
 		       .IsRequired();
 
+		builder.Ignore(x => x.ChangedColumns)
+		       .UsePropertyAccessMode(PropertyAccessMode.Field);
 		builder.Property(x => x.ChangedColumns)
-		       .HasColumnType("jsonb");
+		       .HasColumnType("jsonb")
+		       .HasConversion(
+			       c => JsonSerializer.Serialize(c, (JsonSerializerOptions?)null),
+			       c => JsonSerializer.Deserialize<List<string>>(c, (JsonSerializerOptions?)null)
+		       );
 
+		builder.Ignore(x => x.OldValues)
+		       .UsePropertyAccessMode(PropertyAccessMode.Field);
 		builder.Property(x => x.OldValues)
-		       .HasColumnType("jsonb");
+		       .HasColumnType("jsonb")
+		       .HasConversion(
+			       c => JsonSerializer.Serialize(c, (JsonSerializerOptions?)null),
+			       c => JsonSerializer.Deserialize<Dictionary<string, object?>>(c, (JsonSerializerOptions?)null)
+		       );
 
+		builder.Ignore(x => x.NewValues)
+		       .UsePropertyAccessMode(PropertyAccessMode.Field);
 		builder.Property(x => x.NewValues)
-		       .HasColumnType("jsonb");
+		       .HasColumnType("jsonb")
+		       .HasConversion(
+			       c => JsonSerializer.Serialize(c, (JsonSerializerOptions?)null),
+			       c => JsonSerializer.Deserialize<Dictionary<string, object?>>(c, (JsonSerializerOptions?)null)
+		       );
 
 		builder.Property(x => x.UserId);
 		builder.HasOne(x => x.User)
