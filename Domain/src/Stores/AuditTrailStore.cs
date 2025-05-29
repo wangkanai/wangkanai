@@ -31,8 +31,14 @@ public class AuditTrailStore<TContext, TKey, TUserType, TUserKey>(TContext conte
 	private Task SaveChangesAsync(CancellationToken cancellationToken)
 		=> AutoSaveChanges ? _context.SaveChangesAsync(cancellationToken) : Task.CompletedTask;
 
+	/// <summary>Indicates whether changes to the context are automatically persisted to the database upon certain operations.</summary>
+	/// <remarks>When set to true, any modifications to the underlying data store resulting from method calls such as create, update, or delete will automatically trigger a call to save changes on the database context. If set to false, changes must be explicitly saved manually by invoking the appropriate context method.</remarks>
 	public bool AutoSaveChanges { get; set; } = true;
 
+	/// <summary>Creates a new audit trail entry in the underlying storage context.</summary>
+	/// <param name="audit">The audit entity to be created.</param>
+	/// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+	/// <returns>A result containing the created audit entity, indicating success or failure with potential error information.</returns>
 	public async Task<Result<Audit<TKey, TUserType, TUserKey>>> CreateAsync(Audit<TKey, TUserType, TUserKey> audit, CancellationToken cancellationToken)
 	{
 		_context.Add(audit);
