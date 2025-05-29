@@ -22,7 +22,7 @@ public class AuditContextExtensionsTests
 		           .Verifiable();
 
 		// Act
-		mockBuilder.Object.ApplyAuditTrailConfiguration<Guid, Guid, IdentityUser<Guid>>();
+		mockBuilder.Object.ApplyAuditConfiguration<Guid, Guid, IdentityUser<Guid>>();
 
 		// Assert
 		mockBuilder.Verify(x => x.ApplyConfiguration(It.IsAny<AuditConfiguration<Guid, Guid, IdentityUser<Guid>>>()), Times.Once);
@@ -38,7 +38,7 @@ public class AuditContextExtensionsTests
 		           .Verifiable();
 
 		// Act
-		mockBuilder.Object.ApplyAuditTrailConfiguration<int, int, IdentityUser<int>>();
+		mockBuilder.Object.ApplyAuditConfiguration<int, int, IdentityUser<int>>();
 
 		// Assert
 		mockBuilder.Verify(x => x.ApplyConfiguration(It.IsAny<AuditConfiguration<int, int, IdentityUser<int>>>()), Times.Once);
@@ -54,7 +54,7 @@ public class AuditContextExtensionsTests
 		           .Verifiable();
 
 		// Act
-		mockBuilder.Object.ApplyAuditTrailConfiguration<Guid, string, IdentityUser<string>>();
+		mockBuilder.Object.ApplyAuditConfiguration<Guid, string, IdentityUser<string>>();
 
 		// Assert
 		mockBuilder.Verify(x => x.ApplyConfiguration(It.IsAny<AuditConfiguration<Guid, string, IdentityUser<string>>>()), Times.Once);
