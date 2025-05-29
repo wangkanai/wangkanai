@@ -3,7 +3,9 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
 using Moq;
+
 using Wangkanai.Domain.Configurations;
 
 namespace Wangkanai.Domain.Extensions;
@@ -16,7 +18,7 @@ public class AuditTrailContextExtensionsTests
 		// Arrange
 		var mockBuilder = new Mock<ModelBuilder>();
 		mockBuilder.Setup(x => x.ApplyConfiguration(It.IsAny<IEntityTypeConfiguration<AuditTrail<Guid, IdentityUser<Guid>, Guid>>>()))
-			.Verifiable();
+		           .Verifiable();
 
 		// Act
 		mockBuilder.Object.ApplyAuditTrailConfiguration<Guid, Guid, IdentityUser<Guid>>();
@@ -31,7 +33,7 @@ public class AuditTrailContextExtensionsTests
 		// Arrange
 		var mockBuilder = new Mock<ModelBuilder>();
 		mockBuilder.Setup(x => x.ApplyConfiguration(It.IsAny<IEntityTypeConfiguration<AuditTrail<int, IdentityUser<int>, int>>>()))
-			.Verifiable();
+		           .Verifiable();
 
 		// Act
 		mockBuilder.Object.ApplyAuditTrailConfiguration<int, int, IdentityUser<int>>();
@@ -46,7 +48,7 @@ public class AuditTrailContextExtensionsTests
 		// Arrange
 		var mockBuilder = new Mock<ModelBuilder>();
 		mockBuilder.Setup(x => x.ApplyConfiguration(It.IsAny<IEntityTypeConfiguration<AuditTrail<Guid, IdentityUser<string>, string>>>()))
-			.Verifiable();
+		           .Verifiable();
 
 		// Act
 		mockBuilder.Object.ApplyAuditTrailConfiguration<Guid, string, IdentityUser<string>>();
