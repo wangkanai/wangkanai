@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Wangkanai.Domain.Configurations;
 
-public class AuditConfiguration<TKey, TUserKey, TUserType>
+public class AuditConfiguration<TKey, TUserType, TUserKey>
 	: IEntityTypeConfiguration<Audit<TKey, TUserType, TUserKey>>
 	where TKey : IEquatable<TKey>, IComparable<TKey>
 	where TUserType : IdentityUser<TUserKey>
