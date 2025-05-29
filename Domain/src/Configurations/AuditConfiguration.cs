@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Wangkanai.Domain.Configurations;
 
-public class AuditTrailConfiguration<TKey, TUserKey, TUserType>
-	: IEntityTypeConfiguration<AuditTrail<TKey, TUserType, TUserKey>>
+public class AuditConfiguration<TKey, TUserKey, TUserType>
+	: IEntityTypeConfiguration<Audit<TKey, TUserType, TUserKey>>
 	where TKey : IEquatable<TKey>, IComparable<TKey>
 	where TUserType : IdentityUser<TUserKey>
 	where TUserKey : IEquatable<TUserKey>, IComparable<TUserKey>
 {
-	public void Configure(EntityTypeBuilder<AuditTrail<TKey, TUserType, TUserKey>> builder)
+	public void Configure(EntityTypeBuilder<Audit<TKey, TUserType, TUserKey>> builder)
 	{
 		builder.HasKey(x => x.Id);
 		builder.Property(x => x.Id);

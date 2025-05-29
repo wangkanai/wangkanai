@@ -13,7 +13,7 @@ public interface IAuditTrailStore<TKey, TUserType, TUserKey> : IDisposable
 	where TUserType : IdentityUser<TUserKey>
 	where TUserKey : IEquatable<TUserKey>, IComparable<TUserKey>
 {
-	Task<Result<AuditTrail<TKey, TUserType, TUserKey>>> CreateAsync(AuditTrail<TKey, TUserType, TUserKey> auditTrail, CancellationToken cancellationToken);
+	Task<Result<Audit<TKey, TUserType, TUserKey>>> CreateAsync(Audit<TKey, TUserType, TUserKey> audit, CancellationToken cancellationToken);
 	// Task<Result<AuditTrail<TKey, TUserType, TUserKey>>> UpdateAsync(AuditTrail<TKey, TUserType, TUserKey> auditTrail, CancellationToken cancellationToken);
 	// Task<Result<AuditTrail<TKey, TUserType, TUserKey>>> DeleteAsync(AuditTrail<TKey, TUserType, TUserKey> auditTrail, CancellationToken cancellationToken);
 	// Task<Result<AuditTrail<TKey, TUserType, TUserKey>>> FindByIdAsync(TKey id, CancellationToken cancellationToken);

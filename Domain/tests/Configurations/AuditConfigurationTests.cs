@@ -5,21 +5,21 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Wangkanai.Domain.Configurations;
 
-public class AuditTrailConfigurationTests
+public class AuditConfigurationTests
 {
     [Fact]
     public void Configure_Should_SetPrimaryKey()
     {
         // Arrange
         var builder = new ModelBuilder();
-        var entityBuilder = builder.Entity<AuditTrail<int, IdentityUser<int>, int>>();
-        var configuration = new AuditTrailConfiguration<int, int, IdentityUser<int>>();
+        var entityBuilder = builder.Entity<Audit<int, IdentityUser<int>, int>>();
+        var configuration = new AuditConfiguration<int, int, IdentityUser<int>>();
 
         // Act
         configuration.Configure(entityBuilder);
 
         // Assert
-        var entityType = builder.Model.FindEntityType(typeof(AuditTrail<int, IdentityUser<int>, int>));
+        var entityType = builder.Model.FindEntityType(typeof(Audit<int, IdentityUser<int>, int>));
         Assert.NotNull(entityType);
         Assert.NotNull(entityType.FindPrimaryKey());
         Assert.Contains(entityType.FindPrimaryKey().Properties, p => p.Name == "Id");
@@ -30,14 +30,14 @@ public class AuditTrailConfigurationTests
     {
         // Arrange
         var builder = new ModelBuilder();
-        var entityBuilder = builder.Entity<AuditTrail<int, IdentityUser<int>, int>>();
-        var configuration = new AuditTrailConfiguration<int, int, IdentityUser<int>>();
+        var entityBuilder = builder.Entity<Audit<int, IdentityUser<int>, int>>();
+        var configuration = new AuditConfiguration<int, int, IdentityUser<int>>();
 
         // Act
         configuration.Configure(entityBuilder);
 
         // Assert
-        var entityType = builder.Model.FindEntityType(typeof(AuditTrail<int, IdentityUser<int>, int>));
+        var entityType = builder.Model.FindEntityType(typeof(Audit<int, IdentityUser<int>, int>));
         var entityNameProperty = entityType.FindProperty("EntityName");
         Assert.NotNull(entityNameProperty);
         Assert.Equal(100, entityNameProperty.GetMaxLength());
@@ -50,14 +50,14 @@ public class AuditTrailConfigurationTests
     {
         // Arrange
         var builder = new ModelBuilder();
-        var entityBuilder = builder.Entity<AuditTrail<int, IdentityUser<int>, int>>();
-        var configuration = new AuditTrailConfiguration<int, int, IdentityUser<int>>();
+        var entityBuilder = builder.Entity<Audit<int, IdentityUser<int>, int>>();
+        var configuration = new AuditConfiguration<int, int, IdentityUser<int>>();
 
         // Act
         configuration.Configure(entityBuilder);
 
         // Assert
-        var entityType = builder.Model.FindEntityType(typeof(AuditTrail<int, IdentityUser<int>, int>));
+        var entityType = builder.Model.FindEntityType(typeof(Audit<int, IdentityUser<int>, int>));
         var primaryKeyProperty = entityType.FindProperty("PrimaryKey");
         Assert.NotNull(primaryKeyProperty);
         Assert.Equal(100, primaryKeyProperty.GetMaxLength());
@@ -68,14 +68,14 @@ public class AuditTrailConfigurationTests
     {
         // Arrange
         var builder = new ModelBuilder();
-        var entityBuilder = builder.Entity<AuditTrail<int, IdentityUser<int>, int>>();
-        var configuration = new AuditTrailConfiguration<int, int, IdentityUser<int>>();
+        var entityBuilder = builder.Entity<Audit<int, IdentityUser<int>, int>>();
+        var configuration = new AuditConfiguration<int, int, IdentityUser<int>>();
 
         // Act
         configuration.Configure(entityBuilder);
 
         // Assert
-        var entityType = builder.Model.FindEntityType(typeof(AuditTrail<int, IdentityUser<int>, int>));
+        var entityType = builder.Model.FindEntityType(typeof(Audit<int, IdentityUser<int>, int>));
         var timestampProperty = entityType.FindProperty("Timestamp");
         Assert.NotNull(timestampProperty);
         // Assert.True(timestampProperty.IsRequired());
@@ -87,14 +87,14 @@ public class AuditTrailConfigurationTests
     {
         // Arrange
         var builder = new ModelBuilder();
-        var entityBuilder = builder.Entity<AuditTrail<int, IdentityUser<int>, int>>();
-        var configuration = new AuditTrailConfiguration<int, int, IdentityUser<int>>();
+        var entityBuilder = builder.Entity<Audit<int, IdentityUser<int>, int>>();
+        var configuration = new AuditConfiguration<int, int, IdentityUser<int>>();
 
         // Act
         configuration.Configure(entityBuilder);
 
         // Assert
-        var entityType = builder.Model.FindEntityType(typeof(AuditTrail<int, IdentityUser<int>, int>));
+        var entityType = builder.Model.FindEntityType(typeof(Audit<int, IdentityUser<int>, int>));
         var trailTypeProperty = entityType.FindProperty("TrailType");
         Assert.NotNull(trailTypeProperty);
         //Assert.Equal(typeof(string), trailTypeProperty.ClrType);
@@ -106,14 +106,14 @@ public class AuditTrailConfigurationTests
     {
         // Arrange
         var builder = new ModelBuilder();
-        var entityBuilder = builder.Entity<AuditTrail<int, IdentityUser<int>, int>>();
-        var configuration = new AuditTrailConfiguration<int, int, IdentityUser<int>>();
+        var entityBuilder = builder.Entity<Audit<int, IdentityUser<int>, int>>();
+        var configuration = new AuditConfiguration<int, int, IdentityUser<int>>();
 
         // Act
         configuration.Configure(entityBuilder);
 
         // Assert
-        var entityType = builder.Model.FindEntityType(typeof(AuditTrail<int, IdentityUser<int>, int>));
+        var entityType = builder.Model.FindEntityType(typeof(Audit<int, IdentityUser<int>, int>));
 
         var changedColumnsProperty = entityType.FindProperty("ChangedColumns");
         Assert.NotNull(changedColumnsProperty);
@@ -133,14 +133,14 @@ public class AuditTrailConfigurationTests
     {
         // Arrange
         var builder = new ModelBuilder();
-        var entityBuilder = builder.Entity<AuditTrail<int, IdentityUser<int>, int>>();
-        var configuration = new AuditTrailConfiguration<int, int, IdentityUser<int>>();
+        var entityBuilder = builder.Entity<Audit<int, IdentityUser<int>, int>>();
+        var configuration = new AuditConfiguration<int, int, IdentityUser<int>>();
 
         // Act
         configuration.Configure(entityBuilder);
 
         // Assert
-        var entityType = builder.Model.FindEntityType(typeof(AuditTrail<int, IdentityUser<int>, int>));
+        var entityType = builder.Model.FindEntityType(typeof(Audit<int, IdentityUser<int>, int>));
         var userIdProperty = entityType.FindProperty("UserId");
         Assert.NotNull(userIdProperty);
 
@@ -153,7 +153,7 @@ public class AuditTrailConfigurationTests
     public void AuditTrail_WithGuidKey_ShouldHaveGuidIdProperty()
     {
         // Arrange
-        var auditTrail = new AuditTrail<Guid, IdentityUser<int>, int>
+        var auditTrail = new Audit<Guid, IdentityUser<int>, int>
         {
             Id = Guid.NewGuid(),
             EntityName = "TestEntity",
@@ -170,14 +170,14 @@ public class AuditTrailConfigurationTests
     {
         // Arrange
         var builder = new ModelBuilder();
-        var entityBuilder = builder.Entity<AuditTrail<Guid, IdentityUser<int>, int>>();
-        var configuration = new AuditTrailConfiguration<Guid, int, IdentityUser<int>>();
+        var entityBuilder = builder.Entity<Audit<Guid, IdentityUser<int>, int>>();
+        var configuration = new AuditConfiguration<Guid, int, IdentityUser<int>>();
 
         // Act
         configuration.Configure(entityBuilder);
 
         // Assert
-        var entityType = builder.Model.FindEntityType(typeof(AuditTrail<Guid, IdentityUser<int>, int>));
+        var entityType = builder.Model.FindEntityType(typeof(Audit<Guid, IdentityUser<int>, int>));
         Assert.NotNull(entityType);
 
         var idProperty = entityType.FindProperty("Id");
