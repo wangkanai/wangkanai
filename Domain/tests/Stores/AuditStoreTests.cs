@@ -2,6 +2,7 @@
 
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 using Moq;
@@ -146,15 +147,16 @@ public class AuditStoreTests
 	{
 		// Arrange
 		var mockContext = new Mock<TestAuditDbContext>(CreateNewContextOptions());
+		var mockEntry = new Mock<EntityEntry<Audit<Guid, IdentityUser<Guid>, Guid>>>();
+
 		mockContext.Setup(c => c.Attach(It.IsAny<Audit<Guid, IdentityUser<Guid>, Guid>>()))
-		           .Returns((Audit<Guid, IdentityUser<Guid>, Guid> e) => mockContext.Object.Entry(e));
+		           .Returns(mockEntry.Object);
 		mockContext.Setup(c => c.Update(It.IsAny<Audit<Guid, IdentityUser<Guid>, Guid>>()));
 		mockContext.Setup(c => c.SaveChangesAsync(It.IsAny<CancellationToken>()))
 		           .ThrowsAsync(new DbUpdateConcurrencyException());
 
 		var store = new AuditStore<TestAuditDbContext, Guid, IdentityUser<Guid>, Guid>(mockContext.Object);
-		var audit = new Audit<Guid, IdentityUser<Guid>, Guid>();
-		audit.EntityName = "Test";
+		var audit = new Audit<Guid, IdentityUser<Guid>, Guid>{ EntityName = "Test" };
 
 		// Act
 		var result = await store.UpdateAsync(audit, CancellationToken.None);
