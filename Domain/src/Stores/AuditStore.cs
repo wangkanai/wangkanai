@@ -10,7 +10,7 @@ namespace Wangkanai.Domain.Stores;
 /// <typeparam name="TUserType">The type of the user associated with the audit trail, which must derive from <see cref="IdentityUser{T}"/>.</typeparam>
 /// <typeparam name="TUserKey">The type of the key for the user, which must implement <see cref="IEquatable{T}"/> and <see cref="IComparable{T}"/>.</typeparam>
 /// <param name="context">The database context instance to be used for accessing the audit trails.</param>
-public class AuditTrailStore<TContext, TKey, TUserType, TUserKey>(TContext context) : IQueryableAuditTrailStore<TKey, TUserType, TUserKey>
+public class AuditStore<TContext, TKey, TUserType, TUserKey>(TContext context) : IQueryableAuditStore<TKey, TUserType, TUserKey>
 	where TContext : DbContext
 	where TKey : IEquatable<TKey>, IComparable<TKey>
 	where TUserType : IdentityUser<TUserKey>
