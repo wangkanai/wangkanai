@@ -8,7 +8,7 @@ namespace Wangkanai.Domain.Stores;
 /// <typeparam name="TKey">The type of the unique identifier for the audit trail. It must implement <see cref="IEquatable{T}"/> and <see cref="IComparable{T}"/>. </typeparam>
 /// <typeparam name="TUserType">The type of the user associated with the audit trail. It must inherit from <see cref="IdentityUser{TUserKey}"/>.</typeparam>
 /// <typeparam name="TUserKey">The type of the unique identifier for the user. It must implement <see cref="IEquatable{T}"/> and <see cref="IComparable{T}"/>. </typeparam>
-public interface IQueryableAuditTrailStore<TKey, TUserType, TUserKey> : IAuditTrailStore<TKey, TUserType, TUserKey>
+public interface IQueryableAuditStore<TKey, TUserType, TUserKey> : IAuditStore<TKey, TUserType, TUserKey>
 	where TKey : IEquatable<TKey>, IComparable<TKey>
 	where TUserType : IdentityUser<TUserKey>
 	where TUserKey : IEquatable<TUserKey>, IComparable<TUserKey>
