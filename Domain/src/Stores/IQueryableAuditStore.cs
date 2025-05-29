@@ -1,7 +1,5 @@
 // Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
 
-using Microsoft.AspNetCore.Identity;
-
 namespace Wangkanai.Domain.Stores;
 
 /// <summary>Represents an abstraction for a queryable audit trail store, providing access to audit trail records for tracking changes in the system.</summary>
