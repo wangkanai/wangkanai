@@ -26,7 +26,7 @@ dotnet pack .\src\ -c Release -tl -o .\artifacts --include-symbols -p:SymbolPack
 dotnet nuget sign .\artifacts\*.nupkg  -v normal --timestamper http://timestamp.digicert.com --certificate-subject-name $name -o .\signed
 dotnet nuget sign .\artifacts\*.snupkg -v normal --timestamper http://timestamp.digicert.com --certificate-subject-name $name -o .\signed
 
-if ($publish)
+if (!$publish)
 {
     write-host "Skip update: Hosting" -ForegroundColor Yellow;
     exit;
