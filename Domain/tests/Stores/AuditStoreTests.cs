@@ -45,7 +45,8 @@ public class AuditStoreTests
 		// Arrange
 		var       options = CreateNewContextOptions();
 		using var context = new TestAuditDbContext(options);
-		var       store   = new AuditStore<TestAuditDbContext, Guid, IdentityUser<Guid>, Guid>(context);
+
+		var store = new AuditStore<TestAuditDbContext, Guid, IdentityUser<Guid>, Guid>(context);
 
 		// Act
 		var audits = store.Audits;
@@ -59,8 +60,8 @@ public class AuditStoreTests
 	public async Task CreateAsync_SavesToDbContext()
 	{
 		// Arrange
-		var       options = CreateNewContextOptions();
-		using var context = new TestAuditDbContext(options);
+		var             options = CreateNewContextOptions();
+		await using var context = new TestAuditDbContext(options);
 
 		var store = new AuditStore<TestAuditDbContext, Guid, IdentityUser<Guid>, Guid>(context);
 		var audit = new Audit<Guid, IdentityUser<Guid>, Guid>();
@@ -80,12 +81,10 @@ public class AuditStoreTests
 	public async Task CreateAsync_WithoutAutoSave_DoesNotSaveChanges()
 	{
 		// Arrange
-		var       options = CreateNewContextOptions();
-		using var context = new TestAuditDbContext(options);
-		var store = new AuditStore<TestAuditDbContext, Guid, IdentityUser<Guid>, Guid>(context)
-		            {
-			            AutoSaveChanges = false
-		            };
+		var             options = CreateNewContextOptions();
+		await using var context = new TestAuditDbContext(options);
+
+		var store = new AuditStore<TestAuditDbContext, Guid, IdentityUser<Guid>, Guid>(context) { AutoSaveChanges = false };
 		var audit = new Audit<Guid, IdentityUser<Guid>, Guid>();
 
 		// Act
@@ -119,10 +118,11 @@ public class AuditStoreTests
 	public async Task UpdateAsync_UpdatesExistingEntity()
 	{
 		// Arrange
-		var       options = CreateNewContextOptions();
-		using var context = new TestAuditDbContext(options);
-		var       store   = new AuditStore<TestAuditDbContext, Guid, IdentityUser<Guid>, Guid>(context);
-		var       audit   = new Audit<Guid, IdentityUser<Guid>, Guid>();
+		var             options = CreateNewContextOptions();
+		await using var context = new TestAuditDbContext(options);
+
+		var store = new AuditStore<TestAuditDbContext, Guid, IdentityUser<Guid>, Guid>(context);
+		var audit = new Audit<Guid, IdentityUser<Guid>, Guid>();
 
 		context.Audits.Add(audit);
 		await context.SaveChangesAsync();
@@ -165,8 +165,8 @@ public class AuditStoreTests
 	public async Task DeleteAsync_RemovesEntityFromContext()
 	{
 		// Arrange
-		var       options = CreateNewContextOptions();
-		using var context = new TestAuditDbContext(options);
+		var             options = CreateNewContextOptions();
+		await using var context = new TestAuditDbContext(options);
 
 		var store = new AuditStore<TestAuditDbContext, Guid, IdentityUser<Guid>, Guid>(context);
 		var audit = new Audit<Guid, IdentityUser<Guid>, Guid>();
@@ -271,8 +271,7 @@ public class AuditStoreTests
 		await using var context = new TestAuditDbContext(options);
 
 		var store = new AuditStore<TestAuditDbContext, Guid, IdentityUser<Guid>, Guid>(context);
-
-		var audit = new Audit<Guid, IdentityUser<Guid>, Guid> { UserId = Guid.NewGuid() };
+		var audit = new Audit<Guid, IdentityUser<Guid>, Guid> { UserId = Guid.NewGuid(), EntityName = "Test" };
 		context.Audits.Add(audit);
 		await context.SaveChangesAsync();
 
@@ -288,12 +287,12 @@ public class AuditStoreTests
 	public async Task FindByUserIdAsync_ReturnsMatchingEntity()
 	{
 		// Arrange
-		var       options = CreateNewContextOptions();
-		using var context = new TestAuditDbContext(options);
-		var       store   = new AuditStore<TestAuditDbContext, Guid, IdentityUser<Guid>, Guid>(context);
+		var             options = CreateNewContextOptions();
+		await using var context = new TestAuditDbContext(options);
 
+		var store  = new AuditStore<TestAuditDbContext, Guid, IdentityUser<Guid>, Guid>(context);
 		var userId = Guid.NewGuid();
-		var audit  = new Audit<Guid, IdentityUser<Guid>, Guid> { UserId = userId };
+		var audit  = new Audit<Guid, IdentityUser<Guid>, Guid> { UserId = userId, EntityName = "Test" };
 		context.Audits.Add(audit);
 		await context.SaveChangesAsync();
 
@@ -310,11 +309,11 @@ public class AuditStoreTests
 	public async Task FindByUserIdAsync_WithNonexistentUserId_ReturnsNull()
 	{
 		// Arrange
-		var       options = CreateNewContextOptions();
-		using var context = new TestAuditDbContext(options);
-		var       store   = new AuditStore<TestAuditDbContext, Guid, IdentityUser<Guid>, Guid>(context);
+		var             options = CreateNewContextOptions();
+		await using var context = new TestAuditDbContext(options);
 
-		var audit = new Audit<Guid, IdentityUser<Guid>, Guid> { UserId = Guid.NewGuid() };
+		var store = new AuditStore<TestAuditDbContext, Guid, IdentityUser<Guid>, Guid>(context);
+		var audit = new Audit<Guid, IdentityUser<Guid>, Guid> { UserId = Guid.NewGuid(), EntityName = "Test" };
 		context.Audits.Add(audit);
 		await context.SaveChangesAsync();
 
@@ -353,10 +352,10 @@ public class AuditStoreTests
 	public async Task FindByUserIdAsync_WithNonMatchingId_ReturnsNull()
 	{
 		// Arrange
-		var       options = CreateNewContextOptions();
-		using var context = new TestAuditDbContext(options);
-		var       store   = new AuditStore<TestAuditDbContext, Guid, IdentityUser<Guid>, Guid>(context);
+		var             options = CreateNewContextOptions();
+		await using var context = new TestAuditDbContext(options);
 
+		var store  = new AuditStore<TestAuditDbContext, Guid, IdentityUser<Guid>, Guid>(context);
 		var userId = Guid.NewGuid();
 		var audit  = new Audit<Guid, IdentityUser<Guid>, Guid> { UserId = userId };
 		context.Audits.Add(audit);
