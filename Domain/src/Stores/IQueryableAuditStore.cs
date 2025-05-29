@@ -15,5 +15,5 @@ public interface IQueryableAuditStore<TKey, TUserType, TUserKey> : IAuditStore<T
 	/// <typeparam name="TKey">The type of the primary key for the <see cref="Audit{TKey,TUserType,TUserKey}"/> entity.</typeparam>
 	/// <typeparam name="TUserType">The type representing the user associated with the audit trail.</typeparam>
 	/// <typeparam name="TUserKey">The type of the primary key for the user entity.</typeparam>
-	IQueryable<Audit<TKey, TUserType, TUserKey>> AuditTrails { get; }
+	IQueryable<Audit<TKey, TUserType, TUserKey>> Audits { get; }
 }
