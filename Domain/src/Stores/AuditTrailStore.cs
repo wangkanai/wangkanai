@@ -22,20 +22,20 @@ public class AuditTrailStore<TContext, TKey, TUserType, TUserKey>(TContext conte
 
 	/// <summary>Provides a queryable collection of audit trails associated with the specified identity user and key types.</summary>
 	/// <remarks>This property acts as an interface to the underlying entity set of audit trails, allowing for LINQ-based querying and manipulation of audit trail data. </remarks>
-	public IQueryable<AuditTrail<TKey, TUserType, TUserKey>> AuditTrails
+	public IQueryable<Audit<TKey, TUserType, TUserKey>> AuditTrails
 		=> AuditTrailsSet;
 
-	private DbSet<AuditTrail<TKey, TUserType, TUserKey>> AuditTrailsSet
-		=> _context.Set<AuditTrail<TKey, TUserType, TUserKey>>();
+	private DbSet<Audit<TKey, TUserType, TUserKey>> AuditTrailsSet
+		=> _context.Set<Audit<TKey, TUserType, TUserKey>>();
 
 	private Task SaveChangesAsync(CancellationToken cancellationToken)
 		=> AutoSaveChanges ? _context.SaveChangesAsync(cancellationToken) : Task.CompletedTask;
 
 	public bool AutoSaveChanges { get; set; } = true;
 
-	public async Task<Result<AuditTrail<TKey, TUserType, TUserKey>>> CreateAsync(AuditTrail<TKey, TUserType, TUserKey> auditTrail, CancellationToken cancellationToken)
+	public async Task<Result<Audit<TKey, TUserType, TUserKey>>> CreateAsync(Audit<TKey, TUserType, TUserKey> audit, CancellationToken cancellationToken)
 	{
-		_context.Add(auditTrail);
+		_context.Add(audit);
 		try
 		{
 			await SaveChangesAsync(cancellationToken);
@@ -43,38 +43,38 @@ public class AuditTrailStore<TContext, TKey, TUserType, TUserKey>(TContext conte
 		catch (DbUpdateConcurrencyException ex)
 		{
 			var error = new Error(ErrorCodes.Concurrency, ex.Message);
-			return new Result<AuditTrail<TKey, TUserType, TUserKey>>(auditTrail, false, error);
+			return new Result<Audit<TKey, TUserType, TUserKey>>(audit, false, error);
 		}
 
-		return Result.Success(auditTrail);
+		return Result.Success(audit);
 	}
 
-	public Task<Result<AuditTrail<TKey, TUserType, TUserKey>>> UpdateAsync(AuditTrail<TKey, TUserType, TUserKey> auditTrail, CancellationToken cancellationToken)
+	public Task<Result<Audit<TKey, TUserType, TUserKey>>> UpdateAsync(Audit<TKey, TUserType, TUserKey> audit, CancellationToken cancellationToken)
 	{
 		throw new NotImplementedException();
 	}
 
-	public Task<Result<AuditTrail<TKey, TUserType, TUserKey>>> DeleteAsync(AuditTrail<TKey, TUserType, TUserKey> auditTrail, CancellationToken cancellationToken)
+	public Task<Result<Audit<TKey, TUserType, TUserKey>>> DeleteAsync(Audit<TKey, TUserType, TUserKey> audit, CancellationToken cancellationToken)
 	{
 		throw new NotImplementedException();
 	}
 
-	public Task<Result<AuditTrail<TKey, TUserType, TUserKey>>> FindByIdAsync(TKey id, CancellationToken cancellationToken)
+	public Task<Result<Audit<TKey, TUserType, TUserKey>>> FindByIdAsync(TKey id, CancellationToken cancellationToken)
 	{
 		throw new NotImplementedException();
 	}
 
-	public Task<Result<AuditTrail<TKey, TUserType, TUserKey>>> FindByIdAsync(TKey id, TUserKey userId, CancellationToken cancellationToken)
+	public Task<Result<Audit<TKey, TUserType, TUserKey>>> FindByIdAsync(TKey id, TUserKey userId, CancellationToken cancellationToken)
 	{
 		throw new NotImplementedException();
 	}
 
-	public Task<Result<AuditTrail<TKey, TUserType, TUserKey>>> FindByUserIdAsync(TUserKey userId, CancellationToken cancellationToken)
+	public Task<Result<Audit<TKey, TUserType, TUserKey>>> FindByUserIdAsync(TUserKey userId, CancellationToken cancellationToken)
 	{
 		throw new NotImplementedException();
 	}
 
-	public Task<Result<AuditTrail<TKey, TUserType, TUserKey>>> FindByUserIdAsync(TUserKey userId, TKey id, CancellationToken cancellationToken)
+	public Task<Result<Audit<TKey, TUserType, TUserKey>>> FindByUserIdAsync(TUserKey userId, TKey id, CancellationToken cancellationToken)
 	{
 		throw new NotImplementedException();
 	}

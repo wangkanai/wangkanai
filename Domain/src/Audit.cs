@@ -6,7 +6,7 @@ namespace Wangkanai.Domain;
 /// <typeparam name="TKey">The type of the unique identifier for the audit trail.</typeparam>
 /// <typeparam name="TUserType">The type of the user associated with the audit action.</typeparam>
 /// <typeparam name="TUserKey">The type of the user's unique identifier.</typeparam>
-public class AuditTrail<TKey, TUserType, TUserKey> : Entity<TKey>
+public class Audit<TKey, TUserType, TUserKey> : Entity<TKey>
 	where TKey : IEquatable<TKey>, IComparable<TKey>
 	where TUserType : IdentityUser<TUserKey>
 	where TUserKey : IEquatable<TUserKey>, IComparable<TUserKey>

@@ -32,7 +32,8 @@ public static class ReflectionUtility
 	}
 
 	public static bool IsAssignableFromGenericList(this Type type)
-		=> type.GetInterfaces().Any(intType => intType.IsGenericType && intType.GetGenericTypeDefinition() == typeof(IList<>));
+		=> type.GetInterfaces()
+		       .Any(intType => intType.IsGenericType && intType.GetGenericTypeDefinition() == typeof(IList<>));
 
 	private class ObjectReferenceComparer : IEqualityComparer<object>
 	{

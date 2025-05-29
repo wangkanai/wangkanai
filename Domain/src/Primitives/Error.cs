@@ -21,5 +21,5 @@ public sealed class Error(string code, string message) : ValueObject
 		=> error?.Code ?? string.Empty;
 
 	/// <summary>Gets the empty error instance.</summary>
-	internal static Error None => new Error(string.Empty, string.Empty);
+	internal static Error None => new(string.Empty, string.Empty);
 }

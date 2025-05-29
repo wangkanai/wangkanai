@@ -11,14 +11,13 @@ public static class EntityTypeBuilderExtensions
 		=> builder.Property(x => x.Id)
 		          .ValueGeneratedOnAdd();
 
-	// public static void NewKeyOnAdd<T, TKey>(this EntityTypeBuilder<T> builder)
-	// 	where T : class, IEntity<TKey>
-	// 	where TKey : IComparable<TKey>, IEquatable<TKey>
-	// 	=> builder.Property(x => x.Id)
-	// 	          .ValueGeneratedOnAdd();
-
 	public static void NewKeyOnAdd<T>(this EntityTypeBuilder<T> builder)
 		where T : class, IEntity<int>
+		=> builder.Property(x => x.Id)
+		          .ValueGeneratedOnAdd();
+	public static void NewKeyOnAdd<T, TKey>(this EntityTypeBuilder<T> builder)
+		where T : class, IEntity<TKey>
+		where TKey : IComparable<TKey>, IEquatable<TKey>
 		=> builder.Property(x => x.Id)
 		          .ValueGeneratedOnAdd();
 

@@ -13,7 +13,6 @@ public abstract class AuditableEntity<T> : Entity<T>, IAuditable
 	#endregion
 
 	public virtual bool ShouldSerializeAuditableProperties => true;
-
-	public virtual bool ShouldSerializeCreated() => ShouldSerializeAuditableProperties;
-	public virtual bool ShouldSerializeUpdated() => ShouldSerializeAuditableProperties;
+	public virtual bool ShouldSerializeCreatedDate()       => ShouldSerializeAuditableProperties;
+	public virtual bool ShouldSerializeUpdatedDate()       => ShouldSerializeAuditableProperties;
 }
