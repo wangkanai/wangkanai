@@ -16,8 +16,9 @@ public class AuditTrailContextExtensionsTests
 	public void ApplyAuditTrailConfiguration_ShouldApplyConfiguration()
 	{
 		// Arrange
-		var mockBuilder = new Mock<ModelBuilder>();
-		mockBuilder.Setup(x => x.ApplyConfiguration(It.IsAny<IEntityTypeConfiguration<AuditTrail<Guid, IdentityUser<Guid>, Guid>>>()))
+		var mockBuilder   = new Mock<ModelBuilder>();
+		var configuration = It.IsAny<IEntityTypeConfiguration<AuditTrail<Guid, IdentityUser<Guid>, Guid>>>();
+		mockBuilder.Setup(x => x.ApplyConfiguration(configuration))
 		           .Verifiable();
 
 		// Act
@@ -31,8 +32,9 @@ public class AuditTrailContextExtensionsTests
 	public void ApplyAuditTrailConfiguration_WithIntKeys_ShouldApplyConfiguration()
 	{
 		// Arrange
-		var mockBuilder = new Mock<ModelBuilder>();
-		mockBuilder.Setup(x => x.ApplyConfiguration(It.IsAny<IEntityTypeConfiguration<AuditTrail<int, IdentityUser<int>, int>>>()))
+		var mockBuilder   = new Mock<ModelBuilder>();
+		var configuration = It.IsAny<IEntityTypeConfiguration<AuditTrail<int, IdentityUser<int>, int>>>();
+		mockBuilder.Setup(x => x.ApplyConfiguration(configuration))
 		           .Verifiable();
 
 		// Act
@@ -46,8 +48,9 @@ public class AuditTrailContextExtensionsTests
 	public void ApplyAuditTrailConfiguration_WithDifferentKeyTypes_ShouldApplyConfiguration()
 	{
 		// Arrange
-		var mockBuilder = new Mock<ModelBuilder>();
-		mockBuilder.Setup(x => x.ApplyConfiguration(It.IsAny<IEntityTypeConfiguration<AuditTrail<Guid, IdentityUser<string>, string>>>()))
+		var mockBuilder   = new Mock<ModelBuilder>();
+		var configuration = It.IsAny<IEntityTypeConfiguration<AuditTrail<Guid, IdentityUser<string>, string>>>();
+		mockBuilder.Setup(x => x.ApplyConfiguration(configuration))
 		           .Verifiable();
 
 		// Act
