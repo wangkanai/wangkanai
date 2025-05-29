@@ -20,7 +20,6 @@ well-defined, and thoroughly tested solutions.
 
 [![NuGet](https://raw.githubusercontent.com/wangkanai/wangkanai/main/Assets/wangkanai-badge-nuget.svg?sanitize=true)](https://www.nuget.org/profiles/wangkanai)
 [![.NET](https://github.com/wangkanai/wangkanai/actions/workflows/dotnet.yml/badge.svg)](https://github.com/wangkanai/wangkanai/actions/workflows/dotnet.yml)
-[![Qodana](https://github.com/wangkanai/wangkanai/actions/workflows/qodana_code_quality.yml/badge.svg)](https://github.com/wangkanai/wangkanai/actions/workflows/qodana_code_quality.yml)
 
 [![Open Collective](https://img.shields.io/badge/open%20collective-support%20me-3385FF.svg)](https://opencollective.com/wangkanai)
 [![Patreon](https://img.shields.io/badge/patreon-support%20me-d9643a.svg)](https://www.patreon.com/wangkanai)
