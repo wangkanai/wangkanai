@@ -1,5 +1,7 @@
 // Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
 
+using System.Text.Json;
+
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Wangkanai.Domain.Configurations;
@@ -40,7 +42,11 @@ public class AuditConfiguration<TKey, TUserType, TUserKey>
 		       .HasColumnType("jsonb");
 
 		builder.Property(x => x.NewValues)
-		       .HasColumnType("jsonb");
+		       .HasColumnType("jsonb")
+		       .HasConversion(
+			       c => JsonSerializer.Serialize(c, (JsonSerializerOptions?)null),
+			       c => JsonSerializer.Deserialize<Dictionary<string, object?>>(c, (JsonSerializerOptions?)null)
+		       );
 
 		builder.Property(x => x.UserId);
 		builder.HasOne(x => x.User)
