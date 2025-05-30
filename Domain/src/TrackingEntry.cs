@@ -9,7 +9,7 @@ public class TrackingEntry
 	public required object Entity { get; set; }
 
 	/// <summary>Gets or sets the state of the entity within the tracking entry. This indicates the current status of the entity, such as whether it is unchanged, modified, added, deleted, or detached.</summary>
-	public EntryState EntryState   { get; set; }
+	public EntryState EntryState { get; set; } = EntryState.Unchanged;
 
 	/// <summary>Determines whether the entity associated with the tracking entry is subscribed to change notifications or events within the context.</summary>
 	internal bool IsSubscribed { get; set; }
