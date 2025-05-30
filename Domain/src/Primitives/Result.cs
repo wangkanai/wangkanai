@@ -2,9 +2,7 @@
 
 namespace Wangkanai.Domain.Primitives;
 
-/// <summary>
-/// Represents a result of some operation, with status information and possibly an error.
-/// </summary>
+/// <summary>Represents a result of some operation, with status information and possibly an error.</summary>
 public class Result
 {
 	/// <summary>Initializes a new instance of the <see cref="Result"/> class with the specified parameters.</summary>

@@ -51,8 +51,7 @@ public class ValueObjectTests
 	}
 }
 
-public class Address(string street, string city, string state, string zip)
-	: ValueObject
+public class Address(string street, string city, string state, string zip) : ValueObject
 {
 	public string? Street { get; set; } = street;
 	public string? City   { get; set; } = city;

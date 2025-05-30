@@ -9,6 +9,18 @@ using Wangkanai.Domain.Common;
 
 namespace Wangkanai.Domain;
 
+/// <summary>
+/// Represents an abstract base class for value objects in the domain-driven design context.
+/// A value object is an immutable conceptual object that is compared based on its property values
+/// rather than a unique identity.
+/// </summary>
+/// <remarks>
+/// Value objects provide a way to encapsulate and model domain concepts with specific attributes,
+/// ensuring immutability and equality based on their state.
+/// The class implements <see cref="IValueObject"/> for domain definition,
+/// <see cref="ICacheKey"/> to enable caching based on object states, and <see cref="ICloneable"/>
+/// to support shallow copying of the object.
+/// </remarks>
 public abstract class ValueObject : IValueObject, ICacheKey, ICloneable
 {
 	private static readonly ConcurrentDictionary<Type, IReadOnlyCollection<PropertyInfo>> TypeProperties = new();

@@ -2,9 +2,7 @@
 
 namespace Wangkanai.Domain.Primitives;
 
-/// <summary>
-/// Represents a concrete domain error.
-/// </summary>
+/// <summary>Represents a concrete domain error.</summary>
 /// <param name="code">The error code.</param>
 /// <param name="message">The error message.</param>
 public sealed class Error(string code, string message) : ValueObject
