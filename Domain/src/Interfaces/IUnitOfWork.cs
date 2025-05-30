@@ -14,12 +14,8 @@ namespace Wangkanai.Domain;
 /// </remarks>
 public interface IUnitOfWork
 {
-	/// <summary>
-	/// Persists all changes made within the unit of work to the underlying data storage.
-	/// </summary>
-	/// <returns>
-	/// The number of state entries written to the underlying data storage.
-	/// </returns>
+	/// <summary>Persists all changes made within the unit of work to the underlying data storage.</summary>
+	/// <returns>The number of state entries written to the underlying data storage.</returns>
 	int Commit();
 }
 
@@ -37,11 +33,7 @@ public interface IUnitOfWork
 /// </remarks>
 public interface IUnitOfWorkAsync
 {
-	/// <summary>
-	/// Asynchronously persists all changes made within the unit of work to the underlying data storage.
-	/// </summary>
-	/// <returns>
-	/// A task that represents the asynchronous save operation. The task result contains the number of state entries written to the underlying data storage.
-	/// </returns>
+	/// <summary>Asynchronously persists all changes made within the unit of work to the underlying data storage.</summary>
+	/// <returns>A task that represents the asynchronous save operation. The task result contains the number of state entries written to the underlying data storage.</returns>
 	Task<int> CommitAsync();
 }

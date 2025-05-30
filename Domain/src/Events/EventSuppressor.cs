@@ -25,6 +25,10 @@ public static class EventSuppressor
 		/// </summary>
 		public static bool EventsSuppressed => EventsSuppressedStorage.Value;
 
+		/// <summary>
+		/// Performs application-defined tasks associated with freeing, releasing,
+		/// or resetting unmanaged and managed resources used by the object.
+		/// </summary>
 		public void Dispose()
 			=> Dispose(true);
 
@@ -34,6 +38,11 @@ public static class EventSuppressor
 				action();
 		}
 
+		/// <summary>
+		/// Temporarily suppresses event handling within the current context,
+		/// ensuring that events are not processed while the returned disposable is in use.
+		/// </summary>
+		/// <returns>An IDisposable object that, when disposed, restores event handling to its previous state.</returns>
 		public static IDisposable SuppressEvents()
 		{
 			EventsSuppressedStorage.Value = true;
