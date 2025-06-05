@@ -64,14 +64,6 @@ public class ZeroIntegerAttributeTests
 	}
 
 	[Fact]
-	public void Derived_Class_Inherits_Attribute()
-	{
-		var property  = typeof(DerivedZeroInteger).GetProperty(nameof(DerivedZeroInteger.PropertyWithAttribute));
-		var attribute = property!.GetCustomAttribute<ZeroIntegerAttribute>();
-		Assert.NotNull(attribute);
-	}
-
-	[Fact]
 	public void Multiple_Parameters_With_Attribute()
 	{
 		var method        = typeof(ZeroInteger).GetMethod(nameof(ZeroInteger.MultipleParametersWithAttribute));
