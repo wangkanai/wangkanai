@@ -27,6 +27,12 @@ jobs:
       with:
         dotnet-version: 9.0.x
 
+    - name: SonarCloud Tools
+      run: dotnet tool install --global dotnet-sonarscanner
+
+    - name: SonarCloud Scanner
+      run:  dotnet sonarscanner begin /o:"wangkanai" /k:"wangkanai_github" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+
     - name: Install npm
       run: |
         npm install -g rimraf
@@ -40,3 +46,6 @@ jobs:
 
     - name: Test
       run: dotnet test  --no-build --verbosity normal
+
+    - name: SonarCloud Coverage
+      run:  dotnet sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
