@@ -53,6 +53,4 @@ jobs:
       run:  dotnet coverage collect "dotnet test" -f xml -o "coverage.xml"
 
     - name: SonarCloud Submit
-      run:  ./sonar-end.ps1
-      shell: pwsh
-#      run:  dotnet sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+      run:  dotnet sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"

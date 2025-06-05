@@ -41,7 +41,7 @@ else
             /k:wangkanai_wangkanai `
             /o:wangkanai `
             /v:$version `
-            /s:./SonarQube.Analysis.xml `
+            /s:$sourceDir/SonarQube.Analysis.xml `
             /d:sonar.host.url=https://sonarcloud.io `
             /d:sonar.cs.vscoveragexml.reportsPaths=$sourceDir/coverage.xml
 #            /d:sonar.branch.name=$base
