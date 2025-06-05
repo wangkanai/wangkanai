@@ -33,7 +33,7 @@ jobs:
       run: dotnet tool install --global dotnet-sonarscanner
 
     - name: SonarCloud Scanner
-      run:  dotnet sonarscanner begin /o:"wangkanai" /k:"wangkanai_github" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /s:${{ github.workspace }}/SonarQube.Analysis.xml /d:sonar.scanner.skipJreProvisioning=true
+      run:  dotnet sonarscanner begin /o:"wangkanai" /k:"wangkanai_github" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /s:${{ github.workspace }}/SonarQube.Analysis.xml /d:sonar.scanner.skipJreProvisioning=true /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
 
     - name: Install npm
       run: |
