@@ -16,6 +16,8 @@ jobs:
         DOTNET_ROOT: ${{ github.workspace }}/dotnet  # Define a writable directory for .NET
     steps:
     - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
 
     - name: Setup .NET 8.0
       uses: actions/setup-dotnet@v4
