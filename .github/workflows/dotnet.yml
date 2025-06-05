@@ -53,7 +53,7 @@ jobs:
       run:  dotnet build --no-restore
 
     - name: Test
-      run:  dotnet-coverage collect "dotnet test" -f xml -o "coverage.xml"
+      run:  dotnet-coverage collect "dotnet test --no-build --verbosity normal" -f xml -o "coverage.xml"
 #      run:  dotnet test  --no-build --verbosity normal --collect "Code Coverage"
 
     - name: SonarCloud Submit
