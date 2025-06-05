@@ -1,3 +1,4 @@
+$token       = $env:SONAR_TOKEN
 $buildDir    = $env:AGENT_BUILDDIRECTORY
 $sourceDir   = $env:GITHUB_WORKSPACE
 $version     = 1.0
@@ -22,7 +23,7 @@ if ("main" -ne $env:BUILD_SOURCEBRANCHNAME) {
     dotnet sonarscanner begin `
             /k:wangkanai_wangkanai `
             /o:wangkanai `
-            /d:sonar.token=$env.SONAR_TOKEN `
+            /d:sonar.token=$token `
             /v:$version `
             /s:$sourceDir/SonarQube.Analysis.xml `
             /d:sonar.host.url=https://sonarcloud.io `
