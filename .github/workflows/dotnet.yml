@@ -31,7 +31,7 @@ jobs:
       run: dotnet tool install --global dotnet-sonarscanner
 
     - name: SonarCloud Scanner
-      run:  dotnet sonarscanner begin /o:"wangkanai-github" /k:"github_wangkanai" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+      run:  dotnet sonarscanner begin /o:"wangkanai" /k:"wangkanai_github" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
 
     - name: Install npm
       run: |
