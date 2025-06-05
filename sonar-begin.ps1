@@ -23,7 +23,7 @@ if ("main" -ne $env:BUILD_SOURCEBRANCHNAME) {
             /k:wangkanai_wangkanai `
             /o:wangkanai `
             /v:$version `
-            /s:$sourceDir/SonarQube.Analysis.xml `
+            /s:./SonarQube.Analysis.xml `
             /d:sonar.host.url=https://sonarcloud.io `
             /d:sonar.cs.vscoveragexml.reportsPaths=$sourceDir/coverage.xml
 #            /d:sonar.pullrequest.base=$base `
@@ -41,7 +41,7 @@ else
             /k:wangkanai_wangkanai `
             /o:wangkanai `
             /v:$version `
-            /s:$sourceDir/SonarQube.Analysis.xml `
+            /s:./SonarQube.Analysis.xml `
             /d:sonar.host.url=https://sonarcloud.io `
             /d:sonar.cs.vscoveragexml.reportsPaths=$sourceDir/coverage.xml
 #            /d:sonar.branch.name=$base
