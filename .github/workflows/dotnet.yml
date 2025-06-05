@@ -50,7 +50,7 @@ jobs:
 #      run: dotnet test  --no-build --verbosity normal
 
     - name: Coverage
-      run:  dotnet coverage collect "dotnet test" -f xml -o "coverage.xml"
+      run:  dotnet-coverage collect "dotnet test" -f xml -o "coverage.xml"
 
     - name: SonarCloud Submit
       run:  dotnet sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
