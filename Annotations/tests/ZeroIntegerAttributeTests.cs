@@ -18,49 +18,96 @@ public class ZeroIntegerAttributeTests
 	{
 		var method    = typeof(ZeroInteger).GetMethod(nameof(ZeroInteger.ParameterDefault));
 		var argument  = method!.GetParameters()[0];
-		var attribute = argument!.GetCustomAttribute<ZeroIntegerAttribute>();
+		var attribute = argument.GetCustomAttribute<ZeroIntegerAttribute>();
 		Assert.Null(attribute);
 	}
 
 	[Fact]
-	public void Parameter_Attribute_Exist()
+	public void Parameter_With_Attribute()
 	{
-		// var method    = typeof(ZeroInteger).GetMethod(nameof(ZeroInteger.ParameterExit));
-		// var argument  = method!.GetParameters()[0];
-		// var attribute = argument!.GetCustomAttribute<ZeroIntegerAttribute>();
-		// var expected  = "The value must be zero integer.";
-		// Assert.NotNull(attribute);
-		// Assert.Equal(expected, attribute!.Message);
+		var method    = typeof(ZeroInteger).GetMethod(nameof(ZeroInteger.ParameterWithAttribute));
+		var argument  = method!.GetParameters()[0];
+		var attribute = argument.GetCustomAttribute<ZeroIntegerAttribute>();
+		Assert.NotNull(attribute);
 	}
 
 	[Fact]
-	public void Parameter_Attribute_Message()
+	public void Property_With_Attribute()
 	{
-		// var method    = typeof(ZeroInteger).GetMethod(nameof(ZeroInteger.ParameterMessage));
-		// var argument  = method!.GetParameters()[0];
-		// var attribute = argument!.GetCustomAttribute<ZeroIntegerAttribute>();
-		// var expected  = "message";
-		// Assert.NotNull(attribute);
-		// Assert.Equal(expected, attribute!.Message);
+		var property  = typeof(ZeroInteger).GetProperty(nameof(ZeroInteger.PropertyWithAttribute));
+		var attribute = property!.GetCustomAttribute<ZeroIntegerAttribute>();
+		Assert.NotNull(attribute);
 	}
 
 	[Fact]
-	public void Parameter_Attribute_Error()
+	public void Property_Without_Attribute()
 	{
-		// var method    = typeof(ZeroInteger).GetMethod(nameof(ZeroInteger.ParameterError));
-		// var argument  = method!.GetParameters()[0];
-		// var attribute = argument!.GetCustomAttribute<ZeroIntegerAttribute>();
-		// var expected  = "error";
-		// Assert.NotNull(attribute);
-		// Assert.Equal(expected, attribute!.Message);
-		// Assert.True(attribute.IsError);
+		var property  = typeof(ZeroInteger).GetProperty(nameof(ZeroInteger.PropertyWithoutAttribute));
+		var attribute = property!.GetCustomAttribute<ZeroIntegerAttribute>();
+		Assert.Null(attribute);
+	}
+
+	[Fact]
+	public void Field_With_Attribute()
+	{
+		var field     = typeof(ZeroInteger).GetField("_fieldWithAttribute", BindingFlags.NonPublic | BindingFlags.Instance);
+		var attribute = field!.GetCustomAttribute<ZeroIntegerAttribute>();
+		Assert.NotNull(attribute);
+	}
+
+	[Fact]
+	public void Field_Without_Attribute()
+	{
+		var field     = typeof(ZeroInteger).GetField("_fieldWithoutAttribute", BindingFlags.NonPublic | BindingFlags.Instance);
+		var attribute = field!.GetCustomAttribute<ZeroIntegerAttribute>();
+		Assert.Null(attribute);
+	}
+
+	[Fact]
+	public void Multiple_Parameters_With_Attribute()
+	{
+		var method        = typeof(ZeroInteger).GetMethod(nameof(ZeroInteger.MultipleParametersWithAttribute));
+		var parameters    = method!.GetParameters();
+
+		var firstAttribute  = parameters[0].GetCustomAttribute<ZeroIntegerAttribute>();
+		var secondAttribute = parameters[1].GetCustomAttribute<ZeroIntegerAttribute>();
+
+		Assert.NotNull(firstAttribute);
+		Assert.NotNull(secondAttribute);
+	}
+
+	[Fact]
+	public void Attribute_Is_Inherited()
+	{
+		var attributeType = typeof(ZeroIntegerAttribute);
+		var usageAttribute = attributeType.GetCustomAttribute<AttributeUsageAttribute>();
+
+		Assert.NotNull(usageAttribute);
+		Assert.True(usageAttribute.Inherited);
 	}
 }
 
 public class ZeroInteger
 {
-	public void ParameterDefault(int                            value) { }
-	public void ParameterExit([ZeroInteger]                 int value) { }
-	// public void ParameterMessage([ZeroInteger("message")] int value) { }
-	// public void ParameterError([ZeroInteger("error", true)] int value) { }
+	public void ParameterDefault(int value) { }
+
+	public void ParameterWithAttribute([ZeroInteger] int value) { }
+
+	public void MultipleParametersWithAttribute([ZeroInteger] int first, [ZeroInteger] int second) { }
+
+	[ZeroInteger]
+	public int PropertyWithAttribute { get; set; }
+
+	public int PropertyWithoutAttribute { get; set; }
+
+	[ZeroInteger]
+	private int _fieldWithAttribute = 0;
+
+	private int _fieldWithoutAttribute = 0;
+}
+
+public class DerivedZeroInteger : ZeroInteger
+{
+	// This property will inherit the attribute from the base class
+	public new int PropertyWithAttribute { get; set; }
 }

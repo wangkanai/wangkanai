@@ -27,39 +27,12 @@ public class PositiveIntegerAttributeTests
 		var method    = typeof(PositiveInteger).GetMethod(nameof(PositiveInteger.ParameterExist));
 		var argument  = method!.GetParameters()[0];
 		var attribute = argument!.GetCustomAttribute<PositiveIntegerAttribute>();
-		var expected  = "The value must be positive integer.";
 		Assert.NotNull(attribute);
-		//Assert.Equal(expected, attribute!);
-	}
-
-	[Fact]
-	public void Parameter_Attribute_Message()
-	{
-		//var method    = typeof(PositiveInteger).GetMethod(nameof(PositiveInteger.ParameterMessage));
-		//var argument  = method!.GetParameters()[0];
-		//var attribute = argument!.GetCustomAttribute<PositiveIntegerAttribute>();
-		// var expected  = "message";
-		// Assert.NotNull(attribute);
-		//Assert.Equal(expected, attribute!.Message);
-	}
-
-	[Fact]
-	public void Parameter_Attribute_Error()
-	{
-		// var method    = typeof(PositiveInteger).GetMethod(nameof(PositiveInteger.ParameterError));
-		// var argument  = method!.GetParameters()[0];
-		// var attribute = argument!.GetCustomAttribute<PositiveIntegerAttribute>();
-		// var expected  = "error";
-		// Assert.NotNull(attribute);
-		//Assert.Equal(expected, attribute!.Message);
-		//Assert.True(attribute.IsError);
 	}
 }
 
 public class PositiveInteger
 {
-	public void ParameterDefault(int                                value) { }
-	public void ParameterExist([PositiveInteger]                int value) { }
-	//public void ParameterMessage([PositiveInteger("message")]   int value) { }
-	//public void ParameterError([PositiveInteger("error", true)] int value) { }
+	public void ParameterDefault(int                 value) { }
+	public void ParameterExist([PositiveInteger] int value) { }
 }
