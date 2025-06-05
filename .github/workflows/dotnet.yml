@@ -48,8 +48,5 @@ jobs:
     - name: Test
       run: dotnet test  --no-build --verbosity normal --collect "Code Coverage"
 
-#    - name: Coverage
-#      run:  dotnet-coverage collect "dotnet test" -f xml -o "coverage.xml"
-
     - name: SonarCloud Submit
       run:  dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
