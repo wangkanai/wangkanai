@@ -1,5 +1,5 @@
 $buildDir    = $env:AGENT_BUILDDIRECTORY
-$sourceDir   = $env:BUILD_SOURCESDIRECTORY
+$sourceDir   = $env:GITHUB_WORKSPACE
 $version     = 1.0
 
 write-host "Agent.BuildDirectory:  " $buildDir
@@ -35,7 +35,7 @@ else
     $base      = "main"
 
     Write-Host "PR Not:             " $pullrequest
-    Write-Host "sonar.branch.name : " $base
+#    Write-Host "sonar.branch.name : " $base
 
     dotnet sonarscanner begin `
             /k:wangkanai_wangkanai `
