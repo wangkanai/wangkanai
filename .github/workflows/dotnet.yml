@@ -40,13 +40,13 @@ jobs:
       shell: bash
 
     - name: Restore dependencies
-      run: dotnet restore
+      run:  dotnet restore
 
     - name: Build
-      run: dotnet build --no-restore
+      run:  dotnet build --no-restore
 
     - name: Test
-      run: dotnet test  --no-build --verbosity normal --collect "Code Coverage"
+      run:  dotnet test  --no-build --verbosity normal --collect "Code Coverage"
 
     - name: SonarCloud Submit
-      run:  dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+      run:  dotnet sonarscanner end # /d:sonar.token="${{ secrets.SONAR_TOKEN }}"

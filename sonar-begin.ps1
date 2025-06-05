@@ -23,7 +23,7 @@ if ("main" -ne $env:BUILD_SOURCEBRANCHNAME) {
     dotnet sonarscanner begin `
             /k:wangkanai_wangkanai `
             /o:wangkanai `
-            /d:sonar.token=$token `
+#            /d:sonar.token=$token `
             /v:$version `
             /s:$sourceDir/SonarQube.Analysis.xml `
             /d:sonar.host.url=https://sonarcloud.io `
