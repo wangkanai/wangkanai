@@ -2,7 +2,7 @@
     <!-- Mandatory-->
     <Property Name="sonar.host.url">https://sonarcloud.io</Property>
     <!-- Generic  -->
-    <!-- <Property Name="sonar.branch.name">main</Property>-->
+    <Property Name="sonar.branch.name">main</Property>
     <Property Name="sonar.sourceEncoding">UTF-8</Property>
     <!-- <Property Name="sonar.project.monorepo.enabled">true</Property> -->
     <!-- Source   -->
