@@ -3,7 +3,7 @@
 namespace Wangkanai;
 
 [DebuggerStepThrough]
-public static class NullEqualityComparerExtensions
+public static class NullEqualityExtensions
 {
 	/// <summary>Determines whether the specified value is equal to null or the default value of the type.</summary>
 	/// <typeparam name="T">The type of the value to compare.</typeparam>
