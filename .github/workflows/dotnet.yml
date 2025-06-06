@@ -39,18 +39,28 @@ jobs:
       run:  dotnet tool install --global dotnet-coverage
 
     - name: Install npm
-      run: |
+      run:  |
         npm install -g rimraf
       shell: bash
 
     - name: SonarCloud Scanner
-      run:  dotnet sonarscanner begin /o:"wangkanai" /k:"wangkanai_github" /d:sonar.host.url="https://sonarcloud.io" /v:${{ env.VERSION }} /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /s:${{ github.workspace }}/SonarQube.Analysis.xml /d:sonar.scanner.skipJreProvisioning=true /d:sonar.cs.vscoveragexml.reportsPaths=${{ github.workspace }}/coverage.xml
+      run:  >
+        dotnet sonarscanner begin
+        /o:"wangkanai"
+        /k:"wangkanai_github"
+        /s:${{ github.workspace }}/SonarQube.Analysis.xml
+        /v:${{ env.VERSION }}
+        /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+        /d:sonar.host.url="https://sonarcloud.io"
+        /d:sonar.scanner.skipJreProvisioning=true
+        /d:sonar.scanner.scanAll=false
+        /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
 
     - name: Restore dependencies
       run:  dotnet restore
 
     - name: Build
-      run:  dotnet build --no-restore
+      run:  dotnet build --no-restore --no-incremental
 
     - name: Test
       run:  dotnet-coverage collect "dotnet test --no-build --verbosity normal" -f xml -o "coverage.xml"
