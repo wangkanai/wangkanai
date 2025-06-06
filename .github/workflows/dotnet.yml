@@ -44,7 +44,7 @@ jobs:
       shell: bash
 
     - name: SonarCloud Scanner
-      run:  |
+      run:  >
         dotnet sonarscanner begin
           /o:"wangkanai"
           /k:"wangkanai_github"
