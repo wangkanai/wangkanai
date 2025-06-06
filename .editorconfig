@@ -100,9 +100,10 @@ dotnet_sort_system_directives_first                =true
 dotnet_separate_import_directive_groups            =true
 resharper_sort_system_directives_first             =true
 ij_any_align_multiline_array_initializer_expression=true
+resharper_csharp_space_before_trailing_comment     =false
 
 [*.{cs, cpp, h}]
-file_header_template=Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
+file_header_template=Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 [*.{html, cshtml}]
 indent_size                           =4

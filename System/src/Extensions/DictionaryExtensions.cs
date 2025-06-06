@@ -8,9 +8,7 @@ namespace Wangkanai.Extensions;
 [DebuggerStepThrough]
 public static class DictionaryExtensions
 {
-	/// <summary>
-	/// Returns the value associated with the specified key from the dictionary or throws a KeyNotFoundException with the specified exception message if the key does not exist.
-	/// </summary>
+	/// <summary>Returns the value associated with the specified key from the dictionary or throws a KeyNotFoundException with the specified exception message if the key does not exist.</summary>
 	/// <typeparam name="TKey">The type of the key in the dictionary.</typeparam>
 	/// <typeparam name="TValue">The type of the value in the dictionary.</typeparam>
 	/// <param name="dictionary">The dictionary to retrieve the value from.</param>
@@ -23,21 +21,16 @@ public static class DictionaryExtensions
 			   ? throw new KeyNotFoundException(exceptionMessage)
 			   : value;
 
-	/// <summary>
-	/// Doesn't throw an exception when the key is null or does not exist. Returns the value associated with the specified key from the dictionary, or a default value if the key is null or does not exist.
-	/// </summary>
+	/// <summary>Doesn't throw an exception when the key is null or does not exist. Returns the value associated with the specified key from the dictionary, or a default value if the key is null or does not exist. </summary>
 	/// <typeparam name="TKey">The type of the key in the dictionary.</typeparam>
 	/// <typeparam name="TValue">The type of the value in the dictionary.</typeparam>
 	/// <param name="dictionary">The dictionary to retrieve the value from.</param>
 	/// <param name="key">The key to retrieve the value for.</param>
-	/// <param name="defaultValue">The default value to be returned if the key is null or does not exist.</param>
 	/// <returns>The value associated with the key, or the default value if the key is null or does not exist.</returns>
 	public static TValue GetValueSafe<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key)
 		=> dictionary!.GetValueSafe(key, default)!;
 
-	/// <summary>
-	/// Doesn't throw an exception when the key is null or does not exist. Returns the value associated with the specified key from the dictionary, or a default value if the key is null or does not exist.
-	/// </summary>
+	/// <summary>Doesn't throw an exception when the key is null or does not exist. Returns the value associated with the specified key from the dictionary, or a default value if the key is null or does not exist.</summary>
 	/// <typeparam name="TKey">The type of the key in the dictionary.</typeparam>
 	/// <typeparam name="TValue">The type of the value in the dictionary.</typeparam>
 	/// <param name="dictionary">The dictionary to retrieve the value from.</param>
@@ -45,13 +38,11 @@ public static class DictionaryExtensions
 	/// <param name="defaultValue">The default value to be returned if the key is null or does not exist.</param>
 	/// <returns>The value associated with the key, or the default value if the key is null or does not exist.</returns>
 	public static TValue GetValueSafe<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key, TValue defaultValue)
-		=> EqualityComparer<TKey>.Default.Equals(key, default) || !dictionary.TryGetValue(key, out var value)
+		=> key.EqualNull() || !dictionary.TryGetValue(key, out var value)
 			   ? defaultValue
 			   : value;
 
-	/// <summary>
-	/// Returns the value associated with the specified key from the dictionary, allowing for safe retrieval without throwing a KeyNotFoundException if the key does not exist.
-	/// </summary>
+	/// <summary>Returns the value associated with the specified key from the dictionary, allowing for safe retrieval without throwing a KeyNotFoundException if the key does not exist.</summary>
 	/// <typeparam name="TKey">The type of the key in the dictionary.</typeparam>
 	/// <typeparam name="TValue">The type of the value in the dictionary.</typeparam>
 	/// <param name="dictionary">The dictionary to retrieve the value from.</param>
@@ -60,7 +51,7 @@ public static class DictionaryExtensions
 	/// <returns>true if the dictionary contains an element with the specified key; otherwise, false.</returns>
 	public static bool TryGetValueSafe<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key, out TValue value)
 	{
-		if (!EqualityComparer<TKey>.Default.Equals(key, default))
+		if (key.NotNull())
 			return dictionary.TryGetValue(key, out value!);
 		value = default!;
 		return false;
