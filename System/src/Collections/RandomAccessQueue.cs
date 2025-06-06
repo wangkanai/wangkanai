@@ -6,23 +6,23 @@ namespace Wangkanai.Collections;
 /// <typeparam name="T">The type of elements in the queue.</typeparam>
 public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneable
 {
+	/// <summary>The default initial capacity of the queue when no capacity is explicitly specified.</summary>
 	public const int DefaultCapacity = 16;
 
 	private int _version;
 	private T[] _buffer;
-	private int _count;
 	private int _start;
 
 	/// <summary>The number of items in the queue</summary>
-	public int Count => _count;
+	public int Count { get; private set; }
 
 	/// <summary>Current capacity of the queue - the size of the buffer</summary>
 	public int Capacity => _buffer.Length;
 
-	/// <summary>Returns false, to indicate that the queue is not read-only</summary>
+	/// <summary>Returns false to indicate that the queue is not read-only</summary>
 	public bool IsReadOnly => false;
 
-	/// <summary>Returns false, to in indicate that the queue is not synchronized</summary>
+	/// <summary>Returns false to indicate that the queue is not synchronized</summary>
 	public bool IsSynchronized => false;
 
 	/// <summary>
@@ -30,9 +30,7 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 	/// This reference is not used for anywhere in the class itself.
 	/// The same reference will always be returned for the same queue, and this will never be the same as the reference returned for a different queue, even a clone.
 	/// </summary>
-	public object SyncRoot => _syncRoot;
-
-	private readonly object _syncRoot = new();
+	public object SyncRoot { get; } = new();
 
 	/// <summary>Initializes a new instance of the <see cref="RandomAccessQueue{T}"/> class that is empty and has the default initial capacity.</summary>
 	public RandomAccessQueue() : this(DefaultCapacity) { }
@@ -49,7 +47,7 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 	private RandomAccessQueue(T[] buffer, int count, int start)
 	{
 		_buffer = (T[])buffer.Clone();
-		_count  = count;
+		Count   = count;
 		_start  = start;
 	}
 
@@ -59,12 +57,12 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 	{
 		get
 		{
-			index.ThrowIfOutOfRange(0, _count);
+			index.ThrowIfOutOfRange(0, Count);
 			return _buffer[(_start + index) % Capacity];
 		}
 		set
 		{
-			index.ThrowIfOutOfRange(0, _count);
+			index.ThrowIfOutOfRange(0, Count);
 			_version++;
 			_buffer[(_start + index) % Capacity] = value;
 		}
@@ -74,7 +72,7 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 	public void Clear()
 	{
 		_start = 0;
-		_count = 0;
+		Count  = 0;
 		((IList)_buffer).Clear();
 	}
 
@@ -87,7 +85,7 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 
 	/// <summary>Strongly type version if <see cref="ICloneable.Clone"/> Create a new queue with the same contents as the queue.</summary>
 	/// <returns>A clone of the current queue</returns>
-	public RandomAccessQueue<T> Clone() => new(_buffer, _count, _start);
+	public RandomAccessQueue<T> Clone() => new(_buffer, Count, _start);
 
 	/// <summary>Adds an item to the queue.</summary>
 	/// <param name="item">The item to add</param>
@@ -183,23 +181,23 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 	/// <summary>Adds an item to the end of the queue.</summary>
 	/// <param name="value">The item to add to the queue.</param>
 	public void Enqueue(T value)
-		=> Enqueue(value, _count);
+		=> Enqueue(value, Count);
 
 	/// <summary>Adds an object at the specified index.</summary>
 	/// <param name="value">The item to add to the queue</param>
 	/// <param name="index">The index of the newly added item</param>
 	public void Enqueue(T value, int index)
 	{
-		if (_count == Capacity)
+		if (Count == Capacity)
 		{
-			Resize(_count * 2, index);
-			_count++;
+			Resize(Count * 2, index);
+			Count++;
 		}
 		else
 		{
-			_count++;
+			Count++;
 			// How to make this more efficient? foreach?
-			for (int i = _count - 2; i >= index; i--)
+			for (int i = Count - 2; i >= index; i--)
 				this[i + 1] = this[i];
 		}
 
@@ -211,7 +209,7 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 	/// <exception cref="InvalidOperationException"></exception>
 	public T Dequeue()
 	{
-		if (_count == 0)
+		if (Count == 0)
 			throw new InvalidOperationException("Dequeue called from an empty queue");
 
 		var result = this[0];
@@ -221,7 +219,7 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 		if (_start == Capacity)
 			_start = 0;
 
-		_count--;
+		Count--;
 		return result;
 	}
 
@@ -235,15 +233,15 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 		{
 			int first;
 			int second;
-			if (_buffer.Length - _start >= _count)
+			if (_buffer.Length - _start >= Count)
 			{
-				first  = _count;
+				first  = Count;
 				second = 0;
 			}
 			else
 			{
 				first  = _buffer.Length - _start;
-				second = _count - first;
+				second = Count - first;
 			}
 
 			Array.Copy(_buffer, _start, newBuffer, 0, first);
@@ -254,7 +252,7 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 			var outIndex = 0;
 			var inIndex  = _start;
 
-			for (var i = 0; i < _count; i++)
+			for (var i = 0; i < Count; i++)
 			{
 				if (i == gap)
 					outIndex++;
@@ -276,17 +274,17 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 	/// <returns>The item which has been removed from the</returns>
 	public T RemoveAt(int index)
 	{
-		index.ThrowIfOutOfRange(0, _count);
+		index.ThrowIfOutOfRange(0, Count);
 
 		if (index == 0)
 			return Dequeue();
 
 		var result = this[index];
 
-		if (index == _count - 1)
+		if (index == Count - 1)
 		{
 			this[index] = default!;
-			_count--;
+			Count--;
 			return result;
 		}
 
@@ -295,9 +293,9 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 			Array.Copy(
 				_buffer, _start + index - Capacity + 1,
 				_buffer, _start + index - Capacity,
-				_count - index - 1);
+				Count - index - 1);
 
-			_buffer[_start + _count - 1 - Capacity] = default!;
+			_buffer[_start + Count - 1 - Capacity] = default!;
 		}
 		else
 		{
@@ -306,7 +304,7 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 			_start++;
 		}
 
-		_count--;
+		Count--;
 		_version++;
 		return result;
 	}
@@ -339,7 +337,7 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 	public int BinarySearch(T value)
 	{
 		if (value is null)
-			if (_count == 0 || _buffer[_start].NotNull())
+			if (Count == 0 || _buffer[_start].NotNull())
 				return ~0;
 			else
 				return 0;
@@ -347,7 +345,7 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 		var comparable = value as IComparable;
 		comparable.ThrowIfNull<ArgumentException>($"{nameof(value)} does not implement {nameof(IComparable)}");
 
-		if (_count == 0)
+		if (Count == 0)
 			return ~0;
 
 		return BinarySearch(test => {
@@ -388,7 +386,7 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 	{
 		comparer.ThrowIfNull();
 
-		if (_count == 0)
+		if (Count == 0)
 			return ~0;
 
 		return BinarySearch(test => comparer.Compare(value, this[test]));
@@ -397,7 +395,7 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 	private int BinarySearch(Func<int, int> comparer)
 	{
 		var min = 0;
-		var max = _count - 1;
+		var max = Count - 1;
 
 		while (min <= max)
 		{
