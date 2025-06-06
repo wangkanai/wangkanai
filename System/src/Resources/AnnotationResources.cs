@@ -1,7 +1,12 @@
-// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 namespace Wangkanai.Resources;
 
+/// <summary>
+/// Contains constant string values representing different null-handling behaviors.
+/// This class is intended for internal use within the library to standardize messages
+/// associated with scenarios where null values are encountered.
+/// </summary>
 internal static class AnnotationResources
 {
 	internal const string ValueNullThenHalt    = "null => halt";
