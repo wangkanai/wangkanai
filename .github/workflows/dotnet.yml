@@ -60,7 +60,7 @@ jobs:
       run:  dotnet restore
 
     - name: Build
-      run:  dotnet build --no-restore
+      run:  dotnet build --no-restore --no-incremental
 
     - name: Test
       run:  dotnet-coverage collect "dotnet test --no-build --verbosity normal" -f xml -o "coverage.xml"
