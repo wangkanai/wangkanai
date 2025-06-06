@@ -1,7 +1,9 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 namespace Wangkanai.Collections;
 
+/// <summary>Represents a generic collection that provides random access to elements and supports queue-like operations.</summary>
+/// <typeparam name="T">The type of elements in the queue.</typeparam>
 public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneable
 {
 	public const int DefaultCapacity = 16;
@@ -11,24 +13,16 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 	private int _count;
 	private int _start;
 
-	/// <summary>
-	/// The number of items in the queue
-	/// </summary>
+	/// <summary>The number of items in the queue</summary>
 	public int Count => _count;
 
-	/// <summary>
-	/// Current capacity of the queue - the size of the buffer
-	/// </summary>
+	/// <summary>Current capacity of the queue - the size of the buffer</summary>
 	public int Capacity => _buffer.Length;
 
-	/// <summary>
-	/// Returns false, to indicate that the queue is not read-only
-	/// </summary>
+	/// <summary>Returns false, to indicate that the queue is not read-only</summary>
 	public bool IsReadOnly => false;
 
-	/// <summary>
-	/// Returns false, to in indicate that the queue is not synchronized
-	/// </summary>
+	/// <summary>Returns false, to in indicate that the queue is not synchronized</summary>
 	public bool IsSynchronized => false;
 
 	/// <summary>
@@ -40,21 +34,15 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 
 	private readonly object _syncRoot = new();
 
-	/// <summary>
-	/// Initializes a new instance of the <see cref="RandomAccessQueue{T}"/> class that is empty and has the default initial capacity.
-	/// </summary>
+	/// <summary>Initializes a new instance of the <see cref="RandomAccessQueue{T}"/> class that is empty and has the default initial capacity.</summary>
 	public RandomAccessQueue() : this(DefaultCapacity) { }
 
-	/// <summary>
-	/// Initializes a new instance of the <see cref="RandomAccessQueue{T}"/> class that is empty and has the specified initial capacity (or the default capacity if that is higher.
-	/// </summary>
+	/// <summary>Initializes a new instance of the <see cref="RandomAccessQueue{T}"/> class that is empty and has the specified initial capacity (or the default capacity if that is higher.</summary>
 	/// <param name="capacity">The initial capacity of the queue</param>
 	public RandomAccessQueue(int capacity)
 		=> _buffer = new T[System.Math.Max(capacity, DefaultCapacity)];
 
-	/// <summary>
-	/// Private constructor for cloning
-	/// </summary>
+	/// <summary>Private constructor for cloning</summary>
 	/// <param name="buffer">The buffer to clone for use in this queue</param>
 	/// <param name="count">The number of "valid" elements in the buffer</param>
 	/// <param name="start">The first valid element in the queue</param>
@@ -65,9 +53,7 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 		_start  = start;
 	}
 
-	/// <summary>
-	/// Indexer for the queue, allowing items to be accessed by index and replaced.
-	/// </summary>
+	/// <summary>Indexer for the queue, allowing items to be accessed by index and replaced.</summary>
 	/// <param name="index">The index in the queue</param>
 	public T this[int index]
 	{
@@ -84,9 +70,7 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 		}
 	}
 
-	/// <summary>
-	/// Clear the queue without resizing the buffer
-	/// </summary>
+	/// <summary>Clear the queue without resizing the buffer</summary>
 	public void Clear()
 	{
 		_start = 0;
@@ -101,23 +85,15 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 	/// <returns></returns>
 	object ICloneable.Clone() => Clone();
 
-	/// <summary>
-	/// Strongly type version if <see cref="ICloneable.Clone"/>
-	/// Create a new queue with the same contents as the queue.
-	/// </summary>
+	/// <summary>Strongly type version if <see cref="ICloneable.Clone"/> Create a new queue with the same contents as the queue.</summary>
 	/// <returns>A clone of the current queue</returns>
 	public RandomAccessQueue<T> Clone() => new(_buffer, _count, _start);
 
-
-	/// <summary>
-	/// Adds an item to the queue.
-	/// </summary>
+	/// <summary>Adds an item to the queue.</summary>
 	/// <param name="item">The item to add</param>
 	public void Add(T item) => Enqueue(item);
 
-	/// <summary>
-	/// Removes the given item from the queue, if it exists. The first equal value is removed.
-	/// </summary>
+	/// <summary>Removes the given item from the queue if it exists. The first equal value is removed.</summary>
 	/// <param name="item">The item to remove</param>
 	public bool Remove(T item)
 	{
@@ -145,10 +121,7 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 		return false;
 	}
 
-	/// <summary>
-	/// Returns whether the queue contains the given item,
-	/// using the default equality comparer for the item to find is non-null.
-	/// </summary>
+	/// <summary>Returns whether the queue contains the given item, using the default equality comparer for the item to find is non-null.</summary>
 	public bool Contains(T item)
 	{
 		if (item is null)
@@ -166,9 +139,7 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 		return false;
 	}
 
-	/// <summary>
-	/// Copies the elements of the queue to the given array, starting at the given index in the array.
-	/// </summary>
+	/// <summary>Copies the elements of the queue to the given array, starting at the given index in the array.</summary>
 	/// <param name="array">The array to copy the contents of the queue into</param>
 	/// <param name="arrayIndex">The zero-based index in array at which coping begins</param>
 	/// <exception cref="ArgumentException">When not enough space in the array</exception>
@@ -199,10 +170,7 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 		CopyTo(strong!, index);
 	}
 
-	/// <summary>
-	/// Resizes the buffer to just fit the current number of items in the queue.
-	/// The buffer size is never set to less than the default capacity.
-	/// </summary>
+	/// <summary>Resizes the buffer to just fit the current number of items in the queue. The buffer size is never set to less than the default capacity.</summary>
 	public void TrimToSize()
 	{
 		var newCapacity = System.Math.Max(Count, DefaultCapacity);
@@ -212,16 +180,12 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 		Resize(newCapacity, -1);
 	}
 
-	/// <summary>
-	/// Adds an item to the end of the queue
-	/// </summary>
+	/// <summary>Adds an item to the end of the queue.</summary>
 	/// <param name="value">The item to add to the queue.</param>
 	public void Enqueue(T value)
 		=> Enqueue(value, _count);
 
-	/// <summary>
-	/// Adds an object at the specified index
-	/// </summary>
+	/// <summary>Adds an object at the specified index.</summary>
 	/// <param name="value">The item to add to the queue</param>
 	/// <param name="index">The index of the newly added item</param>
 	public void Enqueue(T value, int index)
@@ -242,9 +206,7 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 		this[index] = value;
 	}
 
-	/// <summary>
-	/// Removes on T from the start of the queue, returning it.
-	/// </summary>
+	/// <summary>Removes on T from the start of the queue, returning it.</summary>
 	/// <returns>The item at the head of the queue</returns>
 	/// <exception cref="InvalidOperationException"></exception>
 	public T Dequeue()
@@ -263,9 +225,7 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 		return result;
 	}
 
-	/// <summary>
-	/// Resizes the queue to a new capacity, optionally leaving a at the given logical index so that a new item can be added in with further copying.
-	/// </summary>
+	/// <summary>Resizes the queue to a new capacity, optionally leaving at the given logical index so that a new item can be added in with further copying.</summary>
 	/// <param name="newCapacity">The new capacity</param>
 	/// <param name="gap">The logical index at which in insert a gap, or -1 for no gap</param>
 	private void Resize(int newCapacity, int gap)
@@ -311,9 +271,7 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 		_start  = 0;
 	}
 
-	/// <summary>
-	/// Removes an item from the queue at the specified index.
-	/// </summary>
+	/// <summary>Removes an item from the queue at the specified index.</summary>
 	/// <param name="index">The index of the item to remove</param>
 	/// <returns>The item which has been removed from the</returns>
 	public T RemoveAt(int index)
@@ -356,6 +314,9 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 	IEnumerator IEnumerable.GetEnumerator()
 		=> GetEnumerator();
 
+	/// <summary>Returns an enumerator that iterates through the elements of the <see cref="RandomAccessQueue{T}"/>.</summary>
+	/// <returns>An enumerator that can be used to iterate through the collection.</returns>
+	/// <exception cref="InvalidOperationException">Thrown if the collection is modified after the enumerator is created.</exception>
 	public IEnumerator<T> GetEnumerator()
 	{
 		var original = _version;
@@ -371,6 +332,10 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 
 	#region Binary Search
 
+	/// <summary>Searches for the specified object within the queue and returns the zero-based index of the object.</summary>
+	/// <param name="value">The object to locate in the queue. The value must implement <see cref="IComparable"/>.</param>
+	/// <returns>The zero-based index of the value in the queue if found; otherwise, a negative number indicating the bitwise complement of the index where the specified value could be inserted.</returns>
+	/// <exception cref="ArgumentException">Thrown when the <paramref name="value"/> does not implement <see cref="IComparable"/>.</exception>
 	public int BinarySearch(T value)
 	{
 		if (value is null)
@@ -391,12 +356,34 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 		});
 	}
 
+	/// <summary>
+	/// Searches the queue for a given item and returns the index of the item if found.
+	/// The search is performed using a binary search algorithm, and the comparison logic is determined by the specified comparer.
+	/// </summary>
+	/// <param name="value">The item to locate in the queue.</param>
+	/// <param name="comparison">An <see cref="IComparer{T}"/> implementation to use for comparing elements during the search.</param>
+	/// <returns>
+	/// The zero-based index of the specified item in the queue, if found;
+	/// otherwise, a negative number that is the bitwise complement of the index of the next element that is larger than the value,
+	/// or, if there is no larger element, the bitwise complement of <see cref="Count"/>.
+	/// </returns>
 	public int BinarySearch(T value, Comparison<T> comparison)
 		=> BinarySearch(value, new ComparisonComparer<T>(comparison));
 
+	/// <summary>Performs a binary search for the specified value and returns the index of the value within the collection.</summary>
+	/// <param name="value">The value to locate within the queue.</param>
+	/// <param name="projection">A projection function to apply to each element in the queue.</param>
+	/// <returns>
+	/// The zero-based index of the specified value if it is found, or a negative number which is the bitwise complement
+	/// of the index of the next element that is larger than the specified value (or if there is no larger element, the bitwise complement of <see cref="Count"/>).
+	/// </returns>
 	public int BinarySearch(T value, Func<T, T, int> projection)
 		=> BinarySearch(value, new ComparisonComparer<T>((x, y) => projection(x, y)));
 
+	/// <summary>Searches for the specified value in the <see cref="RandomAccessQueue{T}"/> using the specified comparer and returns the zero-based index of the value.</summary>
+	/// <param name="value">The value to locate in the queue.</param>
+	/// <param name="comparer">The comparer used to compare values in the queue. Cannot be null.</param>
+	/// <returns>The zero-based index of the specified value in the queue if found; otherwise, a negative number that is the bitwise complement of the index of the next element that is larger than <paramref name="value"/> or, if no such element exists, the bitwise complement of <see cref="Count"/>. </returns>
 	public int BinarySearch(T value, IComparer<T> comparer)
 	{
 		comparer.ThrowIfNull();
