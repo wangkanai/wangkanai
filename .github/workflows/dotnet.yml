@@ -46,15 +46,15 @@ jobs:
     - name: SonarCloud Scanner
       run:  >
         dotnet sonarscanner begin
-          /o:"wangkanai"
-          /k:"wangkanai_github"
-          /s:${{ github.workspace }}/SonarQube.Analysis.xml
-          /v:${{ env.VERSION }}
-          /d:sonar.host.url="https://sonarcloud.io"
-          /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
-          /d:sonar.scanner.skipJreProvisioning=true
-          /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
-          /d:sonar.scanner.scanAll=false
+        /o:"wangkanai"
+        /k:"wangkanai_github"
+        /s:${{ github.workspace }}/SonarQube.Analysis.xml
+        /v:${{ env.VERSION }}
+        /d:sonar.host.url="https://sonarcloud.io"
+        /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+        /d:sonar.scanner.skipJreProvisioning=true
+        /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
+        /d:sonar.scanner.scanAll=false
 
     - name: Restore dependencies
       run:  dotnet restore
