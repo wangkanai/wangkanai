@@ -2,7 +2,7 @@
 
 namespace Wangkanai;
 
-[AttributeUsage( AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter)]
+[AttributeUsage( AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter, Inherited = false)]
 public sealed class PositiveIntegerAttribute : Attribute
 {
 	public PositiveIntegerAttribute() { }
