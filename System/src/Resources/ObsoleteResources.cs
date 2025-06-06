@@ -1,7 +1,10 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 namespace Wangkanai.Resources;
 
+/// <summary>
+/// Provides a collection of constants for obsolete resource messages that indicate deprecated methods or features.
+/// </summary>
 internal static class ObsoleteResources
 {
 	internal const string Duplicated = "This method is duplicated and will be removed in a future version of .NET8.";

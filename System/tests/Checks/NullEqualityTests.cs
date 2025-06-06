@@ -1,5 +1,7 @@
 // Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
 
+// ReSharper disable PreferConcreteValueOverDefault
+// ReSharper disable SuggestVarOrType_BuiltInTypes
 namespace Wangkanai.Checks;
 
 public class NullEqualityTests
@@ -9,7 +11,7 @@ public class NullEqualityTests
     [Fact]
     public void EqualNull_WithNullReferenceType_ReturnsTrue()
     {
-        string value = null;
+        string value = null!;
         Assert.True(value.EqualNull());
     }
 
@@ -30,7 +32,7 @@ public class NullEqualityTests
     [Fact]
     public void EqualNull_WithDefaultInt_ReturnsTrue()
     {
-        int value = default;
+	    int value = default;
         Assert.True(value.EqualNull());
     }
 
@@ -125,7 +127,7 @@ public class NullEqualityTests
     [Fact]
     public void NotNull_WithNullReferenceType_ReturnsFalse()
     {
-        string value = null;
+        string value = null!;
         Assert.False(value.NotNull());
     }
 
@@ -241,7 +243,7 @@ public class NullEqualityTests
     [Fact]
     public void EqualNull_WithNullCustomClass_ReturnsTrue()
     {
-        TestClass value = null;
+        TestClass value = null!;
         Assert.True(value.EqualNull());
     }
 
@@ -255,7 +257,7 @@ public class NullEqualityTests
     [Fact]
     public void NotNull_WithNullCustomClass_ReturnsFalse()
     {
-        TestClass value = null;
+        TestClass value = null!;
         Assert.False(value.NotNull());
     }
 

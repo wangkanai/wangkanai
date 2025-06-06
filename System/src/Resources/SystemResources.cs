@@ -1,7 +1,10 @@
-// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 namespace Wangkanai.Resources;
 
+/// <summary>
+/// Provides generic system resource strings used for exception messages in the application.
+/// </summary>
 internal static class SystemResources
 {
 	internal static string ArgumentEmptyGeneric       => "Value cannot be empty";
