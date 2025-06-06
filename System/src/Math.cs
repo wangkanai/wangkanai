@@ -77,7 +77,7 @@ public static partial class Math
 	/// <param name="divider">The divisor.</param>
 	/// <returns>The quotient of the division. If the divisor is 0, returns 0.</returns>
 	public static float Divider(float value, float divider)
-		=> divider != 0 ? value / divider : 0;
+		=> System.Math.Abs(divider) >= float.Epsilon ? value / divider : 0;
 
 	/// <summary>
 	/// Divides two double values.
@@ -86,7 +86,7 @@ public static partial class Math
 	/// <param name="divider">The divisor.</param>
 	/// <returns>The quotient of the division. If the divisor is 0, returns 0.</returns>
 	public static double Divider(double value, double divider)
-		=> divider != 0 ? value / divider : 0;
+		=> System.Math.Abs(divider) >= double.Epsilon ? value / divider : 0;
 
 	/// <summary>
 	/// Divides two decimal values.
