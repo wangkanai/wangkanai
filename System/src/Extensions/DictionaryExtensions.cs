@@ -45,7 +45,6 @@ public static class DictionaryExtensions
 	/// <param name="defaultValue">The default value to be returned if the key is null or does not exist.</param>
 	/// <returns>The value associated with the key, or the default value if the key is null or does not exist.</returns>
 	public static TValue GetValueSafe<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key, TValue defaultValue)
-		//=> key == null || !dictionary.TryGetValue(key, out var value)
 		=> EqualityComparer<TKey>.Default.Equals(key, default) || !dictionary.TryGetValue(key, out var value)
 			   ? defaultValue
 			   : value;
