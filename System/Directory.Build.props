@@ -2,9 +2,9 @@
 	<Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
 
 	<PropertyGroup>
-		<VersionPrefix>5.4.0</VersionPrefix>
+		<VersionPrefix>5.5.0</VersionPrefix>
 		<Title>Wangkanai System</Title>
-		<PackageTags>aspnetcore;sytem;runtime;</PackageTags>
+		<PackageTags>sytem;runtime;net;check;</PackageTags>
 		<Description>A powerful library of extensions that unlocks the full potential of your .NET runtime. Simplify your coding process, enhance application structure, and reduce boilerplate code. Join us in pushing the boundaries of .NET, writing clean and efficient code that is robust and maintainable. Elevate your development journey with Wangkanai System!</Description>
 		<RootNamespace>Wangkanai</RootNamespace>
 		<PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/System</PackageProjectUrl>
@@ -16,7 +16,7 @@
 	</PropertyGroup>
 
 	<ItemGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.System'">
-		<None Include="..\..\assets\wangkanai-logo.png" Pack="true" PackagePath="\" />
+		<None Include="$(RepoRoot)\assets\wangkanai-logo.png" Pack="true" PackagePath="\" />
 		<None Include="..\README.md" Pack="true" PackagePath="\" />
 	</ItemGroup>
 </Project>
