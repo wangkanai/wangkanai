@@ -4,9 +4,9 @@ namespace Wangkanai.Reflection;
 
 public class PropertyCopyTests
 {
-	[Fact] public void MissingProperty()              => Assert.Throws<ArgumentException>(() => PropertyCopy<Simple>.CopyFrom(new { Missing = "oh!" }));
-	[Fact] public void ReadOnlyTargetPropertyThrows() => Assert.Throws<ArgumentException>(() => PropertyCopy<ReadOnly>.CopyFrom(new { Value = "oh!" }));
-	[Fact] public void IncorrectTypeThrows()          => Assert.Throws<ArgumentException>(() => PropertyCopy<Simple>.CopyFrom(new { Value   = 10 }));
+	[Fact] public void MissingProperty()              => Assert.Throws<ArgumentNullException>(() => PropertyCopy<Simple>.CopyFrom(new { Missing = "oh!" }));
+	[Fact] public void ReadOnlyTargetPropertyThrows() => Assert.Throws<ArgumentException>(() => PropertyCopy<ReadOnly>.CopyFrom(new { Value     = "oh!" }));
+	[Fact] public void IncorrectTypeThrows()          => Assert.Throws<ArgumentException>(() => PropertyCopy<Simple>.CopyFrom(new { Value       = 10 }));
 
 	[Fact]
 	public void CopyToSameType()

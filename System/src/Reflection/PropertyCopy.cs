@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using System.Linq.Expressions;
 
@@ -6,8 +6,16 @@ using ArgumentException = System.ArgumentException;
 
 namespace Wangkanai.Reflection;
 
+/// <summary>A utility class for copying properties from one object to another object of a specified target type.</summary>
+/// <typeparam name="TTarget">The target type to which properties are copied. This must be a class with a parameterless constructor.</typeparam>
 public static class PropertyCopy<TTarget> where TTarget : class, new()
 {
+	/// <summary>Copies properties from a source object to a new instance of the target type.</summary>
+	/// <typeparam name="TSource">The type of the source object from which properties are copied. This must be a class.</typeparam>
+	/// <param name="source">The source object from which properties are copied. Cannot be null.</param>
+	/// <returns>A new instance of the target type with properties copied from the source object.</returns>
+	/// <exception cref="ArgumentNullException">Thrown if the source object is null.</exception>
+	/// <exception cref="ArgumentException">Thrown if a property exists in the source object that cannot be copied to the target type due to mismatched names, types, or accessibility.</exception>
 	public static TTarget CopyFrom<TSource>(TSource source)
 		where TSource : class
 		=> PropertyCopier<TSource>.Copy(source);
@@ -54,7 +62,7 @@ public static class PropertyCopy<TTarget> where TTarget : class, new()
 				var targetProperty = typeof(TTarget).GetProperty(sourceProperty.Name);
 
 				if (targetProperty is null)
-					throw new ArgumentException($"Property {sourceProperty.Name} is not found in {typeof(TTarget).FullName}");
+					throw new ArgumentNullException($"Property {sourceProperty.Name} is not found in {typeof(TTarget).FullName}");
 				if (!targetProperty.CanWrite)
 					throw new ArgumentException($"Property {sourceProperty.Name} is not writable in {typeof(TTarget).FullName}");
 				if (!targetProperty.PropertyType.IsAssignableFrom(sourceProperty.PropertyType))
