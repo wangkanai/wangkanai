@@ -374,7 +374,7 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 	public int BinarySearch(T value)
 	{
 		if (value is null)
-			if (_count == 0 || !EqualityComparer<T>.Default.Equals(_buffer[_start], default))
+			if (_count == 0 || !_buffer[_start].EqualNull())
 				return ~0;
 			else
 				return 0;
