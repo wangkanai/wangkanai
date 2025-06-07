@@ -15,7 +15,7 @@
 	</PropertyGroup>
 
 	<ItemGroup Condition="$(MSBuildProjectDirectory.Contains('src'))">
-		<None Include="..\..\assets\federation-logo.png" Pack="true" PackagePath="\" />
+		<None Include="$(RepoRoot)\assets\federation-logo.png" Pack="true" PackagePath="\" />
 		<None Include="..\..\README.md" Pack="true" PackagePath="\" />
 	</ItemGroup>
 
