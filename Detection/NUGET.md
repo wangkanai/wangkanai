@@ -1,7 +1,14 @@
 ## Detection: Know Your Clients Better
 
-[![NuGet Badge](https://buildstats.info/nuget/wangkanai.detection)](https://www.nuget.org/packages/wangkanai.detection)
-[![NuGet Badge](https://buildstats.info/nuget/wangkanai.detection?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.detection)
+[![NuGet Version](https://img.shields.io/nuget/v/wangkanai.detection)](https://www.nuget.org/packages/wangkanai.detection)
+[![NuGet Pre Release](https://img.shields.io/nuget/vpre/wangkanai.detection)](https://www.nuget.org/packages/wangkanai.detection)
+
+[![.NET](https://github.com/wangkanai/wangkanai/actions/workflows/dotnet.yml/badge.svg)](https://github.com/wangkanai/wangkanai/actions/workflows/dotnet.yml)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=wangkanai_github&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=wangkanai_github)
+
+[![Open Collective](https://img.shields.io/badge/open%20collective-support%20me-3385FF.svg)](https://opencollective.com/wangkanai)
+[![Patreon](https://img.shields.io/badge/patreon-support%20me-d9643a.svg)](https://www.patreon.com/wangkanai)
+[![GitHub](https://img.shields.io/github/license/wangkanai/wangkanai)](https://github.com/wangkanai/wangkanai/blob/main/LICENSE)
 
 Welcome to `Detection`! This is not just another ASP.NET Core service component.
 It's your window into understanding who your users are and how they interact with your application.
@@ -23,9 +30,6 @@ Imagine being able to dynamically adjust your layout based on the client's devic
 instructions to users.
 How about detecting crawlers and serving them optimally for SEO? All this and more is possible with Detection.
 
-[![Open Collective](https://img.shields.io/badge/open%20collective-support%20me-3385FF.svg)](https://opencollective.com/wangkanai)
-[![Patreon](https://img.shields.io/badge/patreon-support%20me-d9643a.svg)](https://www.patreon.com/wangkanai)
-[![GitHub](https://img.shields.io/github/license/wangkanai/wangkanai)](https://github.com/wangkanai/wangkanai/blob/main/LICENSE)
 
 ## Let's Connect
 
