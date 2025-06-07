@@ -4,11 +4,14 @@
 
 **Please show me some love and click the** :star:
 
-[![NuGet Badge](https://buildstats.info/nuget/wangkanai.extensions.fileproviders)](https://www.nuget.org/packages/wangkanai.extensions.fileproviders)
-[![NuGet Badge](https://buildstats.info/nuget/wangkanai.extensions.fileproviders?includePreReleases=true)](https://www.nuget.org/packages/wangkanai.extensions.fileproviders)
+[![NuGet Version](https://img.shields.io/nuget/v/wangkanai.extensions.fileproviders)](https://www.nuget.org/packages/wangkanai.extensions.fileproviders)
+[![NuGet Pre Release](https://img.shields.io/nuget/vpre/wangkanai.extensions.fileproviders)](https://www.nuget.org/packages/wangkanai.extensions.fileproviders)
 
-[![Build Status](https://dev.azure.com/wangkanai/GitHub/_apis/build/status/wangkanai?branchName=main)](https://dev.azure.com/wangkanai/GitHub/_build/latest?definitionId=20&branchName=main)
+[![.NET](https://github.com/wangkanai/wangkanai/actions/workflows/dotnet.yml/badge.svg)](https://github.com/wangkanai/wangkanai/actions/workflows/dotnet.yml)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=wangkanai_github&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=wangkanai_github)
+
 [![Open Collective](https://img.shields.io/badge/open%20collective-support%20me-3385FF.svg)](https://opencollective.com/wangkanai)
 [![Patreon](https://img.shields.io/badge/patreon-support%20me-d9643a.svg)](https://www.patreon.com/wangkanai)
 [![GitHub](https://img.shields.io/github/license/wangkanai/wangkanai)](https://github.com/wangkanai/wangkanai/blob/main/LICENSE)
+
 
