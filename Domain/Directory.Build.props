@@ -1,8 +1,8 @@
 <Project>
 	<Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
 	<PropertyGroup>
-		<VersionPrefix>5.1.0</VersionPrefix>
-		<VersionSuffix>Beta-6</VersionSuffix>
+		<VersionPrefix>5.0.0</VersionPrefix>
+		<VersionSuffix>Beta-7</VersionSuffix>
 		<Title>Wangkanai Domain</Title>
 		<PackageTags>aspnetcore;entity;domain;ddd;</PackageTags>
 		<Description>Unleash the power of Domain-Driven Design (DDD) in your .NET applications with `Domain`! This library simplifies DDD, enabling you to focus on crafting robust business logic. Whether you're an experienced DDD practitioner or a beginner, `Domain` makes DDD more accessible, helping you write better software, faster. Join our growing community, discover the extraordinary, and let's build amazing software together with `Domain`.</Description>

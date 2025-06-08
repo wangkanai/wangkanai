@@ -2,7 +2,7 @@
 	<Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
 
 	<PropertyGroup>
-		<VersionPrefix>4.3.0</VersionPrefix>
+		<VersionPrefix>4.4.0</VersionPrefix>
 		<Title>Wngkanai Webmaster</Title>
 		<PackageTags>aspnetcore;webmaster;seo;</PackageTags>
 		<Description>Revolutionize your SEO with Wangkanai Webmaster. This ASP.NET Core tool boosts your site's traffic and visibility. Ideal for developers aiming to elevate their site's SEO. A must-have for enhanced web traffic, visibility, and efficiency</Description>

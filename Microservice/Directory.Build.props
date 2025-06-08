@@ -2,7 +2,7 @@
 	<Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
 
 	<PropertyGroup>
-		<VersionPrefix>0.3.0</VersionPrefix>
+		<VersionPrefix>0.4.0</VersionPrefix>
 		<Title>Wangkanai Microservice</Title>
 		<PackageTags>aspnetcore;microservice;webapi;</PackageTags>
 		<Description>Wangkanai Microservice is a lightweight framework for building scalable, resilient, and maintainable microservice applications in .NET</Description>
