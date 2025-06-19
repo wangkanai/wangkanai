@@ -46,6 +46,15 @@
     <File Path="Annotations\README.md" />
     <File Path="Annotations\sign.ps1" />
   </Folder>
+  <Folder Name="/Audit/">
+    <Project Path="Audit\benchmark\Wangkanai.Audit.Benchmark.csproj" Type="Classic C#" />
+    <Project Path="Audit\src\Wangkanai.Audit.csproj" Type="Classic C#" />
+    <Project Path="Audit\tests\Wangkanai.Audit.Tests.csproj" Type="Classic C#" />
+    <File Path="Audit\build.ps1" />
+    <File Path="Audit\README.md" />
+    <File Path="Audit\sign.ps1" />
+    <File Path="Audit\Directory.Build.props" />
+  </Folder>
   <Folder Name="/Blazor/">
     <Project Path="Blazor\benchmark\Wangkanai.Blazor.Benchmark.csproj" />
     <Project Path="Blazor\src\Components\Wangkanai.Blazor.Components.csproj" />

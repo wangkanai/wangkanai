@@ -3,13 +3,14 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
+using Wangkanai.Audit.Models;
 using Wangkanai.Domain.Models;
 
 namespace Wangkanai.Domain.Configurations;
 
-public class GuidEntityTypeConfiguration : IEntityTypeConfiguration<GuidEntity>
+public class IntEntityTypeConfiguration : IEntityTypeConfiguration<IntEntity>
 {
-	public void Configure(EntityTypeBuilder<GuidEntity> builder)
+	public void Configure(EntityTypeBuilder<IntEntity> builder)
 	{
 		builder.HasKey(c => c.Id);
 	}

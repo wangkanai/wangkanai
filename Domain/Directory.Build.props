@@ -1,5 +1,6 @@
 <Project>
 	<Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
+
 	<PropertyGroup>
 		<VersionPrefix>5.0.0</VersionPrefix>
 		<VersionSuffix>Beta-8</VersionSuffix>
@@ -8,10 +9,12 @@
 		<Description>Unleash the power of Domain-Driven Design (DDD) in your .NET applications with `Domain`! This library simplifies DDD, enabling you to focus on crafting robust business logic. Whether you're an experienced DDD practitioner or a beginner, `Domain` makes DDD more accessible, helping you write better software, faster. Join our growing community, discover the extraordinary, and let's build amazing software together with `Domain`.</Description>
 		<PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Domain</PackageProjectUrl>
 	</PropertyGroup>
+
 	<PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Domain'">
 		<PackageIcon>wangkanai-logo.png</PackageIcon>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
+
 	<ItemGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Domain'">
 		<None Include="$(RepoRoot)\assets\wangkanai-logo.png" Pack="true" PackagePath="\" />
 		<None Include="..\README.md" Pack="true" PackagePath="\" />

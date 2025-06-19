@@ -1,11 +1,6 @@
 // Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-using System;
-using System.Threading.Tasks;
-
 using Microsoft.AspNetCore.Http;
-
-using Xunit;
 
 namespace Wangkanai.Webmaster.Tests.Hosting;
 
@@ -21,7 +16,7 @@ public class WebmasterMiddlewareTests
 	}
 
 	[Fact]
-	public async void If_Null_Invoke_Throw_Exception()
+	public async ValueTask If_Null_Invoke_Throw_Exception()
 	{
 		var middleware = new WebmasterMiddleware(Next);
 

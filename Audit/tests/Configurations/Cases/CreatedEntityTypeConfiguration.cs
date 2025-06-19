@@ -2,6 +2,8 @@
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+using Wangkanai.Audit.Models;
 using Wangkanai.Domain.Models;
 
 namespace Wangkanai.Domain.Configurations;

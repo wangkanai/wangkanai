@@ -28,7 +28,7 @@ public class ResponsiveMiddlewareTest
 	}
 
 	[Fact]
-	public async void Invoke_HttpContext_Null_ResponsiveService_Null_ThrowsArgumentNullException()
+	public async ValueTask Invoke_HttpContext_Null_ResponsiveService_Null_ThrowsArgumentNullException()
 	{
 		var middleware = new ResponsiveMiddleware(Next);
 
@@ -38,7 +38,7 @@ public class ResponsiveMiddlewareTest
 	}
 
 	[Fact]
-	public async void Invoke_HttpContext_ResponsiveService_Null_ThrowsNullReferenceException()
+	public async ValueTask Invoke_HttpContext_ResponsiveService_Null_ThrowsNullReferenceException()
 	{
 		var service    = MockService.HttpContextService(null!);
 		var middleware = new ResponsiveMiddleware(Next);
@@ -49,7 +49,7 @@ public class ResponsiveMiddlewareTest
 	}
 
 	[Fact]
-	public async void Invoke_HttpContext_ResponsiveService_Success()
+	public async ValueTask Invoke_HttpContext_ResponsiveService_Success()
 	{
 		using var server   = MockServer.Server();
 		var       request  = MockClient.CreateRequest(Device.Desktop);

@@ -1,8 +1,9 @@
 // Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
 
+using Wangkanai.Domain;
 using Wangkanai.Domain.Primitives;
 
-namespace Wangkanai.Domain.Stores;
+namespace Wangkanai.Audit.Stores;
 
 /// <summary>Defines the contract for an audit trail store, capable of managing audit trail entities, including creation operations.</summary>
 /// <typeparam name="TKey">The type of the primary key for the audit trail entity.</typeparam>

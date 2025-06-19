@@ -3,4 +3,4 @@
 global using BenchmarkDotNet.Attributes;
 global using BenchmarkDotNet.Running;
 
-BenchmarkRunner.Run<FirstBenchmark>();
+Console.WriteLine("Wangkanai Testing Benchmarking");
