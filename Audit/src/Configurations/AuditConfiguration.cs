@@ -6,6 +6,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
+using Wangkanai.Domain;
+
 namespace Wangkanai.Audit.Configurations;
 
 /// <summary>

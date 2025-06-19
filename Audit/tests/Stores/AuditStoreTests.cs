@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 using Moq;
 
+using Wangkanai.Domain;
 using Wangkanai.Domain.Primitives;
 
 namespace Wangkanai.Audit.Stores;
@@ -57,7 +58,7 @@ public class AuditStoreTests
 	}
 
 	[Fact]
-	public async Task CreateAsync_SavesToDbContext()
+	public async ValueTask CreateAsync_SavesToDbContext()
 	{
 		// Arrange
 		var             options = CreateNewContextOptions();
@@ -78,7 +79,7 @@ public class AuditStoreTests
 	}
 
 	[Fact]
-	public async Task CreateAsync_WithoutAutoSave_DoesNotSaveChanges()
+	public async ValueTask CreateAsync_WithoutAutoSave_DoesNotSaveChanges()
 	{
 		// Arrange
 		var             options = CreateNewContextOptions();
@@ -96,12 +97,12 @@ public class AuditStoreTests
 	}
 
 	[Fact]
-	public async Task CreateAsync_WithConcurrencyException_ReturnsError()
+	public async ValueTask CreateAsync_WithConcurrencyException_ReturnsError()
 	{
 		// Arrange
 		var mockContext = new Mock<TestAuditDbContext>(CreateNewContextOptions());
 		mockContext.Setup(c => c.SaveChangesAsync(It.IsAny<CancellationToken>()))
-		           .ThrowsAsync(new DbUpdateConcurrencyException());
+		           .Throws(new DbUpdateConcurrencyException());
 
 		var store = new AuditStore<TestAuditDbContext, Guid, IdentityUser<Guid>, Guid>(mockContext.Object);
 		var audit = new Audit<Guid, IdentityUser<Guid>, Guid>();
@@ -115,7 +116,7 @@ public class AuditStoreTests
 	}
 
 	[Fact]
-	public async Task UpdateAsync_UpdatesExistingEntity()
+	public async ValueTask UpdateAsync_UpdatesExistingEntity()
 	{
 		// Arrange
 		var             options = CreateNewContextOptions();
@@ -142,14 +143,14 @@ public class AuditStoreTests
 	}
 
 	[Fact]
-	public async Task UpdateAsync_WithConcurrencyException_ReturnsError()
+	public async ValueTask UpdateAsync_WithConcurrencyException_ReturnsError()
 	{
 		// Arrange
 		var mockContext = new Mock<TestAuditDbContext>(CreateNewContextOptions());
 
 		mockContext.Setup(c => c.Update(It.IsAny<Audit<Guid, IdentityUser<Guid>, Guid>>()));
 		mockContext.Setup(c => c.SaveChangesAsync(It.IsAny<CancellationToken>()))
-		           .ThrowsAsync(new DbUpdateConcurrencyException());
+		           .Throws(new DbUpdateConcurrencyException());
 
 		var store = new AuditStore<TestAuditDbContext, Guid, IdentityUser<Guid>, Guid>(mockContext.Object);
 		var audit = new Audit<Guid, IdentityUser<Guid>, Guid>{ EntityName = "Test" };
@@ -163,7 +164,7 @@ public class AuditStoreTests
 	}
 
 	[Fact]
-	public async Task DeleteAsync_RemovesEntityFromContext()
+	public async ValueTask DeleteAsync_RemovesEntityFromContext()
 	{
 		// Arrange
 		var             options = CreateNewContextOptions();
@@ -184,13 +185,13 @@ public class AuditStoreTests
 	}
 
 	[Fact]
-	public async Task DeleteAsync_WithConcurrencyException_ReturnsError()
+	public async ValueTask DeleteAsync_WithConcurrencyException_ReturnsError()
 	{
 		// Arrange
 		var mockContext = new Mock<TestAuditDbContext>(CreateNewContextOptions());
 		mockContext.Setup(c => c.Remove(It.IsAny<Audit<Guid, IdentityUser<Guid>, Guid>>()));
 		mockContext.Setup(c => c.SaveChangesAsync(It.IsAny<CancellationToken>()))
-		           .ThrowsAsync(new DbUpdateConcurrencyException());
+		           .Throws(new DbUpdateConcurrencyException());
 
 		var store = new AuditStore<TestAuditDbContext, Guid, IdentityUser<Guid>, Guid>(mockContext.Object);
 		var audit = new Audit<Guid, IdentityUser<Guid>, Guid>();
@@ -204,7 +205,7 @@ public class AuditStoreTests
 	}
 
 	[Fact]
-	public async Task FindByIdAsync_ReturnsMatchingEntity()
+	public async ValueTask FindByIdAsync_ReturnsMatchingEntity()
 	{
 		// Arrange
 		var             options = CreateNewContextOptions();
@@ -226,7 +227,7 @@ public class AuditStoreTests
 	}
 
 	[Fact]
-	public async Task FindByIdAsync_WithNonexistentId_ReturnsNull()
+	public async ValueTask FindByIdAsync_WithNonexistentId_ReturnsNull()
 	{
 		// Arrange
 		var       options = CreateNewContextOptions();
@@ -242,7 +243,7 @@ public class AuditStoreTests
 	}
 
 	[Fact]
-	public async Task FindByIdAsync_WithIdAndUserId_ReturnsMatchingEntity()
+	public async ValueTask FindByIdAsync_WithIdAndUserId_ReturnsMatchingEntity()
 	{
 		// Arrange
 		var             options = CreateNewContextOptions();
@@ -265,7 +266,7 @@ public class AuditStoreTests
 	}
 
 	[Fact]
-	public async Task FindByIdAsync_WithNonMatchingUserId_ReturnsNull()
+	public async ValueTask FindByIdAsync_WithNonMatchingUserId_ReturnsNull()
 	{
 		// Arrange
 		var             options = CreateNewContextOptions();
@@ -285,7 +286,7 @@ public class AuditStoreTests
 	}
 
 	[Fact]
-	public async Task FindByUserIdAsync_ReturnsMatchingEntity()
+	public async ValueTask FindByUserIdAsync_ReturnsMatchingEntity()
 	{
 		// Arrange
 		var             options = CreateNewContextOptions();
@@ -307,7 +308,7 @@ public class AuditStoreTests
 	}
 
 	[Fact]
-	public async Task FindByUserIdAsync_WithNonexistentUserId_ReturnsNull()
+	public async ValueTask FindByUserIdAsync_WithNonexistentUserId_ReturnsNull()
 	{
 		// Arrange
 		var             options = CreateNewContextOptions();
@@ -327,7 +328,7 @@ public class AuditStoreTests
 	}
 
 	[Fact]
-	public async Task FindByUserIdAsync_WithUserIdAndId_ReturnsMatchingEntity()
+	public async ValueTask FindByUserIdAsync_WithUserIdAndId_ReturnsMatchingEntity()
 	{
 		// Arrange
 		var       options = CreateNewContextOptions();
@@ -350,7 +351,7 @@ public class AuditStoreTests
 	}
 
 	[Fact]
-	public async Task FindByUserIdAsync_WithNonMatchingId_ReturnsNull()
+	public async ValueTask FindByUserIdAsync_WithNonMatchingId_ReturnsNull()
 	{
 		// Arrange
 		var             options = CreateNewContextOptions();

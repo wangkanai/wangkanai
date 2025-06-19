@@ -1,6 +1,7 @@
 // Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
 
 using Wangkanai.Audit.Configurations;
+using Wangkanai.Domain;
 
 namespace Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -17,6 +18,6 @@ public static class AuditContextExtensions
 		where TUserType : IdentityUser<TUserKey>
 		where TUserKey : IEquatable<TUserKey>, IComparable<TUserKey>
 	{
-		builder.ApplyConfiguration(new AuditConfiguration<TKey, TUserType, TUserKey>());
+		builder.ApplyConfiguration<Audit<TKey, TUserType, TUserKey>>(new AuditConfiguration<TKey, TUserType, TUserKey>());
 	}
 }
