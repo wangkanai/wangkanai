@@ -1,6 +1,6 @@
 // Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
 
-namespace Wangkanai.Domain;
+namespace Wangkanai.Audit;
 
 /// <summary>
 /// Represents an auditable entity with properties for tracking creation and modification timestamps.

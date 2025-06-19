@@ -1,6 +1,6 @@
 // Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
 
-namespace Wangkanai.Domain;
+namespace Wangkanai.Audit;
 
 /// <summary>Represents an audit trail record for tracking entity changes in the system.</summary>
 /// <typeparam name="TKey">The type of the unique identifier for the audit trail.</typeparam>
