@@ -2,7 +2,7 @@
 
 using Microsoft.AspNetCore.Identity;
 
-namespace Wangkanai.Domain.Tests;
+namespace Wangkanai.Audit.Tests;
 
 public class AuditTests
 {
