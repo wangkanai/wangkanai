@@ -2,8 +2,9 @@
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace Wangkanai.Domain.Configurations;
+namespace Wangkanai.Audit.Configurations;
 
 public class AuditConfigurationTests
 {

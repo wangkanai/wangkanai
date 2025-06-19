@@ -1,8 +1,12 @@
 ﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
 
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
+using Wangkanai.Audit;
+using Wangkanai.Audit.Configurations;
+using Wangkanai.Audit.Models;
 using Wangkanai.Domain.Configurations;
 using Wangkanai.Domain.Models;
 

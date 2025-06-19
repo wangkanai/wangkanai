@@ -2,7 +2,7 @@
 
 using Microsoft.EntityFrameworkCore;
 
-using Wangkanai.Domain.Models;
+using Wangkanai.Audit.Models;
 
 namespace Wangkanai.Audit;
 
