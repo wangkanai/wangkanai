@@ -1,16 +1,19 @@
 <Project>
 	<Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
+
 	<PropertyGroup>
-		<VersionPrefix>0.0.0</VersionPrefix>
+		<Version>0.0.0</Version>
 		<Title>Wangkanai Audit</Title>
 		<Description>Audit trail simplified Domain-Driven Design for .NET</Description>
 		<PackageTags>ddd;audit;trail</PackageTags>
 		<PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Audit</PackageProjectUrl>
 	</PropertyGroup>
+
 	<PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Audit'">
 		<PackageIcon>wangkanai-logo.png</PackageIcon>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
+
 	<ItemGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Audit'">
 		<None Include="$(RepoRoot)\assets\wangkanai-logo.png" Pack="true" PackagePath="\" />
 		<None Include="..\README.md" Pack="true" PackagePath="\" />
