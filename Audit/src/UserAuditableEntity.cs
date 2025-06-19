@@ -1,6 +1,8 @@
 ﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
 
-namespace Wangkanai.Domain;
+using System.ComponentModel.DataAnnotations;
+
+namespace Wangkanai.Audit;
 
 /// <summary>
 /// Represents an abstract base class for auditable entities that captures user-related information
