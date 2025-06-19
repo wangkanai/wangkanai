@@ -3,8 +3,6 @@
 using Wangkanai.Detection.Mocks;
 using Wangkanai.Detection.Models;
 
-using Xunit.Abstractions;
-
 namespace Wangkanai.Detection.Services;
 
 public class PlatformServiceTests
