@@ -2,16 +2,18 @@
 
 using System.Text.Json;
 
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Wangkanai.Domain.Configurations;
+namespace Wangkanai.Audit.Configurations;
 
 /// <summary>
 /// Provides the configuration for the <see cref="Audit{TKey, TUserType, TUserKey}"/> entity type.
 /// This class is responsible for defining the model and entity relationship mappings for use with Entity Framework.
 /// </summary>
 /// <typeparam name="TKey">The type of the primary key for the audit entity. Must implement <see cref="IEquatable{T}"/> and <see cref="IComparable{T}"/>.</typeparam>
-/// <typeparam name="TUserType">The user type associated with the audit entity. Must derive from <see cref="IdentityUser{TUserKey}"/>.</typeparam>
+/// <typeparam name="TUserType">The user type associated with the audit entity. Must derive from <see cref="IdentityUser"/>.</typeparam>
 /// <typeparam name="TUserKey">The type of the primary key for the associated user. Must implement <see cref="IEquatable{T}"/> and <see cref="IComparable{T}"/>.</typeparam>
 public class AuditConfiguration<TKey, TUserType, TUserKey>
 	: IEntityTypeConfiguration<Audit<TKey, TUserType, TUserKey>>

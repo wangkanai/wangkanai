@@ -1,8 +1,8 @@
 // Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
 
-using Wangkanai.Domain.Primitives;
+using Wangkanai.Audit.Primitives;
 
-namespace Wangkanai.Domain.Stores;
+namespace Wangkanai.Audit.Stores;
 
 /// <summary>Provides an implementation for managing audit trails within a database context.</summary>
 /// <typeparam name="TContext">The type of the database context, which must derive from <see cref="DbContext"/>.</typeparam>

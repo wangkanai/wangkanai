@@ -2,7 +2,7 @@
 
 using Wangkanai.Domain.Primitives;
 
-namespace Wangkanai.Domain.Stores;
+namespace Wangkanai.Audit.Stores;
 
 /// <summary>Defines the contract for an audit trail store, capable of managing audit trail entities, including creation operations.</summary>
 /// <typeparam name="TKey">The type of the primary key for the audit trail entity.</typeparam>

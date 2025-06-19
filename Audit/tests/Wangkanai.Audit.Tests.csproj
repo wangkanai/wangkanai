@@ -1,9 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<ImplicitUsings>enable</ImplicitUsings>
-		<Nullable>enable</Nullable>
 		<OutputType>Exe</OutputType>
+		<RootNamespace>Wangkanai.Audit</RootNamespace>
 		<!--
 		To enable the Microsoft Testing Platform 'dotnet test' experience, add property:
 			<TestingPlatformDotnetTestSupport>true</TestingPlatformDotnetTestSupport>
@@ -28,6 +27,10 @@
 		<PackageReference Include="Microsoft.NET.Test.Sdk" />
 		<PackageReference Include="xunit.v3" />
 		<PackageReference Include="xunit.runner.visualstudio" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\src\Wangkanai.Audit.csproj" />
 	</ItemGroup>
 
 </Project>

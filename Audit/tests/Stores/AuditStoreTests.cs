@@ -8,9 +8,8 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Moq;
 
 using Wangkanai.Domain.Primitives;
-using Wangkanai.Domain.Stores;
 
-namespace Wangkanai.Domain.Tests.Stores;
+namespace Wangkanai.Audit.Stores;
 
 public class AuditStoreTests
 {
