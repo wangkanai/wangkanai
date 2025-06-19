@@ -9,10 +9,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.TestHost"/>
 		<PackageReference Include="Microsoft.NET.Test.Sdk"/>
-		<PackageReference Include="xunit.v3" />
+		<PackageReference Include="Moq"/>
+		<PackageReference Include="xunit.v3"/>
 		<PackageReference Include="xunit.runner.visualstudio"/>
 		<PackageReference Include="coverlet.collector"/>
+		<PackageReference Include="coverlet.msbuild"/>
+		<PackageReference Include="FluentAssertions"/>
 	</ItemGroup>
 
 	<ItemGroup>
