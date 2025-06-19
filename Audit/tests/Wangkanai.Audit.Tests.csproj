@@ -22,7 +22,9 @@
 	<ItemGroup>
 		<Using Include="Xunit" />
 	</ItemGroup>
-
+	<ItemGroup>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.InMemory"  />
+	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.NET.Test.Sdk" />
 		<PackageReference Include="xunit.v3" />

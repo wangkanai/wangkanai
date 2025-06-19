@@ -6,9 +6,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 using Moq;
 
-using Wangkanai.Domain.Configurations;
+using Wangkanai.Audit.Configurations;
 
-namespace Wangkanai.Domain.Extensions;
+namespace Wangkanai.Audit.Extensions;
 
 public class AuditContextExtensionsTests
 {

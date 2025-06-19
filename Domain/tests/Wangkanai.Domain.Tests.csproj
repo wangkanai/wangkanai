@@ -5,4 +5,7 @@
     <ItemGroup>
         <ProjectReference Include="..\src\Wangkanai.Domain.csproj" />
     </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Extensions\" />
+    </ItemGroup>
 </Project>
