@@ -47,6 +47,9 @@
     <File Path="Annotations\sign.ps1" />
   </Folder>
   <Folder Name="/Audit/">
+    <Project Path="Audit\benchmark\Wangkanai.Audit.Benchmark.csproj" Type="Classic C#" />
+    <Project Path="Audit\src\Wangkanai.Audit.csproj" Type="Classic C#" />
+    <Project Path="Audit\tests\Wangkanai.Audit.tests.csproj" Type="Classic C#" />
     <File Path="Audit\build.ps1" />
     <File Path="Audit\Directory.Packages.props" />
     <File Path="Audit\README.md" />
