@@ -25,7 +25,7 @@ public class ResponsiveBuilderExtensionsTests
 	}
 
 	[Fact]
-	public async void AddResponsive_Options_Disable_True()
+	public async ValueTask AddResponsive_Options_Disable_True()
 	{
 		using var server = MockServer.Server(options => { options.Disable = true; });
 
@@ -38,7 +38,7 @@ public class ResponsiveBuilderExtensionsTests
 
 
 	[Fact]
-	public async void AddResponsive_Options_Disable_False()
+	public async ValueTask AddResponsive_Options_Disable_False()
 	{
 		using var server = MockServer.Server(options => { options.Disable = false; });
 
@@ -66,7 +66,7 @@ public class ResponsiveBuilderExtensionsTests
 	[Theory]
 	[InlineData(Device.Mobile, "desktop", "/api/dog")]
 	[InlineData(Device.Mobile, "mobile", "/api/dog")]
-	public async void AddResponsive_WebApi_Exclude_Api(Device device, string agent, string path)
+	public async ValueTask AddResponsive_WebApi_Exclude_Api(Device device, string agent, string path)
 	{
 		using var server = MockServer.Server(options => {
 			options.DefaultMobile  = device;
@@ -90,7 +90,7 @@ public class ResponsiveBuilderExtensionsTests
 	[InlineData(Device.Desktop, "desktop", "/api/dog")]
 	[InlineData(Device.Mobile, "desktop", "")]
 	[InlineData(Device.Mobile, "mobile", "")]
-	public async void AddResponsive_WebApi_Exclude_NonApi(Device device, string agent, string path)
+	public async ValueTask AddResponsive_WebApi_Exclude_NonApi(Device device, string agent, string path)
 	{
 		using var server = MockServer.Server(options => {
 			options.DefaultMobile  = device;
@@ -116,7 +116,7 @@ public class ResponsiveBuilderExtensionsTests
 	[InlineData(Device.Mobile, "desktop", "/api/dog")]
 	[InlineData(Device.Mobile, "mobile", "")]
 	[InlineData(Device.Mobile, "mobile", "/api/dog")]
-	public async void AddResponsive_WebApi_Include_Api(Device device, string agent, string path)
+	public async ValueTask AddResponsive_WebApi_Include_Api(Device device, string agent, string path)
 	{
 		using var server = MockServer.Server(options => {
 			options.DefaultMobile  = device;
