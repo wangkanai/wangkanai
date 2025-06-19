@@ -5,9 +5,6 @@ using System.Reflection;
 using Wangkanai.Validation.Extensions;
 using Wangkanai.Validation.Models;
 
-using Xunit;
-using Xunit.Abstractions;
-
 namespace Wangkanai.Validation;
 
 public class RequireDigitTests
@@ -53,7 +50,7 @@ public class RequireDigitTests
 		//Assert.Collection(validations, v=>v.ErrorMessage = "Digit is required");
 		Assert.Empty(validations);
 	}
-	
+
 	[Fact]
 	public void Unique()
 	{
@@ -64,7 +61,7 @@ public class RequireDigitTests
 
 		Assert.Collection(validations, v => v.ErrorMessage = "Digit is required");
 	}
-	
+
 	[Fact]
 	public void Duplicate()
 	{
@@ -75,7 +72,7 @@ public class RequireDigitTests
 
 		Assert.Empty(validations);
 	}
-	
+
 	[Fact]
 	public void Special()
 	{
@@ -86,7 +83,7 @@ public class RequireDigitTests
 
 		Assert.Empty(validations);
 	}
-	
+
 	[Fact]
 	public void Empty()
 	{

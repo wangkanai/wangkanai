@@ -5,8 +5,6 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
 
-using Xunit.Abstractions;
-
 namespace Wangkanai.Validation.Extensions;
 
 public static class ValidationExtensions

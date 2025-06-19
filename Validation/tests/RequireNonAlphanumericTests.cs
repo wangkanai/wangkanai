@@ -5,9 +5,6 @@ using System.Reflection;
 using Wangkanai.Validation.Extensions;
 using Wangkanai.Validation.Models;
 
-using Xunit;
-using Xunit.Abstractions;
-
 namespace Wangkanai.Validation;
 
 public class RequireNonAlphanumericTests

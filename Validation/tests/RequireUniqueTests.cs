@@ -1,13 +1,9 @@
 // Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
-using System.Collections.Generic;
 using System.Reflection;
 
 using Wangkanai.Validation.Extensions;
 using Wangkanai.Validation.Models;
-
-using Xunit;
-using Xunit.Abstractions;
 
 namespace Wangkanai.Validation;
 
