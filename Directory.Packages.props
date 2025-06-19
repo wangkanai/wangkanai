@@ -57,7 +57,7 @@
     <PackageVersion Include="xunit.runner.visualstudio" Version="3.1.1" PrivateAssets="all"/>
     <PackageVersion Include="coverlet.collector" Version="6.0.4" PrivateAssets="all" />
     <PackageVersion Include="coverlet.msbuild" Version="6.0.4" PrivateAssets="all" />
-    <PackageVersion Include="FluentAssertions" Version="6.12.2" />
+    <PackageVersion Include="FluentAssertions" Version="8.3.0" />
     <!--benchmark-->
     <PackageVersion Include="BenchmarkDotNet" Version="0.15.2" />
     <!--packages-->
