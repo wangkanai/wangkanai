@@ -16,7 +16,7 @@
 	</PropertyGroup>
 
 	<ItemGroup Condition="$(MSBuildProjectName.Contains('Tests'))">
-		<Using Include="Xunit" />
+		<Using Include="Xunit"/>
 	</ItemGroup>
 
 	<!-- GitHub Source Link -->
@@ -30,6 +30,7 @@
 		<PackageReference Include="Moq"/>
 		<PackageReference Include="xunit.v3"/>
 		<PackageReference Include="xunit.runner.visualstudio"/>
+		<PackageReference Include="xunit.analyzers"/>
 		<PackageReference Include="coverlet.collector"/>
 		<PackageReference Include="coverlet.msbuild"/>
 		<PackageReference Include="FluentAssertions"/>
