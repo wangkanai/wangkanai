@@ -3,7 +3,6 @@
 
 	<PropertyGroup>
 		<VersionPrefix>1.4.0</VersionPrefix>
-		<VersionSuffix>preview1</VersionSuffix>
 		<Title>Wangkanai Cryptography</Title>
 		<PackageTags>aspnetcore;cryptography;</PackageTags>
 		<Description>Advanced data security for .NET developers. Hash, encode, and decode with ease using our intuitive API. Protect sensitive information, fortify your applications, and ensure tamper-proof data.</Description>
