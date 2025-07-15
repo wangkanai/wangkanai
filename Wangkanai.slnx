@@ -4,11 +4,15 @@
     <File Path=".github\RELEASE.yml" />
     <File Path=".github\copilot-instructions.md" />
     <File Path=".github\workflows\dotnet.yml" />
+    <File Path=".github\mcp.txt" />
   </Folder>
   <Folder Name="/.github/ISSUE_TEMPLATE/">
     <File Path=".github\ISSUE_TEMPLATE\bug_report.md" />
     <File Path=".github\ISSUE_TEMPLATE\design_note.md" />
     <File Path=".github\ISSUE_TEMPLATE\feature_request.md" />
+  </Folder>
+  <Folder Name="/.serena/">
+    <File Path=".serena\project.yml" />
   </Folder>
   <Folder Name="/.solutions/">
     <File Path=".editorconfig" />
