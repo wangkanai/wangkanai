@@ -31,12 +31,61 @@ This is a comprehensive .NET monorepo containing 27+ libraries developed by Sari
 ```bash
 # Run tests for specific module (from module directory)
 dotnet test .\tests\ -c Release
+
+# Run tests with coverage (used in CI)
+dotnet-coverage collect "dotnet test --no-build --verbosity normal" -f xml -o "coverage.xml"
+
+# Run single test class
+dotnet test .\tests\ -c Release --filter "ClassName=YourTestClass"
+
+# Run tests with specific pattern
+dotnet test .\tests\ -c Release --filter "TestCategory=Unit"
 ```
 
 ### Package Management
 - All packages target `.NET 8.0`
 - Uses Central Package Management with `Directory.Packages.props`
 - NuGet packages are published under the `Wangkanai` namespace
+
+### Debugging & Development
+```bash
+# Clean and rebuild specific module
+dotnet clean .\src\ -c Release -tl
+dotnet build .\src\ -c Release -tl
+
+# Restore dependencies for entire solution
+dotnet restore
+
+# Build entire solution without incremental builds
+dotnet build --no-restore --no-incremental
+
+# Run benchmarks (from module/benchmark directory)
+dotnet run -c Release
+```
+
+### MCP Commands
+```bash
+# Start MCP server for development
+claude-code --mcp-server
+
+# Install MCP server dependencies
+npm install @modelcontextprotocol/server-stdio
+
+# Configure MCP server settings
+claude-code --configure-mcp
+
+# Test MCP server connection
+claude-code --test-mcp
+
+# Debug MCP server issues
+claude-code --debug-mcp
+
+# List available MCP servers
+claude-code --list-mcp-servers
+
+# Connect to specific MCP server
+claude-code --connect-mcp <server-name>
+```
 
 ## Architecture & Code Organization
 
@@ -57,6 +106,15 @@ The main `build.ps1` processes modules in dependency order:
 4. EntityFramework, Identity, Security, Federation
 5. Markdown, Analytics, Blazor, Tabler
 6. Solver, Microservice, Nation
+
+### Module Build Process
+Each module's `build.ps1` follows this pattern:
+1. `dotnet clean .\src\ -c Release -tl` - Clean source
+2. `dotnet restore .\src\` - Restore dependencies
+3. `dotnet build .\src\ -c Release -tl` - Build source
+4. `dotnet clean .\tests\ -c Release -tl` - Clean tests
+5. `dotnet restore .\tests\` - Restore test dependencies
+6. `dotnet build .\tests\ -c Release -tl` - Build tests
 
 ### Key Patterns
 - **Extension Methods**: Extensive use of extension methods for ASP.NET Core services
@@ -113,3 +171,23 @@ All source files include this copyright header:
 - **ASP.NET Core**: Latest stable version
 - **Entity Framework**: For data access libraries
 - **Benchmarking**: BenchmarkDotNet for performance testing
+
+## Quality Assurance
+
+### CI/CD Pipeline
+- **GitHub Actions**: `.github/workflows/dotnet.yml` runs on main branch
+- **SonarCloud**: Code quality analysis with `SonarQube.Analysis.xml` configuration
+- **Coverage**: Uses `dotnet-coverage` for test coverage reporting
+- **Multi-target**: Supports .NET 8.0 and 9.0
+
+### Code Quality Tools
+- **SonarCloud**: Configured to exclude benchmarks, samples, and node_modules
+- **EditorConfig**: Comprehensive formatting rules in `.editorconfig`
+- **ReSharper**: Detailed code style configuration for consistent formatting
+- **Central Package Management**: All package versions managed in `Directory.Packages.props`
+
+### Exclusions for Analysis
+- Benchmarks (`**/benchmark/**`)
+- Sample applications (`**/samples/**`)
+- Node modules (`**/node_modules/**`)
+- Build artifacts (`**/BenchmarkDotNet.Artifacts/**`)

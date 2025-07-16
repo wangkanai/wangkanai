@@ -1,0 +1,1 @@
+claude mcp add-json "conport" '{"command": "uvx", "args": ["--from", "context-portal-mcp", "conport-mcp", "--mode", "stdio", "--workspace_id", "/Users/wangkanai/Sources/wangkanai/", "--log-file", "./logs/conport.log", "--log-level", "INFO"]}'

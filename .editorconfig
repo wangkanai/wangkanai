@@ -50,6 +50,7 @@ resharper_keep_existing_attribute_arrangement                         =true
 resharper_keep_existing_embedded_block_arrangement                    =false
 resharper_keep_existing_enum_arrangement                              =true
 resharper_place_attribute_on_same_line                                =if_owner_is_single_line
+resharper_space_before_trailing_comment                               =true
 resharper_use_indent_from_vs                                          =false
 resharper_wrap_array_initializer_style                                =chop_if_long
 resharper_wrap_before_arrow_with_expressions                          =true
@@ -62,7 +63,17 @@ resharper_align_multiline_expression                                  =true
 resharper_align_multline_type_parameter_constrains                    =true
 resharper_align_multiline_array_and_object_initializer                =true
 resharper_enforce_line_ending_style                                   =true
-resharper_csharp_max_line_length                                      =300
+resharper_csharp_max_line_length                                      =500
+
+resharper_xmldoc_linebreak_before_singleline_elements                 =false
+resharper_xmldoc_space_before_self_closing                            =false
+resharper_xmldoc_space_after_last_attribute                           =false
+resharper_xmldoc_alignment_tab_fill_style                             =optimal_fill
+resharper_xmldoc_attribute_indent                                     =align_by_first_attribute
+resharper_xmldoc_attribute_style                                      =on_single_line
+resharper_xmldoc_blank_line_after_pi                                  =false
+resharper_xmldoc_indent_text                                          =ZeroIndent
+resharper_xmldoc_pi_attribute_style                                   =on_single_line
 
 # ReSharper inspection severities
 resharper_arrange_redundant_parentheses_highlighting                  =hint
@@ -96,18 +107,34 @@ generated_code      =true
 ij_formatter_enabled=false
 
 [*.cs]
-dotnet_sort_system_directives_first                =true
-dotnet_separate_import_directive_groups            =true
-resharper_sort_system_directives_first             =true
-ij_any_align_multiline_array_initializer_expression=true
-resharper_csharp_space_before_trailing_comment     =false
+dotnet_sort_system_directives_first                          =true
+dotnet_separate_import_directive_groups                      =true
+resharper_sort_system_directives_first                       =true
+ij_any_align_multiline_array_initializer_expression          =true
+resharper_csharp_space_before_trailing_comment               =true
+resharper_csharp_place_simple_property_pattern_on_single_line=true
+resharper_csharp_place_property_on_single_line               =always
+resharper_place_expr_property_on_single_line                 =always
 
 [*.{cs, cpp, h}]
-file_header_template=Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
+file_header_template=Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
-[*.{html, cshtml}]
-indent_size                           =4
-ij_html_do_not_indent_children_of_tags=none
+[*.{html,cshtml,razor}]
+indent_size                                                           =3
+max_line_length                                                       =1000
+resharper_no_indent_inside_elements                                   =html, thead, tbody, tfoot
+resharper_no_indent_inside_if_element_longer_than                     =1000
+resharper_normalize_tag_names                                         =true
+resharper_html_allow_far_alignment                                    =true
+resharper_html_attribute_indent                                       =single_indent
+resharper_html_attribute_style                                        =on_single_line
+resharper_html_linebreak_before_elements                              =body, div, p, main, section, article, form, h1, h2, h3, svg, path
+resharper_html_linebreak_before_multiline_elements                    =false
+resharper_html_linebreaks_inside_tags_for_elements_with_child_elements=false
+resharper_html_linebreaks_inside_tags_for_multiline_elements          =false
+ij_html_do_not_align_children_of_min_lines                            =0
+ij_html_do_not_break_if_inline_tags                                   =title, h1, h2, h3, h4, h5, h6, p, li, span
+ij_html_do_not_indent_children_of_tags                                =form, ol, script, style, h1, h2, h3, h4, h5, h6, table, thead, tbody, tfoot
 
 [*.csproj]
 indent_size                  =2
@@ -130,7 +157,8 @@ ij_powershell_align_multiline_chained_methods   =true
 indent_style=tab
 
 [*.{css, scss, less, sass}]
-indent_size=2
+indent_size           =2
+ij_css_value_alignment=on_value
 
 [*.{js, js.map}]
 indent_size=2

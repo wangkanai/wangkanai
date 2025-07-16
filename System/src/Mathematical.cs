@@ -5,7 +5,7 @@ namespace Wangkanai;
 /// <summary>
 /// Provides mathematical operations.
 /// </summary>
-public static partial class Math
+public static class Mathematical
 {
 	/// <summary>Divides two byte values.</summary>
 	/// <param name="value">The dividend.</param>
