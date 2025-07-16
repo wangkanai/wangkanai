@@ -8,32 +8,32 @@ param(
 )
 
 $dirs=[ordered]@{
-#    1="System";
-#    2="Validation";
-#    3="Annotations";
-#    4="Extensions";
-#    5="Testing";
-#    6="Cryptography";
-#    7="Hosting";
-#    8="Tools";
-#    9="Domain";
-#    10="Audit";
-#    11="Mvc";
-#    12="Webserver";
-#    13="Webmaster";
-#    14="Detection";
-#    15="Responsive";
-#    16="EntityFramework";
-#    17="Identity";
-#    18="Security";
-#    19="Federation";
-#    20="Markdown";
-#    21="Analytics";
-#    22="Blazor";
-#    23="Tabler";
-#    24="Solver";
-#    25="Microservice";
-#    26="Nation";
+    1="System";
+    2="Validation";
+    3="Annotations";
+    4="Extensions";
+    5="Testing";
+    6="Cryptography";
+    7="Hosting";
+    8="Tools";
+    9="Domain";
+    10="Audit";
+    11="Mvc";
+    12="Webserver";
+    13="Webmaster";
+    14="Detection";
+    15="Responsive";
+    16="EntityFramework";
+    17="Identity";
+    18="Security";
+    19="Federation";
+    20="Markdown";
+    21="Analytics";
+    22="Blazor";
+    23="Tabler";
+    24="Solver";
+    25="Microservice";
+    26="Nation";
 }
 
 $env:OneDriveConsumer+"\powershell-env.ps1" | out-null
