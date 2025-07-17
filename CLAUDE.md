@@ -524,3 +524,130 @@ EXTENSION_CLASS="public.*static.*class.*Extensions"
 TEST_CLASS="public.*class.*Tests"
 DI_PATTERN="AddRequiredServices|AddCoreServices|AddMarkerService"
 ```
+
+## AUTOMATED REPOMIX HOOKS SYSTEM
+
+### **🔄 Automatic Repomix Packing Triggers**
+
+The repository now includes automated hooks that trigger repomix packing when code changes are detected:
+
+#### **Git Hooks (Repository Level)**
+```bash
+# Installed hooks
+.git/hooks/post-commit          # Triggers after each commit
+.git/hooks/post-merge           # Triggers after merge operations
+
+# Hook behavior
+- Detects significant file changes (.cs, .csproj, .props, .targets, .json, .config, .xml, .razor, .resx)
+- Implements 5-minute cooldown to prevent excessive packing
+- Runs in background to avoid blocking git operations
+- Logs all activities to .git/hooks/repomix-hook.log
+```
+
+#### **Claude Code Hooks (IDE Level)**
+```bash
+# Hook configuration in .claude/settings.local.json
+- user-prompt-submit: Triggers on code-related prompts
+- tool-call-complete: Triggers after code-changing tools
+
+# Intelligent triggering
+- Analyzes user prompts for code-related keywords
+- Monitors tool execution for code changes
+- Implements 2-minute cooldown for tool triggers
+- Logs activities to .claude/hooks/claude-hook.log
+```
+
+#### **Repomix Monitor Daemon**
+```bash
+# Start the monitoring daemon
+./.claude/repomix-monitor.sh start
+
+# Check daemon status
+./.claude/repomix-monitor.sh status
+
+# Stop the daemon
+./.claude/repomix-monitor.sh stop
+
+# Manual trigger
+./.claude/repomix-monitor.sh trigger
+```
+
+### **📁 Hook File Structure**
+```
+.git/hooks/
+├── post-commit                 # Git commit hook
+├── post-merge                  # Git merge hook
+├── repomix-hook.log           # Git hook logs
+└── last-repomix-pack          # Timestamp tracking
+
+.claude/
+├── settings.local.json         # Claude hook configuration
+├── hooks/
+│   ├── repomix-auto-pack.sh   # User prompt trigger
+│   ├── post-tool-repomix.sh   # Tool execution trigger
+│   └── claude-hook.log        # Claude hook logs
+├── repomix-monitor.sh          # Monitor daemon
+└── repomix-trigger            # Signal files (auto-created)
+```
+
+### **🎯 Trigger Conditions**
+
+#### **Code-Related Keywords (User Prompts)**
+- Architecture: `analyze`, `architecture`, `structure`, `design`, `pattern`
+- Implementation: `implement`, `create`, `add`, `build`, `configure`
+- Analysis: `find`, `search`, `discover`, `examine`, `review`
+- Quality: `fix`, `optimize`, `improve`, `refactor`, `test`
+- Components: `class`, `method`, `service`, `controller`, `interface`
+
+#### **Code-Changing Tools**
+- File operations: `Edit`, `MultiEdit`, `Write`, `NotebookEdit`
+- JetBrains: `replace_*`, `create_new_file_with_text`
+- GitHub: `create_or_update_file`, `push_files`
+
+### **⚡ Performance Optimizations**
+
+#### **Cooldown Periods**
+- **Git hooks**: 5-minute cooldown between packs
+- **Claude hooks**: 2-minute cooldown for tool triggers
+- **Stale detection**: 10-minute threshold for auto-refresh
+
+#### **Background Processing**
+- All hooks run in background to avoid blocking
+- Separate log files for debugging
+- PID tracking for daemon management
+- Signal-based communication between hooks
+
+### **🔧 Configuration & Management**
+
+#### **Enable/Disable Hooks**
+```bash
+# Disable git hooks temporarily
+mv .git/hooks/post-commit .git/hooks/post-commit.disabled
+
+# Re-enable
+mv .git/hooks/post-commit.disabled .git/hooks/post-commit
+
+# Check Claude hook status
+cat .claude/settings.local.json | jq '.hooks'
+```
+
+#### **Monitor Hook Activity**
+```bash
+# View git hook logs
+tail -f .git/hooks/repomix-hook.log
+
+# View Claude hook logs
+tail -f .claude/hooks/claude-hook.log
+
+# Monitor daemon logs
+tail -f .claude/repomix-monitor.log
+```
+
+### **🚀 Benefits**
+
+1. **Always Fresh Analysis**: Repomix output stays current with code changes
+2. **Intelligent Triggering**: Only packs when necessary, not on every change
+3. **Multi-Level Coverage**: Git commits, Claude interactions, and manual triggers
+4. **Performance Optimized**: Background processing with cooldown periods
+5. **Comprehensive Logging**: Full audit trail of all repomix activities
+6. **Zero Maintenance**: Fully automated once set up
