@@ -232,15 +232,38 @@ mcp__memory__delete_observations                    # Delete observations
 mcp__fetch__fetch                                   # Fetch URL content
 ```
 
-##### **Code Analysis & Documentation** (Repomix Integration)
+##### **🚀 REPOMIX INTEGRATION - CRITICAL FOR EFFICIENCY**
 ```bash
-# Repomix codebase analysis
-mcp__repomix__pack_codebase                         # Pack local codebase
-mcp__repomix__pack_remote_repository                # Pack remote repository
-mcp__repomix__read_repomix_output                   # Read repomix output
-mcp__repomix__grep_repomix_output                   # Search in repomix output
-mcp__repomix__file_system_read_file                 # Read file from filesystem
-mcp__repomix__file_system_read_directory            # Read directory contents
+# PRIMARY WORKFLOW TOOLS (Use these extensively!)
+mcp__repomix__pack_codebase                         # Generate codebase analysis
+mcp__repomix__grep_repomix_output                   # Pattern discovery & search
+mcp__repomix__read_repomix_output                   # Selective content reading
+
+# ADDITIONAL CAPABILITIES
+mcp__repomix__pack_remote_repository                # Analyze external repositories
+mcp__repomix__file_system_read_file                 # Direct file system access
+mcp__repomix__file_system_read_directory            # Directory exploration
+
+# COMMON REPOMIX PATTERNS FOR THIS CODEBASE
+# Architecture Discovery
+mcp__repomix__grep_repomix_output "interface.*Service|class.*Controller|public.*Builder"
+mcp__repomix__grep_repomix_output "public.*static.*class.*Extensions"
+mcp__repomix__grep_repomix_output "namespace.*DependencyInjection"
+
+# Implementation Patterns
+mcp__repomix__grep_repomix_output "AddRequiredServices|AddCoreServices|AddMarkerService"
+mcp__repomix__grep_repomix_output "public.*static.*Add.*Builder"
+mcp__repomix__grep_repomix_output "IServiceCollection.*Services"
+
+# Quality Assurance
+mcp__repomix__grep_repomix_output "ThrowIfNull|ArgumentNullException"
+mcp__repomix__grep_repomix_output "Services.*TryAdd.*"
+mcp__repomix__grep_repomix_output "TODO|FIXME|BUG"
+
+# Testing Patterns
+mcp__repomix__grep_repomix_output "public.*class.*Tests"
+mcp__repomix__grep_repomix_output "Fact.*public.*void"
+mcp__repomix__grep_repomix_output "Assert.*Throws.*ArgumentNullException"
 ```
 
 ##### **Problem Solving & Thinking** (Complex Analysis)
@@ -424,3 +447,80 @@ mcp__repomix__grep_repomix_output "public.*static.*class.*Extensions"
 - Sample applications (`**/samples/**`)
 - Node modules (`**/node_modules/**`)
 - Build artifacts (`**/BenchmarkDotNet.Artifacts/**`)
+
+## REPOMIX-ENHANCED ANALYSIS PROCEDURES
+
+### **Systematic Code Analysis Protocol**
+
+#### **1. Initial Repository Analysis**
+```bash
+# Always start with fresh analysis
+mcp__repomix__pack_codebase --directory="/Users/wangkanai/Sources/wangkanai"
+
+# Get repository overview
+mcp__repomix__read_repomix_output --startLine=1 --endLine=100
+```
+
+#### **2. Architecture Discovery**
+```bash
+# Service layer analysis
+mcp__repomix__grep_repomix_output "interface.*Service" --contextLines=2
+mcp__repomix__grep_repomix_output "class.*Service.*implements" --contextLines=2
+
+# Builder pattern analysis
+mcp__repomix__grep_repomix_output "class.*Builder.*IServiceCollection" --contextLines=3
+mcp__repomix__grep_repomix_output "public.*static.*Add.*Builder" --contextLines=2
+
+# Extension methods discovery
+mcp__repomix__grep_repomix_output "public.*static.*class.*Extensions" --contextLines=1
+```
+
+#### **3. Cross-Module Consistency Verification**
+```bash
+# DI registration patterns
+mcp__repomix__grep_repomix_output "AddRequiredServices|AddCoreServices|AddMarkerService"
+mcp__repomix__grep_repomix_output "Services.*TryAdd.*" --contextLines=1
+
+# Error handling patterns
+mcp__repomix__grep_repomix_output "ThrowIfNull" --contextLines=1
+mcp__repomix__grep_repomix_output "ArgumentNullException" --contextLines=2
+```
+
+#### **4. Testing Coverage Analysis**
+```bash
+# Test class discovery
+mcp__repomix__grep_repomix_output "public.*class.*Tests" --contextLines=1
+mcp__repomix__grep_repomix_output "Fact.*public.*void" --contextLines=1
+
+# Mock pattern analysis
+mcp__repomix__grep_repomix_output "Mock.*" --contextLines=1
+mcp__repomix__grep_repomix_output "Assert.*" --contextLines=1
+```
+
+#### **5. Performance & Quality Checks**
+```bash
+# Performance indicators
+mcp__repomix__grep_repomix_output "TODO|FIXME|BUG|HACK" --ignoreCase=true
+
+# Configuration patterns
+mcp__repomix__grep_repomix_output "Configure.*<.*>" --contextLines=2
+mcp__repomix__grep_repomix_output "Options.*" --contextLines=1
+```
+
+### **Efficiency Guidelines for Repomix Usage**
+
+#### **Token Conservation Strategies**
+1. **Use grep first** - Find patterns before reading full content
+2. **Selective reading** - Use startLine/endLine for targeted analysis
+3. **Context lines** - Use --contextLines for focused results
+4. **Pattern libraries** - Build reusable search patterns
+
+#### **Pattern Library Examples**
+```bash
+# Common .NET patterns
+BUILDER_PATTERN="class.*Builder.*IServiceCollection"
+SERVICE_REGISTRATION="public.*static.*Add.*"
+EXTENSION_CLASS="public.*static.*class.*Extensions"
+TEST_CLASS="public.*class.*Tests"
+DI_PATTERN="AddRequiredServices|AddCoreServices|AddMarkerService"
+```
