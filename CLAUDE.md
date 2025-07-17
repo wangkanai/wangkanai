@@ -63,28 +63,70 @@ dotnet build --no-restore --no-incremental
 dotnet run -c Release
 ```
 
-### MCP Commands
+### MCP Commands (By Priority & Efficiency)
+
+#### **High Priority - Core Development**
 ```bash
-# Start MCP server for development
-claude-code --mcp-server
+# JetBrains integration (primary IDE)
+# Access: File operations, debugging, project management
+mcp__jetbrains__*
 
-# Install MCP server dependencies
-npm install @modelcontextprotocol/server-stdio
+# File system operations
+# Access: Direct file/directory operations in /Users/wangkanai/Sources
+mcp__filesystem__*
 
-# Configure MCP server settings
-claude-code --configure-mcp
+# GitHub integration  
+# Access: Repository operations, PRs, issues
+mcp__github__*
+```
 
-# Test MCP server connection
-claude-code --test-mcp
+#### **Medium Priority - Code Quality & Analysis**
+```bash
+# SonarQube analysis
+# Access: Code quality metrics, issue tracking
+mcp__sonarqube__*
 
-# Debug MCP server issues
-claude-code --debug-mcp
+# Podman container management
+# Access: Container operations for development/testing
+mcp__podman__*
 
-# List available MCP servers
-claude-code --list-mcp-servers
+# Memory management
+# Access: Knowledge graph for project context
+mcp__memory__*
+```
 
-# Connect to specific MCP server
-claude-code --connect-mcp <server-name>
+#### **Low Priority - Documentation & Utilities**
+```bash
+# Pandoc document conversion
+# Access: Documentation processing
+mcp__pandoc__*
+
+# Sequential thinking
+# Access: Complex problem solving
+mcp__sequential-thinking__*
+
+# Web fetching
+# Access: External content retrieval
+mcp__fetch__*
+
+# Office integration (Word/PowerPoint)
+# Access: Document creation/editing
+mcp__word__*, mcp__ppt__*
+```
+
+#### **Specialized - Project Specific**
+```bash
+# Azure DevOps (organization: wangkanai)
+# Access: Pipeline management, work items
+mcp__devops__*
+
+# MS365 integration
+# Access: Office 365 services
+mcp__ms365__*
+
+# Browser automation
+# Access: Web testing and automation
+mcp__browserloop__*
 ```
 
 ## Architecture & Code Organization

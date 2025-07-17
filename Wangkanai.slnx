@@ -15,9 +15,6 @@
     <File Path=".github\ISSUE_TEMPLATE\design_note.md" />
     <File Path=".github\ISSUE_TEMPLATE\feature_request.md" />
   </Folder>
-  <Folder Name="/.serena/">
-    <File Path=".serena\project.yml" />
-  </Folder>
   <Folder Name="/.solutions/">
     <File Path=".editorconfig" />
     <File Path=".gitattributes" />

@@ -4,6 +4,7 @@
 repomix-output.xml
 conport_export/
 context_portal/
+.serena/
 lib/
 dist/
 .obsidian/
