@@ -72,7 +72,7 @@
 **/*.ico
 **/*.afdesign
 **/*.vsdx
-**/*.gfie
+**/*.gif
 
 # Database and migration files
 **/context.db
