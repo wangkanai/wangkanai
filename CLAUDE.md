@@ -63,70 +63,194 @@ dotnet build --no-restore --no-incremental
 dotnet run -c Release
 ```
 
-### MCP Commands (By Priority & Efficiency)
+### Available MCP Commands
 
-#### **High Priority - Core Development**
+#### **JetBrains IDE Integration**
 ```bash
-# JetBrains integration (primary IDE)
-# Access: File operations, debugging, project management
-mcp__jetbrains__*
+# File and editor operations
+mcp__jetbrains__get_open_in_editor_file_text        # Get text of currently open file
+mcp__jetbrains__get_open_in_editor_file_path        # Get path of currently open file
+mcp__jetbrains__get_selected_in_editor_text         # Get currently selected text
+mcp__jetbrains__replace_selected_text               # Replace selected text
+mcp__jetbrains__replace_current_file_text           # Replace entire file content
+mcp__jetbrains__create_new_file_with_text           # Create new file with content
+mcp__jetbrains__get_file_text_by_path               # Read file by project path
+mcp__jetbrains__replace_file_text_by_path           # Replace file content by path
+mcp__jetbrains__replace_specific_text               # Replace specific text in file
+mcp__jetbrains__open_file_in_editor                 # Open file in editor
 
-# File system operations
-# Access: Direct file/directory operations in /Users/wangkanai/Sources
-mcp__filesystem__*
+# Project navigation and search
+mcp__jetbrains__find_files_by_name_substring        # Find files by name pattern
+mcp__jetbrains__list_files_in_folder               # List files in directory
+mcp__jetbrains__list_directory_tree_in_folder      # Get directory tree structure
+mcp__jetbrains__search_in_files_content            # Search text in project files
+mcp__jetbrains__get_all_open_file_texts             # Get all open file contents
+mcp__jetbrains__get_all_open_file_paths             # Get all open file paths
 
-# GitHub integration  
-# Access: Repository operations, PRs, issues
-mcp__github__*
+# Version control and project info
+mcp__jetbrains__get_project_vcs_status              # Get VCS status (git status)
+mcp__jetbrains__get_project_modules                 # Get project modules
+mcp__jetbrains__get_project_dependencies           # Get project dependencies
+mcp__jetbrains__find_commit_by_message              # Find commits by message
+
+# Debugging and breakpoints
+mcp__jetbrains__toggle_debugger_breakpoint         # Toggle breakpoint at line
+mcp__jetbrains__get_debugger_breakpoints           # Get all breakpoints
+
+# Code analysis and formatting
+mcp__jetbrains__get_current_file_errors             # Get errors in current file
+mcp__jetbrains__get_project_problems                # Get all project problems
+mcp__jetbrains__reformat_current_file               # Format current file
+mcp__jetbrains__reformat_file                       # Format specific file
+
+# Build and run
+mcp__jetbrains__get_run_configurations              # Get available run configs
+mcp__jetbrains__run_configuration                   # Run specific configuration
+
+# Terminal operations
+mcp__jetbrains__get_terminal_text                   # Get terminal content
+mcp__jetbrains__execute_terminal_command            # Execute terminal command
+
+# IDE actions and utilities
+mcp__jetbrains__list_available_actions              # List all IDE actions
+mcp__jetbrains__execute_action_by_id                # Execute action by ID
+mcp__jetbrains__get_progress_indicators             # Get progress status
+mcp__jetbrains__wait                                # Wait for specified time
 ```
 
-#### **Medium Priority - Code Quality & Analysis**
+#### **GitHub Integration**
 ```bash
-# SonarQube analysis
-# Access: Code quality metrics, issue tracking
-mcp__sonarqube__*
+# Repository operations
+mcp__github__create_repository                      # Create new repository
+mcp__github__search_repositories                    # Search repositories
+mcp__github__fork_repository                        # Fork repository
 
-# Podman container management
-# Access: Container operations for development/testing
-mcp__podman__*
+# File operations
+mcp__github__get_file_contents                      # Get file/directory contents
+mcp__github__create_or_update_file                  # Create or update single file
+mcp__github__push_files                             # Push multiple files
 
-# Memory management
-# Access: Knowledge graph for project context
-mcp__memory__*
+# Branch operations
+mcp__github__create_branch                          # Create new branch
+mcp__github__list_commits                           # List commits
+
+# Issues
+mcp__github__create_issue                           # Create new issue
+mcp__github__list_issues                            # List issues with filters
+mcp__github__update_issue                           # Update existing issue
+mcp__github__get_issue                              # Get issue details
+mcp__github__add_issue_comment                      # Add comment to issue
+
+# Pull requests
+mcp__github__create_pull_request                    # Create pull request
+mcp__github__list_pull_requests                     # List pull requests
+mcp__github__get_pull_request                       # Get PR details
+mcp__github__get_pull_request_files                 # Get PR file changes
+mcp__github__get_pull_request_status                # Get PR status
+mcp__github__get_pull_request_comments              # Get PR comments
+mcp__github__get_pull_request_reviews               # Get PR reviews
+mcp__github__create_pull_request_review             # Create PR review
+mcp__github__merge_pull_request                     # Merge pull request
+mcp__github__update_pull_request_branch             # Update PR branch
+
+# Search operations
+mcp__github__search_code                            # Search code across repos
+mcp__github__search_issues                          # Search issues and PRs
+mcp__github__search_users                           # Search users
 ```
 
-#### **Low Priority - Documentation & Utilities**
+#### **SonarQube Code Analysis**
 ```bash
-# Pandoc document conversion
-# Access: Documentation processing
-mcp__pandoc__*
+# Project and quality gates
+mcp__sonarqube__search_my_sonarqube_projects        # Find SonarQube projects
+mcp__sonarqube__get_project_quality_gate_status     # Get quality gate status
+mcp__sonarqube__list_quality_gates                  # List all quality gates
 
-# Sequential thinking
-# Access: Complex problem solving
-mcp__sequential-thinking__*
+# Issues and rules
+mcp__sonarqube__search_sonar_issues_in_projects     # Search issues in projects
+mcp__sonarqube__change_sonar_issue_status           # Change issue status
+mcp__sonarqube__show_rule                           # Show rule details
+mcp__sonarqube__list_rule_repositories              # List rule repositories
 
-# Web fetching
-# Access: External content retrieval
-mcp__fetch__*
-
-# Office integration (Word/PowerPoint)
-# Access: Document creation/editing
-mcp__word__*, mcp__ppt__*
+# Code analysis
+mcp__sonarqube__analyze_code_snippet                # Analyze code snippet
+mcp__sonarqube__get_component_measures              # Get component metrics
+mcp__sonarqube__search_metrics                      # Search available metrics
+mcp__sonarqube__get_scm_info                        # Get SCM information
+mcp__sonarqube__get_raw_source                      # Get raw source code
+mcp__sonarqube__list_languages                      # List supported languages
 ```
 
-#### **Specialized - Project Specific**
+#### **Container Management (Podman)**
 ```bash
-# Azure DevOps (organization: wangkanai)
-# Access: Pipeline management, work items
-mcp__devops__*
+# Container operations
+mcp__podman__container_list                         # List containers
+mcp__podman__container_run                          # Run container
+mcp__podman__container_stop                         # Stop container
+mcp__podman__container_remove                       # Remove container
+mcp__podman__container_inspect                      # Inspect container
+mcp__podman__container_logs                         # Get container logs
 
-# MS365 integration
-# Access: Office 365 services
-mcp__ms365__*
+# Image operations
+mcp__podman__image_list                             # List images
+mcp__podman__image_pull                             # Pull image
+mcp__podman__image_push                             # Push image
+mcp__podman__image_remove                           # Remove image
+mcp__podman__image_build                            # Build image
 
-# Browser automation
-# Access: Web testing and automation
-mcp__browserloop__*
+# Network and volume operations
+mcp__podman__network_list                           # List networks
+mcp__podman__volume_list                            # List volumes
+```
+
+#### **Memory & Knowledge Graph**
+```bash
+# Entity management
+mcp__memory__create_entities                        # Create entities
+mcp__memory__delete_entities                        # Delete entities
+mcp__memory__search_nodes                           # Search nodes
+mcp__memory__open_nodes                             # Open specific nodes
+mcp__memory__read_graph                             # Read entire graph
+
+# Relationship management
+mcp__memory__create_relations                       # Create relations
+mcp__memory__delete_relations                       # Delete relations
+
+# Observation management
+mcp__memory__add_observations                       # Add observations
+mcp__memory__delete_observations                    # Delete observations
+```
+
+#### **Web & Content Fetching**
+```bash
+mcp__fetch__fetch                                   # Fetch URL content
+```
+
+#### **Code Analysis & Documentation**
+```bash
+# Repomix codebase analysis
+mcp__repomix__pack_codebase                         # Pack local codebase
+mcp__repomix__pack_remote_repository                # Pack remote repository
+mcp__repomix__read_repomix_output                   # Read repomix output
+mcp__repomix__grep_repomix_output                   # Search in repomix output
+mcp__repomix__file_system_read_file                 # Read file from filesystem
+mcp__repomix__file_system_read_directory            # Read directory contents
+```
+
+#### **Problem Solving & Thinking**
+```bash
+mcp__sequential-thinking__sequentialthinking        # Sequential problem solving
+```
+
+#### **IDE Diagnostics**
+```bash
+mcp__ide__getDiagnostics                            # Get IDE diagnostics
+```
+
+#### **Resource Management**
+```bash
+ListMcpResourcesTool                                # List MCP resources
+ReadMcpResourceTool                                 # Read MCP resource
 ```
 
 ## Architecture & Code Organization
