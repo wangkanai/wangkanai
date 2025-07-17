@@ -1,0 +1,70 @@
+{
+  "$schema": "https://repomix.com/schemas/latest/schema.json",
+  "input": {
+    "maxFileSize": 52428800
+  },
+  "output": {
+    "filePath": "repomix-output.xml",
+    "style": "xml",
+    "parsableStyle": false,
+    "fileSummary": true,
+    "directoryStructure": true,
+    "files": true,
+    "removeComments": true,
+    "removeEmptyLines": true,
+    "compress": true,
+    "topFilesLength": 15,
+    "showLineNumbers": true,
+    "copyToClipboard": false,
+    "git": {
+      "sortByChanges": true,
+      "sortByChangesMaxCommits": 50,
+      "includeDiffs": false
+    }
+  },
+  "include": [
+    "**/*.cs",
+    "**/*.csproj",
+    "**/*.slnx",
+    "**/*.sln",
+    "**/*.props",
+    "**/*.targets",
+    "**/*.json",
+    "**/*.config",
+    "**/*.xml",
+    "**/*.razor",
+    "**/*.resx",
+    "**/CLAUDE.md",
+    "**/global.json",
+    "**/Directory.Build.props",
+    "**/Directory.Build.targets",
+    "**/Directory.Packages.props"
+  ],
+  "ignore": {
+    "useGitignore": true,
+    "useDefaultPatterns": true,
+    "customPatterns": [
+      "**/samples/**",
+      "**/benchmark/**",
+      "**/test/**",
+      "**/tests/**/bin/**",
+      "**/tests/**/obj/**",
+      "**/src/**/bin/**",
+      "**/src/**/obj/**",
+      "**/*.Designer.cs",
+      "**/*.AssemblyInfo.cs",
+      "**/Resources.Designer.cs",
+      "**/Usings.cs",
+      "**/key.snk",
+      "**/public.snk",
+      "**/launchSettings.json",
+      "**/xunit.runner.json"
+    ]
+  },
+  "security": {
+    "enableSecurityCheck": true
+  },
+  "tokenCount": {
+    "encoding": "o200k_base"
+  }
+}
