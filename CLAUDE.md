@@ -63,9 +63,11 @@ dotnet build --no-restore --no-incremental
 dotnet run -c Release
 ```
 
-### Available MCP Commands
+### Available MCP Commands (By Priority & Efficiency)
 
-#### **JetBrains IDE Integration**
+#### **🔴 HIGH PRIORITY - Core Development Tools**
+
+##### **JetBrains IDE Integration** (Primary Development Environment)
 ```bash
 # File and editor operations
 mcp__jetbrains__get_open_in_editor_file_text        # Get text of currently open file
@@ -118,7 +120,7 @@ mcp__jetbrains__get_progress_indicators             # Get progress status
 mcp__jetbrains__wait                                # Wait for specified time
 ```
 
-#### **GitHub Integration**
+##### **GitHub Integration** (Repository Management)
 ```bash
 # Repository operations
 mcp__github__create_repository                      # Create new repository
@@ -159,7 +161,9 @@ mcp__github__search_issues                          # Search issues and PRs
 mcp__github__search_users                           # Search users
 ```
 
-#### **SonarQube Code Analysis**
+#### **🟡 MEDIUM PRIORITY - Quality & Analysis Tools**
+
+##### **SonarQube Code Analysis** (Code Quality Metrics)
 ```bash
 # Project and quality gates
 mcp__sonarqube__search_my_sonarqube_projects        # Find SonarQube projects
@@ -181,7 +185,7 @@ mcp__sonarqube__get_raw_source                      # Get raw source code
 mcp__sonarqube__list_languages                      # List supported languages
 ```
 
-#### **Container Management (Podman)**
+##### **Container Management (Podman)** (Development Environment)
 ```bash
 # Container operations
 mcp__podman__container_list                         # List containers
@@ -203,7 +207,7 @@ mcp__podman__network_list                           # List networks
 mcp__podman__volume_list                            # List volumes
 ```
 
-#### **Memory & Knowledge Graph**
+##### **Memory & Knowledge Graph** (Project Context)
 ```bash
 # Entity management
 mcp__memory__create_entities                        # Create entities
@@ -221,12 +225,14 @@ mcp__memory__add_observations                       # Add observations
 mcp__memory__delete_observations                    # Delete observations
 ```
 
-#### **Web & Content Fetching**
+#### **🟢 LOW PRIORITY - Utility & Support Tools**
+
+##### **Web & Content Fetching** (External Content)
 ```bash
 mcp__fetch__fetch                                   # Fetch URL content
 ```
 
-#### **Code Analysis & Documentation**
+##### **Code Analysis & Documentation** (Repomix Integration)
 ```bash
 # Repomix codebase analysis
 mcp__repomix__pack_codebase                         # Pack local codebase
@@ -237,17 +243,19 @@ mcp__repomix__file_system_read_file                 # Read file from filesystem
 mcp__repomix__file_system_read_directory            # Read directory contents
 ```
 
-#### **Problem Solving & Thinking**
+##### **Problem Solving & Thinking** (Complex Analysis)
 ```bash
 mcp__sequential-thinking__sequentialthinking        # Sequential problem solving
 ```
 
-#### **IDE Diagnostics**
+#### **🔵 SPECIALIZED - System & Diagnostic Tools**
+
+##### **IDE Diagnostics** (System Analysis)
 ```bash
 mcp__ide__getDiagnostics                            # Get IDE diagnostics
 ```
 
-#### **Resource Management**
+##### **Resource Management** (MCP Infrastructure)
 ```bash
 ListMcpResourcesTool                                # List MCP resources
 ReadMcpResourceTool                                 # Read MCP resource
