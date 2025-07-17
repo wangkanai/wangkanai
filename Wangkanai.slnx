@@ -1,10 +1,14 @@
 ﻿<Solution>
+  <Folder Name="/.claude/">
+    <File Path="CLAUDE.md" />
+    <File Path="repomix.config.json" />
+    <File Path=".repomixignore" />
+  </Folder>
   <Folder Name="/.github/">
     <File Path=".github\FUNDING.yml" />
     <File Path=".github\RELEASE.yml" />
     <File Path=".github\copilot-instructions.md" />
     <File Path=".github\workflows\dotnet.yml" />
-    <File Path=".github\mcp.txt" />
   </Folder>
   <Folder Name="/.github/ISSUE_TEMPLATE/">
     <File Path=".github\ISSUE_TEMPLATE\bug_report.md" />
@@ -30,7 +34,6 @@
     <File Path="LICENSE" />
     <File Path="SonarQube.Analysis.xml" />
     <File Path="sonar-begin.ps1" />
-    <File Path="CLAUDE.md" />
   </Folder>
   <Folder Name="/Analytics/">
     <Project Path="Analytics\benchmark\Wangkanai.Analytics.Benchmark.csproj" />

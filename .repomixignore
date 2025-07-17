@@ -1,0 +1,104 @@
+# Build artifacts and output directories
+**/bin/
+**/obj/
+**/artifacts/
+**/signed/
+**/BenchmarkDotNet.Artifacts/
+**/TestResults/
+**/coverage.xml
+**/coverage/
+**/.dotcover/
+**/dotCover.Output.*
+
+# Package artifacts
+**/*.nupkg
+**/*.snupkg
+**/packages/
+**/node_modules/
+**/pnpm-lock.yaml
+**/package-lock.json
+
+# IDE and editor files
+**/.vs/
+**/.vscode/
+**/.idea/
+**/*.user
+**/*.suo
+**/*.userosscache
+**/*.sln.docstates
+**/*.DotSettings
+**/*.DotSettings.user
+**/*.sln.iml
+**/*.DS_Store
+
+# Log files
+**/*.log
+**/logs/
+**/msbuild.binlog
+
+# SonarQube analysis files
+**/.sonarqube/
+**/.sonarlint/
+**/SonarQube.Analysis.xml
+**/qodana.sarif.json
+
+# Test and coverage files
+**/*.vspscc
+**/*.vssscc
+**/TestResult.xml
+**/*.VisualState.xml
+**/*.coverage
+**/*.coveragexml
+**/*.dotCover
+
+# Documentation and non-code files
+**/README.md
+**/INSTALL.md
+**/NUGET.md
+**/CODE_OF_CONDUCT.md
+**/CONTRIBUTING.md
+**/SECURITY.md
+**/LICENSE
+
+# Asset files
+**/Assets/
+**/asset/
+**/docs/
+**/*.png
+**/*.jpg
+**/*.jpeg
+**/*.gif
+**/*.svg
+**/*.ico
+**/*.afdesign
+**/*.vsdx
+**/*.gfie
+
+# Database and migration files
+**/context.db
+**/chroma.sqlite3
+**/alembic/
+
+# Temporary and cache files
+**/tmp/
+**/temp/
+**/*.tmp
+**/*.tmp_proj
+**/.obsidian/
+**/.notes/
+**/context_portal/
+
+# Old and backup directories
+**/old/
+**/Old/
+**/conport_export/
+**/MiscUtil/
+
+# PowerShell scripts and config
+**/build.ps1
+**/sign.ps1
+**/dotnet-install.ps1
+**/sonar-begin.ps1
+
+# Repomix output
+**/repomix-output.xml
