@@ -12,7 +12,7 @@
     "files": true,
     "removeComments": true,
     "removeEmptyLines": true,
-    "compress": false,
+    "compress": true,
     "topFilesLength": 15,
     "showLineNumbers": true,
     "copyToClipboard": false,
