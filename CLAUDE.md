@@ -326,19 +326,78 @@ All source files include this copyright header:
 
 ## Development Workflow
 
-### Module Development
+### **REPOMIX-FIRST DEVELOPMENT APPROACH**
+
+#### **Phase 1: Codebase Analysis (ALWAYS START HERE)**
+```bash
+# 1. Generate current codebase analysis
+mcp__repomix__pack_codebase --directory="/Users/wangkanai/Sources/wangkanai"
+
+# 2. Architecture discovery patterns
+mcp__repomix__grep_repomix_output "interface.*Service|class.*Controller|public.*Builder"
+mcp__repomix__grep_repomix_output "public.*static.*class.*Extensions"
+mcp__repomix__grep_repomix_output "Configure.*<.*>"
+
+# 3. Find implementation patterns
+mcp__repomix__grep_repomix_output "AddRequiredServices|AddCoreServices|AddMarkerService"
+mcp__repomix__grep_repomix_output "ThrowIfNull|ArgumentNullException"
+```
+
+#### **Phase 2: Targeted Analysis**
+```bash
+# 4. Selective content reading (efficient token usage)
+mcp__repomix__read_repomix_output --startLine=1000 --endLine=1200
+
+# 5. Cross-module consistency checks
+mcp__repomix__grep_repomix_output "namespace.*DependencyInjection"
+mcp__repomix__grep_repomix_output "IServiceCollection.*Services"
+```
+
+#### **Phase 3: Implementation**
+```bash
+# 6. Pattern-based implementation guidance
+mcp__repomix__grep_repomix_output "class.*Builder.*IServiceCollection"
+mcp__repomix__grep_repomix_output "public.*static.*Add.*Builder"
+```
+
+### **Traditional Module Development (Use After Repomix Analysis)**
 1. Navigate to specific module directory
 2. Run `.\build.ps1` to build and test the module
 3. Make changes to `src/` directory
 4. Add tests to `tests/` directory
 5. Run build script to verify changes
 
-### Adding New Features
-1. Follow existing patterns for service registration
-2. Implement builder pattern for configuration
-3. Add comprehensive unit tests
-4. Update benchmarks if performance-critical
-5. Follow namespace conventions
+### **REPOMIX-ENHANCED FEATURE DEVELOPMENT**
+
+#### **Before Writing Code - Pattern Discovery**
+```bash
+# 1. Find existing similar implementations
+mcp__repomix__grep_repomix_output "class.*YourFeature.*Builder"
+mcp__repomix__grep_repomix_output "I.*YourFeature.*Service"
+
+# 2. Discover service registration patterns
+mcp__repomix__grep_repomix_output "AddYourFeature.*IServiceCollection"
+mcp__repomix__grep_repomix_output "UseYourFeature.*IApplicationBuilder"
+
+# 3. Find testing patterns
+mcp__repomix__grep_repomix_output "public.*class.*YourFeature.*Tests"
+mcp__repomix__grep_repomix_output "AddYourFeature.*Builder.*Null.*ArgumentNullException"
+```
+
+#### **Implementation Guidelines**
+1. **Follow discovered patterns** from repomix analysis
+2. **Implement builder pattern** based on existing examples
+3. **Add comprehensive unit tests** following found test patterns
+4. **Update benchmarks** if performance-critical
+5. **Follow namespace conventions** discovered in analysis
+
+#### **Quality Assurance Patterns**
+```bash
+# 4. Verify implementation consistency
+mcp__repomix__grep_repomix_output "ThrowIfNull.*builder"
+mcp__repomix__grep_repomix_output "Services.*TryAdd.*"
+mcp__repomix__grep_repomix_output "public.*static.*class.*Extensions"
+```
 
 ### Dependencies
 - **Primary Framework**: .NET 8.0
