@@ -46,7 +46,7 @@
     <File Path="Analytics\build.ps1" />
   </Folder>
   <Folder Name="/Annotations/">
-    <Project Path="Annotations\benchamrk\Wangkanai.Annotations.Benchmark.csproj" Type="Classic C#" />
+    <Project Path="Annotations\benchmark\Wangkanai.Annotations.Benchmark.csproj" Type="Classic C#" />
     <Project Path="Annotations\src\Wangkanai.Annotations.csproj" Type="Classic C#" />
     <Project Path="Annotations\tests\Wangkanai.Annotations.Tests.csproj" Type="Classic C#" />
     <File Path="Annotations\build.ps1" />

@@ -46,7 +46,6 @@
     "customPatterns": [
       "**/samples/**",
       "**/benchmark/**",
-      "**/benchamrk/**",
       "**/test/**",
       "**/tests/**/bin/**",
       "**/tests/**/obj/**",
