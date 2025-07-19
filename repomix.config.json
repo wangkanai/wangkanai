@@ -16,6 +16,7 @@
     "topFilesLength": 20,
     "showLineNumbers": true,
     "copyToClipboard": false,
+    "instructionFilePath": "CLAUDE.md",
     "git": {
       "sortByChanges": true,
       "sortByChangesMaxCommits": 50,
@@ -85,8 +86,5 @@
   },
   "tokenCount": {
     "encoding": "o200k_base"
-  },
-  "output": {
-    "instructionFilePath": "CLAUDE.md"
   }
 }
