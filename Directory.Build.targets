@@ -13,6 +13,7 @@
 		<PackageReference Include="BenchmarkDotNet"/>
 	</ItemGroup>
 	<PropertyGroup Condition="$(MSBuildProjectName.Contains('Tests'))">
+		<OutputType>Exe</OutputType>
 		<IsPackable>false</IsPackable>
 		<IsTestProject>true</IsTestProject>
 	</PropertyGroup>
@@ -20,7 +21,7 @@
 		<Using Include="Xunit"/>
 	</ItemGroup>
 	<ItemGroup Condition="$(MSBuildProjectName.Contains('Tests'))">
-		<Content Include="xunit.runner.json" CopyToOutputDirectory="PreserveNewest" />
+		<Content Include="$(RepoRoot)xunit.runner.json" Link="xunit.runner.json" CopyToOutputDirectory="PreserveNewest" Condition="Exists('$(RepoRoot)xunit.runner.json')" />
 	</ItemGroup>
 	<!-- xUnit Tests-->
 	<ItemGroup Condition="$(MSBuildProjectName.Contains('Tests'))">
