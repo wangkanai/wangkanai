@@ -24,6 +24,11 @@ public class DeviceServiceTests
 	[InlineData("Mozilla/5.0 (Linux; Android 7.0; SM-T585 Build/NRD90M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36")]
 	[InlineData("Mozilla/5.0 (Linux; Android 4.4.4; SM-T561 Build/KTU84P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.98 Safari/537.36")]
 	[InlineData("Mozilla/5.0 (Linux; Android 5.1.1; KFAUWI) AppleWebKit/537.36 (KHTML, like Gecko) Silk/77.2.19 like Chrome/77.0.3865.92 Safari/537.36")]
+	[InlineData("Mozilla/5.0 (Linux; Android 10; MediaPad M5 10.8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Safari/537.36")]
+	[InlineData("Mozilla/5.0 (Linux; Android 10; MatePad 10.4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Safari/537.36")]
+	[InlineData("Mozilla/5.0 (Linux; Android 8.0; HUAWEI MediaPad T3 10) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.84 Safari/537.36")]
+	[InlineData("Mozilla/5.0 (Linux; Android 10; HUAWEI MatePad Pro) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Safari/537.36")]
+	[InlineData("Mozilla/5.0 (Linux; Android 9; MediaPad M5 lite) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.90 Safari/537.36")]
 	public void Tablet(string agent)
 	{
 		var resolver = MockService.DeviceService(agent);

@@ -14,7 +14,9 @@ internal static class TabletCollection
 		"hp-tablet",
 		"kindle",
 		"sm-t",
-		"kfauwi"
+		"kfauwi",
+		"mediapad",
+		"matepad"
 	};
 
 	public static readonly IPrefixTrie KeywordsSearchTrie = Keywords.BuildSearchTrie();
