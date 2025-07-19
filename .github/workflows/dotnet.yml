@@ -14,6 +14,8 @@ env:
   DOTNET_GENERATE_ASPNET_CERTIFICATE: false
   DOTNET_SYSTEM_CONSOLE_ALLOW_ANSI_COLOR_REDIRECTION: true
   DOTNET_MULTILEVEL_LOOKUP: false
+  # Skip certain projects on PRs for faster builds
+  SKIP_SLOW_PROJECTS: ${{ github.event_name == 'pull_request' && 'true' || 'false' }}
 
 jobs:
   build:
@@ -102,6 +104,8 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: '20'
+        cache: 'npm'
+        cache-dependency-path: 'Tabler/src/Web/package-lock.json'
 
     # Install tools faster with parallel execution
     - name: Install tools
@@ -142,16 +146,21 @@ jobs:
         dotnet restore --verbosity minimal --no-dependencies
       shell: bash
 
-    - name: Build
+    # Pre-install npm dependencies to avoid build failures
+    - name: Install npm dependencies
       run: |
-        # Pre-install npm dependencies for Tabler to prevent build failures
-        if [ -d "Tabler/src/Web" ] && [ -f "Tabler/src/Web/package.json" ]; then
+        if [ -f "Tabler/src/Web/package.json" ]; then
           echo "Installing npm dependencies for Tabler..."
           cd Tabler/src/Web
           npm ci --prefer-offline --no-audit --no-fund || npm install --no-audit --no-fund
+          # Create stamp file to prevent re-installation during build
+          touch node_modules/.install-stamp
           cd ../../..
         fi
-        
+      shell: bash
+
+    - name: Build
+      run: |
         # Ultra-aggressive parallel build
         dotnet build --no-restore -c Release \
           /p:TreatWarningsAsErrors=false \
