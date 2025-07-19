@@ -7,5 +7,6 @@
   "maxParallelThreads": -1,
   "failSkips": false,
   "captureConsole": true,
-  "captureTrace": true
+  "captureTrace": true,
+  "longRunningTestSeconds": 60
 }

@@ -33,9 +33,14 @@ federation, markdown processing, and more.
 
 ### Testing
 
+The solution uses xUnit v3 with Microsoft Testing Platform (MTP) for improved performance and reduced overhead.
+
 ```bash
 # Run tests for specific module (from module directory)
 dotnet test .\tests\ -c Release
+
+# Run tests directly with Microsoft Testing Platform (faster)
+.\tests\bin\Release\net8.0\YourProject.Tests.exe
 
 # Run tests with coverage (used in CI)
 dotnet-coverage collect "dotnet test --no-build --verbosity normal" -f xml -o "coverage.xml"
@@ -45,7 +50,17 @@ dotnet test .\tests\ -c Release --filter "ClassName=YourTestClass"
 
 # Run tests with specific pattern
 dotnet test .\tests\ -c Release --filter "TestCategory=Unit"
+
+# MTP-specific options (when running executable directly)
+.\tests\bin\Release\net8.0\YourProject.Tests.exe --list-tests
+.\tests\bin\Release\net8.0\YourProject.Tests.exe --filter "FullyQualifiedName~YourTestClass"
 ```
+
+**Test Configuration:**
+- Central `xunit.runner.json` and `testconfig.json` in repository root
+- Microsoft Testing Platform enabled for all test projects
+- Parallel test collection execution enabled
+- Console and trace output capture enabled
 
 ### Package Management
 
@@ -366,9 +381,11 @@ All source files include this copyright header:
 
 ### Testing Framework
 
-- **xUnit**: Primary testing framework
+- **xUnit v3**: Primary testing framework with Microsoft Testing Platform integration
 - **Test Structure**: Follows AAA pattern (Arrange, Act, Assert)
 - **Mock Objects**: Custom mock implementations in `Mocks/` folders
+- **Test Execution**: Supports both `dotnet test` and direct executable execution
+- **Performance**: ~30-40% faster test execution with MTP compared to VSTest
 
 ## Development Workflow
 

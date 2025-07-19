@@ -50,8 +50,9 @@
     <PackageVersion Include="Serilog.AspNetCore" Version="9.0.0" />
     <PackageVersion Include="Serilog.Sinks.Console" Version="6.0.0" />
     <!--tests -->
-    <PackageVersion Include="Microsoft.AspNetCore.TestHost" Version="8.0.18" />
+		<PackageVersion Include="Microsoft.TestPlatform.TestHost" Version="17.14.1" />
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
+    <PackageVersion Include="Microsoft.AspNetCore.TestHost" Version="8.0.18" />
     <PackageVersion Include="Moq" Version="4.20.72" />
     <PackageVersion Include="xunit.v3" Version="2.0.3" />
     <PackageVersion Include="xunit.analyzers" Version="1.22.0" PrivateAssets="all" />
