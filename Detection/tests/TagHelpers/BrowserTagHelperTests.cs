@@ -84,7 +84,7 @@ public class BrowserTagHelperTests
 		Assert.Null(output.TagName);
 	}
 
-	// [Fact]
+	// Re-enabled after verification: Test ensures correct behavior when Include matches "chrome".
 	[Fact]
 	public void ProcessIncludeIsMatch()
 	{
