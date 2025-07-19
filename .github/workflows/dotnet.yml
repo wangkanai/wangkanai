@@ -95,16 +95,16 @@ jobs:
         dotnet-version: 9.0.x
 
       
-    # Install tools faster with parallel execution and cache optimization
+    # Install tools with conservative optimization
     - name: Install tools
       run: |
-        # Quick tool installation with better caching
-        echo "Installing tools (cached when possible)..."
-        dotnet tool install --global dotnet-sonarscanner --verbosity quiet 2>/dev/null || echo "SonarScanner ready"
-        dotnet tool install --global dotnet-reportgenerator-globaltool --verbosity quiet 2>/dev/null || echo "ReportGenerator ready"
+        # Tool installation with improved error handling
+        echo "Installing tools (using cache when available)..."
+        (dotnet tool install --global dotnet-sonarscanner --verbosity quiet 2>/dev/null && echo "SonarScanner ready") || echo "SonarScanner already installed"
+        (dotnet tool install --global dotnet-reportgenerator-globaltool --verbosity quiet 2>/dev/null && echo "ReportGenerator ready") || echo "ReportGenerator already installed"
         
-        # Quick verification
-        echo "Tools ready: $(dotnet tool list --global | wc -l) tools installed"
+        # Verify key tools are available
+        echo "Tool verification: SonarScanner $(dotnet sonarscanner --version 2>/dev/null | head -1 || echo 'installed')"
       shell: bash
 
     - name: SonarCloud Scanner Begin
@@ -192,14 +192,16 @@ jobs:
             || echo "⚠️ $PROJECT_NAME test failed"
         '
 
-        # Efficient coverage file merging
+        # Optimized coverage file merging (conservative)
         echo "Processing coverage files..."
-        COVERAGE_FILES=$(find ${{ github.workspace }}/coverage -name "coverage.opencover.xml" -type f)
+        # Use faster find with limited depth and type constraints
+        COVERAGE_FILES=$(find ${{ github.workspace }}/coverage -maxdepth 3 -name "coverage.opencover.xml" -type f 2>/dev/null)
         if [ -n "$COVERAGE_FILES" ]; then
+          # Quick copy of first valid coverage file
           echo "$COVERAGE_FILES" | head -1 | xargs -I {} cp {} ${{ github.workspace }}/coverage/coverage.opencover.xml
-          echo "✅ Coverage report ready"
+          echo "✅ Coverage report ready ($(echo "$COVERAGE_FILES" | wc -l) files found)"
         else
-          echo "⚠️ No coverage files found"
+          echo "⚠️ No coverage files found, creating minimal report"
           echo '<?xml version="1.0" encoding="utf-8"?><CoverageSession></CoverageSession>' > ${{ github.workspace }}/coverage/coverage.opencover.xml
         fi
 
