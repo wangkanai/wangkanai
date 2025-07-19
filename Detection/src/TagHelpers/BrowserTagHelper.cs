@@ -36,14 +36,9 @@ public class BrowserTagHelper : TagHelper
 		context.ThrowIfNull();
 		output.ThrowIfNull();
 
-		output.TagName = null;
-		output.TagMode = TagMode.StartTagAndEndTag;
-
-		if (string.IsNullOrEmpty(Include) && string.IsNullOrEmpty(Exclude))
-			return;
-
 		var browser = _resolver.Name.ToString();
 
+		// Check exclusions first - if browser is excluded, suppress output
 		if (!string.IsNullOrWhiteSpace(Exclude))
 		{
 			var tokenizer = new StringTokenizer(Exclude, NameSeparator);
@@ -61,23 +56,28 @@ public class BrowserTagHelper : TagHelper
 			}
 		}
 
-		var has = false;
+		// Check inclusions - if specified, only show if browser is included
 		if (!string.IsNullOrWhiteSpace(Include))
 		{
 			var tokenizer = new StringTokenizer(Include, NameSeparator);
+			var hasValidInclude = false;
 			foreach (var item in tokenizer)
 			{
 				var client = item.Trim();
-				if (client.HasValue && client.Length > 0)
-				{
-					has = true;
-					if (client.Equals(browser, StringComparison.OrdinalIgnoreCase))
-						return;
-				}
+				if (!client.HasValue || client.Length <= 0)
+					continue;
+
+				hasValidInclude = true;
+				if (client.Equals(browser, StringComparison.OrdinalIgnoreCase))
+					return; // Show content
 			}
+
+			// If we had valid include criteria but browser didn't match, suppress
+			if (hasValidInclude)
+				output.SuppressOutput();
 		}
 
-		if (has)
-			output.SuppressOutput();
+		// If no valid include or exclude criteria, show content by default (return without suppressing)
+		output.TagName = null;
 	}
 }
