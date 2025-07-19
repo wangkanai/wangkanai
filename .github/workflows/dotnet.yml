@@ -196,6 +196,7 @@ jobs:
 
     # Pre-install npm dependencies to avoid build failures
     - name: Install npm dependencies
+      if: steps.changes.outputs.tabler == 'true' || steps.changes.outputs.blazor == 'true'
       run: |
         # Check for all npm-dependent projects
         for dir in Tabler/src/Web Blazor/src/Web; do
