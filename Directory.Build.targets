@@ -22,6 +22,7 @@
 		<!-- Code Coverage -->
 		<CollectCoverage Condition="'$(CollectCoverage)' == ''">false</CollectCoverage>
 		<CoverletOutputFormat Condition="'$(CoverletOutputFormat)' == ''">opencover</CoverletOutputFormat>
+		<CoverletOutput Condition="'$(CoverletOutput)' == '' and '$(GITHUB_WORKSPACE)' != ''">$(GITHUB_WORKSPACE)/coverage/</CoverletOutput>
 		<CoverletOutput Condition="'$(CoverletOutput)' == ''">$(MSBuildProjectDirectory)/coverage/</CoverletOutput>
 		<ExcludeByFile>**/*.Designer.cs,**/*.g.cs</ExcludeByFile>
 		<ExcludeByAttribute>GeneratedCodeAttribute,CompilerGeneratedAttribute</ExcludeByAttribute>
