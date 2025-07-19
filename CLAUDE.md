@@ -393,6 +393,37 @@ All source files include this copyright header:
 - **Test Execution**: Supports both `dotnet test` and direct executable execution
 - **Performance**: ~30-40% faster test execution with MTP compared to VSTest
 
+### Code Coverage
+
+The solution uses **Coverlet** for code coverage collection with **OpenCover** format for optimal SonarQube compatibility.
+
+**Configuration:**
+- **Coverage Tool**: Coverlet.msbuild (integrated with MSBuild)
+- **Output Format**: OpenCover (preferred by SonarQube)
+- **Output Location**: `./coverage/coverage.opencover.xml`
+- **Exclusions**: `*.Designer.cs`, `*.g.cs`, `GeneratedCodeAttribute`, `CompilerGeneratedAttribute`
+
+**Running Coverage:**
+```bash
+# Single project coverage
+dotnet test ./path/to/tests.csproj -c Release /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=../../../coverage/
+
+# Multiple projects with merging
+# First project:
+dotnet test ./First.Tests.csproj -c Release /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=./coverage/
+
+# Subsequent projects (output JSON for merging):
+dotnet test ./Second.Tests.csproj -c Release /p:CollectCoverage=true /p:CoverletOutputFormat=json /p:CoverletOutput=./coverage/ /p:MergeWith=./coverage/coverage.json
+
+# Final project (merge and output OpenCover):
+dotnet test ./Last.Tests.csproj -c Release /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=./coverage/ /p:MergeWith=./coverage/coverage.json
+```
+
+**SonarQube Integration:**
+- Reports path configured in `SonarQube.Analysis.xml`
+- Uses OpenCover format: `sonar.cs.opencover.reportsPaths=coverage/coverage.opencover.xml`
+- Coverage exclusions match Coverlet configuration
+
 ## Development Workflow
 
 ### **REPOMIX-FIRST DEVELOPMENT APPROACH**
