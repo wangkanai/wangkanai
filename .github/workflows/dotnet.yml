@@ -173,7 +173,7 @@ jobs:
           /p:NoWarn=NU1701;NU1603;CS1591 \
           --verbosity minimal || true
         
-        echo "✅ All projects built successfully"
+        echo "Build completed"
 
     # Run tests with parallel execution and coverage
     - name: Test with Coverage
@@ -257,8 +257,8 @@ jobs:
       
     - name: Restore .NET dependencies
       run: |
-        dotnet restore Tabler/src/Tabler/Wangkanai.Tabler.csproj --verbosity minimal
-        dotnet restore Blazor/src/Blazor/Wangkanai.Blazor.csproj --verbosity minimal
+        dotnet restore Tabler/src/Core/Wangkanai.Tabler.csproj --verbosity minimal
+        dotnet restore Blazor/src/Core/Wangkanai.Blazor.csproj --verbosity minimal
         
     - name: Build Tabler
       run: |
@@ -266,7 +266,7 @@ jobs:
         cd Tabler/src/Web
         npm install --no-audit --no-fund
         cd ../../..
-        dotnet build Tabler/src/Tabler/Wangkanai.Tabler.csproj -c Release --no-restore
+        dotnet build Tabler/src/Core/Wangkanai.Tabler.csproj -c Release --no-restore
         
     - name: Build Blazor  
       run: |
@@ -274,7 +274,7 @@ jobs:
         cd Blazor/src/Web
         npm install --no-audit --no-fund
         cd ../../..
-        dotnet build Blazor/src/Blazor/Wangkanai.Blazor.csproj -c Release --no-restore
+        dotnet build Blazor/src/Core/Wangkanai.Blazor.csproj -c Release --no-restore
         
     - name: SonarCloud analysis for npm projects
       run: |

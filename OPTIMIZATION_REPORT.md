@@ -59,12 +59,15 @@ Focus on single changes per iteration with careful measurement and validation.
 - **Duration**: ~2 minutes  
 - **Learning**: Failures cascade to tests
 
-### Iteration 17: Multi-job Parallel Structure (In Progress)
+### Iteration 17: Multi-job Parallel Structure (Fixed, Running)
 - **Change**: Split into build-dotnet and build-npm parallel jobs
 - **Purpose**: Isolate npm issues, run dotnet and npm builds in parallel
-- **Build**: https://github.com/wangkanai/wangkanai/actions/runs/16387364541
+- **Issues Fixed**:
+  - rimraf not found in dotnet job - added npm tools install
+  - Wrong project paths in npm job - corrected paths
+  - Multiple project restore error - split commands
 - **Key Features**:
-  - build-dotnet: handles all .NET operations
+  - build-dotnet: handles all .NET operations (with npm support)
   - build-npm: handles Tabler/Blazor separately
   - Jobs run in parallel for speed
 
