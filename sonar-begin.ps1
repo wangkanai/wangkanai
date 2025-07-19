@@ -27,7 +27,7 @@ if ("main" -ne $env:BUILD_SOURCEBRANCHNAME) {
             /v:$version `
             /s:$sourceDir/SonarQube.Analysis.xml `
             /d:sonar.host.url=https://sonarcloud.io `
-            /d:sonar.cs.vscoveragexml.reportsPaths=$sourceDir/coverage.xml
+            /d:sonar.cs.vscoveragexml.reportsPaths=$sourceDir/coverage/coverage.cobertura.xml
 #            /d:sonar.pullrequest.base=$base `
 #            /d:sonar.pullrequest.branch=$branch `
 #            /d:sonar.pullrequest.key=$key
@@ -45,6 +45,6 @@ else
             /v:$version `
             /s:$sourceDir/SonarQube.Analysis.xml `
             /d:sonar.host.url=https://sonarcloud.io `
-            /d:sonar.cs.vscoveragexml.reportsPaths=$sourceDir/coverage.xml
+            /d:sonar.cs.vscoveragexml.reportsPaths=$sourceDir/coverage/coverage.cobertura.xml
 #            /d:sonar.branch.name=$base
 }

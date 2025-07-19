@@ -16,8 +16,16 @@
 		<OutputType>Exe</OutputType>
 		<IsPackable>false</IsPackable>
 		<IsTestProject>true</IsTestProject>
+		<!-- Microsoft Testing Platform -->
 		<UseMicrosoftTestingPlatformRunner>true</UseMicrosoftTestingPlatformRunner>
 		<TestingPlatformDotnetTestSupport>true</TestingPlatformDotnetTestSupport>
+		<!-- Code Coverage -->
+		<CollectCoverage>true</CollectCoverage>
+		<CoverletOutputFormat>cobertura,opencover</CoverletOutputFormat>
+		<CoverletOutput>$(MSBuildProjectDirectory)/coverage/</CoverletOutput>
+		<ExcludeByFile>**/*.Designer.cs,**/*.g.cs</ExcludeByFile>
+		<ExcludeByAttribute>GeneratedCodeAttribute,CompilerGeneratedAttribute</ExcludeByAttribute>
+		<IncludeTestAssembly>false</IncludeTestAssembly>
 	</PropertyGroup>
 	<ItemGroup Condition="$(MSBuildProjectName.Contains('Tests'))">
 		<Using Include="Xunit"/>
@@ -29,6 +37,8 @@
 	<ItemGroup Condition="$(MSBuildProjectName.Contains('Tests'))">
 		<PackageReference Include="Microsoft.TestPlatform.TestHost"/>
 		<PackageReference Include="Microsoft.AspNetCore.TestHost"/>
+		<PackageReference Include="Microsoft.NET.Test.Sdk"/>
+		<PackageReference Include="Microsoft.CodeCoverage"/>
 		<PackageReference Include="Moq"/>
 		<PackageReference Include="xunit.v3"/>
 		<PackageReference Include="xunit.runner.visualstudio"/>
