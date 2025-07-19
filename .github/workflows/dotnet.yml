@@ -252,7 +252,9 @@ jobs:
       run: npm install -g rimraf
       
     - name: Restore .NET dependencies
-      run: dotnet restore Tabler/src/Wangkanai.Tabler.csproj Blazor/src/Wangkanai.Blazor.csproj --verbosity minimal
+      run: |
+        dotnet restore Tabler/src/Wangkanai.Tabler.csproj --verbosity minimal
+        dotnet restore Blazor/src/Wangkanai.Blazor.csproj --verbosity minimal
         
     - name: Build Tabler
       run: |
