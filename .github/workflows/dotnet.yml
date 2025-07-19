@@ -137,21 +137,10 @@ jobs:
 
     - name: Build
       run: |
-        # Build all projects (npm targets handled separately in npm job)
+        # Build all projects (simplified for stability)
         dotnet build --no-restore -c Release \
           -p:TreatWarningsAsErrors=false \
           -p:ContinuousIntegrationBuild=true \
-          --maxcpucount \
-          -p:UseSharedCompilation=true \
-          -p:BuildInParallel=true \
-          -p:PublishReadyToRun=false \
-          -p:PublishTrimmed=false \
-          -p:EnableNETAnalyzers=false \
-          -p:RunAnalyzersDuringBuild=false \
-          -p:UseCommonOutputDirectory=true \
-          -p:ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch=None \
-          -p:WarningLevel=0 \
-          -p:NoWarn="NU1701;NU1603;CS1591" \
           --verbosity minimal || true
         
         echo "Build completed"
