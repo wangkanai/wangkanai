@@ -52,33 +52,60 @@ if (-not $NoBuild) {
 }
 
 # Run tests with Coverlet coverage
-$testArgs = @("test")
+Write-Host "Discovering test projects..." -ForegroundColor Yellow
+$repoRoot = Get-Location
+$testProjects = Get-ChildItem -Path . -Filter "*.Tests.csproj" -Recurse | 
+    Where-Object { 
+        $_.FullName -notlike "*\bin\*" -and 
+        $_.FullName -notlike "*\obj\*" -and
+        $_.FullName.StartsWith($repoRoot.Path)
+    }
 
-# Add solution file if exists
-$solutionFile = Get-ChildItem -Path . -Filter "*.slnx" | Select-Object -First 1
-if (-not $solutionFile) {
-    $solutionFile = Get-ChildItem -Path . -Filter "*.sln" | Select-Object -First 1
-}
-if ($solutionFile) {
-    $testArgs += $solutionFile.FullName
-}
-
-$testArgs += @(
-    "--no-build",
-    "-c", $Configuration,
-    "/p:CollectCoverage=true",
-    "/p:CoverletOutputFormat=opencover",
-    "/p:CoverletOutput=./coverage/",
-    "/p:MergeWith=./coverage/coverage.json",
-    "/p:SkipAutoProps=true"
-)
-
-if ($Filter) {
-    $testArgs += "--filter", $Filter
+if ($testProjects.Count -eq 0) {
+    Write-Warning "No test projects found"
+    exit 0
 }
 
-Write-Host "Running: dotnet $($testArgs -join ' ')" -ForegroundColor Cyan
-& dotnet $testArgs
+Write-Host "Found $($testProjects.Count) test project(s)" -ForegroundColor Green
+
+# Run tests on each project
+$firstProject = $true
+foreach ($project in $testProjects) {
+    Write-Host "`nRunning tests for: $($project.Name)" -ForegroundColor Cyan
+    
+    $testArgs = @(
+        "test",
+        $project.FullName,
+        "--no-build",
+        "-c", $Configuration,
+        "/p:CollectCoverage=true",
+        "/p:CoverletOutputFormat=opencover"
+    )
+    
+    # For the first project, output to coverage directory
+    # For subsequent projects, merge with existing coverage
+    if ($firstProject) {
+        $testArgs += "/p:CoverletOutput=./coverage/"
+        $firstProject = $false
+    } else {
+        $testArgs += "/p:CoverletOutput=./coverage/"
+        $testArgs += "/p:MergeWith=./coverage/coverage.json"
+    }
+    
+    $testArgs += "/p:SkipAutoProps=true"
+    
+    if ($Filter) {
+        $testArgs += "--filter", $Filter
+    }
+    
+    Write-Host "Running: dotnet $($testArgs -join ' ')" -ForegroundColor DarkGray
+    & dotnet $testArgs
+    
+    if ($LASTEXITCODE -ne 0) {
+        Write-Error "Tests failed for $($project.Name)"
+        exit 1
+    }
+}
 
 if ($LASTEXITCODE -ne 0) {
     Write-Error "Tests failed"
