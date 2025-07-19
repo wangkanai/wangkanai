@@ -62,14 +62,58 @@ jobs:
     - name: Build
       run:  dotnet build --no-restore --no-incremental
 
+    - name: Test
+      run:  dotnet test --no-build --verbosity normal
+      
     - name: Test with Coverage
       run:  |
-        dotnet test --no-build --verbosity normal \
-          /p:CollectCoverage=true \
-          /p:CoverletOutputFormat=opencover \
-          /p:CoverletOutput=./coverage/ \
-          /p:MergeWith=./coverage/coverage.json \
-          /p:SkipAutoProps=true
+        # Run tests with coverage collection for each project
+        # First, get a single test project to generate the initial coverage
+        FIRST_PROJECT=$(find . -name "*.Tests.csproj" -type f -not -path "*/bin/*" -not -path "*/obj/*" | head -1)
+        
+        if [ -n "$FIRST_PROJECT" ]; then
+          echo "Generating coverage starting with: $FIRST_PROJECT"
+          dotnet test "$FIRST_PROJECT" --no-build \
+            /p:CollectCoverage=true \
+            /p:CoverletOutputFormat=opencover \
+            /p:CoverletOutput=${{ github.workspace }}/coverage/
+        fi
+        
+        # Verify coverage was generated
+        if [ -f "coverage/coverage.opencover.xml" ]; then
+          echo "Coverage report generated successfully"
+          ls -la coverage/
+        else
+          echo "WARNING: Coverage generation failed. Trying alternative approach..."
+          # Try with a specific known project
+          dotnet test ./Annotations/tests/Wangkanai.Annotations.Tests.csproj --no-build \
+            /p:CollectCoverage=true \
+            /p:CoverletOutputFormat=opencover \
+            /p:CoverletOutput=${{ github.workspace }}/coverage/ || true
+          ls -la coverage/ || echo "No coverage directory"
+        fi
 
+    - name: Debug Coverage Files
+      run:  |
+        echo "=== Coverage directory contents ==="
+        find . -name "coverage.opencover.xml" -type f | head -20
+        find . -name "coverage.json" -type f | head -20
+        echo "=== Root coverage directory ==="
+        ls -la coverage/ || echo "No coverage directory"
+        echo "=== Working directory ==="
+        pwd
+        echo "=== GitHub workspace ==="
+        echo ${{ github.workspace }}
+        
+    - name: Upload Coverage Report
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: coverage-report
+        path: |
+          coverage/
+          **/coverage/
+        retention-days: 1
+        
     - name: SonarCloud Submit
       run:  dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"

@@ -20,9 +20,9 @@
 		<UseMicrosoftTestingPlatformRunner>true</UseMicrosoftTestingPlatformRunner>
 		<TestingPlatformDotnetTestSupport>true</TestingPlatformDotnetTestSupport>
 		<!-- Code Coverage -->
-		<CollectCoverage>true</CollectCoverage>
-		<CoverletOutputFormat>opencover</CoverletOutputFormat>
-		<CoverletOutput>$(MSBuildProjectDirectory)/coverage/</CoverletOutput>
+		<CollectCoverage Condition="'$(CollectCoverage)' == ''">false</CollectCoverage>
+		<CoverletOutputFormat Condition="'$(CoverletOutputFormat)' == ''">opencover</CoverletOutputFormat>
+		<CoverletOutput Condition="'$(CoverletOutput)' == ''">$(MSBuildProjectDirectory)/coverage/</CoverletOutput>
 		<ExcludeByFile>**/*.Designer.cs,**/*.g.cs</ExcludeByFile>
 		<ExcludeByAttribute>GeneratedCodeAttribute,CompilerGeneratedAttribute</ExcludeByAttribute>
 		<IncludeTestAssembly>false</IncludeTestAssembly>

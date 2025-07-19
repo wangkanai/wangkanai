@@ -408,6 +408,7 @@ The solution uses **Coverlet** for code coverage collection with **OpenCover** f
 - **Output Format**: OpenCover (preferred by SonarQube)
 - **Output Location**: `./coverage/coverage.opencover.xml`
 - **Exclusions**: `*.Designer.cs`, `*.g.cs`, `GeneratedCodeAttribute`, `CompilerGeneratedAttribute`
+- **Default**: Coverage collection is OFF by default (set `/p:CollectCoverage=true` to enable)
 
 **Running Coverage:**
 ```bash
