@@ -32,6 +32,7 @@
     <File Path="SonarQube.Analysis.xml" />
     <File Path="sonar-begin.ps1" />
     <File Path="testconfig.json" />
+    <File Path="test-coverage.ps1" />
   </Folder>
   <Folder Name="/Analytics/">
     <Project Path="Analytics\benchmark\Wangkanai.Analytics.Benchmark.csproj" />
