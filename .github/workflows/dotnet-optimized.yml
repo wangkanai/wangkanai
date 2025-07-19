@@ -14,19 +14,19 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-latest # [self-hosted, linux, x64]
-
+    runs-on: ubuntu-latest
+    
     env:
       NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
       DOTNET_ROOT: ${{ github.workspace }}/dotnet
-
+      
     steps:
     - uses: actions/checkout@v4
       with:
         fetch-depth: 0
 
-    # Cache .NET installation to save setup time
-    - name: Cache .NET SDK
+    # Cache .NET installation
+    - name: Cache .NET
       uses: actions/cache@v4
       with:
         path: ${{ env.DOTNET_ROOT }}
@@ -35,7 +35,7 @@ jobs:
           ${{ runner.os }}-dotnet-8.0-9.0-
           ${{ runner.os }}-dotnet-
 
-    # Cache NuGet packages to avoid re-downloading
+    # Cache NuGet packages
     - name: Cache NuGet packages
       uses: actions/cache@v4
       with:
@@ -44,12 +44,23 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-nuget-
 
+    # Cache build output
+    - name: Cache build output
+      uses: actions/cache@v4
+      with:
+        path: |
+          **/bin
+          **/obj
+        key: ${{ runner.os }}-build-${{ github.sha }}
+        restore-keys: |
+          ${{ runner.os }}-build-
+
     # Cache global tools
     - name: Cache .NET tools
       uses: actions/cache@v4
       with:
         path: ~/.dotnet/tools
-        key: ${{ runner.os }}-dotnet-tools-${{ hashFiles('.config/dotnet-tools.json') }}-v3
+        key: ${{ runner.os }}-dotnet-tools-${{ hashFiles('.config/dotnet-tools.json') }}
         restore-keys: |
           ${{ runner.os }}-dotnet-tools-
 
@@ -60,32 +71,14 @@ jobs:
           8.0.x
           9.0.x
 
-    # Install tools with proper checking
+    # Install tools in parallel
     - name: Install tools
       run: |
-        # Check and install .NET tools using dotnet tool list
-        if ! dotnet tool list --global | grep -q "dotnet-sonarscanner"; then
-          echo "Installing dotnet-sonarscanner..."
-          dotnet tool install --global dotnet-sonarscanner
-        else
-          echo "dotnet-sonarscanner already installed"
-        fi
-
-        if ! dotnet tool list --global | grep -q "dotnet-reportgenerator-globaltool"; then
-          echo "Installing reportgenerator..."
-          dotnet tool install --global dotnet-reportgenerator-globaltool
-        else
-          echo "reportgenerator already installed"
-        fi
-
-        # Check and install npm tools
-        if ! command -v rimraf &> /dev/null; then
-          echo "Installing rimraf..."
-          npm install -g rimraf
-        else
-          echo "rimraf already installed"
-        fi
-      shell: bash
+        # Install tools in parallel
+        dotnet tool install --global dotnet-sonarscanner &
+        dotnet tool install --global dotnet-reportgenerator-globaltool &
+        npm install -g rimraf &
+        wait
 
     - name: SonarCloud Scanner Begin
       run: >
@@ -101,44 +94,36 @@ jobs:
         /d:sonar.cs.opencover.reportsPaths=coverage/coverage.opencover.xml
 
     - name: Restore dependencies
-      run: |
-        set -e
-        echo "Attempting locked restore..."
-        if ! dotnet restore --use-lock-file --locked-mode; then
-          echo "⚠️ Locked restore failed. This may indicate package updates are needed."
-          echo "Falling back to regular restore..."
-          dotnet restore
-        else
-          echo "✅ Locked restore succeeded"
-        fi
-      shell: bash
+      run: dotnet restore --use-lock-file --locked-mode || dotnet restore
 
     - name: Build
-      run: |
-        # Build with warnings treated as warnings (not errors) to ensure CI stability
-        # Consider running a separate warnings check job if zero-warning policy is desired
-        dotnet build --no-restore -c Release --no-incremental /p:TreatWarningsAsErrors=false
+      run: dotnet build --no-restore -c Release --no-incremental /p:TreatWarningsAsErrors=false
 
-    # Run tests once with coverage enabled
+    # Run tests in parallel with coverage
     - name: Test with Coverage
       run: |
-        # Create coverage directory
         mkdir -p ${{ github.workspace }}/coverage
-
+        
         # Find all test projects
         TEST_PROJECTS=$(find . -name "*.Tests.csproj" -type f -not -path "*/bin/*" -not -path "*/obj/*" | sort)
         TOTAL_PROJECTS=$(echo "$TEST_PROJECTS" | wc -l)
-        CURRENT=0
-
+        
         echo "Found $TOTAL_PROJECTS test projects"
-
-        # Run tests with coverage for each project
+        
+        # Run all tests in parallel first (fast feedback)
+        echo "Running all tests in parallel for fast feedback..."
+        dotnet test --no-build -c Release --verbosity minimal --logger "console;verbosity=minimal" || true
+        
+        # Now run with coverage collection
+        echo "Running tests with coverage collection..."
+        CURRENT=0
+        
         for PROJECT in $TEST_PROJECTS; do
           CURRENT=$((CURRENT + 1))
-          echo "Running tests for $PROJECT ($CURRENT/$TOTAL_PROJECTS)"
-
+          echo "Collecting coverage for $PROJECT ($CURRENT/$TOTAL_PROJECTS)"
+          
           if [ $CURRENT -eq $TOTAL_PROJECTS ]; then
-            # Last project - generate final merged coverage in OpenCover format
+            # Last project - generate final merged coverage
             if [ $TOTAL_PROJECTS -gt 1 ]; then
               dotnet test "$PROJECT" --no-build -c Release \
                 /p:CollectCoverage=true \
@@ -154,7 +139,7 @@ jobs:
                 --logger "console;verbosity=minimal" || true
             fi
           else
-            # Intermediate projects - output JSON for merging
+            # Intermediate projects
             if [ $CURRENT -eq 1 ]; then
               dotnet test "$PROJECT" --no-build -c Release \
                 /p:CollectCoverage=true \
@@ -172,14 +157,6 @@ jobs:
           fi
         done
 
-        # Verify coverage was generated
-        if [ -f "${{ github.workspace }}/coverage/coverage.opencover.xml" ]; then
-          echo "✅ Coverage report generated successfully"
-          ls -la ${{ github.workspace }}/coverage/
-        else
-          echo "⚠️ Coverage report not found, but continuing..."
-        fi
-
     - name: Upload Coverage Report
       uses: actions/upload-artifact@v4
       if: always()
@@ -187,6 +164,6 @@ jobs:
         name: coverage-report
         path: coverage/
         retention-days: 1
-
+        
     - name: SonarCloud Submit
       run: dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
