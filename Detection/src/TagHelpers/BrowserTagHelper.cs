@@ -39,12 +39,12 @@ public class BrowserTagHelper : TagHelper
 		output.TagName = null;
 		output.TagMode = TagMode.StartTagAndEndTag;
 
-		if (Include.IsNullOrEmpty() && Exclude.IsNullOrEmpty())
+		if (string.IsNullOrEmpty(Include) && string.IsNullOrEmpty(Exclude))
 			return;
 
 		var browser = _resolver.Name.ToString();
 
-		if (Exclude != null)
+		if (!string.IsNullOrWhiteSpace(Exclude))
 		{
 			var tokenizer = new StringTokenizer(Exclude, NameSeparator);
 			foreach (var item in tokenizer)
@@ -53,16 +53,16 @@ public class BrowserTagHelper : TagHelper
 				if (!client.HasValue || client.Length <= 0)
 					continue;
 
-				if (!client.Equals(browser, StringComparison.OrdinalIgnoreCase))
-					continue;
-
-				output.SuppressOutput();
-				return;
+				if (client.Equals(browser, StringComparison.OrdinalIgnoreCase))
+				{
+					output.SuppressOutput();
+					return;
+				}
 			}
 		}
 
 		var has = false;
-		if (Include != null)
+		if (!string.IsNullOrWhiteSpace(Include))
 		{
 			var tokenizer = new StringTokenizer(Include, NameSeparator);
 			foreach (var item in tokenizer)

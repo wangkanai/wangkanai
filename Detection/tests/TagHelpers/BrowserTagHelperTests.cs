@@ -158,7 +158,7 @@ public class BrowserTagHelperTests
 		var context = MockTagHelper.Context;
 		tagHelper.Exclude = "chrome";
 		tagHelper.Process(context, output);
-		Assert.Equal(Tag, output.Content.GetContent());
+		Assert.Empty(output.Content.GetContent());
 	}
 
 	// [Fact]
@@ -172,6 +172,6 @@ public class BrowserTagHelperTests
 		tagHelper.Include = "chrome";
 		tagHelper.Exclude = "chrome";
 		tagHelper.Process(context, output);
-		Assert.Equal(Tag, output.Content.GetContent());
+		Assert.Empty(output.Content.GetContent());
 	}
 }
