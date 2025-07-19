@@ -127,52 +127,47 @@ jobs:
           /p:UseCommonOutputDirectory=true \
           --verbosity minimal
 
-    # Run tests with parallel execution but sequential coverage (iteration 3)
+    # Run tests with built-in coverage collector (more reliable)
     - name: Test with Coverage
       run: |
         # Create coverage directory
         mkdir -p ${{ github.workspace }}/coverage
 
-        # First run tests quickly without coverage to catch failures
-        echo "Running tests without coverage for quick feedback..."
-        dotnet test --no-build -c Release --verbosity minimal || exit 1
+        # Run all tests with built-in coverage collector
+        echo "Running tests with coverage..."
+        dotnet test --no-build -c Release \
+          --collect:"XPlat Code Coverage" \
+          --results-directory ${{ github.workspace }}/coverage \
+          --logger "console;verbosity=minimal" \
+          -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
 
-        # Then run with coverage collection
-        echo "Running tests with coverage collection..."
-        TEST_PROJECTS=$(find . -name "*.Tests.csproj" -type f -not -path "*/bin/*" -not -path "*/obj/*" | sort)
-        TOTAL_PROJECTS=$(echo "$TEST_PROJECTS" | wc -l)
-        CURRENT=0
-
-        for PROJECT in $TEST_PROJECTS; do
-          CURRENT=$((CURRENT + 1))
-          echo "Coverage for $PROJECT ($CURRENT/$TOTAL_PROJECTS)"
+        # Find and consolidate coverage files
+        echo "Processing coverage files..."
+        find ${{ github.workspace }}/coverage -name "coverage.opencover.xml" -type f | head -1 | xargs -I {} cp {} ${{ github.workspace }}/coverage/coverage.opencover.xml || true
+        
+        # Verify coverage was generated
+        if [ -f "${{ github.workspace }}/coverage/coverage.opencover.xml" ]; then
+          echo "✅ Coverage report generated successfully"
+          ls -la ${{ github.workspace }}/coverage/
+        else
+          echo "⚠️ Coverage report not found, checking for Coverlet fallback..."
           
-          if [ $CURRENT -eq $TOTAL_PROJECTS ]; then
-            # Last project - generate final coverage
-            if [ $TOTAL_PROJECTS -gt 1 ] && [ -f "${{ github.workspace }}/coverage/coverage.json" ]; then
-              dotnet test "$PROJECT" --no-build -c Release \
-                /p:CollectCoverage=true \
-                /p:CoverletOutputFormat=opencover \
-                /p:CoverletOutput=${{ github.workspace }}/coverage/ \
-                /p:MergeWith=${{ github.workspace }}/coverage/coverage.json \
-                --verbosity quiet || true
-            else
-              dotnet test "$PROJECT" --no-build -c Release \
-                /p:CollectCoverage=true \
-                /p:CoverletOutputFormat=opencover \
-                /p:CoverletOutput=${{ github.workspace }}/coverage/ \
-                --verbosity quiet || true
-            fi
-          else
-            # Intermediate projects
+          # Fallback to Coverlet if XPlat fails
+          TEST_PROJECTS=$(find . -name "*.Tests.csproj" -type f -not -path "*/bin/*" -not -path "*/obj/*" | head -5)
+          for PROJECT in $TEST_PROJECTS; do
+            echo "Trying Coverlet on $PROJECT..."
             dotnet test "$PROJECT" --no-build -c Release \
               /p:CollectCoverage=true \
-              /p:CoverletOutputFormat=json \
+              /p:CoverletOutputFormat=opencover \
               /p:CoverletOutput=${{ github.workspace }}/coverage/ \
-              $([ $CURRENT -gt 1 ] && [ -f "${{ github.workspace }}/coverage/coverage.json" ] && echo "/p:MergeWith=${{ github.workspace }}/coverage/coverage.json") \
-              --verbosity quiet || true
-          fi
-        done
+              --verbosity minimal || true
+            
+            if [ -f "${{ github.workspace }}/coverage/coverage.opencover.xml" ]; then
+              echo "✅ Coverage generated with Coverlet"
+              break
+            fi
+          done
+        fi
 
     - name: Upload Coverage Report
       uses: actions/upload-artifact@v4
