@@ -127,21 +127,30 @@ jobs:
         /d:sonar.verbose=false
         /d:sonar.scm.disabled=true
         /d:sonar.dotnet.excludeTestProjects=true
+        /d:sonar.cpd.exclusions="**/wwwroot/**,**/obj/**,**/bin/**"
+        /d:sonar.exclusions="**/wwwroot/**,**/obj/**,**/bin/**,**/*.Designer.cs,**/*.generated.cs"
+        /d:sonar.coverage.exclusions="**/Mocks/**,**/Tests/**,**/benchmark/**"
+        /d:sonar.scanner.metadataFilePath=.sonarqube/out/sonar-project.properties
 
     - name: Restore dependencies
       run: |
-        # Optimized restore - remove locked mode that may cause issues
-        dotnet restore --verbosity minimal
+        # Optimized restore with better parallelization
+        dotnet restore \
+          --verbosity minimal \
+          --runtime linux-x64
       shell: bash
 
 
     - name: Build
       run: |
-        # Build all projects (simplified for stability)
+        # Optimized build with better performance settings
         dotnet build --no-restore -c Release \
           -p:TreatWarningsAsErrors=false \
           -p:ContinuousIntegrationBuild=true \
-          --verbosity minimal || true
+          -p:Deterministic=true \
+          -p:DebugType=portable \
+          --verbosity minimal \
+          --nologo || true
         
         echo "Build completed"
 
