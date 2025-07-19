@@ -296,6 +296,47 @@ Focus on single changes per iteration with careful measurement and validation.
   - Test configuration enhancements improve robustness
   - Achieving sustained performance in 2m45-50s range indicates optimization maturity
 
+### Iteration 30: Milestone optimization with checkout and cache improvements (🎉 SUCCESS!)
+- **Change**: Strategic optimization of checkout process and npm job efficiency
+- **Key Optimizations**:
+  - **Sparse checkout for npm job**: Only checkout required directories (Tabler/src/Web, Blazor/src/Web)
+  - **Checkout verbosity reduction**: Added `show-progress: false` to reduce output noise
+  - **Cache path optimization**: Maintained proven cache configurations
+  - **Conservative approach**: No changes to stable test execution
+- **Result**: **🎉 MILESTONE ACHIEVED - 3m0s**
+  - **build-npm**: ✅ 19 seconds (from 28s - **32% faster**)
+  - **build-dotnet**: ✅ 3m0s (slight improvement from 3m14s)
+  - **Total Duration**: 3m0s (exactly 3 minutes - **25% improvement from baseline**)
+- **Key Achievement**: 
+  - **Reached 3-minute milestone** - major psychological and performance barrier broken
+  - **npm job optimization successful** - sparse checkout reduced job time by 32%
+  - **Maintained stability** - all tests passing, coverage complete, SonarCloud analysis successful
+  - **Proven strategy** - targeted optimizations on specific jobs yield best results
+  - **Clean round number** - 3m0s represents excellent optimization achievement
+- **Analysis**: 
+  - Sparse checkout strategy highly effective for npm-only jobs
+  - Reducing unnecessary file operations yields significant gains
+  - 25% improvement from baseline demonstrates successful optimization campaign
+  - Further improvements will require more aggressive strategies
+
+### Iteration 31: Optimize test discovery and execution efficiency (⏳ PENDING)
+- **Change**: Enhanced test discovery and execution optimization
+- **Key Optimizations**:
+  - **Test discovery optimization**: Added `maxdepth 4` to limit find command depth
+  - **Improved find syntax**: Used `!` notation instead of `-not` for better performance
+  - **Enhanced parallelization**: Changed `MaxCpuCount=$CORES` to `MaxCpuCount=0` (use all available)
+  - **Reduced timeout**: Lowered blame-hang-timeout from 15000ms to 10000ms
+  - **Added TargetFrameworkVersion**: Specified `net9.0` for better test runner optimization
+  - **Sorted test list**: Added `sort` command for consistent execution order
+  - **SonarCloud exclusions**: Enhanced to exclude node_modules
+  - **Added ignoreHeaderComments**: For faster SonarCloud analysis
+- **Expected Impact**:
+  - Faster test discovery through limited depth search
+  - Better CPU utilization with MaxCpuCount=0
+  - Quicker failure detection with reduced timeout
+  - More efficient SonarCloud analysis
+- **Status**: Workflow running on PR #1138...
+
 ## What Works So Far
 1. Parallel tool installation (saves ~5s)
 2. NuGet package caching (saves 30-60s when hit)
