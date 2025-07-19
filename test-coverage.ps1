@@ -33,7 +33,18 @@ if (Test-Path "./coverage") {
 # Build if not skipping
 if (-not $NoBuild) {
     Write-Host "Building solution..." -ForegroundColor Yellow
-    dotnet build -c $Configuration
+    # Check for solution file
+    $solutionFile = Get-ChildItem -Path . -Filter "*.slnx" | Select-Object -First 1
+    if (-not $solutionFile) {
+        $solutionFile = Get-ChildItem -Path . -Filter "*.sln" | Select-Object -First 1
+    }
+    
+    if ($solutionFile) {
+        dotnet build $solutionFile.FullName -c $Configuration
+    } else {
+        dotnet build -c $Configuration
+    }
+    
     if ($LASTEXITCODE -ne 0) {
         Write-Error "Build failed"
         exit 1
@@ -41,8 +52,18 @@ if (-not $NoBuild) {
 }
 
 # Run tests with Coverlet coverage
-$testArgs = @(
-    "test",
+$testArgs = @("test")
+
+# Add solution file if exists
+$solutionFile = Get-ChildItem -Path . -Filter "*.slnx" | Select-Object -First 1
+if (-not $solutionFile) {
+    $solutionFile = Get-ChildItem -Path . -Filter "*.sln" | Select-Object -First 1
+}
+if ($solutionFile) {
+    $testArgs += $solutionFile.FullName
+}
+
+$testArgs += @(
     "--no-build",
     "-c", $Configuration,
     "/p:CollectCoverage=true",
