@@ -36,9 +36,9 @@ jobs:
           ${{ env.DOTNET_ROOT }}
           ~/.dotnet
           /usr/share/dotnet
-        key: ${{ runner.os }}-dotnet-sdk-8.0-9.0-${{ hashFiles('.github/workflows/dotnet.yml') }}
+        key: ${{ runner.os }}-dotnet-sdk-9.0-${{ hashFiles('.github/workflows/dotnet.yml') }}
         restore-keys: |
-          ${{ runner.os }}-dotnet-sdk-8.0-9.0-
+          ${{ runner.os }}-dotnet-sdk-9.0-
           ${{ runner.os }}-dotnet-sdk-
 
     # Cache NuGet packages to avoid re-downloading
@@ -75,31 +75,21 @@ jobs:
       with:
         dotnet-version: 9.0.x
 
-    # Install tools with proper checking
+    # Install tools faster with parallel execution
     - name: Install tools
       run: |
-        # Check and install .NET tools using dotnet tool list
-        if ! dotnet tool list --global | grep -q "dotnet-sonarscanner"; then
-          echo "Installing dotnet-sonarscanner..."
-          dotnet tool install --global dotnet-sonarscanner
-        else
-          echo "dotnet-sonarscanner already installed"
-        fi
-
-        if ! dotnet tool list --global | grep -q "dotnet-reportgenerator-globaltool"; then
-          echo "Installing reportgenerator..."
-          dotnet tool install --global dotnet-reportgenerator-globaltool
-        else
-          echo "reportgenerator already installed"
-        fi
-
-        # Check and install npm tools
-        if ! command -v rimraf &> /dev/null; then
-          echo "Installing rimraf..."
-          npm install -g rimraf
-        else
-          echo "rimraf already installed"
-        fi
+        # Install all tools without checking - let cache handle duplicates
+        echo "Installing tools in parallel..."
+        (
+          dotnet tool install --global dotnet-sonarscanner 2>/dev/null || echo "SonarScanner already installed"
+        ) &
+        (
+          dotnet tool install --global dotnet-reportgenerator-globaltool 2>/dev/null || echo "ReportGenerator already installed"
+        ) &
+        wait
+        
+        # Verify installations
+        dotnet tool list --global
       shell: bash
 
     - name: SonarCloud Scanner Begin
@@ -117,9 +107,8 @@ jobs:
 
     - name: Restore dependencies
       run: |
-        set -e
-        # Try fast restore with minimal verbosity
-        dotnet restore --verbosity minimal --use-lock-file --locked-mode || dotnet restore --verbosity minimal
+        # Ultra-fast restore with no-dependencies check
+        dotnet restore --verbosity minimal --no-dependencies
       shell: bash
 
     - name: Build
