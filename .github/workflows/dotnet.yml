@@ -59,12 +59,27 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-dotnet-tools-
 
+    # Check if .NET is already cached
+    - name: Check .NET SDK Cache
+      id: dotnet-check
+      run: |
+        if [ -d "${{ env.DOTNET_ROOT }}" ] && [ -f "${{ env.DOTNET_ROOT }}/dotnet" ]; then
+          echo "cache-hit=true" >> $GITHUB_OUTPUT
+          echo "✅ .NET SDK found in cache"
+        else
+          echo "cache-hit=false" >> $GITHUB_OUTPUT
+          echo "❌ .NET SDK not in cache"
+        fi
+      shell: bash
+
     - name: Setup .NET
+      if: steps.dotnet-check.outputs.cache-hit != 'true'
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: |
           8.0.x
           9.0.x
+        global-json-file: false
 
     # Install tools with proper checking
     - name: Install tools
@@ -115,40 +130,41 @@ jobs:
 
     - name: Build
       run: |
-        # Aggressive parallel build with maximum CPU usage
-        dotnet build --no-restore -c Release --no-incremental \
+        # Ultra-aggressive parallel build
+        dotnet build --no-restore -c Release \
           /p:TreatWarningsAsErrors=false \
           /p:ContinuousIntegrationBuild=true \
           /maxcpucount \
           /p:UseSharedCompilation=true \
           /p:BuildInParallel=true \
+          /p:PublishReadyToRun=false \
+          /p:PublishTrimmed=false \
+          /p:EnableNETAnalyzers=false \
+          /p:RunAnalyzersDuringBuild=false \
+          /p:UseCommonOutputDirectory=true \
           --verbosity minimal
 
-    # Run tests with aggressive parallelization (iteration 1)
+    # Run tests with ultra-aggressive parallelization (iteration 2)
     - name: Test with Coverage
       run: |
         # Create coverage directory
         mkdir -p ${{ github.workspace }}/coverage
 
-        # Run all tests in parallel with coverage
+        # Run all tests with maximum parallelization
         dotnet test --no-build -c Release \
           --collect:"XPlat Code Coverage" \
           --results-directory ./coverage \
-          --logger "console;verbosity=minimal" \
+          --logger "console;verbosity=quiet" \
+          --blame-hang-timeout 60s \
           -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover \
+             DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.SkipAutoProps=true \
              RunConfiguration.MaxCpuCount=0 \
              RunConfiguration.DisableAppDomain=true \
-             RunConfiguration.DisableParallelization=false
+             RunConfiguration.DisableParallelization=false \
+             RunConfiguration.TestSessionTimeout=300000
 
-        # Find and move the coverage file
-        find ./coverage -name "coverage.opencover.xml" -exec mv {} ./coverage/coverage.opencover.xml \; 2>/dev/null || true
-
-        # Verify coverage was generated
-        if [ -f "./coverage/coverage.opencover.xml" ]; then
-          echo "✅ Coverage report generated"
-        else
-          echo "⚠️ Coverage report not found"
-        fi
+        # Find and move coverage file more efficiently
+        find ./coverage -name "coverage.opencover.xml" -type f | head -1 | xargs -I {} mv {} ./coverage/coverage.opencover.xml 2>/dev/null || true
 
     - name: Upload Coverage Report
       uses: actions/upload-artifact@v4
