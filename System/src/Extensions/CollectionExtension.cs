@@ -41,7 +41,7 @@ public static class CollectionExtension
 	/// <typeparam name="T">The type of item in collection.</typeparam>
 	/// <param name="list">The collection to check.</param>
 	/// <returns>True if the collection is null or empty; otherwise, false.</returns>
-	public static bool IsNullOrEmpty<T>([NotNull] this T[]? list)
+	public static bool IsNullOrEmpty<T>(this T[]? list)
 		=> list is null || list.Length == 0;
 
 	/// <summary>
