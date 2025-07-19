@@ -109,7 +109,7 @@ jobs:
 
     - name: SonarCloud Scanner Begin
       run: >
-        timeout 30s dotnet sonarscanner begin
+        dotnet sonarscanner begin
         /o:"wangkanai"
         /k:"wangkanai_github"
         /s:${{ github.workspace }}/SonarQube.Analysis.xml
@@ -125,34 +125,27 @@ jobs:
         /d:sonar.cpd.exclusions="**/wwwroot/**,**/obj/**,**/bin/**"
         /d:sonar.exclusions="**/wwwroot/**,**/obj/**,**/bin/**,**/*.Designer.cs,**/*.generated.cs"
         /d:sonar.coverage.exclusions="**/Mocks/**,**/Tests/**,**/benchmark/**"
-        /d:sonar.scanner.metadataFilePath=.sonarqube/out/sonar-project.properties || echo "SonarCloud begin timed out, continuing..."
+        /d:sonar.scanner.metadataFilePath=.sonarqube/out/sonar-project.properties
 
     - name: Restore dependencies
       run: |
-        # High-performance restore with optimized settings
+        # Optimized restore with stable settings
         dotnet restore \
-          --verbosity quiet \
-          --runtime linux-x64 \
-          --no-dependencies \
-          --force-evaluate \
-          --disable-parallel false
+          --verbosity minimal \
+          --runtime linux-x64
       shell: bash
 
 
     - name: Build
       run: |
-        # High-performance build with aggressive optimization
+        # Stable build with proven optimizations
         dotnet build --no-restore -c Release \
           -p:TreatWarningsAsErrors=false \
           -p:ContinuousIntegrationBuild=true \
           -p:Deterministic=true \
           -p:DebugType=portable \
-          -p:UseSharedCompilation=true \
-          -p:BuildInParallel=true \
-          -p:CheckEolTargetFramework=false \
-          --verbosity quiet \
-          --nologo \
-          --disable-build-servers false || true
+          --verbosity minimal \
+          --nologo || true
         
         echo "Build completed"
 
