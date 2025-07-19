@@ -66,7 +66,7 @@ jobs:
       run:  |
         dotnet test --no-build --verbosity normal \
           /p:CollectCoverage=true \
-          /p:CoverletOutputFormat=opencover,cobertura \
+          /p:CoverletOutputFormat=opencover \
           /p:CoverletOutput=./coverage/ \
           /p:MergeWith=./coverage/coverage.json \
           /p:SkipAutoProps=true

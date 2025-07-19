@@ -46,10 +46,10 @@ dotnet test .\tests\ -c Release
 pwsh ./test-coverage.ps1
 
 # Run tests with coverage for specific project
-dotnet test ./path/to/tests.csproj -c Release /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura,opencover /p:CoverletOutput=./coverage/
+dotnet test ./path/to/tests.csproj -c Release /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=./coverage/
 
 # Run all tests with merged coverage
-dotnet test -c Release /p:CollectCoverage=true /p:CoverletOutputFormat=opencover,cobertura /p:CoverletOutput=./coverage/ /p:MergeWith=./coverage/coverage.json
+dotnet test -c Release /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=./coverage/ /p:MergeWith=./coverage/coverage.json
 
 # Run single test class
 dotnet test .\tests\ -c Release --filter "ClassName=YourTestClass"
