@@ -22,8 +22,29 @@ env:
   SKIP_SLOW_PROJECTS: ${{ github.event_name == 'pull_request' && 'true' || 'false' }}
 
 jobs:
+  # Prepare job - runs first to detect changes and cache dependencies
+  prepare:
+    runs-on: ubuntu-latest
+    outputs:
+      changed-tabler: ${{ steps.changes.outputs.tabler }}
+      changed-blazor: ${{ steps.changes.outputs.blazor }}
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    
+    - name: Detect changed modules
+      id: changes
+      uses: dorny/paths-filter@v3
+      with:
+        filters: |
+          tabler: 'Tabler/**'
+          blazor: 'Blazor/**'
+
+  # Main build job - handles all non-npm projects
   build:
-    runs-on: ubuntu-latest # [self-hosted, linux, x64]
+    runs-on: ubuntu-latest
+    needs: prepare
 
     env:
       NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
@@ -33,52 +54,6 @@ jobs:
     - uses: actions/checkout@v4
       with:
         fetch-depth: 0
-
-    # Detect which modules have changes (for logging/metrics only)
-    - name: Detect changed modules
-      id: changes
-      uses: dorny/paths-filter@v3
-      with:
-        filters: |
-          system: 'System/**'
-          validation: 'Validation/**'
-          annotations: 'Annotations/**'
-          extensions: 'Extensions/**'
-          testing: 'Testing/**'
-          cryptography: 'Cryptography/**'
-          hosting: 'Hosting/**'
-          tools: 'Tools/**'
-          domain: 'Domain/**'
-          mvc: 'Mvc/**'
-          webserver: 'Webserver/**'
-          webmaster: 'Webmaster/**'
-          detection: 'Detection/**'
-          responsive: 'Responsive/**'
-          entityframework: 'EntityFramework/**'
-          identity: 'Identity/**'
-          security: 'Security/**'
-          federation: 'Federation/**'
-          markdown: 'Markdown/**'
-          analytics: 'Analytics/**'
-          blazor: 'Blazor/**'
-          tabler: 'Tabler/**'
-          solver: 'Solver/**'
-          microservice: 'Microservice/**'
-          nation: 'Nation/**'
-          audit: 'Audit/**'
-          shared: 'Shared/**'
-
-    # Log changed modules for visibility
-    - name: Log changed modules
-      run: |
-        echo "Changed modules detected:"
-        echo "System: ${{ steps.changes.outputs.system }}"
-        echo "Detection: ${{ steps.changes.outputs.detection }}"
-        echo "Tabler: ${{ steps.changes.outputs.tabler }}"
-        echo "Blazor: ${{ steps.changes.outputs.blazor }}"
-        # Log count of changed modules
-        CHANGED_COUNT=$(echo '${{ toJSON(steps.changes.outputs) }}' | jq -r 'to_entries | map(select(.value == "true")) | length')
-        echo "Total modules changed: $CHANGED_COUNT out of 27"
 
     # Cache .NET installation to save setup time
     - name: Cache .NET SDK
@@ -194,50 +169,30 @@ jobs:
         dotnet restore --verbosity minimal
       shell: bash
 
-    # Pre-install npm dependencies to avoid build failures
-    - name: Install npm dependencies
-      if: steps.changes.outputs.tabler == 'true' || steps.changes.outputs.blazor == 'true'
+
+    - name: Build (excluding npm projects)
       run: |
-        # Check for all npm-dependent projects
-        for dir in Tabler/src/Web Blazor/src/Web; do
-          if [ -f "$dir/package.json" ]; then
-            echo "Installing npm dependencies for $dir..."
-            cd $dir
-            # Install global tools needed by build scripts
-            npm install -g rimraf
-            # Check if package-lock.json exists
-            if [ -f "package-lock.json" ]; then
-              echo "Found package-lock.json, using npm ci"
-              npm ci --no-audit --no-fund
-            else
-              echo "No package-lock.json, using npm install"
-              npm install --no-audit --no-fund
-            fi
-            # Create stamp file to prevent re-installation during build
-            touch node_modules/.install-stamp
-            cd -
+        # Build all projects except Tabler and Blazor
+        for project in */src/*.csproj; do
+          if [[ ! "$project" =~ (Tabler|Blazor) ]]; then
+            echo "Building $project"
+            dotnet build "$project" --no-restore -c Release \
+              /p:TreatWarningsAsErrors=false \
+              /p:ContinuousIntegrationBuild=true \
+              /maxcpucount \
+              /p:UseSharedCompilation=true \
+              /p:BuildInParallel=true \
+              /p:PublishReadyToRun=false \
+              /p:PublishTrimmed=false \
+              /p:EnableNETAnalyzers=false \
+              /p:RunAnalyzersDuringBuild=false \
+              /p:UseCommonOutputDirectory=true \
+              /p:ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch=None \
+              /p:WarningLevel=0 \
+              /p:NoWarn=NU1701;NU1603;CS1591 \
+              --verbosity minimal
           fi
         done
-      shell: bash
-
-    - name: Build
-      run: |
-        # Ultra-aggressive parallel build
-        dotnet build --no-restore -c Release \
-          /p:TreatWarningsAsErrors=false \
-          /p:ContinuousIntegrationBuild=true \
-          /maxcpucount \
-          /p:UseSharedCompilation=true \
-          /p:BuildInParallel=true \
-          /p:PublishReadyToRun=false \
-          /p:PublishTrimmed=false \
-          /p:EnableNETAnalyzers=false \
-          /p:RunAnalyzersDuringBuild=false \
-          /p:UseCommonOutputDirectory=true \
-          /p:ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch=None \
-          /p:WarningLevel=0 \
-          /p:NoWarn=NU1701;NU1603;CS1591 \
-          --verbosity minimal
 
     # Run tests with parallel execution and coverage
     - name: Test with Coverage
@@ -298,3 +253,42 @@ jobs:
 
     - name: SonarCloud Submit
       run: dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+
+  # Separate job for npm-based projects (Tabler/Blazor)
+  npm-build:
+    runs-on: ubuntu-latest
+    needs: prepare
+    if: needs.prepare.outputs.changed-tabler == 'true' || needs.prepare.outputs.changed-blazor == 'true'
+    
+    steps:
+    - uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 9.0.x
+        
+    - name: Build Tabler
+      if: needs.prepare.outputs.changed-tabler == 'true'
+      run: |
+        echo "Building Tabler with npm..."
+        cd Tabler/src/Web
+        npm install -g rimraf
+        npm install --no-audit --no-fund
+        cd ../../..
+        dotnet build Tabler/src/Wangkanai.Tabler.csproj -c Release
+        
+    - name: Build Blazor  
+      if: needs.prepare.outputs.changed-blazor == 'true'
+      run: |
+        echo "Building Blazor with npm..."
+        cd Blazor/src/Web
+        npm install -g rimraf
+        npm install --no-audit --no-fund
+        cd ../../..
+        dotnet build Blazor/src/Wangkanai.Blazor.csproj -c Release
