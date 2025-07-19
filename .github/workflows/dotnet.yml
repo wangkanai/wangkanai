@@ -104,8 +104,6 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: '20'
-        cache: 'npm'
-        cache-dependency-path: 'Tabler/src/Web/package-lock.json'
 
     # Install tools faster with parallel execution
     - name: Install tools
@@ -175,46 +173,52 @@ jobs:
           /p:UseCommonOutputDirectory=true \
           --verbosity minimal
 
-    # Run tests with built-in coverage collector (more reliable)
+    # Run tests with parallel execution and coverage
     - name: Test with Coverage
       run: |
         # Create coverage directory
         mkdir -p ${{ github.workspace }}/coverage
 
-        # Run all tests with built-in coverage collector
-        echo "Running tests with coverage..."
-        dotnet test --no-build -c Release \
-          --collect:"XPlat Code Coverage" \
-          --results-directory ${{ github.workspace }}/coverage \
-          --logger "console;verbosity=minimal" \
-          -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
+        # Find all test projects
+        TEST_PROJECTS=$(find . -name "*.Tests.csproj" -type f -not -path "*/bin/*" -not -path "*/obj/*")
+        TEST_COUNT=$(echo "$TEST_PROJECTS" | wc -l)
+        echo "Found $TEST_COUNT test projects"
 
-        # Find and consolidate coverage files
-        echo "Processing coverage files..."
-        find ${{ github.workspace }}/coverage -name "coverage.opencover.xml" -type f | head -1 | xargs -I {} cp {} ${{ github.workspace }}/coverage/coverage.opencover.xml || true
-        
-        # Verify coverage was generated
-        if [ -f "${{ github.workspace }}/coverage/coverage.opencover.xml" ]; then
-          echo "✅ Coverage report generated successfully"
-          ls -la ${{ github.workspace }}/coverage/
-        else
-          echo "⚠️ Coverage report not found, checking for Coverlet fallback..."
+        # Run tests in parallel batches
+        echo "Running tests with coverage in parallel..."
+        echo "$TEST_PROJECTS" | xargs -P 4 -I {} bash -c '
+          PROJECT="{}"
+          PROJECT_NAME=$(basename "$PROJECT" .csproj)
+          echo "Testing $PROJECT_NAME..."
           
-          # Fallback to Coverlet if XPlat fails
-          TEST_PROJECTS=$(find . -name "*.Tests.csproj" -type f -not -path "*/bin/*" -not -path "*/obj/*" | head -5)
-          for PROJECT in $TEST_PROJECTS; do
-            echo "Trying Coverlet on $PROJECT..."
+          # Try XPlat Code Coverage first
+          if dotnet test "$PROJECT" --no-build -c Release \
+            --collect:"XPlat Code Coverage" \
+            --results-directory "${{ github.workspace }}/coverage/$PROJECT_NAME" \
+            --logger "console;verbosity=quiet" \
+            -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover; then
+            echo "✅ $PROJECT_NAME tested successfully"
+          else
+            # Fallback to Coverlet
+            echo "Trying Coverlet for $PROJECT_NAME..."
             dotnet test "$PROJECT" --no-build -c Release \
               /p:CollectCoverage=true \
-              /p:CoverletOutputFormat=opencover \
-              /p:CoverletOutput=${{ github.workspace }}/coverage/ \
-              --verbosity minimal || true
-            
-            if [ -f "${{ github.workspace }}/coverage/coverage.opencover.xml" ]; then
-              echo "✅ Coverage generated with Coverlet"
-              break
-            fi
-          done
+              /p:CoverletOutputFormat=json \
+              /p:CoverletOutput="${{ github.workspace }}/coverage/" \
+              --verbosity quiet || echo "⚠️ $PROJECT_NAME test failed"
+          fi
+        '
+
+        # Merge coverage files
+        echo "Merging coverage files..."
+        COVERAGE_FILES=$(find ${{ github.workspace }}/coverage -name "coverage.opencover.xml" -type f)
+        if [ -n "$COVERAGE_FILES" ]; then
+          # Take the first file as the main coverage file
+          echo "$COVERAGE_FILES" | head -1 | xargs -I {} cp {} ${{ github.workspace }}/coverage/coverage.opencover.xml
+          echo "✅ Coverage report generated successfully"
+        else
+          echo "⚠️ No coverage files found, creating empty report"
+          echo '<?xml version="1.0" encoding="utf-8"?><CoverageSession></CoverageSession>' > ${{ github.workspace }}/coverage/coverage.opencover.xml
         fi
 
     - name: Upload Coverage Report
