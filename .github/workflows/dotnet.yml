@@ -197,17 +197,26 @@ jobs:
     # Pre-install npm dependencies to avoid build failures
     - name: Install npm dependencies
       run: |
-        if [ -f "Tabler/src/Web/package.json" ]; then
-          echo "Installing npm dependencies for Tabler..."
-          cd Tabler/src/Web
-          # Install global tools needed by build scripts
-          npm install -g rimraf
-          # Install project dependencies (use npm install since lock file may not exist)
-          npm install --no-audit --no-fund
-          # Create stamp file to prevent re-installation during build
-          touch node_modules/.install-stamp
-          cd ../../..
-        fi
+        # Check for all npm-dependent projects
+        for dir in Tabler/src/Web Blazor/src/Web; do
+          if [ -f "$dir/package.json" ]; then
+            echo "Installing npm dependencies for $dir..."
+            cd $dir
+            # Install global tools needed by build scripts
+            npm install -g rimraf
+            # Check if package-lock.json exists
+            if [ -f "package-lock.json" ]; then
+              echo "Found package-lock.json, using npm ci"
+              npm ci --no-audit --no-fund
+            else
+              echo "No package-lock.json, using npm install"
+              npm install --no-audit --no-fund
+            fi
+            # Create stamp file to prevent re-installation during build
+            touch node_modules/.install-stamp
+            cd -
+          fi
+        done
       shell: bash
 
     - name: Build
