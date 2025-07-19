@@ -34,8 +34,9 @@ jobs:
     - uses: actions/checkout@v4
       with:
         fetch-depth: 0
+        show-progress: false  # Reduce checkout verbosity for cleaner output
 
-    # Cache .NET installation to save setup time
+    # Cache .NET installation to save setup time (optimized)
     - name: Cache .NET SDK
       uses: actions/cache@v4
       with:
@@ -43,7 +44,7 @@ jobs:
           ${{ env.DOTNET_ROOT }}
           ~/.dotnet
           /usr/share/dotnet
-        key: ${{ runner.os }}-dotnet-sdk-9.0-${{ hashFiles('.github/workflows/dotnet.yml') }}
+        key: ${{ runner.os }}-dotnet-sdk-9.0-v2
         restore-keys: |
           ${{ runner.os }}-dotnet-sdk-9.0-
           ${{ runner.os }}-dotnet-sdk-
@@ -233,6 +234,11 @@ jobs:
     
     steps:
     - uses: actions/checkout@v4
+      with:
+        show-progress: false  # Reduce checkout verbosity
+        sparse-checkout: |
+          Tabler/src/Web
+          Blazor/src/Web
     
     # Cache npm dependencies efficiently
     - name: Cache npm dependencies
