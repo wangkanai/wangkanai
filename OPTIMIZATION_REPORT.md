@@ -22,12 +22,17 @@ Focus on single changes per iteration with careful measurement and validation.
 - **Best Result**: 3:24 (iteration 4)
 - **Key Learning**: Too many changes at once caused failures
 
-### Iteration 11: Change Detection Foundation (In Progress)
+### Iteration 11: Change Detection Foundation (Failed - npm issue)
 - **Change**: Added dorny/paths-filter@v3 for module change detection
 - **Purpose**: Track which modules change (logging only)
-- **Impact**: No performance change - preparatory step
-- **Next Step**: Use detection data for optimization decisions
-- **Build**: https://github.com/wangkanai/wangkanai/actions/runs/16387170928
+- **Result**: Failed due to npm ci error (same issue as before)
+- **Duration**: 1:39 (99 seconds) - failed early
+- **Learning**: Change detection works, npm issue persists
+
+### Iteration 12: Fix npm Install (In Progress)
+- **Change**: Replace npm ci with npm install to handle missing lock file
+- **Purpose**: Fix recurring npm build failures
+- **Build**: https://github.com/wangkanai/wangkanai/actions/runs/16387104896
 
 ## What Works So Far
 1. Parallel tool installation (saves ~5s)

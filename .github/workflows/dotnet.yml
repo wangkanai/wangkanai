@@ -190,8 +190,8 @@ jobs:
 
     - name: Restore dependencies
       run: |
-        # Ultra-fast restore with locked mode and runtime optimization
-        dotnet restore --verbosity minimal --locked-mode --runtime linux-x64 || dotnet restore --verbosity minimal
+        # Optimized restore - remove locked mode that may cause issues
+        dotnet restore --verbosity minimal
       shell: bash
 
     # Pre-install npm dependencies to avoid build failures
