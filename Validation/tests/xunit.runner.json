@@ -1,4 +1,11 @@
-﻿{
-    "parallelizeAssembly": true,
-    "parallelizeTestCollections": true
+{
+  "$schema": "https://xunit.net/schema/current/xunit.runner.schema.json",
+  "parallelizeAssembly": false,
+  "parallelizeTestCollections": true,
+  "diagnosticMessages": false,
+  "methodDisplay": "classAndMethod",
+  "maxParallelThreads": -1,
+  "failWarns": true,
+  "captureConsole": true,
+  "captureTrace": true
 }
