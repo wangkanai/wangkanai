@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Microsoft.AspNetCore.Razor.TagHelpers;

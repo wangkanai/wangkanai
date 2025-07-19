@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 #pragma warning disable CS8777 // Parameter must have a non-null value when exiting.
 
