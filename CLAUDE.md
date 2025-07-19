@@ -65,221 +65,150 @@ dotnet run -c Release
 
 ### Available MCP Commands (By Priority & Efficiency)
 
-#### **🔴 HIGH PRIORITY - Core Development Tools**
+#### **🔴 CRITICAL PRIORITY - Codebase Analysis & Knowledge Tools**
 
-##### **JetBrains IDE Integration** (Primary Development Environment)
+##### **🚀 REPOMIX INTEGRATION - PRIMARY CODEBASE ANALYSIS**
+**USE FIRST for any code exploration, understanding, or modification tasks!**
 ```bash
-# File and editor operations
-mcp__jetbrains__get_open_in_editor_file_text        # Get text of currently open file
-mcp__jetbrains__get_open_in_editor_file_path        # Get path of currently open file
-mcp__jetbrains__get_selected_in_editor_text         # Get currently selected text
-mcp__jetbrains__replace_selected_text               # Replace selected text
-mcp__jetbrains__replace_current_file_text           # Replace entire file content
-mcp__jetbrains__create_new_file_with_text           # Create new file with content
-mcp__jetbrains__get_file_text_by_path               # Read file by project path
-mcp__jetbrains__replace_file_text_by_path           # Replace file content by path
-mcp__jetbrains__replace_specific_text               # Replace specific text in file
-mcp__jetbrains__open_file_in_editor                 # Open file in editor
-
-# Project navigation and search
-mcp__jetbrains__find_files_by_name_substring        # Find files by name pattern
-mcp__jetbrains__list_files_in_folder               # List files in directory
-mcp__jetbrains__list_directory_tree_in_folder      # Get directory tree structure
-mcp__jetbrains__search_in_files_content            # Search text in project files
-mcp__jetbrains__get_all_open_file_texts             # Get all open file contents
-mcp__jetbrains__get_all_open_file_paths             # Get all open file paths
-
-# Version control and project info
-mcp__jetbrains__get_project_vcs_status              # Get VCS status (git status)
-mcp__jetbrains__get_project_modules                 # Get project modules
-mcp__jetbrains__get_project_dependencies           # Get project dependencies
-mcp__jetbrains__find_commit_by_message              # Find commits by message
-
-# Debugging and breakpoints
-mcp__jetbrains__toggle_debugger_breakpoint         # Toggle breakpoint at line
-mcp__jetbrains__get_debugger_breakpoints           # Get all breakpoints
-
-# Code analysis and formatting
-mcp__jetbrains__get_current_file_errors             # Get errors in current file
-mcp__jetbrains__get_project_problems                # Get all project problems
-mcp__jetbrains__reformat_current_file               # Format current file
-mcp__jetbrains__reformat_file                       # Format specific file
-
-# Build and run
-mcp__jetbrains__get_run_configurations              # Get available run configs
-mcp__jetbrains__run_configuration                   # Run specific configuration
-
-# Terminal operations
-mcp__jetbrains__get_terminal_text                   # Get terminal content
-mcp__jetbrains__execute_terminal_command            # Execute terminal command
-
-# IDE actions and utilities
-mcp__jetbrains__list_available_actions              # List all IDE actions
-mcp__jetbrains__execute_action_by_id                # Execute action by ID
-mcp__jetbrains__get_progress_indicators             # Get progress status
-mcp__jetbrains__wait                                # Wait for specified time
-```
-
-##### **GitHub Integration** (Repository Management)
-```bash
-# Repository operations
-mcp__github__create_repository                      # Create new repository
-mcp__github__search_repositories                    # Search repositories
-mcp__github__fork_repository                        # Fork repository
-
-# File operations
-mcp__github__get_file_contents                      # Get file/directory contents
-mcp__github__create_or_update_file                  # Create or update single file
-mcp__github__push_files                             # Push multiple files
-
-# Branch operations
-mcp__github__create_branch                          # Create new branch
-mcp__github__list_commits                           # List commits
-
-# Issues
-mcp__github__create_issue                           # Create new issue
-mcp__github__list_issues                            # List issues with filters
-mcp__github__update_issue                           # Update existing issue
-mcp__github__get_issue                              # Get issue details
-mcp__github__add_issue_comment                      # Add comment to issue
-
-# Pull requests
-mcp__github__create_pull_request                    # Create pull request
-mcp__github__list_pull_requests                     # List pull requests
-mcp__github__get_pull_request                       # Get PR details
-mcp__github__get_pull_request_files                 # Get PR file changes
-mcp__github__get_pull_request_status                # Get PR status
-mcp__github__get_pull_request_comments              # Get PR comments
-mcp__github__get_pull_request_reviews               # Get PR reviews
-mcp__github__create_pull_request_review             # Create PR review
-mcp__github__merge_pull_request                     # Merge pull request
-mcp__github__update_pull_request_branch             # Update PR branch
-
-# Search operations
-mcp__github__search_code                            # Search code across repos
-mcp__github__search_issues                          # Search issues and PRs
-mcp__github__search_users                           # Search users
-```
-
-##### **🚀 REPOMIX INTEGRATION - CRITICAL FOR EFFICIENCY**
-```bash
-# PRIMARY WORKFLOW TOOLS (Use these extensively!)
-mcp__repomix__pack_codebase                         # Generate codebase analysis
-mcp__repomix__grep_repomix_output                   # Pattern discovery & search
+# CORE WORKFLOW (Always start here!)
+mcp__repomix__pack_codebase                         # Generate complete codebase analysis
+mcp__repomix__grep_repomix_output                   # Fast pattern search (most efficient)
 mcp__repomix__read_repomix_output                   # Selective content reading
 
-# ADDITIONAL CAPABILITIES
-mcp__repomix__pack_remote_repository                # Analyze external repositories
-mcp__repomix__file_system_read_file                 # Direct file system access
-mcp__repomix__file_system_read_directory            # Directory exploration
+# EXTENDED CAPABILITIES
+mcp__repomix__pack_remote_repository                # Analyze external GitHub repos
+mcp__repomix__file_system_read_file                 # Direct file access (with security checks)
+mcp__repomix__file_system_read_directory            # Directory listing
 
-# COMMON REPOMIX PATTERNS FOR THIS CODEBASE
-# Architecture Discovery
-mcp__repomix__grep_repomix_output "interface.*Service|class.*Controller|public.*Builder"
-mcp__repomix__grep_repomix_output "public.*static.*class.*Extensions"
+# EFFICIENCY TIPS
+# 1. Always pack first: mcp__repomix__pack_codebase
+# 2. Use grep for discovery: mcp__repomix__grep_repomix_output "pattern"
+# 3. Read selectively: mcp__repomix__read_repomix_output --startLine=X --endLine=Y
+```
+
+##### **Common Repomix Search Patterns**
+```bash
+# Architecture Discovery (High-level understanding)
+mcp__repomix__grep_repomix_output "interface.*Service|class.*Controller" --contextLines=2
+mcp__repomix__grep_repomix_output "public.*static.*class.*Extensions" --contextLines=1
 mcp__repomix__grep_repomix_output "namespace.*DependencyInjection"
 
-# Implementation Patterns
+# Implementation Patterns (Code patterns)
 mcp__repomix__grep_repomix_output "AddRequiredServices|AddCoreServices|AddMarkerService"
-mcp__repomix__grep_repomix_output "public.*static.*Add.*Builder"
-mcp__repomix__grep_repomix_output "IServiceCollection.*Services"
+mcp__repomix__grep_repomix_output "public.*static.*IServiceCollection.*Add"
+mcp__repomix__grep_repomix_output "Configure.*<.*>|Options.*<.*>"
 
-# Quality Assurance
+# Quality Checks (Issues & TODOs)
+mcp__repomix__grep_repomix_output "TODO|FIXME|BUG|HACK" --ignoreCase=true
 mcp__repomix__grep_repomix_output "ThrowIfNull|ArgumentNullException"
-mcp__repomix__grep_repomix_output "Services.*TryAdd.*"
-mcp__repomix__grep_repomix_output "TODO|FIXME|BUG"
+mcp__repomix__grep_repomix_output "obsolete|deprecated" --ignoreCase=true
 
-# Testing Patterns
-mcp__repomix__grep_repomix_output "public.*class.*Tests"
-mcp__repomix__grep_repomix_output "Fact.*public.*void"
-mcp__repomix__grep_repomix_output "Assert.*Throws.*ArgumentNullException"
+# Testing Patterns (Test discovery)
+mcp__repomix__grep_repomix_output "public.*class.*Tests|TestBase"
+mcp__repomix__grep_repomix_output "\[Fact\]|\[Theory\]|\[Test\]"
+mcp__repomix__grep_repomix_output "Mock<.*>|Substitute\.For"
+```
+
+#### **🟠 HIGH PRIORITY - Direct Development Tools**
+
+##### **JetBrains IDE Integration** (Active File Editing)
+```bash
+# Current file operations (Most efficient for active editing)
+mcp__jetbrains__get_open_in_editor_file_text        # Read current file
+mcp__jetbrains__get_selected_in_editor_text         # Get selection
+mcp__jetbrains__replace_selected_text               # Replace selection
+mcp__jetbrains__replace_current_file_text           # Replace entire file
+mcp__jetbrains__replace_specific_text               # Find & replace (PREFERRED)
+
+# File management
+mcp__jetbrains__create_new_file_with_text           # Create new files
+mcp__jetbrains__get_file_text_by_path               # Read by path
+mcp__jetbrains__replace_file_text_by_path           # Update by path
+mcp__jetbrains__open_file_in_editor                 # Open in editor
+
+# Project navigation (Use Repomix grep first for efficiency!)
+mcp__jetbrains__find_files_by_name_substring        # Find files by name
+mcp__jetbrains__list_files_in_folder                # List directory
+mcp__jetbrains__list_directory_tree_in_folder       # Tree view
+mcp__jetbrains__search_in_files_content             # Text search (prefer Repomix)
+
+# Code quality & debugging
+mcp__jetbrains__get_current_file_errors             # Current file errors
+mcp__jetbrains__get_project_problems                # All project issues
+mcp__jetbrains__toggle_debugger_breakpoint          # Set breakpoints
+mcp__jetbrains__reformat_current_file               # Format code
+
+# Build & execution
+mcp__jetbrains__get_run_configurations              # List run configs
+mcp__jetbrains__run_configuration                   # Execute config
+mcp__jetbrains__execute_terminal_command            # Run commands
+```
+
+##### **GitHub Integration** (Version Control & Collaboration)
+```bash
+# Essential operations
+mcp__github__get_file_contents                      # Read files from GitHub
+mcp__github__create_or_update_file                  # Update single file
+mcp__github__push_files                             # Batch file updates
+mcp__github__create_pull_request                    # Create PRs
+mcp__github__create_branch                          # Branch management
+
+# Repository management
+mcp__github__search_repositories                    # Find repos
+mcp__github__list_commits                           # View history
+mcp__github__get_pull_request                       # PR details
+mcp__github__list_issues                            # Track issues
 ```
 
 #### **🟡 MEDIUM PRIORITY - Quality & Analysis Tools**
 
-##### **SonarQube Code Analysis** (Code Quality Metrics)
+##### **SonarQube** (Code Quality Metrics)
 ```bash
-# Project and quality gates
-mcp__sonarqube__search_my_sonarqube_projects        # Find SonarQube projects
-mcp__sonarqube__get_project_quality_gate_status     # Get quality gate status
-mcp__sonarqube__list_quality_gates                  # List all quality gates
-
-# Issues and rules
-mcp__sonarqube__search_sonar_issues_in_projects     # Search issues in projects
-mcp__sonarqube__change_sonar_issue_status           # Change issue status
-mcp__sonarqube__show_rule                           # Show rule details
-mcp__sonarqube__list_rule_repositories              # List rule repositories
-
-# Code analysis
-mcp__sonarqube__analyze_code_snippet                # Analyze code snippet
-mcp__sonarqube__get_component_measures              # Get component metrics
-mcp__sonarqube__search_metrics                      # Search available metrics
-mcp__sonarqube__get_scm_info                        # Get SCM information
-mcp__sonarqube__get_raw_source                      # Get raw source code
-mcp__sonarqube__list_languages                      # List supported languages
+# Use after code changes for quality checks
+mcp__sonarqube__analyze_code_snippet                # Analyze new code
+mcp__sonarqube__search_sonar_issues_in_projects     # Find issues
+mcp__sonarqube__get_project_quality_gate_status     # Quality gates
 ```
 
-##### **Container Management (Podman)** (Development Environment)
+##### **Hugging Face** (ML/AI Resources)
 ```bash
-# Container operations
-mcp__podman__container_list                         # List containers
-mcp__podman__container_run                          # Run container
-mcp__podman__container_stop                         # Stop container
-mcp__podman__container_remove                       # Remove container
-mcp__podman__container_inspect                      # Inspect container
-mcp__podman__container_logs                         # Get container logs
-
-# Image operations
-mcp__podman__image_list                             # List images
-mcp__podman__image_pull                             # Pull image
-mcp__podman__image_push                             # Push image
-mcp__podman__image_remove                           # Remove image
-mcp__podman__image_build                            # Build image
-
-# Network and volume operations
-mcp__podman__network_list                           # List networks
-mcp__podman__volume_list                            # List volumes
+# Documentation and model search
+mcp__huggingface__hf_doc_search                     # Search HF docs
+mcp__huggingface__model_search                      # Find models
+mcp__huggingface__dataset_search                    # Find datasets
 ```
 
-##### **Memory & Knowledge Graph** (Project Context)
+##### **Microsoft Docs** (Official Documentation)
 ```bash
-# Entity management
-mcp__memory__create_entities                        # Create entities
-mcp__memory__delete_entities                        # Delete entities
-mcp__memory__search_nodes                           # Search nodes
-mcp__memory__open_nodes                             # Open specific nodes
-mcp__memory__read_graph                             # Read entire graph
-
-# Relationship management
-mcp__memory__create_relations                       # Create relations
-mcp__memory__delete_relations                       # Delete relations
-
-# Observation management
-mcp__memory__add_observations                       # Add observations
-mcp__memory__delete_observations                    # Delete observations
+mcp__ms-docs__microsoft_docs_search                 # Search MS/Azure docs
 ```
 
-#### **🟢 LOW PRIORITY - Utility & Support Tools**
+#### **🟢 LOW PRIORITY - Utility Tools**
 
-##### **Web & Content Fetching** (External Content)
+##### **Container Management** (Podman/Docker)
 ```bash
-mcp__fetch__fetch                                   # Fetch URL content
+mcp__podman__container_run                          # Run containers
+mcp__podman__image_build                            # Build images
+mcp__podman__container_logs                         # View logs
 ```
 
-##### **Problem Solving & Thinking** (Complex Analysis)
+##### **Memory & Knowledge Graph** (Context Persistence)
 ```bash
-mcp__sequential-thinking__sequentialthinking        # Sequential problem solving
+mcp__memory__create_entities                        # Store knowledge
+mcp__memory__search_nodes                           # Query knowledge
 ```
 
-#### **🔵 SPECIALIZED - System & Diagnostic Tools**
-
-##### **IDE Diagnostics** (System Analysis)
+##### **Web & Sequential Thinking** (External Resources)
 ```bash
-mcp__ide__getDiagnostics                            # Get IDE diagnostics
+mcp__fetch__fetch                                   # Fetch URLs
+mcp__sequential-thinking__sequentialthinking        # Complex reasoning
 ```
 
-##### **Resource Management** (MCP Infrastructure)
+#### **🔵 RARELY USED - System Tools**
+
+##### **IDE & MCP Infrastructure**
 ```bash
+mcp__ide__getDiagnostics                            # IDE diagnostics
 ListMcpResourcesTool                                # List MCP resources
 ReadMcpResourceTool                                 # Read MCP resource
 ```
