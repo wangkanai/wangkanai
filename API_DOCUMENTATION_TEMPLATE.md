@@ -1,6 +1,7 @@
 # Wangkanai Libraries - API Documentation Structure
 
-This document provides a template and guidelines for creating consistent API documentation across all Wangkanai libraries.
+This document provides a template and guidelines for creating consistent API documentation across all Wangkanai
+libraries.
 
 ## API Documentation Template
 
@@ -10,6 +11,7 @@ This document provides a template and guidelines for creating consistent API doc
 # Wangkanai.[ModuleName] API Reference
 
 ## Overview
+
 Brief description of the module's purpose and key functionality.
 
 ## Installation
@@ -221,33 +223,52 @@ public Device Device { get; }
 ### Using DocFX
 
 1. Install DocFX:
+
 ```bash
 dotnet tool install -g docfx
 ```
 
 2. Create docfx.json in module root:
+
 ```json
 {
-  "metadata": [{
-    "src": [{
-      "src": "src",
-      "files": ["**/*.csproj"]
-    }],
-    "dest": "api",
-    "filter": "filterConfig.yml"
-  }],
-  "build": {
-    "content": [{
-      "files": ["api/**.yml", "api/index.md"]
-    }, {
-      "files": ["articles/**.md", "*.md", "toc.yml"]
-    }],
-    "dest": "_site"
-  }
+	"metadata": [
+		{
+			"src": [
+				{
+					"src": "src",
+					"files": [
+						"**/*.csproj"
+					]
+				}
+			],
+			"dest": "api",
+			"filter": "filterConfig.yml"
+		}
+	],
+	"build": {
+		"content": [
+			{
+				"files": [
+					"api/**.yml",
+					"api/index.md"
+				]
+			},
+			{
+				"files": [
+					"articles/**.md",
+					"*.md",
+					"toc.yml"
+				]
+			}
+		],
+		"dest": "_site"
+	}
 }
 ```
 
 3. Generate documentation:
+
 ```bash
 docfx metadata
 docfx build
@@ -296,6 +317,7 @@ docfx build
 ### Internal References
 
 Use relative links to reference other modules:
+
 ```markdown
 See also: [Wangkanai.System](../System/README.md) for base utilities.
 ```
@@ -303,6 +325,7 @@ See also: [Wangkanai.System](../System/README.md) for base utilities.
 ### External References
 
 Link to official documentation:
+
 ```markdown
 Based on [ASP.NET Core Documentation](https://docs.microsoft.com/aspnet/core).
 ```
@@ -310,6 +333,7 @@ Based on [ASP.NET Core Documentation](https://docs.microsoft.com/aspnet/core).
 ### Code References
 
 Reference specific source files:
+
 ```markdown
 Implementation: [`DetectionService.cs`](src/Services/DetectionService.cs)
 ```
@@ -318,11 +342,11 @@ Implementation: [`DetectionService.cs`](src/Services/DetectionService.cs)
 
 ### Compatibility Matrix
 
-| Library Version | .NET Version | Breaking Changes |
-|----------------|--------------|------------------|
-| 8.0.x | .NET 8.0 | None |
-| 7.0.x | .NET 7.0 | Major API revision |
-| 6.0.x | .NET 6.0 | Initial release |
+| Library Version | .NET Version | Breaking Changes   |
+|-----------------|--------------|--------------------|
+| 8.0.x           | .NET 8.0     | None               |
+| 7.0.x           | .NET 7.0     | Major API revision |
+| 6.0.x           | .NET 6.0     | Initial release    |
 
 ### Change Log Format
 
@@ -330,21 +354,27 @@ Implementation: [`DetectionService.cs`](src/Services/DetectionService.cs)
 ## [8.0.1] - 2024-01-15
 
 ### Added
+
 - New feature description
 
 ### Changed
+
 - Modified behavior description
 
 ### Fixed
+
 - Bug fix description
 
 ### Deprecated
+
 - Deprecated feature notice
 
 ### Removed
+
 - Removed feature notice
 
 ### Security
+
 - Security fix description
 ```
 
