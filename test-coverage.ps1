@@ -80,10 +80,16 @@ Write-Host "  - OpenCover: ./coverage/coverage.opencover.xml" -ForegroundColor G
 if (Get-Command reportgenerator -ErrorAction SilentlyContinue) {
     Write-Host "Generating HTML report..." -ForegroundColor Yellow
     reportgenerator `
-        -reports:"./coverage/coverage.cobertura.xml" `
+        -reports:"./coverage/coverage.opencover.xml" `
         -targetdir:"./coverage/html" `
-        -reporttypes:"HtmlInline_AzurePipelines" `
+        -reporttypes:"HtmlInline_AzurePipelines;Cobertura" `
         -verbosity:Error
+    
+    # Copy the generated Cobertura file for compatibility
+    if (Test-Path "./coverage/html/Cobertura.xml") {
+        Copy-Item "./coverage/html/Cobertura.xml" "./coverage/coverage.cobertura.xml" -Force
+        Write-Host "  - Cobertura: ./coverage/coverage.cobertura.xml (generated from OpenCover)" -ForegroundColor Green
+    }
     Write-Host "  - HTML: ./coverage/html/index.html" -ForegroundColor Green
 }
 
