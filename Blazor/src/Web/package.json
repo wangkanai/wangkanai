@@ -9,6 +9,6 @@
         "build": "echo \"Error: no build specified\" && exit 0"
     },
     "devDependencies": {
-        "sass": "^1.26.10"
+        "sass": "^1.89.2"
     }
 }
