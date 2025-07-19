@@ -59,6 +59,17 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-dotnet-tools-
 
+    # Cache build outputs for faster incremental builds
+    - name: Cache build outputs
+      uses: actions/cache@v4
+      with:
+        path: |
+          **/bin/Release
+          **/obj/Release
+        key: ${{ runner.os }}-build-${{ github.sha }}
+        restore-keys: |
+          ${{ runner.os }}-build-
+
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
@@ -129,27 +140,29 @@ jobs:
           /p:UseCommonOutputDirectory=true \
           --verbosity minimal
 
-    # Run tests with ultra-aggressive parallelization (iteration 2)
+    # Run tests with optimized parallelization (iteration 2)
     - name: Test with Coverage
       run: |
         # Create coverage directory
         mkdir -p ${{ github.workspace }}/coverage
 
-        # Run all tests with maximum parallelization
+        # Run all tests in parallel with coverage
         dotnet test --no-build -c Release \
           --collect:"XPlat Code Coverage" \
           --results-directory ./coverage \
-          --logger "console;verbosity=quiet" \
-          --blame-hang-timeout 60s \
+          --logger "console;verbosity=minimal" \
           -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover \
-             DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.SkipAutoProps=true \
-             RunConfiguration.MaxCpuCount=0 \
-             RunConfiguration.DisableAppDomain=true \
-             RunConfiguration.DisableParallelization=false \
-             RunConfiguration.TestSessionTimeout=300000
+             RunConfiguration.MaxCpuCount=0
 
-        # Find and move coverage file more efficiently
-        find ./coverage -name "coverage.opencover.xml" -type f | head -1 | xargs -I {} mv {} ./coverage/coverage.opencover.xml 2>/dev/null || true
+        # Find and move the coverage file
+        find ./coverage -name "coverage.opencover.xml" -exec mv {} ./coverage/coverage.opencover.xml \; 2>/dev/null || true
+
+        # Verify coverage was generated
+        if [ -f "./coverage/coverage.opencover.xml" ]; then
+          echo "✅ Coverage report generated"
+        else
+          echo "⚠️ Coverage report not found"
+        fi
 
     - name: Upload Coverage Report
       uses: actions/upload-artifact@v4
