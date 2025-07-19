@@ -70,12 +70,10 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-build-
 
-    - name: Setup .NET
+    - name: Setup .NET 9.0
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: |
-          8.0.x
-          9.0.x
+        dotnet-version: 9.0.x
 
     # Install tools with proper checking
     - name: Install tools
@@ -140,29 +138,52 @@ jobs:
           /p:UseCommonOutputDirectory=true \
           --verbosity minimal
 
-    # Run tests with optimized parallelization (iteration 2)
+    # Run tests with parallel execution but sequential coverage (iteration 3)
     - name: Test with Coverage
       run: |
         # Create coverage directory
         mkdir -p ${{ github.workspace }}/coverage
 
-        # Run all tests in parallel with coverage
-        dotnet test --no-build -c Release \
-          --collect:"XPlat Code Coverage" \
-          --results-directory ./coverage \
-          --logger "console;verbosity=minimal" \
-          -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover \
-             RunConfiguration.MaxCpuCount=0
+        # First run tests quickly without coverage to catch failures
+        echo "Running tests without coverage for quick feedback..."
+        dotnet test --no-build -c Release --verbosity minimal || exit 1
 
-        # Find and move the coverage file
-        find ./coverage -name "coverage.opencover.xml" -exec mv {} ./coverage/coverage.opencover.xml \; 2>/dev/null || true
+        # Then run with coverage collection
+        echo "Running tests with coverage collection..."
+        TEST_PROJECTS=$(find . -name "*.Tests.csproj" -type f -not -path "*/bin/*" -not -path "*/obj/*" | sort)
+        TOTAL_PROJECTS=$(echo "$TEST_PROJECTS" | wc -l)
+        CURRENT=0
 
-        # Verify coverage was generated
-        if [ -f "./coverage/coverage.opencover.xml" ]; then
-          echo "✅ Coverage report generated"
-        else
-          echo "⚠️ Coverage report not found"
-        fi
+        for PROJECT in $TEST_PROJECTS; do
+          CURRENT=$((CURRENT + 1))
+          echo "Coverage for $PROJECT ($CURRENT/$TOTAL_PROJECTS)"
+          
+          if [ $CURRENT -eq $TOTAL_PROJECTS ]; then
+            # Last project - generate final coverage
+            if [ $TOTAL_PROJECTS -gt 1 ] && [ -f "${{ github.workspace }}/coverage/coverage.json" ]; then
+              dotnet test "$PROJECT" --no-build -c Release \
+                /p:CollectCoverage=true \
+                /p:CoverletOutputFormat=opencover \
+                /p:CoverletOutput=${{ github.workspace }}/coverage/ \
+                /p:MergeWith=${{ github.workspace }}/coverage/coverage.json \
+                --verbosity quiet || true
+            else
+              dotnet test "$PROJECT" --no-build -c Release \
+                /p:CollectCoverage=true \
+                /p:CoverletOutputFormat=opencover \
+                /p:CoverletOutput=${{ github.workspace }}/coverage/ \
+                --verbosity quiet || true
+            fi
+          else
+            # Intermediate projects
+            dotnet test "$PROJECT" --no-build -c Release \
+              /p:CollectCoverage=true \
+              /p:CoverletOutputFormat=json \
+              /p:CoverletOutput=${{ github.workspace }}/coverage/ \
+              $([ $CURRENT -gt 1 ] && [ -f "${{ github.workspace }}/coverage/coverage.json" ] && echo "/p:MergeWith=${{ github.workspace }}/coverage/coverage.json") \
+              --verbosity quiet || true
+          fi
+        done
 
     - name: Upload Coverage Report
       uses: actions/upload-artifact@v4
