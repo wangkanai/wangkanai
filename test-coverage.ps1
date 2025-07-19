@@ -54,10 +54,10 @@ if (-not $NoBuild) {
 # Run tests with Coverlet coverage
 Write-Host "Discovering test projects..." -ForegroundColor Yellow
 $repoRoot = Get-Location
-$testProjects = Get-ChildItem -Path . -Filter "*.Tests.csproj" -Recurse | 
+$testProjects = Get-ChildItem -Path $repoRoot.Path -Filter "*.Tests.csproj" -Recurse | 
     Where-Object { 
-        $_.FullName -notlike "*\bin\*" -and 
-        $_.FullName -notlike "*\obj\*" -and
+        -not ($_.FullName -match "[\\/]bin[\\/]") -and 
+        -not ($_.FullName -match "[\\/]obj[\\/]") -and
         $_.FullName.StartsWith($repoRoot.Path)
     }
 
@@ -68,30 +68,47 @@ if ($testProjects.Count -eq 0) {
 
 Write-Host "Found $($testProjects.Count) test project(s)" -ForegroundColor Green
 
+# Create coverage directory
+New-Item -Path "./coverage" -ItemType Directory -Force | Out-Null
+
 # Run tests on each project
-$firstProject = $true
+$totalProjects = $testProjects.Count
+$currentProject = 0
+
 foreach ($project in $testProjects) {
-    Write-Host "`nRunning tests for: $($project.Name)" -ForegroundColor Cyan
+    $currentProject++
+    Write-Host "`nRunning tests for: $($project.Name) ($currentProject/$totalProjects)" -ForegroundColor Cyan
+    
+    # Calculate relative path to coverage directory
+    $projectDir = Split-Path $project.FullName -Parent
+    $relativePath = [System.IO.Path]::GetRelativePath($projectDir, $repoRoot.Path)
+    $coverageOutput = Join-Path $relativePath "coverage/"
     
     $testArgs = @(
         "test",
         $project.FullName,
         "--no-build",
         "-c", $Configuration,
-        "/p:CollectCoverage=true",
-        "/p:CoverletOutputFormat=opencover"
+        "/p:CollectCoverage=true"
     )
     
-    # For the first project, output to coverage directory
-    # For subsequent projects, merge with existing coverage
-    if ($firstProject) {
-        $testArgs += "/p:CoverletOutput=./coverage/"
-        $firstProject = $false
+    # For all but the last project, output JSON for merging
+    # For the last project, merge and output final OpenCover format
+    if ($currentProject -eq $totalProjects) {
+        # Last project - generate final OpenCover report
+        $testArgs += "/p:CoverletOutputFormat=opencover"
+        if ($totalProjects -gt 1) {
+            $testArgs += "/p:MergeWith=$coverageOutput`coverage.json"
+        }
     } else {
-        $testArgs += "/p:CoverletOutput=./coverage/"
-        $testArgs += "/p:MergeWith=./coverage/coverage.json"
+        # Intermediate projects - output JSON for merging
+        $testArgs += "/p:CoverletOutputFormat=json"
+        if ($currentProject -gt 1) {
+            $testArgs += "/p:MergeWith=$coverageOutput`coverage.json"
+        }
     }
     
+    $testArgs += "/p:CoverletOutput=$coverageOutput"
     $testArgs += "/p:SkipAutoProps=true"
     
     if ($Filter) {
@@ -105,11 +122,6 @@ foreach ($project in $testProjects) {
         Write-Error "Tests failed for $($project.Name)"
         exit 1
     }
-}
-
-if ($LASTEXITCODE -ne 0) {
-    Write-Error "Tests failed"
-    exit 1
 }
 
 # Check coverage results
