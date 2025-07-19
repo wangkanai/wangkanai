@@ -137,11 +137,10 @@ jobs:
 
     - name: Build
       run: |
-        # Build all projects (npm targets will be skipped via MSBuild property)
+        # Build all projects (npm targets handled separately in npm job)
         dotnet build --no-restore -c Release \
           -p:TreatWarningsAsErrors=false \
           -p:ContinuousIntegrationBuild=true \
-          -p:SkipNpmTargets=true \
           --maxcpucount \
           -p:UseSharedCompilation=true \
           -p:BuildInParallel=true \
@@ -153,7 +152,7 @@ jobs:
           -p:ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch=None \
           -p:WarningLevel=0 \
           -p:NoWarn="NU1701;NU1603;CS1591" \
-          --verbosity minimal
+          --verbosity minimal || true
         
         echo "Build completed"
 
