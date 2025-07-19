@@ -42,14 +42,14 @@ dotnet test .\tests\ -c Release
 # Run tests directly with Microsoft Testing Platform (faster)
 .\tests\bin\Release\net8.0\YourProject.Tests.exe
 
-# Run tests with coverage (Microsoft Testing Platform + Coverlet)
+# Run tests with coverage (Coverlet)
 pwsh ./test-coverage.ps1
 
 # Run tests with coverage for specific project
 dotnet test ./path/to/tests.csproj -c Release /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura,opencover /p:CoverletOutput=./coverage/
 
-# Run tests with Microsoft Code Coverage collector
-dotnet test --collect:"Code Coverage;Format=cobertura" --results-directory ./TestResults --settings coverage.runsettings
+# Run all tests with merged coverage
+dotnet test -c Release /p:CollectCoverage=true /p:CoverletOutputFormat=opencover,cobertura /p:CoverletOutput=./coverage/ /p:MergeWith=./coverage/coverage.json
 
 # Run single test class
 dotnet test .\tests\ -c Release --filter "ClassName=YourTestClass"
