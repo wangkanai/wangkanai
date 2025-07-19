@@ -4,9 +4,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository Overview
 
-This is a comprehensive .NET monorepo containing 27+ libraries developed by Sarin Na Wangkanai. The repository provides ASP.NET Core extensions and utilities for various use cases including device detection, responsive design, security, federation, markdown processing, and more.
+This is a comprehensive .NET monorepo containing 27+ libraries developed by Sarin Na Wangkanai. The repository provides
+ASP.NET Core extensions and utilities for various use cases including device detection, responsive design, security,
+federation, markdown processing, and more.
 
 **Key Libraries:**
+
 - **Detection**: Device, browser, engine, platform & crawler detection
 - **Responsive**: Responsive web design utilities for ASP.NET Core
 - **Blazor**: Custom UI components for Blazor applications
@@ -19,6 +22,7 @@ This is a comprehensive .NET monorepo containing 27+ libraries developed by Sari
 ## Development Commands
 
 ### Building the Solution
+
 ```bash
 # Build entire repository (runs all module builds in order)
 .\build.ps1
@@ -28,6 +32,7 @@ This is a comprehensive .NET monorepo containing 27+ libraries developed by Sari
 ```
 
 ### Testing
+
 ```bash
 # Run tests for specific module (from module directory)
 dotnet test .\tests\ -c Release
@@ -43,11 +48,13 @@ dotnet test .\tests\ -c Release --filter "TestCategory=Unit"
 ```
 
 ### Package Management
+
 - All packages target `.NET 8.0`
 - Uses Central Package Management with `Directory.Packages.props`
 - NuGet packages are published under the `Wangkanai` namespace
 
 ### Debugging & Development
+
 ```bash
 # Clean and rebuild specific module
 dotnet clean .\src\ -c Release -tl
@@ -68,7 +75,9 @@ dotnet run -c Release
 #### **🔴 CRITICAL PRIORITY - Codebase Analysis & Knowledge Tools**
 
 ##### **🚀 REPOMIX INTEGRATION - PRIMARY CODEBASE ANALYSIS**
+
 **USE FIRST for any code exploration, understanding, or modification tasks!**
+
 ```bash
 # CORE WORKFLOW (Always start here!)
 mcp__repomix__pack_codebase                         # Generate complete codebase analysis
@@ -87,6 +96,7 @@ mcp__repomix__file_system_read_directory            # Directory listing
 ```
 
 ##### **Common Repomix Search Patterns**
+
 ```bash
 # Architecture Discovery (High-level understanding)
 mcp__repomix__grep_repomix_output "interface.*Service|class.*Controller" --contextLines=2
@@ -112,6 +122,7 @@ mcp__repomix__grep_repomix_output "Mock<.*>|Substitute\.For"
 #### **🟠 HIGH PRIORITY - Direct Development Tools**
 
 ##### **JetBrains IDE Integration** (Active File Editing)
+
 ```bash
 # Current file operations (Most efficient for active editing)
 mcp__jetbrains__get_open_in_editor_file_text        # Read current file
@@ -145,6 +156,7 @@ mcp__jetbrains__execute_terminal_command            # Run commands
 ```
 
 ##### **GitHub Integration** (Version Control & Collaboration)
+
 ```bash
 # Essential operations
 mcp__github__get_file_contents                      # Read files from GitHub
@@ -163,6 +175,7 @@ mcp__github__list_issues                            # Track issues
 #### **🟡 MEDIUM PRIORITY - Quality & Analysis Tools**
 
 ##### **SonarQube** (Code Quality Metrics)
+
 ```bash
 # Use after code changes for quality checks
 mcp__sonarqube__analyze_code_snippet                # Analyze new code
@@ -171,6 +184,7 @@ mcp__sonarqube__get_project_quality_gate_status     # Quality gates
 ```
 
 ##### **Hugging Face** (ML/AI Resources)
+
 ```bash
 # Documentation and model search
 mcp__huggingface__hf_doc_search                     # Search HF docs
@@ -178,14 +192,72 @@ mcp__huggingface__model_search                      # Find models
 mcp__huggingface__dataset_search                    # Find datasets
 ```
 
-##### **Microsoft Docs** (Official Documentation)
+##### **Microsoft Docs** (Official .NET Documentation)
+
 ```bash
-mcp__ms-docs__microsoft_docs_search                 # Search MS/Azure docs
+# Primary command
+mcp__ms-docs__microsoft_docs_search                 # Search official Microsoft/Azure documentation
+
+# .NET Core/Framework Documentation
+mcp__ms-docs__microsoft_docs_search ".NET 8 features"
+mcp__ms-docs__microsoft_docs_search "C# 12 new features"
+mcp__ms-docs__microsoft_docs_search ".NET performance best practices"
+mcp__ms-docs__microsoft_docs_search "dotnet CLI commands"
+
+# ASP.NET Core Documentation
+mcp__ms-docs__microsoft_docs_search "ASP.NET Core middleware"
+mcp__ms-docs__microsoft_docs_search "ASP.NET Core dependency injection"
+mcp__ms-docs__microsoft_docs_search "ASP.NET Core routing"
+mcp__ms-docs__microsoft_docs_search "ASP.NET Core security"
+mcp__ms-docs__microsoft_docs_search "minimal APIs ASP.NET Core"
+
+# Blazor Documentation
+mcp__ms-docs__microsoft_docs_search "Blazor components"
+mcp__ms-docs__microsoft_docs_search "Blazor Server vs WebAssembly"
+mcp__ms-docs__microsoft_docs_search "Blazor state management"
+mcp__ms-docs__microsoft_docs_search "Blazor JavaScript interop"
+mcp__ms-docs__microsoft_docs_search "Blazor forms validation"
+
+# .NET MAUI Documentation
+mcp__ms-docs__microsoft_docs_search "MAUI getting started"
+mcp__ms-docs__microsoft_docs_search "MAUI layouts"
+mcp__ms-docs__microsoft_docs_search "MAUI platform-specific code"
+mcp__ms-docs__microsoft_docs_search "MAUI data binding"
+mcp__ms-docs__microsoft_docs_search "MAUI navigation"
+
+# Entity Framework Core Documentation
+mcp__ms-docs__microsoft_docs_search "EF Core migrations"
+mcp__ms-docs__microsoft_docs_search "EF Core relationships"
+mcp__ms-docs__microsoft_docs_search "EF Core performance"
+mcp__ms-docs__microsoft_docs_search "EF Core LINQ queries"
+mcp__ms-docs__microsoft_docs_search "EF Core database providers"
+
+# ASP.NET Core Identity Documentation
+mcp__ms-docs__microsoft_docs_search "ASP.NET Core Identity setup"
+mcp__ms-docs__microsoft_docs_search "Identity authentication"
+mcp__ms-docs__microsoft_docs_search "Identity authorization policies"
+mcp__ms-docs__microsoft_docs_search "Identity two-factor authentication"
+mcp__ms-docs__microsoft_docs_search "Identity external providers"
+
+# ML.NET Documentation
+mcp__ms-docs__microsoft_docs_search "ML.NET getting started"
+mcp__ms-docs__microsoft_docs_search "ML.NET model training"
+mcp__ms-docs__microsoft_docs_search "ML.NET sentiment analysis"
+mcp__ms-docs__microsoft_docs_search "ML.NET AutoML"
+mcp__ms-docs__microsoft_docs_search "ML.NET model deployment"
+
+# C# Language Documentation
+mcp__ms-docs__microsoft_docs_search "C# pattern matching"
+mcp__ms-docs__microsoft_docs_search "C# async await best practices"
+mcp__ms-docs__microsoft_docs_search "C# record types"
+mcp__ms-docs__microsoft_docs_search "C# nullable reference types"
+mcp__ms-docs__microsoft_docs_search "C# LINQ operators"
 ```
 
 #### **🟢 LOW PRIORITY - Utility Tools**
 
 ##### **Container Management** (Podman/Docker)
+
 ```bash
 mcp__podman__container_run                          # Run containers
 mcp__podman__image_build                            # Build images
@@ -193,12 +265,14 @@ mcp__podman__container_logs                         # View logs
 ```
 
 ##### **Memory & Knowledge Graph** (Context Persistence)
+
 ```bash
 mcp__memory__create_entities                        # Store knowledge
 mcp__memory__search_nodes                           # Query knowledge
 ```
 
 ##### **Web & Sequential Thinking** (External Resources)
+
 ```bash
 mcp__fetch__fetch                                   # Fetch URLs
 mcp__sequential-thinking__sequentialthinking        # Complex reasoning
@@ -207,6 +281,7 @@ mcp__sequential-thinking__sequentialthinking        # Complex reasoning
 #### **🔵 RARELY USED - System Tools**
 
 ##### **IDE & MCP Infrastructure**
+
 ```bash
 mcp__ide__getDiagnostics                            # IDE diagnostics
 ListMcpResourcesTool                                # List MCP resources
@@ -216,16 +291,19 @@ ReadMcpResourceTool                                 # Read MCP resource
 ## Architecture & Code Organization
 
 ### Repository Structure
+
 - **Monorepo**: Each library is a self-contained module with its own folder
 - **Module Structure**: Each module contains:
-  - `src/` - Main library source code
-  - `tests/` - Unit tests
-  - `benchmark/` - Performance benchmarks
-  - `samples/` - Sample applications (where applicable)
-  - `build.ps1` - Module-specific build script
+	- `src/` - Main library source code
+	- `tests/` - Unit tests
+	- `benchmark/` - Performance benchmarks
+	- `samples/` - Sample applications (where applicable)
+	- `build.ps1` - Module-specific build script
 
 ### Build Dependencies Order
+
 The main `build.ps1` processes modules in dependency order:
+
 1. System, Validation, Annotations, Extensions, Testing
 2. Cryptography, Hosting, Tools, Domain, Mvc
 3. Webserver, Webmaster, Detection, Responsive
@@ -234,7 +312,9 @@ The main `build.ps1` processes modules in dependency order:
 6. Solver, Microservice, Nation
 
 ### Module Build Process
+
 Each module's `build.ps1` follows this pattern:
+
 1. `dotnet clean .\src\ -c Release -tl` - Clean source
 2. `dotnet restore .\src\` - Restore dependencies
 3. `dotnet build .\src\ -c Release -tl` - Build source
@@ -243,12 +323,15 @@ Each module's `build.ps1` follows this pattern:
 6. `dotnet build .\tests\ -c Release -tl` - Build tests
 
 ### Key Patterns
+
 - **Extension Methods**: Extensive use of extension methods for ASP.NET Core services
 - **Builder Pattern**: Each library provides a builder interface (e.g., `IDetectionBuilder`, `IResponsiveBuilder`)
 - **Service Registration**: Follows ASP.NET Core DI conventions with `AddService()` extension methods
-- **Namespace Organization**: Libraries use namespace aliases (e.g., `namespace Microsoft.Extensions.DependencyInjection`)
+- **Namespace Organization**: Libraries use namespace aliases (e.g.,
+  `namespace Microsoft.Extensions.DependencyInjection`)
 
 ### Common File Structures
+
 - **DependencyInjection/**: Service registration and builder classes
 - **Services/**: Core business logic and services
 - **Hosting/**: ASP.NET Core middleware and hosting integration
@@ -258,12 +341,15 @@ Each module's `build.ps1` follows this pattern:
 ## Code Style & Standards
 
 ### File Headers
+
 All source files include this copyright header:
+
 ```csharp
 // Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
 ```
 
 ### Code Style
+
 - **Indentation**: Tabs (4 spaces width)
 - **Braces**: Next line style (Allman)
 - **var usage**: Preferred for built-in types and when type is apparent
@@ -272,6 +358,7 @@ All source files include this copyright header:
 - **Max line length**: 300 characters
 
 ### Testing Framework
+
 - **xUnit**: Primary testing framework
 - **Test Structure**: Follows AAA pattern (Arrange, Act, Assert)
 - **Mock Objects**: Custom mock implementations in `Mocks/` folders
@@ -281,6 +368,7 @@ All source files include this copyright header:
 ### **REPOMIX-FIRST DEVELOPMENT APPROACH**
 
 #### **Phase 1: Codebase Analysis (ALWAYS START HERE)**
+
 ```bash
 # 1. Generate current codebase analysis
 mcp__repomix__pack_codebase --directory="/Users/wangkanai/Sources/wangkanai"
@@ -296,6 +384,7 @@ mcp__repomix__grep_repomix_output "ThrowIfNull|ArgumentNullException"
 ```
 
 #### **Phase 2: Targeted Analysis**
+
 ```bash
 # 4. Selective content reading (efficient token usage)
 mcp__repomix__read_repomix_output --startLine=1000 --endLine=1200
@@ -306,6 +395,7 @@ mcp__repomix__grep_repomix_output "IServiceCollection.*Services"
 ```
 
 #### **Phase 3: Implementation**
+
 ```bash
 # 6. Pattern-based implementation guidance
 mcp__repomix__grep_repomix_output "class.*Builder.*IServiceCollection"
@@ -313,6 +403,7 @@ mcp__repomix__grep_repomix_output "public.*static.*Add.*Builder"
 ```
 
 ### **Traditional Module Development (Use After Repomix Analysis)**
+
 1. Navigate to specific module directory
 2. Run `.\build.ps1` to build and test the module
 3. Make changes to `src/` directory
@@ -322,6 +413,7 @@ mcp__repomix__grep_repomix_output "public.*static.*Add.*Builder"
 ### **REPOMIX-ENHANCED FEATURE DEVELOPMENT**
 
 #### **Before Writing Code - Pattern Discovery**
+
 ```bash
 # 1. Find existing similar implementations
 mcp__repomix__grep_repomix_output "class.*YourFeature.*Builder"
@@ -337,6 +429,7 @@ mcp__repomix__grep_repomix_output "AddYourFeature.*Builder.*Null.*ArgumentNullEx
 ```
 
 #### **Implementation Guidelines**
+
 1. **Follow discovered patterns** from repomix analysis
 2. **Implement builder pattern** based on existing examples
 3. **Add comprehensive unit tests** following found test patterns
@@ -344,6 +437,7 @@ mcp__repomix__grep_repomix_output "AddYourFeature.*Builder.*Null.*ArgumentNullEx
 5. **Follow namespace conventions** discovered in analysis
 
 #### **Quality Assurance Patterns**
+
 ```bash
 # 4. Verify implementation consistency
 mcp__repomix__grep_repomix_output "ThrowIfNull.*builder"
@@ -352,6 +446,7 @@ mcp__repomix__grep_repomix_output "public.*static.*class.*Extensions"
 ```
 
 ### Dependencies
+
 - **Primary Framework**: .NET 8.0
 - **ASP.NET Core**: Latest stable version
 - **Entity Framework**: For data access libraries
@@ -360,18 +455,21 @@ mcp__repomix__grep_repomix_output "public.*static.*class.*Extensions"
 ## Quality Assurance
 
 ### CI/CD Pipeline
+
 - **GitHub Actions**: `.github/workflows/dotnet.yml` runs on main branch
 - **SonarCloud**: Code quality analysis with `SonarQube.Analysis.xml` configuration
 - **Coverage**: Uses `dotnet-coverage` for test coverage reporting
 - **Multi-target**: Supports .NET 8.0 and 9.0
 
 ### Code Quality Tools
+
 - **SonarCloud**: Configured to exclude benchmarks, samples, and node_modules
 - **EditorConfig**: Comprehensive formatting rules in `.editorconfig`
 - **ReSharper**: Detailed code style configuration for consistent formatting
 - **Central Package Management**: All package versions managed in `Directory.Packages.props`
 
 ### Exclusions for Analysis
+
 - Benchmarks (`**/benchmark/**`)
 - Sample applications (`**/samples/**`)
 - Node modules (`**/node_modules/**`)
@@ -382,6 +480,7 @@ mcp__repomix__grep_repomix_output "public.*static.*class.*Extensions"
 ### **Systematic Code Analysis Protocol**
 
 #### **1. Initial Repository Analysis**
+
 ```bash
 # Always start with fresh analysis
 mcp__repomix__pack_codebase --directory="/Users/wangkanai/Sources/wangkanai"
@@ -391,6 +490,7 @@ mcp__repomix__read_repomix_output --startLine=1 --endLine=100
 ```
 
 #### **2. Architecture Discovery**
+
 ```bash
 # Service layer analysis
 mcp__repomix__grep_repomix_output "interface.*Service" --contextLines=2
@@ -405,6 +505,7 @@ mcp__repomix__grep_repomix_output "public.*static.*class.*Extensions" --contextL
 ```
 
 #### **3. Cross-Module Consistency Verification**
+
 ```bash
 # DI registration patterns
 mcp__repomix__grep_repomix_output "AddRequiredServices|AddCoreServices|AddMarkerService"
@@ -416,6 +517,7 @@ mcp__repomix__grep_repomix_output "ArgumentNullException" --contextLines=2
 ```
 
 #### **4. Testing Coverage Analysis**
+
 ```bash
 # Test class discovery
 mcp__repomix__grep_repomix_output "public.*class.*Tests" --contextLines=1
@@ -427,6 +529,7 @@ mcp__repomix__grep_repomix_output "Assert.*" --contextLines=1
 ```
 
 #### **5. Performance & Quality Checks**
+
 ```bash
 # Performance indicators
 mcp__repomix__grep_repomix_output "TODO|FIXME|BUG|HACK" --ignoreCase=true
@@ -439,12 +542,14 @@ mcp__repomix__grep_repomix_output "Options.*" --contextLines=1
 ### **Efficiency Guidelines for Repomix Usage**
 
 #### **Token Conservation Strategies**
+
 1. **Use grep first** - Find patterns before reading full content
 2. **Selective reading** - Use startLine/endLine for targeted analysis
 3. **Context lines** - Use --contextLines for focused results
 4. **Pattern libraries** - Build reusable search patterns
 
 #### **Pattern Library Examples**
+
 ```bash
 # Common .NET patterns
 BUILDER_PATTERN="class.*Builder.*IServiceCollection"
@@ -461,6 +566,7 @@ DI_PATTERN="AddRequiredServices|AddCoreServices|AddMarkerService"
 The repository now includes automated hooks that trigger repomix packing when code changes are detected:
 
 #### **Git Hooks (Repository Level)**
+
 ```bash
 # Installed hooks
 .git/hooks/post-commit          # Triggers after each commit
@@ -474,6 +580,7 @@ The repository now includes automated hooks that trigger repomix packing when co
 ```
 
 #### **Claude Code Hooks (IDE Level)**
+
 ```bash
 # Hook configuration in .claude/settings.local.json
 - user-prompt-submit: Triggers on code-related prompts
@@ -487,6 +594,7 @@ The repository now includes automated hooks that trigger repomix packing when co
 ```
 
 #### **Repomix Monitor Daemon**
+
 ```bash
 # Start the monitoring daemon
 ./.claude/repomix-monitor.sh start
@@ -502,6 +610,7 @@ The repository now includes automated hooks that trigger repomix packing when co
 ```
 
 ### **📁 Hook File Structure**
+
 ```
 .git/hooks/
 ├── post-commit                 # Git commit hook
@@ -522,6 +631,7 @@ The repository now includes automated hooks that trigger repomix packing when co
 ### **🎯 Trigger Conditions**
 
 #### **Code-Related Keywords (User Prompts)**
+
 - Architecture: `analyze`, `architecture`, `structure`, `design`, `pattern`
 - Implementation: `implement`, `create`, `add`, `build`, `configure`
 - Analysis: `find`, `search`, `discover`, `examine`, `review`
@@ -529,6 +639,7 @@ The repository now includes automated hooks that trigger repomix packing when co
 - Components: `class`, `method`, `service`, `controller`, `interface`
 
 #### **Code-Changing Tools**
+
 - File operations: `Edit`, `MultiEdit`, `Write`, `NotebookEdit`
 - JetBrains: `replace_*`, `create_new_file_with_text`
 - GitHub: `create_or_update_file`, `push_files`
@@ -536,11 +647,13 @@ The repository now includes automated hooks that trigger repomix packing when co
 ### **⚡ Performance Optimizations**
 
 #### **Cooldown Periods**
+
 - **Git hooks**: 5-minute cooldown between packs
 - **Claude hooks**: 2-minute cooldown for tool triggers
 - **Stale detection**: 10-minute threshold for auto-refresh
 
 #### **Background Processing**
+
 - All hooks run in background to avoid blocking
 - Separate log files for debugging
 - PID tracking for daemon management
@@ -549,6 +662,7 @@ The repository now includes automated hooks that trigger repomix packing when co
 ### **🔧 Configuration & Management**
 
 #### **Enable/Disable Hooks**
+
 ```bash
 # Disable git hooks temporarily
 mv .git/hooks/post-commit .git/hooks/post-commit.disabled
@@ -561,6 +675,7 @@ cat .claude/settings.local.json | jq '.hooks'
 ```
 
 #### **Monitor Hook Activity**
+
 ```bash
 # View git hook logs
 tail -f .git/hooks/repomix-hook.log
