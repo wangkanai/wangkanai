@@ -3,21 +3,8 @@
 	<PropertyGroup>
 		<!--		<OutputType>Exe</OutputType>-->
 		<RootNamespace>Wangkanai.Audit</RootNamespace>
-		<!--
-		To enable the Microsoft Testing Platform 'dotnet test' experience, add property:
-			<TestingPlatformDotnetTestSupport>true</TestingPlatformDotnetTestSupport>
-
-		To enable the Microsoft Testing Platform native command line experience, add property:
-			<UseMicrosoftTestingPlatformRunner>true</UseMicrosoftTestingPlatformRunner>
-
-		For more information on Microsoft Testing Platform support in xUnit.net, please visit:
-			https://xunit.net/docs/getting-started/v3/microsoft-testing-platform
-		-->
 	</PropertyGroup>
 
-	<ItemGroup>
-		<Content Include="xunit.runner.json" CopyToOutputDirectory="PreserveNewest" />
-	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" />
 	</ItemGroup>
