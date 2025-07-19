@@ -23,7 +23,6 @@ public sealed class DiscoveryResult : IEndpointResult
 		MaxAge = maxAge;
 	}
 
-	[RequiresUnreferencedCode()]
 	public Task ExecuteAsync(HttpContext context)
 	{
 		if (MaxAge >= 0)
