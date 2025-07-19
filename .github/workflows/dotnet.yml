@@ -14,6 +14,10 @@ env:
   DOTNET_GENERATE_ASPNET_CERTIFICATE: false
   DOTNET_SYSTEM_CONSOLE_ALLOW_ANSI_COLOR_REDIRECTION: true
   DOTNET_MULTILEVEL_LOOKUP: false
+  # Performance optimizations
+  DOTNET_TieredCompilation: false
+  DOTNET_TC_QuickJitForLoops: false
+  DOTNET_ReadyToRun: 0
   # Skip certain projects on PRs for faster builds
   SKIP_SLOW_PROJECTS: ${{ github.event_name == 'pull_request' && 'true' || 'false' }}
 
@@ -140,8 +144,8 @@ jobs:
 
     - name: Restore dependencies
       run: |
-        # Ultra-fast restore with no-dependencies check
-        dotnet restore --verbosity minimal --no-dependencies
+        # Ultra-fast restore with locked mode and runtime optimization
+        dotnet restore --verbosity minimal --locked-mode --runtime linux-x64 || dotnet restore --verbosity minimal
       shell: bash
 
     # Pre-install npm dependencies to avoid build failures
@@ -150,6 +154,9 @@ jobs:
         if [ -f "Tabler/src/Web/package.json" ]; then
           echo "Installing npm dependencies for Tabler..."
           cd Tabler/src/Web
+          # Install global tools needed by build scripts
+          npm install -g rimraf
+          # Install project dependencies
           npm ci --prefer-offline --no-audit --no-fund || npm install --no-audit --no-fund
           # Create stamp file to prevent re-installation during build
           touch node_modules/.install-stamp
@@ -171,6 +178,9 @@ jobs:
           /p:EnableNETAnalyzers=false \
           /p:RunAnalyzersDuringBuild=false \
           /p:UseCommonOutputDirectory=true \
+          /p:ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch=None \
+          /p:WarningLevel=0 \
+          /p:NoWarn="NU1701,NU1603,CS1591" \
           --verbosity minimal
 
     # Run tests with parallel execution and coverage
@@ -184,9 +194,10 @@ jobs:
         TEST_COUNT=$(echo "$TEST_PROJECTS" | wc -l)
         echo "Found $TEST_COUNT test projects"
 
-        # Run tests in parallel batches
-        echo "Running tests with coverage in parallel..."
-        echo "$TEST_PROJECTS" | xargs -P 4 -I {} bash -c '
+        # Run tests in parallel batches (use all cores)
+        CORES=$(nproc)
+        echo "Running tests with coverage in parallel using $CORES cores..."
+        echo "$TEST_PROJECTS" | xargs -P $CORES -I {} bash -c '
           PROJECT="{}"
           PROJECT_NAME=$(basename "$PROJECT" .csproj)
           echo "Testing $PROJECT_NAME..."
