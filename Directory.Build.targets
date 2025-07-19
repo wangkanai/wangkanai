@@ -48,9 +48,4 @@
 		<PackageReference Include="FluentAssertions"/>
 	</ItemGroup>
 
-	<Target Name="SetCoverletOutputProperty" BeforeTargets="GenerateCoverageResult">
-		<PropertyGroup>
-			<CoverletOutput>$(VSTestResultsDirectory)\$(MSBuildProjectName).coverage</CoverletOutput>
-		</PropertyGroup>
-	</Target>
 </Project>

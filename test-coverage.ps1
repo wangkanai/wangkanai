@@ -47,7 +47,10 @@ $testArgs = @(
     "-c", $Configuration,
     "--collect:`"Code Coverage;Format=cobertura`"",
     "--results-directory", "./TestResults",
-    "--settings", "coverage.runsettings"
+    "--settings", "coverage.runsettings",
+    "/p:CollectCoverage=true",
+    "/p:CoverletOutputFormat=cobertura,opencover",
+    "/p:CoverletOutput=./coverage/"
 )
 
 if ($Filter) {
@@ -65,23 +68,32 @@ if ($LASTEXITCODE -ne 0) {
 # Find and merge coverage files
 Write-Host "Processing coverage results..." -ForegroundColor Yellow
 
-$coverageFiles = Get-ChildItem -Path "./TestResults" -Filter "*.cobertura.xml" -Recurse
-if ($coverageFiles.Count -eq 0) {
+# Find both Microsoft Code Coverage and Coverlet files
+$msCodeCoverageFiles = Get-ChildItem -Path "./TestResults" -Filter "*.cobertura.xml" -Recurse -ErrorAction SilentlyContinue
+$coverletFiles = Get-ChildItem -Path . -Filter "coverage.cobertura.xml" -Recurse -ErrorAction SilentlyContinue | Where-Object { $_.FullName -notlike "*TestResults*" }
+
+$allCoverageFiles = @()
+if ($msCodeCoverageFiles) { $allCoverageFiles += $msCodeCoverageFiles }
+if ($coverletFiles) { $allCoverageFiles += $coverletFiles }
+
+if ($allCoverageFiles.Count -eq 0) {
     Write-Warning "No coverage files found"
     exit 0
 }
+
+Write-Host "Found $($allCoverageFiles.Count) coverage file(s)" -ForegroundColor Yellow
 
 # Create coverage directory
 New-Item -Path "./coverage" -ItemType Directory -Force | Out-Null
 
 # If single file, just copy it
-if ($coverageFiles.Count -eq 1) {
-    Copy-Item $coverageFiles[0].FullName -Destination "./coverage/coverage.cobertura.xml"
+if ($allCoverageFiles.Count -eq 1) {
+    Copy-Item $allCoverageFiles[0].FullName -Destination "./coverage/coverage.cobertura.xml" -Force
     Write-Host "Coverage report: ./coverage/coverage.cobertura.xml" -ForegroundColor Green
 }
 else {
     # Multiple files - need to merge
-    Write-Host "Found $($coverageFiles.Count) coverage files, merging..." -ForegroundColor Yellow
+    Write-Host "Merging $($allCoverageFiles.Count) coverage files..." -ForegroundColor Yellow
     
     # Install ReportGenerator if not present
     if (-not (Get-Command reportgenerator -ErrorAction SilentlyContinue)) {
@@ -90,16 +102,34 @@ else {
     }
     
     # Merge coverage files
-    $inputFiles = $coverageFiles | ForEach-Object { $_.FullName }
+    $inputFiles = $allCoverageFiles | ForEach-Object { $_.FullName }
+    Write-Host "Input files: $($inputFiles -join ', ')" -ForegroundColor Cyan
+    
     reportgenerator `
         -reports:$($inputFiles -join ';') `
         -targetdir:./coverage `
-        -reporttypes:"Cobertura;HtmlInline_AzurePipelines;SonarQube" `
+        -reporttypes:"Cobertura;OpenCover;HtmlInline_AzurePipelines;SonarQube" `
         -verbosity:Info
     
-    Write-Host "Merged coverage report: ./coverage/Cobertura.xml" -ForegroundColor Green
+    # Rename output files for consistency
+    if (Test-Path "./coverage/Cobertura.xml") {
+        Move-Item "./coverage/Cobertura.xml" "./coverage/coverage.cobertura.xml" -Force
+    }
+    if (Test-Path "./coverage/OpenCover.xml") {
+        Move-Item "./coverage/OpenCover.xml" "./coverage/coverage.opencover.xml" -Force
+    }
+    
+    Write-Host "Merged coverage report: ./coverage/coverage.cobertura.xml" -ForegroundColor Green
+    Write-Host "OpenCover report: ./coverage/coverage.opencover.xml" -ForegroundColor Green
     Write-Host "HTML report: ./coverage/index.html" -ForegroundColor Green
     Write-Host "SonarQube report: ./coverage/SonarQube.xml" -ForegroundColor Green
+}
+
+# Also check for Coverlet's opencover format files
+$openCoverFiles = Get-ChildItem -Path . -Filter "coverage.opencover.xml" -Recurse -ErrorAction SilentlyContinue | Where-Object { $_.FullName -notlike "*TestResults*" }
+if ($openCoverFiles.Count -gt 0 -and -not (Test-Path "./coverage/coverage.opencover.xml")) {
+    Copy-Item $openCoverFiles[0].FullName -Destination "./coverage/coverage.opencover.xml" -Force
+    Write-Host "OpenCover report: ./coverage/coverage.opencover.xml" -ForegroundColor Green
 }
 
 # Display summary
