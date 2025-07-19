@@ -3,12 +3,7 @@
     <File Path="CLAUDE.md" />
     <File Path="repomix.config.json" />
     <File Path=".repomixignore" />
-    <File Path=".claude\repomix-monitor.sh" />
     <File Path=".claude\settings.local.json" />
-  </Folder>
-  <Folder Name="/.claude/hooks/">
-    <File Path=".claude\hooks\post-tool-repomix.sh" />
-    <File Path=".claude\hooks\repomix-auto-pack.sh" />
   </Folder>
   <Folder Name="/.github/">
     <File Path=".github\FUNDING.yml" />
