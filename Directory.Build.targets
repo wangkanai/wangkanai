@@ -38,12 +38,10 @@
 		<PackageReference Include="Microsoft.TestPlatform.TestHost"/>
 		<PackageReference Include="Microsoft.AspNetCore.TestHost"/>
 		<PackageReference Include="Microsoft.NET.Test.Sdk"/>
-		<PackageReference Include="Microsoft.CodeCoverage"/>
 		<PackageReference Include="Moq"/>
 		<PackageReference Include="xunit.v3"/>
 		<PackageReference Include="xunit.runner.visualstudio"/>
 		<PackageReference Include="xunit.analyzers"/>
-		<PackageReference Include="coverlet.collector"/>
 		<PackageReference Include="coverlet.msbuild"/>
 		<PackageReference Include="FluentAssertions"/>
 	</ItemGroup>

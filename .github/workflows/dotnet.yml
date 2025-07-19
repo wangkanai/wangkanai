@@ -35,8 +35,8 @@ jobs:
     - name: Setup SonarCloud
       run:  dotnet tool install --global dotnet-sonarscanner
 
-    - name: Setup Coverage
-      run:  dotnet tool install --global dotnet-coverage
+    - name: Setup ReportGenerator
+      run:  dotnet tool install --global dotnet-reportgenerator-globaltool
 
     - name: Install npm
       run:  |
@@ -54,7 +54,7 @@ jobs:
         /d:sonar.host.url="https://sonarcloud.io"
         /d:sonar.scanner.skipJreProvisioning=true
         /d:sonar.scanner.scanAll=false
-        /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
+        /d:sonar.cs.opencover.reportsPaths=coverage/coverage.opencover.xml
 
     - name: Restore dependencies
       run:  dotnet restore

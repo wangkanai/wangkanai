@@ -40,17 +40,16 @@ if (-not $NoBuild) {
     }
 }
 
-# Run tests with code coverage
+# Run tests with Coverlet coverage
 $testArgs = @(
     "test",
     "--no-build",
     "-c", $Configuration,
-    "--collect:`"Code Coverage;Format=cobertura`"",
-    "--results-directory", "./TestResults",
-    "--settings", "coverage.runsettings",
     "/p:CollectCoverage=true",
     "/p:CoverletOutputFormat=cobertura,opencover",
-    "/p:CoverletOutput=./coverage/"
+    "/p:CoverletOutput=./coverage/",
+    "/p:MergeWith=./coverage/coverage.json",
+    "/p:SkipAutoProps=true"
 )
 
 if ($Filter) {
@@ -65,71 +64,32 @@ if ($LASTEXITCODE -ne 0) {
     exit 1
 }
 
-# Find and merge coverage files
-Write-Host "Processing coverage results..." -ForegroundColor Yellow
+# Check coverage results
+Write-Host "Checking coverage results..." -ForegroundColor Yellow
 
-# Find both Microsoft Code Coverage and Coverlet files
-$msCodeCoverageFiles = Get-ChildItem -Path "./TestResults" -Filter "*.cobertura.xml" -Recurse -ErrorAction SilentlyContinue
-$coverletFiles = Get-ChildItem -Path . -Filter "coverage.cobertura.xml" -Recurse -ErrorAction SilentlyContinue | Where-Object { $_.FullName -notlike "*TestResults*" }
-
-$allCoverageFiles = @()
-if ($msCodeCoverageFiles) { $allCoverageFiles += $msCodeCoverageFiles }
-if ($coverletFiles) { $allCoverageFiles += $coverletFiles }
-
-if ($allCoverageFiles.Count -eq 0) {
-    Write-Warning "No coverage files found"
+# Coverlet generates files in the root coverage directory
+if (-not (Test-Path "./coverage/coverage.cobertura.xml")) {
+    Write-Warning "No coverage files found in ./coverage/"
     exit 0
 }
 
-Write-Host "Found $($allCoverageFiles.Count) coverage file(s)" -ForegroundColor Yellow
-
-# Create coverage directory
-New-Item -Path "./coverage" -ItemType Directory -Force | Out-Null
-
-# If single file, just copy it
-if ($allCoverageFiles.Count -eq 1) {
-    Copy-Item $allCoverageFiles[0].FullName -Destination "./coverage/coverage.cobertura.xml" -Force
-    Write-Host "Coverage report: ./coverage/coverage.cobertura.xml" -ForegroundColor Green
+Write-Host "Coverage reports generated:" -ForegroundColor Green
+if (Test-Path "./coverage/coverage.cobertura.xml") {
+    Write-Host "  - Cobertura: ./coverage/coverage.cobertura.xml" -ForegroundColor Green
 }
-else {
-    # Multiple files - need to merge
-    Write-Host "Merging $($allCoverageFiles.Count) coverage files..." -ForegroundColor Yellow
-    
-    # Install ReportGenerator if not present
-    if (-not (Get-Command reportgenerator -ErrorAction SilentlyContinue)) {
-        Write-Host "Installing ReportGenerator..." -ForegroundColor Yellow
-        dotnet tool install -g dotnet-reportgenerator-globaltool
-    }
-    
-    # Merge coverage files
-    $inputFiles = $allCoverageFiles | ForEach-Object { $_.FullName }
-    Write-Host "Input files: $($inputFiles -join ', ')" -ForegroundColor Cyan
-    
+if (Test-Path "./coverage/coverage.opencover.xml") {
+    Write-Host "  - OpenCover: ./coverage/coverage.opencover.xml" -ForegroundColor Green
+}
+
+# Generate HTML report if ReportGenerator is available
+if (Get-Command reportgenerator -ErrorAction SilentlyContinue) {
+    Write-Host "Generating HTML report..." -ForegroundColor Yellow
     reportgenerator `
-        -reports:$($inputFiles -join ';') `
-        -targetdir:./coverage `
-        -reporttypes:"Cobertura;OpenCover;HtmlInline_AzurePipelines;SonarQube" `
-        -verbosity:Info
-    
-    # Rename output files for consistency
-    if (Test-Path "./coverage/Cobertura.xml") {
-        Move-Item "./coverage/Cobertura.xml" "./coverage/coverage.cobertura.xml" -Force
-    }
-    if (Test-Path "./coverage/OpenCover.xml") {
-        Move-Item "./coverage/OpenCover.xml" "./coverage/coverage.opencover.xml" -Force
-    }
-    
-    Write-Host "Merged coverage report: ./coverage/coverage.cobertura.xml" -ForegroundColor Green
-    Write-Host "OpenCover report: ./coverage/coverage.opencover.xml" -ForegroundColor Green
-    Write-Host "HTML report: ./coverage/index.html" -ForegroundColor Green
-    Write-Host "SonarQube report: ./coverage/SonarQube.xml" -ForegroundColor Green
-}
-
-# Also check for Coverlet's opencover format files
-$openCoverFiles = Get-ChildItem -Path . -Filter "coverage.opencover.xml" -Recurse -ErrorAction SilentlyContinue | Where-Object { $_.FullName -notlike "*TestResults*" }
-if ($openCoverFiles.Count -gt 0 -and -not (Test-Path "./coverage/coverage.opencover.xml")) {
-    Copy-Item $openCoverFiles[0].FullName -Destination "./coverage/coverage.opencover.xml" -Force
-    Write-Host "OpenCover report: ./coverage/coverage.opencover.xml" -ForegroundColor Green
+        -reports:"./coverage/coverage.cobertura.xml" `
+        -targetdir:"./coverage/html" `
+        -reporttypes:"HtmlInline_AzurePipelines" `
+        -verbosity:Error
+    Write-Host "  - HTML: ./coverage/html/index.html" -ForegroundColor Green
 }
 
 # Display summary
