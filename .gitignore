@@ -11,6 +11,7 @@ dist/
 **/wwwroot/lib/
 **/wwwroot/dist/
 
+settings.local.json
 pnpm-lock.yaml
 package-lock.json
 *.DotSettings

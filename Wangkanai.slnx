@@ -3,11 +3,6 @@
     <File Path="CLAUDE.md" />
     <File Path="repomix.config.json" />
     <File Path=".repomixignore" />
-    <File Path=".claude\repomix-monitor.sh" />
-  </Folder>
-  <Folder Name="/.claude/hooks/">
-    <File Path=".claude\hooks\post-tool-repomix.sh" />
-    <File Path=".claude\hooks\repomix-auto-pack.sh" />
   </Folder>
   <Folder Name="/.github/">
     <File Path=".github\FUNDING.yml" />
@@ -258,7 +253,7 @@
     <File Path="System\Directory.Build.props" />
     <File Path="System\README.md" />
     <File Path="System\sign.ps1" />
-    <File Path="build.ps1" />
+    <File Path="System\build.ps1" />
   </Folder>
   <Folder Name="/Tabler/">
     <Project Path="Tabler\benchmark\Wangkanai.Tabler.Benchmark.csproj" />
