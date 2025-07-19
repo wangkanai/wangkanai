@@ -59,27 +59,12 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-dotnet-tools-
 
-    # Check if .NET is already cached
-    - name: Check .NET SDK Cache
-      id: dotnet-check
-      run: |
-        if [ -d "${{ env.DOTNET_ROOT }}" ] && [ -f "${{ env.DOTNET_ROOT }}/dotnet" ]; then
-          echo "cache-hit=true" >> $GITHUB_OUTPUT
-          echo "✅ .NET SDK found in cache"
-        else
-          echo "cache-hit=false" >> $GITHUB_OUTPUT
-          echo "❌ .NET SDK not in cache"
-        fi
-      shell: bash
-
     - name: Setup .NET
-      if: steps.dotnet-check.outputs.cache-hit != 'true'
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: |
           8.0.x
           9.0.x
-        global-json-file: false
 
     # Install tools with proper checking
     - name: Install tools
