@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using System.Xml.Serialization;
 
@@ -22,8 +22,8 @@ public static class SerializationExtensions
 	{
 		source.ThrowIfNull();
 
-		var       serializer = new XmlSerializer(typeof(T));
-		using var writer     = new StringWriter();
+		var serializer = new XmlSerializer(typeof(T));
+		using var writer = new StringWriter();
 		serializer.Serialize(writer, source);
 		return writer.ToString();
 	}
@@ -39,8 +39,8 @@ public static class SerializationExtensions
 	{
 		xml.ThrowIfNull();
 
-		var       serializer = new XmlSerializer(typeof(T));
-		using var reader     = new StringReader(xml);
+		var serializer = new XmlSerializer(typeof(T));
+		using var reader = new StringReader(xml);
 		return ((T)serializer.Deserialize(reader)!)!;
 	}
 }

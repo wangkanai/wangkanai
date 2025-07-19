@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 namespace Wangkanai.Collections;
 
@@ -53,7 +53,7 @@ public static class ProjectionComparer<TSource>
 public class ProjectionComparer<TSource, TKey> : IComparer<TSource>
 {
 	private readonly Func<TSource, TKey> _projection;
-	private readonly IComparer<TKey>     _comparer;
+	private readonly IComparer<TKey> _comparer;
 
 	/// <summary>
 	/// Creates an instance of the <see cref="ProjectionComparer{TSource,TKey}"/> using the given specified projection, which must not be null.
@@ -63,7 +63,7 @@ public class ProjectionComparer<TSource, TKey> : IComparer<TSource>
 	public ProjectionComparer(Func<TSource, TKey> projection, IComparer<TKey>? comparer = null)
 	{
 		_projection = projection.ThrowIfNull();
-		_comparer   = comparer ?? Comparer<TKey>.Default;
+		_comparer = comparer ?? Comparer<TKey>.Default;
 	}
 
 	/// <summary>
@@ -79,9 +79,9 @@ public class ProjectionComparer<TSource, TKey> : IComparer<TSource>
 	public int Compare(TSource? x, TSource? y)
 		=> (x, y) switch
 		{
-			(null, null) =>  0,
-			(null, _)      => -1,
-			(_, null)      =>  1,
-			_                => _comparer.Compare(_projection(x), _projection(y))
+			(null, null) => 0,
+			(null, _) => -1,
+			(_, null) => 1,
+			_ => _comparer.Compare(_projection(x), _projection(y))
 		};
 }

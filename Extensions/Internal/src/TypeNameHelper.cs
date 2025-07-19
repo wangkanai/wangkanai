@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
@@ -29,7 +29,7 @@ internal static class TypeNameHelper
 	public static string GetTypeDisplayName(this Type type, bool fullName = false, bool includeGenericParameterNames = false, bool includeGenericParameters = true, char nestedTypeDelimiter = DefaultNestedTypeDelimiter)
 	{
 		var builder = new StringBuilder();
-		var option  = new DisplayNameOptions(fullName, includeGenericParameterNames, includeGenericParameters, nestedTypeDelimiter);
+		var option = new DisplayNameOptions(fullName, includeGenericParameterNames, includeGenericParameters, nestedTypeDelimiter);
 		builder.ProcessType(type, option);
 		return builder.ToString();
 	}
@@ -151,9 +151,9 @@ internal static class TypeNameHelper
 		bool includeGenericParameters = false,
 		char nestedTypeDelimiter = '.')
 	{
-		public bool FullName                     { get; } = fullName;
-		public bool IncludeGenericParameters     { get; } = includeGenericParameters;
+		public bool FullName { get; } = fullName;
+		public bool IncludeGenericParameters { get; } = includeGenericParameters;
 		public bool IncludeGenericParameterNames { get; } = includeGenericParameterNames;
-		public char NestedTypeDelimiter          { get; } = nestedTypeDelimiter;
+		public char NestedTypeDelimiter { get; } = nestedTypeDelimiter;
 	}
 }

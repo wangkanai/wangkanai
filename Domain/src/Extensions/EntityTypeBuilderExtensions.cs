@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using Wangkanai.Domain;
 
@@ -23,7 +23,7 @@ public static class EntityTypeBuilderExtensions
 	public static void NewGuidOnAdd<T>(this EntityTypeBuilder<T> builder)
 		where T : class, IEntity<Guid>
 		=> builder.Property(x => x.Id)
-		          .ValueGeneratedOnAdd();
+				  .ValueGeneratedOnAdd();
 
 	/// <summary>
 	/// Configures the entity type to generate a new key value for the Id property
@@ -36,7 +36,7 @@ public static class EntityTypeBuilderExtensions
 	public static void NewKeyOnAdd<T>(this EntityTypeBuilder<T> builder)
 		where T : class, IEntity<int>
 		=> builder.Property(x => x.Id)
-		          .ValueGeneratedOnAdd();
+				  .ValueGeneratedOnAdd();
 
 	/// <summary>
 	/// Configures the entity type to generate a new value for the Id property
@@ -51,7 +51,7 @@ public static class EntityTypeBuilderExtensions
 		where T : class, IEntity<TKey>
 		where TKey : IComparable<TKey>, IEquatable<TKey>
 		=> builder.Property(x => x.Id)
-		          .ValueGeneratedOnAdd();
+				  .ValueGeneratedOnAdd();
 
 	/// <summary>
 	/// Configures the entity type to set a default value of the current date and time
@@ -63,8 +63,8 @@ public static class EntityTypeBuilderExtensions
 	public static void HasDefaultCreated<T>(this EntityTypeBuilder<T> builder)
 		where T : class, ICreatedEntity
 		=> builder.Property(x => x.Created)
-		          .HasDefaultValue(DateTime.Now)
-		          .ValueGeneratedOnAdd();
+				  .HasDefaultValue(DateTime.Now)
+				  .ValueGeneratedOnAdd();
 
 	/// <summary>
 	/// Configures the entity type to set a default value for the Updated property
@@ -77,8 +77,8 @@ public static class EntityTypeBuilderExtensions
 	public static void HasDefaultUpdated<T>(this EntityTypeBuilder<T> builder)
 		where T : class, IUpdatedEntity
 		=> builder.Property(x => x.Updated)
-		          .HasDefaultValue(DateTime.Now)
-		          .ValueGeneratedOnUpdate();
+				  .HasDefaultValue(DateTime.Now)
+				  .ValueGeneratedOnUpdate();
 
 	/// <summary>
 	/// Configures the entity type to set default values and value generation strategies
@@ -95,7 +95,7 @@ public static class EntityTypeBuilderExtensions
 		builder.HasDefaultCreated();
 
 		builder.Property(x => x.Updated)
-		       .HasDefaultValue(DateTime.Now)
-		       .ValueGeneratedOnAddOrUpdate();
+			   .HasDefaultValue(DateTime.Now)
+			   .ValueGeneratedOnAddOrUpdate();
 	}
 }

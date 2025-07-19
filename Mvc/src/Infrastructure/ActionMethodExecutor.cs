@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using System.Diagnostics;
 
@@ -30,11 +30,11 @@ internal abstract class ActionMethodExecutor
 	public static EmptyResult EmptyResultInstance { get; } = new();
 
 	public abstract ValueTask<IActionResult> Execute(
-		ActionContext           actionContext,
+		ActionContext actionContext,
 		IActionResultTypeMapper mapper,
-		ObjectMethodExecutor    executor,
-		object                  controller,
-		object?[]?              arguments);
+		ObjectMethodExecutor executor,
+		object controller,
+		object?[]? arguments);
 
 	protected abstract bool CanExecute(ObjectMethodExecutor executor);
 
@@ -67,14 +67,14 @@ internal abstract class ActionMethodExecutor
 		}
 
 		public override async ValueTask<IActionResult> Execute(
-			ActionContext           actionContext,
+			ActionContext actionContext,
 			IActionResultTypeMapper mapper,
-			ObjectMethodExecutor    executor,
-			object                  controller,
-			object?[]?              arguments)
+			ObjectMethodExecutor executor,
+			object controller,
+			object?[]? arguments)
 		{
 			var context = new ControllerEndpointFilterInvocationContext(_controllerActionDescriptor, actionContext, executor, mapper, controller, arguments);
-			var result  = await _controllerActionDescriptor.FilterDelegate!(context);
+			var result = await _controllerActionDescriptor.FilterDelegate!(context);
 			return ConvertToActionResult(mapper, result, executor.IsMethodAsync ? executor.AsyncResultType! : executor.MethodReturnType);
 		}
 
@@ -95,11 +95,11 @@ internal abstract class ActionMethodExecutor
 	private sealed class VoidResultExecutor : ActionMethodExecutor
 	{
 		public override ValueTask<IActionResult> Execute(
-			ActionContext           actionContext,
+			ActionContext actionContext,
 			IActionResultTypeMapper mapper,
-			ObjectMethodExecutor    executor,
-			object                  controller,
-			object?[]?              arguments)
+			ObjectMethodExecutor executor,
+			object controller,
+			object?[]? arguments)
 		{
 			executor.Execute(controller, arguments);
 			return new(EmptyResultInstance);
@@ -107,9 +107,9 @@ internal abstract class ActionMethodExecutor
 
 		public override ValueTask<object?> Execute(ControllerEndpointFilterInvocationContext invocationContext)
 		{
-			var executor   = invocationContext.Executor;
+			var executor = invocationContext.Executor;
 			var controller = invocationContext.Controller;
-			var arguments  = (object[])invocationContext.Arguments;
+			var arguments = (object[])invocationContext.Arguments;
 
 			executor.Execute(controller, arguments);
 			return new(EmptyResultInstance);
@@ -124,11 +124,11 @@ internal abstract class ActionMethodExecutor
 	private sealed class SyncActionResultExecutor : ActionMethodExecutor
 	{
 		public override ValueTask<IActionResult> Execute(
-			ActionContext           actionContext,
+			ActionContext actionContext,
 			IActionResultTypeMapper mapper,
-			ObjectMethodExecutor    executor,
-			object                  controller,
-			object?[]?              arguments)
+			ObjectMethodExecutor executor,
+			object controller,
+			object?[]? arguments)
 		{
 			var actionResult = (IActionResult)executor.Execute(controller, arguments)!;
 			EnsureActionResultNotNull(executor, actionResult);
@@ -138,9 +138,9 @@ internal abstract class ActionMethodExecutor
 
 		public override ValueTask<object?> Execute(ControllerEndpointFilterInvocationContext invocationContext)
 		{
-			var executor   = invocationContext.Executor;
+			var executor = invocationContext.Executor;
 			var controller = invocationContext.Controller;
-			var arguments  = (object[])invocationContext.Arguments;
+			var arguments = (object[])invocationContext.Arguments;
 
 			var actionResult = (IActionResult)executor.Execute(controller, arguments)!;
 			EnsureActionResultNotNull(executor, actionResult);
@@ -157,27 +157,27 @@ internal abstract class ActionMethodExecutor
 	private sealed class SyncObjectResultExecutor : ActionMethodExecutor
 	{
 		public override ValueTask<IActionResult> Execute(
-			ActionContext           actionContext,
+			ActionContext actionContext,
 			IActionResultTypeMapper mapper,
-			ObjectMethodExecutor    executor,
-			object                  controller,
-			object?[]?              arguments)
+			ObjectMethodExecutor executor,
+			object controller,
+			object?[]? arguments)
 		{
 			// Sync method returning arbitrary object
-			var returnValue  = executor.Execute(controller, arguments);
+			var returnValue = executor.Execute(controller, arguments);
 			var actionResult = ConvertToActionResult(mapper, returnValue, executor.MethodReturnType);
 			return new(actionResult);
 		}
 
 		public override ValueTask<object?> Execute(ControllerEndpointFilterInvocationContext invocationContext)
 		{
-			var executor   = invocationContext.Executor;
+			var executor = invocationContext.Executor;
 			var controller = invocationContext.Controller;
-			var arguments  = (object[])invocationContext.Arguments;
-			var mapper     = invocationContext.Mapper;
+			var arguments = (object[])invocationContext.Arguments;
+			var mapper = invocationContext.Mapper;
 
 			// Sync method returning arbitrary object
-			var returnValue  = executor.Execute(controller, arguments);
+			var returnValue = executor.Execute(controller, arguments);
 			var actionResult = ConvertToActionResult(mapper, returnValue, executor.MethodReturnType);
 			return new(actionResult);
 		}
@@ -190,11 +190,11 @@ internal abstract class ActionMethodExecutor
 	private sealed class TaskResultExecutor : ActionMethodExecutor
 	{
 		public override async ValueTask<IActionResult> Execute(
-			ActionContext           actionContext,
+			ActionContext actionContext,
 			IActionResultTypeMapper mapper,
-			ObjectMethodExecutor    executor,
-			object                  controller,
-			object?[]?              arguments)
+			ObjectMethodExecutor executor,
+			object controller,
+			object?[]? arguments)
 		{
 			await (Task)executor.Execute(controller, arguments)!;
 			return EmptyResultInstance;
@@ -202,9 +202,9 @@ internal abstract class ActionMethodExecutor
 
 		public override async ValueTask<object?> Execute(ControllerEndpointFilterInvocationContext invocationContext)
 		{
-			var executor   = invocationContext.Executor;
+			var executor = invocationContext.Executor;
 			var controller = invocationContext.Controller;
-			var arguments  = (object[])invocationContext.Arguments;
+			var arguments = (object[])invocationContext.Arguments;
 
 			await (Task)executor.Execute(controller, arguments)!;
 			return EmptyResultInstance;
@@ -218,11 +218,11 @@ internal abstract class ActionMethodExecutor
 	private sealed class AwaitableResultExecutor : ActionMethodExecutor
 	{
 		public override async ValueTask<IActionResult> Execute(
-			ActionContext           actionContext,
+			ActionContext actionContext,
 			IActionResultTypeMapper mapper,
-			ObjectMethodExecutor    executor,
-			object                  controller,
-			object?[]?              arguments)
+			ObjectMethodExecutor executor,
+			object controller,
+			object?[]? arguments)
 		{
 			await executor.ExecuteAsync(controller, arguments);
 			return EmptyResultInstance;
@@ -230,9 +230,9 @@ internal abstract class ActionMethodExecutor
 
 		public override async ValueTask<object?> Execute(ControllerEndpointFilterInvocationContext invocationContext)
 		{
-			var executor   = invocationContext.Executor;
+			var executor = invocationContext.Executor;
 			var controller = invocationContext.Controller;
-			var arguments  = (object[])invocationContext.Arguments;
+			var arguments = (object[])invocationContext.Arguments;
 
 			await executor.ExecuteAsync(controller, arguments);
 			return EmptyResultInstance;
@@ -249,15 +249,15 @@ internal abstract class ActionMethodExecutor
 	private sealed class TaskOfIActionResultExecutor : ActionMethodExecutor
 	{
 		public override async ValueTask<IActionResult> Execute(
-			ActionContext           actionContext,
+			ActionContext actionContext,
 			IActionResultTypeMapper mapper,
-			ObjectMethodExecutor    executor,
-			object                  controller,
-			object?[]?              arguments)
+			ObjectMethodExecutor executor,
+			object controller,
+			object?[]? arguments)
 		{
 			// Async method returning Task<IActionResult>
 			// Avoid extra allocations by calling Execute rather than ExecuteAsync and casting to Task<IActionResult>.
-			var returnValue  = executor.Execute(controller, arguments);
+			var returnValue = executor.Execute(controller, arguments);
 			var actionResult = await (Task<IActionResult>)returnValue!;
 			EnsureActionResultNotNull(executor, actionResult);
 
@@ -266,13 +266,13 @@ internal abstract class ActionMethodExecutor
 
 		public override async ValueTask<object?> Execute(ControllerEndpointFilterInvocationContext invocationContext)
 		{
-			var executor   = invocationContext.Executor;
+			var executor = invocationContext.Executor;
 			var controller = invocationContext.Controller;
-			var arguments  = (object[])invocationContext.Arguments;
+			var arguments = (object[])invocationContext.Arguments;
 
 			// Async method returning Task<IActionResult>
 			// Avoid extra allocations by calling Execute rather than ExecuteAsync and casting to Task<IActionResult>.
-			var returnValue  = executor.Execute(controller, arguments);
+			var returnValue = executor.Execute(controller, arguments);
 			var actionResult = await (Task<IActionResult>)returnValue!;
 			EnsureActionResultNotNull(executor, actionResult);
 
@@ -288,11 +288,11 @@ internal abstract class ActionMethodExecutor
 	private sealed class TaskOfActionResultExecutor : ActionMethodExecutor
 	{
 		public override async ValueTask<IActionResult> Execute(
-			ActionContext           actionContext,
+			ActionContext actionContext,
 			IActionResultTypeMapper mapper,
-			ObjectMethodExecutor    executor,
-			object                  controller,
-			object?[]?              arguments)
+			ObjectMethodExecutor executor,
+			object controller,
+			object?[]? arguments)
 		{
 			// Async method returning awaitable-of-IActionResult (e.g., Task<ViewResult>)
 			// We have to use ExecuteAsync because we don't know the awaitable's type at compile time.
@@ -303,9 +303,9 @@ internal abstract class ActionMethodExecutor
 
 		public override async ValueTask<object?> Execute(ControllerEndpointFilterInvocationContext invocationContext)
 		{
-			var executor   = invocationContext.Executor;
+			var executor = invocationContext.Executor;
 			var controller = invocationContext.Controller;
-			var arguments  = (object[])invocationContext.Arguments;
+			var arguments = (object[])invocationContext.Arguments;
 
 			// Async method returning awaitable-of-IActionResult (e.g., Task<ViewResult>)
 			// We have to use ExecuteAsync because we don't know the awaitable's type at compile time.
@@ -326,26 +326,26 @@ internal abstract class ActionMethodExecutor
 	private sealed class AwaitableObjectResultExecutor : ActionMethodExecutor
 	{
 		public override async ValueTask<IActionResult> Execute(
-			ActionContext           actionContext,
+			ActionContext actionContext,
 			IActionResultTypeMapper mapper,
-			ObjectMethodExecutor    executor,
-			object                  controller,
-			object?[]?              arguments)
+			ObjectMethodExecutor executor,
+			object controller,
+			object?[]? arguments)
 		{
 			// Async method returning awaitable-of-nonvoid
-			var returnValue  = await executor.ExecuteAsync(controller, arguments);
+			var returnValue = await executor.ExecuteAsync(controller, arguments);
 			var actionResult = ConvertToActionResult(mapper, returnValue, executor.AsyncResultType!);
 			return actionResult;
 		}
 
 		public override async ValueTask<object?> Execute(ControllerEndpointFilterInvocationContext invocationContext)
 		{
-			var executor   = invocationContext.Executor;
+			var executor = invocationContext.Executor;
 			var controller = invocationContext.Controller;
-			var arguments  = (object[])invocationContext.Arguments;
-			var mapper     = invocationContext.Mapper;
+			var arguments = (object[])invocationContext.Arguments;
+			var mapper = invocationContext.Mapper;
 
-			var returnValue  = await executor.ExecuteAsync(controller, arguments);
+			var returnValue = await executor.ExecuteAsync(controller, arguments);
 			var actionResult = ConvertToActionResult(mapper, returnValue, executor.AsyncResultType!);
 			return actionResult;
 		}

@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -10,8 +10,8 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.AspNetCore.Routing.Patterns;
 using Microsoft.Extensions.DependencyInjection;
 
-using Wangkanai.Mvc.Infrastructure;
 using Wangkanai.Mvc.Filters;
+using Wangkanai.Mvc.Infrastructure;
 using Wangkanai.Mvc.Shared;
 using Wangkanai.Routing.Controllers;
 
@@ -19,36 +19,37 @@ namespace Wangkanai.Mvc.Routing;
 
 internal sealed class ActionEndpointFactory
 {
-	private readonly RoutePatternTransformer   _routePatternTransformer;
-	private readonly RequestDelegate           _requestDelegate;
+	private readonly RoutePatternTransformer _routePatternTransformer;
+	private readonly RequestDelegate _requestDelegate;
 	private readonly IRequestDelegateFactory[] _requestDelegateFactories;
-	private readonly IServiceProvider          _serviceProvider;
+	private readonly IServiceProvider _serviceProvider;
 
 	public ActionEndpointFactory(
-		RoutePatternTransformer              routePatternTransformer,
+		RoutePatternTransformer routePatternTransformer,
 		IEnumerable<IRequestDelegateFactory> requestDelegateFactories,
-		IServiceProvider                     serviceProvider)
+		IServiceProvider serviceProvider)
 	{
 		routePatternTransformer.ThrowIfNull(nameof(routePatternTransformer));
 
-		_routePatternTransformer  = routePatternTransformer;
-		_requestDelegate          = CreateRequestDelegate();
+		_routePatternTransformer = routePatternTransformer;
+		_requestDelegate = CreateRequestDelegate();
 		_requestDelegateFactories = requestDelegateFactories.ToArray();
-		_serviceProvider          = serviceProvider;
+		_serviceProvider = serviceProvider;
 	}
 
 	private static RequestDelegate CreateRequestDelegate()
 	{
 		IActionInvokerFactory? invokerFactory = null;
 
-		return (context) => {
-			var endpoint   = context.GetEndpoint();
+		return (context) =>
+		{
+			var endpoint = context.GetEndpoint();
 			var dataTokens = endpoint.Metadata.GetMetadata<IDataTokensMetadata>();
 
 			var routeData = new RouteData();
 			routeData.PushState(router: null, context.Request.RouteValues, new RouteValueDictionary(dataTokens?.DataTokens));
 
-			var action        = endpoint.Metadata.GetMetadata<ActionDescriptor>()!;
+			var action = endpoint.Metadata.GetMetadata<ActionDescriptor>()!;
 			var actionContext = new ActionContext(context, routeData, action);
 
 			if (invokerFactory == null)
@@ -72,16 +73,16 @@ internal sealed class ActionEndpointFactory
 	}
 
 	public void AddEndpoints(
-		List<Endpoint>                         endpoints,
-		HashSet<string>                        routeNames,
-		ActionDescriptor                       action,
-		IReadOnlyList<ConventionalRouteEntry>  routes,
+		List<Endpoint> endpoints,
+		HashSet<string> routeNames,
+		ActionDescriptor action,
+		IReadOnlyList<ConventionalRouteEntry> routes,
 		IReadOnlyList<Action<EndpointBuilder>> conventions,
 		IReadOnlyList<Action<EndpointBuilder>> groupConventions,
 		IReadOnlyList<Action<EndpointBuilder>> finallyConventions,
 		IReadOnlyList<Action<EndpointBuilder>> groupFinallyConventions,
-		bool                                   createInertEndpoints,
-		RoutePattern?                          groupPrefix = null)
+		bool createInertEndpoints,
+		RoutePattern? groupPrefix = null)
 	{
 		endpoints.ThrowIfNull();
 		routeNames.ThrowIfNull();
@@ -96,7 +97,7 @@ internal sealed class ActionEndpointFactory
 		{
 			var builder = new InertEndpointBuilder()
 			{
-				DisplayName     = action.DisplayName,
+				DisplayName = action.DisplayName,
 				RequestDelegate = _requestDelegate,
 			};
 			AddActionDataToBuilder(
@@ -140,7 +141,7 @@ internal sealed class ActionEndpointFactory
 				// to handle link generation.
 				var builder = new RouteEndpointBuilder(requestDelegate, updatedRoutePattern, route.Order)
 				{
-					DisplayName         = action.DisplayName,
+					DisplayName = action.DisplayName,
 					ApplicationServices = _serviceProvider,
 				};
 				AddActionDataToBuilder(
@@ -162,7 +163,7 @@ internal sealed class ActionEndpointFactory
 		}
 		else
 		{
-			var requestDelegate       = CreateRequestDelegate(action) ?? _requestDelegate;
+			var requestDelegate = CreateRequestDelegate(action) ?? _requestDelegate;
 			var attributeRoutePattern = RoutePatternFactory.Parse(action.AttributeRouteInfo.Template);
 
 			// Modify the route and required values to ensure required values can be successfully subsituted.
@@ -186,7 +187,7 @@ internal sealed class ActionEndpointFactory
 
 			var builder = new RouteEndpointBuilder(requestDelegate, updatedRoutePattern, action.AttributeRouteInfo.Order)
 			{
-				DisplayName         = action.DisplayName,
+				DisplayName = action.DisplayName,
 				ApplicationServices = _serviceProvider,
 			};
 			AddActionDataToBuilder(
@@ -209,7 +210,7 @@ internal sealed class ActionEndpointFactory
 
 	private static (RoutePattern resolvedRoutePattern, IDictionary<string, string?> resolvedRequiredValues) ResolveDefaultsAndRequiredValues(ActionDescriptor action, RoutePattern attributeRoutePattern)
 	{
-		RouteValueDictionary?         updatedDefaults        = null;
+		RouteValueDictionary? updatedDefaults = null;
 		IDictionary<string, string?>? resolvedRequiredValues = null;
 
 		foreach (var routeValue in action.RouteValues)
@@ -257,13 +258,13 @@ internal sealed class ActionEndpointFactory
 
 
 	private static void AddActionDataToBuilder(
-		EndpointBuilder                        builder,
-		HashSet<string>                        routeNames,
-		ActionDescriptor                       action,
-		string?                                routeName,
-		RouteValueDictionary?                  dataTokens,
-		bool                                   suppressLinkGeneration,
-		bool                                   suppressPathMatching,
+		EndpointBuilder builder,
+		HashSet<string> routeNames,
+		ActionDescriptor action,
+		string? routeName,
+		RouteValueDictionary? dataTokens,
+		bool suppressLinkGeneration,
+		bool suppressPathMatching,
 		IReadOnlyList<Action<EndpointBuilder>> groupConventions,
 		IReadOnlyList<Action<EndpointBuilder>> conventions,
 		IReadOnlyList<Action<EndpointBuilder>> perRouteConventions,
@@ -295,9 +296,9 @@ internal sealed class ActionEndpointFactory
 		builder.Metadata.Add(action);
 
 		if (routeName != null &&
-		    !suppressLinkGeneration &&
-		    routeNames.Add(routeName) &&
-		    builder.Metadata.OfType<IEndpointNameMetadata>().LastOrDefault()?.EndpointName == null)
+			!suppressLinkGeneration &&
+			routeNames.Add(routeName) &&
+			builder.Metadata.OfType<IEndpointNameMetadata>().LastOrDefault()?.EndpointName == null)
 		{
 			builder.Metadata.Add(new EndpointNameMetadata(routeName));
 		}
@@ -322,12 +323,12 @@ internal sealed class ActionEndpointFactory
 			foreach (var actionConstraint in action.ActionConstraints)
 			{
 				if (actionConstraint is HttpMethodActionConstraint httpMethodActionConstraint &&
-				    !builder.Metadata.OfType<HttpMethodMetadata>().Any())
+					!builder.Metadata.OfType<HttpMethodMetadata>().Any())
 				{
 					builder.Metadata.Add(new HttpMethodMetadata(httpMethodActionConstraint.HttpMethods));
 				}
 				else if (actionConstraint is ConsumesAttribute consumesAttribute &&
-				         !builder.Metadata.OfType<AcceptsMetadata>().Any())
+						 !builder.Metadata.OfType<AcceptsMetadata>().Any())
 				{
 					builder.Metadata.Add(new AcceptsMetadata(consumesAttribute.ContentTypes.ToArray()));
 				}
@@ -355,7 +356,8 @@ internal sealed class ActionEndpointFactory
 		{
 			var routeHandlerFilters = builder.FilterFactories;
 
-			EndpointFilterDelegate del = static invocationContext => {
+			EndpointFilterDelegate del = static invocationContext =>
+			{
 				// By the time this is called, we have the cache entry
 				var controllerInvocationContext = (ControllerEndpointFilterInvocationContext)invocationContext;
 				return controllerInvocationContext.ActionDescriptor.CacheEntry!.InnerActionMethodExecutor.Execute(controllerInvocationContext);
@@ -363,7 +365,7 @@ internal sealed class ActionEndpointFactory
 
 			var context = new EndpointFilterFactoryContext
 			{
-				MethodInfo          = controllerActionDescriptor.MethodInfo,
+				MethodInfo = controllerActionDescriptor.MethodInfo,
 				ApplicationServices = builder.ApplicationServices,
 			};
 

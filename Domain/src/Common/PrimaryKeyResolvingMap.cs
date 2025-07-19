@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 namespace Wangkanai.Domain.Common;
 
@@ -36,9 +36,9 @@ public class PrimaryKeyResolvingMap
 				if (pair is { Key: IUserAuditable transient, Value: IUserAuditable presistent })
 				{
 					transient.CreatedBy = presistent.CreatedBy;
-					transient.Created   = presistent.Created;
+					transient.Created = presistent.Created;
 					transient.UpdatedBy = presistent.UpdatedBy;
-					transient.Updated   = presistent.Updated;
+					transient.Updated = presistent.Updated;
 				}
 			}
 		}

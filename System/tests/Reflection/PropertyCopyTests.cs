@@ -1,12 +1,12 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 namespace Wangkanai.Reflection;
 
 public class PropertyCopyTests
 {
-	[Fact] public void MissingProperty()              => Assert.Throws<ArgumentNullException>(() => PropertyCopy<Simple>.CopyFrom(new { Missing = "oh!" }));
-	[Fact] public void ReadOnlyTargetPropertyThrows() => Assert.Throws<ArgumentException>(() => PropertyCopy<ReadOnly>.CopyFrom(new { Value     = "oh!" }));
-	[Fact] public void IncorrectTypeThrows()          => Assert.Throws<ArgumentException>(() => PropertyCopy<Simple>.CopyFrom(new { Value       = 10 }));
+	[Fact] public void MissingProperty() => Assert.Throws<ArgumentNullException>(() => PropertyCopy<Simple>.CopyFrom(new { Missing = "oh!" }));
+	[Fact] public void ReadOnlyTargetPropertyThrows() => Assert.Throws<ArgumentException>(() => PropertyCopy<ReadOnly>.CopyFrom(new { Value = "oh!" }));
+	[Fact] public void IncorrectTypeThrows() => Assert.Throws<ArgumentException>(() => PropertyCopy<Simple>.CopyFrom(new { Value = 10 }));
 
 	[Fact]
 	public void CopyToSameType()
@@ -113,8 +113,8 @@ public class PropertyCopyTests
 
 	class Three
 	{
-		public string? First  { get; set; }
-		public int?    Second { get; set; }
-		public bool    Third  { get; set; }
+		public string? First { get; set; }
+		public int? Second { get; set; }
+		public bool Third { get; set; }
 	}
 }

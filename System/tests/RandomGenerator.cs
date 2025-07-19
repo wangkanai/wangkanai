@@ -1,11 +1,11 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 namespace Wangkanai;
 
 public class RandomGenerator
 {
 	private int[]? _numbers;
-	private int    _size;
+	private int _size;
 
 	public RandomGenerator(int size, bool keep)
 	{

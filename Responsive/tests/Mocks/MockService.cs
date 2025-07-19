@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using System.Diagnostics;
 
@@ -18,7 +18,7 @@ public static class MockService
 	internal static ResponsiveService ResponsiveService(string agent, ResponsiveOptions options = null!)
 	{
 		var accessor = CreateHttpContextAccessor(agent);
-		var device   = DeviceService(agent);
+		var device = DeviceService(agent);
 		return ResponsiveService(accessor, device, options);
 	}
 
@@ -58,7 +58,7 @@ public static class MockService
 	{
 		var service = new Mock<IHttpContextService>();
 		service.Setup(f => f.Context)
-		       .Returns(context);
+			   .Returns(context);
 		return service;
 	}
 

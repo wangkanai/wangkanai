@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -20,7 +20,8 @@ public static class ObservableCollectionExtensions
 	/// <param name="removeAction">The action to perform when an item is removed from the collection.</param>
 	public static void Observe<T>(this ObservableCollection<T> collection, Action<T> addAction, Action<T> removeAction)
 	{
-		collection.CollectionChanged += (sender, args) => {
+		collection.CollectionChanged += (sender, args) =>
+		{
 			if (args.Action == NotifyCollectionChangedAction.Add)
 				foreach (var newItem in args.NewItems!)
 					addAction((T)newItem);

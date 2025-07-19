@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using Wangkanai.Detection.Models;
 
@@ -8,24 +8,24 @@ public sealed class DetectionService : IDetectionService
 {
 	public DetectionService(
 		IUserAgentService userAgentService,
-		IDeviceService    device,
-		ICrawlerService   crawler,
-		IBrowserService   browser,
-		IEngineService    engine,
-		IPlatformService  platform)
+		IDeviceService device,
+		ICrawlerService crawler,
+		IBrowserService browser,
+		IEngineService engine,
+		IPlatformService platform)
 	{
 		UserAgent = userAgentService.UserAgent;
-		Device    = device;
-		Crawler   = crawler;
-		Browser   = browser;
-		Engine    = engine;
-		Platform  = platform;
+		Device = device;
+		Crawler = crawler;
+		Browser = browser;
+		Engine = engine;
+		Platform = platform;
 	}
 
-	public UserAgent        UserAgent { get; }
-	public IDeviceService   Device    { get; }
-	public ICrawlerService  Crawler   { get; }
-	public IBrowserService  Browser   { get; }
-	public IEngineService   Engine    { get; }
-	public IPlatformService Platform  { get; }
+	public UserAgent UserAgent { get; }
+	public IDeviceService Device { get; }
+	public ICrawlerService Crawler { get; }
+	public IBrowserService Browser { get; }
+	public IEngineService Engine { get; }
+	public IPlatformService Platform { get; }
 }

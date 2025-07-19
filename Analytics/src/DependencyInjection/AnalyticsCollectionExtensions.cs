@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 namespace Microsoft.Extensions.DependencyInjection;
 
@@ -10,9 +10,9 @@ public static class AnalyticsCollectionExtensions
 	/// <returns>An <see cref="IAnalyticsBuilder" /> so that additional calls can be chained</returns>
 	public static IAnalyticsBuilder AddAnalytics(this IServiceCollection services)
 		=> services.AddAnalyticsBuilder()
-		           .AddRequiredServices()
-		           .AddCoreServices()
-		           .AddMarkerService();
+				   .AddRequiredServices()
+				   .AddCoreServices()
+				   .AddMarkerService();
 
 	/// <summary>Add Analytics service to the services container</summary>
 	/// <param name="services">The services available in the application</param>
@@ -20,7 +20,7 @@ public static class AnalyticsCollectionExtensions
 	/// <returns>An <see cref="IAnalyticsBuilder" /> so that additional calls can be chained</returns>
 	public static IAnalyticsBuilder AddAnalytics(this IServiceCollection services, Action<AnalyticsOptions> setAction)
 		=> services.Configure(setAction)
-		           .AddAnalytics();
+				   .AddAnalytics();
 
 	// For internal unit tests
 	internal static IAnalyticsBuilder AddAnalyticsBuilder(this IServiceCollection services)

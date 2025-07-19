@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.Primitives;
@@ -12,12 +12,12 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers;
 [HtmlTargetElement(ElementName, Attributes = ExcludeAttributeName)]
 public class EngineTagHelper : TagHelper
 {
-	private const string ElementName          = "engine";
+	private const string ElementName = "engine";
 	private const string IncludeAttributeName = "include";
 	private const string ExcludeAttributeName = "exclude";
 
-	private static readonly char[]         NameSeparator = { ',' };
-	private readonly        IEngineService _resolver;
+	private static readonly char[] NameSeparator = { ',' };
+	private readonly IEngineService _resolver;
 
 	public EngineTagHelper(IEngineService resolver)
 	{

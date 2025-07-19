@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using System.Reflection;
 
@@ -9,10 +9,10 @@ namespace Wangkanai.Validation;
 
 public class RequireBooleanTests(ITestOutputHelper output)
 {
-	private readonly PropertyInfo      _wannaFalse    = BooleanModel.GetProperty(nameof(BooleanModel.WannaFalse));
-	private readonly PropertyInfo      _wannaTrue     = BooleanModel.GetProperty(nameof(BooleanModel.WannaTrue));
-	private readonly PropertyInfo      _nullableFalse = BooleanModel.GetProperty(nameof(BooleanModel.NullableFalse));
-	private readonly PropertyInfo      _nullableTrue  = BooleanModel.GetProperty(nameof(BooleanModel.NullableTrue));
+	private readonly PropertyInfo _wannaFalse = BooleanModel.GetProperty(nameof(BooleanModel.WannaFalse));
+	private readonly PropertyInfo _wannaTrue = BooleanModel.GetProperty(nameof(BooleanModel.WannaTrue));
+	private readonly PropertyInfo _nullableFalse = BooleanModel.GetProperty(nameof(BooleanModel.NullableFalse));
+	private readonly PropertyInfo _nullableTrue = BooleanModel.GetProperty(nameof(BooleanModel.NullableTrue));
 
 	[Fact]
 	public void ExpectedTrue_ActualTrue()

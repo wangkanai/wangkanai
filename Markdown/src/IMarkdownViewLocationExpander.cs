@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 namespace Wangkanai.Markdown;
 
@@ -9,5 +9,5 @@ public interface IMarkdownViewLocationExpander
 
 	IEnumerable<string> ExpandViewLocations(
 		MarkdownViewLocationExpanderContext context,
-		IEnumerable<string>                 viewLocations);
+		IEnumerable<string> viewLocations);
 }

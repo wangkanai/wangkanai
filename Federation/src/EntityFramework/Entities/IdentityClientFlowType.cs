@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using Wangkanai.Federation.Models;
 
@@ -28,8 +28,8 @@ public class IdentityClientGrantType<TKey> where TKey : IEquatable<TKey>
 		FlowType = flowType;
 	}
 
-	public virtual TKey           Id       { get; set; } = default!;
-	public virtual TKey           ClientId { get; set; }
-	public virtual IdentityClient Client   { get; set; }
-	public virtual FlowTypes      FlowType { get; set; }
+	public virtual TKey Id { get; set; } = default!;
+	public virtual TKey ClientId { get; set; }
+	public virtual IdentityClient Client { get; set; }
+	public virtual FlowTypes FlowType { get; set; }
 }

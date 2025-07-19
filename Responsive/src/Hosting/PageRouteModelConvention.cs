@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 
@@ -23,8 +23,8 @@ internal sealed class ResponsivePageRouteModelConvention : IPageRouteModelConven
 		if (split.Length != 2)
 			throw new InvalidOperationException($"Wangkanai.Responsive.WebmasterPage '{model.RelativePath}' does not follow the required format.");
 
-		var areaName   = model.AreaName;
-		var pageName   = split[0];
+		var areaName = model.AreaName;
+		var pageName = split[0];
 		var deviceName = split[1];
 
 		if (!Enum.TryParse<Device>(deviceName, true, out var device))
@@ -49,7 +49,7 @@ internal sealed class ResponsivePageRouteModelConvention : IPageRouteModelConven
 		//
 		// suffix = '/{id?}'
 		var templateOld = selector.AttributeRouteModel.Template;
-		var suffix      = templateOld.Substring(area.Length + prefix.Length + fileNameWithoutExtension.Length);
+		var suffix = templateOld.Substring(area.Length + prefix.Length + fileNameWithoutExtension.Length);
 
 		if (pageName.Equals("Index", StringComparison.OrdinalIgnoreCase))
 		{

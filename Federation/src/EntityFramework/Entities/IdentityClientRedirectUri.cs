@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 namespace Wangkanai.Federation.Entities;
 
@@ -8,7 +8,7 @@ public class IdentityClientRedirectUri : IdentityClientRedirectUri<Guid>
 
 	public IdentityClientRedirectUri(Guid clientId, string redirectUri) : this()
 	{
-		ClientId    = clientId;
+		ClientId = clientId;
 		RedirectUri = redirectUri;
 	}
 }
@@ -19,13 +19,13 @@ public class IdentityClientRedirectUri<TKey> where TKey : IEquatable<TKey>
 
 	public IdentityClientRedirectUri(TKey clientId, string redirectUri) : this()
 	{
-		ClientId    = clientId;
+		ClientId = clientId;
 		RedirectUri = redirectUri;
 	}
 
 
-	public virtual TKey           Id          { get; set; }
-	public virtual TKey           ClientId    { get; set; }
-	public virtual IdentityClient Client      { get; set; }
-	public virtual string         RedirectUri { get; set; }
+	public virtual TKey Id { get; set; }
+	public virtual TKey ClientId { get; set; }
+	public virtual IdentityClient Client { get; set; }
+	public virtual string RedirectUri { get; set; }
 }

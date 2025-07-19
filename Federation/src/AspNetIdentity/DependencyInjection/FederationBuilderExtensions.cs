@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
@@ -17,32 +17,38 @@ public static class FederationBuilderExtensions
 	{
 		builder.Services.AddTransientDecorator<IUserClaimsPrincipalFactory<TUser>, UserClaimsFactory<TUser>>();
 
-		builder.Services.Configure<IdentityOptions>(options => {
-			options.ClaimsIdentity.UserIdClaimType   = JwtClaimTypes.Subject;
+		builder.Services.Configure<IdentityOptions>(options =>
+		{
+			options.ClaimsIdentity.UserIdClaimType = JwtClaimTypes.Subject;
 			options.ClaimsIdentity.UserNameClaimType = JwtClaimTypes.Name;
-			options.ClaimsIdentity.RoleClaimType     = JwtClaimTypes.Role;
-			options.ClaimsIdentity.EmailClaimType    = JwtClaimTypes.Email;
+			options.ClaimsIdentity.RoleClaimType = JwtClaimTypes.Role;
+			options.ClaimsIdentity.EmailClaimType = JwtClaimTypes.Email;
 		});
 
-		builder.Services.ConfigureApplicationCookie(options => {
+		builder.Services.ConfigureApplicationCookie(options =>
+		{
 			options.Cookie.IsEssential = true;
-			options.Cookie.SameSite    = SameSiteMode.None;
+			options.Cookie.SameSite = SameSiteMode.None;
 		});
 
-		builder.Services.ConfigureExternalCookie(options => {
+		builder.Services.ConfigureExternalCookie(options =>
+		{
 			options.Cookie.IsEssential = true;
-			options.Cookie.SameSite    = SameSiteMode.None;
+			options.Cookie.SameSite = SameSiteMode.None;
 		});
 
-		builder.Services.Configure<CookieAuthenticationOptions>(IdentityConstants.TwoFactorRememberMeScheme, options => {
-			options.Cookie.IsEssential = true;
-		});
-
-		builder.Services.Configure<CookieAuthenticationOptions>(IdentityConstants.TwoFactorRememberMeScheme, options => {
+		builder.Services.Configure<CookieAuthenticationOptions>(IdentityConstants.TwoFactorRememberMeScheme, options =>
+		{
 			options.Cookie.IsEssential = true;
 		});
 
-		builder.Services.AddAuthentication(options => {
+		builder.Services.Configure<CookieAuthenticationOptions>(IdentityConstants.TwoFactorRememberMeScheme, options =>
+		{
+			options.Cookie.IsEssential = true;
+		});
+
+		builder.Services.AddAuthentication(options =>
+		{
 			if (options.DefaultAuthenticateScheme == null && options.DefaultScheme == FederationConstants.DefaultCookieAuthenticationScheme)
 				options.DefaultScheme = IdentityConstants.ApplicationScheme;
 		});

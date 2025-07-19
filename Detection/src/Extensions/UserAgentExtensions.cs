@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using Wangkanai.Detection.Models;
 using Wangkanai.Extensions;
@@ -36,7 +36,7 @@ internal static class UserAgentExtensions
 
 	public static int IndexOf(this UserAgent agent, string word)
 		=> agent.ToLower()
-		        .IndexOf(word.ToLower(), StringComparison.Ordinal);
+				.IndexOf(word.ToLower(), StringComparison.Ordinal);
 
 	public static int IndexOf(this UserAgent agent, Browser browser)
 		=> agent.IndexOf(browser.ToString());
@@ -46,11 +46,11 @@ internal static class UserAgentExtensions
 
 	public static string Substring(this UserAgent agent, int start, int length)
 		=> agent.ToLower()
-		        .Substring(start, length);
+				.Substring(start, length);
 
 	public static string[] Split(this UserAgent agent, char separator)
 		=> agent.ToLower()
-		        .Split(separator);
+				.Split(separator);
 
 	public static bool StartsWith(this UserAgent agent, string word)
 		=> !word.IsNullOrEmpty()

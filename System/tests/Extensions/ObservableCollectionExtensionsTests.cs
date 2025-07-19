@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using System.Collections.ObjectModel;
 
@@ -11,7 +11,7 @@ public class ObservableCollectionExtensionsTests
 	{
 		// Arrange
 		var collection = new ObservableCollection<int>();
-		var result     = 0;
+		var result = 0;
 		collection.Observe(x => result += x, x => result -= x);
 
 		// Act
@@ -28,7 +28,7 @@ public class ObservableCollectionExtensionsTests
 	{
 		// Arrange
 		var collection = new ObservableCollection<int> { 1, 2, 3 };
-		var result     = 6;
+		var result = 6;
 		collection.Observe(x => result += x, x => result -= x);
 
 		// Act
@@ -45,7 +45,7 @@ public class ObservableCollectionExtensionsTests
 	{
 		// Arrange
 		var collection = new ObservableCollection<int> { 1, 2, 3 };
-		var result     = 6;
+		var result = 6;
 		collection.Observe(x => result += x, x => result -= x);
 
 		// Act
@@ -65,7 +65,7 @@ public class ObservableCollectionExtensionsTests
 	{
 		// Arrange
 		var collection = new ObservableCollection<int> { 1, 2, 3 };
-		var result     = 6;
+		var result = 6;
 		collection.Observe(x => result += x, x => result -= x);
 
 		// Act
@@ -85,7 +85,7 @@ public class ObservableCollectionExtensionsTests
 	{
 		// Arrange
 		var collection = new ObservableCollection<int> { 1, 2, 3 };
-		var result     = 6;
+		var result = 6;
 		collection.Observe(x => result += x, x => result -= x);
 
 		// Act

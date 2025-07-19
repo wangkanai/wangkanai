@@ -1,9 +1,9 @@
-// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using Microsoft.Extensions.Options;
 
-using Wangkanai.Markdown.DependencyInjection.Options;
 using Wangkanai.Markdown.ApplicationModels;
+using Wangkanai.Markdown.DependencyInjection.Options;
 
 namespace Microsoft.Extensions.DependencyInjection;
 

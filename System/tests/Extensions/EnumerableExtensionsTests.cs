@@ -1,17 +1,17 @@
-// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 namespace Wangkanai.Extensions;
 
 public class EnumerableExtensionsTests
 {
-	private readonly IEnumerable<string> _nullStrings  = null!;
-	private readonly IEnumerable<int>    _nullInts     = null!;
+	private readonly IEnumerable<string> _nullStrings = null!;
+	private readonly IEnumerable<int> _nullInts = null!;
 	private readonly IEnumerable<string> _emptyStrings = Enumerable.Empty<string>();
-	private readonly IEnumerable<int>    _emptyInts    = Enumerable.Empty<int>();
-	private readonly IEnumerable<string> _existString  = new[] { "hello" };
-	private readonly IEnumerable<int>    _existInt     = new[] { 0, int.MinValue };
+	private readonly IEnumerable<int> _emptyInts = Enumerable.Empty<int>();
+	private readonly IEnumerable<string> _existString = new[] { "hello" };
+	private readonly IEnumerable<int> _existInt = new[] { 0, int.MinValue };
 	private readonly IEnumerable<string> _existStrings = new[] { "hello", "world" };
-	private readonly IEnumerable<int>    _existInts    = new[] { int.MinValue, int.MinValue };
+	private readonly IEnumerable<int> _existInts = new[] { int.MinValue, int.MinValue };
 
 	[Fact]
 	public void IsNull()
@@ -123,7 +123,7 @@ public class EnumerableExtensionsTests
 	public void Apply()
 	{
 		var items = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-		var sum   = 0;
+		var sum = 0;
 		items.Apply(i => sum += i);
 		Assert.Equal(55, sum);
 	}
@@ -132,7 +132,7 @@ public class EnumerableExtensionsTests
 	public void Apply_Null()
 	{
 		var items = new int[] { };
-		var sum   = 0;
+		var sum = 0;
 		items.Apply(i => sum += i);
 		Assert.Equal(0, sum);
 	}
@@ -141,7 +141,7 @@ public class EnumerableExtensionsTests
 	public void Apply_List()
 	{
 		var items = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-		var sum   = 0;
+		var sum = 0;
 		items.Apply(i => sum += i);
 		Assert.Equal(55, sum);
 	}
@@ -150,7 +150,7 @@ public class EnumerableExtensionsTests
 	public void Apply_List_Null()
 	{
 		var items = new List<int> { };
-		var sum   = 0;
+		var sum = 0;
 		items.Apply(i => sum += i);
 		Assert.Equal(0, sum);
 	}
@@ -159,7 +159,7 @@ public class EnumerableExtensionsTests
 	public void Apply_Null_List()
 	{
 		var items = new List<int> { };
-		var sum   = 0;
+		var sum = 0;
 		items.Apply(i => sum += i);
 		Assert.Equal(0, sum);
 	}
@@ -168,7 +168,7 @@ public class EnumerableExtensionsTests
 	public void Apply_Dictionary()
 	{
 		var items = new Dictionary<string, string> { { "1", "1" }, { "2", "2" }, { "3", "3" } };
-		var sum   = 0;
+		var sum = 0;
 		items.Apply((key, value) => sum += int.Parse(key) + int.Parse(value));
 		Assert.Equal(12, sum);
 	}
@@ -177,7 +177,7 @@ public class EnumerableExtensionsTests
 	public void Apply_Dictionary_Null()
 	{
 		Dictionary<string, string> items = null!;
-		var                        sum   = 0;
+		var sum = 0;
 		items.Apply((k, v) => sum += int.Parse(k) + int.Parse(v));
 		Assert.Equal(0, sum);
 	}
@@ -186,7 +186,7 @@ public class EnumerableExtensionsTests
 	public void Apply_Dictionary_Empty()
 	{
 		var items = new Dictionary<string, string>();
-		var sum   = 0;
+		var sum = 0;
 		items.Apply((k, v) => sum += int.Parse(k) + int.Parse(v));
 		Assert.Equal(0, sum);
 	}
@@ -194,7 +194,7 @@ public class EnumerableExtensionsTests
 	[Fact]
 	public void ToDictionary_Int()
 	{
-		var items      = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+		var items = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 		var dictionary = items.ToIDictionary(i => i);
 		Assert.Equal(10, dictionary.Count);
 	}
@@ -202,7 +202,7 @@ public class EnumerableExtensionsTests
 	[Fact]
 	public void ToDictionary_String()
 	{
-		var items      = new[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" };
+		var items = new[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" };
 		var dictionary = items.ToIDictionary(i => i);
 		Assert.Equal(10, dictionary.Count);
 	}
@@ -210,14 +210,14 @@ public class EnumerableExtensionsTests
 	[Fact]
 	public void ToDictionary_Null()
 	{
-		string[] items      = null!;
+		string[] items = null!;
 		Assert.Throws<ArgumentNullException>(() => items.ToIDictionary(i => i));
 	}
 
 	[Fact]
 	public void ToDictionary_Empty()
 	{
-		var items      = new string[] { };
+		var items = new string[] { };
 		var dictionary = items.ToIDictionary(i => i);
 		Assert.Empty(dictionary);
 	}
@@ -225,7 +225,7 @@ public class EnumerableExtensionsTests
 	[Fact]
 	public void ToIDictionary_EqualityComparer_Ints()
 	{
-		var items      = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+		var items = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 		var dictionary = items.ToIDictionary(i => i, EqualityComparer<int>.Default);
 		Assert.Equal(10, dictionary.Count);
 	}
@@ -233,7 +233,7 @@ public class EnumerableExtensionsTests
 	[Fact]
 	public void ToIDictionary_EqualityComparer_Strings()
 	{
-		var items      = new[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" };
+		var items = new[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" };
 		var dictionary = items.ToIDictionary(i => i, EqualityComparer<string>.Default);
 		Assert.Equal(10, dictionary.Count);
 	}
@@ -241,14 +241,14 @@ public class EnumerableExtensionsTests
 	[Fact]
 	public void ToIDictionary_EqualityComparer_Null()
 	{
-		string[] items      = null!;
+		string[] items = null!;
 		Assert.Throws<ArgumentNullException>(() => items.ToIDictionary(i => i, EqualityComparer<string>.Default));
 	}
 
 	[Fact]
 	public void ToIDictionary_EqualityComparer_Empty()
 	{
-		var items      = new string[] { };
+		var items = new string[] { };
 		var dictionary = items.ToIDictionary(i => i, EqualityComparer<string>.Default);
 		Assert.Empty(dictionary);
 	}
@@ -256,7 +256,7 @@ public class EnumerableExtensionsTests
 	[Fact]
 	public void ToIDictionary_EqualityComparer_NullComparer()
 	{
-		var items      = new string[] { };
+		var items = new string[] { };
 		var dictionary = items.ToIDictionary(i => i, null!);
 		Assert.Empty(dictionary);
 	}

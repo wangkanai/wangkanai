@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.AspNetCore.Routing;
@@ -7,9 +7,9 @@ namespace Wangkanai.Markdown.Infrastructure;
 
 internal sealed class DynamicMarkdownRouteValueTransformerMetadata : IDynamicEndpointMetadata
 {
-	public bool    IsDynamic    => true;
-	public object? State        { get; }
-	public Type    SelectorType { get; }
+	public bool IsDynamic => true;
+	public object? State { get; }
+	public Type SelectorType { get; }
 
 	public DynamicMarkdownRouteValueTransformerMetadata(Type selectorType, object? state)
 	{
@@ -22,6 +22,6 @@ internal sealed class DynamicMarkdownRouteValueTransformerMetadata : IDynamicEnd
 			);
 
 		SelectorType = selectorType;
-		State        = state;
+		State = state;
 	}
 }

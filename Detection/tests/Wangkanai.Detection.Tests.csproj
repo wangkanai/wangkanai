@@ -3,7 +3,7 @@
 		<RootNamespace>Wangkanai.Detection</RootNamespace>
 	</PropertyGroup>
 	<ItemGroup>
-		<ProjectReference Include="..\..\Testing\src\Wangkanai.Testing.csproj" />
-		<ProjectReference Include="..\src\Wangkanai.Detection.csproj" />
+		<ProjectReference Include="../../Testing/src/Wangkanai.Testing.csproj" />
+		<ProjectReference Include="../src/Wangkanai.Detection.csproj" />
 	</ItemGroup>
 </Project>

@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using System.IO;
 using System.Text.Encodings.Web;
@@ -14,8 +14,8 @@ namespace Wangkanai.Webmaster.TagHelpers;
 [HtmlTargetElement(InlineImgAttributeName, Attributes = SrcWildcardAttributeName, TagStructure = TagStructure.WithoutEndTag)]
 public sealed class InlineImgTagHelper : UrlResolutionTagHelper
 {
-	private const string InlineImgAttributeName   = "inline-img";
-	private const string SrcAttributeName         = "src";
+	private const string InlineImgAttributeName = "inline-img";
+	private const string SrcAttributeName = "src";
 	private const string SrcWildcardAttributeName = "[src^='~/']";
 
 	private readonly IFileProvider _fileProvider;
@@ -41,7 +41,7 @@ public sealed class InlineImgTagHelper : UrlResolutionTagHelper
 			return;
 		}
 
-		var contentType       = GetFileContentType(Src);
+		var contentType = GetFileContentType(Src);
 		var srcAttributeValue = $"data:{contentType};base64,{fileContent}";
 
 		output.TagName = "img";

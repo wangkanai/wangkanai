@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using System.Diagnostics.CodeAnalysis;
 
@@ -10,8 +10,8 @@ internal static class LinkerFlags
 	///     Flags for a member that is JSON (de)serialized.
 	/// </summary>
 	public const DynamicallyAccessedMemberTypes JsonSerialized = DynamicallyAccessedMemberTypes.PublicConstructors |
-	                                                             DynamicallyAccessedMemberTypes.PublicFields       |
-	                                                             DynamicallyAccessedMemberTypes.PublicProperties;
+																 DynamicallyAccessedMemberTypes.PublicFields |
+																 DynamicallyAccessedMemberTypes.PublicProperties;
 
 	/// <summary>
 	///     Flags for a component

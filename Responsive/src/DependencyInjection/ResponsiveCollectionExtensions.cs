@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using Wangkanai.Responsive;
 
@@ -12,11 +12,11 @@ public static class ResponsiveCollectionExtensions
 	/// <returns>An <see cref="IResponsiveBuilder" /> so that additional calls can be chained</returns>
 	public static IResponsiveBuilder AddResponsive(this IServiceCollection services)
 		=> services.AddResponsiveBuilder()
-		           .AddRequiredServices()
-		           .AddCoreServices()
-		           .AddSessionServices()
-		           .AddResponsiveService()
-		           .AddMarkerService();
+				   .AddRequiredServices()
+				   .AddCoreServices()
+				   .AddSessionServices()
+				   .AddResponsiveService()
+				   .AddMarkerService();
 
 	/// <summary>Add Responsive service to the service container</summary>
 	/// <param name="services">The services available in the application</param>
@@ -24,7 +24,7 @@ public static class ResponsiveCollectionExtensions
 	/// <returns>An <see cref="IResponsiveBuilder" /> so that additional calls can be chained</returns>
 	public static IResponsiveBuilder AddResponsive(this IServiceCollection services, Action<ResponsiveOptions> configure)
 		=> services.Configure(configure)
-		           .AddResponsive();
+				   .AddResponsive();
 
 	// For internal unit tests
 	internal static IResponsiveBuilder AddResponsiveBuilder(this IServiceCollection services)

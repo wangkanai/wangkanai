@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using System.Linq.Expressions;
 
@@ -34,8 +34,8 @@ public static class ReflectionUtility
 		var lambda = (LambdaExpression)propertyExpression;
 
 		var memberExpression = lambda.Body is UnaryExpression unaryExpression
-			                       ? (MemberExpression)unaryExpression.Operand
-			                       : (MemberExpression)lambda.Body;
+								   ? (MemberExpression)unaryExpression.Operand
+								   : (MemberExpression)lambda.Body;
 
 		return memberExpression.Member.Name;
 	}
@@ -45,7 +45,7 @@ public static class ReflectionUtility
 	/// <returns>True if the specified type implements a generic IList interface; otherwise, false.</returns>
 	public static bool IsAssignableFromGenericList(this Type type)
 		=> type.GetInterfaces()
-		       .Any(intType => intType.IsGenericType && intType.GetGenericTypeDefinition() == typeof(IList<>));
+			   .Any(intType => intType.IsGenericType && intType.GetGenericTypeDefinition() == typeof(IList<>));
 
 	private class ObjectReferenceComparer : IEqualityComparer<object>
 	{
@@ -54,6 +54,6 @@ public static class ReflectionUtility
 
 		public int GetHashCode(object obj)
 			=> obj.ThrowIfNull()
-			      .GetHashCode();
+				  .GetHashCode();
 	}
 }

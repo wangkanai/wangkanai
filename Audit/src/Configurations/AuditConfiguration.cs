@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using System.Text.Json;
 
@@ -32,54 +32,54 @@ public class AuditConfiguration<TKey, TUserType, TUserKey>
 
 		builder.HasIndex(x => x.EntityName);
 		builder.Property(x => x.EntityName)
-		       .HasMaxLength(100)
-		       .IsRequired();
+			   .HasMaxLength(100)
+			   .IsRequired();
 
 		builder.Property(x => x.PrimaryKey)
-		       .HasMaxLength(100);
+			   .HasMaxLength(100);
 
 		builder.Property(x => x.Timestamp)
-		       .IsRequired()
-		       .HasConversion(to => DateTime.SpecifyKind(to, DateTimeKind.Utc), value => DateTime.SpecifyKind(value, DateTimeKind.Utc));
+			   .IsRequired()
+			   .HasConversion(to => DateTime.SpecifyKind(to, DateTimeKind.Utc), value => DateTime.SpecifyKind(value, DateTimeKind.Utc));
 
 		builder.Property(x => x.TrailType)
-		       .HasConversion<string>();
+			   .HasConversion<string>();
 
 		builder.Property(x => x.EntityName)
-		       .IsRequired();
+			   .IsRequired();
 
 		builder.Ignore(x => x.ChangedColumns)
-		       .UsePropertyAccessMode(PropertyAccessMode.Field);
+			   .UsePropertyAccessMode(PropertyAccessMode.Field);
 		builder.Property(x => x.ChangedColumns)
-		       .HasColumnType("jsonb")
-		       .HasConversion(
-			       c => JsonSerializer.Serialize(c, (JsonSerializerOptions?)null),
-			       c => JsonSerializer.Deserialize<List<string>>(c, (JsonSerializerOptions?)null)
-		       );
+			   .HasColumnType("jsonb")
+			   .HasConversion(
+				   c => JsonSerializer.Serialize(c, (JsonSerializerOptions?)null),
+				   c => JsonSerializer.Deserialize<List<string>>(c, (JsonSerializerOptions?)null)
+			   );
 
 		builder.Ignore(x => x.OldValues)
-		       .UsePropertyAccessMode(PropertyAccessMode.Field);
+			   .UsePropertyAccessMode(PropertyAccessMode.Field);
 		builder.Property(x => x.OldValues)
-		       .HasColumnType("jsonb")
-		       .HasConversion(
-			       c => JsonSerializer.Serialize(c, (JsonSerializerOptions?)null),
-			       c => JsonSerializer.Deserialize<Dictionary<string, object?>>(c, (JsonSerializerOptions?)null)
-		       );
+			   .HasColumnType("jsonb")
+			   .HasConversion(
+				   c => JsonSerializer.Serialize(c, (JsonSerializerOptions?)null),
+				   c => JsonSerializer.Deserialize<Dictionary<string, object?>>(c, (JsonSerializerOptions?)null)
+			   );
 
 		builder.Ignore(x => x.NewValues)
-		       .UsePropertyAccessMode(PropertyAccessMode.Field);
+			   .UsePropertyAccessMode(PropertyAccessMode.Field);
 		builder.Property(x => x.NewValues)
-		       .HasColumnType("jsonb")
-		       .HasConversion(
-			       c => JsonSerializer.Serialize(c, (JsonSerializerOptions?)null),
-			       c => JsonSerializer.Deserialize<Dictionary<string, object?>>(c, (JsonSerializerOptions?)null)
-		       );
+			   .HasColumnType("jsonb")
+			   .HasConversion(
+				   c => JsonSerializer.Serialize(c, (JsonSerializerOptions?)null),
+				   c => JsonSerializer.Deserialize<Dictionary<string, object?>>(c, (JsonSerializerOptions?)null)
+			   );
 
 		builder.Property(x => x.UserId);
 		builder.HasOne(x => x.User)
-		       .WithMany()
-		       .HasForeignKey(x => x.UserId)
-		       .IsRequired(false)
-		       .OnDelete(DeleteBehavior.SetNull);
+			   .WithMany()
+			   .HasForeignKey(x => x.UserId)
+			   .IsRequired(false)
+			   .OnDelete(DeleteBehavior.SetNull);
 	}
 }

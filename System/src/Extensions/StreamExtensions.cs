@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 namespace Wangkanai.Extensions;
 
@@ -30,9 +30,9 @@ public static class StreamExtensions
 	{
 		stream.ThrowIfNull();
 
-		var       buffer = new byte[16 * 1024];
-		using var ms     = new MemoryStream();
-		int       read;
+		var buffer = new byte[16 * 1024];
+		using var ms = new MemoryStream();
+		int read;
 		while ((read = stream.Read(buffer, 0, buffer.Length)) > 0)
 			ms.Write(buffer, 0, read);
 

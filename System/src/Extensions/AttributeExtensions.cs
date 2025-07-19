@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 // ReSharper disable UseCollectionExpression
 namespace Wangkanai.Extensions;
@@ -20,7 +20,7 @@ public static class AttributeExtensions
 		=> string.IsNullOrEmpty(original)
 			   ? Array.Empty<string>()
 			   : original.Split(separator)
-			             .Select(x => x.Trim())
-			             .Where(x => !x.IsNullOrEmpty())
-			             .ToArray();
+						 .Select(x => x.Trim())
+						 .Where(x => !x.IsNullOrEmpty())
+						 .ToArray();
 }

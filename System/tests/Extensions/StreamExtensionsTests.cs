@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 namespace Wangkanai.Extensions;
 
@@ -9,8 +9,8 @@ public class StreamExtensionsTests
 	{
 		// Arrange
 		var fromStream = new MemoryStream();
-		var toStream   = new MemoryStream();
-		var bytes      = new byte[8092];
+		var toStream = new MemoryStream();
+		var bytes = new byte[8092];
 		fromStream.Write(bytes, 0, bytes.Length);
 		fromStream.Position = 0;
 
@@ -26,7 +26,7 @@ public class StreamExtensionsTests
 	{
 		// Arrange
 		var stream = new MemoryStream();
-		var bytes  = new byte[8092];
+		var bytes = new byte[8092];
 		stream.Write(bytes, 0, bytes.Length);
 		stream.Position = 0;
 
@@ -43,7 +43,7 @@ public class StreamExtensionsTests
 		// Arrange
 		var length = 8092;
 		var stream = new MemoryStream();
-		var bytes  = new byte[length];
+		var bytes = new byte[length];
 		stream.Write(bytes, 0, length);
 		stream.Position = 0;
 
@@ -79,7 +79,7 @@ public class StreamExtensionsTests
 	{
 		// Arrange
 		Stream fromStream = null!;
-		var    toStream   = new MemoryStream();
+		var toStream = new MemoryStream();
 
 		// Assert
 		Assert.Throws<NullReferenceException>(() => fromStream.CopyTo(toStream));

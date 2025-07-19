@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -16,7 +16,7 @@ public class AuditStoreTests
 	public class TestAuditDbContext(DbContextOptions<TestAuditDbContext> options) : DbContext(options)
 	{
 		public DbSet<Audit<Guid, IdentityUser<Guid>, Guid>> Audits { get; set; }
-		public DbSet<IdentityUser<Guid>>                    Users  { get; set; }
+		public DbSet<IdentityUser<Guid>> Users { get; set; }
 
 		protected override void OnModelCreating(ModelBuilder builder)
 		{
@@ -28,8 +28,8 @@ public class AuditStoreTests
 	private DbContextOptions<TestAuditDbContext> CreateNewContextOptions()
 	{
 		return new DbContextOptionsBuilder<TestAuditDbContext>()
-		       .UseInMemoryDatabase(databaseName: $"AuditStoreTest_{Guid.NewGuid()}")
-		       .Options;
+			   .UseInMemoryDatabase(databaseName: $"AuditStoreTest_{Guid.NewGuid()}")
+			   .Options;
 	}
 
 	[Fact]
@@ -43,7 +43,7 @@ public class AuditStoreTests
 	public void Audits_ReturnsQueryableCollection()
 	{
 		// Arrange
-		var       options = CreateNewContextOptions();
+		var options = CreateNewContextOptions();
 		using var context = new TestAuditDbContext(options);
 
 		var store = new AuditStore<TestAuditDbContext, Guid, IdentityUser<Guid>, Guid>(context);
@@ -60,7 +60,7 @@ public class AuditStoreTests
 	public async ValueTask CreateAsync_SavesToDbContext()
 	{
 		// Arrange
-		var             options = CreateNewContextOptions();
+		var options = CreateNewContextOptions();
 		await using var context = new TestAuditDbContext(options);
 
 		var store = new AuditStore<TestAuditDbContext, Guid, IdentityUser<Guid>, Guid>(context);
@@ -73,15 +73,15 @@ public class AuditStoreTests
 		// Assert
 		Assert.True(result.IsSuccess);
 		Assert.Equal(audit, result.Value);
-		Assert.Equal(1, await context.Audits.CountAsync());
-		Assert.Equal(audit.Id, (await context.Audits.FirstOrDefaultAsync())?.Id);
+		Assert.Equal(1, await context.Audits.CountAsync(cancellationToken: TestContext.Current.CancellationToken));
+		Assert.Equal(audit.Id, (await context.Audits.FirstOrDefaultAsync(cancellationToken: TestContext.Current.CancellationToken))?.Id);
 	}
 
 	[Fact]
 	public async ValueTask CreateAsync_WithoutAutoSave_DoesNotSaveChanges()
 	{
 		// Arrange
-		var             options = CreateNewContextOptions();
+		var options = CreateNewContextOptions();
 		await using var context = new TestAuditDbContext(options);
 
 		var store = new AuditStore<TestAuditDbContext, Guid, IdentityUser<Guid>, Guid>(context) { AutoSaveChanges = false };
@@ -92,7 +92,7 @@ public class AuditStoreTests
 
 		// Assert
 		Assert.True(result.IsSuccess);
-		Assert.Equal(0, await context.Audits.CountAsync());
+		Assert.Equal(0, await context.Audits.CountAsync(cancellationToken: TestContext.Current.CancellationToken));
 	}
 
 	[Fact]
@@ -101,7 +101,7 @@ public class AuditStoreTests
 		// Arrange
 		var mockContext = new Mock<TestAuditDbContext>(CreateNewContextOptions());
 		mockContext.Setup(c => c.SaveChangesAsync(It.IsAny<CancellationToken>()))
-		           .Throws(new DbUpdateConcurrencyException());
+				   .Throws(new DbUpdateConcurrencyException());
 
 		var store = new AuditStore<TestAuditDbContext, Guid, IdentityUser<Guid>, Guid>(mockContext.Object);
 		var audit = new Audit<Guid, IdentityUser<Guid>, Guid>();
@@ -118,7 +118,7 @@ public class AuditStoreTests
 	public async ValueTask UpdateAsync_UpdatesExistingEntity()
 	{
 		// Arrange
-		var             options = CreateNewContextOptions();
+		var options = CreateNewContextOptions();
 		await using var context = new TestAuditDbContext(options);
 
 		var store = new AuditStore<TestAuditDbContext, Guid, IdentityUser<Guid>, Guid>(context);
@@ -126,7 +126,7 @@ public class AuditStoreTests
 		audit.EntityName = "Test";
 
 		context.Audits.Add(audit);
-		await context.SaveChangesAsync();
+		await context.SaveChangesAsync(TestContext.Current.CancellationToken);
 
 		// Clear tracker to simulate detached entity
 		context.ChangeTracker.Clear();
@@ -137,7 +137,7 @@ public class AuditStoreTests
 
 		// Assert
 		Assert.True(result.IsSuccess);
-		var updatedAudit = await context.Audits.FindAsync(audit.Id);
+		var updatedAudit = await context.Audits.FindAsync(new object?[] { audit.Id }, TestContext.Current.CancellationToken);
 		Assert.Equal(TrailType.Create, updatedAudit?.TrailType);
 	}
 
@@ -149,10 +149,10 @@ public class AuditStoreTests
 
 		mockContext.Setup(c => c.Update(It.IsAny<Audit<Guid, IdentityUser<Guid>, Guid>>()));
 		mockContext.Setup(c => c.SaveChangesAsync(It.IsAny<CancellationToken>()))
-		           .Throws(new DbUpdateConcurrencyException());
+				   .Throws(new DbUpdateConcurrencyException());
 
 		var store = new AuditStore<TestAuditDbContext, Guid, IdentityUser<Guid>, Guid>(mockContext.Object);
-		var audit = new Audit<Guid, IdentityUser<Guid>, Guid>{ EntityName = "Test" };
+		var audit = new Audit<Guid, IdentityUser<Guid>, Guid> { EntityName = "Test" };
 
 		// Act
 		var result = await store.UpdateAsync(audit, CancellationToken.None);
@@ -166,21 +166,21 @@ public class AuditStoreTests
 	public async ValueTask DeleteAsync_RemovesEntityFromContext()
 	{
 		// Arrange
-		var             options = CreateNewContextOptions();
+		var options = CreateNewContextOptions();
 		await using var context = new TestAuditDbContext(options);
 
 		var store = new AuditStore<TestAuditDbContext, Guid, IdentityUser<Guid>, Guid>(context);
 		var audit = new Audit<Guid, IdentityUser<Guid>, Guid>();
 		audit.EntityName = "Test";
 		context.Audits.Add(audit);
-		await context.SaveChangesAsync();
+		await context.SaveChangesAsync(TestContext.Current.CancellationToken);
 
 		// Act
 		var result = await store.DeleteAsync(audit, CancellationToken.None);
 
 		// Assert
 		Assert.True(result.IsSuccess);
-		Assert.Equal(0, await context.Audits.CountAsync());
+		Assert.Equal(0, await context.Audits.CountAsync(cancellationToken: TestContext.Current.CancellationToken));
 	}
 
 	[Fact]
@@ -190,7 +190,7 @@ public class AuditStoreTests
 		var mockContext = new Mock<TestAuditDbContext>(CreateNewContextOptions());
 		mockContext.Setup(c => c.Remove(It.IsAny<Audit<Guid, IdentityUser<Guid>, Guid>>()));
 		mockContext.Setup(c => c.SaveChangesAsync(It.IsAny<CancellationToken>()))
-		           .Throws(new DbUpdateConcurrencyException());
+				   .Throws(new DbUpdateConcurrencyException());
 
 		var store = new AuditStore<TestAuditDbContext, Guid, IdentityUser<Guid>, Guid>(mockContext.Object);
 		var audit = new Audit<Guid, IdentityUser<Guid>, Guid>();
@@ -207,14 +207,14 @@ public class AuditStoreTests
 	public async ValueTask FindByIdAsync_ReturnsMatchingEntity()
 	{
 		// Arrange
-		var             options = CreateNewContextOptions();
+		var options = CreateNewContextOptions();
 		await using var context = new TestAuditDbContext(options);
 
 		var store = new AuditStore<TestAuditDbContext, Guid, IdentityUser<Guid>, Guid>(context);
 		var audit = new Audit<Guid, IdentityUser<Guid>, Guid>();
 		audit.EntityName = "Test";
 		context.Audits.Add(audit);
-		await context.SaveChangesAsync();
+		await context.SaveChangesAsync(TestContext.Current.CancellationToken);
 
 		// Act
 		var result = await store.FindByIdAsync(audit.Id, CancellationToken.None);
@@ -229,9 +229,9 @@ public class AuditStoreTests
 	public async ValueTask FindByIdAsync_WithNonexistentId_ReturnsNull()
 	{
 		// Arrange
-		var       options = CreateNewContextOptions();
+		var options = CreateNewContextOptions();
 		using var context = new TestAuditDbContext(options);
-		var       store   = new AuditStore<TestAuditDbContext, Guid, IdentityUser<Guid>, Guid>(context);
+		var store = new AuditStore<TestAuditDbContext, Guid, IdentityUser<Guid>, Guid>(context);
 
 		// Act
 		var result = await store.FindByIdAsync(Guid.NewGuid(), CancellationToken.None);
@@ -245,15 +245,15 @@ public class AuditStoreTests
 	public async ValueTask FindByIdAsync_WithIdAndUserId_ReturnsMatchingEntity()
 	{
 		// Arrange
-		var             options = CreateNewContextOptions();
+		var options = CreateNewContextOptions();
 		await using var context = new TestAuditDbContext(options);
 
-		var store  = new AuditStore<TestAuditDbContext, Guid, IdentityUser<Guid>, Guid>(context);
+		var store = new AuditStore<TestAuditDbContext, Guid, IdentityUser<Guid>, Guid>(context);
 		var userId = Guid.NewGuid();
-		var audit  = new Audit<Guid, IdentityUser<Guid>, Guid> { UserId = userId, EntityName = "Test" };
+		var audit = new Audit<Guid, IdentityUser<Guid>, Guid> { UserId = userId, EntityName = "Test" };
 
 		context.Audits.Add(audit);
-		await context.SaveChangesAsync();
+		await context.SaveChangesAsync(TestContext.Current.CancellationToken);
 
 		// Act
 		var result = await store.FindByIdAsync(audit.Id, userId, CancellationToken.None);
@@ -268,13 +268,13 @@ public class AuditStoreTests
 	public async ValueTask FindByIdAsync_WithNonMatchingUserId_ReturnsNull()
 	{
 		// Arrange
-		var             options = CreateNewContextOptions();
+		var options = CreateNewContextOptions();
 		await using var context = new TestAuditDbContext(options);
 
 		var store = new AuditStore<TestAuditDbContext, Guid, IdentityUser<Guid>, Guid>(context);
 		var audit = new Audit<Guid, IdentityUser<Guid>, Guid> { UserId = Guid.NewGuid(), EntityName = "Test" };
 		context.Audits.Add(audit);
-		await context.SaveChangesAsync();
+		await context.SaveChangesAsync(TestContext.Current.CancellationToken);
 
 		// Act
 		var result = await store.FindByIdAsync(audit.Id, Guid.NewGuid(), CancellationToken.None);
@@ -288,14 +288,14 @@ public class AuditStoreTests
 	public async ValueTask FindByUserIdAsync_ReturnsMatchingEntity()
 	{
 		// Arrange
-		var             options = CreateNewContextOptions();
+		var options = CreateNewContextOptions();
 		await using var context = new TestAuditDbContext(options);
 
-		var store  = new AuditStore<TestAuditDbContext, Guid, IdentityUser<Guid>, Guid>(context);
+		var store = new AuditStore<TestAuditDbContext, Guid, IdentityUser<Guid>, Guid>(context);
 		var userId = Guid.NewGuid();
-		var audit  = new Audit<Guid, IdentityUser<Guid>, Guid> { UserId = userId, EntityName = "Test" };
+		var audit = new Audit<Guid, IdentityUser<Guid>, Guid> { UserId = userId, EntityName = "Test" };
 		context.Audits.Add(audit);
-		await context.SaveChangesAsync();
+		await context.SaveChangesAsync(TestContext.Current.CancellationToken);
 
 		// Act
 		var result = await store.FindByUserIdAsync(userId, CancellationToken.None);
@@ -310,13 +310,13 @@ public class AuditStoreTests
 	public async ValueTask FindByUserIdAsync_WithNonexistentUserId_ReturnsNull()
 	{
 		// Arrange
-		var             options = CreateNewContextOptions();
+		var options = CreateNewContextOptions();
 		await using var context = new TestAuditDbContext(options);
 
 		var store = new AuditStore<TestAuditDbContext, Guid, IdentityUser<Guid>, Guid>(context);
 		var audit = new Audit<Guid, IdentityUser<Guid>, Guid> { UserId = Guid.NewGuid(), EntityName = "Test" };
 		context.Audits.Add(audit);
-		await context.SaveChangesAsync();
+		await context.SaveChangesAsync(TestContext.Current.CancellationToken);
 
 		// Act
 		var result = await store.FindByUserIdAsync(Guid.NewGuid(), CancellationToken.None);
@@ -330,14 +330,14 @@ public class AuditStoreTests
 	public async ValueTask FindByUserIdAsync_WithUserIdAndId_ReturnsMatchingEntity()
 	{
 		// Arrange
-		var       options = CreateNewContextOptions();
+		var options = CreateNewContextOptions();
 		using var context = new TestAuditDbContext(options);
 
-		var store  = new AuditStore<TestAuditDbContext, Guid, IdentityUser<Guid>, Guid>(context);
+		var store = new AuditStore<TestAuditDbContext, Guid, IdentityUser<Guid>, Guid>(context);
 		var userId = Guid.NewGuid();
-		var audit  = new Audit<Guid, IdentityUser<Guid>, Guid> { UserId = userId, EntityName = "Test" };
+		var audit = new Audit<Guid, IdentityUser<Guid>, Guid> { UserId = userId, EntityName = "Test" };
 		context.Audits.Add(audit);
-		await context.SaveChangesAsync();
+		await context.SaveChangesAsync(TestContext.Current.CancellationToken);
 
 		// Act
 		var result = await store.FindByUserIdAsync(userId, audit.Id, CancellationToken.None);
@@ -353,14 +353,14 @@ public class AuditStoreTests
 	public async ValueTask FindByUserIdAsync_WithNonMatchingId_ReturnsNull()
 	{
 		// Arrange
-		var             options = CreateNewContextOptions();
+		var options = CreateNewContextOptions();
 		await using var context = new TestAuditDbContext(options);
 
-		var store  = new AuditStore<TestAuditDbContext, Guid, IdentityUser<Guid>, Guid>(context);
+		var store = new AuditStore<TestAuditDbContext, Guid, IdentityUser<Guid>, Guid>(context);
 		var userId = Guid.NewGuid();
-		var audit  = new Audit<Guid, IdentityUser<Guid>, Guid> { UserId = userId, EntityName = "Test" };
+		var audit = new Audit<Guid, IdentityUser<Guid>, Guid> { UserId = userId, EntityName = "Test" };
 		context.Audits.Add(audit);
-		await context.SaveChangesAsync();
+		await context.SaveChangesAsync(TestContext.Current.CancellationToken);
 
 		// Act
 		var result = await store.FindByUserIdAsync(userId, Guid.NewGuid(), CancellationToken.None);

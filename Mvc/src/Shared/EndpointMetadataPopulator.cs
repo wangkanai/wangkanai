@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
@@ -14,7 +14,7 @@ namespace Wangkanai.Mvc.Shared;
 internal static class EndpointMetadataPopulator
 {
 	private static readonly MethodInfo PopulateMetadataForParameterMethod = typeof(EndpointMetadataPopulator).GetMethod(nameof(PopulateMetadataForParameter), BindingFlags.NonPublic | BindingFlags.Static)!;
-	private static readonly MethodInfo PopulateMetadataForEndpointMethod  = typeof(EndpointMetadataPopulator).GetMethod(nameof(PopulateMetadataForEndpoint), BindingFlags.NonPublic  | BindingFlags.Static)!;
+	private static readonly MethodInfo PopulateMetadataForEndpointMethod = typeof(EndpointMetadataPopulator).GetMethod(nameof(PopulateMetadataForEndpoint), BindingFlags.NonPublic | BindingFlags.Static)!;
 
 	public static void PopulateMetadata(MethodInfo methodInfo, EndpointBuilder builder, IEnumerable<ParameterInfo>? parameters = null)
 	{
@@ -27,18 +27,18 @@ internal static class EndpointMetadataPopulator
 			if (typeof(IEndpointParameterMetadataProvider).IsAssignableFrom(parameter.ParameterType))
 			{
 				// Parameter type implements IEndpointParameterMetadataProvider
-				invokeArgs    ??= new object[2];
-				invokeArgs[0] =   parameter;
-				invokeArgs[1] =   builder;
+				invokeArgs ??= new object[2];
+				invokeArgs[0] = parameter;
+				invokeArgs[1] = builder;
 				PopulateMetadataForParameterMethod.MakeGenericMethod(parameter.ParameterType).Invoke(null, invokeArgs);
 			}
 
 			if (typeof(IEndpointMetadataProvider).IsAssignableFrom(parameter.ParameterType))
 			{
 				// Parameter type implements IEndpointMetadataProvider
-				invokeArgs    ??= new object[2];
-				invokeArgs[0] =   methodInfo;
-				invokeArgs[1] =   builder;
+				invokeArgs ??= new object[2];
+				invokeArgs[0] = methodInfo;
+				invokeArgs[1] = builder;
 				PopulateMetadataForEndpointMethod.MakeGenericMethod(parameter.ParameterType).Invoke(null, invokeArgs);
 			}
 		}
@@ -51,9 +51,9 @@ internal static class EndpointMetadataPopulator
 		if (returnType is not null && typeof(IEndpointMetadataProvider).IsAssignableFrom(returnType))
 		{
 			// Return type implements IEndpointMetadataProvider
-			invokeArgs    ??= new object[2];
-			invokeArgs[0] =   methodInfo;
-			invokeArgs[1] =   builder;
+			invokeArgs ??= new object[2];
+			invokeArgs[0] = methodInfo;
+			invokeArgs[1] = builder;
 			PopulateMetadataForEndpointMethod.MakeGenericMethod(returnType).Invoke(null, invokeArgs);
 		}
 	}

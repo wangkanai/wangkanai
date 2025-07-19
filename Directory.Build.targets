@@ -1,27 +1,26 @@
 <Project>
+	<!-- GitHub Source Link -->
+	<ItemGroup>
+		<PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="all"/>
+	</ItemGroup>
 	<PropertyGroup Condition="$(MSBuildProjectName.Contains('Benchmark'))">
 		<OutputType>Exe</OutputType>
 		<Optimize>true</Optimize>
 		<IsPackable>false</IsPackable>
 		<SonarQubeExclude>true</SonarQubeExclude>
 	</PropertyGroup>
-
 	<ItemGroup Condition="$(MSBuildProjectName.Contains('Benchmark'))">
 		<PackageReference Include="BenchmarkDotNet"/>
 	</ItemGroup>
-
 	<PropertyGroup Condition="$(MSBuildProjectName.Contains('Tests'))">
 		<IsPackable>false</IsPackable>
 		<IsTestProject>true</IsTestProject>
 	</PropertyGroup>
-
 	<ItemGroup Condition="$(MSBuildProjectName.Contains('Tests'))">
 		<Using Include="Xunit"/>
 	</ItemGroup>
-
-	<!-- GitHub Source Link -->
-	<ItemGroup>
-		<PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="all"/>
+	<ItemGroup Condition="$(MSBuildProjectName.Contains('Tests'))">
+		<Content Include="xunit.runner.json" CopyToOutputDirectory="PreserveNewest" />
 	</ItemGroup>
 	<!-- xUnit Tests-->
 	<ItemGroup Condition="$(MSBuildProjectName.Contains('Tests'))">

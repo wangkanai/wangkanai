@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
@@ -8,40 +8,40 @@ namespace Wangkanai.Extensions.Internal;
 
 internal readonly struct AwaitableInfo
 {
-	private const           BindingFlags Everything                                  = BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Static | BindingFlags.Instance;
-	private static readonly MethodInfo   INotifyCompletion_OnCompleted               = typeof(INotifyCompletion).GetMethod(nameof(INotifyCompletion.OnCompleted), Everything, new[] { typeof(Action) })!;
-	private static readonly MethodInfo   ICriticalNotifyCompletion_UnsafeOnCompleted = typeof(ICriticalNotifyCompletion).GetMethod(nameof(ICriticalNotifyCompletion.UnsafeOnCompleted), Everything, new[] { typeof(Action) })!;
+	private const BindingFlags Everything = BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Static | BindingFlags.Instance;
+	private static readonly MethodInfo INotifyCompletion_OnCompleted = typeof(INotifyCompletion).GetMethod(nameof(INotifyCompletion.OnCompleted), Everything, new[] { typeof(Action) })!;
+	private static readonly MethodInfo ICriticalNotifyCompletion_UnsafeOnCompleted = typeof(ICriticalNotifyCompletion).GetMethod(nameof(ICriticalNotifyCompletion.UnsafeOnCompleted), Everything, new[] { typeof(Action) })!;
 
-	public Type         AwaiterType                    { get; }
-	public PropertyInfo AwaiterIsCompletedProperty     { get; }
-	public MethodInfo   AwaiterGetResultMethod         { get; }
-	public MethodInfo   AwaiterOnCompletedMethod       { get; }
-	public MethodInfo?  AwaiterUnsafeOnCompletedMethod { get; }
-	public Type         ResultType                     { get; }
-	public MethodInfo   GetAwaiterMethod               { get; }
+	public Type AwaiterType { get; }
+	public PropertyInfo AwaiterIsCompletedProperty { get; }
+	public MethodInfo AwaiterGetResultMethod { get; }
+	public MethodInfo AwaiterOnCompletedMethod { get; }
+	public MethodInfo? AwaiterUnsafeOnCompletedMethod { get; }
+	public Type ResultType { get; }
+	public MethodInfo GetAwaiterMethod { get; }
 
 	public AwaitableInfo(
-		Type         awaiterType,
+		Type awaiterType,
 		PropertyInfo awaiterIsCompletedProperty,
-		MethodInfo   awaiterGetResultMethod,
-		MethodInfo   awaiterOnCompletedMethod,
-		MethodInfo?  awaiterUnsafeOnCompletedMethod,
-		Type         resultType,
-		MethodInfo   getAwaiterMethod)
+		MethodInfo awaiterGetResultMethod,
+		MethodInfo awaiterOnCompletedMethod,
+		MethodInfo? awaiterUnsafeOnCompletedMethod,
+		Type resultType,
+		MethodInfo getAwaiterMethod)
 	{
-		AwaiterType                    = awaiterType;
-		AwaiterIsCompletedProperty     = awaiterIsCompletedProperty;
-		AwaiterGetResultMethod         = awaiterGetResultMethod;
-		AwaiterOnCompletedMethod       = awaiterOnCompletedMethod;
+		AwaiterType = awaiterType;
+		AwaiterIsCompletedProperty = awaiterIsCompletedProperty;
+		AwaiterGetResultMethod = awaiterGetResultMethod;
+		AwaiterOnCompletedMethod = awaiterOnCompletedMethod;
 		AwaiterUnsafeOnCompletedMethod = awaiterUnsafeOnCompletedMethod;
-		ResultType                     = resultType;
-		GetAwaiterMethod               = getAwaiterMethod;
+		ResultType = resultType;
+		GetAwaiterMethod = getAwaiterMethod;
 	}
 
 	[UnconditionalSuppressMessage("Trimmer", "IL2070", Justification = "Reflecting over the async Task types contract")]
 	[UnconditionalSuppressMessage("Trimmer", "IL2075", Justification = "Reflecting over the async Task types contract")]
 	public static bool IsTypeAwaitable(
-		Type              type,
+		Type type,
 		out AwaitableInfo awaitableInfo)
 	{
 		// Awaitable must have method matching "object GetAwaiter()"
@@ -75,8 +75,8 @@ internal readonly struct AwaitableInfo
 		var onCompletedMethod = INotifyCompletion_OnCompleted;
 
 		// Awaiter optionally implements ICriticalNotifyCompletion
-		var         implementsICriticalNotifyCompletion = typeof(ICriticalNotifyCompletion).IsAssignableFrom(awaiterType);
-		MethodInfo? unsafeOnCompletedMethod             = null;
+		var implementsICriticalNotifyCompletion = typeof(ICriticalNotifyCompletion).IsAssignableFrom(awaiterType);
+		MethodInfo? unsafeOnCompletedMethod = null;
 		if (implementsICriticalNotifyCompletion)
 		{
 			// ICriticalNotifyCompletion supplies a method matching "void UnsafeOnCompleted(Action action)"

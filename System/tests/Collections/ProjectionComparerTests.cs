@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 namespace Wangkanai.Collections;
 
@@ -11,42 +11,42 @@ public class ProjectionComparerTest
 	public void ProjectToStringWithIgnoredParameter()
 	{
 		ProjectionComparer.Create(A10, x => x.Name)
-		                  .AssertAll();
+						  .AssertAll();
 	}
 
 	[Fact]
 	public void ProjectToStringWithExplicitType()
 	{
 		ProjectionComparer.Create((NameAndNumber x) => x.Name)
-		                  .AssertAll();
+						  .AssertAll();
 	}
 
 	[Fact]
 	public void ProjectToStringWithGenericType()
 	{
 		ProjectionComparer<NameAndNumber>.Create(x => x.Name)
-		                                 .AssertAll();
+										 .AssertAll();
 	}
 
 	[Fact]
 	public void ProjectToNumberWithIgnoredParameter()
 	{
 		ProjectionComparer.Create(A10, x => x.Number)
-		                  .AssertAll();
+						  .AssertAll();
 	}
 
 	[Fact]
 	public void ProjectToNumberWithExplicitType()
 	{
 		ProjectionComparer.Create((NameAndNumber x) => x.Number)
-		                  .AssertAll();
+						  .AssertAll();
 	}
 
 	[Fact]
 	public void ProjectToNumberWithGenericType()
 	{
 		ProjectionComparer<NameAndNumber>.Create(x => x.Number)
-		                                 .AssertAll();
+										 .AssertAll();
 	}
 
 	[Fact]
@@ -63,10 +63,10 @@ public class ProjectionComparerTest
 		var lowerA = new NameAndNumber("a", 10);
 		var upperZ = new NameAndNumber("Z", 10);
 
-		var ordinal     = new ProjectionComparer<NameAndNumber, string>(x => x.Name, StringComparer.Ordinal);
+		var ordinal = new ProjectionComparer<NameAndNumber, string>(x => x.Name, StringComparer.Ordinal);
 		var insensitive = new ProjectionComparer<NameAndNumber, string>(x => x.Name, StringComparer.OrdinalIgnoreCase);
 
-		Assert.True(ordinal.Compare(lowerA, upperZ)     > 0);
+		Assert.True(ordinal.Compare(lowerA, upperZ) > 0);
 		Assert.True(insensitive.Compare(lowerA, upperZ) < 0);
 	}
 }

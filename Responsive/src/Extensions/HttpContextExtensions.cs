@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
@@ -17,8 +17,8 @@ internal static class HttpContextExtensions
 		context.Items.ThrowIfNull();
 
 		return context.Items.TryGetValue(ResponsiveContextKey, out var responsive)
-			       ? (Device)(responsive ?? Device.Unknown)
-			       : Device.Desktop;
+				   ? (Device)(responsive ?? Device.Unknown)
+				   : Device.Desktop;
 	}
 
 	public static void SetDevice(this HttpContext context, Device device)

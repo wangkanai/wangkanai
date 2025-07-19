@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using Wangkanai.Detection.Collections;
 using Wangkanai.Detection.Extensions;
@@ -50,7 +50,7 @@ public sealed class DeviceService : IDeviceService
 	private static bool IsMobile(string agent)
 	{
 		return agent.Length >= 4 && agent.SearchStartsWith(MobileCollection.PrefixesSearchTrie) ||
-		       agent.SearchContains(MobileCollection.KeywordsSearchTrie);
+			   agent.SearchContains(MobileCollection.KeywordsSearchTrie);
 	}
 
 	private static bool IsTV(string agent)

@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using System.Reflection;
 
@@ -9,7 +9,7 @@ namespace Wangkanai.Webmaster.TagHelpers;
 [HtmlTargetElement(ElementName, Attributes = FieldCountAttributeName, TagStructure = TagStructure.WithoutEndTag)]
 public sealed class VersionTagHelper : TagHelper
 {
-	private const string ElementName             = "version";
+	private const string ElementName = "version";
 	private const string FieldCountAttributeName = "field";
 
 	[HtmlAttributeName(FieldCountAttributeName)]

@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 namespace System.ComponentModel.DataAnnotations;
 
@@ -15,11 +15,11 @@ public sealed class RequireUniqueCharAttribute : ValidationAttribute
 
 	public override bool IsValid(object? value)
 		=> value switch
-		   {
-			   null          => true,
-			   string actual => Unique(actual).Count >= Minimum,
-			   _             => false
-		   };
+		{
+			null => true,
+			string actual => Unique(actual).Count >= Minimum,
+			_ => false
+		};
 
 	private static Dictionary<char, int> Unique(string value)
 	{

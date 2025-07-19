@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
@@ -13,14 +13,14 @@ internal sealed class DynamicMarkdownEndpointSelector : IDisposable
 	public EndpointDataSource DataSource => _dataSource;
 
 	private readonly DataSourceDependentCache<ActionSelectionTable<Endpoint>> _cache;
-	private readonly EndpointDataSource                                       _dataSource;
+	private readonly EndpointDataSource _dataSource;
 
 	public DynamicMarkdownEndpointSelector(EndpointDataSource dataSource)
 	{
 		dataSource.ThrowIfNull();
 
 		_dataSource = dataSource;
-		_cache      = new DataSourceDependentCache<ActionSelectionTable<Endpoint>>(dataSource, Initialize);
+		_cache = new DataSourceDependentCache<ActionSelectionTable<Endpoint>>(dataSource, Initialize);
 	}
 
 	private static ActionSelectionTable<Endpoint> Initialize(IReadOnlyList<Endpoint> endpoints)
@@ -33,7 +33,7 @@ internal sealed class DynamicMarkdownEndpointSelector : IDisposable
 	{
 		values.ThrowIfNull();
 
-		var table   = Table;
+		var table = Table;
 		var matches = table.Select(values);
 		return matches;
 	}

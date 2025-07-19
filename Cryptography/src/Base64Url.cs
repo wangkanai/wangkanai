@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 namespace Wangkanai.Cryptography;
 
@@ -8,7 +8,7 @@ public static class Base64Url
 	{
 		arg.ThrowIfNull();
 		arg.ThrowIfEmpty();
-		
+
 		var str = Convert.ToBase64String(arg);
 		str = str.Split('=')[0];
 		str = str.Replace('+', '-');
@@ -20,7 +20,7 @@ public static class Base64Url
 	{
 		arg.ThrowIfNull();
 		arg.ThrowIfEmpty();
-		
+
 		var str = arg;
 		str = str.Replace('-', '+');
 		str = str.Replace('_', '/');
@@ -32,7 +32,7 @@ public static class Base64Url
 			3 => str + "=",
 			_ => throw new Exception("Illegal base64url string!")
 		};
-		
+
 		return Convert.FromBase64String(str);
 	}
 }

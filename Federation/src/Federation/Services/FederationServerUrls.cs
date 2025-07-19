@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using Microsoft.AspNetCore.Http;
 
@@ -20,10 +20,10 @@ public class FederationServerUrls : IServerUrls
 		}
 		set
 		{
-			var split   = value.Split(new[] { "://" }, StringSplitOptions.RemoveEmptyEntries);
+			var split = value.Split(new[] { "://" }, StringSplitOptions.RemoveEmptyEntries);
 			var request = _httpContextAccessor.HttpContext.Request;
 			request.Scheme = split.First();
-			request.Host   = new HostString(split.Last());
+			request.Host = new HostString(split.Last());
 		}
 	}
 

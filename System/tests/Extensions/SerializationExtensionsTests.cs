@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 namespace Wangkanai.Extensions;
 
@@ -7,10 +7,10 @@ public class SerializationExtensionsTests
 	private readonly TestObject _source = new() { Name = "Test", Value = 1 };
 
 	private readonly string _xml = $"<?xml version=\"1.0\" encoding=\"utf-16\"?>{Environment.NewLine}" +
-	                               $"<TestObject xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">{Environment.NewLine}" +
-	                               $"  <Name>Test</Name>{Environment.NewLine}" +
-	                               $"  <Value>1</Value>{Environment.NewLine}" +
-	                               "</TestObject>";
+								   $"<TestObject xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">{Environment.NewLine}" +
+								   $"  <Name>Test</Name>{Environment.NewLine}" +
+								   $"  <Value>1</Value>{Environment.NewLine}" +
+								   "</TestObject>";
 
 	[Fact]
 	public void SerializeXml()
@@ -44,6 +44,6 @@ public class SerializationExtensionsTests
 
 public class TestObject
 {
-	public string? Name  { get; set; }
-	public int     Value { get; set; }
+	public string? Name { get; set; }
+	public int Value { get; set; }
 }

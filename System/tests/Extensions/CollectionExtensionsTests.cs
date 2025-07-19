@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using Wangkanai.Exceptions;
 
@@ -6,12 +6,12 @@ namespace Wangkanai.Extensions;
 
 public class CollectionExtensionsTests
 {
-	private readonly List<string>? _nullStrings  = null;
-	private readonly List<int>?    _nullInts     = null;
+	private readonly List<string>? _nullStrings = null;
+	private readonly List<int>? _nullInts = null;
 	private readonly List<string>? _emptyStrings = [];
-	private readonly List<int>?    _emptyInts    = [];
+	private readonly List<int>? _emptyInts = [];
 	private readonly List<string>? _existStrings = ["hello"];
-	private readonly List<int>?    _existInts    = [int.MinValue, Int32.MinValue];
+	private readonly List<int>? _existInts = [int.MinValue, Int32.MinValue];
 
 	[Fact]
 	public void IsNull()
@@ -88,8 +88,8 @@ public class CollectionExtensionsTests
 	[Fact]
 	public void RangeListInt()
 	{
-		var ints1    = new List<int> { 1, 2 };
-		var ints2    = new List<int> { 3, 4 };
+		var ints1 = new List<int> { 1, 2 };
+		var ints2 = new List<int> { 3, 4 };
 		var expected = new List<int> { 1, 2, 3, 4 };
 
 		Assert.Equal(expected, ints1.AddRangeSafe(ints2));
@@ -108,8 +108,8 @@ public class CollectionExtensionsTests
 	[Fact]
 	public void RangeArrayInt()
 	{
-		var ints1    = new List<int> { 1, 2 };
-		var ints2    = new[] { 3, 4 };
+		var ints1 = new List<int> { 1, 2 };
+		var ints2 = new[] { 3, 4 };
 		var expected = new List<int> { 1, 2, 3, 4 };
 
 		Assert.Equal(expected, ints1.AddRangeSafe(ints2));
@@ -148,7 +148,7 @@ public class CollectionExtensionsTests
 	}
 
 	EqualityComparer<string> _comparerString = EqualityComparer<string>.Default;
-	EqualityComparer<int>    _comparerInt    = EqualityComparer<int>.Default;
+	EqualityComparer<int> _comparerInt = EqualityComparer<int>.Default;
 
 	[Fact]
 	public void DistinctComparerNullNull()
@@ -223,8 +223,8 @@ public class CollectionExtensionsTests
 	[Fact]
 	public void ReplaceListInt()
 	{
-		var ints1    = new List<int> { 1, 2 };
-		var ints2    = new List<int> { 3, 4 };
+		var ints1 = new List<int> { 1, 2 };
+		var ints2 = new List<int> { 3, 4 };
 		var expected = new List<int> { 3, 4 };
 		var replaced = ints1.Replace(ints2);
 

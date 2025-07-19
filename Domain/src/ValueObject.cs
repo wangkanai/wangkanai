@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using System.Collections;
 using System.Collections.Concurrent;
@@ -61,14 +61,14 @@ public abstract class ValueObject : IValueObject, ICacheKey, ICloneable
 
 	public virtual IEnumerable<PropertyInfo> GetProperties()
 		=> TypeProperties.GetOrAdd(GetType(), t => t.GetTypeInfo().GetProperties(BindingFlags.Instance | BindingFlags.Public))
-		                 .OrderBy(p => p.Name)
-		                 .ToList();
+						 .OrderBy(p => p.Name)
+						 .ToList();
 
 	public virtual string GetCacheKey()
 	{
 		var keyValues = GetEqualityComponents()
-		                .Select(x => x is string ? $"'{x}'" : x)
-		                .Select(x => x is ICacheKey cacheKey ? cacheKey.GetCacheKey() : x?.ToString());
+						.Select(x => x is string ? $"'{x}'" : x)
+						.Select(x => x is ICacheKey cacheKey ? cacheKey.GetCacheKey() : x?.ToString());
 
 		return string.Join("|", keyValues);
 	}

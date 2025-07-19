@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 namespace Wangkanai.Federation.Services;
 
@@ -7,7 +7,7 @@ namespace Wangkanai.Federation.Services;
 /// </summary>
 public interface IServerUrls
 {
-	string Origin   { get; set; }
+	string Origin { get; set; }
 	string BasePath { get; set; }
-	string BaseUri  => Origin + BasePath;
+	string BaseUri => Origin + BasePath;
 }

@@ -1,7 +1,7 @@
-// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Wangkanai.Audit.Configurations;
@@ -12,7 +12,7 @@ public class AuditConfigurationTests
 	public void Configure_Should_SetPrimaryKey()
 	{
 		// Arrange
-		var builder       = new ModelBuilder();
+		var builder = new ModelBuilder();
 		var entityBuilder = builder.Entity<Audit<int, IdentityUser<int>, int>>();
 		var configuration = new AuditConfiguration<int, IdentityUser<int>, int>();
 
@@ -30,7 +30,7 @@ public class AuditConfigurationTests
 	public void Configure_Should_SetEntityNameProperty()
 	{
 		// Arrange
-		var builder       = new ModelBuilder();
+		var builder = new ModelBuilder();
 		var entityBuilder = builder.Entity<Audit<int, IdentityUser<int>, int>>();
 		var configuration = new AuditConfiguration<int, IdentityUser<int>, int>();
 
@@ -38,7 +38,7 @@ public class AuditConfigurationTests
 		configuration.Configure(entityBuilder);
 
 		// Assert
-		var entityType         = builder.Model.FindEntityType(typeof(Audit<int, IdentityUser<int>, int>));
+		var entityType = builder.Model.FindEntityType(typeof(Audit<int, IdentityUser<int>, int>));
 		var entityNameProperty = entityType.FindProperty("EntityName");
 		Assert.NotNull(entityNameProperty);
 		Assert.Equal(100, entityNameProperty.GetMaxLength());
@@ -50,7 +50,7 @@ public class AuditConfigurationTests
 	public void Configure_Should_SetPrimaryKeyProperty()
 	{
 		// Arrange
-		var builder       = new ModelBuilder();
+		var builder = new ModelBuilder();
 		var entityBuilder = builder.Entity<Audit<int, IdentityUser<int>, int>>();
 		var configuration = new AuditConfiguration<int, IdentityUser<int>, int>();
 
@@ -58,7 +58,7 @@ public class AuditConfigurationTests
 		configuration.Configure(entityBuilder);
 
 		// Assert
-		var entityType         = builder.Model.FindEntityType(typeof(Audit<int, IdentityUser<int>, int>));
+		var entityType = builder.Model.FindEntityType(typeof(Audit<int, IdentityUser<int>, int>));
 		var primaryKeyProperty = entityType.FindProperty("PrimaryKey");
 		Assert.NotNull(primaryKeyProperty);
 		Assert.Equal(100, primaryKeyProperty.GetMaxLength());
@@ -68,7 +68,7 @@ public class AuditConfigurationTests
 	public void Configure_Should_SetTimestampProperty()
 	{
 		// Arrange
-		var builder       = new ModelBuilder();
+		var builder = new ModelBuilder();
 		var entityBuilder = builder.Entity<Audit<int, IdentityUser<int>, int>>();
 		var configuration = new AuditConfiguration<int, IdentityUser<int>, int>();
 
@@ -76,7 +76,7 @@ public class AuditConfigurationTests
 		configuration.Configure(entityBuilder);
 
 		// Assert
-		var entityType        = builder.Model.FindEntityType(typeof(Audit<int, IdentityUser<int>, int>));
+		var entityType = builder.Model.FindEntityType(typeof(Audit<int, IdentityUser<int>, int>));
 		var timestampProperty = entityType.FindProperty("Timestamp");
 		Assert.NotNull(timestampProperty);
 		// Assert.True(timestampProperty.IsRequired());
@@ -87,7 +87,7 @@ public class AuditConfigurationTests
 	public void Configure_Should_SetTrailTypeProperty()
 	{
 		// Arrange
-		var builder       = new ModelBuilder();
+		var builder = new ModelBuilder();
 		var entityBuilder = builder.Entity<Audit<int, IdentityUser<int>, int>>();
 		var configuration = new AuditConfiguration<int, IdentityUser<int>, int>();
 
@@ -95,7 +95,7 @@ public class AuditConfigurationTests
 		configuration.Configure(entityBuilder);
 
 		// Assert
-		var entityType        = builder.Model.FindEntityType(typeof(Audit<int, IdentityUser<int>, int>));
+		var entityType = builder.Model.FindEntityType(typeof(Audit<int, IdentityUser<int>, int>));
 		var trailTypeProperty = entityType.FindProperty("TrailType");
 		Assert.NotNull(trailTypeProperty);
 		//Assert.Equal(typeof(string), trailTypeProperty.ClrType);
@@ -106,7 +106,7 @@ public class AuditConfigurationTests
 	public void Configure_Should_SetJsonbProperties()
 	{
 		// Arrange
-		var builder       = new ModelBuilder();
+		var builder = new ModelBuilder();
 		var entityBuilder = builder.Entity<Audit<int, IdentityUser<int>, int>>();
 		var configuration = new AuditConfiguration<int, IdentityUser<int>, int>();
 
@@ -133,7 +133,7 @@ public class AuditConfigurationTests
 	public void Configure_Should_SetUserIdPropertyAndRelationship()
 	{
 		// Arrange
-		var builder       = new ModelBuilder();
+		var builder = new ModelBuilder();
 		var entityBuilder = builder.Entity<Audit<int, IdentityUser<int>, int>>();
 		var configuration = new AuditConfiguration<int, IdentityUser<int>, int>();
 
@@ -141,7 +141,7 @@ public class AuditConfigurationTests
 		configuration.Configure(entityBuilder);
 
 		// Assert
-		var entityType     = builder.Model.FindEntityType(typeof(Audit<int, IdentityUser<int>, int>));
+		var entityType = builder.Model.FindEntityType(typeof(Audit<int, IdentityUser<int>, int>));
 		var userIdProperty = entityType.FindProperty("UserId");
 		Assert.NotNull(userIdProperty);
 
@@ -155,11 +155,11 @@ public class AuditConfigurationTests
 	{
 		// Arrange
 		var auditTrail = new Audit<Guid, IdentityUser<int>, int>
-		                 {
-			                 Id         = Guid.NewGuid(),
-			                 EntityName = "TestEntity",
-			                 Timestamp  = DateTime.UtcNow
-		                 };
+		{
+			Id = Guid.NewGuid(),
+			EntityName = "TestEntity",
+			Timestamp = DateTime.UtcNow
+		};
 
 		// Act & Assert
 		Assert.IsType<Guid>(auditTrail.Id);
@@ -170,9 +170,9 @@ public class AuditConfigurationTests
 	public void Configure_WithGuidKey_ShouldConfigureGuidIdProperty()
 	{
 		// Arrange
-		var builder       = new ModelBuilder();
+		var builder = new ModelBuilder();
 		var entityBuilder = builder.Entity<Audit<Guid, IdentityUser<int>, int>>();
-		var configuration = new AuditConfiguration<Guid,  IdentityUser<int>, int>();
+		var configuration = new AuditConfiguration<Guid, IdentityUser<int>, int>();
 
 		// Act
 		configuration.Configure(entityBuilder);

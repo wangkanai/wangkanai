@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using Microsoft.Extensions.Logging;
 
@@ -11,18 +11,18 @@ namespace Wangkanai.Federation.Responses;
 
 public class DiscoveryResponseFactory : IDiscoveryResponseFactory
 {
-	protected readonly FederationOptions                 Options;
-	protected readonly IKeyMaterialService               Keys;
+	protected readonly FederationOptions Options;
+	protected readonly IKeyMaterialService Keys;
 	protected readonly ILogger<DiscoveryResponseFactory> Logger;
 
 	public DiscoveryResponseFactory(
-		FederationOptions                 options,
-		IKeyMaterialService               keys,
+		FederationOptions options,
+		IKeyMaterialService keys,
 		ILogger<DiscoveryResponseFactory> logger)
 	{
 		Options = options;
-		Keys    = keys;
-		Logger  = logger;
+		Keys = keys;
+		Logger = logger;
 	}
 
 	public virtual async Task<Dictionary<string, object>> CreateResultAsync(string baseUri, string issuerUri)

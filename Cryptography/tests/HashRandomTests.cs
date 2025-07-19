@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using Wangkanai.Exceptions;
 
@@ -69,7 +69,7 @@ public class HashRandomTests
 	[Fact]
 	public void CreateUniqueId_Length16_FormatInvalid()
 	{
-		Assert.Throws<ArgumentOutOfRangeException>(() => HashRandom.CreateUniqueId(16, (HashRandom.OutputFormat) 99));
+		Assert.Throws<ArgumentOutOfRangeException>(() => HashRandom.CreateUniqueId(16, (HashRandom.OutputFormat)99));
 	}
 
 	[Fact]

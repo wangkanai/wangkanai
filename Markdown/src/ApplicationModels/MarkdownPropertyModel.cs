@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using System.Diagnostics;
 using System.Reflection;
@@ -12,7 +12,7 @@ namespace Wangkanai.Markdown.ApplicationModels;
 public class MarkdownPropertyModel : ParameterModelBase, ICommonModel
 {
 	public MarkdownPropertyModel(
-		PropertyInfo          propertyInfo,
+		PropertyInfo propertyInfo,
 		IReadOnlyList<object> attributes)
 		: base(propertyInfo.PropertyType, attributes)
 	{
@@ -24,13 +24,13 @@ public class MarkdownPropertyModel : ParameterModelBase, ICommonModel
 	{
 		other.ThrowIfNull();
 
-		Page         = other.Page;
-		BindingInfo  = other.BindingInfo == null ? null : new BindingInfo(other.BindingInfo);
+		Page = other.Page;
+		BindingInfo = other.BindingInfo == null ? null : new BindingInfo(other.BindingInfo);
 		PropertyInfo = other.PropertyInfo;
 	}
 
-	public MarkdownApplicationModel Page         { get; set; } = default!;
-	public PropertyInfo             PropertyInfo { get; }
+	public MarkdownApplicationModel Page { get; set; } = default!;
+	public PropertyInfo PropertyInfo { get; }
 
 	public string PropertyName
 	{

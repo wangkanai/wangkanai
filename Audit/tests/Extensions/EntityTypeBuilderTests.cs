@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
@@ -19,8 +19,8 @@ public class EntityTypeBuilderTests
 	{
 		// Arrange
 		var builder = MockExtensions.GetEntityTypeBuilder<GuidEntity, GuidEntityTypeConfiguration>();
-		var entity  = builder.Metadata;
-		var id      = entity.FindProperty(nameof(GuidEntity.Id));
+		var entity = builder.Metadata;
+		var id = entity.FindProperty(nameof(GuidEntity.Id));
 
 		// Act
 		builder.NewGuidOnAdd();
@@ -34,8 +34,8 @@ public class EntityTypeBuilderTests
 	{
 		// Arrange
 		var builder = MockExtensions.GetEntityTypeBuilder<IntEntity, IntEntityTypeConfiguration>();
-		var entity  = builder.Metadata;
-		var id      = entity.FindProperty(nameof(IntEntity.Id));
+		var entity = builder.Metadata;
+		var id = entity.FindProperty(nameof(IntEntity.Id));
 
 		// Act
 		builder.NewKeyOnAdd();
@@ -49,8 +49,8 @@ public class EntityTypeBuilderTests
 	{
 		// Arrange
 		var builder = MockExtensions.GetEntityTypeBuilder<GuidEntity, GuidEntityTypeConfiguration>();
-		var entity  = builder.Metadata;
-		var id      = entity.FindProperty(nameof(GuidEntity.Id));
+		var entity = builder.Metadata;
+		var id = entity.FindProperty(nameof(GuidEntity.Id));
 
 		// Act
 		builder.NewKeyOnAdd<GuidEntity, Guid>();
@@ -64,7 +64,7 @@ public class EntityTypeBuilderTests
 	{
 		// Arrange
 		var builder = MockExtensions.GetEntityTypeBuilder<CreatedEntity, CreatedEntityTypeConfiguration>();
-		var entity  = builder.Metadata;
+		var entity = builder.Metadata;
 		var created = entity.FindProperty(nameof(CreatedEntity.Created));
 
 		// Act
@@ -81,7 +81,7 @@ public class EntityTypeBuilderTests
 	{
 		// Arrange
 		var builder = MockExtensions.GetEntityTypeBuilder<UpdatedEntity, UpdatedEntityTypeConfiguration>();
-		var entity  = builder.Metadata;
+		var entity = builder.Metadata;
 		var updated = entity.FindProperty(nameof(UpdatedEntity.Updated));
 
 		// Act
@@ -98,7 +98,7 @@ public class EntityTypeBuilderTests
 	{
 		// Arrange
 		var builder = MockExtensions.GetEntityTypeBuilder<AuditEntity, AuditEntityTypeConfiguration>();
-		var entity  = builder.Metadata;
+		var entity = builder.Metadata;
 		var created = entity.FindProperty(nameof(AuditEntity.Created));
 		var updated = entity.FindProperty(nameof(AuditEntity.Updated));
 

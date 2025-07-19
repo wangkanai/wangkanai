@@ -1,5 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
-
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 namespace Microsoft.Extensions.DependencyInjection;
 
@@ -26,7 +25,7 @@ public static class DecoratorServiceExtensions
 
 		if (registration.ImplementationInstance != null)
 		{
-			var type  = registration.ImplementationInstance.GetType();
+			var type = registration.ImplementationInstance.GetType();
 			var inner = typeof(Decorator<,>).MakeGenericType(typeof(TService), type);
 
 			services.Add(new ServiceDescriptor(typeof(Decorator<TService>), inner, ServiceLifetime.Transient));
@@ -38,7 +37,7 @@ public static class DecoratorServiceExtensions
 		}
 		else
 		{
-			var type  = registration.ImplementationType;
+			var type = registration.ImplementationType;
 			var inner = typeof(Decorator<,>).MakeGenericType(typeof(TService), registration.ImplementationType);
 
 			services.Add(new ServiceDescriptor(typeof(Decorator<TService>), inner, ServiceLifetime.Transient));

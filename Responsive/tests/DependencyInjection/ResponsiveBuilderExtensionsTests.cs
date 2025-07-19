@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using System;
 
@@ -29,11 +29,11 @@ public class ResponsiveBuilderExtensionsTests
 	{
 		using var server = MockServer.Server(options => { options.Disable = true; });
 
-		var client   = server.CreateClient();
-		var request  = MockClient.CreateRequest(Device.Mobile);
-		var response = await client.SendAsync(request);
+		var client = server.CreateClient();
+		var request = MockClient.CreateRequest(Device.Mobile);
+		var response = await client.SendAsync(request, TestContext.Current.CancellationToken);
 		response.EnsureSuccessStatusCode();
-		Assert.Contains("desktop", await response.Content.ReadAsStringAsync(), StringComparison.OrdinalIgnoreCase);
+		Assert.Contains("desktop", await response.Content.ReadAsStringAsync(TestContext.Current.CancellationToken), StringComparison.OrdinalIgnoreCase);
 	}
 
 
@@ -42,22 +42,24 @@ public class ResponsiveBuilderExtensionsTests
 	{
 		using var server = MockServer.Server(options => { options.Disable = false; });
 
-		var client   = server.CreateClient();
-		var request  = MockClient.CreateRequest(Device.Mobile);
-		var response = await client.SendAsync(request);
+		var client = server.CreateClient();
+		var request = MockClient.CreateRequest(Device.Mobile);
+		var response = await client.SendAsync(request, TestContext.Current.CancellationToken);
 		response.EnsureSuccessStatusCode();
-		Assert.Contains("mobile", await response.Content.ReadAsStringAsync(), StringComparison.OrdinalIgnoreCase);
+		Assert.Contains("mobile", await response.Content.ReadAsStringAsync(TestContext.Current.CancellationToken), StringComparison.OrdinalIgnoreCase);
 	}
 
 	[Fact]
 	public void AddResponsive_Options_Disable_IncludeWebApi()
 	{
-		var builder = MockServer.WebHostBuilder(options => {
-			options.Disable       = true;
+		var builder = MockServer.WebHostBuilder(options =>
+		{
+			options.Disable = true;
 			options.IncludeWebApi = true;
 		});
 
-		var exception = Assert.Throws<InvalidOperationException>(() => {
+		var exception = Assert.Throws<InvalidOperationException>(() =>
+		{
 			using var server = new TestServer(builder);
 		});
 		Assert.Equal("IncludeWebApi is not needed if already Disable", exception.Message);
@@ -68,11 +70,12 @@ public class ResponsiveBuilderExtensionsTests
 	[InlineData(Device.Mobile, "mobile", "/api/dog")]
 	public async ValueTask AddResponsive_WebApi_Exclude_Api(Device device, string agent, string path)
 	{
-		using var server = MockServer.Server(options => {
-			options.DefaultMobile  = device;
-			options.DefaultTablet  = device;
+		using var server = MockServer.Server(options =>
+		{
+			options.DefaultMobile = device;
+			options.DefaultTablet = device;
 			options.DefaultDesktop = device;
-			options.IncludeWebApi  = true;
+			options.IncludeWebApi = true;
 		});
 
 		var request = server.CreateRequest(path);
@@ -80,7 +83,7 @@ public class ResponsiveBuilderExtensionsTests
 		//var request  = MockClient.CreateRequest(agent, path);
 		var response = await request.GetAsync();
 		response.EnsureSuccessStatusCode();
-		Assert.Contains("mobile", await response.Content.ReadAsStringAsync(), StringComparison.OrdinalIgnoreCase);
+		Assert.Contains("mobile", await response.Content.ReadAsStringAsync(TestContext.Current.CancellationToken), StringComparison.OrdinalIgnoreCase);
 	}
 
 	[Theory]
@@ -92,19 +95,20 @@ public class ResponsiveBuilderExtensionsTests
 	[InlineData(Device.Mobile, "mobile", "")]
 	public async ValueTask AddResponsive_WebApi_Exclude_NonApi(Device device, string agent, string path)
 	{
-		using var server = MockServer.Server(options => {
-			options.DefaultMobile  = device;
-			options.DefaultTablet  = device;
+		using var server = MockServer.Server(options =>
+		{
+			options.DefaultMobile = device;
+			options.DefaultTablet = device;
 			options.DefaultDesktop = device;
-			options.IncludeWebApi  = false;
+			options.IncludeWebApi = false;
 		});
-		await server.Host.StartAsync();
+		await server.Host.StartAsync(TestContext.Current.CancellationToken);
 
-		var client   = server.CreateClient();
-		var request  = MockClient.CreateRequest(agent, path);
-		var response = await client.SendAsync(request);
+		var client = server.CreateClient();
+		var request = MockClient.CreateRequest(agent, path);
+		var response = await client.SendAsync(request, TestContext.Current.CancellationToken);
 		response.EnsureSuccessStatusCode();
-		Assert.Contains(device.ToString(), await response.Content.ReadAsStringAsync(), StringComparison.OrdinalIgnoreCase);
+		Assert.Contains(device.ToString(), await response.Content.ReadAsStringAsync(TestContext.Current.CancellationToken), StringComparison.OrdinalIgnoreCase);
 	}
 
 	[Theory]
@@ -118,17 +122,18 @@ public class ResponsiveBuilderExtensionsTests
 	[InlineData(Device.Mobile, "mobile", "/api/dog")]
 	public async ValueTask AddResponsive_WebApi_Include_Api(Device device, string agent, string path)
 	{
-		using var server = MockServer.Server(options => {
-			options.DefaultMobile  = device;
-			options.DefaultTablet  = device;
+		using var server = MockServer.Server(options =>
+		{
+			options.DefaultMobile = device;
+			options.DefaultTablet = device;
 			options.DefaultDesktop = device;
-			options.IncludeWebApi  = true;
+			options.IncludeWebApi = true;
 		});
 
-		var client   = server.CreateClient();
-		var request  = MockClient.CreateRequest(agent, path);
-		var response = await client.SendAsync(request);
+		var client = server.CreateClient();
+		var request = MockClient.CreateRequest(agent, path);
+		var response = await client.SendAsync(request, TestContext.Current.CancellationToken);
 		response.EnsureSuccessStatusCode();
-		Assert.Contains(device.ToString(), await response.Content.ReadAsStringAsync(), StringComparison.OrdinalIgnoreCase);
+		Assert.Contains(device.ToString(), await response.Content.ReadAsStringAsync(TestContext.Current.CancellationToken), StringComparison.OrdinalIgnoreCase);
 	}
 }

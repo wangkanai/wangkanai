@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 namespace System.ComponentModel.DataAnnotations;
 
@@ -11,9 +11,9 @@ public sealed class RequireFalseAttribute : ValidationAttribute
 	public override bool IsValid(object? value)
 		=> value switch
 		{
-			null        => true,
-			true        => false,
-			false       => true,
-			_           => false
+			null => true,
+			true => false,
+			false => true,
+			_ => false
 		};
 }

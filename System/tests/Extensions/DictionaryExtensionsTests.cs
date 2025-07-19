@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 namespace Wangkanai.Extensions;
 
@@ -8,7 +8,7 @@ public class DictionaryExtensionsTests
 	public void GetValueOrThrow_KeyExists_ReturnsCorrectValue()
 	{
 		var dictionary = new Dictionary<string, int> { { "key", 1 } };
-		var result     = dictionary.GetValueOrThrow("key", "Key not found");
+		var result = dictionary.GetValueOrThrow("key", "Key not found");
 		Assert.Equal(1, result);
 	}
 
@@ -23,7 +23,7 @@ public class DictionaryExtensionsTests
 	public void GetValueSafe_KeyExists_ReturnsCorrectValue()
 	{
 		var dictionary = new Dictionary<string, int> { { "key", 1 } };
-		var result     = dictionary.GetValueSafe("key");
+		var result = dictionary.GetValueSafe("key");
 		Assert.Equal(1, result);
 	}
 
@@ -31,7 +31,7 @@ public class DictionaryExtensionsTests
 	public void GetValueSafe_KeyDoesNotExist_ReturnsDefaultValue()
 	{
 		var dictionary = new Dictionary<string, int>();
-		var result     = dictionary.GetValueSafe("key");
+		var result = dictionary.GetValueSafe("key");
 		Assert.Equal(0, result);
 	}
 
@@ -39,7 +39,7 @@ public class DictionaryExtensionsTests
 	public void TryGetValueSafe_KeyExists_ReturnsTrueAndCorrectValue()
 	{
 		var dictionary = new Dictionary<string, int> { { "key", 1 } };
-		var result     = dictionary.TryGetValueSafe("key", out var value);
+		var result = dictionary.TryGetValueSafe("key", out var value);
 		Assert.True(result);
 		Assert.Equal(1, value);
 	}
@@ -48,7 +48,7 @@ public class DictionaryExtensionsTests
 	public void TryGetValueSafe_KeyDoesNotExist_ReturnsFalse()
 	{
 		var dictionary = new Dictionary<string, int>();
-		var result     = dictionary.TryGetValueSafe("key", out var value);
+		var result = dictionary.TryGetValueSafe("key", out var value);
 		Assert.False(result);
 		Assert.Equal(0, value);
 		Assert.Equal(default, value);
@@ -58,7 +58,7 @@ public class DictionaryExtensionsTests
 	public void GetValueSafe_NullKey_ReturnsDefaultValue()
 	{
 		var dictionary = new Dictionary<string, int> { { "key", 1 } };
-		var result     = dictionary.GetValueSafe(null);
+		var result = dictionary.GetValueSafe(null);
 		Assert.Equal(0, result);
 	}
 
@@ -66,7 +66,7 @@ public class DictionaryExtensionsTests
 	public void GetValueSafe_WithCustomDefaultValue_KeyDoesNotExist_ReturnsCustomDefaultValue()
 	{
 		var dictionary = new Dictionary<string, int>();
-		var result     = dictionary.GetValueSafe("key", 42);
+		var result = dictionary.GetValueSafe("key", 42);
 		Assert.Equal(42, result);
 	}
 
@@ -74,7 +74,7 @@ public class DictionaryExtensionsTests
 	public void GetValueSafe_WithCustomDefaultValue_KeyExists_ReturnsActualValue()
 	{
 		var dictionary = new Dictionary<string, int> { { "key", 1 } };
-		var result     = dictionary.GetValueSafe("key", 42);
+		var result = dictionary.GetValueSafe("key", 42);
 		Assert.Equal(1, result);
 	}
 
@@ -82,7 +82,7 @@ public class DictionaryExtensionsTests
 	public void GetValueSafe_WithCustomDefaultValue_NullKey_ReturnsCustomDefaultValue()
 	{
 		var dictionary = new Dictionary<string, int> { { "key", 1 } };
-		var result     = dictionary.GetValueSafe(null, 42);
+		var result = dictionary.GetValueSafe(null, 42);
 		Assert.Equal(42, result);
 	}
 
@@ -90,7 +90,7 @@ public class DictionaryExtensionsTests
 	public void GetValueSafe_WithReferenceType_KeyExists_ReturnsCorrectValue()
 	{
 		var dictionary = new Dictionary<string, string> { { "key", "value" } };
-		var result     = dictionary.GetValueSafe("key");
+		var result = dictionary.GetValueSafe("key");
 		Assert.Equal("value", result);
 	}
 
@@ -98,7 +98,7 @@ public class DictionaryExtensionsTests
 	public void GetValueSafe_WithReferenceType_KeyDoesNotExist_ReturnsNull()
 	{
 		var dictionary = new Dictionary<string, string>();
-		var result     = dictionary.GetValueSafe("key");
+		var result = dictionary.GetValueSafe("key");
 		Assert.Null(result);
 	}
 
@@ -106,7 +106,7 @@ public class DictionaryExtensionsTests
 	public void TryGetValueSafe_NullKey_ReturnsFalse()
 	{
 		var dictionary = new Dictionary<string, int> { { "key", 1 } };
-		var result     = dictionary.TryGetValueSafe(null, out var value);
+		var result = dictionary.TryGetValueSafe(null, out var value);
 		Assert.False(result);
 		Assert.Equal(0, value);
 	}
@@ -115,7 +115,7 @@ public class DictionaryExtensionsTests
 	public void TryGetValueSafe_WithReferenceType_KeyExists_ReturnsTrueAndCorrectValue()
 	{
 		var dictionary = new Dictionary<string, string> { { "key", "value" } };
-		var result     = dictionary.TryGetValueSafe("key", out var value);
+		var result = dictionary.TryGetValueSafe("key", out var value);
 		Assert.True(result);
 		Assert.Equal("value", value);
 	}
@@ -124,7 +124,7 @@ public class DictionaryExtensionsTests
 	public void TryGetValueSafe_WithReferenceType_KeyDoesNotExist_ReturnsFalseAndNull()
 	{
 		var dictionary = new Dictionary<string, string>();
-		var result     = dictionary.TryGetValueSafe("key", out var value);
+		var result = dictionary.TryGetValueSafe("key", out var value);
 		Assert.False(result);
 		Assert.Null(value);
 	}
@@ -140,7 +140,7 @@ public class DictionaryExtensionsTests
 	public void GetValueSafe_WithDifferentKeyType_WorksCorrectly()
 	{
 		var dictionary = new Dictionary<int, string> { { 1, "one" } };
-		var result     = dictionary.GetValueSafe(1);
+		var result = dictionary.GetValueSafe(1);
 		Assert.Equal("one", result);
 		result = dictionary.GetValueSafe(2);
 		Assert.Null(result);
@@ -150,7 +150,7 @@ public class DictionaryExtensionsTests
 	public void TryGetValueSafe_WithDifferentKeyType_WorksCorrectly()
 	{
 		var dictionary = new Dictionary<int, string> { { 1, "one" } };
-		var result     = dictionary.TryGetValueSafe(1, out var value);
+		var result = dictionary.TryGetValueSafe(1, out var value);
 		Assert.True(result);
 		Assert.Equal("one", value);
 

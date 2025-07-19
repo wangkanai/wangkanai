@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using System.Text.RegularExpressions;
 
@@ -12,9 +12,9 @@ public sealed class PlatformService : IPlatformService
 {
 	private readonly IUserAgentService _userAgentService;
 
-	private Platform?  _name;
+	private Platform? _name;
 	private Processor? _processor;
-	private Version?   _version;
+	private Version? _version;
 
 	public PlatformService(IUserAgentService userAgentService)
 	{
@@ -22,8 +22,8 @@ public sealed class PlatformService : IPlatformService
 	}
 
 	public Processor Processor => _processor ??= GetProcessor();
-	public Platform  Name      => _name ??= GetPlatform();
-	public Version   Version   => _version ??= GetVersion();
+	public Platform Name => _name ??= GetPlatform();
+	public Version Version => _version ??= GetVersion();
 
 
 	private Platform GetPlatform()
@@ -53,26 +53,26 @@ public sealed class PlatformService : IPlatformService
 
 	private Version GetVersion()
 	{
-		var agent    = _userAgentService.UserAgent.ToLower();
+		var agent = _userAgentService.UserAgent.ToLower();
 		var platform = Name;
 		return platform switch
 		{
 			Platform.Unknown => new Version(),
-			Platform.Others  => new Version(),
+			Platform.Others => new Version(),
 			Platform.Windows => ParseOsVersion(agent, "windowsnt"),
 			Platform.Android => ParseOsVersion(agent, "android"),
-			Platform.Mac     => ParseOsVersion(agent, "intelmacosx"),
-			Platform.iOS     => ParseOsVersion(agent, "cpuiphoneos"),
-			Platform.iPadOS  => ParseOsVersion(agent, "cpuos"),
-			Platform.Linux   => ParseOsVersion(agent, "rv:"),
-			_                => new Version()
+			Platform.Mac => ParseOsVersion(agent, "intelmacosx"),
+			Platform.iOS => ParseOsVersion(agent, "cpuiphoneos"),
+			Platform.iPadOS => ParseOsVersion(agent, "cpuos"),
+			Platform.Linux => ParseOsVersion(agent, "rv:"),
+			_ => new Version()
 		};
 	}
 
 	private Processor GetProcessor()
 	{
 		var agent = _userAgentService.UserAgent.ToLower();
-		var os    = Name;
+		var os = Name;
 
 		if (IsArm(agent, os))
 			return Processor.ARM;
@@ -118,8 +118,8 @@ public sealed class PlatformService : IPlatformService
 	private static Version ParseOsVersion(string agent, string prefix)
 	{
 		return _osParseRegex.RegexMatch(ReplaceUnderscore(AgentSourceParse(agent, prefix)))
-		                    .Value
-		                    .ToVersion();
+							.Value
+							.ToVersion();
 	}
 
 	private static string ReplaceUnderscore(string value)
@@ -130,27 +130,27 @@ public sealed class PlatformService : IPlatformService
 
 	private static string AgentSourceStart(string agent, string prefix)
 		=> _osStartRegex.RegexMatch(agent)
-		                .Captures
-		                .FirstOrDefault()
-		                ?
-		                .Value
-		                .RemoveAll(" ", "(", ")")
-		                .Split(';')
-		                .FirstOrDefault(x => x.StartsWith(prefix, StringComparison.Ordinal));
+						.Captures
+						.FirstOrDefault()
+						?
+						.Value
+						.RemoveAll(" ", "(", ")")
+						.Split(';')
+						.FirstOrDefault(x => x.StartsWith(prefix, StringComparison.Ordinal));
 
 
-	private static readonly string[]    X86DeviceList    = { "i86", "i686", Processor.x86.ToString() };
-	private static readonly IPrefixTrie X86DeviceTrie    = X86DeviceList.BuildSearchTrie();
-	private static readonly string[]    X64DeviceList    = { "x86_64", "wow64", "win64", Processor.x64.ToLowerString() };
-	private static readonly IPrefixTrie X64DeviceTrie    = X64DeviceList.BuildSearchTrie();
-	private static readonly string[]    IosDeviceList    = { "iphone", "ipod", Platform.iOS.ToLowerString() };
-	private static readonly IPrefixTrie IosDeviceTrie    = IosDeviceList.BuildSearchTrie();
-	private static readonly string[]    IPadosDeviceList = { "ipad", Platform.iPadOS.ToLowerString() };
+	private static readonly string[] X86DeviceList = { "i86", "i686", Processor.x86.ToString() };
+	private static readonly IPrefixTrie X86DeviceTrie = X86DeviceList.BuildSearchTrie();
+	private static readonly string[] X64DeviceList = { "x86_64", "wow64", "win64", Processor.x64.ToLowerString() };
+	private static readonly IPrefixTrie X64DeviceTrie = X64DeviceList.BuildSearchTrie();
+	private static readonly string[] IosDeviceList = { "iphone", "ipod", Platform.iOS.ToLowerString() };
+	private static readonly IPrefixTrie IosDeviceTrie = IosDeviceList.BuildSearchTrie();
+	private static readonly string[] IPadosDeviceList = { "ipad", Platform.iPadOS.ToLowerString() };
 
 	private static readonly IPrefixTrie PadosDeviceTrie = IPadosDeviceList.BuildSearchTrie();
-	private static readonly string[]    ChromeOSList    = { "cros" };
-	private static readonly IPrefixTrie ChromeOsTrie    = ChromeOSList.BuildSearchTrie();
-	private static readonly string[]    AppleWebKitList = { "applewebkit", "webkit" };
+	private static readonly string[] ChromeOSList = { "cros" };
+	private static readonly IPrefixTrie ChromeOsTrie = ChromeOSList.BuildSearchTrie();
+	private static readonly string[] AppleWebKitList = { "applewebkit", "webkit" };
 	private static readonly IPrefixTrie AppleWebKitTrie = AppleWebKitList.BuildSearchTrie();
 
 	#endregion

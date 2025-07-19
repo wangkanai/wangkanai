@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 namespace Wangkanai.Federation.Options;
 
@@ -6,7 +6,7 @@ namespace Wangkanai.Federation.Options;
 
 public class TableConfiguration
 {
-	public string  Name   { get; }
+	public string Name { get; }
 	public string? Schema { get; }
 
 	public TableConfiguration(string name)

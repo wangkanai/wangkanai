@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 namespace Wangkanai;
 
@@ -6,7 +6,7 @@ namespace Wangkanai;
 public static class StaticRandom
 {
 	private static readonly Random Random = new Random();
-	private static readonly object Lock   = new object();
+	private static readonly object Lock = new object();
 
 	/// <summary>Generates a random integer.</summary>
 	/// <returns>A random integer.</returns>

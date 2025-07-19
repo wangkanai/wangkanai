@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using System.Reflection;
 
@@ -16,7 +16,7 @@ public class PositiveIntegerAttributeTests
 	[Fact]
 	public void Parameter_Attribute_Default()
 	{
-		var method    = typeof(PositiveInteger).GetMethod(nameof(PositiveInteger.ParameterDefault));
+		var method = typeof(PositiveInteger).GetMethod(nameof(PositiveInteger.ParameterDefault));
 		var attribute = method!.GetCustomAttribute<PositiveIntegerAttribute>();
 		Assert.Null(attribute);
 	}
@@ -24,8 +24,8 @@ public class PositiveIntegerAttributeTests
 	[Fact]
 	public void Parameter_Attribute_Exist()
 	{
-		var method    = typeof(PositiveInteger).GetMethod(nameof(PositiveInteger.ParameterExist));
-		var argument  = method!.GetParameters()[0];
+		var method = typeof(PositiveInteger).GetMethod(nameof(PositiveInteger.ParameterExist));
+		var argument = method!.GetParameters()[0];
 		var attribute = argument!.GetCustomAttribute<PositiveIntegerAttribute>();
 		Assert.NotNull(attribute);
 	}
@@ -33,6 +33,6 @@ public class PositiveIntegerAttributeTests
 
 public class PositiveInteger
 {
-	public void ParameterDefault(int                 value) { }
+	public void ParameterDefault(int value) { }
 	public void ParameterExist([PositiveInteger] int value) { }
 }

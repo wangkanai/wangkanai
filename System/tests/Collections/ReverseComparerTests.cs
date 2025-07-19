@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 namespace Wangkanai.Collections;
 
@@ -14,7 +14,7 @@ public class ReverseComparerTests
 	public void NormalComparer()
 	{
 		var original = StringComparer.Ordinal;
-		var subject  = new ReverseComparer<string>(original);
+		var subject = new ReverseComparer<string>(original);
 
 		Assert.Equal(original.Compare("x", "y"), subject.Compare("y", "x"));
 		Assert.Equal(0, subject.Compare("x", "x"));

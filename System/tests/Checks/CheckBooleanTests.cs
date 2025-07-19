@@ -1,5 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
-
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 // ReSharper disable InconsistentNaming
 
@@ -10,15 +9,15 @@ public class CheckBooleanTests
 	[Fact]
 	public void CheckTrueIfNullThenReturnTrue()
 	{
-		byte?    _byte    = null;
-		short?   _short   = null;
-		int?     _int     = null;
-		long?    _long    = null;
-		float?   _float   = null;
-		double?  _double  = null;
+		byte? _byte = null;
+		short? _short = null;
+		int? _int = null;
+		long? _long = null;
+		float? _float = null;
+		double? _double = null;
 		decimal? _decimal = null;
-		char?    _char    = null;
-		string?  _string  = null;
+		char? _char = null;
+		string? _string = null;
 
 		Assert.True(_byte.TrueIfNull());
 		Assert.True(_short.TrueIfNull());
@@ -34,15 +33,15 @@ public class CheckBooleanTests
 	[Fact]
 	public void CheckTrueIfExistReturnFalse()
 	{
-		byte?    _byte    = 0;
-		short?   _short   = 0;
-		int?     _int     = 0;
-		long?    _long    = 0;
-		float?   _float   = 0;
-		double?  _double  = 0.0;
+		byte? _byte = 0;
+		short? _short = 0;
+		int? _int = 0;
+		long? _long = 0;
+		float? _float = 0;
+		double? _double = 0.0;
 		decimal? _decimal = 0;
-		char     _char    = 'a';
-		string   _string  = "xyz";
+		char _char = 'a';
+		string _string = "xyz";
 
 		Assert.False(_byte.TrueIfNull());
 		Assert.False(_short.TrueIfNull());
@@ -58,15 +57,15 @@ public class CheckBooleanTests
 	[Fact]
 	public void CheckFalseIfNullThenReturnFalse()
 	{
-		byte?    _byte    = null;
-		short?   _short   = null;
-		int?     _int     = null;
-		long?    _long    = null;
-		float?   _float   = null;
-		double?  _double  = null;
+		byte? _byte = null;
+		short? _short = null;
+		int? _int = null;
+		long? _long = null;
+		float? _float = null;
+		double? _double = null;
 		decimal? _decimal = null;
-		char?    _char    = null;
-		string?  _string  = null;
+		char? _char = null;
+		string? _string = null;
 
 		Assert.False(_byte.FalseIfNull());
 		Assert.False(_short.FalseIfNull());
@@ -82,15 +81,15 @@ public class CheckBooleanTests
 	[Fact]
 	public void CheckFalseIfExistReturnFalse()
 	{
-		byte?    _byte    = 0;
-		short?   _short   = 0;
-		int?     _int     = 0;
-		long?    _long    = 0;
-		float?   _float   = 0;
-		double?  _double  = 0.0;
+		byte? _byte = 0;
+		short? _short = 0;
+		int? _int = 0;
+		long? _long = 0;
+		float? _float = 0;
+		double? _double = 0.0;
 		decimal? _decimal = 0;
-		char?    _char    = 'a';
-		string  _string  = "xyz";
+		char? _char = 'a';
+		string _string = "xyz";
 
 		Assert.True(_byte.FalseIfNull());
 		Assert.True(_short.FalseIfNull());

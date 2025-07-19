@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using System.Reflection;
 
@@ -10,7 +10,7 @@ namespace Wangkanai.Validation;
 public class RequireNonAlphanumericTests
 {
 	private readonly ITestOutputHelper _output;
-	private readonly PropertyInfo      _password = NonAlphanumericModel.GetProperty(nameof(NonAlphanumericModel.Password));
+	private readonly PropertyInfo _password = NonAlphanumericModel.GetProperty(nameof(NonAlphanumericModel.Password));
 
 	public RequireNonAlphanumericTests(ITestOutputHelper output)
 	{

@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using Wangkanai.Collections;
 
@@ -18,7 +18,7 @@ public class ComparerExtensionsTests
 	public void SingleReverseReverse()
 	{
 		var original = StringComparer.Ordinal;
-		var subject  = original.Reverse();
+		var subject = original.Reverse();
 
 		Assert.Equal(original.Compare("x", "y"), subject.Compare("y", "x"));
 		Assert.Equal(0, subject.Compare("x", "x"));
@@ -27,8 +27,8 @@ public class ComparerExtensionsTests
 	[Fact]
 	public void ThenByWithComparer()
 	{
-		var data      = TestSample.Data;
-		var primary   = ProjectionComparer<TestSample>.Create(x => x.First);
+		var data = TestSample.Data;
+		var primary = ProjectionComparer<TestSample>.Create(x => x.First);
 		var secondary = ProjectionComparer<TestSample>.Create(x => x.Second);
 
 		data.Sort(primary.ThenBy(secondary));
@@ -39,7 +39,7 @@ public class ComparerExtensionsTests
 	[Fact]
 	public void ThenByWithProjection()
 	{
-		var data    = TestSample.Data;
+		var data = TestSample.Data;
 		var primary = ProjectionComparer<TestSample>.Create(x => x.First);
 
 		data.Sort(primary.ThenBy(x => x.Second));
@@ -49,7 +49,7 @@ public class ComparerExtensionsTests
 
 	class TestSample
 	{
-		public int First  { get; set; }
+		public int First { get; set; }
 		public int Second { get; set; }
 
 		public static List<TestSample> Data =>

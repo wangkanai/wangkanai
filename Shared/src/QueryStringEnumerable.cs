@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using System.Buffers;
 using System.Runtime.CompilerServices;
@@ -26,12 +26,12 @@ public readonly struct QueryStringEnumerable
 
 	public readonly struct EncodedNameValuePair
 	{
-		public readonly ReadOnlyMemory<char> EncodedName  { get; }
+		public readonly ReadOnlyMemory<char> EncodedName { get; }
 		public readonly ReadOnlyMemory<char> EncodedValue { get; }
 
 		internal EncodedNameValuePair(ReadOnlyMemory<char> encodedName, ReadOnlyMemory<char> encodedValue)
 		{
-			EncodedName  = encodedName;
+			EncodedName = encodedName;
 			EncodedValue = encodedValue;
 		}
 
@@ -48,8 +48,8 @@ public readonly struct QueryStringEnumerable
 		private static ReadOnlyMemory<char> Decode(ReadOnlyMemory<char> chars)
 		{
 			return chars.Length < 16 && chars.Span.IndexOfAny('%', '+') < 0
-				       ? chars
-				       : Uri.UnescapeDataString(SpanHelper.ReplacePlusWithSpace(chars.Span)).AsMemory();
+					   ? chars
+					   : Uri.UnescapeDataString(SpanHelper.ReplacePlusWithSpace(chars.Span)).AsMemory();
 		}
 	}
 
@@ -61,8 +61,8 @@ public readonly struct QueryStringEnumerable
 		{
 			Current = default;
 			_query = query.IsEmpty || query.Span[0] != '?'
-				         ? query
-				         : query.Slice(1);
+						 ? query
+						 : query.Slice(1);
 		}
 
 		public EncodedNameValuePair Current { get; private set; }
@@ -73,16 +73,16 @@ public readonly struct QueryStringEnumerable
 			{
 				// Chomp off the next segment
 				ReadOnlyMemory<char> segment;
-				var                  delimiterIndex = _query.Span.IndexOf('&');
+				var delimiterIndex = _query.Span.IndexOf('&');
 				if (delimiterIndex >= 0)
 				{
 					segment = _query.Slice(0, delimiterIndex);
-					_query  = _query.Slice(delimiterIndex + 1);
+					_query = _query.Slice(delimiterIndex + 1);
 				}
 				else
 				{
 					segment = _query;
-					_query  = default;
+					_query = default;
 				}
 
 				// If it's nonempty, emit it
@@ -124,7 +124,7 @@ public readonly struct QueryStringEnumerable
 		{
 			fixed (char* ptr = &MemoryMarshal.GetReference(buffer))
 			{
-				var input  = (ushort*)state.ToPointer();
+				var input = (ushort*)state.ToPointer();
 				var output = (ushort*)ptr;
 
 				var i = (nint)0;
@@ -132,14 +132,14 @@ public readonly struct QueryStringEnumerable
 
 				if (Vector256.IsHardwareAccelerated && n >= Vector256<ushort>.Count)
 				{
-					var vecPlus  = Vector256.Create((ushort)'+');
+					var vecPlus = Vector256.Create((ushort)'+');
 					var vecSpace = Vector256.Create((ushort)' ');
 
 					do
 					{
-						var vec  = Vector256.Load(input + i);
+						var vec = Vector256.Load(input + i);
 						var mask = Vector256.Equals(vec, vecPlus);
-						var res  = Vector256.ConditionalSelect(mask, vecSpace, vec);
+						var res = Vector256.ConditionalSelect(mask, vecSpace, vec);
 						res.Store(output + i);
 						i += Vector256<ushort>.Count;
 					} while (i <= n - Vector256<ushort>.Count);
@@ -147,14 +147,14 @@ public readonly struct QueryStringEnumerable
 
 				if (Vector128.IsHardwareAccelerated && n - i >= Vector128<ushort>.Count)
 				{
-					var vecPlus  = Vector128.Create((ushort)'+');
+					var vecPlus = Vector128.Create((ushort)'+');
 					var vecSpace = Vector128.Create((ushort)' ');
 
 					do
 					{
-						var vec  = Vector128.Load(input + i);
+						var vec = Vector128.Load(input + i);
 						var mask = Vector128.Equals(vec, vecPlus);
-						var res  = Vector128.ConditionalSelect(mask, vecSpace, vec);
+						var res = Vector128.ConditionalSelect(mask, vecSpace, vec);
 						res.Store(output + i);
 						i += Vector128<ushort>.Count;
 					} while (i <= n - Vector128<ushort>.Count);

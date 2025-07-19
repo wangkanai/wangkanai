@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using Microsoft.AspNetCore.Http;
 
@@ -9,11 +9,11 @@ public class UserAgentServiceTests
 	[Fact]
 	public void Ctor_IServiceProvider_Success()
 	{
-		var agent   = "Agent";
+		var agent = "Agent";
 		var context = new DefaultHttpContext();
 		context.Request.Headers["User-Agent"] = agent;
 
-		var accessor       = new HttpContextAccessor { HttpContext = context };
+		var accessor = new HttpContextAccessor { HttpContext = context };
 		var contextService = new HttpContextService(accessor);
 
 		var useragentService = new UserAgentService(contextService);

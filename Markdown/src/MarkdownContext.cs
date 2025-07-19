@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -11,9 +11,9 @@ namespace Wangkanai.Markdown;
 public class MarkdownContext : ActionContext
 {
 	private CompiledMarkdownActionDescriptor? _actionDescriptor;
-	private IList<IValueProviderFactory>?     _valueProviderFactories;
-	private ViewDataDictionary?               _viewData;
-	private IList<Func<IMarkdownPage>>?       _viewStartFactories;
+	private IList<IValueProviderFactory>? _valueProviderFactories;
+	private ViewDataDictionary? _viewData;
+	private IList<Func<IMarkdownPage>>? _viewStartFactories;
 
 	public MarkdownContext() { }
 
@@ -21,8 +21,8 @@ public class MarkdownContext : ActionContext
 		: base(actionContext) { }
 
 	internal MarkdownContext(
-		HttpContext                      httpContext,
-		RouteData                        routeData,
+		HttpContext httpContext,
+		RouteData routeData,
 		CompiledMarkdownActionDescriptor actionDescriptor)
 		: base(httpContext, routeData, actionDescriptor)
 	{

@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using Microsoft.AspNetCore.Routing;
 
@@ -12,7 +12,8 @@ public static class RoutingCollectionExtensions
 	{
 		builder.ThrowIfNull();
 
-		builder.Services.Configure<RouteOptions>(options => {
+		builder.Services.Configure<RouteOptions>(options =>
+		{
 			options.ConstraintMap.Add("thai", typeof(ThaiLanguageRouteConstraint));
 			options.ConstraintMap.Add("lao", typeof(LaoLanguageRouteConstraint));
 			options.ConstraintMap.Add("myanmar", typeof(MyanmarLanguageRouteConstraint));

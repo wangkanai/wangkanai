@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using Microsoft.AspNetCore.Mvc.Filters;
 
@@ -14,7 +14,7 @@ internal sealed class FilterDescriptorOrderComparer : IComparer<FilterDescriptor
 		y.ThrowIfNull();
 
 		return x.Order == y.Order
-			       ? x.Scope.CompareTo(y.Scope)
-			       : x.Order.CompareTo(y.Order);
+				   ? x.Scope.CompareTo(y.Scope)
+				   : x.Order.CompareTo(y.Order);
 	}
 }

@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 namespace Wangkanai.Collections;
 
@@ -7,7 +7,7 @@ namespace Wangkanai.Collections;
 /// </summary>
 internal sealed class StringArrayComparer : IEqualityComparer<string[]>
 {
-	public static readonly StringArrayComparer Ordinal           = new(StringComparer.Ordinal);
+	public static readonly StringArrayComparer Ordinal = new(StringComparer.Ordinal);
 	public static readonly StringArrayComparer OrdinalIgnoreCase = new(StringComparer.OrdinalIgnoreCase);
 
 	private readonly StringComparer _valueComparer;

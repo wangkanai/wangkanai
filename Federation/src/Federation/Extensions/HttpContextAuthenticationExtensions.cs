@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
@@ -15,7 +15,7 @@ public static class HttpContextAuthenticationExtensions
 			return options.Authentication.CookieAuthenticationScheme;
 
 		var schemes = context.RequestServices.GetRequiredService<IAuthenticationSchemeProvider>();
-		var scheme  = await schemes.GetDefaultAuthenticateSchemeAsync();
+		var scheme = await schemes.GetDefaultAuthenticateSchemeAsync();
 		scheme.ThrowIfNull<InvalidOperationException>("No DefaultAuthenticationScheme found or no CookieAuthenticationScheme configured on FederationOptions");
 		return scheme.Name;
 	}

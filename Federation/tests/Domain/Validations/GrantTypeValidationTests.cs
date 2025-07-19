@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using Wangkanai.Exceptions;
 using Wangkanai.Federation.Models;
@@ -13,7 +13,7 @@ public class GrantTypeValidationTests
 		IEnumerable<string> grantTypes = null!;
 		Assert.Throws<ArgumentNullException>(() => grantTypes.ValidateGrantTypes());
 	}
-	
+
 	[Fact]
 	public void Validate_Empty()
 	{
@@ -30,7 +30,7 @@ public class GrantTypeValidationTests
 		grantTypes.Add(GrantType.Implicit);
 		Assert.Throws<InvalidOperationException>(() => grantTypes.ValidateGrantTypes());
 	}
-	
+
 	[Fact]
 	public void Validate_Duplicate()
 	{
@@ -39,7 +39,7 @@ public class GrantTypeValidationTests
 		grantTypes.Add(GrantType.Implicit);
 		Assert.Throws<InvalidOperationException>(() => grantTypes.ValidateGrantTypes());
 	}
-	
+
 	[Fact]
 	public void Validate_Implicit()
 	{
@@ -48,7 +48,7 @@ public class GrantTypeValidationTests
 		Assert.Equal(grantTypes, grantTypes.ValidateGrantTypes());
 		Assert.Single(grantTypes.ValidateGrantTypes());
 	}
-	
+
 	[Fact]
 	public void Validate_Hybrid()
 	{
@@ -57,7 +57,7 @@ public class GrantTypeValidationTests
 		Assert.Equal(grantTypes, grantTypes.ValidateGrantTypes());
 		Assert.Single(grantTypes.ValidateGrantTypes());
 	}
-	
+
 	[Fact]
 	public void Validate_AuthorizationCode()
 	{
@@ -66,7 +66,7 @@ public class GrantTypeValidationTests
 		Assert.Equal(grantTypes, grantTypes.ValidateGrantTypes());
 		Assert.Single(grantTypes.ValidateGrantTypes());
 	}
-	
+
 	[Fact]
 	public void Validate_ImplicitAndHybrid()
 	{
@@ -75,7 +75,7 @@ public class GrantTypeValidationTests
 		grantTypes.Add(GrantType.Hybrid);
 		Assert.Throws<InvalidOperationException>(() => grantTypes.ValidateGrantTypes());
 	}
-	
+
 	[Fact]
 	public void Validate_ImplicitAndAuthorizationCode()
 	{
@@ -84,7 +84,7 @@ public class GrantTypeValidationTests
 		grantTypes.Add(GrantType.AuthorizationCode);
 		Assert.Throws<InvalidOperationException>(() => grantTypes.ValidateGrantTypes());
 	}
-	
+
 	[Fact]
 	public void Validate_HybridAndAuthorizationCode()
 	{
@@ -93,7 +93,7 @@ public class GrantTypeValidationTests
 		grantTypes.Add(GrantType.AuthorizationCode);
 		Assert.Throws<InvalidOperationException>(() => grantTypes.ValidateGrantTypes());
 	}
-	
+
 	[Fact]
 	public void Validate_All()
 	{
@@ -103,7 +103,7 @@ public class GrantTypeValidationTests
 		grantTypes.Add(GrantType.AuthorizationCode);
 		Assert.Throws<InvalidOperationException>(() => grantTypes.ValidateGrantTypes());
 	}
-	
+
 	[Fact]
 	public void HashSet_Implicit()
 	{
@@ -111,7 +111,7 @@ public class GrantTypeValidationTests
 		grantTypes.Add(GrantType.Implicit);
 		Assert.Equal(grantTypes, grantTypes.ValidateGrantTypes());
 	}
-	
+
 	[Fact]
 	public void HashSet_Hybrid()
 	{
@@ -119,7 +119,7 @@ public class GrantTypeValidationTests
 		grantTypes.Add(GrantType.Hybrid);
 		Assert.Equal(grantTypes, grantTypes.ValidateGrantTypes());
 	}
-	
+
 	[Fact]
 	public void HashSet_AuthorizationCode()
 	{
@@ -127,7 +127,7 @@ public class GrantTypeValidationTests
 		grantTypes.Add(GrantType.AuthorizationCode);
 		Assert.Equal(grantTypes, grantTypes.ValidateGrantTypes());
 	}
-	
+
 	[Fact]
 	public void HashSet_ImplicitAndHybrid()
 	{
@@ -135,7 +135,7 @@ public class GrantTypeValidationTests
 		grantTypes.Add(GrantType.Implicit);
 		Assert.Throws<InvalidOperationException>(() => grantTypes.Add(GrantType.Hybrid));
 	}
-	
+
 	[Fact]
 	public void HashSet_ImplicitAndAuthorizationCode()
 	{
@@ -151,14 +151,14 @@ public class GrantTypeValidationTests
 		Assert.Throws<ArgumentNullException>(() => grantTypes.Add(null!));
 		Assert.Throws<ArgumentEmptyException>(() => grantTypes.Add(string.Empty));
 	}
-	
+
 	[Fact]
 	public void HashSet_HasSpaces()
 	{
 		var grantTypes = new GrantTypeValidationHashSet();
 		Assert.Throws<InvalidOperationException>(() => grantTypes.Add("o o"));
 	}
-	
+
 	[Fact]
 	public void HashSet_Duplicate()
 	{
@@ -176,7 +176,7 @@ public class GrantTypeValidationTests
 		grantTypes.Remove(GrantType.Implicit);
 		Assert.Empty(grantTypes);
 	}
-	
+
 	[Fact]
 	public void HashSet_Add_And_Clear()
 	{
@@ -191,6 +191,6 @@ public class GrantTypeValidationTests
 	{
 		var grantTypes = new GrantTypeValidationHashSet();
 		grantTypes.Add(GrantType.Implicit);
-		Assert.True(grantTypes.Contains(GrantType.Implicit));
+		Assert.Contains(GrantType.Implicit, grantTypes);
 	}
 }

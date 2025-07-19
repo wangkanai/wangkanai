@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2025 Sarin Na Wangkanai and Aliaksandr Kukrash, All Rights Reserved. Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using System.Runtime.CompilerServices;
 
@@ -9,9 +9,9 @@ namespace Wangkanai.Detection.Extensions;
 public class KmpPrefixTrie : IPrefixTrie
 {
 	private readonly KmpPrefixTrie?[]? _lookup;
-	private readonly int               _offset;
-	private          KmpPrefixTrie?    _fallback;
-	private readonly List<char>        _variants;
+	private readonly int _offset;
+	private KmpPrefixTrie? _fallback;
+	private readonly List<char> _variants;
 
 	/// <summary>
 	/// Creates optimized prefix Trie using static keyword list,
@@ -34,7 +34,7 @@ public class KmpPrefixTrie : IPrefixTrie
 	{
 		if (pos > 0)
 			keywords = keywords?.Where(k => k.Length > pos)
-			                   .ToArray();
+							   .ToArray();
 
 		_variants = [];
 		if (keywords.IsNullOrEmpty())
@@ -51,7 +51,7 @@ public class KmpPrefixTrie : IPrefixTrie
 		_lookup = new KmpPrefixTrie[upperBound - lowerBound + 1];
 
 		foreach (var (key, group) in keywords.GroupBy(k => k[pos])
-		                                     .Select(x => (x.Key, x)))
+											 .Select(x => (x.Key, x)))
 		{
 			_variants.Add(key);
 			var newKeys = group.ToArray();
@@ -72,12 +72,12 @@ public class KmpPrefixTrie : IPrefixTrie
 	public bool ContainsWithAnyIn(ReadOnlySpan<char> source)
 	{
 		var current = this;
-		var length  = source.Length;
-		var seed    = 0;
+		var length = source.Length;
+		var seed = 0;
 
 		while (length - seed > 0)
 		{
-			var            c = source[seed];
+			var c = source[seed];
 			KmpPrefixTrie? next;
 			if (current._lookup != null && c - current._offset >= 0 && c - current._offset < current._lookup.Length)
 				next = current._lookup[c - current._offset];
@@ -108,8 +108,8 @@ public class KmpPrefixTrie : IPrefixTrie
 	public bool StartsWithAnyIn(ReadOnlySpan<char> source)
 	{
 		var current = this;
-		var length  = source.Length;
-		var seed    = 0;
+		var length = source.Length;
+		var seed = 0;
 
 		while (length - seed > 0)
 		{

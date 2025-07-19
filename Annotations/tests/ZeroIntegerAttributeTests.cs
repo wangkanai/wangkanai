@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using System.Reflection;
 
@@ -16,8 +16,8 @@ public class ZeroIntegerAttributeTests
 	[Fact]
 	public void Parameter_Attribute_Default()
 	{
-		var method    = typeof(ZeroInteger).GetMethod(nameof(ZeroInteger.ParameterDefault));
-		var argument  = method!.GetParameters()[0];
+		var method = typeof(ZeroInteger).GetMethod(nameof(ZeroInteger.ParameterDefault));
+		var argument = method!.GetParameters()[0];
 		var attribute = argument.GetCustomAttribute<ZeroIntegerAttribute>();
 		Assert.Null(attribute);
 	}
@@ -25,8 +25,8 @@ public class ZeroIntegerAttributeTests
 	[Fact]
 	public void Parameter_With_Attribute()
 	{
-		var method    = typeof(ZeroInteger).GetMethod(nameof(ZeroInteger.ParameterWithAttribute));
-		var argument  = method!.GetParameters()[0];
+		var method = typeof(ZeroInteger).GetMethod(nameof(ZeroInteger.ParameterWithAttribute));
+		var argument = method!.GetParameters()[0];
 		var attribute = argument.GetCustomAttribute<ZeroIntegerAttribute>();
 		Assert.NotNull(attribute);
 	}
@@ -34,7 +34,7 @@ public class ZeroIntegerAttributeTests
 	[Fact]
 	public void Property_With_Attribute()
 	{
-		var property  = typeof(ZeroInteger).GetProperty(nameof(ZeroInteger.PropertyWithAttribute));
+		var property = typeof(ZeroInteger).GetProperty(nameof(ZeroInteger.PropertyWithAttribute));
 		var attribute = property!.GetCustomAttribute<ZeroIntegerAttribute>();
 		Assert.NotNull(attribute);
 	}
@@ -42,7 +42,7 @@ public class ZeroIntegerAttributeTests
 	[Fact]
 	public void Property_Without_Attribute()
 	{
-		var property  = typeof(ZeroInteger).GetProperty(nameof(ZeroInteger.PropertyWithoutAttribute));
+		var property = typeof(ZeroInteger).GetProperty(nameof(ZeroInteger.PropertyWithoutAttribute));
 		var attribute = property!.GetCustomAttribute<ZeroIntegerAttribute>();
 		Assert.Null(attribute);
 	}
@@ -50,7 +50,7 @@ public class ZeroIntegerAttributeTests
 	[Fact]
 	public void Field_With_Attribute()
 	{
-		var field     = typeof(ZeroInteger).GetField("_fieldWithAttribute", BindingFlags.NonPublic | BindingFlags.Instance);
+		var field = typeof(ZeroInteger).GetField("_fieldWithAttribute", BindingFlags.NonPublic | BindingFlags.Instance);
 		var attribute = field!.GetCustomAttribute<ZeroIntegerAttribute>();
 		Assert.NotNull(attribute);
 	}
@@ -58,7 +58,7 @@ public class ZeroIntegerAttributeTests
 	[Fact]
 	public void Field_Without_Attribute()
 	{
-		var field     = typeof(ZeroInteger).GetField("_fieldWithoutAttribute", BindingFlags.NonPublic | BindingFlags.Instance);
+		var field = typeof(ZeroInteger).GetField("_fieldWithoutAttribute", BindingFlags.NonPublic | BindingFlags.Instance);
 		var attribute = field!.GetCustomAttribute<ZeroIntegerAttribute>();
 		Assert.Null(attribute);
 	}
@@ -66,10 +66,10 @@ public class ZeroIntegerAttributeTests
 	[Fact]
 	public void Multiple_Parameters_With_Attribute()
 	{
-		var method     = typeof(ZeroInteger).GetMethod(nameof(ZeroInteger.MultipleParametersWithAttribute));
+		var method = typeof(ZeroInteger).GetMethod(nameof(ZeroInteger.MultipleParametersWithAttribute));
 		var parameters = method!.GetParameters();
 
-		var firstAttribute  = parameters[0].GetCustomAttribute<ZeroIntegerAttribute>();
+		var firstAttribute = parameters[0].GetCustomAttribute<ZeroIntegerAttribute>();
 		var secondAttribute = parameters[1].GetCustomAttribute<ZeroIntegerAttribute>();
 
 		Assert.NotNull(firstAttribute);
@@ -79,7 +79,7 @@ public class ZeroIntegerAttributeTests
 	[Fact]
 	public void Attribute_Is_Not_Inherited()
 	{
-		var attributeType  = typeof(ZeroIntegerAttribute);
+		var attributeType = typeof(ZeroIntegerAttribute);
 		var usageAttribute = attributeType.GetCustomAttribute<AttributeUsageAttribute>();
 
 		Assert.NotNull(usageAttribute);
@@ -89,10 +89,10 @@ public class ZeroIntegerAttributeTests
 	[Fact]
 	public void Derived_Class_Property_Does_Not_Inherit_Attribute()
 	{
-		var baseProperty    = typeof(ZeroInteger).GetProperty(nameof(ZeroInteger.PropertyWithAttribute));
+		var baseProperty = typeof(ZeroInteger).GetProperty(nameof(ZeroInteger.PropertyWithAttribute));
 		var derivedProperty = typeof(DerivedZeroInteger).GetProperty(nameof(DerivedZeroInteger.PropertyWithAttribute));
 
-		var baseAttribute    = baseProperty!.GetCustomAttribute<ZeroIntegerAttribute>();
+		var baseAttribute = baseProperty!.GetCustomAttribute<ZeroIntegerAttribute>();
 		var derivedAttribute = derivedProperty!.GetCustomAttribute<ZeroIntegerAttribute>();
 
 		Assert.NotNull(baseAttribute);
@@ -102,7 +102,7 @@ public class ZeroIntegerAttributeTests
 	[Fact]
 	public void Derived_Class_With_Explicit_Attribute()
 	{
-		var property  = typeof(DerivedZeroInteger).GetProperty(nameof(DerivedZeroInteger.ExplicitAttributeProperty));
+		var property = typeof(DerivedZeroInteger).GetProperty(nameof(DerivedZeroInteger.ExplicitAttributeProperty));
 		var attribute = property!.GetCustomAttribute<ZeroIntegerAttribute>();
 		Assert.NotNull(attribute);
 	}
@@ -110,7 +110,7 @@ public class ZeroIntegerAttributeTests
 	[Fact]
 	public void Derived_Class_Additional_Methods()
 	{
-		var method    = typeof(DerivedZeroInteger).GetMethod(nameof(DerivedZeroInteger.DerivedMethod));
+		var method = typeof(DerivedZeroInteger).GetMethod(nameof(DerivedZeroInteger.DerivedMethod));
 		var parameter = method!.GetParameters()[0];
 		var attribute = parameter.GetCustomAttribute<ZeroIntegerAttribute>();
 		Assert.NotNull(attribute);
@@ -119,13 +119,13 @@ public class ZeroIntegerAttributeTests
 	[Fact]
 	public void Derived_Class_Can_Override_Method_With_Attribute()
 	{
-		var baseMethod    = typeof(ZeroInteger).GetMethod(nameof(ZeroInteger.ParameterWithAttribute));
+		var baseMethod = typeof(ZeroInteger).GetMethod(nameof(ZeroInteger.ParameterWithAttribute));
 		var derivedMethod = typeof(DerivedZeroInteger).GetMethod(nameof(DerivedZeroInteger.ParameterWithAttribute));
 
-		var baseParameter    = baseMethod!.GetParameters()[0];
+		var baseParameter = baseMethod!.GetParameters()[0];
 		var derivedParameter = derivedMethod!.GetParameters()[0];
 
-		var baseAttribute    = baseParameter.GetCustomAttribute<ZeroIntegerAttribute>();
+		var baseAttribute = baseParameter.GetCustomAttribute<ZeroIntegerAttribute>();
 		var derivedAttribute = derivedParameter.GetCustomAttribute<ZeroIntegerAttribute>();
 
 		Assert.NotNull(baseAttribute);

@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 namespace Wangkanai.Extensions;
 
@@ -85,9 +85,9 @@ public static class CollectionExtension
 	public static ICollection<T> AddDistinct<T>(this ICollection<T> list, IEqualityComparer<T> comparer, params T[] items)
 	{
 		list.ThrowIfNull()
-		    .ThrowIfEmpty();
+			.ThrowIfEmpty();
 		items.ThrowIfNull()
-		     .ThrowIfEmpty();
+			 .ThrowIfEmpty();
 
 		foreach (var item in items)
 		{

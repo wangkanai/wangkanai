@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using System.Reflection;
 
@@ -18,11 +18,11 @@ public class CompiledMarkdownActionDescriptor : MarkdownActionDescriptor
 
 	public IList<HandlerMethodDescriptor> HandlerMethods { get; set; } = default!;
 
-	public TypeInfo  HandlerTypeInfo       { get; set; } = default!;
+	public TypeInfo HandlerTypeInfo { get; set; } = default!;
 	public TypeInfo? DeclaredModelTypeInfo { get; set; }
-	public TypeInfo? ModelTypeInfo         { get; set; }
-	public TypeInfo  MarkdownTypeInfo      { get; set; } = default!;
-	public Endpoint? Endpoint              { get; set; }
+	public TypeInfo? ModelTypeInfo { get; set; }
+	public TypeInfo MarkdownTypeInfo { get; set; } = default!;
+	public Endpoint? Endpoint { get; set; }
 
 	internal MarkdownActionInvokerCacheEntry? CacheEntry { get; set; }
 

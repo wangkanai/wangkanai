@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
@@ -19,25 +19,25 @@ internal static class ObjectMethodExecutorFSharpSupport
 {
 	private static readonly object FsharpValuesCacheLock = new();
 
-	private static Assembly?     _fsharpCoreAssembly;
-	private static MethodInfo?   _fsharpAsyncStartAsTaskGenericMethod;
+	private static Assembly? _fsharpCoreAssembly;
+	private static MethodInfo? _fsharpAsyncStartAsTaskGenericMethod;
 	private static PropertyInfo? _fsharpOptionOfTaskCreationOptionsNoneProperty;
 	private static PropertyInfo? _fsharpOptionOfCancellationTokenNoneProperty;
 
 	[UnconditionalSuppressMessage("Trimmer", "IL2060", Justification = "Reflecting over the async FSharpAsync<> contract")]
 	public static bool TryBuildCoercerFromFSharpAsyncToAwaitable(
-		Type           possibleFSharpAsyncType,
+		Type possibleFSharpAsyncType,
 		out Expression coerceToAwaitableExpression,
-		out Type       awaitableType)
+		out Type awaitableType)
 	{
 		var methodReturnGenericType = possibleFSharpAsyncType.IsGenericType
-			                              ? possibleFSharpAsyncType.GetGenericTypeDefinition()
-			                              : null;
+										  ? possibleFSharpAsyncType.GetGenericTypeDefinition()
+										  : null;
 
 		if (!IsFSharpAsyncOpenGenericType(methodReturnGenericType!))
 		{
 			coerceToAwaitableExpression = null!;
-			awaitableType               = null!;
+			awaitableType = null!;
 			return false;
 		}
 
@@ -52,7 +52,7 @@ internal static class ObjectMethodExecutorFSharpSupport
 		//         FSharpOption<CancellationToken>.None);
 		// };
 		var startAsTaskClosedMethod = _fsharpAsyncStartAsTaskGenericMethod!.MakeGenericMethod(awaiterResultType);
-		var coerceToAwaitableParam  = Expression.Parameter(typeof(object));
+		var coerceToAwaitableParam = Expression.Parameter(typeof(object));
 		coerceToAwaitableExpression = Expression.Lambda(
 			Expression.Convert(
 				Expression.Call(
@@ -85,9 +85,9 @@ internal static class ObjectMethodExecutorFSharpSupport
 	[UnconditionalSuppressMessage("Trimmer", "IL2072", Justification = "Reflecting over the async FSharpAsync<> contract")]
 	private static bool TryPopulateFSharpValueCaches(Type possibleFSharpAsyncGenericType)
 	{
-		var assembly         = possibleFSharpAsyncGenericType.Assembly;
+		var assembly = possibleFSharpAsyncGenericType.Assembly;
 		var fsharpOptionType = assembly.GetType("Microsoft.FSharp.Core.FSharpOption`1");
-		var fsharpAsyncType  = assembly.GetType("Microsoft.FSharp.Control.FSharpAsync");
+		var fsharpAsyncType = assembly.GetType("Microsoft.FSharp.Control.FSharpAsync");
 
 		if (fsharpOptionType == null || fsharpAsyncType == null)
 			return false;
@@ -107,13 +107,13 @@ internal static class ObjectMethodExecutorFSharpSupport
 		{
 			var parameters = candidateMethodInfo.GetParameters();
 			if (parameters.Length == 3
-			    && TypesHaveSameIdentity(parameters[0].ParameterType, possibleFSharpAsyncGenericType)
-			    && parameters[1].ParameterType == fsharpOptionOfTaskCreationOptionsType
-			    && parameters[2].ParameterType == fsharpOptionOfCancellationTokenType)
+				&& TypesHaveSameIdentity(parameters[0].ParameterType, possibleFSharpAsyncGenericType)
+				&& parameters[1].ParameterType == fsharpOptionOfTaskCreationOptionsType
+				&& parameters[2].ParameterType == fsharpOptionOfCancellationTokenType)
 			{
 				// This really does look like the correct method (and hence assembly).
 				_fsharpAsyncStartAsTaskGenericMethod = candidateMethodInfo;
-				_fsharpCoreAssembly                  = assembly;
+				_fsharpCoreAssembly = assembly;
 				break;
 			}
 		}
@@ -124,7 +124,7 @@ internal static class ObjectMethodExecutorFSharpSupport
 	private static bool TypesHaveSameIdentity(Type type1, Type type2)
 	{
 		return type1.Assembly == type2.Assembly
-		       && string.Equals(type1.Namespace, type2.Namespace, StringComparison.Ordinal)
-		       && string.Equals(type1.Name, type2.Name, StringComparison.Ordinal);
+			   && string.Equals(type1.Namespace, type2.Namespace, StringComparison.Ordinal)
+			   && string.Equals(type1.Name, type2.Name, StringComparison.Ordinal);
 	}
 }

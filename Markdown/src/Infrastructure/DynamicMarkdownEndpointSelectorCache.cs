@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using System.Collections.Concurrent;
 using System.Diagnostics;
@@ -10,7 +10,7 @@ namespace Wangkanai.Markdown.Infrastructure;
 
 internal class DynamicMarkdownEndpointSelectorCache
 {
-	private readonly ConcurrentDictionary<int, EndpointDataSource>              _dataSourceCache       = new();
+	private readonly ConcurrentDictionary<int, EndpointDataSource> _dataSourceCache = new();
 	private readonly ConcurrentDictionary<int, DynamicMarkdownEndpointSelector> _endpointSelectorCache = new();
 
 	public void AddDataSource(MarkdownActionEndpointDataSource dataSource)

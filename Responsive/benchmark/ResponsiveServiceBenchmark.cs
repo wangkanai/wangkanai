@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using BenchmarkDotNet.Attributes;
 
@@ -22,25 +22,26 @@ public class ResponsiveServiceBenchmark
 	};
 
 	private readonly HttpContextAccessor[] _accessors
-		= UserAgents.Select(x => {
-			            var accessor = new HttpContextAccessor()
-			            {
-				            HttpContext = new DefaultHttpContext()
-			            };
-			            accessor.HttpContext.Request.Headers["User-Agent"] = x;
-			            return accessor;
-		            })
-		            .ToArray();
+		= UserAgents.Select(x =>
+		{
+			var accessor = new HttpContextAccessor()
+			{
+				HttpContext = new DefaultHttpContext()
+			};
+			accessor.HttpContext.Request.Headers["User-Agent"] = x;
+			return accessor;
+		})
+					.ToArray();
 
 	[Benchmark]
 	public void Responsive()
 	{
 		foreach (var accessor in _accessors)
 		{
-			var context    = new HttpContextService(accessor);
-			var useragent  = new UserAgentService(context);
-			var device     = new DeviceService(useragent);
-			var options    = new ResponsiveOptions();
+			var context = new HttpContextService(accessor);
+			var useragent = new UserAgentService(context);
+			var device = new DeviceService(useragent);
+			var options = new ResponsiveOptions();
 			var responsive = new ResponsiveService(accessor, device, options);
 			_ = responsive.View;
 		}

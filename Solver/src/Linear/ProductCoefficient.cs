@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 namespace Wangkanai.Solver.Linear;
 
@@ -12,7 +12,7 @@ public class ProductCoefficient(LinearExpression expression, double coefficient)
 	{
 		var currentMultiplier = multiplier * coefficient;
 		return currentMultiplier != 0.0
-			       ? expression.DoVisit(coefficients, currentMultiplier)
-			       : 0.0;
+				   ? expression.DoVisit(coefficients, currentMultiplier)
+				   : 0.0;
 	}
 }

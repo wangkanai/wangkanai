@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using System.Diagnostics.CodeAnalysis;
 
@@ -9,27 +9,27 @@ namespace Wangkanai.Mvc.Routing;
 
 internal sealed class DataSourceDependentCache<T> : IDisposable where T : class
 {
-	private readonly EndpointDataSource               _dataSource;
+	private readonly EndpointDataSource _dataSource;
 	private readonly Func<IReadOnlyList<Endpoint>, T> _initializeCore;
-	private readonly Func<T>                          _initializer;
-	private readonly Action<object?>                  _initializerWithState;
+	private readonly Func<T> _initializer;
+	private readonly Action<object?> _initializerWithState;
 
 	private readonly object _lock;
 
-	private bool         _initialized;
-	private T?           _value;
+	private bool _initialized;
+	private T? _value;
 	private IDisposable? _disposable;
-	private bool         _disposed;
-	private object       _syncLock;
+	private bool _disposed;
+	private object _syncLock;
 
 	public DataSourceDependentCache(EndpointDataSource dataSource, Func<IReadOnlyList<Endpoint>, T> initialize)
 	{
 		dataSource.ThrowIfNull();
 		initialize.ThrowIfNull();
 
-		_dataSource     = dataSource;
+		_dataSource = dataSource;
 		_initializeCore = initialize;
-		_initializer    = Initialize;
+		_initializer = Initialize;
 	}
 
 	[NotNullIfNotNull(nameof(_value))]
@@ -66,7 +66,7 @@ internal sealed class DataSourceDependentCache<T> : IDisposable where T : class
 			{
 				_disposable?.Dispose();
 				_disposable = null;
-				_disposed   = true;
+				_disposed = true;
 			}
 		}
 	}

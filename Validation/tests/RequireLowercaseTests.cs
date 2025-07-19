@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using System.Reflection;
 
@@ -14,7 +14,7 @@ public class RequireLowercaseTests(ITestOutputHelper output)
 	[Fact]
 	public void Uppercase()
 	{
-		var vm          = new LowercaseModel { Password = "ABC" };
+		var vm = new LowercaseModel { Password = "ABC" };
 		var validations = vm.Validate(vm.Password, _password);
 		validations.Print(output);
 		Assert.Collection(validations, v => v.ErrorMessage = "Lowercase is required");
@@ -23,7 +23,7 @@ public class RequireLowercaseTests(ITestOutputHelper output)
 	[Fact]
 	public void Lowercase()
 	{
-		var vm          = new LowercaseModel { Password = "abc" };
+		var vm = new LowercaseModel { Password = "abc" };
 		var validations = vm.Validate(vm.Password, _password);
 		validations.Print(output);
 		Assert.Empty(validations);
@@ -32,7 +32,7 @@ public class RequireLowercaseTests(ITestOutputHelper output)
 	[Fact]
 	public void Mix()
 	{
-		var vm          = new LowercaseModel { Password = "Abc" };
+		var vm = new LowercaseModel { Password = "Abc" };
 		var validations = vm.Validate(vm.Password, _password);
 		validations.Print(output);
 		Assert.Empty(validations);
@@ -51,7 +51,7 @@ public class RequireLowercaseTests(ITestOutputHelper output)
 	[Fact]
 	public void Null()
 	{
-		var vm          = new LowercaseModel { Password = null! };
+		var vm = new LowercaseModel { Password = null! };
 		var validations = vm.Validate(vm.Password, _password);
 		validations.Print(output);
 		// Assert.Collection(validations, v => v.ErrorMessage = "Lowercase is required");

@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.Routing;
@@ -20,16 +20,16 @@ public static class ResponsiveCoreBuilderExtensions
 		builder.Services.AddHttpContextAccessor();
 		builder.Services.AddOptions();
 		builder.Services.TryAddSingleton(provider => provider.GetRequiredService<IOptions<ResponsiveOptions>>().Value);
-		
+
 		builder.Services.AddDetection();
-		
+
 		return builder;
 	}
 
 	public static IResponsiveBuilder AddCoreServices(this IResponsiveBuilder builder)
 	{
 		builder.ThrowIfNull();
-		
+
 		return builder;
 	}
 
@@ -48,18 +48,19 @@ public static class ResponsiveCoreBuilderExtensions
 	public static IResponsiveBuilder AddSessionServices(this IResponsiveBuilder builder)
 	{
 		builder.ThrowIfNull();
-		
+
 		builder.Services.AddDistributedMemoryCache();
 		builder.Services.AddSession(
-			options => {
-				options.Cookie.Name        = "Responsive";
-				options.IdleTimeout        = TimeSpan.FromSeconds(10);
+			options =>
+			{
+				options.Cookie.Name = "Responsive";
+				options.IdleTimeout = TimeSpan.FromSeconds(10);
 				options.Cookie.IsEssential = true;
 			});
 
 		return builder;
 	}
-	
+
 	internal static IResponsiveBuilder AddMarkerService(this IResponsiveBuilder builder)
 	{
 		builder.Services.TryAddSingleton<ResponsiveMarkerService>();
@@ -69,7 +70,8 @@ public static class ResponsiveCoreBuilderExtensions
 
 	private static IServiceCollection AddRazorViewLocation(this IServiceCollection services)
 	{
-		return services.Configure<RazorViewEngineOptions>(options => {
+		return services.Configure<RazorViewEngineOptions>(options =>
+		{
 			options.ViewLocationExpanders.Add(new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Suffix));
 			//options.ViewLocationExpanders.Add(new ResponsiveViewLocationExpander(ResponsiveViewLocationFormat.Subfolder));
 			options.ViewLocationExpanders.Add(new ResponsivePageLocationExpander());
@@ -84,6 +86,6 @@ public static class ResponsiveCoreBuilderExtensions
 
 		return services;
 	}
-	
+
 
 }

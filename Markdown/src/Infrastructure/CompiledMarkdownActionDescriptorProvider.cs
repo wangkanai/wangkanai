@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Abstractions;
@@ -13,19 +13,19 @@ namespace Wangkanai.Markdown.Infrastructure;
 
 public sealed class CompiledMarkdownActionDescriptorProvider : IActionDescriptorProvider
 {
-	private readonly MarkdownActionDescriptorProvider        _pageActionDescriptorProvider;
-	private readonly ApplicationPartManager                  _applicationPartManager;
+	private readonly MarkdownActionDescriptorProvider _pageActionDescriptorProvider;
+	private readonly ApplicationPartManager _applicationPartManager;
 	private readonly CompiledMarkdownActionDescriptorFactory _compiledPageActionDescriptorFactory;
 
 	public CompiledMarkdownActionDescriptorProvider(
-		IEnumerable<IMarkdownRouteModelProvider>       markdownRouteModelProviders,
+		IEnumerable<IMarkdownRouteModelProvider> markdownRouteModelProviders,
 		IEnumerable<IMarkdownApplicationModelProvider> applicationModelProviders,
-		ApplicationPartManager                         applicationPartManager,
-		IOptions<MvcOptions>                           mvcOptions,
-		IOptions<MarkdownPagesOptions>                 pageOptions)
+		ApplicationPartManager applicationPartManager,
+		IOptions<MvcOptions> mvcOptions,
+		IOptions<MarkdownPagesOptions> pageOptions)
 	{
-		_pageActionDescriptorProvider        = new MarkdownActionDescriptorProvider(markdownRouteModelProviders, mvcOptions, pageOptions);
-		_applicationPartManager              = applicationPartManager;
+		_pageActionDescriptorProvider = new MarkdownActionDescriptorProvider(markdownRouteModelProviders, mvcOptions, pageOptions);
+		_applicationPartManager = applicationPartManager;
 		_compiledPageActionDescriptorFactory = new CompiledMarkdownActionDescriptorFactory(applicationModelProviders, mvcOptions.Value, pageOptions.Value);
 	}
 

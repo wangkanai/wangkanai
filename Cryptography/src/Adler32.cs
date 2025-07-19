@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using System.Security.Cryptography;
 using System.Text;
@@ -16,7 +16,7 @@ public sealed class Adler32 : HashAlgorithm
 
 	public Adler32() => Initialize();
 
-	public static int Checksum(string text) 
+	public static int Checksum(string text)
 		=> Checksum(Encoding.ASCII.GetBytes(text));
 
 	public static int Checksum(byte[] bytes)
@@ -43,7 +43,7 @@ public sealed class Adler32 : HashAlgorithm
 	protected override void HashCore(byte[] data, int start, int length)
 	{
 		var index = start;
-		var end   = start + length;
+		var end = start + length;
 
 		while (end > 0)
 		{

@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using Microsoft.AspNetCore.Builder;
 
@@ -6,17 +6,17 @@ namespace Wangkanai.Markdown.Builder;
 
 public sealed class MarkdownActionEndpointConventionBuilder : IEndpointConventionBuilder
 {
-	private readonly object                        _lock;
+	private readonly object _lock;
 	private readonly List<Action<EndpointBuilder>> _conventions;
 	private readonly List<Action<EndpointBuilder>> _finallyConventions;
 
 	internal MarkdownActionEndpointConventionBuilder(
-		object                        @lock,
+		object @lock,
 		List<Action<EndpointBuilder>> conventions,
 		List<Action<EndpointBuilder>> finallyConventions)
 	{
-		_lock               = @lock;
-		_conventions        = conventions;
+		_lock = @lock;
+		_conventions = conventions;
 		_finallyConventions = finallyConventions;
 	}
 

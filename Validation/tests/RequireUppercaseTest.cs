@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using System.Reflection;
 
@@ -14,7 +14,7 @@ public class RequireUppercaseTest(ITestOutputHelper output)
 	[Fact]
 	public void Uppercase()
 	{
-		var vm          = new UppercaseModel { Password = "ABC" };
+		var vm = new UppercaseModel { Password = "ABC" };
 		var validations = vm.Validate(vm.Password, _password);
 		validations.Print(output);
 		Assert.Empty(validations);

@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using System.Security.Cryptography;
 using System.Text;
@@ -9,19 +9,19 @@ public static class Hash
 {
 	public static string HashMd5(this string value)
 		=> MD5.HashData(value.GetAsciiBytes())
-		      .HashDataToString();
+			  .HashDataToString();
 
 	public static string HashSha512(this string value)
 		=> SHA512.HashData(value.GetAsciiBytes())
-		         .HashDataToString();
+				 .HashDataToString();
 
 	public static string HashSha384(this string value)
 		=> SHA384.HashData(value.GetAsciiBytes())
-		         .HashDataToString();
+				 .HashDataToString();
 
 	public static string HashSha256(this string value)
 		=> SHA256.HashData(value.GetAsciiBytes())
-		         .HashDataToString();
+				 .HashDataToString();
 
 	#region Internal
 

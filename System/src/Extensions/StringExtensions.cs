@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using System.Globalization;
 using System.Text;
@@ -431,8 +431,8 @@ public static class StringExtensions
 		maxLength.ThrowIfLessThan(postfix.Length);
 
 		return value.Length <= maxLength
-			       ? value
-			       : value.Left(maxLength - postfix.Length) + postfix;
+				   ? value
+				   : value.Left(maxLength - postfix.Length) + postfix;
 	}
 
 	/// <summary>
@@ -465,8 +465,8 @@ public static class StringExtensions
 		length.ThrowIfLessThan(0);
 
 		return value.Length - start > length
-			       ? value.Substring(start, length)
-			       : value[start..];
+				   ? value.Substring(start, length)
+				   : value[start..];
 	}
 
 	/// <summary>
@@ -494,7 +494,7 @@ public static class StringExtensions
 		value.ThrowIfEmpty();
 
 		char[] specialCharacters = { '+', '-', '!', '(', ')', '{', '}', '[', ']', '^', '"', '~', '*', '?', ':', '\\' };
-		var    result            = new StringBuilder("");
+		var result = new StringBuilder("");
 		//'&&', '||',
 		foreach (var ch in value)
 		{
@@ -520,7 +520,7 @@ public static class StringExtensions
 		value.ThrowIfNull();
 		value.ThrowIfEmpty();
 
-		var pattern     = string.Format("([{0}])", "/[!\"#$%&'()*+,./:;<=>?@^`{{|}}~\\]");
+		var pattern = string.Format("([{0}])", "/[!\"#$%&'()*+,./:;<=>?@^`{{|}}~\\]");
 		var replacement = @"\\$1";
 		return Regex.Replace(value, pattern, replacement, RegexOptions.Compiled, Constants.RegexTimeout);
 	}
@@ -536,8 +536,8 @@ public static class StringExtensions
 		value.ThrowIfEmpty();
 
 		Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-		var    encoding = Encoding.GetEncoding("Cyrillic");
-		byte[] bytes    = encoding.GetBytes(value);
+		var encoding = Encoding.GetEncoding("Cyrillic");
+		byte[] bytes = encoding.GetBytes(value);
 		return Encoding.ASCII.GetString(bytes);
 	}
 
@@ -586,8 +586,8 @@ public static class StringExtensions
 		list.ThrowIfNull();
 		list.ThrowIfEmpty();
 		return !list.Any()
-			       ? throw new ArgumentEmptyException(nameof(list))
-			       : string.Join(' ', list);
+				   ? throw new ArgumentEmptyException(nameof(list))
+				   : string.Join(' ', list);
 	}
 
 	/// <summary>
@@ -597,9 +597,9 @@ public static class StringExtensions
 	/// <returns>A list of individual substrings after separating the input string based on space delimiter.</returns>
 	public static IEnumerable<string> SeparateFromSpace([NotNull] this string value)
 		=> value.ThrowIfNull()
-		        .ThrowIfEmpty()
-		        .Trim()
-		        .Split(Separator, StringSplitOptions.RemoveEmptyEntries);
+				.ThrowIfEmpty()
+				.Trim()
+				.Split(Separator, StringSplitOptions.RemoveEmptyEntries);
 
 	private static readonly char[] Separator = [' '];
 }

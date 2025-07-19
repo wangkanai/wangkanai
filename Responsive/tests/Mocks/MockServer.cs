@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using System;
 
@@ -20,13 +20,13 @@ internal static class MockServer
 		= context => context.GetDevice() switch
 		{
 			Device.Desktop => context.Response.WriteAsync("desktop"),
-			Device.Tablet  => context.Response.WriteAsync("tablet"),
-			Device.Mobile  => context.Response.WriteAsync("mobile"),
-			Device.Watch   => context.Response.WriteAsync("watch"),
-			Device.Tv      => context.Response.WriteAsync("tv"),
+			Device.Tablet => context.Response.WriteAsync("tablet"),
+			Device.Mobile => context.Response.WriteAsync("mobile"),
+			Device.Watch => context.Response.WriteAsync("watch"),
+			Device.Tv => context.Response.WriteAsync("tv"),
 			Device.Console => context.Response.WriteAsync("console"),
-			Device.Car     => context.Response.WriteAsync("car"),
-			_              => context.Response.WriteAsync("who?")
+			Device.Car => context.Response.WriteAsync("car"),
+			_ => context.Response.WriteAsync("who?")
 		};
 
 	internal static TestServer Server()
@@ -49,13 +49,15 @@ internal static class MockServer
 
 	private static IWebHostBuilder WebHostBuilder(RequestDelegate contextHandler, Action<ResponsiveOptions> options)
 		=> new WebHostBuilder()
-		   .ConfigureServices(services => {
+		   .ConfigureServices(services =>
+		   {
 			   services.TryAddSingleton<IHttpContextAccessor, MockHttpContextAccessor>();
 			   services.AddSession();
 			   services.AddDetection();
 			   services.AddResponsive(options);
 		   })
-		   .Configure(app => {
+		   .Configure(app =>
+		   {
 			   app.UseDetection();
 			   app.UseSession();
 			   app.UseResponsive();

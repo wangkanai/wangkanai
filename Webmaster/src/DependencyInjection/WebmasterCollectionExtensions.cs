@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using Wangkanai.Webmaster;
 using Wangkanai.Webmaster.Builders;
@@ -15,8 +15,8 @@ public static class WebmasterCollectionExtensions
 	/// <returns>An <see cref="IServiceCollection" /> so that additional calls can be chained.</returns>
 	public static IWebmasterBuilder AddWebmaster(this IServiceCollection services)
 		=> services.AddWebmasterBuilder()
-		           .AddCoreServices()
-		           .AddMarkerService();
+				   .AddCoreServices()
+				   .AddMarkerService();
 
 	/// <summary>Add Webmaster Service to the services container.</summary>
 	/// <param name="services">The services available in the application.</param>
@@ -24,8 +24,8 @@ public static class WebmasterCollectionExtensions
 	/// <returns>An <see cref="IServiceCollection" /> so that additional calls can be chained.</returns>
 	public static IWebmasterBuilder AddWebmaster(this IServiceCollection services, Action<WebmasterOptions> setAction)
 		=> services.Configure(setAction)
-		           .AddWebmaster();
-	
+				   .AddWebmaster();
+
 	internal static IWebmasterBuilder AddWebmasterBuilder(this IServiceCollection services)
 		=> new WebmasterBuilder(services);
 }

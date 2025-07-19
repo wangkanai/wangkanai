@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using System.Diagnostics;
 
@@ -40,10 +40,10 @@ internal static class Tracing
 
 	public static class TraceNames
 	{
-		public static string Basic      => "Wangkanai";
-		public static string Store      => Basic + ".Store";
-		public static string Cache      => Basic + ".Cache";
-		public static string Service    => Basic + ".Service";
+		public static string Basic => "Wangkanai";
+		public static string Store => Basic + ".Store";
+		public static string Cache => Basic + ".Cache";
+		public static string Service => Basic + ".Service";
 		public static string Validation => Basic + ".Validation";
 	}
 }

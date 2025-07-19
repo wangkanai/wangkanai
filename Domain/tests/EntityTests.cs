@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using Wangkanai.Domain.Models;
 
@@ -18,8 +18,8 @@ public class EntityTests
 	{
 		var entity = new TransientGuidEntity();
 		Assert.True(entity.IsTransient());
-	}       
-	
+	}
+
 	[Fact]
 	public void GuidEntity_IsTransient_ShouldBeFalse()
 	{
@@ -33,7 +33,7 @@ public class EntityTests
 		var entity = new IntEntity();
 		Assert.NotEqual(0, entity.Id);
 	}
-	
+
 	[Fact]
 	public void IntEntity_IsTransient_ShouldBeFalse()
 	{
@@ -56,21 +56,21 @@ public class EntityTests
 		entity.Id = default;
 		Assert.NotEqual(entity.Id.GetHashCode(), entity.GetHashCode());
 	}
-	
+
 	[Fact]
 	public void Entity_Equals_ShouldBeTrue()
 	{
 		var entity = new IntEntity();
-		var other  = new IntEntity();
+		var other = new IntEntity();
 		Assert.True(entity.Equals(other));
 		Assert.True(entity == other);
 	}
-	
+
 	[Fact]
 	public void Entity_Equals_ShouldBeFalse()
 	{
 		var entity = new IntEntity();
-		var other  = new TransientIntEntity();
+		var other = new TransientIntEntity();
 		Assert.False(entity.Equals(other));
 		Assert.False(entity == other);
 	}

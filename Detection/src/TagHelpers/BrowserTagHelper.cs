@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.Primitives;
@@ -12,7 +12,7 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers;
 [HtmlTargetElement(ElementName, Attributes = ExcludeAttributeName)]
 public class BrowserTagHelper : TagHelper
 {
-	private const string ElementName          = "browser";
+	private const string ElementName = "browser";
 	private const string IncludeAttributeName = "include";
 	private const string ExcludeAttributeName = "exclude";
 
@@ -36,15 +36,10 @@ public class BrowserTagHelper : TagHelper
 		context.ThrowIfNull();
 		output.ThrowIfNull();
 
-		output.TagName = null;
-		output.TagMode = TagMode.StartTagAndEndTag;
-
-		if (Include.IsNullOrEmpty() && Exclude.IsNullOrEmpty())
-			return;
-
 		var browser = _resolver.Name.ToString();
 
-		if (Exclude != null)
+		// Check exclusions first - if browser is excluded, suppress output
+		if (!string.IsNullOrWhiteSpace(Exclude))
 		{
 			var tokenizer = new StringTokenizer(Exclude, NameSeparator);
 			foreach (var item in tokenizer)
@@ -53,31 +48,36 @@ public class BrowserTagHelper : TagHelper
 				if (!client.HasValue || client.Length <= 0)
 					continue;
 
-				if (!client.Equals(browser, StringComparison.OrdinalIgnoreCase))
-					continue;
-
-				output.SuppressOutput();
-				return;
-			}
-		}
-
-		var has = false;
-		if (Include != null)
-		{
-			var tokenizer = new StringTokenizer(Include, NameSeparator);
-			foreach (var item in tokenizer)
-			{
-				var client = item.Trim();
-				if (client.HasValue && client.Length > 0)
+				if (client.Equals(browser, StringComparison.OrdinalIgnoreCase))
 				{
-					has = true;
-					if (client.Equals(browser, StringComparison.OrdinalIgnoreCase))
-						return;
+					output.SuppressOutput();
+					return;
 				}
 			}
 		}
 
-		if (has)
-			output.SuppressOutput();
+		// Check inclusions - if specified, only show if browser is included
+		if (!string.IsNullOrWhiteSpace(Include))
+		{
+			var tokenizer = new StringTokenizer(Include, NameSeparator);
+			var hasValidInclude = false;
+			foreach (var item in tokenizer)
+			{
+				var client = item.Trim();
+				if (!client.HasValue || client.Length <= 0)
+					continue;
+
+				hasValidInclude = true;
+				if (client.Equals(browser, StringComparison.OrdinalIgnoreCase))
+					return; // Show content
+			}
+
+			// If we had valid include criteria but browser didn't match, suppress
+			if (hasValidInclude)
+				output.SuppressOutput();
+		}
+
+		// If no valid include or exclude criteria, show content by default (return without suppressing)
+		output.TagName = null;
 	}
 }

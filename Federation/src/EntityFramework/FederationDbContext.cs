@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -59,10 +59,10 @@ public abstract class FederationDbContext<TUser, TRole, TClient, TScope, TResour
 
 	protected FederationDbContext() { }
 
-	public virtual DbSet<TClient>    Clients     { get; set; } = default!;
-	public virtual DbSet<TGroup>     Groups      { get; set; } = default!;
-	public virtual DbSet<TScope>     Scopes      { get; set; } = default!;
-	public virtual DbSet<TResource>  Resources   { get; set; } = default!;
+	public virtual DbSet<TClient> Clients { get; set; } = default!;
+	public virtual DbSet<TGroup> Groups { get; set; } = default!;
+	public virtual DbSet<TScope> Scopes { get; set; } = default!;
+	public virtual DbSet<TResource> Resources { get; set; } = default!;
 	public virtual DbSet<TDirectory> Directories { get; set; } = default!;
 
 	public virtual DbSet<IdentityClientOrigin> ClientCorsOrigins { get; set; }
@@ -70,10 +70,11 @@ public abstract class FederationDbContext<TUser, TRole, TClient, TScope, TResour
 	protected override void OnModelCreating(ModelBuilder builder)
 	{
 		var configOptions = GetConfigurationOptions();
-		var maxKeyLength  = configOptions?.MaxLengthForKeys ?? 0;
-		var encryptData   = configOptions?.EncryptData      ?? false;
+		var maxKeyLength = configOptions?.MaxLengthForKeys ?? 0;
+		var encryptData = configOptions?.EncryptData ?? false;
 
-		builder.Entity<TClient>(b => {
+		builder.Entity<TClient>(b =>
+		{
 			b.ToTable(configOptions.Client);
 			b.HasKey(c => c.Id);
 			b.HasIndex(c => c.ClientId).HasDatabaseName("ClientIdIndex").IsUnique();
@@ -84,7 +85,8 @@ public abstract class FederationDbContext<TUser, TRole, TClient, TScope, TResour
 			b.Property(c => c.ConcurrencyStamp).IsConcurrencyToken();
 		});
 
-		builder.Entity<IdentityClientOrigin>(b => {
+		builder.Entity<IdentityClientOrigin>(b =>
+		{
 			b.ToTable(configOptions.ClientOrigin);
 			b.HasKey(c => c.Id);
 			b.Property(c => c.Origin).HasMaxLength(150).IsRequired();
@@ -93,21 +95,24 @@ public abstract class FederationDbContext<TUser, TRole, TClient, TScope, TResour
 			b.HasOne(x => x.Client).WithMany(x => x.Origins).IsRequired();
 		});
 
-		builder.Entity<IdentityClientFlowType>(b => {
+		builder.Entity<IdentityClientFlowType>(b =>
+		{
 			b.ToTable(configOptions.ClientFlowType);
 			b.HasKey(c => c.Id);
 
 			b.HasOne(c => c.Client).WithMany(c => c.FlowTypes).IsRequired();
 		});
 
-		builder.Entity<IdentityClientRedirectUri>(b => {
+		builder.Entity<IdentityClientRedirectUri>(b =>
+		{
 			b.ToTable(configOptions.ClientRedirectUri);
 			b.HasKey(c => c.Id);
 
 			b.HasOne(c => c.Client).WithMany(x => x.RedirectUris).IsRequired();
 		});
 
-		builder.Entity<TScope>(b => {
+		builder.Entity<TScope>(b =>
+		{
 			b.ToTable(configOptions.Scope);
 			b.HasKey(s => s.Id);
 			b.HasIndex(s => s.Name).HasDatabaseName("ScopeIndex").IsUnique();
@@ -116,7 +121,8 @@ public abstract class FederationDbContext<TUser, TRole, TClient, TScope, TResour
 			b.Property(c => c.ConcurrencyStamp).IsConcurrencyToken();
 		});
 
-		builder.Entity<TResource>(b => {
+		builder.Entity<TResource>(b =>
+		{
 			b.ToTable(configOptions.Resource);
 			b.HasKey(r => r.Id);
 			b.HasIndex(r => r.Name).HasDatabaseName("ResourceIndex").IsUnique();
@@ -125,7 +131,8 @@ public abstract class FederationDbContext<TUser, TRole, TClient, TScope, TResour
 			b.Property(c => c.ConcurrencyStamp).IsConcurrencyToken();
 		});
 
-		builder.Entity<TDirectory>(b => {
+		builder.Entity<TDirectory>(b =>
+		{
 			b.ToTable(configOptions.Directory);
 			b.HasKey(d => d.Id);
 			b.HasIndex(d => d.Name).HasDatabaseName("DirectoryIndex").IsUnique();
@@ -134,7 +141,8 @@ public abstract class FederationDbContext<TUser, TRole, TClient, TScope, TResour
 			b.Property(c => c.ConcurrencyStamp).IsConcurrencyToken();
 		});
 
-		builder.Entity<TGroup>(b => {
+		builder.Entity<TGroup>(b =>
+		{
 			b.ToTable(configOptions.Group);
 			b.HasKey(g => g.Id);
 			b.HasIndex(g => g.Name).HasDatabaseName("GroupIndex").IsUnique();
@@ -148,10 +156,10 @@ public abstract class FederationDbContext<TUser, TRole, TClient, TScope, TResour
 
 	private ConfigurationOptions? GetConfigurationOptions()
 		=> this.GetService<IDbContextOptions>()
-		       .Extensions.OfType<CoreOptionsExtension>()
-		       .FirstOrDefault()
-		       ?.ApplicationServiceProvider?.GetService<IOptions<FederationOptions>>()
-		       ?.Value?.Stores;
+			   .Extensions.OfType<CoreOptionsExtension>()
+			   .FirstOrDefault()
+			   ?.ApplicationServiceProvider?.GetService<IOptions<FederationOptions>>()
+			   ?.Value?.Stores;
 
 	private sealed class FederationDataConverter : ValueConverter<string, string>
 	{

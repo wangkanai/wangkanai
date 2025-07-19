@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 namespace Wangkanai;
 
@@ -9,12 +9,14 @@ public class StaticRandomTests
 	{
 		var grabbers = new RandomGenerator[100];
 
-		Parallel.ForEach(grabbers, (grabber, state, index) => {
+		Parallel.ForEach(grabbers, (grabber, state, index) =>
+		{
 			grabbers[index] = new RandomGenerator(30, true);
 			grabbers[index].Generate();
 		});
 
-		Parallel.ForEach(grabbers, (grabber, state, index) => {
+		Parallel.ForEach(grabbers, (grabber, state, index) =>
+		{
 			for (var local = index + 1; local < grabbers.Length; local++)
 				if (grabbers[index].Equals(grabbers[local]))
 					Assert.Fail("Random number generator is not random");
@@ -30,9 +32,9 @@ public class StaticRandomTests
 			values[i] = StaticRandom.Next();
 
 		for (var i = 0; i < values.Length; i++)
-		for (var j = i + 1; j < values.Length; j++)
-			if (values[i] == values[j])
-				Assert.Fail("Next should return different values");
+			for (var j = i + 1; j < values.Length; j++)
+				if (values[i] == values[j])
+					Assert.Fail("Next should return different values");
 	}
 
 	[Fact]
@@ -44,40 +46,40 @@ public class StaticRandomTests
 			values[i] = StaticRandom.Next();
 
 		for (var i = 0; i < values.Length; i++)
-		for (var j = i + 1; j < values.Length; j++)
-			if (values[i] == values[j])
-				Assert.Fail("Next should return different values");
+			for (var j = i + 1; j < values.Length; j++)
+				if (values[i] == values[j])
+					Assert.Fail("Next should return different values");
 	}
 
 	[Fact]
 	public void NextIntMaxShouldReturnDifferentValues()
 	{
 		var length = 100;
-		var max    = 1_000_000;
+		var max = 1_000_000;
 		var values = new int[length];
 		for (var i = 0; i < values.Length; i++)
 			values[i] = StaticRandom.Next(max);
 
 		for (var i = 0; i < values.Length; i++)
-		for (var j = i + 1; j < values.Length; j++)
-			if (values[i] == values[j])
-				Assert.Fail("Next should return different values");
+			for (var j = i + 1; j < values.Length; j++)
+				if (values[i] == values[j])
+					Assert.Fail("Next should return different values");
 	}
 
 	[Fact]
 	public void NextIntMinMaxShouldReturnDifferentValues()
 	{
 		var length = 100;
-		var min    = 1_000;
-		var max    = 1_000_000;
+		var min = 1_000;
+		var max = 1_000_000;
 		var values = new int[length];
 		for (var i = 0; i < values.Length; i++)
 			values[i] = StaticRandom.Next(min, max);
 
 		for (var i = 0; i < values.Length; i++)
-		for (var j = i + 1; j < values.Length; j++)
-			if (values[i] == values[j])
-				Assert.Fail("Next should return different values");
+			for (var j = i + 1; j < values.Length; j++)
+				if (values[i] == values[j])
+					Assert.Fail("Next should return different values");
 	}
 
 	[Fact]
@@ -103,9 +105,9 @@ public class StaticRandomTests
 		StaticRandom.NextBytes(values);
 
 		for (var i = 0; i < values.Length; i++)
-		for (var j = i + 1; j < values.Length; j++)
-			if (values[i] == values[j])
-				Assert.Fail("NextBytes should return different values");
+			for (var j = i + 1; j < values.Length; j++)
+				if (values[i] == values[j])
+					Assert.Fail("NextBytes should return different values");
 	}
 
 	[Fact]
@@ -116,9 +118,9 @@ public class StaticRandomTests
 		StaticRandom.NextBytes(values.AsSpan());
 
 		for (var i = 0; i < values.Length; i++)
-		for (var j = i + 1; j < values.Length; j++)
-			if (values[i] == values[j])
-				Assert.Fail("NextBytes should return different values");
+			for (var j = i + 1; j < values.Length; j++)
+				if (values[i] == values[j])
+					Assert.Fail("NextBytes should return different values");
 	}
 
 	[Fact]
@@ -129,8 +131,8 @@ public class StaticRandomTests
 		StaticRandom.NextBytes(values.AsMemory());
 
 		for (var i = 0; i < values.Length; i++)
-		for (var j = i + 1; j < values.Length; j++)
-			if (values[i] == values[j])
-				Assert.Fail("NextBytes should return different values");
+			for (var j = i + 1; j < values.Length; j++)
+				if (values[i] == values[j])
+					Assert.Fail("NextBytes should return different values");
 	}
 }

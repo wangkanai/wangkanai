@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using Wangkanai.Federation;
 
@@ -12,12 +12,12 @@ public static class FederationCollectionExtensions
 	/// <returns>An <see cref="IFederationBuilder" /> so that additional calls can be chained</returns>
 	public static IFederationBuilder AddFederation(this IServiceCollection services)
 		=> services.AddFederationBuilder()
-		           .AddRequiredServices()
-		           .AddCoreServices()
-		           .AddDefaultEndpoints()
-		           .AddRunnableServices()
-		           .AddResponseMakers()
-		           .AddMarkerService();
+				   .AddRequiredServices()
+				   .AddCoreServices()
+				   .AddDefaultEndpoints()
+				   .AddRunnableServices()
+				   .AddResponseMakers()
+				   .AddMarkerService();
 
 	/// <summary>Add Federation service to the services container with configuration</summary>
 	/// <param name="services">The services available in the application</param>
@@ -25,7 +25,7 @@ public static class FederationCollectionExtensions
 	/// <returns>An <see cref="IFederationBuilder" /> so that additional calls can be chained</returns>
 	public static IFederationBuilder AddFederation(this IServiceCollection services, Action<FederationOptions> setAction)
 		=> services.Configure(setAction)
-		           .AddFederation();
+				   .AddFederation();
 
 	internal static IFederationBuilder AddFederationBuilder(this IServiceCollection services)
 		=> new FederationBuilder(services);

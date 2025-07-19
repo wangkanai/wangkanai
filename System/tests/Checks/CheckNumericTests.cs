@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using Wangkanai.Exceptions;
 
@@ -9,10 +9,10 @@ public class CheckNumericTests
 	[Fact]
 	public void IntegralIsNull()
 	{
-		byte?  byte1  = null;
+		byte? byte1 = null;
 		short? short2 = null;
-		int?   int4   = null;
-		long?  long8  = null;
+		int? int4 = null;
+		long? long8 = null;
 
 		Assert.Throws<ArgumentNullException>(() => byte1.ThrowIfNull());
 		Assert.Throws<ArgumentNullException>(() => short2.ThrowIfNull());
@@ -23,8 +23,8 @@ public class CheckNumericTests
 	[Fact]
 	public void FloatingIsNull()
 	{
-		float?   float16   = null;
-		double?  double32  = null;
+		float? float16 = null;
+		double? double32 = null;
 		decimal? decimal32 = null;
 
 		Assert.Throws<ArgumentNullException>(() => float16.ThrowIfNull());
@@ -37,7 +37,7 @@ public class CheckNumericTests
 	{
 		const int positive = 1;
 		const int negative = -1;
-		const int zero     = 0;
+		const int zero = 0;
 
 		Assert.Equal(0, zero.ThrowIfNegative());
 		Assert.Equal(1, positive.ThrowIfNegative());
@@ -51,8 +51,8 @@ public class CheckNumericTests
 	public void ThrowIfZero()
 	{
 		const int posittive = 1;
-		const int negative  = -1;
-		const int zero      = 0;
+		const int negative = -1;
+		const int zero = 0;
 
 		Assert.Throws<ArgumentZeroException>(() => zero.ThrowIfZero());
 		Assert.Throws<ArgumentZeroException>(() => zero.ThrowIfZero("message"));
@@ -65,7 +65,7 @@ public class CheckNumericTests
 	{
 		const int positive = 1;
 		const int negative = -1;
-		const int zero     = 0;
+		const int zero = 0;
 
 		Assert.Throws<ArgumentPositiveException>(() => positive.ThrowIfPositive());
 		Assert.Throws<ArgumentPositiveException>(() => positive.ThrowIfPositive("message"));

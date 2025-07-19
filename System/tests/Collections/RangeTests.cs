@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 namespace Wangkanai.Collections;
 
@@ -200,8 +200,8 @@ public class RangeTests
 		Assert.Throws<ArgumentOutOfRangeException>(() => new Range<int>(5, 0));
 	}
 
-	private static readonly int[] even      = { 0, 2, 4 };
-	private static readonly int[] odd       = { 5, 3, 1 };
+	private static readonly int[] even = { 0, 2, 4 };
+	private static readonly int[] odd = { 5, 3, 1 };
 	private static readonly int[] zero_five = { 0, 1, 2, 3, 4, 5 };
 	private static readonly int[] five_zero = { 5, 4, 3, 2, 1, 0 };
 

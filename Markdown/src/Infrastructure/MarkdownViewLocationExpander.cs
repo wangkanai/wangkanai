@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 namespace Wangkanai.Markdown.Infrastructure;
 
@@ -47,7 +47,7 @@ public class MarkdownViewLocationExpander : IMarkdownViewLocationExpander
 				var end = context.PageName.Length;
 
 				// PageName always starts with `/`
-				while (end > 0 && (end = context.PageName.LastIndexOf('/', end               - 1)) != -1)
+				while (end > 0 && (end = context.PageName.LastIndexOf('/', end - 1)) != -1)
 					yield return location.Replace("/{1}/", context.PageName.Substring(0, end + 1));
 			}
 		}

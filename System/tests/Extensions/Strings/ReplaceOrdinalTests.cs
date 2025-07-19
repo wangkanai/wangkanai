@@ -1,13 +1,13 @@
-// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 namespace Wangkanai.Extensions.Strings;
 
 public class ReplaceOrdinalTests
 {
-	readonly string? _null  = null;
-	readonly string  _empty = string.Empty;
-	readonly string  _space = " ";
-	readonly string  _text  = "abcde";
+	readonly string? _null = null;
+	readonly string _empty = string.Empty;
+	readonly string _space = " ";
+	readonly string _text = "abcde";
 
 	[Fact]
 	public void ReplaceOrdinalSingle()

@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using System.Diagnostics;
 using System.Threading.Tasks;
@@ -14,17 +14,17 @@ namespace Wangkanai.Markdown.Infrastructure;
 internal sealed class DynamicMarkdownEndpointMatcherPolicy : MatcherPolicy, IEndpointSelectorPolicy
 {
 	private readonly DynamicMarkdownEndpointSelectorCache _selectorCache;
-	private readonly MarkdownLoader                       _loader;
-	private readonly EndpointMetadataComparer             _comparer;
+	private readonly MarkdownLoader _loader;
+	private readonly EndpointMetadataComparer _comparer;
 
 	public DynamicMarkdownEndpointMatcherPolicy(
 		DynamicMarkdownEndpointSelectorCache selectorCache,
-		MarkdownLoader                       loader,
-		EndpointMetadataComparer             comparer)
+		MarkdownLoader loader,
+		EndpointMetadataComparer comparer)
 	{
 		_selectorCache = selectorCache.ThrowIfNull();
-		_loader        = loader.ThrowIfNull();
-		_comparer      = comparer.ThrowIfNull();
+		_loader = loader.ThrowIfNull();
+		_comparer = comparer.ThrowIfNull();
 	}
 
 	public override int Order => int.MinValue + 100;
@@ -60,7 +60,7 @@ internal sealed class DynamicMarkdownEndpointMatcherPolicy : MatcherPolicy, IEnd
 			if (!candidates.IsValidCandidate(i))
 				continue;
 
-			var endpoint       = candidates[i].Endpoint;
+			var endpoint = candidates[i].Endpoint;
 			var originalValues = candidates[i].Values;
 
 			RouteValueDictionary? dynamicValues = null;
@@ -79,7 +79,7 @@ internal sealed class DynamicMarkdownEndpointMatcherPolicy : MatcherPolicy, IEnd
 					throw new InvalidOperationException(string.Format(Resources.StateShouldBeNullForRouteValueTransformers, transformerMetadata.SelectorType.Name));
 
 				transformer.State = transformerMetadata.State;
-				dynamicValues     = await transformer.TransformAsync(httpContext, originalValues!);
+				dynamicValues = await transformer.TransformAsync(httpContext, originalValues!);
 			}
 			else
 				continue;
@@ -96,7 +96,7 @@ internal sealed class DynamicMarkdownEndpointMatcherPolicy : MatcherPolicy, IEnd
 			{
 				throw new InvalidOperationException(
 					"Cannot find the fallback endpoint specified by route values: " +
-					"{ "                                                            + string.Join(", ", dynamicValues.Select(kvp => $"{kvp.Key}: {kvp.Value}")) + " }.");
+					"{ " + string.Join(", ", dynamicValues.Select(kvp => $"{kvp.Key}: {kvp.Value}")) + " }.");
 			}
 
 			if (endpoints.Count == 0)
@@ -126,12 +126,12 @@ internal sealed class DynamicMarkdownEndpointMatcherPolicy : MatcherPolicy, IEnd
 			var loadedEndpoints = new List<Endpoint>(endpoints);
 			for (var j = 0; j < loadedEndpoints.Count; j++)
 			{
-				var metadata         = loadedEndpoints[j].Metadata;
+				var metadata = loadedEndpoints[j].Metadata;
 				var actionDescriptor = metadata.GetMetadata<MarkdownActionDescriptor>();
 				if (actionDescriptor is not CompiledMarkdownActionDescriptor)
 				{
 					var compiled = actionDescriptor!.CompiledMarkdownDescriptor ??
-					               await _loader.LoadAsync(actionDescriptor, endpoint.Metadata);
+								   await _loader.LoadAsync(actionDescriptor, endpoint.Metadata);
 					loadedEndpoints[j] = compiled.Endpoint!;
 				}
 			}

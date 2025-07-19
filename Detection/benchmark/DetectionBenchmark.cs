@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using Microsoft.AspNetCore.Http;
 
@@ -30,24 +30,25 @@ public class DetectionBenchmark
 	};
 
 	private readonly HttpContextAccessor[] Accessors
-		= RawUserAgents.Select(x => {
-			               var accessor = new HttpContextAccessor
-			               {
-				               HttpContext = new DefaultHttpContext()
-			               };
-			               accessor.HttpContext.Request.Headers["User-Agent"] = x;
-			               return accessor;
-		               })
-		               .ToArray();
+		= RawUserAgents.Select(x =>
+		{
+			var accessor = new HttpContextAccessor
+			{
+				HttpContext = new DefaultHttpContext()
+			};
+			accessor.HttpContext.Request.Headers["User-Agent"] = x;
+			return accessor;
+		})
+					   .ToArray();
 
 	[Benchmark]
 	public void Device()
 	{
 		foreach (var accessor in Accessors)
 		{
-			var contextService   = new HttpContextService(accessor);
+			var contextService = new HttpContextService(accessor);
 			var userAgentService = new UserAgentService(contextService);
-			var deviceService    = new DeviceService(userAgentService);
+			var deviceService = new DeviceService(userAgentService);
 			_ = deviceService.Type;
 		}
 	}
@@ -57,9 +58,9 @@ public class DetectionBenchmark
 	{
 		foreach (var accessor in Accessors)
 		{
-			var contextService   = new HttpContextService(accessor);
+			var contextService = new HttpContextService(accessor);
 			var userAgentService = new UserAgentService(contextService);
-			var platformService  = new PlatformService(userAgentService);
+			var platformService = new PlatformService(userAgentService);
 			_ = platformService.Name;
 		}
 	}
@@ -69,10 +70,10 @@ public class DetectionBenchmark
 	{
 		foreach (var accessor in Accessors)
 		{
-			var contextService   = new HttpContextService(accessor);
+			var contextService = new HttpContextService(accessor);
 			var userAgentService = new UserAgentService(contextService);
-			var platformService  = new PlatformService(userAgentService);
-			var engineService    = new EngineService(userAgentService, platformService);
+			var platformService = new PlatformService(userAgentService);
+			var engineService = new EngineService(userAgentService, platformService);
 			_ = engineService.Name;
 		}
 	}
@@ -82,11 +83,11 @@ public class DetectionBenchmark
 	{
 		foreach (var accessor in Accessors)
 		{
-			var contextService   = new HttpContextService(accessor);
+			var contextService = new HttpContextService(accessor);
 			var userAgentService = new UserAgentService(contextService);
-			var platformService  = new PlatformService(userAgentService);
-			var engineService    = new EngineService(userAgentService, platformService);
-			var browserService   = new BrowserService(userAgentService, engineService);
+			var platformService = new PlatformService(userAgentService);
+			var engineService = new EngineService(userAgentService, platformService);
+			var browserService = new BrowserService(userAgentService, engineService);
 			_ = browserService.Name;
 			_ = browserService.Version;
 		}

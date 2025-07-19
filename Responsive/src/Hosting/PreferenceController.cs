@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,7 +10,7 @@ namespace Wangkanai.Responsive.Hosting;
 [Area(AreaName)]
 public sealed class PreferenceController : Controller
 {
-	private const    string             AreaName = "Responsive";
+	private const string AreaName = "Responsive";
 	private readonly IResponsiveService _responsive;
 
 	public PreferenceController(IResponsiveService responsive)

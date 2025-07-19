@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using Wangkanai.Extensions;
 
@@ -10,12 +10,12 @@ namespace Wangkanai.Domain;
 /// <typeparam name="TBaseType">The base type of the generic type.</typeparam>
 public class GenericTypeInfo<TBaseType>(Type type)
 {
-	public ICollection<object> Services    { get; private set; } = new List<object>();
-	public Type                MappedType  { get; private set; } = typeof(Type);
-	public string              TypeName    { get; private set; } = type.Name;
-	public Type                Type        { get; private set; } = type;
-	public Func<TBaseType>?    Factory     { get; private set; }
-	public Action<TBaseType>?  SetupAction { get; private set; }
+	public ICollection<object> Services { get; private set; } = new List<object>();
+	public Type MappedType { get; private set; } = typeof(Type);
+	public string TypeName { get; private set; } = type.Name;
+	public Type Type { get; private set; } = type;
+	public Func<TBaseType>? Factory { get; private set; }
+	public Action<TBaseType>? SetupAction { get; private set; }
 
 	/// <summary>
 	/// Sets the type name for the generic type.
@@ -51,8 +51,8 @@ public class GenericTypeInfo<TBaseType>(Type type)
 	/// <returns>True if the GenericTypeInfo is assignable to the given type name; otherwise, false.</returns>
 	public bool IsAssignableTo(string typeName)
 		=> Type.GetTypeInheritanceChainTo(typeof(TBaseType))
-		       .Concat(new[] { typeof(TBaseType) })
-		       .Any(t => typeName.EqualsInvariant(t.Name));
+			   .Concat(new[] { typeof(TBaseType) })
+			   .Any(t => typeName.EqualsInvariant(t.Name));
 
 	/// <summary>
 	/// Adds a service to the GenericTypeInfo instance.

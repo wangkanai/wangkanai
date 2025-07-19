@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 namespace Wangkanai.Domain.Primitives;
 
@@ -17,7 +17,7 @@ public class Result
 			throw new InvalidOperationException("Invalid operation for failure result.");
 
 		IsSuccess = isSuccess;
-		Error     = error;
+		Error = error;
 	}
 
 	/// <summary>Gets the error.</summary>

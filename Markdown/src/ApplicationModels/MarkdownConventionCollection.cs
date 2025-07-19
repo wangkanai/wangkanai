@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using System.Collections.ObjectModel;
 
@@ -11,7 +11,7 @@ namespace Wangkanai.Markdown.ApplicationModels;
 public class MarkdownConventionCollection : Collection<IMarkdownConvention>
 {
 	private readonly IServiceProvider? _serviceProvider;
-	private          MvcOptions?       _mvcOptions;
+	private MvcOptions? _mvcOptions;
 
 	public MarkdownConventionCollection()
 		: this((IServiceProvider?)null) { }

@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using Wangkanai.Federation.Models;
 
@@ -10,18 +10,18 @@ public class ResourceValidationResult
 
 	public ResourceValidationResult(FederationResources resources)
 	{
-		Resources    = resources;
+		Resources = resources;
 		ParsedScopes = resources.ToScopeNames().Select(x => new ParsedScopeValue(x)).ToList();
 	}
 
 	public ResourceValidationResult(FederationResources resources, IEnumerable<ParsedScopeValue> parsedScopeValues)
 	{
-		Resources    = resources;
+		Resources = resources;
 		ParsedScopes = parsedScopeValues.ToList();
 	}
 
 	public bool Succeed
-		=> ParsedScopes.Any()   &&
+		=> ParsedScopes.Any() &&
 		   !InvalidScopes.Any() &&
 		   !InvalidResourceIndicators.Any();
 
@@ -32,7 +32,7 @@ public class ResourceValidationResult
 
 	public ICollection<ParsedScopeValue> ParsedScopes { get; set; } = new HashSet<ParsedScopeValue>();
 
-	public ICollection<string> InvalidScopes             { get; set; } = new HashSet<string>();
-	public ICollection<string> InvalidResources          { get; set; } = new HashSet<string>();
+	public ICollection<string> InvalidScopes { get; set; } = new HashSet<string>();
+	public ICollection<string> InvalidResources { get; set; } = new HashSet<string>();
 	public ICollection<string> InvalidResourceIndicators { get; set; } = new HashSet<string>();
 }

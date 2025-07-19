@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2024 Sarin Na Wangkanai,All Rights Reserved.Apache License,Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using Wangkanai.Exceptions;
 
@@ -44,8 +44,8 @@ public static class ThrowIfEmptyExtensions
 	{
 		value.ThrowIfNull<TException>();
 		return !value.Any()
-			       ? throw ExceptionActivator.CreateArgumentInstance<TException>(nameof(value))
-			       : value;
+				   ? throw ExceptionActivator.CreateArgumentInstance<TException>(nameof(value))
+				   : value;
 	}
 
 	/// <summary>
@@ -61,7 +61,7 @@ public static class ThrowIfEmptyExtensions
 	{
 		value.ThrowIfNull<TException>();
 		return !value.Any()
-			       ? throw ExceptionActivator.CreateArgumentInstance<TException>(nameof(value), message)
-			       : value;
+				   ? throw ExceptionActivator.CreateArgumentInstance<TException>(nameof(value), message)
+				   : value;
 	}
 }

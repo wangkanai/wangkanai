@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using System.Diagnostics;
 
@@ -46,7 +46,7 @@ public class FederationResource : BaseResource
 		name.ThrowIfNull();
 		claims.ThrowIfEmpty("Must provide at least one claim type");
 
-		Name        = name;
+		Name = name;
 		DisplayName = displayName;
 
 		foreach (var claim in claims)

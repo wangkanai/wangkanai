@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using System.Diagnostics;
 using System.Globalization;
@@ -22,27 +22,27 @@ public partial class MarkdownViewEngine : IMarkdownViewEngine
 {
 	public static readonly string ViewExtension = ".md";
 
-	private const string AreaKey       = "area";
+	private const string AreaKey = "area";
 	private const string ControllerKey = "controller";
-	private const string PageKey       = "page";
-	private const string MarkdownKey   = "markdown";
+	private const string PageKey = "page";
+	private const string MarkdownKey = "markdown";
 
 	private static readonly TimeSpan _cacheExpirationDuration = TimeSpan.FromMinutes(20);
 
 	private readonly IMarkdownPageFactoryProvider _pageFactory;
-	private readonly IMarkdownPageActivator       _pageActivator;
-	private readonly HtmlEncoder                  _htmlEncoder;
-	private readonly ILogger                      _logger;
-	private readonly MarkdownViewEngineOptions    _options;
-	private readonly DiagnosticListener           _diagnosticListener;
+	private readonly IMarkdownPageActivator _pageActivator;
+	private readonly HtmlEncoder _htmlEncoder;
+	private readonly ILogger _logger;
+	private readonly MarkdownViewEngineOptions _options;
+	private readonly DiagnosticListener _diagnosticListener;
 
 	public MarkdownViewEngine(
-		IMarkdownPageFactoryProvider        pageFactory,
-		IMarkdownPageActivator              pageActivator,
-		HtmlEncoder                         htmlEncoder,
+		IMarkdownPageFactoryProvider pageFactory,
+		IMarkdownPageActivator pageActivator,
+		HtmlEncoder htmlEncoder,
 		IOptions<MarkdownViewEngineOptions> optionsAccessor,
-		ILoggerFactory                      loggerFactory,
-		DiagnosticListener                  diagnosticListener)
+		ILoggerFactory loggerFactory,
+		DiagnosticListener diagnosticListener)
 	{
 		_options = optionsAccessor.Value;
 
@@ -50,24 +50,24 @@ public partial class MarkdownViewEngine : IMarkdownViewEngine
 		{
 			throw new ArgumentException(
 				string.Format(Resources.ViewLocationFormatsIsRequired,
-				              nameof(MarkdownViewEngineOptions.ViewLocationFormats),
-				              nameof(optionsAccessor)));
+							  nameof(MarkdownViewEngineOptions.ViewLocationFormats),
+							  nameof(optionsAccessor)));
 		}
 
 		if (_options.AreaViewLocationFormats.Count == 0)
 		{
 			throw new ArgumentException(
 				string.Format(Resources.ViewLocationFormatsIsRequired,
-				              nameof(MarkdownViewEngineOptions.AreaViewLocationFormats),
-				              nameof(optionsAccessor)));
+							  nameof(MarkdownViewEngineOptions.AreaViewLocationFormats),
+							  nameof(optionsAccessor)));
 		}
 
-		_pageFactory        = pageFactory;
-		_pageActivator      = pageActivator;
-		_htmlEncoder        = htmlEncoder;
-		_logger             = loggerFactory.CreateLogger<RazorViewEngine>();
+		_pageFactory = pageFactory;
+		_pageActivator = pageActivator;
+		_htmlEncoder = htmlEncoder;
+		_logger = loggerFactory.CreateLogger<RazorViewEngine>();
 		_diagnosticListener = diagnosticListener;
-		ViewLookupCache     = new MemoryCache(new MemoryCacheOptions());
+		ViewLookupCache = new MemoryCache(new MemoryCacheOptions());
 	}
 
 	protected internal IMemoryCache ViewLookupCache { get; private set; }
@@ -99,7 +99,7 @@ public partial class MarkdownViewEngine : IMarkdownViewEngine
 	private MarkdownViewLocationCacheResult LocatePageFromPath(string? executingFilePath, string pagePath, bool isMainPage)
 	{
 		var applicationRelativePath = GetAbsolutePath(executingFilePath, pagePath)!;
-		var cacheKey                = new MarkdownViewLocationCacheKey(applicationRelativePath, isMainPage);
+		var cacheKey = new MarkdownViewLocationCacheKey(applicationRelativePath, isMainPage);
 
 		if (!ViewLookupCache.TryGetValue(cacheKey, out MarkdownViewLocationCacheResult? cacheResult))
 		{
@@ -125,14 +125,14 @@ public partial class MarkdownViewEngine : IMarkdownViewEngine
 
 	internal MarkdownViewLocationCacheResult? CreateCacheResult(
 		HashSet<IChangeToken> expirationTokens,
-		string                relativePath,
-		bool                  isMainPage)
+		string relativePath,
+		bool isMainPage)
 	{
-		var factoryResult  = _pageFactory.CreateFactory(relativePath);
+		var factoryResult = _pageFactory.CreateFactory(relativePath);
 		var viewDescriptor = factoryResult.ViewDescriptor;
 		if (viewDescriptor?.ExpirationTokens != null)
 		{
-			var viewExpirationTokens      = viewDescriptor.ExpirationTokens;
+			var viewExpirationTokens = viewDescriptor.ExpirationTokens;
 			var viewExpirationTokensCount = viewExpirationTokens.Count;
 			for (var i = 0; i < viewExpirationTokensCount; i++)
 				expirationTokens.Add(viewExpirationTokens[i]);
@@ -142,8 +142,8 @@ public partial class MarkdownViewEngine : IMarkdownViewEngine
 		{
 			// Only need to lookup _ViewStarts for the main page.
 			var viewStartPages = isMainPage
-				                     ? GetViewStartPages(viewDescriptor!.RelativePath, expirationTokens)
-				                     : Array.Empty<MarkdownViewLocationCacheItem>();
+									 ? GetViewStartPages(viewDescriptor!.RelativePath, expirationTokens)
+									 : Array.Empty<MarkdownViewLocationCacheItem>();
 
 			return new MarkdownViewLocationCacheResult(
 				new MarkdownViewLocationCacheItem(factoryResult.MarkdownPageFactory, relativePath),
@@ -155,11 +155,11 @@ public partial class MarkdownViewEngine : IMarkdownViewEngine
 
 	private MarkdownViewLocationCacheResult LocatePageFromViewLocations(
 		ActionContext actionContext,
-		string        pageName,
-		bool          isMainPage)
+		string pageName,
+		bool isMainPage)
 	{
 		var controllerName = GetNormalizedRouteValue(actionContext, ControllerKey);
-		var areaName       = GetNormalizedRouteValue(actionContext, AreaKey);
+		var areaName = GetNormalizedRouteValue(actionContext, AreaKey);
 
 		string? razorPageName = null;
 		if (actionContext.ActionDescriptor.RouteValues.ContainsKey(PageKey))
@@ -179,7 +179,7 @@ public partial class MarkdownViewEngine : IMarkdownViewEngine
 		var expandersCount = expanders.Count;
 		if (expandersCount > 0)
 		{
-			expanderValues         = new Dictionary<string, string?>(StringComparer.Ordinal);
+			expanderValues = new Dictionary<string, string?>(StringComparer.Ordinal);
 			expanderContext.Values = expanderValues;
 
 			// Perf: Avoid allocations
@@ -201,18 +201,18 @@ public partial class MarkdownViewEngine : IMarkdownViewEngine
 			cacheResult = OnCacheMiss(expanderContext, cacheKey);
 		}
 		//else
-			//Log.ViewLookupCacheHit(_logger, cacheKey.ViewName, cacheKey.ControllerName);
+		//Log.ViewLookupCacheHit(_logger, cacheKey.ViewName, cacheKey.ControllerName);
 
 		return cacheResult;
 	}
 
 	private MarkdownViewLocationCacheResult OnCacheMiss(
 		MarkdownViewLocationExpanderContext expanderContext,
-		MarkdownViewLocationCacheKey        cacheKey)
+		MarkdownViewLocationCacheKey cacheKey)
 	{
 		var viewLocations = GetViewLocationFormats(expanderContext);
 
-		var expanders      = _options.ViewLocationExpanders;
+		var expanders = _options.ViewLocationExpanders;
 		var expandersCount = expanders.Count;
 
 		for (var i = 0; i < expandersCount; i++)
@@ -221,7 +221,7 @@ public partial class MarkdownViewEngine : IMarkdownViewEngine
 		MarkdownViewLocationCacheResult? cacheResult = null;
 
 		var searchedLocations = new List<string>();
-		var expirationTokens  = new HashSet<IChangeToken>();
+		var expirationTokens = new HashSet<IChangeToken>();
 		foreach (var location in viewLocations)
 		{
 			var path = string.Format(
@@ -266,14 +266,14 @@ public partial class MarkdownViewEngine : IMarkdownViewEngine
 	}
 
 	private IReadOnlyList<MarkdownViewLocationCacheItem> GetViewStartPages(
-		string                path,
+		string path,
 		HashSet<IChangeToken> expirationTokens)
 	{
 		var viewStartPages = new List<MarkdownViewLocationCacheItem>();
 
 		foreach (var filePath in MarkdownFileHierarchy.GetViewStartPaths(path))
 		{
-			var result         = _pageFactory.CreateFactory(filePath);
+			var result = _pageFactory.CreateFactory(filePath);
 			var viewDescriptor = result.ViewDescriptor;
 			if (viewDescriptor?.ExpirationTokens != null)
 				for (var i = 0; i < viewDescriptor.ExpirationTokens.Count; i++)

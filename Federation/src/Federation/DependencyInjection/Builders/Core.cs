@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using Microsoft.Extensions.Options;
 
@@ -14,7 +14,7 @@ public static class FederationCoreBuilderExtensions
 	internal static IFederationBuilder AddRequiredServices(this IFederationBuilder builder)
 	{
 		builder.ThrowIfNull();
-		
+
 		builder.Services.AddHttpContextAccessor();
 		builder.Services.AddOptions();
 		builder.Services.AddSingleton(provider => provider.GetRequiredService<IOptions<FederationOptions>>().Value);

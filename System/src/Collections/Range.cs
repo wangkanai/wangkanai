@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 namespace Wangkanai.Collections;
 
@@ -47,11 +47,11 @@ public class Range<T>
 		if (comparer.Compare(start, end) > 0)
 			throw new ArgumentOutOfRangeException(nameof(end), "start must be lower than end according to comparer");
 
-		Start         = start;
-		End           = end;
-		Comparer      = comparer;
+		Start = start;
+		End = end;
+		Comparer = comparer;
 		IncludesStart = includesStart;
-		IncludesEnd   = includesEnd;
+		IncludesEnd = includesEnd;
 	}
 
 	/// <summary>

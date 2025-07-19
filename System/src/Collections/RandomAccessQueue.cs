@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 namespace Wangkanai.Collections;
 
@@ -47,8 +47,8 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 	private RandomAccessQueue(T[] buffer, int count, int start)
 	{
 		_buffer = (T[])buffer.Clone();
-		Count   = count;
-		_start  = start;
+		Count = count;
+		_start = start;
 	}
 
 	/// <summary>Indexer for the queue, allowing items to be accessed by index and replaced.</summary>
@@ -72,7 +72,7 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 	public void Clear()
 	{
 		_start = 0;
-		Count  = 0;
+		Count = 0;
 		((IList)_buffer).Clear();
 	}
 
@@ -163,7 +163,7 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 		array.ThrowIfNull();
 
 		var strong = array as T[];
-		var name   = array.GetType().GetElementType()!.Name;
+		var name = array.GetType().GetElementType()!.Name;
 		strong.ThrowIfNull<ArgumentException>($"Cannot copy elements of type {typeof(T).Name} to an array of type {name}");
 		CopyTo(strong!, index);
 	}
@@ -235,12 +235,12 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 			int second;
 			if (_buffer.Length - _start >= Count)
 			{
-				first  = Count;
+				first = Count;
 				second = 0;
 			}
 			else
 			{
-				first  = _buffer.Length - _start;
+				first = _buffer.Length - _start;
 				second = Count - first;
 			}
 
@@ -250,7 +250,7 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 		else
 		{
 			var outIndex = 0;
-			var inIndex  = _start;
+			var inIndex = _start;
 
 			for (var i = 0; i < Count; i++)
 			{
@@ -266,7 +266,7 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 		}
 
 		_buffer = newBuffer;
-		_start  = 0;
+		_start = 0;
 	}
 
 	/// <summary>Removes an item from the queue at the specified index.</summary>
@@ -348,7 +348,8 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 		if (Count == 0)
 			return ~0;
 
-		return BinarySearch(test => {
+		return BinarySearch(test =>
+		{
 			var element = this[test];
 			return element is null ? 1 : comparable!.CompareTo(element);
 		});
@@ -399,7 +400,7 @@ public sealed class RandomAccessQueue<T> : ICollection<T>, ICollection, ICloneab
 
 		while (min <= max)
 		{
-			var test   = (min + max) / 2;
+			var test = (min + max) / 2;
 			var result = comparer(test);
 
 			if (result == 0)

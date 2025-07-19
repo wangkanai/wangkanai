@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using Wangkanai.Solver.Abstractions;
 
@@ -6,7 +6,7 @@ namespace Wangkanai.Solver.Linear;
 
 public class Variable : IVariable
 {
-	public string Name  { get; init; }
+	public string Name { get; init; }
 	public double Value { get; set; }
 
 	public static LinearExpression operator +(Variable left, double right)

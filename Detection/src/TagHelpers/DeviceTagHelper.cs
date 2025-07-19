@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.Primitives;
@@ -12,7 +12,7 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers;
 [HtmlTargetElement(ElementName, Attributes = ExcludeAttributeName)]
 public class DeviceTagHelper : TagHelper
 {
-	private const string ElementName          = "device";
+	private const string ElementName = "device";
 	private const string IncludeAttributeName = "include";
 	private const string ExcludeAttributeName = "exclude";
 

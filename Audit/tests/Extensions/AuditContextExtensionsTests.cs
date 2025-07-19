@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -6,8 +6,8 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 using Moq;
 
-using Wangkanai.Domain;
 using Wangkanai.Audit.Configurations;
+using Wangkanai.Domain;
 
 namespace Wangkanai.Audit.Extensions;
 
@@ -17,10 +17,10 @@ public class AuditContextExtensionsTests
 	public void ApplyAuditTrailConfiguration_ShouldApplyConfiguration()
 	{
 		// Arrange
-		var mockBuilder   = new Mock<ModelBuilder>();
+		var mockBuilder = new Mock<ModelBuilder>();
 		var configuration = It.IsAny<IEntityTypeConfiguration<Audit<Guid, IdentityUser<Guid>, Guid>>>();
 		mockBuilder.Setup(x => x.ApplyConfiguration(configuration))
-		           .Verifiable();
+				   .Verifiable();
 
 		// Act
 		mockBuilder.Object.ApplyAuditConfiguration<Guid, IdentityUser<Guid>, Guid>();
@@ -33,10 +33,10 @@ public class AuditContextExtensionsTests
 	public void ApplyAuditTrailConfiguration_WithIntKeys_ShouldApplyConfiguration()
 	{
 		// Arrange
-		var mockBuilder   = new Mock<ModelBuilder>();
+		var mockBuilder = new Mock<ModelBuilder>();
 		var configuration = It.IsAny<IEntityTypeConfiguration<Audit<int, IdentityUser<int>, int>>>();
 		mockBuilder.Setup(x => x.ApplyConfiguration(configuration))
-		           .Verifiable();
+				   .Verifiable();
 
 		// Act
 		mockBuilder.Object.ApplyAuditConfiguration<int, IdentityUser<int>, int>();
@@ -49,10 +49,10 @@ public class AuditContextExtensionsTests
 	public void ApplyAuditTrailConfiguration_WithDifferentKeyTypes_ShouldApplyConfiguration()
 	{
 		// Arrange
-		var mockBuilder   = new Mock<ModelBuilder>();
+		var mockBuilder = new Mock<ModelBuilder>();
 		var configuration = It.IsAny<IEntityTypeConfiguration<Audit<Guid, IdentityUser<string>, string>>>();
 		mockBuilder.Setup(x => x.ApplyConfiguration(configuration))
-		           .Verifiable();
+				   .Verifiable();
 
 		// Act
 		mockBuilder.Object.ApplyAuditConfiguration<Guid, IdentityUser<string>, string>();

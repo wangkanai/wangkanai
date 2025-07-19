@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 namespace Wangkanai.Resources;
 
@@ -9,11 +9,11 @@ namespace Wangkanai.Resources;
 /// </summary>
 internal static class AnnotationResources
 {
-	internal const string ValueNullThenHalt    = "null => halt";
-	internal const string ValueNullThenStop    = "null => stop";
-	internal const string ValueNullThenVoid    = "null => void";
+	internal const string ValueNullThenHalt = "null => halt";
+	internal const string ValueNullThenStop = "null => stop";
+	internal const string ValueNullThenVoid = "null => void";
 	internal const string ValueNullThenNothing = "null => nothing";
 
-	internal const string ValueNullThenTrue  = "null => true";
+	internal const string ValueNullThenTrue = "null => true";
 	internal const string ValueNullThenFalse = "null => false";
 }

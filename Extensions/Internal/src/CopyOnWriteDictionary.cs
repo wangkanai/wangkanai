@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using System.Collections;
 using System.Diagnostics.CodeAnalysis;
@@ -8,22 +8,22 @@ namespace Wangkanai.Internal;
 internal sealed class CopyOnWriteDictionary<TKey, TValue> : IDictionary<TKey, TValue>
 	where TKey : notnull
 {
-	private readonly IDictionary<TKey, TValue>  _sourceDictionary;
-	private readonly IEqualityComparer<TKey>    _comparer;
-	private          IDictionary<TKey, TValue>? _innerDictionary;
+	private readonly IDictionary<TKey, TValue> _sourceDictionary;
+	private readonly IEqualityComparer<TKey> _comparer;
+	private IDictionary<TKey, TValue>? _innerDictionary;
 
 	public CopyOnWriteDictionary(
 		IDictionary<TKey, TValue> sourceDictionary,
-		IEqualityComparer<TKey>   comparer)
+		IEqualityComparer<TKey> comparer)
 	{
 		_sourceDictionary = sourceDictionary.ThrowIfNull();
-		_comparer         = comparer.ThrowIfNull();
+		_comparer = comparer.ThrowIfNull();
 	}
 
-	public ICollection<TKey>   Keys   => ReadDictionary.Keys;
+	public ICollection<TKey> Keys => ReadDictionary.Keys;
 	public ICollection<TValue> Values => ReadDictionary.Values;
 
-	public int  Count      => ReadDictionary.Count;
+	public int Count => ReadDictionary.Count;
 	public bool IsReadOnly => false;
 
 	private IDictionary<TKey, TValue> ReadDictionary
@@ -35,7 +35,7 @@ internal sealed class CopyOnWriteDictionary<TKey, TValue> : IDictionary<TKey, TV
 		{
 			if (_innerDictionary == null)
 				_innerDictionary = new Dictionary<TKey, TValue>(_sourceDictionary,
-				                                                _comparer);
+																_comparer);
 			return _innerDictionary;
 		}
 	}

@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 namespace Wangkanai.Collections;
 
@@ -17,7 +17,7 @@ public class LinkedComparer<T> : IComparer<T>
 	/// <param name="secondary">The next level of comparison if the primary return 0 (equivalent)</param>
 	public LinkedComparer(IComparer<T> primary, IComparer<T> secondary)
 	{
-		_primary   = primary.ThrowIfNull();
+		_primary = primary.ThrowIfNull();
 		_secondary = secondary.ThrowIfNull();
 	}
 
@@ -29,7 +29,7 @@ public class LinkedComparer<T> : IComparer<T>
 	{
 		var result = _primary.Compare(x, y);
 		return result == 0
-			       ? _secondary.Compare(x, y)
-			       : result;
+				   ? _secondary.Compare(x, y)
+				   : result;
 	}
 }

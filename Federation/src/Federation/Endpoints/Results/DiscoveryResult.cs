@@ -1,4 +1,6 @@
-// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
+
+using System.Diagnostics.CodeAnalysis;
 
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,12 +15,12 @@ namespace Wangkanai.Federation.Endpoints.Results;
 public sealed class DiscoveryResult : IEndpointResult
 {
 	public Dictionary<string, object> Records { get; }
-	public int                        MaxAge  { get; }
+	public int MaxAge { get; }
 
 	public DiscoveryResult(Dictionary<string, object> records, int maxAge)
 	{
 		Records = records.ThrowIfNull();
-		MaxAge  = maxAge;
+		MaxAge = maxAge;
 	}
 
 	public Task ExecuteAsync(HttpContext context)

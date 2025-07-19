@@ -1,13 +1,13 @@
-// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 namespace Wangkanai.Webmaster.Models;
 
 public enum IconSize
 {
-	X16  = 16,
-	X24  = 24,
-	X32  = 32,
-	X64  = 64,
+	X16 = 16,
+	X24 = 24,
+	X32 = 32,
+	X64 = 64,
 	X128 = 128,
 	X256 = 256,
 	X512 = 512

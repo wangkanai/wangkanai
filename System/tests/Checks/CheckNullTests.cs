@@ -1,6 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
-
-
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 // ReSharper disable InconsistentNaming
 
@@ -22,7 +20,7 @@ public class CheckNullTests
 	public void BooleanReturnTrueIfNotNull()
 	{
 		bool? _false = false;
-		bool? _true  = true;
+		bool? _true = true;
 
 		Assert.True(_true.ThrowIfNull());
 		Assert.True(_true.ThrowIfNull<ArgumentNullException>());
@@ -37,10 +35,10 @@ public class CheckNullTests
 	public void IntegralThrowIfNullNullException()
 	{
 		sbyte? _sbyte = null;
-		byte?  _byte  = null;
+		byte? _byte = null;
 		short? _short = null;
-		int?   _int   = null;
-		long?  _long  = null;
+		int? _int = null;
+		long? _long = null;
 
 		Assert.Throws<ArgumentNullException>(() => _sbyte.ThrowIfNull());
 		Assert.Throws<ArgumentNullException>(() => _byte.ThrowIfNull());
@@ -53,10 +51,10 @@ public class CheckNullTests
 	public void IntegralThrowIfNullCustomException()
 	{
 		sbyte? _sbyte = null;
-		byte?  _byte  = null;
+		byte? _byte = null;
 		short? _short = null;
-		int?   _int   = null;
-		long?  _long  = null;
+		int? _int = null;
+		long? _long = null;
 
 		Assert.Throws<CustomArgumentException>(() => _sbyte.ThrowIfNull<CustomArgumentException>());
 		Assert.Throws<CustomArgumentException>(() => _byte.ThrowIfNull<CustomArgumentException>());
@@ -69,8 +67,8 @@ public class CheckNullTests
 	public void PositiveIntegralThrowIfNullNullException()
 	{
 		ushort? _ushort = null;
-		uint?   _uint   = null;
-		ulong?  _ulong  = null;
+		uint? _uint = null;
+		ulong? _ulong = null;
 
 		Assert.Throws<ArgumentNullException>(() => _ushort.ThrowIfNull());
 		Assert.Throws<ArgumentNullException>(() => _uint.ThrowIfNull());
@@ -80,7 +78,7 @@ public class CheckNullTests
 	[Fact]
 	public void NativeIntegralIfNull()
 	{
-		nint?  _nint  = null;
+		nint? _nint = null;
 		nuint? _nuint = null;
 
 		Assert.Throws<ArgumentNullException>(() => _nint.ThrowIfNull());
@@ -93,8 +91,8 @@ public class CheckNullTests
 	public void PositiveIntegralThrowIfNullCustomException()
 	{
 		ushort? _ushort = null;
-		uint?   _uint   = null;
-		ulong?  _ulong  = null;
+		uint? _uint = null;
+		ulong? _ulong = null;
 
 		Assert.Throws<CustomArgumentException>(() => _ushort.ThrowIfNull<CustomArgumentException>());
 		Assert.Throws<CustomArgumentException>(() => _uint.ThrowIfNull<CustomArgumentException>());
@@ -105,8 +103,8 @@ public class CheckNullTests
 	[Fact]
 	public void FloatingIsNullThrowNullException()
 	{
-		float?   _float   = null;
-		double?  _double  = null;
+		float? _float = null;
+		double? _double = null;
 		decimal? _decimal = null;
 
 		Assert.Throws<ArgumentNullException>(() => _float.ThrowIfNull());
@@ -117,8 +115,8 @@ public class CheckNullTests
 	[Fact]
 	public void FloatingIsNullThrowCustomException()
 	{
-		float?   _float   = null;
-		double?  _double  = null;
+		float? _float = null;
+		double? _double = null;
 		decimal? _decimal = null;
 
 		Assert.Throws<CustomArgumentException>(() => _float.ThrowIfNull<CustomArgumentException>());

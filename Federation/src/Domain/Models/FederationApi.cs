@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using System.Diagnostics;
 
@@ -14,7 +14,7 @@ public sealed class FederationApi : FederationResource
 	public bool RequireApiIndicator { get; set; }
 
 	public ICollection<FederationSecret> Secrets { get; set; } = new HashSet<FederationSecret>();
-	public ICollection<string>           Scopes  { get; set; } = new HashSet<string>();
+	public ICollection<string> Scopes { get; set; } = new HashSet<string>();
 
 	public ICollection<string> AllowedAccessTokenSigningAlgorithms { get; set; } = new HashSet<string>();
 
@@ -26,7 +26,7 @@ public sealed class FederationApi : FederationResource
 	{
 		name.ThrowIfNullOrWhitespace();
 
-		Name        = name;
+		Name = name;
 		DisplayName = displayName;
 
 		if (claims.IsNullOrEmpty())

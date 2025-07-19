@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using System.Reflection;
 
@@ -10,7 +10,7 @@ namespace Wangkanai.Validation;
 public class RequireDigitTests
 {
 	private readonly ITestOutputHelper _output;
-	private readonly PropertyInfo      _password = DigitModel.GetProperty(nameof(DigitModel.Password));
+	private readonly PropertyInfo _password = DigitModel.GetProperty(nameof(DigitModel.Password));
 
 	public RequireDigitTests(ITestOutputHelper output)
 	{

@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2024 Sarin Na Wangkanai,All Rights Reserved.Apache License,Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using Wangkanai.Exceptions;
 using Wangkanai.Extensions;
@@ -71,7 +71,7 @@ public static class ThrowIfNullOrEmptyExtensions
 	/// <param name="message">The custom error message.</param>
 	/// <param name="paramName">The parameter name that thrown the exception.</param>
 	/// <returns>The original string if it is not null or empty.</returns>
-	public static string ThrowIfNullOrEmpty<T>([NotNull] this string? value, string message,  string paramName)
+	public static string ThrowIfNullOrEmpty<T>([NotNull] this string? value, string message, string paramName)
 		where T : ArgumentException
 		=> value!.IsNullOrEmpty()
 			   ? throw ExceptionActivator.CreateArgumentInstance<T>(paramName, message)

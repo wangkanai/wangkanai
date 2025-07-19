@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using System;
 
@@ -16,7 +16,7 @@ public class HttpContextExtensionsTest
 	[Fact]
 	public void GetDevice_HttpContext_ReturnsExpected()
 	{
-		var device  = Device.Tablet;
+		var device = Device.Tablet;
 		var context = new DefaultHttpContext();
 		context.SetDevice(device);
 

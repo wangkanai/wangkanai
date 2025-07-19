@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using System.Diagnostics.CodeAnalysis;
 
@@ -11,14 +11,14 @@ public readonly struct MarkdownPageFactoryResult
 	[MemberNotNullWhen(true, nameof(MarkdownPageFactory))]
 	public bool Success => MarkdownPageFactory != null;
 
-	public Func<IMarkdownPage>?    MarkdownPageFactory { get; }
-	public CompiledViewDescriptor? ViewDescriptor      { get; }
+	public Func<IMarkdownPage>? MarkdownPageFactory { get; }
+	public CompiledViewDescriptor? ViewDescriptor { get; }
 
 	public MarkdownPageFactoryResult(
 		CompiledViewDescriptor viewDescriptor,
-		Func<IMarkdownPage>?   razorPageFactory)
+		Func<IMarkdownPage>? razorPageFactory)
 	{
-		ViewDescriptor      = viewDescriptor.ThrowIfNull();
+		ViewDescriptor = viewDescriptor.ThrowIfNull();
 		MarkdownPageFactory = razorPageFactory;
 	}
 }

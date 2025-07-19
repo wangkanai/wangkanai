@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using System.Globalization;
 
@@ -16,10 +16,10 @@ internal static class NormalizedRouteValue
 		if (!context.RouteData.Values.TryGetValue(key, out var routeValue))
 			return null;
 
-		var     actionDescriptor = context.ActionDescriptor;
-		string? normalizedValue  = null;
+		var actionDescriptor = context.ActionDescriptor;
+		string? normalizedValue = null;
 
-		if (actionDescriptor.RouteValues.TryGetValue(key, out var value) && !string.IsNullOrEmpty(value)) 
+		if (actionDescriptor.RouteValues.TryGetValue(key, out var value) && !string.IsNullOrEmpty(value))
 			normalizedValue = value;
 
 		var stringRouteValue = Convert.ToString(routeValue, CultureInfo.InvariantCulture);

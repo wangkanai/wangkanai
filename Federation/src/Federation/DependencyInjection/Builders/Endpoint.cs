@@ -1,4 +1,6 @@
-﻿// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
+
+using System.Diagnostics.CodeAnalysis;
 
 using Microsoft.AspNetCore.Http;
 
@@ -25,7 +27,7 @@ public static class FederationEndpointBuilderExtensions
 		return builder;
 	}
 
-	public static IFederationBuilder AddEndpoint<T>(this IFederationBuilder builder, string name, PathString path)
+	public static IFederationBuilder AddEndpoint<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] T>(this IFederationBuilder builder, string name, PathString path)
 		where T : class, IEndpointHandler
 	{
 		builder.Services.AddTransient<T>();

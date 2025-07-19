@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.
 
 using System.Reflection.Metadata;
 
@@ -54,7 +54,7 @@ internal static class MarkdownCoreBuilderExtensions
 		// Action description and invocation
 		var actionDescriptorProvider = builder.Services.FirstOrDefault(
 			f =>
-				f.ServiceType        == typeof(IActionDescriptorProvider) &&
+				f.ServiceType == typeof(IActionDescriptorProvider) &&
 				f.ImplementationType == typeof(MarkdownActionDescriptorProvider));
 
 		if (actionDescriptorProvider is null)
