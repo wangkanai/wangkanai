@@ -202,8 +202,8 @@ jobs:
           cd Tabler/src/Web
           # Install global tools needed by build scripts
           npm install -g rimraf
-          # Install project dependencies
-          npm ci --prefer-offline --no-audit --no-fund || npm install --no-audit --no-fund
+          # Install project dependencies (use npm install since lock file may not exist)
+          npm install --no-audit --no-fund
           # Create stamp file to prevent re-installation during build
           touch node_modules/.install-stamp
           cd ../../..
