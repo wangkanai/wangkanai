@@ -42,7 +42,6 @@
     "**/Dockerfile",
     "**/.dockerignore",
     "**/LICENSE",
-    "**/README.md",
     "**/INSTALL.md"
   ],
   "ignore": {
