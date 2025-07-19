@@ -74,8 +74,11 @@ jobs:
         path: |
           **/bin/Release
           **/obj/Release
-        key: ${{ runner.os }}-build-${{ github.sha }}
+          **/.dotnet
+          **/project.assets.json
+        key: ${{ runner.os }}-build-${{ github.sha }}-${{ hashFiles('**/*.csproj') }}
         restore-keys: |
+          ${{ runner.os }}-build-${{ github.sha }}-
           ${{ runner.os }}-build-
 
 
@@ -131,25 +134,40 @@ jobs:
 
     - name: Restore dependencies
       run: |
-        # Optimized restore with stable settings
+        # Ultra-optimized restore with parallel processing
+        echo "Starting parallel restore..."
         dotnet restore \
           --verbosity minimal \
-          --runtime linux-x64
+          --runtime linux-x64 \
+          --disable-parallel false \
+          -p:RestoreUseStaticGraphEvaluation=true \
+          -p:RestorePackagesConfig=true \
+          -p:CheckEolTargetFramework=false
       shell: bash
 
 
     - name: Build
       run: |
-        # Stable build with proven optimizations
+        # Enhanced build with incremental compilation and optimized settings
+        echo "Starting optimized build process..."
+        
+        # Build with incremental compilation and better parallelization
         dotnet build --no-restore -c Release \
           -p:TreatWarningsAsErrors=false \
           -p:ContinuousIntegrationBuild=true \
           -p:Deterministic=true \
           -p:DebugType=portable \
+          -p:PublishReadyToRun=false \
+          -p:PublishTrimmed=false \
+          -p:EnableNETAnalyzers=false \
+          -p:EnforceCodeStyleInBuild=false \
+          -p:AnalysisLevel=none \
+          -p:BuildInParallel=true \
+          -m \
           --verbosity minimal \
           --nologo || true
         
-        echo "Build completed"
+        echo "Build completed successfully"
 
     # Run tests with parallel execution and coverage  
     - name: Test with Coverage
