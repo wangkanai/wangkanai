@@ -3,6 +3,11 @@
     <File Path="CLAUDE.md" />
     <File Path="repomix.config.json" />
     <File Path=".repomixignore" />
+    <File Path="WANGKANAI_MODULE_ANALYSIS.md" />
+    <File Path="DOCUMENTATION_NAVIGATION.md" />
+    <File Path="API_DOCUMENTATION_TEMPLATE.md" />
+    <File Path="PROJECT_INDEX.md" />
+    <File Path="BUILD_GUIDE.md" />
   </Folder>
   <Folder Name="/.github/">
     <File Path=".github\FUNDING.yml" />
@@ -34,6 +39,8 @@
     <File Path="sonar-begin.ps1" />
     <File Path="testconfig.json" />
     <File Path="test-coverage.ps1" />
+    <File Path="build-enhanced.ps1" />
+    <File Path="build-simple.ps1" />
   </Folder>
   <Folder Name="/Analytics/">
     <Project Path="Analytics\benchmark\Wangkanai.Analytics.Benchmark.csproj" />

@@ -6,8 +6,6 @@ using System.Text.RegularExpressions;
 
 using Wangkanai.Exceptions;
 
-#nullable disable
-
 namespace Wangkanai.Extensions;
 
 /// <summary>
@@ -21,7 +19,7 @@ public static class StringExtensions
 	/// </summary>
 	/// <param name="value">The string to check.</param>
 	/// <returns>True if the string is empty; otherwise, false.</returns>
-	public static bool IsEmpty([NotNull] this string value)
+	public static bool IsEmpty(this string value)
 		=> value == string.Empty;
 
 	/// <summary>
@@ -29,7 +27,7 @@ public static class StringExtensions
 	/// </summary>
 	/// <param name="value">The string to check.</param>
 	/// <returns>True if the string is null or empty; otherwise, false.</returns>
-	public static bool IsNullOrEmpty([NotNull] this string value)
+	public static bool IsNullOrEmpty(this string? value)
 		=> string.IsNullOrEmpty(value);
 
 	/// <summary>
@@ -37,7 +35,7 @@ public static class StringExtensions
 	/// </summary>
 	/// <param name="value">The string to check.</param>
 	/// <returns>True if the string is not null or empty; otherwise, false.</returns>
-	public static bool IsNotNullOrEmpty([NotNull] this string value)
+	public static bool IsNotNullOrEmpty(this string? value)
 		=> !string.IsNullOrEmpty(value);
 
 	/// <summary>
@@ -45,7 +43,7 @@ public static class StringExtensions
 	/// </summary>
 	/// <param name="value">The string to check.</param>
 	/// <returns>True if the string is null, empty, or consists only of white space characters; otherwise, false.</returns>
-	public static bool IsNullOrWhiteSpace([NotNull] this string value)
+	public static bool IsNullOrWhiteSpace(this string? value)
 		=> string.IsNullOrWhiteSpace(value);
 
 	/// <summary>
@@ -53,7 +51,7 @@ public static class StringExtensions
 	/// </summary>
 	/// <param name="value">The string to check.</param>
 	/// <returns>True if the string consists of only white space characters; otherwise, false.</returns>
-	public static bool IsWhiteSpace([NotNull] this string value)
+	public static bool IsWhiteSpace(this string value)
 		=> !value.IsNullOrEmpty() && value.All(char.IsWhiteSpace);
 
 	/// <summary>
@@ -61,7 +59,7 @@ public static class StringExtensions
 	/// </summary>
 	/// <param name="value">The string to check.</param>
 	/// <returns>True if the string is not null or consists of only white spaces; otherwise, false.</returns>
-	public static bool IsNotNullOrWhiteSpace([NotNull] this string value)
+	public static bool IsNotNullOrWhiteSpace(this string? value)
 		=> !value.IsNullOrWhiteSpace();
 
 	/// <summary>
@@ -69,7 +67,7 @@ public static class StringExtensions
 	/// </summary>
 	/// <param name="value">The string to check.</param>
 	/// <returns>True if the string is not null or whitespace; otherwise, false.</returns>
-	public static bool IsExist([NotNull] this string value)
+	public static bool IsExist(this string? value)
 		=> !value.IsNullOrWhiteSpace();
 
 	/// <summary>
@@ -77,15 +75,19 @@ public static class StringExtensions
 	/// </summary>
 	/// <param name="value">The string to check.</param>
 	/// <returns>True if the string contains Unicode characters; otherwise, false.</returns>
-	public static bool IsUnicode([NotNull] this string value)
-		=> Encoding.ASCII.GetByteCount(value) != Encoding.UTF8.GetByteCount(value);
+	public static bool IsUnicode(this string value)
+	{
+		ArgumentNullException.ThrowIfNull(value);
+		// Optimized: check if all characters are ASCII first
+		return value.Any(c => c > 127);
+	}
 
 	/// <summary>
 	/// Ensures that the given string starts with a leading slash.
 	/// </summary>
 	/// <param name="value">The string to ensure leading slash for.</param>
 	/// <returns>The string with a leading slash, or the original string if it already starts with a slash.</returns>
-	public static string EnsureLeadingSlash([NotNull] this string value)
+	public static string? EnsureLeadingSlash(this string? value)
 		=> value.IsNotNullOrWhiteSpace() && !value.StartsWith('/')
 			   ? "/" + value
 			   : value;
@@ -95,8 +97,8 @@ public static class StringExtensions
 	/// </summary>
 	/// <param name="value">The string to check.</param>
 	/// <returns>The string with a trailing slash if it doesn't have one already; otherwise, the original string.</returns>
-	public static string EnsureTrailingSlash([NotNull] this string value)
-		=> value.IsNotNullOrWhiteSpace() && !value.EndsWith('/')
+	public static string? EnsureTrailingSlash(this string? value)
+		=> value.IsNotNullOrWhiteSpace() && !value!.EndsWith('/')
 			   ? value + "/"
 			   : value;
 
@@ -105,9 +107,9 @@ public static class StringExtensions
 	/// </summary>
 	/// <param name="value">The string to remove the leading slash from.</param>
 	/// <returns>The string without the leading slash.</returns>
-	public static string RemoveLeadingSlash([NotNull] this string value)
-		=> value.IsNotNullOrWhiteSpace() && value.StartsWith('/')
-			   ? value.Substring(1)
+	public static string? RemoveLeadingSlash(this string? value)
+		=> value.IsNotNullOrWhiteSpace() && value!.StartsWith('/')
+			   ? value[1..] // Use span-based slice instead of Substring
 			   : value;
 
 	/// <summary>
@@ -115,9 +117,9 @@ public static class StringExtensions
 	/// </summary>
 	/// <param name="value">The string to remove the trailing slash from.</param>
 	/// <returns>The string without the trailing slash.</returns>
-	public static string RemoveTrailingSlash([NotNull] this string value)
-		=> value.IsNotNullOrWhiteSpace() && value.EndsWith('/')
-			   ? value.Substring(0, value.Length - 1)
+	public static string? RemoveTrailingSlash(this string? value)
+		=> value.IsNotNullOrWhiteSpace() && value!.EndsWith('/')
+			   ? value[..^1] // Use span-based slice instead of Substring
 			   : value;
 
 	/// <summary>
@@ -233,12 +235,12 @@ public static class StringExtensions
 	/// <returns>The substring extracted from the rightmost position.</returns>
 	/// <exception cref="ArgumentNullException">Thrown when the <paramref name="value"/> is null.</exception>
 	/// <exception cref="ArgumentLessThanException">Thrown when the length is greater than the length of the string.</exception>
-	public static string Right([NotNull] this string value, int length)
+	public static string Right(this string value, int length)
 	{
 		value.ThrowIfNull();
 		value.Length.ThrowIfLessThan(length);
 
-		return value.Substring(value.Length - length, length);
+		return value[^length..]; // Use span-based slice from end
 	}
 
 	/// <summary>
@@ -457,7 +459,7 @@ public static class StringExtensions
 	/// <param name="start">The starting index of the substring.</param>
 	/// <param name="length">The length of the substring.</param>
 	/// <returns>The substring of the given string starting from the specified index and with the specified length.</returns>
-	public static string SubstringSafe([NotNull] this string value, int start, int length)
+	public static string SubstringSafe(this string value, int start, int length)
 	{
 		value.ThrowIfNull();
 		value.ThrowIfEmpty();
@@ -483,29 +485,32 @@ public static class StringExtensions
 		return string.Concat(value.AsSpan(0, 1).ToString().ToUpper(), value.AsSpan(1));
 	}
 
+	// Special characters set for EscapeSearch - defined at class level for reuse
+	private static readonly HashSet<char> SpecialCharacters = new() { '+', '-', '!', '(', ')', '{', '}', '[', ']', '^', '"', '~', '*', '?', ':', '\\' };
+
 	/// <summary>
 	/// Escapes special characters in a search string.
 	/// </summary>
 	/// <param name="value">The search string to escape.</param>
 	/// <returns>The escaped search string.</returns>
-	public static string EscapeSearch([NotNull] this string value)
+	public static string EscapeSearch(this string value)
 	{
 		value.ThrowIfNull();
 		value.ThrowIfEmpty();
 
-		char[] specialCharacters = { '+', '-', '!', '(', ')', '{', '}', '[', ']', '^', '"', '~', '*', '?', ':', '\\' };
-		var result = new StringBuilder("");
-		//'&&', '||',
+		// Pre-allocate with estimated capacity to reduce resizing
+		var result = new StringBuilder(value.Length * 2);
+		
 		foreach (var ch in value)
 		{
-			if (specialCharacters.Any(x => x == ch))
+			if (SpecialCharacters.Contains(ch))
 				result.Append('\\');
 
 			result.Append(ch);
 		}
 
-		result = result.Replace("&&", @"\&&");
-		result = result.Replace("||", @"\||");
+		result.Replace("&&", @"\&&");
+		result.Replace("||", @"\||");
 
 		return result.ToString().Trim();
 	}
@@ -541,12 +546,17 @@ public static class StringExtensions
 		return Encoding.ASCII.GetString(bytes);
 	}
 
+	// Static regex patterns for GenerateSlug - defined at class level for reuse
+	private static readonly Regex InvalidCharsRegex = new(@"[^a-z0-9\s-]", RegexOptions.Compiled);
+	private static readonly Regex MultipleSpacesRegex = new(@"\s+", RegexOptions.Compiled);
+	private static readonly Regex SpaceToHyphenRegex = new(@"\s", RegexOptions.Compiled);
+
 	/// <summary>
 	/// Generates a slug from the given string value.
 	/// </summary>
 	/// <param name="value">The string value to generate the slug from.</param>
 	/// <returns>The generated slug.</returns>
-	public static string GenerateSlug([NotNull] this string value)
+	public static string GenerateSlug(this string value)
 	{
 		value.ThrowIfNull();
 		value.ThrowIfEmpty();
@@ -554,13 +564,13 @@ public static class StringExtensions
 		string str = value.RemoveAccent().ToLower();
 
 		// invalid chars
-		str = Regex.Replace(str, @"[^a-z0-9\s-]", "", RegexOptions.Compiled, Constants.RegexTimeout);
+		str = InvalidCharsRegex.Replace(str, "");
 		// convert multiple spaces into one space
-		str = Regex.Replace(str, @"\s+", " ", RegexOptions.Compiled, Constants.RegexTimeout).Trim();
-		// cut and trim it
-		str = str.Substring(0, str.Length <= 240 ? str.Length : 240).Trim();
+		str = MultipleSpacesRegex.Replace(str, " ").Trim();
+		// cut and trim it - use span-based slice
+		str = str.Length <= 240 ? str : str[..240].Trim();
 		// hyphens
-		str = Regex.Replace(str, @"\s", "-", RegexOptions.Compiled, Constants.RegexTimeout);
+		str = SpaceToHyphenRegex.Replace(str, "-");
 
 		return str;
 	}
