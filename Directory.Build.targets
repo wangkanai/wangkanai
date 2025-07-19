@@ -21,7 +21,7 @@
 		<TestingPlatformDotnetTestSupport>true</TestingPlatformDotnetTestSupport>
 		<!-- Code Coverage -->
 		<CollectCoverage>true</CollectCoverage>
-		<CoverletOutputFormat>cobertura,opencover</CoverletOutputFormat>
+		<CoverletOutputFormat>opencover</CoverletOutputFormat>
 		<CoverletOutput>$(MSBuildProjectDirectory)/coverage/</CoverletOutput>
 		<ExcludeByFile>**/*.Designer.cs,**/*.g.cs</ExcludeByFile>
 		<ExcludeByAttribute>GeneratedCodeAttribute,CompilerGeneratedAttribute</ExcludeByAttribute>

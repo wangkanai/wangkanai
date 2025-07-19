@@ -46,7 +46,7 @@ $testArgs = @(
     "--no-build",
     "-c", $Configuration,
     "/p:CollectCoverage=true",
-    "/p:CoverletOutputFormat=cobertura,opencover",
+    "/p:CoverletOutputFormat=opencover",
     "/p:CoverletOutput=./coverage/",
     "/p:MergeWith=./coverage/coverage.json",
     "/p:SkipAutoProps=true"
@@ -68,18 +68,13 @@ if ($LASTEXITCODE -ne 0) {
 Write-Host "Checking coverage results..." -ForegroundColor Yellow
 
 # Coverlet generates files in the root coverage directory
-if (-not (Test-Path "./coverage/coverage.cobertura.xml")) {
+if (-not (Test-Path "./coverage/coverage.opencover.xml")) {
     Write-Warning "No coverage files found in ./coverage/"
     exit 0
 }
 
 Write-Host "Coverage reports generated:" -ForegroundColor Green
-if (Test-Path "./coverage/coverage.cobertura.xml") {
-    Write-Host "  - Cobertura: ./coverage/coverage.cobertura.xml" -ForegroundColor Green
-}
-if (Test-Path "./coverage/coverage.opencover.xml") {
-    Write-Host "  - OpenCover: ./coverage/coverage.opencover.xml" -ForegroundColor Green
-}
+Write-Host "  - OpenCover: ./coverage/coverage.opencover.xml" -ForegroundColor Green
 
 # Generate HTML report if ReportGenerator is available
 if (Get-Command reportgenerator -ErrorAction SilentlyContinue) {
