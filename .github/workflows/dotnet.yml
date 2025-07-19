@@ -11,6 +11,9 @@ env:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
   DOTNET_NOLOGO: true
   DOTNET_CLI_TELEMETRY_OPTOUT: true
+  DOTNET_GENERATE_ASPNET_CERTIFICATE: false
+  DOTNET_SYSTEM_CONSOLE_ALLOW_ANSI_COLOR_REDIRECTION: true
+  DOTNET_MULTILEVEL_LOOKUP: false
 
 jobs:
   build:
@@ -29,11 +32,14 @@ jobs:
     - name: Cache .NET SDK
       uses: actions/cache@v4
       with:
-        path: ${{ env.DOTNET_ROOT }}
-        key: ${{ runner.os }}-dotnet-8.0-9.0-${{ hashFiles('**/global.json') }}
+        path: |
+          ${{ env.DOTNET_ROOT }}
+          ~/.dotnet
+          /usr/share/dotnet
+        key: ${{ runner.os }}-dotnet-sdk-8.0-9.0-${{ hashFiles('.github/workflows/dotnet.yml') }}
         restore-keys: |
-          ${{ runner.os }}-dotnet-8.0-9.0-
-          ${{ runner.os }}-dotnet-
+          ${{ runner.os }}-dotnet-sdk-8.0-9.0-
+          ${{ runner.os }}-dotnet-sdk-
 
     # Cache NuGet packages to avoid re-downloading
     - name: Cache NuGet packages
@@ -59,6 +65,8 @@ jobs:
         dotnet-version: |
           8.0.x
           9.0.x
+        cache: true
+        cache-dependency-path: '**/packages.lock.json'
 
     # Install tools with proper checking
     - name: Install tools
@@ -103,81 +111,45 @@ jobs:
     - name: Restore dependencies
       run: |
         set -e
-        echo "Attempting locked restore..."
-        if ! dotnet restore --use-lock-file --locked-mode; then
-          echo "⚠️ Locked restore failed. This may indicate package updates are needed."
-          echo "Falling back to regular restore..."
-          dotnet restore
-        else
-          echo "✅ Locked restore succeeded"
-        fi
+        # Try fast restore with minimal verbosity
+        dotnet restore --verbosity minimal --use-lock-file --locked-mode || dotnet restore --verbosity minimal
       shell: bash
 
     - name: Build
       run: |
-        # Build with warnings treated as warnings (not errors) to ensure CI stability
-        # Consider running a separate warnings check job if zero-warning policy is desired
-        dotnet build --no-restore -c Release --no-incremental /p:TreatWarningsAsErrors=false
+        # Aggressive parallel build with maximum CPU usage
+        dotnet build --no-restore -c Release --no-incremental \
+          /p:TreatWarningsAsErrors=false \
+          /p:ContinuousIntegrationBuild=true \
+          /maxcpucount \
+          /p:UseSharedCompilation=true \
+          /p:BuildInParallel=true \
+          --verbosity minimal
 
-    # Run tests once with coverage enabled (iteration 4)
+    # Run tests with aggressive parallelization (iteration 1)
     - name: Test with Coverage
       run: |
         # Create coverage directory
         mkdir -p ${{ github.workspace }}/coverage
 
-        # Find all test projects
-        TEST_PROJECTS=$(find . -name "*.Tests.csproj" -type f -not -path "*/bin/*" -not -path "*/obj/*" | sort)
-        TOTAL_PROJECTS=$(echo "$TEST_PROJECTS" | wc -l)
-        CURRENT=0
+        # Run all tests in parallel with coverage
+        dotnet test --no-build -c Release \
+          --collect:"XPlat Code Coverage" \
+          --results-directory ./coverage \
+          --logger "console;verbosity=minimal" \
+          -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover \
+             RunConfiguration.MaxCpuCount=0 \
+             RunConfiguration.DisableAppDomain=true \
+             RunConfiguration.DisableParallelization=false
 
-        echo "Found $TOTAL_PROJECTS test projects"
-
-        # Run tests with coverage for each project
-        for PROJECT in $TEST_PROJECTS; do
-          CURRENT=$((CURRENT + 1))
-          echo "Running tests for $PROJECT ($CURRENT/$TOTAL_PROJECTS)"
-
-          if [ $CURRENT -eq $TOTAL_PROJECTS ]; then
-            # Last project - generate final merged coverage in OpenCover format
-            if [ $TOTAL_PROJECTS -gt 1 ]; then
-              dotnet test "$PROJECT" --no-build -c Release \
-                /p:CollectCoverage=true \
-                /p:CoverletOutputFormat=opencover \
-                /p:CoverletOutput=${{ github.workspace }}/coverage/ \
-                /p:MergeWith=${{ github.workspace }}/coverage/coverage.json \
-                --logger "console;verbosity=minimal" || true
-            else
-              dotnet test "$PROJECT" --no-build -c Release \
-                /p:CollectCoverage=true \
-                /p:CoverletOutputFormat=opencover \
-                /p:CoverletOutput=${{ github.workspace }}/coverage/ \
-                --logger "console;verbosity=minimal" || true
-            fi
-          else
-            # Intermediate projects - output JSON for merging
-            if [ $CURRENT -eq 1 ]; then
-              dotnet test "$PROJECT" --no-build -c Release \
-                /p:CollectCoverage=true \
-                /p:CoverletOutputFormat=json \
-                /p:CoverletOutput=${{ github.workspace }}/coverage/ \
-                --logger "console;verbosity=minimal" || true
-            else
-              dotnet test "$PROJECT" --no-build -c Release \
-                /p:CollectCoverage=true \
-                /p:CoverletOutputFormat=json \
-                /p:CoverletOutput=${{ github.workspace }}/coverage/ \
-                /p:MergeWith=${{ github.workspace }}/coverage/coverage.json \
-                --logger "console;verbosity=minimal" || true
-            fi
-          fi
-        done
+        # Find and move the coverage file
+        find ./coverage -name "coverage.opencover.xml" -exec mv {} ./coverage/coverage.opencover.xml \; 2>/dev/null || true
 
         # Verify coverage was generated
-        if [ -f "${{ github.workspace }}/coverage/coverage.opencover.xml" ]; then
-          echo "✅ Coverage report generated successfully"
-          ls -la ${{ github.workspace }}/coverage/
+        if [ -f "./coverage/coverage.opencover.xml" ]; then
+          echo "✅ Coverage report generated"
         else
-          echo "⚠️ Coverage report not found, but continuing..."
+          echo "⚠️ Coverage report not found"
         fi
 
     - name: Upload Coverage Report
