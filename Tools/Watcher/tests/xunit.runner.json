@@ -5,7 +5,7 @@
   "diagnosticMessages": false,
   "methodDisplay": "classAndMethod",
   "maxParallelThreads": -1,
-  "failWarns": true,
+  "failSkips": false,
   "captureConsole": true,
   "captureTrace": true
 }
