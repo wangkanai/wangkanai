@@ -81,6 +81,17 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-npm-
 
+    # Cache SonarCloud scanner and analysis data
+    - name: Cache SonarCloud
+      uses: actions/cache@v4
+      with:
+        path: |
+          ~/.sonar/cache
+          .sonarqube
+        key: ${{ runner.os }}-sonar-${{ github.sha }}
+        restore-keys: |
+          ${{ runner.os }}-sonar-
+
     - name: Setup .NET 9.0
       uses: actions/setup-dotnet@v4
       with:
@@ -121,6 +132,9 @@ jobs:
         /d:sonar.scanner.skipJreProvisioning=true
         /d:sonar.scanner.scanAll=false
         /d:sonar.cs.opencover.reportsPaths=coverage/coverage.opencover.xml
+        /d:sonar.verbose=false
+        /d:sonar.scm.disabled=true
+        /d:sonar.dotnet.excludeTestProjects=true
 
     - name: Restore dependencies
       run: |
