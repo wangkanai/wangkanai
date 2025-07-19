@@ -75,15 +75,11 @@ New-Item -Path "./coverage" -ItemType Directory -Force | Out-Null
 # Run tests on each project
 $totalProjects = $testProjects.Count
 $currentProject = 0
+$coverageDir = Join-Path $repoRoot "coverage"
 
 foreach ($project in $testProjects) {
     $currentProject++
     Write-Host "`nRunning tests for: $($project.Name) ($currentProject/$totalProjects)" -ForegroundColor Cyan
-    
-    # Calculate relative path to coverage directory
-    $projectDir = Split-Path $project.FullName -Parent
-    $relativePath = [System.IO.Path]::GetRelativePath($projectDir, $repoRoot)
-    $coverageOutput = Join-Path $relativePath "coverage/"
     
     $testArgs = @(
         "test",
@@ -99,17 +95,17 @@ foreach ($project in $testProjects) {
         # Last project - generate final OpenCover report
         $testArgs += "/p:CoverletOutputFormat=opencover"
         if ($totalProjects -gt 1) {
-            $testArgs += "/p:MergeWith=$coverageOutput`coverage.json"
+            $testArgs += "/p:MergeWith=$coverageDir/coverage.json"
         }
     } else {
         # Intermediate projects - output JSON for merging
         $testArgs += "/p:CoverletOutputFormat=json"
         if ($currentProject -gt 1) {
-            $testArgs += "/p:MergeWith=$coverageOutput`coverage.json"
+            $testArgs += "/p:MergeWith=$coverageDir/coverage.json"
         }
     }
     
-    $testArgs += "/p:CoverletOutput=$coverageOutput"
+    $testArgs += "/p:CoverletOutput=$coverageDir/"
     $testArgs += "/p:SkipAutoProps=true"
     
     if ($Filter) {
