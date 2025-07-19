@@ -57,7 +57,7 @@ dotnet test .\tests\ -c Release --filter "TestCategory=Unit"
 ```
 
 **Test Configuration:**
-- Central `xunit.runner.json` and `testconfig.json` in repository root
+- Central `testconfig.json` in repository root for Microsoft Testing Platform configuration
 - Microsoft Testing Platform enabled for all test projects
 - Parallel test collection execution enabled
 - Console and trace output capture enabled

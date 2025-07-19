@@ -24,13 +24,12 @@
 		<Using Include="Xunit"/>
 	</ItemGroup>
 	<ItemGroup Condition="$(MSBuildProjectName.Contains('Tests'))">
-		<Content Include="$(RepoRoot)xunit.runner.json" Link="xunit.runner.json" CopyToOutputDirectory="PreserveNewest" Condition="Exists('$(RepoRoot)xunit.runner.json')" />
 		<Content Include="$(RepoRoot)testconfig.json" Link="testconfig.json" CopyToOutputDirectory="PreserveNewest" Condition="Exists('$(RepoRoot)testconfig.json')" />
 	</ItemGroup>
 	<!-- xUnit Tests-->
 	<ItemGroup Condition="$(MSBuildProjectName.Contains('Tests'))">
-		<PackageReference Include="Microsoft.AspNetCore.TestHost"/>
 		<PackageReference Include="Microsoft.TestPlatform.TestHost"/>
+		<PackageReference Include="Microsoft.AspNetCore.TestHost"/>
 		<PackageReference Include="Moq"/>
 		<PackageReference Include="xunit.v3"/>
 		<PackageReference Include="xunit.runner.visualstudio"/>
