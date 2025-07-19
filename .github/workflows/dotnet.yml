@@ -34,6 +34,52 @@ jobs:
       with:
         fetch-depth: 0
 
+    # Detect which modules have changes (for logging/metrics only)
+    - name: Detect changed modules
+      id: changes
+      uses: dorny/paths-filter@v3
+      with:
+        filters: |
+          system: 'System/**'
+          validation: 'Validation/**'
+          annotations: 'Annotations/**'
+          extensions: 'Extensions/**'
+          testing: 'Testing/**'
+          cryptography: 'Cryptography/**'
+          hosting: 'Hosting/**'
+          tools: 'Tools/**'
+          domain: 'Domain/**'
+          mvc: 'Mvc/**'
+          webserver: 'Webserver/**'
+          webmaster: 'Webmaster/**'
+          detection: 'Detection/**'
+          responsive: 'Responsive/**'
+          entityframework: 'EntityFramework/**'
+          identity: 'Identity/**'
+          security: 'Security/**'
+          federation: 'Federation/**'
+          markdown: 'Markdown/**'
+          analytics: 'Analytics/**'
+          blazor: 'Blazor/**'
+          tabler: 'Tabler/**'
+          solver: 'Solver/**'
+          microservice: 'Microservice/**'
+          nation: 'Nation/**'
+          audit: 'Audit/**'
+          shared: 'Shared/**'
+
+    # Log changed modules for visibility
+    - name: Log changed modules
+      run: |
+        echo "Changed modules detected:"
+        echo "System: ${{ steps.changes.outputs.system }}"
+        echo "Detection: ${{ steps.changes.outputs.detection }}"
+        echo "Tabler: ${{ steps.changes.outputs.tabler }}"
+        echo "Blazor: ${{ steps.changes.outputs.blazor }}"
+        # Log count of changed modules
+        CHANGED_COUNT=$(echo '${{ toJSON(steps.changes.outputs) }}' | jq -r 'to_entries | map(select(.value == "true")) | length')
+        echo "Total modules changed: $CHANGED_COUNT out of 27"
+
     # Cache .NET installation to save setup time
     - name: Cache .NET SDK
       uses: actions/cache@v4
