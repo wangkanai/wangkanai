@@ -110,6 +110,10 @@ jobs:
       with:
         node-version: '20'
 
+    # Install npm tools needed for build
+    - name: Install npm tools
+      run: npm install -g rimraf
+      
     # Install tools faster with parallel execution
     - name: Install tools
       run: |
@@ -253,8 +257,8 @@ jobs:
       
     - name: Restore .NET dependencies
       run: |
-        dotnet restore Tabler/src/Wangkanai.Tabler.csproj --verbosity minimal
-        dotnet restore Blazor/src/Wangkanai.Blazor.csproj --verbosity minimal
+        dotnet restore Tabler/src/Tabler/Wangkanai.Tabler.csproj --verbosity minimal
+        dotnet restore Blazor/src/Blazor/Wangkanai.Blazor.csproj --verbosity minimal
         
     - name: Build Tabler
       run: |
@@ -262,7 +266,7 @@ jobs:
         cd Tabler/src/Web
         npm install --no-audit --no-fund
         cd ../../..
-        dotnet build Tabler/src/Wangkanai.Tabler.csproj -c Release --no-restore
+        dotnet build Tabler/src/Tabler/Wangkanai.Tabler.csproj -c Release --no-restore
         
     - name: Build Blazor  
       run: |
@@ -270,7 +274,7 @@ jobs:
         cd Blazor/src/Web
         npm install --no-audit --no-fund
         cd ../../..
-        dotnet build Blazor/src/Wangkanai.Blazor.csproj -c Release --no-restore
+        dotnet build Blazor/src/Blazor/Wangkanai.Blazor.csproj -c Release --no-restore
         
     - name: SonarCloud analysis for npm projects
       run: |
