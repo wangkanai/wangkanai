@@ -70,10 +70,27 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-build-
 
+    # Cache npm dependencies for Tabler project
+    - name: Cache npm dependencies
+      uses: actions/cache@v4
+      with:
+        path: |
+          ~/.npm
+          **/node_modules
+        key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json', '**/package.json') }}
+        restore-keys: |
+          ${{ runner.os }}-npm-
+
     - name: Setup .NET 9.0
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 9.0.x
+
+    # Setup Node.js for npm builds
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
 
     # Install tools faster with parallel execution
     - name: Install tools
@@ -113,6 +130,14 @@ jobs:
 
     - name: Build
       run: |
+        # Pre-install npm dependencies for Tabler to prevent build failures
+        if [ -d "Tabler/src/Web" ] && [ -f "Tabler/src/Web/package.json" ]; then
+          echo "Installing npm dependencies for Tabler..."
+          cd Tabler/src/Web
+          npm ci --prefer-offline --no-audit --no-fund || npm install --no-audit --no-fund
+          cd ../../..
+        fi
+        
         # Ultra-aggressive parallel build
         dotnet build --no-restore -c Release \
           /p:TreatWarningsAsErrors=false \
