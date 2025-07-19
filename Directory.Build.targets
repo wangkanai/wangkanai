@@ -19,6 +19,9 @@
 	<ItemGroup Condition="$(MSBuildProjectName.Contains('Tests'))">
 		<Using Include="Xunit"/>
 	</ItemGroup>
+	<ItemGroup Condition="$(MSBuildProjectName.Contains('Tests'))">
+		<Content Include="xunit.runner.json" CopyToOutputDirectory="PreserveNewest" />
+	</ItemGroup>
 	<!-- xUnit Tests-->
 	<ItemGroup Condition="$(MSBuildProjectName.Contains('Tests'))">
 		<PackageReference Include="Microsoft.AspNetCore.TestHost"/>
