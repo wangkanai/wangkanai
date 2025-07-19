@@ -65,8 +65,6 @@ jobs:
         dotnet-version: |
           8.0.x
           9.0.x
-        cache: true
-        cache-dependency-path: '**/packages.lock.json'
 
     # Install tools with proper checking
     - name: Install tools
