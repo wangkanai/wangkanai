@@ -63,7 +63,25 @@ jobs:
       run:  dotnet build --no-restore --no-incremental
 
     - name: Test
-      run:  dotnet-coverage collect "dotnet test --no-build --verbosity normal" -f xml -o "coverage.xml"
+      run:  |
+        dotnet test --no-build --verbosity normal \
+          --collect:"Code Coverage;Format=cobertura" \
+          --results-directory ./TestResults \
+          --settings coverage.runsettings \
+          /p:CollectCoverage=true \
+          /p:CoverletOutputFormat=cobertura,opencover \
+          /p:CoverletOutput=./coverage/
+        
+    - name: Merge Coverage Reports
+      run:  |
+        # Find all coverage files
+        find . -name "*.cobertura.xml" -type f | head -20
+        # Copy primary coverage file for SonarQube
+        if [ -f "./coverage/coverage.cobertura.xml" ]; then
+          cp ./coverage/coverage.cobertura.xml ./coverage.xml
+        elif [ -f "./TestResults/*/coverage.cobertura.xml" ]; then
+          cp ./TestResults/*/coverage.cobertura.xml ./coverage.xml
+        fi
 
     - name: SonarCloud Submit
       run:  dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
