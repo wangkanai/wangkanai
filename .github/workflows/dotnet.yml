@@ -123,10 +123,11 @@ jobs:
         /d:sonar.verbose=false
         /d:sonar.scm.disabled=true
         /d:sonar.dotnet.excludeTestProjects=true
-        /d:sonar.cpd.exclusions="**/wwwroot/**,**/obj/**,**/bin/**"
-        /d:sonar.exclusions="**/wwwroot/**,**/obj/**,**/bin/**,**/*.Designer.cs,**/*.generated.cs"
-        /d:sonar.coverage.exclusions="**/Mocks/**,**/Tests/**,**/benchmark/**"
+        /d:sonar.cpd.exclusions="**/wwwroot/**,**/obj/**,**/bin/**,**/node_modules/**"
+        /d:sonar.exclusions="**/wwwroot/**,**/obj/**,**/bin/**,**/*.Designer.cs,**/*.generated.cs,**/node_modules/**"
+        /d:sonar.coverage.exclusions="**/Mocks/**,**/Tests/**,**/benchmark/**,**/samples/**"
         /d:sonar.scanner.metadataFilePath=.sonarqube/out/sonar-project.properties
+        /d:sonar.cs.ignoreHeaderComments=true
 
     - name: Restore dependencies
       run: |
@@ -156,42 +157,50 @@ jobs:
         # Create coverage directory
         mkdir -p ${{ github.workspace }}/coverage
 
-        # Find all test projects (exclude slow tests on PRs)
+        # Optimized test project discovery with early filtering
+        echo "Discovering test projects..."
         if [ "$SKIP_SLOW_PROJECTS" = "true" ]; then
           echo "PR build: Skipping slow test projects..."
-          TEST_PROJECTS=$(find . -name "*.Tests.csproj" -type f -not -path "*/bin/*" -not -path "*/obj/*" \
-            -not -path "*/benchmark/*" -not -path "*/samples/*" -not -path "*/Tabler.Tests/*")
+          # Use faster find with limited depth and early exclusions
+          TEST_PROJECTS=$(find . -maxdepth 4 -name "*.Tests.csproj" -type f \
+            ! -path "*/bin/*" ! -path "*/obj/*" ! -path "*/benchmark/*" \
+            ! -path "*/samples/*" ! -path "*/Tabler.Tests/*" 2>/dev/null | sort)
         else
-          TEST_PROJECTS=$(find . -name "*.Tests.csproj" -type f -not -path "*/bin/*" -not -path "*/obj/*")
+          # Production: run all tests with optimized find
+          TEST_PROJECTS=$(find . -maxdepth 4 -name "*.Tests.csproj" -type f \
+            ! -path "*/bin/*" ! -path "*/obj/*" 2>/dev/null | sort)
         fi
         
         TEST_COUNT=$(echo "$TEST_PROJECTS" | wc -l)
         echo "Found $TEST_COUNT test projects"
 
-        # Aggressive parallel test execution with optimized settings
+        # Enhanced parallel test execution with batch processing
         CORES=$(nproc)
-        echo "Running tests with coverage using $CORES cores (aggressive mode)..."
+        echo "Running tests with coverage using $CORES cores (optimized batch mode)..."
         
-        # High-performance test execution
+        # Export test projects list for batch processing
+        export TEST_PROJECTS
+        
+        # Batch test execution with improved parallelization
         echo "$TEST_PROJECTS" | xargs -P $CORES -I {} bash -c '
           PROJECT="{}"
           PROJECT_NAME=$(basename "$PROJECT" .csproj)
-          echo "Testing $PROJECT_NAME..."
+          echo "▶ Testing $PROJECT_NAME..."
           
-          # Optimized test execution with conservative settings
+          # Ultra-optimized test execution with minimal overhead
           dotnet test "$PROJECT" --no-build -c Release \
             --collect:"XPlat Code Coverage" \
             --results-directory "${{ github.workspace }}/coverage/$PROJECT_NAME" \
             --logger "console;verbosity=quiet" \
-            --blame-hang-timeout 15000 \
+            --blame-hang-timeout 10000 \
             --no-restore \
             --settings "${{ github.workspace }}/testconfig.json" \
-            --diag "${{ github.workspace }}/coverage/$PROJECT_NAME/diag.log" \
             -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover \
-              RunConfiguration.MaxCpuCount=$CORES \
+              RunConfiguration.MaxCpuCount=0 \
               RunConfiguration.DisableAppDomain=true \
               RunConfiguration.DisableParallelization=false \
               RunConfiguration.TreatNoTestsAsError=false \
+              RunConfiguration.TargetFrameworkVersion=net9.0 \
             || echo "⚠️ $PROJECT_NAME test failed (continuing)"
         '
 
