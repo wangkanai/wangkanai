@@ -87,21 +87,18 @@ public static class StringExtensions
 	/// </summary>
 	/// <param name="value">The string to ensure leading slash for.</param>
 	/// <returns>The string with a leading slash, or the original string if it already starts with a slash.</returns>
-	public static string EnsureLeadingSlash(this string value)
-	{
-		ArgumentNullException.ThrowIfNull(value);
-		return value.IsNotNullOrWhiteSpace() && !value.StartsWith('/')
+	public static string? EnsureLeadingSlash(this string? value)
+		=> value.IsNotNullOrWhiteSpace() && !value.StartsWith('/')
 			   ? "/" + value
 			   : value;
-	}
 
 	/// <summary>
 	/// Ensures that the given string has a trailing slash.
 	/// </summary>
 	/// <param name="value">The string to check.</param>
 	/// <returns>The string with a trailing slash if it doesn't have one already; otherwise, the original string.</returns>
-	public static string EnsureTrailingSlash([NotNull] this string value)
-		=> value.IsNotNullOrWhiteSpace() && !value.EndsWith('/')
+	public static string? EnsureTrailingSlash(this string? value)
+		=> value.IsNotNullOrWhiteSpace() && !value!.EndsWith('/')
 			   ? value + "/"
 			   : value;
 
@@ -110,26 +107,20 @@ public static class StringExtensions
 	/// </summary>
 	/// <param name="value">The string to remove the leading slash from.</param>
 	/// <returns>The string without the leading slash.</returns>
-	public static string RemoveLeadingSlash(this string value)
-	{
-		ArgumentNullException.ThrowIfNull(value);
-		return value.IsNotNullOrWhiteSpace() && value.StartsWith('/')
+	public static string? RemoveLeadingSlash(this string? value)
+		=> value.IsNotNullOrWhiteSpace() && value!.StartsWith('/')
 			   ? value[1..] // Use span-based slice instead of Substring
 			   : value;
-	}
 
 	/// <summary>
 	/// Removes the trailing slash from the given string.
 	/// </summary>
 	/// <param name="value">The string to remove the trailing slash from.</param>
 	/// <returns>The string without the trailing slash.</returns>
-	public static string RemoveTrailingSlash(this string value)
-	{
-		ArgumentNullException.ThrowIfNull(value);
-		return value.IsNotNullOrWhiteSpace() && value.EndsWith('/')
+	public static string? RemoveTrailingSlash(this string? value)
+		=> value.IsNotNullOrWhiteSpace() && value!.EndsWith('/')
 			   ? value[..^1] // Use span-based slice instead of Substring
 			   : value;
-	}
 
 	/// <summary>
 	/// Ensures that the given string starts with the specified character.
