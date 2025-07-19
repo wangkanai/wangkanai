@@ -33,7 +33,6 @@
     <File Path="sonar-begin.ps1" />
     <File Path="testconfig.json" />
     <File Path="test-coverage.ps1" />
-    <File Path="test-coverage-simple.ps1" />
   </Folder>
   <Folder Name="/Analytics/">
     <Project Path="Analytics\benchmark\Wangkanai.Analytics.Benchmark.csproj" />

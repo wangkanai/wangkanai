@@ -53,12 +53,13 @@ if (-not $NoBuild) {
 
 # Run tests with Coverlet coverage
 Write-Host "Discovering test projects..." -ForegroundColor Yellow
-$repoRoot = Get-Location
-$testProjects = Get-ChildItem -Path $repoRoot.Path -Filter "*.Tests.csproj" -Recurse | 
+$repoRoot = (Get-Location).Path
+
+# Only search within current directory, not parent directories
+$testProjects = Get-ChildItem -Path "." -Filter "*.Tests.csproj" -Recurse | 
     Where-Object { 
         -not ($_.FullName -match "[\\/]bin[\\/]") -and 
-        -not ($_.FullName -match "[\\/]obj[\\/]") -and
-        $_.FullName.StartsWith($repoRoot.Path)
+        -not ($_.FullName -match "[\\/]obj[\\/]")
     }
 
 if ($testProjects.Count -eq 0) {
@@ -81,7 +82,7 @@ foreach ($project in $testProjects) {
     
     # Calculate relative path to coverage directory
     $projectDir = Split-Path $project.FullName -Parent
-    $relativePath = [System.IO.Path]::GetRelativePath($projectDir, $repoRoot.Path)
+    $relativePath = [System.IO.Path]::GetRelativePath($projectDir, $repoRoot)
     $coverageOutput = Join-Path $relativePath "coverage/"
     
     $testArgs = @(

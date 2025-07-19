@@ -42,8 +42,14 @@ dotnet test .\tests\ -c Release
 # Run tests directly with Microsoft Testing Platform (faster)
 .\tests\bin\Release\net8.0\YourProject.Tests.exe
 
-# Run tests with coverage (Coverlet)
+# Run tests with coverage for all projects
 pwsh ./test-coverage.ps1
+
+# Run tests with coverage (skip build)
+pwsh ./test-coverage.ps1 -NoBuild
+
+# Run tests with coverage for specific test pattern
+pwsh ./test-coverage.ps1 -Filter "FullyQualifiedName~YourTest"
 
 # Run tests with coverage for specific project
 dotnet test ./path/to/tests.csproj -c Release /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=./coverage/
