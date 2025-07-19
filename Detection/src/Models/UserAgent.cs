@@ -6,22 +6,22 @@ namespace Wangkanai.Detection.Models;
 
 public class UserAgent
 {
-	private readonly int    _length;
+	private readonly int _length;
 	private readonly string _lower;
 	private readonly string _original;
 
 	public UserAgent()
 	{
 		_original = string.Empty;
-		_lower    = string.Empty;
-		_length   = 0;
+		_lower = string.Empty;
+		_length = 0;
 	}
 
 	public UserAgent(string useragent) : this()
 	{
 		_original = useragent ?? string.Empty;
-		_lower    = _original.ToLower();
-		_length   = _original.Length;
+		_lower = _original.ToLower();
+		_length = _original.Length;
 	}
 
 	[DebuggerStepThrough]

@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using System.Threading.Tasks;
 
@@ -6,9 +6,9 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.AspNetCore.Routing;
 
+using Wangkanai.Markdown.ApplicationModels;
 using Wangkanai.Markdown.Builder;
 using Wangkanai.Markdown.Infrastructure;
-using Wangkanai.Markdown.ApplicationModels;
 using Wangkanai.Mvc.Infrastructure;
 
 namespace Microsoft.Extensions.DependencyInjection;
@@ -26,7 +26,7 @@ public static class MarkdownEndpointRouteBuilderExtensions
 
 	public static IEndpointConventionBuilder MapFallbackToMarkdown(
 		this IEndpointRouteBuilder endpoints,
-		string                     page)
+		string page)
 	{
 		endpoints.ThrowIfNull();
 		page.ThrowIfNull();
@@ -40,7 +40,8 @@ public static class MarkdownEndpointRouteBuilderExtensions
 		RegisterInCache(endpoints.ServiceProvider, pageDataSource);
 
 		var builder = endpoints.MapFallback(context => Task.CompletedTask);
-		builder.Add(b => {
+		builder.Add(b =>
+		{
 			b.Metadata.Add(CreateDynamicMarkdownMetadata(page, null));
 			b.Metadata.Add(new MarkdownEndpointDataSourceIdMetadata(pageDataSource.DataSourceId));
 		});
@@ -50,8 +51,8 @@ public static class MarkdownEndpointRouteBuilderExtensions
 
 	public static IEndpointConventionBuilder MapFallbackToMarkdown(
 		this IEndpointRouteBuilder endpoints,
-		string                     pattern,
-		string                     page)
+		string pattern,
+		string page)
 	{
 		endpoints.ThrowIfNull();
 		pattern.ThrowIfNull();
@@ -66,7 +67,8 @@ public static class MarkdownEndpointRouteBuilderExtensions
 		RegisterInCache(endpoints.ServiceProvider, pageDataSource);
 
 		var builder = endpoints.MapFallback(pattern, context => Task.CompletedTask);
-		builder.Add(b => {
+		builder.Add(b =>
+		{
 			b.Metadata.Add(CreateDynamicMarkdownMetadata(page, area: null));
 			b.Metadata.Add(new MarkdownEndpointDataSourceIdMetadata(pageDataSource.DataSourceId));
 		});
@@ -75,8 +77,8 @@ public static class MarkdownEndpointRouteBuilderExtensions
 
 	public static IEndpointConventionBuilder MapFallbackToAreaPage(
 		this IEndpointRouteBuilder endpoints,
-		string                     page,
-		string                     area)
+		string page,
+		string area)
 	{
 		endpoints.ThrowIfNull();
 		page.ThrowIfNull();
@@ -90,7 +92,8 @@ public static class MarkdownEndpointRouteBuilderExtensions
 		RegisterInCache(endpoints.ServiceProvider, pageDataSource);
 
 		var builder = endpoints.MapFallback(context => Task.CompletedTask);
-		builder.Add(b => {
+		builder.Add(b =>
+		{
 			b.Metadata.Add(CreateDynamicMarkdownMetadata(page, area));
 			b.Metadata.Add(new MarkdownEndpointDataSourceIdMetadata(pageDataSource.DataSourceId));
 		});
@@ -99,9 +102,9 @@ public static class MarkdownEndpointRouteBuilderExtensions
 
 	public static IEndpointConventionBuilder MapFallbackToAreaPage(
 		this IEndpointRouteBuilder endpoints,
-		string                     pattern,
-		string                     page,
-		string                     area)
+		string pattern,
+		string page,
+		string area)
 	{
 		endpoints.ThrowIfNull();
 		pattern.ThrowIfNull();
@@ -116,7 +119,8 @@ public static class MarkdownEndpointRouteBuilderExtensions
 		RegisterInCache(endpoints.ServiceProvider, pageDataSource);
 
 		var builder = endpoints.MapFallback(context => Task.CompletedTask);
-		builder.Add(b => {
+		builder.Add(b =>
+		{
 			b.Metadata.Add(CreateDynamicMarkdownMetadata(page, area));
 			b.Metadata.Add(new MarkdownEndpointDataSourceIdMetadata(pageDataSource.DataSourceId));
 		});
@@ -164,7 +168,7 @@ public static class MarkdownEndpointRouteBuilderExtensions
 		if (dataSource == null)
 		{
 			var orderProviderCache = endpoints.ServiceProvider.GetRequiredService<OrderedEndpointsSequenceProviderCache>();
-			var factory            = endpoints.ServiceProvider.GetRequiredService<MarkdownActionEndpointDataSourceFactory>();
+			var factory = endpoints.ServiceProvider.GetRequiredService<MarkdownActionEndpointDataSourceFactory>();
 			dataSource = factory.Create(orderProviderCache.GetOrCreateOrderedEndpointsSequenceProvider(endpoints));
 			endpoints.DataSources.Add(dataSource);
 		}

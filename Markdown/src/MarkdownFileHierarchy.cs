@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using System.Text;
 
@@ -19,9 +19,9 @@ internal static class MarkdownFileHierarchy
 		if (path.Length == 1)
 			yield break;
 
-		var builder       = new StringBuilder(path);
+		var builder = new StringBuilder(path);
 		var maxIterations = 255;
-		var index         = path.Length;
+		var index = path.Length;
 		while (maxIterations-- > 0 && index > 1 && (index = path.LastIndexOf('/', index - 1)) != -1)
 		{
 			builder.Length = index + 1;

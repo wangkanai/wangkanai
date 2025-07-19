@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using Wangkanai.Extensions;
 
@@ -63,10 +63,10 @@ public static class AbstractTypeFactory<TBaseType>
 	public static GenericTypeInfo<TBaseType> OverrideType<TOldType, TNewType>()
 		where TNewType : TBaseType
 	{
-		var oldType       = typeof(TOldType);
-		var newType       = typeof(TNewType);
+		var oldType = typeof(TOldType);
+		var newType = typeof(TNewType);
 		var existTypeInfo = TypeInfos.Find(x => x.Type == oldType);
-		var newTypeInfo   = new GenericTypeInfo<TBaseType>(newType);
+		var newTypeInfo = new GenericTypeInfo<TBaseType>(newType);
 		if (existTypeInfo != null)
 			TypeInfos.Remove(existTypeInfo);
 
@@ -94,7 +94,7 @@ public static class AbstractTypeFactory<TBaseType>
 	/// <returns>An instance of TBaseType created using the type mapping information.</returns>
 	public static TBaseType TryCreateInstance(string typeName)
 	{
-		TBaseType                  result;
+		TBaseType result;
 		GenericTypeInfo<TBaseType> typeInfo = FindTypeInfoByName(typeName);
 		if (typeInfo.FalseIfNull())
 		{

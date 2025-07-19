@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
@@ -26,8 +26,8 @@ public class CoreBuilderExtensionsTests
 	[Fact]
 	public void AddMarkerServices_ReturnsExpected()
 	{
-		var services    = new ServiceCollection();
-		var builder     = services.AddFederationBuilder().AddMarkerService();
+		var services = new ServiceCollection();
+		var builder = services.AddFederationBuilder().AddMarkerService();
 		var descriptors = new List<ServiceDescriptor>();
 		descriptors.Add(new(typeof(FederationMarkerService), typeof(FederationMarkerService), ServiceLifetime.Singleton));
 
@@ -39,8 +39,8 @@ public class CoreBuilderExtensionsTests
 	[Fact]
 	public void AddRequiredPlatformServices_ReturnsExpected()
 	{
-		var services    = new ServiceCollection();
-		var builder     = services.AddFederationBuilder().AddRequiredServices();
+		var services = new ServiceCollection();
+		var builder = services.AddFederationBuilder().AddRequiredServices();
 		var descriptors = new List<ServiceDescriptor>();
 		descriptors.Add(new(typeof(IHttpContextAccessor), typeof(HttpContextAccessor), ServiceLifetime.Singleton));
 		descriptors.Add(new(typeof(IOptions<>), typeof(FederationOptions), ServiceLifetime.Singleton));
@@ -58,8 +58,8 @@ public class CoreBuilderExtensionsTests
 	[Fact]
 	public void AddCoreServices_ReturnsExpected()
 	{
-		var services    = new ServiceCollection();
-		var builder     = services.AddFederationBuilder().AddCoreServices();
+		var services = new ServiceCollection();
+		var builder = services.AddFederationBuilder().AddCoreServices();
 		var descriptors = new List<ServiceDescriptor>();
 		descriptors.Add(new(typeof(IServerUrls), typeof(FederationServerUrls), ServiceLifetime.Transient));
 		descriptors.Add(new(typeof(IIssuerNameService), typeof(FederationIssuerNameService), ServiceLifetime.Transient));

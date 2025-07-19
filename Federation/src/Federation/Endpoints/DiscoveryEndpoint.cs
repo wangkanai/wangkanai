@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using System.Net;
 
@@ -14,24 +14,24 @@ namespace Wangkanai.Federation.Endpoints;
 
 public class DiscoveryEndpoint : IEndpointHandler
 {
-	private readonly FederationOptions          _options;
-	private readonly IIssuerNameService         _issuerNameService;
-	private readonly IDiscoveryResponseFactory  _responseFactory;
-	private readonly IServerUrls                _urls;
+	private readonly FederationOptions _options;
+	private readonly IIssuerNameService _issuerNameService;
+	private readonly IDiscoveryResponseFactory _responseFactory;
+	private readonly IServerUrls _urls;
 	private readonly ILogger<DiscoveryEndpoint> _logger;
 
 	public DiscoveryEndpoint(
-		FederationOptions          options,
-		IIssuerNameService         issuerNameService,
-		IDiscoveryResponseFactory  responseFactory,
-		IServerUrls                urls,
+		FederationOptions options,
+		IIssuerNameService issuerNameService,
+		IDiscoveryResponseFactory responseFactory,
+		IServerUrls urls,
 		ILogger<DiscoveryEndpoint> logger)
 	{
-		_options           = options;
+		_options = options;
 		_issuerNameService = issuerNameService;
-		_responseFactory   = responseFactory;
-		_urls              = urls;
-		_logger            = logger;
+		_responseFactory = responseFactory;
+		_urls = urls;
+		_logger = logger;
 	}
 
 
@@ -54,7 +54,7 @@ public class DiscoveryEndpoint : IEndpointHandler
 		}
 
 		var issuerUri = await _issuerNameService.GetCurrentAsync();
-		var baseUri   = _urls.BaseUri;
+		var baseUri = _urls.BaseUri;
 
 		_logger.LogTrace("Calling into discovery response maker: {Type}", _responseFactory.GetType().FullName);
 		var response = await _responseFactory.CreateResultAsync(issuerUri, baseUri);

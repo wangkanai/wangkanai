@@ -5,6 +5,6 @@ using Microsoft.AspNetCore.Mvc;
 namespace Wangkanai.Routing.Controllers;
 
 internal delegate Task ControllerBinderDelegate(
-	ControllerContext           controllerContext,
-	object                      controller,
+	ControllerContext controllerContext,
+	object controller,
 	Dictionary<string, object?> arguments);

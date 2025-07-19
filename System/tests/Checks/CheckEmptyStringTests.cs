@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using Wangkanai.Exceptions;
 
@@ -6,7 +6,7 @@ namespace Wangkanai.Checks;
 
 public class CheckEmptyStringTests
 {
-	private readonly string _null  = null!;
+	private readonly string _null = null!;
 	private readonly string _empty = string.Empty;
 
 	[Fact]

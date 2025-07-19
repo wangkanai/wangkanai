@@ -27,11 +27,11 @@ public class IdentityDirectory<TKey> : IAuditable
 		Name = name;
 	}
 
-	public virtual TKey      Id               { get; set; } = default!;
-	public virtual string    Name             { get; set; }
-	public virtual string    DisplayName      { get; set; }
-	public virtual string    Description      { get; set; }
-	public virtual DateTime? Created          { get; set; } = DateTime.UtcNow;
-	public virtual DateTime? Updated          { get; set; }
-	public virtual string    ConcurrencyStamp { get; set; } = Guid.NewGuid().ToString();
+	public virtual TKey Id { get; set; } = default!;
+	public virtual string Name { get; set; }
+	public virtual string DisplayName { get; set; }
+	public virtual string Description { get; set; }
+	public virtual DateTime? Created { get; set; } = DateTime.UtcNow;
+	public virtual DateTime? Updated { get; set; }
+	public virtual string ConcurrencyStamp { get; set; } = Guid.NewGuid().ToString();
 }

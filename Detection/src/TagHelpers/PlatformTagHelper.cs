@@ -12,12 +12,12 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers;
 [HtmlTargetElement(ElementName, Attributes = ExcludeAttributeName)]
 public class PlatformTagHelper : TagHelper
 {
-	private const string ElementName          = "platform";
+	private const string ElementName = "platform";
 	private const string IncludeAttributeName = "include";
 	private const string ExcludeAttributeName = "exclude";
 
-	private static readonly char[]           NameSeparator = { ',' };
-	private readonly        IPlatformService _resolver;
+	private static readonly char[] NameSeparator = { ',' };
+	private readonly IPlatformService _resolver;
 
 	public PlatformTagHelper(IPlatformService resolver)
 	{

@@ -54,7 +54,7 @@ internal static class MarkdownCoreBuilderExtensions
 		// Action description and invocation
 		var actionDescriptorProvider = builder.Services.FirstOrDefault(
 			f =>
-				f.ServiceType        == typeof(IActionDescriptorProvider) &&
+				f.ServiceType == typeof(IActionDescriptorProvider) &&
 				f.ImplementationType == typeof(MarkdownActionDescriptorProvider));
 
 		if (actionDescriptorProvider is null)

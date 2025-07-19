@@ -10,9 +10,9 @@ public sealed class RequireNonAlphanumericAttribute : ValidationAttribute
 
 	public override bool IsValid(object? value)
 		=> value switch
-		   {
-			   null          => true,
-			   string actual => !actual.All(char.IsLetterOrDigit),
-			   _             => false
-		   };
+		{
+			null => true,
+			string actual => !actual.All(char.IsLetterOrDigit),
+			_ => false
+		};
 }

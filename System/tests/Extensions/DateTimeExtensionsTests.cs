@@ -15,7 +15,7 @@ public class DateTimeExtensionsTests
 
 		// Act
 		var expected = new DateTime(2022, 1, 1, 12, 30, 30);
-		var actual   = dateTime.Truncate(timeSpan);
+		var actual = dateTime.Truncate(timeSpan);
 
 		// Assert
 		Assert.Equal(expected, actual);
@@ -30,7 +30,7 @@ public class DateTimeExtensionsTests
 
 		// Act
 		var expected = new DateTime(2022, 1, 1, 12, 30, 30);
-		var actual   = dateTime.Truncate(timeSpan);
+		var actual = dateTime.Truncate(timeSpan);
 
 		// Assert
 		Assert.Equal(expected, actual);
@@ -45,7 +45,7 @@ public class DateTimeExtensionsTests
 
 		// Act
 		var expected = new DateTime(2022, 1, 1, 0, 0, 0);
-		var actual   = dateTime.Truncate(timeSpan);
+		var actual = dateTime.Truncate(timeSpan);
 
 		// Assert
 		Assert.Equal(expected, actual);

@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 #nullable enable
 
@@ -16,7 +16,7 @@ public class TypeExtensionsTests
 	public void SingleTypeInheritanceChainToParent()
 	{
 		var parent = typeof(Parent);
-		var child  = typeof(Child);
+		var child = typeof(Child);
 		var result = child.GetTypeInheritanceChainTo(parent);
 		Assert.Single(result);
 		Assert.Equal(typeof(Child), result[0]);
@@ -32,8 +32,8 @@ public class TypeExtensionsTests
 	public void MultipleTypeInheritanceChainToParent()
 	{
 		var animal = typeof(Animal);
-		var dog    = typeof(Dog);
-		var husky  = typeof(Husky);
+		var dog = typeof(Dog);
+		var husky = typeof(Husky);
 
 		var result = husky.GetTypeInheritanceChainTo(animal);
 		Assert.Equal(2, result.Length);
@@ -46,7 +46,7 @@ public class TypeExtensionsTests
 	[Fact]
 	public void SingleTypeInheritanceChainToSelf()
 	{
-		var alone  = typeof(Alone);
+		var alone = typeof(Alone);
 		var result = alone.GetTypeInheritanceChainTo(alone);
 		Assert.Single(result);
 		Assert.Equal(typeof(Alone), result[0]);
@@ -122,7 +122,7 @@ public class TypeExtensionsTests
 	public void PrettyPrintRecursiveChain()
 	{
 		var parent = typeof(Parent);
-		var child  = typeof(Child);
+		var child = typeof(Child);
 		Assert.Equal("Parent", parent.PrettyPrintRecursive(0));
 		Assert.Equal("Child", child.PrettyPrintRecursive(0));
 	}
@@ -131,7 +131,7 @@ public class TypeExtensionsTests
 	public void PrettyPrintRecursiveChainDepth()
 	{
 		var parent = typeof(Parent);
-		var child  = typeof(Child);
+		var child = typeof(Child);
 		Assert.Equal("Parent", parent.PrettyPrintRecursive(1));
 		Assert.Equal("Child", child.PrettyPrintRecursive(1));
 	}

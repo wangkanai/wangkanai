@@ -12,7 +12,7 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers;
 [HtmlTargetElement(ElementName, Attributes = ExcludeAttributeName)]
 public class BrowserTagHelper : TagHelper
 {
-	private const string ElementName          = "browser";
+	private const string ElementName = "browser";
 	private const string IncludeAttributeName = "include";
 	private const string ExcludeAttributeName = "exclude";
 

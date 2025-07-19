@@ -8,18 +8,18 @@ public class TreeExtensionsTests
 	public void Traverse()
 	{
 		var root = new Node<int>(1)
-		           {
-			           Children = new List<Node<int>>
-			                      {
-				                      new Node<int>(2)
-				                      {
-					                      Children = new List<Node<int>>
-					                                 {
-						                                 new Node<int>(3)
-					                                 }
-				                      }
-			                      }
-		           };
+		{
+			Children = new List<Node<int>>
+								  {
+									  new Node<int>(2)
+									  {
+										  Children = new List<Node<int>>
+													 {
+														 new Node<int>(3)
+													 }
+									  }
+								  }
+		};
 
 		var result = root.Traverse(n => n.Children).ToList();
 		Assert.Equal(3, result.Count);
@@ -32,6 +32,6 @@ public class TreeExtensionsTests
 public class Node<T>(T value)
 	where T : struct
 {
-	public T             Value    { get; set; } = value;
+	public T Value { get; set; } = value;
 	public List<Node<T>> Children { get; set; } = new();
 }

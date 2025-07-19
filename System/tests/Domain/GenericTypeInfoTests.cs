@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 #nullable enable
 namespace Wangkanai.Domain;
@@ -6,7 +6,7 @@ namespace Wangkanai.Domain;
 public class GenericTypeInfoTests
 {
 	private GenericTypeInfo<Parent> parent = new(typeof(Parent));
-	private GenericTypeInfo<Child>  child  = new(typeof(Child));
+	private GenericTypeInfo<Child> child = new(typeof(Child));
 
 	[Fact]
 	public void TypeIsNull()
@@ -39,35 +39,35 @@ public class GenericTypeInfoTests
 		var custom = parent.WithTypeName("custom");
 		Assert.Equal("custom", custom.TypeName);
 	}
-	
+
 	[Fact]
 	public void AssignNewService()
 	{
 		var custom = parent.WithService(new Parent());
 		Assert.NotNull(custom.GetService<Parent>());
 	}
-	
+
 	[Fact]
 	public void WithServiceReturnSelf()
 	{
 		var custom = parent.WithService(new Parent());
 		Assert.Equal(parent, custom);
 	}
-	
+
 	[Fact]
 	public void AssignNewMappedType()
 	{
 		var custom = parent.MapToType<Parent>();
 		Assert.Equal(typeof(Parent), custom.MappedType);
 	}
-	
+
 	[Fact]
 	public void AssignNewFactory()
 	{
 		var custom = parent.WithFactory(() => new Parent());
 		Assert.NotNull(custom.Factory);
 	}
-	
+
 	[Fact]
 	public void AssignNewSetupAction()
 	{

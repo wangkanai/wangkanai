@@ -12,7 +12,7 @@ internal static class AnalyticsCoreBuilderExtensions
 	public static IAnalyticsBuilder AddRequiredServices(this IAnalyticsBuilder builder)
 	{
 		builder.ThrowIfNull();
-		
+
 		builder.Services.AddHttpContextAccessor();
 		builder.Services.AddOptions();
 		builder.Services.TryAddSingleton(provider => provider.GetRequiredService<IOptions<AnalyticsOptions>>().Value);

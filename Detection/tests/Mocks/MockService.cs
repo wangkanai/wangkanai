@@ -27,7 +27,7 @@ public static class MockService
 	private static BrowserService BrowserService(IUserAgentService agent)
 	{
 		var platform = PlatformService(agent);
-		var engine   = EngineService(agent);
+		var engine = EngineService(agent);
 		return new BrowserService(agent, engine);
 	}
 
@@ -92,7 +92,7 @@ public static class MockService
 	{
 		var service = new Mock<IHttpContextService>();
 		service.Setup(f => f.Context)
-		       .Returns(context);
+			   .Returns(context);
 		return service;
 	}
 

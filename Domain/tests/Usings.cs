@@ -2,7 +2,7 @@
 
 global using System;
 
-global using Microsoft.EntityFrameworkCore.Metadata.Internal;
 global using Microsoft.EntityFrameworkCore.Metadata;
+global using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 global using Xunit;

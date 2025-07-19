@@ -11,7 +11,7 @@ namespace Wangkanai.Markdown.ApplicationModels;
 public class MarkdownHandlerModel : ICommonModel
 {
 	public MarkdownHandlerModel(
-		MethodInfo            handlerMethod,
+		MethodInfo handlerMethod,
 		IReadOnlyList<object> attributes)
 	{
 		MethodInfo = handlerMethod.ThrowIfNull();
@@ -25,11 +25,11 @@ public class MarkdownHandlerModel : ICommonModel
 	{
 		other.ThrowIfNull();
 
-		MethodInfo  = other.MethodInfo;
+		MethodInfo = other.MethodInfo;
 		HandlerName = other.HandlerName;
-		HttpMethod  = other.HttpMethod;
-		Name        = other.Name;
-		Page        = other.Page;
+		HttpMethod = other.HttpMethod;
+		Name = other.Name;
+		Page = other.Page;
 
 		Attributes = new List<object>(other.Attributes);
 		Properties = new Dictionary<object, object?>(other.Properties);
@@ -38,14 +38,14 @@ public class MarkdownHandlerModel : ICommonModel
 
 	public MethodInfo MethodInfo { get; }
 
-	public string  HttpMethod  { get; set; } = default!;
+	public string HttpMethod { get; set; } = default!;
 	public string? HandlerName { get; set; }
-	public string  Name        { get; set; } = default!;
+	public string Name { get; set; } = default!;
 
 	public IList<MarkdownParameterModel> Parameters { get; }
-	public MarkdownApplicationModel      Page       { get; set; } = default!;
-	public IReadOnlyList<object>         Attributes { get; }
-	public IDictionary<object, object?>  Properties { get; }
+	public MarkdownApplicationModel Page { get; set; } = default!;
+	public IReadOnlyList<object> Attributes { get; }
+	public IDictionary<object, object?> Properties { get; }
 
 	MemberInfo ICommonModel.MemberInfo => MethodInfo;
 }

@@ -26,8 +26,8 @@ public class CoreBuilderExtensionsTests
 	[Fact]
 	public void AddMarkerServices_ReturnsExpected()
 	{
-		var services    = new ServiceCollection();
-		var builder     = services.AddDetectionBuilder().AddMarkerService();
+		var services = new ServiceCollection();
+		var builder = services.AddDetectionBuilder().AddMarkerService();
 		var descriptors = new List<ServiceDescriptor>();
 		descriptors.Add(new ServiceDescriptor(typeof(DetectionMarkerService), typeof(DetectionMarkerService), ServiceLifetime.Singleton));
 
@@ -39,8 +39,8 @@ public class CoreBuilderExtensionsTests
 	[Fact]
 	public void AddRequiredPlatformServices_ReturnsExpected()
 	{
-		var services    = new ServiceCollection();
-		var builder     = services.AddDetectionBuilder().AddRequiredServices();
+		var services = new ServiceCollection();
+		var builder = services.AddDetectionBuilder().AddRequiredServices();
 		var descriptors = new List<ServiceDescriptor>();
 		descriptors.Add(new ServiceDescriptor(typeof(IHttpContextAccessor), typeof(HttpContextAccessor), ServiceLifetime.Singleton));
 		descriptors.Add(new ServiceDescriptor(typeof(IOptions<>), typeof(DetectionOptions), ServiceLifetime.Singleton));
@@ -58,8 +58,8 @@ public class CoreBuilderExtensionsTests
 	[Fact]
 	public void AddCoreServices_ReturnsExpected()
 	{
-		var services    = new ServiceCollection();
-		var builder     = services.AddDetectionBuilder().AddCoreServices();
+		var services = new ServiceCollection();
+		var builder = services.AddDetectionBuilder().AddCoreServices();
 		var descriptors = new List<ServiceDescriptor>();
 		descriptors.Add(new ServiceDescriptor(typeof(IHttpContextService), typeof(HttpContextService), ServiceLifetime.Scoped));
 		descriptors.Add(new ServiceDescriptor(typeof(IUserAgentService), typeof(UserAgentService), ServiceLifetime.Scoped));

@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Abstractions;
@@ -14,21 +14,21 @@ namespace Wangkanai.Markdown.Infrastructure;
 
 public class MarkdownActionDescriptorProvider : IActionDescriptorProvider
 {
-	private readonly IMarkdownRouteModelProvider[]   _routeModelProviders;
-	private readonly MvcOptions                      _mvcOptions;
+	private readonly IMarkdownRouteModelProvider[] _routeModelProviders;
+	private readonly MvcOptions _mvcOptions;
 	private readonly IMarkdownRouteModelConvention[] _conventions;
 
 	public MarkdownActionDescriptorProvider(
 		IEnumerable<IMarkdownRouteModelProvider> markdownRouteModelProviders,
-		IOptions<MvcOptions>                     mvcOptionsAccessor,
-		IOptions<MarkdownPagesOptions>           MarkdownOptionsAccessor)
+		IOptions<MvcOptions> mvcOptionsAccessor,
+		IOptions<MarkdownPagesOptions> MarkdownOptionsAccessor)
 	{
 		_routeModelProviders = markdownRouteModelProviders.OrderBy(p => p.Order).ToArray();
-		_mvcOptions          = mvcOptionsAccessor.Value;
+		_mvcOptions = mvcOptionsAccessor.Value;
 
 		_conventions = MarkdownOptionsAccessor.Value.Conventions
-		                                      .OfType<IMarkdownRouteModelConvention>()
-		                                      .ToArray();
+											  .OfType<IMarkdownRouteModelConvention>()
+											  .ToArray();
 	}
 
 	public int Order { get; set; } = -900;
@@ -66,21 +66,21 @@ public class MarkdownActionDescriptorProvider : IActionDescriptorProvider
 			var descriptor = new MarkdownActionDescriptor
 			{
 				ActionConstraints = selector.ActionConstraints.ToList(),
-				AreaName          = model.AreaName,
+				AreaName = model.AreaName,
 				AttributeRouteInfo = new AttributeRouteInfo
 				{
-					Name                   = selector.AttributeRouteModel!.Name,
-					Order                  = selector.AttributeRouteModel.Order ?? 0,
-					Template               = TransformMarkdownRoute(model, selector),
+					Name = selector.AttributeRouteModel!.Name,
+					Order = selector.AttributeRouteModel.Order ?? 0,
+					Template = TransformMarkdownRoute(model, selector),
 					SuppressLinkGeneration = selector.AttributeRouteModel.SuppressLinkGeneration,
-					SuppressPathMatching   = selector.AttributeRouteModel.SuppressPathMatching,
+					SuppressPathMatching = selector.AttributeRouteModel.SuppressPathMatching,
 				},
-				DisplayName       = $"Page: {model.ViewEnginePath}",
-				EndpointMetadata  = selector.EndpointMetadata.ToList(),
+				DisplayName = $"Page: {model.ViewEnginePath}",
+				EndpointMetadata = selector.EndpointMetadata.ToList(),
 				FilterDescriptors = Array.Empty<FilterDescriptor>(),
-				Properties        = new Dictionary<object, object?>(model.Properties),
-				RelativePath      = model.RelativePath,
-				ViewEnginePath    = model.ViewEnginePath,
+				Properties = new Dictionary<object, object?>(model.Properties),
+				RelativePath = model.RelativePath,
+				ViewEnginePath = model.ViewEnginePath,
 			};
 
 			foreach (var kvp in model.RouteValues)

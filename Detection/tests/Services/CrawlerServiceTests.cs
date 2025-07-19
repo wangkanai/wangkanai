@@ -18,7 +18,7 @@ public class CrawlerServiceTests
 	[Fact]
 	public void Unknown()
 	{
-		var agent    = "Mozilla/5.0 (X11; Linux x86_64; rv:10.0) Gecko/20100101 Firefox/10.0";
+		var agent = "Mozilla/5.0 (X11; Linux x86_64; rv:10.0) Gecko/20100101 Firefox/10.0";
 		var resolver = MockService.CrawlerService(agent);
 		Assert.False(resolver.IsCrawler);
 		Assert.Equal(Crawler.Unknown, resolver.Name);
@@ -27,7 +27,7 @@ public class CrawlerServiceTests
 	[Fact]
 	public void Google()
 	{
-		var agent   = "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)";
+		var agent = "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)";
 		var crawler = MockService.CrawlerService(agent);
 		Assert.True(crawler.IsCrawler);
 		Assert.Equal(Crawler.Google, crawler.Name);
@@ -37,7 +37,7 @@ public class CrawlerServiceTests
 	[Fact]
 	public void Facebook()
 	{
-		var agent   = "facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)";
+		var agent = "facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)";
 		var crawler = MockService.CrawlerService(agent);
 		Assert.True(crawler.IsCrawler);
 		Assert.Equal(Crawler.Facebook, crawler.Name);
@@ -47,7 +47,7 @@ public class CrawlerServiceTests
 	[Fact]
 	public void BingBot()
 	{
-		var agent    = "Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)";
+		var agent = "Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)";
 		var resolver = MockService.CrawlerService(agent);
 		Assert.True(resolver.IsCrawler);
 		Assert.Equal(Crawler.Bing, resolver.Name);
@@ -57,7 +57,7 @@ public class CrawlerServiceTests
 	[Fact]
 	public void Twitter()
 	{
-		var agent    = "Twitterbot/1.0";
+		var agent = "Twitterbot/1.0";
 		var resolver = MockService.CrawlerService(agent);
 		Assert.True(resolver.IsCrawler);
 		Assert.Equal(Crawler.Twitter, resolver.Name);
@@ -67,7 +67,7 @@ public class CrawlerServiceTests
 	[Fact]
 	public void Yahoo()
 	{
-		var agent    = "Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp)";
+		var agent = "Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp)";
 		var resolver = MockService.CrawlerService(agent);
 		Assert.Equal(Crawler.Yahoo, resolver.Name);
 		Assert.Equal(new Version(), resolver.Version);
@@ -76,7 +76,7 @@ public class CrawlerServiceTests
 	[Fact]
 	public void Baidu()
 	{
-		var agent    = "Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)";
+		var agent = "Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)";
 		var resolver = MockService.CrawlerService(agent);
 		Assert.True(resolver.IsCrawler);
 		Assert.Equal(Crawler.Baidu, resolver.Name);
@@ -86,7 +86,7 @@ public class CrawlerServiceTests
 	[Fact]
 	public void LinkedIn()
 	{
-		var agent    = "LinkedInBot/1.0 (compatible; Mozilla/5.0; Jakarta Commons-HttpClient/3.1 +http://www.linkedin.com)";
+		var agent = "LinkedInBot/1.0 (compatible; Mozilla/5.0; Jakarta Commons-HttpClient/3.1 +http://www.linkedin.com)";
 		var resolver = MockService.CrawlerService(agent);
 		Assert.True(resolver.IsCrawler);
 		Assert.Equal(Crawler.LinkedIn, resolver.Name);
@@ -96,7 +96,7 @@ public class CrawlerServiceTests
 	[Fact]
 	public void Skype()
 	{
-		var agent    = "Mozilla/5.0 (Windows NT 6.1; WOW64) SkypeUriPreview Preview/0.5";
+		var agent = "Mozilla/5.0 (Windows NT 6.1; WOW64) SkypeUriPreview Preview/0.5";
 		var resolver = MockService.CrawlerService(agent);
 		Assert.True(resolver.IsCrawler);
 		Assert.Equal(Crawler.Skype, resolver.Name);
@@ -105,7 +105,7 @@ public class CrawlerServiceTests
 	[Fact]
 	public void WhatsApp()
 	{
-		var agent    = "WhatsApp/2.18.61 i";
+		var agent = "WhatsApp/2.18.61 i";
 		var resolver = MockService.CrawlerService(agent);
 		Assert.True(resolver.IsCrawler);
 		Assert.Equal(Crawler.WhatsApp, resolver.Name);
@@ -125,7 +125,7 @@ public class CrawlerServiceTests
 	[Fact]
 	public void OptionCrawlerForOthers()
 	{
-		var agent   = "starnic";
+		var agent = "starnic";
 		var options = new DetectionOptions();
 		options.Crawler.Others.Add("starnic");
 		var resolver = MockService.CrawlerService(agent, options);

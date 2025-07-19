@@ -9,7 +9,7 @@ public class AttributeExtensionsTests
 	{
 		// Arrange
 		var attribute = new TestAttribute();
-		var original  = (string?)null!;
+		var original = (string?)null!;
 		var separator = ',';
 
 		// Act
@@ -24,7 +24,7 @@ public class AttributeExtensionsTests
 	{
 		// Arrange
 		var attribute = new TestAttribute();
-		var original  = string.Empty;
+		var original = string.Empty;
 		var separator = ',';
 
 		// Act
@@ -39,7 +39,7 @@ public class AttributeExtensionsTests
 	{
 		// Arrange
 		var attribute = new TestAttribute();
-		var original  = "a,b,c";
+		var original = "a,b,c";
 		var separator = ',';
 
 		// Act
@@ -58,7 +58,7 @@ public class AttributeExtensionsTests
 	{
 		// Arrange
 		var attribute = new TestAttribute { Separator = ';' };
-		var original  = "a;b;c";
+		var original = "a;b;c";
 		var separator = ';';
 
 		// Act
@@ -77,7 +77,7 @@ public class AttributeExtensionsTests
 	{
 		// Arrange
 		var attribute = new TestAttribute { Separator = ';' };
-		var original  = "a; b; c";
+		var original = "a; b; c";
 		var separator = ';';
 
 		// Act
@@ -96,7 +96,7 @@ public class AttributeExtensionsTests
 	{
 		// Arrange
 		var attribute = new TestAttribute { Separator = ';' };
-		var original  = "a; b; ;c";
+		var original = "a; b; ;c";
 		var separator = ';';
 
 		// Act
@@ -115,7 +115,7 @@ public class AttributeExtensionsTests
 	{
 		// Arrange
 		var attribute = new TestAttribute { Separator = ';' };
-		var original  = "a; b; ;c;";
+		var original = "a; b; ;c;";
 		var separator = ';';
 
 		// Act
@@ -132,6 +132,6 @@ public class AttributeExtensionsTests
 
 public sealed class TestAttribute : Attribute
 {
-	public string? Original  { get; set; }
-	public char    Separator { get; set; }
+	public string? Original { get; set; }
+	public char Separator { get; set; }
 }

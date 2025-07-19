@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
@@ -11,20 +11,20 @@ namespace Wangkanai.Routing.Controllers;
 internal sealed class ControllerActionInvokerCacheEntry
 {
 	internal ControllerActionInvokerCacheEntry(
-		FilterItem[]                                cachedFilters,
-		Func<ControllerContext, object>             controllerFactory,
+		FilterItem[] cachedFilters,
+		Func<ControllerContext, object> controllerFactory,
 		Func<ControllerContext, object, ValueTask>? controllerReleaser,
-		ControllerBinderDelegate?                   controllerBinderDelegate,
-		ObjectMethodExecutor                        objectMethodExecutor,
-		ActionMethodExecutor                        actionMethodExecutor,
-		ActionMethodExecutor                        innerActionMethodExecutor)
+		ControllerBinderDelegate? controllerBinderDelegate,
+		ObjectMethodExecutor objectMethodExecutor,
+		ActionMethodExecutor actionMethodExecutor,
+		ActionMethodExecutor innerActionMethodExecutor)
 	{
-		ControllerFactory         = controllerFactory;
-		ControllerReleaser        = controllerReleaser;
-		ControllerBinderDelegate  = controllerBinderDelegate;
-		CachedFilters             = cachedFilters;
-		ObjectMethodExecutor      = objectMethodExecutor;
-		ActionMethodExecutor      = actionMethodExecutor;
+		ControllerFactory = controllerFactory;
+		ControllerReleaser = controllerReleaser;
+		ControllerBinderDelegate = controllerBinderDelegate;
+		CachedFilters = cachedFilters;
+		ObjectMethodExecutor = objectMethodExecutor;
+		ActionMethodExecutor = actionMethodExecutor;
 		InnerActionMethodExecutor = innerActionMethodExecutor;
 	}
 

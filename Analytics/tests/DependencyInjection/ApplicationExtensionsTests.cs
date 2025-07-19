@@ -20,7 +20,7 @@ public class ApplicationExtensionsTests
 		// Arrange
 		var provider = new Mock<IServiceProvider>();
 		provider.Setup(s => s.GetService(typeof(ILoggerFactory)))
-		        .Returns(Mock.Of<NullLogFactory>());
+				.Returns(Mock.Of<NullLogFactory>());
 		var app = new Mock<IApplicationBuilder>();
 		app.Setup(x => x.ApplicationServices)
 		   .Returns(provider.Object);

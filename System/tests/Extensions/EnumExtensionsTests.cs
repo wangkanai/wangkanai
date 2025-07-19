@@ -10,10 +10,10 @@ public class EnumExtensionsTests
 	[Fact]
 	public void GetFlag()
 	{
-		var one   = Country.Thailand;
-		var two   = Country.Thailand | Country.Japan;
+		var one = Country.Thailand;
+		var two = Country.Thailand | Country.Japan;
 		var three = Country.Thailand | Country.Japan | Country.Singapore;
-		var four  = Country.Thailand | Country.Japan | Country.Singapore | Country.Australia;
+		var four = Country.Thailand | Country.Japan | Country.Singapore | Country.Australia;
 		Assert.Single(one.GetFlags());
 		Assert.Equal(2, two.GetFlags().Count());
 		Assert.Equal(3, three.GetFlags().Count());
@@ -276,8 +276,8 @@ public class EnumExtensionsTests
 [Flags]
 public enum Country
 {
-	[Description("ประเทศไทย")] Thailand  = 1 << 0,
-	[EnumMember(Value = "jp")] Japan     = 1 << 1,
+	[Description("ประเทศไทย")] Thailand = 1 << 0,
+	[EnumMember(Value = "jp")] Japan = 1 << 1,
 	[EnumMember(Value = "sg")] Singapore = 1 << 2,
 	[EnumMember(Value = "au")] Australia = 1 << 3
 }

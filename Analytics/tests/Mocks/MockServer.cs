@@ -35,8 +35,8 @@ public static class MockServer
 	public static IWebHostBuilder WebHostBuilder(Action<AnalyticsOptions> options)
 	{
 		return new WebHostBuilder()
-		       .ConfigureServices(services => services.AddAnalytics(options))
-		       .Configure(app => { app.Run(ContextHandler()); });
+			   .ConfigureServices(services => services.AddAnalytics(options))
+			   .Configure(app => { app.Run(ContextHandler()); });
 	}
 
 	private static RequestDelegate ContextHandler()

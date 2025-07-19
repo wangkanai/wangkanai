@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using System.Numerics;
 
@@ -9,9 +9,9 @@ public class OperatorTests
 	[Fact]
 	public void ConvertInt32ToDouble()
 	{
-		int    from = 300;
-		double d    = Operator.Convert<int, double>(from);
-		int    i    = Operator.Convert<double, int>(d);
+		int from = 300;
+		double d = Operator.Convert<int, double>(from);
+		int i = Operator.Convert<double, int>(d);
 		Assert.Equal(i, from);
 		Assert.Equal(d, (double)i);
 	}
@@ -90,7 +90,7 @@ public class OperatorTests
 	[Fact]
 	public void AddDateTimeTimeSpan()
 	{
-		DateTime from  = DateTime.Today;
+		DateTime from = DateTime.Today;
 		TimeSpan delta = TimeSpan.FromHours(73.5);
 		Assert.Equal(from + delta, Operator.AddAlternative(from, delta));
 	}
@@ -113,7 +113,7 @@ public class OperatorTests
 	[Fact]
 	public void SubtractDateTimeTimeSpan()
 	{
-		DateTime from  = DateTime.Today;
+		DateTime from = DateTime.Today;
 		TimeSpan delta = TimeSpan.FromHours(73.5);
 		Assert.Equal(from - delta, Operator.SubtractAlternative(from, delta));
 	}
@@ -144,8 +144,8 @@ public class OperatorTests
 	[Fact]
 	public void MultiplyFloatInt32()
 	{
-		float from   = 123.45F;
-		int   factor = 12;
+		float from = 123.45F;
+		int factor = 12;
 		Assert.Equal(from * factor, Operator.Multiply(from, factor));
 		Assert.Throws<InvalidOperationException>(
 			() => Operator.MultiplyAlternative(from, factor)
@@ -173,8 +173,8 @@ public class OperatorTests
 	[Fact]
 	public void DivideFloatInt32()
 	{
-		float from    = 123.45F;
-		int   divisor = 12;
+		float from = 123.45F;
+		int divisor = 12;
 		//Assert.Equal(from / divisor, Operator.DivideAlternative(from, divisor));
 		//Assert.Equal(from / divisor, Operator.DivideInt32(from, divisor));
 		Assert.Throws<InvalidOperationException>(

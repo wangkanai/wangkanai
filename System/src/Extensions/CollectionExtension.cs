@@ -85,9 +85,9 @@ public static class CollectionExtension
 	public static ICollection<T> AddDistinct<T>(this ICollection<T> list, IEqualityComparer<T> comparer, params T[] items)
 	{
 		list.ThrowIfNull()
-		    .ThrowIfEmpty();
+			.ThrowIfEmpty();
 		items.ThrowIfNull()
-		     .ThrowIfEmpty();
+			 .ThrowIfEmpty();
 
 		foreach (var item in items)
 		{

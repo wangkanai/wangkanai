@@ -34,7 +34,7 @@ public static class ApplicationBuilderExtensions
 	}
 
 	public static void VerifyEndpointRoutingMiddlewareIsNotRegistered(this IApplicationBuilder app,
-		Func<IApplicationBuilder, IApplicationBuilder>                                         middleware)
+		Func<IApplicationBuilder, IApplicationBuilder> middleware)
 	{
 		middleware.ThrowIfNull();
 		const string endpointRouteBuilder = "__EndpointRouteBuilder";

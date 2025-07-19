@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using icrosoft.AspNetCore.Authorization;
 
@@ -15,23 +15,23 @@ namespace Microsoft.Extensions.DependencyInjection;
 
 public static class AuthorizationCollectionExtensions
 {
-    public static IServiceCollection AddAuthorization(
-        this IServiceCollection      services,
-        Action<AuthorizationOptions> setupAction,
-        Action<SecurityOptions>      configure)
-    {
-        services.ThrowIfNull();
-        configure.ThrowIfNull();
+	public static IServiceCollection AddAuthorization(
+		this IServiceCollection services,
+		Action<AuthorizationOptions> setupAction,
+		Action<SecurityOptions> configure)
+	{
+		services.ThrowIfNull();
+		configure.ThrowIfNull();
 
-        if (setupAction == null)
-            services.AddAuthorization();
-        else
-            services.AddAuthorization(setupAction);
+		if (setupAction == null)
+			services.AddAuthorization();
+		else
+			services.AddAuthorization(setupAction);
 
-        services.Configure(configure);
+		services.Configure(configure);
 
-        services.TryAddEnumerable(ServiceDescriptor.Transient<IApplicationModelProvider, PrivateNetworkApplicationModelProvider>());
+		services.TryAddEnumerable(ServiceDescriptor.Transient<IApplicationModelProvider, PrivateNetworkApplicationModelProvider>());
 
-        return services;
-    }
+		return services;
+	}
 }

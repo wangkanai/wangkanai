@@ -6,8 +6,8 @@ public class MarkdownViewEngineOptions
 {
 	public List<IMarkdownViewLocationExpander> ViewLocationExpanders { get; } = new();
 
-	public List<string> ViewLocationFormats         { get; } = new();
-	public List<string> AreaViewLocationFormats     { get; } = new();
-	public List<string> PageViewLocationFormats     { get; } = new();
+	public List<string> ViewLocationFormats { get; } = new();
+	public List<string> AreaViewLocationFormats { get; } = new();
+	public List<string> PageViewLocationFormats { get; } = new();
 	public List<string> AreaPageViewLocationFormats { get; } = new();
 }

@@ -6,7 +6,7 @@ namespace Wangkanai.Solver.Linear;
 
 public class Variable : IVariable
 {
-	public string Name  { get; init; }
+	public string Name { get; init; }
 	public double Value { get; set; }
 
 	public static LinearExpression operator +(Variable left, double right)

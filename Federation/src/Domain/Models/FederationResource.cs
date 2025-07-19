@@ -46,7 +46,7 @@ public class FederationResource : BaseResource
 		name.ThrowIfNull();
 		claims.ThrowIfEmpty("Must provide at least one claim type");
 
-		Name        = name;
+		Name = name;
 		DisplayName = displayName;
 
 		foreach (var claim in claims)

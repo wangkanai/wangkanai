@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 #nullable enable
 
@@ -7,7 +7,7 @@ namespace Wangkanai.Domain;
 public class AbstractTypeFactoryTests
 {
 	private GenericTypeInfo<Parent> _parentInfo = new(typeof(Parent));
-	private GenericTypeInfo<Child>  _childInfo  = new(typeof(Child));
+	private GenericTypeInfo<Child> _childInfo = new(typeof(Child));
 
 	[Fact]
 	public void RegisterType_ThrowIfNull()
@@ -48,7 +48,7 @@ public class AbstractTypeFactoryTests
 	public void RegisterType_ParentChild()
 	{
 		var parent = AbstractTypeFactory<Parent>.RegisterType<Parent>();
-		var child  = AbstractTypeFactory<Child>.RegisterType<Child>();
+		var child = AbstractTypeFactory<Child>.RegisterType<Child>();
 		Assert.NotEqual(parent.TypeName, child.TypeName);
 		Assert.NotEqual(parent.Type, child.Type);
 		Assert.Contains(parent.Type, child.GetAllSubclasses());
@@ -59,7 +59,7 @@ public class AbstractTypeFactoryTests
 	public void OverrideType()
 	{
 		var parent = AbstractTypeFactory<Parent>.RegisterType<Parent>();
-		var child  = AbstractTypeFactory<Child>.RegisterType<Child>();
+		var child = AbstractTypeFactory<Child>.RegisterType<Child>();
 		var result = AbstractTypeFactory<Parent>.OverrideType<Parent, Child>();
 		Assert.Equal(child.Type, result.Type);
 		Assert.Equal(child.TypeName, result.TypeName);
@@ -69,7 +69,7 @@ public class AbstractTypeFactoryTests
 	public void TryCreateInstance()
 	{
 		var parent = AbstractTypeFactory<Parent>.RegisterType<Parent>();
-		var child  = AbstractTypeFactory<Child>.RegisterType<Child>();
+		var child = AbstractTypeFactory<Child>.RegisterType<Child>();
 		var result = AbstractTypeFactory<Parent>.TryCreateInstance();
 		Assert.NotNull(result);
 		// Assert.IsType<Parent>(result);
@@ -79,7 +79,7 @@ public class AbstractTypeFactoryTests
 	public void TryCreateInstance_Generic()
 	{
 		var parent = AbstractTypeFactory<Parent>.RegisterType<Parent>();
-		var child  = AbstractTypeFactory<Child>.RegisterType<Child>();
+		var child = AbstractTypeFactory<Child>.RegisterType<Child>();
 		var result = AbstractTypeFactory<Parent>.TryCreateInstance<Parent>();
 		Assert.NotNull(result);
 		// Assert.IsType<Parent>(result);
@@ -90,7 +90,7 @@ public class AbstractTypeFactoryTests
 	public void TryCreateInstance_TypeName()
 	{
 		var parent = AbstractTypeFactory<Parent>.RegisterType<Parent>();
-		var child  = AbstractTypeFactory<Child>.RegisterType<Child>();
+		var child = AbstractTypeFactory<Child>.RegisterType<Child>();
 		var result = AbstractTypeFactory<Parent>.TryCreateInstance("Parent");
 		Assert.NotNull(result);
 		// Assert.IsType<Parent>(result);

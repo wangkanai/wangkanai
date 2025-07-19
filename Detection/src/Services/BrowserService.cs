@@ -12,12 +12,12 @@ public sealed class BrowserService(IUserAgentService userAgentService, IEngineSe
 	private Browser? _browser;
 	private Version? _version;
 
-	public Browser Name    => _browser ??= GetBrowser();
+	public Browser Name => _browser ??= GetBrowser();
 	public Version Version => _version ??= GetVersion();
 
 	private Browser GetBrowser()
 	{
-		var agent  = userAgentService.UserAgent.ToLower();
+		var agent = userAgentService.UserAgent.ToLower();
 		var engine = engineService.Name;
 
 		if (string.IsNullOrEmpty(agent))
@@ -44,7 +44,7 @@ public sealed class BrowserService(IUserAgentService userAgentService, IEngineSe
 
 	private Version GetVersion()
 	{
-		var agent   = userAgentService.UserAgent.ToLower();
+		var agent = userAgentService.UserAgent.ToLower();
 		var browser = Name;
 
 		if (browser == Browser.Edge && agent.Contains("EdgA", StringComparison.OrdinalIgnoreCase))
@@ -89,18 +89,18 @@ public sealed class BrowserService(IUserAgentService userAgentService, IEngineSe
 		if (indexOfOpera != -1)
 			return agent.Substring(indexOfOpera + "opera ".Length).ToVersion();
 
-		var name           = browser.ToLowerString();
-		var first          = agent.IndexOf(name, StringComparison.Ordinal);
-		var cut            = agent.Length > first + name.Length + 1 ? agent.Substring(first + name.Length + 1) : agent.Substring(first + name.Length);
-		var text           = "version/";
+		var name = browser.ToLowerString();
+		var first = agent.IndexOf(name, StringComparison.Ordinal);
+		var cut = agent.Length > first + name.Length + 1 ? agent.Substring(first + name.Length + 1) : agent.Substring(first + name.Length);
+		var text = "version/";
 		var indexOfVersion = cut.IndexOf(text, StringComparison.Ordinal);
-		var version        = indexOfVersion != -1 ? cut.Substring(indexOfVersion + text.Length) : cut;
+		var version = indexOfVersion != -1 ? cut.Substring(indexOfVersion + text.Length) : cut;
 		return version.ToVersion();
 	}
 
 	private static Version GetVersionOf(string agent, string value)
 	{
-		var version      = agent.Substring(agent.IndexOf($"{value}/", StringComparison.Ordinal) + $"{value}/".Length);
+		var version = agent.Substring(agent.IndexOf($"{value}/", StringComparison.Ordinal) + $"{value}/".Length);
 		var indexOfSpace = version.IndexOf(' ');
 
 		if (indexOfSpace != -1)
@@ -111,7 +111,7 @@ public sealed class BrowserService(IUserAgentService userAgentService, IEngineSe
 
 	private static Version GetVersionEdge(string agent)
 	{
-		var version      = agent.Substring(agent.IndexOf("edge/", StringComparison.Ordinal) + "edge/".Length);
+		var version = agent.Substring(agent.IndexOf("edge/", StringComparison.Ordinal) + "edge/".Length);
 		var indexOfSpace = version.IndexOf(' ');
 
 		if (indexOfSpace != -1)
@@ -122,7 +122,7 @@ public sealed class BrowserService(IUserAgentService userAgentService, IEngineSe
 
 	private static Version GetVersionGoogleSearchApp(string agent)
 	{
-		var version      = agent.Substring(agent.IndexOf("gsa/", StringComparison.Ordinal) + "gsa/".Length);
+		var version = agent.Substring(agent.IndexOf("gsa/", StringComparison.Ordinal) + "gsa/".Length);
 		var indexOfSpace = version.IndexOf(' ');
 
 		if (indexOfSpace != -1)
@@ -133,7 +133,7 @@ public sealed class BrowserService(IUserAgentService userAgentService, IEngineSe
 
 	private static Version GetVersionSamsungInternetBrowser(string agent)
 	{
-		var version      = agent.Substring(agent.IndexOf("SamsungBrowser/", StringComparison.OrdinalIgnoreCase) + "SamsungBrowser/".Length);
+		var version = agent.Substring(agent.IndexOf("SamsungBrowser/", StringComparison.OrdinalIgnoreCase) + "SamsungBrowser/".Length);
 		var indexOfSpace = version.IndexOf(' ');
 
 		if (indexOfSpace != -1)
@@ -144,7 +144,7 @@ public sealed class BrowserService(IUserAgentService userAgentService, IEngineSe
 
 	private static Version GetVersionSafariVersion(string agent)
 	{
-		var version      = agent.Substring(agent.IndexOf("version/", StringComparison.Ordinal) + "version/".Length);
+		var version = agent.Substring(agent.IndexOf("version/", StringComparison.Ordinal) + "version/".Length);
 		var indexOfSpace = version.IndexOf(' ');
 		if (indexOfSpace != -1)
 			version = version.Substring(0, indexOfSpace);
@@ -154,7 +154,7 @@ public sealed class BrowserService(IUserAgentService userAgentService, IEngineSe
 
 	private static Version GetVersionSafariSafari(string agent)
 	{
-		var safari    = agent.Substring(agent.IndexOf("safari/", StringComparison.Ordinal) + "safari/".Length);
+		var safari = agent.Substring(agent.IndexOf("safari/", StringComparison.Ordinal) + "safari/".Length);
 		var substring = safari.Substring(0);
 		if (substring.Contains('.'))
 			return substring.ToVersion();
@@ -166,7 +166,7 @@ public sealed class BrowserService(IUserAgentService userAgentService, IEngineSe
 
 	private static Version GetVersionChromeOs(string agent)
 	{
-		var version      = agent.Substring(agent.IndexOf("crios/", StringComparison.Ordinal) + "crios/".Length);
+		var version = agent.Substring(agent.IndexOf("crios/", StringComparison.Ordinal) + "crios/".Length);
 		var indexOfSpace = version.IndexOf(' ');
 
 		if (indexOfSpace != -1)
@@ -177,7 +177,7 @@ public sealed class BrowserService(IUserAgentService userAgentService, IEngineSe
 
 	private static Version GetVersionChrome(string agent)
 	{
-		var version      = agent.Substring(agent.IndexOf("chrome/", StringComparison.Ordinal) + "chrome/".Length);
+		var version = agent.Substring(agent.IndexOf("chrome/", StringComparison.Ordinal) + "chrome/".Length);
 		var indexOfSpace = version.IndexOf(' ');
 
 		if (indexOfSpace != -1)
@@ -188,7 +188,7 @@ public sealed class BrowserService(IUserAgentService userAgentService, IEngineSe
 
 	private static Version GetVersionCommon(string agent, Browser browser)
 	{
-		var name  = browser.ToLowerString();
+		var name = browser.ToLowerString();
 		var first = agent.IndexOf(name, StringComparison.Ordinal);
 
 		if (first < 0 || first + name.Length > agent.Length)
@@ -197,7 +197,7 @@ public sealed class BrowserService(IUserAgentService userAgentService, IEngineSe
 		var cut = agent.Length > first + name.Length + 1 ? agent.Substring(first + name.Length + 1) : agent.Substring(first + name.Length);
 
 		var indexOfSpace = cut.IndexOf(' ');
-		var version      = indexOfSpace != -1 ? cut.Substring(0, indexOfSpace) : cut;
+		var version = indexOfSpace != -1 ? cut.Substring(0, indexOfSpace) : cut;
 		return version.ToVersion();
 	}
 

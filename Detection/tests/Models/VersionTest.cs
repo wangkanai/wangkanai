@@ -19,8 +19,8 @@ public class VersionTests
 	[Fact]
 	public void Ctor_StringString_Success()
 	{
-		var major   = 1;
-		var minor   = 0;
+		var major = 1;
+		var minor = 0;
 		var version = new Version(major, minor);
 
 		AssertVersion(major, minor, version);
@@ -30,11 +30,11 @@ public class VersionTests
 	[Fact]
 	public void Ctor_StringStringStringString_Success()
 	{
-		var major    = 1;
-		var minor    = 0;
-		var build    = 1;
+		var major = 1;
+		var minor = 0;
+		var build = 1;
 		var revision = 0;
-		var version  = new Version(major, minor, build, revision);
+		var version = new Version(major, minor, build, revision);
 
 		AssertVersion(major, minor, build, revision, version);
 		Assert.Equal("1.0.1.0", version.ToString());

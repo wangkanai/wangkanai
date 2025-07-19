@@ -12,17 +12,17 @@ public sealed class CountryConfiguration : IEntityTypeConfiguration<Models.Count
 	public void Configure(EntityTypeBuilder<Models.Country> builder)
 	{
 		builder.Property(x => x.Iso)
-		       .HasMaxLength(2)
-		       .IsRequired();
+			   .HasMaxLength(2)
+			   .IsRequired();
 
 		builder.Property(x => x.Name)
-		       .HasMaxLength(100)
-		       .IsRequired();
+			   .HasMaxLength(100)
+			   .IsRequired();
 
 		builder.Property(x => x.Native)
-		       .HasMaxLength(100)
-		       .IsUnicode()
-		       .IsRequired();
+			   .HasMaxLength(100)
+			   .IsUnicode()
+			   .IsRequired();
 
 		builder.Property(x => x.Population);
 

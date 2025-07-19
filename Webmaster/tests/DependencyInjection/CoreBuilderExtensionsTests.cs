@@ -19,8 +19,8 @@ public class CoreBuilderExtensionsTests
 	[Fact]
 	public void AddMarkerServices_ReturnsExpected()
 	{
-		var services    = new ServiceCollection();
-		var builder     = services.AddWebmasterBuilder().AddMarkerService();
+		var services = new ServiceCollection();
+		var builder = services.AddWebmasterBuilder().AddMarkerService();
 		var descriptors = new List<ServiceDescriptor>();
 		descriptors.Add(new(typeof(WebmasterMarkerService), typeof(WebmasterMarkerService), ServiceLifetime.Singleton));
 
@@ -32,8 +32,8 @@ public class CoreBuilderExtensionsTests
 	[Fact]
 	public void AddRequiredPlatformServices_ReturnsExpected()
 	{
-		var services    = new ServiceCollection();
-		var builder     = services.AddWebmasterBuilder().AddRequiredServices();
+		var services = new ServiceCollection();
+		var builder = services.AddWebmasterBuilder().AddRequiredServices();
 		var descriptors = new List<ServiceDescriptor>();
 		descriptors.Add(new(typeof(IHttpContextAccessor), typeof(HttpContextAccessor), ServiceLifetime.Singleton));
 		descriptors.Add(new(typeof(IOptions<>), typeof(WebmasterOptions), ServiceLifetime.Singleton));
@@ -42,7 +42,7 @@ public class CoreBuilderExtensionsTests
 		descriptors.Add(new(typeof(IOptionsFactory<>), typeof(WebmasterOptions), ServiceLifetime.Transient));
 		descriptors.Add(new(typeof(IOptionsMonitorCache<>), typeof(WebmasterOptions), ServiceLifetime.Singleton));
 		descriptors.Add(new(typeof(WebmasterOptions), typeof(WebmasterOptions), ServiceLifetime.Singleton));
-		
+
 		Assert.NotNull(builder);
 		Assert.NotNull(builder.Services);
 		descriptors.AssertServices(builder.Services);
@@ -51,8 +51,8 @@ public class CoreBuilderExtensionsTests
 	[Fact]
 	public void AddCoreServices_ReturnsExpected()
 	{
-		var services    = new ServiceCollection();
-		var builder     = services.AddWebmasterBuilder().AddCoreServices();
+		var services = new ServiceCollection();
+		var builder = services.AddWebmasterBuilder().AddCoreServices();
 		var descriptors = new List<ServiceDescriptor>();
 		descriptors.Add(new(typeof(IWebmasterService), typeof(WebmasterService), ServiceLifetime.Scoped));
 

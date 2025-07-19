@@ -14,32 +14,32 @@ namespace Wangkanai.Federation.Services;
 
 public class FederationUserSession : IUserSession
 {
-	internal readonly IHttpContextAccessor           HttpContextAccessor;
-	internal readonly FederationOptions              Options;
+	internal readonly IHttpContextAccessor HttpContextAccessor;
+	internal readonly FederationOptions Options;
 	internal readonly IAuthenticationHandlerProvider HandlerProvider;
-	internal readonly IClock                         Clock;
-	internal readonly IServerUrls                    Urls;
-	internal readonly ILogger                        Logger;
+	internal readonly IClock Clock;
+	internal readonly IServerUrls Urls;
+	internal readonly ILogger Logger;
 
-	internal ClaimsPrincipal          Principal;
+	internal ClaimsPrincipal Principal;
 	internal AuthenticationProperties Properties;
 
-	internal HttpContext  HttpContext               => HttpContextAccessor.HttpContext;
-	internal string       SessionCookieName         => Options.Authentication.SessionCookieName;
-	internal string       SessionCookieDomain       => Options.Authentication.SessionCookieDomain;
+	internal HttpContext HttpContext => HttpContextAccessor.HttpContext;
+	internal string SessionCookieName => Options.Authentication.SessionCookieName;
+	internal string SessionCookieDomain => Options.Authentication.SessionCookieDomain;
 	internal SameSiteMode SessionCookieSameSiteMode => Options.Authentication.SessionCookieSameSiteMode;
 
 	protected virtual async Task AuthenticateAsync()
 	{
 		if (Principal == null || Properties == null)
 		{
-			var scheme  = await HttpContext.GetCookieAuthenticationSchemeAsync();
+			var scheme = await HttpContext.GetCookieAuthenticationSchemeAsync();
 			var handler = await HandlerProvider.GetHandlerAsync(HttpContext, scheme);
 			handler.ThrowIfNull<InvalidOperationException>($"No authentication handler is configured to authenticate for the scheme: {scheme}");
 			var result = await handler.AuthenticateAsync();
 			if (result != null && result.Succeeded && result.Principal.Identity.IsAuthenticated)
 			{
-				Principal  = result.Principal;
+				Principal = result.Principal;
 				Properties = result.Properties;
 			}
 		}
@@ -51,7 +51,7 @@ public class FederationUserSession : IUserSession
 		properties.ThrowIfNull();
 
 		var currentSubjectId = (await GetUserAsync()).GetSubjectId();
-		var newSubjectId     = principal.GetSubjectId();
+		var newSubjectId = principal.GetSubjectId();
 		if (properties.GetSessionId() == null)
 		{
 			var currentSid = await GetSessionIdAsync();
@@ -69,7 +69,7 @@ public class FederationUserSession : IUserSession
 		var sid = properties.GetSessionId();
 		IssueSessionIdCookie(sid);
 
-		Principal  = principal;
+		Principal = principal;
 		Properties = properties;
 
 		return sid!;
@@ -162,16 +162,16 @@ public class FederationUserSession : IUserSession
 	public virtual CookieOptions CreateSessionIdCookieOption()
 	{
 		var secure = HttpContext.Request.IsHttps;
-		var path   = Urls.BasePath.CleanUrlPath();
+		var path = Urls.BasePath.CleanUrlPath();
 
 		return new CookieOptions
 		{
-			HttpOnly    = false,
-			Secure      = secure,
-			Path        = path,
+			HttpOnly = false,
+			Secure = secure,
+			Path = path,
 			IsEssential = true,
-			Domain      = SessionCookieDomain,
-			SameSite    = SessionCookieSameSiteMode,
+			Domain = SessionCookieDomain,
+			SameSite = SessionCookieSameSiteMode,
 		};
 	}
 

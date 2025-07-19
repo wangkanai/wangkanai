@@ -4,7 +4,7 @@ namespace Wangkanai.Federation.Validations;
 
 public class ValidationResult
 {
-	public bool   IsError     { get; set; } = true;
-	public string Error       { get; set; }
+	public bool IsError { get; set; } = true;
+	public string Error { get; set; }
 	public string Description { get; set; }
 }

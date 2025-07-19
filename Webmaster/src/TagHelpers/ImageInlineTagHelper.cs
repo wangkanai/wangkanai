@@ -22,7 +22,7 @@ namespace Wangkanai.Webmaster.TagHelpers;
 public sealed class ImageInlineTagHelper : ImageTagHelper
 {
 	private const string InlineAttributeName = "inline";
-	private const string SrcAttributeName    = "src";
+	private const string SrcAttributeName = "src";
 
 	//private const string AppendVersionAttributeName = "asp-append-version";
 
@@ -39,7 +39,7 @@ public sealed class ImageInlineTagHelper : ImageTagHelper
 	public bool Inline { get; set; }
 
 	private IFileProvider FileProvider { get; set; }
-	private IFileInfo     FileInfo     { get; set; }
+	private IFileInfo FileInfo { get; set; }
 
 	public override async void Process(TagHelperContext context, TagHelperOutput output)
 	{
@@ -48,7 +48,7 @@ public sealed class ImageInlineTagHelper : ImageTagHelper
 
 		output.CopyHtmlAttribute(SrcAttributeName, context);
 		ProcessUrlAttribute(SrcAttributeName, output);
-		var path    = output.Attributes[SrcAttributeName].Value as string;
+		var path = output.Attributes[SrcAttributeName].Value as string;
 		var payload = await Payload(path);
 		output.Attributes.SetAttribute(SrcAttributeName, payload);
 	}
@@ -56,7 +56,7 @@ public sealed class ImageInlineTagHelper : ImageTagHelper
 	private async Task<string> Payload(string path)
 	{
 		FileInfo = FileProvider.GetFileInfo(path);
-		var data    = FileInfo.ContentType();
+		var data = FileInfo.ContentType();
 		var content = await GetContentBase64Async();
 		return $"data:{data};base64,{content}";
 	}

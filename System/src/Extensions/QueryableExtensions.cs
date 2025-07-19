@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using System.Linq.Expressions;
 using System.Runtime.ExceptionServices;
@@ -35,10 +35,10 @@ public static class QueryableExtensions
 		IOrderedQueryable<T> result = null!;
 
 		var effectiveType = GetEffectiveType<T>();
-		var expression    = Expression.Parameter(typeof(T));
+		var expression = Expression.Parameter(typeof(T));
 		var expr = effectiveType == typeof(T)
-			           ? (Expression)expression
-			           : Expression.Convert(expression, effectiveType);
+					   ? (Expression)expression
+					   : Expression.Convert(expression, effectiveType);
 
 		var propertyExpression = GetPropertyExpression(property, expr);
 
@@ -61,9 +61,9 @@ public static class QueryableExtensions
 		try
 		{
 			return methodType.GetMethods()
-			                 .Single(PredicateGenericMethod)
-			                 .MakeGenericMethod(genericTypeArguments)
-			                 .Invoke(instance, methodArguments)!;
+							 .Single(PredicateGenericMethod)
+							 .MakeGenericMethod(genericTypeArguments)
+							 .Invoke(instance, methodArguments)!;
 		}
 		// This catch is needed to get unwrapped exception, like calling method without reflection. Otherwise it would be TargetInvocationException with meaningful inner exception
 		catch (TargetInvocationException ex)
@@ -73,9 +73,9 @@ public static class QueryableExtensions
 		}
 
 		bool PredicateGenericMethod(MethodInfo method) => method.Name == methodName &&
-		                                                  method.IsGenericMethodDefinition &&
-		                                                  method.GetGenericArguments().Length == genericTypeArguments.Length &&
-		                                                  method.GetParameters().Length == methodArguments.Length;
+														  method.IsGenericMethodDefinition &&
+														  method.GetGenericArguments().Length == genericTypeArguments.Length &&
+														  method.GetParameters().Length == methodArguments.Length;
 	}
 
 
@@ -87,9 +87,9 @@ public static class QueryableExtensions
 
 	private static Expression GetPropertyExpression(string propertyString, Expression expression)
 	{
-		var result       = expression;
+		var result = expression;
 		var propertyType = expression.Type;
-		var properties   = propertyString.Split('.');
+		var properties = propertyString.Split('.');
 
 		foreach (var property in properties)
 		{
@@ -98,7 +98,7 @@ public static class QueryableExtensions
 
 			if (propertyInfo != null)
 			{
-				result       = Expression.Property(result, propertyInfo);
+				result = Expression.Property(result, propertyInfo);
 				propertyType = propertyInfo.PropertyType;
 			}
 			else

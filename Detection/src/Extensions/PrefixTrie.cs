@@ -7,7 +7,7 @@ namespace Wangkanai.Detection.Extensions;
 public readonly struct PrefixTrie : IPrefixTrie
 {
 	private readonly PrefixTrie[]? _lookup;
-	private readonly int           _offset;
+	private readonly int _offset;
 
 	/// <summary>
 	/// Creates optimized search Trie using static keyword list, uses prefix search Trie as base algorithm
@@ -26,7 +26,7 @@ public readonly struct PrefixTrie : IPrefixTrie
 	{
 		if (pos > 0)
 			keywords = keywords?.Where(k => k.Length > pos)
-			                   .ToArray();
+							   .ToArray();
 
 		if (keywords.IsNullOrEmpty())
 		{
@@ -45,8 +45,8 @@ public readonly struct PrefixTrie : IPrefixTrie
 		{
 			var newKeys = list.ToArray();
 			_lookup[key - lower] = newKeys.Any(k => pos + 1 >= k.Length)
-				                       ? new PrefixTrie(null, pos + 1)
-				                       : new PrefixTrie(newKeys, pos + 1);
+									   ? new PrefixTrie(null, pos + 1)
+									   : new PrefixTrie(newKeys, pos + 1);
 		}
 	}
 
@@ -66,7 +66,7 @@ public readonly struct PrefixTrie : IPrefixTrie
 			if (source.Length == 0 || lookup == null)
 				return false;
 
-			var c      = source[0];
+			var c = source[0];
 			var offset = current._offset;
 
 			if (c - offset < 0 || c - offset >= lookup.Length)
@@ -87,9 +87,9 @@ public readonly struct PrefixTrie : IPrefixTrie
 	{
 		while (source.Length > 0)
 		{
-			var slice   = source;
+			var slice = source;
 			var current = this;
-			var found   = SearchCurrentSource(current, slice);
+			var found = SearchCurrentSource(current, slice);
 
 			if (found)
 				return true;
@@ -117,7 +117,7 @@ public readonly struct PrefixTrie : IPrefixTrie
 				break;
 			}
 
-			var c      = slice[0];
+			var c = slice[0];
 			var offset = current._offset;
 
 			if (c - offset < 0 || c - offset >= lookup.Length)
@@ -142,5 +142,5 @@ public readonly struct PrefixTrie : IPrefixTrie
 
 	private static IEnumerable<(char Key, IGrouping<char, string> x)> KeywordsGroupByCharAtPosition(IEnumerable<string> keywords, int position)
 		=> keywords.GroupBy(k => k[position])
-		           .Select(x => (x.Key, x));
+				   .Select(x => (x.Key, x));
 }

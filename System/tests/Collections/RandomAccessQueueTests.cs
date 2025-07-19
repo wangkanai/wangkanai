@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using System.Collections;
 
@@ -125,7 +125,7 @@ public class RandomAccessQueueTests
 	public void StronglyTypedClone()
 	{
 		var queue = new RandomAccessQueue<object>();
-		var first  = new object();
+		var first = new object();
 		var second = new object();
 		queue.Enqueue(first);
 		queue.Enqueue(second);
@@ -143,12 +143,12 @@ public class RandomAccessQueueTests
 	public void CloneableClone()
 	{
 		var queue = new RandomAccessQueue<object>();
-		var first  = new object();
+		var first = new object();
 		var second = new object();
 		queue.Enqueue(first);
 		queue.Enqueue(second);
 		ICloneable cloneable = queue;
-		var        clone     = (RandomAccessQueue<object>)cloneable.Clone();
+		var clone = (RandomAccessQueue<object>)cloneable.Clone();
 
 		Assert.Equal(queue.Count, clone.Count);
 		Assert.Same(first, queue.Dequeue());
@@ -575,7 +575,7 @@ public class RandomAccessQueueTests
 	[Fact]
 	public void BinarySearchComparerNull()
 	{
-		var queue    = new StringQueue();
+		var queue = new StringQueue();
 		var comparer = Comparer<string>.Default;
 		Assert.Equal(~0, queue.BinarySearch(null, comparer));
 		queue.Add("hi");
@@ -616,8 +616,9 @@ public class RandomAccessQueueTests
 		queue.Enqueue("50");
 		queue.Enqueue("200");
 
-		Comparison<string> comparison = delegate(string x, string y) {
-			var first  = int.Parse(x);
+		Comparison<string> comparison = delegate (string x, string y)
+		{
+			var first = int.Parse(x);
 			var second = int.Parse(y);
 
 			return first.CompareTo(second);

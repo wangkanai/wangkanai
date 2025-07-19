@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using System.Collections.Concurrent;
 
@@ -11,7 +11,7 @@ namespace Wangkanai.Extensions;
 public static class TypeExtensions
 {
 	private static readonly ConcurrentDictionary<Type, string> PrettyPrintCache = new();
-	private static readonly ConcurrentDictionary<Type, string> TypeCacheKeys    = new();
+	private static readonly ConcurrentDictionary<Type, string> TypeCacheKeys = new();
 
 	/// <summary>
 	/// Get the cache key for a given type.
@@ -27,7 +27,8 @@ public static class TypeExtensions
 	/// <param name="type">The Type to be pretty-printed.</param>
 	/// <returns>The pretty-printed string representation of the Type.</returns>
 	public static string PrettyPrint(this Type type)
-		=> PrettyPrintCache.GetOrAdd(type, t => {
+		=> PrettyPrintCache.GetOrAdd(type, t =>
+		{
 			try
 			{
 				return t.PrettyPrintRecursive(0);
@@ -45,7 +46,8 @@ public static class TypeExtensions
 	/// <param name="depth">The depth of the pretty-printed string representation.</param>
 	/// <returns>The pretty-printed string representation of the Type.</returns>
 	public static string PrettyPrint(this Type type, int depth)
-		=> PrettyPrintCache.GetOrAdd(type, t => {
+		=> PrettyPrintCache.GetOrAdd(type, t =>
+		{
 			try
 			{
 				return t.PrettyPrintRecursive(depth);
@@ -72,8 +74,8 @@ public static class TypeExtensions
 
 		var genericArgs = type.GetTypeInfo().GetGenericArguments();
 		return !type.IsConstructedGenericType
-			       ? $"{nameParts[0]}<{new string(',', genericArgs.Length - 1)}>"
-			       : $"{nameParts[0]}<{string.Join(",", genericArgs.Select(t => PrettyPrintRecursive(t, depth + 1)))}>";
+				   ? $"{nameParts[0]}<{new string(',', genericArgs.Length - 1)}>"
+				   : $"{nameParts[0]}<{string.Join(",", genericArgs.Select(t => PrettyPrintRecursive(t, depth + 1)))}>";
 	}
 
 	/// <summary>
@@ -84,7 +86,7 @@ public static class TypeExtensions
 	/// <returns>An array of types representing the inheritance chain from the child type to the parent type.</returns>
 	public static Type[] GetTypeInheritanceChainTo(this Type child, Type parent)
 	{
-		var retVal   = new List<Type> { child };
+		var retVal = new List<Type> { child };
 		var baseType = child.BaseType;
 		while (baseType != parent && baseType != typeof(object))
 		{
@@ -121,8 +123,8 @@ public static class TypeExtensions
 		var typeInfo = type.GetTypeInfo();
 
 		return !typeInfo.IsValueType
-		       || typeInfo.IsGenericType
-		       && typeInfo.GetGenericTypeDefinition() == typeof(Nullable<>);
+			   || typeInfo.IsGenericType
+			   && typeInfo.GetGenericTypeDefinition() == typeof(Nullable<>);
 	}
 
 	/// <summary>
@@ -137,8 +139,8 @@ public static class TypeExtensions
 			return type;
 
 		return nullable
-			       ? typeof(Nullable<>).MakeGenericType(type)
-			       : type.GetGenericArguments()[0];
+				   ? typeof(Nullable<>).MakeGenericType(type)
+				   : type.GetGenericArguments()[0];
 	}
 
 	/// <summary>
@@ -156,7 +158,7 @@ public static class TypeExtensions
 	/// <returns>The underlying non-enum type.</returns>
 	public static Type UnwrapEnum(this Type type)
 	{
-		var isNullable                = type.IsNullable();
+		var isNullable = type.IsNullable();
 		var underlyingNonNullableType = isNullable ? type.UnwrapNullable() : type;
 		if (!underlyingNonNullableType.GetTypeInfo().IsEnum)
 			return type;
@@ -195,14 +197,14 @@ public static class TypeExtensions
 
 	private static IEnumerable<KeyValuePair<string, object>> YieldPropertyEnumerator(object original, ICollection<object> visited, string memberPath, Type typeOfOriginal)
 		=> typeOfOriginal.GetProperties(BindingFlags.Instance | BindingFlags.Public)
-		                 .SelectMany(propertyInfo => propertyInfo.GetValue(original).TraverseObjectGraphRecursively(visited, $@"{memberPath}.{propertyInfo.Name}"));
+						 .SelectMany(propertyInfo => propertyInfo.GetValue(original).TraverseObjectGraphRecursively(visited, $@"{memberPath}.{propertyInfo.Name}"));
 
 	private static IEnumerable<KeyValuePair<string, object>> YieldOriginalEnumerator(ICollection<object> visited, string memberPath, IEnumerable objEnum)
 	{
 		// ReSharper disable once NotDisposedResource
 		var enumerator = objEnum.GetEnumerator();
 		enumerator.ThrowIfNull();
-		var index      = 0;
+		var index = 0;
 		while (enumerator.MoveNext())
 			foreach (var result in enumerator.Current.TraverseObjectGraphRecursively(visited, $@"{memberPath}[{index++}]"))
 				yield return result;

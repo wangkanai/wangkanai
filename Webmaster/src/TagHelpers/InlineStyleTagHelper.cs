@@ -13,7 +13,7 @@ namespace Wangkanai.Webmaster.TagHelpers;
 public sealed class InlineStyleTagHelper : InlineTagHelper
 {
 	private const string InlineStyleAttributeName = "inline-style";
-	private const string HrefAttributeName        = "href";
+	private const string HrefAttributeName = "href";
 
 	[HtmlAttributeName(HrefAttributeName)]
 	public string Href { get; set; }

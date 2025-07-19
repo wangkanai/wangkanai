@@ -17,12 +17,12 @@ public static class EnumValues<T> where T : Enum
 	private static readonly T[] Values = (T[])Enum.GetValues(typeof(T));
 
 	private static readonly ConcurrentDictionary<T, IReadOnlySet<T>> MultiValueFlagsCache = new();
-	private static readonly ConcurrentDictionary<T, EnumValueName>   MultiValueCache      = new();
+	private static readonly ConcurrentDictionary<T, EnumValueName> MultiValueCache = new();
 
-	private static readonly Dictionary<T, string>          PlainNames       = Values.ToDictionary(value => value, value => value.ToString());
-	private static readonly Dictionary<T, IReadOnlySet<T>> EnumFlags        = Values.ToDictionary(v => v, v => (IReadOnlySet<T>)Values.Where(item => v.HasFlag(item)).ToHashSet());
-	private static readonly Dictionary<string, T>          ValuesOriginal   = Values.ToDictionary(value => value.ToString(), value => value, StringComparer.Ordinal);
-	private static readonly Dictionary<string, T>          ValuesIgnoreCase = Values.ToDictionary(value => value.ToString(), value => value, StringComparer.OrdinalIgnoreCase);
+	private static readonly Dictionary<T, string> PlainNames = Values.ToDictionary(value => value, value => value.ToString());
+	private static readonly Dictionary<T, IReadOnlySet<T>> EnumFlags = Values.ToDictionary(v => v, v => (IReadOnlySet<T>)Values.Where(item => v.HasFlag(item)).ToHashSet());
+	private static readonly Dictionary<string, T> ValuesOriginal = Values.ToDictionary(value => value.ToString(), value => value, StringComparer.Ordinal);
+	private static readonly Dictionary<string, T> ValuesIgnoreCase = Values.ToDictionary(value => value.ToString(), value => value, StringComparer.OrdinalIgnoreCase);
 
 	/// <summary>
 	/// Retrieves an array of all values of the specified enum type.
@@ -119,47 +119,47 @@ public static class EnumValues<T> where T : Enum
 	{
 		var names = MultiValueCache
 			.GetOrAdd(value, v => new EnumValueName
-			                      {
-				                      Name               = v.ToString(),
-				                      NameWithFlags      = GetNameWithFlags(v),
-				                      NameLower          = v.ToString().ToLowerInvariant(),
-				                      NameLowerWithFlags = GetNameWithFlags(v).ToLowerInvariant(),
-				                      NameUpper          = v.ToString().ToUpperInvariant(),
-				                      NameUpperWithFlags = GetNameWithFlags(v).ToUpperInvariant()
-			                      });
+			{
+				Name = v.ToString(),
+				NameWithFlags = GetNameWithFlags(v),
+				NameLower = v.ToString().ToLowerInvariant(),
+				NameLowerWithFlags = GetNameWithFlags(v).ToLowerInvariant(),
+				NameUpper = v.ToString().ToUpperInvariant(),
+				NameUpperWithFlags = GetNameWithFlags(v).ToUpperInvariant()
+			});
 
 		if (returnAllFlags)
 			return kind switch
 			{
 				ValueKind.Normal => names.NameWithFlags,
-				ValueKind.Lower  => names.NameLowerWithFlags,
-				ValueKind.Upper  => names.NameUpperWithFlags,
-				_                => throw new ArgumentOutOfRangeException(nameof(kind), kind, null)
+				ValueKind.Lower => names.NameLowerWithFlags,
+				ValueKind.Upper => names.NameUpperWithFlags,
+				_ => throw new ArgumentOutOfRangeException(nameof(kind), kind, null)
 			};
 
 		return kind switch
 		{
 			ValueKind.Normal => names.Name,
-			ValueKind.Lower  => names.NameLower,
-			ValueKind.Upper  => names.NameUpper,
-			_                => throw new ArgumentOutOfRangeException(nameof(kind), kind, null)
+			ValueKind.Lower => names.NameLower,
+			ValueKind.Upper => names.NameUpper,
+			_ => throw new ArgumentOutOfRangeException(nameof(kind), kind, null)
 		};
 	}
 
 	private enum ValueKind
 	{
 		Normal = 0,
-		Lower  = 1,
-		Upper  = 2,
+		Lower = 1,
+		Upper = 2,
 	}
 
 	private readonly struct EnumValueName
 	{
-		public required string Name               { get; init; }
-		public required string NameWithFlags      { get; init; }
-		public required string NameLower          { get; init; }
+		public required string Name { get; init; }
+		public required string NameWithFlags { get; init; }
+		public required string NameLower { get; init; }
 		public required string NameLowerWithFlags { get; init; }
-		public required string NameUpper          { get; init; }
+		public required string NameUpper { get; init; }
 		public required string NameUpperWithFlags { get; init; }
 	}
 }

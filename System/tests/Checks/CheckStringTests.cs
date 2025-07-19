@@ -11,7 +11,7 @@ public class CheckStringTests
 	[Fact]
 	public void StringThrowIfNull()
 	{
-		char?   _char   = null;
+		char? _char = null;
 		string? _string = null;
 
 		Assert.Throws<ArgumentNullException>(() => _char.ThrowIfNull());
@@ -24,8 +24,8 @@ public class CheckStringTests
 	[Fact]
 	public void StringIsEmpty()
 	{
-		string? _null  = null;
-		string  _empty = string.Empty;
+		string? _null = null;
+		string _empty = string.Empty;
 
 		Assert.Throws<ArgumentNullException>(() => _null.ThrowIfEmpty());
 		Assert.Throws<ArgumentNullException>(() => _null.ThrowIfEmpty<ArgumentNullException>());
@@ -39,8 +39,8 @@ public class CheckStringTests
 	[Fact]
 	public void StringIsEmptyThrowException()
 	{
-		string? _null  = null;
-		string  _empty = string.Empty;
+		string? _null = null;
+		string _empty = string.Empty;
 
 		Assert.Throws<ArgumentException>(() => _null.ThrowIfEmpty<ArgumentException>());
 		Assert.Throws<ArgumentException>(() => _null.ThrowIfEmpty<ArgumentException>("Empty Exception"));
@@ -69,8 +69,8 @@ public class CheckStringTests
 	[Fact]
 	public void StringIsNullOrEmptyThrowNull()
 	{
-		string? _null  = null;
-		string  _empty = string.Empty;
+		string? _null = null;
+		string _empty = string.Empty;
 
 		Assert.Throws<ArgumentNullOrEmptyException>(() => _null.ThrowIfNullOrEmpty());
 		Assert.Throws<ArgumentNullOrEmptyException>(() => _null.ThrowIfNullOrEmpty<ArgumentNullOrEmptyException>());
@@ -84,8 +84,8 @@ public class CheckStringTests
 	[Fact]
 	public void StringIsNullOrEmptyThrowException()
 	{
-		string? _null  = null;
-		string  _empty = string.Empty;
+		string? _null = null;
+		string _empty = string.Empty;
 
 		Assert.Throws<ArgumentException>(() => _null.ThrowIfNullOrEmpty<ArgumentException>());
 		Assert.Throws<ArgumentException>(() => _null.ThrowIfNullOrEmpty<ArgumentException>("Null Exception"));
@@ -115,9 +115,9 @@ public class CheckStringTests
 	[Fact]
 	public void StringIsNullOrWhiteSpaceThrowException()
 	{
-		string? _null  = null;
-		string  _empty = string.Empty;
-		string  _space = " ";
+		string? _null = null;
+		string _empty = string.Empty;
+		string _space = " ";
 
 
 		Assert.Throws<ArgumentNullOrWhitespaceException>(() => _null.ThrowIfNullOrWhitespace());
@@ -156,7 +156,7 @@ public class CheckStringTests
 	[Fact]
 	public void StringIsWhitespaceThrowException()
 	{
-		string _space     = " ";
+		string _space = " ";
 		string _paragraph = new string(' ', 10);
 
 		Assert.Throws<ArgumentWhitespaceException>(() => _space.ThrowIfWhitespace());

@@ -28,8 +28,8 @@ public class IdentityClientGrantType<TKey> where TKey : IEquatable<TKey>
 		FlowType = flowType;
 	}
 
-	public virtual TKey           Id       { get; set; } = default!;
-	public virtual TKey           ClientId { get; set; }
-	public virtual IdentityClient Client   { get; set; }
-	public virtual FlowTypes      FlowType { get; set; }
+	public virtual TKey Id { get; set; } = default!;
+	public virtual TKey ClientId { get; set; }
+	public virtual IdentityClient Client { get; set; }
+	public virtual FlowTypes FlowType { get; set; }
 }

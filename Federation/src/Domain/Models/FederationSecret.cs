@@ -4,17 +4,17 @@ namespace Wangkanai.Federation.Models;
 
 public class FederationSecret
 {
-	public DateTime? Expiration  { get; set; }
-	public string?   Description { get; set; }
-	public string?   Value       { get; }
-	public string    Type        { get; } = DomainConstants.SecretTypes.SharedSecret;
+	public DateTime? Expiration { get; set; }
+	public string? Description { get; set; }
+	public string? Value { get; }
+	public string Type { get; } = DomainConstants.SecretTypes.SharedSecret;
 
 	public FederationSecret() { }
 
 	public FederationSecret(string value, DateTime? expiration = null)
 		: this()
 	{
-		Value      = value;
+		Value = value;
 		Expiration = expiration;
 	}
 
@@ -22,8 +22,8 @@ public class FederationSecret
 		: this()
 	{
 		Description = description;
-		Value       = value;
-		Expiration  = expiration;
+		Value = value;
+		Expiration = expiration;
 	}
 
 	public override int GetHashCode()
@@ -50,6 +50,6 @@ public class FederationSecret
 			return true;
 
 		return string.Equals(other.Type, Type, StringComparison.Ordinal) &&
-		       string.Equals(other.Value, Value, StringComparison.Ordinal);
+			   string.Equals(other.Value, Value, StringComparison.Ordinal);
 	}
 }

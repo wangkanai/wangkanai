@@ -11,23 +11,23 @@ namespace Wangkanai.Responsive.Mocks;
 
 internal class MockPageRouteModel
 {
-	private static readonly string            IndexFileName = "Index" + RazorViewEngine.ViewExtension;
-	private readonly        string            _normalizedAreaRootDirectory;
-	private readonly        string            _normalizedRootDirectory;
-	private readonly        RazorPagesOptions _options;
+	private static readonly string IndexFileName = "Index" + RazorViewEngine.ViewExtension;
+	private readonly string _normalizedAreaRootDirectory;
+	private readonly string _normalizedRootDirectory;
+	private readonly RazorPagesOptions _options;
 
 	public MockPageRouteModel(RazorPagesOptions options)
 	{
 		_options = options.ThrowIfNull();
 
-		_normalizedRootDirectory     = NormalizeDirectory(options.RootDirectory);
+		_normalizedRootDirectory = NormalizeDirectory(options.RootDirectory);
 		_normalizedAreaRootDirectory = "/Areas/";
 	}
 
 	public PageRouteModel CreateRouteModel(string relativePath, string routeTemplate)
 	{
 		var viewEnginePath = GetViewEnginePath(_normalizedRootDirectory, relativePath);
-		var model          = new PageRouteModel(relativePath, viewEnginePath);
+		var model = new PageRouteModel(relativePath, viewEnginePath);
 
 		PopulateRouteModel(model, viewEnginePath, routeTemplate);
 
@@ -39,7 +39,7 @@ internal class MockPageRouteModel
 		if (!TryParseAreaPath(relativePath, out var areaResult))
 			return null!;
 
-		var model  = new PageRouteModel(relativePath, areaResult.viewEnginePath, areaResult.areaName);
+		var model = new PageRouteModel(relativePath, areaResult.viewEnginePath, areaResult.areaName);
 		var prefix = CreateAreaRoute(areaResult.areaName, areaResult.viewEnginePath);
 		PopulateRouteModel(model, prefix, routeTemplate);
 		model.RouteValues["area"] = areaResult.areaName;
@@ -57,13 +57,13 @@ internal class MockPageRouteModel
 
 		var fileName = Path.GetFileName(model.RelativePath);
 		if (AttributeRouteModel.IsOverridePattern(routeTemplate) &&
-		    string.Equals(IndexFileName, fileName, StringComparison.OrdinalIgnoreCase))
+			string.Equals(IndexFileName, fileName, StringComparison.OrdinalIgnoreCase))
 		{
 			// For pages without on override route, and ending in /Index.cshtml
 			// I want ot allow incoming routing, but force outgoing routes to match to the path sans /Index.
 			selectorModel.AttributeRouteModel.SuppressLinkGeneration = true;
 
-			var index               = pageRoute.LastIndexOf('/');
+			var index = pageRoute.LastIndexOf('/');
 			var parentDirectoryPath = index == -1 ? string.Empty : pageRoute.Substring(0, index);
 			model.Selectors.Add(CreateSelectorModel(parentDirectoryPath, routeTemplate));
 		}
@@ -71,13 +71,13 @@ internal class MockPageRouteModel
 
 	private static SelectorModel CreateSelectorModel(string prefix, string routeTemplate)
 		=> new()
-		   {
-			   AttributeRouteModel = new AttributeRouteModel
-			                         {
-				                         Template = AttributeRouteModel.CombineTemplates(prefix, routeTemplate)
-			                         },
-			   EndpointMetadata = { new PageRouteMetadata(prefix, routeTemplate) }
-		   };
+		{
+			AttributeRouteModel = new AttributeRouteModel
+			{
+				Template = AttributeRouteModel.CombineTemplates(prefix, routeTemplate)
+			},
+			EndpointMetadata = { new PageRouteMetadata(prefix, routeTemplate) }
+		};
 
 	private bool TryParseAreaPath(string relativePath, out (string areaName, string viewEnginePath) result)
 	{
@@ -89,14 +89,14 @@ internal class MockPageRouteModel
 		// Parse the area root directory
 		var areaRootEndIndex = relativePath.IndexOf('/', 1);
 		if (areaRootEndIndex == -1 ||
-		    areaRootEndIndex >= relativePath.Length - 1 ||
-		    !relativePath.StartsWith(_normalizedAreaRootDirectory, StringComparison.OrdinalIgnoreCase))
+			areaRootEndIndex >= relativePath.Length - 1 ||
+			!relativePath.StartsWith(_normalizedAreaRootDirectory, StringComparison.OrdinalIgnoreCase))
 			return false;
 
 		// The first directory that follows the area root is the area name
 		var areaEndIndex = relativePath.IndexOf('/', areaRootEndIndex + 1);
 		if (areaEndIndex == -1 ||
-		    areaEndIndex == relativePath.Length)
+			areaEndIndex == relativePath.Length)
 			return false;
 
 		// Ensire the next token is the "Pages" directory
@@ -105,7 +105,7 @@ internal class MockPageRouteModel
 			return false;
 
 		// Include the trailing slash of the root directory at the start of the viewEnginePath
-		var pageNameIndex  = areaEndIndex + areaPagesRoot.Length - 1;
+		var pageNameIndex = areaEndIndex + areaPagesRoot.Length - 1;
 		var viewEnginePath = relativePath.Substring(pageNameIndex, relativePath.Length - pageNameIndex - RazorViewEngine.ViewExtension.Length);
 
 		result = (areaName, viewEnginePath);
@@ -118,17 +118,18 @@ internal class MockPageRouteModel
 		path.ThrowIfNull();
 
 		var start = rootDirectory.Length - 1;
-		var end   = path.Length - RazorViewEngine.ViewExtension.Length;
+		var end = path.Length - RazorViewEngine.ViewExtension.Length;
 
 		return path.Substring(start, end - start);
 	}
 
 	private static string CreateAreaRoute(string areaName, string viewEnginePath)
-		=> string.Create(1 + areaName.Length + viewEnginePath.Length, (areaName, viewEnginePath), (span, tuple) => {
+		=> string.Create(1 + areaName.Length + viewEnginePath.Length, (areaName, viewEnginePath), (span, tuple) =>
+		{
 			var (areaNameValue, viewEnginePathValue) = tuple;
 
 			span[0] = '/';
-			span    = span.Slice(1);
+			span = span.Slice(1);
 
 			areaNameValue.AsSpan().CopyTo(span);
 			span = span.Slice(areaNameValue.Length);

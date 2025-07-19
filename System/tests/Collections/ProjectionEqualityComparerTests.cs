@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 namespace Wangkanai.Collections;
 
@@ -57,7 +57,7 @@ public class ProjectionEqualityComparerTests
 		var lowerA = new NameAndNumber("a", 10);
 		var upperA = new NameAndNumber("A", 10);
 
-		var ordinal     = new ProjectionEqualityComparer<NameAndNumber, string>(x => x.Name, StringComparer.Ordinal);
+		var ordinal = new ProjectionEqualityComparer<NameAndNumber, string>(x => x.Name, StringComparer.Ordinal);
 		var insensitive = new ProjectionEqualityComparer<NameAndNumber, string>(x => x.Name, StringComparer.OrdinalIgnoreCase);
 
 		ordinal.AssertNotEqual(lowerA, upperA);

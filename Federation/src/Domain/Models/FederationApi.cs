@@ -14,7 +14,7 @@ public sealed class FederationApi : FederationResource
 	public bool RequireApiIndicator { get; set; }
 
 	public ICollection<FederationSecret> Secrets { get; set; } = new HashSet<FederationSecret>();
-	public ICollection<string>           Scopes  { get; set; } = new HashSet<string>();
+	public ICollection<string> Scopes { get; set; } = new HashSet<string>();
 
 	public ICollection<string> AllowedAccessTokenSigningAlgorithms { get; set; } = new HashSet<string>();
 
@@ -26,7 +26,7 @@ public sealed class FederationApi : FederationResource
 	{
 		name.ThrowIfNullOrWhitespace();
 
-		Name        = name;
+		Name = name;
 		DisplayName = displayName;
 
 		if (claims.IsNullOrEmpty())

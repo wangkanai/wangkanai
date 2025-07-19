@@ -12,28 +12,28 @@ public class MarkdownApplicationModel
 {
 	public MarkdownApplicationModel(
 		MarkdownActionDescriptor actionDescriptor,
-		TypeInfo                 handlerType,
-		IReadOnlyList<object>    handlerAttributes)
+		TypeInfo handlerType,
+		IReadOnlyList<object> handlerAttributes)
 		: this(actionDescriptor, handlerType, handlerType, handlerAttributes) { }
 
 	public MarkdownApplicationModel(
 		MarkdownActionDescriptor actionDescriptor,
-		TypeInfo                 declaredModelType,
-		TypeInfo                 handlerType,
-		IReadOnlyList<object>    handlerAttributes)
+		TypeInfo declaredModelType,
+		TypeInfo handlerType,
+		IReadOnlyList<object> handlerAttributes)
 	{
-		ActionDescriptor  = actionDescriptor.ThrowIfNull();
+		ActionDescriptor = actionDescriptor.ThrowIfNull();
 		DeclaredModelType = declaredModelType;
-		HandlerType       = handlerType;
+		HandlerType = handlerType;
 
 		Filters = new List<IFilterMetadata>();
 		Properties = new CopyOnWriteDictionary<object, object?>(
 			actionDescriptor.Properties,
 			EqualityComparer<object>.Default);
-		HandlerMethods        = new List<MarkdownHandlerModel>();
-		HandlerProperties     = new List<MarkdownPropertyModel>();
+		HandlerMethods = new List<MarkdownHandlerModel>();
+		HandlerProperties = new List<MarkdownPropertyModel>();
 		HandlerTypeAttributes = handlerAttributes;
-		EndpointMetadata      = new List<object>(ActionDescriptor.EndpointMetadata ?? Array.Empty<object>());
+		EndpointMetadata = new List<object>(ActionDescriptor.EndpointMetadata ?? Array.Empty<object>());
 	}
 
 	public MarkdownApplicationModel(MarkdownApplicationModel other)
@@ -41,38 +41,38 @@ public class MarkdownApplicationModel
 		other.ThrowIfNull();
 
 		ActionDescriptor = other.ActionDescriptor;
-		HandlerType      = other.HandlerType;
-		MarkdownType     = other.MarkdownType;
-		ModelType        = other.ModelType;
+		HandlerType = other.HandlerType;
+		MarkdownType = other.MarkdownType;
+		ModelType = other.ModelType;
 
-		Filters    = new List<IFilterMetadata>(other.Filters);
+		Filters = new List<IFilterMetadata>(other.Filters);
 		Properties = new Dictionary<object, object?>(other.Properties);
 
-		HandlerMethods        = new List<MarkdownHandlerModel>(other.HandlerMethods.Select(m => new MarkdownHandlerModel(m)));
-		HandlerProperties     = new List<MarkdownPropertyModel>(other.HandlerProperties.Select(p => new MarkdownPropertyModel(p)));
+		HandlerMethods = new List<MarkdownHandlerModel>(other.HandlerMethods.Select(m => new MarkdownHandlerModel(m)));
+		HandlerProperties = new List<MarkdownPropertyModel>(other.HandlerProperties.Select(p => new MarkdownPropertyModel(p)));
 		HandlerTypeAttributes = other.HandlerTypeAttributes;
-		EndpointMetadata      = new List<object>(other.EndpointMetadata);
+		EndpointMetadata = new List<object>(other.EndpointMetadata);
 	}
 
 	public MarkdownActionDescriptor ActionDescriptor { get; }
 
-	public string  RelativePath   => ActionDescriptor.RelativePath;
-	public string  ViewEnginePath => ActionDescriptor.ViewEnginePath;
-	public string? AreaName       => ActionDescriptor.AreaName;
-	public string? RouteTemplate  => ActionDescriptor.AttributeRouteInfo?.Template;
+	public string RelativePath => ActionDescriptor.RelativePath;
+	public string ViewEnginePath => ActionDescriptor.ViewEnginePath;
+	public string? AreaName => ActionDescriptor.AreaName;
+	public string? RouteTemplate => ActionDescriptor.AttributeRouteInfo?.Template;
 
 	public IList<IFilterMetadata> Filters { get; }
 
 	public IDictionary<object, object?> Properties { get; }
 
-	public TypeInfo  MarkdownType      { get; set; } = default!;
+	public TypeInfo MarkdownType { get; set; } = default!;
 	public TypeInfo? DeclaredModelType { get; }
-	public TypeInfo? ModelType         { get; set; }
-	public TypeInfo  HandlerType       { get; }
+	public TypeInfo? ModelType { get; set; }
+	public TypeInfo HandlerType { get; }
 
 	public IReadOnlyList<object> HandlerTypeAttributes { get; }
 
-	public IList<MarkdownHandlerModel>  HandlerMethods    { get; }
+	public IList<MarkdownHandlerModel> HandlerMethods { get; }
 	public IList<MarkdownPropertyModel> HandlerProperties { get; }
-	public IList<object>                EndpointMetadata  { get; }
+	public IList<object> EndpointMetadata { get; }
 }

@@ -1,12 +1,12 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using System.Diagnostics;
 
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Mvc.Infrastructure;
-using Microsoft.AspNetCore.Routing;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Abstractions;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.AspNetCore.Routing.Patterns;
 using Microsoft.Extensions.Primitives;
 
@@ -21,16 +21,16 @@ internal abstract class ActionEndpointDataSourceBase : EndpointDataSource, IDisp
 	protected readonly List<Action<EndpointBuilder>> Conventions;
 	protected readonly List<Action<EndpointBuilder>> FinallyConventions;
 
-	private List<Endpoint>?          _endpoints;
+	private List<Endpoint>? _endpoints;
 	private CancellationTokenSource? _cancellationTokenSource;
-	private IChangeToken?            _changeToken;
-	private IDisposable?             _disposable;
+	private IChangeToken? _changeToken;
+	private IDisposable? _disposable;
 
 	public ActionEndpointDataSourceBase(IActionDescriptorCollectionProvider actions)
 	{
 		_actions = actions;
 
-		Conventions        = new List<Action<EndpointBuilder>>();
+		Conventions = new List<Action<EndpointBuilder>>();
 		FinallyConventions = new List<Action<EndpointBuilder>>();
 	}
 
@@ -40,7 +40,7 @@ internal abstract class ActionEndpointDataSourceBase : EndpointDataSource, IDisp
 		{
 			Initialize();
 			Debug.Assert(_changeToken != null);
-			Debug.Assert(_endpoints   != null);
+			Debug.Assert(_endpoints != null);
 			return _endpoints;
 		}
 	}
@@ -80,17 +80,17 @@ internal abstract class ActionEndpointDataSourceBase : EndpointDataSource, IDisp
 				finallyConventions: FinallyConventions,
 				groupFinallyConventions: Array.Empty<Action<EndpointBuilder>>());
 			var oldCancellationTokenSource = _cancellationTokenSource;
-			_endpoints               = endpoints;
+			_endpoints = endpoints;
 			_cancellationTokenSource = new CancellationTokenSource();
-			_changeToken             = new CancellationChangeToken(_cancellationTokenSource.Token);
+			_changeToken = new CancellationChangeToken(_cancellationTokenSource.Token);
 
 			oldCancellationTokenSource?.Cancel();
 		}
 	}
 
 	protected abstract List<Endpoint> CreateEndpoints(
-		RoutePattern?                          groupPrefix,
-		IReadOnlyList<ActionDescriptor>        actions,
+		RoutePattern? groupPrefix,
+		IReadOnlyList<ActionDescriptor> actions,
 		IReadOnlyList<Action<EndpointBuilder>> conventions,
 		IReadOnlyList<Action<EndpointBuilder>> groupConventions,
 		IReadOnlyList<Action<EndpointBuilder>> finallyConventions,
@@ -98,12 +98,12 @@ internal abstract class ActionEndpointDataSourceBase : EndpointDataSource, IDisp
 
 	protected void Subscribe()
 	{
-		if (_actions is ActionDescriptorCollectionProvider collectionProviderWithChangeToken) 
+		if (_actions is ActionDescriptorCollectionProvider collectionProviderWithChangeToken)
 			_disposable = ChangeToken.OnChange(() => collectionProviderWithChangeToken.GetChangeToken(), UpdateEndpoints);
 	}
 
 	public override IChangeToken GetChangeToken()
-	{ 
+	{
 		Initialize();
 		Debug.Assert(_changeToken != null);
 		Debug.Assert(_endpoints != null);

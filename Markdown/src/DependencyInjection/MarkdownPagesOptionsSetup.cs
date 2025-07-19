@@ -2,8 +2,8 @@
 
 using Microsoft.Extensions.Options;
 
-using Wangkanai.Markdown.DependencyInjection.Options;
 using Wangkanai.Markdown.ApplicationModels;
+using Wangkanai.Markdown.DependencyInjection.Options;
 
 namespace Microsoft.Extensions.DependencyInjection;
 

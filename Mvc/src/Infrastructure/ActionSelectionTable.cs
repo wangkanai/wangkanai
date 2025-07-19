@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 #nullable enable
 
@@ -16,20 +16,20 @@ namespace Wangkanai.Mvc.Infrastructure;
 
 internal sealed class ActionSelectionTable<TItem>
 {
-	public  int                               Version                  { get; }
-	private string[]                          RouteKeys                { get; }
-	private Dictionary<string[], List<TItem>> OrdinalEntries           { get; }
+	public int Version { get; }
+	private string[] RouteKeys { get; }
+	private Dictionary<string[], List<TItem>> OrdinalEntries { get; }
 	private Dictionary<string[], List<TItem>> OrdinalIgnoreCaseEntries { get; }
 
 	private ActionSelectionTable(
-		int                               version,
-		string[]                          routeKeys,
+		int version,
+		string[] routeKeys,
 		Dictionary<string[], List<TItem>> ordinalEntries,
 		Dictionary<string[], List<TItem>> ordinalIgnoreCaseEntries)
 	{
-		Version                  = version;
-		RouteKeys                = routeKeys;
-		OrdinalEntries           = ordinalEntries;
+		Version = version;
+		RouteKeys = routeKeys;
+		OrdinalEntries = ordinalEntries;
 		OrdinalIgnoreCaseEntries = ordinalIgnoreCaseEntries;
 	}
 
@@ -39,7 +39,8 @@ internal sealed class ActionSelectionTable<TItem>
 			actions.Version,
 			actions.Items.Where(a => a.AttributeRouteInfo == null),
 			a => a.RouteValues?.Keys,
-			(a, key) => {
+			(a, key) =>
+			{
 				string? value = null;
 				a.RouteValues?.TryGetValue(key, out value);
 				return value ?? string.Empty;
@@ -48,23 +49,24 @@ internal sealed class ActionSelectionTable<TItem>
 
 	public static ActionSelectionTable<Endpoint> Create(IEnumerable<Endpoint> endpoints)
 		=> CreateCore(version: 0,
-		              items: endpoints.Where(e => e.GetType() == typeof(Endpoint)),
-		              getRouteKeys: e => e.Metadata.GetMetadata<ActionDescriptor>()?.RouteValues?.Keys,
-		              getRouteValue: (e, key) => {
-			              string? value = null;
-			              e.Metadata.GetMetadata<ActionDescriptor>()?.RouteValues?.TryGetValue(key, out value);
-			              return Convert.ToString(value, CultureInfo.InvariantCulture) ?? string.Empty;
-		              });
+					  items: endpoints.Where(e => e.GetType() == typeof(Endpoint)),
+					  getRouteKeys: e => e.Metadata.GetMetadata<ActionDescriptor>()?.RouteValues?.Keys,
+					  getRouteValue: (e, key) =>
+					  {
+						  string? value = null;
+						  e.Metadata.GetMetadata<ActionDescriptor>()?.RouteValues?.TryGetValue(key, out value);
+						  return Convert.ToString(value, CultureInfo.InvariantCulture) ?? string.Empty;
+					  });
 
 	private static ActionSelectionTable<T> CreateCore<T>(
-		int                           version,
-		IEnumerable<T>                items,
+		int version,
+		IEnumerable<T> items,
 		Func<T, IEnumerable<string>?> getRouteKeys,
-		Func<T, string, string>       getRouteValue)
+		Func<T, string, string> getRouteValue)
 	{
-		var ordinalEntries           = new Dictionary<string[], List<T>>(StringArrayComparer.Ordinal);
+		var ordinalEntries = new Dictionary<string[], List<T>>(StringArrayComparer.Ordinal);
 		var ordinalIgnoreCaseEntries = new Dictionary<string[], List<T>>(StringArrayComparer.OrdinalIgnoreCase);
-		var routeKeys                = new SortedSet<string>(StringComparer.OrdinalIgnoreCase);
+		var routeKeys = new SortedSet<string>(StringComparer.OrdinalIgnoreCase);
 
 		foreach (var item in items)
 		{
@@ -77,7 +79,7 @@ internal sealed class ActionSelectionTable<TItem>
 
 		foreach (var item in items)
 		{
-			var index       = 0;
+			var index = 0;
 			var routeValues = new string[routeKeys.Count];
 			foreach (var key in routeKeys)
 			{
@@ -101,7 +103,7 @@ internal sealed class ActionSelectionTable<TItem>
 
 	public IReadOnlyList<TItem> Select(RouteValueDictionary values)
 	{
-		var routeKeys   = RouteKeys;
+		var routeKeys = RouteKeys;
 		var routeValues = new string[routeKeys.Length];
 		for (var i = 0; i < routeKeys.Length; i++)
 		{
@@ -110,7 +112,7 @@ internal sealed class ActionSelectionTable<TItem>
 		}
 
 		if (OrdinalEntries.TryGetValue(routeValues, out var matches) ||
-		    OrdinalIgnoreCaseEntries.TryGetValue(routeValues, out matches))
+			OrdinalIgnoreCaseEntries.TryGetValue(routeValues, out matches))
 		{
 			Debug.Assert(matches != null);
 			return matches;

@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using System.Linq.Expressions;
 
@@ -35,16 +35,16 @@ public static class ExpressionFactory
 			catch (InvalidOperationException)
 			{
 				if (castArgsToResultOnFailure           // if we show retry
-				    && typeof(TArg1) == typeof(TResult) // and the args are not
-				    && typeof(TArg2) == typeof(TResult))
+					&& typeof(TArg1) == typeof(TResult) // and the args are not
+					&& typeof(TArg2) == typeof(TResult))
 				{
 					// convert both lhs and rhs to TResult (as appropriate)
 					var castLhs = typeof(TArg1) == typeof(TResult)
-						              ? (Expression)lhs
-						              : (Expression)Expression.Convert(lhs, typeof(TResult));
+									  ? (Expression)lhs
+									  : (Expression)Expression.Convert(lhs, typeof(TResult));
 					var castRhs = typeof(TArg2) == typeof(TResult)
-						              ? (Expression)rhs
-						              : (Expression)Expression.Convert(rhs, typeof(TResult));
+									  ? (Expression)rhs
+									  : (Expression)Expression.Convert(rhs, typeof(TResult));
 
 					return Expression.Lambda<Func<TArg1, TArg2, TResult>>(body(castLhs, castRhs), lhs, rhs).Compile();
 				}

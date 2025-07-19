@@ -12,12 +12,12 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers;
 [HtmlTargetElement(ElementName, Attributes = ExcludeAttributeName)]
 public class CrawlerTagHelper : TagHelper
 {
-	private const string ElementName          = "crawler";
+	private const string ElementName = "crawler";
 	private const string IncludeAttributeName = "include";
 	private const string ExcludeAttributeName = "exclude";
 
-	private static readonly char[]          NameSeparator = { ',' };
-	private readonly        ICrawlerService _resolver;
+	private static readonly char[] NameSeparator = { ',' };
+	private readonly ICrawlerService _resolver;
 
 	public CrawlerTagHelper(ICrawlerService resolver)
 	{

@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using System.Diagnostics;
 using System.Threading.Tasks;
@@ -10,9 +10,9 @@ namespace Wangkanai.Markdown;
 [DebuggerDisplay("{DebuggerDisplayString,nq}")]
 public class MarkdownActionDescriptor : ActionDescriptor
 {
-	public string  RelativePath   { get; set; } = default!;
-	public string  ViewEnginePath { get; set; } = default!;
-	public string? AreaName       { get; set; }
+	public string RelativePath { get; set; } = default!;
+	public string ViewEnginePath { get; set; } = default!;
+	public string? AreaName { get; set; }
 
 	public MarkdownActionDescriptor() { }
 
@@ -20,9 +20,9 @@ public class MarkdownActionDescriptor : ActionDescriptor
 	{
 		other.ThrowIfNull();
 
-		RelativePath   = other.RelativePath;
+		RelativePath = other.RelativePath;
 		ViewEnginePath = other.ViewEnginePath;
-		AreaName       = other.AreaName;
+		AreaName = other.AreaName;
 	}
 
 	internal virtual CompiledMarkdownActionDescriptor? CompiledMarkdownDescriptor { get; set; }

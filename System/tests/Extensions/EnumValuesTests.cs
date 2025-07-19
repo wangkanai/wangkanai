@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 namespace Wangkanai.Extensions;
 
@@ -47,8 +47,8 @@ public class EnumValuesTests
 [Flags]
 public enum Fruit
 {
-	Apple  = 0,
+	Apple = 0,
 	Orange = 1 << 0,
-	Pear   = 1 << 1,
+	Pear = 1 << 1,
 	Banana = 1 << 2
 }

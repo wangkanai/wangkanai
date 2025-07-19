@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 namespace Wangkanai.Collections;
 
@@ -46,7 +46,7 @@ public static class ProjectionEqualityComparer<TSource>
 /// <typeparam name="TKey">Type parameter for the keys to be compared, after being projected from the elements</typeparam>
 public class ProjectionEqualityComparer<TSource, TKey> : IEqualityComparer<TSource>
 {
-	private readonly Func<TSource, TKey>     _projection;
+	private readonly Func<TSource, TKey> _projection;
 	private readonly IEqualityComparer<TKey> _comparer;
 
 	/// <summary>
@@ -57,7 +57,7 @@ public class ProjectionEqualityComparer<TSource, TKey> : IEqualityComparer<TSour
 	public ProjectionEqualityComparer(Func<TSource, TKey> projection, IEqualityComparer<TKey>? comparer = null)
 	{
 		_projection = projection.ThrowIfNull();
-		_comparer   = comparer ?? EqualityComparer<TKey>.Default;
+		_comparer = comparer ?? EqualityComparer<TKey>.Default;
 	}
 
 	/// <summary>
@@ -72,9 +72,9 @@ public class ProjectionEqualityComparer<TSource, TKey> : IEqualityComparer<TSour
 		=> (x, y) switch
 		{
 			(null, null) => true,
-			(null, _)    => false,
-			(_, null)    => false,
-			_            => _comparer.Equals(_projection(x), _projection(y))
+			(null, _) => false,
+			(_, null) => false,
+			_ => _comparer.Equals(_projection(x), _projection(y))
 		};
 
 	/// <summary>

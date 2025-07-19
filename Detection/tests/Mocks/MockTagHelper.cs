@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
 
 using System.Text.Encodings.Web;
 
@@ -26,7 +26,7 @@ public static class MockTagHelper
 
 	internal static Task<TagHelperContent> GetChildContentAsync(IHtmlContent inner)
 	{
-		var content       = new DefaultTagHelperContent();
+		var content = new DefaultTagHelperContent();
 		var helperContent = content.SetHtmlContent(inner);
 		return Task.FromResult<TagHelperContent>(helperContent);
 	}

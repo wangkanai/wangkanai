@@ -9,5 +9,5 @@ public class ClassMapper : BaseMapper
 	public override string ToString()
 		=> string.Join(
 			" ", Items.Select(i => i())
-			          .Where(i => i != null));
+					  .Where(i => i != null));
 }

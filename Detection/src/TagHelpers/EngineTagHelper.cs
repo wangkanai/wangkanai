@@ -12,12 +12,12 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers;
 [HtmlTargetElement(ElementName, Attributes = ExcludeAttributeName)]
 public class EngineTagHelper : TagHelper
 {
-	private const string ElementName          = "engine";
+	private const string ElementName = "engine";
 	private const string IncludeAttributeName = "include";
 	private const string ExcludeAttributeName = "exclude";
 
-	private static readonly char[]         NameSeparator = { ',' };
-	private readonly        IEngineService _resolver;
+	private static readonly char[] NameSeparator = { ',' };
+	private readonly IEngineService _resolver;
 
 	public EngineTagHelper(IEngineService resolver)
 	{

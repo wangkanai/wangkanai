@@ -10,9 +10,9 @@ public sealed class RequireUppercaseAttribute : ValidationAttribute
 
 	public override bool IsValid(object? value)
 		=> value switch
-		   {
-			   null          => true, // Required duty
-			   string actual => actual.Any(char.IsUpper),
-			   _             => false
-		   };
+		{
+			null => true, // Required duty
+			string actual => actual.Any(char.IsUpper),
+			_ => false
+		};
 }

@@ -6,12 +6,12 @@ public static class WebserverCollectionExtensions
 {
 	public static IWebserverBuilder AddWebserver(this IServiceCollection services, Action<WebserverOptions> setAction)
 		=> services.Configure(setAction)
-		           .AddWebserver();
+				   .AddWebserver();
 
 	public static IWebserverBuilder AddWebserver(this IServiceCollection services)
 		=> services.AddWebserverBuilder()
-		           .AddCoreServices()
-		           .AddMarkerService();
+				   .AddCoreServices()
+				   .AddMarkerService();
 
 	private static IWebserverBuilder AddWebserverBuilder(this IServiceCollection services)
 		=> new WebserverBuilder(services);

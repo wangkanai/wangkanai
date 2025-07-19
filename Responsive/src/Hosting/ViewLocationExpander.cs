@@ -22,7 +22,7 @@ namespace Wangkanai.Responsive.Hosting;
 /// </example>
 public sealed class ResponsiveViewLocationExpander : IViewLocationExpander
 {
-	private const    string                       ValueKey = "device";
+	private const string ValueKey = "device";
 	private readonly ResponsiveViewLocationFormat _format;
 
 	public ResponsiveViewLocationExpander(ResponsiveViewLocationFormat format)
@@ -48,8 +48,8 @@ public sealed class ResponsiveViewLocationExpander : IViewLocationExpander
 		context.Values.TryGetValue(ValueKey, out var device);
 
 		return string.IsNullOrEmpty(device)
-			       ? viewLocations
-			       : ExpandViewLocationsCore(viewLocations, device);
+				   ? viewLocations
+				   : ExpandViewLocationsCore(viewLocations, device);
 	}
 
 	private IEnumerable<string> ExpandViewLocationsCore(IEnumerable<string> viewLocations, string device)
@@ -57,8 +57,8 @@ public sealed class ResponsiveViewLocationExpander : IViewLocationExpander
 		foreach (var location in viewLocations)
 		{
 			yield return _format == ResponsiveViewLocationFormat.Suffix
-				             ? location.Replace("{0}", "{0}." + device)
-				             : location.Replace("{0}", device + "/{0}");
+							 ? location.Replace("{0}", "{0}." + device)
+							 : location.Replace("{0}", device + "/{0}");
 
 			yield return location;
 		}

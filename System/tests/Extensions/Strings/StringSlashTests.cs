@@ -1,16 +1,16 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 namespace Wangkanai.Extensions.Strings;
 
 public class StringSlashTests
 {
-	readonly string? _null  = null;
-	readonly string  _empty = string.Empty;
-	readonly string  _space = " ";
+	readonly string? _null = null;
+	readonly string _empty = string.Empty;
+	readonly string _space = " ";
 
 	readonly string _slash = "/";
 	readonly string _start = "start";
-	readonly string _end   = "end";
+	readonly string _end = "end";
 
 	// Ensure leading slash
 
@@ -56,8 +56,8 @@ public class StringSlashTests
 
 	// Remove leading slash
 
-	[Fact] public void RemoveLeadingNoSlash()   => Assert.Equal(_start, _start.RemoveLeadingSlash());
-	[Fact] public void RemoveTrailingNoSlash()  => Assert.Equal(_end, _end.RemoveTrailingSlash());
+	[Fact] public void RemoveLeadingNoSlash() => Assert.Equal(_start, _start.RemoveLeadingSlash());
+	[Fact] public void RemoveTrailingNoSlash() => Assert.Equal(_end, _end.RemoveTrailingSlash());
 	[Fact] public void RemoveTrailingHasSlash() => Assert.Equal(_end, (_end + _slash).RemoveTrailingSlash());
 
 	[Fact]

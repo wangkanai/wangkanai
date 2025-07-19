@@ -15,7 +15,7 @@ public sealed class ResponsiveService : IResponsiveService
 	private const string ResponsiveContextKey = "Responsive";
 
 	private readonly HttpContext _context;
-	private readonly Device      _defaultView;
+	private readonly Device _defaultView;
 
 	public ResponsiveService(IHttpContextAccessor accessor, IDeviceService deviceService, ResponsiveOptions? options)
 	{
@@ -25,7 +25,7 @@ public sealed class ResponsiveService : IResponsiveService
 
 		options ??= new ResponsiveOptions();
 
-		_context     = accessor.HttpContext;
+		_context = accessor.HttpContext;
 		_defaultView = DefaultView(deviceService.Type, options);
 	}
 
@@ -63,11 +63,11 @@ public sealed class ResponsiveService : IResponsiveService
 	private static Device DefaultView(Device device, ResponsiveOptions options)
 	{
 		return device switch
-		       {
-			       Device.Mobile  => options.DefaultMobile,
-			       Device.Tablet  => options.DefaultTablet,
-			       Device.Desktop => options.DefaultDesktop,
-			       _              => device
-		       };
+		{
+			Device.Mobile => options.DefaultMobile,
+			Device.Tablet => options.DefaultTablet,
+			Device.Desktop => options.DefaultDesktop,
+			_ => device
+		};
 	}
 }

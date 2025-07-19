@@ -10,27 +10,27 @@ namespace Wangkanai.Mvc.Routing;
 
 internal readonly struct ConventionalRouteEntry
 {
-	public readonly RoutePattern                           Pattern;
-	public readonly string                                 RouteName;
-	public readonly RouteValueDictionary?                  DataTokens;
-	public readonly int                                    Order;
+	public readonly RoutePattern Pattern;
+	public readonly string RouteName;
+	public readonly RouteValueDictionary? DataTokens;
+	public readonly int Order;
 	public readonly IReadOnlyList<Action<EndpointBuilder>> Conventions;
 	public readonly IReadOnlyList<Action<EndpointBuilder>> FinallyConventions;
 
 	public ConventionalRouteEntry(
-		string                        routeName,
-		string                        pattern,
-		RouteValueDictionary?         defaults,
+		string routeName,
+		string pattern,
+		RouteValueDictionary? defaults,
 		IDictionary<string, object?>? constraints,
-		RouteValueDictionary?         dataTokens,
-		int                           order,
+		RouteValueDictionary? dataTokens,
+		int order,
 		List<Action<EndpointBuilder>> conventions,
 		List<Action<EndpointBuilder>> finallyConventions)
 	{
-		RouteName          = routeName;
-		DataTokens         = dataTokens;
-		Order              = order;
-		Conventions        = conventions;
+		RouteName = routeName;
+		DataTokens = dataTokens;
+		Order = order;
+		Conventions = conventions;
 		FinallyConventions = finallyConventions;
 
 		try

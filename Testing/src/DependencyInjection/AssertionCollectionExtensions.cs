@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using Wangkanai.Testing;
 using Wangkanai.Testing.Builders;
@@ -13,10 +13,10 @@ public static class AssertionCollectionExtensions
 	/// <returns>An <see cref="IAssertionBuilder" /> so that additional calls can be chained</returns>
 	public static IAssertionBuilder AddAssertion(this IServiceCollection services)
 		=> services.AddAssertionBuilder()
-		           .AddRequiredService()
-		           .AddLifetimeService()
-		           .AddMockService()
-		           .AddMarkerService();
+				   .AddRequiredService()
+				   .AddLifetimeService()
+				   .AddMockService()
+				   .AddMarkerService();
 
 	/// <summary>Add Assertion service to the service container</summary>
 	/// <param name="services">The services available in the application</param>
@@ -27,7 +27,7 @@ public static class AssertionCollectionExtensions
 	/// <returns>An <see cref="IAssertionBuilder" /> so that additional calls can be chained</returns>
 	public static IAssertionBuilder AddAssertion(this IServiceCollection services, Action<AssertionOptions> configure)
 		=> services.Configure(configure)
-	                                                                                                                              .AddAssertionBuilder();
+																																  .AddAssertionBuilder();
 
 	// For internal unit tests
 	internal static IAssertionBuilder AddAssertionBuilder(this IServiceCollection services)

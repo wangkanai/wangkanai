@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using System.Diagnostics;
 using System.Reflection;
@@ -11,7 +11,7 @@ namespace Wangkanai.Markdown.ApplicationModels;
 public class MarkdownParameterModel : ParameterModelBase, ICommonModel, IBindingModel
 {
 	public MarkdownParameterModel(
-		ParameterInfo         parameterInfo,
+		ParameterInfo parameterInfo,
 		IReadOnlyList<object> attributes)
 		: base(parameterInfo.ParameterType, attributes)
 	{
@@ -26,7 +26,7 @@ public class MarkdownParameterModel : ParameterModelBase, ICommonModel, IBinding
 	{
 		other.ThrowIfNull();
 
-		Handler       = other.Handler;
+		Handler = other.Handler;
 		ParameterInfo = other.ParameterInfo;
 	}
 

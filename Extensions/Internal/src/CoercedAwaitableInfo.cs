@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
@@ -9,14 +9,14 @@ namespace Wangkanai.Extensions.Internal;
 
 internal readonly struct CoercedAwaitableInfo
 {
-	public AwaitableInfo AwaitableInfo     { get; }
-	public Expression    CoercerExpression { get; }
-	public Type          CoercerResultType { get; }
-	public bool          RequiresCoercion  => CoercerExpression != null;
+	public AwaitableInfo AwaitableInfo { get; }
+	public Expression CoercerExpression { get; }
+	public Type CoercerResultType { get; }
+	public bool RequiresCoercion => CoercerExpression != null;
 
 	internal CoercedAwaitableInfo(AwaitableInfo awaitableInfo)
 	{
-		AwaitableInfo     = awaitableInfo;
+		AwaitableInfo = awaitableInfo;
 		CoercerExpression = null;
 		CoercerResultType = null;
 	}
@@ -25,7 +25,7 @@ internal readonly struct CoercedAwaitableInfo
 	{
 		CoercerExpression = coercerExpression;
 		CoercerResultType = coercerResultType;
-		AwaitableInfo     = coercedAwaitableInfo;
+		AwaitableInfo = coercedAwaitableInfo;
 	}
 
 	public static bool IsTypeAwaitable(

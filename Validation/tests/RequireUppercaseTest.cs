@@ -14,7 +14,7 @@ public class RequireUppercaseTest(ITestOutputHelper output)
 	[Fact]
 	public void Uppercase()
 	{
-		var vm          = new UppercaseModel { Password = "ABC" };
+		var vm = new UppercaseModel { Password = "ABC" };
 		var validations = vm.Validate(vm.Password, _password);
 		validations.Print(output);
 		Assert.Empty(validations);

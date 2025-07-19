@@ -10,8 +10,8 @@ namespace Wangkanai.Webmaster.TagHelpers;
 public sealed class CanonicalTagHelper : TagHelper
 {
 	private const string CanonicalAttributeName = "seo-canonical";
-	private const string HrefAttributeName      = "href";
-	private const string RelAttributeName       = "rel";
+	private const string HrefAttributeName = "href";
+	private const string RelAttributeName = "rel";
 
 	public override int Order => -1000;
 

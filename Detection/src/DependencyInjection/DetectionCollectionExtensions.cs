@@ -12,9 +12,9 @@ public static class DetectionCollectionExtensions
 	/// <returns>An <see cref="IDetectionBuilder" /> so that additional calls can be chained</returns>
 	public static IDetectionBuilder AddDetection(this IServiceCollection services)
 		=> services.AddDetectionBuilder()
-		           .AddRequiredServices()
-		           .AddCoreServices()
-		           .AddMarkerService();
+				   .AddRequiredServices()
+				   .AddCoreServices()
+				   .AddMarkerService();
 
 	/// <summary>Add Detection service to the services container</summary>
 	/// <param name="services">The services available in the application</param>
@@ -22,7 +22,7 @@ public static class DetectionCollectionExtensions
 	/// <returns>An <see cref="IDetectionBuilder" /> so that additional calls can be chained</returns>
 	public static IDetectionBuilder AddDetection(this IServiceCollection services, Action<DetectionOptions> setAction)
 		=> services.Configure(setAction)
-		           .AddDetection();
+				   .AddDetection();
 
 	internal static IDetectionBuilder AddDetectionBuilder(this IServiceCollection services)
 		=> new DetectionBuilder(services);

@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using Wangkanai.Exceptions;
 
@@ -6,11 +6,11 @@ namespace Wangkanai.Extensions.Strings;
 
 public class StringSeparationListTests
 {
-	List<string> _nullList  = null;
+	List<string> _nullList = null;
 	List<string> _emptyList = new();
 	List<string> _spaceList = new() { " " };
 
-	[Fact] public void ToSpaceNull()  => Assert.Throws<ArgumentNullException>(() => _nullList.SeparateToSpace());
+	[Fact] public void ToSpaceNull() => Assert.Throws<ArgumentNullException>(() => _nullList.SeparateToSpace());
 	[Fact] public void ToSpaceEmpty() => Assert.Throws<ArgumentEmptyException>(() => _emptyList.SeparateToSpace());
 	[Fact] public void ToSpaceSpace() => Assert.Equal(" ", _spaceList.SeparateToSpace());
 

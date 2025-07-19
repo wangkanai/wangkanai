@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 namespace Wangkanai.Extensions;
 
@@ -64,7 +64,7 @@ public static class AssemblyExtensions
 	public static string GetInformationalVersion(this Assembly assembly)
 	{
 		assembly.ThrowIfNull();
-		var info    = assembly.GetCustomAttributes(false).OfType<AssemblyInformationalVersionAttribute>().Single();
+		var info = assembly.GetCustomAttributes(false).OfType<AssemblyInformationalVersionAttribute>().Single();
 		var version = info.InformationalVersion;
 		return version;
 	}
@@ -77,7 +77,7 @@ public static class AssemblyExtensions
 	public static string GetFileVersion(this Assembly assembly)
 	{
 		assembly.ThrowIfNull();
-		var info    = FileVersionInfo.GetVersionInfo(assembly.Location);
+		var info = FileVersionInfo.GetVersionInfo(assembly.Location);
 		var version = info.FileVersion.ThrowIfNull();
 		return version;
 	}

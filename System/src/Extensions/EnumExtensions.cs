@@ -105,7 +105,7 @@ public static class EnumExtensions
 	/// <returns>The description attributed to the enumeration value, or the string representation of the value if no description is found.</returns>
 	public static string GetDescription(this Enum value)
 	{
-		var type   = value.GetType();
+		var type = value.GetType();
 		var member = type.GetMember(value.ToString());
 		if (member.Length <= 0)
 			return value.ToString();
@@ -115,8 +115,8 @@ public static class EnumExtensions
 			return value.ToString();
 
 		return attributes.OfType<DescriptionAttribute>()
-		                 .SingleOrDefault()
-		                 ?.Description ?? string.Empty;
+						 .SingleOrDefault()
+						 ?.Description ?? string.Empty;
 	}
 
 	/// <summary>

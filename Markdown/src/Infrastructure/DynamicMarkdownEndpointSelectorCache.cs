@@ -10,7 +10,7 @@ namespace Wangkanai.Markdown.Infrastructure;
 
 internal class DynamicMarkdownEndpointSelectorCache
 {
-	private readonly ConcurrentDictionary<int, EndpointDataSource>              _dataSourceCache       = new();
+	private readonly ConcurrentDictionary<int, EndpointDataSource> _dataSourceCache = new();
 	private readonly ConcurrentDictionary<int, DynamicMarkdownEndpointSelector> _endpointSelectorCache = new();
 
 	public void AddDataSource(MarkdownActionEndpointDataSource dataSource)

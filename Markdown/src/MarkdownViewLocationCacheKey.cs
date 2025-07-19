@@ -4,32 +4,32 @@ namespace Wangkanai.Markdown;
 
 internal readonly struct MarkdownViewLocationCacheKey : IEquatable<MarkdownViewLocationCacheKey>
 {
-	public string  ViewName       { get; }
+	public string ViewName { get; }
 	public string? ControllerName { get; }
-	public string? AreaName       { get; }
-	public string? PageName       { get; }
-	public bool    IsMainPage     { get; }
+	public string? AreaName { get; }
+	public string? PageName { get; }
+	public bool IsMainPage { get; }
 
 	public IReadOnlyDictionary<string, string?>? ViewLocationExpanderValues { get; }
 
 	public MarkdownViewLocationCacheKey(
 		string viewName,
-		bool   isMainPage)
+		bool isMainPage)
 		: this(viewName, null, null, null, isMainPage, null) { }
 
 	public MarkdownViewLocationCacheKey(
-		string                                viewName,
-		string?                               controllerName,
-		string?                               areaName,
-		string?                               pageName,
-		bool                                  isMainPage,
+		string viewName,
+		string? controllerName,
+		string? areaName,
+		string? pageName,
+		bool isMainPage,
 		IReadOnlyDictionary<string, string?>? values)
 	{
-		ViewName                   = viewName;
-		ControllerName             = controllerName;
-		AreaName                   = areaName;
-		PageName                   = pageName;
-		IsMainPage                 = isMainPage;
+		ViewName = viewName;
+		ControllerName = controllerName;
+		AreaName = areaName;
+		PageName = pageName;
+		IsMainPage = isMainPage;
 		ViewLocationExpanderValues = values;
 	}
 
@@ -37,11 +37,11 @@ internal readonly struct MarkdownViewLocationCacheKey : IEquatable<MarkdownViewL
 	/// <inheritdoc />
 	public bool Equals(MarkdownViewLocationCacheKey y)
 	{
-		if (IsMainPage != y.IsMainPage                                                 ||
-		    !string.Equals(ViewName, y.ViewName, StringComparison.Ordinal)             ||
-		    !string.Equals(ControllerName, y.ControllerName, StringComparison.Ordinal) ||
-		    !string.Equals(AreaName, y.AreaName, StringComparison.Ordinal)             ||
-		    !string.Equals(PageName, y.PageName, StringComparison.Ordinal))
+		if (IsMainPage != y.IsMainPage ||
+			!string.Equals(ViewName, y.ViewName, StringComparison.Ordinal) ||
+			!string.Equals(ControllerName, y.ControllerName, StringComparison.Ordinal) ||
+			!string.Equals(AreaName, y.AreaName, StringComparison.Ordinal) ||
+			!string.Equals(PageName, y.PageName, StringComparison.Ordinal))
 		{
 			return false;
 		}
@@ -49,9 +49,9 @@ internal readonly struct MarkdownViewLocationCacheKey : IEquatable<MarkdownViewL
 		if (ReferenceEquals(ViewLocationExpanderValues, y.ViewLocationExpanderValues))
 			return true;
 
-		if (ViewLocationExpanderValues   == null ||
-		    y.ViewLocationExpanderValues == null ||
-		    (ViewLocationExpanderValues.Count != y.ViewLocationExpanderValues.Count))
+		if (ViewLocationExpanderValues == null ||
+			y.ViewLocationExpanderValues == null ||
+			(ViewLocationExpanderValues.Count != y.ViewLocationExpanderValues.Count))
 		{
 			return false;
 		}
@@ -59,7 +59,7 @@ internal readonly struct MarkdownViewLocationCacheKey : IEquatable<MarkdownViewL
 		foreach (var item in ViewLocationExpanderValues)
 		{
 			if (!y.ViewLocationExpanderValues.TryGetValue(item.Key, out var yValue) ||
-			    !string.Equals(item.Value, yValue, StringComparison.Ordinal))
+				!string.Equals(item.Value, yValue, StringComparison.Ordinal))
 			{
 				return false;
 			}

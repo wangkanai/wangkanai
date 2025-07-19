@@ -17,7 +17,7 @@ public class Result
 			throw new InvalidOperationException("Invalid operation for failure result.");
 
 		IsSuccess = isSuccess;
-		Error     = error;
+		Error = error;
 	}
 
 	/// <summary>Gets the error.</summary>

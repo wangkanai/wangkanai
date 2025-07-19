@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using Microsoft.Extensions.DependencyInjection;
 
@@ -9,8 +9,8 @@ public class AssertionHelperExtensionsTests
 	[Fact]
 	public void Null_Services()
 	{
-		ServiceCollection services    = null!;
-		var               descriptors = new List<ServiceDescriptor>();
+		ServiceCollection services = null!;
+		var descriptors = new List<ServiceDescriptor>();
 		descriptors.AssertServices(services);
 		Assert.Null(services);
 		Assert.Empty(descriptors);
@@ -19,7 +19,7 @@ public class AssertionHelperExtensionsTests
 	[Fact]
 	public void Null_Descriptors()
 	{
-		var                     services    = new ServiceCollection();
+		var services = new ServiceCollection();
 		List<ServiceDescriptor> descriptors = null!;
 		Assert.Throws<NullReferenceException>(() => descriptors.AssertServices(services));
 	}
@@ -27,7 +27,7 @@ public class AssertionHelperExtensionsTests
 	[Fact]
 	public void Empty_Services_Descriptors()
 	{
-		var services    = new ServiceCollection();
+		var services = new ServiceCollection();
 		var descriptors = new List<ServiceDescriptor>();
 
 		Assert.Empty(services);
@@ -89,8 +89,8 @@ public class AssertionHelperExtensionsTests
 	[Fact]
 	public void Assert_Builder()
 	{
-		var services    = new ServiceCollection();
-		var builder     = services.AddAssertionBuilder().AddMarkerService();
+		var services = new ServiceCollection();
+		var builder = services.AddAssertionBuilder().AddMarkerService();
 		var descriptors = new List<ServiceDescriptor>();
 		descriptors.Add(new ServiceDescriptor(typeof(AssertionMarkerService), typeof(AssertionMarkerService), ServiceLifetime.Singleton));
 

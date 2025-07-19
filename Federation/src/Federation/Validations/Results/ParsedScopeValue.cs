@@ -9,12 +9,12 @@ public class ParsedScopeValue
 
 	public ParsedScopeValue(string value, string name, string parameter)
 	{
-		Value     = value.ThrowIfNullOrWhitespace();
-		Name      = name.ThrowIfNullOrWhitespace();
+		Value = value.ThrowIfNullOrWhitespace();
+		Name = name.ThrowIfNullOrWhitespace();
 		Parameter = parameter;
 	}
 
-	public string Value     { get; set; }
-	public string Name      { get; set; }
+	public string Value { get; set; }
+	public string Name { get; set; }
 	public string Parameter { get; set; }
 }

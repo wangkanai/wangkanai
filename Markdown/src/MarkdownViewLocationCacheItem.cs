@@ -11,6 +11,6 @@ internal readonly struct MarkdownViewLocationCacheItem
 	public MarkdownViewLocationCacheItem(Func<IMarkdownPage> razorPageFactory, string location)
 	{
 		PageFactory = razorPageFactory;
-		Location    = location;
+		Location = location;
 	}
 }

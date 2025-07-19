@@ -10,9 +10,9 @@ public sealed class RequireDigitAttribute : ValidationAttribute
 
 	public override bool IsValid(object? value)
 		=> value switch
-		   {
-			   null          => true,
-			   string actual => actual.Any(char.IsDigit),
-			   _             => false
-		   };
+		{
+			null => true,
+			string actual => actual.Any(char.IsDigit),
+			_ => false
+		};
 }

@@ -80,7 +80,7 @@ public class ResultTests
 	public void FirstFailureOrSuccess_WithFailures_ReturnsFirstFailure()
 	{
 		// Arrange
-		var success  = Result.Success();
+		var success = Result.Success();
 		var failure1 = Result.Failure(new Error("Test.Error1", "Test error 1"));
 		var failure2 = Result.Failure(new Error("Test.Error2", "Test error 2"));
 
@@ -107,7 +107,7 @@ public class ResultTests
 	{
 		// Arrange
 		var success1 = Result.Success();
-		var failure  = Result.Failure(new Error("Test.Error", "Test error"));
+		var failure = Result.Failure(new Error("Test.Error", "Test error"));
 		var success2 = Result.Success();
 
 		// Act
@@ -173,7 +173,7 @@ public class ResultTests
 	public void GenericValue_OnFailure_ThrowsInvalidOperationException()
 	{
 		// Arrange
-		var error  = new Error("Test.Error", "Test error message");
+		var error = new Error("Test.Error", "Test error message");
 		var result = Result.Failure<string>(error);
 
 		// Act & Assert
@@ -215,7 +215,7 @@ public class ResultTests
 	{
 		// Arrange
 		string? value = null;
-		var     error = new Error("Test.Error", "Test error message");
+		var error = new Error("Test.Error", "Test error message");
 
 		// Act
 		var result = Result.Create(value, error);

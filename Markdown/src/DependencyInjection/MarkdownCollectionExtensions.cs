@@ -13,9 +13,9 @@ public static class MarkdownCollectionExtensions
 	/// <returns>An <see cref="IMarkdownBuilder" /> so that additional calls can be chained</returns>
 	public static IMarkdownBuilder AddMarkdownPages(this IServiceCollection services)
 		=> services.AddMarkdownBuilder()
-		           .AddRequiredServices()
-		           .AddCoreServices()
-		           .AddMarkerService();
+				   .AddRequiredServices()
+				   .AddCoreServices()
+				   .AddMarkerService();
 
 	/// <summary>Add Markdown service to the services container</summary>
 	/// <param name="services">The services available in the application</param>
@@ -23,9 +23,9 @@ public static class MarkdownCollectionExtensions
 	/// <returns>An <see cref="IMarkdownBuilder" /> so that additional calls can be chained</returns>
 	public static IMarkdownBuilder AddMarkdownPages(this IServiceCollection services, Action<MarkdownPagesOptions> setAction)
 		=> services.Configure(setAction)
-		           .AddMarkdownPages();
+				   .AddMarkdownPages();
 
 	// For internal unit tests
-	internal static IMarkdownBuilder AddMarkdownBuilder(this IServiceCollection services) 
+	internal static IMarkdownBuilder AddMarkdownBuilder(this IServiceCollection services)
 		=> new MarkdownBuilder(services);
 }

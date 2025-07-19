@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using System.Text;
 
@@ -10,7 +10,7 @@ namespace Wangkanai.Federation.Extensions;
 
 public static class AuthenticationPropertiesExtensions
 {
-	internal const string SessionIdKey  = "session_id";
+	internal const string SessionIdKey = "session_id";
 	internal const string ClientListKey = "client_list";
 
 	public static string? GetSessionId(this AuthenticationProperties properties)
@@ -21,20 +21,20 @@ public static class AuthenticationPropertiesExtensions
 	public static void SetSessionId(this AuthenticationProperties properties, string sid)
 		=> properties.Items[SessionIdKey] = sid;
 
-	public static IEnumerable<string> GetClientList(this AuthenticationProperties properties) 
-		=> properties.Items.TryGetValue(ClientListKey, out var value) 
-			   ? DecodeList(value) 
+	public static IEnumerable<string> GetClientList(this AuthenticationProperties properties)
+		=> properties.Items.TryGetValue(ClientListKey, out var value)
+			   ? DecodeList(value)
 			   : Enumerable.Empty<string>();
 
 
 	public static void SetClientList(this AuthenticationProperties properties, IEnumerable<string> clientIds)
 	{
-		var list  = string.Join(",", clientIds);
+		var list = string.Join(",", clientIds);
 		var bytes = Encoding.UTF8.GetBytes(list);
 		var value = Base64Url.Encode(bytes);
 		properties.Items[ClientListKey] = value;
 	}
-	
+
 	public static void RemoveClientList(this AuthenticationProperties properties)
 		=> properties.Items.Remove(ClientListKey);
 
@@ -43,9 +43,9 @@ public static class AuthenticationPropertiesExtensions
 		clientId.ThrowIfNull();
 
 		var clients = properties.GetClientList();
-		if (clients.Contains(clientId)) 
+		if (clients.Contains(clientId))
 			return;
-		
+
 		var update = clients.ToList();
 		update.Add(clientId);
 		properties.SetClientList(update);

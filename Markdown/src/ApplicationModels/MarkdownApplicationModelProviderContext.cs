@@ -9,7 +9,7 @@ public class MarkdownApplicationModelProviderContext
 	public MarkdownApplicationModelProviderContext(MarkdownActionDescriptor descriptor, TypeInfo pageTypeInfo)
 	{
 		ActionDescriptor = descriptor;
-		PageType         = pageTypeInfo;
+		PageType = pageTypeInfo;
 	}
 
 	public MarkdownActionDescriptor ActionDescriptor { get; }

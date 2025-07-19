@@ -13,13 +13,13 @@ internal static class WebmasterCoreCollectionBuilderExtensions
 	internal static IWebmasterBuilder AddRequiredServices(this IWebmasterBuilder builder)
 	{
 		builder.ThrowIfNull();
-		
+
 		builder.Services.AddHttpContextAccessor();
 		builder.Services.AddOptions();
-		builder.Services.TryAddSingleton(provider=> provider.GetRequiredService<IOptions<WebmasterOptions>>().Value);
-		
+		builder.Services.TryAddSingleton(provider => provider.GetRequiredService<IOptions<WebmasterOptions>>().Value);
+
 		builder.Services.AddDetection();
-		
+
 		return builder;
 	}
 

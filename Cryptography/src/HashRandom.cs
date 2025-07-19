@@ -31,9 +31,9 @@ public class HashRandom : Random
 		return format switch
 		{
 			OutputFormat.Base64Url => Base64Url.Encode(bytes),
-			OutputFormat.Base64    => Convert.ToBase64String(bytes),
-			OutputFormat.Hex       => BitConverter.ToString(bytes).Replace("-", ""),
-			_                      => throw new ArgumentOutOfRangeException(nameof(format), "Invalid output format")
+			OutputFormat.Base64 => Convert.ToBase64String(bytes),
+			OutputFormat.Hex => BitConverter.ToString(bytes).Replace("-", ""),
+			_ => throw new ArgumentOutOfRangeException(nameof(format), "Invalid output format")
 		};
 	}
 
@@ -59,7 +59,7 @@ public class HashRandom : Random
 		{
 			Generator.GetBytes(_buffer);
 			var random = BitConverter.ToUInt32(_buffer, 0);
-			var max    = 1 + (long)uint.MaxValue;
+			var max = 1 + (long)uint.MaxValue;
 			var remainder = max % diff;
 			if (random < max - remainder)
 				return (int)(minValue + (random % diff));

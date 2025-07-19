@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure;
@@ -11,22 +11,22 @@ internal static class CompiledMarkdownActionDescriptorBuilder
 {
 	public static CompiledMarkdownActionDescriptor Build(
 		MarkdownApplicationModel applicationModel,
-		FilterCollection         globalFilters)
+		FilterCollection globalFilters)
 	{
 		var boundProperties = CreateBoundProperties(applicationModel);
 		var filters = Enumerable.Concat(
-			                        globalFilters.Select(f => new FilterDescriptor(f, FilterScope.Global)),
-			                        applicationModel.Filters.Select(f => new FilterDescriptor(f, FilterScope.Action)))
-		                        .ToArray();
+									globalFilters.Select(f => new FilterDescriptor(f, FilterScope.Global)),
+									applicationModel.Filters.Select(f => new FilterDescriptor(f, FilterScope.Action)))
+								.ToArray();
 		var handlerMethods = CreateHandlerMethods(applicationModel);
 
 		if (applicationModel.ModelType != null && applicationModel.DeclaredModelType != null &&
-		    !applicationModel.DeclaredModelType.IsAssignableFrom(applicationModel.ModelType))
+			!applicationModel.DeclaredModelType.IsAssignableFrom(applicationModel.ModelType))
 		{
 			var message = string.Format(Resources.InvalidActionDescriptorModelType,
-			                            applicationModel.ActionDescriptor.DisplayName,
-			                            applicationModel.ModelType.Name,
-			                            applicationModel.DeclaredModelType.Name);
+										applicationModel.ActionDescriptor.DisplayName,
+										applicationModel.ModelType.Name,
+										applicationModel.DeclaredModelType.Name);
 
 			throw new InvalidOperationException(message);
 		}
@@ -34,18 +34,18 @@ internal static class CompiledMarkdownActionDescriptorBuilder
 		var actionDescriptor = applicationModel.ActionDescriptor;
 		return new CompiledMarkdownActionDescriptor(actionDescriptor)
 		{
-			ActionConstraints     = actionDescriptor.ActionConstraints,
-			AttributeRouteInfo    = actionDescriptor.AttributeRouteInfo,
-			BoundProperties       = boundProperties,
-			EndpointMetadata      = CreateEndPointMetadata(applicationModel),
-			FilterDescriptors     = filters,
-			HandlerMethods        = handlerMethods,
-			HandlerTypeInfo       = applicationModel.HandlerType,
+			ActionConstraints = actionDescriptor.ActionConstraints,
+			AttributeRouteInfo = actionDescriptor.AttributeRouteInfo,
+			BoundProperties = boundProperties,
+			EndpointMetadata = CreateEndPointMetadata(applicationModel),
+			FilterDescriptors = filters,
+			HandlerMethods = handlerMethods,
+			HandlerTypeInfo = applicationModel.HandlerType,
 			DeclaredModelTypeInfo = applicationModel.DeclaredModelType,
-			ModelTypeInfo         = applicationModel.ModelType,
-			RouteValues           = actionDescriptor.RouteValues,
-			MarkdownTypeInfo      = applicationModel.MarkdownType,
-			Properties            = applicationModel.Properties,
+			ModelTypeInfo = applicationModel.ModelType,
+			RouteValues = actionDescriptor.RouteValues,
+			MarkdownTypeInfo = applicationModel.MarkdownType,
+			Properties = applicationModel.Properties,
 		};
 	}
 
@@ -60,7 +60,7 @@ internal static class CompiledMarkdownActionDescriptorBuilder
 	// Internal for unit testing
 	internal static HandlerMethodDescriptor[] CreateHandlerMethods(MarkdownApplicationModel applicationModel)
 	{
-		var handlerModels      = applicationModel.HandlerMethods;
+		var handlerModels = applicationModel.HandlerMethods;
 		var handlerDescriptors = new HandlerMethodDescriptor[handlerModels.Count];
 
 		for (var i = 0; i < handlerDescriptors.Length; i++)
@@ -70,7 +70,7 @@ internal static class CompiledMarkdownActionDescriptorBuilder
 			handlerDescriptors[i] = new HandlerMethodDescriptor
 			{
 				HttpMethod = handlerModel.HttpMethod,
-				Name       = handlerModel.HandlerName,
+				Name = handlerModel.HandlerName,
 				MethodInfo = handlerModel.MethodInfo,
 				Parameters = CreateHandlerParameters(handlerModel),
 			};
@@ -83,7 +83,7 @@ internal static class CompiledMarkdownActionDescriptorBuilder
 	internal static HandlerParameterDescriptor[] CreateHandlerParameters(MarkdownHandlerModel handlerModel)
 	{
 		var methodParameters = handlerModel.Parameters;
-		var parameters       = new HandlerParameterDescriptor[methodParameters.Count];
+		var parameters = new HandlerParameterDescriptor[methodParameters.Count];
 
 		for (var i = 0; i < parameters.Length; i++)
 		{
@@ -91,8 +91,8 @@ internal static class CompiledMarkdownActionDescriptorBuilder
 
 			parameters[i] = new HandlerParameterDescriptor
 			{
-				BindingInfo   = parameterModel.BindingInfo,
-				Name          = parameterModel.ParameterName,
+				BindingInfo = parameterModel.BindingInfo,
+				Name = parameterModel.ParameterName,
 				ParameterInfo = parameterModel.ParameterInfo,
 				ParameterType = parameterModel.ParameterInfo.ParameterType,
 			};
@@ -104,7 +104,7 @@ internal static class CompiledMarkdownActionDescriptorBuilder
 	// internal for unit testing
 	internal static MarkdownBoundPropertyDescriptor[] CreateBoundProperties(MarkdownApplicationModel applicationModel)
 	{
-		var results    = new List<MarkdownBoundPropertyDescriptor>();
+		var results = new List<MarkdownBoundPropertyDescriptor>();
 		var properties = applicationModel.HandlerProperties;
 		for (var i = 0; i < properties.Count; i++)
 		{
@@ -115,9 +115,9 @@ internal static class CompiledMarkdownActionDescriptorBuilder
 
 			var descriptor = new MarkdownBoundPropertyDescriptor
 			{
-				Property      = propertyModel.PropertyInfo,
-				Name          = propertyModel.PropertyName,
-				BindingInfo   = propertyModel.BindingInfo,
+				Property = propertyModel.PropertyInfo,
+				Name = propertyModel.PropertyName,
+				BindingInfo = propertyModel.BindingInfo,
 				ParameterType = propertyModel.PropertyInfo.PropertyType,
 			};
 

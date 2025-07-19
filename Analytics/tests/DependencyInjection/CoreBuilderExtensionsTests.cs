@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2024 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using System;
 using System.Collections.Generic;
@@ -18,8 +18,8 @@ public class CoreBuilderExtensionsTests
 	[Fact]
 	public void AddMarkerServices_ReturnsExpected()
 	{
-		var services    = new ServiceCollection();
-		var builder     = services.AddAnalyticsBuilder().AddMarkerService();
+		var services = new ServiceCollection();
+		var builder = services.AddAnalyticsBuilder().AddMarkerService();
 		var descriptors = new List<ServiceDescriptor>();
 		descriptors.Add(new(typeof(AnalyticsMarkerService), typeof(AnalyticsMarkerService), ServiceLifetime.Singleton));
 
@@ -31,8 +31,8 @@ public class CoreBuilderExtensionsTests
 	[Fact]
 	public void AddRequiredPlatformServices_ReturnsExpected()
 	{
-		var services    = new ServiceCollection();
-		var builder     = services.AddAnalyticsBuilder().AddRequiredServices();
+		var services = new ServiceCollection();
+		var builder = services.AddAnalyticsBuilder().AddRequiredServices();
 		var descriptors = new List<ServiceDescriptor>();
 		descriptors.Add(new(typeof(IHttpContextAccessor), typeof(HttpContextAccessor), ServiceLifetime.Singleton));
 		descriptors.Add(new(typeof(IOptions<>), typeof(AnalyticsOptions), ServiceLifetime.Singleton));
@@ -46,12 +46,12 @@ public class CoreBuilderExtensionsTests
 		Assert.NotNull(builder.Services);
 		descriptors.AssertServices(builder.Services);
 	}
-	
+
 	[Fact]
 	public void AddCoreServices_ReturnsExpected()
 	{
-		var services    = new ServiceCollection();
-		var builder     = services.AddAnalyticsBuilder().AddCoreServices();
+		var services = new ServiceCollection();
+		var builder = services.AddAnalyticsBuilder().AddCoreServices();
 		var descriptors = new List<ServiceDescriptor>();
 		descriptors.Add(new(typeof(IAnalyticsService), typeof(AnalyticsService), ServiceLifetime.Scoped));
 
@@ -59,13 +59,13 @@ public class CoreBuilderExtensionsTests
 		Assert.NotNull(builder.Services);
 		descriptors.AssertServices(builder.Services);
 	}
-	
+
 	[Fact]
 	public void AddAnalytics_Null_ArgumentNullException()
 	{
 		Assert.Throws<ArgumentNullException>(() => ((IServiceCollection)null!).AddAnalytics());
 	}
-	
+
 	[Fact]
 	public void AddAnalyticsBuilder_Null_ArgumentNullException()
 	{

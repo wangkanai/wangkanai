@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 
@@ -10,17 +10,17 @@ namespace Wangkanai.Markdown.Infrastructure;
 internal sealed class MarkdownActionEndpointDataSourceFactory
 {
 	private readonly MarkdownActionEndpointDataSourceIdProvider _dataSourceIdProvider;
-	private readonly IActionDescriptorCollectionProvider        _actions;
-	private readonly ActionEndpointFactory                      _endpointFactory;
+	private readonly IActionDescriptorCollectionProvider _actions;
+	private readonly ActionEndpointFactory _endpointFactory;
 
 	public MarkdownActionEndpointDataSourceFactory(
 		MarkdownActionEndpointDataSourceIdProvider dataSourceIdProvider,
-		IActionDescriptorCollectionProvider        actions,
-		ActionEndpointFactory                      endpointFactory)
+		IActionDescriptorCollectionProvider actions,
+		ActionEndpointFactory endpointFactory)
 	{
 		_dataSourceIdProvider = dataSourceIdProvider;
-		_actions              = actions;
-		_endpointFactory      = endpointFactory;
+		_actions = actions;
+		_endpointFactory = endpointFactory;
 	}
 
 	public MarkdownActionEndpointDataSource Create(

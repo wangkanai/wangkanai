@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using System.Reflection;
 
@@ -7,30 +7,30 @@ using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Razor.Compilation;
 
-using Wangkanai.Markdown.DependencyInjection.Options;
 using Wangkanai.Markdown.ApplicationModels;
+using Wangkanai.Markdown.DependencyInjection.Options;
 
 namespace Wangkanai.Markdown.Infrastructure;
 
 internal sealed class CompiledMarkdownActionDescriptorFactory
 {
 	private readonly IMarkdownApplicationModelProvider[] _applicationModelProviders;
-	private readonly MarkdownConventionCollection        _conventions;
-	private readonly FilterCollection                    _globalFilters;
+	private readonly MarkdownConventionCollection _conventions;
+	private readonly FilterCollection _globalFilters;
 
 	public CompiledMarkdownActionDescriptorFactory(
 		IEnumerable<IMarkdownApplicationModelProvider> applicationModelProviders,
-		MvcOptions                                     mvcOptions,
-		MarkdownPagesOptions                           pageOptions)
+		MvcOptions mvcOptions,
+		MarkdownPagesOptions pageOptions)
 	{
 		_applicationModelProviders = applicationModelProviders.OrderBy(a => a.Order).ToArray();
-		_conventions               = pageOptions.Conventions;
-		_globalFilters             = mvcOptions.Filters;
+		_conventions = pageOptions.Conventions;
+		_globalFilters = mvcOptions.Filters;
 	}
 
 	public CompiledMarkdownActionDescriptor CreateCompiledDescriptor(
 		MarkdownActionDescriptor actionDescriptor,
-		CompiledViewDescriptor   viewDescriptor)
+		CompiledViewDescriptor viewDescriptor)
 	{
 		var context = new MarkdownApplicationModelProviderContext(actionDescriptor, viewDescriptor.Type!.GetTypeInfo());
 		for (var i = 0; i < _applicationModelProviders.Length; i++)
@@ -49,7 +49,7 @@ internal sealed class CompiledMarkdownActionDescriptorFactory
 
 	internal static void ApplyConventions(
 		MarkdownConventionCollection conventions,
-		MarkdownApplicationModel     pageApplicationModel)
+		MarkdownApplicationModel pageApplicationModel)
 	{
 		var applicationModelConventions = GetConventions<IMarkdownApplicationModelConvention>(pageApplicationModel.HandlerTypeAttributes);
 		foreach (var convention in applicationModelConventions)

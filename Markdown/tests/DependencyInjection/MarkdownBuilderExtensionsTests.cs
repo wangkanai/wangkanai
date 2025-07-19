@@ -2,9 +2,9 @@
 
 using System;
 
-using Xunit;
-
 using Microsoft.Extensions.DependencyInjection;
+
+using Xunit;
 
 namespace Wangkanai.Markdown;
 

@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using System.Runtime.CompilerServices;
 
@@ -11,10 +11,10 @@ namespace Wangkanai.Extensions.Internal;
 /// </summary>
 internal readonly struct ObjectMethodExecutorAwaitable
 {
-	private readonly object                 _customAwaitable;
-	private readonly Func<object, object>   _getAwaiterMethod;
-	private readonly Func<object, bool>     _isCompletedMethod;
-	private readonly Func<object, object>   _getResultMethod;
+	private readonly object _customAwaitable;
+	private readonly Func<object, object> _getAwaiterMethod;
+	private readonly Func<object, bool> _isCompletedMethod;
+	private readonly Func<object, object> _getResultMethod;
 	private readonly Action<object, Action> _onCompletedMethod;
 	private readonly Action<object, Action> _unsafeOnCompletedMethod;
 
@@ -37,18 +37,18 @@ internal readonly struct ObjectMethodExecutorAwaitable
 	// or other value-typed awaitables.
 
 	public ObjectMethodExecutorAwaitable(
-		object                 customAwaitable,
-		Func<object, object>   getAwaiterMethod,
-		Func<object, bool>     isCompletedMethod,
-		Func<object, object>   getResultMethod,
+		object customAwaitable,
+		Func<object, object> getAwaiterMethod,
+		Func<object, bool> isCompletedMethod,
+		Func<object, object> getResultMethod,
 		Action<object, Action> onCompletedMethod,
 		Action<object, Action> unsafeOnCompletedMethod)
 	{
-		_customAwaitable         = customAwaitable;
-		_getAwaiterMethod        = getAwaiterMethod;
-		_isCompletedMethod       = isCompletedMethod;
-		_getResultMethod         = getResultMethod;
-		_onCompletedMethod       = onCompletedMethod;
+		_customAwaitable = customAwaitable;
+		_getAwaiterMethod = getAwaiterMethod;
+		_isCompletedMethod = isCompletedMethod;
+		_getResultMethod = getResultMethod;
+		_onCompletedMethod = onCompletedMethod;
 		_unsafeOnCompletedMethod = unsafeOnCompletedMethod;
 	}
 
@@ -60,23 +60,23 @@ internal readonly struct ObjectMethodExecutorAwaitable
 
 	public readonly struct Awaiter : ICriticalNotifyCompletion
 	{
-		private readonly object                 _customAwaiter;
-		private readonly Func<object, bool>     _isCompletedMethod;
-		private readonly Func<object, object>   _getResultMethod;
+		private readonly object _customAwaiter;
+		private readonly Func<object, bool> _isCompletedMethod;
+		private readonly Func<object, object> _getResultMethod;
 		private readonly Action<object, Action> _onCompletedMethod;
 		private readonly Action<object, Action> _unsafeOnCompletedMethod;
 
 		public Awaiter(
-			object                 customAwaiter,
-			Func<object, bool>     isCompletedMethod,
-			Func<object, object>   getResultMethod,
+			object customAwaiter,
+			Func<object, bool> isCompletedMethod,
+			Func<object, object> getResultMethod,
 			Action<object, Action> onCompletedMethod,
 			Action<object, Action> unsafeOnCompletedMethod)
 		{
-			_customAwaiter           = customAwaiter;
-			_isCompletedMethod       = isCompletedMethod;
-			_getResultMethod         = getResultMethod;
-			_onCompletedMethod       = onCompletedMethod;
+			_customAwaiter = customAwaiter;
+			_isCompletedMethod = isCompletedMethod;
+			_getResultMethod = getResultMethod;
+			_onCompletedMethod = onCompletedMethod;
 			_unsafeOnCompletedMethod = unsafeOnCompletedMethod;
 		}
 

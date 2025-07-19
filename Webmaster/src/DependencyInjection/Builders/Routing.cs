@@ -12,7 +12,8 @@ public static class RoutingCollectionExtensions
 	{
 		builder.ThrowIfNull();
 
-		builder.Services.Configure<RouteOptions>(options => {
+		builder.Services.Configure<RouteOptions>(options =>
+		{
 			options.ConstraintMap.Add("thai", typeof(ThaiLanguageRouteConstraint));
 			options.ConstraintMap.Add("lao", typeof(LaoLanguageRouteConstraint));
 			options.ConstraintMap.Add("myanmar", typeof(MyanmarLanguageRouteConstraint));

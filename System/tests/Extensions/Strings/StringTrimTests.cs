@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using Wangkanai.Exceptions;
 
@@ -6,10 +6,10 @@ namespace Wangkanai.Extensions.Strings;
 
 public class StringTrimTests
 {
-	string? _null  = null;
-	string  _empty = string.Empty;
-	string  _space = " ";
-	string  _text  = "abcde";
+	string? _null = null;
+	string _empty = string.Empty;
+	string _space = " ";
+	string _text = "abcde";
 
 	[Fact]
 	public void LeftExist()

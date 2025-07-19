@@ -8,9 +8,9 @@ namespace Wangkanai.Federation.Services;
 
 public interface IUserSession
 {
-	Task<string>          CreateSessionIdAsync(ClaimsPrincipal principal, AuthenticationProperties properties);
+	Task<string> CreateSessionIdAsync(ClaimsPrincipal principal, AuthenticationProperties properties);
 	Task<ClaimsPrincipal> GetUserAsync();
-	Task<string>          GetSessionIdAsync();
+	Task<string> GetSessionIdAsync();
 
 	Task EnsureSessionIdCookieAsync();
 	Task RemoveSessionIdCookieAsync();

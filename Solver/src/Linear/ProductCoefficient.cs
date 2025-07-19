@@ -12,7 +12,7 @@ public class ProductCoefficient(LinearExpression expression, double coefficient)
 	{
 		var currentMultiplier = multiplier * coefficient;
 		return currentMultiplier != 0.0
-			       ? expression.DoVisit(coefficients, currentMultiplier)
-			       : 0.0;
+				   ? expression.DoVisit(coefficients, currentMultiplier)
+				   : 0.0;
 	}
 }

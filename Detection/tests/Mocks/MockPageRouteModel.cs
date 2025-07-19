@@ -8,23 +8,23 @@ namespace Wangkanai.Detection.Mocks;
 
 internal class MockPageRouteModel
 {
-	private static readonly string            IndexFileName = "Index" + RazorViewEngine.ViewExtension;
-	private readonly        string            _normalizedAreaRootDirectory;
-	private readonly        string            _normalizedRootDirectory;
-	private readonly        RazorPagesOptions _options;
+	private static readonly string IndexFileName = "Index" + RazorViewEngine.ViewExtension;
+	private readonly string _normalizedAreaRootDirectory;
+	private readonly string _normalizedRootDirectory;
+	private readonly RazorPagesOptions _options;
 
 	public MockPageRouteModel(RazorPagesOptions options)
 	{
 		_options = options ?? throw new ArgumentNullException(nameof(options));
 
-		_normalizedRootDirectory     = NormalizeDirectory(options.RootDirectory);
+		_normalizedRootDirectory = NormalizeDirectory(options.RootDirectory);
 		_normalizedAreaRootDirectory = "/Areas/";
 	}
 
 	public PageRouteModel CreateRouteModel(string relativePath, string routeTemplate)
 	{
 		var viewEnginePath = GetViewEnginePath(_normalizedRootDirectory, relativePath);
-		var model          = new PageRouteModel(relativePath, viewEnginePath);
+		var model = new PageRouteModel(relativePath, viewEnginePath);
 
 		PopulateRouteModel(model, viewEnginePath, routeTemplate);
 
@@ -36,7 +36,7 @@ internal class MockPageRouteModel
 		if (!TryParseAreaPath(relativePath, out var areaResult))
 			return null!;
 
-		var model  = new PageRouteModel(relativePath, areaResult.viewEnginePath, areaResult.areaName);
+		var model = new PageRouteModel(relativePath, areaResult.viewEnginePath, areaResult.areaName);
 		var prefix = CreateAreaRoute(areaResult.areaName, areaResult.viewEnginePath);
 		PopulateRouteModel(model, prefix, routeTemplate);
 		model.RouteValues["area"] = areaResult.areaName;
@@ -59,7 +59,7 @@ internal class MockPageRouteModel
 			// I want ot allow incoming routing, but force outgoing routes to match to the path sans /Index.
 			selectorModel.AttributeRouteModel.SuppressLinkGeneration = true;
 
-			var index               = pageRoute.LastIndexOf('/');
+			var index = pageRoute.LastIndexOf('/');
 			var parentDirectoryPath = index == -1 ? string.Empty : pageRoute.Substring(0, index);
 			model.Selectors.Add(CreateSelectorModel(parentDirectoryPath, routeTemplate));
 		}
@@ -100,7 +100,7 @@ internal class MockPageRouteModel
 			return false;
 
 		// Include the trailing slash of the root directory at the start of the viewEnginePath
-		var pageNameIndex  = areaEndIndex + areaPagesRoot.Length - 1;
+		var pageNameIndex = areaEndIndex + areaPagesRoot.Length - 1;
 		var viewEnginePath = relativePath.Substring(pageNameIndex, relativePath.Length - pageNameIndex - RazorViewEngine.ViewExtension.Length);
 
 		result = (areaName, viewEnginePath);
@@ -115,18 +115,19 @@ internal class MockPageRouteModel
 			throw new ArgumentNullException(nameof(path));
 
 		var start = rootDirectory.Length - 1;
-		var end   = path.Length          - RazorViewEngine.ViewExtension.Length;
+		var end = path.Length - RazorViewEngine.ViewExtension.Length;
 
 		return path.Substring(start, end - start);
 	}
 
 	private static string CreateAreaRoute(string areaName, string viewEnginePath)
 	{
-		return string.Create(1 + areaName.Length + viewEnginePath.Length, (areaName, viewEnginePath), (span, tuple) => {
+		return string.Create(1 + areaName.Length + viewEnginePath.Length, (areaName, viewEnginePath), (span, tuple) =>
+		{
 			var (areaNameValue, viewEnginePathValue) = tuple;
 
 			span[0] = '/';
-			span    = span.Slice(1);
+			span = span.Slice(1);
 
 			areaNameValue.AsSpan().CopyTo(span);
 			span = span.Slice(areaNameValue.Length);
@@ -138,8 +139,8 @@ internal class MockPageRouteModel
 	private static string NormalizeDirectory(string directory)
 	{
 		return directory.Length > 1
-		       && !directory.EndsWith("/", StringComparison.Ordinal)
-			       ? directory + "/"
-			       : directory;
+			   && !directory.EndsWith("/", StringComparison.Ordinal)
+				   ? directory + "/"
+				   : directory;
 	}
 }

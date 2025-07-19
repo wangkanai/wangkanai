@@ -10,8 +10,8 @@ namespace Wangkanai.Domain.Configurations;
 
 public class CreatedEntityTypeConfiguration : IEntityTypeConfiguration<CreatedEntity>
 {
-    public void Configure(EntityTypeBuilder<CreatedEntity> builder)
-    {
-        builder.HasKey(x => x.Id);
-    }
+	public void Configure(EntityTypeBuilder<CreatedEntity> builder)
+	{
+		builder.HasKey(x => x.Id);
+	}
 }

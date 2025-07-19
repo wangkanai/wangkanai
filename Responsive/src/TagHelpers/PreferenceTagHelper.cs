@@ -13,16 +13,16 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers;
 [HtmlTargetElement(ElementName, Attributes = OnlyAttributeName, TagStructure = TagStructure.NormalOrSelfClosing)]
 public class PreferenceTagHelper : TagHelper
 {
-	private const    string             ElementName       = "preference";
-	private const    string             OnlyAttributeName = "only";
-	private readonly IDeviceService     _device;
+	private const string ElementName = "preference";
+	private const string OnlyAttributeName = "only";
+	private readonly IDeviceService _device;
 	private readonly IResponsiveService _responsive;
 
 	public PreferenceTagHelper(IHtmlGenerator generator, IResponsiveService responsive, IDeviceService device)
 	{
-		Generator   = generator  ?? throw new ArgumentNullException(nameof(generator));
+		Generator = generator ?? throw new ArgumentNullException(nameof(generator));
 		_responsive = responsive ?? throw new ArgumentNullException(nameof(responsive));
-		_device     = device     ?? throw new ArgumentNullException(nameof(device));
+		_device = device ?? throw new ArgumentNullException(nameof(device));
 	}
 
 	protected IHtmlGenerator Generator { get; }

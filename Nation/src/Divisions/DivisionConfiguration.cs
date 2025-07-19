@@ -10,17 +10,17 @@ public sealed class DivisionConfiguration : IEntityTypeConfiguration<Division>
 	public void Configure(EntityTypeBuilder<Division> builder)
 	{
 		builder.Property(x => x.Iso)
-		       .HasMaxLength(2)
-		       .IsRequired();
+			   .HasMaxLength(2)
+			   .IsRequired();
 
 		builder.Property(x => x.Name)
-		       .HasMaxLength(100)
-		       .IsRequired();
+			   .HasMaxLength(100)
+			   .IsRequired();
 
 		builder.Property(x => x.Native)
-		       .HasMaxLength(100)
-		       .IsUnicode()
-		       .IsRequired();
+			   .HasMaxLength(100)
+			   .IsUnicode()
+			   .IsRequired();
 
 		builder.HasDiscriminator<string>("type");
 	}

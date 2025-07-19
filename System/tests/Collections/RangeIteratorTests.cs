@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using FluentAssertions;
 
@@ -8,17 +8,17 @@ public class RangeIteratorTests
 {
 	private static readonly int[] ArrayZeroFour = [0, 1, 2, 3, 4];
 	private static readonly int[] ArrayZeroFive = [0, 1, 2, 3, 4, 5];
-	private static readonly int[] ArrayOneFour  = [1, 2, 3, 4];
-	private static readonly int[] ArrayOneFive  = [1, 2, 3, 4, 5];
-	private static readonly int[] ArrayFiveOne  = [5, 4, 3, 2, 1];
+	private static readonly int[] ArrayOneFour = [1, 2, 3, 4];
+	private static readonly int[] ArrayOneFive = [1, 2, 3, 4, 5];
+	private static readonly int[] ArrayFiveOne = [5, 4, 3, 2, 1];
 	private static readonly int[] ArrayFiveZero = [5, 4, 3, 2, 1, 0];
-	private static readonly int[] ArrayFourOne  = [4, 3, 2, 1];
+	private static readonly int[] ArrayFourOne = [4, 3, 2, 1];
 	private static readonly int[] ArrayFourZero = [4, 3, 2, 1, 0];
 
 	[Fact]
 	public void InclusiveRange()
 	{
-		var range   = new Range<int>(0, 5);
+		var range = new Range<int>(0, 5);
 		var subject = new RangeIterator<int>(range, x => x + 1);
 		Assert.True(subject.SequenceEqual(ArrayZeroFive));
 		subject.Range.Should().Be(range);
@@ -29,7 +29,7 @@ public class RangeIteratorTests
 	[Fact]
 	public void RangeExcludingStart()
 	{
-		var range   = new Range<int>(0, 5).ExcludeStart();
+		var range = new Range<int>(0, 5).ExcludeStart();
 		var subject = new RangeIterator<int>(range, x => x + 1);
 		Assert.True(subject.SequenceEqual(ArrayOneFive));
 		subject.Range.Should().Be(range);
@@ -40,7 +40,7 @@ public class RangeIteratorTests
 	[Fact]
 	public void RangeExcludingEnd()
 	{
-		var range   = new Range<int>(0, 5).ExcludeEnd();
+		var range = new Range<int>(0, 5).ExcludeEnd();
 		var subject = new RangeIterator<int>(range, x => x + 1);
 		Assert.True(subject.SequenceEqual(ArrayZeroFour));
 		subject.Range.Should().Be(range);
@@ -51,7 +51,7 @@ public class RangeIteratorTests
 	[Fact]
 	public void RangeExcludingBoth()
 	{
-		var range   = new Range<int>(0, 5).ExcludeStart().ExcludeEnd();
+		var range = new Range<int>(0, 5).ExcludeStart().ExcludeEnd();
 		var subject = new RangeIterator<int>(range, x => x + 1);
 		Assert.True(subject.SequenceEqual(ArrayOneFour));
 		subject.Range.Should().Be(range);

@@ -12,10 +12,10 @@ namespace Wangkanai.Helpers;
 
 public sealed class Gravatar
 {
-	private readonly string         _email;
-	private readonly IconSize       _size;
+	private readonly string _email;
+	private readonly IconSize _size;
 	private readonly GravatarRating _rating;
-	private readonly GravatarMode   _mode;
+	private readonly GravatarMode _mode;
 
 	public Gravatar(string email)
 		=> _email = email;
@@ -34,7 +34,7 @@ public sealed class Gravatar
 
 	public override string ToString()
 	{
-		var uri   = GetUri(_email);
+		var uri = GetUri(_email);
 		var query = new QueryBuilder();
 		if (_size > 0)
 			query.Add("s", _size.Value());

@@ -41,13 +41,15 @@ internal static class MockServer
 
 	private static IWebHostBuilder WebHostBuilderDetection(RequestDelegate contextHandler, Action<DetectionOptions> options)
 		=> new WebHostBuilder()
-		   .ConfigureServices(services => {
+		   .ConfigureServices(services =>
+		   {
 			   // var accessor = MockService.MockHttpContextAccessor(agent);
 			   // services.TryAddSingleton<IHttpContextAccessor, accessor>();
 			   services.AddScoped(sp => sp.GetService<IHttpContextAccessor>().HttpContext.Session);
 			   services.AddDetection(options);
 		   })
-		   .Configure(app => {
+		   .Configure(app =>
+		   {
 			   app.UseSession();
 			   app.UseDetection();
 			   app.Run(contextHandler);

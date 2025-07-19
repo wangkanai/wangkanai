@@ -16,27 +16,27 @@ public class InlineTagHelper : UrlResolutionTagHelper
 	private const string CacheKeyPrefix = "InlineTagHelper-";
 
 	private readonly IWebHostEnvironment _webHostEnvironment;
-	private readonly IMemoryCache        _cache;
+	private readonly IMemoryCache _cache;
 
 	[ActivatorUtilitiesConstructor]
 	public InlineTagHelper(IWebHostEnvironment webHostEnvironment, IMemoryCache cache, HtmlEncoder htmlEncoder, IUrlHelperFactory urlHelperFactory) : base(urlHelperFactory, htmlEncoder)
 	{
 		_webHostEnvironment = webHostEnvironment;
-		_cache              = cache;
+		_cache = cache;
 	}
 
 	private async Task<T> GetContentAsync<T>(ICacheEntry entry, string path, Func<IFileInfo, Task<T>> getContent)
 	{
 		var fileProvider = _webHostEnvironment.WebRootFileProvider;
-		var changeToken  = fileProvider.Watch(path);
+		var changeToken = fileProvider.Watch(path);
 
 		entry.SetPriority(CacheItemPriority.NeverRemove);
 		entry.AddExpirationToken(changeToken);
 
 		var file = fileProvider.GetFileInfo(path);
 		return file is not { Exists: true }
-			       ? default
-			       : await getContent(file);
+				   ? default
+				   : await getContent(file);
 	}
 
 	protected Task<string> GetFileContentStringAsync(string path)
@@ -53,7 +53,7 @@ public class InlineTagHelper : UrlResolutionTagHelper
 	private static async Task<string> GetFileContentAsStringAsync(IFileInfo file)
 	{
 		await using var stream = file.CreateReadStream();
-		using var       reader = new StreamReader(stream);
+		using var reader = new StreamReader(stream);
 
 		return await reader.ReadToEndAsync();
 	}

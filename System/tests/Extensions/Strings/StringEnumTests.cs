@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using Wangkanai.Exceptions;
 
@@ -6,7 +6,7 @@ namespace Wangkanai.Extensions.Strings;
 
 public class StringEnumTests
 {
-	string? _null  = null;
+	string? _null = null;
 	string? _empty = string.Empty;
 	string? _space = " ";
 
@@ -59,7 +59,7 @@ public class StringEnumTests
 		Assert.Throws<ArgumentException>(() => name.ToEnum<Names>(false));
 	}
 
-	[Fact] public void ValueNull()  => Assert.Throws<ArgumentNullException>(() => _null!.ToEnum<Names>());
+	[Fact] public void ValueNull() => Assert.Throws<ArgumentNullException>(() => _null!.ToEnum<Names>());
 	[Fact] public void ValueEmpty() => Assert.Throws<ArgumentEmptyException>(() => _empty!.ToEnum<Names>());
 	[Fact] public void ValueSpace() => Assert.Throws<ArgumentNullOrWhitespaceException>(() => _space!.ToEnum<Names>());
 

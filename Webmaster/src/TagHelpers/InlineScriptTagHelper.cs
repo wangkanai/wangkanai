@@ -13,7 +13,7 @@ namespace Wangkanai.Webmaster.TagHelpers;
 public sealed class InlineScriptTagHelper : InlineTagHelper
 {
 	private const string InlineScriptAttributeName = "inline-script";
-	private const string HrefAttributeName         = "href";
+	private const string HrefAttributeName = "href";
 
 	[HtmlAttributeName(HrefAttributeName)]
 	public string Href { get; set; }

@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using System.Linq.Expressions;
 
@@ -23,18 +23,18 @@ public static class PropertyCopy<TTarget> where TTarget : class, new()
 	private static class PropertyCopier<TSource> where TSource : class
 	{
 		private static Func<TSource, TTarget> _copier;
-		private static Exception              _intialization;
+		private static Exception _intialization;
 
 		static PropertyCopier()
 		{
 			try
 			{
-				_copier        = BuildCopier();
+				_copier = BuildCopier();
 				_intialization = null!;
 			}
 			catch (Exception ex)
 			{
-				_copier        = null!;
+				_copier = null!;
 				_intialization = ex;
 			}
 		}
@@ -52,7 +52,7 @@ public static class PropertyCopy<TTarget> where TTarget : class, new()
 		private static Func<TSource, TTarget> BuildCopier()
 		{
 			var sourceParameter = Expression.Parameter(typeof(TSource), "source");
-			var bindings        = new List<MemberBinding>();
+			var bindings = new List<MemberBinding>();
 
 			foreach (var sourceProperty in typeof(TSource).GetProperties())
 			{

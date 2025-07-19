@@ -20,10 +20,10 @@ public class FederationServerUrls : IServerUrls
 		}
 		set
 		{
-			var split   = value.Split(new[] { "://" }, StringSplitOptions.RemoveEmptyEntries);
+			var split = value.Split(new[] { "://" }, StringSplitOptions.RemoveEmptyEntries);
 			var request = _httpContextAccessor.HttpContext.Request;
 			request.Scheme = split.First();
-			request.Host   = new HostString(split.Last());
+			request.Host = new HostString(split.Last());
 		}
 	}
 

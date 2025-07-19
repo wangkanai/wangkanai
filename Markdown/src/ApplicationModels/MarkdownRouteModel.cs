@@ -12,12 +12,12 @@ public class MarkdownRouteModel
 
 	public MarkdownRouteModel(string relativePath, string viewEnginePath, string? areaName)
 	{
-		RelativePath   = relativePath.ThrowIfNull();
+		RelativePath = relativePath.ThrowIfNull();
 		ViewEnginePath = viewEnginePath.ThrowIfNull();
-		AreaName       = areaName;
+		AreaName = areaName;
 
-		Properties  = new Dictionary<object, object?>();
-		Selectors   = new List<SelectorModel>();
+		Properties = new Dictionary<object, object?>();
+		Selectors = new List<SelectorModel>();
 		RouteValues = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 	}
 
@@ -25,22 +25,22 @@ public class MarkdownRouteModel
 	{
 		other.ThrowIfNull();
 
-		RelativePath              = other.RelativePath;
-		ViewEnginePath            = other.ViewEnginePath;
-		AreaName                  = other.AreaName;
+		RelativePath = other.RelativePath;
+		ViewEnginePath = other.ViewEnginePath;
+		AreaName = other.AreaName;
 		RouteParameterTransformer = other.RouteParameterTransformer;
 
-		Properties  = new Dictionary<object, object?>(other.Properties);
-		Selectors   = new List<SelectorModel>(other.Selectors.Select(m => new SelectorModel(m)));
+		Properties = new Dictionary<object, object?>(other.Properties);
+		Selectors = new List<SelectorModel>(other.Selectors.Select(m => new SelectorModel(m)));
 		RouteValues = new Dictionary<string, string>(other.RouteValues, StringComparer.OrdinalIgnoreCase);
 	}
 
-	public string  RelativePath   { get; }
-	public string  ViewEnginePath { get; }
-	public string? AreaName       { get; }
+	public string RelativePath { get; }
+	public string ViewEnginePath { get; }
+	public string? AreaName { get; }
 
-	public IDictionary<object, object?> Properties  { get; }
-	public IDictionary<string, string>  RouteValues { get; }
+	public IDictionary<object, object?> Properties { get; }
+	public IDictionary<string, string> RouteValues { get; }
 
 	public IList<SelectorModel> Selectors { get; }
 

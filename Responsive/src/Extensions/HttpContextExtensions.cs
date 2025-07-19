@@ -17,8 +17,8 @@ internal static class HttpContextExtensions
 		context.Items.ThrowIfNull();
 
 		return context.Items.TryGetValue(ResponsiveContextKey, out var responsive)
-			       ? (Device)(responsive ?? Device.Unknown)
-			       : Device.Desktop;
+				   ? (Device)(responsive ?? Device.Unknown)
+				   : Device.Desktop;
 	}
 
 	public static void SetDevice(this HttpContext context, Device device)

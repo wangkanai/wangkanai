@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
+// Copyright (c) 2014-2022 Sarin Na Wangkanai, All Rights Reserved.Apache License, Version 2.0
 
 using Wangkanai.Extensions;
 
@@ -32,11 +32,11 @@ public class RangeIterator<T> : IEnumerable<T>
 		step.ThrowIfNull();
 
 		if (ascending && range.Comparer.Compare(range.Start, step(range.Start)) >= 0 ||
-		    !ascending && range.Comparer.Compare(range.End, step(range.End)) <= 0)
+			!ascending && range.Comparer.Compare(range.End, step(range.End)) <= 0)
 			throw new ArgumentException("Step does nothing, or progresses the wrong way");
 
-		Range     = range;
-		Step      = step;
+		Range = range;
+		Step = step;
 		Ascending = ascending;
 	}
 
@@ -46,10 +46,10 @@ public class RangeIterator<T> : IEnumerable<T>
 	public IEnumerator<T> GetEnumerator()
 	{
 		var includeStart = Ascending ? Range.IncludesStart : Range.IncludesEnd;
-		var includeEnd   = Ascending ? Range.IncludesEnd : Range.IncludesStart;
+		var includeEnd = Ascending ? Range.IncludesEnd : Range.IncludesStart;
 
-		var start    = Ascending ? Range.Start : Range.End;
-		var end      = Ascending ? Range.End : Range.Start;
+		var start = Ascending ? Range.Start : Range.End;
+		var end = Ascending ? Range.End : Range.Start;
 		var comparer = Ascending ? Range.Comparer : Range.Comparer.Reverse();
 
 		var value = start;

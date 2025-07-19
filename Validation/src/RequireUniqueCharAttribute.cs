@@ -15,11 +15,11 @@ public sealed class RequireUniqueCharAttribute : ValidationAttribute
 
 	public override bool IsValid(object? value)
 		=> value switch
-		   {
-			   null          => true,
-			   string actual => Unique(actual).Count >= Minimum,
-			   _             => false
-		   };
+		{
+			null => true,
+			string actual => Unique(actual).Count >= Minimum,
+			_ => false
+		};
 
 	private static Dictionary<char, int> Unique(string value)
 	{

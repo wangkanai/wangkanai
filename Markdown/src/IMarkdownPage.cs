@@ -10,15 +10,15 @@ namespace Wangkanai.Markdown;
 
 public interface IMarkdownPage
 {
-	ViewContext   ViewContext { get; set; }
+	ViewContext ViewContext { get; set; }
 	IHtmlContent? BodyContent { get; set; }
 
-	bool    IsLayoutBeingRendered { get; set; }
-	string  Path                  { get; set; }
-	string? Layout                { get; set; }
+	bool IsLayoutBeingRendered { get; set; }
+	string Path { get; set; }
+	string? Layout { get; set; }
 
 	IDictionary<string, RenderAsyncDelegate> PreviousSectionWriters { get; set; }
-	IDictionary<string, RenderAsyncDelegate> SectionWriters         { get; }
+	IDictionary<string, RenderAsyncDelegate> SectionWriters { get; }
 
 	Task ExecuteAsync();
 
