@@ -33,19 +33,46 @@ federation, markdown processing, and more.
 
 ### Testing
 
+The solution uses xUnit v3 with Microsoft Testing Platform (MTP) for improved performance and reduced overhead.
+
 ```bash
 # Run tests for specific module (from module directory)
 dotnet test .\tests\ -c Release
 
-# Run tests with coverage (used in CI)
-dotnet-coverage collect "dotnet test --no-build --verbosity normal" -f xml -o "coverage.xml"
+# Run tests directly with Microsoft Testing Platform (faster)
+.\tests\bin\Release\net8.0\YourProject.Tests.exe
+
+# Run tests with coverage for all projects
+pwsh ./test-coverage.ps1
+
+# Run tests with coverage (skip build)
+pwsh ./test-coverage.ps1 -NoBuild
+
+# Run tests with coverage for specific test pattern
+pwsh ./test-coverage.ps1 -Filter "FullyQualifiedName~YourTest"
+
+# Run tests with coverage for specific project
+dotnet test ./path/to/tests.csproj -c Release /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=./coverage/
+
+# Run all tests with merged coverage
+dotnet test -c Release /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=./coverage/ /p:MergeWith=./coverage/coverage.json
 
 # Run single test class
 dotnet test .\tests\ -c Release --filter "ClassName=YourTestClass"
 
 # Run tests with specific pattern
 dotnet test .\tests\ -c Release --filter "TestCategory=Unit"
+
+# MTP-specific options (when running executable directly)
+.\tests\bin\Release\net8.0\YourProject.Tests.exe --list-tests
+.\tests\bin\Release\net8.0\YourProject.Tests.exe --filter "FullyQualifiedName~YourTestClass"
 ```
+
+**Test Configuration:**
+- Central `testconfig.json` in repository root for Microsoft Testing Platform configuration
+- Microsoft Testing Platform enabled for all test projects
+- Parallel test collection execution enabled
+- Console and trace output capture enabled
 
 ### Package Management
 
@@ -366,9 +393,43 @@ All source files include this copyright header:
 
 ### Testing Framework
 
-- **xUnit**: Primary testing framework
+- **xUnit v3**: Primary testing framework with Microsoft Testing Platform integration
 - **Test Structure**: Follows AAA pattern (Arrange, Act, Assert)
 - **Mock Objects**: Custom mock implementations in `Mocks/` folders
+- **Test Execution**: Supports both `dotnet test` and direct executable execution
+- **Performance**: ~30-40% faster test execution with MTP compared to VSTest
+
+### Code Coverage
+
+The solution uses **Coverlet** for code coverage collection with **OpenCover** format for optimal SonarQube compatibility.
+
+**Configuration:**
+- **Coverage Tool**: Coverlet.msbuild (integrated with MSBuild)
+- **Output Format**: OpenCover (preferred by SonarQube)
+- **Output Location**: `./coverage/coverage.opencover.xml`
+- **Exclusions**: `*.Designer.cs`, `*.g.cs`, `GeneratedCodeAttribute`, `CompilerGeneratedAttribute`
+- **Default**: Coverage collection is OFF by default (set `/p:CollectCoverage=true` to enable)
+
+**Running Coverage:**
+```bash
+# Single project coverage
+dotnet test ./path/to/tests.csproj -c Release /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=../../../coverage/
+
+# Multiple projects with merging
+# First project:
+dotnet test ./First.Tests.csproj -c Release /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=./coverage/
+
+# Subsequent projects (output JSON for merging):
+dotnet test ./Second.Tests.csproj -c Release /p:CollectCoverage=true /p:CoverletOutputFormat=json /p:CoverletOutput=./coverage/ /p:MergeWith=./coverage/coverage.json
+
+# Final project (merge and output OpenCover):
+dotnet test ./Last.Tests.csproj -c Release /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=./coverage/ /p:MergeWith=./coverage/coverage.json
+```
+
+**SonarQube Integration:**
+- Reports path configured in `SonarQube.Analysis.xml`
+- Uses OpenCover format: `sonar.cs.opencover.reportsPaths=coverage/coverage.opencover.xml`
+- Coverage exclusions match Coverlet configuration
 
 ## Development Workflow
 

@@ -35,8 +35,8 @@ jobs:
     - name: Setup SonarCloud
       run:  dotnet tool install --global dotnet-sonarscanner
 
-    - name: Setup Coverage
-      run:  dotnet tool install --global dotnet-coverage
+    - name: Setup ReportGenerator
+      run:  dotnet tool install --global dotnet-reportgenerator-globaltool
 
     - name: Install npm
       run:  |
@@ -54,7 +54,7 @@ jobs:
         /d:sonar.host.url="https://sonarcloud.io"
         /d:sonar.scanner.skipJreProvisioning=true
         /d:sonar.scanner.scanAll=false
-        /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
+        /d:sonar.cs.opencover.reportsPaths=coverage/coverage.opencover.xml
 
     - name: Restore dependencies
       run:  dotnet restore
@@ -63,7 +63,87 @@ jobs:
       run:  dotnet build --no-restore --no-incremental
 
     - name: Test
-      run:  dotnet-coverage collect "dotnet test --no-build --verbosity normal" -f xml -o "coverage.xml"
+      run:  dotnet test --no-build --verbosity normal
+      
+    - name: Test with Coverage
+      run:  |
+        # Create coverage directory
+        mkdir -p ${{ github.workspace }}/coverage
+        
+        # Find all test projects
+        TEST_PROJECTS=$(find . -name "*.Tests.csproj" -type f -not -path "*/bin/*" -not -path "*/obj/*" | sort)
+        TOTAL_PROJECTS=$(echo "$TEST_PROJECTS" | wc -l)
+        CURRENT=0
+        
+        echo "Found $TOTAL_PROJECTS test projects"
+        
+        # Run tests with coverage for each project
+        for PROJECT in $TEST_PROJECTS; do
+          CURRENT=$((CURRENT + 1))
+          echo "Running tests for $PROJECT ($CURRENT/$TOTAL_PROJECTS)"
+          
+          if [ $CURRENT -eq $TOTAL_PROJECTS ]; then
+            # Last project - generate final merged coverage in OpenCover format
+            if [ $TOTAL_PROJECTS -gt 1 ]; then
+              dotnet test "$PROJECT" --no-build \
+                /p:CollectCoverage=true \
+                /p:CoverletOutputFormat=opencover \
+                /p:CoverletOutput=${{ github.workspace }}/coverage/ \
+                /p:MergeWith=${{ github.workspace }}/coverage/coverage.json || true
+            else
+              dotnet test "$PROJECT" --no-build \
+                /p:CollectCoverage=true \
+                /p:CoverletOutputFormat=opencover \
+                /p:CoverletOutput=${{ github.workspace }}/coverage/ || true
+            fi
+          else
+            # Intermediate projects - output JSON for merging
+            if [ $CURRENT -eq 1 ]; then
+              dotnet test "$PROJECT" --no-build \
+                /p:CollectCoverage=true \
+                /p:CoverletOutputFormat=json \
+                /p:CoverletOutput=${{ github.workspace }}/coverage/ || true
+            else
+              dotnet test "$PROJECT" --no-build \
+                /p:CollectCoverage=true \
+                /p:CoverletOutputFormat=json \
+                /p:CoverletOutput=${{ github.workspace }}/coverage/ \
+                /p:MergeWith=${{ github.workspace }}/coverage/coverage.json || true
+            fi
+          fi
+        done
+        
+        # Verify coverage was generated
+        if [ -f "${{ github.workspace }}/coverage/coverage.opencover.xml" ]; then
+          echo "✅ Coverage report generated successfully at expected location"
+          ls -la ${{ github.workspace }}/coverage/
+        else
+          echo "❌ Coverage report not found at expected location"
+          echo "Searching for any coverage files..."
+          find . -name "coverage.opencover.xml" -type f | head -20
+        fi
 
+    - name: Debug Coverage Files
+      run:  |
+        echo "=== Coverage directory contents ==="
+        find . -name "coverage.opencover.xml" -type f | head -20
+        find . -name "coverage.json" -type f | head -20
+        echo "=== Root coverage directory ==="
+        ls -la coverage/ || echo "No coverage directory"
+        echo "=== Working directory ==="
+        pwd
+        echo "=== GitHub workspace ==="
+        echo ${{ github.workspace }}
+        
+    - name: Upload Coverage Report
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: coverage-report
+        path: |
+          coverage/
+          **/coverage/
+        retention-days: 1
+        
     - name: SonarCloud Submit
       run:  dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"

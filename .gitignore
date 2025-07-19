@@ -37,6 +37,9 @@ dotCover.Output.dcvr
 dotCover.Output/
 .dotcover/
 coverage.xml
+coverage.json
+coverage.cobertura.xml
+coverage.opencover.xml
 
 # SonarScanner Cloud
 

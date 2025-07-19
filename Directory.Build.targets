@@ -16,29 +16,35 @@
 		<OutputType>Exe</OutputType>
 		<IsPackable>false</IsPackable>
 		<IsTestProject>true</IsTestProject>
+		<!-- Microsoft Testing Platform -->
+		<UseMicrosoftTestingPlatformRunner>true</UseMicrosoftTestingPlatformRunner>
+		<TestingPlatformDotnetTestSupport>true</TestingPlatformDotnetTestSupport>
+		<!-- Code Coverage -->
+		<CollectCoverage Condition="'$(CollectCoverage)' == ''">false</CollectCoverage>
+		<CoverletOutputFormat Condition="'$(CoverletOutputFormat)' == ''">opencover</CoverletOutputFormat>
+		<CoverletOutput Condition="'$(CoverletOutput)' == '' and '$(GITHUB_WORKSPACE)' != ''">$(GITHUB_WORKSPACE)/coverage/</CoverletOutput>
+		<CoverletOutput Condition="'$(CoverletOutput)' == ''">$(MSBuildProjectDirectory)/coverage/</CoverletOutput>
+		<ExcludeByFile>**/*.Designer.cs,**/*.g.cs</ExcludeByFile>
+		<ExcludeByAttribute>GeneratedCodeAttribute,CompilerGeneratedAttribute</ExcludeByAttribute>
+		<IncludeTestAssembly>false</IncludeTestAssembly>
 	</PropertyGroup>
 	<ItemGroup Condition="$(MSBuildProjectName.Contains('Tests'))">
 		<Using Include="Xunit"/>
 	</ItemGroup>
 	<ItemGroup Condition="$(MSBuildProjectName.Contains('Tests'))">
-		<Content Include="xunit.runner.json" CopyToOutputDirectory="PreserveNewest" />
+		<Content Include="$(RepoRoot)testconfig.json" Link="testconfig.json" CopyToOutputDirectory="PreserveNewest" Condition="Exists('$(RepoRoot)testconfig.json')" />
 	</ItemGroup>
 	<!-- xUnit Tests-->
 	<ItemGroup Condition="$(MSBuildProjectName.Contains('Tests'))">
+		<PackageReference Include="Microsoft.TestPlatform.TestHost"/>
 		<PackageReference Include="Microsoft.AspNetCore.TestHost"/>
 		<PackageReference Include="Microsoft.NET.Test.Sdk"/>
 		<PackageReference Include="Moq"/>
 		<PackageReference Include="xunit.v3"/>
 		<PackageReference Include="xunit.runner.visualstudio"/>
 		<PackageReference Include="xunit.analyzers"/>
-		<PackageReference Include="coverlet.collector"/>
 		<PackageReference Include="coverlet.msbuild"/>
 		<PackageReference Include="FluentAssertions"/>
 	</ItemGroup>
 
-	<Target Name="SetCoverletOutputProperty" BeforeTargets="GenerateCoverageResult">
-		<PropertyGroup>
-			<CoverletOutput>$(VSTestResultsDirectory)\$(MSBuildProjectName).coverage</CoverletOutput>
-		</PropertyGroup>
-	</Target>
 </Project>
