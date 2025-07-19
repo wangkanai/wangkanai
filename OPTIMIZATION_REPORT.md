@@ -71,11 +71,29 @@ Focus on single changes per iteration with careful measurement and validation.
   - Shell command interpretation - quoted NoWarn property
 - **Key Achievement**: Successfully isolated npm builds!
 
-### Iteration 18: Add npm caching to npm job (In Progress)
+### Iteration 18: Add npm caching to npm job (Completed)
 - **Change**: Added npm dependency caching to build-npm job
 - **Purpose**: Improve npm job performance with dependency caching
 - **Features**: Cache ~/.npm and node_modules with package.json key
-- **Build**: https://github.com/wangkanai/wangkanai/actions/runs/16387466982
+- **Result**: npm caching implemented successfully
+
+### Iteration 19: Proper separation of dotnet/npm builds (MAJOR REFACTOR)
+- **Change**: Complete separation of concerns between dotnet and npm builds
+- **Purpose**: Follow user guidance for true build separation
+- **Key Changes**:
+  - **build-dotnet**: Pure .NET only (no Node.js/npm dependencies)
+    * Removed Node.js setup and npm tools installation
+    * Added `/p:SkipNpmTargets=true` to skip npm build targets
+    * Focuses only on .NET restore, build, test, coverage, sonarcloud
+  - **build-npm**: Pure npm asset compilation only (no .NET builds)
+    * Only Node.js setup, no .NET SDK  
+    * Focuses on Sass compilation and asset generation
+    * Uses `npm ci` for production installs
+    * Proper error handling and build verification
+  - **MSBuild Integration**: Updated Tabler Web project targets
+    * Added `Condition="'$(SkipNpmTargets)' != 'true'"` to npm targets
+    * Allows dotnet builds to skip npm when property is set
+- **Result**: Proper separation of concerns implemented
 
 ## What Works So Far
 1. Parallel tool installation (saves ~5s)
