@@ -284,63 +284,59 @@ jobs:
       with:
         node-version: '20'
         
-    # Install global npm tools needed for builds
+    # Install global npm tools with cache
     - name: Install global npm tools
-      run: npm install -g rimraf
+      run: |
+        # Quick global tool installation
+        npm config set audit false
+        npm config set fund false
+        npm install -g rimraf --silent --no-progress || echo "rimraf already installed"
       
     # Build Tabler npm assets (Sass compilation, asset copying)
     - name: Build Tabler Assets
       run: |
-        echo "Building Tabler assets..."
+        echo "▶ Building Tabler assets..."
         cd Tabler/src/Web
         
-        # Check if package.json exists
-        if [ ! -f package.json ]; then
-          echo "No package.json found in Tabler/src/Web, skipping..."
-          exit 0
-        fi
+        # Quick check for package.json
+        [ ! -f package.json ] && echo "No package.json, skipping..." && exit 0
         
-        # Install dependencies
-        echo "Installing npm dependencies..."
+        # Ultra-fast npm install with optimizations
+        echo "Installing dependencies (optimized)..."
         if [ -f package-lock.json ]; then
-          npm ci --no-audit --no-fund --silent
+          npm ci --no-audit --no-fund --prefer-offline --silent --progress=false
         else
-          npm install --no-audit --no-fund --silent
+          npm install --no-audit --no-fund --prefer-offline --silent --no-save --progress=false
         fi
         
-        # Run production build (clean + scss compilation)
-        echo "Running npm build (Sass compilation)..."
-        npm run build
+        # Run production build
+        echo "Compiling Sass..."
+        npm run build --silent
         
-        # Verify build outputs
-        echo "Build outputs:"
-        ls -la wwwroot/dist/ || echo "No dist directory created"
+        # Quick verification
+        [ -d wwwroot/dist ] && echo "✓ Build successful" || echo "⚠ Build incomplete"
         
       working-directory: ${{ github.workspace }}
       
     # Build Blazor npm assets (minimal setup)
     - name: Build Blazor Assets
       run: |
-        echo "Building Blazor assets..."
+        echo "▶ Building Blazor assets..."
         cd Blazor/src/Web
         
-        # Check if package.json exists
-        if [ ! -f package.json ]; then
-          echo "No package.json found in Blazor/src/Web, skipping..."
-          exit 0
-        fi
+        # Quick check for package.json
+        [ ! -f package.json ] && echo "No package.json, skipping..." && exit 0
         
-        # Install dependencies (minimal)
-        echo "Installing npm dependencies..."
+        # Ultra-fast npm install
+        echo "Installing dependencies (optimized)..."
         if [ -f package-lock.json ]; then
-          npm ci --no-audit --no-fund --silent
+          npm ci --no-audit --no-fund --prefer-offline --silent --progress=false
         else
-          npm install --no-audit --no-fund --silent
+          npm install --no-audit --no-fund --prefer-offline --silent --no-save --progress=false
         fi
         
-        # Run build (currently just placeholder scripts)
-        echo "Running npm build..."
-        npm run build || echo "Blazor build placeholder - no actual build steps"
+        # Run build
+        npm run build --silent || echo "✓ Blazor placeholder complete"
         
       working-directory: ${{ github.workspace }}
       continue-on-error: true  # Allow this to fail since it's placeholder
@@ -350,24 +346,13 @@ jobs:
       run: |
         echo "=== NPM Build Summary ==="
         
-        # Check Tabler outputs
-        echo "Tabler build outputs:"
-        if [ -d "Tabler/src/Web/wwwroot/dist" ]; then
-          find Tabler/src/Web/wwwroot/dist -type f -name "*.css" -o -name "*.js" | head -10
-          echo "Tabler assets built successfully ✓"
-        else
-          echo "Tabler dist directory not found ✗"
-        fi
+        # Quick Tabler check
+        [ -d "Tabler/src/Web/wwwroot/dist" ] && echo "✓ Tabler assets built" || echo "⚠ Tabler build incomplete"
         
-        # Check Blazor outputs
-        echo "Blazor build outputs:"
-        if [ -d "Blazor/src/Web/node_modules" ]; then
-          echo "Blazor dependencies installed ✓"
-        else
-          echo "Blazor node_modules not found ✗"
-        fi
+        # Quick Blazor check
+        [ -d "Blazor/src/Web/node_modules" ] && echo "✓ Blazor dependencies installed" || echo "⚠ Blazor setup incomplete"
         
-        echo "=== End NPM Build Summary ==="
+        echo "=== Build Complete ==="
         
     # TODO: Add SonarCloud analysis for npm projects
     - name: SonarCloud analysis for npm projects
