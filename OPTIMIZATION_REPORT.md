@@ -71,6 +71,12 @@ Focus on single changes per iteration with careful measurement and validation.
   - Shell command interpretation - quoted NoWarn property
 - **Key Achievement**: Successfully isolated npm builds!
 
+### Iteration 18: Add npm caching to npm job (In Progress)
+- **Change**: Added npm dependency caching to build-npm job
+- **Purpose**: Improve npm job performance with dependency caching
+- **Features**: Cache ~/.npm and node_modules with package.json key
+- **Build**: https://github.com/wangkanai/wangkanai/actions/runs/16387466982
+
 ## What Works So Far
 1. Parallel tool installation (saves ~5s)
 2. NuGet package caching (saves 30-60s when hit)

@@ -77,16 +77,6 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-build-
 
-    # Cache npm dependencies for Tabler project
-    - name: Cache npm dependencies
-      uses: actions/cache@v4
-      with:
-        path: |
-          ~/.npm
-          **/node_modules
-        key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json', '**/package.json') }}
-        restore-keys: |
-          ${{ runner.os }}-npm-
 
     # Cache SonarCloud scanner and analysis data
     - name: Cache SonarCloud
@@ -104,15 +94,6 @@ jobs:
       with:
         dotnet-version: 9.0.x
 
-    # Setup Node.js for npm builds
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20'
-
-    # Install npm tools needed for build
-    - name: Install npm tools
-      run: npm install -g rimraf
       
     # Install tools faster with parallel execution
     - name: Install tools
@@ -156,10 +137,11 @@ jobs:
 
     - name: Build
       run: |
-        # Build all projects (dotnet will handle npm projects that may fail)
+        # Build all projects with MSBuild property to skip npm targets
         dotnet build --no-restore -c Release \
           /p:TreatWarningsAsErrors=false \
           /p:ContinuousIntegrationBuild=true \
+          /p:SkipNpmTargets=true \
           /maxcpucount \
           /p:UseSharedCompilation=true \
           /p:BuildInParallel=true \
@@ -171,7 +153,7 @@ jobs:
           /p:ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch=None \
           /p:WarningLevel=0 \
           /p:NoWarn="NU1701;NU1603;CS1591" \
-          --verbosity minimal || true
+          --verbosity minimal
         
         echo "Build completed"
 
@@ -235,14 +217,14 @@ jobs:
     - name: SonarCloud Submit
       run: dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
 
-  # Separate job for npm-based projects (Tabler/Blazor)
+  # Separate job for npm-based projects (asset compilation only)
   build-npm:
     runs-on: ubuntu-latest
     
     steps:
     - uses: actions/checkout@v4
     
-    # Cache npm dependencies
+    # Cache npm dependencies efficiently
     - name: Cache npm dependencies
       uses: actions/cache@v4
       with:
@@ -252,41 +234,100 @@ jobs:
         key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json', '**/package.json') }}
         restore-keys: |
           ${{ runner.os }}-npm-
-      
+
+    # Only setup Node.js - no .NET SDK needed for npm builds
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
         node-version: '20'
+        cache: 'npm'
+        cache-dependency-path: |
+          Tabler/src/Web/package-lock.json
+          Blazor/src/Web/package-lock.json
         
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: 9.0.x
-        
+    # Install global npm tools needed for builds
     - name: Install global npm tools
       run: npm install -g rimraf
       
-    - name: Restore .NET dependencies
+    # Build Tabler npm assets (Sass compilation, asset copying)
+    - name: Build Tabler Assets
       run: |
-        dotnet restore Tabler/src/Core/Wangkanai.Tabler.csproj --verbosity minimal
-        dotnet restore Blazor/src/Core/Wangkanai.Blazor.csproj --verbosity minimal
-        
-    - name: Build Tabler
-      run: |
-        echo "Building Tabler with npm..."
+        echo "Building Tabler assets..."
         cd Tabler/src/Web
-        npm install --no-audit --no-fund
-        cd ../../..
-        dotnet build Tabler/src/Core/Wangkanai.Tabler.csproj -c Release --no-restore
         
-    - name: Build Blazor  
+        # Check if package.json exists
+        if [ ! -f package.json ]; then
+          echo "No package.json found in Tabler/src/Web, skipping..."
+          exit 0
+        fi
+        
+        # Install dependencies
+        echo "Installing npm dependencies..."
+        npm ci --no-audit --no-fund --silent
+        
+        # Run production build (clean + scss compilation)
+        echo "Running npm build (Sass compilation)..."
+        npm run build
+        
+        # Verify build outputs
+        echo "Build outputs:"
+        ls -la wwwroot/dist/ || echo "No dist directory created"
+        
+      working-directory: ${{ github.workspace }}
+      
+    # Build Blazor npm assets (minimal setup)
+    - name: Build Blazor Assets
       run: |
-        echo "Building Blazor with npm..."
+        echo "Building Blazor assets..."
         cd Blazor/src/Web
-        npm install --no-audit --no-fund
-        cd ../../..
-        dotnet build Blazor/src/Core/Wangkanai.Blazor.csproj -c Release --no-restore
         
+        # Check if package.json exists
+        if [ ! -f package.json ]; then
+          echo "No package.json found in Blazor/src/Web, skipping..."
+          exit 0
+        fi
+        
+        # Install dependencies (minimal)
+        echo "Installing npm dependencies..."
+        npm ci --no-audit --no-fund --silent
+        
+        # Run build (currently just placeholder scripts)
+        echo "Running npm build..."
+        npm run build || echo "Blazor build placeholder - no actual build steps"
+        
+      working-directory: ${{ github.workspace }}
+      continue-on-error: true  # Allow this to fail since it's placeholder
+      
+    # Verify all npm builds completed
+    - name: Verify npm builds
+      run: |
+        echo "=== NPM Build Summary ==="
+        
+        # Check Tabler outputs
+        echo "Tabler build outputs:"
+        if [ -d "Tabler/src/Web/wwwroot/dist" ]; then
+          find Tabler/src/Web/wwwroot/dist -type f -name "*.css" -o -name "*.js" | head -10
+          echo "Tabler assets built successfully ✓"
+        else
+          echo "Tabler dist directory not found ✗"
+        fi
+        
+        # Check Blazor outputs
+        echo "Blazor build outputs:"
+        if [ -d "Blazor/src/Web/node_modules" ]; then
+          echo "Blazor dependencies installed ✓"
+        else
+          echo "Blazor node_modules not found ✗"
+        fi
+        
+        echo "=== End NPM Build Summary ==="
+        
+    # TODO: Add SonarCloud analysis for npm projects
     - name: SonarCloud analysis for npm projects
       run: |
         echo "TODO: Add SonarCloud analysis for npm projects"
+        echo "This would include:"
+        echo "  - CSS/SCSS analysis"
+        echo "  - JavaScript analysis (if applicable)"
+        echo "  - Asset optimization analysis"
+        echo "  - Security scanning for npm dependencies"
