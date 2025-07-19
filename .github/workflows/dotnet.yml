@@ -170,7 +170,7 @@ jobs:
           /p:UseCommonOutputDirectory=true \
           /p:ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch=None \
           /p:WarningLevel=0 \
-          /p:NoWarn=NU1701;NU1603;CS1591 \
+          /p:NoWarn="NU1701;NU1603;CS1591" \
           --verbosity minimal || true
         
         echo "Build completed"
@@ -241,6 +241,17 @@ jobs:
     
     steps:
     - uses: actions/checkout@v4
+    
+    # Cache npm dependencies
+    - name: Cache npm dependencies
+      uses: actions/cache@v4
+      with:
+        path: |
+          ~/.npm
+          **/node_modules
+        key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json', '**/package.json') }}
+        restore-keys: |
+          ${{ runner.os }}-npm-
       
     - name: Setup Node.js
       uses: actions/setup-node@v4
