@@ -10,10 +10,10 @@
     "fileSummary": true,
     "directoryStructure": true,
     "files": true,
-    "removeComments": true,
-    "removeEmptyLines": true,
-    "compress": true,
-    "topFilesLength": 15,
+    "removeComments": false,
+    "removeEmptyLines": false,
+    "compress": false,
+    "topFilesLength": 20,
     "showLineNumbers": true,
     "copyToClipboard": false,
     "git": {
@@ -34,11 +34,16 @@
     "**/*.xml",
     "**/*.razor",
     "**/*.resx",
-    "**/CLAUDE.md",
-    "**/global.json",
-    "**/Directory.Build.props",
-    "**/Directory.Build.targets",
-    "**/Directory.Packages.props"
+    "**/*.md",
+    "**/*.ps1",
+    "**/*.yml",
+    "**/*.yaml",
+    "**/Dockerfile",
+    "**/.dockerignore",
+    "**/LICENSE",
+    "**/README.md",
+    "**/INSTALL.md",
+    "**/CLAUDE.md"
   ],
   "ignore": {
     "useGitignore": true,
@@ -46,19 +51,33 @@
     "customPatterns": [
       "**/samples/**",
       "**/benchmark/**",
-      "**/test/**",
-      "**/tests/**/bin/**",
-      "**/tests/**/obj/**",
-      "**/src/**/bin/**",
-      "**/src/**/obj/**",
+      "**/bin/**",
+      "**/obj/**",
+      "**/packages/**",
+      "**/artifacts/**",
+      "**/BenchmarkDotNet.Artifacts/**",
+      "**/TestResults/**",
+      "**/coverage/**",
       "**/*.Designer.cs",
       "**/*.AssemblyInfo.cs",
       "**/Resources.Designer.cs",
+      "**/GlobalUsings.cs",
       "**/Usings.cs",
-      "**/key.snk",
-      "**/public.snk",
+      "**/*.snk",
+      "**/*.pfx",
       "**/launchSettings.json",
-      "**/xunit.runner.json"
+      "**/appsettings.*.json",
+      "**/secrets.json",
+      "**/.vs/**",
+      "**/.vscode/**",
+      "**/.idea/**",
+      "**/node_modules/**",
+      "**/*.log",
+      "**/*.bak",
+      "**/*.tmp",
+      "**/*.cache",
+      "**/Thumbs.db",
+      "**/.DS_Store"
     ]
   },
   "security": {
@@ -66,5 +85,8 @@
   },
   "tokenCount": {
     "encoding": "o200k_base"
+  },
+  "output": {
+    "instructionFilePath": "CLAUDE.md"
   }
 }
