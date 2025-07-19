@@ -172,27 +172,45 @@ jobs:
 
     - name: Build (excluding npm projects)
       run: |
-        # Build all projects except Tabler and Blazor
-        for project in */src/*.csproj; do
-          if [[ ! "$project" =~ (Tabler|Blazor) ]]; then
-            echo "Building $project"
-            dotnet build "$project" --no-restore -c Release \
-              /p:TreatWarningsAsErrors=false \
-              /p:ContinuousIntegrationBuild=true \
-              /maxcpucount \
-              /p:UseSharedCompilation=true \
-              /p:BuildInParallel=true \
-              /p:PublishReadyToRun=false \
-              /p:PublishTrimmed=false \
-              /p:EnableNETAnalyzers=false \
-              /p:RunAnalyzersDuringBuild=false \
-              /p:UseCommonOutputDirectory=true \
-              /p:ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch=None \
-              /p:WarningLevel=0 \
-              /p:NoWarn=NU1701;NU1603;CS1591 \
-              --verbosity minimal
+        # Find all projects except Tabler and Blazor
+        BUILD_PROJECTS=$(find . -name "*.csproj" -path "*/src/*" -not -path "*/Tabler/*" -not -path "*/Blazor/*" | sort)
+        PROJECT_COUNT=$(echo "$BUILD_PROJECTS" | wc -l)
+        echo "Found $PROJECT_COUNT projects to build"
+        
+        # Get available CPU cores
+        CORES=$(nproc)
+        echo "Building projects in parallel using $CORES cores..."
+        
+        # Build projects in parallel batches
+        echo "$BUILD_PROJECTS" | xargs -P $CORES -I {} bash -c '
+          PROJECT="{}"
+          PROJECT_NAME=$(basename "$PROJECT" .csproj)
+          echo "Building $PROJECT_NAME..."
+          
+          if dotnet build "$PROJECT" --no-restore -c Release \
+            /p:TreatWarningsAsErrors=false \
+            /p:ContinuousIntegrationBuild=true \
+            /maxcpucount \
+            /p:UseSharedCompilation=true \
+            /p:BuildInParallel=true \
+            /p:PublishReadyToRun=false \
+            /p:PublishTrimmed=false \
+            /p:EnableNETAnalyzers=false \
+            /p:RunAnalyzersDuringBuild=false \
+            /p:UseCommonOutputDirectory=true \
+            /p:ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch=None \
+            /p:WarningLevel=0 \
+            /p:NoWarn=NU1701;NU1603;CS1591 \
+            --verbosity minimal > /tmp/build_${PROJECT_NAME}.log 2>&1; then
+            echo "✅ $PROJECT_NAME built successfully"
+          else
+            echo "❌ $PROJECT_NAME build failed"
+            cat /tmp/build_${PROJECT_NAME}.log
+            exit 1
           fi
-        done
+        '
+        
+        echo "✅ All projects built successfully"
 
     # Run tests with parallel execution and coverage
     - name: Test with Coverage
