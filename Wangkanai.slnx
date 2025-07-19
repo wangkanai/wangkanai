@@ -31,7 +31,6 @@
     <File Path="LICENSE" />
     <File Path="SonarQube.Analysis.xml" />
     <File Path="sonar-begin.ps1" />
-    <File Path="xunit.runner.json" />
     <File Path="testconfig.json" />
   </Folder>
   <Folder Name="/Analytics/">
