@@ -43,8 +43,7 @@
     "**/.dockerignore",
     "**/LICENSE",
     "**/README.md",
-    "**/INSTALL.md",
-    "**/CLAUDE.md"
+    "**/INSTALL.md"
   ],
   "ignore": {
     "useGitignore": true,
