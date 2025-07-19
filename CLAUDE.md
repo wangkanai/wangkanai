@@ -2,627 +2,452 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Repository Overview
-
-This is a comprehensive .NET monorepo containing 27+ libraries developed by Sarin Na Wangkanai. The repository provides
-ASP.NET Core extensions and utilities for various use cases including device detection, responsive design, security,
-federation, markdown processing, and more.
-
-**Key Libraries:**
-
-- **Detection**: Device, browser, engine, platform & crawler detection
-- **Responsive**: Responsive web design utilities for ASP.NET Core
-- **Blazor**: Custom UI components for Blazor applications
-- **Security**: Authentication and authorization extensions
-- **Federation**: Identity federation services
-- **Markdown**: Markdown parsing and rendering for web applications
-- **Domain**: Domain-driven design primitives and patterns
-- **Analytics**: User analytics and tracking services
-
 ## Development Commands
 
-### Building the Solution
-
+### Build and Restore
 ```bash
-# Build entire repository (runs all module builds in order)
-.\build.ps1
+# Full restore and release build
+./build.ps1
+# Equivalent to:
+dotnet restore --force
+dotnet build -c Release --tl
+```
 
-# Build individual module (from module directory)
-.\build.ps1
+### Development Server
+```bash
+# Start development environment with hot reload
+./watch.ps1
+# Equivalent to:
+dotnet watch --project ./Web/Razor/RiverSync.Web.Razor.csproj
 ```
 
 ### Testing
-
-The solution uses xUnit v3 with Microsoft Testing Platform (MTP) for improved performance and reduced overhead.
-
 ```bash
-# Run tests for specific module (from module directory)
-dotnet test .\tests\ -c Release
-
-# Run tests directly with Microsoft Testing Platform (faster)
-.\tests\bin\Release\net8.0\YourProject.Tests.exe
-
-# Run tests with coverage for all projects
-pwsh ./test-coverage.ps1
-
-# Run tests with coverage (skip build)
-pwsh ./test-coverage.ps1 -NoBuild
-
-# Run tests with coverage for specific test pattern
-pwsh ./test-coverage.ps1 -Filter "FullyQualifiedName~YourTest"
-
-# Run tests with coverage for specific project
-dotnet test ./path/to/tests.csproj -c Release /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=./coverage/
-
-# Run all tests with merged coverage
-dotnet test -c Release /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=./coverage/ /p:MergeWith=./coverage/coverage.json
-
-# Run single test class
-dotnet test .\tests\ -c Release --filter "ClassName=YourTestClass"
-
-# Run tests with specific pattern
-dotnet test .\tests\ -c Release --filter "TestCategory=Unit"
-
-# MTP-specific options (when running executable directly)
-.\tests\bin\Release\net8.0\YourProject.Tests.exe --list-tests
-.\tests\bin\Release\net8.0\YourProject.Tests.exe --filter "FullyQualifiedName~YourTestClass"
+# Run all tests
+dotnet test --configuration Release
+# Test pattern matches: **/*[Tt]ests/*.csproj
 ```
 
-**Test Configuration:**
-- Central `testconfig.json` in repository root for Microsoft Testing Platform configuration
-- Microsoft Testing Platform enabled for all test projects
-- Parallel test collection execution enabled
-- Console and trace output capture enabled
-
-### Package Management
-
-- All packages target `.NET 8.0`
-- Uses Central Package Management with `Directory.Packages.props`
-- NuGet packages are published under the `Wangkanai` namespace
-
-### Debugging & Development
-
+### Solution Management
 ```bash
-# Clean and rebuild specific module
-dotnet clean .\src\ -c Release -tl
-dotnet build .\src\ -c Release -tl
-
-# Restore dependencies for entire solution
-dotnet restore
-
-# Build entire solution without incremental builds
-dotnet build --no-restore --no-incremental
-
-# Run benchmarks (from module/benchmark directory)
-dotnet run -c Release
+# Restore all projects
+dotnet restore **/*.slnx
+# Build all projects
+dotnet build **/*.slnx --configuration Release
 ```
 
-### Available MCP Commands (By Priority & Efficiency)
-
-#### **🔴 CRITICAL PRIORITY - Codebase Analysis & Knowledge Tools**
-
-##### **🚀 REPOMIX INTEGRATION - PRIMARY CODEBASE ANALYSIS**
-
-**USE FIRST for any code exploration, understanding, or modification tasks!**
-
+### Database Operations
 ```bash
-# CORE WORKFLOW (Always start here!)
-mcp__repomix__pack_codebase                         # Generate complete codebase analysis
-mcp__repomix__grep_repomix_output                   # Fast pattern search (most efficient)
-mcp__repomix__read_repomix_output                   # Selective content reading
-
-# EXTENDED CAPABILITIES
-mcp__repomix__pack_remote_repository                # Analyze external GitHub repos
-mcp__repomix__file_system_read_file                 # Direct file access (with security checks)
-mcp__repomix__file_system_read_directory            # Directory listing
-
-# EFFICIENCY TIPS
-# 1. Always pack first: mcp__repomix__pack_codebase
-# 2. Use grep for discovery: mcp__repomix__grep_repomix_output "pattern"
-# 3. Read selectively: mcp__repomix__read_repomix_output --startLine=X --endLine=Y
+# Database management script
+./db.ps1
 ```
 
-##### **Common Repomix Search Patterns**
+## Architecture Overview
 
+RiverSync is a .NET 9.0 enterprise application built using Clean Architecture principles with Domain-Driven Design (DDD) patterns. This is part of the larger Wangkanai ecosystem of libraries and applications. The solution consists of multiple independent modules without centralized orchestration.
+
+### Solution Structure
+
+The RiverSync solution (`RiverSync.slnx`) is organized into the following structure:
+
+#### Configuration Folders
+- **/.claude/**: Claude Code configuration
+  - `settings.local.json`: Local Claude settings
+  - `CLAUDE.md`: This documentation file
+- **/.serena/**: Serena AI assistant configuration
+  - `project.yml`: Project configuration for Serena
+- **/.solutions/**: Solution-level configuration files
+  - `.editorconfig`, `.gitattributes`, `.gitignore`: Development environment setup
+  - `Directory.Build.props`: Common MSBuild properties
+  - `Directory.Build.targets`: Common MSBuild targets
+  - `Directory.Packages.props`: Centralized package version management
+  - `azure-pipelines.yml`: CI/CD pipeline configuration
+  - `build.ps1`, `watch.ps1`, `db.ps1`: Development scripts
+  - `qodana.yaml`: Code quality analysis configuration
+  - `azure-aad-config.txt`: Azure AD configuration notes
+
+#### Application Modules
+
+**Portal/** - Main business application (Clean Architecture)
+- `RiverSync.Portal.Domain.csproj`: Core business entities and domain logic
+- `RiverSync.Portal.Application.csproj`: Application services and use cases (MediatR)
+- `RiverSync.Portal.Infrastructure.csproj`: External service integrations
+- `RiverSync.Portal.Persistence.csproj`: Data access layer with Entity Framework Core
+- `RiverSync.Portal.Client.csproj`: Blazor WebAssembly client application
+- `RiverSync.Portal.csproj`: ASP.NET Core Web API and hosting (Server)
+- `RiverSync.Portal.Migration.csproj`: Database migration utilities
+- `Directory.Build.props`: Portal-specific build properties
+
+**Processor/** - Background processing service (Clean Architecture)
+- `RiverSync.Processor.Domain.csproj`: Processing domain entities
+- `RiverSync.Processor.Application.csproj`: Processing application services
+- `RiverSync.Processor.Infrastructure.csproj`: Processing infrastructure
+- `RiverSync.Processor.Server.csproj`: Processing service host
+- `Directory.Build.props`: Processor-specific build properties
+
+**Web/** - Additional web applications
+- `RiverSync.Web.Client.csproj`: Blazor WebAssembly client
+- `RiverSync.Web.Razor.csproj`: Server-side Blazor/Razor Pages application
+- `RiverSync.Web.Old.csproj`: Legacy web application
+- `Directory.Build.props`: Web-specific build properties
+
+**Aspire/** - Deprecated/Empty directory
+- Only contains `Directory.Build.props`
+- Referenced in `watch.ps1` but no longer contains projects
+
+**Docs/** - Documentation
+- `RiverSync.Docs.csproj`: Documentation site project
+
+**Admin/** - Administrative tools and interfaces
+- `Directory.Build.props`: Admin-specific build properties
+
+#### Wangkanai Libraries in Solution
+The RiverSync solution is part of the Wangkanai monorepo containing multiple libraries:
+
+**Core Libraries**:
+- **Detection**: Client device/browser/platform detection
+- **Responsive**: Responsive design and adaptation
+- **Blazor**: Custom Blazor UI components
+- **Identity**: User authentication and authorization
+- **Domain**: Domain-driven design base classes
+- **System**: System utilities and extensions
+- **Shared**: Shared components across libraries
+
+**UI & Presentation**:
+- **Tabler**: Modern dashboard/admin panel components
+- **Markdown**: Markdown parsing and rendering
+- **Mvc**: MVC extensions and helpers
+- **Webmaster**: SEO and web optimization tools
+
+**Infrastructure**:
+- **EntityFramework**: EF Core extensions
+- **Hosting**: Hosting configuration helpers
+- **Webserver**: Web server utilities
+- **Microservice**: Microservice patterns
+
+**Security & Identity**:
+- **Federation**: Identity provider federation
+- **Security**: Authentication/Authorization components
+- **Cryptography**: Cryptographic utilities
+- **Audit**: Audit logging functionality
+
+**Development Tools**:
+- **Testing**: Testing utilities and base classes
+- **Validation**: Validation framework
+- **Analytics**: Analytics integration
+- **Solver**: Problem-solving utilities
+- **Tools**: MSBuild tasks and watchers
+
+**Additional Components**:
+- **Nation**: Localization and country data
+- **Annotations**: Custom attributes
+- **Extensions**: Various extension libraries
+
+#### Project Dependencies and Relationships
+- **Portal.Server** (main web API) references Portal.Client, Portal.Persistence
+- **Processor.Server** runs as independent background service
+- Each module follows Clean Architecture with clear layer separation
+- Centralized package management ensures consistent versions across all projects
+
+### Technology Stack
+
+- **.NET 9.0** with C# 12+ features (nullable reference types, implicit usings)
+- **Blazor WebAssembly** for client-side applications
+- **Entity Framework Core 9.0** with PostgreSQL provider
+- **MediatR** for CQRS pattern implementation
+- **OpenTelemetry** for observability and monitoring
+- **xUnit** for testing with Moq for mocking
+- **Wangkanai** custom libraries for various functionality
+
+### Database and Infrastructure
+
+- **PostgreSQL** as primary database
+- **Redis** for caching
+- **RabbitMQ** for message queuing
+- **Seq** for structured logging
+- **Azure** services integration (Event Hubs, App Configuration)
+
+### Development Patterns
+
+- **Clean Architecture** with clear separation of concerns
+- **Domain-Driven Design** with rich domain models
+- **CQRS** pattern using MediatR
+- **Repository Pattern** through Entity Framework Core
+- **Dependency Injection** throughout the application
+- **Centralized package management** via Directory.Packages.props
+
+### Authentication and Authorization
+
+- **ASP.NET Core Identity** with Entity Framework storage
+- **JWT Bearer** authentication
+- **OpenID Connect** support
+- **Social login** providers (Facebook, Google)
+- **Microsoft Authentication Library (MSAL)** for WebAssembly
+- **Azure AD** integration
+
+### Key Files
+
+- `RiverSync.slnx`: Main solution file (Visual Studio solution)
+- `Directory.Build.props`: Common MSBuild properties for all projects
+- `Directory.Packages.props`: Centralized NuGet package version management
+- `azure-pipelines.yml`: CI/CD pipeline configuration for Azure DevOps
+
+### Running the Application
+
+Current development workflow:
+1. **Web Razor Application** (Primary): Use the watch script for hot reload
+   ```bash
+   ./watch.ps1
+   # Or directly:
+   dotnet watch --project ./Web/Razor/RiverSync.Web.Razor.csproj
+   ```
+2. **Portal Application**: Run the Portal.Server project for API services
+   ```bash
+   dotnet run --project Portal/Server/RiverSync.Portal.csproj
+   ```
+3. **Processor Service**: Run the Processor.Server project for background processing
+   ```bash
+   dotnet run --project Processor/Server/RiverSync.Processor.Server.csproj
+   ```
+4. **Infrastructure**: Manually start required services (PostgreSQL, Redis, RabbitMQ) using Docker or local installations
+
+### Deployment and Environment Configuration
+
+#### Azure Deployment
+- **Azure App Services** for hosting web applications
+- **Azure Container Instances** or **Azure Kubernetes Service** for containerized services
+- **Azure Database for PostgreSQL** for production database
+- **Azure Cache for Redis** for distributed caching
+- **Azure Service Bus** or **Azure Event Hubs** for messaging
+- **Azure Application Insights** for monitoring and telemetry
+
+#### Environment Configuration
+- **Development**: Manual service startup with local Docker containers
+- **Staging**: Azure-hosted services with test databases
+- **Production**: Full Azure deployment with high availability
+
+#### Missing Configuration Files
+The following configuration files are referenced but may need to be created:
+- `azure-pipelines.yml`: Azure DevOps CI/CD pipeline
+- Environment-specific `appsettings.{Environment}.json` files
+- Docker/container configuration files
+- Kubernetes manifests (if using AKS)
+
+## Available MCP Commands (Ranked by Efficiency)
+
+This project has access to several MCP (Model Context Protocol) servers. Commands are organized by priority and frequency of use for .NET development with Azure DevOps integration:
+
+### 🔥 Tier 1: Essential Daily Development Commands
+
+#### JetBrains IDE Integration (Most Used)
 ```bash
-# Architecture Discovery (High-level understanding)
-mcp__repomix__grep_repomix_output "interface.*Service|class.*Controller" --contextLines=2
-mcp__repomix__grep_repomix_output "public.*static.*class.*Extensions" --contextLines=1
-mcp__repomix__grep_repomix_output "namespace.*DependencyInjection"
+# Code editing and navigation (highest efficiency)
+mcp__jetbrains__replace_specific_text          # Most efficient for precise edits
+mcp__jetbrains__search_in_files_content        # Fast codebase search
+mcp__jetbrains__find_files_by_name_substring   # Quick file location
+mcp__jetbrains__get_file_text_by_path          # Direct file reading
+mcp__jetbrains__list_directory_tree_in_folder  # Project structure overview
 
-# Implementation Patterns (Code patterns)
-mcp__repomix__grep_repomix_output "AddRequiredServices|AddCoreServices|AddMarkerService"
-mcp__repomix__grep_repomix_output "public.*static.*IServiceCollection.*Add"
-mcp__repomix__grep_repomix_output "Configure.*<.*>|Options.*<.*>"
+# Active development
+mcp__jetbrains__get_current_file_errors        # Real-time error checking
+mcp__jetbrains__get_project_problems           # Project-wide issues
+mcp__jetbrains__run_configuration              # Execute builds/tests
+mcp__jetbrains__execute_terminal_command       # Run dotnet commands
 
-# Quality Checks (Issues & TODOs)
-mcp__repomix__grep_repomix_output "TODO|FIXME|BUG|HACK" --ignoreCase=true
-mcp__repomix__grep_repomix_output "ThrowIfNull|ArgumentNullException"
-mcp__repomix__grep_repomix_output "obsolete|deprecated" --ignoreCase=true
+# Code formatting and quality
+mcp__jetbrains__reformat_current_file          # Format current file
+mcp__jetbrains__reformat_file                  # Format specific file
 
-# Testing Patterns (Test discovery)
-mcp__repomix__grep_repomix_output "public.*class.*Tests|TestBase"
-mcp__repomix__grep_repomix_output "\[Fact\]|\[Theory\]|\[Test\]"
-mcp__repomix__grep_repomix_output "Mock<.*>|Substitute\.For"
+# Debugging
+mcp__jetbrains__toggle_debugger_breakpoint     # Quick debugging setup
+mcp__jetbrains__get_debugger_breakpoints       # Breakpoint management
 ```
 
-#### **🟠 HIGH PRIORITY - Direct Development Tools**
-
-##### **JetBrains IDE Integration** (Active File Editing)
-
+#### Azure DevOps Integration (Critical for Project Management)
 ```bash
-# Current file operations (Most efficient for active editing)
-mcp__jetbrains__get_open_in_editor_file_text        # Read current file
-mcp__jetbrains__get_selected_in_editor_text         # Get selection
-mcp__jetbrains__replace_selected_text               # Replace selection
-mcp__jetbrains__replace_current_file_text           # Replace entire file
-mcp__jetbrains__replace_specific_text               # Find & replace (PREFERRED)
+# Work Item Management
+mcp__devops__wit_my_work_items                # Get assigned work items
+mcp__devops__wit_create_work_item             # Create new tasks/bugs
+mcp__devops__wit_update_work_item             # Update work item status
+mcp__devops__wit_add_work_item_comment        # Add comments to work items
+mcp__devops__wit_link_work_item_to_pull_request # Link work to PRs
 
-# File management
-mcp__jetbrains__create_new_file_with_text           # Create new files
-mcp__jetbrains__get_file_text_by_path               # Read by path
-mcp__jetbrains__replace_file_text_by_path           # Update by path
-mcp__jetbrains__open_file_in_editor                 # Open in editor
+# Source Control & Pull Requests
+mcp__devops__repo_create_pull_request         # Create PRs
+mcp__devops__repo_list_pull_requests_by_repo  # List open PRs
+mcp__devops__repo_get_pull_request_by_id      # Get PR details
+mcp__devops__repo_list_pull_request_threads   # Review PR comments
+mcp__devops__repo_reply_to_comment            # Respond to PR reviews
+mcp__devops__repo_resolve_comment             # Resolve PR threads
 
-# Project navigation (Use Repomix grep first for efficiency!)
-mcp__jetbrains__find_files_by_name_substring        # Find files by name
-mcp__jetbrains__list_files_in_folder                # List directory
-mcp__jetbrains__list_directory_tree_in_folder       # Tree view
-mcp__jetbrains__search_in_files_content             # Text search (prefer Repomix)
+# Build Pipeline Management
+mcp__devops__build_get_definitions             # List build definitions
+mcp__devops__build_run_build                  # Trigger builds
+mcp__devops__build_get_status                 # Check build status
+mcp__devops__build_get_log                    # View build logs
+mcp__devops__build_get_changes                # See build changes
 
-# Code quality & debugging
-mcp__jetbrains__get_current_file_errors             # Current file errors
-mcp__jetbrains__get_project_problems                # All project issues
-mcp__jetbrains__toggle_debugger_breakpoint          # Set breakpoints
-mcp__jetbrains__reformat_current_file               # Format code
-
-# Build & execution
-mcp__jetbrains__get_run_configurations              # List run configs
-mcp__jetbrains__run_configuration                   # Execute config
-mcp__jetbrains__execute_terminal_command            # Run commands
+# Git Operations
+mcp__devops__repo_list_repos_by_project       # List repositories
+mcp__devops__repo_list_branches_by_repo       # List branches
+mcp__devops__repo_search_commits              # Search commit history
+mcp__devops__repo_get_branch_by_name          # Get branch details
 ```
 
-##### **GitHub Integration** (Version Control & Collaboration)
-
+#### Azure Integration (Critical for Cloud Development)
 ```bash
-# Essential operations
-mcp__github__get_file_contents                      # Read files from GitHub
-mcp__github__create_or_update_file                  # Update single file
-mcp__github__push_files                             # Batch file updates
-mcp__github__create_pull_request                    # Create PRs
-mcp__github__create_branch                          # Branch management
+# Essential Azure commands
+mcp__azure__azmcp_subscription_list            # View available subscriptions
+mcp__azure__azmcp_group_list                   # List resource groups
+mcp__azure__azmcp_appconfig_kv_list            # App Configuration management
+mcp__azure__azmcp_appconfig_kv_set             # Update configuration
+mcp__azure__azmcp_keyvault_secret_get          # Retrieve secrets
 
-# Repository management
-mcp__github__search_repositories                    # Find repos
-mcp__github__list_commits                           # View history
-mcp__github__get_pull_request                       # PR details
-mcp__github__list_issues                            # Track issues
+# Database operations
+mcp__azure__azmcp_sql_db_show                  # SQL Database info
+mcp__azure__azmcp_postgres_database_query      # PostgreSQL queries
+mcp__azure__azmcp_cosmos_database_container_item_query  # Cosmos DB queries
+
+# Monitoring and diagnostics
+mcp__azure__azmcp_monitor_workspace_log_query  # Log Analytics queries
+mcp__azure__azmcp_monitor_metrics_query        # Performance metrics
 ```
 
-#### **🟡 MEDIUM PRIORITY - Quality & Analysis Tools**
-
-##### **SonarQube** (Code Quality Metrics)
-
+#### Microsoft Documentation (.NET & Azure Focus)
 ```bash
-# Project ID: wangkanai_github
-
-# Use after code changes for quality checks
-mcp__sonarqube__analyze_code_snippet                # Analyze new code
-mcp__sonarqube__search_sonar_issues_in_projects     # Find issues
-mcp__sonarqube__get_project_quality_gate_status     # Quality gates
-
-# Example commands for this repository
-mcp__sonarqube__get_project_quality_gate_status --projectKey="wangkanai_github"
-mcp__sonarqube__search_sonar_issues_in_projects --projects=["wangkanai_github"]
-mcp__sonarqube__analyze_code_snippet --projectKey="wangkanai_github" --codeSnippet="..." --language="cs"
+# Documentation search - focused on .NET and Azure only
+mcp__ms-docs__microsoft_docs_search            # Search .NET/Azure docs
+# Use for: ASP.NET Core, Blazor, Entity Framework, Azure services,
+# C# features, .NET APIs, Azure SDK, deployment guides
 ```
 
-##### **Hugging Face** (ML/AI Resources)
+### 🚀 Tier 2: High-Value Development Tools
 
+#### Azure DevOps Advanced Features
 ```bash
-# Documentation and model search
-mcp__huggingface__hf_doc_search                     # Search HF docs
-mcp__huggingface__model_search                      # Find models
-mcp__huggingface__dataset_search                    # Find datasets
+# Sprint & Iteration Management
+mcp__devops__work_list_team_iterations        # View team iterations
+mcp__devops__work_create_iterations           # Create new sprints
+mcp__devops__wit_get_work_items_for_iteration # Sprint work items
+
+# Release Management
+mcp__devops__release_get_definitions           # List release definitions
+mcp__devops__release_get_releases             # View releases
+
+# Wiki & Documentation
+mcp__devops__wiki_list_wikis                  # List project wikis
+mcp__devops__wiki_get_page_content            # Read wiki pages
+mcp__devops__search_wiki                      # Search wiki content
+
+# Test Management
+mcp__devops__testplan_list_test_plans         # List test plans
+mcp__devops__testplan_create_test_case        # Create test cases
+mcp__devops__testplan_show_test_results_from_build_id # Test results
+
+# Search
+mcp__devops__search_code                      # Search code in repos
+mcp__devops__search_workitem                  # Search work items
 ```
 
-##### **Microsoft Docs** (Official .NET Documentation)
-
+#### Code Analysis & Quality
 ```bash
-# Primary command
-mcp__ms-docs__microsoft_docs_search                 # Search official Microsoft/Azure documentation
+# Repository analysis
+mcp__repomix__pack_codebase                   # Analyze entire codebase
+mcp__repomix__grep_repomix_output             # Search analysis results
 
-# .NET Core/Framework Documentation
-mcp__ms-docs__microsoft_docs_search ".NET 8 features"
-mcp__ms-docs__microsoft_docs_search "C# 12 new features"
-mcp__ms-docs__microsoft_docs_search ".NET performance best practices"
-mcp__ms-docs__microsoft_docs_search "dotnet CLI commands"
-
-# ASP.NET Core Documentation
-mcp__ms-docs__microsoft_docs_search "ASP.NET Core middleware"
-mcp__ms-docs__microsoft_docs_search "ASP.NET Core dependency injection"
-mcp__ms-docs__microsoft_docs_search "ASP.NET Core routing"
-mcp__ms-docs__microsoft_docs_search "ASP.NET Core security"
-mcp__ms-docs__microsoft_docs_search "minimal APIs ASP.NET Core"
-
-# Blazor Documentation
-mcp__ms-docs__microsoft_docs_search "Blazor components"
-mcp__ms-docs__microsoft_docs_search "Blazor Server vs WebAssembly"
-mcp__ms-docs__microsoft_docs_search "Blazor state management"
-mcp__ms-docs__microsoft_docs_search "Blazor JavaScript interop"
-mcp__ms-docs__microsoft_docs_search "Blazor forms validation"
-
-# .NET MAUI Documentation
-mcp__ms-docs__microsoft_docs_search "MAUI getting started"
-mcp__ms-docs__microsoft_docs_search "MAUI layouts"
-mcp__ms-docs__microsoft_docs_search "MAUI platform-specific code"
-mcp__ms-docs__microsoft_docs_search "MAUI data binding"
-mcp__ms-docs__microsoft_docs_search "MAUI navigation"
-
-# Entity Framework Core Documentation
-mcp__ms-docs__microsoft_docs_search "EF Core migrations"
-mcp__ms-docs__microsoft_docs_search "EF Core relationships"
-mcp__ms-docs__microsoft_docs_search "EF Core performance"
-mcp__ms-docs__microsoft_docs_search "EF Core LINQ queries"
-mcp__ms-docs__microsoft_docs_search "EF Core database providers"
-
-# ASP.NET Core Identity Documentation
-mcp__ms-docs__microsoft_docs_search "ASP.NET Core Identity setup"
-mcp__ms-docs__microsoft_docs_search "Identity authentication"
-mcp__ms-docs__microsoft_docs_search "Identity authorization policies"
-mcp__ms-docs__microsoft_docs_search "Identity two-factor authentication"
-mcp__ms-docs__microsoft_docs_search "Identity external providers"
-
-# ML.NET Documentation
-mcp__ms-docs__microsoft_docs_search "ML.NET getting started"
-mcp__ms-docs__microsoft_docs_search "ML.NET model training"
-mcp__ms-docs__microsoft_docs_search "ML.NET sentiment analysis"
-mcp__ms-docs__microsoft_docs_search "ML.NET AutoML"
-mcp__ms-docs__microsoft_docs_search "ML.NET model deployment"
-
-# C# Language Documentation
-mcp__ms-docs__microsoft_docs_search "C# pattern matching"
-mcp__ms-docs__microsoft_docs_search "C# async await best practices"
-mcp__ms-docs__microsoft_docs_search "C# record types"
-mcp__ms-docs__microsoft_docs_search "C# nullable reference types"
-mcp__ms-docs__microsoft_docs_search "C# LINQ operators"
+# File operations
+mcp__repomix__file_system_read_file           # Read files with security
+mcp__repomix__file_system_read_directory      # List directory contents
 ```
 
-#### **🟢 LOW PRIORITY - Utility Tools**
-
-##### **Container Management** (Podman/Docker)
-
+#### Container Management
 ```bash
-mcp__podman__container_run                          # Run containers
-mcp__podman__image_build                            # Build images
-mcp__podman__container_logs                         # View logs
+# Container operations (if using Podman/Docker)
+mcp__podman__container_list                   # List running containers
+mcp__podman__container_logs                   # View container logs
+mcp__podman__image_list                       # Available images
+# Note: Manual container management required without Aspire orchestration
 ```
 
-##### **Memory & Knowledge Graph** (Context Persistence)
+### 📊 Tier 3: Project Management & Architecture
 
+#### Memory/Knowledge Graph
 ```bash
-mcp__memory__create_entities                        # Store knowledge
-mcp__memory__search_nodes                           # Query knowledge
+# Relationship tracking
+mcp__memory__create_entities                  # Track system components
+mcp__memory__create_relations                 # Document relationships
+mcp__memory__search_nodes                     # Find related concepts
+mcp__memory__read_graph                       # View entire knowledge graph
 ```
 
-##### **Web & Sequential Thinking** (External Resources)
+### 🔧 Tier 4: Specialized Tools
 
+#### Advanced Azure Operations
 ```bash
-mcp__fetch__fetch                                   # Fetch URLs
-mcp__sequential-thinking__sequentialthinking        # Complex reasoning
+# Load testing
+mcp__azure__azmcp_loadtesting_test_create     # Create load tests
+mcp__azure__azmcp_loadtesting_testrun_create  # Execute tests
+
+# Service Bus
+mcp__azure__azmcp_servicebus_queue_details    # Queue management
+mcp__azure__azmcp_servicebus_topic_details    # Topic management
+
+# Search services
+mcp__azure__azmcp_search_index_query          # Azure AI Search
+
+# Container services
+mcp__azure__azmcp_aks_cluster_list            # AKS clusters
+
+# Grafana monitoring
+mcp__azure__azmcp_grafana_list                # Grafana workspaces
+
+# Storage
+mcp__azure__azmcp_storage_account_list        # Storage accounts
+mcp__azure__azmcp_storage_blob_list           # Blob storage
 ```
 
-#### **🔵 RARELY USED - System Tools**
-
-##### **IDE & MCP Infrastructure**
-
+#### Browser Testing
 ```bash
-mcp__ide__getDiagnostics                            # IDE diagnostics
-ListMcpResourcesTool                                # List MCP resources
-ReadMcpResourceTool                                 # Read MCP resource
+# UI testing (requires server running)
+mcp__browserloop__screenshot                  # Capture UI state
+mcp__browserloop__read_console               # Debug browser issues
 ```
 
-## Architecture & Code Organization
-
-### Repository Structure
-
-- **Monorepo**: Each library is a self-contained module with its own folder
-- **Module Structure**: Each module contains:
-	- `src/` - Main library source code
-	- `tests/` - Unit tests
-	- `benchmark/` - Performance benchmarks
-	- `samples/` - Sample applications (where applicable)
-	- `build.ps1` - Module-specific build script
-
-### Build Dependencies Order
-
-The main `build.ps1` processes modules in dependency order:
-
-1. System, Validation, Annotations, Extensions, Testing
-2. Cryptography, Hosting, Tools, Domain, Mvc
-3. Webserver, Webmaster, Detection, Responsive
-4. EntityFramework, Identity, Security, Federation
-5. Markdown, Analytics, Blazor, Tabler
-6. Solver, Microservice, Nation
-
-### Module Build Process
-
-Each module's `build.ps1` follows this pattern:
-
-1. `dotnet clean .\src\ -c Release -tl` - Clean source
-2. `dotnet restore .\src\` - Restore dependencies
-3. `dotnet build .\src\ -c Release -tl` - Build source
-4. `dotnet clean .\tests\ -c Release -tl` - Clean tests
-5. `dotnet restore .\tests\` - Restore test dependencies
-6. `dotnet build .\tests\ -c Release -tl` - Build tests
-
-### Key Patterns
-
-- **Extension Methods**: Extensive use of extension methods for ASP.NET Core services
-- **Builder Pattern**: Each library provides a builder interface (e.g., `IDetectionBuilder`, `IResponsiveBuilder`)
-- **Service Registration**: Follows ASP.NET Core DI conventions with `AddService()` extension methods
-- **Namespace Organization**: Libraries use namespace aliases (e.g.,
-  `namespace Microsoft.Extensions.DependencyInjection`)
-
-### Common File Structures
-
-- **DependencyInjection/**: Service registration and builder classes
-- **Services/**: Core business logic and services
-- **Hosting/**: ASP.NET Core middleware and hosting integration
-- **Models/**: Data models and DTOs
-- **Extensions/**: Extension method classes
-
-## Code Style & Standards
-
-### File Headers
-
-All source files include this copyright header:
-
-```csharp
-// Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved. Apache License, Version 2.0
-```
-
-### Code Style
-
-- **Indentation**: Tabs (4 spaces width)
-- **Braces**: Next line style (Allman)
-- **var usage**: Preferred for built-in types and when type is apparent
-- **Accessibility**: Required for non-interface members
-- **Line endings**: CRLF
-- **Max line length**: 300 characters
-
-### Testing Framework
-
-- **xUnit v3**: Primary testing framework with Microsoft Testing Platform integration
-- **Test Structure**: Follows AAA pattern (Arrange, Act, Assert)
-- **Mock Objects**: Custom mock implementations in `Mocks/` folders
-- **Test Execution**: Supports both `dotnet test` and direct executable execution
-- **Performance**: ~30-40% faster test execution with MTP compared to VSTest
-
-### Code Coverage
-
-The solution uses **Coverlet** for code coverage collection with **OpenCover** format for optimal SonarQube compatibility.
-
-**Configuration:**
-- **Coverage Tool**: Coverlet.msbuild (integrated with MSBuild)
-- **Output Format**: OpenCover (preferred by SonarQube)
-- **Output Location**: `./coverage/coverage.opencover.xml`
-- **Exclusions**: `*.Designer.cs`, `*.g.cs`, `GeneratedCodeAttribute`, `CompilerGeneratedAttribute`
-- **Default**: Coverage collection is OFF by default (set `/p:CollectCoverage=true` to enable)
-
-**Running Coverage:**
+#### Utilities
 ```bash
-# Single project coverage
-dotnet test ./path/to/tests.csproj -c Release /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=../../../coverage/
-
-# Multiple projects with merging
-# First project:
-dotnet test ./First.Tests.csproj -c Release /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=./coverage/
-
-# Subsequent projects (output JSON for merging):
-dotnet test ./Second.Tests.csproj -c Release /p:CollectCoverage=true /p:CoverletOutputFormat=json /p:CoverletOutput=./coverage/ /p:MergeWith=./coverage/coverage.json
-
-# Final project (merge and output OpenCover):
-dotnet test ./Last.Tests.csproj -c Release /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=./coverage/ /p:MergeWith=./coverage/coverage.json
+# Advanced operations
+mcp__sequential-thinking__sequentialthinking  # Complex problem solving
+mcp__fetch__fetch                            # External data fetching
+mcp__azure__azmcp_extension_az               # Raw Azure CLI commands
+mcp__azure__azmcp_extension_azd              # Azure Developer CLI
+mcp__azure__azmcp_extension_azqr             # Azure Quick Review
 ```
 
-**SonarQube Integration:**
-- Reports path configured in `SonarQube.Analysis.xml`
-- Uses OpenCover format: `sonar.cs.opencover.reportsPaths=coverage/coverage.opencover.xml`
-- Coverage exclusions match Coverlet configuration
+### 💡 Usage Tips
 
-## Development Workflow
+1. **Most Efficient Workflow**:
+   - Use JetBrains commands for immediate code operations
+   - Use Azure DevOps commands for work item and source control management
+   - Use Azure commands for cloud resource management
+   - Use Microsoft Docs for .NET/Azure documentation only
 
-### **REPOMIX-FIRST DEVELOPMENT APPROACH**
+2. **DevOps Integration Best Practices**:
+   - Always link commits to work items using DevOps commands
+   - Create PRs through DevOps MCP for proper tracking
+   - Use DevOps search before creating duplicate work items
+   - Monitor build pipelines through DevOps commands
 
-#### **Phase 1: Codebase Analysis (ALWAYS START HERE)**
+3. **Performance Optimization**:
+   - Prefer `replace_specific_text` over full file replacements
+   - Use DevOps batch operations when updating multiple work items
+   - Cache frequently accessed Azure configurations
+   - Batch Azure operations to reduce API calls
 
-```bash
-# 1. Generate current codebase analysis
-mcp__repomix__pack_codebase --directory="/Users/wangkanai/Sources/wangkanai"
+4. **Best Practices**:
+   - Always use `get_current_file_errors` after code changes
+   - Run `get_project_problems` before commits
+   - Use `search_in_files_content` before creating new code
+   - Link all PRs to work items for traceability
+   - Check build status before merging PRs
 
-# 2. Architecture discovery patterns
-mcp__repomix__grep_repomix_output "interface.*Service|class.*Controller|public.*Builder"
-mcp__repomix__grep_repomix_output "public.*static.*class.*Extensions"
-mcp__repomix__grep_repomix_output "Configure.*<.*>"
-
-# 3. Find implementation patterns
-mcp__repomix__grep_repomix_output "AddRequiredServices|AddCoreServices|AddMarkerService"
-mcp__repomix__grep_repomix_output "ThrowIfNull|ArgumentNullException"
-```
-
-#### **Phase 2: Targeted Analysis**
-
-```bash
-# 4. Selective content reading (efficient token usage)
-mcp__repomix__read_repomix_output --startLine=1000 --endLine=1200
-
-# 5. Cross-module consistency checks
-mcp__repomix__grep_repomix_output "namespace.*DependencyInjection"
-mcp__repomix__grep_repomix_output "IServiceCollection.*Services"
-```
-
-#### **Phase 3: Implementation**
-
-```bash
-# 6. Pattern-based implementation guidance
-mcp__repomix__grep_repomix_output "class.*Builder.*IServiceCollection"
-mcp__repomix__grep_repomix_output "public.*static.*Add.*Builder"
-```
-
-### **Traditional Module Development (Use After Repomix Analysis)**
-
-1. Navigate to specific module directory
-2. Run `.\build.ps1` to build and test the module
-3. Make changes to `src/` directory
-4. Add tests to `tests/` directory
-5. Run build script to verify changes
-
-### **REPOMIX-ENHANCED FEATURE DEVELOPMENT**
-
-#### **Before Writing Code - Pattern Discovery**
-
-```bash
-# 1. Find existing similar implementations
-mcp__repomix__grep_repomix_output "class.*YourFeature.*Builder"
-mcp__repomix__grep_repomix_output "I.*YourFeature.*Service"
-
-# 2. Discover service registration patterns
-mcp__repomix__grep_repomix_output "AddYourFeature.*IServiceCollection"
-mcp__repomix__grep_repomix_output "UseYourFeature.*IApplicationBuilder"
-
-# 3. Find testing patterns
-mcp__repomix__grep_repomix_output "public.*class.*YourFeature.*Tests"
-mcp__repomix__grep_repomix_output "AddYourFeature.*Builder.*Null.*ArgumentNullException"
-```
-
-#### **Implementation Guidelines**
-
-1. **Follow discovered patterns** from repomix analysis
-2. **Implement builder pattern** based on existing examples
-3. **Add comprehensive unit tests** following found test patterns
-4. **Update benchmarks** if performance-critical
-5. **Follow namespace conventions** discovered in analysis
-
-#### **Quality Assurance Patterns**
-
-```bash
-# 4. Verify implementation consistency
-mcp__repomix__grep_repomix_output "ThrowIfNull.*builder"
-mcp__repomix__grep_repomix_output "Services.*TryAdd.*"
-mcp__repomix__grep_repomix_output "public.*static.*class.*Extensions"
-```
-
-### Dependencies
-
-- **Primary Framework**: .NET 8.0
-- **ASP.NET Core**: Latest stable version
-- **Entity Framework**: For data access libraries
-- **Benchmarking**: BenchmarkDotNet for performance testing
-
-## Quality Assurance
-
-### CI/CD Pipeline
-
-- **GitHub Actions**: `.github/workflows/dotnet.yml` runs on main branch
-- **SonarCloud**: Code quality analysis with `SonarQube.Analysis.xml` configuration
-- **Coverage**: Uses `dotnet-coverage` for test coverage reporting
-- **Multi-target**: Supports .NET 8.0 and 9.0
-
-### Code Quality Tools
-
-- **SonarCloud**: Configured to exclude benchmarks, samples, and node_modules
-- **EditorConfig**: Comprehensive formatting rules in `.editorconfig`
-- **ReSharper**: Detailed code style configuration for consistent formatting
-- **Central Package Management**: All package versions managed in `Directory.Packages.props`
-
-### Exclusions for Analysis
-
-- Benchmarks (`**/benchmark/**`)
-- Sample applications (`**/samples/**`)
-- Node modules (`**/node_modules/**`)
-- Build artifacts (`**/BenchmarkDotNet.Artifacts/**`)
-
-## REPOMIX-ENHANCED ANALYSIS PROCEDURES
-
-### **Systematic Code Analysis Protocol**
-
-#### **1. Initial Repository Analysis**
-
-```bash
-# Always start with fresh analysis
-mcp__repomix__pack_codebase --directory="/Users/wangkanai/Sources/wangkanai"
-
-# Get repository overview
-mcp__repomix__read_repomix_output --startLine=1 --endLine=100
-```
-
-#### **2. Architecture Discovery**
-
-```bash
-# Service layer analysis
-mcp__repomix__grep_repomix_output "interface.*Service" --contextLines=2
-mcp__repomix__grep_repomix_output "class.*Service.*implements" --contextLines=2
-
-# Builder pattern analysis
-mcp__repomix__grep_repomix_output "class.*Builder.*IServiceCollection" --contextLines=3
-mcp__repomix__grep_repomix_output "public.*static.*Add.*Builder" --contextLines=2
-
-# Extension methods discovery
-mcp__repomix__grep_repomix_output "public.*static.*class.*Extensions" --contextLines=1
-```
-
-#### **3. Cross-Module Consistency Verification**
-
-```bash
-# DI registration patterns
-mcp__repomix__grep_repomix_output "AddRequiredServices|AddCoreServices|AddMarkerService"
-mcp__repomix__grep_repomix_output "Services.*TryAdd.*" --contextLines=1
-
-# Error handling patterns
-mcp__repomix__grep_repomix_output "ThrowIfNull" --contextLines=1
-mcp__repomix__grep_repomix_output "ArgumentNullException" --contextLines=2
-```
-
-#### **4. Testing Coverage Analysis**
-
-```bash
-# Test class discovery
-mcp__repomix__grep_repomix_output "public.*class.*Tests" --contextLines=1
-mcp__repomix__grep_repomix_output "Fact.*public.*void" --contextLines=1
-
-# Mock pattern analysis
-mcp__repomix__grep_repomix_output "Mock.*" --contextLines=1
-mcp__repomix__grep_repomix_output "Assert.*" --contextLines=1
-```
-
-#### **5. Performance & Quality Checks**
-
-```bash
-# Performance indicators
-mcp__repomix__grep_repomix_output "TODO|FIXME|BUG|HACK" --ignoreCase=true
-
-# Configuration patterns
-mcp__repomix__grep_repomix_output "Configure.*<.*>" --contextLines=2
-mcp__repomix__grep_repomix_output "Options.*" --contextLines=1
-```
-
-### **Efficiency Guidelines for Repomix Usage**
-
-#### **Token Conservation Strategies**
-
-1. **Use grep first** - Find patterns before reading full content
-2. **Selective reading** - Use startLine/endLine for targeted analysis
-3. **Context lines** - Use --contextLines for focused results
-4. **Pattern libraries** - Build reusable search patterns
-
-#### **Pattern Library Examples**
-
-```bash
-# Common .NET patterns
-BUILDER_PATTERN="class.*Builder.*IServiceCollection"
-SERVICE_REGISTRATION="public.*static.*Add.*"
-EXTENSION_CLASS="public.*static.*class.*Extensions"
-TEST_CLASS="public.*class.*Tests"
-DI_PATTERN="AddRequiredServices|AddCoreServices|AddMarkerService"
-```
+These MCP commands extend Claude's capabilities for efficient .NET development, Azure DevOps integration, and cloud deployment management.
