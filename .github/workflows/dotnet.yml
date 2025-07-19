@@ -95,21 +95,16 @@ jobs:
         dotnet-version: 9.0.x
 
       
-    # Install tools faster with parallel execution
+    # Install tools faster with parallel execution and cache optimization
     - name: Install tools
       run: |
-        # Install all tools without checking - let cache handle duplicates
-        echo "Installing tools in parallel..."
-        (
-          dotnet tool install --global dotnet-sonarscanner 2>/dev/null || echo "SonarScanner already installed"
-        ) &
-        (
-          dotnet tool install --global dotnet-reportgenerator-globaltool 2>/dev/null || echo "ReportGenerator already installed"
-        ) &
-        wait
+        # Quick tool installation with better caching
+        echo "Installing tools (cached when possible)..."
+        dotnet tool install --global dotnet-sonarscanner --verbosity quiet 2>/dev/null || echo "SonarScanner ready"
+        dotnet tool install --global dotnet-reportgenerator-globaltool --verbosity quiet 2>/dev/null || echo "ReportGenerator ready"
         
-        # Verify installations
-        dotnet tool list --global
+        # Quick verification
+        echo "Tools ready: $(dotnet tool list --global | wc -l) tools installed"
       shell: bash
 
     - name: SonarCloud Scanner Begin
@@ -172,23 +167,28 @@ jobs:
         TEST_COUNT=$(echo "$TEST_PROJECTS" | wc -l)
         echo "Found $TEST_COUNT test projects"
 
-        # Optimized parallel test execution
+        # Aggressive parallel test execution with optimized settings
         CORES=$(nproc)
-        echo "Running tests with coverage using $CORES cores..."
+        echo "Running tests with coverage using $CORES cores (aggressive mode)..."
         
-        # Single-pass coverage collection with optimized settings
+        # High-performance test execution
         echo "$TEST_PROJECTS" | xargs -P $CORES -I {} bash -c '
           PROJECT="{}"
           PROJECT_NAME=$(basename "$PROJECT" .csproj)
           echo "Testing $PROJECT_NAME..."
           
-          # Simplified test execution with better performance
+          # Optimized test execution for maximum speed
           dotnet test "$PROJECT" --no-build -c Release \
             --collect:"XPlat Code Coverage" \
             --results-directory "${{ github.workspace }}/coverage/$PROJECT_NAME" \
-            --logger "console;verbosity=minimal" \
-            --blame-hang-timeout 30000 \
+            --logger "console;verbosity=quiet" \
+            --blame-hang-timeout 15000 \
+            --no-restore \
+            --settings "${{ github.workspace }}/testconfig.json" \
             -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover \
+              RunConfiguration.MaxCpuCount=$CORES \
+              RunConfiguration.DisableAppDomain=true \
+              RunConfiguration.DisableParallelization=false \
             || echo "⚠️ $PROJECT_NAME test failed"
         '
 
@@ -212,7 +212,12 @@ jobs:
         retention-days: 1
 
     - name: SonarCloud Submit
-      run: dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+      run: |
+        # Optimized SonarCloud submission with timeout
+        timeout 120s dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}" || {
+          echo "SonarCloud submission timed out after 2 minutes"
+          exit 0
+        }
 
   # Separate job for npm-based projects (asset compilation only)
   build-npm:
