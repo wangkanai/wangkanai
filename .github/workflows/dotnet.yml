@@ -119,7 +119,7 @@ jobs:
         # Consider running a separate warnings check job if zero-warning policy is desired
         dotnet build --no-restore -c Release --no-incremental /p:TreatWarningsAsErrors=false
 
-    # Run tests once with coverage enabled (iteration 3)
+    # Run tests once with coverage enabled (iteration 4)
     - name: Test with Coverage
       run: |
         # Create coverage directory
