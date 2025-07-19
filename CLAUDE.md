@@ -161,6 +161,40 @@ mcp__github__search_issues                          # Search issues and PRs
 mcp__github__search_users                           # Search users
 ```
 
+##### **🚀 REPOMIX INTEGRATION - CRITICAL FOR EFFICIENCY**
+```bash
+# PRIMARY WORKFLOW TOOLS (Use these extensively!)
+mcp__repomix__pack_codebase                         # Generate codebase analysis
+mcp__repomix__grep_repomix_output                   # Pattern discovery & search
+mcp__repomix__read_repomix_output                   # Selective content reading
+
+# ADDITIONAL CAPABILITIES
+mcp__repomix__pack_remote_repository                # Analyze external repositories
+mcp__repomix__file_system_read_file                 # Direct file system access
+mcp__repomix__file_system_read_directory            # Directory exploration
+
+# COMMON REPOMIX PATTERNS FOR THIS CODEBASE
+# Architecture Discovery
+mcp__repomix__grep_repomix_output "interface.*Service|class.*Controller|public.*Builder"
+mcp__repomix__grep_repomix_output "public.*static.*class.*Extensions"
+mcp__repomix__grep_repomix_output "namespace.*DependencyInjection"
+
+# Implementation Patterns
+mcp__repomix__grep_repomix_output "AddRequiredServices|AddCoreServices|AddMarkerService"
+mcp__repomix__grep_repomix_output "public.*static.*Add.*Builder"
+mcp__repomix__grep_repomix_output "IServiceCollection.*Services"
+
+# Quality Assurance
+mcp__repomix__grep_repomix_output "ThrowIfNull|ArgumentNullException"
+mcp__repomix__grep_repomix_output "Services.*TryAdd.*"
+mcp__repomix__grep_repomix_output "TODO|FIXME|BUG"
+
+# Testing Patterns
+mcp__repomix__grep_repomix_output "public.*class.*Tests"
+mcp__repomix__grep_repomix_output "Fact.*public.*void"
+mcp__repomix__grep_repomix_output "Assert.*Throws.*ArgumentNullException"
+```
+
 #### **🟡 MEDIUM PRIORITY - Quality & Analysis Tools**
 
 ##### **SonarQube Code Analysis** (Code Quality Metrics)
@@ -230,40 +264,6 @@ mcp__memory__delete_observations                    # Delete observations
 ##### **Web & Content Fetching** (External Content)
 ```bash
 mcp__fetch__fetch                                   # Fetch URL content
-```
-
-##### **🚀 REPOMIX INTEGRATION - CRITICAL FOR EFFICIENCY**
-```bash
-# PRIMARY WORKFLOW TOOLS (Use these extensively!)
-mcp__repomix__pack_codebase                         # Generate codebase analysis
-mcp__repomix__grep_repomix_output                   # Pattern discovery & search
-mcp__repomix__read_repomix_output                   # Selective content reading
-
-# ADDITIONAL CAPABILITIES
-mcp__repomix__pack_remote_repository                # Analyze external repositories
-mcp__repomix__file_system_read_file                 # Direct file system access
-mcp__repomix__file_system_read_directory            # Directory exploration
-
-# COMMON REPOMIX PATTERNS FOR THIS CODEBASE
-# Architecture Discovery
-mcp__repomix__grep_repomix_output "interface.*Service|class.*Controller|public.*Builder"
-mcp__repomix__grep_repomix_output "public.*static.*class.*Extensions"
-mcp__repomix__grep_repomix_output "namespace.*DependencyInjection"
-
-# Implementation Patterns
-mcp__repomix__grep_repomix_output "AddRequiredServices|AddCoreServices|AddMarkerService"
-mcp__repomix__grep_repomix_output "public.*static.*Add.*Builder"
-mcp__repomix__grep_repomix_output "IServiceCollection.*Services"
-
-# Quality Assurance
-mcp__repomix__grep_repomix_output "ThrowIfNull|ArgumentNullException"
-mcp__repomix__grep_repomix_output "Services.*TryAdd.*"
-mcp__repomix__grep_repomix_output "TODO|FIXME|BUG"
-
-# Testing Patterns
-mcp__repomix__grep_repomix_output "public.*class.*Tests"
-mcp__repomix__grep_repomix_output "Fact.*public.*void"
-mcp__repomix__grep_repomix_output "Assert.*Throws.*ArgumentNullException"
 ```
 
 ##### **Problem Solving & Thinking** (Complex Analysis)
