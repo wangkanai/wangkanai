@@ -4,6 +4,7 @@
     <File Path="repomix.config.json" />
     <File Path=".repomixignore" />
     <File Path=".claude\repomix-monitor.sh" />
+    <File Path=".claude\settings.local.json" />
   </Folder>
   <Folder Name="/.claude/hooks/">
     <File Path=".claude\hooks\post-tool-repomix.sh" />
