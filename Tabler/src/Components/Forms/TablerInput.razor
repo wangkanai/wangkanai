@@ -1,0 +1,336 @@
+@* Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved. *@
+@namespace Wangkanai.Tabler.Components
+@inherits ComponentBase
+@using Wangkanai.Tabler.Models
+@using Microsoft.AspNetCore.Components.Web
+
+<div class="@WrapperCssClass">
+    @if (PrefixIcon != null || !string.IsNullOrEmpty(PrefixText))
+    {
+        <span class="input-group-text">
+            @if (PrefixIcon != null)
+            {
+                @PrefixIcon
+            }
+            else if (!string.IsNullOrEmpty(PrefixText))
+            {
+                @PrefixText
+            }
+        </span>
+    }
+
+    <input @attributes="AllAttributes" 
+           class="@InputCssClass" 
+           type="@Type"
+           value="@CurrentValue"
+           placeholder="@Placeholder"
+           disabled="@Disabled"
+           readonly="@ReadOnly"
+           @oninput="HandleInput"
+           @onchange="HandleChange"
+           @onfocus="HandleFocus"
+           @onblur="HandleBlur" />
+
+    @if (SuffixIcon != null || !string.IsNullOrEmpty(SuffixText))
+    {
+        <span class="input-group-text">
+            @if (SuffixIcon != null)
+            {
+                @SuffixIcon
+            }
+            else if (!string.IsNullOrEmpty(SuffixText))
+            {
+                @SuffixText
+            }
+        </span>
+    }
+</div>
+
+@if (!string.IsNullOrEmpty(HelpText) || ValidationState != InputValidationState.None)
+{
+    <div class="@FeedbackCssClass">
+        @if (ValidationState == InputValidationState.Invalid && !string.IsNullOrEmpty(ErrorMessage))
+        {
+            @ErrorMessage
+        }
+        else if (ValidationState == InputValidationState.Valid && !string.IsNullOrEmpty(SuccessMessage))
+        {
+            @SuccessMessage
+        }
+        else if (ValidationState == InputValidationState.Warning && !string.IsNullOrEmpty(WarningMessage))
+        {
+            @WarningMessage
+        }
+        else if (!string.IsNullOrEmpty(HelpText))
+        {
+            @HelpText
+        }
+    </div>
+}
+
+@code {
+    /// <summary>
+    /// The current value of the input.
+    /// </summary>
+    [Parameter] public string? Value { get; set; }
+
+    /// <summary>
+    /// Event callback fired when the input value changes.
+    /// </summary>
+    [Parameter] public EventCallback<string?> ValueChanged { get; set; }
+
+    /// <summary>
+    /// Additional HTML attributes to be applied to the input element.
+    /// </summary>
+    [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+    /// <summary>
+    /// The input type (text, email, password, etc.).
+    /// </summary>
+    [Parameter] public string Type { get; set; } = "text";
+
+    /// <summary>
+    /// Placeholder text to display when the input is empty.
+    /// </summary>
+    [Parameter] public string? Placeholder { get; set; }
+
+    /// <summary>
+    /// Whether the input is disabled.
+    /// </summary>
+    [Parameter] public bool Disabled { get; set; }
+
+    /// <summary>
+    /// Whether the input is read-only.
+    /// </summary>
+    [Parameter] public bool ReadOnly { get; set; }
+
+    /// <summary>
+    /// The size of the input control.
+    /// </summary>
+    [Parameter] public InputSize Size { get; set; } = InputSize.Default;
+
+    /// <summary>
+    /// The validation state of the input.
+    /// </summary>
+    [Parameter] public InputValidationState ValidationState { get; set; } = InputValidationState.None;
+
+    /// <summary>
+    /// Help text to display below the input.
+    /// </summary>
+    [Parameter] public string? HelpText { get; set; }
+
+    /// <summary>
+    /// Error message to display when ValidationState is Invalid.
+    /// </summary>
+    [Parameter] public string? ErrorMessage { get; set; }
+
+    /// <summary>
+    /// Success message to display when ValidationState is Valid.
+    /// </summary>
+    [Parameter] public string? SuccessMessage { get; set; }
+
+    /// <summary>
+    /// Warning message to display when ValidationState is Warning.
+    /// </summary>
+    [Parameter] public string? WarningMessage { get; set; }
+
+    /// <summary>
+    /// Prefix icon content to display before the input.
+    /// </summary>
+    [Parameter] public RenderFragment? PrefixIcon { get; set; }
+
+    /// <summary>
+    /// Prefix text to display before the input.
+    /// </summary>
+    [Parameter] public string? PrefixText { get; set; }
+
+    /// <summary>
+    /// Suffix icon content to display after the input.
+    /// </summary>
+    [Parameter] public RenderFragment? SuffixIcon { get; set; }
+
+    /// <summary>
+    /// Suffix text to display after the input.
+    /// </summary>
+    [Parameter] public string? SuffixText { get; set; }
+
+    /// <summary>
+    /// Event callback fired when the input receives focus.
+    /// </summary>
+    [Parameter] public EventCallback<FocusEventArgs> OnFocus { get; set; }
+
+    /// <summary>
+    /// Event callback fired when the input loses focus.
+    /// </summary>
+    [Parameter] public EventCallback<FocusEventArgs> OnBlur { get; set; }
+
+    /// <summary>
+    /// Additional CSS classes to apply to the input wrapper.
+    /// </summary>
+    [Parameter] public string? AdditionalCssClass { get; set; }
+
+    /// <summary>
+    /// Gets or sets the current input value.
+    /// </summary>
+    protected string? CurrentValue
+    {
+        get => Value;
+        set
+        {
+            if (Value != value)
+            {
+                Value = value;
+                _ = ValueChanged.InvokeAsync(value);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Gets the attributes to apply to the input element, excluding class.
+    /// </summary>
+    private Dictionary<string, object> AllAttributes
+    {
+        get
+        {
+            var attributes = new Dictionary<string, object>();
+
+            if (AdditionalAttributes != null)
+            {
+                foreach (var attr in AdditionalAttributes.Where(a => a.Key != "class"))
+                {
+                    attributes[attr.Key] = attr.Value;
+                }
+            }
+
+            return attributes;
+        }
+    }
+
+    /// <summary>
+    /// Gets the CSS class for the input wrapper.
+    /// </summary>
+    private string WrapperCssClass
+    {
+        get
+        {
+            var classes = new List<string>();
+
+            if (HasPrefixOrSuffix)
+                classes.Add("input-group");
+
+            if (!string.IsNullOrWhiteSpace(AdditionalCssClass))
+            {
+                foreach (var cssClass in AdditionalCssClass.Split(' ', StringSplitOptions.RemoveEmptyEntries))
+                {
+                    classes.Add(cssClass);
+                }
+            }
+
+            return string.Join(" ", classes).Trim();
+        }
+    }
+
+    /// <summary>
+    /// Gets the CSS class for the input element.
+    /// </summary>
+    private string InputCssClass
+    {
+        get
+        {
+            var classes = new List<string> { "form-control" };
+
+            // Size classes
+            switch (Size)
+            {
+                case InputSize.Small:
+                    classes.Add("form-control-sm");
+                    break;
+                case InputSize.Large:
+                    classes.Add("form-control-lg");
+                    break;
+            }
+
+            // Validation state classes
+            switch (ValidationState)
+            {
+                case InputValidationState.Valid:
+                    classes.Add("is-valid");
+                    break;
+                case InputValidationState.Invalid:
+                    classes.Add("is-invalid");
+                    break;
+                case InputValidationState.Warning:
+                    classes.Add("is-warning");
+                    break;
+            }
+
+            // Add any additional classes from AdditionalAttributes
+            if (AdditionalAttributes?.ContainsKey("class") == true)
+            {
+                var additionalClass = AdditionalAttributes["class"]?.ToString();
+                if (!string.IsNullOrWhiteSpace(additionalClass))
+                {
+                    foreach (var cssClass in additionalClass.Split(' ', StringSplitOptions.RemoveEmptyEntries))
+                    {
+                        classes.Add(cssClass);
+                    }
+                }
+            }
+
+            return string.Join(" ", classes).Trim();
+        }
+    }
+
+    /// <summary>
+    /// Gets the CSS class for the feedback message.
+    /// </summary>
+    private string FeedbackCssClass => ValidationState switch
+    {
+        InputValidationState.Valid => "valid-feedback",
+        InputValidationState.Invalid => "invalid-feedback",
+        InputValidationState.Warning => "warning-feedback",
+        _ => "form-text text-muted"
+    };
+
+    /// <summary>
+    /// Gets whether the input has prefix or suffix elements.
+    /// </summary>
+    private bool HasPrefixOrSuffix => PrefixIcon != null || !string.IsNullOrEmpty(PrefixText) || 
+                                     SuffixIcon != null || !string.IsNullOrEmpty(SuffixText);
+
+    /// <summary>
+    /// Handles input value changes (oninput event).
+    /// </summary>
+    private async Task HandleInput(ChangeEventArgs e)
+    {
+        CurrentValue = e.Value?.ToString();
+        await Task.CompletedTask;
+    }
+
+    /// <summary>
+    /// Handles input value changes (onchange event).
+    /// </summary>
+    private async Task HandleChange(ChangeEventArgs e)
+    {
+        CurrentValue = e.Value?.ToString();
+        await Task.CompletedTask;
+    }
+
+    /// <summary>
+    /// Handles input focus events.
+    /// </summary>
+    private async Task HandleFocus(FocusEventArgs e)
+    {
+        if (OnFocus.HasDelegate)
+            await OnFocus.InvokeAsync(e);
+    }
+
+    /// <summary>
+    /// Handles input blur events.
+    /// </summary>
+    private async Task HandleBlur(FocusEventArgs e)
+    {
+        if (OnBlur.HasDelegate)
+            await OnBlur.InvokeAsync(e);
+    }
+}

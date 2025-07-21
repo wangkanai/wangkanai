@@ -1,0 +1,333 @@
+@* Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved. *@
+@namespace Wangkanai.Tabler.Components
+@inherits ComponentBase
+@using Wangkanai.Tabler.Models
+@using Microsoft.AspNetCore.Components.Web
+
+<div class="@WrapperCssClass">
+    <input @attributes="AllAttributes" 
+           class="@CheckboxCssClass" 
+           type="checkbox"
+           checked="@IsChecked"
+           disabled="@Disabled"
+           @onchange="HandleChange"
+           @onfocus="HandleFocus"
+           @onblur="HandleBlur" />
+    
+    @if (!string.IsNullOrEmpty(Label) || LabelContent != null)
+    {
+        <label class="@LabelCssClass" for="@GetElementId()">
+            @if (LabelContent != null)
+            {
+                @LabelContent
+            }
+            else if (!string.IsNullOrEmpty(Label))
+            {
+                @Label
+            }
+        </label>
+    }
+</div>
+
+@if (!string.IsNullOrEmpty(HelpText) || ValidationState != InputValidationState.None)
+{
+    <div class="@FeedbackCssClass">
+        @if (ValidationState == InputValidationState.Invalid && !string.IsNullOrEmpty(ErrorMessage))
+        {
+            @ErrorMessage
+        }
+        else if (ValidationState == InputValidationState.Valid && !string.IsNullOrEmpty(SuccessMessage))
+        {
+            @SuccessMessage
+        }
+        else if (ValidationState == InputValidationState.Warning && !string.IsNullOrEmpty(WarningMessage))
+        {
+            @WarningMessage
+        }
+        else if (!string.IsNullOrEmpty(HelpText))
+        {
+            @HelpText
+        }
+    </div>
+}
+
+@code {
+    /// <summary>
+    /// Whether the checkbox is checked.
+    /// </summary>
+    [Parameter] public bool Value { get; set; }
+
+    /// <summary>
+    /// Event callback fired when the checkbox state changes.
+    /// </summary>
+    [Parameter] public EventCallback<bool> ValueChanged { get; set; }
+
+    /// <summary>
+    /// Additional HTML attributes to be applied to the checkbox element.
+    /// </summary>
+    [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+    /// <summary>
+    /// The label text to display next to the checkbox.
+    /// </summary>
+    [Parameter] public string? Label { get; set; }
+
+    /// <summary>
+    /// Custom label content for rich formatting.
+    /// </summary>
+    [Parameter] public RenderFragment? LabelContent { get; set; }
+
+    /// <summary>
+    /// Whether the checkbox is disabled.
+    /// </summary>
+    [Parameter] public bool Disabled { get; set; }
+
+    /// <summary>
+    /// Whether the checkbox is in an indeterminate state.
+    /// </summary>
+    [Parameter] public bool Indeterminate { get; set; }
+
+    /// <summary>
+    /// The validation state of the checkbox.
+    /// </summary>
+    [Parameter] public InputValidationState ValidationState { get; set; } = InputValidationState.None;
+
+    /// <summary>
+    /// Help text to display below the checkbox.
+    /// </summary>
+    [Parameter] public string? HelpText { get; set; }
+
+    /// <summary>
+    /// Error message to display when ValidationState is Invalid.
+    /// </summary>
+    [Parameter] public string? ErrorMessage { get; set; }
+
+    /// <summary>
+    /// Success message to display when ValidationState is Valid.
+    /// </summary>
+    [Parameter] public string? SuccessMessage { get; set; }
+
+    /// <summary>
+    /// Warning message to display when ValidationState is Warning.
+    /// </summary>
+    [Parameter] public string? WarningMessage { get; set; }
+
+    /// <summary>
+    /// Event callback fired when the checkbox receives focus.
+    /// </summary>
+    [Parameter] public EventCallback<FocusEventArgs> OnFocus { get; set; }
+
+    /// <summary>
+    /// Event callback fired when the checkbox loses focus.
+    /// </summary>
+    [Parameter] public EventCallback<FocusEventArgs> OnBlur { get; set; }
+
+    /// <summary>
+    /// Additional CSS classes to apply to the checkbox wrapper.
+    /// </summary>
+    [Parameter] public string? AdditionalCssClass { get; set; }
+
+    /// <summary>
+    /// The layout style for the checkbox and label.
+    /// </summary>
+    [Parameter] public CheckboxLayout Layout { get; set; } = CheckboxLayout.Default;
+
+    /// <summary>
+    /// Gets or sets the current checkbox state.
+    /// </summary>
+    protected bool IsChecked
+    {
+        get => Value;
+        set
+        {
+            if (Value != value)
+            {
+                Value = value;
+                _ = ValueChanged.InvokeAsync(value);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Gets the attributes to apply to the checkbox element, excluding class.
+    /// </summary>
+    private Dictionary<string, object> AllAttributes
+    {
+        get
+        {
+            var attributes = new Dictionary<string, object>();
+
+            if (AdditionalAttributes != null)
+            {
+                foreach (var attr in AdditionalAttributes.Where(a => a.Key != "class"))
+                {
+                    attributes[attr.Key] = attr.Value;
+                }
+            }
+
+            // Add id attribute if not present for label association
+            if (!attributes.ContainsKey("id") && 
+                (AdditionalAttributes?.ContainsKey("id") != true))
+            {
+                attributes["id"] = GetElementId();
+            }
+
+            // Handle indeterminate state via JavaScript attribute
+            if (Indeterminate)
+            {
+                attributes["data-indeterminate"] = "true";
+            }
+
+            return attributes;
+        }
+    }
+
+    /// <summary>
+    /// Gets the CSS class for the checkbox wrapper.
+    /// </summary>
+    private string WrapperCssClass
+    {
+        get
+        {
+            var classes = new List<string> { "form-check" };
+
+            // Layout-specific classes
+            switch (Layout)
+            {
+                case CheckboxLayout.Inline:
+                    classes.Add("form-check-inline");
+                    break;
+                case CheckboxLayout.Switch:
+                    classes.Add("form-switch");
+                    break;
+                case CheckboxLayout.Reverse:
+                    classes.Add("form-check-reverse");
+                    break;
+            }
+
+            if (!string.IsNullOrWhiteSpace(AdditionalCssClass))
+            {
+                foreach (var cssClass in AdditionalCssClass.Split(' ', StringSplitOptions.RemoveEmptyEntries))
+                {
+                    classes.Add(cssClass);
+                }
+            }
+
+            return string.Join(" ", classes).Trim();
+        }
+    }
+
+    /// <summary>
+    /// Gets the CSS class for the checkbox element.
+    /// </summary>
+    private string CheckboxCssClass
+    {
+        get
+        {
+            var classes = new List<string> { "form-check-input" };
+
+            // Validation state classes
+            switch (ValidationState)
+            {
+                case InputValidationState.Valid:
+                    classes.Add("is-valid");
+                    break;
+                case InputValidationState.Invalid:
+                    classes.Add("is-invalid");
+                    break;
+                case InputValidationState.Warning:
+                    classes.Add("is-warning");
+                    break;
+            }
+
+            // Add any additional classes from AdditionalAttributes
+            if (AdditionalAttributes?.ContainsKey("class") == true)
+            {
+                var additionalClass = AdditionalAttributes["class"]?.ToString();
+                if (!string.IsNullOrWhiteSpace(additionalClass))
+                {
+                    foreach (var cssClass in additionalClass.Split(' ', StringSplitOptions.RemoveEmptyEntries))
+                    {
+                        classes.Add(cssClass);
+                    }
+                }
+            }
+
+            return string.Join(" ", classes).Trim();
+        }
+    }
+
+    /// <summary>
+    /// Gets the CSS class for the label element.
+    /// </summary>
+    private string LabelCssClass => "form-check-label";
+
+    /// <summary>
+    /// Gets the CSS class for the feedback message.
+    /// </summary>
+    private string FeedbackCssClass => ValidationState switch
+    {
+        InputValidationState.Valid => "valid-feedback",
+        InputValidationState.Invalid => "invalid-feedback",
+        InputValidationState.Warning => "warning-feedback",
+        _ => "form-text text-muted"
+    };
+
+    /// <summary>
+    /// Generates a unique element ID for the checkbox.
+    /// </summary>
+    private string GetElementId()
+    {
+        return AdditionalAttributes?.ContainsKey("id") == true 
+            ? AdditionalAttributes["id"]?.ToString() ?? $"checkbox-{Guid.NewGuid():N}"
+            : $"checkbox-{Guid.NewGuid():N}";
+    }
+
+    /// <summary>
+    /// Handles checkbox state changes.
+    /// </summary>
+    private async Task HandleChange(ChangeEventArgs e)
+    {
+        if (e.Value is bool boolValue)
+        {
+            IsChecked = boolValue;
+        }
+        else
+        {
+            IsChecked = e.Value?.ToString()?.ToLowerInvariant() == "true";
+        }
+        await Task.CompletedTask;
+    }
+
+    /// <summary>
+    /// Handles checkbox focus events.
+    /// </summary>
+    private async Task HandleFocus(FocusEventArgs e)
+    {
+        if (OnFocus.HasDelegate)
+            await OnFocus.InvokeAsync(e);
+    }
+
+    /// <summary>
+    /// Handles checkbox blur events.
+    /// </summary>
+    private async Task HandleBlur(FocusEventArgs e)
+    {
+        if (OnBlur.HasDelegate)
+            await OnBlur.InvokeAsync(e);
+    }
+
+    /// <summary>
+    /// Called after the component has been rendered.
+    /// </summary>
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        // Handle indeterminate state via JavaScript interop if needed
+        if (Indeterminate && firstRender)
+        {
+            // For now, we set the indeterminate property via data attribute
+            // In a full implementation, this would use JS interop
+        }
+        await base.OnAfterRenderAsync(firstRender);
+    }
+}
