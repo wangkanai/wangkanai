@@ -275,6 +275,7 @@
     <File Path="Tabler\README.md" />
     <File Path="Tabler\sign.ps1" />
     <File Path="Tabler\build.ps1" />
+    <File Path="Tabler\PRD.md" />
   </Folder>
   <Folder Name="/Testing/">
     <Project Path="Testing\benchmark\Wangkanai.Testing.Benchmark.csproj" />
