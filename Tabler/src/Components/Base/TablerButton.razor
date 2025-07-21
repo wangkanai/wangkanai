@@ -1,0 +1,158 @@
+@namespace Wangkanai.Tabler.Components.Base
+@using Wangkanai.Tabler.Models
+@inherits ComponentBase
+
+<button class="@CssClass" 
+        disabled="@Disabled" 
+        type="@Type"
+        @onclick="HandleClick"
+        @attributes="AdditionalAttributes">
+    
+    @if (Loading)
+    {
+        <span class="spinner-border spinner-border-sm me-2" aria-hidden="true"></span>
+    }
+    
+    @if (Icon != null)
+    {
+        <svg class="icon icon-tabler me-2" 
+             width="16" 
+             height="16" 
+             viewBox="0 0 24 24" 
+             stroke-width="2" 
+             stroke="currentColor" 
+             fill="none" 
+             stroke-linecap="round" 
+             stroke-linejoin="round">
+            @Icon
+        </svg>
+    }
+    
+    @if (ChildContent != null)
+    {
+        @ChildContent
+    }
+    else if (!string.IsNullOrEmpty(Text))
+    {
+        @Text
+    }
+</button>
+
+@code {
+    /// <summary>
+    /// The content to be rendered inside the button.
+    /// </summary>
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    
+    /// <summary>
+    /// Text content for the button when ChildContent is not provided.
+    /// </summary>
+    [Parameter] public string? Text { get; set; }
+    
+    /// <summary>
+    /// The color variant of the button. Default is Primary.
+    /// </summary>
+    [Parameter] public ButtonColor Color { get; set; } = ButtonColor.Primary;
+    
+    /// <summary>
+    /// The size of the button. Default is Medium.
+    /// </summary>
+    [Parameter] public ButtonSize Size { get; set; } = ButtonSize.Medium;
+    
+    /// <summary>
+    /// The style variant of the button. Default is Solid.
+    /// </summary>
+    [Parameter] public ButtonVariant Variant { get; set; } = ButtonVariant.Solid;
+    
+    /// <summary>
+    /// Whether the button is disabled.
+    /// </summary>
+    [Parameter] public bool Disabled { get; set; }
+    
+    /// <summary>
+    /// Whether the button is in a loading state, displaying a spinner.
+    /// </summary>
+    [Parameter] public bool Loading { get; set; }
+    
+    /// <summary>
+    /// The HTML button type. Default is "button".
+    /// </summary>
+    [Parameter] public string Type { get; set; } = "button";
+    
+    /// <summary>
+    /// Optional icon content to display before the button text.
+    /// Should contain SVG path elements for Tabler icons.
+    /// </summary>
+    [Parameter] public RenderFragment? Icon { get; set; }
+    
+    /// <summary>
+    /// Event callback fired when the button is clicked.
+    /// </summary>
+    [Parameter] public EventCallback OnClick { get; set; }
+    
+    /// <summary>
+    /// Additional attributes to be applied to the button element.
+    /// </summary>
+    [Parameter(CaptureUnmatchedValues = true)] 
+    public Dictionary<string, object>? AdditionalAttributes { get; set; }
+    
+    /// <summary>
+    /// Gets the computed CSS class string for the button.
+    /// </summary>
+    private string CssClass => string.Join(" ", GetCssClasses()).Trim();
+    
+    /// <summary>
+    /// Generates the CSS classes based on component parameters.
+    /// </summary>
+    private IEnumerable<string> GetCssClasses()
+    {
+        yield return "btn";
+        
+        // Apply color and variant combinations
+        var colorClass = GetColorClass();
+        if (!string.IsNullOrEmpty(colorClass))
+            yield return colorClass;
+        
+        // Apply size classes
+        switch (Size)
+        {
+            case ButtonSize.Small:
+                yield return "btn-sm";
+                break;
+            case ButtonSize.Large:
+                yield return "btn-lg";
+                break;
+        }
+        
+        // Apply state classes
+        if (Loading)
+            yield return "btn-loading";
+    }
+    
+    /// <summary>
+    /// Gets the color class based on the Color and Variant properties.
+    /// </summary>
+    private string GetColorClass()
+    {
+        if (Color == ButtonColor.None) return string.Empty;
+        
+        var colorName = Color.ToString().ToLowerInvariant();
+        
+        return Variant switch
+        {
+            ButtonVariant.Outline => $"btn-outline-{colorName}",
+            ButtonVariant.Ghost => $"btn-ghost-{colorName}",
+            _ => $"btn-{colorName}"
+        };
+    }
+    
+    /// <summary>
+    /// Handles the button click event.
+    /// </summary>
+    private async Task HandleClick()
+    {
+        if (Disabled || Loading) return;
+        
+        await OnClick.InvokeAsync();
+    }
+}
