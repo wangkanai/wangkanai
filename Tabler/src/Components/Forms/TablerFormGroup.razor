@@ -1,0 +1,238 @@
+@* Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved. *@
+@namespace Wangkanai.Tabler.Components
+@inherits ComponentBase
+@using Wangkanai.Tabler.Models
+
+<div class="@CssClass" @attributes="AdditionalAttributes">
+    @if (!string.IsNullOrEmpty(Label) || LabelContent != null)
+    {
+        <label class="@LabelCssClass" for="@ForId">
+            @if (LabelContent != null)
+            {
+                @LabelContent
+            }
+            else
+            {
+                @Label
+            }
+            @if (Required)
+            {
+                <span class="text-danger">*</span>
+            }
+        </label>
+    }
+
+    <div class="@InputWrapperCssClass">
+        @ChildContent
+    </div>
+
+    @if (!string.IsNullOrEmpty(HelpText) || HelpContent != null)
+    {
+        <div class="@HelpTextCssClass">
+            @if (HelpContent != null)
+            {
+                @HelpContent
+            }
+            else
+            {
+                @HelpText
+            }
+        </div>
+    }
+</div>
+
+@code {
+    /// <summary>
+    /// The form control content to be rendered in the group.
+    /// </summary>
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+
+    /// <summary>
+    /// Additional HTML attributes to be applied to the form group element.
+    /// </summary>
+    [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+    /// <summary>
+    /// The label text for the form group.
+    /// </summary>
+    [Parameter] public string? Label { get; set; }
+
+    /// <summary>
+    /// Custom label content as a RenderFragment.
+    /// Takes precedence over Label parameter.
+    /// </summary>
+    [Parameter] public RenderFragment? LabelContent { get; set; }
+
+    /// <summary>
+    /// The ID of the associated form control (for accessibility).
+    /// </summary>
+    [Parameter] public string? ForId { get; set; }
+
+    /// <summary>
+    /// Whether the form field is required.
+    /// Displays a red asterisk (*) next to the label.
+    /// </summary>
+    [Parameter] public bool Required { get; set; }
+
+    /// <summary>
+    /// Help text to display below the form control.
+    /// </summary>
+    [Parameter] public string? HelpText { get; set; }
+
+    /// <summary>
+    /// Custom help content as a RenderFragment.
+    /// Takes precedence over HelpText parameter.
+    /// </summary>
+    [Parameter] public RenderFragment? HelpContent { get; set; }
+
+    /// <summary>
+    /// The validation state of the form group.
+    /// Affects styling of the entire group.
+    /// </summary>
+    [Parameter] public InputValidationState ValidationState { get; set; } = InputValidationState.None;
+
+    /// <summary>
+    /// Additional CSS classes to apply to the form group.
+    /// </summary>
+    [Parameter] public string? AdditionalCssClass { get; set; }
+
+    /// <summary>
+    /// Whether to use floating labels for the form group.
+    /// </summary>
+    [Parameter] public bool FloatingLabel { get; set; }
+
+    /// <summary>
+    /// Whether to use horizontal layout (label beside control).
+    /// </summary>
+    [Parameter] public bool Horizontal { get; set; }
+
+    /// <summary>
+    /// CSS classes for the label column when using horizontal layout.
+    /// </summary>
+    [Parameter] public string LabelColumnClass { get; set; } = "col-sm-3";
+
+    /// <summary>
+    /// CSS classes for the input column when using horizontal layout.
+    /// </summary>
+    [Parameter] public string InputColumnClass { get; set; } = "col-sm-9";
+
+    /// <summary>
+    /// Gets the computed CSS class string for the form group.
+    /// </summary>
+    private string CssClass
+    {
+        get
+        {
+            var classes = new List<string>();
+
+            if (FloatingLabel)
+                classes.Add("form-floating");
+            else if (Horizontal)
+                classes.Add("row mb-3");
+            else
+                classes.Add("mb-3");
+
+            // Validation state classes
+            switch (ValidationState)
+            {
+                case InputValidationState.Valid:
+                    classes.Add("has-validation");
+                    break;
+                case InputValidationState.Invalid:
+                    classes.Add("has-validation");
+                    break;
+                case InputValidationState.Warning:
+                    classes.Add("has-validation");
+                    break;
+            }
+
+            if (!string.IsNullOrWhiteSpace(AdditionalCssClass))
+            {
+                foreach (var cssClass in AdditionalCssClass.Split(' ', StringSplitOptions.RemoveEmptyEntries))
+                {
+                    classes.Add(cssClass);
+                }
+            }
+
+            return string.Join(" ", classes).Trim();
+        }
+    }
+
+    /// <summary>
+    /// Gets the CSS class for the label element.
+    /// </summary>
+    private string LabelCssClass
+    {
+        get
+        {
+            var classes = new List<string>();
+
+            if (FloatingLabel)
+            {
+                // Floating labels use different styling
+                return string.Empty;
+            }
+            else if (Horizontal)
+            {
+                classes.Add("col-form-label");
+                classes.Add(LabelColumnClass);
+            }
+            else
+            {
+                classes.Add("form-label");
+            }
+
+            return string.Join(" ", classes).Trim();
+        }
+    }
+
+    /// <summary>
+    /// Gets the CSS class for the input wrapper.
+    /// </summary>
+    private string InputWrapperCssClass
+    {
+        get
+        {
+            if (Horizontal)
+                return InputColumnClass;
+
+            return string.Empty;
+        }
+    }
+
+    /// <summary>
+    /// Gets the CSS class for the help text.
+    /// </summary>
+    private string HelpTextCssClass
+    {
+        get
+        {
+            var classes = new List<string>();
+
+            if (Horizontal)
+            {
+                classes.Add("offset-sm-3");
+                classes.Add(InputColumnClass);
+            }
+
+            switch (ValidationState)
+            {
+                case InputValidationState.Valid:
+                    classes.Add("valid-feedback");
+                    break;
+                case InputValidationState.Invalid:
+                    classes.Add("invalid-feedback");
+                    break;
+                case InputValidationState.Warning:
+                    classes.Add("warning-feedback");
+                    break;
+                default:
+                    classes.Add("form-text");
+                    classes.Add("text-muted");
+                    break;
+            }
+
+            return string.Join(" ", classes).Trim();
+        }
+    }
+}

@@ -1,6 +1,7 @@
 @* Copyright (c) 2014-2025 Sarin Na Wangkanai, All Rights Reserved. *@
 @namespace Wangkanai.Tabler.Components
 @inherits ComponentBase
+@using Microsoft.AspNetCore.Components.Forms
 
 <form class="@CssClass" @onsubmit="HandleSubmit" @onsubmit:preventDefault="PreventDefaultSubmit" @attributes="AdditionalAttributes">
     @ChildContent
