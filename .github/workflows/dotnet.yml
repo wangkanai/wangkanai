@@ -160,7 +160,7 @@ jobs:
         if [ "$SKIP_SLOW_PROJECTS" = "true" ]; then
           echo "PR build: Skipping slow test projects..."
           TEST_PROJECTS=$(find . -name "*.Tests.csproj" -type f -not -path "*/bin/*" -not -path "*/obj/*" \
-            -not -path "*/benchmark/*" -not -path "*/samples/*" -not -path "*/Tabler.Tests/*")
+            -not -path "*/benchmark/*" -not -path "*/samples/*")
         else
           TEST_PROJECTS=$(find . -name "*.Tests.csproj" -type f -not -path "*/bin/*" -not -path "*/obj/*")
         fi
@@ -346,7 +346,7 @@ jobs:
         if [ -d "Blazor/src/Web/node_modules" ]; then
           echo "Blazor dependencies installed ✓"
         else
-          echo "Blazor node_modules not found ✗"
+          echo "Blazor node_modules not found - may not be needed ✓"
         fi
         
         echo "=== End NPM Build Summary ==="
