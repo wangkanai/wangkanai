@@ -35,10 +35,6 @@ wangkanai/
 │   │   ├── README.md                    # Blazor components overview
 │   │   ├── COMPONENTS.md                # Component catalog
 │   │   └── API.md                       # Blazor API reference
-│   └── Tabler/
-│       ├── README.md                    # Tabler integration guide
-│       ├── COMPONENTS.md                # Tabler component catalog
-│       └── THEMES.md                    # Theming guide
 │
 ├── 🔒 Security & Identity/
 │   ├── Identity/
@@ -135,7 +131,7 @@ Responsive, Analytics
 #### Web Application Stack
 
 ```
-System + Detection + Responsive + Identity + Blazor/Tabler
+System + Detection + Responsive + Identity + Blazor
 ```
 
 #### API Service Stack

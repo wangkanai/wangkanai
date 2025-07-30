@@ -286,7 +286,7 @@ docfx build
 6. Events and Handlers
 7. Middleware Components
 
-### For UI Libraries (e.g., Blazor, Tabler)
+### For UI Libraries (e.g., Blazor)
 
 1. Component Registration
 2. Component Catalog

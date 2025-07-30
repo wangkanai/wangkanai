@@ -42,7 +42,6 @@ dotnet add package Wangkanai.Responsive
 
 # UI Components
 dotnet add package Wangkanai.Blazor
-dotnet add package Wangkanai.Tabler
 
 # Security
 dotnet add package Wangkanai.Identity
@@ -161,15 +160,6 @@ Custom Blazor components and utilities.
 - **Structure**: Core, Components, Components.Web
 - **Dependencies**: System
 - **Package**: `Wangkanai.Blazor`
-
-#### [Wangkanai.Tabler](Tabler/README.md)
-
-Modern dashboard and admin panel components based on Tabler.
-
-- **Purpose**: Admin UI components
-- **Structure**: Core, Components, Components.Web
-- **Features**: Dashboard layouts, forms, charts
-- **Package**: `Wangkanai.Tabler`
 
 #### [Wangkanai.Markdown](Markdown/README.md)
 
@@ -433,8 +423,7 @@ Layer 4 (Features):
 Layer 5 (Complex Components):
 ├── Federation → Identity, Cryptography, System
 ├── Security → System (with sub-projects)
-├── Blazor → Multiple projects
-└── Tabler → Multiple projects
+└── Blazor → Multiple projects
 ```
 
 ### Design Principles
