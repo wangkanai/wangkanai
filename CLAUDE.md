@@ -114,7 +114,6 @@ The RiverSync solution is part of the Wangkanai monorepo containing multiple lib
 - **Shared**: Shared components across libraries
 
 **UI & Presentation**:
-- **Tabler**: Modern dashboard/admin panel components
 - **Markdown**: Markdown parsing and rendering
 - **Mvc**: MVC extensions and helpers
 - **Webmaster**: SEO and web optimization tools

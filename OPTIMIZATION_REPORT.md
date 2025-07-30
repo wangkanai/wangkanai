@@ -11,7 +11,7 @@ Focus on single changes per iteration with careful measurement and validation.
 ## Repository Structure Analysis
 - **67 total projects**: 36 source, 31 test projects across 27 modules
 - **Dependency Levels**: 6 levels of build dependencies
-- **Heavy Projects**: Tabler/Blazor with npm builds
+- **Heavy Projects**: Blazor with npm builds
 - **Test Coverage**: 31 test projects with varying complexity
 
 ## Iteration Summaries
@@ -42,13 +42,13 @@ Focus on single changes per iteration with careful measurement and validation.
 - **Learning**: Restore optimization didn't help with npm issue
 
 ### Iteration 14: Improve npm Handling (Failed)
-- **Change**: Handle both Tabler and Blazor npm projects, conditional ci/install
+- **Change**: Handle Blazor npm projects, conditional ci/install
 - **Result**: Failed - npm build issues persist
 - **Duration**: ~2 minutes
 - **Learning**: npm issues need different approach
 
 ### Iteration 15: Skip npm Projects (Failed) 
-- **Change**: Skip Tabler/Blazor projects entirely
+- **Change**: Skip Blazor projects entirely
 - **Result**: Failed - integration tests depend on these
 - **Duration**: ~2 minutes
 - **Learning**: Cannot skip modules, need integration
@@ -90,7 +90,7 @@ Focus on single changes per iteration with careful measurement and validation.
     * Focuses on Sass compilation and asset generation
     * Uses `npm ci` for production installs
     * Proper error handling and build verification
-  - **MSBuild Integration**: Updated Tabler Web project targets
+  - **MSBuild Integration**: Updated Web project targets
     * Added `Condition="'$(SkipNpmTargets)' != 'true'"` to npm targets
     * Allows dotnet builds to skip npm when property is set
 - **Result**: Proper separation of concerns implemented
@@ -100,7 +100,7 @@ Focus on single changes per iteration with careful measurement and validation.
 - **Result**: **npm job SUCCESS!** ✅
 - **Fixes**:
   - npm fallback: Use `npm install` when `package-lock.json` doesn't exist
-  - Both Tabler and Blazor handle missing lock files gracefully
+  - Blazor handles missing lock files gracefully
 - **Remaining**: MSBuild syntax still had issues
 
 ### Iteration 21: Remove SkipNpmTargets, use error tolerance (Completed)

@@ -37,12 +37,7 @@ Core applications. The solution contains 37 main modules/libraries, all of which
 	- Structure: Components, Core, and Web sub-projects
 	- Documentation: Basic README present
 
-7. **Tabler**
-	- Purpose: Modern dashboard/admin panel components
-	- Structure: Components, Core, and Web sub-projects
-	- Documentation: Basic README present
-
-8. **Markdown**
+7. **Markdown**
 	- Purpose: Markdown parsing and rendering
 	- Documentation: Basic README present
 
@@ -197,7 +192,7 @@ Core applications. The solution contains 37 main modules/libraries, all of which
 ### Core Dependencies
 
 - Most modules depend on `Shared` and `System` for common utilities
-- UI modules (Blazor, Tabler) have internal component structures
+- UI modules (Blazor) have internal component structures
 - Security modules (Identity, Federation, Security) work together
 - Data modules (EntityFramework, Domain, Audit) provide data layer support
 
