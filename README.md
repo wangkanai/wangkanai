@@ -2,10 +2,10 @@
   <a href="https://github.com/wangkanai/wangkanai" alt="repository"><img alt="Wangkanai banner" src="https://raw.githubusercontent.com/wangkanai/wangkanai/main/Assets/wangkanai-banner-federation.svg?sanitize=true" width="100%" /></a>
 </p>
 
-[![Twitter](https://img.shields.io/badge/-LinkedIn-006BAD?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/sarinnawangkanai/)
-[![Twitter](https://img.shields.io/badge/-Youtube-006BAD?style=flat-square&logo=Youtube&logoColor=white)](https://www.youtube.com/channel/UCnYCx4IFBKII3w03STiDzAw)
+[![LinkedIn](https://img.shields.io/badge/-LinkedIn-006BAD?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/sarinnawangkanai/)
+[![Youtube](https://img.shields.io/badge/-Youtube-006BAD?style=flat-square&logo=Youtube&logoColor=white)](https://www.youtube.com/channel/UCnYCx4IFBKII3w03STiDzAw)
 [![Twitter](https://img.shields.io/badge/-Twitter-006BAD?style=flat-square&logo=twitter&logoColor=white)](https://twitter.com/NaWangkanai)
-[![Twitter](https://img.shields.io/badge/-Blog-006BAD?style=flat-square&logo=RSS&logoColor=white)](https://www.wangkanai.com)
+[![Blog](https://img.shields.io/badge/-Blog-006BAD?style=flat-square&logo=RSS&logoColor=white)](https://www.wangkanai.com)
 
 Hello, fellow developers! 👋
 
@@ -39,10 +39,6 @@ world of technology. Here's a quick snapshot of what you can expect to find:
   enhance user experience and productivity.
 - **[Markdown](https://github.com/wangkanai/wangkanai/tree/main/Markdown)**: A library to help you parse and render
   Markdown content in your application.
-- **[Identity](https://github.com/wangkanai/wangkanai/tree/main/Identity)**: A library to help you manage user
-  authentication and authorization in your application.
-- **[Federation](https://github.com/wangkanai/wangkanai/tree/main/Federation)**: A library to help you federate your
-  application with other identity providers.
 
 And much more! Feel free to explore, use, and contribute to these projects.
 
