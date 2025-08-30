@@ -14,16 +14,13 @@ $dirs=[ordered]@{
     13="Detection";
     14="Responsive";
     15="EntityFramework";
-    16="Identity";
-    17="Security";
-    18="Federation";
-    19="Markdown";
-    20="Analytics";
-    21="Blazor";
-    22="Tabler";
-    23="Solver";
-    24="Microservice";
-    25="Nation";
+    16="Markdown";
+    17="Analytics";
+    18="Blazor";
+    19="Tabler";
+    20="Solver";
+    21="Microservice";
+    22="Nation";
 }
 
 for ($i=0; $i -lt $dirs.count; $i++) {
