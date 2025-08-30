@@ -134,11 +134,21 @@ Target Directory: ~/Sources/federation/
 
 - [ ] Copy `.github/workflows/dotnet.yml` from main repo
 - [ ] Adapt workflow for federation repository:
-  - [ ] Remove npm build job (if not needed)
-  - [ ] Update SonarCloud project key to `wangkanai_federation`
+  - [ ] Remove npm build job (not needed for these modules)
+  - [ ] Update SonarCloud configuration:
+    - [ ] Organization: `wangkanai`
+    - [ ] Project Key: `wangkanai_federation`
+    - [ ] Version: `1.0.0`
+  - [ ] Add SonarScanner installation step
+  - [ ] Configure SonarCloud Begin/End analysis steps
   - [ ] Simplify test discovery for focused modules
   - [ ] Remove references to Tabler/Blazor assets
-- [ ] Create `SonarQube.Analysis.xml` configuration file
+- [ ] Create `SonarQube.Analysis.xml` configuration file with:
+  ```xml
+  <Property Name="sonar.organization">wangkanai</Property>
+  <Property Name="sonar.projectKey">wangkanai_federation</Property>
+  <Property Name="sonar.projectVersion">1.0.0</Property>
+  ```
 - [ ] Add required GitHub Secrets:
   - [ ] `SONAR_TOKEN` for SonarCloud integration
   - [ ] `NUGET_API_KEY` for package publishing (later)
@@ -280,13 +290,35 @@ Target Directory: ~/Sources/federation/
 
 ### Task 5.3: SonarCloud Integration
 
-- [ ] Register project in SonarCloud: https://sonarcloud.io
-- [ ] Create organization if needed: `wangkanai`
-- [ ] Add new project: `wangkanai_federation`
-- [ ] Generate and add `SONAR_TOKEN` to GitHub Secrets
-- [ ] Update SonarCloud badges in README.md:
+- [ ] Register project in SonarCloud: https://sonarcloud.io/projects/create
+  - [ ] Organization: `wangkanai`
+  - [ ] Project Key: `wangkanai_federation`
+  - [ ] Display Name: `Federation`
+- [ ] Configure Quality Gate settings:
+  - [ ] Use "Sonar way" quality gate or customize:
+    - [ ] Coverage: >= 80%
+    - [ ] Duplicated Lines: < 3%
+    - [ ] Maintainability Rating: A
+    - [ ] Reliability Rating: A
+    - [ ] Security Rating: A
+- [ ] Generate authentication token:
+  - [ ] Go to: https://sonarcloud.io/account/security
+  - [ ] Generate new token named: `federation-github-actions`
+  - [ ] Copy token value
+- [ ] Add token to GitHub repository:
+  - [ ] Go to: https://github.com/wangkanai/federation/settings/secrets/actions
+  - [ ] Add new secret: `SONAR_TOKEN` with token value
+- [ ] Verify SonarQube.Analysis.xml has correct settings:
+  ```xml
+  <Property Name="sonar.organization">wangkanai</Property>
+  <Property Name="sonar.projectKey">wangkanai_federation</Property>
+  <Property Name="sonar.projectVersion">1.0.0</Property>
+  ```
+- [ ] Update README.md badges:
   ```markdown
   [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=wangkanai_federation&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=wangkanai_federation)
+  [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=wangkanai_federation&metric=coverage)](https://sonarcloud.io/summary/new_code?id=wangkanai_federation)
+  [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=wangkanai_federation&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=wangkanai_federation)
   ```
 
 ### Task 5.4: Branch Protection Verification
