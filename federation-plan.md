@@ -81,13 +81,12 @@ dotnet build Security/src/Core/Wangkanai.Security.Core.csproj
 
 ### Phase 2: New Repository Setup
 
-#### 2.1 Create New Repository
+#### 2.1 Clone Existing Repository
 
 ```bash
-# Create new repository on GitHub: https://github.com/wangkanai/federation
-gh repo create wangkanai/federation --public --description "Authentication and Authorization Server for ASP.NET Core"
-
-# Clone the new repository
+# Repository already created at: https://github.com/wangkanai/federation
+# Clone the repository to ~/Sources/federation/
+cd ~/Sources
 git clone https://github.com/wangkanai/federation.git
 cd federation
 ```
