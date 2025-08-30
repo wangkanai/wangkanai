@@ -24,15 +24,12 @@ $dirs=[ordered]@{
 #    14="Detection";
 #    15="Responsive";
 #    16="EntityFramework";
-#    17="Identity";
-#    18="Security";
-#    19="Federation";
-#    20="Markdown";
-#    21="Analytics";
-#    22="Blazor";
-#    23="Solver";
-#    24="Microservice";
-#    25="Nation";
+#    17="Markdown";
+#    18="Analytics";
+#    19="Blazor";
+#    20="Solver";
+#    21="Microservice";
+#    22="Nation";
 }
 
 $env:OneDriveConsumer+"\powershell-env.ps1" | out-null

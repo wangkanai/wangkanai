@@ -4,17 +4,12 @@
     <File Path="repomix.config.json" />
     <File Path=".repomixignore" />
     <File Path="WANGKANAI_MODULE_ANALYSIS.md" />
-    <File Path="DOCUMENTATION_NAVIGATION.md" />
-    <File Path="API_DOCUMENTATION_TEMPLATE.md" />
-    <File Path="PROJECT_INDEX.md" />
-    <File Path="BUILD_GUIDE.md" />
   </Folder>
   <Folder Name="/.github/">
     <File Path=".github\FUNDING.yml" />
     <File Path=".github\RELEASE.yml" />
     <File Path=".github\copilot-instructions.md" />
     <File Path=".github\workflows\dotnet.yml" />
-    <File Path="OPTIMIZATION_REPORT.md" />
   </Folder>
   <Folder Name="/.github/ISSUE_TEMPLATE/">
     <File Path=".github\ISSUE_TEMPLATE\bug_report.md" />
@@ -38,8 +33,6 @@
     <File Path="SonarQube.Analysis.xml" />
     <File Path="sonar-begin.ps1" />
     <File Path="testconfig.json" />
-    <File Path="test-coverage.ps1" />
-    <File Path="build-enhanced.ps1" />
     <File Path="build-simple.ps1" />
   </Folder>
   <Folder Name="/Analytics/">
