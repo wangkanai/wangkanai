@@ -146,23 +146,6 @@
     <File Path="Extensions\Internal\Directory.Build.props" />
     <File Path="Extensions\Internal\README.md" />
   </Folder>
-  <Folder Name="/Federation/">
-    <Project Path="Federation\benchmark\Wangkanai.Federation.Benchmark.csproj" />
-    <Project Path="Federation\src\AspNetIdentity\Wangkanai.Federation.AspNetIdentity.csproj" />
-    <Project Path="Federation\src\AuthProxyBackend\Wangkanai.Federation.AuthProxyBackend.csproj" />
-    <Project Path="Federation\src\Domain\Wangkanai.Federation.Domain.csproj" />
-    <Project Path="Federation\src\EntityFramework\Wangkanai.Federation.EntityFramework.csproj" />
-    <Project Path="Federation\src\Federation\Wangkanai.Federation.csproj" />
-    <File Path="Federation\Directory.Build.props" />
-    <File Path="Federation\Federation.slnf" />
-    <File Path="Federation\README.md" />
-    <File Path="Federation\sign.ps1" />
-    <File Path="Federation\build.ps1" />
-  </Folder>
-  <Folder Name="/Federation/tests/">
-    <Project Path="Federation\tests\Domain\Wangkanai.Federation.Domain.Tests.csproj" />
-    <Project Path="Federation\tests\Federation\Wangkanai.Federation.Tests.csproj" />
-  </Folder>
   <Folder Name="/Hosting/">
     <Project Path="Hosting\benchmark\Wangkanai.Hosting.Benchmark.csproj" />
     <Project Path="Hosting\src\Wangkanai.Hosting.csproj" />
@@ -171,16 +154,6 @@
     <File Path="Hosting\README.md" />
     <File Path="Hosting\sign.ps1" />
     <File Path="Hosting\build.ps1" />
-  </Folder>
-  <Folder Name="/Identity/">
-    <Project Path="Identity\benchmark\Wangkanai.Identity.Benchmark.csproj" />
-    <Project Path="Identity\src\Wangkanai.Identity.csproj" />
-    <Project Path="Identity\tests\Wangkanai.Identity.Tests.csproj" />
-    <File Path="Identity\.editorconfig" />
-    <File Path="Identity\Directory.Build.props" />
-    <File Path="Identity\README.md" />
-    <File Path="Identity\sign.ps1" />
-    <File Path="Identity\build.ps1" />
   </Folder>
   <Folder Name="/Markdown/">
     <Project Path="Markdown\benchmark\Wangkanai.Markdown.Benchmark.csproj" />
@@ -228,18 +201,6 @@
     <File Path="Responsive\README.md" />
     <File Path="Responsive\sign.ps1" />
     <File Path="Responsive\build.ps1" />
-  </Folder>
-  <Folder Name="/Security/">
-    <Project Path="Security\benchmark\Wangkanai.Security.Benchmark.csproj" />
-    <Project Path="Security\src\Authentication\Wangkanai.Security.Authentication.csproj" />
-    <Project Path="Security\src\Authorization\Wangkanai.Security.Authorization.csproj" />
-    <Project Path="Security\src\Core\Wangkanai.Security.Core.csproj" />
-    <Project Path="Security\tests\Security\Wangkanai.Security.Tests.csproj" />
-    <File Path="Security\Directory.Build.props" />
-    <File Path="Security\README.md" />
-    <File Path="Security\Security.slnf" />
-    <File Path="Security\sign.ps1" />
-    <File Path="Security\build.ps1" />
   </Folder>
   <Folder Name="/Shared/">
     <Project Path="Shared\benchmark\Wangkanai.Shared.Benchmark.csproj" />
