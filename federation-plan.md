@@ -91,7 +91,30 @@ git clone https://github.com/wangkanai/federation.git
 cd federation
 ```
 
-#### 2.2 Initialize Repository Structure
+#### 2.2 Configure GitHub Repository Settings
+
+##### Branch Protection Rules
+Configure main branch protection in GitHub Settings:
+- **Require pull request reviews before merging**: Yes
+- **Required approving reviews**: 1
+- **Dismiss stale pull request approvals**: Yes
+- **Require status checks to pass**: Yes
+  - Required checks: build-dotnet, build-npm (if applicable)
+- **Require branches to be up to date**: Yes
+- **Require conversation resolution**: Yes
+- **Require signed commits**: Optional
+- **Include administrators**: No (for emergency fixes)
+- **Allow force pushes**: No
+- **Allow deletions**: No
+
+##### Repository Settings
+- **Default branch**: main
+- **Allow merge commits**: Yes
+- **Allow squash merging**: Yes
+- **Allow rebase merging**: No
+- **Automatically delete head branches**: Yes
+
+#### 2.3 Initialize Repository Structure
 
 ```
 federation/
@@ -137,7 +160,7 @@ federation/
 └── Federation.slnx
 ```
 
-#### 2.3 Copy Common Configuration Files
+#### 2.4 Copy Common Configuration Files
 
 From the main repository, copy:
 
@@ -148,6 +171,7 @@ From the main repository, copy:
 - `.gitignore`
 - `.gitattributes`
 - `LICENSE`
+- `.github/workflows/dotnet.yml` (adapt for new repository)
 
 ### Phase 3: Module Migration
 
@@ -251,41 +275,203 @@ Structure:
 
 ### Phase 5: CI/CD Setup
 
-#### 5.1 GitHub Actions Workflow
+#### 5.1 GitHub Actions Workflow with SonarCloud Integration
 
-Create `.github/workflows/dotnet.yml`:
+Create `.github/workflows/dotnet.yml` (adapted from main repository):
 
 ```yaml
-name: .NET
+name: dotnet
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ main ]
+    branches: [ "main" ]
+
+env:
+  VERSION: 1.0.0
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+  DOTNET_NOLOGO: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+  DOTNET_GENERATE_ASPNET_CERTIFICATE: false
+  DOTNET_SYSTEM_CONSOLE_ALLOW_ANSI_COLOR_REDIRECTION: true
+  DOTNET_MULTILEVEL_LOOKUP: false
 
 jobs:
-  build:
+  build-dotnet:
     runs-on: ubuntu-latest
+    
+    env:
+      NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
+      
     steps:
-    - uses: actions/checkout@v3
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v3
+    - uses: actions/checkout@v4
       with:
-        dotnet-version: 8.0.x
+        fetch-depth: 0  # Required for SonarCloud analysis
+        
+    - name: Setup .NET 9.0
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 9.0.x
+        
+    - name: Cache NuGet packages
+      uses: actions/cache@v4
+      with:
+        path: ${{ env.NUGET_PACKAGES }}
+        key: ${{ runner.os }}-nuget-${{ hashFiles('**/Directory.Packages.props', '**/*.csproj') }}
+        restore-keys: |
+          ${{ runner.os }}-nuget-
+          
+    - name: Install SonarScanner
+      run: |
+        dotnet tool install --global dotnet-sonarscanner --version 5.15.0
+        echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
+        
+    - name: SonarCloud Begin Analysis
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      run: |
+        dotnet sonarscanner begin \
+          /k:"wangkanai_federation" \
+          /o:"wangkanai" \
+          /v:"${{ env.VERSION }}" \
+          /d:sonar.token="${{ secrets.SONAR_TOKEN }}" \
+          /d:sonar.host.url="https://sonarcloud.io" \
+          /d:sonar.cs.opencover.reportsPaths="**/coverage.opencover.xml" \
+          /d:sonar.coverage.exclusions="**/Mocks/**,**/Tests/**,**/benchmark/**" \
+          /d:sonar.exclusions="**/obj/**,**/bin/**,**/*.Designer.cs"
+        
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore --verbosity minimal
+      
     - name: Build
-      run: dotnet build --no-restore -c Release
-    - name: Test
-      run: dotnet test --no-build -c Release --verbosity normal
+      run: |
+        dotnet build --no-restore -c Release \
+          -p:TreatWarningsAsErrors=false \
+          -p:ContinuousIntegrationBuild=true \
+          -p:Deterministic=true \
+          --verbosity minimal
+          
+    - name: Test with Coverage
+      run: |
+        dotnet test --no-build -c Release \
+          --collect:"XPlat Code Coverage" \
+          --logger "console;verbosity=normal" \
+          --results-directory ./coverage \
+          -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
+          
+    - name: SonarCloud End Analysis
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      run: |
+        dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+          
+    - name: Upload Coverage Report
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: coverage-report
+        path: coverage/
+        retention-days: 7
 ```
 
-#### 5.2 NuGet Publishing Configuration
+#### 5.2 SonarCloud Configuration
 
-- Set up GitHub Secrets for NuGet API keys
-- Configure package versioning strategy
-- Set up release workflow for publishing
+Create `SonarQube.Analysis.xml` in repository root:
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<SonarQubeAnalysisProperties xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+                             xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+                             xmlns="http://www.sonarsource.com/msbuild/integration/2015/1">
+  <Property Name="sonar.organization">wangkanai</Property>
+  <Property Name="sonar.projectKey">wangkanai_federation</Property>
+  <Property Name="sonar.projectName">Federation</Property>
+  <Property Name="sonar.projectVersion">1.0.0</Property>
+  <Property Name="sonar.sources">.</Property>
+  <Property Name="sonar.exclusions">
+    **/bin/**,
+    **/obj/**,
+    **/node_modules/**,
+    **/*.Designer.cs,
+    **/*.generated.cs,
+    **/wwwroot/lib/**
+  </Property>
+  <Property Name="sonar.coverage.exclusions">
+    **/Tests/**,
+    **/benchmark/**,
+    **/Migrations/**,
+    **/Program.cs,
+    **/Startup.cs
+  </Property>
+  <Property Name="sonar.cs.opencover.reportsPaths">**/coverage.opencover.xml</Property>
+  <Property Name="sonar.cs.vstest.reportsPaths">**/*.trx</Property>
+</SonarQubeAnalysisProperties>
+```
+
+#### 5.2 NuGet Publishing Workflow
+
+Create `.github/workflows/publish.yml`:
+
+```yaml
+name: Publish NuGet
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Package version'
+        required: true
+        
+env:
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+  DOTNET_NOLOGO: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+  
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 9.0.x
+        
+    - name: Restore dependencies
+      run: dotnet restore
+      
+    - name: Build
+      run: dotnet build -c Release --no-restore
+      
+    - name: Pack
+      run: |
+        VERSION=${{ github.event.inputs.version || github.event.release.tag_name }}
+        dotnet pack -c Release --no-build -o ./artifacts \
+          -p:PackageVersion=${VERSION#v} \
+          -p:IncludeSymbols=true \
+          -p:SymbolPackageFormat=snupkg
+          
+    - name: Push to NuGet
+      run: |
+        dotnet nuget push "./artifacts/*.nupkg" \
+          --api-key ${{ secrets.NUGET_API_KEY }} \
+          --source https://api.nuget.org/v3/index.json \
+          --skip-duplicate
+```
+
+#### 5.3 Branch Protection Setup
+
+Configure via GitHub UI or API:
+- Protect main branch with required status checks
+- Require PR reviews before merging
+- Automatically run CI on all PRs
 
 ### Phase 6: Validation
 
