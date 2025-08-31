@@ -30,16 +30,6 @@
     <File Path="LICENSE" />
     <File Path="SonarQube.Analysis.xml" />
   </Folder>
-  <Folder Name="/Analytics/">
-    <Project Path="Analytics\benchmark\Wangkanai.Analytics.Benchmark.csproj" />
-    <Project Path="Analytics\src\Wangkanai.Analytics.csproj" />
-    <Project Path="Analytics\tests\Wangkanai.Analytics.Tests.csproj" />
-    <File Path="Analytics\Directory.Build.props" />
-    <File Path="Analytics\INSTALL.md" />
-    <File Path="Analytics\README.md" />
-    <File Path="Analytics\sign.ps1" />
-    <File Path="Analytics\build.ps1" />
-  </Folder>
   <Folder Name="/Annotations/">
     <Project Path="Annotations\benchmark\Wangkanai.Annotations.Benchmark.csproj" Type="Classic C#" />
     <Project Path="Annotations\src\Wangkanai.Annotations.csproj" Type="Classic C#" />
