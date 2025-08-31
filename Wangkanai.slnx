@@ -21,7 +21,6 @@
     <File Path=".gitignore" />
     <File Path="Directory.Build.props" />
     <File Path="Directory.Build.targets" />
-    <File Path="global.json" />
     <File Path="md-styles.css" />
     <File Path="qodana.yaml" />
     <File Path="README.md" />
@@ -30,7 +29,6 @@
     <File Path="build.ps1" />
     <File Path="LICENSE" />
     <File Path="SonarQube.Analysis.xml" />
-    <File Path="build-simple.ps1" />
   </Folder>
   <Folder Name="/Analytics/">
     <Project Path="Analytics\benchmark\Wangkanai.Analytics.Benchmark.csproj" />
