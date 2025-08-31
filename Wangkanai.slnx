@@ -202,10 +202,6 @@
     <File Path="Validation\sign.ps1" />
     <File Path="Validation\build.ps1" />
   </Folder>
-  <Folder Name="/Web/">
-    <File Path="Web\Directory.Build.props" />
-    <File Path="Web\README.md" />
-  </Folder>
   <Folder Name="/Webmaster/">
     <Project Path="Webmaster\benchmark\Wangkanai.Webmaster.Benchmark.csproj" />
     <Project Path="Webmaster\src\Wangkanai.Webmaster.csproj" />
