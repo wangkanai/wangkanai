@@ -3,7 +3,6 @@
     <File Path="CLAUDE.md" />
     <File Path="repomix.config.json" />
     <File Path=".repomixignore" />
-    <File Path="WANGKANAI_MODULE_ANALYSIS.md" />
   </Folder>
   <Folder Name="/.github/">
     <File Path=".github\FUNDING.yml" />
@@ -32,7 +31,6 @@
     <File Path="LICENSE" />
     <File Path="SonarQube.Analysis.xml" />
     <File Path="sonar-begin.ps1" />
-    <File Path="testconfig.json" />
     <File Path="build-simple.ps1" />
   </Folder>
   <Folder Name="/Analytics/">
