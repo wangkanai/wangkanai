@@ -4,7 +4,7 @@
    <PropertyGroup>
       <VersionPrefix>2.4.0</VersionPrefix>
       <Title>Wangkanai Analytics</Title>
-      <Description>Embrace the power of data with Analytics, a .NET Core library for comprehensive website tracking. Delve into insightful statistics, understand your audience better, and make data-driven decisions with ease. From session duration to bounce rate, Analytics transforms raw data into meaningful insights. Join our community, shine a light on your website's performance, and let's unlock the full potential of website analytics with Analytics.</Description>
+      <Description>Embrace the power of data with Analytics, a .NET Core library for comprehensive website tracking. Delve into insightful statistics, understand your audience better, and make data-driven decisions with ease. From session duration to bounce rate, Analytics transforms raw data into meaningful insights.</Description>
       <PackageTags>aspnetcore;analytics;</PackageTags>
       <RootNamespace>Wangkanai.Analytics</RootNamespace>
       <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Analytics</PackageProjectUrl>
