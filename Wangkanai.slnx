@@ -144,15 +144,6 @@
     <File Path="Markdown\sign.ps1" />
     <File Path="Markdown\build.ps1" />
   </Folder>
-  <Folder Name="/Microservice/">
-    <Project Path="Microservice\benchmark\Wangkanai.Microservice.Benchmark.csproj" Type="Classic C#" />
-    <Project Path="Microservice\src\Wangkanai.Microservice.csproj" Type="Classic C#" />
-    <Project Path="Microservice\tests\Wangkanai.Microservice.Tests.csproj" Type="Classic C#" />
-    <File Path="Microservice\build.ps1" />
-    <File Path="Microservice\Directory.Build.props" />
-    <File Path="Microservice\README.md" />
-    <File Path="Microservice\sign.ps1" />
-  </Folder>
   <Folder Name="/Mvc/">
     <Project Path="Mvc\benchmark\Wangkanai.Mvc.Benchmark.csproj" />
     <Project Path="Mvc\src\Wangkanai.Mvc.csproj" />

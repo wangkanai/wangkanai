@@ -9,7 +9,8 @@ internal static class Tracing
    private static readonly Version _assemblyVersion = typeof(Tracing).Assembly.GetName().Version!;
 
    /// <summary> Service version </summary>
-   public static string ServiceVersion => _assemblyVersion.ToString(3);
+   public static string ServiceVersion
+      => _assemblyVersion.ToString(3);
 
    /// <summary> Service name for base tracing </summary>
    public static ActivitySource BasicActivitySource { get; } = new(TraceNames.Basic, ServiceVersion);

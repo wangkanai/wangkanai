@@ -16,8 +16,7 @@ $dirs=[ordered]@{
     15="EntityFramework";
     16="Markdown";
     17="Analytics";
-    18="Microservice";
-    19="Nation";
+    18="Nation";
 }
 
 for ($i=0; $i -lt $dirs.count; $i++) {
