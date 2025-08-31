@@ -16,15 +16,11 @@ $dirs=[ordered]@{
 #    6="Cryptography";
 #    7="Hosting";
 #    8="Tools";
-#    9="Domain";
-#    10="Audit";
-#    11="Mvc";
-#    12="Webserver";
-#    13="Webmaster";
-#    14="Detection";
-#    15="Responsive";
-#    16="EntityFramework";
-#    18="Analytics";
+#    9="Mvc";
+#    10="Webserver";
+#    11="Webmaster";
+#    12="Detection";
+#    13="Responsive";
 }
 
 $env:OneDriveConsumer + "\powershell-env.ps1" | out-null
