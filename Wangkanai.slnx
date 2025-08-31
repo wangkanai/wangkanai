@@ -153,15 +153,6 @@
     <File Path="Mvc\sign.ps1" />
     <File Path="Mvc\build.ps1" />
   </Folder>
-  <Folder Name="/Nation/">
-    <Project Path="Nation\benchmark\Wangkanai.Nation.Benchmark.csproj" Type="Classic C#" />
-    <Project Path="Nation\src\Wangkanai.Nation.csproj" Type="Classic C#" />
-    <Project Path="Nation\test\Wangkanai.Nation.Tests.csproj" Type="Classic C#" />
-    <File Path="Nation\sign.ps1" />
-    <File Path="Nation\build.ps1" />
-    <File Path="Nation\README.md" />
-    <File Path="Nation\Directory.Build.props" />
-  </Folder>
   <Folder Name="/Responsive/">
     <Project Path="Responsive\benchmark\Wangkanai.Responsive.Benchmark.csproj" />
     <Project Path="Responsive\src\Wangkanai.Responsive.csproj" />
