@@ -134,16 +134,6 @@
     <File Path="Hosting\sign.ps1" />
     <File Path="Hosting\build.ps1" />
   </Folder>
-  <Folder Name="/Markdown/">
-    <Project Path="Markdown\benchmark\Wangkanai.Markdown.Benchmark.csproj" />
-    <Project Path="Markdown\src\Wangkanai.Markdown.csproj" />
-    <Project Path="Markdown\tests\Wangkanai.Markdown.Tests.csproj" />
-    <File Path="Markdown\Directory.Build.props" />
-    <File Path="Markdown\INSTALL.md" />
-    <File Path="Markdown\README.md" />
-    <File Path="Markdown\sign.ps1" />
-    <File Path="Markdown\build.ps1" />
-  </Folder>
   <Folder Name="/Mvc/">
     <Project Path="Mvc\benchmark\Wangkanai.Mvc.Benchmark.csproj" />
     <Project Path="Mvc\src\Wangkanai.Mvc.csproj" />
