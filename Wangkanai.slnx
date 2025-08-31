@@ -39,15 +39,6 @@
     <File Path="Annotations\README.md" />
     <File Path="Annotations\sign.ps1" />
   </Folder>
-  <Folder Name="/Audit/">
-    <Project Path="Audit\benchmark\Wangkanai.Audit.Benchmark.csproj" Type="Classic C#" />
-    <Project Path="Audit\src\Wangkanai.Audit.csproj" Type="Classic C#" />
-    <Project Path="Audit\tests\Wangkanai.Audit.Tests.csproj" Type="Classic C#" />
-    <File Path="Audit\build.ps1" />
-    <File Path="Audit\README.md" />
-    <File Path="Audit\sign.ps1" />
-    <File Path="Audit\Directory.Build.props" />
-  </Folder>
   <Folder Name="/Cryptography/">
     <Project Path="Cryptography\benchmark\Wangkanai.Cryptography.Benchmark.csproj" />
     <Project Path="Cryptography\src\Wangkanai.Cryptography.csproj" />
@@ -67,24 +58,6 @@
     <File Path="Detection\README.md" />
     <File Path="Detection\sign.ps1" />
     <File Path="Detection\build.ps1" />
-  </Folder>
-  <Folder Name="/Domain/">
-    <Project Path="Domain\benchmark\Wangkanai.Domain.Benchmark.csproj" />
-    <Project Path="Domain\src\Wangkanai.Domain.csproj" />
-    <Project Path="Domain\tests\Wangkanai.Domain.Tests.csproj" />
-    <File Path="Domain\Directory.Build.props" />
-    <File Path="Domain\README.md" />
-    <File Path="Domain\sign.ps1" />
-    <File Path="Domain\build.ps1" />
-  </Folder>
-  <Folder Name="/EntityFramework/">
-    <Project Path="EntityFramework\benchmark\Wangkanai.EntityFramework.Benchmark.csproj" />
-    <Project Path="EntityFramework\src\Wangkanai.EntityFramework.csproj" />
-    <Project Path="EntityFramework\tests\Wangkanai.EntityFramework.Tests.csproj" />
-    <File Path="EntityFramework\Directory.Build.props" />
-    <File Path="EntityFramework\README.md" />
-    <File Path="EntityFramework\sign.ps1" />
-    <File Path="EntityFramework\build.ps1" />
   </Folder>
   <Folder Name="/Extensions/">
     <File Path="Extensions\Directory.Build.props" />
