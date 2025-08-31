@@ -4,9 +4,6 @@ using BenchmarkDotNet.Attributes;
 
 public class DomainBenchmark
 {
-	[Benchmark]
-	public void Nothing()
-	{
-
-	}
+   [Benchmark]
+   public void Nothing() { }
 }

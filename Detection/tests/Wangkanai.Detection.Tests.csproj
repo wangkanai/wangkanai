@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-	<PropertyGroup>
-		<RootNamespace>Wangkanai.Detection</RootNamespace>
-	</PropertyGroup>
-	<ItemGroup>
-		<ProjectReference Include="../../Testing/src/Wangkanai.Testing.csproj" />
-		<ProjectReference Include="../src/Wangkanai.Detection.csproj" />
-	</ItemGroup>
+   <PropertyGroup>
+      <RootNamespace>Wangkanai.Detection</RootNamespace>
+   </PropertyGroup>
+   <ItemGroup>
+      <ProjectReference Include="../../Testing/src/Wangkanai.Testing.csproj"/>
+      <ProjectReference Include="../src/Wangkanai.Detection.csproj"/>
+   </ItemGroup>
 </Project>

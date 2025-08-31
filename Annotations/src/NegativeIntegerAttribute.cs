@@ -2,8 +2,5 @@
 
 namespace Wangkanai;
 
-[AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter, Inherited = false)]
-public sealed class NegativeIntegerAttribute : Attribute
-{
-	public NegativeIntegerAttribute() { }
-}
+[AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter)]
+public sealed class NegativeIntegerAttribute : Attribute { }

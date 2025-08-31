@@ -4,27 +4,27 @@ namespace Wangkanai.Markdown;
 
 internal sealed class MarkdownViewLocationCacheResult
 {
-	public bool Success { get; }
+   public MarkdownViewLocationCacheResult(
+      MarkdownViewLocationCacheItem                view,
+      IReadOnlyList<MarkdownViewLocationCacheItem> viewStarts)
+   {
+      viewStarts.ThrowIfNull();
 
-	public MarkdownViewLocationCacheItem ViewEntry { get; }
-	public IReadOnlyList<MarkdownViewLocationCacheItem>? ViewStartEntries { get; }
-	public IEnumerable<string>? SearchedLocations { get; }
+      ViewEntry        = view;
+      ViewStartEntries = viewStarts;
+      Success          = true;
+   }
 
-	public MarkdownViewLocationCacheResult(
-		MarkdownViewLocationCacheItem view,
-		IReadOnlyList<MarkdownViewLocationCacheItem> viewStarts)
-	{
-		viewStarts.ThrowIfNull();
+   public MarkdownViewLocationCacheResult(IEnumerable<string> searchedLocations)
+   {
+      searchedLocations.ThrowIfNull();
 
-		ViewEntry = view;
-		ViewStartEntries = viewStarts;
-		Success = true;
-	}
+      SearchedLocations = searchedLocations;
+   }
 
-	public MarkdownViewLocationCacheResult(IEnumerable<string> searchedLocations)
-	{
-		searchedLocations.ThrowIfNull();
+   public bool Success { get; }
 
-		SearchedLocations = searchedLocations;
-	}
+   public MarkdownViewLocationCacheItem                 ViewEntry         { get; }
+   public IReadOnlyList<MarkdownViewLocationCacheItem>? ViewStartEntries  { get; }
+   public IEnumerable<string>?                          SearchedLocations { get; }
 }

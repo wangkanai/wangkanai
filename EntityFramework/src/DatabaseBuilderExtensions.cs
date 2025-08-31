@@ -8,55 +8,55 @@ namespace Wangkanai.EntityFramework;
 
 public static class DatabaseBuilderExtensions
 {
-	public static IApplicationBuilder CreateDatabase<T>(this IApplicationBuilder app)
-		where T : DbContext
-	{
-		using var scope = app.ApplicationServices.CreateScope();
-		using var context = scope.ServiceProvider.GetRequiredService<T>();
+   public static IApplicationBuilder CreateDatabase<T>(this IApplicationBuilder app)
+      where T : DbContext
+   {
+      using var scope   = app.ApplicationServices.CreateScope();
+      using var context = scope.ServiceProvider.GetRequiredService<T>();
 
-		context.ThrowIfNull();
+      context.ThrowIfNull();
 
-		context.Database.EnsureCreated();
+      context.Database.EnsureCreated();
 
-		return app;
-	}
+      return app;
+   }
 
-	public static async Task<IApplicationBuilder> CreateDatabaseAsync<T>(this IApplicationBuilder app)
-		where T : DbContext
-	{
-		await using var scope = app.ApplicationServices.CreateAsyncScope();
-		await using var context = scope.ServiceProvider.GetRequiredService<T>();
+   public static async Task<IApplicationBuilder> CreateDatabaseAsync<T>(this IApplicationBuilder app)
+      where T : DbContext
+   {
+      await using var scope   = app.ApplicationServices.CreateAsyncScope();
+      await using var context = scope.ServiceProvider.GetRequiredService<T>();
 
-		context.ThrowIfNull();
+      context.ThrowIfNull();
 
-		await context.Database.EnsureCreatedAsync();
+      await context.Database.EnsureCreatedAsync();
 
-		return app;
-	}
+      return app;
+   }
 
-	public static IApplicationBuilder MigrateDatabase<T>(this IApplicationBuilder app)
-		where T : DbContext
-	{
-		using var scope = app.ApplicationServices.CreateScope();
-		using var context = scope.ServiceProvider.GetRequiredService<T>();
+   public static IApplicationBuilder MigrateDatabase<T>(this IApplicationBuilder app)
+      where T : DbContext
+   {
+      using var scope   = app.ApplicationServices.CreateScope();
+      using var context = scope.ServiceProvider.GetRequiredService<T>();
 
-		context.ThrowIfNull();
+      context.ThrowIfNull();
 
-		context.Database.Migrate();
+      context.Database.Migrate();
 
-		return app;
-	}
+      return app;
+   }
 
-	public static async Task<IApplicationBuilder> MigrateDatabaseAsync<T>(this IApplicationBuilder app)
-		where T : DbContext
-	{
-		await using var scope = app.ApplicationServices.CreateAsyncScope();
-		await using var context = scope.ServiceProvider.GetRequiredService<T>();
+   public static async Task<IApplicationBuilder> MigrateDatabaseAsync<T>(this IApplicationBuilder app)
+      where T : DbContext
+   {
+      await using var scope   = app.ApplicationServices.CreateAsyncScope();
+      await using var context = scope.ServiceProvider.GetRequiredService<T>();
 
-		context.ThrowIfNull();
+      context.ThrowIfNull();
 
-		await context.Database.MigrateAsync();
+      await context.Database.MigrateAsync();
 
-		return app;
-	}
+      return app;
+   }
 }

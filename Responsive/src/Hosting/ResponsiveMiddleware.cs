@@ -9,19 +9,16 @@ namespace Wangkanai.Responsive.Hosting;
 
 public sealed class ResponsiveMiddleware
 {
-	private readonly RequestDelegate _next;
+   private readonly RequestDelegate _next;
 
-	public ResponsiveMiddleware(RequestDelegate next)
-	{
-		_next = next.ThrowIfNull();
-	}
+   public ResponsiveMiddleware(RequestDelegate next) => _next = next.ThrowIfNull();
 
-	public async Task InvokeAsync(HttpContext context, IResponsiveService responsive)
-	{
-		context.ThrowIfNull();
+   public async Task InvokeAsync(HttpContext context, IResponsiveService responsive)
+   {
+      context.ThrowIfNull();
 
-		context.SetDevice(responsive.View);
+      context.SetDevice(responsive.View);
 
-		await _next(context);
-	}
+      await _next(context);
+   }
 }

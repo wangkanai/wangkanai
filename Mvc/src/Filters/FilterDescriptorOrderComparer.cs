@@ -6,15 +6,15 @@ namespace Wangkanai.Mvc.Filters;
 
 internal sealed class FilterDescriptorOrderComparer : IComparer<FilterDescriptor>
 {
-	public static FilterDescriptorOrderComparer Comparer { get; } = new FilterDescriptorOrderComparer();
+   public static FilterDescriptorOrderComparer Comparer { get; } = new();
 
-	public int Compare(FilterDescriptor? x, FilterDescriptor? y)
-	{
-		x.ThrowIfNull();
-		y.ThrowIfNull();
+   public int Compare(FilterDescriptor? x, FilterDescriptor? y)
+   {
+      x.ThrowIfNull();
+      y.ThrowIfNull();
 
-		return x.Order == y.Order
-				   ? x.Scope.CompareTo(y.Scope)
-				   : x.Order.CompareTo(y.Order);
-	}
+      return x.Order == y.Order
+         ? x.Scope.CompareTo(y.Scope)
+         : x.Order.CompareTo(y.Order);
+   }
 }

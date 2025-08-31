@@ -10,7 +10,7 @@ namespace Wangkanai;
 [MemoryDiagnoser]
 public class StringSpanVsSubstringBenchmark
 {
-	private const string Str = "Hello World";
+   private const string Str = "Hello World";
 
-	[Benchmark] public void AsSpan() => Str.ToTitleCase();
+   [Benchmark] public void AsSpan() => Str.ToTitleCase();
 }

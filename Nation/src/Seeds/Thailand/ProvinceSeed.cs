@@ -6,8 +6,8 @@ namespace Wangkanai.Nation.Seeds.Thailand;
 
 public static class ProvinceSeed
 {
-	public static List<Province> Dataset =
-	[
-		new(66, 66_0001, "BKK", "Bangkok", "กรุงเทพมหานคร", 5_692_284),
-	];
+   public static List<Province> Dataset =
+   [
+      new(66, 66_0001, "BKK", "Bangkok", "กรุงเทพมหานคร", 5_692_284)
+   ];
 }

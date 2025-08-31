@@ -5,15 +5,15 @@ namespace System.ComponentModel.DataAnnotations;
 [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter)]
 public sealed class RequireFalseAttribute : ValidationAttribute
 {
-	public RequireFalseAttribute()
-		: base(() => "Unchecked is required") { }
+   public RequireFalseAttribute()
+      : base(() => "Unchecked is required") { }
 
-	public override bool IsValid(object? value)
-		=> value switch
-		{
-			null => true,
-			true => false,
-			false => true,
-			_ => false
-		};
+   public override bool IsValid(object? value)
+      => value switch
+         {
+            null  => true,
+            true  => false,
+            false => true,
+            _     => false
+         };
 }

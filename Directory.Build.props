@@ -1,34 +1,34 @@
 <Project>
-	<PropertyGroup>
-		<Company>Wangkanai</Company>
-		<Authors>Sarin Na Wangkanai</Authors>
-		<Copyright>©2014-2025 Sarin Na Wangkanai, All rights reserved</Copyright>
+   <PropertyGroup>
+      <Company>Wangkanai</Company>
+      <Authors>Sarin Na Wangkanai</Authors>
+      <Copyright>©2014-2025 Sarin Na Wangkanai, All rights reserved</Copyright>
 
-		<RepositoryType>git</RepositoryType>
-		<RepositoryUrl>git://github.com/wangkanai/wangkanai</RepositoryUrl>
+      <RepositoryType>git</RepositoryType>
+      <RepositoryUrl>git://github.com/wangkanai/wangkanai</RepositoryUrl>
 
-		<PackageProjectUrl>https://github.com/wangkanai/wangkanai</PackageProjectUrl>
-		<PackageLicense>https://github.com/wangkanai/wangkanai/blob/main/LICENSE</PackageLicense>
-		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-	</PropertyGroup>
+      <PackageProjectUrl>https://github.com/wangkanai/wangkanai</PackageProjectUrl>
+      <PackageLicense>https://github.com/wangkanai/wangkanai/blob/main/LICENSE</PackageLicense>
+      <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+   </PropertyGroup>
 
-	<PropertyGroup>
-		<TargetFramework>net8.0</TargetFramework>
-		<ImplicitUsings>enable</ImplicitUsings>
-		<Nullable>enable</Nullable>
-	</PropertyGroup>
+   <PropertyGroup>
+      <TargetFramework>net8.0</TargetFramework>
+      <ImplicitUsings>enable</ImplicitUsings>
+      <Nullable>enable</Nullable>
+   </PropertyGroup>
 
-	<PropertyGroup>
-		<SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
-		<PublishRepositoryUrl>true</PublishRepositoryUrl>
-		<EmbedUntrackedSources>true</EmbedUntrackedSources>
-		<IncludeSymbols>true</IncludeSymbols>
-		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
-		<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
-	</PropertyGroup>
+   <PropertyGroup>
+      <SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
+      <PublishRepositoryUrl>true</PublishRepositoryUrl>
+      <EmbedUntrackedSources>true</EmbedUntrackedSources>
+      <IncludeSymbols>true</IncludeSymbols>
+      <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+      <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+   </PropertyGroup>
 
-	<PropertyGroup>
-		<RepoRoot Condition=" '$(RepoRoot)' == '' OR !HasTrailingSlash('$(RepoRoot)') ">$(MSBuildThisFileDirectory)</RepoRoot>
-		<SharedSourceRoot>$(MSBuildThisFileDirectory)Shared\src\</SharedSourceRoot>
-	</PropertyGroup>
+   <PropertyGroup>
+      <RepoRoot Condition=" '$(RepoRoot)' == '' OR !HasTrailingSlash('$(RepoRoot)') ">$(MSBuildThisFileDirectory)</RepoRoot>
+      <SharedSourceRoot>$(MSBuildThisFileDirectory)Shared\src\</SharedSourceRoot>
+   </PropertyGroup>
 </Project>

@@ -4,12 +4,12 @@ namespace Wangkanai.Markdown.ApplicationModels;
 
 public sealed class MarkdownRouteMetadata
 {
-	public string MarkdownRoute { get; }
-	public string? RouteTemplate { get; }
+   public MarkdownRouteMetadata(string markdownRoute, string? routeTemplate)
+   {
+      MarkdownRoute = markdownRoute;
+      RouteTemplate = routeTemplate;
+   }
 
-	public MarkdownRouteMetadata(string markdownRoute, string? routeTemplate)
-	{
-		MarkdownRoute = markdownRoute;
-		RouteTemplate = routeTemplate;
-	}
+   public string  MarkdownRoute { get; }
+   public string? RouteTemplate { get; }
 }

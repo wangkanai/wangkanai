@@ -4,19 +4,18 @@ Installation of Responsive library is now done with a single package reference p
 
 - [Installation](#installation)
 - [Responsive Service](#responsive-service)
-    - [Responsive MVC](#responsive-mvc)
-    - [Responsive Razor Pages](#responsive-razor-pages)
-    - [Responsive Tag Helpers](#responsive-tag-helpers)
-    - [User Preference](#user-preference)
-    - [Responsive Options](#responsive-options)
+   - [Responsive MVC](#responsive-mvc)
+   - [Responsive Razor Pages](#responsive-razor-pages)
+   - [Responsive Tag Helpers](#responsive-tag-helpers)
+   - [User Preference](#user-preference)
+   - [Responsive Options](#responsive-options)
 - [Directory Structure](#directory-structure)
-    - [Contributing](#contributing)
+   - [Contributing](#contributing)
 - [Contributors](#contributors)
-    - [Code Contributors](#code-contributors)
-    - [Financial Contributors](#financial-contributors)
-        - [Individuals](#individuals)
-        - [Organizations](#organizations)
-
+   - [Code Contributors](#code-contributors)
+   - [Financial Contributors](#financial-contributors)
+      - [Individuals](#individuals)
+      - [Organizations](#organizations)
 
 ```powershell
 PM> install-package Wangkanai.Responsive
@@ -56,7 +55,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 {
     app.UseSession();
     app.UseResponsive();
-    
+
     app.UseRouting();
 
     app.UseEndpoints(endpoints => endpoints.MapDefaultControllerRoute());

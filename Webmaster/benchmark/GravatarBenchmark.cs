@@ -6,8 +6,8 @@ using Wangkanai.Helpers;
 
 public class GravatarBenchmark
 {
-	private readonly Gravatar _gravatar = new Gravatar("john@don.com");
+   private readonly Gravatar _gravatar = new("john@don.com");
 
-	[Benchmark]
-	public string GetGravatarUrl() => _gravatar.ToString();
+   [Benchmark]
+   public string GetGravatarUrl() => _gravatar.ToString();
 }

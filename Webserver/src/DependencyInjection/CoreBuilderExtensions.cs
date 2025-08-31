@@ -9,28 +9,28 @@ namespace Microsoft.Extensions.DependencyInjection;
 
 internal static class CoreBuilderExtensions
 {
-	public static IWebserverBuilder AddRequiredServices(this IWebserverBuilder builder)
-	{
-		builder.ThrowIfNull();
+   public static IWebserverBuilder AddRequiredServices(this IWebserverBuilder builder)
+   {
+      builder.ThrowIfNull();
 
-		builder.Services.AddHttpContextAccessor();
-		builder.Services.AddOptions();
-		builder.Services.TryAddSingleton(provider => provider.GetRequiredService<IOptions<WebserverOptions>>().Value);
+      builder.Services.AddHttpContextAccessor();
+      builder.Services.AddOptions();
+      builder.Services.TryAddSingleton(provider => provider.GetRequiredService<IOptions<WebserverOptions>>().Value);
 
-		return builder;
-	}
+      return builder;
+   }
 
-	public static IWebserverBuilder AddCoreServices(this IWebserverBuilder builder)
-	{
-		builder.Services.TryAddScoped<IWebserverService, WebserverService>();
+   public static IWebserverBuilder AddCoreServices(this IWebserverBuilder builder)
+   {
+      builder.Services.TryAddScoped<IWebserverService, WebserverService>();
 
-		return builder;
-	}
+      return builder;
+   }
 
-	public static IWebserverBuilder AddMarkerService(this IWebserverBuilder builder)
-	{
-		builder.Services.TryAddSingleton<WebserverMarkerService, WebserverMarkerService>();
+   public static IWebserverBuilder AddMarkerService(this IWebserverBuilder builder)
+   {
+      builder.Services.TryAddSingleton<WebserverMarkerService, WebserverMarkerService>();
 
-		return builder;
-	}
+      return builder;
+   }
 }

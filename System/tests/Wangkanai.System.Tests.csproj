@@ -1,11 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-	<PropertyGroup>
-		<NoWarn>0659,8625</NoWarn>
-	</PropertyGroup>
+   <PropertyGroup>
+      <NoWarn>0659,8625</NoWarn>
+   </PropertyGroup>
 
-	<ItemGroup>
-		<ProjectReference Include="..\src\Wangkanai.System.csproj" />
-	</ItemGroup>
+   <ItemGroup>
+      <ProjectReference Include="..\src\Wangkanai.System.csproj"/>
+   </ItemGroup>
 
 </Project>

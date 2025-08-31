@@ -1,88 +1,88 @@
 {
-  "$schema": "https://repomix.com/schemas/latest/schema.json",
-  "input": {
-    "maxFileSize": 52428800
-  },
-  "output": {
-    "filePath": "repomix-output.xml",
-    "style": "xml",
-    "parsableStyle": true,
-    "fileSummary": true,
-    "directoryStructure": true,
-    "files": true,
-    "removeComments": true,
-    "removeEmptyLines": true,
-    "compress": false,
-    "topFilesLength": 20,
-    "showLineNumbers": true,
-    "copyToClipboard": false,
-    "instructionFilePath": "CLAUDE.md",
-    "git": {
-      "sortByChanges": true,
-      "sortByChangesMaxCommits": 10,
-      "includeDiffs": true
-    }
-  },
-  "include": [
-    "**/*.cs",
-    "**/*.csproj",
-    "**/*.slnx",
-    "**/*.sln",
-    "**/*.props",
-    "**/*.targets",
-    "**/*.json",
-    "**/*.config",
-    "**/*.xml",
-    "**/*.razor",
-    "**/*.resx",
-    "**/*.md",
-    "**/*.ps1",
-    "**/*.yml",
-    "**/*.yaml",
-    "**/Dockerfile",
-    "**/.dockerignore",
-    "**/LICENSE",
-    "**/INSTALL.md"
-  ],
-  "ignore": {
-    "useGitignore": true,
-    "useDefaultPatterns": true,
-    "customPatterns": [
-      "**/samples/**",
-      "**/benchmark/**",
-      "**/bin/**",
-      "**/obj/**",
-      "**/packages/**",
-      "**/artifacts/**",
-      "**/BenchmarkDotNet.Artifacts/**",
-      "**/TestResults/**",
-      "**/coverage/**",
-      "**/*.Designer.cs",
-      "**/*.AssemblyInfo.cs",
-      "**/Resources.Designer.cs",
-      "**/Usings.cs",
-      "**/*.snk",
-      "**/*.pfx",
-      "**/launchSettings.json",
-      "**/appsettings.json",
-      "**/appsettings.*.json",
-      "**/secrets.json",
-      "**/.vs/**",
-      "**/.vscode/**",
-      "**/.idea/**",
-      "**/node_modules/**",
-      "**/*.log",
-      "**/*.bak",
-      "**/*.tmp",
-      "**/*.cache",
-      "**/Thumbs.db",
-      "**/.DS_Store"
-    ]
-  },
-  "security": {
-    "enableSecurityCheck": true
-  },
-  "tokenCount": {
-    "encoding": "o200k_base"
-  }
+   "$schema": "https://repomix.com/schemas/latest/schema.json",
+   "input": {
+      "maxFileSize": 52428800
+   },
+   "output": {
+      "filePath": "repomix-output.xml",
+      "style": "xml",
+      "parsableStyle": true,
+      "fileSummary": true,
+      "directoryStructure": true,
+      "files": true,
+      "removeComments": true,
+      "removeEmptyLines": true,
+      "compress": false,
+      "topFilesLength": 20,
+      "showLineNumbers": true,
+      "copyToClipboard": false,
+      "instructionFilePath": "CLAUDE.md",
+      "git": {
+         "sortByChanges": true,
+         "sortByChangesMaxCommits": 10,
+         "includeDiffs": true
+      }
+   },
+   "include": [
+      "**/*.cs",
+      "**/*.csproj",
+      "**/*.slnx",
+      "**/*.sln",
+      "**/*.props",
+      "**/*.targets",
+      "**/*.json",
+      "**/*.config",
+      "**/*.xml",
+      "**/*.razor",
+      "**/*.resx",
+      "**/*.md",
+      "**/*.ps1",
+      "**/*.yml",
+      "**/*.yaml",
+      "**/Dockerfile",
+      "**/.dockerignore",
+      "**/LICENSE",
+      "**/INSTALL.md"
+   ],
+   "ignore": {
+      "useGitignore": true,
+      "useDefaultPatterns": true,
+      "customPatterns": [
+         "**/samples/**",
+         "**/benchmark/**",
+         "**/bin/**",
+         "**/obj/**",
+         "**/packages/**",
+         "**/artifacts/**",
+         "**/BenchmarkDotNet.Artifacts/**",
+         "**/TestResults/**",
+         "**/coverage/**",
+         "**/*.Designer.cs",
+         "**/*.AssemblyInfo.cs",
+         "**/Resources.Designer.cs",
+         "**/Usings.cs",
+         "**/*.snk",
+         "**/*.pfx",
+         "**/launchSettings.json",
+         "**/appsettings.json",
+         "**/appsettings.*.json",
+         "**/secrets.json",
+         "**/.vs/**",
+         "**/.vscode/**",
+         "**/.idea/**",
+         "**/node_modules/**",
+         "**/*.log",
+         "**/*.bak",
+         "**/*.tmp",
+         "**/*.cache",
+         "**/Thumbs.db",
+         "**/.DS_Store"
+      ]
+   },
+   "security": {
+      "enableSecurityCheck": true
+   },
+   "tokenCount": {
+      "encoding": "o200k_base"
+   }
 }

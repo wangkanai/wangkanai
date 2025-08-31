@@ -4,28 +4,25 @@ namespace Wangkanai.Detection.Extensions;
 
 public class VersionExtensionsTests
 {
-	[Fact]
-	public void RemoveWhitespaceTest()
-	{
-		var temp = "1.0.0 ";
-		var version = temp.ToVersion();
-		var result = version.ToString();
-		Assert.Equal("1.0.0", result);
-	}
+   [Fact]
+   public void RemoveWhitespaceTest()
+   {
+      var temp    = "1.0.0 ";
+      var version = temp.ToVersion();
+      var result  = version.ToString();
+      Assert.Equal("1.0.0", result);
+   }
 
-	[Theory]
-	[InlineData("1.1")]
-	[InlineData("1.1.0")]
-	[InlineData("1.1.1.1")]
-	public void StringToVersion(string value)
-	{
-		var version = value.ToVersion();
-		Assert.Equal(value, version.ToString());
-	}
+   [Theory]
+   [InlineData("1.1")]
+   [InlineData("1.1.0")]
+   [InlineData("1.1.1.1")]
+   public void StringToVersion(string value)
+   {
+      var version = value.ToVersion();
+      Assert.Equal(value, version.ToString());
+   }
 
-	[Fact]
-	public void MajorOnly()
-	{
-		Assert.Equal("1.0", "1".ToVersion().ToString());
-	}
+   [Fact]
+   public void MajorOnly() => Assert.Equal("1.0", "1".ToVersion().ToString());
 }

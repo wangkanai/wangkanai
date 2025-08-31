@@ -14,74 +14,72 @@ namespace Wangkanai.Markdown.Infrastructure;
 
 internal sealed class CompiledMarkdownActionDescriptorFactory
 {
-	private readonly IMarkdownApplicationModelProvider[] _applicationModelProviders;
-	private readonly MarkdownConventionCollection _conventions;
-	private readonly FilterCollection _globalFilters;
+   private readonly IMarkdownApplicationModelProvider[] _applicationModelProviders;
+   private readonly MarkdownConventionCollection        _conventions;
+   private readonly FilterCollection                    _globalFilters;
 
-	public CompiledMarkdownActionDescriptorFactory(
-		IEnumerable<IMarkdownApplicationModelProvider> applicationModelProviders,
-		MvcOptions mvcOptions,
-		MarkdownPagesOptions pageOptions)
-	{
-		_applicationModelProviders = applicationModelProviders.OrderBy(a => a.Order).ToArray();
-		_conventions = pageOptions.Conventions;
-		_globalFilters = mvcOptions.Filters;
-	}
+   public CompiledMarkdownActionDescriptorFactory(
+      IEnumerable<IMarkdownApplicationModelProvider> applicationModelProviders,
+      MvcOptions                                     mvcOptions,
+      MarkdownPagesOptions                           pageOptions)
+   {
+      _applicationModelProviders = applicationModelProviders.OrderBy(a => a.Order).ToArray();
+      _conventions               = pageOptions.Conventions;
+      _globalFilters             = mvcOptions.Filters;
+   }
 
-	public CompiledMarkdownActionDescriptor CreateCompiledDescriptor(
-		MarkdownActionDescriptor actionDescriptor,
-		CompiledViewDescriptor viewDescriptor)
-	{
-		var context = new MarkdownApplicationModelProviderContext(actionDescriptor, viewDescriptor.Type!.GetTypeInfo());
-		for (var i = 0; i < _applicationModelProviders.Length; i++)
-			_applicationModelProviders[i].OnProvidersExecuting(context);
+   public CompiledMarkdownActionDescriptor CreateCompiledDescriptor(
+      MarkdownActionDescriptor actionDescriptor,
+      CompiledViewDescriptor   viewDescriptor)
+   {
+      var context = new MarkdownApplicationModelProviderContext(actionDescriptor, viewDescriptor.Type!.GetTypeInfo());
+      for (var i = 0; i < _applicationModelProviders.Length; i++)
+         _applicationModelProviders[i].OnProvidersExecuting(context);
 
-		for (var i = _applicationModelProviders.Length - 1; i >= 0; i--)
-			_applicationModelProviders[i].OnProvidersExecuted(context);
+      for (var i = _applicationModelProviders.Length - 1; i >= 0; i--)
+         _applicationModelProviders[i].OnProvidersExecuted(context);
 
-		ApplyConventions(_conventions, context.MarkdownApplicationModel);
+      ApplyConventions(_conventions, context.MarkdownApplicationModel);
 
-		var compiled = CompiledMarkdownActionDescriptorBuilder.Build(context.MarkdownApplicationModel, _globalFilters);
-		actionDescriptor.CompiledMarkdownDescriptor = compiled;
+      var compiled = CompiledMarkdownActionDescriptorBuilder.Build(context.MarkdownApplicationModel, _globalFilters);
+      actionDescriptor.CompiledMarkdownDescriptor = compiled;
 
-		return compiled;
-	}
+      return compiled;
+   }
 
-	internal static void ApplyConventions(
-		MarkdownConventionCollection conventions,
-		MarkdownApplicationModel pageApplicationModel)
-	{
-		var applicationModelConventions = GetConventions<IMarkdownApplicationModelConvention>(pageApplicationModel.HandlerTypeAttributes);
-		foreach (var convention in applicationModelConventions)
-			convention.Apply(pageApplicationModel);
+   internal static void ApplyConventions(
+      MarkdownConventionCollection conventions,
+      MarkdownApplicationModel     pageApplicationModel)
+   {
+      var applicationModelConventions = GetConventions<IMarkdownApplicationModelConvention>(pageApplicationModel.HandlerTypeAttributes);
+      foreach (var convention in applicationModelConventions)
+         convention.Apply(pageApplicationModel);
 
-		var handlers = pageApplicationModel.HandlerMethods.ToArray();
-		foreach (var handlerModel in handlers)
-		{
-			var handlerModelConventions = GetConventions<IMarkdownHandlerModelConvention>(handlerModel.Attributes);
-			foreach (var convention in handlerModelConventions)
-				convention.Apply(handlerModel);
+      var handlers = pageApplicationModel.HandlerMethods.ToArray();
+      foreach (var handlerModel in handlers)
+      {
+         var handlerModelConventions = GetConventions<IMarkdownHandlerModelConvention>(handlerModel.Attributes);
+         foreach (var convention in handlerModelConventions)
+            convention.Apply(handlerModel);
 
-			var parameterModels = handlerModel.Parameters.ToArray();
-			foreach (var parameterModel in parameterModels)
-			{
-				var parameterModelConventions = GetConventions<IParameterModelBaseConvention>(parameterModel.Attributes);
-				foreach (var convention in parameterModelConventions)
-					convention.Apply(parameterModel);
-			}
-		}
+         var parameterModels = handlerModel.Parameters.ToArray();
+         foreach (var parameterModel in parameterModels)
+         {
+            var parameterModelConventions = GetConventions<IParameterModelBaseConvention>(parameterModel.Attributes);
+            foreach (var convention in parameterModelConventions)
+               convention.Apply(parameterModel);
+         }
+      }
 
-		var properties = pageApplicationModel.HandlerProperties.ToArray();
-		foreach (var propertyModel in properties)
-		{
-			var propertyModelConventions = GetConventions<IParameterModelBaseConvention>(propertyModel.Attributes);
-			foreach (var convention in propertyModelConventions)
-				convention.Apply(propertyModel);
-		}
+      var properties = pageApplicationModel.HandlerProperties.ToArray();
+      foreach (var propertyModel in properties)
+      {
+         var propertyModelConventions = GetConventions<IParameterModelBaseConvention>(propertyModel.Attributes);
+         foreach (var convention in propertyModelConventions)
+            convention.Apply(propertyModel);
+      }
 
-		IEnumerable<TConvention> GetConventions<TConvention>(IReadOnlyList<object> attributes)
-			=> Enumerable.Concat(
-				conventions.OfType<TConvention>(),
-				attributes.OfType<TConvention>());
-	}
+      IEnumerable<TConvention> GetConventions<TConvention>(IReadOnlyList<object> attributes)
+         => conventions.OfType<TConvention>().Concat(attributes.OfType<TConvention>());
+   }
 }

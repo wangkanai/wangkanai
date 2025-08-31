@@ -35,10 +35,6 @@ world of technology. Here's a quick snapshot of what you can expect to find:
   device, browser, engine, platform, & crawler.
 - **[Responsive](https://github.com/wangkanai/wangkanai/tree/main/Responsive)**: A library to help you make your
   application responsive and adaptable to different screen sizes.
-- **[Blazor](https://github.com/wangkanai/wangkanai/tree/main/Blazor)**: Custom UI components for Blazor applications to
-  enhance user experience and productivity.
-- **[Markdown](https://github.com/wangkanai/wangkanai/tree/main/Markdown)**: A library to help you parse and render
-  Markdown content in your application.
 
 And much more! Feel free to explore, use, and contribute to these projects.
 

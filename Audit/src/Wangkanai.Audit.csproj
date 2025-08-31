@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-	<ItemGroup>
-		<PackageReference Include="Microsoft.EntityFrameworkCore" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" />
-		<PackageReference Include="Microsoft.Extensions.Identity.Stores" />
-	</ItemGroup>
-	<ItemGroup>
-		<ProjectReference Include="$(RepoRoot)\Domain\src\Wangkanai.Domain.csproj" />
-	</ItemGroup>
+   <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore"/>
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Relational"/>
+      <PackageReference Include="Microsoft.Extensions.Identity.Stores"/>
+   </ItemGroup>
+   <ItemGroup>
+      <ProjectReference Include="$(RepoRoot)\Domain\src\Wangkanai.Domain.csproj"/>
+   </ItemGroup>
 </Project>

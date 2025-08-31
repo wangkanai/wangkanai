@@ -9,7 +9,7 @@ namespace Wangkanai.Markdown.Infrastructure;
 
 public class MarkdownBoundPropertyDescriptor : ParameterDescriptor, IPropertyInfoParameterDescriptor
 {
-	public PropertyInfo Property { get; set; } = default!;
+   public PropertyInfo Property { get; set; } = default!;
 
-	PropertyInfo IPropertyInfoParameterDescriptor.PropertyInfo => Property;
+   PropertyInfo IPropertyInfoParameterDescriptor.PropertyInfo => Property;
 }

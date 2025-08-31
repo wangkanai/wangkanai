@@ -6,8 +6,8 @@ namespace Wangkanai.Testing;
 
 public class SingletonService : ISingletonService
 {
-	public DateTime Start { get; set; }
-	public DateTime Stop { get; set; }
-	public TimeSpan Elapsed => Stop - Start;
-	public ServiceLifetime Lifetime => ServiceLifetime.Singleton;
+   public DateTime        Start    { get; set; }
+   public DateTime        Stop     { get; set; }
+   public TimeSpan        Elapsed  => Stop - Start;
+   public ServiceLifetime Lifetime => ServiceLifetime.Singleton;
 }

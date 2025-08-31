@@ -13,50 +13,52 @@ namespace Wangkanai.Markdown.Infrastructure;
 
 public sealed class CompiledMarkdownActionDescriptorProvider : IActionDescriptorProvider
 {
-	private readonly MarkdownActionDescriptorProvider _pageActionDescriptorProvider;
-	private readonly ApplicationPartManager _applicationPartManager;
-	private readonly CompiledMarkdownActionDescriptorFactory _compiledPageActionDescriptorFactory;
+   private readonly ApplicationPartManager                  _applicationPartManager;
+   private readonly CompiledMarkdownActionDescriptorFactory _compiledPageActionDescriptorFactory;
+   private readonly MarkdownActionDescriptorProvider        _pageActionDescriptorProvider;
 
-	public CompiledMarkdownActionDescriptorProvider(
-		IEnumerable<IMarkdownRouteModelProvider> markdownRouteModelProviders,
-		IEnumerable<IMarkdownApplicationModelProvider> applicationModelProviders,
-		ApplicationPartManager applicationPartManager,
-		IOptions<MvcOptions> mvcOptions,
-		IOptions<MarkdownPagesOptions> pageOptions)
-	{
-		_pageActionDescriptorProvider = new MarkdownActionDescriptorProvider(markdownRouteModelProviders, mvcOptions, pageOptions);
-		_applicationPartManager = applicationPartManager;
-		_compiledPageActionDescriptorFactory = new CompiledMarkdownActionDescriptorFactory(applicationModelProviders, mvcOptions.Value, pageOptions.Value);
-	}
+   public CompiledMarkdownActionDescriptorProvider(
+      IEnumerable<IMarkdownRouteModelProvider>       markdownRouteModelProviders,
+      IEnumerable<IMarkdownApplicationModelProvider> applicationModelProviders,
+      ApplicationPartManager                         applicationPartManager,
+      IOptions<MvcOptions>                           mvcOptions,
+      IOptions<MarkdownPagesOptions>                 pageOptions)
+   {
+      _pageActionDescriptorProvider        = new(markdownRouteModelProviders, mvcOptions, pageOptions);
+      _applicationPartManager              = applicationPartManager;
+      _compiledPageActionDescriptorFactory = new(applicationModelProviders, mvcOptions.Value, pageOptions.Value);
+   }
 
-	public int Order => _pageActionDescriptorProvider.Order;
+   public int Order => _pageActionDescriptorProvider.Order;
 
-	public void OnProvidersExecuting(ActionDescriptorProviderContext context)
-	{
-		var newContext = new ActionDescriptorProviderContext();
-		_pageActionDescriptorProvider.OnProvidersExecuting(newContext);
-		_pageActionDescriptorProvider.OnProvidersExecuted(newContext);
+   public void OnProvidersExecuting(ActionDescriptorProviderContext context)
+   {
+      var newContext = new ActionDescriptorProviderContext();
+      _pageActionDescriptorProvider.OnProvidersExecuting(newContext);
+      _pageActionDescriptorProvider.OnProvidersExecuted(newContext);
 
-		var feature = new ViewsFeature();
-		_applicationPartManager.PopulateFeature(feature);
+      var feature = new ViewsFeature();
+      _applicationPartManager.PopulateFeature(feature);
 
-		var lookup = new Dictionary<string, CompiledViewDescriptor>(feature.ViewDescriptors.Count, StringComparer.Ordinal);
+      var lookup = new Dictionary<string, CompiledViewDescriptor>(feature.ViewDescriptors.Count, StringComparer.Ordinal);
 
-		foreach (var viewDescriptor in feature.ViewDescriptors)
-			lookup.TryAdd(ViewPath.NormalizePath(viewDescriptor.RelativePath), viewDescriptor);
+      foreach (var viewDescriptor in feature.ViewDescriptors)
+         lookup.TryAdd(ViewPath.NormalizePath(viewDescriptor.RelativePath), viewDescriptor);
 
-		foreach (var item in newContext.Results)
-		{
-			var pageActionDescriptor = (MarkdownActionDescriptor)item;
-			if (!lookup.TryGetValue(pageActionDescriptor.RelativePath, out var compiledViewDescriptor))
-				throw new InvalidOperationException($"A descriptor for '{pageActionDescriptor.RelativePath}' was not found.");
+      foreach (var item in newContext.Results)
+      {
+         var pageActionDescriptor = (MarkdownActionDescriptor)item;
+         if (!lookup.TryGetValue(pageActionDescriptor.RelativePath, out var compiledViewDescriptor))
+         {
+            throw new InvalidOperationException($"A descriptor for '{pageActionDescriptor.RelativePath}' was not found.");
+         }
 
-			var compiledPageActionDescriptor = _compiledPageActionDescriptorFactory.CreateCompiledDescriptor(
-				pageActionDescriptor,
-				compiledViewDescriptor);
-			context.Results.Add(compiledPageActionDescriptor);
-		}
-	}
+         var compiledPageActionDescriptor = _compiledPageActionDescriptorFactory.CreateCompiledDescriptor(
+                                                                                                          pageActionDescriptor,
+                                                                                                          compiledViewDescriptor);
+         context.Results.Add(compiledPageActionDescriptor);
+      }
+   }
 
-	public void OnProvidersExecuted(ActionDescriptorProviderContext context) { }
+   public void OnProvidersExecuted(ActionDescriptorProviderContext context) { }
 }

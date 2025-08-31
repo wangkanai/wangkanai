@@ -1,5 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <ItemGroup>
-    <ProjectReference Include="..\src\Wangkanai.Annotations.csproj" />
-  </ItemGroup>
+   <ItemGroup>
+      <ProjectReference Include="..\src\Wangkanai.Annotations.csproj"/>
+   </ItemGroup>
 </Project>

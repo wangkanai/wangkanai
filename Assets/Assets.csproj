@@ -1,28 +1,28 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <TargetFramework>net7.0</TargetFramework>
-        <IsPackable>false</IsPackable>
-    </PropertyGroup>
+   <PropertyGroup>
+      <TargetFramework>net7.0</TargetFramework>
+      <IsPackable>false</IsPackable>
+   </PropertyGroup>
 
-    <ItemGroup>
-        <Content Include="*.*" />
-        <Content Update="Tabler\favicon.ico">
-          <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-          <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-        </Content>
-        <Content Update="Tabler\icon.afdesign">
-          <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-          <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-        </Content>
-        <Content Update="Tabler\icon-192.png">
-          <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-          <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-        </Content>
-        <Content Update="Tabler\icon-512.png">
-          <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-          <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-        </Content>
-    </ItemGroup>
+   <ItemGroup>
+      <Content Include="*.*"/>
+      <Content Update="Tabler\favicon.ico">
+         <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+         <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="Tabler\icon.afdesign">
+         <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+         <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="Tabler\icon-192.png">
+         <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+         <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="Tabler\icon-512.png">
+         <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+         <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+   </ItemGroup>
 
 </Project>

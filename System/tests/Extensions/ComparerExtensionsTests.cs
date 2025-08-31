@@ -6,58 +6,58 @@ namespace Wangkanai.Extensions;
 
 public class ComparerExtensionsTests
 {
-	[Fact]
-	public void DoubleReverseIsNoOperation()
-	{
-		var original = StringComparer.Ordinal;
+   [Fact]
+   public void DoubleReverseIsNoOperation()
+   {
+      var original = StringComparer.Ordinal;
 
-		Assert.Same(original, original.Reverse().Reverse());
-	}
+      Assert.Same(original, original.Reverse().Reverse());
+   }
 
-	[Fact]
-	public void SingleReverseReverse()
-	{
-		var original = StringComparer.Ordinal;
-		var subject = original.Reverse();
+   [Fact]
+   public void SingleReverseReverse()
+   {
+      var original = StringComparer.Ordinal;
+      var subject  = original.Reverse();
 
-		Assert.Equal(original.Compare("x", "y"), subject.Compare("y", "x"));
-		Assert.Equal(0, subject.Compare("x", "x"));
-	}
+      Assert.Equal(original.Compare("x", "y"), subject.Compare("y", "x"));
+      Assert.Equal(0,                          subject.Compare("x", "x"));
+   }
 
-	[Fact]
-	public void ThenByWithComparer()
-	{
-		var data = TestSample.Data;
-		var primary = ProjectionComparer<TestSample>.Create(x => x.First);
-		var secondary = ProjectionComparer<TestSample>.Create(x => x.Second);
+   [Fact]
+   public void ThenByWithComparer()
+   {
+      var data      = TestSample.Data;
+      var primary   = ProjectionComparer<TestSample>.Create(x => x.First);
+      var secondary = ProjectionComparer<TestSample>.Create(x => x.Second);
 
-		data.Sort(primary.ThenBy(secondary));
+      data.Sort(primary.ThenBy(secondary));
 
-		Assert.True(new[] { 2, 10, 5 }.SequenceEqual(data.Select(x => x.Second)));
-	}
+      Assert.True(new[] { 2, 10, 5 }.SequenceEqual(data.Select(x => x.Second)));
+   }
 
-	[Fact]
-	public void ThenByWithProjection()
-	{
-		var data = TestSample.Data;
-		var primary = ProjectionComparer<TestSample>.Create(x => x.First);
+   [Fact]
+   public void ThenByWithProjection()
+   {
+      var data    = TestSample.Data;
+      var primary = ProjectionComparer<TestSample>.Create(x => x.First);
 
-		data.Sort(primary.ThenBy(x => x.Second));
+      data.Sort(primary.ThenBy(x => x.Second));
 
-		Assert.True(new[] { 2, 10, 5 }.SequenceEqual(data.Select(x => x.Second)));
-	}
+      Assert.True(new[] { 2, 10, 5 }.SequenceEqual(data.Select(x => x.Second)));
+   }
 
-	class TestSample
-	{
-		public int First { get; set; }
-		public int Second { get; set; }
+   private class TestSample
+   {
+      public int First  { get; set; }
+      public int Second { get; set; }
 
-		public static List<TestSample> Data =>
-			new List<TestSample>
-			{
-				new() { First = 1, Second = 10 },
-				new() { First = 5, Second = 5 },
-				new() { First = 1, Second = 2 }
-			};
-	}
+      public static List<TestSample> Data =>
+         new()
+         {
+            new() { First = 1, Second = 10 },
+            new() { First = 5, Second = 5 },
+            new() { First = 1, Second = 2 }
+         };
+   }
 }

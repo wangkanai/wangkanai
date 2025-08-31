@@ -7,10 +7,10 @@ namespace Wangkanai.Analytics;
 [MemoryDiagnoser]
 public class AnalyticsBenchmark
 {
-	[Benchmark]
-	public void Service()
-	{
-		var service = new AnalyticsService();
-		service.ThrowIfNull();
-	}
+   [Benchmark]
+   public void Service()
+   {
+      var service = new AnalyticsService();
+      service.ThrowIfNull();
+   }
 }

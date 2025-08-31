@@ -6,8 +6,5 @@ namespace Wangkanai.Analytics.Tests.Mocks;
 
 public class MockService
 {
-	private static IHttpContextAccessor HttpContextAccessor()
-	{
-		return new HttpContextAccessor { HttpContext = new DefaultHttpContext() };
-	}
+   private static IHttpContextAccessor HttpContextAccessor() => new HttpContextAccessor { HttpContext = new DefaultHttpContext() };
 }

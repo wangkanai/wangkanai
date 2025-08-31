@@ -12,70 +12,77 @@ namespace Microsoft.AspNetCore.Mvc.TagHelpers;
 [HtmlTargetElement(ElementName, Attributes = ExcludeAttributeName)]
 public class EngineTagHelper : TagHelper
 {
-	private const string ElementName = "engine";
-	private const string IncludeAttributeName = "include";
-	private const string ExcludeAttributeName = "exclude";
+   private const string ElementName          = "engine";
+   private const string IncludeAttributeName = "include";
+   private const string ExcludeAttributeName = "exclude";
 
-	private static readonly char[] NameSeparator = { ',' };
-	private readonly IEngineService _resolver;
+   private static readonly char[]         NameSeparator = { ',' };
+   private readonly        IEngineService _resolver;
 
-	public EngineTagHelper(IEngineService resolver)
-	{
-		_resolver = resolver ?? throw new ArgumentNullException(nameof(resolver));
-	}
+   public EngineTagHelper(IEngineService resolver) => _resolver = resolver ?? throw new ArgumentNullException(nameof(resolver));
 
-	[HtmlAttributeName(IncludeAttributeName)]
-	public string? Include { get; set; }
+   [HtmlAttributeName(IncludeAttributeName)]
+   public string? Include { get; set; }
 
-	[HtmlAttributeName(ExcludeAttributeName)]
-	public string? Exclude { get; set; }
+   [HtmlAttributeName(ExcludeAttributeName)]
+   public string? Exclude { get; set; }
 
-	public override void Process(TagHelperContext context, TagHelperOutput output)
-	{
-		context.ThrowIfNull();
-		output.ThrowIfNull();
+   public override void Process(TagHelperContext context, TagHelperOutput output)
+   {
+      context.ThrowIfNull();
+      output.ThrowIfNull();
 
-		output.TagName = null;
+      output.TagName = null;
 
-		if (Include.IsNullOrEmpty() && Exclude.IsNullOrEmpty())
-			return;
+      if (Include.IsNullOrEmpty() && Exclude.IsNullOrEmpty())
+      {
+         return;
+      }
 
-		var engine = _resolver.Name.ToString();
+      var engine = _resolver.Name.ToString();
 
-		if (Exclude != null)
-		{
-			var tokenizer = new StringTokenizer(Exclude, NameSeparator);
-			foreach (var item in tokenizer)
-			{
-				var client = item.Trim();
-				if (!client.HasValue || client.Length <= 0)
-					continue;
+      if (Exclude != null)
+      {
+         var tokenizer = new StringTokenizer(Exclude, NameSeparator);
+         foreach (var item in tokenizer)
+         {
+            var client = item.Trim();
+            if (!client.HasValue || client.Length <= 0)
+            {
+               continue;
+            }
 
-				if (!client.Equals(engine, StringComparison.OrdinalIgnoreCase))
-					continue;
+            if (!client.Equals(engine, StringComparison.OrdinalIgnoreCase))
+            {
+               continue;
+            }
 
-				output.SuppressOutput();
-				return;
-			}
-		}
+            output.SuppressOutput();
+            return;
+         }
+      }
 
-		var has = false;
-		if (Include != null)
-		{
-			var tokenizer = new StringTokenizer(Include, NameSeparator);
-			foreach (var item in tokenizer)
-			{
-				var client = item.Trim();
-				if (client.HasValue && client.Length > 0)
-				{
-					has = true;
-					if (client.Equals(engine, StringComparison.OrdinalIgnoreCase))
-						return;
-				}
-			}
-		}
+      var has = false;
+      if (Include != null)
+      {
+         var tokenizer = new StringTokenizer(Include, NameSeparator);
+         foreach (var item in tokenizer)
+         {
+            var client = item.Trim();
+            if (client.HasValue && client.Length > 0)
+            {
+               has = true;
+               if (client.Equals(engine, StringComparison.OrdinalIgnoreCase))
+               {
+                  return;
+               }
+            }
+         }
+      }
 
-		if (has)
-			output.SuppressOutput();
-	}
+      if (has)
+      {
+         output.SuppressOutput();
+      }
+   }
 }

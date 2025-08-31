@@ -6,220 +6,220 @@ namespace Wangkanai.Checks;
 
 public class CheckNullTests
 {
-	[Fact]
-	public void BooleanThrowIfNull()
-	{
-		bool? _bool = null;
+   [Fact]
+   public void BooleanThrowIfNull()
+   {
+      bool? _bool = null;
 
-		Assert.Throws<ArgumentNullException>(() => _bool.ThrowIfNull());
-		Assert.Throws<ArgumentNullException>(() => _bool.ThrowIfNull<ArgumentNullException>());
-		Assert.Throws<CustomArgumentException>(() => _bool.ThrowIfNull<CustomArgumentException>());
-	}
+      Assert.Throws<ArgumentNullException>(() => _bool.ThrowIfNull());
+      Assert.Throws<ArgumentNullException>(() => _bool.ThrowIfNull<ArgumentNullException>());
+      Assert.Throws<CustomArgumentException>(() => _bool.ThrowIfNull<CustomArgumentException>());
+   }
 
-	[Fact]
-	public void BooleanReturnTrueIfNotNull()
-	{
-		bool? _false = false;
-		bool? _true = true;
+   [Fact]
+   public void BooleanReturnTrueIfNotNull()
+   {
+      bool? _false = false;
+      bool? _true  = true;
 
-		Assert.True(_true.ThrowIfNull());
-		Assert.True(_true.ThrowIfNull<ArgumentNullException>());
-		Assert.True(_true.ThrowIfNull<CustomArgumentException>());
+      Assert.True(_true.ThrowIfNull());
+      Assert.True(_true.ThrowIfNull<ArgumentNullException>());
+      Assert.True(_true.ThrowIfNull<CustomArgumentException>());
 
-		Assert.False(_false.ThrowIfNull());
-		Assert.False(_false.ThrowIfNull<ArgumentNullException>());
-		Assert.False(_false.ThrowIfNull<CustomArgumentException>());
-	}
+      Assert.False(_false.ThrowIfNull());
+      Assert.False(_false.ThrowIfNull<ArgumentNullException>());
+      Assert.False(_false.ThrowIfNull<CustomArgumentException>());
+   }
 
-	[Fact]
-	public void IntegralThrowIfNullNullException()
-	{
-		sbyte? _sbyte = null;
-		byte? _byte = null;
-		short? _short = null;
-		int? _int = null;
-		long? _long = null;
+   [Fact]
+   public void IntegralThrowIfNullNullException()
+   {
+      sbyte? _sbyte = null;
+      byte?  _byte  = null;
+      short? _short = null;
+      int?   _int   = null;
+      long?  _long  = null;
 
-		Assert.Throws<ArgumentNullException>(() => _sbyte.ThrowIfNull());
-		Assert.Throws<ArgumentNullException>(() => _byte.ThrowIfNull());
-		Assert.Throws<ArgumentNullException>(() => _short.ThrowIfNull());
-		Assert.Throws<ArgumentNullException>(() => _int.ThrowIfNull());
-		Assert.Throws<ArgumentNullException>(() => _long.ThrowIfNull());
-	}
+      Assert.Throws<ArgumentNullException>(() => _sbyte.ThrowIfNull());
+      Assert.Throws<ArgumentNullException>(() => _byte.ThrowIfNull());
+      Assert.Throws<ArgumentNullException>(() => _short.ThrowIfNull());
+      Assert.Throws<ArgumentNullException>(() => _int.ThrowIfNull());
+      Assert.Throws<ArgumentNullException>(() => _long.ThrowIfNull());
+   }
 
-	[Fact]
-	public void IntegralThrowIfNullCustomException()
-	{
-		sbyte? _sbyte = null;
-		byte? _byte = null;
-		short? _short = null;
-		int? _int = null;
-		long? _long = null;
+   [Fact]
+   public void IntegralThrowIfNullCustomException()
+   {
+      sbyte? _sbyte = null;
+      byte?  _byte  = null;
+      short? _short = null;
+      int?   _int   = null;
+      long?  _long  = null;
 
-		Assert.Throws<CustomArgumentException>(() => _sbyte.ThrowIfNull<CustomArgumentException>());
-		Assert.Throws<CustomArgumentException>(() => _byte.ThrowIfNull<CustomArgumentException>());
-		Assert.Throws<CustomArgumentException>(() => _short.ThrowIfNull<CustomArgumentException>());
-		Assert.Throws<CustomArgumentException>(() => _int.ThrowIfNull<CustomArgumentException>());
-		Assert.Throws<CustomArgumentException>(() => _long.ThrowIfNull<CustomArgumentException>());
-	}
+      Assert.Throws<CustomArgumentException>(() => _sbyte.ThrowIfNull<CustomArgumentException>());
+      Assert.Throws<CustomArgumentException>(() => _byte.ThrowIfNull<CustomArgumentException>());
+      Assert.Throws<CustomArgumentException>(() => _short.ThrowIfNull<CustomArgumentException>());
+      Assert.Throws<CustomArgumentException>(() => _int.ThrowIfNull<CustomArgumentException>());
+      Assert.Throws<CustomArgumentException>(() => _long.ThrowIfNull<CustomArgumentException>());
+   }
 
-	[Fact]
-	public void PositiveIntegralThrowIfNullNullException()
-	{
-		ushort? _ushort = null;
-		uint? _uint = null;
-		ulong? _ulong = null;
+   [Fact]
+   public void PositiveIntegralThrowIfNullNullException()
+   {
+      ushort? _ushort = null;
+      uint?   _uint   = null;
+      ulong?  _ulong  = null;
 
-		Assert.Throws<ArgumentNullException>(() => _ushort.ThrowIfNull());
-		Assert.Throws<ArgumentNullException>(() => _uint.ThrowIfNull());
-		Assert.Throws<ArgumentNullException>(() => _ulong.ThrowIfNull());
-	}
+      Assert.Throws<ArgumentNullException>(() => _ushort.ThrowIfNull());
+      Assert.Throws<ArgumentNullException>(() => _uint.ThrowIfNull());
+      Assert.Throws<ArgumentNullException>(() => _ulong.ThrowIfNull());
+   }
 
-	[Fact]
-	public void NativeIntegralIfNull()
-	{
-		nint? _nint = null;
-		nuint? _nuint = null;
+   [Fact]
+   public void NativeIntegralIfNull()
+   {
+      nint?  _nint  = null;
+      nuint? _nuint = null;
 
-		Assert.Throws<ArgumentNullException>(() => _nint.ThrowIfNull());
-		Assert.Throws<ArgumentNullException>(() => _nuint.ThrowIfNull());
-		Assert.Throws<CustomArgumentException>(() => _nint.ThrowIfNull<CustomArgumentException>());
-		Assert.Throws<CustomArgumentException>(() => _nuint.ThrowIfNull<CustomArgumentException>());
-	}
+      Assert.Throws<ArgumentNullException>(() => _nint.ThrowIfNull());
+      Assert.Throws<ArgumentNullException>(() => _nuint.ThrowIfNull());
+      Assert.Throws<CustomArgumentException>(() => _nint.ThrowIfNull<CustomArgumentException>());
+      Assert.Throws<CustomArgumentException>(() => _nuint.ThrowIfNull<CustomArgumentException>());
+   }
 
-	[Fact]
-	public void PositiveIntegralThrowIfNullCustomException()
-	{
-		ushort? _ushort = null;
-		uint? _uint = null;
-		ulong? _ulong = null;
+   [Fact]
+   public void PositiveIntegralThrowIfNullCustomException()
+   {
+      ushort? _ushort = null;
+      uint?   _uint   = null;
+      ulong?  _ulong  = null;
 
-		Assert.Throws<CustomArgumentException>(() => _ushort.ThrowIfNull<CustomArgumentException>());
-		Assert.Throws<CustomArgumentException>(() => _uint.ThrowIfNull<CustomArgumentException>());
-		Assert.Throws<CustomArgumentException>(() => _ulong.ThrowIfNull<CustomArgumentException>());
-	}
-
-
-	[Fact]
-	public void FloatingIsNullThrowNullException()
-	{
-		float? _float = null;
-		double? _double = null;
-		decimal? _decimal = null;
-
-		Assert.Throws<ArgumentNullException>(() => _float.ThrowIfNull());
-		Assert.Throws<ArgumentNullException>(() => _double.ThrowIfNull());
-		Assert.Throws<ArgumentNullException>(() => _decimal.ThrowIfNull());
-	}
-
-	[Fact]
-	public void FloatingIsNullThrowCustomException()
-	{
-		float? _float = null;
-		double? _double = null;
-		decimal? _decimal = null;
-
-		Assert.Throws<CustomArgumentException>(() => _float.ThrowIfNull<CustomArgumentException>());
-		Assert.Throws<CustomArgumentException>(() => _double.ThrowIfNull<CustomArgumentException>());
-		Assert.Throws<CustomArgumentException>(() => _decimal.ThrowIfNull<CustomArgumentException>());
-	}
-
-	[Fact]
-	public void ObjectIsNull()
-	{
-		object? _null = null;
-
-		Assert.Throws<ArgumentNullException>(() => _null.ThrowIfNull());
-		Assert.Throws<ArgumentNullException>(() => _null.ThrowIfNull<ArgumentNullException>());
-		Assert.Throws<CustomArgumentException>(() => _null.ThrowIfNull<CustomArgumentException>());
-
-		Assert.Throws<ArgumentNullException>(() => _null.ThrowIfNull("Null Exception"));
-		Assert.Throws<ArgumentNullException>(() => _null.ThrowIfNull<ArgumentNullException>("Null Exception"));
-		Assert.Throws<CustomArgumentException>(() => _null.ThrowIfNull<CustomArgumentException>("Null Exception"));
-	}
-
-	[Fact]
-	public void ObjectIsNotNullThenReturn()
-	{
-		object? _obj = new object();
-
-		Assert.Equal(_obj, _obj.ThrowIfNull());
-		Assert.Equal(_obj, _obj.ThrowIfNull<ArgumentNullException>());
-		Assert.Equal(_obj, _obj.ThrowIfNull<CustomArgumentException>());
-
-		Assert.Equal(_obj, _obj.ThrowIfNull("Null Exception"));
-		Assert.Equal(_obj, _obj.ThrowIfNull<ArgumentNullException>("Null Exception"));
-		Assert.Equal(_obj, _obj.ThrowIfNull<CustomArgumentException>("Null Exception"));
-	}
-
-	[Fact]
-	public void ObjectIsStringThenReturn()
-	{
-		object? _string = "abc";
-
-		Assert.Equal(_string, _string.ThrowIfNull());
-		Assert.Equal(_string, _string.ThrowIfNull<ArgumentNullException>());
-		Assert.Equal(_string, _string.ThrowIfNull<CustomArgumentException>());
-
-		Assert.Equal(_string, _string.ThrowIfNull("Null Exception"));
-		Assert.Equal(_string, _string.ThrowIfNull<ArgumentNullException>("Null Exception"));
-		Assert.Equal(_string, _string.ThrowIfNull<CustomArgumentException>("Null Exception"));
-	}
-
-	[Fact]
-	public void StringIsNullThrowNullException()
-	{
-		string? _null = null;
-
-		Assert.Throws<ArgumentNullException>(() => _null.ThrowIfNull());
-		Assert.Throws<ArgumentNullException>(() => _null.ThrowIfNull<ArgumentNullException>());
-		Assert.Throws<CustomArgumentException>(() => _null.ThrowIfNull<CustomArgumentException>());
-
-		Assert.Throws<ArgumentNullException>(() => _null.ThrowIfNull("Null Exception"));
-		Assert.Throws<ArgumentNullException>(() => _null.ThrowIfNull<ArgumentNullException>("Null Exception"));
-		Assert.Throws<CustomArgumentException>(() => _null.ThrowIfNull<CustomArgumentException>("Null Exception"));
-	}
-
-	[Fact]
-	public void StringReturnIfNotNull()
-	{
-		string? abc = "abc";
+      Assert.Throws<CustomArgumentException>(() => _ushort.ThrowIfNull<CustomArgumentException>());
+      Assert.Throws<CustomArgumentException>(() => _uint.ThrowIfNull<CustomArgumentException>());
+      Assert.Throws<CustomArgumentException>(() => _ulong.ThrowIfNull<CustomArgumentException>());
+   }
 
 
-		Assert.Equal(abc, abc.ThrowIfNull());
-		Assert.Equal(abc, abc.ThrowIfNull<ArgumentNullException>());
-		Assert.Equal(abc, abc.ThrowIfNull<CustomArgumentException>());
+   [Fact]
+   public void FloatingIsNullThrowNullException()
+   {
+      float?   _float   = null;
+      double?  _double  = null;
+      decimal? _decimal = null;
 
-		Assert.Equal(abc, abc.ThrowIfNull("Null Exception"));
-		Assert.Equal(abc, abc.ThrowIfNull<ArgumentNullException>("Null Exception"));
-		Assert.Equal(abc, abc.ThrowIfNull<CustomArgumentException>("Null Exception"));
-	}
+      Assert.Throws<ArgumentNullException>(() => _float.ThrowIfNull());
+      Assert.Throws<ArgumentNullException>(() => _double.ThrowIfNull());
+      Assert.Throws<ArgumentNullException>(() => _decimal.ThrowIfNull());
+   }
 
-	[Fact]
-	public void StringEmptyReturnIfNotNull()
-	{
-		string? _empty = string.Empty;
+   [Fact]
+   public void FloatingIsNullThrowCustomException()
+   {
+      float?   _float   = null;
+      double?  _double  = null;
+      decimal? _decimal = null;
 
-		Assert.Equal(_empty, _empty.ThrowIfNull());
-		Assert.Equal(_empty, _empty.ThrowIfNull<ArgumentNullException>());
-		Assert.Equal(_empty, _empty.ThrowIfNull<CustomArgumentException>());
+      Assert.Throws<CustomArgumentException>(() => _float.ThrowIfNull<CustomArgumentException>());
+      Assert.Throws<CustomArgumentException>(() => _double.ThrowIfNull<CustomArgumentException>());
+      Assert.Throws<CustomArgumentException>(() => _decimal.ThrowIfNull<CustomArgumentException>());
+   }
 
-		Assert.Equal(_empty, _empty.ThrowIfNull("Null Exception"));
-		Assert.Equal(_empty, _empty.ThrowIfNull<ArgumentNullException>("Null Exception"));
-		Assert.Equal(_empty, _empty.ThrowIfNull<CustomArgumentException>("Null Exception"));
-	}
+   [Fact]
+   public void ObjectIsNull()
+   {
+      object? _null = null;
 
-	[Fact]
-	public void StringSpaceReturnIfNotNull()
-	{
-		string? _space = " ";
+      Assert.Throws<ArgumentNullException>(() => _null.ThrowIfNull());
+      Assert.Throws<ArgumentNullException>(() => _null.ThrowIfNull<ArgumentNullException>());
+      Assert.Throws<CustomArgumentException>(() => _null.ThrowIfNull<CustomArgumentException>());
 
-		Assert.Equal(_space, _space.ThrowIfNull());
-		Assert.Equal(_space, _space.ThrowIfNull<ArgumentNullException>());
-		Assert.Equal(_space, _space.ThrowIfNull<CustomArgumentException>());
+      Assert.Throws<ArgumentNullException>(() => _null.ThrowIfNull("Null Exception"));
+      Assert.Throws<ArgumentNullException>(() => _null.ThrowIfNull<ArgumentNullException>("Null Exception"));
+      Assert.Throws<CustomArgumentException>(() => _null.ThrowIfNull<CustomArgumentException>("Null Exception"));
+   }
 
-		Assert.Equal(_space, _space.ThrowIfNull("Null Exception"));
-		Assert.Equal(_space, _space.ThrowIfNull<ArgumentNullException>("Null Exception"));
-		Assert.Equal(_space, _space.ThrowIfNull<CustomArgumentException>("Null Exception"));
-	}
+   [Fact]
+   public void ObjectIsNotNullThenReturn()
+   {
+      var _obj = new object();
+
+      Assert.Equal(_obj, _obj.ThrowIfNull());
+      Assert.Equal(_obj, _obj.ThrowIfNull<ArgumentNullException>());
+      Assert.Equal(_obj, _obj.ThrowIfNull<CustomArgumentException>());
+
+      Assert.Equal(_obj, _obj.ThrowIfNull("Null Exception"));
+      Assert.Equal(_obj, _obj.ThrowIfNull<ArgumentNullException>("Null Exception"));
+      Assert.Equal(_obj, _obj.ThrowIfNull<CustomArgumentException>("Null Exception"));
+   }
+
+   [Fact]
+   public void ObjectIsStringThenReturn()
+   {
+      object? _string = "abc";
+
+      Assert.Equal(_string, _string.ThrowIfNull());
+      Assert.Equal(_string, _string.ThrowIfNull<ArgumentNullException>());
+      Assert.Equal(_string, _string.ThrowIfNull<CustomArgumentException>());
+
+      Assert.Equal(_string, _string.ThrowIfNull("Null Exception"));
+      Assert.Equal(_string, _string.ThrowIfNull<ArgumentNullException>("Null Exception"));
+      Assert.Equal(_string, _string.ThrowIfNull<CustomArgumentException>("Null Exception"));
+   }
+
+   [Fact]
+   public void StringIsNullThrowNullException()
+   {
+      string? _null = null;
+
+      Assert.Throws<ArgumentNullException>(() => _null.ThrowIfNull());
+      Assert.Throws<ArgumentNullException>(() => _null.ThrowIfNull<ArgumentNullException>());
+      Assert.Throws<CustomArgumentException>(() => _null.ThrowIfNull<CustomArgumentException>());
+
+      Assert.Throws<ArgumentNullException>(() => _null.ThrowIfNull("Null Exception"));
+      Assert.Throws<ArgumentNullException>(() => _null.ThrowIfNull<ArgumentNullException>("Null Exception"));
+      Assert.Throws<CustomArgumentException>(() => _null.ThrowIfNull<CustomArgumentException>("Null Exception"));
+   }
+
+   [Fact]
+   public void StringReturnIfNotNull()
+   {
+      var abc = "abc";
+
+
+      Assert.Equal(abc, abc.ThrowIfNull());
+      Assert.Equal(abc, abc.ThrowIfNull<ArgumentNullException>());
+      Assert.Equal(abc, abc.ThrowIfNull<CustomArgumentException>());
+
+      Assert.Equal(abc, abc.ThrowIfNull("Null Exception"));
+      Assert.Equal(abc, abc.ThrowIfNull<ArgumentNullException>("Null Exception"));
+      Assert.Equal(abc, abc.ThrowIfNull<CustomArgumentException>("Null Exception"));
+   }
+
+   [Fact]
+   public void StringEmptyReturnIfNotNull()
+   {
+      var _empty = string.Empty;
+
+      Assert.Equal(_empty, _empty.ThrowIfNull());
+      Assert.Equal(_empty, _empty.ThrowIfNull<ArgumentNullException>());
+      Assert.Equal(_empty, _empty.ThrowIfNull<CustomArgumentException>());
+
+      Assert.Equal(_empty, _empty.ThrowIfNull("Null Exception"));
+      Assert.Equal(_empty, _empty.ThrowIfNull<ArgumentNullException>("Null Exception"));
+      Assert.Equal(_empty, _empty.ThrowIfNull<CustomArgumentException>("Null Exception"));
+   }
+
+   [Fact]
+   public void StringSpaceReturnIfNotNull()
+   {
+      var _space = " ";
+
+      Assert.Equal(_space, _space.ThrowIfNull());
+      Assert.Equal(_space, _space.ThrowIfNull<ArgumentNullException>());
+      Assert.Equal(_space, _space.ThrowIfNull<CustomArgumentException>());
+
+      Assert.Equal(_space, _space.ThrowIfNull("Null Exception"));
+      Assert.Equal(_space, _space.ThrowIfNull<ArgumentNullException>("Null Exception"));
+      Assert.Equal(_space, _space.ThrowIfNull<CustomArgumentException>("Null Exception"));
+   }
 }

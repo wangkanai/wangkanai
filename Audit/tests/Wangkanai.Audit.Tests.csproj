@@ -1,15 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-	<PropertyGroup>
-		<!--		<OutputType>Exe</OutputType>-->
-		<RootNamespace>Wangkanai.Audit</RootNamespace>
-	</PropertyGroup>
+   <PropertyGroup>
+      <!--		<OutputType>Exe</OutputType>-->
+      <RootNamespace>Wangkanai.Audit</RootNamespace>
+   </PropertyGroup>
 
-	<ItemGroup>
-		<PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" />
-	</ItemGroup>
-	<ItemGroup>
-		<ProjectReference Include="..\src\Wangkanai.Audit.csproj" />
-	</ItemGroup>
+   <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory"/>
+   </ItemGroup>
+   <ItemGroup>
+      <ProjectReference Include="..\src\Wangkanai.Audit.csproj"/>
+   </ItemGroup>
 
 </Project>

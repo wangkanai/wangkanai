@@ -6,10 +6,10 @@ namespace Wangkanai.Hosting;
 
 public class ApplicationBuilderExtensionTests
 {
-	[Fact]
-	public void ValidateOption_ThrowIfNull()
-	{
-		var app = MockServer.WebHostBuilder();
-		//app.ValidateOption(new object());
-	}
+   [Fact]
+   public void ValidateOption_ThrowIfNull()
+   {
+      var app = MockServer.WebHostBuilder();
+      //app.ValidateOption(new object());
+   }
 }

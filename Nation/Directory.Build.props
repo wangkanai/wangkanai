@@ -1,18 +1,18 @@
 <Project>
-	<Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
-	<PropertyGroup>
-		<VersionPrefix>0.5.0</VersionPrefix>
-		<Title>Wangkanai Nation</Title>
-		<PackageTags>nation;country;entity;domain;ddd;</PackageTags>
-		<Description>Nation: Seed your dataset with actual country data</Description>
-		<PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Nation</PackageProjectUrl>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Nation'">
-		<PackageIcon>wangkanai-logo.png</PackageIcon>
-		<PackageReadmeFile>README.md</PackageReadmeFile>
-	</PropertyGroup>
-	<ItemGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Nation'">
-		<None Include="$(RepoRoot)\assets\wangkanai-logo.png" Pack="true" PackagePath="\" />
-		<None Include="..\README.md" Pack="true" PackagePath="\" />
-	</ItemGroup>
+   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props"/>
+   <PropertyGroup>
+      <VersionPrefix>0.5.0</VersionPrefix>
+      <Title>Wangkanai Nation</Title>
+      <PackageTags>nation;country;entity;domain;ddd;</PackageTags>
+      <Description>Nation: Seed your dataset with actual country data</Description>
+      <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Nation</PackageProjectUrl>
+   </PropertyGroup>
+   <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Nation'">
+      <PackageIcon>wangkanai-logo.png</PackageIcon>
+      <PackageReadmeFile>README.md</PackageReadmeFile>
+   </PropertyGroup>
+   <ItemGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Nation'">
+      <None Include="$(RepoRoot)\assets\wangkanai-logo.png" Pack="true" PackagePath="\"/>
+      <None Include="..\README.md" Pack="true" PackagePath="\"/>
+   </ItemGroup>
 </Project>

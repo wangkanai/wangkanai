@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
-	<PropertyGroup>
-		<RootNamespace>Wangkanai.Hosting</RootNamespace>
-	</PropertyGroup>
-    <ItemGroup>
-        <ProjectReference Include="..\src\Wangkanai.Hosting.csproj" />
-    </ItemGroup>
+   <PropertyGroup>
+      <RootNamespace>Wangkanai.Hosting</RootNamespace>
+   </PropertyGroup>
+   <ItemGroup>
+      <ProjectReference Include="..\src\Wangkanai.Hosting.csproj"/>
+   </ItemGroup>
 </Project>

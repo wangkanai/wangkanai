@@ -4,9 +4,9 @@ namespace Wangkanai.Markdown.ApplicationModels;
 
 public interface IMarkdownApplicationModelProvider
 {
-	int Order { get; }
+   int Order { get; }
 
-	void OnProvidersExecuting(MarkdownApplicationModelProviderContext context);
+   void OnProvidersExecuting(MarkdownApplicationModelProviderContext context);
 
-	void OnProvidersExecuted(MarkdownApplicationModelProviderContext context);
+   void OnProvidersExecuted(MarkdownApplicationModelProviderContext context);
 }

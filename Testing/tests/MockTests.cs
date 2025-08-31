@@ -4,10 +4,10 @@ namespace Wangkanai.Testing.Tests;
 
 public class MockTests
 {
-	[Fact]
-	public void MockTest()
-	{
-		var mock = 1;
-		Assert.Equal(1, mock);
-	}
+   [Fact]
+   public void MockTest()
+   {
+      var mock = 1;
+      Assert.Equal(1, mock);
+   }
 }

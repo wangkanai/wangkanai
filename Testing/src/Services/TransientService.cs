@@ -6,8 +6,8 @@ namespace Wangkanai.Testing;
 
 public class TransientService : ITransientService
 {
-	public DateTime Start { get; set; }
-	public DateTime Stop { get; set; }
-	public TimeSpan Elapsed => Stop - Start;
-	public ServiceLifetime Lifetime => ServiceLifetime.Transient;
+   public DateTime        Start    { get; set; }
+   public DateTime        Stop     { get; set; }
+   public TimeSpan        Elapsed  => Stop - Start;
+   public ServiceLifetime Lifetime => ServiceLifetime.Transient;
 }

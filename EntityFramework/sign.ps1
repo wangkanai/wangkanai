@@ -1,8 +1,8 @@
 param(
-    [Parameter(mandatory=$false)]
-    [bool]$publish=$false,
-    [Parameter(mandatory=$false)]
-    [string]$name="Open Source Developer, Sarin Na Wangkanai"
+    [Parameter(mandatory = $false)]
+    [bool]$publish = $false,
+    [Parameter(mandatory = $false)]
+    [string]$name = "Open Source Developer, Sarin Na Wangkanai"
 )
 Write-Host "EntityFramework Certificate: $name" -ForegroundColor Blue
 

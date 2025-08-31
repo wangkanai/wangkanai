@@ -10,26 +10,28 @@ namespace Wangkanai.Markdown.DependencyInjection.Options;
 
 public class MarkdownPagesOptions : IEnumerable<ICompatibilitySwitch>
 {
-	private readonly IReadOnlyList<ICompatibilitySwitch> _switches = Array.Empty<ICompatibilitySwitch>();
+   private readonly IReadOnlyList<ICompatibilitySwitch> _switches = Array.Empty<ICompatibilitySwitch>();
 
-	private string _root = "/Pages";
+   private string _root = "/Pages";
 
-	public MarkdownConventionCollection Conventions { get; internal set; } = new();
+   public MarkdownConventionCollection Conventions { get; internal set; } = new();
 
-	public IEnumerator<ICompatibilitySwitch> GetEnumerator() => _switches.GetEnumerator();
+   public string RootDirectory
+   {
+      get => _root;
+      set
+      {
+         value.ThrowIfNullOrEmpty<ArgumentException>(Resources.ArgumentCannotBeNullOrEmpty, nameof(value));
+         if (value[0] != '/')
+         {
+            throw new ArgumentException(Resources.PathMustBeRootRelativePath, nameof(value));
+         }
 
-	IEnumerator IEnumerable.GetEnumerator() => _switches.GetEnumerator();
+         _root = value;
+      }
+   }
 
-	public string RootDirectory
-	{
-		get => _root;
-		set
-		{
-			value.ThrowIfNullOrEmpty<ArgumentException>(Resources.ArgumentCannotBeNullOrEmpty, nameof(value));
-			if (value[0] != '/')
-				throw new ArgumentException(Resources.PathMustBeRootRelativePath, nameof(value));
+   public IEnumerator<ICompatibilitySwitch> GetEnumerator() => _switches.GetEnumerator();
 
-			_root = value;
-		}
-	}
+   IEnumerator IEnumerable.GetEnumerator() => _switches.GetEnumerator();
 }

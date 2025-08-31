@@ -6,8 +6,8 @@ namespace Wangkanai.Responsive.Services;
 
 public interface IResponsiveService
 {
-	public Device View { get; }
-	void PreferSet(Device desktop);
-	void PreferClear();
-	bool HasPreferred();
+   Device View { get; }
+   void   PreferSet(Device desktop);
+   void   PreferClear();
+   bool   HasPreferred();
 }

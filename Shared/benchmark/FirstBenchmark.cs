@@ -3,9 +3,9 @@
 [MemoryDiagnoser]
 public class FirstBenchmark
 {
-	[Benchmark]
-	public void Benchmark()
-	{
-		// Method intentionally left empty.
-	}
+   [Benchmark]
+   public void Benchmark()
+   {
+      // Method intentionally left empty.
+   }
 }

@@ -13,56 +13,61 @@ namespace Wangkanai.Mvc.Shared;
 [UnconditionalSuppressMessage("Trimmer", "IL2060", Justification = "Trimmer warnings are presented in RequestDelegateFactory.")]
 internal static class EndpointMetadataPopulator
 {
-	private static readonly MethodInfo PopulateMetadataForParameterMethod = typeof(EndpointMetadataPopulator).GetMethod(nameof(PopulateMetadataForParameter), BindingFlags.NonPublic | BindingFlags.Static)!;
-	private static readonly MethodInfo PopulateMetadataForEndpointMethod = typeof(EndpointMetadataPopulator).GetMethod(nameof(PopulateMetadataForEndpoint), BindingFlags.NonPublic | BindingFlags.Static)!;
+   private static readonly MethodInfo PopulateMetadataForParameterMethod =
+      typeof(EndpointMetadataPopulator).GetMethod(nameof(PopulateMetadataForParameter), BindingFlags.NonPublic | BindingFlags.Static)!;
 
-	public static void PopulateMetadata(MethodInfo methodInfo, EndpointBuilder builder, IEnumerable<ParameterInfo>? parameters = null)
-	{
-		object?[]? invokeArgs = null;
-		parameters ??= methodInfo.GetParameters();
+   private static readonly MethodInfo PopulateMetadataForEndpointMethod =
+      typeof(EndpointMetadataPopulator).GetMethod(nameof(PopulateMetadataForEndpoint), BindingFlags.NonPublic | BindingFlags.Static)!;
 
-		// Get metadata from parameter types
-		foreach (var parameter in parameters)
-		{
-			if (typeof(IEndpointParameterMetadataProvider).IsAssignableFrom(parameter.ParameterType))
-			{
-				// Parameter type implements IEndpointParameterMetadataProvider
-				invokeArgs ??= new object[2];
-				invokeArgs[0] = parameter;
-				invokeArgs[1] = builder;
-				PopulateMetadataForParameterMethod.MakeGenericMethod(parameter.ParameterType).Invoke(null, invokeArgs);
-			}
+   public static void PopulateMetadata(MethodInfo methodInfo, EndpointBuilder builder, IEnumerable<ParameterInfo>? parameters = null)
+   {
+      object?[]? invokeArgs = null;
+      parameters ??= methodInfo.GetParameters();
 
-			if (typeof(IEndpointMetadataProvider).IsAssignableFrom(parameter.ParameterType))
-			{
-				// Parameter type implements IEndpointMetadataProvider
-				invokeArgs ??= new object[2];
-				invokeArgs[0] = methodInfo;
-				invokeArgs[1] = builder;
-				PopulateMetadataForEndpointMethod.MakeGenericMethod(parameter.ParameterType).Invoke(null, invokeArgs);
-			}
-		}
+      // Get metadata from parameter types
+      foreach (var parameter in parameters)
+      {
+         if (typeof(IEndpointParameterMetadataProvider).IsAssignableFrom(parameter.ParameterType))
+         {
+            // Parameter type implements IEndpointParameterMetadataProvider
+            invokeArgs    ??= new object[2];
+            invokeArgs[0] =   parameter;
+            invokeArgs[1] =   builder;
+            PopulateMetadataForParameterMethod.MakeGenericMethod(parameter.ParameterType).Invoke(null, invokeArgs);
+         }
 
-		// Get metadata from return type
-		var returnType = methodInfo.ReturnType;
-		if (AwaitableInfo.IsTypeAwaitable(returnType, out var awaitableInfo))
-			returnType = awaitableInfo.ResultType;
+         if (typeof(IEndpointMetadataProvider).IsAssignableFrom(parameter.ParameterType))
+         {
+            // Parameter type implements IEndpointMetadataProvider
+            invokeArgs    ??= new object[2];
+            invokeArgs[0] =   methodInfo;
+            invokeArgs[1] =   builder;
+            PopulateMetadataForEndpointMethod.MakeGenericMethod(parameter.ParameterType).Invoke(null, invokeArgs);
+         }
+      }
 
-		if (returnType is not null && typeof(IEndpointMetadataProvider).IsAssignableFrom(returnType))
-		{
-			// Return type implements IEndpointMetadataProvider
-			invokeArgs ??= new object[2];
-			invokeArgs[0] = methodInfo;
-			invokeArgs[1] = builder;
-			PopulateMetadataForEndpointMethod.MakeGenericMethod(returnType).Invoke(null, invokeArgs);
-		}
-	}
+      // Get metadata from return type
+      var returnType = methodInfo.ReturnType;
+      if (AwaitableInfo.IsTypeAwaitable(returnType, out var awaitableInfo))
+      {
+         returnType = awaitableInfo.ResultType;
+      }
 
-	private static void PopulateMetadataForParameter<T>(ParameterInfo parameter, EndpointBuilder builder)
-		where T : IEndpointParameterMetadataProvider
-		=> T.PopulateMetadata(parameter, builder);
+      if (returnType is not null && typeof(IEndpointMetadataProvider).IsAssignableFrom(returnType))
+      {
+         // Return type implements IEndpointMetadataProvider
+         invokeArgs    ??= new object[2];
+         invokeArgs[0] =   methodInfo;
+         invokeArgs[1] =   builder;
+         PopulateMetadataForEndpointMethod.MakeGenericMethod(returnType).Invoke(null, invokeArgs);
+      }
+   }
 
-	private static void PopulateMetadataForEndpoint<T>(MethodInfo method, EndpointBuilder builder)
-		where T : IEndpointMetadataProvider
-		=> T.PopulateMetadata(method, builder);
+   private static void PopulateMetadataForParameter<T>(ParameterInfo parameter, EndpointBuilder builder)
+      where T : IEndpointParameterMetadataProvider
+      => T.PopulateMetadata(parameter, builder);
+
+   private static void PopulateMetadataForEndpoint<T>(MethodInfo method, EndpointBuilder builder)
+      where T : IEndpointMetadataProvider
+      => T.PopulateMetadata(method, builder);
 }

@@ -1,22 +1,22 @@
 <Project>
-	<Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
+   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props"/>
 
-	<PropertyGroup>
-		<VersionPrefix>1.5.0</VersionPrefix>
-		<Title>Wangkanai Cryptography</Title>
-		<PackageTags>aspnetcore;cryptography;</PackageTags>
-		<Description>Advanced data security for .NET developers. Hash, encode, and decode with ease using our intuitive API. Protect sensitive information, fortify your applications, and ensure tamper-proof data.</Description>
-		<PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Cryptography</PackageProjectUrl>
-	</PropertyGroup>
+   <PropertyGroup>
+      <VersionPrefix>1.5.0</VersionPrefix>
+      <Title>Wangkanai Cryptography</Title>
+      <PackageTags>aspnetcore;cryptography;</PackageTags>
+      <Description>Advanced data security for .NET developers. Hash, encode, and decode with ease using our intuitive API. Protect sensitive information, fortify your applications, and ensure tamper-proof data.</Description>
+      <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Cryptography</PackageProjectUrl>
+   </PropertyGroup>
 
-	<PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Cryptography'">
-		<PackageIcon>wangkanai-logo.png</PackageIcon>
-		<PackageReadmeFile>README.md</PackageReadmeFile>
-	</PropertyGroup>
+   <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Cryptography'">
+      <PackageIcon>wangkanai-logo.png</PackageIcon>
+      <PackageReadmeFile>README.md</PackageReadmeFile>
+   </PropertyGroup>
 
-	<ItemGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Cryptography'">
-		<None Include="$(RepoRoot)\assets\wangkanai-logo.png" Pack="true" PackagePath="\" />
-		<None Include="..\README.md" Pack="true" PackagePath="\" />
-	</ItemGroup>
+   <ItemGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Cryptography'">
+      <None Include="$(RepoRoot)\assets\wangkanai-logo.png" Pack="true" PackagePath="\"/>
+      <None Include="..\README.md" Pack="true" PackagePath="\"/>
+   </ItemGroup>
 
 </Project>

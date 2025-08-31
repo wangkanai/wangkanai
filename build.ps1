@@ -16,16 +16,14 @@ $dirs=[ordered]@{
     15="EntityFramework";
     16="Markdown";
     17="Analytics";
-    18="Blazor";
-    19="Microservice";
-    20="Nation";
+    18="Nation";
 }
 
 for ($i=0; $i -lt $dirs.count; $i++) {
-	Push-Location $dirs[$i];
-	$build = ".\" + $dirs[$i] + "\build.ps1";
-	write-host $dirs[$i] -ForegroundColor Red;
-	write-host $build    -ForegroundColor Green;
-	.\build.ps1
-	Pop-Location;
+    Push-Location $dirs[$i];
+    $build=".\" + $dirs[$i] + "\build.ps1";
+    write-host $dirs[$i] -ForegroundColor Red;
+    write-host $build    -ForegroundColor Green;
+    .\build.ps1
+    Pop-Location;
 }

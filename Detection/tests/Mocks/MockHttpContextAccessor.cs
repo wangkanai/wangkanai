@@ -6,5 +6,5 @@ namespace Wangkanai.Detection.Mocks;
 
 public class MockHttpContextAccessor : IHttpContextAccessor
 {
-	public HttpContext? HttpContext { get; set; }
+   public HttpContext? HttpContext { get; set; }
 }

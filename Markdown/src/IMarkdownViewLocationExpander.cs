@@ -4,10 +4,10 @@ namespace Wangkanai.Markdown;
 
 public interface IMarkdownViewLocationExpander
 {
-	void PopulateValues(
-		MarkdownViewLocationExpanderContext context);
+   void PopulateValues(
+      MarkdownViewLocationExpanderContext context);
 
-	IEnumerable<string> ExpandViewLocations(
-		MarkdownViewLocationExpanderContext context,
-		IEnumerable<string> viewLocations);
+   IEnumerable<string> ExpandViewLocations(
+      MarkdownViewLocationExpanderContext context,
+      IEnumerable<string>                 viewLocations);
 }

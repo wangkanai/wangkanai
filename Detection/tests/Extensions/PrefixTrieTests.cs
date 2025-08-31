@@ -4,56 +4,29 @@ namespace Wangkanai.Detection.Extensions;
 
 public class PrefixTrieTests : BasePrefixTrieTests<PrefixTrie>
 {
-	protected override PrefixTrie Create(string[]? keywords)
-	{
-		return new PrefixTrie(keywords);
-	}
+   protected override PrefixTrie Create(string[]? keywords) => new(keywords);
 
-	[Fact]
-	public void KeywordsIsNull_Test()
-	{
-		KeywordsIsNull();
-	}
+   [Fact]
+   public void KeywordsIsNull_Test() => KeywordsIsNull();
 
-	[Fact]
-	public void KeywordsIsEmpty_Test()
-	{
-		KeywordsIsEmpty();
-	}
+   [Fact]
+   public void KeywordsIsEmpty_Test() => KeywordsIsEmpty();
 
-	[Fact]
-	public void KeywordsExist_SourceIsNull_SeedIsZero_Test()
-	{
-		KeywordsExist_SourceIsNull_SeedIsZero();
-	}
+   [Fact]
+   public void KeywordsExist_SourceIsNull_SeedIsZero_Test() => KeywordsExist_SourceIsNull_SeedIsZero();
 
-	[Fact]
-	public void KeywordsExist_SourceIsEmpty_SeedIsZero_Test()
-	{
-		KeywordsExist_SourceIsEmpty_SeedIsZero();
-	}
+   [Fact]
+   public void KeywordsExist_SourceIsEmpty_SeedIsZero_Test() => KeywordsExist_SourceIsEmpty_SeedIsZero();
 
-	[Fact]
-	public void KeywordsExist_SourceIsWhiteSpace_SeedIsZero_Test()
-	{
-		KeywordsExist_SourceIsWhiteSpace_SeedIsZero();
-	}
+   [Fact]
+   public void KeywordsExist_SourceIsWhiteSpace_SeedIsZero_Test() => KeywordsExist_SourceIsWhiteSpace_SeedIsZero();
 
-	[Fact]
-	public void KeywordsExist_SourceExist_SeedIsZero_Test()
-	{
-		KeywordsExist_SourceExist_SeedIsZero();
-	}
+   [Fact]
+   public void KeywordsExist_SourceExist_SeedIsZero_Test() => KeywordsExist_SourceExist_SeedIsZero();
 
-	[Fact]
-	public void KeywordsExist_SourceSubset_SeedIsZero_Test()
-	{
-		KeywordsExist_SourceSubset_SeedIsZero();
-	}
+   [Fact]
+   public void KeywordsExist_SourceSubset_SeedIsZero_Test() => KeywordsExist_SourceSubset_SeedIsZero();
 
-	[Fact]
-	public void KeywordsExist_SourceNotSub_SeedIsZero_Test()
-	{
-		KeywordsExist_SourceNotSub_SeedIsZero();
-	}
+   [Fact]
+   public void KeywordsExist_SourceNotSub_SeedIsZero_Test() => KeywordsExist_SourceNotSub_SeedIsZero();
 }

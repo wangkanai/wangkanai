@@ -9,18 +9,19 @@ namespace Wangkanai.Hosting.Mocks;
 
 internal static class MockServer
 {
-	private static readonly RequestDelegate ContextHandler
-		= context => context.Response.WriteAsync("Hosting:");
+   private static readonly RequestDelegate ContextHandler
+      = context => context.Response.WriteAsync("Hosting:");
 
-	internal static TestServer Server(IWebHostBuilder builder)
-		=> new TestServer(builder);
+   internal static TestServer Server(IWebHostBuilder builder) => new(builder);
 
-	internal static IWebHostBuilder WebHostBuilder()
-		=> WebHostBuilder(ContextHandler);
+   internal static IWebHostBuilder WebHostBuilder()
+      => WebHostBuilder(ContextHandler);
 
-	internal static IWebHostBuilder WebHostBuilder(RequestDelegate contextHandler)
-		=> new WebHostBuilder()
-		   .ConfigureServices(services => { })
-		   .Configure(app => { app.Run(contextHandler); });
-
+   internal static IWebHostBuilder WebHostBuilder(RequestDelegate contextHandler)
+      => new WebHostBuilder()
+        .ConfigureServices(services => { })
+        .Configure(app =>
+         {
+            app.Run(contextHandler);
+         });
 }

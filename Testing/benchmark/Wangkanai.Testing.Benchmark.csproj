@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-	<PropertyGroup>
-		<IsTestProject>false</IsTestProject>
-	</PropertyGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\src\Wangkanai.Testing.csproj" />
-  </ItemGroup>
+   <PropertyGroup>
+      <IsTestProject>false</IsTestProject>
+   </PropertyGroup>
+   <ItemGroup>
+      <ProjectReference Include="..\src\Wangkanai.Testing.csproj"/>
+   </ItemGroup>
 </Project>

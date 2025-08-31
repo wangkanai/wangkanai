@@ -3,16 +3,18 @@
 namespace Wangkanai.Operators;
 
 public sealed class ClassNullOperator<T> : INullOperator<T>
-	where T : class
+   where T : class
 {
-	public bool HasValue(T value) => value.FalseIfNull();
+   public bool HasValue(T value) => value.FalseIfNull();
 
-	public bool AddIfNotNull(ref T accumulator, T value)
-	{
-		if (value.TrueIfNull())
-			return false;
+   public bool AddIfNotNull(ref T accumulator, T value)
+   {
+      if (value.TrueIfNull())
+      {
+         return false;
+      }
 
-		accumulator = Operator<T>.Add(accumulator, value);
-		return true;
-	}
+      accumulator = Operator<T>.Add(accumulator, value);
+      return true;
+   }
 }
