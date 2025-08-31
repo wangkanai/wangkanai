@@ -7,14 +7,11 @@ $dirs=[ordered]@{
     6="Cryptography";
     7="Hosting";
     8="Tools";
-    9="Domain";
-    10="Mvc";
-    11="Webserver";
-    12="Webmaster";
-    13="Detection";
-    14="Responsive";
-    15="EntityFramework";
-    17="Analytics";
+    9="Mvc";
+    10="Webserver";
+    11="Webmaster";
+    12="Detection";
+    13="Responsive";
 }
 
 for ($i=0; $i -lt $dirs.count; $i++) {
