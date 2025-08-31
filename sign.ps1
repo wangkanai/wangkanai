@@ -24,7 +24,6 @@ $dirs=[ordered]@{
 #    14="Detection";
 #    15="Responsive";
 #    16="EntityFramework";
-#    17="Markdown";
 #    18="Analytics";
 }
 

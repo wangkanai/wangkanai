@@ -9,105 +9,105 @@ This document provides a comprehensive checklist for migrating the Markdown modu
 ## Phase 1: Repository Setup and Initial Configuration
 
 ### Task 1.1: Repository Preparation
-- [ ] Clone the `wangkanai/markdown` repository to `~/Sources/markdown/`
-- [ ] Verify repository access and permissions
-- [ ] Create initial branch for migration work (`feature/initial-migration`)
-- [ ] Set up local git configuration for the new repository
+- [x] Clone the `wangkanai/markdown` repository to `~/Sources/markdown/`
+- [x] Verify repository access and permissions
+- [x] Create initial branch for migration work (`feature/initial-migration`)
+- [x] Set up local git configuration for the new repository
 
 ### Task 1.2: Directory Structure Creation
-- [ ] Create `/src/` directory for main library code
-- [ ] Create `/tests/` directory for unit tests
-- [ ] Create `/benchmark/` directory for performance tests
-- [ ] Create `/.github/workflows/` directory for CI/CD
-- [ ] Create `/Assets/` directory for brand assets
+- [x] Create `/src/` directory for main library code
+- [x] Create `/tests/` directory for unit tests
+- [x] Create `/benchmark/` directory for performance tests
+- [x] Create `/.github/workflows/` directory for CI/CD
+- [x] Create `/Assets/` directory for brand assets
 
 ### Task 1.3: Asset Migration
-- [ ] Copy `Assets/wangkanai-logo.afdesign` from source repository
-- [ ] Copy `Assets/wangkanai-logo.svg` from source repository
-- [ ] Copy `Assets/wangkanai-logo.ico` from source repository
-- [ ] Copy `Assets/wangkanai-logo.png` from source repository
-- [ ] Copy `Assets/wangkanai-logo-large.png` from source repository
-- [ ] Copy `md-styles.css` from source repository root
-- [ ] Copy `.github/FUNDING.yml` from source repository
-- [ ] Copy `.github/RELEASE.yml` from source repository
+- [x] Copy `Assets/wangkanai-logo.afdesign` from source repository
+- [x] Copy `Assets/wangkanai-logo.svg` from source repository
+- [x] Copy `Assets/wangkanai-logo.ico` from source repository
+- [x] Copy `Assets/wangkanai-logo.png` from source repository
+- [x] Copy `Assets/wangkanai-logo-large.png` from source repository
+- [x] Copy `md-styles.css` from source repository root
+- [x] Copy `.github/FUNDING.yml` from source repository
+- [x] Copy `.github/RELEASE.yml` from source repository
 
 ### Task 1.4: Documentation Migration
-- [ ] Copy `Markdown/README.md` as the main repository README
-- [ ] Copy `Markdown/INSTALL.md` to repository root
-- [ ] Update README.md to reflect standalone repository context
-- [ ] Update package URLs and links in documentation
-- [ ] Add migration notes and changelog
+- [x] Copy `Markdown/README.md` as the main repository README
+- [x] Copy `Markdown/INSTALL.md` to repository root
+- [x] Update README.md to reflect standalone repository context
+- [x] Update package URLs and links in documentation
+- [x] Add migration notes and changelog
 
 ---
 
 ## Phase 2: Code and Project Migration
 
 ### Task 2.1: Source Code Migration
-- [ ] Copy entire `Markdown/src/` directory contents to new `/src/`
-- [ ] Verify all source files are present and intact
-- [ ] Update namespace references if needed
-- [ ] Check for any hardcoded paths or dependencies
-- [ ] Validate file structure matches expected layout
+- [x] Copy entire `Markdown/src/` directory contents to new `/src/`
+- [x] Verify all source files are present and intact
+- [x] Update namespace references if needed
+- [x] Check for any hardcoded paths or dependencies
+- [x] Validate file structure matches expected layout
 
 ### Task 2.2: Test Project Migration
-- [ ] Copy entire `Markdown/tests/` directory contents to new `/tests/`
-- [ ] Verify all test files are present and functional
-- [ ] Update test project references and dependencies
-- [ ] Check for any test data or configuration files
-- [ ] Validate test project structure
+- [x] Copy entire `Markdown/tests/` directory contents to new `/tests/`
+- [x] Verify all test files are present and functional
+- [x] Update test project references and dependencies
+- [x] Check for any test data or configuration files
+- [x] Validate test project structure
 
 ### Task 2.3: Benchmark Project Migration
-- [ ] Copy entire `Markdown/benchmark/` directory contents to new `/benchmark/`
-- [ ] Verify all benchmark files and configurations
-- [ ] Update benchmark project references
-- [ ] Check benchmark data and baseline files
-- [ ] Validate benchmark project structure
+- [x] Copy entire `Markdown/benchmark/` directory contents to new `/benchmark/`
+- [x] Verify all benchmark files and configurations
+- [x] Update benchmark project references
+- [x] Check benchmark data and baseline files
+- [x] Validate benchmark project structure
 
 ### Task 2.4: Build Scripts Migration
-- [ ] Copy `sign.ps1` from `Markdown/` directory
-- [ ] Copy `build.ps1` from `Markdown/` directory
-- [ ] Update script paths and references for standalone repository
-- [ ] Modify script parameters for new repository context
-- [ ] Test script functionality in new environment
+- [x] Copy `sign.ps1` from `Markdown/` directory
+- [x] Copy `build.ps1` from `Markdown/` directory
+- [x] Update script paths and references for standalone repository
+- [x] Modify script parameters for new repository context
+- [x] Test script functionality in new environment
 
 ### Task 2.5: Build Configuration Migration
-- [ ] Copy `Markdown/Directory.Build.props` to repository root
-- [ ] Update parent directory import references
-- [ ] Modify package URLs to point to new repository
-- [ ] Update project references and dependencies
-- [ ] Validate build properties and configurations
+- [x] Copy `Markdown/Directory.Build.props` to repository root
+- [x] Update parent directory import references
+- [x] Modify package URLs to point to new repository
+- [x] Update project references and dependencies
+- [x] Validate build properties and configurations
 
 ---
 
 ## Phase 3: Solution Configuration and Project Setup
 
 ### Task 3.1: Solution File Creation
-- [ ] Create `Wangkanai.Markdown.slnx` using new slnx format
-- [ ] Add main library project (`src/Wangkanai.Markdown.csproj`)
-- [ ] Add test project (`tests/Wangkanai.Markdown.Tests.csproj`)
-- [ ] Add benchmark project (`benchmark/Wangkanai.Markdown.Benchmark.csproj`)
-- [ ] Add solution-level files (README.md, Directory.Build.props, etc.)
+- [x] Create `Markdown.slnx` using new slnx format (renamed from `Wangkanai.Markdown.slnx`)
+- [x] Add main library project (`src/Wangkanai.Markdown.csproj`)
+- [x] Add test project (`tests/Wangkanai.Markdown.Tests.csproj`)
+- [x] Add benchmark project (`benchmark/Wangkanai.Markdown.Benchmark.csproj`)
+- [x] Add solution-level files (README.md, Directory.Build.props, etc.)
 
 ### Task 3.2: Project Reference Updates
-- [ ] Update project references in test project to point to src
-- [ ] Update benchmark project references to point to src
-- [ ] Replace any wangkanai internal project references with NuGet packages
-- [ ] Verify all PackageReference entries are correct
-- [ ] Update framework target versions if needed
+- [x] Update project references in test project to point to src
+- [x] Update benchmark project references to point to src
+- [x] Replace any wangkanai internal project references with NuGet packages
+- [x] Verify all PackageReference entries are correct
+- [x] Update framework target versions if needed
 
 ### Task 3.3: Build Validation
-- [ ] Perform full solution restore (`dotnet restore`)
-- [ ] Build entire solution (`dotnet build`)
-- [ ] Verify no compilation errors or warnings
-- [ ] Check all projects build successfully
-- [ ] Validate output artifacts are generated correctly
+- [x] Perform full solution restore (`dotnet restore`)
+- [x] Build entire solution (`dotnet build`)
+- [x] Verify no compilation errors or warnings
+- [x] Check all projects build successfully
+- [x] Validate output artifacts are generated correctly
 
 ### Task 3.4: Test Validation
-- [ ] Run all unit tests (`dotnet test`)
-- [ ] Verify all tests pass in new environment
-- [ ] Check test coverage reports
-- [ ] Validate test output and logging
-- [ ] Fix any test failures related to migration
+- [x] Run all unit tests (`dotnet test`)
+- [x] Verify all tests pass in new environment
+- [x] Check test coverage reports
+- [x] Validate test output and logging
+- [x] Fix any test failures related to migration
 
 ---
 
