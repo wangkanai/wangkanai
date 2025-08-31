@@ -3,13 +3,13 @@
 namespace Wangkanai.Operators;
 
 public sealed class StructNullOperator<T> : INullOperator<T>
-	where T : struct
+   where T : struct
 {
-	public bool HasValue(T value) => true;
+   public bool HasValue(T value) => true;
 
-	public bool AddIfNotNull(ref T accumulator, T value)
-	{
-		accumulator = Operator<T>.Add(accumulator, value);
-		return true;
-	}
+   public bool AddIfNotNull(ref T accumulator, T value)
+   {
+      accumulator = Operator<T>.Add(accumulator, value);
+      return true;
+   }
 }

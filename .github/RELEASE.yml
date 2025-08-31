@@ -1,31 +1,31 @@
 changelog:
-    exclude:
-        labels:
-            - ignore-for-release
-        authors:
-            - octocat
-    categories:
-        -   title: ⚒️ Breaking
-            labels:
-                - Semver-Major
-                - breaking-change
-        -   title: 🐞 Bugs
-            labels:
-                - Semver-Minor
-                - bug
-        -   title: 🎉 Features
-            labels:
-                - Semver-Minor
-                - enhancement
-                - feature
-        -   title: 🥷 Refactor
-            labels:
-                - Semver-Minor
-                - refactor
-        -   title: 👒 Dependencies
-            labels:
-                - Semver-Minor
-                - dependencies
-        -   title: Other Changes
-            labels:
-                - "*"
+  exclude:
+    labels:
+      - ignore-for-release
+    authors:
+      - octocat
+  categories:
+    - title: ⚒️ Breaking
+      labels:
+        - Semver-Major
+        - breaking-change
+    - title: 🐞 Bugs
+      labels:
+        - Semver-Minor
+        - bug
+    - title: 🎉 Features
+      labels:
+        - Semver-Minor
+        - enhancement
+        - feature
+    - title: 🥷 Refactor
+      labels:
+        - Semver-Minor
+        - refactor
+    - title: 👒 Dependencies
+      labels:
+        - Semver-Minor
+        - dependencies
+    - title: Other Changes
+      labels:
+        - "*"

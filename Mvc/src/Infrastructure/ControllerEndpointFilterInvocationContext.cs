@@ -11,36 +11,36 @@ namespace Wangkanai.Mvc.Infrastructure;
 
 internal class ControllerEndpointFilterInvocationContext : EndpointFilterInvocationContext
 {
-	public object Controller { get; }
+   public ControllerEndpointFilterInvocationContext(
+      ControllerActionDescriptor actionDescriptor,
+      ActionContext              actionContext,
+      ObjectMethodExecutor       executor,
+      IActionResultTypeMapper    mapper,
+      object                     controller,
+      object?[]?                 arguments)
+   {
+      ActionDescriptor = actionDescriptor;
+      ActionContext    = actionContext;
+      Mapper           = mapper;
+      Executor         = executor;
+      Controller       = controller;
+      Arguments        = arguments ?? Array.Empty<object?>();
+   }
 
-	internal IActionResultTypeMapper Mapper { get; }
+   public object Controller { get; }
 
-	internal ActionContext ActionContext { get; }
+   internal IActionResultTypeMapper Mapper { get; }
 
-	internal ObjectMethodExecutor Executor { get; }
+   internal ActionContext ActionContext { get; }
 
-	internal ControllerActionDescriptor ActionDescriptor { get; }
+   internal ObjectMethodExecutor Executor { get; }
 
-	public override HttpContext HttpContext => ActionContext.HttpContext;
+   internal ControllerActionDescriptor ActionDescriptor { get; }
 
-	public override IList<object?> Arguments { get; }
+   public override HttpContext HttpContext => ActionContext.HttpContext;
 
-	public ControllerEndpointFilterInvocationContext(
-		ControllerActionDescriptor actionDescriptor,
-		ActionContext actionContext,
-		ObjectMethodExecutor executor,
-		IActionResultTypeMapper mapper,
-		object controller,
-		object?[]? arguments)
-	{
-		ActionDescriptor = actionDescriptor;
-		ActionContext = actionContext;
-		Mapper = mapper;
-		Executor = executor;
-		Controller = controller;
-		Arguments = arguments ?? Array.Empty<object?>();
-	}
+   public override IList<object?> Arguments { get; }
 
-	public override T GetArgument<T>(int index)
-		=> (T)Arguments[index]!;
+   public override T GetArgument<T>(int index)
+      => (T)Arguments[index]!;
 }

@@ -4,7 +4,7 @@ namespace Wangkanai.Operators;
 
 public interface INullOperator<T>
 {
-	bool HasValue(T value);
+   bool HasValue(T value);
 
-	bool AddIfNotNull(ref T accumulator, T value);
+   bool AddIfNotNull(ref T accumulator, T value);
 }

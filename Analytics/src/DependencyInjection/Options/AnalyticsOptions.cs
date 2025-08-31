@@ -4,5 +4,5 @@ namespace Microsoft.Extensions.DependencyInjection;
 
 public sealed class AnalyticsOptions
 {
-	public bool Demo { get; set; }
+   public bool Demo { get; set; }
 }

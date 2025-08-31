@@ -7,7 +7,7 @@ namespace Wangkanai.Hosting.DependencyInjection;
 
 public static class CoreBuilderExtensions
 {
-	public static void AddMarkerService<T>(this IServiceCollection services)
-		where T : class
-		=> services.TryAddSingleton<T>();
+   public static void AddMarkerService<T>(this IServiceCollection services)
+      where T : class
+      => services.TryAddSingleton<T>();
 }

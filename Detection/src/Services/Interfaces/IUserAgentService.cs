@@ -4,13 +4,9 @@ using Wangkanai.Detection.Models;
 
 namespace Wangkanai.Detection.Services;
 
-/// <summary>
-///     Provides the APIs for query client access device.
-/// </summary>
+/// <summary>Provides the APIs for query client access device.</summary>
 public interface IUserAgentService
 {
-	/// <summary>
-	///     Get the <see cref="UserAgent" /> of the request client.
-	/// </summary>
-	UserAgent UserAgent { get; }
+   /// <summary>Get the <see cref="UserAgent"/> of the request client.</summary>
+   UserAgent UserAgent { get; }
 }

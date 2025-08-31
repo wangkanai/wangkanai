@@ -4,8 +4,8 @@ namespace Wangkanai.Mvc.Infrastructure;
 
 internal sealed class OrderedEndpointsSequenceProvider
 {
-	private int _current;
+   private int _current;
 
-	public int GetNext()
-		=> Interlocked.Increment(ref _current);
+   public int GetNext()
+      => Interlocked.Increment(ref _current);
 }

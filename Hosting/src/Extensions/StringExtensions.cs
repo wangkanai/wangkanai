@@ -10,13 +10,18 @@ namespace Wangkanai.Hosting;
 [DebuggerStepThrough]
 public static class StringExtensions
 {
-	public static string CleanUrlPath([NotNull] this string url)
-	{
-		if (url.IsNullOrWhiteSpace())
-			url = "/";
-		if (url != "/" && url.EndsWith('/'))
-			url = url.Substring(0, url.Length - 1);
+   public static string CleanUrlPath([NotNull] this string url)
+   {
+      if (url.IsNullOrWhiteSpace())
+      {
+         url = "/";
+      }
 
-		return url;
-	}
+      if (url != "/" && url.EndsWith('/'))
+      {
+         url = url.Substring(0, url.Length - 1);
+      }
+
+      return url;
+   }
 }

@@ -10,36 +10,35 @@ namespace Wangkanai.Markdown.Infrastructure;
 
 internal sealed class DynamicMarkdownEndpointSelector : IDisposable
 {
-	public EndpointDataSource DataSource => _dataSource;
+   private readonly DataSourceDependentCache<ActionSelectionTable<Endpoint>> _cache;
 
-	private readonly DataSourceDependentCache<ActionSelectionTable<Endpoint>> _cache;
-	private readonly EndpointDataSource _dataSource;
+   public DynamicMarkdownEndpointSelector(EndpointDataSource dataSource)
+   {
+      dataSource.ThrowIfNull();
 
-	public DynamicMarkdownEndpointSelector(EndpointDataSource dataSource)
-	{
-		dataSource.ThrowIfNull();
+      DataSource = dataSource;
+      _cache     = new(dataSource, Initialize);
+   }
 
-		_dataSource = dataSource;
-		_cache = new DataSourceDependentCache<ActionSelectionTable<Endpoint>>(dataSource, Initialize);
-	}
+   public EndpointDataSource DataSource
+   {
+      get;
+   }
 
-	private static ActionSelectionTable<Endpoint> Initialize(IReadOnlyList<Endpoint> endpoints)
-		=> ActionSelectionTable<Endpoint>.Create(endpoints);
+   private ActionSelectionTable<Endpoint> Table
+      => _cache.EnsureInitialized();
 
-	private ActionSelectionTable<Endpoint> Table
-		=> _cache.EnsureInitialized();
+   public void Dispose() => _cache.Dispose();
 
-	public IReadOnlyList<Endpoint> SelectEndpoints(RouteValueDictionary values)
-	{
-		values.ThrowIfNull();
+   private static ActionSelectionTable<Endpoint> Initialize(IReadOnlyList<Endpoint> endpoints)
+      => ActionSelectionTable<Endpoint>.Create(endpoints);
 
-		var table = Table;
-		var matches = table.Select(values);
-		return matches;
-	}
+   public IReadOnlyList<Endpoint> SelectEndpoints(RouteValueDictionary values)
+   {
+      values.ThrowIfNull();
 
-	public void Dispose()
-	{
-		_cache.Dispose();
-	}
+      var table   = Table;
+      var matches = table.Select(values);
+      return matches;
+   }
 }

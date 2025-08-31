@@ -6,5 +6,5 @@ namespace Wangkanai.Responsive.Hosting;
 
 public interface IResponsiveMetadata
 {
-	Device Device { get; }
+   Device Device { get; }
 }

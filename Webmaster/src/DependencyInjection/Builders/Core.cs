@@ -10,31 +10,31 @@ namespace Microsoft.Extensions.DependencyInjection;
 
 internal static class WebmasterCoreCollectionBuilderExtensions
 {
-	internal static IWebmasterBuilder AddRequiredServices(this IWebmasterBuilder builder)
-	{
-		builder.ThrowIfNull();
+   internal static IWebmasterBuilder AddRequiredServices(this IWebmasterBuilder builder)
+   {
+      builder.ThrowIfNull();
 
-		builder.Services.AddHttpContextAccessor();
-		builder.Services.AddOptions();
-		builder.Services.TryAddSingleton(provider => provider.GetRequiredService<IOptions<WebmasterOptions>>().Value);
+      builder.Services.AddHttpContextAccessor();
+      builder.Services.AddOptions();
+      builder.Services.TryAddSingleton(provider => provider.GetRequiredService<IOptions<WebmasterOptions>>().Value);
 
-		builder.Services.AddDetection();
+      builder.Services.AddDetection();
 
-		return builder;
-	}
+      return builder;
+   }
 
-	internal static IWebmasterBuilder AddCoreServices(this IWebmasterBuilder builder)
-	{
-		// Add Basic core to services
-		builder.Services.TryAddScoped<IWebmasterService, WebmasterService>();
+   internal static IWebmasterBuilder AddCoreServices(this IWebmasterBuilder builder)
+   {
+      // Add Basic core to services
+      builder.Services.TryAddScoped<IWebmasterService, WebmasterService>();
 
-		return builder;
-	}
+      return builder;
+   }
 
-	internal static IWebmasterBuilder AddMarkerService(this IWebmasterBuilder builder)
-	{
-		builder.Services.TryAddSingleton<WebmasterMarkerService>();
+   internal static IWebmasterBuilder AddMarkerService(this IWebmasterBuilder builder)
+   {
+      builder.Services.TryAddSingleton<WebmasterMarkerService>();
 
-		return builder;
-	}
+      return builder;
+   }
 }

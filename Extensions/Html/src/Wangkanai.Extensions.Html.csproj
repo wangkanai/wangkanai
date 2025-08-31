@@ -1,11 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-    <ItemGroup>
-        <FrameworkReference Include="Microsoft.AspNetCore.App" />
-    </ItemGroup>
+   <ItemGroup>
+      <FrameworkReference Include="Microsoft.AspNetCore.App"/>
+   </ItemGroup>
 
-    <ItemGroup>
-        <PackageReference Include="HtmlAgilityPack"/>
-    </ItemGroup>
+   <ItemGroup>
+      <PackageReference Include="HtmlAgilityPack"/>
+   </ItemGroup>
 
 </Project>

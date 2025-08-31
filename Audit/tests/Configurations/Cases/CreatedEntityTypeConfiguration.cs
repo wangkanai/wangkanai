@@ -4,14 +4,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 using Wangkanai.Audit.Models;
-using Wangkanai.Domain.Models;
 
 namespace Wangkanai.Domain.Configurations;
 
 public class CreatedEntityTypeConfiguration : IEntityTypeConfiguration<CreatedEntity>
 {
-	public void Configure(EntityTypeBuilder<CreatedEntity> builder)
-	{
-		builder.HasKey(x => x.Id);
-	}
+   public void Configure(EntityTypeBuilder<CreatedEntity> builder) => builder.HasKey(x => x.Id);
 }

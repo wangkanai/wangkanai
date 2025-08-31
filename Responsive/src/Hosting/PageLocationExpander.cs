@@ -9,43 +9,44 @@ namespace Wangkanai.Responsive.Hosting;
 
 public sealed class ResponsivePageLocationExpander : IViewLocationExpander
 {
-	private const string ValueKey = "device";
+   private const string ValueKey = "device";
 
-	public IEnumerable<string> ExpandViewLocations(ViewLocationExpanderContext context, IEnumerable<string> viewLocations)
-	{
-		context.Values.TryGetValue(ValueKey, out var device);
+   public IEnumerable<string> ExpandViewLocations(ViewLocationExpanderContext context, IEnumerable<string> viewLocations)
+   {
+      context.Values.TryGetValue(ValueKey, out var device);
 
-		if (context.ActionContext.ActionDescriptor is not PageActionDescriptor)
-			return viewLocations;
+      if (context.ActionContext.ActionDescriptor is not PageActionDescriptor)
+      {
+         return viewLocations;
+      }
 
-		if (string.IsNullOrEmpty(context.PageName) || string.IsNullOrEmpty(device))
-			return viewLocations;
+      if (string.IsNullOrEmpty(context.PageName) || string.IsNullOrEmpty(device))
+      {
+         return viewLocations;
+      }
 
-		var expand = ExpandPageHierarchy();
+      var expand = ExpandPageHierarchy();
 
-		return expand;
+      return expand;
 
-		IEnumerable<string> ExpandPageHierarchy()
-		{
-			foreach (var location in viewLocations)
-			{
-				// If the location doesn't have the 'page' replacement token just return it as-is.
-				if (!location.Contains("/Pages/", StringComparison.OrdinalIgnoreCase))
-				{
-					yield return location;
-					continue;
-				}
+      IEnumerable<string> ExpandPageHierarchy()
+      {
+         foreach (var location in viewLocations)
+         {
+            // If the location doesn't have the 'page' replacement token just return it as-is.
+            if (!location.Contains("/Pages/", StringComparison.OrdinalIgnoreCase))
+            {
+               yield return location;
+               continue;
+            }
 
-				// Device ResponsiveWeb if exist on disk
-				// yield return location.Replace("{0}", "{0}." + device);
-				// Fallback to the original default view
-				yield return location;
-			}
-		}
-	}
+            // Device ResponsiveWeb if exist on disk
+            // yield return location.Replace("{0}", "{0}." + device);
+            // Fallback to the original default view
+            yield return location;
+         }
+      }
+   }
 
-	public void PopulateValues(ViewLocationExpanderContext context)
-	{
-		context.Values[ValueKey] = context.ActionContext.HttpContext.GetDevice().ToString().ToLower();
-	}
+   public void PopulateValues(ViewLocationExpanderContext context) => context.Values[ValueKey] = context.ActionContext.HttpContext.GetDevice().ToString().ToLower();
 }

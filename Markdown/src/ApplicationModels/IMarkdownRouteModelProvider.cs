@@ -4,9 +4,9 @@ namespace Wangkanai.Markdown.ApplicationModels;
 
 public interface IMarkdownRouteModelProvider
 {
-	int Order { get; }
+   int Order { get; }
 
-	void OnProvidersExecuting(MarkdownRouteModelProviderContext context);
+   void OnProvidersExecuting(MarkdownRouteModelProviderContext context);
 
-	void OnProvidersExecuted(MarkdownRouteModelProviderContext context);
+   void OnProvidersExecuted(MarkdownRouteModelProviderContext context);
 }

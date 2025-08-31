@@ -9,29 +9,29 @@ namespace Microsoft.Extensions.DependencyInjection;
 
 internal static class AnalyticsCoreBuilderExtensions
 {
-	public static IAnalyticsBuilder AddRequiredServices(this IAnalyticsBuilder builder)
-	{
-		builder.ThrowIfNull();
+   public static IAnalyticsBuilder AddRequiredServices(this IAnalyticsBuilder builder)
+   {
+      builder.ThrowIfNull();
 
-		builder.Services.AddHttpContextAccessor();
-		builder.Services.AddOptions();
-		builder.Services.TryAddSingleton(provider => provider.GetRequiredService<IOptions<AnalyticsOptions>>().Value);
+      builder.Services.AddHttpContextAccessor();
+      builder.Services.AddOptions();
+      builder.Services.TryAddSingleton(provider => provider.GetRequiredService<IOptions<AnalyticsOptions>>().Value);
 
-		return builder;
-	}
+      return builder;
+   }
 
-	public static IAnalyticsBuilder AddCoreServices(this IAnalyticsBuilder builder)
-	{
-		// Add basic core to services
-		builder.Services.TryAddScoped<IAnalyticsService, AnalyticsService>();
+   public static IAnalyticsBuilder AddCoreServices(this IAnalyticsBuilder builder)
+   {
+      // Add basic core to services
+      builder.Services.TryAddScoped<IAnalyticsService, AnalyticsService>();
 
-		return builder;
-	}
+      return builder;
+   }
 
-	public static IAnalyticsBuilder AddMarkerService(this IAnalyticsBuilder builder)
-	{
-		builder.Services.TryAddSingleton<AnalyticsMarkerService, AnalyticsMarkerService>();
+   public static IAnalyticsBuilder AddMarkerService(this IAnalyticsBuilder builder)
+   {
+      builder.Services.TryAddSingleton<AnalyticsMarkerService, AnalyticsMarkerService>();
 
-		return builder;
-	}
+      return builder;
+   }
 }

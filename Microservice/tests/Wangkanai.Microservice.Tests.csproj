@@ -1,5 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <ItemGroup>
-    <ProjectReference Include="..\src\Wangkanai.Microservice.csproj" />
-  </ItemGroup>
+   <ItemGroup>
+      <ProjectReference Include="..\src\Wangkanai.Microservice.csproj"/>
+   </ItemGroup>
 </Project>

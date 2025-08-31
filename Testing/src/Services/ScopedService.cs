@@ -6,8 +6,8 @@ namespace Wangkanai.Testing;
 
 public class ScopedService : IScopedService
 {
-	public DateTime Start { get; set; }
-	public DateTime Stop { get; set; }
-	public TimeSpan Elapsed => Stop - Start;
-	public ServiceLifetime Lifetime => ServiceLifetime.Scoped;
+   public DateTime        Start    { get; set; }
+   public DateTime        Stop     { get; set; }
+   public TimeSpan        Elapsed  => Stop - Start;
+   public ServiceLifetime Lifetime => ServiceLifetime.Scoped;
 }

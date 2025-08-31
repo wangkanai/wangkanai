@@ -1,20 +1,20 @@
 <Project>
-	<Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
+   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props"/>
 
-	<PropertyGroup>
-		<Title>Wangkanai Watcher</Title>
-		<Description>An enhanced ASP.NET Core Development tool to supercharge `dotnet-watch`. Automates file monitoring and task executions to streamline your workflow. Boost your productivity, focus on coding, and contribute to an easier development process.</Description>
-		<PackageTags>aspnetcore;watcher;task;job;</PackageTags>
-		<PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Watcher</PackageProjectUrl>
-	</PropertyGroup>
+   <PropertyGroup>
+      <Title>Wangkanai Watcher</Title>
+      <Description>An enhanced ASP.NET Core Development tool to supercharge `dotnet-watch`. Automates file monitoring and task executions to streamline your workflow. Boost your productivity, focus on coding, and contribute to an easier development process.</Description>
+      <PackageTags>aspnetcore;watcher;task;job;</PackageTags>
+      <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Watcher</PackageProjectUrl>
+   </PropertyGroup>
 
-	<PropertyGroup>
-		<PackageIcon>wangkanai-logo.png</PackageIcon>
-		<PackageReadmeFile>README.md</PackageReadmeFile>
-	</PropertyGroup>
+   <PropertyGroup>
+      <PackageIcon>wangkanai-logo.png</PackageIcon>
+      <PackageReadmeFile>README.md</PackageReadmeFile>
+   </PropertyGroup>
 
-	<ItemGroup>
-		<None Include="$(RepoRoot)\assets\wangkanai-logo.png" Pack="true" PackagePath="\" />
-		<None Include="..\README.md" Pack="true" PackagePath="\" />
-	</ItemGroup>
+   <ItemGroup>
+      <None Include="$(RepoRoot)\assets\wangkanai-logo.png" Pack="true" PackagePath="\"/>
+      <None Include="..\README.md" Pack="true" PackagePath="\"/>
+   </ItemGroup>
 </Project>

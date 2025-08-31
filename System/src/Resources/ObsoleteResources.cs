@@ -2,11 +2,9 @@
 
 namespace Wangkanai.Resources;
 
-/// <summary>
-/// Provides a collection of constants for obsolete resource messages that indicate deprecated methods or features.
-/// </summary>
+/// <summary>Provides a collection of constants for obsolete resource messages that indicate deprecated methods or features.</summary>
 internal static class ObsoleteResources
 {
-	internal const string Duplicated = "This method is duplicated and will be removed in a future version of .NET8.";
-	internal const string Net8 = "This method is obsolete and will be removed in a future version of .NET8.";
+   internal const string Duplicated = "This method is duplicated and will be removed in a future version of .NET8.";
+   internal const string Net8       = "This method is obsolete and will be removed in a future version of .NET8.";
 }

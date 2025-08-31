@@ -8,9 +8,9 @@ namespace Wangkanai.Domain;
 
 public class MockContext(DbContextOptions<MockContext> options) : DbContext(options)
 {
-	public DbSet<GuidEntity> Guids { get; set; }
-	public DbSet<IntEntity> Ints { get; set; }
+   public DbSet<GuidEntity> Guids { get; set; }
+   public DbSet<IntEntity>  Ints  { get; set; }
 
-	protected override void OnModelCreating(ModelBuilder builder)
-		=> base.OnModelCreating(builder);
+   protected override void OnModelCreating(ModelBuilder builder)
+      => base.OnModelCreating(builder);
 }

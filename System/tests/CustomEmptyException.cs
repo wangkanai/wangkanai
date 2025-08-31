@@ -4,15 +4,14 @@ namespace Wangkanai;
 
 public class CustomEmptyException : ArgumentException
 {
-	public CustomEmptyException()
-		: base() { }
+   public CustomEmptyException() { }
 
-	public CustomEmptyException(string message)
-		: base(message) { }
+   public CustomEmptyException(string message)
+      : base(message) { }
 
-	public CustomEmptyException(string message, Exception innerException)
-		: base(message, innerException) { }
+   public CustomEmptyException(string message, Exception innerException)
+      : base(message, innerException) { }
 
-	public CustomEmptyException(string paramName, string message)
-		: base(paramName, message) { }
+   public CustomEmptyException(string paramName, string message)
+      : base(paramName, message) { }
 }

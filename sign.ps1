@@ -30,7 +30,7 @@ $dirs=[ordered]@{
 #    20="Microservice";
 }
 
-$env:OneDriveConsumer+"\powershell-env.ps1" | out-null
+$env:OneDriveConsumer + "\powershell-env.ps1" | out-null
 
 Write-Host "NuGet Certificate: $certicate"  -ForegroundColor Magenta
 
@@ -55,7 +55,7 @@ for ($i=0; $i -lt $dirs.count; $i++) {
         $namespace=$xml.Project.PropertyGroup.PackageNamespace;
         $primary=$xml.Project.PropertyGroup.PackagePrimary;
         $name="Wangkanai." + $dirs[$i];
-        if (-not([string]::IsNullOrEmpty($primary[0])))
+        if (-not ([string]::IsNullOrEmpty($primary[0])))
         {
             if ($namespace -like "true")
             {

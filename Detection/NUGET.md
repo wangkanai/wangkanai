@@ -30,7 +30,6 @@ Imagine being able to dynamically adjust your layout based on the client's devic
 instructions to users.
 How about detecting crawlers and serving them optimally for SEO? All this and more is possible with Detection.
 
-
 ## Let's Connect
 
 Your support means a lot to us! If you find `Detection` helpful or if it has made your development work easier, we would

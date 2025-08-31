@@ -7,11 +7,11 @@ namespace Wangkanai.EntityFramework.Generators;
 
 public sealed class DateTimeOffsetNowGenerator : ValueGenerator<DateTimeOffset>
 {
-	public override bool GeneratesTemporaryValues => false;
+   public override bool GeneratesTemporaryValues => false;
 
-	public override DateTimeOffset Next(EntityEntry entry)
-	{
-		entry.ThrowIfNull();
-		return DateTimeOffset.Now;
-	}
+   public override DateTimeOffset Next(EntityEntry entry)
+   {
+      entry.ThrowIfNull();
+      return DateTimeOffset.Now;
+   }
 }

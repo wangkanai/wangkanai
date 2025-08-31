@@ -4,10 +4,6 @@ namespace Wangkanai.Markdown.Infrastructure;
 
 internal sealed class MarkdownEndpointDataSourceIdMetadata
 {
-	public int Id { get; }
-
-	public MarkdownEndpointDataSourceIdMetadata(int id)
-	{
-		Id = id;
-	}
+   public MarkdownEndpointDataSourceIdMetadata(int id) => Id = id;
+   public int Id { get; }
 }

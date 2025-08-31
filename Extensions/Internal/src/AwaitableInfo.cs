@@ -8,98 +8,100 @@ namespace Wangkanai.Extensions.Internal;
 
 internal readonly struct AwaitableInfo
 {
-	private const BindingFlags Everything = BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Static | BindingFlags.Instance;
-	private static readonly MethodInfo INotifyCompletion_OnCompleted = typeof(INotifyCompletion).GetMethod(nameof(INotifyCompletion.OnCompleted), Everything, new[] { typeof(Action) })!;
-	private static readonly MethodInfo ICriticalNotifyCompletion_UnsafeOnCompleted = typeof(ICriticalNotifyCompletion).GetMethod(nameof(ICriticalNotifyCompletion.UnsafeOnCompleted), Everything, new[] { typeof(Action) })!;
+   private const           BindingFlags Everything                    = BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Static | BindingFlags.Instance;
+   private static readonly MethodInfo   INotifyCompletion_OnCompleted = typeof(INotifyCompletion).GetMethod(nameof(INotifyCompletion.OnCompleted), Everything, new[] { typeof(Action) })!;
 
-	public Type AwaiterType { get; }
-	public PropertyInfo AwaiterIsCompletedProperty { get; }
-	public MethodInfo AwaiterGetResultMethod { get; }
-	public MethodInfo AwaiterOnCompletedMethod { get; }
-	public MethodInfo? AwaiterUnsafeOnCompletedMethod { get; }
-	public Type ResultType { get; }
-	public MethodInfo GetAwaiterMethod { get; }
+   private static readonly MethodInfo ICriticalNotifyCompletion_UnsafeOnCompleted =
+      typeof(ICriticalNotifyCompletion).GetMethod(nameof(ICriticalNotifyCompletion.UnsafeOnCompleted), Everything, new[] { typeof(Action) })!;
 
-	public AwaitableInfo(
-		Type awaiterType,
-		PropertyInfo awaiterIsCompletedProperty,
-		MethodInfo awaiterGetResultMethod,
-		MethodInfo awaiterOnCompletedMethod,
-		MethodInfo? awaiterUnsafeOnCompletedMethod,
-		Type resultType,
-		MethodInfo getAwaiterMethod)
-	{
-		AwaiterType = awaiterType;
-		AwaiterIsCompletedProperty = awaiterIsCompletedProperty;
-		AwaiterGetResultMethod = awaiterGetResultMethod;
-		AwaiterOnCompletedMethod = awaiterOnCompletedMethod;
-		AwaiterUnsafeOnCompletedMethod = awaiterUnsafeOnCompletedMethod;
-		ResultType = resultType;
-		GetAwaiterMethod = getAwaiterMethod;
-	}
+   public Type         AwaiterType                    { get; }
+   public PropertyInfo AwaiterIsCompletedProperty     { get; }
+   public MethodInfo   AwaiterGetResultMethod         { get; }
+   public MethodInfo   AwaiterOnCompletedMethod       { get; }
+   public MethodInfo?  AwaiterUnsafeOnCompletedMethod { get; }
+   public Type         ResultType                     { get; }
+   public MethodInfo   GetAwaiterMethod               { get; }
 
-	[UnconditionalSuppressMessage("Trimmer", "IL2070", Justification = "Reflecting over the async Task types contract")]
-	[UnconditionalSuppressMessage("Trimmer", "IL2075", Justification = "Reflecting over the async Task types contract")]
-	public static bool IsTypeAwaitable(
-		Type type,
-		out AwaitableInfo awaitableInfo)
-	{
-		// Awaitable must have method matching "object GetAwaiter()"
-		var getAwaiterMethod = type.GetMethod("GetAwaiter", Everything, Type.EmptyTypes);
+   public AwaitableInfo(
+      Type         awaiterType,
+      PropertyInfo awaiterIsCompletedProperty,
+      MethodInfo   awaiterGetResultMethod,
+      MethodInfo   awaiterOnCompletedMethod,
+      MethodInfo?  awaiterUnsafeOnCompletedMethod,
+      Type         resultType,
+      MethodInfo   getAwaiterMethod)
+   {
+      AwaiterType                    = awaiterType;
+      AwaiterIsCompletedProperty     = awaiterIsCompletedProperty;
+      AwaiterGetResultMethod         = awaiterGetResultMethod;
+      AwaiterOnCompletedMethod       = awaiterOnCompletedMethod;
+      AwaiterUnsafeOnCompletedMethod = awaiterUnsafeOnCompletedMethod;
+      ResultType                     = resultType;
+      GetAwaiterMethod               = getAwaiterMethod;
+   }
 
-		if (getAwaiterMethod is null)
-		{
-			awaitableInfo = default(AwaitableInfo);
-			return false;
-		}
+   [UnconditionalSuppressMessage("Trimmer", "IL2070", Justification = "Reflecting over the async Task types contract")]
+   [UnconditionalSuppressMessage("Trimmer", "IL2075", Justification = "Reflecting over the async Task types contract")]
+   public static bool IsTypeAwaitable(
+      Type              type,
+      out AwaitableInfo awaitableInfo)
+   {
+      // Awaitable must have method matching "object GetAwaiter()"
+      var getAwaiterMethod = type.GetMethod("GetAwaiter", Everything, Type.EmptyTypes);
 
-		var awaiterType = getAwaiterMethod.ReturnType;
+      if (getAwaiterMethod is null)
+      {
+         awaitableInfo = default;
+         return false;
+      }
 
-		// Awaiter must have property matching "bool IsCompleted { get; }"
-		var isCompletedProperty = awaiterType.GetProperty("IsCompleted", Everything, binder: null, returnType: typeof(bool), types: Type.EmptyTypes, modifiers: null);
-		if (isCompletedProperty is null)
-		{
-			awaitableInfo = default(AwaitableInfo);
-			return false;
-		}
+      var awaiterType = getAwaiterMethod.ReturnType;
 
-		// Awaiter must implement INotifyCompletion
-		var implementsINotifyCompletion = typeof(INotifyCompletion).IsAssignableFrom(awaiterType);
-		if (!implementsINotifyCompletion)
-		{
-			awaitableInfo = default(AwaitableInfo);
-			return false;
-		}
+      // Awaiter must have property matching "bool IsCompleted { get; }"
+      var isCompletedProperty = awaiterType.GetProperty("IsCompleted", Everything, null, typeof(bool), Type.EmptyTypes, null);
+      if (isCompletedProperty is null)
+      {
+         awaitableInfo = default;
+         return false;
+      }
 
-		// INotifyCompletion supplies a method matching "void OnCompleted(Action action)"
-		var onCompletedMethod = INotifyCompletion_OnCompleted;
+      // Awaiter must implement INotifyCompletion
+      var implementsINotifyCompletion = typeof(INotifyCompletion).IsAssignableFrom(awaiterType);
+      if (!implementsINotifyCompletion)
+      {
+         awaitableInfo = default;
+         return false;
+      }
 
-		// Awaiter optionally implements ICriticalNotifyCompletion
-		var implementsICriticalNotifyCompletion = typeof(ICriticalNotifyCompletion).IsAssignableFrom(awaiterType);
-		MethodInfo? unsafeOnCompletedMethod = null;
-		if (implementsICriticalNotifyCompletion)
-		{
-			// ICriticalNotifyCompletion supplies a method matching "void UnsafeOnCompleted(Action action)"
-			unsafeOnCompletedMethod = ICriticalNotifyCompletion_UnsafeOnCompleted;
-		}
+      // INotifyCompletion supplies a method matching "void OnCompleted(Action action)"
+      var onCompletedMethod = INotifyCompletion_OnCompleted;
 
-		// Awaiter must have method matching "void GetResult" or "T GetResult()"
-		var getResultMethod = awaiterType.GetMethod("GetResult", Everything, Type.EmptyTypes);
+      // Awaiter optionally implements ICriticalNotifyCompletion
+      var         implementsICriticalNotifyCompletion = typeof(ICriticalNotifyCompletion).IsAssignableFrom(awaiterType);
+      MethodInfo? unsafeOnCompletedMethod             = null;
+      if (implementsICriticalNotifyCompletion)
+      {
+         // ICriticalNotifyCompletion supplies a method matching "void UnsafeOnCompleted(Action action)"
+         unsafeOnCompletedMethod = ICriticalNotifyCompletion_UnsafeOnCompleted;
+      }
 
-		if (getResultMethod is null)
-		{
-			awaitableInfo = default(AwaitableInfo);
-			return false;
-		}
+      // Awaiter must have method matching "void GetResult" or "T GetResult()"
+      var getResultMethod = awaiterType.GetMethod("GetResult", Everything, Type.EmptyTypes);
 
-		awaitableInfo = new AwaitableInfo(
-			awaiterType,
-			isCompletedProperty,
-			getResultMethod,
-			onCompletedMethod,
-			unsafeOnCompletedMethod,
-			getResultMethod.ReturnType,
-			getAwaiterMethod);
-		return true;
-	}
+      if (getResultMethod is null)
+      {
+         awaitableInfo = default;
+         return false;
+      }
+
+      awaitableInfo = new(
+                          awaiterType,
+                          isCompletedProperty,
+                          getResultMethod,
+                          onCompletedMethod,
+                          unsafeOnCompletedMethod,
+                          getResultMethod.ReturnType,
+                          getAwaiterMethod);
+      return true;
+   }
 }

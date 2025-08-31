@@ -12,113 +12,113 @@ namespace Wangkanai.Detection.Mocks;
 [DebuggerStepThrough]
 public static class MockService
 {
-	#region Device
+   #region Device
 
-	internal static DeviceService DeviceService(string agent)
-		=> new(UserAgentService(agent));
+   internal static DeviceService DeviceService(string agent)
+      => new(UserAgentService(agent));
 
-	#endregion
+   #endregion
 
-	#region Browser
+   #region HttpContextService
 
-	internal static BrowserService BrowserService(string agent)
-		=> BrowserService(UserAgentService(agent));
+   internal static IHttpContextService HttpContextService(string agent)
+      => MockHttpContextService(agent).Object;
 
-	private static BrowserService BrowserService(IUserAgentService agent)
-	{
-		var platform = PlatformService(agent);
-		var engine = EngineService(agent);
-		return new BrowserService(agent, engine);
-	}
+   #endregion
 
-	#endregion
+   #region Browser
 
-	#region Platform
+   internal static BrowserService BrowserService(string agent)
+      => BrowserService(UserAgentService(agent));
 
-	internal static PlatformService PlatformService(string agent)
-		=> new(UserAgentService(agent));
+   private static BrowserService BrowserService(IUserAgentService agent)
+   {
+      var platform = PlatformService(agent);
+      var engine   = EngineService(agent);
+      return new(agent, engine);
+   }
 
-	internal static PlatformService PlatformService(IUserAgentService service)
-		=> new(service);
+   #endregion
 
-	#endregion
+   #region Platform
 
-	#region Engine
+   internal static PlatformService PlatformService(string agent)
+      => new(UserAgentService(agent));
 
-	internal static EngineService EngineService(string agent)
-		=> EngineService(UserAgentService(agent));
+   internal static PlatformService PlatformService(IUserAgentService service)
+      => new(service);
 
-	internal static EngineService EngineService(IUserAgentService agent)
-		=> new(agent, PlatformService(agent));
+   #endregion
 
-	#endregion
+   #region Engine
 
-	#region Crawler
+   internal static EngineService EngineService(string agent)
+      => EngineService(UserAgentService(agent));
 
-	internal static CrawlerService CrawlerService(string agent)
-		=> CrawlerService(agent, new DetectionOptions());
+   internal static EngineService EngineService(IUserAgentService agent)
+      => new(agent, PlatformService(agent));
 
-	internal static CrawlerService CrawlerService(string agent, DetectionOptions options)
-		=> new(UserAgentService(agent), options);
+   #endregion
 
-	#endregion
+   #region Crawler
 
-	#region UserAgent
+   internal static CrawlerService CrawlerService(string agent)
+      => CrawlerService(agent, new());
 
-	internal static IUserAgentService UserAgentService(string agent)
-		=> UserAgentService(new UserAgent(agent));
+   internal static CrawlerService CrawlerService(string agent, DetectionOptions options)
+      => new(UserAgentService(agent), options);
 
-	internal static IUserAgentService UserAgentService(UserAgent agent)
-		=> MockUserAgentService(agent).Object;
+   #endregion
 
-	#endregion
+   #region UserAgent
 
-	#region Mocking
+   internal static IUserAgentService UserAgentService(string agent)
+      => UserAgentService(new UserAgent(agent));
 
-	private static Mock<IUserAgentService> MockUserAgentService(string agent)
-		=> MockUserAgentService(new UserAgent(agent));
+   internal static IUserAgentService UserAgentService(UserAgent agent)
+      => MockUserAgentService(agent).Object;
 
-	private static Mock<IUserAgentService> MockUserAgentService(UserAgent agent)
-	{
-		var service = new Mock<IUserAgentService>();
-		service.Setup(a => a.UserAgent).Returns(agent);
-		return service;
-	}
+   #endregion
 
-	private static Mock<IHttpContextService> MockHttpContextService(string agent)
-		=> CreateHttpContext(agent).SetupHttpContextService();
+   #region Mocking
 
-	private static Mock<IHttpContextService> SetupHttpContextService(this HttpContext context)
-	{
-		var service = new Mock<IHttpContextService>();
-		service.Setup(f => f.Context)
-			   .Returns(context);
-		return service;
-	}
+   private static Mock<IUserAgentService> MockUserAgentService(string agent)
+      => MockUserAgentService(new UserAgent(agent));
 
-	#endregion
+   private static Mock<IUserAgentService> MockUserAgentService(UserAgent agent)
+   {
+      var service = new Mock<IUserAgentService>();
+      service.Setup(a => a.UserAgent).Returns(agent);
+      return service;
+   }
 
-	#region HttpContextService
+   private static Mock<IHttpContextService> MockHttpContextService(string agent)
+      => CreateHttpContext(agent).SetupHttpContextService();
 
-	internal static IHttpContextService HttpContextService(string agent)
-		=> MockHttpContextService(agent).Object;
+   private static Mock<IHttpContextService> SetupHttpContextService(this HttpContext context)
+   {
+      var service = new Mock<IHttpContextService>();
+      service.Setup(f => f.Context)
+             .Returns(context);
+      return service;
+   }
 
-	#endregion
+   #endregion
 
-	#region Internal
+   #region Internal
 
-	internal static IHttpContextAccessor MockHttpContextAccessor(string agent)
-		=> new MockHttpContextAccessor { HttpContext = CreateHttpContext(agent) };
+   internal static IHttpContextAccessor MockHttpContextAccessor(string agent)
+      => new MockHttpContextAccessor { HttpContext = CreateHttpContext(agent) };
 
-	internal static IHttpContextAccessor CreateHttpContextAccessor(string agent)
-		=> new HttpContextAccessor { HttpContext = CreateHttpContext(agent) };
+   internal static IHttpContextAccessor CreateHttpContextAccessor(string agent)
+      => new HttpContextAccessor { HttpContext = CreateHttpContext(agent) };
 
-	private static HttpContext CreateHttpContext(string value)
-	{
-		var context = new DefaultHttpContext();
-		context.Request.Headers.Append("User-Agent", new[] { value });
-		return context;
-	}
+   private static HttpContext CreateHttpContext(string value)
+   {
+      var context = new DefaultHttpContext();
+      context.Request.Headers.Append("User-Agent", new[] { value });
+      return context;
+   }
 
-	#endregion
+   #endregion
 }

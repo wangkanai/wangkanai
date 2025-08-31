@@ -4,5 +4,5 @@ namespace Wangkanai.Markdown.ApplicationModels;
 
 public class MarkdownRouteModelProviderContext
 {
-	public IList<MarkdownRouteModel> RouteModels { get; } = new List<MarkdownRouteModel>();
+   public IList<MarkdownRouteModel> RouteModels { get; } = new List<MarkdownRouteModel>();
 }

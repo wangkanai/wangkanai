@@ -4,5 +4,5 @@ namespace Wangkanai.Detection;
 
 internal static class Constants
 {
-	public static readonly TimeSpan RegexTimeout = TimeSpan.FromMilliseconds(100);
+   public static readonly TimeSpan RegexTimeout = TimeSpan.FromMilliseconds(100);
 }

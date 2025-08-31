@@ -4,13 +4,9 @@ using Wangkanai.Detection.Models;
 
 namespace Wangkanai.Detection.Services;
 
-/// <summary>
-///     Provides the APIs for query client <see cref="Device" />.
-/// </summary>
+/// <summary>Provides the APIs for query client <see cref="Device"/>.</summary>
 public interface IDeviceService
 {
-	/// <summary>
-	///     Gets the <see cref="Device" /> of the request client.
-	/// </summary>
-	public Device Type { get; }
+   /// <summary>Gets the <see cref="Device"/> of the request client.</summary>
+   Device Type { get; }
 }

@@ -1,10 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
-    <PropertyGroup>
-        <IsTrimmable>true</IsTrimmable>
-        <Optimize>true</Optimize>
-    </PropertyGroup>
+   <PropertyGroup>
+      <IsTrimmable>true</IsTrimmable>
+      <Optimize>true</Optimize>
+   </PropertyGroup>
 
-    <ItemGroup>
-        <ProjectReference Include="$(RepoRoot)\System\src\Wangkanai.System.csproj"/>
-    </ItemGroup>
+   <ItemGroup>
+      <ProjectReference Include="$(RepoRoot)\System\src\Wangkanai.System.csproj"/>
+   </ItemGroup>
 </Project>

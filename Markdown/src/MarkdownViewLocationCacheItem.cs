@@ -4,13 +4,13 @@ namespace Wangkanai.Markdown;
 
 internal readonly struct MarkdownViewLocationCacheItem
 {
-	public string Location { get; }
+   public string Location { get; }
 
-	public Func<IMarkdownPage> PageFactory { get; }
+   public Func<IMarkdownPage> PageFactory { get; }
 
-	public MarkdownViewLocationCacheItem(Func<IMarkdownPage> razorPageFactory, string location)
-	{
-		PageFactory = razorPageFactory;
-		Location = location;
-	}
+   public MarkdownViewLocationCacheItem(Func<IMarkdownPage> razorPageFactory, string location)
+   {
+      PageFactory = razorPageFactory;
+      Location    = location;
+   }
 }

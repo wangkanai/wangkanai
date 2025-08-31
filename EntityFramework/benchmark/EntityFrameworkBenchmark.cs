@@ -2,9 +2,6 @@
 
 public class EntityFrameworkBenchmark
 {
-	[Benchmark]
-	public void MigrateDatabase()
-	{
-
-	}
+   [Benchmark]
+   public void MigrateDatabase() { }
 }

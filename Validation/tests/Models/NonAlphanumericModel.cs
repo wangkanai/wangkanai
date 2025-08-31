@@ -6,7 +6,7 @@ namespace Wangkanai.Validation.Models;
 
 public class NonAlphanumericModel : BaseModel<NonAlphanumericModel>, IPasswordModel
 {
-	[Required]
-	[RequireNonAlphanumeric]
-	public string Password { get; set; } = string.Empty;
+   [Required]
+   [RequireNonAlphanumeric]
+   public string Password { get; set; } = string.Empty;
 }

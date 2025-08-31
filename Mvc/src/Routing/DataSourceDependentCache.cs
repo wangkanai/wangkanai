@@ -9,65 +9,67 @@ namespace Wangkanai.Mvc.Routing;
 
 internal sealed class DataSourceDependentCache<T> : IDisposable where T : class
 {
-	private readonly EndpointDataSource _dataSource;
-	private readonly Func<IReadOnlyList<Endpoint>, T> _initializeCore;
-	private readonly Func<T> _initializer;
-	private readonly Action<object?> _initializerWithState;
+   private readonly EndpointDataSource               _dataSource;
+   private readonly Func<IReadOnlyList<Endpoint>, T> _initializeCore;
+   private readonly Func<T>                          _initializer;
+   private readonly Action<object?>                  _initializerWithState;
 
-	private readonly object _lock;
+   private readonly object       _lock;
+   private          IDisposable? _disposable;
+   private          bool         _disposed;
 
-	private bool _initialized;
-	private T? _value;
-	private IDisposable? _disposable;
-	private bool _disposed;
-	private object _syncLock;
+   private bool   _initialized;
+   private object _syncLock;
+   private T?     _value;
 
-	public DataSourceDependentCache(EndpointDataSource dataSource, Func<IReadOnlyList<Endpoint>, T> initialize)
-	{
-		dataSource.ThrowIfNull();
-		initialize.ThrowIfNull();
+   public DataSourceDependentCache(EndpointDataSource dataSource, Func<IReadOnlyList<Endpoint>, T> initialize)
+   {
+      dataSource.ThrowIfNull();
+      initialize.ThrowIfNull();
 
-		_dataSource = dataSource;
-		_initializeCore = initialize;
-		_initializer = Initialize;
-	}
+      _dataSource     = dataSource;
+      _initializeCore = initialize;
+      _initializer    = Initialize;
+   }
 
-	[NotNullIfNotNull(nameof(_value))]
-	public T? Value
-		=> _value;
+   [NotNullIfNotNull(nameof(_value))]
+   public T? Value
+      => _value;
 
-	[MemberNotNull(nameof(_value))]
-	public T EnsureInitialized()
-	{
-		_syncLock = _lock;
-		return LazyInitializer.EnsureInitialized<T>(ref _value, ref _initialized, ref _syncLock, _initializer);
-	}
+   public void Dispose()
+   {
+      lock (_lock)
+      {
+         if (!_disposed)
+         {
+            _disposable?.Dispose();
+            _disposable = null;
+            _disposed   = true;
+         }
+      }
+   }
 
-	private T Initialize()
-	{
-		lock (_lock)
-		{
-			var changeToken = _dataSource.GetChangeToken();
-			_value = _initializeCore(_dataSource.Endpoints);
+   [MemberNotNull(nameof(_value))]
+   public T EnsureInitialized()
+   {
+      _syncLock = _lock;
+      return LazyInitializer.EnsureInitialized<T>(ref _value, ref _initialized, ref _syncLock, _initializer);
+   }
 
-			if (_disposed)
-				return _value;
+   private T Initialize()
+   {
+      lock (_lock)
+      {
+         var changeToken = _dataSource.GetChangeToken();
+         _value = _initializeCore(_dataSource.Endpoints);
 
-			_disposable = changeToken.RegisterChangeCallback(_initializerWithState, null);
-			return _value;
-		}
-	}
+         if (_disposed)
+         {
+            return _value;
+         }
 
-	public void Dispose()
-	{
-		lock (_lock)
-		{
-			if (!_disposed)
-			{
-				_disposable?.Dispose();
-				_disposable = null;
-				_disposed = true;
-			}
-		}
-	}
+         _disposable = changeToken.RegisterChangeCallback(_initializerWithState, null);
+         return _value;
+      }
+   }
 }

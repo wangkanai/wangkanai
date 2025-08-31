@@ -7,9 +7,9 @@ namespace Wangkanai.Markdown;
 
 public interface IMarkdownViewEngine : IViewEngine
 {
-	MarkdownPageResult FindPage(ActionContext context, string pageName);
+   MarkdownPageResult FindPage(ActionContext context, string pageName);
 
-	MarkdownPageResult GetPage(string executingFilePath, string pagePath);
+   MarkdownPageResult GetPage(string executingFilePath, string pagePath);
 
-	string? GetAbsolutePath(string? executingFilePath, string? pagePath);
+   string? GetAbsolutePath(string? executingFilePath, string? pagePath);
 }

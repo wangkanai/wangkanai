@@ -4,13 +4,9 @@ using Wangkanai.Detection.Models;
 
 namespace Wangkanai.Detection.Services;
 
-/// <summary>
-///     Provides the APIs for query client browser rendering engine.
-/// </summary>
+/// <summary>Provides the APIs for query client browser rendering engine.</summary>
 public interface IEngineService
 {
-	/// <summary>
-	///     Get the <see cref="Engine" /> of the request client.
-	/// </summary>
-	public Engine Name { get; }
+   /// <summary>Get the <see cref="Engine"/> of the request client.</summary>
+   Engine Name { get; }
 }

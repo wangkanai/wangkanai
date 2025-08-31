@@ -10,35 +10,35 @@ namespace Wangkanai.Markdown.ApplicationModels;
 [DebuggerDisplay("MarkdownParameterModel: Name={ParameterName}")]
 public class MarkdownParameterModel : ParameterModelBase, ICommonModel, IBindingModel
 {
-	public MarkdownParameterModel(
-		ParameterInfo parameterInfo,
-		IReadOnlyList<object> attributes)
-		: base(parameterInfo.ParameterType, attributes)
-	{
-		parameterInfo.ThrowIfNull();
-		attributes.ThrowIfNull();
+   public MarkdownParameterModel(
+      ParameterInfo         parameterInfo,
+      IReadOnlyList<object> attributes)
+      : base(parameterInfo.ParameterType, attributes)
+   {
+      parameterInfo.ThrowIfNull();
+      attributes.ThrowIfNull();
 
-		ParameterInfo = parameterInfo;
-	}
+      ParameterInfo = parameterInfo;
+   }
 
-	public MarkdownParameterModel(MarkdownParameterModel other)
-		: base(other)
-	{
-		other.ThrowIfNull();
+   public MarkdownParameterModel(MarkdownParameterModel other)
+      : base(other)
+   {
+      other.ThrowIfNull();
 
-		Handler = other.Handler;
-		ParameterInfo = other.ParameterInfo;
-	}
+      Handler       = other.Handler;
+      ParameterInfo = other.ParameterInfo;
+   }
 
-	public MarkdownHandlerModel Handler { get; set; } = default!;
+   public MarkdownHandlerModel Handler { get; set; } = default!;
 
-	MemberInfo ICommonModel.MemberInfo => ParameterInfo.Member;
+   public ParameterInfo ParameterInfo { get; }
 
-	public ParameterInfo ParameterInfo { get; }
+   public string ParameterName
+   {
+      get => Name;
+      set => Name = value;
+   }
 
-	public string ParameterName
-	{
-		get => Name;
-		set => Name = value;
-	}
+   MemberInfo ICommonModel.MemberInfo => ParameterInfo.Member;
 }

@@ -4,7 +4,7 @@ namespace Wangkanai.Webmaster.Core;
 
 [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
 public sealed class MetaDescriptionAttribute(string description)
-	: Attribute
+   : Attribute
 {
-	private readonly string _description = description;
+   private readonly string _description = description;
 }

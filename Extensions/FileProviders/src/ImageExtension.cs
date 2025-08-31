@@ -4,9 +4,9 @@ namespace Wangkanai.Extensions;
 
 public enum ImageExtension
 {
-	Unknown,
-	Jpg,
-	Gif,
-	Png,
-	Svg
+   Unknown,
+   Jpg,
+   Gif,
+   Png,
+   Svg
 }

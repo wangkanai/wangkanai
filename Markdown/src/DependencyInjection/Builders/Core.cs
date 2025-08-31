@@ -19,61 +19,64 @@ namespace Microsoft.Extensions.DependencyInjection;
 
 internal static class MarkdownCoreBuilderExtensions
 {
-	internal static IMarkdownBuilder AddRequiredServices(this IMarkdownBuilder builder)
-	{
-		// Hosting doesn't add IHttpContextAccessor by default
-		builder.Services.AddHttpContextAccessor();
+   internal static IMarkdownBuilder AddRequiredServices(this IMarkdownBuilder builder)
+   {
+      // Hosting doesn't add IHttpContextAccessor by default
+      builder.Services.AddHttpContextAccessor();
 
-		// Add DetectionMvc Options
-		builder.Services.AddOptions();
-		builder.Services.TryAddSingleton(provider => provider.GetRequiredService<IOptions<DetectionOptions>>().Value);
+      // Add DetectionMvc Options
+      builder.Services.AddOptions();
+      builder.Services.TryAddSingleton(provider => provider.GetRequiredService<IOptions<DetectionOptions>>().Value);
 
-		return builder;
-	}
+      return builder;
+   }
 
-	internal static IMarkdownBuilder AddCoreServices(this IMarkdownBuilder builder)
-	{
-		if (MetadataUpdater.IsSupported)
-			builder.Services.TryAddSingleton<MarkdownHotReload>();
+   internal static IMarkdownBuilder AddCoreServices(this IMarkdownBuilder builder)
+   {
+      if (MetadataUpdater.IsSupported)
+      {
+         builder.Services.TryAddSingleton<MarkdownHotReload>();
+      }
 
-		// Options
-		builder.Services.TryAddEnumerable(
-			ServiceDescriptor.Transient<IConfigureOptions<MarkdownViewEngineOptions>, MarkdownViewEngineOptionsSetup>());
-		builder.Services.TryAddEnumerable(
-			ServiceDescriptor.Transient<IConfigureOptions<MarkdownPagesOptions>, MarkdownPagesOptionsSetup>());
+      // Options
+      builder.Services.TryAddEnumerable(
+                                        ServiceDescriptor.Transient<IConfigureOptions<MarkdownViewEngineOptions>, MarkdownViewEngineOptionsSetup>());
+      builder.Services.TryAddEnumerable(
+                                        ServiceDescriptor.Transient<IConfigureOptions<MarkdownPagesOptions>, MarkdownPagesOptionsSetup>());
 
-		// Routing
-		builder.Services.TryAddEnumerable(ServiceDescriptor.Singleton<MatcherPolicy, DynamicMarkdownEndpointMatcherPolicy>());
-		builder.Services.TryAddSingleton<DynamicMarkdownEndpointSelectorCache>();
-		builder.Services.TryAddSingleton<MarkdownActionEndpointDataSourceIdProvider>();
+      // Routing
+      builder.Services.TryAddEnumerable(ServiceDescriptor.Singleton<MatcherPolicy, DynamicMarkdownEndpointMatcherPolicy>());
+      builder.Services.TryAddSingleton<DynamicMarkdownEndpointSelectorCache>();
+      builder.Services.TryAddSingleton<MarkdownActionEndpointDataSourceIdProvider>();
 
-		builder.Services.TryAddSingleton<OrderedEndpointsSequenceProviderCache>();
-		builder.Services.TryAddSingleton<ActionEndpointFactory>();
-		builder.Services.TryAddSingleton<MarkdownActionEndpointDataSourceIdProvider>();
+      builder.Services.TryAddSingleton<OrderedEndpointsSequenceProviderCache>();
+      builder.Services.TryAddSingleton<ActionEndpointFactory>();
+      builder.Services.TryAddSingleton<MarkdownActionEndpointDataSourceIdProvider>();
 
-		// Action description and invocation
-		var actionDescriptorProvider = builder.Services.FirstOrDefault(
-			f =>
-				f.ServiceType == typeof(IActionDescriptorProvider) &&
-				f.ImplementationType == typeof(MarkdownActionDescriptorProvider));
+      // Action description and invocation
+      var actionDescriptorProvider = builder.Services.FirstOrDefault(f =>
+                                                                        f.ServiceType        == typeof(IActionDescriptorProvider) &&
+                                                                        f.ImplementationType == typeof(MarkdownActionDescriptorProvider));
 
-		if (actionDescriptorProvider is null)
-			builder.Services.TryAddEnumerable(
-				ServiceDescriptor.Singleton<IActionDescriptorProvider, CompiledMarkdownActionDescriptorProvider>());
+      if (actionDescriptorProvider is null)
+      {
+         builder.Services.TryAddEnumerable(
+                                           ServiceDescriptor.Singleton<IActionDescriptorProvider, CompiledMarkdownActionDescriptorProvider>());
+      }
 
-		builder.Services.TryAddSingleton<MarkdownActionEndpointDataSourceFactory>();
+      builder.Services.TryAddSingleton<MarkdownActionEndpointDataSourceFactory>();
 
-		// Page and Page model create and activation
+      // Page and Page model create and activation
 
-		// Action executors
+      // Action executors
 
-		return builder;
-	}
+      return builder;
+   }
 
-	internal static IMarkdownBuilder AddMarkerService(this IMarkdownBuilder builder)
-	{
-		builder.Services.TryAddSingleton<MarkdownMarkerService>();
+   internal static IMarkdownBuilder AddMarkerService(this IMarkdownBuilder builder)
+   {
+      builder.Services.TryAddSingleton<MarkdownMarkerService>();
 
-		return builder;
-	}
+      return builder;
+   }
 }

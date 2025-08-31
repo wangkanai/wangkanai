@@ -4,7 +4,5 @@ namespace Wangkanai.Webmaster;
 
 public sealed class WebmasterOptions
 {
-	public bool Test { get; set; } = false;
-
-	public WebmasterOptions() { }
+   public bool Test { get; set; } = false;
 }

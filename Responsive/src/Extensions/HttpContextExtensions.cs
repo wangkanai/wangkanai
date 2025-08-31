@@ -9,26 +9,26 @@ namespace Wangkanai.Responsive.Extensions;
 
 internal static class HttpContextExtensions
 {
-	private const string ResponsiveContextKey = "Responsive";
+   private const string ResponsiveContextKey = "Responsive";
 
-	public static Device GetDevice(this HttpContext context)
-	{
-		context.ThrowIfNull();
-		context.Items.ThrowIfNull();
+   public static Device GetDevice(this HttpContext context)
+   {
+      context.ThrowIfNull();
+      context.Items.ThrowIfNull();
 
-		return context.Items.TryGetValue(ResponsiveContextKey, out var responsive)
-				   ? (Device)(responsive ?? Device.Unknown)
-				   : Device.Desktop;
-	}
+      return context.Items.TryGetValue(ResponsiveContextKey, out var responsive)
+         ? (Device)(responsive ?? Device.Unknown)
+         : Device.Desktop;
+   }
 
-	public static void SetDevice(this HttpContext context, Device device)
-		=> context.Items[ResponsiveContextKey] = device;
+   public static void SetDevice(this HttpContext context, Device device)
+      => context.Items[ResponsiveContextKey] = device;
 
-	public static ISession? SafeSession(this HttpContext httpContext)
-		=> httpContext.Features.Get<ISessionFeature?>() == null
-			   ? null
-			   : httpContext.Session;
+   public static ISession? SafeSession(this HttpContext httpContext)
+      => httpContext.Features.Get<ISessionFeature?>() == null
+         ? null
+         : httpContext.Session;
 
-	public static bool IsWebApi(this HttpContext context, ResponsiveOptions options)
-		=> context.Request.Path.StartsWithSegments(options.WebApiPath);
+   public static bool IsWebApi(this HttpContext context, ResponsiveOptions options)
+      => context.Request.Path.StartsWithSegments(options.WebApiPath);
 }

@@ -9,17 +9,17 @@ namespace Microsoft.Extensions.DependencyInjection;
 
 public static class WebserverApplicationExtensions
 {
-	public static IApplicationBuilder UseWebserver(this IApplicationBuilder app)
-	{
-		app.ThrowIfNull();
-		app.Validate();
-		app.VerifyMarkerIsRegistered<WebserverMarkerService>();
+   public static IApplicationBuilder UseWebserver(this IApplicationBuilder app)
+   {
+      app.ThrowIfNull();
+      app.Validate();
+      app.VerifyMarkerIsRegistered<WebserverMarkerService>();
 
-		return app.UseMiddleware<WebserverMiddleware>();
-	}
+      return app.UseMiddleware<WebserverMiddleware>();
+   }
 
-	private static void Validate(this IApplicationBuilder app)
-	{
-		// what should I validate?
-	}
+   private static void Validate(this IApplicationBuilder app)
+   {
+      // what should I validate?
+   }
 }

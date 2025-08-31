@@ -3,29 +3,30 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
+using Wangkanai.Nation.Models;
 using Wangkanai.Nation.Seeds;
 
 namespace Wangkanai.Nation.Configurations;
 
-public sealed class CountryConfiguration : IEntityTypeConfiguration<Models.Country>
+public sealed class CountryConfiguration : IEntityTypeConfiguration<Country>
 {
-	public void Configure(EntityTypeBuilder<Models.Country> builder)
-	{
-		builder.Property(x => x.Iso)
-			   .HasMaxLength(2)
-			   .IsRequired();
+   public void Configure(EntityTypeBuilder<Country> builder)
+   {
+      builder.Property(x => x.Iso)
+             .HasMaxLength(2)
+             .IsRequired();
 
-		builder.Property(x => x.Name)
-			   .HasMaxLength(100)
-			   .IsRequired();
+      builder.Property(x => x.Name)
+             .HasMaxLength(100)
+             .IsRequired();
 
-		builder.Property(x => x.Native)
-			   .HasMaxLength(100)
-			   .IsUnicode()
-			   .IsRequired();
+      builder.Property(x => x.Native)
+             .HasMaxLength(100)
+             .IsUnicode()
+             .IsRequired();
 
-		builder.Property(x => x.Population);
+      builder.Property(x => x.Population);
 
-		builder.HasData(CountrySeed.Dataset);
-	}
+      builder.HasData(CountrySeed.Dataset);
+   }
 }

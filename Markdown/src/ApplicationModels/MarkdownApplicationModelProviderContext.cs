@@ -6,15 +6,15 @@ namespace Wangkanai.Markdown.ApplicationModels;
 
 public class MarkdownApplicationModelProviderContext
 {
-	public MarkdownApplicationModelProviderContext(MarkdownActionDescriptor descriptor, TypeInfo pageTypeInfo)
-	{
-		ActionDescriptor = descriptor;
-		PageType = pageTypeInfo;
-	}
+   public MarkdownApplicationModelProviderContext(MarkdownActionDescriptor descriptor, TypeInfo pageTypeInfo)
+   {
+      ActionDescriptor = descriptor;
+      PageType         = pageTypeInfo;
+   }
 
-	public MarkdownActionDescriptor ActionDescriptor { get; }
+   public MarkdownActionDescriptor ActionDescriptor { get; }
 
-	public TypeInfo PageType { get; }
+   public TypeInfo PageType { get; }
 
-	public MarkdownApplicationModel MarkdownApplicationModel { get; set; } = default!;
+   public MarkdownApplicationModel MarkdownApplicationModel { get; set; } = default!;
 }

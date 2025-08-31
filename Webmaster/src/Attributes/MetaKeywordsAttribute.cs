@@ -6,15 +6,12 @@ namespace Wangkanai.Webmaster.Core;
 
 [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
 public sealed class MetaKeywordsAttribute(params string[] keywords)
-	: Attribute
+   : Attribute
 {
-	private readonly List<string> _keywords = new List<string>(keywords);
+   private readonly List<string> _keywords = new(keywords);
 }
 
 public abstract class MetaAttribute : ActionFilterAttribute
 {
-	public override void OnActionExecuting(ActionExecutingContext context)
-	{
-		context.ThrowIfNull();
-	}
+   public override void OnActionExecuting(ActionExecutingContext context) => context.ThrowIfNull();
 }

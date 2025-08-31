@@ -1,11 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <RootNamespace>Wangkanai.Nation</RootNamespace>
-  </PropertyGroup>
+   <PropertyGroup>
+      <RootNamespace>Wangkanai.Nation</RootNamespace>
+   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\src\Wangkanai.Nation.csproj" />
-  </ItemGroup>
+   <ItemGroup>
+      <ProjectReference Include="..\src\Wangkanai.Nation.csproj"/>
+   </ItemGroup>
 
 </Project>

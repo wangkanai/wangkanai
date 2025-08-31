@@ -12,30 +12,30 @@ namespace Wangkanai.Webmaster.TagHelpers;
 [HtmlTargetElement(InlineScriptAttributeName, Attributes = HrefAttributeName, TagStructure = TagStructure.WithoutEndTag)]
 public sealed class InlineScriptTagHelper : InlineTagHelper
 {
-	private const string InlineScriptAttributeName = "inline-script";
-	private const string HrefAttributeName = "href";
+   private const string InlineScriptAttributeName = "inline-script";
+   private const string HrefAttributeName         = "href";
 
-	[HtmlAttributeName(HrefAttributeName)]
-	public string Href { get; set; }
+   public InlineScriptTagHelper(IWebHostEnvironment webHostEnvironment, IMemoryCache cache, HtmlEncoder htmlEncoder, IUrlHelperFactory urlHelperFactory)
+      : base(webHostEnvironment, cache, htmlEncoder, urlHelperFactory) { }
 
-	public InlineScriptTagHelper(IWebHostEnvironment webHostEnvironment, IMemoryCache cache, HtmlEncoder htmlEncoder, IUrlHelperFactory urlHelperFactory)
-		: base(webHostEnvironment, cache, htmlEncoder, urlHelperFactory) { }
+   [HtmlAttributeName(HrefAttributeName)]
+   public string Href { get; set; }
 
-	public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
-	{
-		context.ThrowIfNull();
-		output.ThrowIfNull();
+   public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
+   {
+      context.ThrowIfNull();
+      output.ThrowIfNull();
 
-		var fileContent = await GetFileContentStringAsync(Href);
-		if (fileContent is null)
-		{
-			output.SuppressOutput();
-			return;
-		}
+      var fileContent = await GetFileContentStringAsync(Href);
+      if (fileContent is null)
+      {
+         output.SuppressOutput();
+         return;
+      }
 
-		output.TagName = "script";
-		output.Attributes.RemoveAll("href");
-		output.TagMode = TagMode.StartTagAndEndTag;
-		output.Content.AppendHtml(fileContent);
-	}
+      output.TagName = "script";
+      output.Attributes.RemoveAll("href");
+      output.TagMode = TagMode.StartTagAndEndTag;
+      output.Content.AppendHtml(fileContent);
+   }
 }

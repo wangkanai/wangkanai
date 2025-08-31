@@ -4,84 +4,84 @@ namespace Wangkanai.Extensions;
 
 public class StreamExtensionsTests
 {
-	[Fact]
-	public void CopyTo()
-	{
-		// Arrange
-		var fromStream = new MemoryStream();
-		var toStream = new MemoryStream();
-		var bytes = new byte[8092];
-		fromStream.Write(bytes, 0, bytes.Length);
-		fromStream.Position = 0;
+   [Fact]
+   public void CopyTo()
+   {
+      // Arrange
+      var fromStream = new MemoryStream();
+      var toStream   = new MemoryStream();
+      var bytes      = new byte[8092];
+      fromStream.Write(bytes, 0, bytes.Length);
+      fromStream.Position = 0;
 
-		// Act
-		fromStream.CopyTo(toStream);
+      // Act
+      fromStream.CopyTo(toStream);
 
-		// Assert
-		Assert.Equal(fromStream.Length, toStream.Length);
-	}
+      // Assert
+      Assert.Equal(fromStream.Length, toStream.Length);
+   }
 
-	[Fact]
-	public void ReadFully()
-	{
-		// Arrange
-		var stream = new MemoryStream();
-		var bytes = new byte[8092];
-		stream.Write(bytes, 0, bytes.Length);
-		stream.Position = 0;
+   [Fact]
+   public void ReadFully()
+   {
+      // Arrange
+      var stream = new MemoryStream();
+      var bytes  = new byte[8092];
+      stream.Write(bytes, 0, bytes.Length);
+      stream.Position = 0;
 
-		// Act
-		var result = stream.ReadFully();
+      // Act
+      var result = stream.ReadFully();
 
-		// Assert
-		Assert.Equal(stream.Length, result.Length);
-	}
+      // Assert
+      Assert.Equal(stream.Length, result.Length);
+   }
 
-	[Fact]
-	public void ReadToString()
-	{
-		// Arrange
-		var length = 8092;
-		var stream = new MemoryStream();
-		var bytes = new byte[length];
-		stream.Write(bytes, 0, length);
-		stream.Position = 0;
+   [Fact]
+   public void ReadToString()
+   {
+      // Arrange
+      var length = 8092;
+      var stream = new MemoryStream();
+      var bytes  = new byte[length];
+      stream.Write(bytes, 0, length);
+      stream.Position = 0;
 
-		// Act
-		var result = stream.ReadToString();
+      // Act
+      var result = stream.ReadToString();
 
-		// Assert
-		Assert.Equal(length, result.Length);
-	}
+      // Assert
+      Assert.Equal(length, result.Length);
+   }
 
-	[Fact]
-	public void ReadToString_Null()
-	{
-		// Arrange
-		Stream? stream = null;
+   [Fact]
+   public void ReadToString_Null()
+   {
+      // Arrange
+      Stream? stream = null;
 
-		// Assert
-		Assert.Throws<ArgumentNullException>(() => stream!.ReadToString());
-	}
+      // Assert
+      Assert.Throws<ArgumentNullException>(() => stream!.ReadToString());
+   }
 
-	[Fact]
-	public void ReadFully_Null()
-	{
-		// Arrange
-		Stream stream = null!;
+   [Fact]
+   public void ReadFully_Null()
+   {
+      // Arrange
+      Stream stream = null!;
 
-		// Assert
-		Assert.Throws<ArgumentNullException>(() => stream.ReadFully());
-	}
+      // Assert
+      Assert.Throws<ArgumentNullException>(() => stream.ReadFully());
+   }
 
-	[Fact]
-	public void CopyTo_Null()
-	{
-		// Arrange
-		Stream fromStream = null!;
-		var toStream = new MemoryStream();
+   [Fact]
+   public void CopyTo_Null()
+   {
+      // Arrange
+      Stream fromStream = null!;
+      var    toStream   = new MemoryStream();
 
-		// Assert
-		Assert.Throws<NullReferenceException>(() => fromStream.CopyTo(toStream));
-	}
+      // Assert
+      Assert.Throws<NullReferenceException>(() => fromStream.CopyTo(toStream));
+   }
 }

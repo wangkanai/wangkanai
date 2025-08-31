@@ -6,8 +6,8 @@ namespace Wangkanai.Testing;
 
 public interface ILifetimeService
 {
-	public DateTime Start { get; set; }
-	public DateTime Stop { get; set; }
-	public TimeSpan Elapsed { get; }
-	public ServiceLifetime Lifetime { get; }
+   DateTime        Start    { get; set; }
+   DateTime        Stop     { get; set; }
+   TimeSpan        Elapsed  { get; }
+   ServiceLifetime Lifetime { get; }
 }

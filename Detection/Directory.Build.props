@@ -1,19 +1,19 @@
 <Project>
-	<Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
-	<PropertyGroup>
-		<VersionPrefix>8.20.0</VersionPrefix>
-		<Title>Wangkanai Detection</Title>
-		<Description>Introducing `Detection` – your gateway to understanding your users' interactions with your ASP.NET Core application. With over 10 million downloads, `Detection` offers invaluable insights into your client's device, browser, engine, and platform, even identifying crawlers. Tailor your application to your users' needs, enhance the user experience, and optimize for SEO. Discover the power of `Detection` and let's create seamless, personalized experiences for all users.</Description>
-		<PackageTags>aspnetcore;detection;</PackageTags>
-		<PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Detection</PackageProjectUrl>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Detection'">
-		<PackageIcon>wangkanai-logo.png</PackageIcon>
-		<PackageReadmeFile>NUGET.md</PackageReadmeFile>
-	</PropertyGroup>
-	<ItemGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Detection'">
-		<None Include="$(RepoRoot)\assets\wangkanai-logo.png" Pack="true" PackagePath="\" />
-		<None Include="..\README.md" Pack="true" PackagePath="\" />
-		<None Include="..\NUGET.md" Pack="true" PackagePath="\" />
-	</ItemGroup>
+   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props"/>
+   <PropertyGroup>
+      <VersionPrefix>8.20.0</VersionPrefix>
+      <Title>Wangkanai Detection</Title>
+      <Description>Introducing `Detection` – your gateway to understanding your users' interactions with your ASP.NET Core application. With over 10 million downloads, `Detection` offers invaluable insights into your client's device, browser, engine, and platform, even identifying crawlers. Tailor your application to your users' needs, enhance the user experience, and optimize for SEO. Discover the power of `Detection` and let's create seamless, personalized experiences for all users.</Description>
+      <PackageTags>aspnetcore;detection;</PackageTags>
+      <PackageProjectUrl>https://github.com/wangkanai/wangkanai/tree/main/Detection</PackageProjectUrl>
+   </PropertyGroup>
+   <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Detection'">
+      <PackageIcon>wangkanai-logo.png</PackageIcon>
+      <PackageReadmeFile>NUGET.md</PackageReadmeFile>
+   </PropertyGroup>
+   <ItemGroup Condition="'$(MSBuildProjectName)' == 'Wangkanai.Detection'">
+      <None Include="$(RepoRoot)\assets\wangkanai-logo.png" Pack="true" PackagePath="\"/>
+      <None Include="..\README.md" Pack="true" PackagePath="\"/>
+      <None Include="..\NUGET.md" Pack="true" PackagePath="\"/>
+   </ItemGroup>
 </Project>

@@ -6,12 +6,12 @@ namespace Wangkanai.Markdown.Infrastructure;
 
 internal sealed class DynamicMarkdownMetadata : IDynamicEndpointMetadata
 {
-	public RouteValueDictionary Values { get; }
-	public bool IsDynamic => true;
+   public DynamicMarkdownMetadata(RouteValueDictionary values)
+   {
+      values.ThrowIfNull();
+      Values = values;
+   }
 
-	public DynamicMarkdownMetadata(RouteValueDictionary values)
-	{
-		values.ThrowIfNull();
-		Values = values;
-	}
+   public RouteValueDictionary Values    { get; }
+   public bool                 IsDynamic => true;
 }

@@ -2,11 +2,9 @@
 
 namespace Wangkanai.Responsive.Hosting;
 
-/// <summary>
-///     Specifies the GetDevice view formar for <see cref="ResponsiveViewLocationExpander" />.
-/// </summary>
+/// <summary>Specifies the GetDevice view formar for <see cref="ResponsiveViewLocationExpander"/>.</summary>
 public enum ResponsiveViewLocationFormat
 {
-	Subfolder,
-	Suffix
+   Subfolder,
+   Suffix
 }

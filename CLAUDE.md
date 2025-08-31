@@ -9,6 +9,7 @@ This project has access to several MCP (Model Context Protocol) servers. Command
 ### 🔥 Tier 1: Essential Daily Development Commands
 
 #### JetBrains IDE Integration (Most Used)
+
 ```bash
 # Code editing and navigation (highest efficiency)
 mcp__jetbrains__replace_specific_text          # Most efficient for precise edits
@@ -35,6 +36,7 @@ mcp__jetbrains__get_debugger_breakpoints       # Breakpoint management
 ### 🚀 Tier 2: High-Value Development Tools
 
 #### Memory/Knowledge Graph
+
 ```bash
 # Relationship tracking
 mcp__memory__create_entities                  # Track system components
@@ -44,6 +46,7 @@ mcp__memory__read_graph                       # View entire knowledge graph
 ```
 
 #### Code Analysis & Quality
+
 ```bash
 # Repository analysis
 mcp__repomix__pack_codebase                   # Analyze entire codebase

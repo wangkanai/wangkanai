@@ -12,361 +12,350 @@ namespace Wangkanai.Mvc.Infrastructure;
 
 internal abstract class ActionMethodExecutor
 {
-	private static readonly ActionMethodExecutor[] Executors = new ActionMethodExecutor[]
-	{
-		// Executors for sync methods
-		new VoidResultExecutor(),
-		new SyncActionResultExecutor(),
-		new SyncObjectResultExecutor(),
+   private static readonly ActionMethodExecutor[] Executors = new ActionMethodExecutor[]
+                                                              {
+                                                                 // Executors for sync methods
+                                                                 new VoidResultExecutor(),
+                                                                 new SyncActionResultExecutor(),
+                                                                 new SyncObjectResultExecutor(),
 
-		// Executors for async methods
-		new TaskResultExecutor(),
-		new AwaitableResultExecutor(),
-		new TaskOfIActionResultExecutor(),
-		new TaskOfActionResultExecutor(),
-		new AwaitableObjectResultExecutor(),
-	};
+                                                                 // Executors for async methods
+                                                                 new TaskResultExecutor(),
+                                                                 new AwaitableResultExecutor(),
+                                                                 new TaskOfIActionResultExecutor(),
+                                                                 new TaskOfActionResultExecutor(),
+                                                                 new AwaitableObjectResultExecutor()
+                                                              };
 
-	public static EmptyResult EmptyResultInstance { get; } = new();
+   public static EmptyResult EmptyResultInstance { get; } = new();
 
-	public abstract ValueTask<IActionResult> Execute(
-		ActionContext actionContext,
-		IActionResultTypeMapper mapper,
-		ObjectMethodExecutor executor,
-		object controller,
-		object?[]? arguments);
+   public abstract ValueTask<IActionResult> Execute(
+      ActionContext           actionContext,
+      IActionResultTypeMapper mapper,
+      ObjectMethodExecutor    executor,
+      object                  controller,
+      object?[]?              arguments);
 
-	protected abstract bool CanExecute(ObjectMethodExecutor executor);
+   protected abstract bool CanExecute(ObjectMethodExecutor executor);
 
-	public abstract ValueTask<object?> Execute(ControllerEndpointFilterInvocationContext invocationContext);
+   public abstract ValueTask<object?> Execute(ControllerEndpointFilterInvocationContext invocationContext);
 
-	public static ActionMethodExecutor GetExecutor(ObjectMethodExecutor executor)
-	{
-		for (var i = 0; i < Executors.Length; i++)
-		{
-			if (Executors[i].CanExecute(executor))
-			{
-				return Executors[i];
-			}
-		}
+   public static ActionMethodExecutor GetExecutor(ObjectMethodExecutor executor)
+   {
+      for (var i = 0; i < Executors.Length; i++)
+      {
+         if (Executors[i].CanExecute(executor))
+         {
+            return Executors[i];
+         }
+      }
 
-		Debug.Fail("Should not get here");
-		throw new Exception();
-	}
+      Debug.Fail("Should not get here");
+      throw new();
+   }
 
-	public static ActionMethodExecutor GetFilterExecutor(ControllerActionDescriptor actionDescriptor) =>
-		new FilterActionMethodExecutor(actionDescriptor);
+   public static ActionMethodExecutor GetFilterExecutor(ControllerActionDescriptor actionDescriptor) =>
+      new FilterActionMethodExecutor(actionDescriptor);
 
-	private sealed class FilterActionMethodExecutor : ActionMethodExecutor
-	{
-		private readonly ControllerActionDescriptor _controllerActionDescriptor;
+   private static void EnsureActionResultNotNull(ObjectMethodExecutor executor, IActionResult actionResult)
+   {
+      if (actionResult == null)
+      {
+         var type = executor.AsyncResultType ?? executor.MethodReturnType;
+         throw new InvalidOperationException($"Cannot return null from an action method with a return type of '{type}'.");
+      }
+   }
 
-		public FilterActionMethodExecutor(ControllerActionDescriptor controllerActionDescriptor)
-		{
-			_controllerActionDescriptor = controllerActionDescriptor;
-		}
+   private static IActionResult ConvertToActionResult(IActionResultTypeMapper mapper, object? returnValue, Type declaredType)
+   {
+      var result = returnValue as IActionResult ?? mapper.Convert(returnValue, declaredType);
+      result.ThrowIfNull<InvalidOperationException>($"Cannot return null from an action method with a return type of '{declaredType}'.");
 
-		public override async ValueTask<IActionResult> Execute(
-			ActionContext actionContext,
-			IActionResultTypeMapper mapper,
-			ObjectMethodExecutor executor,
-			object controller,
-			object?[]? arguments)
-		{
-			var context = new ControllerEndpointFilterInvocationContext(_controllerActionDescriptor, actionContext, executor, mapper, controller, arguments);
-			var result = await _controllerActionDescriptor.FilterDelegate!(context);
-			return ConvertToActionResult(mapper, result, executor.IsMethodAsync ? executor.AsyncResultType! : executor.MethodReturnType);
-		}
+      return result;
+   }
 
-		public override ValueTask<object?> Execute(ControllerEndpointFilterInvocationContext invocationContext)
-		{
-			// This is never called
-			throw new NotSupportedException();
-		}
+   private sealed class FilterActionMethodExecutor : ActionMethodExecutor
+   {
+      private readonly ControllerActionDescriptor _controllerActionDescriptor;
 
-		protected override bool CanExecute(ObjectMethodExecutor executor)
-		{
-			// This is never called
-			throw new NotSupportedException();
-		}
-	}
+      public FilterActionMethodExecutor(ControllerActionDescriptor controllerActionDescriptor) => _controllerActionDescriptor = controllerActionDescriptor;
 
-	// void LogMessage(..)
-	private sealed class VoidResultExecutor : ActionMethodExecutor
-	{
-		public override ValueTask<IActionResult> Execute(
-			ActionContext actionContext,
-			IActionResultTypeMapper mapper,
-			ObjectMethodExecutor executor,
-			object controller,
-			object?[]? arguments)
-		{
-			executor.Execute(controller, arguments);
-			return new(EmptyResultInstance);
-		}
+      public override async ValueTask<IActionResult> Execute(
+         ActionContext           actionContext,
+         IActionResultTypeMapper mapper,
+         ObjectMethodExecutor    executor,
+         object                  controller,
+         object?[]?              arguments)
+      {
+         var context = new ControllerEndpointFilterInvocationContext(_controllerActionDescriptor, actionContext, executor, mapper, controller, arguments);
+         var result  = await _controllerActionDescriptor.FilterDelegate!(context);
+         return ConvertToActionResult(mapper, result, executor.IsMethodAsync ? executor.AsyncResultType! : executor.MethodReturnType);
+      }
 
-		public override ValueTask<object?> Execute(ControllerEndpointFilterInvocationContext invocationContext)
-		{
-			var executor = invocationContext.Executor;
-			var controller = invocationContext.Controller;
-			var arguments = (object[])invocationContext.Arguments;
+      public override ValueTask<object?> Execute(ControllerEndpointFilterInvocationContext invocationContext) => throw
+         // This is never called
+         new NotSupportedException();
 
-			executor.Execute(controller, arguments);
-			return new(EmptyResultInstance);
-		}
+      protected override bool CanExecute(ObjectMethodExecutor executor) => throw
+         // This is never called
+         new NotSupportedException();
+   }
 
-		protected override bool CanExecute(ObjectMethodExecutor executor)
-			=> !executor.IsMethodAsync && executor.MethodReturnType == typeof(void);
-	}
+   // void LogMessage(..)
+   private sealed class VoidResultExecutor : ActionMethodExecutor
+   {
+      public override ValueTask<IActionResult> Execute(
+         ActionContext           actionContext,
+         IActionResultTypeMapper mapper,
+         ObjectMethodExecutor    executor,
+         object                  controller,
+         object?[]?              arguments)
+      {
+         executor.Execute(controller, arguments);
+         return new(EmptyResultInstance);
+      }
 
-	// IActionResult Post(..)
-	// CreatedAtResult Put(..)
-	private sealed class SyncActionResultExecutor : ActionMethodExecutor
-	{
-		public override ValueTask<IActionResult> Execute(
-			ActionContext actionContext,
-			IActionResultTypeMapper mapper,
-			ObjectMethodExecutor executor,
-			object controller,
-			object?[]? arguments)
-		{
-			var actionResult = (IActionResult)executor.Execute(controller, arguments)!;
-			EnsureActionResultNotNull(executor, actionResult);
+      public override ValueTask<object?> Execute(ControllerEndpointFilterInvocationContext invocationContext)
+      {
+         var executor   = invocationContext.Executor;
+         var controller = invocationContext.Controller;
+         var arguments  = (object[])invocationContext.Arguments;
 
-			return new(actionResult);
-		}
+         executor.Execute(controller, arguments);
+         return new(EmptyResultInstance);
+      }
 
-		public override ValueTask<object?> Execute(ControllerEndpointFilterInvocationContext invocationContext)
-		{
-			var executor = invocationContext.Executor;
-			var controller = invocationContext.Controller;
-			var arguments = (object[])invocationContext.Arguments;
+      protected override bool CanExecute(ObjectMethodExecutor executor)
+         => !executor.IsMethodAsync && executor.MethodReturnType == typeof(void);
+   }
 
-			var actionResult = (IActionResult)executor.Execute(controller, arguments)!;
-			EnsureActionResultNotNull(executor, actionResult);
+   // IActionResult Post(..)
+   // CreatedAtResult Put(..)
+   private sealed class SyncActionResultExecutor : ActionMethodExecutor
+   {
+      public override ValueTask<IActionResult> Execute(
+         ActionContext           actionContext,
+         IActionResultTypeMapper mapper,
+         ObjectMethodExecutor    executor,
+         object                  controller,
+         object?[]?              arguments)
+      {
+         var actionResult = (IActionResult)executor.Execute(controller, arguments)!;
+         EnsureActionResultNotNull(executor, actionResult);
 
-			return new(actionResult);
-		}
+         return new(actionResult);
+      }
 
-		protected override bool CanExecute(ObjectMethodExecutor executor)
-			=> !executor.IsMethodAsync && typeof(IActionResult).IsAssignableFrom(executor.MethodReturnType);
-	}
+      public override ValueTask<object?> Execute(ControllerEndpointFilterInvocationContext invocationContext)
+      {
+         var executor   = invocationContext.Executor;
+         var controller = invocationContext.Controller;
+         var arguments  = (object[])invocationContext.Arguments;
 
-	// Person GetPerson(..)
-	// object Index(..)
-	private sealed class SyncObjectResultExecutor : ActionMethodExecutor
-	{
-		public override ValueTask<IActionResult> Execute(
-			ActionContext actionContext,
-			IActionResultTypeMapper mapper,
-			ObjectMethodExecutor executor,
-			object controller,
-			object?[]? arguments)
-		{
-			// Sync method returning arbitrary object
-			var returnValue = executor.Execute(controller, arguments);
-			var actionResult = ConvertToActionResult(mapper, returnValue, executor.MethodReturnType);
-			return new(actionResult);
-		}
+         var actionResult = (IActionResult)executor.Execute(controller, arguments)!;
+         EnsureActionResultNotNull(executor, actionResult);
 
-		public override ValueTask<object?> Execute(ControllerEndpointFilterInvocationContext invocationContext)
-		{
-			var executor = invocationContext.Executor;
-			var controller = invocationContext.Controller;
-			var arguments = (object[])invocationContext.Arguments;
-			var mapper = invocationContext.Mapper;
+         return new(actionResult);
+      }
 
-			// Sync method returning arbitrary object
-			var returnValue = executor.Execute(controller, arguments);
-			var actionResult = ConvertToActionResult(mapper, returnValue, executor.MethodReturnType);
-			return new(actionResult);
-		}
+      protected override bool CanExecute(ObjectMethodExecutor executor)
+         => !executor.IsMethodAsync && typeof(IActionResult).IsAssignableFrom(executor.MethodReturnType);
+   }
 
-		// Catch-all for sync methods
-		protected override bool CanExecute(ObjectMethodExecutor executor) => !executor.IsMethodAsync;
-	}
+   // Person GetPerson(..)
+   // object Index(..)
+   private sealed class SyncObjectResultExecutor : ActionMethodExecutor
+   {
+      public override ValueTask<IActionResult> Execute(
+         ActionContext           actionContext,
+         IActionResultTypeMapper mapper,
+         ObjectMethodExecutor    executor,
+         object                  controller,
+         object?[]?              arguments)
+      {
+         // Sync method returning arbitrary object
+         var returnValue  = executor.Execute(controller, arguments);
+         var actionResult = ConvertToActionResult(mapper, returnValue, executor.MethodReturnType);
+         return new(actionResult);
+      }
 
-	// Task SaveState(..)
-	private sealed class TaskResultExecutor : ActionMethodExecutor
-	{
-		public override async ValueTask<IActionResult> Execute(
-			ActionContext actionContext,
-			IActionResultTypeMapper mapper,
-			ObjectMethodExecutor executor,
-			object controller,
-			object?[]? arguments)
-		{
-			await (Task)executor.Execute(controller, arguments)!;
-			return EmptyResultInstance;
-		}
+      public override ValueTask<object?> Execute(ControllerEndpointFilterInvocationContext invocationContext)
+      {
+         var executor   = invocationContext.Executor;
+         var controller = invocationContext.Controller;
+         var arguments  = (object[])invocationContext.Arguments;
+         var mapper     = invocationContext.Mapper;
 
-		public override async ValueTask<object?> Execute(ControllerEndpointFilterInvocationContext invocationContext)
-		{
-			var executor = invocationContext.Executor;
-			var controller = invocationContext.Controller;
-			var arguments = (object[])invocationContext.Arguments;
+         // Sync method returning arbitrary object
+         var returnValue  = executor.Execute(controller, arguments);
+         var actionResult = ConvertToActionResult(mapper, returnValue, executor.MethodReturnType);
+         return new(actionResult);
+      }
 
-			await (Task)executor.Execute(controller, arguments)!;
-			return EmptyResultInstance;
-		}
+      // Catch-all for sync methods
+      protected override bool CanExecute(ObjectMethodExecutor executor) => !executor.IsMethodAsync;
+   }
 
-		protected override bool CanExecute(ObjectMethodExecutor executor) => executor.MethodReturnType == typeof(Task);
-	}
+   // Task SaveState(..)
+   private sealed class TaskResultExecutor : ActionMethodExecutor
+   {
+      public override async ValueTask<IActionResult> Execute(
+         ActionContext           actionContext,
+         IActionResultTypeMapper mapper,
+         ObjectMethodExecutor    executor,
+         object                  controller,
+         object?[]?              arguments)
+      {
+         await (Task)executor.Execute(controller, arguments)!;
+         return EmptyResultInstance;
+      }
 
-	// CustomAsync PerformActionAsync(..)
-	// Custom task-like type with no return value.
-	private sealed class AwaitableResultExecutor : ActionMethodExecutor
-	{
-		public override async ValueTask<IActionResult> Execute(
-			ActionContext actionContext,
-			IActionResultTypeMapper mapper,
-			ObjectMethodExecutor executor,
-			object controller,
-			object?[]? arguments)
-		{
-			await executor.ExecuteAsync(controller, arguments);
-			return EmptyResultInstance;
-		}
+      public override async ValueTask<object?> Execute(ControllerEndpointFilterInvocationContext invocationContext)
+      {
+         var executor   = invocationContext.Executor;
+         var controller = invocationContext.Controller;
+         var arguments  = (object[])invocationContext.Arguments;
 
-		public override async ValueTask<object?> Execute(ControllerEndpointFilterInvocationContext invocationContext)
-		{
-			var executor = invocationContext.Executor;
-			var controller = invocationContext.Controller;
-			var arguments = (object[])invocationContext.Arguments;
+         await (Task)executor.Execute(controller, arguments)!;
+         return EmptyResultInstance;
+      }
 
-			await executor.ExecuteAsync(controller, arguments);
-			return EmptyResultInstance;
-		}
+      protected override bool CanExecute(ObjectMethodExecutor executor) => executor.MethodReturnType == typeof(Task);
+   }
 
-		protected override bool CanExecute(ObjectMethodExecutor executor)
-		{
-			// Async method returning void
-			return executor.IsMethodAsync && executor.AsyncResultType == typeof(void);
-		}
-	}
+   // CustomAsync PerformActionAsync(..)
+   // Custom task-like type with no return value.
+   private sealed class AwaitableResultExecutor : ActionMethodExecutor
+   {
+      public override async ValueTask<IActionResult> Execute(
+         ActionContext           actionContext,
+         IActionResultTypeMapper mapper,
+         ObjectMethodExecutor    executor,
+         object                  controller,
+         object?[]?              arguments)
+      {
+         await executor.ExecuteAsync(controller, arguments);
+         return EmptyResultInstance;
+      }
 
-	// Task<IActionResult> Post(..)
-	private sealed class TaskOfIActionResultExecutor : ActionMethodExecutor
-	{
-		public override async ValueTask<IActionResult> Execute(
-			ActionContext actionContext,
-			IActionResultTypeMapper mapper,
-			ObjectMethodExecutor executor,
-			object controller,
-			object?[]? arguments)
-		{
-			// Async method returning Task<IActionResult>
-			// Avoid extra allocations by calling Execute rather than ExecuteAsync and casting to Task<IActionResult>.
-			var returnValue = executor.Execute(controller, arguments);
-			var actionResult = await (Task<IActionResult>)returnValue!;
-			EnsureActionResultNotNull(executor, actionResult);
+      public override async ValueTask<object?> Execute(ControllerEndpointFilterInvocationContext invocationContext)
+      {
+         var executor   = invocationContext.Executor;
+         var controller = invocationContext.Controller;
+         var arguments  = (object[])invocationContext.Arguments;
 
-			return actionResult;
-		}
+         await executor.ExecuteAsync(controller, arguments);
+         return EmptyResultInstance;
+      }
 
-		public override async ValueTask<object?> Execute(ControllerEndpointFilterInvocationContext invocationContext)
-		{
-			var executor = invocationContext.Executor;
-			var controller = invocationContext.Controller;
-			var arguments = (object[])invocationContext.Arguments;
+      protected override bool CanExecute(ObjectMethodExecutor executor) =>
+         // Async method returning void
+         executor.IsMethodAsync && executor.AsyncResultType == typeof(void);
+   }
 
-			// Async method returning Task<IActionResult>
-			// Avoid extra allocations by calling Execute rather than ExecuteAsync and casting to Task<IActionResult>.
-			var returnValue = executor.Execute(controller, arguments);
-			var actionResult = await (Task<IActionResult>)returnValue!;
-			EnsureActionResultNotNull(executor, actionResult);
+   // Task<IActionResult> Post(..)
+   private sealed class TaskOfIActionResultExecutor : ActionMethodExecutor
+   {
+      public override async ValueTask<IActionResult> Execute(
+         ActionContext           actionContext,
+         IActionResultTypeMapper mapper,
+         ObjectMethodExecutor    executor,
+         object                  controller,
+         object?[]?              arguments)
+      {
+         // Async method returning Task<IActionResult>
+         // Avoid extra allocations by calling Execute rather than ExecuteAsync and casting to Task<IActionResult>.
+         var returnValue  = executor.Execute(controller, arguments);
+         var actionResult = await (Task<IActionResult>)returnValue!;
+         EnsureActionResultNotNull(executor, actionResult);
 
-			return actionResult;
-		}
+         return actionResult;
+      }
 
-		protected override bool CanExecute(ObjectMethodExecutor executor)
-			=> typeof(Task<IActionResult>).IsAssignableFrom(executor.MethodReturnType);
-	}
+      public override async ValueTask<object?> Execute(ControllerEndpointFilterInvocationContext invocationContext)
+      {
+         var executor   = invocationContext.Executor;
+         var controller = invocationContext.Controller;
+         var arguments  = (object[])invocationContext.Arguments;
 
-	// Task<PhysicalFileResult> DownloadFile(..)
-	// ValueTask<ViewResult> GetViewsAsync(..)
-	private sealed class TaskOfActionResultExecutor : ActionMethodExecutor
-	{
-		public override async ValueTask<IActionResult> Execute(
-			ActionContext actionContext,
-			IActionResultTypeMapper mapper,
-			ObjectMethodExecutor executor,
-			object controller,
-			object?[]? arguments)
-		{
-			// Async method returning awaitable-of-IActionResult (e.g., Task<ViewResult>)
-			// We have to use ExecuteAsync because we don't know the awaitable's type at compile time.
-			var actionResult = (IActionResult)await executor.ExecuteAsync(controller, arguments);
-			EnsureActionResultNotNull(executor, actionResult);
-			return actionResult;
-		}
+         // Async method returning Task<IActionResult>
+         // Avoid extra allocations by calling Execute rather than ExecuteAsync and casting to Task<IActionResult>.
+         var returnValue  = executor.Execute(controller, arguments);
+         var actionResult = await (Task<IActionResult>)returnValue!;
+         EnsureActionResultNotNull(executor, actionResult);
 
-		public override async ValueTask<object?> Execute(ControllerEndpointFilterInvocationContext invocationContext)
-		{
-			var executor = invocationContext.Executor;
-			var controller = invocationContext.Controller;
-			var arguments = (object[])invocationContext.Arguments;
+         return actionResult;
+      }
 
-			// Async method returning awaitable-of-IActionResult (e.g., Task<ViewResult>)
-			// We have to use ExecuteAsync because we don't know the awaitable's type at compile time.
-			var actionResult = (IActionResult)await executor.ExecuteAsync(controller, arguments);
-			EnsureActionResultNotNull(executor, actionResult);
-			return actionResult;
-		}
+      protected override bool CanExecute(ObjectMethodExecutor executor)
+         => typeof(Task<IActionResult>).IsAssignableFrom(executor.MethodReturnType);
+   }
 
-		protected override bool CanExecute(ObjectMethodExecutor executor)
-		{
-			// Async method returning awaitable-of - IActionResult(e.g., Task<ViewResult>)
-			return executor.IsMethodAsync && typeof(IActionResult).IsAssignableFrom(executor.AsyncResultType);
-		}
-	}
+   // Task<PhysicalFileResult> DownloadFile(..)
+   // ValueTask<ViewResult> GetViewsAsync(..)
+   private sealed class TaskOfActionResultExecutor : ActionMethodExecutor
+   {
+      public override async ValueTask<IActionResult> Execute(
+         ActionContext           actionContext,
+         IActionResultTypeMapper mapper,
+         ObjectMethodExecutor    executor,
+         object                  controller,
+         object?[]?              arguments)
+      {
+         // Async method returning awaitable-of-IActionResult (e.g., Task<ViewResult>)
+         // We have to use ExecuteAsync because we don't know the awaitable's type at compile time.
+         var actionResult = (IActionResult)await executor.ExecuteAsync(controller, arguments);
+         EnsureActionResultNotNull(executor, actionResult);
+         return actionResult;
+      }
 
-	// Task<object> GetPerson(..)
-	// Task<Customer> GetCustomerAsync(..)
-	private sealed class AwaitableObjectResultExecutor : ActionMethodExecutor
-	{
-		public override async ValueTask<IActionResult> Execute(
-			ActionContext actionContext,
-			IActionResultTypeMapper mapper,
-			ObjectMethodExecutor executor,
-			object controller,
-			object?[]? arguments)
-		{
-			// Async method returning awaitable-of-nonvoid
-			var returnValue = await executor.ExecuteAsync(controller, arguments);
-			var actionResult = ConvertToActionResult(mapper, returnValue, executor.AsyncResultType!);
-			return actionResult;
-		}
+      public override async ValueTask<object?> Execute(ControllerEndpointFilterInvocationContext invocationContext)
+      {
+         var executor   = invocationContext.Executor;
+         var controller = invocationContext.Controller;
+         var arguments  = (object[])invocationContext.Arguments;
 
-		public override async ValueTask<object?> Execute(ControllerEndpointFilterInvocationContext invocationContext)
-		{
-			var executor = invocationContext.Executor;
-			var controller = invocationContext.Controller;
-			var arguments = (object[])invocationContext.Arguments;
-			var mapper = invocationContext.Mapper;
+         // Async method returning awaitable-of-IActionResult (e.g., Task<ViewResult>)
+         // We have to use ExecuteAsync because we don't know the awaitable's type at compile time.
+         var actionResult = (IActionResult)await executor.ExecuteAsync(controller, arguments);
+         EnsureActionResultNotNull(executor, actionResult);
+         return actionResult;
+      }
 
-			var returnValue = await executor.ExecuteAsync(controller, arguments);
-			var actionResult = ConvertToActionResult(mapper, returnValue, executor.AsyncResultType!);
-			return actionResult;
-		}
+      protected override bool CanExecute(ObjectMethodExecutor executor) =>
+         // Async method returning awaitable-of - IActionResult(e.g., Task<ViewResult>)
+         executor.IsMethodAsync && typeof(IActionResult).IsAssignableFrom(executor.AsyncResultType);
+   }
 
-		protected override bool CanExecute(ObjectMethodExecutor executor) => true;
-	}
+   // Task<object> GetPerson(..)
+   // Task<Customer> GetCustomerAsync(..)
+   private sealed class AwaitableObjectResultExecutor : ActionMethodExecutor
+   {
+      public override async ValueTask<IActionResult> Execute(
+         ActionContext           actionContext,
+         IActionResultTypeMapper mapper,
+         ObjectMethodExecutor    executor,
+         object                  controller,
+         object?[]?              arguments)
+      {
+         // Async method returning awaitable-of-nonvoid
+         var returnValue  = await executor.ExecuteAsync(controller, arguments);
+         var actionResult = ConvertToActionResult(mapper, returnValue, executor.AsyncResultType!);
+         return actionResult;
+      }
 
-	private static void EnsureActionResultNotNull(ObjectMethodExecutor executor, IActionResult actionResult)
-	{
-		if (actionResult == null)
-		{
-			var type = executor.AsyncResultType ?? executor.MethodReturnType;
-			throw new InvalidOperationException($"Cannot return null from an action method with a return type of '{type}'.");
-		}
-	}
+      public override async ValueTask<object?> Execute(ControllerEndpointFilterInvocationContext invocationContext)
+      {
+         var executor   = invocationContext.Executor;
+         var controller = invocationContext.Controller;
+         var arguments  = (object[])invocationContext.Arguments;
+         var mapper     = invocationContext.Mapper;
 
-	private static IActionResult ConvertToActionResult(IActionResultTypeMapper mapper, object? returnValue, Type declaredType)
-	{
-		var result = returnValue as IActionResult ?? mapper.Convert(returnValue, declaredType);
-		result.ThrowIfNull<InvalidOperationException>($"Cannot return null from an action method with a return type of '{declaredType}'.");
+         var returnValue  = await executor.ExecuteAsync(controller, arguments);
+         var actionResult = ConvertToActionResult(mapper, returnValue, executor.AsyncResultType!);
+         return actionResult;
+      }
 
-		return result;
-	}
+      protected override bool CanExecute(ObjectMethodExecutor executor) => true;
+   }
 }

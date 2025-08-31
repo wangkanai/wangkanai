@@ -10,22 +10,27 @@
 [![Patreon](https://img.shields.io/badge/patreon-support%20me-d9643a.svg)](https://www.patreon.com/wangkanai)
 [![GitHub](https://img.shields.io/github/license/wangkanai/wangkanai)](https://github.com/wangkanai/wangkanai/blob/main/LICENSE)
 
-**Wangkanai Microservice** is a powerful, cutting-edge framework that transforms the way developers build cloud-native applications in .NET. It's not just another library—it's your complete toolkit for constructing scalable, resilient, and maintainable microservice architectures that stand up to the demands of modern enterprise applications.
+**Wangkanai Microservice** is a powerful, cutting-edge framework that transforms the way developers build cloud-native applications in .NET. It's not just another library—it's your complete toolkit
+for constructing scalable, resilient, and maintainable microservice architectures that stand up to the demands of modern enterprise applications.
 
 ### 💥 Why Wangkanai Microservice?
 
-In today's fast-paced digital landscape, monolithic applications can't keep up with the rapid pace of innovation and scaling requirements. Wangkanai Microservice empowers development teams to break free from the constraints of traditional architecture and embrace the full potential of distributed systems.
+In today's fast-paced digital landscape, monolithic applications can't keep up with the rapid pace of innovation and scaling requirements. Wangkanai Microservice empowers development teams to break
+free from the constraints of traditional architecture and embrace the full potential of distributed systems.
 
-Our framework doesn't just implement microservice patterns—it **revolutionizes** them with .NET-optimized components that work seamlessly together while remaining flexible enough to adapt to your unique business requirements.
+Our framework doesn't just implement microservice patterns—it **revolutionizes** them with .NET-optimized components that work seamlessly together while remaining flexible enough to adapt to your
+unique business requirements.
 
 ### 🔥 Core Features & Capabilities
 
 #### 🏗️ Service Architecture Foundation
+
 - **Domain-Driven Design (DDD) Templates**: Jump-start your microservice development with pre-configured templates that enforce clean separation of concerns
 - **Bounded Context Patterns**: Easily define and maintain service boundaries that map to your business domains
 - **Modular Service Structure**: Build independent, deployable services that can evolve at their own pace
 
 #### 🌐 Communication & Integration
+
 - **Robust Messaging System**: Choose from multiple messaging patterns including request-response, publish-subscribe, and event-driven architectures
 - **API Gateway Integration**: Seamlessly connect services with built-in support for leading API gateway solutions
 - **Service Discovery**: Automatic registration and discovery of services in your ecosystem
@@ -33,12 +38,14 @@ Our framework doesn't just implement microservice patterns—it **revolutionizes
 - **Circuit Breaker Implementation**: Prevent cascade failures with sophisticated failure detection and handling
 
 #### ⚡ Performance Optimization
+
 - **Asynchronous Processing**: First-class support for async patterns throughout the framework
 - **Caching Strategies**: Multiple caching layers to optimize response times and reduce database load
 - **Connection Pooling**: Efficient resource utilization for database and external service connections
 - **Compression & Optimization**: Automatic payload optimization for inter-service communication
 
 #### 🛡️ Resilience & Reliability
+
 - **Retry Policies**: Configurable retry mechanisms for transient failures
 - **Fault Tolerance**: Service isolation to prevent error propagation
 - **Graceful Degradation**: Fallback mechanisms when dependent services are unavailable
@@ -46,6 +53,7 @@ Our framework doesn't just implement microservice patterns—it **revolutionizes
 - **Self-Healing Capabilities**: Automatic recovery from common failure scenarios
 
 #### 🔒 Security & Compliance
+
 - **Authentication & Authorization**: Comprehensive identity management across services
 - **Encryption**: End-to-end encryption for sensitive data in transit and at rest
 - **Audit Trails**: Detailed logging of system activities and changes
@@ -53,6 +61,7 @@ Our framework doesn't just implement microservice patterns—it **revolutionizes
 - **Policy Enforcement**: Centralized policy definition and distributed enforcement
 
 #### 📊 Monitoring & Observability
+
 - **Distributed Tracing**: Track requests as they flow through your microservice ecosystem
 - **Metrics Collection**: Gather performance and business metrics from all services
 - **Centralized Logging**: Aggregate logs across services for comprehensive analysis
@@ -60,6 +69,7 @@ Our framework doesn't just implement microservice patterns—it **revolutionizes
 - **Alerting System**: Proactive notification when metrics cross defined thresholds
 
 #### 🚢 DevOps & Deployment
+
 - **Container-First Design**: Optimized for Docker and Kubernetes environments
 - **Infrastructure as Code**: Templates for defining your infrastructure alongside your application code
 - **CI/CD Pipeline Integration**: Seamless integration with popular CI/CD platforms
@@ -67,6 +77,7 @@ Our framework doesn't just implement microservice patterns—it **revolutionizes
 - **Rollback Capabilities**: Quick recovery from problematic deployments
 
 #### 🧩 Extensibility & Customization
+
 - **Plugin Architecture**: Extend the framework with custom components without modifying core code
 - **Provider Abstraction**: Swap implementation details without changing service logic
 - **Configuration Management**: Centralized, hierarchical configuration with environment overrides
@@ -134,6 +145,7 @@ dotnet add package Wangkanai.Microservice
 // Run it locally
 dotnet run
 ```
+
 ### 💼 Enterprise Ready
 
 Wangkanai Microservice isn't just for startups and greenfield projects. Our enterprise features include:
