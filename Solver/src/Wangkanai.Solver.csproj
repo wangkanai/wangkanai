@@ -1,7 +1,0 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
-    <ItemGroup>
-        <ProjectReference Include="$(RepoRoot)\System\src\Wangkanai.System.csproj" />
-    </ItemGroup>
-
-</Project>

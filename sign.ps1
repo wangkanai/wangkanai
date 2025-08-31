@@ -27,9 +27,8 @@ $dirs=[ordered]@{
 #    17="Markdown";
 #    18="Analytics";
 #    19="Blazor";
-#    20="Solver";
-#    21="Microservice";
-#    22="Nation";
+#    20="Microservice";
+#    21="Nation";
 }
 
 $env:OneDriveConsumer+"\powershell-env.ps1" | out-null

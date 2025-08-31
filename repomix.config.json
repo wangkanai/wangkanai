@@ -6,12 +6,12 @@
   "output": {
     "filePath": "repomix-output.xml",
     "style": "xml",
-    "parsableStyle": false,
+    "parsableStyle": true,
     "fileSummary": true,
     "directoryStructure": true,
     "files": true,
-    "removeComments": false,
-    "removeEmptyLines": false,
+    "removeComments": true,
+    "removeEmptyLines": true,
     "compress": false,
     "topFilesLength": 20,
     "showLineNumbers": true,
@@ -19,8 +19,8 @@
     "instructionFilePath": "CLAUDE.md",
     "git": {
       "sortByChanges": true,
-      "sortByChangesMaxCommits": 50,
-      "includeDiffs": false
+      "sortByChangesMaxCommits": 10,
+      "includeDiffs": true
     }
   },
   "include": [

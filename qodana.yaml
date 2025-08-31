@@ -11,6 +11,4 @@ exclude:
     paths:
       - Web/src/Server/wwwroot/images/
       - Web/old/wwwroot/
-      - Tabler/samples/
-      - Blazor/samples/
       - Assets

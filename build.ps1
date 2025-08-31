@@ -17,9 +17,8 @@ $dirs=[ordered]@{
     16="Markdown";
     17="Analytics";
     18="Blazor";
-    19="Solver";
-    20="Microservice";
-    21="Nation";
+    19="Microservice";
+    20="Nation";
 }
 
 for ($i=0; $i -lt $dirs.count; $i++) {

@@ -3,7 +3,6 @@
     <File Path="CLAUDE.md" />
     <File Path="repomix.config.json" />
     <File Path=".repomixignore" />
-    <File Path="WANGKANAI_MODULE_ANALYSIS.md" />
   </Folder>
   <Folder Name="/.github/">
     <File Path=".github\FUNDING.yml" />
@@ -32,7 +31,6 @@
     <File Path="LICENSE" />
     <File Path="SonarQube.Analysis.xml" />
     <File Path="sonar-begin.ps1" />
-    <File Path="testconfig.json" />
     <File Path="build-simple.ps1" />
   </Folder>
   <Folder Name="/Analytics/">
@@ -200,15 +198,6 @@
     <Project Path="Shared\src\Wangkanai.Shared.csproj" />
     <Project Path="Shared\tests\Wangkanai.Shared.Tests.csproj" />
     <File Path="Shared\README.md" />
-  </Folder>
-  <Folder Name="/Solver/">
-    <Project Path="Solver\benchmark\Wangkanai.Solver.Benchmark.csproj" />
-    <Project Path="Solver\src\Wangkanai.Solver.csproj" />
-    <Project Path="Solver\tests\Wangkanai.Solver.Tests.csproj" />
-    <File Path="Solver\Directory.Build.props" />
-    <File Path="Solver\README.md" />
-    <File Path="Solver\sign.ps1" />
-    <File Path="Solver\build.ps1" />
   </Folder>
   <Folder Name="/System/">
     <Project Path="System\benchmark\Wangkanai.System.Benchmark.csproj" />
